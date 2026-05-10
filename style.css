@@ -222,7 +222,7 @@ h3 {
 }
 
 .hero .amp {
-  color: var(--orange);
+  color: var(--black);
 }
 
 .hero-sub {
@@ -256,6 +256,42 @@ h3 {
   height: 520px;
   object-fit: cover;
   border-radius: 16px;
+}
+
+/* === Logo Bar === */
+.logo-bar {
+  background: var(--black);
+  padding: 28px 0;
+  overflow: hidden;
+}
+
+.logo-bar-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-logos 30s linear infinite;
+}
+
+.logo-bar-logos {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  padding: 0 32px;
+}
+
+.logo-bar-logos img {
+  height: 28px;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.logo-bar-logos img:hover {
+  opacity: 1;
+}
+
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* === Sections === */
