@@ -65,9 +65,18 @@
 
   <!-- Hero -->
   <header class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto">
-      <source src="images/hero-bg.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline preload="none" id="hero-video">
+      <source id="hero-source" src="" type="video/mp4">
     </video>
+    <script>
+      (function(){
+        var src = window.innerWidth <= 768
+          ? 'images/hero-bg-mobile.mp4'
+          : 'images/hero-bg-desktop.mp4';
+        document.getElementById('hero-source').src = src;
+        document.getElementById('hero-video').load();
+      })();
+    </script>
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <div class="hero-grid">
