@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unitree G1 — Robot Umanoide | Abra Robotics</title>
+  <meta name="description" content="Acquista Unitree G1 in Italia con supporto tecnico dedicato. Distributore ufficiale Abra Robotics: configurazione, onboarding e assistenza inclusi.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/prodotti/unitree-g1.html">
+
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="Unitree G1 — Robot Umanoide | Abra Robotics">
+  <meta property="og:description" content="Acquista Unitree G1 in Italia con supporto tecnico dedicato. Distributore ufficiale Abra Robotics.">
+  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/prodotti/unitree-g1.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Abra Robotics">
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+    .breadcrumb a { color: var(--gray-500); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--black); }
+    .breadcrumb-sep { color: var(--gray-300); }
+
+    /* ── Product Hero ── */
+    .product-hero {
+      padding-top: calc(40px + 64px + 80px);
+      padding-bottom: 80px;
+    }
+    .product-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .product-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-500);
+      background: var(--gray-100);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .product-hero h1 {
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+    .product-price {
+      margin-bottom: 24px;
+    }
+    .product-price-main {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .product-price-sub {
+      font-size: 0.75em;
+      font-weight: 500;
+      color: var(--gray-500);
+    }
+    .product-price-note {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      margin-top: 6px;
+    }
+    .product-tagline {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .product-desc {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .product-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .product-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #111;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Trust Bar ── */
+    .trust-bar {
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 40px 0;
+    }
+    .trust-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .trust-item { display: flex; flex-direction: column; gap: 6px; }
+    .trust-icon { font-size: 1.4rem; margin-bottom: 4px; }
+    .trust-title { font-size: 0.9rem; font-weight: 700; color: var(--black); }
+    .trust-desc { font-size: 0.82rem; color: var(--gray-500); line-height: 1.5; }
+
+    /* ── Per chi ── */
+    .per-chi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .per-chi-col h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .per-chi-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .per-chi-list li {
+      font-size: 1rem;
+      color: var(--gray-600);
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .per-chi-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* ── Comparison Table ── */
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+    .comparison-table th {
+      text-align: left;
+      padding: 14px 24px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.35);
+    }
+    .comparison-table td {
+      padding: 18px 24px;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      vertical-align: middle;
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .col-feature { color: var(--white); font-weight: 600; }
+    .comparison-table .col-g1 { color: #4ade80; }
+    .comparison-table .col-other { color: rgba(255,255,255,0.35); }
+
+    /* ── Specs Table ── */
+    .specs-table { width: 100%; border-collapse: collapse; }
+    .specs-table tr { border-bottom: 1px solid var(--gray-100); }
+    .specs-table tr:last-child { border-bottom: none; }
+    .specs-table td { padding: 16px 0; font-size: 1rem; }
+    .specs-table td:first-child { color: var(--gray-500); font-weight: 500; width: 40%; }
+    .specs-table td:last-child { font-weight: 600; color: var(--black); }
+
+    /* ── Risk Reversal ── */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .risk-card {
+      padding: 36px 32px;
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+    }
+    .risk-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .risk-card p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.6; }
+    .risk-footnote {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      line-height: 1.7;
+      max-width: 720px;
+      padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* ── Nav active ── */
+    .nav-active { font-weight: 700 !important; color: var(--black) !important; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .product-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .trust-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .per-chi-grid { grid-template-columns: 1fr; gap: 40px; }
+      .risk-grid { grid-template-columns: 1fr; }
+      .comparison-table th,
+      .comparison-table td { padding: 14px 16px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <p>La maggior parte dei progetti è finanziabile. <a href="#finanziamenti">Scopri come →</a></p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <a href="../index.html#prodotti" class="nav-active">Prodotti</a>
+        <a href="../index.html#soluzioni">Cosa facciamo</a>
+        <a href="../index.html#per-chi">Per chi</a>
+        <a href="../index.html#come-lavoriamo">Processo</a>
+        <a href="../index.html#chi-siamo">Chi siamo</a>
+      </div>
+      <a href="#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="../index.html#prodotti">Prodotti</a>
+    <a href="../index.html#soluzioni">Cosa facciamo</a>
+    <a href="../index.html#per-chi">Per chi</a>
+    <a href="../index.html#come-lavoriamo">Processo</a>
+    <a href="../index.html#chi-siamo">Chi siamo</a>
+    <a href="#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
+  </div>
+
+  <!-- Hero -->
+  <header class="product-hero">
+    <div class="container product-hero-grid">
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="../index.html#prodotti">Prodotti</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="../index.html#prodotti">Robot Umanoidi</a>
+          <span class="breadcrumb-sep">›</span>
+          <span style="color: var(--black); font-weight: 600;">Unitree G1</span>
+        </nav>
+        <div class="product-tag">Robot Umanoide · Ricerca &amp; Industria</div>
+        <h1>Unitree G1</h1>
+        <div class="product-price">
+          <div class="product-price-main">Da € 16.000 <span class="product-price-sub">IVA esclusa</span></div>
+          <div class="product-price-note">Prezzo variabile per configurazione. Richiedi un preventivo.</div>
+        </div>
+        <p class="product-tagline">Il robot umanoide che porta la ricerca fuori dal simulatore.</p>
+        <p class="product-desc">Il G1 è la piattaforma umanoide di riferimento per università, laboratori R&D e aziende che vogliono sviluppare applicazioni reali. 43 gradi di libertà, supporto ROS2 nativo, SDK aperto. Disponibile in più configurazioni.</p>
+        <div class="product-ctas">
+          <a href="#cta-finale" class="btn btn-primary">Richiedi un preventivo →</a>
+          <a href="#" class="btn btn-secondary">Scarica la scheda tecnica</a>
+        </div>
+      </div>
+      <div>
+        <div class="product-img-placeholder">Immagine G1 in contesto</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="container trust-bar-grid">
+      <div class="trust-item">
+        <span class="trust-icon">🚚</span>
+        <span class="trust-title">Spedizione 8–12 settimane</span>
+        <span class="trust-desc">Gestione doganale e test pre-consegna inclusi.</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🛡️</span>
+        <span class="trust-title">Garanzia 12 mesi</span>
+        <span class="trust-desc">Gestita direttamente da Abra in Italia.</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">⚙️</span>
+        <span class="trust-title">Testato prima della consegna</span>
+        <span class="trust-desc">Accensione, sensori e firmware verificati.</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">📞</span>
+        <span class="trust-title">Referente tecnico dedicato</span>
+        <span class="trust-desc">Un interlocutore per ogni problema post-consegna.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Il problema che risolve -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="label label-light">Il problema</p>
+        <h2>Sviluppare su un simulatore non basta più.</h2>
+        <p class="section-sub">Chi lavora su AI embodied, manipolazione robotica o computer vision sa che il gap tra simulazione e hardware reale è enorme. Il G1 elimina quel gap: è un robot che cammina, manipola e percepisce l'ambiente — programmabile dall'SDK, integrabile con ROS2, pronto per applicazioni reali dal primo giorno.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Per chi è + cosa puoi farci -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">Utilizzo</p>
+        <h2>Per chi è e cosa puoi farci.</h2>
+      </div>
+      <div class="per-chi-grid">
+        <div class="per-chi-col">
+          <h3>Per chi è</h3>
+          <ul class="per-chi-list">
+            <li>Università e dipartimenti di ingegneria robotica</li>
+            <li>Laboratori R&D aziendali</li>
+            <li>Centri di ricerca su AI e automazione</li>
+            <li>Aziende che vogliono costruire un POC su robotica umanoide prima di investire in scala</li>
+          </ul>
+        </div>
+        <div class="per-chi-col">
+          <h3>Cosa puoi farci</h3>
+          <ul class="per-chi-list">
+            <li>Ricerca su AI embodied e apprendimento per imitazione</li>
+            <li>Sviluppo algoritmi di navigazione in ambienti reali</li>
+            <li>Manipolazione: assemblaggio leggero, ispezione, assistenza operatori</li>
+            <li>Corsi universitari di robotica con hardware reale</li>
+            <li>POC per dimostrare automazione umanoide a clienti e investitori</li>
+            <li>Integrazione con sistemi ERP/MES tramite SDK</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perché G1 -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="label label-light">Confronto</p>
+        <h2>Perché il G1 è il punto di partenza giusto.</h2>
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Caratteristica</th>
+            <th>Unitree G1</th>
+            <th>Alternativa tipica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-feature">SDK aperto e documentato</td>
+            <td class="col-g1">✅ ROS2 + Python nativo</td>
+            <td class="col-other">⚠️ Spesso proprietario</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Prezzo per R&D</td>
+            <td class="col-g1">✅ Da €16.000</td>
+            <td class="col-other">❌ €80.000–€200.000+</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Tempi di consegna</td>
+            <td class="col-g1">✅ 8–12 settimane</td>
+            <td class="col-other">❌ 6–18 mesi</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Supporto in italiano</td>
+            <td class="col-g1">✅ Referente Abra dedicato</td>
+            <td class="col-other">❌ Solo documentazione EN</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Finanziabile Industria 4.0</td>
+            <td class="col-g1">✅ Verificato</td>
+            <td class="col-other">⚠️ Dipende dal fornitore</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Specifiche tecniche -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">Scheda tecnica</p>
+        <h2>Specifiche principali</h2>
+      </div>
+      <table class="specs-table">
+        <tbody>
+          <tr><td>Altezza</td><td>1.270 mm</td></tr>
+          <tr><td>Peso</td><td>~35 kg</td></tr>
+          <tr><td>Gradi di libertà</td><td>23 base, espandibile a 43</td></tr>
+          <tr><td>Velocità max</td><td>2 m/s</td></tr>
+          <tr><td>Carico max per braccio</td><td>2–3 kg (config. dipendente)</td></tr>
+          <tr><td>Autonomia batteria</td><td>~2 ore</td></tr>
+          <tr><td>Visione</td><td>Telecamera depth + LiDAR 3D</td></tr>
+          <tr><td>Connettività</td><td>Wi-Fi 6 + Bluetooth 5.2</td></tr>
+          <tr><td>SDK</td><td>ROS2, Python, API aperte</td></tr>
+          <tr><td>Modulo AI opzionale</td><td>NVIDIA Jetson Orin</td></tr>
+          <tr><td>Mani opzionali</td><td>Dex3-1 (7 DoF, feedback tattile)</td></tr>
+          <tr><td>Garanzia</td><td>12 mesi</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Processo di acquisto -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="label label-light">Come funziona</p>
+        <h2>Dal preventivo al robot operativo.</h2>
+      </div>
+      <div class="process-steps">
+        <div class="step">
+          <span class="step-number">01</span>
+          <h3>Richiedi un preventivo</h3>
+          <p>Descrivi il tuo caso d'uso. Ti contattiamo entro 24 ore per capire la configurazione giusta e confermare disponibilità.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">02</span>
+          <h3>Definiamo la configurazione</h3>
+          <p>SDK, mani Dex3-1, modulo Jetson Orin, configurazione base o avanzata. Tutto prima della firma.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">03</span>
+          <h3>Spedizione e test pre-consegna</h3>
+          <p>Il G1 parte dalla Cina, arriva in 8–12 settimane. Prima della consegna lo testiamo: accensione, sensori, firmware aggiornato.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">04</span>
+          <h3>Consegna e onboarding</h3>
+          <p>Consegna on-site, sessione tecnica con il tuo team, referente Abra per i primi 3 mesi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Risk Reversal -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">Perché fidarsi</p>
+        <h2>Compri con certezze, non con speranza.</h2>
+      </div>
+      <div class="risk-grid">
+        <div class="risk-card">
+          <h3>🛡️ Garanzia 12 mesi</h3>
+          <p>Su tutto l'hardware. Gestita direttamente da Abra in Italia. Nessun rimbalzo con il produttore.</p>
+        </div>
+        <div class="risk-card">
+          <h3>📞 Assistenza inclusa</h3>
+          <p>Supporto remoto e on-site per tutta la durata del progetto. Non sei solo dopo la firma.</p>
+        </div>
+        <div class="risk-card">
+          <h3>💡 Spesso finanziabile</h3>
+          <p>Industria 4.0, Transizione 5.0, bandi ricerca. Verifica gratuita inclusa prima dell'acquisto.</p>
+        </div>
+        <div class="risk-card">
+          <h3>🧪 Prima un POC</h3>
+          <p>Non sei sicuro? Strutturiamo un pilot a basso rischio con obiettivi misurabili prima di qualsiasi impegno.</p>
+        </div>
+      </div>
+      <p class="risk-footnote">Non hai mai acquistato un robot umanoide? È normale. Per questo ogni acquisto include onboarding tecnico, documentazione in italiano e un referente dedicato per i primi 3 mesi. Se entro 30 giorni dalla consegna il robot presenta difetti di fabbricazione, lo ritiriamo e sostituiamo senza costi.</p>
+    </div>
+  </section>
+
+  <!-- Finanziamenti -->
+  <section id="finanziamenti" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="label label-light">Finanziamenti</p>
+        <h2>Il costo non è un ostacolo.</h2>
+        <p class="section-sub">La maggior parte dei progetti di robotica è finanziabile. Facciamo scouting degli incentivi disponibili — Industria 4.0, PNRR, bandi regionali — e ti affianchiamo in tutto il processo di accesso ai fondi, per darti un'idea chiara del costo reale.</p>
+      </div>
+      <div class="finance-stats">
+        <div class="finance-stat">
+          <span class="finance-stat-number">30–50%</span>
+          <span class="finance-stat-label">Del costo spesso coperto da incentivi</span>
+        </div>
+        <div class="finance-stat">
+          <span class="finance-stat-number">0€</span>
+          <span class="finance-stat-label">Costo della verifica iniziale con noi</span>
+        </div>
+      </div>
+      <div class="finance-cta">
+        <a href="#cta-finale" class="btn btn-cta-finance">Verifica gratuitamente se il tuo progetto è finanziabile →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">FAQ</p>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Qual è la differenza tra G1 standard e G1 EDU?</summary>
+          <p>La versione EDU ha SDK completamente aperto, più gradi di libertà opzionali, supporto NVIDIA Jetson Orin e documentazione tecnica estesa. È la versione per chi sviluppa software proprietario. La standard è per chi vuole operare il robot senza customizzazione profonda.</p>
+        </details>
+        <details class="faq-item">
+          <summary>È davvero pronto per applicazioni industriali?</summary>
+          <p>Dipende dal caso d'uso. Per ricerca, POC e applicazioni leggere è già operativo. Per task industriali continuativi ad alta affidabilità è ancora in maturazione — siamo onesti su questo. Per questo proponiamo sempre un pilot prima dell'acquisto in contesti produttivi critici.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quanto tempo dalla firma alla consegna?</summary>
+          <p>8–12 settimane in media. Spedizione dalla Cina, gestione doganale, test pre-consegna e consegna finale sono incluse nel prezzo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso sviluppare software proprietario?</summary>
+          <p>Sì. Il G1 EDU supporta ROS2, Python e API aperte. Abra può affiancarti anche nello sviluppo software.</p>
+        </details>
+        <details class="faq-item">
+          <summary>È finanziabile?</summary>
+          <p>Spesso sì. Rientra tipicamente in Industria 4.0 / Transizione 5.0 e nei bandi per ricerca e innovazione. Verifica gratuita inclusa.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso vederlo prima di acquistarlo?</summary>
+          <p>Sì. Organizziamo demo e sessioni POC su richiesta.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA finale -->
+  <section id="cta-finale" class="section section-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Hai letto tutto. Hai ancora dubbi?</h2>
+        <p>30 minuti di chiamata con il nostro tecnico costano zero e chiariscono tutto — inclusa la configurazione giusta per il tuo caso d'uso.</p>
+        <a href="#" class="btn btn-primary btn-lg">Prenota una chiamata gratuita →</a>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-top: 16px;">Nessun impegno. Risposta entro 24h.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Navigazione</span>
+        <a href="../index.html#prodotti">Prodotti</a>
+        <a href="../index.html#soluzioni">Cosa facciamo</a>
+        <a href="../index.html#per-chi">Per chi</a>
+        <a href="../index.html#come-lavoriamo">Processo</a>
+        <a href="../index.html#chi-siamo">Chi siamo</a>
+        <a href="../index.html#faq">FAQ</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Contatti</span>
+        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+        <p>Italia</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Unitree G1",
+    "description": "Robot umanoide con 43 gradi di libertà, ROS2 nativo, SDK aperto. Per università, laboratori R&D e aziende.",
+    "brand": { "@type": "Brand", "name": "Unitree" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "16000",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "Abra Robotics" }
+    }
+  }
+  </script>
+
+  <script src="../script.js"></script>
+</body>
+</html>

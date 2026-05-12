@@ -1,3 +1,41 @@
+// Contact form → Google Sheets
+// Replace this URL with your deployed Google Apps Script URL
+const GOOGLE_SCRIPT_URL = 'INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT';
+
+const contactForm = document.getElementById('contact-form');
+const formFeedback = document.getElementById('form-feedback');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('.form-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso...';
+    formFeedback.className = 'form-feedback';
+    formFeedback.textContent = '';
+
+    const payload = Object.fromEntries(new FormData(contactForm).entries());
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      formFeedback.className = 'form-feedback success';
+      formFeedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
+      contactForm.reset();
+    } catch {
+      formFeedback.className = 'form-feedback error';
+      formFeedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Invia la richiesta';
+    }
+  });
+}
+
 // Mobile menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
@@ -26,10 +64,10 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Fade-in animation on scroll
+// Scroll-triggered fade-in with stagger
 const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -50px 0px'
+  threshold: 0.12,
+  rootMargin: '0px 0px -40px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -41,14 +79,22 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.card, .use-case, .step, .stat, .about-stat, .report-card').forEach(el => {
+const animatedElements = document.querySelectorAll(
+  '.card, .use-case, .step, .about-stat, .report-card, .faq-item, .social-proof-stat'
+);
+
+animatedElements.forEach((el, i) => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  // Stagger within parent: find siblings of same type
+  const parent = el.parentElement;
+  const siblings = Array.from(parent.children).filter(c => c.tagName === el.tagName || c.classList.contains(el.classList[0]));
+  const indexInParent = siblings.indexOf(el);
+  el.style.transition = `opacity 0.6s ease ${indexInParent * 0.1}s, transform 0.6s ease ${indexInParent * 0.1}s`;
   observer.observe(el);
 });
 
-// Add visible class styles
+// Visible class
 document.head.insertAdjacentHTML('beforeend', `
   <style>
     .visible {
