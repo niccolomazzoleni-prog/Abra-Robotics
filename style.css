@@ -193,15 +193,13 @@ h3 {
   color: var(--white);
   box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 4px 14px rgba(0,0,0,0.08);
   transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.28s ease,
-              color 0.2s ease;
+              box-shadow 0.28s ease;
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
 }
 
 .btn:hover {
-  color: var(--orange);
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 4px 18px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.1);
 }
@@ -209,17 +207,35 @@ h3 {
 /* "Esplora le soluzioni" — unica eccezione: pill bianca */
 .btn-secondary {
   background: var(--white);
-  color: var(--black);
+  color: var(--gray-800);
   border-color: rgba(0,0,0,0.1);
   box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 14px rgba(0,0,0,0.05);
 }
 
-/* Su fondi neri i bottoni neri sarebbero invisibili — si invertono a bianchi */
-.section-dark .btn:not(.btn-secondary),
-.section-cta .btn:not(.btn-secondary) {
+/* Su fondi neri i bottoni neri si invertono a bianchi */
+.section-dark .btn:not(.btn-secondary):not(.btn-cta-finance),
+.section-cta .btn:not(.btn-secondary):not(.form-submit) {
   background: var(--white);
-  color: var(--black);
+  color: var(--gray-600);
   border-color: rgba(255,255,255,0.9);
+}
+
+
+/* Bottone finanziamenti: trasparente sul nero, stesso stile label-light */
+.btn-cta-finance {
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 14px rgba(0,0,0,0.2);
+}
+
+.btn-cta-finance:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.11);
+  border-color: rgba(255,255,255,0.28);
+  box-shadow: 0 4px 22px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.3);
 }
 
 /* Hero: stesso principio */
@@ -230,10 +246,14 @@ h3 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 4px 20px rgba(0,0,0,0.15);
 }
 
+.hero .btn-primary:hover {
+  background: var(--gray-100);
+}
+
 .hero .btn-secondary {
-  background: rgba(255,255,255,0.12);
-  color: var(--white);
-  border-color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.22);
   box-shadow: 0 1px 3px rgba(0,0,0,0.18), 0 4px 14px rgba(0,0,0,0.12);
 }
 
@@ -260,10 +280,6 @@ h3 {
   padding: 10px 22px;
 }
 
-.btn-cta-finance {
-  font-size: 1.05rem;
-  padding: 14px 28px;
-}
 
 /* === Eyebrow === */
 .eyebrow {
@@ -504,7 +520,7 @@ h3 {
 
 /* === Sections === */
 .section {
-  padding: 120px 0;
+  padding: 88px 0;
 }
 
 .section-dark {
@@ -805,7 +821,9 @@ h3 {
 }
 
 .finance-cta {
-  margin-top: 16px;
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
 }
 
 /* === Use Cases === */
@@ -1120,26 +1138,68 @@ h3 {
 /* === CTA Section === */
 .section-cta {
   background: var(--black);
-  background-image: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232, 89, 12, 0.06) 0%, transparent 70%);
   text-align: center;
-  padding: 140px 0;
+  padding: 112px 0;
 }
 
 .cta-content {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 680px;
+  margin: 0 auto 56px;
 }
 
 .cta-content h2 {
   color: var(--white);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.cta-content p {
+.cta-subtitle {
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.cta-content p:not(.cta-subtitle) {
   color: var(--gray-400);
-  font-size: 1.1rem;
-  margin-bottom: 40px;
+  font-size: 1rem;
   line-height: 1.7;
+}
+
+/* Form bianco su sfondo nero — risalta come card */
+.section-cta .contact-form {
+  text-align: left;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.section-cta .form-group label {
+  color: var(--gray-600);
+}
+
+.section-cta .form-group input,
+.section-cta .form-group textarea {
+  background: var(--white);
+  border-color: var(--gray-200);
+  color: var(--black);
+}
+
+.section-cta .form-group input::placeholder,
+.section-cta .form-group textarea::placeholder {
+  color: var(--gray-400);
+}
+
+.section-cta .form-group input:focus,
+.section-cta .form-group textarea:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(179,126,255,0.12);
+  background: var(--white);
+}
+
+.section-cta .form-note {
+  color: var(--gray-400);
 }
 
 
@@ -1313,7 +1373,7 @@ h3 {
 
   /* Sections */
   .section {
-    padding: 80px 0;
+    padding: 64px 0;
   }
 
   .section-header {
@@ -1368,16 +1428,11 @@ h3 {
 
   /* CTA */
   .section-cta {
-    padding: 100px 0;
+    padding: 72px 0;
   }
 
   .cta-content h2 {
     font-size: 1.8rem;
-  }
-
-  .cta-content .btn {
-    width: 100%;
-    justify-content: center;
   }
 
   /* Logo bar */
