@@ -769,6 +769,29 @@
       .product-cta-group .btn { width: 100%; justify-content: center; }
       .product-trust { justify-content: center; }
       .product-price-row { justify-content: center; flex-wrap: wrap; gap: 6px; }
+      .product-price { font-size: 1.3rem; }
+    }
+
+    /* ── Breakpoint extra-small (≤ 480px) ── */
+    @media (max-width: 480px) {
+      /* key-specs: 2 col invece di 3 */
+      .key-specs-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* comp models: 1 col */
+      .comp-models-bar { grid-template-columns: 1fr; }
+
+      /* spec mini: 1 col */
+      .spec-mini-grid { grid-template-columns: 1fr; }
+
+      /* gallery thumbs: 3 in fila stretta ok, ma li rende un po' più alti */
+      .gallery-thumbs { gap: 6px; }
+
+      /* sezione stats: testo un po' più piccolo */
+      .stat-number { font-size: clamp(3rem, 15vw, 5rem); }
+      .stat-unit   { font-size: 1.5rem; }
+
+      /* risk promise */
+      .risk-promise { padding: 20px 16px; }
     }
   </style>
 </head>
