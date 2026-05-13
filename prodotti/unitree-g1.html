@@ -344,7 +344,7 @@
       font-weight: 600;
       padding: 20px 24px;
     }
-    .specs-accordion .faq-item summary:hover { color: var(--orange); }
+    .specs-accordion .faq-item summary:hover { color: rgba(255,255,255,0.7); }
     .specs-accordion .faq-item summary::after { color: rgba(255,255,255,0.25); }
 
     .specs-table {
@@ -505,7 +505,7 @@
       vertical-align: bottom;
     }
     .comparison-table th:first-child {
-      width: 26%;
+      width: 20%;
       text-align: left;
       padding-left: 0;
     }
@@ -585,6 +585,50 @@
       margin-bottom: 56px;
     }
 
+    /* ── Mini Spec Cards ── */
+    .spec-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+
+    .spec-mini-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+      cursor: default;
+    }
+
+    .spec-mini-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+      border-color: var(--gray-400);
+    }
+
+    .spec-mini-value {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .spec-mini-label {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .included-strip { grid-template-columns: repeat(3, 1fr); }
@@ -608,6 +652,7 @@
       .features-grid { grid-template-columns: 1fr; }
       .feature-video-wrap { aspect-ratio: 16/9; }
       .process-steps-product { grid-template-columns: 1fr; gap: 32px; }
+      .spec-mini-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -1000,6 +1045,34 @@
   </section>
 
   <!-- ─────────────────────────────────────────
+       5b. FINANZIAMENTI
+  ───────────────────────────────────────── -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="label label-light">Finanziamenti</p>
+        <h2>Il costo non è un ostacolo.</h2>
+        <p class="section-sub">La maggior parte dei progetti di robotica è finanziabile. Facciamo scouting degli incentivi disponibili: Industria 4.0, PNRR, bandi regionali. Ti affianchiamo in tutto il processo di accesso ai fondi, per darti un'idea chiara del costo reale.</p>
+      </div>
+
+      <div class="finance-stats">
+        <div class="finance-stat">
+          <span class="finance-stat-number">30–50%</span>
+          <span class="finance-stat-label">Del costo spesso coperto da incentivi</span>
+        </div>
+        <div class="finance-stat">
+          <span class="finance-stat-number">0€</span>
+          <span class="finance-stat-label">Costo della verifica iniziale con noi</span>
+        </div>
+      </div>
+
+      <div class="finance-cta">
+        <a href="#form" class="btn btn-cta-finance">Verifica gratuitamente se il tuo progetto è finanziabile →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
        6. TABELLA COMPARATIVA
   ───────────────────────────────────────── -->
   <section class="section">
@@ -1068,6 +1141,57 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       6b. SPECIFICHE IN SINTESI
+  ───────────────────────────────────────── -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:0;">
+        <p class="label">Dati tecnici</p>
+        <h2>Specifiche tecniche complete</h2>
+      </div>
+
+      <div class="spec-mini-grid">
+        <div class="spec-mini-card">
+          <span class="spec-mini-value">23</span>
+          <span class="spec-mini-label">Gradi di libertà</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value">2 <small style="font-size:1rem;font-weight:600">m/s</small></span>
+          <span class="spec-mini-label">Velocità massima</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value">90 <small style="font-size:1rem;font-weight:600">N·m</small></span>
+          <span class="spec-mini-label">Coppia ginocchio</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value">~2 <small style="font-size:1rem;font-weight:600">ore</small></span>
+          <span class="spec-mini-label">Autonomia batteria</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value">35 <small style="font-size:1rem;font-weight:600">kg</small></span>
+          <span class="spec-mini-label">Peso totale</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value">132 <small style="font-size:1rem;font-weight:600">cm</small></span>
+          <span class="spec-mini-label">Altezza</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value" style="font-size:1.1rem;">LIVOX MID-360</span>
+          <span class="spec-mini-label">LiDAR 3D</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value" style="font-size:1.1rem;">D435i</span>
+          <span class="spec-mini-label">Depth Camera</span>
+        </div>
+        <div class="spec-mini-card">
+          <span class="spec-mini-value" style="font-size:1.1rem;">Wi-Fi 6</span>
+          <span class="spec-mini-label">Connettività</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1272,7 +1396,7 @@
 
     /* ── Scroll fade-in ── */
     (function () {
-      const els = document.querySelectorAll('.feature-card, .product-stat, .step, .parallax-img-wrap, .key-spec');
+      const els = document.querySelectorAll('.feature-card, .product-stat, .step, .parallax-img-wrap, .key-spec, .spec-mini-card');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
