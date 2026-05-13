@@ -164,7 +164,7 @@
 
     .gallery-thumbs {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
     }
 
@@ -734,7 +734,7 @@
       .product-hero { padding: calc(36px + 72px + 40px) 0 60px; }
       .product-hero-grid { grid-template-columns: 1fr; gap: 36px; }
       .gallery { position: static; }
-      .gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
+      .gallery-thumbs { grid-template-columns: repeat(3, 1fr); }
       .gallery-btn { width: 44px; height: 44px; }
 
       .product-stats { grid-template-columns: 1fr; }
@@ -825,8 +825,8 @@
         <div class="gallery">
           <div class="gallery-main">
             <img id="gallery-main-img"
-                 src="https://shop.unitree.com/cdn/shop/files/5_eb271a12-e794-439d-ade5-d60ec009e81a.jpg?v=1773039138"
-                 alt="Unitree R1 EDU Standard — Robot Umanoide">
+                 src="https://www.unitree.com/images/77941f03b55b43be9960edc22edf7181_1851x2910.png"
+                 alt="Unitree R1 EDU Standard — Robot Umanoide, schema componenti">
             <div class="gallery-nav">
               <button class="gallery-btn" id="gallery-prev" aria-label="Immagine precedente">←</button>
               <button class="gallery-btn" id="gallery-next" aria-label="Immagine successiva">→</button>
@@ -834,10 +834,13 @@
           </div>
           <div class="gallery-thumbs">
             <div class="gallery-thumb active" data-index="0">
-              <img src="https://shop.unitree.com/cdn/shop/files/5_eb271a12-e794-439d-ade5-d60ec009e81a.jpg?v=1773039138" alt="R1 vista frontale">
+              <img src="https://www.unitree.com/images/77941f03b55b43be9960edc22edf7181_1851x2910.png" alt="R1 schema componenti">
             </div>
             <div class="gallery-thumb" data-index="1">
-              <img src="https://shop.unitree.com/cdn/shop/files/6_1b6cd726-c1a6-4968-b24a-7e38e15e039b.jpg?v=1773039138" alt="R1 vista laterale">
+              <img src="https://www.unitree.com/images/2f7d65a5229f40a5b9ba3ce7328f3c8d_3840x2160.jpg" alt="R1 ambiente industriale">
+            </div>
+            <div class="gallery-thumb" data-index="2">
+              <img src="https://www.unitree.com/images/eec8d82f279b440ea170982ffa80b3fa_3840x2160.jpg" alt="R1 render ufficiale">
             </div>
           </div>
         </div>
@@ -1445,8 +1448,9 @@
     /* ── Gallery slider ── */
     (function () {
       const images = [
-        'https://shop.unitree.com/cdn/shop/files/5_eb271a12-e794-439d-ade5-d60ec009e81a.jpg?v=1773039138',
-        'https://shop.unitree.com/cdn/shop/files/6_1b6cd726-c1a6-4968-b24a-7e38e15e039b.jpg?v=1773039138',
+        'https://www.unitree.com/images/77941f03b55b43be9960edc22edf7181_1851x2910.png',
+        'https://www.unitree.com/images/2f7d65a5229f40a5b9ba3ce7328f3c8d_3840x2160.jpg',
+        'https://www.unitree.com/images/eec8d82f279b440ea170982ffa80b3fa_3840x2160.jpg',
       ];
       let current = 0;
       const mainImg = document.getElementById('gallery-main-img');
