@@ -656,6 +656,33 @@
       font-weight: 600;
     }
 
+    /* ── Mobile comparison cards (hidden on desktop) ── */
+    .comp-mobile-cards { display: none; }
+
+    .cmr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      font-family: var(--font);
+      font-size: 0.875rem;
+    }
+
+    .cmr span:first-child {
+      color: var(--gray-400);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cmr span:last-child {
+      color: var(--gray-700);
+      font-weight: 500;
+      text-align: right;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .included-strip { grid-template-columns: repeat(3, 1fr); }
@@ -680,7 +707,6 @@
       .feature-video-wrap { aspect-ratio: 16/9; }
       .process-steps-product { grid-template-columns: 1fr; gap: 32px; }
       .spec-mini-grid { grid-template-columns: repeat(2, 1fr); }
-      .comp-models-bar { grid-template-columns: 1fr; }
 
       /* Centro tutto il contenuto */
       .product-info { text-align: center; }
@@ -689,6 +715,18 @@
       .product-trust { justify-content: center; }
       .visual-text { text-align: center; }
       .visual-text .btn { display: flex; width: 100%; justify-content: center; }
+
+      /* Centra la section-header della scheda tecnica (override inline style) */
+      #specs .section-header { text-align: center !important; }
+
+      /* Comparison: nascondi desktop table + header cards, mostra mobile cards */
+      .comp-models-bar { display: none; }
+      .comp-table-wrap { display: none; }
+      .comp-mobile-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
     }
   </style>
 </head>
@@ -990,7 +1028,7 @@
       <div class="visual-desc-grid">
 
         <div class="visual-text">
-          <p class="label">Design e ingegneria</p>
+          <p class="label">Ingegneria</p>
           <h2>Costruito per ambienti reali, non solo per laboratorio.</h2>
           <p>G1 Base nasce da anni di R&D in robotica umanoide applicata. Ogni giunto è progettato per durare, ogni sensore scelto per funzionare in condizioni reali: luce variabile, terreni irregolari, interazioni non previste.</p>
           <p>L'architettura modulare consente upgrade rapidi. La struttura in lega di alluminio garantisce rigidità senza compromettere il peso totale di 35 kg, trasportabile e operativa in ambienti industriali e universitari.</p>
@@ -1173,6 +1211,66 @@
           </tbody>
         </table>
       </div>
+
+      <!-- Mobile comparison cards (visibili solo su mobile) -->
+      <div class="comp-mobile-cards">
+
+        <div style="border:1px solid var(--black);border-radius:var(--radius);overflow:hidden;">
+          <div style="background:var(--black);padding:20px 16px;">
+            <span style="display:block;font-family:var(--font);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px;">G1 Base</span>
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.45);">Distribuzione e ricerca</span>
+          </div>
+          <div style="background:var(--white);">
+            <div class="cmr"><span>Mani</span><span>Fisse (senza polsi)</span></div>
+            <div class="cmr"><span>DoF totali</span><span>23</span></div>
+            <div class="cmr"><span>Coppia max</span><span>90 N·m</span></div>
+            <div class="cmr"><span>Computing</span><span class="cross">—</span></div>
+            <div class="cmr"><span>Sensori</span><span>LIVOX + D435i</span></div>
+            <div class="cmr" style="border-bottom:none;"><span>Garanzia</span><span>8 mesi</span></div>
+          </div>
+          <div style="padding:16px;background:var(--white);border-top:1px solid var(--gray-100);">
+            <a href="#form" class="btn btn-primary" style="width:100%;justify-content:center;display:flex;">Richiedi info</a>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;">
+          <div style="background:var(--gray-50);padding:20px 16px;border-bottom:1px solid var(--gray-200);">
+            <span style="display:block;font-family:var(--font);font-size:1rem;font-weight:700;color:var(--black);margin-bottom:4px;">G1 EDU Standard</span>
+            <span style="font-size:0.78rem;color:var(--gray-400);">Sviluppo avanzato</span>
+          </div>
+          <div style="background:var(--white);">
+            <div class="cmr"><span>Mani</span><span>Articolate con polsi</span></div>
+            <div class="cmr"><span>DoF totali</span><span>43</span></div>
+            <div class="cmr"><span>Coppia max</span><span>90 N·m</span></div>
+            <div class="cmr"><span>Computing</span><span class="check">NVIDIA Jetson</span></div>
+            <div class="cmr"><span>Sensori</span><span>LIVOX + D435i × 2</span></div>
+            <div class="cmr" style="border-bottom:none;"><span>Garanzia</span><span>12 mesi</span></div>
+          </div>
+          <div style="padding:16px;background:var(--white);border-top:1px solid var(--gray-100);">
+            <a href="#form" class="btn btn-secondary" style="width:100%;justify-content:center;display:flex;">Richiedi info</a>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;">
+          <div style="background:var(--gray-50);padding:20px 16px;border-bottom:1px solid var(--gray-200);">
+            <span style="display:block;font-family:var(--font);font-size:1rem;font-weight:700;color:var(--black);margin-bottom:4px;">G1 EDU Plus</span>
+            <span style="font-size:0.78rem;color:var(--gray-400);">Ricerca di punta</span>
+          </div>
+          <div style="background:var(--white);">
+            <div class="cmr"><span>Mani</span><span>Articolate avanzate</span></div>
+            <div class="cmr"><span>DoF totali</span><span>53</span></div>
+            <div class="cmr"><span>Coppia max</span><span>120 N·m</span></div>
+            <div class="cmr"><span>Computing</span><span class="check">NVIDIA Orin NX</span></div>
+            <div class="cmr"><span>Sensori</span><span>LIVOX + D435i × 3</span></div>
+            <div class="cmr" style="border-bottom:none;"><span>Garanzia</span><span>12 mesi</span></div>
+          </div>
+          <div style="padding:16px;background:var(--white);border-top:1px solid var(--gray-100);">
+            <a href="#form" class="btn btn-secondary" style="width:100%;justify-content:center;display:flex;">Richiedi info</a>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
