@@ -489,90 +489,114 @@
     .feature-card h3 { font-size: 1.15rem; font-weight: 700; }
     .feature-card p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.7; }
 
-    /* ── Comparison Table ── */
-    .comparison-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 680px;
+    /* ── Comparison (redesigned) ── */
+    .comp-models-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
     }
 
-    .comparison-table th {
-      padding: 0 12px 28px 12px;
-      text-align: center;
-      font-weight: 600;
-      vertical-align: bottom;
-    }
-    .comparison-table th:first-child {
-      width: 20%;
-      text-align: left;
-      padding-left: 0;
-    }
-
-    .comp-header-card {
-      background: rgba(255,255,255,0.45);
+    .comp-model-card {
+      background: rgba(255,255,255,0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.09);
       border-radius: var(--radius);
-      padding: 24px 20px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      padding: 28px 24px;
       text-align: center;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease;
+      cursor: default;
     }
-    .comp-header-card.current {
+
+    .comp-model-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+    }
+
+    .comp-model-card.current {
       background: var(--black);
       border-color: var(--black);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .comp-model-card.current:hover {
+      box-shadow: 0 20px 48px rgba(0,0,0,0.25);
     }
 
     .comp-model-name {
       display: block;
       font-family: var(--font);
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--black);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
-    .comp-header-card.current .comp-model-name { color: var(--white); }
+
+    .comp-model-card.current .comp-model-name { color: var(--white); }
 
     .comp-model-tag {
       font-family: var(--font);
       font-size: 0.78rem;
       color: var(--gray-400);
     }
-    .comp-header-card.current .comp-model-tag { color: rgba(255,255,255,0.45); }
 
-    .comparison-table td {
-      padding: 12px 12px;
+    .comp-model-card.current .comp-model-tag { color: rgba(255,255,255,0.45); }
+
+    .comp-table-wrap {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 580px;
+      table-layout: fixed;
+    }
+
+    .comp-table col:first-child { width: 28%; }
+
+    .comp-table td {
+      padding: 14px 16px;
       font-family: var(--font);
-      font-size: 0.88rem;
+      font-size: 0.875rem;
       color: var(--gray-600);
       border-bottom: 1px solid var(--gray-100);
       vertical-align: middle;
       line-height: 1.5;
       text-align: center;
+      transition: background 0.15s ease;
     }
-    .comparison-table td:first-child {
-      color: var(--gray-400);
+
+    .comp-table td:first-child {
+      color: var(--gray-500);
       font-weight: 600;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       text-align: left;
-      padding-left: 0;
     }
 
-    .comp-section-row td {
-      padding-top: 28px !important;
-      padding-bottom: 6px !important;
-      border-bottom: 1.5px solid var(--gray-200) !important;
-      color: var(--black) !important;
-      font-size: 0.68rem !important;
+    .comp-table tbody tr:not(.comp-section-row):hover td {
+      background: linear-gradient(90deg, rgba(0,0,0,0.025) 0%, rgba(0,0,0,0.01) 60%, transparent 100%);
+    }
+
+    .comp-table .comp-section-row td {
+      padding: 12px 16px;
+      font-size: 0.65rem;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-weight: 800 !important;
+      color: var(--gray-600);
+      text-align: left;
+      background: linear-gradient(90deg, var(--gray-50) 0%, rgba(245,245,245,0.4) 70%, transparent 100%);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
     }
+
+    .comp-table tr:last-child td { border-bottom: none; }
 
     .check { color: #16a34a; font-weight: 700; }
     .cross { color: var(--gray-300); }
@@ -601,14 +625,16 @@
       text-align: center;
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
                   box-shadow 0.3s ease,
-                  border-color 0.3s ease;
+                  border-color 0.3s ease,
+                  background 0.3s ease;
       cursor: default;
     }
 
     .spec-mini-card:hover {
-      transform: scale(1.04);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
-      border-color: var(--gray-400);
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      border-color: rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 60%);
     }
 
     .spec-mini-value {
@@ -653,6 +679,8 @@
       .feature-video-wrap { aspect-ratio: 16/9; }
       .process-steps-product { grid-template-columns: 1fr; gap: 32px; }
       .spec-mini-grid { grid-template-columns: repeat(2, 1fr); }
+      .comp-models-bar { grid-template-columns: 1fr; }
+      .comp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     }
   </style>
 </head>
@@ -1083,31 +1111,26 @@
         <p class="section-sub">Tre versioni per esigenze diverse — dalla ricerca applicata allo sviluppo avanzato.</p>
       </div>
 
-      <div class="comparison-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>
-                <div class="comp-header-card current">
-                  <span class="comp-model-name">G1 Base</span>
-                  <span class="comp-model-tag">Distribuzione e ricerca</span>
-                </div>
-              </th>
-              <th>
-                <div class="comp-header-card">
-                  <span class="comp-model-name">G1 EDU Standard</span>
-                  <span class="comp-model-tag">Sviluppo avanzato</span>
-                </div>
-              </th>
-              <th>
-                <div class="comp-header-card">
-                  <span class="comp-model-name">G1 EDU Plus</span>
-                  <span class="comp-model-tag">Ricerca di punta</span>
-                </div>
-              </th>
-            </tr>
-          </thead>
+      <!-- 3 model cards — full-width, centered, no offset -->
+      <div class="comp-models-bar">
+        <div class="comp-model-card current">
+          <span class="comp-model-name">G1 Base</span>
+          <span class="comp-model-tag">Distribuzione e ricerca</span>
+        </div>
+        <div class="comp-model-card">
+          <span class="comp-model-name">G1 EDU Standard</span>
+          <span class="comp-model-tag">Sviluppo avanzato</span>
+        </div>
+        <div class="comp-model-card">
+          <span class="comp-model-name">G1 EDU Plus</span>
+          <span class="comp-model-tag">Ricerca di punta</span>
+        </div>
+      </div>
+
+      <!-- Comparison table with section headers + row hover -->
+      <div class="comp-table-wrap">
+        <table class="comp-table">
+          <colgroup><col><col><col><col></colgroup>
           <tbody>
             <tr class="comp-section-row"><td colspan="4">Mani e manipolazione</td></tr>
             <tr><td>Tipo mani</td><td>Fisse (senza polsi)</td><td>Articolate con polsi</td><td>Articolate avanzate</td></tr>
@@ -1135,9 +1158,9 @@
 
             <tr>
               <td></td>
-              <td><a href="#form" class="btn btn-primary btn-card" style="margin-top:16px;">Richiedi info</a></td>
-              <td><a href="#form" class="btn btn-secondary btn-card" style="margin-top:16px;">Richiedi info</a></td>
-              <td><a href="#form" class="btn btn-secondary btn-card" style="margin-top:16px;">Richiedi info</a></td>
+              <td style="padding:16px;"><a href="#form" class="btn btn-primary btn-card">Richiedi info</a></td>
+              <td style="padding:16px;"><a href="#form" class="btn btn-secondary btn-card">Richiedi info</a></td>
+              <td style="padding:16px;"><a href="#form" class="btn btn-secondary btn-card">Richiedi info</a></td>
             </tr>
           </tbody>
         </table>
