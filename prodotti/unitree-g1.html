@@ -3,229 +3,589 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unitree G1 — Robot Umanoide | Abra Robotics</title>
-  <meta name="description" content="Acquista Unitree G1 in Italia con supporto tecnico dedicato. Distributore ufficiale Abra Robotics: configurazione, onboarding e assistenza inclusi.">
+  <title>Unitree G1 Base — Robot Umanoide | Abra Robotics</title>
+  <meta name="description" content="Unitree G1 Base: robot umanoide con 23 gradi di libertà, velocità 2 m/s, LiDAR 3D LIVOX MID-360 e Intel RealSense D435i. Distributore ufficiale Unitree in Italia.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/prodotti/unitree-g1.html">
-
-  <meta property="og:type" content="product">
-  <meta property="og:title" content="Unitree G1 — Robot Umanoide | Abra Robotics">
-  <meta property="og:description" content="Acquista Unitree G1 in Italia con supporto tecnico dedicato. Distributore ufficiale Abra Robotics.">
-  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/prodotti/unitree-g1.html">
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:site_name" content="Abra Robotics">
 
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 
   <style>
-    /* ── Breadcrumb ── */
+    /* ── Product Hero ── */
+    .product-hero {
+      padding: calc(40px + 72px + 60px) 0 80px;
+      background: var(--white);
+    }
+
     .breadcrumb {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.875rem;
-      color: var(--gray-500);
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      margin-bottom: 40px;
+    }
+    .breadcrumb a { text-decoration: none; color: var(--gray-400); transition: color .2s; }
+    .breadcrumb a:hover { color: var(--black); }
+    .breadcrumb-sep { color: var(--gray-200); }
+
+    .product-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* Gallery */
+    .gallery { position: sticky; top: calc(40px + 72px + 24px); }
+
+    .gallery-main {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      aspect-ratio: 1/1;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+      transition: opacity .25s ease;
+    }
+
+    .gallery-main img.fade { opacity: 0; }
+
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 12px;
+      pointer-events: none;
+    }
+
+    .gallery-btn {
+      pointer-events: all;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--black);
+      transition: all .2s;
+    }
+    .gallery-btn:hover { background: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    .gallery-thumb {
+      aspect-ratio: 1/1;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color .2s;
+      background: var(--gray-50);
+    }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+    .gallery-thumb.active { border-color: var(--black); }
+    .gallery-thumb:hover:not(.active) { border-color: var(--gray-400); }
+
+    /* Product Info */
+    .product-info { padding-top: 4px; }
+
+    .product-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      margin-top: 12px;
+    }
+
+    .product-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .key-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .key-spec {
+      background: var(--white);
+      padding: 18px 12px;
+      text-align: center;
+    }
+
+    .key-spec-value {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .key-spec-label {
+      font-size: 0.7rem;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+    }
+
+    .product-desc {
+      font-size: 1rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .product-cta-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .product-trust {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    /* ── Marquee ── */
+    .marquee-strip {
+      background: var(--black);
+      padding: 16px 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 24s linear infinite;
+    }
+
+    .marquee-content {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .marquee-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.35);
+      padding: 0 28px;
+    }
+
+    .marquee-dot {
+      color: var(--orange);
+      font-size: 0.5rem;
+      line-height: 1;
+    }
+
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Stats ── */
+    .product-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-stat {
+      padding: 72px 48px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .product-stat:last-child { border-right: none; }
+
+    .stat-number {
+      display: block;
+      font-size: clamp(4rem, 7vw, 6.5rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-unit {
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--orange);
+      margin-left: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      font-weight: 500;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* ── Specs ── */
+    .specs-section { padding-top: 24px; }
+
+    .specs-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .specs-accordion .faq-item { border-color: rgba(255,255,255,0.07); }
+    .specs-accordion .faq-item summary { color: var(--white); font-size: 0.95rem; }
+    .specs-accordion .faq-item summary:hover { color: var(--orange); }
+    .specs-accordion .faq-item summary::after { color: rgba(255,255,255,0.25); }
+
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .specs-table tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .specs-table tr:last-child { border-bottom: none; }
+
+    .specs-table td {
+      padding: 10px 0;
+      color: var(--gray-400);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .specs-table td:first-child {
+      color: rgba(255,255,255,0.4);
+      width: 42%;
+      padding-right: 16px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .specs-accordion .faq-item p,
+    .specs-accordion .faq-item .specs-table {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      padding-bottom: 0;
+    }
+
+    .specs-accordion .faq-item[open] p,
+    .specs-accordion .faq-item[open] .specs-table {
+      max-height: 800px;
+      opacity: 1;
+      padding-bottom: 20px;
+    }
+
+    /* Sidebar Incluso */
+    .included-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: sticky;
+      top: calc(40px + 72px + 24px);
+    }
+
+    .included-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.35);
       margin-bottom: 20px;
     }
-    .breadcrumb a { color: var(--gray-500); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--black); }
-    .breadcrumb-sep { color: var(--gray-300); }
 
-    /* ── Product Hero ── */
-    .product-hero {
-      padding-top: calc(40px + 64px + 80px);
-      padding-bottom: 80px;
+    .included-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .included-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
     }
-    .product-hero-grid {
+
+    .included-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .included-note {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.6;
+    }
+
+    /* ── Visual Description ── */
+    .visual-desc-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
     }
-    .product-tag {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gray-500);
-      background: var(--gray-100);
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .product-hero h1 {
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 28px;
-    }
-    .product-price {
-      margin-bottom: 24px;
-    }
-    .product-price-main {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--black);
-    }
-    .product-price-sub {
-      font-size: 0.75em;
-      font-weight: 500;
-      color: var(--gray-500);
-    }
-    .product-price-note {
-      font-size: 0.875rem;
-      color: var(--gray-500);
-      margin-top: 6px;
-    }
-    .product-tagline {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--orange);
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-    .product-desc {
-      font-size: 1.1rem;
-      color: var(--gray-600);
-      line-height: 1.7;
-      margin-bottom: 36px;
-    }
-    .product-ctas {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .product-img-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: #111;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.25);
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
 
-    /* ── Trust Bar ── */
-    .trust-bar {
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 40px 0;
-    }
-    .trust-bar-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-    }
-    .trust-item { display: flex; flex-direction: column; gap: 6px; }
-    .trust-icon { font-size: 1.4rem; margin-bottom: 4px; }
-    .trust-title { font-size: 0.9rem; font-weight: 700; color: var(--black); }
-    .trust-desc { font-size: 0.82rem; color: var(--gray-500); line-height: 1.5; }
+    .visual-text { position: sticky; top: calc(40px + 72px + 60px); }
+    .visual-text h2 { margin-bottom: 20px; }
+    .visual-text p { font-size: 1.05rem; color: var(--gray-600); line-height: 1.75; margin-bottom: 20px; }
 
-    /* ── Per chi ── */
-    .per-chi-grid {
+    .parallax-cols {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 16px;
       align-items: start;
     }
-    .per-chi-col h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
-    }
-    .per-chi-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-    .per-chi-list li {
-      font-size: 1rem;
-      color: var(--gray-600);
-      padding-left: 22px;
+
+    .parallax-col-a { will-change: transform; }
+    .parallax-col-b { will-change: transform; transform: translateY(40px); }
+
+    .parallax-img-wrap {
       position: relative;
-      line-height: 1.5;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
     }
-    .per-chi-list li::before {
-      content: '→';
+    .parallax-img-wrap:last-child { margin-bottom: 0; }
+
+    .parallax-img-wrap img {
+      width: 100%; height: auto;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .parallax-img-wrap:hover img { transform: scale(1.03); }
+
+    .parallax-caption {
       position: absolute;
-      left: 0;
-      color: var(--orange);
-      font-weight: 700;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 16px 14px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.72));
     }
+
+    .parallax-caption-value {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .parallax-caption-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+    }
+
+    /* ── Key Features ── */
+    .features-section { background: var(--gray-50); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .feature-card { display: flex; flex-direction: column; gap: 20px; }
+
+    .feature-video-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      background: var(--gray-800);
+    }
+
+    .feature-video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .feature-video-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: opacity .4s ease;
+      pointer-events: none;
+    }
+    .feature-video-poster.hidden { opacity: 0; }
+
+    .feature-card h3 { font-size: 1.15rem; font-weight: 700; }
+    .feature-card p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.7; }
 
     /* ── Comparison Table ── */
-    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+    .comparison-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
     .comparison-table th {
+      padding: 0 16px 28px 0;
       text-align: left;
-      padding: 14px 24px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border-bottom: 2px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.35);
+      font-weight: 600;
+      vertical-align: bottom;
     }
-    .comparison-table td {
-      padding: 18px 24px;
-      font-size: 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      vertical-align: middle;
-    }
-    .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table .col-feature { color: var(--white); font-weight: 600; }
-    .comparison-table .col-g1 { color: #4ade80; }
-    .comparison-table .col-other { color: rgba(255,255,255,0.35); }
+    .comparison-table th:first-child { width: 28%; padding-right: 20px; }
 
-    /* ── Specs Table ── */
-    .specs-table { width: 100%; border-collapse: collapse; }
-    .specs-table tr { border-bottom: 1px solid var(--gray-100); }
-    .specs-table tr:last-child { border-bottom: none; }
-    .specs-table td { padding: 16px 0; font-size: 1rem; }
-    .specs-table td:first-child { color: var(--gray-500); font-weight: 500; width: 40%; }
-    .specs-table td:last-child { font-weight: 600; color: var(--black); }
-
-    /* ── Risk Reversal ── */
-    .risk-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-    .risk-card {
-      padding: 36px 32px;
-      background: rgba(255,255,255,0.45);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,0,0,0.08);
+    .comp-header-card {
+      border: 1px solid var(--gray-200);
       border-radius: var(--radius);
+      padding: 20px;
+      background: var(--gray-50);
     }
-    .risk-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; }
-    .risk-card p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.6; }
-    .risk-footnote {
-      font-size: 0.95rem;
-      color: var(--gray-500);
-      line-height: 1.7;
-      max-width: 720px;
-      padding-top: 24px;
-      border-top: 1px solid var(--gray-200);
+    .comp-header-card.current { background: var(--black); border-color: var(--black); }
+
+    .comp-header-card img {
+      width: 100%; height: 100px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 12px;
+      filter: grayscale(1);
+      opacity: .6;
+    }
+    .comp-header-card.current img { filter: grayscale(1) invert(1); opacity: .9; }
+
+    .comp-model-name {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .comp-header-card.current .comp-model-name { color: var(--white); }
+
+    .comp-model-tag { font-size: 0.75rem; color: var(--gray-400); }
+    .comp-header-card.current .comp-model-tag { color: rgba(255,255,255,0.4); }
+
+    .comparison-table td {
+      padding: 12px 16px 12px 0;
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .comparison-table td:first-child {
+      color: var(--gray-400);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-right: 20px;
     }
 
-    /* ── Nav active ── */
-    .nav-active { font-weight: 700 !important; color: var(--black) !important; }
+    .comp-section-row td {
+      padding-top: 28px !important;
+      padding-bottom: 6px !important;
+      border-bottom: 1.5px solid var(--gray-200) !important;
+      color: var(--black) !important;
+      font-size: 0.68rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800 !important;
+    }
+
+    .check { color: #16a34a; font-weight: 700; }
+    .cross { color: var(--gray-300); }
+
+    /* ── Process Steps Product ── */
+    .process-steps-product {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-bottom: 56px;
+    }
 
     /* ── Responsive ── */
-    @media (max-width: 900px) {
-      .product-hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .trust-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-      .per-chi-grid { grid-template-columns: 1fr; gap: 40px; }
-      .risk-grid { grid-template-columns: 1fr; }
-      .comparison-table th,
-      .comparison-table td { padding: 14px 16px; font-size: 0.9rem; }
+    @media (max-width: 1024px) {
+      .specs-layout { grid-template-columns: 1fr; }
+      .included-box { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      .product-hero { padding: calc(36px + 72px + 40px) 0 60px; }
+      .product-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .gallery { position: static; }
+      .product-stats { grid-template-columns: 1fr; }
+      .product-stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        padding: 40px 24px;
+      }
+      .product-stat:last-child { border-bottom: none; }
+      .visual-desc-grid { grid-template-columns: 1fr; gap: 40px; }
+      .visual-text { position: static; }
+      .parallax-col-b { transform: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-video-wrap { aspect-ratio: 16/9; }
+      .process-steps-product { grid-template-columns: 1fr; gap: 32px; }
     }
   </style>
 </head>
@@ -233,341 +593,530 @@
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <p>La maggior parte dei progetti è finanziabile. <a href="#finanziamenti">Scopri come →</a></p>
+    <p>La maggior parte dei progetti è finanziabile. <a href="#form">Scopri come →</a></p>
   </div>
 
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container navbar-inner">
-      <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <a href="../" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
       <div class="nav-links">
-        <a href="../index.html#prodotti" class="nav-active">Prodotti</a>
-        <a href="../index.html#soluzioni">Cosa facciamo</a>
-        <a href="../index.html#per-chi">Per chi</a>
-        <a href="../index.html#come-lavoriamo">Processo</a>
-        <a href="../index.html#chi-siamo">Chi siamo</a>
+        <a href="../#prodotti">Prodotti</a>
+        <a href="../#soluzioni">Cosa facciamo</a>
+        <a href="../#per-chi">Per chi</a>
+        <a href="../#come-lavoriamo">Processo</a>
+        <a href="../#faq">FAQ</a>
       </div>
-      <a href="#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
-      <button class="menu-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-      </button>
+      <a href="#form" class="btn btn-primary btn-sm">Parla con un esperto</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu">
-    <a href="../index.html#prodotti">Prodotti</a>
-    <a href="../index.html#soluzioni">Cosa facciamo</a>
-    <a href="../index.html#per-chi">Per chi</a>
-    <a href="../index.html#come-lavoriamo">Processo</a>
-    <a href="../index.html#chi-siamo">Chi siamo</a>
-    <a href="#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
+    <a href="../#prodotti">Prodotti</a>
+    <a href="../#soluzioni">Cosa facciamo</a>
+    <a href="../#per-chi">Per chi</a>
+    <a href="../#come-lavoriamo">Processo</a>
+    <a href="../#faq">FAQ</a>
+    <a href="#form" class="btn btn-primary">Parla con un esperto</a>
   </div>
 
-  <!-- Hero -->
-  <header class="product-hero">
-    <div class="container product-hero-grid">
-      <div>
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span class="breadcrumb-sep">›</span>
-          <a href="../index.html#prodotti">Prodotti</a>
-          <span class="breadcrumb-sep">›</span>
-          <a href="../index.html#prodotti">Robot Umanoidi</a>
-          <span class="breadcrumb-sep">›</span>
-          <span style="color: var(--black); font-weight: 600;">Unitree G1</span>
-        </nav>
-        <div class="product-tag">Robot Umanoide · Ricerca &amp; Industria</div>
-        <h1>Unitree G1</h1>
-        <div class="product-price">
-          <div class="product-price-main">Da € 16.000 <span class="product-price-sub">IVA esclusa</span></div>
-          <div class="product-price-note">Prezzo variabile per configurazione. Richiedi un preventivo.</div>
-        </div>
-        <p class="product-tagline">Il robot umanoide che porta la ricerca fuori dal simulatore.</p>
-        <p class="product-desc">Il G1 è la piattaforma umanoide di riferimento per università, laboratori R&D e aziende che vogliono sviluppare applicazioni reali. 43 gradi di libertà, supporto ROS2 nativo, SDK aperto. Disponibile in più configurazioni.</p>
-        <div class="product-ctas">
-          <a href="#cta-finale" class="btn btn-primary">Richiedi un preventivo →</a>
-          <a href="#" class="btn btn-secondary">Scarica la scheda tecnica</a>
-        </div>
-      </div>
-      <div>
-        <div class="product-img-placeholder">Immagine G1 in contesto</div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Trust Bar -->
-  <div class="trust-bar">
-    <div class="container trust-bar-grid">
-      <div class="trust-item">
-        <span class="trust-icon">🚚</span>
-        <span class="trust-title">Spedizione 8–12 settimane</span>
-        <span class="trust-desc">Gestione doganale e test pre-consegna inclusi.</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🛡️</span>
-        <span class="trust-title">Garanzia 12 mesi</span>
-        <span class="trust-desc">Gestita direttamente da Abra in Italia.</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">⚙️</span>
-        <span class="trust-title">Testato prima della consegna</span>
-        <span class="trust-desc">Accensione, sensori e firmware verificati.</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">📞</span>
-        <span class="trust-title">Referente tecnico dedicato</span>
-        <span class="trust-desc">Un interlocutore per ogni problema post-consegna.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Il problema che risolve -->
-  <section class="section section-dark">
+  <!-- ─────────────────────────────────────────
+       1. HERO — GALLERY + INFO
+  ───────────────────────────────────────── -->
+  <section class="product-hero">
     <div class="container">
-      <div class="section-header">
-        <p class="label label-light">Il problema</p>
-        <h2>Sviluppare su un simulatore non basta più.</h2>
-        <p class="section-sub">Chi lavora su AI embodied, manipolazione robotica o computer vision sa che il gap tra simulazione e hardware reale è enorme. Il G1 elimina quel gap: è un robot che cammina, manipola e percepisce l'ambiente — programmabile dall'SDK, integrabile con ROS2, pronto per applicazioni reali dal primo giorno.</p>
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../#prodotti">Prodotti</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Unitree G1 Base</span>
+      </nav>
+
+      <div class="product-hero-grid">
+
+        <!-- Gallery -->
+        <div class="gallery">
+          <div class="gallery-main">
+            <img id="gallery-main-img" src="assets/images/g1-06.png" alt="Unitree G1 Base — Robot Umanoide">
+            <div class="gallery-nav">
+              <button class="gallery-btn" id="gallery-prev" aria-label="Immagine precedente">←</button>
+              <button class="gallery-btn" id="gallery-next" aria-label="Immagine successiva">→</button>
+            </div>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb active" data-index="0"><img src="assets/images/g1-06.png" alt="G1 render"></div>
+            <div class="gallery-thumb" data-index="1"><img src="assets/images/g1-01.jpg" alt="G1 vista frontale"></div>
+            <div class="gallery-thumb" data-index="2"><img src="assets/images/g1-02.jpg" alt="G1 dettaglio"></div>
+            <div class="gallery-thumb" data-index="3"><img src="assets/images/g1-03.jpg" alt="G1 in movimento"></div>
+            <div class="gallery-thumb" data-index="4"><img src="assets/images/g1-04.jpg" alt="G1 articolazioni"></div>
+            <div class="gallery-thumb" data-index="5"><img src="assets/images/g1-05.jpg" alt="G1 profilo"></div>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <p class="label">Robot Umanoide</p>
+          <h1 class="product-title">Unitree G1 Base</h1>
+          <p class="product-subtitle">Il robot umanoide compatto per ricerca, POC manifatturiero e dimostrazione avanzata. Pronto all'uso, distribuito in Italia da Abra Robotics.</p>
+
+          <div class="key-specs-grid">
+            <div class="key-spec">
+              <span class="key-spec-value">2 <small style="font-size:.9rem;font-weight:600">m/s</small></span>
+              <span class="key-spec-label">Velocità max</span>
+            </div>
+            <div class="key-spec">
+              <span class="key-spec-value">23</span>
+              <span class="key-spec-label">Gradi libertà</span>
+            </div>
+            <div class="key-spec">
+              <span class="key-spec-value">~2 <small style="font-size:.9rem;font-weight:600">ore</small></span>
+              <span class="key-spec-label">Autonomia</span>
+            </div>
+            <div class="key-spec">
+              <span class="key-spec-value">35 <small style="font-size:.9rem;font-weight:600">kg</small></span>
+              <span class="key-spec-label">Peso</span>
+            </div>
+            <div class="key-spec">
+              <span class="key-spec-value">132 <small style="font-size:.9rem;font-weight:600">cm</small></span>
+              <span class="key-spec-label">Altezza</span>
+            </div>
+            <div class="key-spec">
+              <span class="key-spec-value">~2 <small style="font-size:.9rem;font-weight:600">kg</small></span>
+              <span class="key-spec-label">Carico braccia</span>
+            </div>
+          </div>
+
+          <p class="product-desc">G1 Base integra un LiDAR 3D LIVOX MID-360 e una depth camera Intel RealSense D435i per navigazione autonoma in ambienti complessi. Con 23 gradi di libertà e coppia massima al ginocchio di 90 N·m, affronta terreni irregolari, recupera da urti e manipola oggetti con precisione.</p>
+
+          <div class="product-cta-group">
+            <a href="#form" class="btn btn-primary">Richiedi informazioni</a>
+            <a href="#specs" class="btn btn-secondary">Specifiche tecniche</a>
+          </div>
+
+          <div class="product-trust">
+            <div class="trust-item">✓ <span>Distributore ufficiale Unitree</span></div>
+            <div class="trust-item">📦 <span>Consegna 2–4 settimane</span></div>
+            <div class="trust-item">🛡 <span>Garanzia 8 mesi</span></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Per chi è + cosa puoi farci -->
+  <!-- ── Marquee ── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span class="marquee-text">Unitree G1 Base</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">23 Gradi di Libertà</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">2 m/s velocità max</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">LiDAR 3D LIVOX MID-360</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">Intel RealSense D435i</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">90 N·m coppia ginocchio</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">Autonomia ~2 ore</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">Distributore ufficiale Italia</span><span class="marquee-dot">●</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span class="marquee-text">Unitree G1 Base</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">23 Gradi di Libertà</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">2 m/s velocità max</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">LiDAR 3D LIVOX MID-360</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">Intel RealSense D435i</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">90 N·m coppia ginocchio</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">Autonomia ~2 ore</span><span class="marquee-dot">●</span>
+        <span class="marquee-text">Distributore ufficiale Italia</span><span class="marquee-dot">●</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────
+       2. STATS
+  ───────────────────────────────────────── -->
+  <section class="section section-dark" style="padding-bottom:0;">
+    <div class="container">
+      <div class="product-stats" id="stats-section">
+        <div class="product-stat">
+          <span class="stat-number"><span class="counter" data-target="2">0</span><span class="stat-unit">m/s</span></span>
+          <span class="stat-label">Velocità massima di marcia</span>
+        </div>
+        <div class="product-stat">
+          <span class="stat-number"><span class="counter" data-target="23">0</span></span>
+          <span class="stat-label">Gradi di libertà totali</span>
+        </div>
+        <div class="product-stat">
+          <span class="stat-number"><span class="counter" data-target="2">0</span><span class="stat-unit">ore</span></span>
+          <span class="stat-label">Autonomia batteria</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       3. SPECIFICHE TECNICHE
+  ───────────────────────────────────────── -->
+  <section id="specs" class="section section-dark specs-section">
+    <div class="container">
+
+      <div class="section-header" style="text-align:left;max-width:100%;margin-bottom:48px;">
+        <p class="label label-light">Scheda tecnica</p>
+        <h2>Specifiche tecniche complete</h2>
+      </div>
+
+      <div class="specs-layout">
+
+        <div class="specs-accordion faq-list" style="max-width:100%;">
+
+          <details class="faq-item" open>
+            <summary>Hardware — Telaio e dimensioni</summary>
+            <table class="specs-table">
+              <tr><td>Altezza in piedi</td><td>1.320 mm</td></tr>
+              <tr><td>Larghezza × Profondità</td><td>450 × 200 mm</td></tr>
+              <tr><td>Dimensioni ripiegato</td><td>690 × 450 × 300 mm</td></tr>
+              <tr><td>Peso totale</td><td>35 kg (batteria inclusa)</td></tr>
+              <tr><td>Materiali</td><td>Lega di alluminio + plastica tecnica ad alta resistenza</td></tr>
+              <tr><td>Coscia + polpaccio</td><td>0,6 m</td></tr>
+              <tr><td>Apertura braccia</td><td>0,05 m</td></tr>
+            </table>
+          </details>
+
+          <details class="faq-item">
+            <summary>Performance</summary>
+            <table class="specs-table">
+              <tr><td>Velocità max</td><td>2 m/s</td></tr>
+              <tr><td>Coppia max ginocchio</td><td>90 N·m</td></tr>
+              <tr><td>Carico max braccia</td><td>~2 kg</td></tr>
+            </table>
+          </details>
+
+          <details class="faq-item">
+            <summary>Meccanica — Gradi di libertà e articolazioni</summary>
+            <table class="specs-table">
+              <tr><td>DoF totali</td><td>23</td></tr>
+              <tr><td>Singola gamba</td><td>6 DoF</td></tr>
+              <tr><td>Vita</td><td>1 DoF</td></tr>
+              <tr><td>Singolo braccio</td><td>5 DoF</td></tr>
+              <tr><td>Mani / Testa / Polsi</td><td>0 DoF (G1 Base)</td></tr>
+              <tr><td>Vita Z range</td><td>±155°</td></tr>
+              <tr><td>Ginocchio</td><td>0–165°</td></tr>
+              <tr><td>Anca pitch / roll / yaw</td><td>±154° / −30°·+170° / ±158°</td></tr>
+              <tr><td>Motori</td><td>PMSM rotore interno bassa inerzia</td></tr>
+              <tr><td>Cuscinetti</td><td>Rulli incrociati industriali</td></tr>
+              <tr><td>Encoder</td><td>Doppio per giunto</td></tr>
+            </table>
+          </details>
+
+          <details class="faq-item">
+            <summary>Batteria e alimentazione</summary>
+            <table class="specs-table">
+              <tr><td>Capacità</td><td>9.000 mAh litio 13S</td></tr>
+              <tr><td>Autonomia</td><td>~2 ore</td></tr>
+              <tr><td>Caricatore</td><td>54V / 5A</td></tr>
+              <tr><td>Sgancio rapido</td><td>Sì</td></tr>
+            </table>
+          </details>
+
+          <details class="faq-item">
+            <summary>Sensori e fotocamere</summary>
+            <table class="specs-table">
+              <tr><td>LiDAR 3D</td><td>LIVOX MID-360</td></tr>
+              <tr><td>Depth camera</td><td>Intel RealSense D435i</td></tr>
+              <tr><td>Sensori tattili mani</td><td>Non inclusi (G1 Base)</td></tr>
+            </table>
+          </details>
+
+          <details class="faq-item">
+            <summary>Audio e connettività</summary>
+            <table class="specs-table">
+              <tr><td>Microfoni</td><td>4 con cancellazione rumore/eco</td></tr>
+              <tr><td>Speaker</td><td>5W stereo</td></tr>
+              <tr><td>Funzione vocale</td><td>Sì</td></tr>
+              <tr><td>Wi-Fi</td><td>Wi-Fi 6</td></tr>
+              <tr><td>Bluetooth</td><td>5.2</td></tr>
+              <tr><td>Telecomando</td><td>Incluso</td></tr>
+            </table>
+          </details>
+
+          <details class="faq-item">
+            <summary>Sistema e aggiornamenti</summary>
+            <table class="specs-table">
+              <tr><td>OTA update</td><td>Sì</td></tr>
+              <tr><td>Cablaggio passante giunti</td><td>Sì</td></tr>
+              <tr><td>Raffreddamento</td><td>Aria locale</td></tr>
+              <tr><td>Garanzia</td><td>8 mesi</td></tr>
+              <tr><td>Sviluppo secondario</td><td>Non supportato (G1 Base)</td></tr>
+              <tr><td>Computing avanzato</td><td>Non supportato (G1 Base)</td></tr>
+            </table>
+          </details>
+
+        </div>
+
+        <!-- Sidebar incluso -->
+        <aside class="included-box">
+          <p class="included-title">Cosa è incluso</p>
+          <ul class="included-list">
+            <li class="included-item"><div class="included-icon">🤖</div><span>Robot G1 Base</span></li>
+            <li class="included-item"><div class="included-icon">🤲</div><span>Mani fisse (senza polsi)</span></li>
+            <li class="included-item"><div class="included-icon">🎮</div><span>Telecomando</span></li>
+            <li class="included-item"><div class="included-icon">🔋</div><span>Batteria × 1</span></li>
+            <li class="included-item"><div class="included-icon">🛡</div><span>Garanzia 8 mesi</span></li>
+          </ul>
+          <p class="included-note">Accessori opzionali disponibili separatamente: mani articolate, batterie aggiuntive, kit sviluppo.</p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       4. DESCRIZIONE VISUALE + PARALLAX
+  ───────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="visual-desc-grid">
+
+        <div class="visual-text">
+          <p class="label">Design e ingegneria</p>
+          <h2>Costruito per ambienti reali, non solo per laboratorio.</h2>
+          <p>G1 Base nasce da anni di R&D in robotica umanoide applicata. Ogni giunto è progettato per durare, ogni sensore scelto per funzionare in condizioni reali: luce variabile, terreni irregolari, interazioni non previste.</p>
+          <p>L'architettura modulare consente upgrade rapidi. La struttura in lega di alluminio garantisce rigidità senza compromettere il peso totale di 35 kg — trasportabile e operativo in ambienti industriali e universitari.</p>
+          <a href="#form" class="btn btn-primary" style="margin-top:8px;">Parla con un esperto</a>
+        </div>
+
+        <div class="parallax-cols" id="parallax-container">
+          <div class="parallax-col-a" id="parallax-col-a">
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-01.jpg" alt="G1 struttura e articolazioni" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">23 DoF</span>
+                <span class="parallax-caption-label">Gradi di libertà totali</span>
+              </div>
+            </div>
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-base.jpg" alt="G1 Base dettaglio" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">35 kg</span>
+                <span class="parallax-caption-label">Peso totale con batteria</span>
+              </div>
+            </div>
+          </div>
+          <div class="parallax-col-b" id="parallax-col-b">
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-02.jpg" alt="G1 in movimento" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">2 m/s</span>
+                <span class="parallax-caption-label">Velocità massima</span>
+              </div>
+            </div>
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-05.jpg" alt="G1 dettaglio sensori" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">90 N·m</span>
+                <span class="parallax-caption-label">Coppia massima ginocchio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       5. KEY FEATURES — VIDEO
+  ───────────────────────────────────────── -->
+  <section class="section features-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">Capacità</p>
+        <h2>Cosa sa fare G1</h2>
+        <p class="section-sub">Dal movimento fluido alla navigazione autonoma — tre capacità chiave pronte all'uso.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-video-wrap">
+            <video class="feature-video" muted loop playsinline preload="none" data-src="assets/videos/vid-01.mp4"></video>
+            <img class="feature-video-poster" src="assets/thumbs/thumb-01.jpg" alt="Movimenti precaricati G1">
+          </div>
+          <h3>Libreria movimenti integrata</h3>
+          <p>G1 include una libreria di movimenti precaricati — cammino, equilibrio, recupero cadute — pronti all'uso senza configurazione aggiuntiva.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-video-wrap">
+            <video class="feature-video" muted loop playsinline preload="none" data-src="assets/videos/vid-02.mp4"></video>
+            <img class="feature-video-poster" src="assets/thumbs/thumb-02.jpg" alt="Agilità e resistenza urti G1">
+          </div>
+          <h3>Agilità e resistenza agli urti</h3>
+          <p>La struttura rinforzata e il controllo dinamico permettono a G1 di recuperare da spinte, ostacoli imprevisti e superfici instabili in tempo reale.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-video-wrap">
+            <video class="feature-video" muted loop playsinline preload="none" data-src="assets/videos/vid-03.mp4"></video>
+            <img class="feature-video-poster" src="assets/thumbs/thumb-03.jpg" alt="Navigazione autonoma 360 G1">
+          </div>
+          <h3>Navigazione autonoma 360°</h3>
+          <p>LiDAR LIVOX MID-360 e depth camera RealSense D435i forniscono una visione completa dell'ambiente per navigazione autonoma anche in spazi affollati.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       6. TABELLA COMPARATIVA
+  ───────────────────────────────────────── -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <p class="label">Utilizzo</p>
-        <h2>Per chi è e cosa puoi farci.</h2>
+        <p class="label">Gamma G1</p>
+        <h2>Scegli il modello giusto</h2>
+        <p class="section-sub">Tre versioni per esigenze diverse — dalla ricerca applicata allo sviluppo avanzato.</p>
       </div>
-      <div class="per-chi-grid">
-        <div class="per-chi-col">
-          <h3>Per chi è</h3>
-          <ul class="per-chi-list">
-            <li>Università e dipartimenti di ingegneria robotica</li>
-            <li>Laboratori R&D aziendali</li>
-            <li>Centri di ricerca su AI e automazione</li>
-            <li>Aziende che vogliono costruire un POC su robotica umanoide prima di investire in scala</li>
-          </ul>
-        </div>
-        <div class="per-chi-col">
-          <h3>Cosa puoi farci</h3>
-          <ul class="per-chi-list">
-            <li>Ricerca su AI embodied e apprendimento per imitazione</li>
-            <li>Sviluppo algoritmi di navigazione in ambienti reali</li>
-            <li>Manipolazione: assemblaggio leggero, ispezione, assistenza operatori</li>
-            <li>Corsi universitari di robotica con hardware reale</li>
-            <li>POC per dimostrare automazione umanoide a clienti e investitori</li>
-            <li>Integrazione con sistemi ERP/MES tramite SDK</li>
-          </ul>
-        </div>
+
+      <div class="comparison-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                <div class="comp-header-card current">
+                  <img src="assets/images/g1-06.png" alt="G1 Base">
+                  <span class="comp-model-name">G1 Base</span>
+                  <span class="comp-model-tag">Distribuzione e ricerca</span>
+                </div>
+              </th>
+              <th>
+                <div class="comp-header-card">
+                  <img src="assets/images/g1-06.png" alt="G1 EDU Standard">
+                  <span class="comp-model-name">G1 EDU Standard</span>
+                  <span class="comp-model-tag">Sviluppo avanzato</span>
+                </div>
+              </th>
+              <th>
+                <div class="comp-header-card">
+                  <img src="assets/images/g1-06.png" alt="G1 EDU Plus">
+                  <span class="comp-model-name">G1 EDU Plus</span>
+                  <span class="comp-model-tag">Ricerca di punta</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="comp-section-row"><td colspan="4">Mani e manipolazione</td></tr>
+            <tr><td>Tipo mani</td><td>Fisse (senza polsi)</td><td>Articolate con polsi</td><td>Articolate avanzate</td></tr>
+            <tr><td>DoF mani</td><td>0</td><td>6 per mano</td><td>6 + sensori di forza</td></tr>
+
+            <tr class="comp-section-row"><td colspan="4">Computing e sviluppo</td></tr>
+            <tr><td>Sviluppo secondario</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Computing avanzato</td><td><span class="cross">—</span></td><td>NVIDIA Jetson</td><td>NVIDIA Orin NX</td></tr>
+
+            <tr class="comp-section-row"><td colspan="4">Performance</td></tr>
+            <tr><td>DoF totali</td><td>23</td><td>43</td><td>53</td></tr>
+            <tr><td>DoF vita</td><td>1</td><td>3</td><td>3</td></tr>
+            <tr><td>Coppia max ginocchio</td><td>90 N·m</td><td>90 N·m</td><td>120 N·m</td></tr>
+            <tr><td>Carico max braccia</td><td>~2 kg</td><td>~3 kg</td><td>~5 kg</td></tr>
+
+            <tr class="comp-section-row"><td colspan="4">Sensori</td></tr>
+            <tr><td>LiDAR 3D</td><td>LIVOX MID-360</td><td>LIVOX MID-360</td><td>LIVOX MID-360</td></tr>
+            <tr><td>Depth camera</td><td>RealSense D435i</td><td>D435i × 2</td><td>D435i × 3</td></tr>
+            <tr><td>Sensori tattili</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+
+            <tr class="comp-section-row"><td colspan="4">Connettività e garanzia</td></tr>
+            <tr><td>Wi-Fi / Bluetooth</td><td>Wi-Fi 6 / BT 5.2</td><td>Wi-Fi 6 / BT 5.2</td><td>Wi-Fi 6E / BT 5.3</td></tr>
+            <tr><td>Audio</td><td>4 mic · 5W stereo</td><td>4 mic · 5W stereo</td><td>6 mic · 10W stereo</td></tr>
+            <tr><td>Garanzia</td><td>8 mesi</td><td>12 mesi</td><td>12 mesi</td></tr>
+
+            <tr>
+              <td></td>
+              <td><a href="#form" class="btn btn-primary btn-card" style="margin-top:16px;">Richiedi info</a></td>
+              <td><a href="#form" class="btn btn-secondary btn-card" style="margin-top:16px;">Richiedi info</a></td>
+              <td><a href="#form" class="btn btn-secondary btn-card" style="margin-top:16px;">Richiedi info</a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- Perché G1 -->
+  <!-- ─────────────────────────────────────────
+       7. COME FUNZIONA
+  ───────────────────────────────────────── -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header">
-        <p class="label label-light">Confronto</p>
-        <h2>Perché il G1 è il punto di partenza giusto.</h2>
+        <p class="label label-light">Il processo</p>
+        <h2>Dal primo contatto<br>al robot operativo.</h2>
+        <p class="section-sub">Tre step. Nessuna sorpresa. Un interlocutore dall'inizio alla fine.</p>
       </div>
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Caratteristica</th>
-            <th>Unitree G1</th>
-            <th>Alternativa tipica</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-feature">SDK aperto e documentato</td>
-            <td class="col-g1">✅ ROS2 + Python nativo</td>
-            <td class="col-other">⚠️ Spesso proprietario</td>
-          </tr>
-          <tr>
-            <td class="col-feature">Prezzo per R&D</td>
-            <td class="col-g1">✅ Da €16.000</td>
-            <td class="col-other">❌ €80.000–€200.000+</td>
-          </tr>
-          <tr>
-            <td class="col-feature">Tempi di consegna</td>
-            <td class="col-g1">✅ 8–12 settimane</td>
-            <td class="col-other">❌ 6–18 mesi</td>
-          </tr>
-          <tr>
-            <td class="col-feature">Supporto in italiano</td>
-            <td class="col-g1">✅ Referente Abra dedicato</td>
-            <td class="col-other">❌ Solo documentazione EN</td>
-          </tr>
-          <tr>
-            <td class="col-feature">Finanziabile Industria 4.0</td>
-            <td class="col-g1">✅ Verificato</td>
-            <td class="col-other">⚠️ Dipende dal fornitore</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
 
-  <!-- Specifiche tecniche -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <p class="label">Scheda tecnica</p>
-        <h2>Specifiche principali</h2>
-      </div>
-      <table class="specs-table">
-        <tbody>
-          <tr><td>Altezza</td><td>1.270 mm</td></tr>
-          <tr><td>Peso</td><td>~35 kg</td></tr>
-          <tr><td>Gradi di libertà</td><td>23 base, espandibile a 43</td></tr>
-          <tr><td>Velocità max</td><td>2 m/s</td></tr>
-          <tr><td>Carico max per braccio</td><td>2–3 kg (config. dipendente)</td></tr>
-          <tr><td>Autonomia batteria</td><td>~2 ore</td></tr>
-          <tr><td>Visione</td><td>Telecamera depth + LiDAR 3D</td></tr>
-          <tr><td>Connettività</td><td>Wi-Fi 6 + Bluetooth 5.2</td></tr>
-          <tr><td>SDK</td><td>ROS2, Python, API aperte</td></tr>
-          <tr><td>Modulo AI opzionale</td><td>NVIDIA Jetson Orin</td></tr>
-          <tr><td>Mani opzionali</td><td>Dex3-1 (7 DoF, feedback tattile)</td></tr>
-          <tr><td>Garanzia</td><td>12 mesi</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Processo di acquisto -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <p class="label label-light">Come funziona</p>
-        <h2>Dal preventivo al robot operativo.</h2>
-      </div>
-      <div class="process-steps">
+      <div class="process-steps-product">
         <div class="step">
           <span class="step-number">01</span>
-          <h3>Richiedi un preventivo</h3>
-          <p>Descrivi il tuo caso d'uso. Ti contattiamo entro 24 ore per capire la configurazione giusta e confermare disponibilità.</p>
+          <h3>Contattaci</h3>
+          <p>Compila il form e descrivici il tuo caso d'uso. Ti risponderemo entro 12 ore con una valutazione preliminare e, se necessario, organizziamo una chiamata tecnica.</p>
         </div>
         <div class="step">
           <span class="step-number">02</span>
-          <h3>Definiamo la configurazione</h3>
-          <p>SDK, mani Dex3-1, modulo Jetson Orin, configurazione base o avanzata. Tutto prima della firma.</p>
+          <h3>Configurazione su misura</h3>
+          <p>Definiamo insieme il modello, gli accessori, l'eventuale configurazione software e il percorso di formazione per il tuo team tecnico.</p>
         </div>
         <div class="step">
           <span class="step-number">03</span>
-          <h3>Spedizione e test pre-consegna</h3>
-          <p>Il G1 parte dalla Cina, arriva in 8–12 settimane. Prima della consegna lo testiamo: accensione, sensori, firmware aggiornato.</p>
+          <h3>Consegna e supporto</h3>
+          <p>Robot consegnato, configurato e operativo in 2–4 settimane. Supporto tecnico dedicato per tutto il periodo di garanzia e oltre.</p>
         </div>
-        <div class="step">
-          <span class="step-number">04</span>
-          <h3>Consegna e onboarding</h3>
-          <p>Consegna on-site, sessione tecnica con il tuo team, referente Abra per i primi 3 mesi.</p>
-        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <a href="#form" class="btn" style="background:var(--white);color:var(--black);border-color:var(--white);">Parla con un esperto →</a>
       </div>
     </div>
   </section>
 
-  <!-- Risk Reversal -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <p class="label">Perché fidarsi</p>
-        <h2>Compri con certezze, non con speranza.</h2>
-      </div>
-      <div class="risk-grid">
-        <div class="risk-card">
-          <h3>🛡️ Garanzia 12 mesi</h3>
-          <p>Su tutto l'hardware. Gestita direttamente da Abra in Italia. Nessun rimbalzo con il produttore.</p>
-        </div>
-        <div class="risk-card">
-          <h3>📞 Assistenza inclusa</h3>
-          <p>Supporto remoto e on-site per tutta la durata del progetto. Non sei solo dopo la firma.</p>
-        </div>
-        <div class="risk-card">
-          <h3>💡 Spesso finanziabile</h3>
-          <p>Industria 4.0, Transizione 5.0, bandi ricerca. Verifica gratuita inclusa prima dell'acquisto.</p>
-        </div>
-        <div class="risk-card">
-          <h3>🧪 Prima un POC</h3>
-          <p>Non sei sicuro? Strutturiamo un pilot a basso rischio con obiettivi misurabili prima di qualsiasi impegno.</p>
-        </div>
-      </div>
-      <p class="risk-footnote">Non hai mai acquistato un robot umanoide? È normale. Per questo ogni acquisto include onboarding tecnico, documentazione in italiano e un referente dedicato per i primi 3 mesi. Se entro 30 giorni dalla consegna il robot presenta difetti di fabbricazione, lo ritiriamo e sostituiamo senza costi.</p>
-    </div>
-  </section>
-
-  <!-- Finanziamenti -->
-  <section id="finanziamenti" class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <p class="label label-light">Finanziamenti</p>
-        <h2>Il costo non è un ostacolo.</h2>
-        <p class="section-sub">La maggior parte dei progetti di robotica è finanziabile. Facciamo scouting degli incentivi disponibili — Industria 4.0, PNRR, bandi regionali — e ti affianchiamo in tutto il processo di accesso ai fondi, per darti un'idea chiara del costo reale.</p>
-      </div>
-      <div class="finance-stats">
-        <div class="finance-stat">
-          <span class="finance-stat-number">30–50%</span>
-          <span class="finance-stat-label">Del costo spesso coperto da incentivi</span>
-        </div>
-        <div class="finance-stat">
-          <span class="finance-stat-number">0€</span>
-          <span class="finance-stat-label">Costo della verifica iniziale con noi</span>
-        </div>
-      </div>
-      <div class="finance-cta">
-        <a href="#cta-finale" class="btn btn-cta-finance">Verifica gratuitamente se il tuo progetto è finanziabile →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <div class="container">
-      <div class="section-header">
-        <p class="label">FAQ</p>
-        <h2>Domande frequenti</h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Qual è la differenza tra G1 standard e G1 EDU?</summary>
-          <p>La versione EDU ha SDK completamente aperto, più gradi di libertà opzionali, supporto NVIDIA Jetson Orin e documentazione tecnica estesa. È la versione per chi sviluppa software proprietario. La standard è per chi vuole operare il robot senza customizzazione profonda.</p>
-        </details>
-        <details class="faq-item">
-          <summary>È davvero pronto per applicazioni industriali?</summary>
-          <p>Dipende dal caso d'uso. Per ricerca, POC e applicazioni leggere è già operativo. Per task industriali continuativi ad alta affidabilità è ancora in maturazione — siamo onesti su questo. Per questo proponiamo sempre un pilot prima dell'acquisto in contesti produttivi critici.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Quanto tempo dalla firma alla consegna?</summary>
-          <p>8–12 settimane in media. Spedizione dalla Cina, gestione doganale, test pre-consegna e consegna finale sono incluse nel prezzo.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Posso sviluppare software proprietario?</summary>
-          <p>Sì. Il G1 EDU supporta ROS2, Python e API aperte. Abra può affiancarti anche nello sviluppo software.</p>
-        </details>
-        <details class="faq-item">
-          <summary>È finanziabile?</summary>
-          <p>Spesso sì. Rientra tipicamente in Industria 4.0 / Transizione 5.0 e nei bandi per ricerca e innovazione. Verifica gratuita inclusa.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Posso vederlo prima di acquistarlo?</summary>
-          <p>Sì. Organizziamo demo e sessioni POC su richiesta.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA finale -->
-  <section id="cta-finale" class="section section-cta">
+  <!-- ─────────────────────────────────────────
+       8. FORM DI CONTATTO
+  ───────────────────────────────────────── -->
+  <section id="form" class="section section-cta" style="scroll-margin-top:120px;">
     <div class="container">
       <div class="cta-content">
-        <h2>Hai letto tutto. Hai ancora dubbi?</h2>
-        <p>30 minuti di chiamata con il nostro tecnico costano zero e chiariscono tutto — inclusa la configurazione giusta per il tuo caso d'uso.</p>
-        <a href="#" class="btn btn-primary btn-lg">Prenota una chiamata gratuita →</a>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-top: 16px;">Nessun impegno. Risposta entro 24h.</p>
+        <h2>Hai un progetto in mente?</h2>
+        <p class="cta-subtitle">Compila il form, un consulente ABRA ti ricontatterà entro 12 ore.</p>
       </div>
+
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome e cognome</label>
+            <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="form-group">
+            <label for="azienda">Azienda</label>
+            <input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l." required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="mario@azienda.com" required>
+        </div>
+        <div class="form-group">
+          <label for="messaggio">La tua richiesta</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Raccontaci il tuo progetto e chiedici tutto quello che vuoi sapere." rows="5" required></textarea>
+        </div>
+        <input type="hidden" name="prodotto" value="Unitree G1 Base">
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+          <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
+        </div>
+        <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+      </form>
     </div>
   </section>
 
@@ -575,17 +1124,17 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <a href="../" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
         <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca.</p>
       </div>
       <div class="footer-nav">
         <span class="footer-heading">Navigazione</span>
-        <a href="../index.html#prodotti">Prodotti</a>
-        <a href="../index.html#soluzioni">Cosa facciamo</a>
-        <a href="../index.html#per-chi">Per chi</a>
-        <a href="../index.html#come-lavoriamo">Processo</a>
-        <a href="../index.html#chi-siamo">Chi siamo</a>
-        <a href="../index.html#faq">FAQ</a>
+        <a href="../#soluzioni">Cosa facciamo</a>
+        <a href="../#prodotti">Prodotti</a>
+        <a href="../#per-chi">Per chi</a>
+        <a href="../#come-lavoriamo">Processo</a>
+        <a href="../#faq">FAQ</a>
+        <a href="#form">Contattaci</a>
       </div>
       <div class="footer-contact">
         <span class="footer-heading">Contatti</span>
@@ -598,24 +1147,121 @@
     </div>
   </footer>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Unitree G1",
-    "description": "Robot umanoide con 43 gradi di libertà, ROS2 nativo, SDK aperto. Per università, laboratori R&D e aziende.",
-    "brand": { "@type": "Brand", "name": "Unitree" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "price": "16000",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "Organization", "name": "Abra Robotics" }
-    }
-  }
-  </script>
-
   <script src="../script.js"></script>
+  <script>
+    /* ── Gallery Slider ── */
+    (function () {
+      const images = [
+        'assets/images/g1-06.png',
+        'assets/images/g1-01.jpg',
+        'assets/images/g1-02.jpg',
+        'assets/images/g1-03.jpg',
+        'assets/images/g1-04.jpg',
+        'assets/images/g1-05.jpg',
+      ];
+      let current = 0;
+      const mainImg = document.getElementById('gallery-main-img');
+      const thumbs = document.querySelectorAll('.gallery-thumb');
+
+      function setImage(index) {
+        current = (index + images.length) % images.length;
+        mainImg.classList.add('fade');
+        setTimeout(() => {
+          mainImg.src = images[current];
+          mainImg.classList.remove('fade');
+        }, 150);
+        thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+      }
+
+      document.getElementById('gallery-prev').addEventListener('click', () => setImage(current - 1));
+      document.getElementById('gallery-next').addEventListener('click', () => setImage(current + 1));
+      thumbs.forEach((t, i) => t.addEventListener('click', () => setImage(i)));
+    })();
+
+    /* ── Animated Counters ── */
+    (function () {
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+      function animateCounter(el, target, duration) {
+        const start = performance.now();
+        (function update(now) {
+          const p = Math.min((now - start) / duration, 1);
+          el.textContent = Math.round(easeOutCubic(p) * target);
+          if (p < 1) requestAnimationFrame(update);
+          else el.textContent = target;
+        })(performance.now());
+      }
+
+      const statsEl = document.getElementById('stats-section');
+      if (!statsEl) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.querySelectorAll('.counter').forEach(c =>
+            animateCounter(c, parseInt(c.dataset.target, 10), 1800)
+          );
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.5 });
+      obs.observe(statsEl);
+    })();
+
+    /* ── Parallax Collage ── */
+    (function () {
+      const colA = document.getElementById('parallax-col-a');
+      const colB = document.getElementById('parallax-col-b');
+      const container = document.getElementById('parallax-container');
+      if (!colA || !colB || window.matchMedia('(max-width: 768px)').matches) return;
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const center = container.getBoundingClientRect().top + container.offsetHeight / 2 - window.innerHeight / 2;
+          colA.style.transform = `translateY(${center * -0.06}px)`;
+          colB.style.transform = `translateY(${40 + center * -0.03}px)`;
+          ticking = false;
+        });
+      }, { passive: true });
+    })();
+
+    /* ── Lazy Video Autoplay ── */
+    (function () {
+      const videos = document.querySelectorAll('.feature-video[data-src]');
+      if (!videos.length) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          const poster = video.nextElementSibling;
+          if (entry.isIntersecting) {
+            if (!video.src) { video.src = video.dataset.src; video.load(); }
+            video.play().then(() => { if (poster) poster.classList.add('hidden'); }).catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.4 });
+      videos.forEach(v => obs.observe(v));
+    })();
+
+    /* ── Scroll fade-in ── */
+    (function () {
+      const els = document.querySelectorAll('.feature-card, .product-stat, .step, .parallax-img-wrap, .key-spec');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      els.forEach((el, i) => {
+        const siblings = Array.from(el.parentElement.children).filter(c => c.classList[0] === el.classList[0]);
+        const idx = siblings.indexOf(el);
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = `opacity 0.6s ease ${idx * 0.1}s, transform 0.6s ease ${idx * 0.1}s`;
+        obs.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>
