@@ -546,7 +546,8 @@
     .comp-table-wrap {
       border: 1px solid var(--gray-200);
       border-radius: var(--radius);
-      overflow: hidden;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .comp-table {
@@ -680,7 +681,14 @@
       .process-steps-product { grid-template-columns: 1fr; gap: 32px; }
       .spec-mini-grid { grid-template-columns: repeat(2, 1fr); }
       .comp-models-bar { grid-template-columns: 1fr; }
-      .comp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+      /* Centro tutto il contenuto */
+      .product-info { text-align: center; }
+      .product-cta-group { flex-direction: column; align-items: stretch; }
+      .product-cta-group .btn { width: 100%; justify-content: center; }
+      .product-trust { justify-content: center; }
+      .visual-text { text-align: center; }
+      .visual-text .btn { display: flex; width: 100%; justify-content: center; }
     }
   </style>
 </head>
