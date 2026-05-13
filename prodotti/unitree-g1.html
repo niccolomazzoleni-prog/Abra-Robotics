@@ -179,7 +179,7 @@
     .product-trust {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
       padding-top: 24px;
       border-top: 1px solid var(--gray-200);
@@ -188,10 +188,25 @@
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 7px;
-      font-size: 0.82rem;
-      color: var(--gray-600);
+      gap: 8px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--gray-800);
       font-weight: 500;
+    }
+
+    .trust-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px; height: 18px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 0.55rem;
+      font-weight: 900;
+      flex-shrink: 0;
+      letter-spacing: 0;
     }
 
     /* ── Marquee ── */
@@ -271,18 +286,64 @@
       display: block;
     }
 
-    /* ── Specs ── */
+    /* ── Included strip ── */
     .specs-section { padding-top: 24px; }
 
-    .specs-layout {
+    .included-strip {
       display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 56px;
-      align-items: start;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
     }
 
-    .specs-accordion .faq-item { border-color: rgba(255,255,255,0.07); }
-    .specs-accordion .faq-item summary { color: var(--white); font-size: 0.95rem; }
+    .included-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .included-card-label {
+      display: block;
+      font-family: var(--font);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 8px;
+    }
+
+    .included-card-name {
+      display: block;
+      font-family: var(--font);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.4;
+    }
+
+    /* ── Specs accordion glassmorphism ── */
+    .specs-accordion .faq-item {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08) !important;
+      border-radius: var(--radius) !important;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    .specs-accordion .faq-item summary {
+      font-family: var(--font);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 20px 24px;
+    }
     .specs-accordion .faq-item summary:hover { color: var(--orange); }
     .specs-accordion .faq-item summary::after { color: rgba(255,255,255,0.25); }
 
@@ -290,6 +351,8 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.88rem;
+      font-family: var(--font);
+      padding: 0 24px;
     }
 
     .specs-table tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -304,7 +367,7 @@
 
     .specs-table td:first-child {
       color: rgba(255,255,255,0.4);
-      width: 42%;
+      width: 40%;
       padding-right: 16px;
       font-weight: 600;
       font-size: 0.78rem;
@@ -312,69 +375,18 @@
       letter-spacing: 0.05em;
     }
 
-    .specs-accordion .faq-item p,
     .specs-accordion .faq-item .specs-table {
       max-height: 0;
       overflow: hidden;
       opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-      padding-bottom: 0;
+      display: block;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
     }
 
-    .specs-accordion .faq-item[open] p,
     .specs-accordion .faq-item[open] .specs-table {
       max-height: 800px;
       opacity: 1;
       padding-bottom: 20px;
-    }
-
-    /* Sidebar Incluso */
-    .included-box {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 28px;
-      position: sticky;
-      top: calc(40px + 72px + 24px);
-    }
-
-    .included-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 20px;
-    }
-
-    .included-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-
-    .included-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.7);
-      font-weight: 500;
-    }
-
-    .included-icon {
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .included-note {
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.3);
-      line-height: 1.6;
     }
 
     /* ── Visual Description ── */
@@ -487,50 +499,59 @@
     }
 
     .comparison-table th {
-      padding: 0 16px 28px 0;
-      text-align: left;
+      padding: 0 12px 28px 12px;
+      text-align: center;
       font-weight: 600;
       vertical-align: bottom;
     }
-    .comparison-table th:first-child { width: 28%; padding-right: 20px; }
+    .comparison-table th:first-child {
+      width: 26%;
+      text-align: left;
+      padding-left: 0;
+    }
 
     .comp-header-card {
-      border: 1px solid var(--gray-200);
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.08);
       border-radius: var(--radius);
-      padding: 20px;
-      background: var(--gray-50);
+      padding: 24px 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      text-align: center;
     }
-    .comp-header-card.current { background: var(--black); border-color: var(--black); }
-
-    .comp-header-card img {
-      width: 100%; height: 100px;
-      object-fit: contain;
-      display: block;
-      margin-bottom: 12px;
-      filter: grayscale(1);
-      opacity: .6;
+    .comp-header-card.current {
+      background: var(--black);
+      border-color: var(--black);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
-    .comp-header-card.current img { filter: grayscale(1) invert(1); opacity: .9; }
 
     .comp-model-name {
       display: block;
-      font-size: 0.88rem;
+      font-family: var(--font);
+      font-size: 1rem;
       font-weight: 700;
       color: var(--black);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .comp-header-card.current .comp-model-name { color: var(--white); }
 
-    .comp-model-tag { font-size: 0.75rem; color: var(--gray-400); }
-    .comp-header-card.current .comp-model-tag { color: rgba(255,255,255,0.4); }
+    .comp-model-tag {
+      font-family: var(--font);
+      font-size: 0.78rem;
+      color: var(--gray-400);
+    }
+    .comp-header-card.current .comp-model-tag { color: rgba(255,255,255,0.45); }
 
     .comparison-table td {
-      padding: 12px 16px 12px 0;
+      padding: 12px 12px;
+      font-family: var(--font);
       font-size: 0.88rem;
       color: var(--gray-600);
       border-bottom: 1px solid var(--gray-100);
       vertical-align: middle;
       line-height: 1.5;
+      text-align: center;
     }
     .comparison-table td:first-child {
       color: var(--gray-400);
@@ -538,7 +559,8 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding-right: 20px;
+      text-align: left;
+      padding-left: 0;
     }
 
     .comp-section-row td {
@@ -565,8 +587,7 @@
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
-      .specs-layout { grid-template-columns: 1fr; }
-      .included-box { position: static; }
+      .included-strip { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -583,6 +604,7 @@
       .visual-desc-grid { grid-template-columns: 1fr; gap: 40px; }
       .visual-text { position: static; }
       .parallax-col-b { transform: none; }
+      .included-strip { grid-template-columns: repeat(2, 1fr); }
       .features-grid { grid-template-columns: 1fr; }
       .feature-video-wrap { aspect-ratio: 16/9; }
       .process-steps-product { grid-template-columns: 1fr; gap: 32px; }
@@ -641,19 +663,19 @@
         <!-- Gallery -->
         <div class="gallery">
           <div class="gallery-main">
-            <img id="gallery-main-img" src="assets/images/g1-06.png" alt="Unitree G1 Base — Robot Umanoide">
+            <img id="gallery-main-img" src="assets/images/g1-01.jpg" alt="Unitree G1 Base — Robot Umanoide">
             <div class="gallery-nav">
               <button class="gallery-btn" id="gallery-prev" aria-label="Immagine precedente">←</button>
               <button class="gallery-btn" id="gallery-next" aria-label="Immagine successiva">→</button>
             </div>
           </div>
           <div class="gallery-thumbs">
-            <div class="gallery-thumb active" data-index="0"><img src="assets/images/g1-06.png" alt="G1 render"></div>
-            <div class="gallery-thumb" data-index="1"><img src="assets/images/g1-01.jpg" alt="G1 vista frontale"></div>
-            <div class="gallery-thumb" data-index="2"><img src="assets/images/g1-02.jpg" alt="G1 dettaglio"></div>
-            <div class="gallery-thumb" data-index="3"><img src="assets/images/g1-03.jpg" alt="G1 in movimento"></div>
-            <div class="gallery-thumb" data-index="4"><img src="assets/images/g1-04.jpg" alt="G1 articolazioni"></div>
-            <div class="gallery-thumb" data-index="5"><img src="assets/images/g1-05.jpg" alt="G1 profilo"></div>
+            <div class="gallery-thumb active" data-index="0"><img src="assets/images/g1-01.jpg" alt="G1 vista frontale"></div>
+            <div class="gallery-thumb" data-index="1"><img src="assets/images/g1-02.jpg" alt="G1 dettaglio"></div>
+            <div class="gallery-thumb" data-index="2"><img src="assets/images/g1-03.jpg" alt="G1 in movimento"></div>
+            <div class="gallery-thumb" data-index="3"><img src="assets/images/g1-04.jpg" alt="G1 articolazioni"></div>
+            <div class="gallery-thumb" data-index="4"><img src="assets/images/g1-05.jpg" alt="G1 profilo"></div>
+            <div class="gallery-thumb" data-index="5"><img src="assets/images/g1-06.png" alt="G1 render"></div>
           </div>
         </div>
 
@@ -698,9 +720,9 @@
           </div>
 
           <div class="product-trust">
-            <div class="trust-item">✓ <span>Distributore ufficiale Unitree</span></div>
-            <div class="trust-item">📦 <span>Consegna 2–4 settimane</span></div>
-            <div class="trust-item">🛡 <span>Garanzia 8 mesi</span></div>
+            <div class="trust-item"><span class="trust-check">✓</span><span>Distributore ufficiale Unitree</span></div>
+            <div class="trust-item"><span class="trust-check">✓</span><span>Consegna 2–4 settimane</span></div>
+            <div class="trust-item"><span class="trust-check">✓</span><span>Garanzia 8 mesi</span></div>
           </div>
         </div>
 
@@ -767,9 +789,31 @@
         <h2>Specifiche tecniche complete</h2>
       </div>
 
-      <div class="specs-layout">
+      <!-- Cosa è incluso — strip orizzontale -->
+      <div class="included-strip">
+        <div class="included-card">
+          <span class="included-card-label">Robot</span>
+          <span class="included-card-name">G1 Base</span>
+        </div>
+        <div class="included-card">
+          <span class="included-card-label">Mani</span>
+          <span class="included-card-name">Fisse senza polsi</span>
+        </div>
+        <div class="included-card">
+          <span class="included-card-label">Controllo</span>
+          <span class="included-card-name">Telecomando</span>
+        </div>
+        <div class="included-card">
+          <span class="included-card-label">Alimentazione</span>
+          <span class="included-card-name">Batteria × 1</span>
+        </div>
+        <div class="included-card">
+          <span class="included-card-label">Copertura</span>
+          <span class="included-card-name">Garanzia 8 mesi</span>
+        </div>
+      </div>
 
-        <div class="specs-accordion faq-list" style="max-width:100%;">
+      <div class="specs-accordion faq-list" style="max-width:100%;">
 
           <details class="faq-item" open>
             <summary>Hardware — Telaio e dimensioni</summary>
@@ -853,21 +897,6 @@
             </table>
           </details>
 
-        </div>
-
-        <!-- Sidebar incluso -->
-        <aside class="included-box">
-          <p class="included-title">Cosa è incluso</p>
-          <ul class="included-list">
-            <li class="included-item"><div class="included-icon">🤖</div><span>Robot G1 Base</span></li>
-            <li class="included-item"><div class="included-icon">🤲</div><span>Mani fisse (senza polsi)</span></li>
-            <li class="included-item"><div class="included-icon">🎮</div><span>Telecomando</span></li>
-            <li class="included-item"><div class="included-icon">🔋</div><span>Batteria × 1</span></li>
-            <li class="included-item"><div class="included-icon">🛡</div><span>Garanzia 8 mesi</span></li>
-          </ul>
-          <p class="included-note">Accessori opzionali disponibili separatamente: mani articolate, batterie aggiuntive, kit sviluppo.</p>
-        </aside>
-
       </div>
     </div>
   </section>
@@ -883,7 +912,7 @@
           <p class="label">Design e ingegneria</p>
           <h2>Costruito per ambienti reali, non solo per laboratorio.</h2>
           <p>G1 Base nasce da anni di R&D in robotica umanoide applicata. Ogni giunto è progettato per durare, ogni sensore scelto per funzionare in condizioni reali: luce variabile, terreni irregolari, interazioni non previste.</p>
-          <p>L'architettura modulare consente upgrade rapidi. La struttura in lega di alluminio garantisce rigidità senza compromettere il peso totale di 35 kg — trasportabile e operativo in ambienti industriali e universitari.</p>
+          <p>L'architettura modulare consente upgrade rapidi. La struttura in lega di alluminio garantisce rigidità senza compromettere il peso totale di 35 kg, trasportabile e operativa in ambienti industriali e universitari.</p>
           <a href="#form" class="btn btn-primary" style="margin-top:8px;">Parla con un esperto</a>
         </div>
 
@@ -988,21 +1017,18 @@
               <th></th>
               <th>
                 <div class="comp-header-card current">
-                  <img src="assets/images/g1-06.png" alt="G1 Base">
                   <span class="comp-model-name">G1 Base</span>
                   <span class="comp-model-tag">Distribuzione e ricerca</span>
                 </div>
               </th>
               <th>
                 <div class="comp-header-card">
-                  <img src="assets/images/g1-06.png" alt="G1 EDU Standard">
                   <span class="comp-model-name">G1 EDU Standard</span>
                   <span class="comp-model-tag">Sviluppo avanzato</span>
                 </div>
               </th>
               <th>
                 <div class="comp-header-card">
-                  <img src="assets/images/g1-06.png" alt="G1 EDU Plus">
                   <span class="comp-model-name">G1 EDU Plus</span>
                   <span class="comp-model-tag">Ricerca di punta</span>
                 </div>
@@ -1152,12 +1178,12 @@
     /* ── Gallery Slider ── */
     (function () {
       const images = [
-        'assets/images/g1-06.png',
         'assets/images/g1-01.jpg',
         'assets/images/g1-02.jpg',
         'assets/images/g1-03.jpg',
         'assets/images/g1-04.jpg',
         'assets/images/g1-05.jpg',
+        'assets/images/g1-06.png',
       ];
       let current = 0;
       const mainImg = document.getElementById('gallery-main-img');
