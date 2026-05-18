@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automazione per manifattura e logistica | Cobot, Robot ispezione, Embodied AI | Abra Robotics</title>
+  <meta name="description" content="Abra Robotics: cobot Fairino 6 assi, robot quadrupedi Unitree per ispezione industriale e POC di embodied AI. Soluzioni di automazione per PMI manifatturiere italiane.">
+  <meta name="keywords" content="cobot piccole imprese, robot ispezione industriale, machine tending CNC, palletizzazione cobot, robot quadrupede impianti, POC robotica umanoide industria, Fairino FR5 FR10 FR20, Unitree Go2 B2 R1">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/manifattura-logistica.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Automazione per manifattura e logistica | Abra Robotics">
+  <meta property="og:description" content="Cobot Fairino, quadrupedi Unitree per ispezione industriale e POC di embodied AI per PMI manifatturiere italiane.">
+  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/manifattura-logistica.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Abra Robotics">
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Vertical Landing - Manifattura & Logistica */
+
+    /* Hero */
+    .vert-hero {
+      padding: calc(40px + 72px + 80px) 0 100px;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .vert-hero-inner { max-width: 980px; }
+    .vert-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin: 16px 0 24px;
+    }
+    .vert-hero .vert-hero-sub {
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      color: var(--gray-600);
+      line-height: 1.6;
+      max-width: 760px;
+      margin-bottom: 36px;
+    }
+    .vert-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Anchor strip */
+    .anchor-strip {
+      position: sticky;
+      top: calc(40px + 72px);
+      z-index: 90;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .anchor-strip-inner {
+      display: flex;
+      gap: 32px;
+      padding: 14px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .anchor-strip-inner::-webkit-scrollbar { display: none; }
+    .anchor-strip-inner a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .anchor-strip-inner a:hover { color: var(--black); }
+    .anchor-strip-inner a span {
+      color: var(--gray-400);
+      margin-right: 6px;
+      font-weight: 700;
+    }
+
+    section[id] { scroll-margin-top: 160px; }
+
+    /* Section headers */
+    .vert-section-head {
+      max-width: 880px;
+      margin-bottom: 56px;
+    }
+    .vert-section-head h2 {
+      font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      margin: 14px 0 22px;
+    }
+    .vert-section-head p {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    .vert-section-subhead {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin: 0 0 24px;
+    }
+
+    /* Robot/Product card grid */
+    .robot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .robot-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .robot-grid.cols-1 {
+      grid-template-columns: minmax(0, 760px);
+      justify-content: center;
+    }
+
+    .robot-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+    }
+    .robot-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.15);
+    }
+    .robot-card.dark {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .robot-card.dark:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.25);
+    }
+
+    /* Media */
+    .robot-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .robot-card.dark .robot-media {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .robot-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+      transition: transform 0.5s ease;
+    }
+    .robot-card:hover .robot-media img { transform: scale(1.04); }
+    .robot-media-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-600);
+      z-index: 2;
+    }
+    .robot-card.dark .robot-media-tag {
+      background: rgba(0,0,0,0.55);
+      color: rgba(255,255,255,0.88);
+      border-color: rgba(255,255,255,0.15);
+    }
+    .robot-media-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      padding: 24px;
+    }
+    .robot-media-placeholder strong {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--gray-600);
+    }
+    .robot-media-placeholder span {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+    .robot-media.no-img img { display: none; }
+
+    /* Body */
+    .robot-body {
+      padding: 28px 28px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      flex: 1;
+    }
+    .robot-card h3 {
+      font-size: 1.4rem;
+      letter-spacing: -0.015em;
+      margin: 0 0 2px;
+    }
+    .robot-card.dark h3 { color: var(--white); }
+    .robot-subtitle {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      margin: 0;
+      font-weight: 500;
+    }
+    .robot-card.dark .robot-subtitle { color: rgba(255,255,255,0.45); }
+
+    /* Key specs grid (2x2) */
+    .key-specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .robot-card.dark .key-specs { border-color: rgba(255,255,255,0.10); }
+    .key-spec {
+      padding: 14px 16px;
+      border-right: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--white);
+    }
+    .robot-card.dark .key-spec {
+      background: rgba(255,255,255,0.02);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .key-spec:nth-child(2n) { border-right: none; }
+    .key-spec:nth-last-child(-n+2) { border-bottom: none; }
+    .key-spec-label {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 4px;
+    }
+    .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
+    .key-spec-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .robot-card.dark .key-spec-value { color: var(--white); }
+    .key-spec-value small {
+      font-weight: 500;
+      color: var(--gray-400);
+      font-size: 0.78em;
+    }
+    .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
+
+    /* Detail rows */
+    .spec-rows {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0;
+    }
+    .spec-rows li {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 14px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .robot-card.dark .spec-rows li { border-color: rgba(255,255,255,0.06); }
+    .spec-rows li:last-child { border-bottom: none; }
+    .spec-rows li span:first-child {
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-400);
+      padding-top: 2px;
+    }
+    .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
+    .spec-rows li span:last-child {
+      color: var(--gray-800);
+      font-weight: 500;
+    }
+    .robot-card.dark .spec-rows li span:last-child { color: rgba(255,255,255,0.85); }
+
+    /* Use case highlight */
+    .use-case-box {
+      background: var(--gray-50);
+      border-left: 3px solid var(--black);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .robot-card.dark .use-case-box {
+      background: rgba(255,255,255,0.03);
+      border-left-color: var(--orange);
+    }
+    .use-case-label {
+      display: block;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+    .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
+    .use-case-text {
+      font-size: 0.92rem;
+      color: var(--gray-800);
+      line-height: 1.55;
+      font-weight: 500;
+      margin: 0;
+    }
+    .robot-card.dark .use-case-text { color: rgba(255,255,255,0.85); }
+
+    /* Avviso importante (R1) */
+    .avviso-box {
+      padding: 14px 18px;
+      background: rgba(179,126,255,0.12);
+      border: 1px solid rgba(179,126,255,0.3);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.55;
+    }
+    .avviso-box strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* CTA */
+    .robot-card-cta {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    /* KPI box */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .kpi-box {
+      background: var(--black);
+      color: var(--white);
+      padding: 32px 28px;
+      border-radius: var(--radius);
+    }
+    .kpi-box .kpi-value {
+      display: block;
+      font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .kpi-box .kpi-label {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* Tech note */
+    .tech-note {
+      margin-top: 36px;
+      padding: 20px 24px;
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      border: 1px solid var(--gray-200);
+    }
+
+    /* When list */
+    .when-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .when-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      color: var(--gray-800);
+      line-height: 1.5;
+    }
+    .when-list li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    /* ROI box */
+    .roi-box {
+      margin-top: 56px;
+      padding: 48px 56px;
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+      color: var(--white);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+    .roi-box::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(179,126,255,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .roi-box .roi-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .roi-box h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .roi-box p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      max-width: 760px;
+      position: relative;
+    }
+    .roi-box p strong { color: var(--white); }
+
+    /* Honesty block */
+    .honesty-block {
+      margin-top: 48px;
+      padding: 36px 40px;
+      background: rgba(255,255,255,0.04);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .honesty-block h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+      color: var(--white);
+    }
+    .honesty-block p {
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    /* Final CTA */
+    .vert-final-cta {
+      padding: 100px 0;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+    .vert-final-cta .label-light { color: var(--orange); }
+    .vert-final-cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 22px;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .vert-final-cta p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+    .vert-final-cta .btn {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    /* Section rhythm */
+    .vert-section { padding: 100px 0; }
+    .vert-section + .vert-section { border-top: 1px solid var(--gray-200); }
+    .vert-section.section-dark { border-top: none; background: var(--black); color: var(--white); }
+    .vert-section.section-dark .vert-section-head h2 { color: var(--white); }
+    .vert-section.section-dark .vert-section-head p { color: rgba(255,255,255,0.65); }
+    .vert-section.section-dark .vert-section-subhead { color: rgba(255,255,255,0.45); }
+
+    /* Section CTA row */
+    .section-cta-row {
+      margin-top: 48px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .robot-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+      .kpi-strip { grid-template-columns: 1fr; }
+      .when-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .vert-hero { padding: calc(40px + 56px + 36px) 0 56px; }
+      .vert-hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); margin: 12px 0 18px; }
+      .vert-hero .vert-hero-sub { font-size: 1rem; margin-bottom: 28px; }
+      .vert-hero-ctas { flex-direction: column; align-items: stretch; }
+      .vert-hero-ctas .btn { width: 100%; justify-content: center; }
+
+      .vert-section { padding: 56px 0; }
+      .vert-section-head { margin-bottom: 36px; }
+      .vert-section-head h2 { font-size: clamp(1.6rem, 6vw, 2.1rem); margin: 10px 0 16px; }
+      .vert-section-head p { font-size: 0.98rem; }
+      .vert-section-subhead { margin-bottom: 18px; font-size: 0.72rem; }
+
+      .robot-grid,
+      .robot-grid.cols-3,
+      .robot-grid.cols-1 { grid-template-columns: 1fr; gap: 16px; }
+      .robot-body { padding: 22px 20px 24px; gap: 14px; }
+      .robot-card h3 { font-size: 1.25rem; }
+      .robot-card-cta { flex-direction: column; }
+      .robot-card-cta .btn { width: 100%; justify-content: center; }
+
+      .key-spec { padding: 11px 12px; }
+      .key-spec-value { font-size: 0.88rem; }
+      .key-spec-value small { font-size: 0.7em; }
+      .spec-rows li { grid-template-columns: 1fr; gap: 2px; padding: 9px 0; }
+
+      .use-case-box { padding: 12px 14px; }
+      .use-case-text { font-size: 0.88rem; }
+      .avviso-box { padding: 12px 14px; font-size: 0.85rem; }
+
+      .when-list li { padding: 14px 16px; font-size: 0.9rem; }
+
+      .kpi-strip { gap: 12px; margin-top: 28px; }
+      .kpi-box { padding: 24px 22px; }
+      .kpi-box .kpi-value { font-size: 1.5rem; margin-bottom: 6px; }
+      .kpi-box .kpi-label { font-size: 0.88rem; }
+
+      .tech-note { padding: 16px 18px; font-size: 0.83rem; margin-top: 28px; }
+
+      .roi-box { padding: 28px 22px; margin-top: 36px; }
+      .roi-box h3 { font-size: 1.2rem; }
+      .roi-box p { font-size: 0.94rem; }
+
+      .honesty-block { padding: 24px 20px; margin-top: 32px; }
+      .honesty-block h4 { font-size: 1rem; }
+      .honesty-block p { font-size: 0.92rem; }
+
+      .vert-final-cta { padding: 64px 0; }
+      .vert-final-cta h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); margin-bottom: 16px; }
+      .vert-final-cta p { font-size: 0.98rem; margin-bottom: 28px; }
+      .vert-final-cta .btn { width: 100%; justify-content: center; }
+
+      .section-cta-row { margin-top: 32px; flex-direction: column; align-items: stretch; }
+      .section-cta-row .btn { width: 100%; justify-content: center; }
+
+      .anchor-strip { position: static; }
+      .anchor-strip-inner { gap: 20px; padding: 10px 0; }
+      .anchor-strip-inner a { font-size: 0.78rem; }
+
+      .robot-media-tag {
+        top: 10px; left: 10px;
+        padding: 5px 9px;
+        font-size: 0.62rem;
+      }
+      .robot-media-placeholder strong { font-size: 1.3rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .vert-hero { padding: calc(40px + 56px + 28px) 0 44px; }
+      .vert-hero h1 { font-size: 1.85rem; line-height: 1.1; }
+      .vert-section { padding: 44px 0; }
+      .robot-body { padding: 18px 16px 20px; }
+      .key-specs { grid-template-columns: 1fr; }
+      .key-spec { border-right: none; }
+      .key-spec:nth-last-child(-n+2) { border-bottom: 1px solid var(--gray-200); }
+      .key-spec:last-child { border-bottom: none; }
+      .robot-card.dark .key-spec:nth-last-child(-n+2) { border-bottom-color: rgba(255,255,255,0.08); }
+      .robot-card.dark .key-spec:last-child { border-bottom: none; }
+      .roi-box { padding: 24px 18px; }
+      .honesty-block { padding: 20px 16px; }
+      .vert-final-cta { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <p>La maggior parte dei progetti è finanziabile. <a href="#contact-form">Scopri come →</a></p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <a href="/">Abra Robotics</a>
+        <a href="#cobot">Cobot</a>
+        <a href="#ispezione">Ispezione</a>
+        <a href="#embodied-ai">Embodied AI</a>
+        <a href="/#faq">FAQ</a>
+      </div>
+      <a href="#contact-form" class="btn btn-primary btn-sm">Parla con un esperto</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="/">Abra Robotics</a>
+    <a href="#cobot">Cobot</a>
+    <a href="#ispezione">Ispezione</a>
+    <a href="#embodied-ai">Embodied AI</a>
+    <a href="/#faq">FAQ</a>
+    <a href="#contact-form" class="btn btn-primary">Parla con un esperto</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="vert-hero">
+    <div class="container">
+      <div class="vert-hero-inner">
+        <p class="label">Manifattura e logistica</p>
+        <h1>Automatizza i tuoi processi produttivi con il robot giusto per la tua azienda.</h1>
+        <p class="vert-hero-sub">Abra Robotics porta nelle PMI italiane le tecnologie di automazione che i grandi gruppi industriali stanno già usando. Soluzioni concrete, ROI misurabile, adatte alla tua linea com'è oggi.</p>
+        <div class="vert-hero-ctas">
+          <a href="#contact-form" class="btn btn-primary">Parla con un esperto</a>
+          <a href="#cobot" class="btn btn-secondary">Scopri i casi d'uso</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANCHOR STRIP -->
+  <div class="anchor-strip">
+    <div class="container">
+      <div class="anchor-strip-inner">
+        <a href="#cobot"><span>01</span>Cobot industriali</a>
+        <a href="#ispezione"><span>02</span>Ispezione autonoma</a>
+        <a href="#embodied-ai"><span>03</span>Embodied AI / POC</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEZIONE 1 - COBOT -->
+  <section id="cobot" class="vert-section">
+    <div class="container">
+
+      <div class="vert-section-head">
+        <p class="label">01 · Cobot industriali</p>
+        <h2>Cobot industriali: automatizza i task ripetitivi e risparmia sulla produzione.</h2>
+        <p>I cobot a 6 assi Fairino FR Series sono la scelta più matura per la manifattura italiana: nessun recinto, installazione in pochi giorni, ROI medio tra 12 e 24 mesi. Certificati CE, conformi ISO 10218 e ISO/TS 15066, già operativi in migliaia di stabilimenti europei.</p>
+      </div>
+
+      <div class="robot-grid cols-3">
+
+        <!-- Fairino FR5 -->
+        <article class="robot-card">
+          <div class="robot-media no-img">
+            <span class="robot-media-tag">Pick &amp; Place · Machine Tending</span>
+            <div class="robot-media-placeholder">
+              <strong>Fairino FR5</strong>
+              <span>Cobot 6 assi · 5 kg</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Fairino FR5</h3>
+              <p class="robot-subtitle">Cobot 6 assi · 5 kg</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec">
+                <span class="key-spec-label">Payload</span>
+                <span class="key-spec-value">5 kg <small>(max 7)</small></span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Sbraccio</span>
+                <span class="key-spec-value">922 mm</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Ripetibilità</span>
+                <span class="key-spec-value">±0,02 mm</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Velocità TCP</span>
+                <span class="key-spec-value">1 m/s</span>
+              </div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Gradi libertà</span><span>6</span></li>
+              <li><span>Protezione</span><span>IP54 (IP65 optional)</span></li>
+              <li><span>Programmazione</span><span>Pendant 10,1" o Web App · ROS2, Python, C++</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Pick &amp; place, avvitatura, machine tending su CNC, assemblaggio leggero elettronica.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: listino Fairino non pubblico, richiedere quotazione diretta -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo FR5</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fairino FR10 -->
+        <article class="robot-card">
+          <div class="robot-media no-img">
+            <span class="robot-media-tag">Machine Tending · Palletizzazione</span>
+            <div class="robot-media-placeholder">
+              <strong>Fairino FR10</strong>
+              <span>Cobot 6 assi · 10 kg</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Fairino FR10</h3>
+              <p class="robot-subtitle">Cobot 6 assi · 10 kg</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec">
+                <span class="key-spec-label">Payload</span>
+                <span class="key-spec-value">10 kg <small>(max 14)</small></span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Sbraccio</span>
+                <span class="key-spec-value">1400 mm</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Ripetibilità</span>
+                <span class="key-spec-value">±0,05 mm</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Velocità TCP</span>
+                <span class="key-spec-value">1,5 m/s</span>
+              </div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Gradi libertà</span><span>6</span></li>
+              <li><span>Protezione</span><span>IP54 (IP66 optional)</span></li>
+              <li><span>Programmazione</span><span>Pendant 10,1" o Web App · ROS2, Python, C++</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Machine tending presse e CNC, palletizzazione fine linea, dispensing.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: listino Fairino non pubblico, richiedere quotazione diretta -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo FR10</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fairino FR20 -->
+        <article class="robot-card">
+          <div class="robot-media no-img">
+            <span class="robot-media-tag">Palletizzazione · Handling pesante</span>
+            <div class="robot-media-placeholder">
+              <strong>Fairino FR20</strong>
+              <span>Cobot 6 assi · 20 kg</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Fairino FR20</h3>
+              <p class="robot-subtitle">Cobot 6 assi · 20 kg</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec">
+                <span class="key-spec-label">Payload</span>
+                <span class="key-spec-value">20 kg</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Sbraccio</span>
+                <span class="key-spec-value">1854 mm</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Ripetibilità</span>
+                <span class="key-spec-value">±0,05 mm</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Gradi libertà</span>
+                <span class="key-spec-value">6</span>
+              </div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Protezione</span><span>IP54 (IP65 optional)</span></li>
+              <li><span>Programmazione</span><span>Pendant 10,1" o Web App · ROS2, Python, C++</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Palletizzazione, depalletizzazione, handling di semilavorati pesanti.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: listino Fairino non pubblico, richiedere quotazione diretta -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo FR20</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="tech-note">
+        Tutti i cobot Fairino FR Series sono certificati CE e conformi alle norme ISO 10218-1/-2, ISO/TS 15066 per la collaborazione uomo-robot e Direttiva Macchine 2006/42/CE. La valutazione del rischio specifica per il tuo impianto è inclusa nel progetto.
+      </p>
+
+      <div class="kpi-strip">
+        <div class="kpi-box">
+          <span class="kpi-value">12-24 mesi</span>
+          <span class="kpi-label">ROI medio su applicazioni standard di machine tending e palletizzazione</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-value">2-4 mesi</span>
+          <span class="kpi-label">Tempo a produzione dall'ordine, incluso assessment, installazione e training</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-value">Safety integrata</span>
+          <span class="kpi-label">Nessun recinto richiesto. Il cobot lavora a fianco dell'operatore</span>
+        </div>
+      </div>
+
+      <div class="section-cta-row">
+        <a href="#contact-form" class="btn btn-primary">Richiedi un preventivo</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEZIONE 2 - ISPEZIONE -->
+  <section id="ispezione" class="vert-section" style="background:var(--gray-50);">
+    <div class="container">
+
+      <div class="vert-section-head">
+        <p class="label">02 · Ispezione autonoma</p>
+        <h2>Ispezione continua degli impianti. Senza mettere a rischio nessuno.</h2>
+        <p>I robot quadrupedi Unitree fanno quello che un operatore non dovrebbe fare: entrano in zone pericolose, lavorano di notte, raccolgono dati termici e acustici in real-time. Il caso d'uso è solido quando hai almeno una di queste condizioni: ronde periodiche in zone a rischio, ispezioni termiche ricorrenti, sorveglianza perimetrale h24, documentazione automatica per audit e manutenzione predittiva.</p>
+      </div>
+
+      <p class="vert-section-subhead">Quando ha senso</p>
+
+      <ul class="when-list">
+        <li>Ronde periodiche in zone a rischio o difficili da raggiungere</li>
+        <li>Ispezioni termiche o acustiche ricorrenti su componenti critici</li>
+        <li>Sorveglianza perimetrale h24 senza costo guardia giurata</li>
+        <li>Raccolta dati strutturati per manutenzione predittiva e audit</li>
+        <li>Sopralluogo in aree pericolose al posto degli operatori</li>
+      </ul>
+
+      <div class="robot-grid" style="margin-top:56px;">
+
+        <!-- Unitree Go2 EDU+ -->
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Ispezione leggera · Ambienti semi-strutturati</span>
+            <img src="https://robostore.com/cdn/shop/files/unitree-go2-pro-ai-quadruped-robot-dog-4343804.jpg?width=800"
+                 alt="Unitree Go2 EDU+, quadrupede per ispezione leggera"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree Go2 EDU+</strong>
+              <span>Quadrupede · LiDAR 4D</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree Go2 EDU+</h3>
+              <p class="robot-subtitle">Quadrupede · LiDAR 4D</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec">
+                <span class="key-spec-label">Velocità max</span>
+                <span class="key-spec-value">3,5 m/s</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Payload</span>
+                <span class="key-spec-value">fino a 8 kg</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Autonomia</span>
+                <span class="key-spec-value">~1,5 ore</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Computing</span>
+                <span class="key-spec-value">Jetson Orin 100 TOPS</span>
+              </div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Navigazione</span><span>LiDAR 4D ultra-wide + navigazione autonoma</span></li>
+              <li><span>Connettività</span><span>Wi-Fi 6 · Bluetooth 5.2 · 4G optional</span></li>
+              <li><span>SDK</span><span>Aperto: ROS2, Python, supporto sviluppo custom</span></li>
+              <li><span>Certificazioni</span><span>CE</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Ispezioni in magazzini, ambienti semi-strutturati, campus universitari, demo e POC.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: riferimento distribuzione ~$3.500-4.500 USD EDU+ -->
+              <a href="prodotti/unitree-go2-edu-plus.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo Go2</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Unitree B2 -->
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Ispezione industriale pesante</span>
+            <img src="https://robostore.com/cdn/shop/files/unitree-b2-industrial-quadruped-robotic-dog-3096671.jpg?width=800"
+                 alt="Unitree B2, quadrupede industriale IP67"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree B2</strong>
+              <span>Industriale · IP67</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree B2</h3>
+              <p class="robot-subtitle">Quadrupede industriale · IP67</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec">
+                <span class="key-spec-label">Velocità max</span>
+                <span class="key-spec-value">&gt;6 m/s</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Payload continuo</span>
+                <span class="key-spec-value">&gt;40 kg</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Autonomia</span>
+                <span class="key-spec-value">&gt;5 ore / 20 km</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Protezione</span>
+                <span class="key-spec-value">IP67</span>
+              </div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Autonomia con carico</span><span>&gt;4 ore / 15 km con 20 kg</span></li>
+              <li><span>Scalini superabili</span><span>fino a 40 cm</span></li>
+              <li><span>Pendenza max</span><span>&gt;45°</span></li>
+              <li><span>Computing</span><span>Intel Core i5 + i7 utente · espandibile Jetson Orin NX</span></li>
+              <li><span>Sensori base</span><span>LiDAR 3D · 2x depth · 2x ottiche</span></li>
+              <li><span>I/O</span><span>4x GbE · 4x USB 3.0 · 12V/24V ausiliaria</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Impianti chimici, centrali energetiche, sorveglianza perimetrale h24, ispezione termica e acustica, ambienti hazardous.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: listino pubblico ~$84.999 USD (RoboStore), contattare per quotazione reale -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo B2</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="roi-box">
+        <span class="roi-label">ROI sintetico</span>
+        <h3>Una guardia giurata a turno costa 3.000 - 5.000 €/mese.</h3>
+        <p>
+          Unitree <strong>B2</strong> in modalità pattugliamento lavora <strong>h24</strong>, genera report strutturati, non si ammala, non ha straordinari. Il delta si misura in pochi mesi. I dati raccolti diventano input continuo per la manutenzione predittiva.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEZIONE 3 - EMBODIED AI -->
+  <section id="embodied-ai" class="vert-section section-dark">
+    <div class="container">
+
+      <div class="vert-section-head">
+        <p class="label label-light">03 · Embodied AI / POC</p>
+        <h2>Robotica umanoide in produzione: costruiamo assieme il caso d'uso del futuro.</h2>
+        <p>BMW, Mercedes e hub logistici di grandi operatori stanno già testando robot umanoidi in produzione reale. Non è fantascienza: è un ciclo di adozione che inizia con i POC. Le aziende che capiscono oggi come usarli, dove integrarli e, soprattutto, dove non usarli, avranno un vantaggio strutturale quando il costo scenderà a regime. Abra non vende soluzioni umanoidi industriali chiavi in mano, perché non esistono ancora. Offre POC strutturati: definiamo insieme il task, gestiamo l'integrazione, misuriamo i risultati.</p>
+      </div>
+
+      <div class="robot-grid cols-1">
+
+        <!-- Unitree R1 EDU -->
+        <article class="robot-card dark">
+          <div class="robot-media">
+            <span class="robot-media-tag">Piattaforma POC · Ricerca</span>
+            <img src="https://robostore.com/cdn/shop/files/unitree-r1-robotic-humanoid-5324651.jpg?width=800"
+                 alt="Unitree R1 EDU, umanoide per POC"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree R1 EDU</strong>
+              <span>Umanoide · 26 DoF</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree R1 EDU</h3>
+              <p class="robot-subtitle">Umanoide · 26 DoF</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec">
+                <span class="key-spec-label">Altezza</span>
+                <span class="key-spec-value">123 cm</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Peso</span>
+                <span class="key-spec-value">~29 kg</span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Gradi libertà</span>
+                <span class="key-spec-value">26 <small>(24 + 2 testa)</small></span>
+              </div>
+              <div class="key-spec">
+                <span class="key-spec-label">Autonomia</span>
+                <span class="key-spec-value">~1 ora <small>(hot-swap)</small></span>
+              </div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Computing</span><span>8-core CPU + GPU · Jetson Orin optional 40-100 TOPS (EDU)</span></li>
+              <li><span>Visione</span><span>Telecamera binoculare stereo + array 4 microfoni</span></li>
+              <li><span>Connettività</span><span>Wi-Fi 6 · Bluetooth 5.2</span></li>
+              <li><span>AI onboard</span><span>Large Multimodal Model (LMM) per riconoscimento voce e immagine</span></li>
+              <li><span>SDK</span><span>Aperto: ROS2, Python, sviluppo custom (solo versione EDU)</span></li>
+            </ul>
+
+            <div class="avviso-box">
+              <strong>Avviso importante</strong>
+              Il modello base (R1 Standard) NON supporta sviluppo software. Per POC e ricerca serve obbligatoriamente la versione EDU.
+            </div>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Piattaforma POC industriali, ricerca, sviluppo algoritmi di manipolazione e navigazione in ambienti antropici.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: R1 EDU Standard ~$10.000-12.000 USD; R1 EDU Pro ~$20.000-35.000 USD -->
+              <a href="prodotti/unitree-r1-edu.html" class="btn btn-secondary btn-sm" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,0.3);">Scheda tecnica R1</a>
+              <a href="#contact-form" class="btn btn-primary btn-sm" style="background:var(--white);color:var(--black);border-color:var(--white);">Parliamo del tuo POC</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="honesty-block">
+        <h4>Cosa offriamo in questa fase</h4>
+        <p>Non ti vendiamo una soluzione industriale chiavi in mano, perché sarebbe disonesto. Ti offriamo un POC strutturato: definiamo insieme il task, gestiamo l'integrazione, misuriamo i risultati reali. Sai esattamente cosa stai comprando.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINALE -->
+  <section class="vert-final-cta">
+    <div class="container">
+      <p class="label label-light">Parliamone</p>
+      <h2>Non tutti i robot sono giusti per ogni situazione. Ti aiutiamo a scegliere quello corretto.</h2>
+      <p>Facciamo una call di 30 minuti. Ci descrivi il processo, ti diciamo onestamente se la robotica lo risolve, quale piattaforma ha senso e quanto costa realisticamente. Nessun pitch. Solo dati.</p>
+      <a href="#contact-form" class="btn">Prenota una call tecnica gratuita</a>
+    </div>
+  </section>
+
+  <!-- FORM CONTATTI -->
+  <section id="contact-form" class="section section-cta" style="scroll-margin-top:160px;">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Hai un progetto in mente?</h2>
+        <p class="cta-subtitle">Compila il form, un consulente Abra ti ricontatterà entro 12 ore.</p>
+      </div>
+
+      <form id="contact-form-el" class="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome e cognome</label>
+            <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="form-group">
+            <label for="azienda">Azienda</label>
+            <input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l." required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="mario@azienda.com" required>
+        </div>
+        <div class="form-group">
+          <label for="messaggio">Descrivi il tuo processo o caso d'uso</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Esempio: linea di assemblaggio con 3 operatori su pick & place; vorrei capire se un cobot ha senso." rows="5" required></textarea>
+        </div>
+        <input type="hidden" name="vertical" value="Manifattura e Logistica">
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+          <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
+        </div>
+        <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Verticale</span>
+        <a href="#cobot">Cobot industriali</a>
+        <a href="#ispezione">Ispezione autonoma</a>
+        <a href="#embodied-ai">Embodied AI / POC</a>
+        <a href="#contact-form">Contattaci</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Contatti</span>
+        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+        <p>Italia</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
