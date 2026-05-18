@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment e POC | Automazione industriale su misura | Abra Robotics</title>
+  <meta name="description" content="Abra Robotics: assessment strutturato prima di ogni acquisto. Mappatura processo, simulazione 3D con fisica reale, co-design del POC e copertura normativa. Prima call gratuita.">
+  <meta name="keywords" content="assessment automazione industriale, POC robotica collaborativa PMI, simulazione 3D robot prima dell'acquisto, consulenza cobot valutazione processo, progetto pilota robotica, Isaac Sim, MuJoCo, ISO 10218, ISO/TS 15066">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/assessment.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Assessment e POC | Abra Robotics">
+  <meta property="og:description" content="Mappatura processo, simulazione 3D con fisica reale, co-design del POC e copertura normativa. Quattro fasi, output concreti. Prima call gratuita.">
+  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/assessment.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Abra Robotics">
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Page: Assessment e POC */
+
+    /* Hero */
+    .vert-hero {
+      padding: calc(40px + 72px + 80px) 0 100px;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .vert-hero-inner { max-width: 980px; }
+    .vert-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin: 16px 0 24px;
+    }
+    .vert-hero .vert-hero-sub {
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      color: var(--gray-600);
+      line-height: 1.65;
+      max-width: 820px;
+      margin-bottom: 36px;
+    }
+    .vert-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    section[id] { scroll-margin-top: 130px; }
+
+    /* Section base */
+    .vert-section { padding: 100px 0; }
+    .vert-section.section-dark { background: var(--black); color: var(--white); }
+    .vert-section + .vert-section { border-top: 1px solid var(--gray-200); }
+    .vert-section.section-dark + .vert-section,
+    .vert-section + .vert-section.section-dark { border-top: none; }
+
+    .vert-section-head {
+      max-width: 880px;
+      margin-bottom: 56px;
+    }
+    .vert-section-head h2 {
+      font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      margin: 14px 0 22px;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+    .vert-section-head p {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    .vert-section.section-dark .vert-section-head h2 { color: var(--white); }
+    .vert-section.section-dark .vert-section-head p { color: rgba(255,255,255,0.7); }
+
+    /* Problem section: large body text */
+    .problem-body {
+      max-width: 820px;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--gray-800);
+    }
+    .problem-body p + p { margin-top: 22px; }
+
+    /* ── PROCESS STEPPER ── */
+    .stepper {
+      display: grid;
+      gap: 0;
+      max-width: 980px;
+      position: relative;
+    }
+    .step-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 32px;
+      padding: 36px 0;
+      position: relative;
+    }
+    .step-item + .step-item {
+      border-top: 1px solid var(--gray-200);
+    }
+    .step-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .step-number {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+    .step-marker::after {
+      content: "";
+      position: absolute;
+      top: 64px;
+      bottom: -36px;
+      left: 50%;
+      width: 2px;
+      background: var(--gray-200);
+      transform: translateX(-1px);
+    }
+    .step-item:last-child .step-marker::after { display: none; }
+
+    .step-content { padding-top: 4px; }
+    .step-eyebrow {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .step-body {
+      font-size: 1.02rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .step-outputs {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+    }
+    .step-outputs-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 14px;
+    }
+    .step-outputs ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .step-outputs li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--gray-800);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .step-outputs li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--black);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 9px;
+    }
+
+    /* ── OUTCOMES 2x2 ── */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .outcome-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+    }
+    .outcome-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.07);
+      border-color: rgba(0,0,0,0.15);
+    }
+    .outcome-tag {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .outcome-box h3 {
+      font-size: 1.3rem;
+      letter-spacing: -0.015em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+    .outcome-box p {
+      font-size: 0.98rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    /* ── AUDIENCE 2x2 ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .audience-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 32px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .audience-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--orange);
+      transition: width 0.4s ease;
+    }
+    .audience-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.07);
+      border-color: rgba(0,0,0,0.15);
+    }
+    .audience-card:hover::before { width: 100%; }
+    .audience-card h3 {
+      font-size: 1.2rem;
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+    .audience-card p {
+      font-size: 0.96rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── HONESTY block (dark) ── */
+    .honesty-section {
+      background: var(--black);
+      color: var(--white);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .honesty-section::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(179,126,255,0.16) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .honesty-inner {
+      max-width: 880px;
+      position: relative;
+    }
+    .honesty-tag {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+    .honesty-section h2 {
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+      margin-bottom: 26px;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .honesty-section p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.75;
+      max-width: 780px;
+    }
+
+    /* ── TIMELINE TABLE ── */
+    .timeline-table-wrap {
+      max-width: 820px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font);
+    }
+    .timeline-table th {
+      text-align: left;
+      padding: 18px 26px;
+      background: var(--gray-50);
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .timeline-table td {
+      padding: 18px 26px;
+      font-size: 0.98rem;
+      color: var(--gray-800);
+      border-bottom: 1px solid var(--gray-100);
+      line-height: 1.5;
+    }
+    .timeline-table tr:last-child td {
+      border-bottom: none;
+      background: var(--gray-50);
+      font-weight: 700;
+    }
+    .timeline-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: var(--black);
+      white-space: nowrap;
+    }
+    .timeline-table tr:last-child td:last-child { color: var(--black); }
+
+    .timeline-note {
+      margin-top: 22px;
+      padding: 16px 22px;
+      background: rgba(179,126,255,0.08);
+      border: 1px solid rgba(179,126,255,0.22);
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      color: var(--gray-800);
+      line-height: 1.55;
+      max-width: 820px;
+    }
+
+    /* ── FAQ override (local) ── */
+    .assessment-faq .faq-list { max-width: 880px; margin-left: 0; }
+    .assessment-faq .faq-item p {
+      max-width: 760px;
+    }
+
+    /* Final CTA */
+    .vert-final-cta {
+      padding: 100px 0;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+    .vert-final-cta .label-light { color: var(--orange); }
+    .vert-final-cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 22px;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: -0.025em;
+    }
+    .vert-final-cta p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+    .vert-final-cta .btn {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .vert-hero { padding: calc(40px + 56px + 32px) 0 52px; }
+      .vert-hero h1 { font-size: clamp(1.95rem, 8vw, 2.5rem); margin: 12px 0 18px; line-height: 1.1; }
+      .vert-hero .vert-hero-sub { font-size: 0.98rem; margin-bottom: 26px; line-height: 1.55; }
+      .vert-hero-ctas { flex-direction: column; align-items: stretch; }
+      .vert-hero-ctas .btn { width: 100%; justify-content: center; }
+
+      .vert-section { padding: 56px 0; }
+      .vert-section-head { margin-bottom: 36px; }
+      .vert-section-head h2 { font-size: clamp(1.55rem, 6vw, 2rem); margin: 10px 0 14px; line-height: 1.15; }
+      .vert-section-head p { font-size: 0.96rem; }
+
+      .problem-body { font-size: 1rem; line-height: 1.7; }
+
+      .step-item {
+        grid-template-columns: 56px 1fr;
+        gap: 18px;
+        padding: 26px 0;
+      }
+      .step-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+      }
+      .step-marker::after { top: 48px; bottom: -26px; }
+      .step-title { font-size: 1.2rem; margin-bottom: 12px; }
+      .step-body { font-size: 0.96rem; margin-bottom: 18px; line-height: 1.6; }
+      .step-outputs { padding: 18px 20px; }
+      .step-outputs li { font-size: 0.9rem; }
+
+      .outcome-box { padding: 26px 22px; }
+      .outcome-box h3 { font-size: 1.15rem; }
+      .outcome-box p { font-size: 0.94rem; }
+
+      .audience-card { padding: 24px 22px; }
+      .audience-card h3 { font-size: 1.1rem; }
+      .audience-card p { font-size: 0.93rem; }
+
+      .honesty-section { padding: 56px 0; }
+      .honesty-section h2 { font-size: clamp(1.5rem, 6vw, 2.1rem); margin-bottom: 18px; }
+      .honesty-section p { font-size: 1rem; line-height: 1.7; }
+      .honesty-tag { font-size: 0.66rem; margin-bottom: 14px; }
+
+      .timeline-table th { padding: 14px 18px; font-size: 0.62rem; }
+      .timeline-table td { padding: 14px 18px; font-size: 0.92rem; }
+      .timeline-table td:last-child { font-size: 0.9rem; }
+      .timeline-note { font-size: 0.88rem; padding: 14px 18px; margin-top: 18px; }
+
+      .vert-final-cta { padding: 56px 0; }
+      .vert-final-cta h2 { font-size: clamp(1.55rem, 6vw, 2.1rem); margin-bottom: 16px; }
+      .vert-final-cta p { font-size: 0.98rem; margin-bottom: 28px; }
+      .vert-final-cta .btn { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 18px; }
+      .vert-hero { padding: calc(40px + 56px + 24px) 0 40px; }
+      .vert-hero h1 { font-size: 1.75rem; }
+      .vert-section { padding: 44px 0; }
+      .step-item { grid-template-columns: 44px 1fr; gap: 14px; padding: 22px 0; }
+      .step-number { width: 40px; height: 40px; font-size: 0.95rem; }
+      .step-marker::after { top: 40px; bottom: -22px; }
+      .outcome-box, .audience-card { padding: 22px 18px; }
+      .timeline-table th, .timeline-table td { padding: 12px 14px; }
+      .timeline-table td { font-size: 0.88rem; }
+      .timeline-table td:last-child { font-size: 0.82rem; }
+      .honesty-section { padding: 44px 0; }
+      .vert-final-cta { padding: 44px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <p>La prima call è gratuita e senza impegno. <a href="#form-assessment">Prenota →</a></p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <a href="/">Abra Robotics</a>
+        <a href="#processo">Processo</a>
+        <a href="#cosa-ottieni">Cosa ottieni</a>
+        <a href="#tempi">Tempi</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="#form-assessment" class="btn btn-primary btn-sm">Prenota una call gratuita</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="/">Abra Robotics</a>
+    <a href="#processo">Processo</a>
+    <a href="#cosa-ottieni">Cosa ottieni</a>
+    <a href="#tempi">Tempi</a>
+    <a href="#faq">FAQ</a>
+    <a href="#form-assessment" class="btn btn-primary">Prenota una call gratuita</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="vert-hero">
+    <div class="container">
+      <div class="vert-hero-inner">
+        <p class="label">Assessment e POC</p>
+        <h1>Definiamo insieme il tuo caso d'uso. Poi scegliamo il robot e lo configuriamo.</h1>
+        <p class="vert-hero-sub">La maggior parte dei progetti di automazione fallisce perché l'analisi iniziale è fatta in modo superficiale. Abra parte dall'assessment: mappiamo i tuoi processi, valutiamo le soluzioni esistenti, simuliamo in 3D con fisica reale e, solo se ha senso, progettiamo il POC insieme.</p>
+        <div class="vert-hero-ctas">
+          <a href="#form-assessment" class="btn btn-primary">Prenota una call gratuita</a>
+          <a href="#processo" class="btn btn-secondary">Come funziona</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IL PROBLEMA -->
+  <section id="problema" class="vert-section">
+    <div class="container">
+      <div class="vert-section-head">
+        <p class="label">Il problema</p>
+        <h2>Perché molti robot comprati senza assessment finiscono inutilizzati.</h2>
+      </div>
+      <div class="problem-body">
+        <p>La robotica è una tecnologia in continua evoluzione. La selezione del modello, lo sviluppo del software e la collocazione del robot nel processo produttivo di un'azienda sono fasi delicate e complesse, che determinano la convenienza di qualsiasi progetto.</p>
+        <p>Noi di Abra Robotics lo sappiamo bene. Per questo, se vuoi capire se la tua azienda può trarre profitto da un robot, ti offriamo un percorso personalizzato per scoprirlo velocemente, numeri alla mano.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IL PROCESSO -->
+  <section id="processo" class="vert-section" style="background:var(--gray-50);">
+    <div class="container">
+      <div class="vert-section-head">
+        <p class="label">Il processo</p>
+        <h2>Come funziona un assessment Abra.</h2>
+        <p>Quattro fasi. Ogni fase ha un output concreto e una decisione.</p>
+      </div>
+
+      <div class="stepper">
+
+        <!-- STEP 1 -->
+        <article class="step-item">
+          <div class="step-marker"><span class="step-number">1</span></div>
+          <div class="step-content">
+            <span class="step-eyebrow">Step 1 · Mappatura del processo</span>
+            <h3 class="step-title">Capire cosa fai oggi, prima di immaginare cosa farebbe il robot.</h3>
+            <p class="step-body">Mappiamo il processo reale: flusso materiali, tempi ciclo, variabilità dei pezzi, layout fisico, interfacce con operatori e altri sistemi. Raccogliamo anche i vincoli e i desiderata: cosa vuoi ottenere, cosa non puoi toccare, quali limiti di budget, tempo e organizzazione esistono. I vincoli contano quanto il processo.</p>
+            <div class="step-outputs">
+              <span class="step-outputs-label">Output di questa fase</span>
+              <ul>
+                <li>Mappa del processo attuale (as-is)</li>
+                <li>Lista dei task candidati all'automazione, ordinati per fattibilità e impatto</li>
+                <li>Vincoli espliciti documentati</li>
+                <li>Prima stima di fattibilità tecnica</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- STEP 2 -->
+        <article class="step-item">
+          <div class="step-marker"><span class="step-number">2</span></div>
+          <div class="step-content">
+            <span class="step-eyebrow">Step 2 · Selezione delle soluzioni esistenti</span>
+            <h3 class="step-title">Prima di progettare, cercare. Una soluzione già esistente è sempre meglio di una custom.</h3>
+            <p class="step-body">Il mercato ha centinaia di soluzioni già deployate. Prima di progettare qualcosa di nuovo, verifichiamo se esiste già una risposta: un cobot con gripper standard, un AMR con percorso pre-configurato, un package software già testato su quel tipo di task. Se esiste una soluzione matura e il tuo caso d'uso ci entra, quella è la scelta. Se non esiste, o se la tua complessità la esclude, passiamo al co-design.</p>
+            <div class="step-outputs">
+              <span class="step-outputs-label">Output di questa fase</span>
+              <ul>
+                <li>Benchmarking delle soluzioni disponibili per il tuo caso d'uso</li>
+                <li>Valutazione fit: soluzione standard vs co-design</li>
+                <li>Raccomandazione motivata con dati</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- STEP 3 -->
+        <article class="step-item">
+          <div class="step-marker"><span class="step-number">3</span></div>
+          <div class="step-content">
+            <span class="step-eyebrow">Step 3 · Simulazione 3D con fisica reale</span>
+            <h3 class="step-title">Vedi il robot nel tuo processo prima che esista fisicamente.</h3>
+            <p class="step-body">Prima di qualsiasi ordine, simuliamo in 3D con fisica reale quello che il robot dovrà fare nel tuo ambiente. Non è un'animazione: è una simulazione con le caratteristiche fisiche del robot selezionato, il layout reale dello spazio, i vincoli di reach e payload, i tempi ciclo stimati. Se la simulazione non funziona, il robot reale non funzionerà. Se funziona, hai già un baseline misurabile prima dell'acquisto. Usiamo Isaac Sim (NVIDIA), MuJoCo o Gazebo in base alla complessità del task.</p>
+            <div class="step-outputs">
+              <span class="step-outputs-label">Output di questa fase</span>
+              <ul>
+                <li>Simulazione 3D del task nel tuo ambiente</li>
+                <li>Validazione tecnica di reach, payload, tempi ciclo</li>
+                <li>Identificazione dei punti critici prima dell'installazione</li>
+                <li>Baseline KPI da confrontare con i risultati reali del POC</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- STEP 4 -->
+        <article class="step-item">
+          <div class="step-marker"><span class="step-number">4</span></div>
+          <div class="step-content">
+            <span class="step-eyebrow">Step 4 · Co-design del POC e copertura normativa</span>
+            <h3 class="step-title">Progettiamo il POC insieme. E curiamo anche la parte normativa.</h3>
+            <p class="step-body">Se la simulazione valida la fattibilità, progettiamo il POC: obiettivi misurabili, configurazione hardware, perimetro di test, criteri di successo, tempi. Il POC non è "proviamo e vediamo": è un esperimento con ipotesi chiare e metriche di valutazione definite. In parallelo copriamo la normativa: valutazione del rischio specifica per il tuo caso d'uso (ISO 10218 e ISO/TS 15066 per i cobot, ISO 3691-4 per gli AMR, Reg. UE 2023/1230 per le macchine), DVR aggiornato se necessario, documentazione CE. Gestiamo questa parte insieme al tuo RSPP. Non la lasciamo al cliente da solo.</p>
+            <div class="step-outputs">
+              <span class="step-outputs-label">Output di questa fase</span>
+              <ul>
+                <li>Piano di POC con obiettivi, KPI, configurazione hardware, timeline</li>
+                <li>Valutazione del rischio preliminare</li>
+                <li>Checklist normativa specifica per piattaforma e settore</li>
+                <li>Proposta commerciale basata su dati reali</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COSA OTTIENI -->
+  <section id="cosa-ottieni" class="vert-section">
+    <div class="container">
+      <div class="vert-section-head">
+        <p class="label">Cosa ottieni</p>
+        <h2>Cosa ottieni concretamente.</h2>
+      </div>
+
+      <div class="outcomes-grid">
+
+        <article class="outcome-box">
+          <span class="outcome-tag">01 · Documentazione</span>
+          <h3>Mappa del processo</h3>
+          <p>Documentazione strutturata del processo attuale, dei task candidati e dei vincoli. Un documento tecnico che puoi usare anche internamente, non un PowerPoint generico.</p>
+        </article>
+
+        <article class="outcome-box">
+          <span class="outcome-tag">02 · Confronto</span>
+          <h3>Benchmarking soluzioni</h3>
+          <p>Confronto delle soluzioni disponibili sul mercato per il tuo caso d'uso, con dati su costi, tempi di deployment e casi reali. Nessuna raccomandazione senza dati.</p>
+        </article>
+
+        <article class="outcome-box">
+          <span class="outcome-tag">03 · Validazione</span>
+          <h3>Simulazione 3D validata</h3>
+          <p>Simulazione del task nel tuo ambiente con il robot selezionato. Output: video della simulazione, report tecnico con KPI stimati, identificazione dei punti critici.</p>
+        </article>
+
+        <article class="outcome-box">
+          <span class="outcome-tag">04 · Decisione</span>
+          <h3>Piano POC eseguibile</h3>
+          <p>Se la simulazione valida la fattibilità: piano completo con obiettivi, metriche, hardware, normativa e proposta commerciale. Puoi portarlo in approvazione interna senza ulteriori analisi.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PER CHI È -->
+  <section id="per-chi" class="vert-section" style="background:var(--gray-50);">
+    <div class="container">
+      <div class="vert-section-head">
+        <p class="label">Per chi è</p>
+        <h2>A chi serve un assessment strutturato.</h2>
+      </div>
+
+      <div class="audience-grid">
+
+        <article class="audience-card">
+          <h3>PMI manifatturiera</h3>
+          <p>Vuoi automatizzare un processo ripetitivo ma non sai se un cobot è la risposta giusta, quale scegliere, o se il tuo layout lo permette. L'assessment ti dà una risposta basata sui tuoi dati, non sulla scheda tecnica del robot.</p>
+        </article>
+
+        <article class="audience-card">
+          <h3>Responsabile logistica</h3>
+          <p>Hai inefficienze nel trasporto interno o nel picking ma non sai se un AMR si integra con il tuo WMS, quanto costa realmente il deployment e quando torni in pareggio. Ti portiamo una valutazione completa prima di qualsiasi impegno di spesa.</p>
+        </article>
+
+        <article class="audience-card">
+          <h3>Responsabile R&amp;D o innovazione</h3>
+          <p>Vuoi esplorare la robotica collaborativa o l'embodied AI ma non hai un caso d'uso definito. L'assessment ti aiuta a identificare il punto di partenza con il miglior rapporto rischio/impatto.</p>
+        </article>
+
+        <article class="audience-card">
+          <h3>Università e centri di ricerca</h3>
+          <p>Stai avviando un laboratorio o un progetto su una piattaforma specifica. Ti aiutiamo a definire obiettivi misurabili, scegliere la configurazione hardware giusta e strutturare un POC che produce dati utili, non una demo.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ONESTÀ -->
+  <section class="honesty-section">
+    <div class="container">
+      <div class="honesty-inner">
+        <span class="honesty-tag">Onestà</span>
+        <h2>Quando l'assessment dice no.</h2>
+        <p>Non ogni processo è automatizzabile. Non ogni caso d'uso giustifica l'investimento. Non ogni timeline è realistica. Se dopo la mappatura la valutazione è che un robot non risolve il tuo problema, o che esistono soluzioni più semplici ed economiche, te lo diciamo. L'assessment ha valore anche se la risposta è no, perché chiarisce cosa fare invece.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMPI ORIENTATIVI -->
+  <section id="tempi" class="vert-section">
+    <div class="container">
+      <div class="vert-section-head">
+        <p class="label">Tempi orientativi</p>
+        <h2>Quanto ci vuole.</h2>
+        <p>I tempi variano in base alla complessità del processo. Un caso d'uso singolo richiede tipicamente 5-9 settimane dall'avvio.</p>
+      </div>
+
+      <div class="timeline-table-wrap">
+        <table class="timeline-table">
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th style="text-align:right;">Durata tipica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mappatura processo e desiderata</td>
+              <td>1-2 settimane</td>
+            </tr>
+            <tr>
+              <td>Benchmarking soluzioni</td>
+              <td>1 settimana</td>
+            </tr>
+            <tr>
+              <td>Simulazione 3D</td>
+              <td>2-4 settimane</td>
+            </tr>
+            <tr>
+              <td>Co-design POC e copertura normativa</td>
+              <td>1-2 settimane</td>
+            </tr>
+            <tr>
+              <td>Totale orientativo</td>
+              <td>5-9 settimane</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="timeline-note">
+        Il costo dell'assessment viene applicato come sconto sull'hardware finale se il progetto procede all'acquisto.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="vert-section assessment-faq" style="background:var(--gray-50);">
+    <div class="container">
+      <div class="vert-section-head">
+        <p class="label">FAQ</p>
+        <h2>Domande frequenti.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>Devo già sapere quale robot voglio?</summary>
+          <p>No, anzi: è meglio se non lo sai. L'assessment serve proprio a identificare la soluzione giusta per il tuo problema. Se arrivi con un'idea precisa, la verifichiamo con dati. Se arrivi con un problema aperto, lo analizziamo senza pregiudizi.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>La simulazione 3D usa il mio layout reale?</summary>
+          <p>Sì. Usiamo planimetria e dati dimensionali del tuo spazio. Se non hai un CAD, lavoriamo con misurazioni e foto del sopralluogo. L'obiettivo è avvicinarsi il più possibile alle condizioni reali prima di qualsiasi ordine.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Chi gestisce la parte normativa?</summary>
+          <p>Il team tecnico Abra gestisce la valutazione del rischio preliminare e la checklist normativa. Per la documentazione CE formale e l'aggiornamento del DVR lavoriamo in affiancamento al tuo RSPP. Non sostituiamo il tuo responsabile sicurezza: lo supportiamo con la parte tecnica specifica della robotica collaborativa.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Il POC richiede di comprare il robot prima?</summary>
+          <p>Non necessariamente. In alcuni casi il POC si conduce in simulazione estesa. In altri, valutiamo formule di noleggio o pilot a breve termine. La struttura dipende dal caso specifico e dal livello di maturità del processo.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Cosa succede se il POC non raggiunge gli obiettivi?</summary>
+          <p>Lo analizziamo insieme. Un POC che non raggiunge i KPI non è un fallimento: è informazione. Identifichiamo cosa non ha funzionato (processo, configurazione, aspettative) e decidiamo insieme se iterare, cambiare approccio o fermarsi.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Quanto costa l'assessment?</summary>
+          <p>Il costo varia in base alla complessità del processo e al numero di task da analizzare. Lo definiamo nella prima call, dopo aver capito il tuo caso specifico. La prima call è gratuita.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINALE -->
+  <section class="vert-final-cta">
+    <div class="container">
+      <p class="label label-light">Parliamone</p>
+      <h2>Hai un processo che vuoi valutare?</h2>
+      <p>Inizia da una call di 30 minuti. Descrivi il processo, i vincoli e cosa vorresti ottenere. Ti diciamo se ha senso procedere con un assessment, quali fasi sono rilevanti per il tuo caso e quanto tempo ci vuole. Nessun impegno.</p>
+      <a href="#form-assessment" class="btn">Prenota una call gratuita</a>
+    </div>
+  </section>
+
+  <!-- FORM CONTATTI -->
+  <section id="form-assessment" class="section section-cta" style="scroll-margin-top:130px;">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Raccontaci il tuo processo.</h2>
+        <p class="cta-subtitle">Compila il form, un consulente Abra ti ricontatterà entro 12 ore per fissare la prima call gratuita.</p>
+      </div>
+
+      <form id="contact-form-el" class="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome e cognome</label>
+            <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="form-group">
+            <label for="azienda">Azienda o istituzione</label>
+            <input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l." required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="mario@azienda.com" required>
+        </div>
+        <div class="form-group">
+          <label for="messaggio">Descrivi il processo che vorresti valutare</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Esempio: linea di assemblaggio con 4 operatori su pick & place; vorremmo capire se un cobot ha senso e quale sceglieremmo." rows="5" required></textarea>
+        </div>
+        <input type="hidden" name="vertical" value="Assessment e POC">
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+          <p class="form-note">Risposta garantita entro 12 ore lavorative. La prima call è gratuita.</p>
+        </div>
+        <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Assessment</span>
+        <a href="#processo">Processo</a>
+        <a href="#cosa-ottieni">Cosa ottieni</a>
+        <a href="#per-chi">Per chi è</a>
+        <a href="#tempi">Tempi</a>
+        <a href="#faq">FAQ</a>
+        <a href="#form-assessment">Contattaci</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Contatti</span>
+        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+        <p>Italia</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
