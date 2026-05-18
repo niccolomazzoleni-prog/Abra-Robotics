@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robotica per università e ricerca | Umanoidi, quadrupedi, Franka FR3, mani Inspire | Abra Robotics</title>
+  <meta name="description" content="Abra Robotics fornisce a università, laboratori e centri di ricerca le piattaforme robotiche più avanzate: umanoidi Unitree G1/R1/H2, quadrupedi Go2/A2/B2, Franka Research 3, mani Inspire RH56. SDK aperti, supporto sviluppo, percorsi formativi.">
+  <meta name="keywords" content="robotica università, ricerca umanoidi, Unitree G1 EDU, Unitree R1 EDU, Unitree H2 EDU, Unitree A2, Franka Research 3 FR3, Inspire RH56, Embodied AI, ROS2, SDK aperto, IsaacSim, MuJoCo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/universita-ricerca.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Robotica per università e ricerca | Abra Robotics">
+  <meta property="og:description" content="Piattaforme robotiche per laboratori e centri di ricerca: umanoidi Unitree, quadrupedi, Franka Research 3, mani Inspire. SDK aperti e supporto sviluppo.">
+  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/universita-ricerca.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Abra Robotics">
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Vertical Landing - Università e Ricerca */
+
+    /* Hero */
+    .vert-hero {
+      padding: calc(40px + 72px + 80px) 0 100px;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .vert-hero-inner { max-width: 980px; }
+    .vert-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin: 16px 0 24px;
+    }
+    .vert-hero .vert-hero-sub {
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      color: var(--gray-600);
+      line-height: 1.6;
+      max-width: 820px;
+      margin-bottom: 36px;
+    }
+    .vert-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Anchor strip */
+    .anchor-strip {
+      position: sticky;
+      top: calc(40px + 72px);
+      z-index: 90;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .anchor-strip-inner {
+      display: flex;
+      gap: 28px;
+      padding: 14px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .anchor-strip-inner::-webkit-scrollbar { display: none; }
+    .anchor-strip-inner a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .anchor-strip-inner a:hover { color: var(--black); }
+    .anchor-strip-inner a span {
+      color: var(--gray-400);
+      margin-right: 6px;
+      font-weight: 700;
+    }
+
+    section[id] { scroll-margin-top: 160px; }
+
+    /* Section heads */
+    .vert-section-head {
+      max-width: 880px;
+      margin-bottom: 56px;
+    }
+    .vert-section-head h2 {
+      font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      margin: 14px 0 22px;
+    }
+    .vert-section-head p {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    .vert-section-subhead {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin: 0 0 24px;
+    }
+
+    /* Sub-section block (1A, 1B, 1C) */
+    .subsection-block { margin-top: 72px; }
+    .subsection-block:first-of-type { margin-top: 64px; }
+    .subsection-head {
+      margin-bottom: 32px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .subsection-block.dark .subsection-head {
+      border-bottom-color: rgba(255,255,255,0.10);
+    }
+    .subsection-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .subsection-head h3 {
+      font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      max-width: 760px;
+    }
+    .subsection-block.dark .subsection-head h3 { color: var(--white); }
+
+    /* Robot card grid */
+    .robot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .robot-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .robot-grid.cols-1 {
+      grid-template-columns: minmax(0, 760px);
+      justify-content: center;
+    }
+
+    .robot-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+    }
+    .robot-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.15);
+    }
+    .robot-card.dark {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .robot-card.dark:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.25);
+    }
+
+    .robot-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .robot-card.dark .robot-media {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .robot-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 22px;
+      transition: transform 0.5s ease;
+    }
+    .robot-card:hover .robot-media img { transform: scale(1.04); }
+    .robot-media-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-600);
+      z-index: 2;
+    }
+    .robot-card.dark .robot-media-tag {
+      background: rgba(0,0,0,0.55);
+      color: rgba(255,255,255,0.88);
+      border-color: rgba(255,255,255,0.15);
+    }
+    .robot-media-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      padding: 24px;
+    }
+    .robot-media-placeholder strong {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--gray-600);
+    }
+    .robot-media-placeholder span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+    .robot-card.dark .robot-media-placeholder strong { color: rgba(255,255,255,0.85); }
+    .robot-card.dark .robot-media-placeholder span { color: rgba(255,255,255,0.45); }
+    .robot-media.no-img img { display: none; }
+
+    .robot-body {
+      padding: 26px 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+    .robot-card h3 {
+      font-size: 1.35rem;
+      letter-spacing: -0.015em;
+      margin: 0 0 2px;
+    }
+    .robot-card.dark h3 { color: var(--white); }
+    .robot-subtitle {
+      font-size: 0.84rem;
+      color: var(--gray-400);
+      margin: 0;
+      font-weight: 500;
+    }
+    .robot-card.dark .robot-subtitle { color: rgba(255,255,255,0.45); }
+
+    /* Key specs grid */
+    .key-specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .robot-card.dark .key-specs { border-color: rgba(255,255,255,0.10); }
+    .key-spec {
+      padding: 12px 14px;
+      border-right: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--white);
+    }
+    .robot-card.dark .key-spec {
+      background: rgba(255,255,255,0.02);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .key-spec:nth-child(2n) { border-right: none; }
+    .key-spec:nth-last-child(-n+2) { border-bottom: none; }
+    .key-spec-label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 4px;
+    }
+    .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
+    .key-spec-value {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .robot-card.dark .key-spec-value { color: var(--white); }
+    .key-spec-value small {
+      font-weight: 500;
+      color: var(--gray-400);
+      font-size: 0.78em;
+    }
+    .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
+
+    /* Detail rows */
+    .spec-rows {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .spec-rows li {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 14px;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .robot-card.dark .spec-rows li { border-color: rgba(255,255,255,0.06); }
+    .spec-rows li:last-child { border-bottom: none; }
+    .spec-rows li span:first-child {
+      font-size: 0.64rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-400);
+      padding-top: 2px;
+    }
+    .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
+    .spec-rows li span:last-child {
+      color: var(--gray-800);
+      font-weight: 500;
+    }
+    .robot-card.dark .spec-rows li span:last-child { color: rgba(255,255,255,0.85); }
+
+    /* Use case + Why-research box */
+    .use-case-box {
+      background: var(--gray-50);
+      border-left: 3px solid var(--black);
+      padding: 13px 16px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .robot-card.dark .use-case-box {
+      background: rgba(255,255,255,0.03);
+      border-left-color: var(--orange);
+    }
+    .use-case-label {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+    .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
+    .use-case-text {
+      font-size: 0.9rem;
+      color: var(--gray-800);
+      line-height: 1.55;
+      font-weight: 500;
+      margin: 0;
+    }
+    .robot-card.dark .use-case-text { color: rgba(255,255,255,0.85); }
+
+    /* Why-for-research highlight (Franka) */
+    .why-box {
+      padding: 16px 18px;
+      background: rgba(179,126,255,0.10);
+      border: 1px solid rgba(179,126,255,0.25);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+    .why-box strong { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--black); margin-bottom: 6px; font-weight: 800; }
+
+    /* Avviso box */
+    .avviso-box {
+      padding: 13px 16px;
+      background: rgba(179,126,255,0.12);
+      border: 1px solid rgba(179,126,255,0.3);
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+    .robot-card .avviso-box { color: var(--gray-800); }
+    .robot-card.dark .avviso-box { color: rgba(255,255,255,0.85); }
+    .avviso-box strong { display: block; margin-bottom: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--black); font-weight: 800; }
+    .robot-card.dark .avviso-box strong { color: var(--white); }
+
+    /* CTA in card */
+    .robot-card-cta {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    /* Final CTA */
+    .vert-final-cta {
+      padding: 100px 0;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+    .vert-final-cta .label-light { color: var(--orange); }
+    .vert-final-cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 22px;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .vert-final-cta p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 760px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+    .vert-final-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .vert-final-cta-actions .btn-primary { background: var(--white); color: var(--black); border-color: var(--white); }
+    .vert-final-cta-actions .btn-secondary { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
+
+    /* Section rhythm */
+    .vert-section { padding: 100px 0; }
+    .vert-section + .vert-section { border-top: 1px solid var(--gray-200); }
+    .vert-section.section-dark { border-top: none; background: var(--black); color: var(--white); }
+    .vert-section.section-dark .vert-section-head h2 { color: var(--white); }
+    .vert-section.section-dark .vert-section-head p { color: rgba(255,255,255,0.65); }
+    .vert-section.section-dark .vert-section-subhead { color: rgba(255,255,255,0.45); }
+
+    /* Section CTA row */
+    .section-cta-row {
+      margin-top: 48px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .robot-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .vert-hero { padding: calc(40px + 56px + 36px) 0 56px; }
+      .vert-hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); margin: 12px 0 18px; }
+      .vert-hero .vert-hero-sub { font-size: 1rem; margin-bottom: 28px; }
+      .vert-hero-ctas { flex-direction: column; align-items: stretch; }
+      .vert-hero-ctas .btn { width: 100%; justify-content: center; }
+
+      .vert-section { padding: 56px 0; }
+      .vert-section-head { margin-bottom: 36px; }
+      .vert-section-head h2 { font-size: clamp(1.6rem, 6vw, 2.1rem); margin: 10px 0 16px; }
+      .vert-section-head p { font-size: 0.98rem; }
+      .vert-section-subhead { margin-bottom: 18px; font-size: 0.72rem; }
+
+      .subsection-block { margin-top: 48px; }
+      .subsection-head h3 { font-size: 1.3rem; }
+
+      .robot-grid,
+      .robot-grid.cols-3,
+      .robot-grid.cols-1 { grid-template-columns: 1fr; gap: 16px; }
+      .robot-body { padding: 22px 20px 24px; gap: 14px; }
+      .robot-card h3 { font-size: 1.2rem; }
+      .robot-card-cta { flex-direction: column; }
+      .robot-card-cta .btn { width: 100%; justify-content: center; }
+
+      .key-spec { padding: 10px 12px; }
+      .key-spec-value { font-size: 0.85rem; }
+      .spec-rows li { grid-template-columns: 1fr; gap: 2px; padding: 8px 0; }
+
+      .use-case-box, .avviso-box, .why-box { padding: 12px 14px; font-size: 0.84rem; }
+
+      .vert-final-cta { padding: 64px 0; }
+      .vert-final-cta h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); margin-bottom: 16px; }
+      .vert-final-cta p { font-size: 0.98rem; margin-bottom: 28px; }
+      .vert-final-cta-actions { flex-direction: column; }
+      .vert-final-cta-actions .btn { width: 100%; justify-content: center; }
+
+      .section-cta-row { margin-top: 32px; flex-direction: column; align-items: stretch; }
+      .section-cta-row .btn { width: 100%; justify-content: center; }
+
+      .anchor-strip { position: static; }
+      .anchor-strip-inner { gap: 20px; padding: 10px 0; }
+      .anchor-strip-inner a { font-size: 0.78rem; }
+
+      .robot-media-tag {
+        top: 10px; left: 10px;
+        padding: 5px 9px;
+        font-size: 0.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .vert-hero { padding: calc(40px + 56px + 28px) 0 44px; }
+      .vert-hero h1 { font-size: 1.8rem; line-height: 1.1; }
+      .vert-section { padding: 44px 0; }
+      .robot-body { padding: 18px 16px 20px; }
+      .key-specs { grid-template-columns: 1fr; }
+      .key-spec { border-right: none; }
+      .key-spec:nth-last-child(-n+2) { border-bottom: 1px solid var(--gray-200); }
+      .key-spec:last-child { border-bottom: none; }
+      .robot-card.dark .key-spec:nth-last-child(-n+2) { border-bottom-color: rgba(255,255,255,0.08); }
+      .robot-card.dark .key-spec:last-child { border-bottom: none; }
+      .vert-final-cta { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <p>La maggior parte dei progetti è finanziabile tramite bandi universitari e fondi PNRR. <a href="#contact-form">Scopri come →</a></p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <a href="/">Abra Robotics</a>
+        <a href="#piattaforme">Piattaforme</a>
+        <a href="#accessori">Accessori</a>
+        <a href="#franka">Franka Research</a>
+        <a href="#contact-form">Percorsi formativi</a>
+        <a href="/#faq">FAQ</a>
+      </div>
+      <a href="#contact-form" class="btn btn-primary btn-sm">Parla con un tecnico</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="/">Abra Robotics</a>
+    <a href="#piattaforme">Piattaforme</a>
+    <a href="#accessori">Accessori</a>
+    <a href="#franka">Franka Research</a>
+    <a href="#contact-form">Percorsi formativi</a>
+    <a href="/#faq">FAQ</a>
+    <a href="#contact-form" class="btn btn-primary">Parla con un tecnico</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="vert-hero">
+    <div class="container">
+      <div class="vert-hero-inner">
+        <p class="label">Università e ricerca</p>
+        <h1>Ricerca robotica nativa, a partire dall'hardware reale.</h1>
+        <p class="vert-hero-sub">Abra Robotics fornisce a università, laboratori e centri di ricerca le piattaforme robotiche più avanzate disponibili oggi: umanoidi programmabili, quadrupedi autonomi, bracci di ricerca force-sensitive e mani destramente articolate. SDK aperti, documentazione tecnica, percorsi formativi specializzati e supporto alla programmazione inclusi.</p>
+        <div class="vert-hero-ctas">
+          <a href="#contact-form" class="btn btn-primary">Parla con un tecnico</a>
+          <a href="#piattaforme" class="btn btn-secondary">Scopri le piattaforme</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANCHOR STRIP -->
+  <div class="anchor-strip">
+    <div class="container">
+      <div class="anchor-strip-inner">
+        <a href="#umanoidi"><span>01</span>Umanoidi</a>
+        <a href="#quadrupedi"><span>02</span>Quadrupedi</a>
+        <a href="#franka"><span>03</span>Franka Research 3</a>
+        <a href="#accessori"><span>04</span>Mani robotiche</a>
+        <a href="#contact-form"><span>05</span>Percorsi formativi</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEZIONE 1 - PIATTAFORME -->
+  <section id="piattaforme" class="vert-section">
+    <div class="container">
+
+      <div class="vert-section-head">
+        <p class="label">01 · Piattaforme programmabili</p>
+        <h2>Piattaforme open. Programma a qualsiasi livello.</h2>
+        <p>Tutte le piattaforme che trattiamo espongono SDK completi: C++, Python, ROS2. Dal controllo di alto livello al torque control a 1 kHz, ogni livello è accessibile. Le versioni EDU e ricerca sono l'unica scelta per chi vuole sviluppare software proprio: i modelli base non supportano sviluppo secondario.</p>
+      </div>
+
+      <!-- 1A - UMANOIDI -->
+      <div id="umanoidi" class="subsection-block">
+        <div class="subsection-head">
+          <span class="subsection-tag">1A · Umanoidi programmabili</span>
+          <h3>Umanoidi programmabili. Dalla locomozione alla manipolazione bimane.</h3>
+        </div>
+
+        <div class="robot-grid cols-3">
+
+          <!-- G1 EDU Standard -->
+          <article class="robot-card">
+            <div class="robot-media">
+              <span class="robot-media-tag">Ricerca · Sviluppo algoritmi</span>
+              <img src="https://robostore.com/cdn/shop/files/unitree-g1-edu-standard-robotic-humanoid-u1-7101558.jpg?width=800"
+                   alt="Unitree G1 EDU Standard, umanoide programmabile 23 DoF"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('no-img');">
+              <div class="robot-media-placeholder">
+                <strong>Unitree G1 EDU</strong>
+                <span>Umanoide · 23 DoF</span>
+              </div>
+            </div>
+            <div class="robot-body">
+              <div>
+                <h3>Unitree G1 EDU Standard</h3>
+                <p class="robot-subtitle">23 DoF base · espandibile a 43</p>
+              </div>
+
+              <div class="key-specs">
+                <div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">1270 mm</span></div>
+                <div class="key-spec"><span class="key-spec-label">Peso</span><span class="key-spec-value">~35 kg</span></div>
+                <div class="key-spec"><span class="key-spec-label">Gradi libertà</span><span class="key-spec-value">23 <small>(espand. 43)</small></span></div>
+                <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">~2 ore</span></div>
+              </div>
+
+              <ul class="spec-rows">
+                <li><span>Coppia ginocchio</span><span>88 N·m (EDU Standard)</span></li>
+                <li><span>Carico braccio</span><span>2 kg per braccio</span></li>
+                <li><span>Computing</span><span>NVIDIA Jetson Orin 40 TOPS (EDU Standard)</span></li>
+                <li><span>Visione</span><span>Telecamera di profondità + LiDAR 3D</span></li>
+                <li><span>Connettività</span><span>Wi-Fi 6 · Bluetooth 5.2</span></li>
+                <li><span>SDK</span><span>C++, Python, ROS2 (aperto)</span></li>
+                <li><span>Mani optional</span><span>Dex3-1 force-controlled · Inspire RH56 compatibili</span></li>
+                <li><span>AI framework</span><span>UnifoLM-VLA-0 open-source (12 categorie task)</span></li>
+              </ul>
+
+              <div class="use-case-box">
+                <span class="use-case-label">Caso d'uso chiave</span>
+                <p class="use-case-text">Ricerca su locomotion control, manipulation bimane, imitation learning, HRI, sviluppo algoritmi VLA su piattaforma fisica.</p>
+              </div>
+
+              <div class="avviso-box">
+                <strong>Repository proprietari inclusi</strong>
+                L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
+              </div>
+
+              <div class="robot-card-cta">
+                <!-- PREZZO DA VERIFICARE: G1 EDU Standard (U1) ~$25.000-30.000 USD su RoboStore -->
+                <a href="prodotti/unitree-g1.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo G1</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- R1 EDU -->
+          <article class="robot-card">
+            <div class="robot-media">
+              <span class="robot-media-tag">Entry-level ricerca · POC</span>
+              <img src="https://robostore.com/cdn/shop/files/unitree-r1-robotic-humanoid-5324651.jpg?width=800"
+                   alt="Unitree R1 EDU, umanoide compatto 26 DoF"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('no-img');">
+              <div class="robot-media-placeholder">
+                <strong>Unitree R1 EDU</strong>
+                <span>Umanoide · 26 DoF</span>
+              </div>
+            </div>
+            <div class="robot-body">
+              <div>
+                <h3>Unitree R1 EDU</h3>
+                <p class="robot-subtitle">26 DoF · entry-level ricerca</p>
+              </div>
+
+              <div class="key-specs">
+                <div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">123 cm</span></div>
+                <div class="key-spec"><span class="key-spec-label">Peso</span><span class="key-spec-value">~29 kg</span></div>
+                <div class="key-spec"><span class="key-spec-label">Gradi libertà</span><span class="key-spec-value">26 <small>(24 + 2 testa)</small></span></div>
+                <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">~1 ora <small>(hot-swap)</small></span></div>
+              </div>
+
+              <ul class="spec-rows">
+                <li><span>Computing</span><span>8-core CPU + GPU · Jetson Orin optional 40-100 TOPS (EDU)</span></li>
+                <li><span>Visione</span><span>Telecamera binoculare stereo + array 4 microfoni</span></li>
+                <li><span>Connettività</span><span>Wi-Fi 6 · Bluetooth 5.2</span></li>
+                <li><span>AI onboard</span><span>LMM multimodale per voce e immagine</span></li>
+                <li><span>SDK</span><span>Aperto: ROS2, Python, C++ (solo EDU)</span></li>
+              </ul>
+
+              <div class="avviso-box">
+                <strong>Avviso importante</strong>
+                Il modello base R1 Standard NON supporta sviluppo software. Per ricerca serve la versione EDU.
+              </div>
+
+              <div class="use-case-box">
+                <span class="use-case-label">Caso d'uso chiave</span>
+                <p class="use-case-text">Piattaforma entry-level per laboratori universitari: navigazione, HRI, protocolli di interazione, corsi pratici di robotica umanoide.</p>
+              </div>
+
+              <div class="robot-card-cta">
+                <!-- PREZZO DA VERIFICARE: R1 EDU Standard ~$10.000-12.000 USD; R1 EDU Pro ~$20.000-35.000 USD -->
+                <a href="prodotti/unitree-r1-edu.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo R1</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- H2 EDU -->
+          <article class="robot-card">
+            <div class="robot-media">
+              <span class="robot-media-tag">Full-size · Scala umana</span>
+              <img src="https://robostore.com/cdn/shop/files/unitree-h2-destiny-awakening-humanoid-3790320.jpg?width=800"
+                   alt="Unitree H2 EDU, umanoide full-size 180 cm"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('no-img');">
+              <div class="robot-media-placeholder">
+                <strong>Unitree H2 EDU</strong>
+                <span>Umanoide · 180 cm</span>
+              </div>
+            </div>
+            <div class="robot-body">
+              <div>
+                <h3>Unitree H2 EDU</h3>
+                <p class="robot-subtitle">31 DoF · 180 cm · scala umana</p>
+              </div>
+
+              <div class="key-specs">
+                <div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">180 cm</span></div>
+                <div class="key-spec"><span class="key-spec-label">Peso</span><span class="key-spec-value">~70 kg</span></div>
+                <div class="key-spec"><span class="key-spec-label">Gradi libertà</span><span class="key-spec-value">31</span></div>
+                <div class="key-spec"><span class="key-spec-label">Coppia gamba</span><span class="key-spec-value">360 N·m</span></div>
+              </div>
+
+              <ul class="spec-rows">
+                <li><span>Articolazione</span><span>Vita 3 DoF · collo 2 DoF · braccia 7 DoF</span></li>
+                <li><span>Payload braccio</span><span>7 kg continuo / 21 kg breve</span></li>
+                <li><span>Computing</span><span>2070 TOPS onboard · espandibile 3x Jetson Orin NX</span></li>
+                <li><span>Visione</span><span>Dual-eye camera</span></li>
+                <li><span>Mani</span><span>DEX5-1 5 dita / DEX3-1 3 dita force-controlled (optional)</span></li>
+                <li><span>SDK</span><span>EDU: ROS2, C++, Python</span></li>
+                <li><span>Aggiornamenti</span><span>OTA continui</span></li>
+              </ul>
+
+              <div class="avviso-box">
+                <strong>Nota prezzo</strong>
+                Il prezzo base $29.900 è per il mercato cinese. La versione internazionale EDU con mani destramente articolate e SDK completo ha un costo sensibilmente superiore. Da richiedere quotazione diretta.
+              </div>
+
+              <div class="use-case-box">
+                <span class="use-case-label">Caso d'uso chiave</span>
+                <p class="use-case-text">Ricerca su HRI a scala umana, manipolazione complessa, controllo whole-body, co-presenza e interazione sociale.</p>
+              </div>
+
+              <div class="robot-card-cta">
+                <!-- PREZZO DA VERIFICARE: H2 EDU listino RoboStore ~$68.900 USD; versione internazionale con mani avanzate sup. -->
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi quotazione H2</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- 1B - QUADRUPEDI -->
+      <div id="quadrupedi" class="subsection-block">
+        <div class="subsection-head">
+          <span class="subsection-tag">1B · Quadrupedi SDK-aperti</span>
+          <h3>Quadrupedi SDK-aperti. Dal campo al laboratorio, con lo stesso codice.</h3>
+        </div>
+
+        <div class="robot-grid cols-3">
+
+          <!-- Go2 EDU+ -->
+          <article class="robot-card">
+            <div class="robot-media">
+              <span class="robot-media-tag">Entry-level ricerca</span>
+              <img src="https://robostore.com/cdn/shop/files/unitree-go2-pro-ai-quadruped-robot-dog-4343804.jpg?width=800"
+                   alt="Unitree Go2 EDU+, quadrupede entry-level ricerca"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('no-img');">
+              <div class="robot-media-placeholder">
+                <strong>Unitree Go2 EDU+</strong>
+                <span>Quadrupede · LiDAR 4D</span>
+              </div>
+            </div>
+            <div class="robot-body">
+              <div>
+                <h3>Unitree Go2 EDU+</h3>
+                <p class="robot-subtitle">LiDAR 4D · Jetson Orin 100 TOPS</p>
+              </div>
+
+              <div class="key-specs">
+                <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">3,5 m/s</span></div>
+                <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">~1,5 ore</span></div>
+                <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin 100 TOPS</span></div>
+                <div class="key-spec"><span class="key-spec-label">Navigazione</span><span class="key-spec-value">LiDAR 4D</span></div>
+              </div>
+
+              <ul class="spec-rows">
+                <li><span>SDK</span><span>Aperto: ROS2, Python</span></li>
+                <li><span>Connettività</span><span>Wi-Fi 6 · BT 5.2 · 4G optional</span></li>
+                <li><span>Certificazioni</span><span>CE</span></li>
+              </ul>
+
+              <div class="use-case-box">
+                <span class="use-case-label">Caso d'uso chiave</span>
+                <p class="use-case-text">Corsi universitari di robotica mobile, SLAM, navigazione autonoma, reinforcement learning su hardware reale, ricerca HRI a basso costo.</p>
+              </div>
+
+              <div class="robot-card-cta">
+                <!-- PREZZO DA VERIFICARE: Go2 EDU+ ~$4.000-5.000 USD su RoboStore -->
+                <a href="prodotti/unitree-go2-edu-plus.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- A2 -->
+          <article class="robot-card">
+            <div class="robot-media">
+              <span class="robot-media-tag">Mid-tier · Ispezione e campo</span>
+              <img src="https://robostore.com/cdn/shop/files/unitree-a2-pro-quadruped-robot-dog-7836893.jpg?width=800"
+                   alt="Unitree A2, quadrupede mid-tier dual LiDAR"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('no-img');">
+              <div class="robot-media-placeholder">
+                <strong>Unitree A2</strong>
+                <span>Quadrupede · Dual LiDAR</span>
+              </div>
+            </div>
+            <div class="robot-body">
+              <div>
+                <h3>Unitree A2 (Standard / Pro)</h3>
+                <p class="robot-subtitle">Dual LiDAR · 5 m/s · 5 ore</p>
+              </div>
+
+              <div class="key-specs">
+                <div class="key-spec"><span class="key-spec-label">Peso</span><span class="key-spec-value">~37 kg</span></div>
+                <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">5 m/s</span></div>
+                <div class="key-spec"><span class="key-spec-label">Payload walking</span><span class="key-spec-value">fino a 25 kg</span></div>
+                <div class="key-spec"><span class="key-spec-label">Carico statico</span><span class="key-spec-value">100 kg</span></div>
+              </div>
+
+              <ul class="spec-rows">
+                <li><span>Autonomia scarico</span><span>&gt;5 ore / 20 km</span></li>
+                <li><span>Autonomia carico</span><span>&gt;3 ore / 12,5 km con 25 kg</span></li>
+                <li><span>Scalini</span><span>fino a 30 cm</span></li>
+                <li><span>Pendenza max</span><span>45°</span></li>
+                <li><span>LiDAR</span><span>2 industriali (frontale + posteriore), copertura 360°</span></li>
+                <li><span>Computing</span><span>8-core CPU + Intel Core i7 utente</span></li>
+                <li><span>Batterie</span><span>Dual hot-swappable</span></li>
+                <li><span>Protezione</span><span>IP56 chassis · IP67 componenti critici</span></li>
+                <li><span>Temperature</span><span>-20 °C a +55 °C</span></li>
+                <li><span>SDK</span><span>Aperto: ROS2, C++, Python</span></li>
+                <li><span>Ruote optional</span><span>Wheel-leg hybrid disponibile</span></li>
+              </ul>
+
+              <div class="use-case-box">
+                <span class="use-case-label">Caso d'uso chiave</span>
+                <p class="use-case-text">Ricerca su navigazione in ambienti non strutturati, ispezione autonoma, SLAM in ambienti ostili, reinforcement learning su piattaforma mid-tier robusta.</p>
+              </div>
+
+              <div class="robot-card-cta">
+                <!-- PREZZO DA VERIFICARE: A2 Pro listino non ancora pubblico, contattare per quotazione -->
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo A2</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- B2 -->
+          <article class="robot-card">
+            <div class="robot-media">
+              <span class="robot-media-tag">Industriale · Top performance</span>
+              <img src="https://robostore.com/cdn/shop/files/unitree-b2-industrial-quadruped-robotic-dog-3096671.jpg?width=800"
+                   alt="Unitree B2, quadrupede industriale IP67"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('no-img');">
+              <div class="robot-media-placeholder">
+                <strong>Unitree B2</strong>
+                <span>Industriale · IP67</span>
+              </div>
+            </div>
+            <div class="robot-body">
+              <div>
+                <h3>Unitree B2</h3>
+                <p class="robot-subtitle">IP67 · &gt;6 m/s · &gt;40 kg payload</p>
+              </div>
+
+              <div class="key-specs">
+                <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">&gt;6 m/s</span></div>
+                <div class="key-spec"><span class="key-spec-label">Payload continuo</span><span class="key-spec-value">&gt;40 kg</span></div>
+                <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">&gt;5 ore / 20 km</span></div>
+                <div class="key-spec"><span class="key-spec-label">Protezione</span><span class="key-spec-value">IP67</span></div>
+              </div>
+
+              <ul class="spec-rows">
+                <li><span>Scalini</span><span>fino a 40 cm</span></li>
+                <li><span>Pendenza max</span><span>&gt;45°</span></li>
+                <li><span>Computing</span><span>Core i5 piattaforma + i7 utente · Jetson Orin NX optional</span></li>
+                <li><span>Sensori</span><span>LiDAR 3D · 2x depth · 2x ottiche</span></li>
+                <li><span>I/O</span><span>4x GbE · 4x USB 3.0 · 12V/24V ausiliaria</span></li>
+                <li><span>SDK</span><span>Aperto: ROS2, C++, Python</span></li>
+              </ul>
+
+              <div class="use-case-box">
+                <span class="use-case-label">Caso d'uso chiave</span>
+                <p class="use-case-text">Ricerca su locomozione in ambienti estremi, deployment su campo reale, algoritmi di navigazione e percezione in condizioni hazardous.</p>
+              </div>
+
+              <div class="robot-card-cta">
+                <!-- PREZZO DA VERIFICARE: B2 listino RoboStore ~$84.999 USD -->
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo B2</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- 1C - FRANKA -->
+      <div id="franka" class="subsection-block">
+        <div class="subsection-head">
+          <span class="subsection-tag">1C · Braccio di ricerca</span>
+          <h3>Franka Research 3. Il riferimento per la ricerca sulla manipolazione.</h3>
+        </div>
+
+        <div class="robot-grid cols-1">
+
+          <article class="robot-card">
+            <div class="robot-media">
+              <span class="robot-media-tag">Braccio 7-DoF · Force control · 1 kHz</span>
+              <img src="https://franka.de/hubfs/_Frank%20Robotics4386_resized-1.jpg"
+                   alt="Franka Research 3, braccio robotico 7-DoF force-sensitive"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('no-img');">
+              <div class="robot-media-placeholder">
+                <strong>Franka Research 3</strong>
+                <span>7 DoF · Force-sensitive · TÜV</span>
+              </div>
+            </div>
+            <div class="robot-body">
+              <div>
+                <h3>Franka Research 3 (FR3)</h3>
+                <p class="robot-subtitle">Prodotto in Germania · TÜV certificato · 1 kHz</p>
+              </div>
+
+              <div class="key-specs">
+                <div class="key-spec"><span class="key-spec-label">Gradi libertà</span><span class="key-spec-value">7</span></div>
+                <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">3 kg</span></div>
+                <div class="key-spec"><span class="key-spec-label">Sbraccio</span><span class="key-spec-value">855 mm</span></div>
+                <div class="key-spec"><span class="key-spec-label">Ripetibilità</span><span class="key-spec-value">±0,1 mm</span></div>
+              </div>
+
+              <ul class="spec-rows">
+                <li><span>Workspace</span><span>94,5% di copertura</span></li>
+                <li><span>Torque sensor</span><span>Su tutti i 7 giunti</span></li>
+                <li><span>Controllo real-time</span><span>1 kHz via FCI (Franka Control Interface)</span></li>
+                <li><span>Interfacce</span><span>Joint torque/posizione/velocità · Cartesiano posa/velocità</span></li>
+                <li><span>Programmazione</span><span>Desk (UI visuale) · RIDE (custom app) · FCI (low-level C++)</span></li>
+                <li><span>SDK</span><span>C++, ROS2, MATLAB/Simulink, MoveIt!</span></li>
+                <li><span>Sicurezza</span><span>ISO 10218 · ISO 13849 · TÜV certificato</span></li>
+                <li><span>Gripper incluso</span><span>Franka Hand: 2 dita, 70 N grip, apertura 80 mm</span></li>
+              </ul>
+
+              <div class="why-box">
+                <strong>Perché per la ricerca su Embodied AI</strong>
+                Il FR3 è la piattaforma più usata nei paper su manipolazione dextrous, imitation learning e robot learning. Controllo torque diretto a 1 kHz, sensori su tutti i giunti, integrazione nativa con IsaacSim e MuJoCo. È il punto di riferimento della comunità internazionale.
+              </div>
+
+              <div class="use-case-box">
+                <span class="use-case-label">Caso d'uso chiave</span>
+                <p class="use-case-text">Ricerca su manipulation, grasping, force-controlled assembly, imitation learning, reinforcement learning, human-robot collaboration, insegnamento robotica avanzata.</p>
+              </div>
+
+              <div class="robot-card-cta">
+                <!-- PREZZO DA VERIFICARE: Franka Research 3 listino ~€15.000-20.000 EUR (variabile per distribuzione) -->
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi quotazione FR3</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEZIONE 2 - ACCESSORI / MANI -->
+  <section id="accessori" class="vert-section" style="background:var(--gray-50);">
+    <div class="container">
+
+      <div class="vert-section-head">
+        <p class="label">02 · Accessori · Mani robotiche</p>
+        <h2>Mani destramente articolate. Manipolazione a 6 gradi di libertà.</h2>
+        <p>Le mani robotiche Inspire RH56 sono compatibili con Unitree G1 EDU Flagship e con i principali bracci umanoidi. 6 DoF, 12 giunti, sensori di forza e posizione integrati, supporto ROS nativo.</p>
+      </div>
+
+      <div class="robot-grid cols-3">
+
+        <!-- RH56DFX -->
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Forza elevata · Presa robusta</span>
+            <img src="https://en.inspire-robots.com/wp-content/uploads/2023/09/DFX-1.jpg"
+                 alt="Inspire RH56DFX, mano dexterous 6 DoF force-controlled"
+                 loading="lazy"
+                 onerror="this.onerror=null;this.src='https://robostore.com/cdn/shop/files/inspire-robots-rh56dfq-dexterous-hands-5-finger-robotic-manipulator-176100.png?width=800';this.addEventListener('error',function(){this.parentElement.classList.add('no-img');},{once:true});">
+            <div class="robot-media-placeholder">
+              <strong>Inspire RH56DFX</strong>
+              <span>The Gripper</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Inspire RH56DFX</h3>
+              <p class="robot-subtitle">"The Gripper" · 6 DoF · 12 giunti · RS485/CAN</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Gradi libertà</span><span class="key-spec-value">6</span></div>
+              <div class="key-spec"><span class="key-spec-label">Giunti</span><span class="key-spec-value">12</span></div>
+              <div class="key-spec"><span class="key-spec-label">Peso</span><span class="key-spec-value">~540 g</span></div>
+              <div class="key-spec"><span class="key-spec-label">Forza pollice</span><span class="key-spec-value">&gt;10 N</span></div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Interfaccia</span><span>RS485 / CAN</span></li>
+              <li><span>Tensione</span><span>DC 24V ±10%</span></li>
+              <li><span>Velocità chiusura</span><span>~0,4 s</span></li>
+              <li><span>Sensori</span><span>6 sensori di pressione integrati</span></li>
+              <li><span>Controllo</span><span>Posizione + forza ibrido</span></li>
+              <li><span>SDK</span><span>ROS supportato · plug-in disponibile</span></li>
+              <li><span>Compatibilità</span><span>Unitree G1 EDU Flagship · principali bracci umanoidi</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Grasping di oggetti di peso medio-alto, task pick-and-place, protesi robotiche, manipolazione in ambienti industriali simulati.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: Inspire RH56 series ~$9.500 USD/coppia su RoboStore -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo DFX</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- RH56BFX -->
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Alta velocità · Desterità fine</span>
+            <img src="https://en.inspire-robots.com/wp-content/uploads/2023/09/DFX-2.jpg"
+                 alt="Inspire RH56BFX, mano dexterous alta velocità 570 gradi/s"
+                 loading="lazy"
+                 onerror="this.onerror=null;this.src='https://robostore.com/cdn/shop/files/inspire-robots-rh56dfq-dexterous-hands-5-finger-robotic-manipulator-176100.png?width=800';this.addEventListener('error',function(){this.parentElement.classList.add('no-img');},{once:true});">
+            <div class="robot-media-placeholder">
+              <strong>Inspire RH56BFX</strong>
+              <span>The Pianist</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Inspire RH56BFX</h3>
+              <p class="robot-subtitle">"The Pianist" · 570°/s · sensori forza e posizione</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Velocità 4 dita</span><span class="key-spec-value">570°/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità pollice</span><span class="key-spec-value">150°/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Peso</span><span class="key-spec-value">~540 g</span></div>
+              <div class="key-spec"><span class="key-spec-label">Ripetibilità</span><span class="key-spec-value">±0,20 mm</span></div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Gradi libertà</span><span>6 · 12 giunti</span></li>
+              <li><span>Interfaccia</span><span>RS485 / CAN</span></li>
+              <li><span>Tensione</span><span>DC 24V ±10%</span></li>
+              <li><span>Forza pollice</span><span>6 N</span></li>
+              <li><span>Sensori</span><span>Forza + posizione assoluta integrati</span></li>
+              <li><span>Controllo</span><span>Posizione + forza ibrido</span></li>
+              <li><span>Auto-lock</span><span>Power-off self-locking (mantiene posizione senza corrente)</span></li>
+              <li><span>SDK</span><span>ROS supportato</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Task ad alta velocità e desterità fine: rock-paper-scissors vision-guided (vinto contro umani), gesti, interazione, ricerca su manipolazione rapida.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: contattare per quotazione -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo BFX</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- RH56F1 -->
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Full metal · Sensori avanzati</span>
+            <img src="https://en.inspire-robots.com/wp-content/uploads/2023/09/DFX-3.jpg"
+                 alt="Inspire RH56F1, mano full-metal con sensori tattili"
+                 loading="lazy"
+                 onerror="this.onerror=null;this.src='https://robostore.com/cdn/shop/files/inspire-robots-rh56dfq-dexterous-hands-5-finger-robotic-manipulator-176100.png?width=800';this.addEventListener('error',function(){this.parentElement.classList.add('no-img');},{once:true});">
+            <div class="robot-media-placeholder">
+              <strong>Inspire RH56F1</strong>
+              <span>Full Metal</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Inspire RH56F1</h3>
+              <p class="robot-subtitle">"Full Metal" · 4 categorie sensori · EtherCAT</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Gradi libertà</span><span class="key-spec-value">6</span></div>
+              <div class="key-spec"><span class="key-spec-label">Giunti</span><span class="key-spec-value">12</span></div>
+              <div class="key-spec"><span class="key-spec-label">Peso</span><span class="key-spec-value">620 g</span></div>
+              <div class="key-spec"><span class="key-spec-label">Forza pollice</span><span class="key-spec-value">15 N</span></div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Interfaccia</span><span>EtherCAT + RS485</span></li>
+              <li><span>Tensione</span><span>24V a 48V</span></li>
+              <li><span>Carico statico</span><span>30 kg passivo</span></li>
+              <li><span>Sensori</span><span>24 gruppi in 4 categorie: tattile, forza, posizione, temperatura</span></li>
+              <li><span>Comunicazione</span><span>1 kHz real-time</span></li>
+              <li><span>Certificazioni</span><span>20 test standard superati</span></li>
+              <li><span>Corpo</span><span>Full metal · design integrato a scheletro</span></li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Ricerca avanzata su tactile sensing, imitation learning con feedback di forza completo, assemblaggio preciso, grasping con retroazione tattile.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: F1 versione top di gamma, contattare per quotazione -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo F1</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINALE -->
+  <section class="vert-final-cta">
+    <div class="container">
+      <p class="label label-light">Parliamone</p>
+      <h2>Stai costruendo un laboratorio o hai già un progetto in corso?</h2>
+      <p>Raccontaci il tuo stack attuale, la piattaforma che ti interessa e il tipo di ricerca che stai conducendo. In 30 minuti di call ti diciamo quali piattaforme hanno senso, quali repository sono il punto di partenza più solido e se ci sono bandi applicabili al tuo progetto.</p>
+      <div class="vert-final-cta-actions">
+        <a href="#contact-form" class="btn btn-primary">Prenota una call tecnica</a>
+        <a href="#contact-form" class="btn btn-secondary">Richiedi la lista risorse GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM CONTATTI -->
+  <section id="contact-form" class="section section-cta" style="scroll-margin-top:160px;">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Hai un progetto di ricerca in mente?</h2>
+        <p class="cta-subtitle">Compila il form, un consulente Abra ti ricontatterà entro 12 ore.</p>
+      </div>
+
+      <form id="contact-form-el" class="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome e cognome</label>
+            <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="form-group">
+            <label for="istituzione">Università o istituzione</label>
+            <input type="text" id="istituzione" name="istituzione" placeholder="Politecnico di Milano, Dip. DEIB" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email istituzionale</label>
+          <input type="email" id="email" name="email" placeholder="mario.rossi@polimi.it" required>
+        </div>
+        <div class="form-group">
+          <label for="messaggio">Descrivi il tuo progetto di ricerca o il setup di laboratorio</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Esempio: stiamo allestendo un laboratorio per ricerca su imitation learning su Franka FR3, vorremmo capire integrazione con IsaacSim e percorsi formativi." rows="5" required></textarea>
+        </div>
+        <input type="hidden" name="vertical" value="Universita e Ricerca">
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+          <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
+        </div>
+        <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Verticale ricerca</span>
+        <a href="#umanoidi">Umanoidi programmabili</a>
+        <a href="#quadrupedi">Quadrupedi SDK-aperti</a>
+        <a href="#franka">Franka Research 3</a>
+        <a href="#accessori">Mani robotiche</a>
+        <a href="#contact-form">Percorsi formativi</a>
+        <a href="#contact-form">Contattaci</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Contatti</span>
+        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+        <p>Italia</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
