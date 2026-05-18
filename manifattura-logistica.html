@@ -547,6 +547,81 @@
       align-items: center;
     }
 
+    /* Video showcase */
+    .video-showcase {
+      margin-top: 56px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--black);
+    }
+    .video-showcase-header {
+      padding: 22px 26px;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .video-showcase-eyebrow {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .video-showcase-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Minimal product card (AMR, G1-D, R1-D: short cards without full spec tables) */
+    .robot-card .short-body { gap: 14px; }
+    .robot-card .robot-blurb {
+      font-size: 0.96rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .robot-card.dark .robot-blurb { color: rgba(255,255,255,0.7); }
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .chip-list li {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      color: var(--gray-800);
+      white-space: nowrap;
+    }
+    .robot-card.dark .chip-list li {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.78);
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .robot-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
@@ -653,6 +728,7 @@
       <div class="nav-links">
         <a href="/">Abra Robotics</a>
         <a href="#cobot">Cobot</a>
+        <a href="#amr">AMR</a>
         <a href="#ispezione">Ispezione</a>
         <a href="#embodied-ai">Embodied AI</a>
         <a href="/#faq">FAQ</a>
@@ -666,6 +742,7 @@
   <div class="mobile-menu">
     <a href="/">Abra Robotics</a>
     <a href="#cobot">Cobot</a>
+    <a href="#amr">AMR</a>
     <a href="#ispezione">Ispezione</a>
     <a href="#embodied-ai">Embodied AI</a>
     <a href="/#faq">FAQ</a>
@@ -692,8 +769,9 @@
     <div class="container">
       <div class="anchor-strip-inner">
         <a href="#cobot"><span>01</span>Cobot industriali</a>
-        <a href="#ispezione"><span>02</span>Ispezione autonoma</a>
-        <a href="#embodied-ai"><span>03</span>Embodied AI / POC</a>
+        <a href="#amr"><span>02</span>AMR · Logistica interna</a>
+        <a href="#ispezione"><span>03</span>Ispezione autonoma</a>
+        <a href="#embodied-ai"><span>04</span>Embodied AI</a>
       </div>
     </div>
   </div>
@@ -867,6 +945,23 @@
 
       </div>
 
+      <!-- Video showcase Fairino -->
+      <div class="video-showcase">
+        <div class="video-showcase-header">
+          <span class="video-showcase-eyebrow">In azione · Palletizzazione</span>
+          <p class="video-showcase-title">Fairino FR Series, ciclo di palletizzazione reale.</p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/yvFlAzRG-10"
+            title="Fairino FR Series · ciclo di palletizzazione"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+      </div>
+
       <p class="tech-note">
         Tutti i cobot Fairino FR Series sono certificati CE e conformi alle norme ISO 10218-1/-2, ISO/TS 15066 per la collaborazione uomo-robot e Direttiva Macchine 2006/42/CE. La valutazione del rischio specifica per il tuo impianto è inclusa nel progetto.
       </p>
@@ -893,12 +988,117 @@
     </div>
   </section>
 
-  <!-- SEZIONE 2 - ISPEZIONE -->
-  <section id="ispezione" class="vert-section" style="background:var(--gray-50);">
+  <!-- SEZIONE 2 - AMR / LOGISTICA INTERNA -->
+  <section id="amr" class="vert-section" style="background:var(--gray-50);">
     <div class="container">
 
       <div class="vert-section-head">
-        <p class="label">02 · Ispezione autonoma</p>
+        <p class="label">02 · AMR · Logistica interna</p>
+        <h2>I tuoi materiali arrivano in linea. Sempre, in orario, senza operatori logistici.</h2>
+        <p>Gli AMR sostituiscono il trasporto manuale interno: tote, cassette, semilavorati, carrelli. Navigazione autonoma, integrazione con il tuo WMS, percorsi dinamici che si adattano in real-time alla produzione.</p>
+      </div>
+
+      <div class="robot-grid">
+
+        <!-- HikRobot LMR -->
+        <article class="robot-card">
+          <div class="robot-media no-img">
+            <span class="robot-media-tag">Logistica interna · Tote e carrelli</span>
+            <img src="https://www.hikrobotics.com/en/static/img/4ef6560882c3.jpg"
+                 alt="HikRobot LMR, robot mobile autonomo per logistica interna"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>HikRobot LMR</strong>
+              <span>AMR · SLAM laser</span>
+            </div>
+          </div>
+          <div class="robot-body short-body">
+            <div>
+              <h3>HikRobot LMR Series</h3>
+              <p class="robot-subtitle">Latent Mobile Robot · payload 200-1500 kg</p>
+            </div>
+
+            <p class="robot-blurb">
+              Famiglia di AMR HikRobot a sollevamento sottoscocca. Naviga sotto carrelli e scaffali, li solleva e li trasporta in autonomia. SLAM laser, integrazione con sistemi MES/WMS, flotta gestita centralmente.
+            </p>
+
+            <ul class="chip-list">
+              <li>Payload 200-1500 kg</li>
+              <li>SLAM laser</li>
+              <li>Multi-robot fleet</li>
+              <li>API REST</li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Trasporto tote tra reparti, rifornimento bordo linea con kanban automatico, picking in magazzino.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: HikRobot listino non pubblico, quotazione su configurazione flotta -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo LMR</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Enabled Robotics MC250 -->
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Mobile cobot · Pick &amp; deliver</span>
+            <img src="https://a.storyblok.com/f/230581/1344x838/c2b286bb47/mc250_front.png/m/984x614"
+                 alt="Enabled Robotics MC250, mobile cobot MiR250 + Universal Robots"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>MC250</strong>
+              <span>AMR + cobot</span>
+            </div>
+          </div>
+          <div class="robot-body short-body">
+            <div>
+              <h3>Enabled Robotics MC250</h3>
+              <p class="robot-subtitle">Mobile cobot · MiR250 + Universal Robots</p>
+            </div>
+
+            <p class="robot-blurb">
+              Piattaforma mobile MiR250 integrata con un cobot Universal Robots (UR5e / UR10e / UR16e). Il robot si sposta autonomamente in produzione e svolge task di manipolazione sul posto: machine tending mobile, ispezione, kitting.
+            </p>
+
+            <ul class="chip-list">
+              <li>Base AMR 250 kg</li>
+              <li>Cobot UR fino a 16 kg</li>
+              <li>Una flotta, due funzioni</li>
+              <li>MiR Fleet compatibile</li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Machine tending distribuito su più macchine senza dedicare un cobot fisso per ciascuna. Ispezione e kitting mobile in produzione e laboratorio.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: MC250 distribuzione Enabled Robotics / Konica Minolta -->
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo MC250</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="section-cta-row">
+        <a href="#contact-form" class="btn btn-primary">Scopri gli AMR disponibili</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEZIONE 3 - ISPEZIONE -->
+  <section id="ispezione" class="vert-section">
+    <div class="container">
+
+      <div class="vert-section-head">
+        <p class="label">03 · Ispezione autonoma</p>
         <h2>Ispezione continua degli impianti. Senza mettere a rischio nessuno.</h2>
         <p>I robot quadrupedi Unitree fanno quello che un operatore non dovrebbe fare: entrano in zone pericolose, lavorano di notte, raccolgono dati termici e acustici in real-time. Il caso d'uso è solido quando hai almeno una di queste condizioni: ronde periodiche in zone a rischio, ispezioni termiche ricorrenti, sorveglianza perimetrale h24, documentazione automatica per audit e manutenzione predittiva.</p>
       </div>
@@ -919,10 +1119,10 @@
         <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">Ispezione leggera · Ambienti semi-strutturati</span>
-            <img src="https://robostore.com/cdn/shop/files/unitree-go2-pro-ai-quadruped-robot-dog-4343804.jpg?width=800"
-                 alt="Unitree Go2 EDU+, quadrupede per ispezione leggera"
+            <img src="https://www.unitree.com/images/6377486efe1c4b0885825f97abe3524e_702x1060.jpg"
+                 alt="Unitree Go2 in ispezione su sottostazione elettrica"
                  loading="lazy"
-                 onerror="this.parentElement.classList.add('no-img');">
+                 onerror="this.onerror=null;this.src='https://robostore.com/cdn/shop/files/unitree-go2-pro-ai-quadruped-robot-dog-4343804.jpg?width=800';this.addEventListener('error',function(){this.parentElement.classList.add('no-img');},{once:true});">
             <div class="robot-media-placeholder">
               <strong>Unitree Go2 EDU+</strong>
               <span>Quadrupede · LiDAR 4D</span>
@@ -1050,73 +1250,93 @@
     <div class="container">
 
       <div class="vert-section-head">
-        <p class="label label-light">03 · Embodied AI / POC</p>
+        <p class="label label-light">04 · Embodied AI / POC</p>
         <h2>Robotica umanoide in produzione: costruiamo assieme il caso d'uso del futuro.</h2>
-        <p>BMW, Mercedes e hub logistici di grandi operatori stanno già testando robot umanoidi in produzione reale. Non è fantascienza: è un ciclo di adozione che inizia con i POC. Le aziende che capiscono oggi come usarli, dove integrarli e, soprattutto, dove non usarli, avranno un vantaggio strutturale quando il costo scenderà a regime. Abra non vende soluzioni umanoidi industriali chiavi in mano, perché non esistono ancora. Offre POC strutturati: definiamo insieme il task, gestiamo l'integrazione, misuriamo i risultati.</p>
+        <p>BMW, Mercedes e hub logistici di grandi operatori stanno già testando robot umanoidi in produzione reale. Non è fantascienza: è un ciclo di adozione che inizia con i POC. Le piattaforme deployment-ready stanno arrivando: Unitree G1-D e R1-D sono le prime versioni pensate per uscire dal laboratorio. Abra ti aiuta a fare il POC in modo controllato, senza rischiare l'operatività.</p>
       </div>
 
-      <div class="robot-grid cols-1">
+      <div class="robot-grid">
 
-        <!-- Unitree R1 EDU -->
+        <!-- Unitree G1-D -->
         <article class="robot-card dark">
           <div class="robot-media">
-            <span class="robot-media-tag">Piattaforma POC · Ricerca</span>
-            <img src="https://robostore.com/cdn/shop/files/unitree-r1-robotic-humanoid-5324651.jpg?width=800"
-                 alt="Unitree R1 EDU, umanoide per POC"
+            <span class="robot-media-tag">Umanoide industrial-ready</span>
+            <img src="https://www.unitree.com/images/8c85d6a1b92c464fa245f9826495c605_1960x1270.png"
+                 alt="Unitree G1-D, umanoide deployment-ready"
                  loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
-              <strong>Unitree R1 EDU</strong>
-              <span>Umanoide · 26 DoF</span>
+              <strong>Unitree G1-D</strong>
+              <span>Umanoide · Deployment</span>
             </div>
           </div>
-          <div class="robot-body">
+          <div class="robot-body short-body">
             <div>
-              <h3>Unitree R1 EDU</h3>
-              <p class="robot-subtitle">Umanoide · 26 DoF</p>
+              <h3>Unitree G1-D</h3>
+              <p class="robot-subtitle">Variante "D" di G1 · pensata per deployment industriale</p>
             </div>
 
-            <div class="key-specs">
-              <div class="key-spec">
-                <span class="key-spec-label">Altezza</span>
-                <span class="key-spec-value">123 cm</span>
-              </div>
-              <div class="key-spec">
-                <span class="key-spec-label">Peso</span>
-                <span class="key-spec-value">~29 kg</span>
-              </div>
-              <div class="key-spec">
-                <span class="key-spec-label">Gradi libertà</span>
-                <span class="key-spec-value">26 <small>(24 + 2 testa)</small></span>
-              </div>
-              <div class="key-spec">
-                <span class="key-spec-label">Autonomia</span>
-                <span class="key-spec-value">~1 ora <small>(hot-swap)</small></span>
-              </div>
-            </div>
+            <p class="robot-blurb">
+              G1-D è la versione di G1 ottimizzata per l'uscita dal laboratorio: pipeline di acquisizione dati e training integrata, supporto a task ripetitivi industriali, telecamere e sensoristica orientate al deployment continuo. Resta una piattaforma da introdurre tramite POC strutturato, ma con un orizzonte di produzione reale già visibile.
+            </p>
 
-            <ul class="spec-rows">
-              <li><span>Computing</span><span>8-core CPU + GPU · Jetson Orin optional 40-100 TOPS (EDU)</span></li>
-              <li><span>Visione</span><span>Telecamera binoculare stereo + array 4 microfoni</span></li>
-              <li><span>Connettività</span><span>Wi-Fi 6 · Bluetooth 5.2</span></li>
-              <li><span>AI onboard</span><span>Large Multimodal Model (LMM) per riconoscimento voce e immagine</span></li>
-              <li><span>SDK</span><span>Aperto: ROS2, Python, sviluppo custom (solo versione EDU)</span></li>
+            <ul class="chip-list">
+              <li>Training pipeline integrato</li>
+              <li>Telecamere multi-vista</li>
+              <li>SDK aperto · ROS2</li>
+              <li>Deploy-oriented</li>
             </ul>
-
-            <div class="avviso-box">
-              <strong>Avviso importante</strong>
-              Il modello base (R1 Standard) NON supporta sviluppo software. Per POC e ricerca serve obbligatoriamente la versione EDU.
-            </div>
 
             <div class="use-case-box">
               <span class="use-case-label">Caso d'uso chiave</span>
-              <p class="use-case-text">Piattaforma POC industriali, ricerca, sviluppo algoritmi di manipolazione e navigazione in ambienti antropici.</p>
+              <p class="use-case-text">POC di task ripetitivi a postazione (handling leggero, prelievo, ispezione bimane) con percorso verso il deployment continuo.</p>
             </div>
 
             <div class="robot-card-cta">
-              <!-- PREZZO DA VERIFICARE: R1 EDU Standard ~$10.000-12.000 USD; R1 EDU Pro ~$20.000-35.000 USD -->
-              <a href="prodotti/unitree-r1-edu.html" class="btn btn-secondary btn-sm" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,0.3);">Scheda tecnica R1</a>
-              <a href="#contact-form" class="btn btn-primary btn-sm" style="background:var(--white);color:var(--black);border-color:var(--white);">Parliamo del tuo POC</a>
+              <!-- PREZZO DA VERIFICARE: G1-D listino non ancora pubblico in Italia, contattare per quotazione -->
+              <a href="#contact-form" class="btn btn-primary btn-sm" style="background:var(--white);color:var(--black);border-color:var(--white);">Parliamo del POC G1-D</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Unitree R1-D -->
+        <article class="robot-card dark">
+          <div class="robot-media">
+            <span class="robot-media-tag">Compatto · Manipolazione bimane</span>
+            <img src="https://www.unitree.com/images/acb8ab749ddc45c9a35a6696144a3b19_3840x2411.png"
+                 alt="Unitree R1-D, umanoide compatto deployment-ready"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree R1-D</strong>
+              <span>Umanoide · Compatto</span>
+            </div>
+          </div>
+          <div class="robot-body short-body">
+            <div>
+              <h3>Unitree R1-D</h3>
+              <p class="robot-subtitle">Variante "D" di R1 · piattaforma compatta deployment-ready</p>
+            </div>
+
+            <p class="robot-blurb">
+              R1-D porta la piattaforma R1 verso un uso operativo: braccia con attuatori specifici per la manipolazione bimane, camera binoculare, computing onboard espandibile. Compatto, mobile su postazione, pensato per task collaborativi in ambienti semi-strutturati.
+            </p>
+
+            <ul class="chip-list">
+              <li>Manipolazione bimane</li>
+              <li>Camera binoculare</li>
+              <li>Computing espandibile</li>
+              <li>Mobile su postazione</li>
+            </ul>
+
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Postazioni di assemblaggio leggero, kitting e pick &amp; place collaborativo dove serve un robot antropomorfo compatto.</p>
+            </div>
+
+            <div class="robot-card-cta">
+              <!-- PREZZO DA VERIFICARE: R1-D listino non ancora pubblico in Italia, contattare per quotazione -->
+              <a href="#contact-form" class="btn btn-primary btn-sm" style="background:var(--white);color:var(--black);border-color:var(--white);">Parliamo del POC R1-D</a>
             </div>
           </div>
         </article>
@@ -1188,6 +1408,7 @@
       <div class="footer-nav">
         <span class="footer-heading">Verticale</span>
         <a href="#cobot">Cobot industriali</a>
+        <a href="#amr">AMR · Logistica</a>
         <a href="#ispezione">Ispezione autonoma</a>
         <a href="#embodied-ai">Embodied AI / POC</a>
         <a href="#contact-form">Contattaci</a>
