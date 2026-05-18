@@ -191,7 +191,7 @@
     .robot-media-placeholder {
       position: absolute;
       inset: 0;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -199,6 +199,7 @@
       text-align: center;
       padding: 24px;
     }
+    .robot-media.no-img .robot-media-placeholder { display: flex; }
     .robot-media-placeholder strong {
       font-size: 1.6rem;
       font-weight: 900;
@@ -790,8 +791,12 @@
 
         <!-- Fairino FR5 -->
         <article class="robot-card">
-          <div class="robot-media no-img">
+          <div class="robot-media">
             <span class="robot-media-tag">Pick &amp; Place · Machine Tending</span>
+            <img src="images/manifattura/fairino-cobot.png"
+                 alt="Fairino FR5, cobot a 6 assi 5 kg"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Fairino FR5</strong>
               <span>Cobot 6 assi · 5 kg</span>
@@ -842,8 +847,12 @@
 
         <!-- Fairino FR10 -->
         <article class="robot-card">
-          <div class="robot-media no-img">
+          <div class="robot-media">
             <span class="robot-media-tag">Machine Tending · Palletizzazione</span>
+            <img src="images/manifattura/fairino-cobot.png"
+                 alt="Fairino FR10, cobot a 6 assi 10 kg"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Fairino FR10</strong>
               <span>Cobot 6 assi · 10 kg</span>
@@ -894,8 +903,12 @@
 
         <!-- Fairino FR20 -->
         <article class="robot-card">
-          <div class="robot-media no-img">
+          <div class="robot-media">
             <span class="robot-media-tag">Palletizzazione · Handling pesante</span>
+            <img src="images/manifattura/fairino-cobot.png"
+                 alt="Fairino FR20, cobot a 6 assi 20 kg"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Fairino FR20</strong>
               <span>Cobot 6 assi · 20 kg</span>
