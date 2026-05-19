@@ -190,9 +190,13 @@
       height: 100%;
       object-fit: contain;
       padding: 22px;
-      transition: transform 0.5s ease;
+      filter: drop-shadow(0 14px 18px rgba(0,0,0,0.18));
+      transition: transform 0.5s ease, filter 0.4s ease;
     }
-    .robot-card:hover .robot-media img { transform: scale(1.04); }
+    .robot-card:hover .robot-media img {
+      transform: scale(1.04);
+      filter: drop-shadow(0 18px 22px rgba(0,0,0,0.22));
+    }
     .robot-media-tag {
       position: absolute;
       top: 14px;
@@ -218,7 +222,7 @@
     .robot-media-placeholder {
       position: absolute;
       inset: 0;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -226,6 +230,7 @@
       text-align: center;
       padding: 24px;
     }
+    .robot-media.no-img .robot-media-placeholder { display: flex; }
     .robot-media-placeholder strong {
       font-size: 1.4rem;
       font-weight: 900;
@@ -655,7 +660,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Ricerca · Sviluppo algoritmi</span>
-              <img src="https://robostore.com/cdn/shop/files/unitree-g1-edu-standard-robotic-humanoid-u1-7101558.jpg?width=800"
+              <img src="images/manifattura/unitree-g1-d.png"
                    alt="Unitree G1 EDU Standard, umanoide programmabile 23 DoF"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -710,7 +715,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Entry-level ricerca · POC</span>
-              <img src="https://robostore.com/cdn/shop/files/unitree-r1-robotic-humanoid-5324651.jpg?width=800"
+              <img src="images/manifattura/unitree-r1-d.png"
                    alt="Unitree R1 EDU, umanoide compatto 26 DoF"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -740,11 +745,6 @@
                 <li><span>SDK</span><span>Aperto: ROS2, Python, C++ (solo EDU)</span></li>
               </ul>
 
-              <div class="avviso-box">
-                <strong>Avviso importante</strong>
-                Il modello base R1 Standard NON supporta sviluppo software. Per ricerca serve la versione EDU.
-              </div>
-
               <div class="use-case-box">
                 <span class="use-case-label">Caso d'uso chiave</span>
                 <p class="use-case-text">Piattaforma entry-level per laboratori universitari: navigazione, HRI, protocolli di interazione, corsi pratici di robotica umanoide.</p>
@@ -762,7 +762,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Full-size · Scala umana</span>
-              <img src="https://robostore.com/cdn/shop/files/unitree-h2-destiny-awakening-humanoid-3790320.jpg?width=800"
+              <img src="images/universita/unitree-h2.png"
                    alt="Unitree H2 EDU, umanoide full-size 180 cm"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -794,11 +794,6 @@
                 <li><span>Aggiornamenti</span><span>OTA continui</span></li>
               </ul>
 
-              <div class="avviso-box">
-                <strong>Nota prezzo</strong>
-                Il prezzo base $29.900 è per il mercato cinese. La versione internazionale EDU con mani destramente articolate e SDK completo ha un costo sensibilmente superiore. Da richiedere quotazione diretta.
-              </div>
-
               <div class="use-case-box">
                 <span class="use-case-label">Caso d'uso chiave</span>
                 <p class="use-case-text">Ricerca su HRI a scala umana, manipolazione complessa, controllo whole-body, co-presenza e interazione sociale.</p>
@@ -827,7 +822,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Entry-level ricerca</span>
-              <img src="https://robostore.com/cdn/shop/files/unitree-go2-pro-ai-quadruped-robot-dog-4343804.jpg?width=800"
+              <img src="images/manifattura/unitree-go2-edu.png"
                    alt="Unitree Go2 EDU+, quadrupede entry-level ricerca"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -872,7 +867,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Mid-tier · Ispezione e campo</span>
-              <img src="https://robostore.com/cdn/shop/files/unitree-a2-pro-quadruped-robot-dog-7836893.jpg?width=800"
+              <img src="images/universita/unitree-a2.png"
                    alt="Unitree A2, quadrupede mid-tier dual LiDAR"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -924,7 +919,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Industriale · Top performance</span>
-              <img src="https://robostore.com/cdn/shop/files/unitree-b2-industrial-quadruped-robotic-dog-3096671.jpg?width=800"
+              <img src="images/manifattura/unitree-b2.png"
                    alt="Unitree B2, quadrupede industriale IP67"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -982,7 +977,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Braccio 7-DoF · Force control · 1 kHz</span>
-              <img src="https://franka.de/hubfs/_Frank%20Robotics4386_resized-1.jpg"
+              <img src="images/universita/franka-fr3.png"
                    alt="Franka Research 3, braccio robotico 7-DoF force-sensitive"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -1054,10 +1049,10 @@
         <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">Forza elevata · Presa robusta</span>
-            <img src="https://en.inspire-robots.com/wp-content/uploads/2023/09/DFX-1.jpg"
+            <img src="images/universita/inspire-rh56.png"
                  alt="Inspire RH56DFX, mano dexterous 6 DoF force-controlled"
                  loading="lazy"
-                 onerror="this.onerror=null;this.src='https://robostore.com/cdn/shop/files/inspire-robots-rh56dfq-dexterous-hands-5-finger-robotic-manipulator-176100.png?width=800';this.addEventListener('error',function(){this.parentElement.classList.add('no-img');},{once:true});">
+                 onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Inspire RH56DFX</strong>
               <span>The Gripper</span>
@@ -1102,10 +1097,10 @@
         <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">Alta velocità · Desterità fine</span>
-            <img src="https://en.inspire-robots.com/wp-content/uploads/2023/09/DFX-2.jpg"
+            <img src="images/universita/inspire-rh56.png"
                  alt="Inspire RH56BFX, mano dexterous alta velocità 570 gradi/s"
                  loading="lazy"
-                 onerror="this.onerror=null;this.src='https://robostore.com/cdn/shop/files/inspire-robots-rh56dfq-dexterous-hands-5-finger-robotic-manipulator-176100.png?width=800';this.addEventListener('error',function(){this.parentElement.classList.add('no-img');},{once:true});">
+                 onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Inspire RH56BFX</strong>
               <span>The Pianist</span>
@@ -1151,10 +1146,10 @@
         <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">Full metal · Sensori avanzati</span>
-            <img src="https://en.inspire-robots.com/wp-content/uploads/2023/09/DFX-3.jpg"
+            <img src="images/universita/inspire-rh56.png"
                  alt="Inspire RH56F1, mano full-metal con sensori tattili"
                  loading="lazy"
-                 onerror="this.onerror=null;this.src='https://robostore.com/cdn/shop/files/inspire-robots-rh56dfq-dexterous-hands-5-finger-robotic-manipulator-176100.png?width=800';this.addEventListener('error',function(){this.parentElement.classList.add('no-img');},{once:true});">
+                 onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Inspire RH56F1</strong>
               <span>Full Metal</span>
