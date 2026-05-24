@@ -130,6 +130,14 @@
       max-width: 760px;
     }
     .subsection-block.dark .subsection-head h3 { color: var(--white); }
+    .subsection-note {
+      margin-top: 12px;
+      max-width: 760px;
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+    .subsection-block.dark .subsection-note { color: rgba(255,255,255,0.65); }
 
     /* Robot card grid */
     .robot-grid {
@@ -617,7 +625,7 @@
       <div class="vert-hero-inner">
         <p class="label">Università e ricerca</p>
         <h1>Ricerca robotica nativa, a partire dall'hardware reale.</h1>
-        <p class="vert-hero-sub">Abra Robotics fornisce a università, laboratori e centri di ricerca le piattaforme robotiche più avanzate disponibili oggi: umanoidi programmabili, quadrupedi autonomi, bracci di ricerca force-sensitive e mani destramente articolate. SDK aperti, documentazione tecnica, percorsi formativi specializzati e supporto alla programmazione inclusi.</p>
+        <p class="vert-hero-sub">Abra Robotics fornisce a università, laboratori e centri di ricerca le piattaforme robotiche più avanzate disponibili oggi: umanoidi programmabili, quadrupedi autonomi, bracci di ricerca force-sensitive e manipolatori a 2/3/5 dita. SDK aperti, documentazione tecnica, percorsi formativi specializzati e supporto alla programmazione inclusi.</p>
         <div class="vert-hero-ctas">
           <a href="#contact-form" class="btn btn-primary">Parla con un tecnico</a>
           <a href="#piattaforme" class="btn btn-secondary">Scopri le piattaforme</a>
@@ -646,14 +654,14 @@
       <div class="vert-section-head">
         <p class="label">01 · Piattaforme programmabili</p>
         <h2>Piattaforme open. Programma a qualsiasi livello.</h2>
-        <p>Tutte le piattaforme che trattiamo espongono SDK completi: C++, Python, ROS2. Dal controllo di alto livello al torque control a 1 kHz, ogni livello è accessibile. Le versioni EDU e ricerca sono l'unica scelta per chi vuole sviluppare software proprio: i modelli base non supportano sviluppo secondario.</p>
+        <p>Tutte le piattaforme che trattiamo espongono SDK completi: C++, Python, ROS2. Dal controllo di alto livello a quello di basso livello, ogni livello è accessibile. Le versioni EDU e ricerca sono l'unica scelta per chi vuole sviluppare software proprio: i modelli base non supportano sviluppo secondario.</p>
       </div>
 
       <!-- 1A - UMANOIDI -->
       <div id="umanoidi" class="subsection-block">
         <div class="subsection-head">
           <span class="subsection-tag">1A · Umanoidi programmabili</span>
-          <h3>Umanoidi programmabili. Dalla locomozione alla manipolazione bimane.</h3>
+          <h3>Umanoidi programmabili. Dalla locomozione alla manipolazione.</h3>
         </div>
 
         <div class="robot-grid cols-3">
@@ -752,6 +760,11 @@
                 <p class="use-case-text">Piattaforma entry-level per laboratori universitari: navigazione, HRI, protocolli di interazione, corsi pratici di robotica umanoide.</p>
               </div>
 
+              <div class="avviso-box">
+                <strong>Repository proprietari inclusi</strong>
+                L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
+              </div>
+
               <div class="robot-card-cta">
                 <!-- PREZZO DA VERIFICARE: R1 EDU Standard ~$10.000-12.000 USD; R1 EDU Pro ~$20.000-35.000 USD -->
                 <a href="prodotti/unitree-r1-edu.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
@@ -801,6 +814,11 @@
                 <p class="use-case-text">Ricerca su HRI a scala umana, manipolazione complessa, controllo whole-body, co-presenza e interazione sociale.</p>
               </div>
 
+              <div class="avviso-box">
+                <strong>Repository proprietari inclusi</strong>
+                L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
+              </div>
+
               <div class="robot-card-cta">
                 <!-- PREZZO DA VERIFICARE: H2 EDU listino RoboStore ~$68.900 USD; versione internazionale con mani avanzate sup. -->
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi quotazione H2</a>
@@ -816,6 +834,7 @@
         <div class="subsection-head">
           <span class="subsection-tag">1B · Quadrupedi SDK-aperti</span>
           <h3>Quadrupedi SDK-aperti. Dal campo al laboratorio, con lo stesso codice.</h3>
+          <p class="subsection-note">SDK ufficiali aperti (C++, Python, ROS2) + le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra, inclusi con ogni robot e percorso di formazione.</p>
         </div>
 
         <div class="robot-grid cols-3">
@@ -855,6 +874,11 @@
               <div class="use-case-box">
                 <span class="use-case-label">Caso d'uso chiave</span>
                 <p class="use-case-text">Corsi universitari di robotica mobile, SLAM, navigazione autonoma, reinforcement learning su hardware reale, ricerca HRI a basso costo.</p>
+              </div>
+
+              <div class="avviso-box">
+                <strong>Repository proprietari inclusi</strong>
+                L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
               </div>
 
               <div class="robot-card-cta">
@@ -910,6 +934,11 @@
                 <p class="use-case-text">Ricerca su navigazione in ambienti non strutturati, ispezione autonoma, SLAM in ambienti ostili, reinforcement learning su piattaforma mid-tier robusta.</p>
               </div>
 
+              <div class="avviso-box">
+                <strong>Repository proprietari inclusi</strong>
+                L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
+              </div>
+
               <div class="robot-card-cta">
                 <!-- PREZZO DA VERIFICARE: A2 Pro listino non ancora pubblico, contattare per quotazione -->
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo A2</a>
@@ -955,6 +984,11 @@
               <div class="use-case-box">
                 <span class="use-case-label">Caso d'uso chiave</span>
                 <p class="use-case-text">Ricerca su locomozione in ambienti estremi, deployment su campo reale, algoritmi di navigazione e percezione in condizioni hazardous.</p>
+              </div>
+
+              <div class="avviso-box">
+                <strong>Repository proprietari inclusi</strong>
+                L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
               </div>
 
               <div class="robot-card-cta">
@@ -1022,6 +1056,11 @@
                 <p class="use-case-text">Ricerca su manipulation, grasping, force-controlled assembly, imitation learning, reinforcement learning, human-robot collaboration, insegnamento robotica avanzata.</p>
               </div>
 
+              <div class="avviso-box">
+                <strong>Repository proprietari inclusi</strong>
+                L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
+              </div>
+
               <div class="robot-card-cta">
                 <!-- PREZZO DA VERIFICARE: Franka Research 3 listino ~€15.000-20.000 EUR (variabile per distribuzione) -->
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi quotazione FR3</a>
@@ -1041,7 +1080,7 @@
 
       <div class="vert-section-head">
         <p class="label">02 · Accessori · Mani robotiche</p>
-        <h2>Mani destramente articolate. Manipolazione a 6 gradi di libertà.</h2>
+        <h2>Manipolatori a 2/3/5 dita. Manipolazione a 6 gradi di libertà.</h2>
         <p>Le mani robotiche Inspire RH56 sono compatibili con Unitree G1 EDU Flagship e con i principali bracci umanoidi. 6 DoF, 12 giunti, sensori di forza e posizione integrati, supporto ROS nativo.</p>
       </div>
 
@@ -1086,6 +1125,11 @@
             <div class="use-case-box">
               <span class="use-case-label">Caso d'uso chiave</span>
               <p class="use-case-text">Grasping di oggetti di peso medio-alto, task pick-and-place, protesi robotiche, manipolazione in ambienti industriali simulati.</p>
+            </div>
+
+            <div class="avviso-box">
+              <strong>Repository proprietari inclusi</strong>
+              L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
             </div>
 
             <div class="robot-card-cta">
@@ -1137,6 +1181,11 @@
               <p class="use-case-text">Task ad alta velocità e desterità fine: rock-paper-scissors vision-guided (vinto contro umani), gesti, interazione, ricerca su manipolazione rapida.</p>
             </div>
 
+            <div class="avviso-box">
+              <strong>Repository proprietari inclusi</strong>
+              L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
+            </div>
+
             <div class="robot-card-cta">
               <!-- PREZZO DA VERIFICARE: contattare per quotazione -->
               <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo BFX</a>
@@ -1183,6 +1232,11 @@
             <div class="use-case-box">
               <span class="use-case-label">Caso d'uso chiave</span>
               <p class="use-case-text">Ricerca avanzata su tactile sensing, imitation learning con feedback di forza completo, assemblaggio preciso, grasping con retroazione tattile.</p>
+            </div>
+
+            <div class="avviso-box">
+              <strong>Repository proprietari inclusi</strong>
+              L'acquisto di robot o percorsi di formazione include le nostre librerie proprietarie su GitHub: stack di partenza testati e mantenuti dal team Abra.
             </div>
 
             <div class="robot-card-cta">
