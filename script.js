@@ -54,6 +54,15 @@ mobileMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
+// Mobile dropdown accordion
+mobileMenu.querySelectorAll('.mobile-dropdown-trigger').forEach(trigger => {
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    trigger.closest('.mobile-dropdown').classList.toggle('open');
+  });
+});
+
 // Navbar background on scroll
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {

@@ -537,43 +537,74 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container navbar-inner">
-      <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
       <div class="nav-links">
-        <a href="/">Abra Robotics</a>
-        <a href="#processo">Processo</a>
-        <a href="#cosa-ottieni">Cosa ottieni</a>
-        <a href="#tempi">Tempi</a>
-        <a href="#faq">FAQ</a>
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html#cobot">Cobot</a>
+            <a href="manifattura-logistica.html#amr">AMR</a>
+            <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
+            <a href="manifattura-logistica.html#umanoidi">Umanoidi</a>
+          </div>
+        </div>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+            <a href="universita-ricerca.html">Università e Ricerca</a>
+          </div>
+        </div>
       </div>
-      <a href="#form-assessment" class="btn btn-primary btn-sm">Prenota una call gratuita</a>
+      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
       <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu">
-    <a href="/">Abra Robotics</a>
-    <a href="#processo">Processo</a>
-    <a href="#cosa-ottieni">Cosa ottieni</a>
-    <a href="#tempi">Tempi</a>
-    <a href="#faq">FAQ</a>
-    <a href="#form-assessment" class="btn btn-primary">Prenota una call gratuita</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html#cobot">Cobot</a>
+        <a href="manifattura-logistica.html#amr">AMR</a>
+        <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
+        <a href="manifattura-logistica.html#umanoidi">Umanoidi</a>
+      </div>
+    </div>
+    <a href="assessment.html">Trova il robot giusto</a>
+    <a href="finanziamenti.html">Finanziamenti</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+        <a href="universita-ricerca.html">Università e Ricerca</a>
+      </div>
+    </div>
+    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
   </div>
 
-  <!-- HERO -->
-  <section class="vert-hero">
+  <!-- HERO (page-hero pattern: LEFT content + visual right) -->
+  <header class="page-hero">
     <div class="container">
-      <div class="vert-hero-inner">
-        <p class="label">Assessment e POC</p>
-        <h1>Definiamo insieme il tuo caso d'uso. Poi scegliamo il robot e lo configuriamo.</h1>
-        <p class="vert-hero-sub">La maggior parte dei progetti di automazione fallisce perché l'analisi iniziale è fatta in modo superficiale. Abra parte dall'assessment: mappiamo i tuoi processi, valutiamo le soluzioni esistenti, simuliamo in 3D con fisica reale e, solo se ha senso, progettiamo il POC insieme.</p>
-        <div class="vert-hero-ctas">
-          <a href="#form-assessment" class="btn btn-primary">Prenota una call gratuita</a>
-          <a href="#processo" class="btn btn-secondary">Come funziona</a>
+      <div class="page-hero-grid">
+        <div class="page-hero-content">
+          <p class="label">Trova il robot giusto</p>
+          <h1>Definiamo insieme il tuo caso d'uso. Poi scegliamo il robot e lo configuriamo.</h1>
+          <p class="page-hero-sub">La maggior parte dei progetti di automazione fallisce perché l'analisi iniziale è fatta in modo superficiale. Abra parte dall'assessment: mappiamo i tuoi processi, valutiamo le soluzioni esistenti, simuliamo in 3D con fisica reale e, solo se ha senso, progettiamo il POC insieme.</p>
+          <div class="page-hero-ctas">
+            <a href="#form-assessment" class="btn btn-primary">Prenota una call gratuita</a>
+            <a href="#processo" class="btn btn-secondary">Come funziona</a>
+          </div>
+        </div>
+        <div class="page-hero-visual">
+          <div class="img-slot" style="background:url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&h=900&q=80&auto=format&fit=crop') center/cover, var(--gray-100); color:transparent;"></div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
   <!-- IL PROBLEMA -->
   <section id="problema" class="vert-section">
@@ -604,6 +635,7 @@
         <article class="step-item">
           <div class="step-marker"><span class="step-number">1</span></div>
           <div class="step-content">
+            <div class="img-slot" style="margin-bottom: 20px; background:url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=1000&h=560&q=75&auto=format&fit=crop') center/cover, var(--gray-100); color:transparent;"></div>
             <span class="step-eyebrow">Step 1 · Mappatura del processo</span>
             <h3 class="step-title">Capire cosa fai oggi, prima di immaginare cosa farebbe il robot.</h3>
             <p class="step-body">Mappiamo il processo reale: flusso materiali, tempi ciclo, variabilità dei pezzi, layout fisico, interfacce con operatori e altri sistemi. Raccogliamo anche i vincoli e i desiderata: cosa vuoi ottenere, cosa non puoi toccare, quali limiti di budget, tempo e organizzazione esistono. I vincoli contano quanto il processo.</p>
@@ -623,6 +655,7 @@
         <article class="step-item">
           <div class="step-marker"><span class="step-number">2</span></div>
           <div class="step-content">
+            <div class="img-slot" style="margin-bottom: 20px; background:url('https://images.unsplash.com/photo-1603201667141-5a2d4c673378?w=1000&h=560&q=75&auto=format&fit=crop') center/cover, var(--gray-100); color:transparent;"></div>
             <span class="step-eyebrow">Step 2 · Selezione delle soluzioni esistenti</span>
             <h3 class="step-title">Prima di progettare, cercare. Una soluzione già esistente è sempre meglio di una custom.</h3>
             <p class="step-body">Il mercato ha centinaia di soluzioni già deployate. Prima di progettare qualcosa di nuovo, verifichiamo se esiste già una risposta: un cobot con gripper standard, un AMR con percorso pre-configurato, un package software già testato su quel tipo di task. Se esiste una soluzione matura e il tuo caso d'uso ci entra, quella è la scelta. Se non esiste, o se la tua complessità la esclude, passiamo al co-design.</p>
@@ -641,6 +674,7 @@
         <article class="step-item">
           <div class="step-marker"><span class="step-number">3</span></div>
           <div class="step-content">
+            <div class="img-slot" style="margin-bottom: 20px; background:url('https://images.unsplash.com/photo-1769149068959-b11392164add?w=1000&h=560&q=75&auto=format&fit=crop') center/cover, var(--gray-100); color:transparent;"></div>
             <span class="step-eyebrow">Step 3 · Simulazione 3D con fisica reale</span>
             <h3 class="step-title">Vedi il robot nel tuo processo prima che esista fisicamente.</h3>
             <p class="step-body">Prima di qualsiasi ordine, simuliamo in 3D con fisica reale quello che il robot dovrà fare nel tuo ambiente. Non è un'animazione: è una simulazione con le caratteristiche fisiche del robot selezionato, il layout reale dello spazio, i vincoli di reach e payload, i tempi ciclo stimati. Se la simulazione non funziona, il robot reale non funzionerà. Se funziona, hai già un baseline misurabile prima dell'acquisto. Usiamo Isaac Sim (NVIDIA), MuJoCo o Gazebo in base alla complessità del task.</p>
@@ -660,6 +694,7 @@
         <article class="step-item">
           <div class="step-marker"><span class="step-number">4</span></div>
           <div class="step-content">
+            <div class="img-slot" style="margin-bottom: 20px; background:url('https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?w=1000&h=560&q=75&auto=format&fit=crop') center/cover, var(--gray-100); color:transparent;"></div>
             <span class="step-eyebrow">Step 4 · Co-design del POC e copertura normativa</span>
             <h3 class="step-title">Progettiamo il POC insieme. E curiamo anche la parte normativa.</h3>
             <p class="step-body">Se la simulazione valida la fattibilità, progettiamo il POC: obiettivi misurabili, configurazione hardware, perimetro di test, criteri di successo, tempi. Il POC non è "proviamo e vediamo": è un esperimento con ipotesi chiare e metriche di valutazione definite. In parallelo copriamo la normativa: valutazione del rischio specifica per il tuo caso d'uso (ISO 10218 e ISO/TS 15066 per i cobot, ISO 3691-4 per gli AMR, Reg. UE 2023/1230 per le macchine), DVR aggiornato se necessario, documentazione CE. Gestiamo questa parte insieme al tuo RSPP. Non la lasciamo al cliente da solo.</p>
@@ -868,33 +903,33 @@
   <section id="form-assessment" class="section section-cta" style="scroll-margin-top:130px;">
     <div class="container">
       <div class="cta-content">
-        <h2>Raccontaci il tuo processo.</h2>
-        <p class="cta-subtitle">Compila il form, un consulente Abra ti ricontatterà entro 12 ore per fissare la prima call gratuita.</p>
+        <h2>Hai un progetto in mente?</h2>
+        <p class="cta-subtitle">Compila il form, un consulente ABRA ti ricontatterà entro 12 ore.</p>
       </div>
 
-      <form id="contact-form-el" class="contact-form" novalidate>
+      <form id="contact-form" class="contact-form" novalidate>
         <div class="form-row">
           <div class="form-group">
             <label for="nome">Nome e cognome</label>
             <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
           </div>
           <div class="form-group">
-            <label for="azienda">Azienda o istituzione</label>
+            <label for="azienda">Azienda</label>
             <input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l." required>
           </div>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="mario@azienda.com" required>
+          <label for="ruolo">Ruolo</label>
+          <input type="text" id="ruolo" name="ruolo" placeholder="CTO, Responsabile R&D, Ricercatore..." required>
         </div>
         <div class="form-group">
-          <label for="messaggio">Descrivi il processo che vorresti valutare</label>
-          <textarea id="messaggio" name="messaggio" placeholder="Esempio: linea di assemblaggio con 4 operatori su pick & place; vorremmo capire se un cobot ha senso e quale sceglieremmo." rows="5" required></textarea>
+          <label for="messaggio">La tua richiesta</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Raccontaci il tuo progetto e chiedici tutto quello che vuoi sapere." rows="6" required></textarea>
         </div>
         <input type="hidden" name="vertical" value="Assessment e POC">
         <div class="form-footer">
           <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
-          <p class="form-note">Risposta garantita entro 12 ore lavorative. La prima call è gratuita.</p>
+          <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
         </div>
         <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
       </form>
@@ -905,22 +940,28 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a href="/" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca.</p>
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
       </div>
       <div class="footer-nav">
-        <span class="footer-heading">Assessment</span>
-        <a href="#processo">Processo</a>
-        <a href="#cosa-ottieni">Cosa ottieni</a>
-        <a href="#per-chi">Per chi è</a>
-        <a href="#tempi">Tempi</a>
-        <a href="#faq">FAQ</a>
-        <a href="#form-assessment">Contattaci</a>
+        <span class="footer-heading">Navigazione</span>
+        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+        <a href="universita-ricerca.html">Università e Ricerca</a>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Prodotti</span>
+        <a href="manifattura-logistica.html#cobot">Cobot</a>
+        <a href="manifattura-logistica.html#amr">AMR</a>
+        <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
+        <a href="manifattura-logistica.html#umanoidi">Umanoidi</a>
       </div>
       <div class="footer-contact">
         <span class="footer-heading">Contatti</span>
         <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
         <p>Italia</p>
+        <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
       </div>
     </div>
     <div class="container footer-bottom">
