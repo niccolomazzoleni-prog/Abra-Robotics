@@ -176,6 +176,120 @@ h3 {
   font-weight: 500;
 }
 
+/* === Dropdown nav (desktop) === */
+.nav-item-dropdown { position: relative; }
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  transition: color 0.2s;
+}
+.nav-dropdown-trigger:hover { color: var(--black); }
+.nav-caret {
+  font-size: 0.7em;
+  margin-left: 2px;
+  transition: transform 0.2s;
+  color: var(--gray-400);
+}
+.nav-item-dropdown:hover .nav-caret,
+.nav-item-dropdown:focus-within .nav-caret { transform: rotate(180deg); color: var(--black); }
+.nav-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1001;
+}
+.nav-item-dropdown::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+.nav-item-dropdown:hover .nav-dropdown-panel,
+.nav-item-dropdown:focus-within .nav-dropdown-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-panel a {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-dropdown-panel a:hover {
+  background: rgba(0,0,0,0.04);
+  color: var(--black);
+}
+
+/* === Dropdown nav (mobile accordion) === */
+.mobile-dropdown { display: flex; flex-direction: column; }
+.mobile-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--black);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+.mobile-dropdown-trigger .nav-caret {
+  font-size: 0.8em;
+  transition: transform 0.2s;
+}
+.mobile-dropdown.open .mobile-dropdown-trigger .nav-caret { transform: rotate(180deg); }
+.mobile-dropdown-panel {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 0 4px 16px;
+  margin: 10px 0 0;
+  border-left: 2px solid var(--gray-200);
+}
+.mobile-dropdown.open .mobile-dropdown-panel { display: flex; }
+.mobile-dropdown-panel a {
+  font-size: 1rem;
+  color: var(--gray-600);
+  font-weight: 400;
+}
+
 
 /* === Buttons === */
 .btn {
@@ -1136,6 +1250,74 @@ h3 {
 .form-feedback.success { color: #16a34a; }
 .form-feedback.error   { color: #dc2626; }
 
+/* === Chi siamo === */
+.section-about {
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+  gap: 64px;
+  align-items: start;
+}
+.about-intro h2 {
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 14px 0 22px;
+}
+.about-lead {
+  font-size: 1.08rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.about-value {
+  padding: 28px 32px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius, 18px);
+  background: var(--gray-50, rgba(0,0,0,0.02));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.about-value:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0,0,0,0.18);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.06);
+}
+.about-value-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 10px;
+}
+.about-value h3 {
+  font-size: 1.2rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+.about-value p {
+  font-size: 0.98rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
 /* === CTA Section === */
 .section-cta {
   background: var(--black);
@@ -1493,6 +1675,212 @@ h3 {
     padding: 24px 20px;
   }
 }
+
+/* ===========================================================
+   UNIFORM SITE-WIDE — applies to ALL pages (root + vertical)
+   =========================================================== */
+
+/* Footer — 4 columns desktop */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 56px;
+  padding: 80px 0 56px;
+}
+.footer-brand .footer-desc {
+  max-width: 320px;
+  line-height: 1.6;
+  color: var(--gray-400);
+}
+.footer-nav,
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-nav a,
+.footer-contact a {
+  text-decoration: none;
+  color: var(--gray-400);
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.footer-nav a:hover,
+.footer-contact a:hover { color: var(--white); }
+.footer-heading {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.footer-contact .btn {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* ===========================================================
+   MOBILE — uniform centering for hero + section headers
+   =========================================================== */
+@media (max-width: 768px) {
+  /* Vertical-page hero (manifattura, universita, assessment, finanziamenti) */
+  .vert-hero { padding: calc(40px + 60px + 48px) 0 64px; }
+  .vert-hero-inner,
+  .vert-hero h1,
+  .vert-hero .vert-hero-sub,
+  .vert-hero .label,
+  .vert-hero p { text-align: center; }
+  .vert-hero-ctas {
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .vert-hero-ctas .btn { width: 100%; text-align: center; justify-content: center; }
+
+  /* Vertical-page section heads */
+  .vert-section { padding: 64px 0; }
+  .vert-section-head,
+  .vert-section-head h2,
+  .vert-section-head p,
+  .vert-section-head .label { text-align: center; }
+  .vert-section-head { max-width: 100%; margin: 0 auto 36px; padding: 0 4px; }
+
+  /* Stepper (assessment) — center eyebrow + title, body left for readability */
+  .step-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .step-marker { margin: 0 auto 16px !important; }
+  .step-eyebrow,
+  .step-title { text-align: center; }
+  .step-body { text-align: left; }
+  .step-outputs { text-align: left; }
+  .step-outputs ul { padding-left: 18px; }
+
+  /* Tool cards (finanziamenti) — keep card body left, header center */
+  .tool-card { text-align: left; }
+  .tool-card h3,
+  .tool-card .tool-eyebrow { text-align: left; }
+
+  /* Robot cards in vertical pages — keep title and CTA centered */
+  .robot-card,
+  .robot-card .robot-card-title,
+  .robot-card .robot-card-meta { text-align: center; }
+  .robot-card .use-case-box { text-align: left; }
+
+  /* Home hero CTAs full-width stacked */
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .hero-ctas .btn { width: 100%; text-align: center; justify-content: center; }
+
+  /* About / Chi siamo grid stacks */
+  .about-grid { gap: 36px; }
+  .about-intro,
+  .about-intro h2,
+  .about-intro .label,
+  .about-intro .about-lead { text-align: center; }
+
+  /* Footer mobile center */
+  .footer-grid {
+    padding: 56px 0 32px;
+    text-align: center;
+  }
+  .footer-brand,
+  .footer-nav,
+  .footer-contact { align-items: center; }
+  .footer-brand .footer-desc { margin-left: auto; margin-right: auto; }
+  .footer-contact .btn { align-self: center; }
+
+  /* Anchor strip on finanziamenti page — center scrollable */
+  .anchor-strip-inner { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ===========================================================
+   PAGE HERO — for secondary pages (chi-siamo, future landings)
+   Pattern: LEFT content + visual on right (desktop), stack centered (mobile)
+   =========================================================== */
+.page-hero {
+  padding: calc(40px + 72px + 80px) 0 88px;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+}
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: center;
+}
+.page-hero-content { max-width: 620px; }
+.page-hero-content h1 {
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin: 16px 0 22px;
+}
+.page-hero-sub {
+  font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin: 0 0 32px;
+}
+.page-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.page-hero-visual { width: 100%; }
+.page-hero-visual .img-slot { aspect-ratio: 4 / 3; }
+
+@media (max-width: 900px) {
+  .page-hero { padding: calc(40px + 60px + 48px) 0 56px; }
+  .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+  .page-hero-content { margin: 0 auto; }
+  .page-hero-content h1,
+  .page-hero-sub,
+  .page-hero-content .label { text-align: center; }
+  .page-hero-ctas {
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .page-hero-ctas .btn { width: 100%; justify-content: center; }
+  .page-hero-visual .img-slot { aspect-ratio: 16 / 9; }
+}
+
+/* ===========================================================
+   PLACEHOLDER UTILITIES — reuse home patterns site-wide
+   .card-img-placeholder (light bg) and .robot-img-placeholder (dark bg)
+   already defined above. Adding aspect-locked variant for hero use.
+   =========================================================== */
+.img-slot {
+  width: 100%;
+  background: var(--gray-100);
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--gray-200);
+}
+.img-slot.dark {
+  background: var(--gray-800);
+  color: var(--gray-400);
+  border-color: rgba(255,255,255,0.06);
+}
+.img-slot.square { aspect-ratio: 1 / 1; }
+.img-slot.portrait { aspect-ratio: 3 / 4; }
+.img-slot.wide { aspect-ratio: 21 / 9; }
 
 /* === Hero Entrance Animation === */
 @keyframes hero-fade-up {

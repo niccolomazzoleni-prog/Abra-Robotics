@@ -11,7 +11,7 @@ Always reference and apply these skills when working on this project:
 ## Design Direction (Locked)
 
 - **Font**: Satoshi (Fontshare CDN)
-- **Colors**: Black (#000) / White (#fff) primary, Orange accents (sparingly)
+- **Colors**: Black (#000) / White (#fff) primary, Purple accents (sparingly)
 - **Inspiration**: Sanity.io — clean, modern, full-width
 - **Cards**: Glassmorphism (backdrop-filter blur, semi-transparent)
 - **Buttons**: Black bg, white border, scale(1.05) on hover
