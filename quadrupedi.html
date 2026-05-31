@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Quadrupedi Unitree — Tutta la gamma | Abra Robotics</title>
+  <meta name="description" content="Tutti i robot quadrupedi Unitree distribuiti in Italia da Abra Robotics: Go2 Pro, Go2 EDU, Go2 EDU+, Go2 Enterprise+ U2, A2, A2 Pro e B2. Specifiche, confronto e schede tecniche.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/quadrupedi.html">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Componente robot-card (estratto da manifattura-logistica) ── */
+/* Robot/Product card grid */
+    .robot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .robot-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .robot-grid.cols-1 {
+      grid-template-columns: minmax(0, 760px);
+      justify-content: center;
+    }
+
+    .robot-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+    }
+    .robot-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.15);
+    }
+    .robot-card.dark {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .robot-card.dark:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.25);
+    }
+
+    /* Media */
+    .robot-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .robot-card.dark .robot-media {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .robot-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+      filter: drop-shadow(0 14px 18px rgba(0,0,0,0.18));
+      transition: transform 0.5s ease, filter 0.4s ease;
+    }
+    .robot-card:hover .robot-media img {
+      transform: scale(1.04);
+      filter: drop-shadow(0 18px 22px rgba(0,0,0,0.22));
+    }
+    .robot-media-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-600);
+      z-index: 2;
+    }
+    .robot-card.dark .robot-media-tag {
+      background: rgba(0,0,0,0.55);
+      color: rgba(255,255,255,0.88);
+      border-color: rgba(255,255,255,0.15);
+    }
+    .robot-media-placeholder {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      padding: 24px;
+    }
+    .robot-media.no-img .robot-media-placeholder { display: flex; }
+    .robot-media-placeholder strong {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--gray-600);
+    }
+    .robot-media-placeholder span {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+    .robot-media.no-img img { display: none; }
+
+    /* Body */
+    .robot-body {
+      padding: 28px 28px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      flex: 1;
+    }
+    .robot-card h3 {
+      font-size: 1.4rem;
+      letter-spacing: -0.015em;
+      margin: 0 0 2px;
+    }
+    .robot-card.dark h3 { color: var(--white); }
+    .robot-subtitle {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      margin: 0;
+      font-weight: 500;
+    }
+    .robot-card.dark .robot-subtitle { color: rgba(255,255,255,0.45); }
+
+    /* Key specs grid (2x2) */
+    .key-specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .robot-card.dark .key-specs { border-color: rgba(255,255,255,0.10); }
+    .key-spec {
+      padding: 14px 16px;
+      border-right: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--white);
+    }
+    .robot-card.dark .key-spec {
+      background: rgba(255,255,255,0.02);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .key-spec:nth-child(2n) { border-right: none; }
+    .key-spec:nth-last-child(-n+2) { border-bottom: none; }
+    .key-spec-label {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 4px;
+    }
+    .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
+    .key-spec-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .robot-card.dark .key-spec-value { color: var(--white); }
+    .key-spec-value small {
+      font-weight: 500;
+      color: var(--gray-400);
+      font-size: 0.78em;
+    }
+    .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
+
+    /* Detail rows */
+    .spec-rows {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0;
+    }
+    .spec-rows li {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 14px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .robot-card.dark .spec-rows li { border-color: rgba(255,255,255,0.06); }
+    .spec-rows li:last-child { border-bottom: none; }
+    .spec-rows li span:first-child {
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-400);
+      padding-top: 2px;
+    }
+    .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
+    .spec-rows li span:last-child {
+      color: var(--gray-800);
+      font-weight: 500;
+    }
+    .robot-card.dark .spec-rows li span:last-child { color: rgba(255,255,255,0.85); }
+
+    /* Use case highlight */
+    .use-case-box {
+      background: var(--gray-50);
+      border-left: 3px solid var(--black);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .robot-card.dark .use-case-box {
+      background: rgba(255,255,255,0.03);
+      border-left-color: var(--orange);
+    }
+    .use-case-label {
+      display: block;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+    .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
+    .use-case-text {
+      font-size: 0.92rem;
+      color: var(--gray-800);
+      line-height: 1.55;
+      font-weight: 500;
+      margin: 0;
+    }
+    .robot-card.dark .use-case-text { color: rgba(255,255,255,0.85); }
+
+    /* Avviso importante (R1) */
+    .avviso-box {
+      padding: 14px 18px;
+      background: rgba(179,126,255,0.12);
+      border: 1px solid rgba(179,126,255,0.3);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.55;
+    }
+    .avviso-box strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* CTA */
+    .robot-card-cta {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    /* ── Pagina collezione ── */
+    .collection-hero { padding: calc(40px + 72px + 64px) 0 56px; background: var(--white); }
+    .collection-hero .label { margin-bottom: 16px; }
+    .collection-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 20px; }
+    .collection-hero p.lead { font-size: 1.15rem; color: var(--gray-600); line-height: 1.7; max-width: 760px; }
+    .collection-hero .hero-meta { display:flex; gap:28px; flex-wrap:wrap; margin-top:28px; }
+    .collection-hero .hero-meta div { display:flex; flex-direction:column; }
+    .collection-hero .hero-meta strong { font-size:1.6rem; font-weight:900; letter-spacing:-0.03em; }
+    .collection-hero .hero-meta span { font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-400); font-weight:600; }
+    .matrix-wrap { border:1px solid var(--gray-200); border-radius: var(--radius); overflow:auto; -webkit-overflow-scrolling:touch; }
+    .matrix { width:100%; border-collapse:collapse; min-width: 880px; }
+    .matrix thead td { background: var(--black); color:#fff; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; padding:14px 16px; text-align:center; }
+    .matrix thead td:first-child { text-align:left; }
+    .matrix tbody td { padding:14px 16px; font-family:var(--font); font-size:0.86rem; color:var(--gray-700); border-bottom:1px solid var(--gray-100); text-align:center; vertical-align:middle; }
+    .matrix tbody tr:hover td { background: rgba(0,0,0,0.025); }
+    .matrix tbody tr:last-child td { border-bottom:none; }
+    @media (max-width: 900px) { .robot-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <p>Distributore ufficiale Unitree in Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
+  </div>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html#cobot">Cobot</a>
+            <a href="manifattura-logistica.html#amr">AMR</a>
+            <a href="quadrupedi.html">Quadrupedi</a>
+            <a href="umanoidi.html">Umanoidi</a>
+            <a href="accessori.html">Accessori</a>
+          </div>
+        </div>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+            <a href="universita-ricerca.html">Università e Ricerca</a>
+          </div>
+        </div>
+        <a href="index.html#chi-siamo">Chi siamo</a>
+      </div>
+      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html#cobot">Cobot</a>
+        <a href="manifattura-logistica.html#amr">AMR</a>
+        <a href="quadrupedi.html">Quadrupedi</a>
+        <a href="umanoidi.html">Umanoidi</a>
+        <a href="accessori.html">Accessori</a>
+      </div>
+    </div>
+    <a href="assessment.html">Trova il robot giusto</a>
+    <a href="finanziamenti.html">Finanziamenti</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+        <a href="universita-ricerca.html">Università e Ricerca</a>
+      </div>
+    </div>
+    <a href="index.html#chi-siamo">Chi siamo</a>
+    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
+  </div>
+
+  <section class="collection-hero">
+    <div class="container">
+      <p class="label">Robot Quadrupedi</p>
+      <h1>Quadrupedi Unitree — tutta la gamma</h1>
+      <p class="lead">Dal Go2 agile per education e ispezione leggera fino al B2 industriale pesante IP67: la gamma completa di robot quadrupedi Unitree, distribuita in Italia da Abra Robotics. Una scheda tecnica dedicata per ciascun modello.</p>
+      <div class="hero-meta">
+        <div><strong>7</strong><span>Modelli</span></div>
+        <div><strong>10–120 kg</strong><span>Carico utile</span></div>
+        <div><strong>IP67</strong><span>Fino a (A2 Pro / B2)</span></div>
+        <div><strong>Italia</strong><span>Distributore ufficiale</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:24px;">
+    <div class="container">
+      <div class="robot-grid">
+
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Consumer / base</span>
+            <img src="prodotti/assets/variants/go2-pro/img-01.jpg" alt="Unitree Go2 Pro, quadrupede Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree Go2 Pro</strong>
+              <span>Quadrupede · 10 kg carico</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree Go2 Pro</h3>
+              <p class="robot-subtitle">Quadrupede · Consumer / base</p>
+            </div>
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Carico utile</span><span class="key-spec-value">10 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">1,7 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Pendenza max</span><span class="key-spec-value">40°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core CPU</span></div>
+            </div>
+            <ul class="spec-rows">
+              <li><span>LiDAR</span><span>3D L1</span></li>
+              <li><span>Protezione</span><span>—</span></li>
+              <li><span>Autonomia</span><span>1–2 h</span></li>
+              <li><span>Garanzia</span><span>12 mesi</span></li>
+            </ul>
+            <div class="robot-card-cta">
+              <a href="prodotti/unitree-go2-pro.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Education · 40 TOPS</span>
+            <img src="prodotti/assets/variants/go2-edu/img-01.jpg" alt="Unitree Go2 EDU, quadrupede Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree Go2 EDU</strong>
+              <span>Quadrupede · 12 kg carico</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree Go2 EDU</h3>
+              <p class="robot-subtitle">Quadrupede · Education · 40 TOPS</p>
+            </div>
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Carico utile</span><span class="key-spec-value">12 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">2 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Pendenza max</span><span class="key-spec-value">40°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin Nano 40 TOPS</span></div>
+            </div>
+            <ul class="spec-rows">
+              <li><span>LiDAR</span><span>4D L2</span></li>
+              <li><span>Protezione</span><span>—</span></li>
+              <li><span>Autonomia</span><span>2–4 h</span></li>
+              <li><span>Garanzia</span><span>12 mesi</span></li>
+            </ul>
+            <div class="robot-card-cta">
+              <a href="prodotti/unitree-go2-edu.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Education · 100 TOPS</span>
+            <img src="prodotti/assets/variants/go2-edu/img-02.jpg" alt="Unitree Go2 EDU+, quadrupede Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree Go2 EDU+</strong>
+              <span>Quadrupede · 12 kg carico</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree Go2 EDU+</h3>
+              <p class="robot-subtitle">Quadrupede · Education · 100 TOPS</p>
+            </div>
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Carico utile</span><span class="key-spec-value">12 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">2 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Pendenza max</span><span class="key-spec-value">40°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX 100 TOPS</span></div>
+            </div>
+            <ul class="spec-rows">
+              <li><span>LiDAR</span><span>4D L2</span></li>
+              <li><span>Protezione</span><span>—</span></li>
+              <li><span>Autonomia</span><span>2–4 h</span></li>
+              <li><span>Garanzia</span><span>12 mesi</span></li>
+            </ul>
+            <div class="robot-card-cta">
+              <a href="prodotti/unitree-go2-edu-plus.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Enterprise · sorveglianza</span>
+            <img src="prodotti/assets/variants/go2-ent-u2/img-01.jpg" alt="Unitree Go2 Enterprise+ U2, quadrupede Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree Go2 Enterprise+ U2</strong>
+              <span>Quadrupede · 10 kg carico</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree Go2 Enterprise+ U2</h3>
+              <p class="robot-subtitle">Quadrupede · Enterprise · sorveglianza</p>
+            </div>
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Carico utile</span><span class="key-spec-value">10 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">1,7 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Pendenza max</span><span class="key-spec-value">40°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core CPU</span></div>
+            </div>
+            <ul class="spec-rows">
+              <li><span>LiDAR</span><span>L1</span></li>
+              <li><span>Protezione</span><span>—</span></li>
+              <li><span>Autonomia</span><span>1–2 h</span></li>
+              <li><span>Garanzia</span><span>12 mesi</span></li>
+            </ul>
+            <div class="robot-card-cta">
+              <a href="prodotti/unitree-go2-enterprise-u2.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Industriale · IP56</span>
+            <img src="prodotti/assets/variants/a2/img-01.jpg" alt="Unitree A2, quadrupede Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree A2</strong>
+              <span>Quadrupede · 25 kg carico</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree A2</h3>
+              <p class="robot-subtitle">Quadrupede · Industriale · IP56</p>
+            </div>
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Carico utile</span><span class="key-spec-value">25 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">~5 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Pendenza max</span><span class="key-spec-value">45°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core + Intel i7</span></div>
+            </div>
+            <ul class="spec-rows">
+              <li><span>LiDAR</span><span>Industriale</span></li>
+              <li><span>Protezione</span><span>IP56</span></li>
+              <li><span>Autonomia</span><span>>5 h</span></li>
+              <li><span>Garanzia</span><span>12 mesi</span></li>
+            </ul>
+            <div class="robot-card-cta">
+              <a href="prodotti/unitree-a2.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Field autonomy · IP67</span>
+            <img src="prodotti/assets/variants/a2-pro/img-01.jpg" alt="Unitree A2 Pro, quadrupede Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree A2 Pro</strong>
+              <span>Quadrupede · 25 kg carico</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree A2 Pro</h3>
+              <p class="robot-subtitle">Quadrupede · Field autonomy · IP67</p>
+            </div>
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Carico utile</span><span class="key-spec-value">25 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">~5 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Pendenza max</span><span class="key-spec-value">45°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Tri-processore i7</span></div>
+            </div>
+            <ul class="spec-rows">
+              <li><span>LiDAR</span><span>Dual ind.</span></li>
+              <li><span>Protezione</span><span>IP67</span></li>
+              <li><span>Autonomia</span><span>>5 h</span></li>
+              <li><span>Garanzia</span><span>12 mesi</span></li>
+            </ul>
+            <div class="robot-card-cta">
+              <a href="prodotti/unitree-a2-pro.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <div class="robot-media">
+            <span class="robot-media-tag">Industriale pesante · IP67</span>
+            <img src="prodotti/assets/variants/b2/img-01.jpg" alt="Unitree B2, quadrupede Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree B2</strong>
+              <span>Quadrupede · 40 kg carico</span>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree B2</h3>
+              <p class="robot-subtitle">Quadrupede · Industriale pesante · IP67</p>
+            </div>
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Carico utile</span><span class="key-spec-value">40 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">>6 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Pendenza max</span><span class="key-spec-value">>45°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Intel i5 + i7</span></div>
+            </div>
+            <ul class="spec-rows">
+              <li><span>LiDAR</span><span>32 canali</span></li>
+              <li><span>Protezione</span><span>IP67</span></li>
+              <li><span>Autonomia</span><span>4–6 h</span></li>
+              <li><span>Garanzia</span><span>12 mesi</span></li>
+            </ul>
+            <div class="robot-card-cta">
+              <a href="prodotti/unitree-b2.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header" style="text-align:left;max-width:100%;">
+        <p class="label label-light">Confronto</p>
+        <h2>Tutta la gamma quadrupedi a confronto</h2>
+        <p class="section-sub" style="margin-left:0;">Carico, velocità, computing, LiDAR e protezione dei sette modelli. Scorri in orizzontale su mobile.</p>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <thead>
+            <tr><td>Modello</td><td>Carico</td><td>Velocità</td><td>Computing</td><td>LiDAR</td><td>IP</td><td>Garanzia</td><td></td></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:left;"><a href="prodotti/unitree-go2-pro.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 Pro</a></td>
+              <td>10 kg</td>
+              <td>1,7 m/s</td>
+              <td>8-core CPU</td>
+              <td>3D L1</td>
+              <td>—</td>
+              <td>12 mesi</td>
+              <td style="padding:10px 14px;"><a href="prodotti/unitree-go2-pro.html" class="btn btn-secondary btn-card">Apri</a></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;"><a href="prodotti/unitree-go2-edu.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 EDU</a></td>
+              <td>12 kg</td>
+              <td>2 m/s</td>
+              <td>Orin Nano 40 TOPS</td>
+              <td>4D L2</td>
+              <td>—</td>
+              <td>12 mesi</td>
+              <td style="padding:10px 14px;"><a href="prodotti/unitree-go2-edu.html" class="btn btn-secondary btn-card">Apri</a></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;"><a href="prodotti/unitree-go2-edu-plus.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 EDU+</a></td>
+              <td>12 kg</td>
+              <td>2 m/s</td>
+              <td>Orin NX 100 TOPS</td>
+              <td>4D L2</td>
+              <td>—</td>
+              <td>12 mesi</td>
+              <td style="padding:10px 14px;"><a href="prodotti/unitree-go2-edu-plus.html" class="btn btn-secondary btn-card">Apri</a></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;"><a href="prodotti/unitree-go2-enterprise-u2.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 Enterprise+ U2</a></td>
+              <td>10 kg</td>
+              <td>1,7 m/s</td>
+              <td>8-core CPU</td>
+              <td>L1</td>
+              <td>—</td>
+              <td>12 mesi</td>
+              <td style="padding:10px 14px;"><a href="prodotti/unitree-go2-enterprise-u2.html" class="btn btn-secondary btn-card">Apri</a></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;"><a href="prodotti/unitree-a2.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree A2</a></td>
+              <td>25 kg</td>
+              <td>~5 m/s</td>
+              <td>8-core + Intel i7</td>
+              <td>Industriale</td>
+              <td>IP56</td>
+              <td>12 mesi</td>
+              <td style="padding:10px 14px;"><a href="prodotti/unitree-a2.html" class="btn btn-secondary btn-card">Apri</a></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;"><a href="prodotti/unitree-a2-pro.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree A2 Pro</a></td>
+              <td>25 kg</td>
+              <td>~5 m/s</td>
+              <td>Tri-processore i7</td>
+              <td>Dual ind.</td>
+              <td>IP67</td>
+              <td>12 mesi</td>
+              <td style="padding:10px 14px;"><a href="prodotti/unitree-a2-pro.html" class="btn btn-secondary btn-card">Apri</a></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;"><a href="prodotti/unitree-b2.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree B2</a></td>
+              <td>40 kg</td>
+              <td>>6 m/s</td>
+              <td>Intel i5 + i7</td>
+              <td>32 canali</td>
+              <td>IP67</td>
+              <td>12 mesi</td>
+              <td style="padding:10px 14px;"><a href="prodotti/unitree-b2.html" class="btn btn-secondary btn-card">Apri</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Non sai quale quadrupede scegliere?</h2>
+        <p class="cta-subtitle">Dalla didattica all'ispezione industriale: raccontaci il tuo caso d'uso e ti aiutiamo a scegliere il modello giusto. Risposta entro 12 ore.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+          <a href="assessment.html" class="btn btn-primary">Trova il robot giusto</a>
+          <a href="index.html#cta-finale" class="btn btn-secondary">Prenota una chiamata</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Navigazione</span>
+        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+        <a href="universita-ricerca.html">Università e Ricerca</a>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Prodotti</span>
+        <a href="manifattura-logistica.html#cobot">Cobot</a>
+        <a href="manifattura-logistica.html#amr">AMR</a>
+        <a href="quadrupedi.html">Quadrupedi</a>
+        <a href="umanoidi.html">Umanoidi</a>
+        <a href="accessori.html">Accessori</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Contatti</span>
+        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+        <p>Italia</p>
+        <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
