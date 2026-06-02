@@ -2,11 +2,12 @@
 """Genera la pagina collezione Umanoidi (umanoidi.html, livello root)."""
 import os
 from _gen_variants import LINEUP, COMPACT, V
+from _prezzi import PREZZI, euro
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repo root
 
 NAMES = {
- "g1":"Unitree G1 Base","g1-u1":"Unitree G1 EDU Standard","g1-u2":"Unitree G1 EDU Plus",
+ "g1":"Unitree G1 Air","g1-u1":"Unitree G1 EDU Standard","g1-u2":"Unitree G1 EDU Plus",
  "g1-u3":"Unitree G1 EDU Ultimate A","g1-u4":"Unitree G1 EDU Ultimate B","g1-u5":"Unitree G1 EDU Ultimate C",
  "g1-u6":"Unitree G1 EDU Ultimate D","g1-u7":"Unitree G1 EDU Ultimate E","g1-u8":"Unitree G1 EDU Ultimate F",
  "g1-comp":"Unitree G1 Comp",
@@ -25,6 +26,8 @@ def card(code):
     c = COMPACT[code]
     name = NAMES[code]
     href = f"prodotti/{c['file']}"
+    pz = PREZZI.get(c['file'])
+    price = euro(pz['cent']) if pz and pz['stato'] == 'acquista' else 'Su richiesta'
     return f'''        <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">{UNUM[code]} · {c['tag']}</span>
@@ -55,7 +58,8 @@ def card(code):
               <li><span>Garanzia</span><span>{c['warranty']}</span></li>
             </ul>
 
-            <div class="robot-card-cta">
+            <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+              <span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">{price}</span>
               <a href="{href}" class="btn btn-primary btn-sm">Vedi scheda →</a>
             </div>
           </div>
