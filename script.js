@@ -112,3 +112,31 @@ document.head.insertAdjacentHTML('beforeend', `
     }
   </style>
 `);
+
+// Cookie / privacy informational notice (technical cookies only)
+(function () {
+  const KEY = 'abra_cookie_notice';
+  try {
+    if (localStorage.getItem(KEY) === 'ok') return;
+  } catch (e) { /* localStorage non disponibile: mostra comunque l'avviso */ }
+
+  // Risolvi il percorso della cookie policy (le pagine in /prodotti/ sono in sottocartella)
+  const prefix = window.location.pathname.includes('/prodotti/') ? '../' : '';
+
+  const banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-label', 'Avviso cookie');
+  banner.innerHTML = `
+    <p>Questo sito utilizza solo cookie e strumenti tecnici necessari al suo funzionamento. Non usiamo cookie di profilazione. Maggiori informazioni nella <a href="${prefix}cookie-policy.html">Cookie Policy</a>.</p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-accept">Ho capito</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  banner.querySelector('.cookie-accept').addEventListener('click', () => {
+    try { localStorage.setItem(KEY, 'ok'); } catch (e) { /* ignora */ }
+    banner.remove();
+  });
+})();
