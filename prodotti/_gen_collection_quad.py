@@ -2,6 +2,7 @@
 """Genera quadrupedi.html (collezione, livello root)."""
 import os
 from _gen_quadrupeds import LINEUP, COMPACT
+from _prezzi import PREZZI, euro
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAMES = {
@@ -17,6 +18,8 @@ RUN = {"go2-pro":"1–2 h","go2-edu":"2–4 h","go2-edu-plus":"2–4 h","go2-ent
 
 def card(code):
     c = COMPACT[code]; name = NAMES[code]
+    pz = PREZZI.get(c['file'])
+    price = euro(pz['cent']) if pz and pz['stato'] == 'acquista' else 'Su richiesta'
     return f'''        <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">{c['tag']}</span>
@@ -44,7 +47,8 @@ def card(code):
               <li><span>Autonomia</span><span>{RUN[code]}</span></li>
               <li><span>Garanzia</span><span>{c['warranty']}</span></li>
             </ul>
-            <div class="robot-card-cta">
+            <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+              <span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">{price}</span>
               <a href="prodotti/{c['file']}" class="btn btn-primary btn-sm">Vedi scheda →</a>
             </div>
           </div>

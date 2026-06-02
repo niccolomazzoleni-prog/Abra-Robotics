@@ -3,6 +3,7 @@
 Dati specifiche/immagini da RoboStore. Produce le pagine U1-U8 + Comp
 replicando la struttura di unitree-g1.html, con CSS/JS condivisi."""
 import os
+from _buy import buy_area, schema
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 
@@ -10,7 +11,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 # code -> dict(file, short, tag, hands, dof, tactile, computing, knee, warranty)
 LINEUP = ["g1", "g1-u1", "g1-u2", "g1-u3", "g1-u4", "g1-u5", "g1-u6", "g1-u7", "g1-u8", "g1-comp"]
 COMPACT = {
- "g1":     dict(file="unitree-g1.html",            short="G1 Base",        tag="Distribuzione e ricerca", hands="Dummy (no polsi)",   dof="23", tactile="—",   computing="8-core CPU",       knee="90 N·m",  warranty="8 mesi"),
+ "g1":     dict(file="unitree-g1.html",            short="G1 Air",         tag="Marketing e Comunicazione", hands="Dummy (no polsi)",   dof="23", tactile="—",   computing="8-core CPU",       knee="90 N·m",  warranty="8 mesi"),
  "g1-u1":  dict(file="unitree-g1-edu-standard.html",short="G1 EDU Standard",tag="Ricerca e sviluppo",      hands="Dummy (no polsi)",   dof="23", tactile="—",   computing="Jetson Orin NX",   knee="120 N·m", warranty="18 mesi"),
  "g1-u2":  dict(file="unitree-g1-edu-plus.html",    short="G1 EDU Plus",    tag="Sviluppo avanzato",       hands="Dummy + polsi",      dof="28", tactile="—",   computing="Jetson Orin NX",   knee="120 N·m", warranty="18 mesi"),
  "g1-u3":  dict(file="unitree-g1-edu-ultimate-a.html",short="G1 Ultimate A",tag="Manipolazione Dex3",      hands="Dex3 (3 dita)",      dof="42", tactile="—",   computing="Jetson Orin NX",   knee="120 N·m", warranty="18 mesi"),
@@ -489,6 +490,8 @@ def render(code):
       "%%COMP_MOBILE%%": comp_mobile(code, trio),
       "%%SPEC_MINI%%": spec_mini(d),
       "%%FORM_PRODUCT%%": title_full,
+      "%%BUY_AREA%%": buy_area(d["cmp"]["file"]),
+      "%%PRODUCT_SCHEMA%%": schema(d["cmp"]["file"], title_full, d["metadesc"], imgs[0]),
     }
     html = TEMPLATE
     for k, v in repl.items():

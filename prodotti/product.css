@@ -713,3 +713,51 @@
         gap: 16px;
       }
     }
+
+    /* ── Price block + checkout (Stripe) ── */
+    .product-price {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .product-price-value {
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      line-height: 1;
+    }
+    .product-price-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    .product-price-note .ppn-ico {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0;
+      background: var(--black); color: var(--white);
+      border-radius: 50%; font-size: 0.55rem; font-weight: 900;
+    }
+    .product-price-disclaimer {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      line-height: 1.5;
+      margin-bottom: 22px;
+      max-width: 46ch;
+    }
+    .btn.buy-btn.is-disabled,
+    .btn.buy-btn[aria-disabled="true"] {
+      opacity: 0.45;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    @media (max-width: 768px) {
+      .product-price { justify-content: center; }
+      .product-price-note { justify-content: center; }
+      .product-price-disclaimer { margin-left: auto; margin-right: auto; }
+    }
