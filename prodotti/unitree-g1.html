@@ -757,6 +757,27 @@
   }
   }
   </script>
+<style>
+    /* ── Buy box dedicato (stile Shopify) ── */
+    .buy-box { border:1px solid var(--gray-200); border-radius:var(--radius); padding:26px; background:var(--white); box-shadow:0 10px 34px rgba(0,0,0,0.06); margin-bottom:28px; }
+    .buy-box-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:18px; }
+    .buy-box-price { display:flex; flex-direction:column; gap:3px; }
+    .buy-box-amount { font-size:clamp(1.9rem,3.2vw,2.45rem); font-weight:900; letter-spacing:-0.03em; line-height:1; color:var(--black); }
+    .buy-box-sub { font-size:0.78rem; color:var(--gray-400); font-weight:600; }
+    .buy-box-stock { display:inline-flex; align-items:center; gap:7px; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:999px; padding:6px 12px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--gray-700); white-space:nowrap; }
+    .buy-box-stock .dot { width:7px; height:7px; border-radius:50%; background:#16a34a; box-shadow:0 0 0 3px rgba(22,163,74,0.16); }
+    .buy-box-perks { list-style:none; padding:0; margin:0 0 20px; display:flex; flex-direction:column; gap:10px; }
+    .buy-box-perks li { display:flex; align-items:center; gap:10px; font-size:0.9rem; font-weight:500; color:var(--gray-800); }
+    .buy-box-perks .bp-ico { display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; flex-shrink:0; background:var(--black); color:var(--white); border-radius:50%; font-size:0.55rem; font-weight:900; }
+    .buy-box-cta { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+    .buy-box-cta .btn { width:100%; justify-content:center; display:flex; }
+    .buy-box-cta .buy-btn { font-size:1.02rem; padding:16px; }
+    .buy-box-pay { display:flex; align-items:center; justify-content:center; gap:9px; padding-top:16px; border-top:1px solid var(--gray-100); font-size:0.76rem; color:var(--gray-500); font-weight:600; }
+    .buy-box-pay svg { color:var(--gray-500); flex-shrink:0; }
+    .buy-box-cards { display:inline-flex; gap:5px; align-items:center; }
+    .buy-box-cards span { font-size:0.58rem; font-weight:800; letter-spacing:0.03em; color:var(--gray-600); border:1px solid var(--gray-200); border-radius:4px; padding:2px 5px; background:var(--gray-50); }
+    .buy-box-note { font-size:0.74rem; color:var(--gray-400); line-height:1.5; margin:14px 0 0; text-align:center; }
+  </style>
 </head>
 <body>
 
@@ -889,16 +910,43 @@
             </div>
           </div>
 
+          <div class="quote-box">
+            <p class="quote-box-title">Richiedi informazioni su questo prodotto</p>
+            <form class="quote-form-top" data-product="Unitree G1 Air">
+              <div class="quote-row">
+                <input type="text" name="nome" placeholder="Nome e cognome" required>
+                <input type="email" name="email" placeholder="Email" required>
+              </div>
+              <textarea name="messaggio" rows="2" placeholder="La tua richiesta..."></textarea>
+              <button type="submit" class="btn btn-primary btn-sm">Invia richiesta</button>
+              <span class="quote-form-feedback" aria-live="polite"></span>
+            </form>
+          </div>
           <p class="product-desc">G1 Air integra un LiDAR 3D LIVOX MID-360 e una depth camera Intel RealSense D435i per navigazione autonoma in ambienti complessi. Con 23 gradi di libertà e coppia massima al ginocchio di 90 N·m, affronta terreni irregolari, recupera da urti e manipola oggetti con precisione.</p>
 
-                    <div class="product-price">
-            <span class="product-price-value">23.997,41 €</span>
-          </div>
-          <p class="product-price-note"><span class="ppn-ico">✓</span> Spedizione e dazio doganale inclusi</p>
-          <p class="product-price-disclaimer">Prezzo indicativo, soggetto a variazioni cambio EUR/USD — preventivo aggiornato su richiesta.</p>
-          <div class="product-cta-group">
-            <a href="#form" class="btn btn-primary buy-btn" data-buy-pending="1">Acquista</a>
-            <a href="#form" class="btn btn-secondary">Richiedi preventivo</a>
+          <div class="buy-box">
+            <div class="buy-box-head">
+              <div class="buy-box-price">
+                <span class="buy-box-amount">23.997,41 €</span>
+                <span class="buy-box-sub">Prezzo chiavi in mano</span>
+              </div>
+              <span class="buy-box-stock"><span class="dot"></span> Disponibile</span>
+            </div>
+            <ul class="buy-box-perks">
+              <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
+              <li><span class="bp-ico">✓</span> Distributore ufficiale Unitree · garanzia inclusa</li>
+              <li><span class="bp-ico">✓</span> Consegna stimata 2–4 settimane</li>
+            </ul>
+            <div class="buy-box-cta">
+              <a href="#form" class="btn btn-primary buy-btn" data-buy-pending="1">Acquista ora</a>
+              <a href="#form" class="btn btn-secondary">Richiedi preventivo</a>
+            </div>
+            <div class="buy-box-pay">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Pagamento sicuro · Stripe
+              <span class="buy-box-cards"><span>VISA</span><span>MC</span><span>AMEX</span></span>
+            </div>
+            <p class="buy-box-note">Prezzo indicativo, soggetto a variazioni cambio EUR/USD — preventivo aggiornato su richiesta.</p>
           </div>
 
           <div class="product-trust">
@@ -1617,5 +1665,7 @@
       });
     })();
   </script>
+  <script src="stripe-config.js"></script>
+  <script src="ecommerce.js"></script>
 </body>
 </html>
