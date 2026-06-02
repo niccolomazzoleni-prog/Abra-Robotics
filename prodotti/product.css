@@ -761,3 +761,22 @@
       .product-price-note { justify-content: center; }
       .product-price-disclaimer { margin-left: auto; margin-right: auto; }
     }
+    /* ── Buy box dedicato (stile Shopify) ── */
+    .buy-box { border:1px solid var(--gray-200); border-radius:var(--radius); padding:26px; background:var(--white); box-shadow:0 10px 34px rgba(0,0,0,0.06); margin-bottom:28px; }
+    .buy-box-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:18px; }
+    .buy-box-price { display:flex; flex-direction:column; gap:3px; }
+    .buy-box-amount { font-size:clamp(1.9rem,3.2vw,2.45rem); font-weight:900; letter-spacing:-0.03em; line-height:1; color:var(--black); }
+    .buy-box-sub { font-size:0.78rem; color:var(--gray-400); font-weight:600; }
+    .buy-box-stock { display:inline-flex; align-items:center; gap:7px; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:999px; padding:6px 12px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--gray-700); white-space:nowrap; }
+    .buy-box-stock .dot { width:7px; height:7px; border-radius:50%; background:#16a34a; box-shadow:0 0 0 3px rgba(22,163,74,0.16); }
+    .buy-box-perks { list-style:none; padding:0; margin:0 0 20px; display:flex; flex-direction:column; gap:10px; }
+    .buy-box-perks li { display:flex; align-items:center; gap:10px; font-size:0.9rem; font-weight:500; color:var(--gray-800); }
+    .buy-box-perks .bp-ico { display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; flex-shrink:0; background:var(--black); color:var(--white); border-radius:50%; font-size:0.55rem; font-weight:900; }
+    .buy-box-cta { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+    .buy-box-cta .btn { width:100%; justify-content:center; display:flex; }
+    .buy-box-cta .buy-btn { font-size:1.02rem; padding:16px; }
+    .buy-box-pay { display:flex; align-items:center; justify-content:center; gap:9px; padding-top:16px; border-top:1px solid var(--gray-100); font-size:0.76rem; color:var(--gray-500); font-weight:600; }
+    .buy-box-pay svg { color:var(--gray-500); flex-shrink:0; }
+    .buy-box-cards { display:inline-flex; gap:5px; align-items:center; }
+    .buy-box-cards span { font-size:0.58rem; font-weight:800; letter-spacing:0.03em; color:var(--gray-600); border:1px solid var(--gray-200); border-radius:4px; padding:2px 5px; background:var(--gray-50); }
+    .buy-box-note { font-size:0.74rem; color:var(--gray-400); line-height:1.5; margin:14px 0 0; text-align:center; }
