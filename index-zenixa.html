@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abra Robotics — Il robot giusto, configurato, consegnato</title>
+  <meta name="description" content="Robotica applicata per aziende, università e istituti di ricerca. Selezioniamo l'hardware, scriviamo il software, formiamo il team, gestiamo il finanziamento.">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Fonts: Switzer (heading, near Neue Montreal) + Inter Tight (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #0a0c12;
+      --ink-2: #12151d;
+      --ink-3: #1b2030;
+      --accent: #2f6bff;
+      --accent-600: #1e54e6;
+      --ocean-1: #3a72f0;
+      --ocean-2: #0f2356;
+      --paper: #ffffff;
+      --soft: #f1f3f7;
+      --soft-2: #cdd5e0;
+      --neutral: #8a93a6;
+      --warm: #45506a;
+      --line: #e6e9f0;
+      --line-dark: rgba(255,255,255,0.12);
+      --head: 'Switzer', 'Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
+      --body: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+      --r-lg: 28px;
+      --r-md: 18px;
+      --r-sm: 12px;
+      --pad: 40px;
+      --maxw: 1280px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--head);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+    }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* === Eyebrow pill === */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 7px 16px 7px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      text-transform: capitalize;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .on-dark .eyebrow, .eyebrow.light {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--line-dark);
+      color: #fff;
+    }
+
+    /* === Buttons (pill) === */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-600); }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { background: #000; }
+    .btn-ghost { background: transparent; border-color: currentColor; color: var(--ink); }
+    .on-dark .btn-ghost { color: #fff; }
+    .btn-light { background: #fff; color: var(--ink); }
+    .btn-sm { padding: 11px 20px; font-size: 0.9rem; }
+    .btn .arrow {
+      display: inline-grid; place-items: center;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(255,255,255,0.18); font-size: 0.85rem;
+    }
+    .btn-ghost .arrow, .on-dark .btn-ghost .arrow { background: rgba(255,255,255,0.12); }
+
+    /* === Sections === */
+    section { position: relative; }
+    .section { padding: 110px 0; }
+    .on-dark { background: var(--ink); color: #fff; }
+    .on-dark h1, .on-dark h2, .on-dark h3 { color: #fff; }
+    .sec-head { max-width: 760px; margin-bottom: 56px; }
+    .sec-head h2 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      margin: 18px 0 16px;
+    }
+    .sec-head p {
+      color: var(--warm);
+      font-size: 1.08rem;
+      max-width: 640px;
+    }
+    .on-dark .sec-head p { color: var(--soft-2); }
+
+    /* === Top bar === */
+    .top-bar {
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 9px 16px;
+    }
+    .top-bar a { color: var(--accent); font-weight: 600; }
+
+    /* === Navbar === */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad);
+    }
+    .logo-img { height: 26px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links > a, .nav-dropdown-trigger {
+      font-family: var(--body); font-size: 0.95rem; font-weight: 500;
+      color: var(--ink); background: none; border: none; cursor: pointer;
+      padding: 9px 14px; border-radius: 999px; transition: background .15s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .nav-links > a:hover, .nav-dropdown-trigger:hover { background: var(--soft); }
+    .nav-caret { font-size: 0.7rem; opacity: 0.6; }
+    .nav-item-dropdown { position: relative; }
+    .nav-dropdown-panel {
+      position: absolute; top: calc(100% + 10px); left: 0;
+      background: #fff; border: 1px solid var(--line); border-radius: var(--r-md);
+      padding: 8px; min-width: 220px; display: none; flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+    }
+    .nav-item-dropdown:hover .nav-dropdown-panel { display: flex; }
+    .nav-dropdown-panel a { padding: 10px 14px; border-radius: var(--r-sm); font-size: 0.92rem; }
+    .nav-dropdown-panel a:hover { background: var(--soft); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
+    .menu-toggle span { width: 22px; height: 2px; background: var(--ink); display: block; }
+
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 4px;
+      padding: 16px var(--pad) 28px; background: #fff; border-bottom: 1px solid var(--line);
+    }
+    .mobile-menu > a, .mobile-dropdown-trigger {
+      font-family: var(--body); font-size: 1.05rem; font-weight: 500; text-align: left;
+      background: none; border: none; padding: 12px 4px; color: var(--ink); cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mobile-dropdown-panel { display: none; flex-direction: column; padding-left: 14px; }
+    .mobile-dropdown.open .mobile-dropdown-panel { display: flex; }
+    .mobile-dropdown-panel a { padding: 9px 4px; color: var(--warm); }
+
+    /* === Hero === */
+    .hero { background: var(--ink); color: #fff; padding: 72px 0 0; overflow: hidden; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6.5vw, 5.4rem);
+      font-weight: 600;
+      margin: 22px 0 24px;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-sub { color: var(--soft-2); font-size: 1.18rem; max-width: 520px; margin-bottom: 32px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .hero-rating { display: flex; align-items: center; gap: 12px; margin-top: 30px; color: var(--soft-2); font-size: 0.92rem; }
+    .stars { color: var(--accent); letter-spacing: 2px; }
+    .hero-visual {
+      position: relative; border-radius: var(--r-lg); overflow: hidden;
+      background: linear-gradient(160deg, #2a2724, #100f0e);
+      aspect-ratio: 4/5; border: 1px solid var(--line-dark);
+    }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-chip {
+      position: absolute; top: 18px; right: 18px;
+      background: rgba(12,11,10,0.6); backdrop-filter: blur(8px);
+      border: 1px solid var(--line-dark); border-radius: 999px;
+      padding: 8px 14px; font-size: 0.8rem; color: #fff;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .hero-chip::before { content:""; width:7px; height:7px; border-radius:50%; background: var(--accent); }
+
+    /* Marquee */
+    .marquee { margin-top: 64px; border-top: 1px solid var(--line-dark); padding: 26px 0 40px; }
+    .marquee-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--neutral); margin-bottom: 18px; }
+    .marquee-track { display: flex; gap: 64px; width: max-content; animation: scroll 34s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track img { height: 26px; width: auto; opacity: 0.62; filter: brightness(0) invert(1); }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* === Service cards === */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      position: relative; border-radius: var(--r-lg); padding: 26px;
+      background: var(--soft); border: 1px solid var(--line); overflow: hidden;
+      display: flex; flex-direction: column; min-height: 420px;
+    }
+    .card .card-media {
+      height: 180px; border-radius: var(--r-md); overflow: hidden; margin-bottom: 20px;
+      background: #e9e8e5; position: relative;
+    }
+    .card .card-media img { width: 100%; height: 100%; object-fit: cover; }
+    .ghost-num {
+      position: absolute; right: 18px; bottom: 8px;
+      font-family: var(--head); font-weight: 700; font-size: 6rem; line-height: 1;
+      color: rgba(12,11,10,0.06); pointer-events: none;
+    }
+    .card h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .card .kicker { color: var(--accent); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .card p { color: var(--warm); font-size: 0.98rem; flex: 1; }
+    .card .card-foot { margin-top: 20px; }
+
+    /* === Process steps === */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .step {
+      border: 1px solid var(--line-dark); border-radius: var(--r-lg); padding: 30px;
+      background: var(--ink-2);
+    }
+    .step .step-num {
+      display: inline-grid; place-items: center; width: 46px; height: 46px;
+      border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700;
+      font-family: var(--head); margin-bottom: 22px;
+    }
+    .step h3 { font-size: 1.35rem; margin-bottom: 10px; color: #fff; }
+    .step p { color: var(--soft-2); font-size: 0.98rem; }
+
+    /* === Products === */
+    .prod-card {
+      border-radius: var(--r-lg); border: 1px solid var(--line); background: #fff;
+      overflow: hidden; display: flex; flex-direction: column; position: relative;
+    }
+    .prod-media { aspect-ratio: 4/3; background: var(--soft); display: grid; place-items: center; padding: 24px; }
+    .prod-media img { max-height: 100%; width: auto; object-fit: contain; }
+    .prod-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+    .prod-body h3 { font-size: 1.3rem; margin-bottom: 14px; }
+    .badge {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      background: var(--accent); color: #fff; font-size: 0.74rem; font-weight: 600;
+      padding: 6px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .spec { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .spec li { font-size: 0.92rem; color: var(--warm); padding-left: 20px; position: relative; }
+    .spec li::before { content:""; position:absolute; left:0; top:9px; width:8px; height:8px; border-radius:50%; background: var(--accent); }
+    .prod-use { font-size: 0.85rem; color: var(--neutral); margin-bottom: 18px; }
+    .prod-foot { margin-top: auto; }
+
+    /* === Finance feature === */
+    .finance-wrap {
+      border-radius: var(--r-lg); overflow: hidden;
+      background: linear-gradient(145deg, var(--ocean-1), var(--ocean-2));
+      color: #fff; padding: 60px var(--pad); display: grid;
+      grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;
+    }
+    .finance-wrap h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 16px 0 14px; }
+    .finance-wrap .sec-sub { color: rgba(255,255,255,0.85); margin-bottom: 26px; }
+    .finance-stats { display: flex; gap: 36px; flex-wrap: wrap; }
+    .fstat-num { font-family: var(--head); font-weight: 700; font-size: 2.6rem; display: block; }
+    .fstat-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); max-width: 180px; }
+
+    /* === Use cases === */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .use-case { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); background: #fff; }
+    .use-case .uc-media { height: 260px; background-size: cover; background-position: center; }
+    .use-case .uc-body { padding: 28px; }
+    .use-case h3 { font-size: 1.5rem; margin: 10px 0 12px; }
+    .use-case p { color: var(--warm); }
+
+    /* === Stats band === */
+    .stat-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .stat-item { border-top: 2px solid var(--accent); padding-top: 18px; }
+    .stat-item .num { font-family: var(--head); font-weight: 700; font-size: 3.2rem; color: #fff; }
+    .stat-item .lbl { color: var(--soft-2); font-size: 0.95rem; }
+
+    /* === FAQ === */
+    .faq-list { max-width: 860px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 6px 0; }
+    .faq-item summary {
+      cursor: pointer; list-style: none; padding: 22px 0; font-family: var(--head);
+      font-weight: 600; font-size: 1.2rem; display: flex; justify-content: space-between; gap: 20px; align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: var(--accent); font-size: 1.6rem; font-weight: 400; transition: transform .2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { color: var(--warm); padding-bottom: 22px; max-width: 720px; }
+
+    /* === CTA + form === */
+    .cta-final { background: var(--ink); color: #fff; }
+    .cta-big {
+      font-size: clamp(3rem, 11vw, 9rem); line-height: 0.92; font-weight: 600;
+      letter-spacing: -0.04em; margin-bottom: 10px;
+    }
+    .cta-big .accent { color: var(--accent); }
+    .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 50px; }
+    .cta-lead p { color: var(--soft-2); font-size: 1.1rem; max-width: 420px; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-size: 0.85rem; color: var(--soft-2); }
+    .contact-form input, .contact-form textarea {
+      font-family: var(--body); font-size: 1rem; padding: 14px 16px; color: #fff;
+      background: var(--ink-2); border: 1px solid var(--line-dark); border-radius: var(--r-sm);
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #6b6864; }
+    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+    .form-footer { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 6px; }
+    .form-note { font-size: 0.85rem; color: var(--neutral); }
+    .form-feedback { font-size: 0.95rem; }
+    .form-feedback.success { color: #6ee7a8; }
+    .form-feedback.error { color: var(--accent); }
+
+    /* === Footer === */
+    .footer { background: var(--ink); color: #fff; border-top: 3px solid var(--accent); padding: 72px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 48px; }
+    .footer-desc { color: var(--soft-2); font-size: 0.92rem; max-width: 300px; margin-top: 16px; }
+    .footer h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--neutral); margin-bottom: 16px; font-family: var(--body); }
+    .footer-col a, .footer-col p { display: block; color: var(--soft-2); font-size: 0.92rem; margin-bottom: 10px; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid var(--line-dark); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+    .footer-bottom, .footer-bottom a { color: var(--neutral); font-size: 0.84rem; }
+    .footer-legal { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-legal a:hover { color: #fff; }
+
+    /* === Cookie banner (style hook for script.js) === */
+    .cookie-banner {
+      position: fixed; left: 50%; transform: translateX(-50%); bottom: 20px; z-index: 2000;
+      width: min(700px, calc(100% - 32px)); background: #fff; color: var(--ink);
+      border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 22px;
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap; box-shadow: 0 16px 50px rgba(0,0,0,0.25);
+    }
+    .cookie-banner p { flex: 1 1 320px; font-size: 0.9rem; }
+    .cookie-banner a { color: var(--accent); text-decoration: underline; }
+    .cookie-banner button { font-family: var(--body); font-weight: 600; border: none; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 999px; cursor: pointer; }
+
+    /* === Responsive === */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-visual { aspect-ratio: 16/10; max-height: 360px; }
+      .grid-3, .steps, .stat-band { grid-template-columns: 1fr; }
+      .grid-2, .grid-3.products { grid-template-columns: 1fr; }
+      .finance-wrap, .cta-row { grid-template-columns: 1fr; }
+      .nav-links, .nav-right .btn { display: none; }
+      .menu-toggle { display: flex; }
+    }
+    @media (max-width: 600px) {
+      :root { --pad: 20px; }
+      .section { padding: 72px 0; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <p>La maggior parte dei progetti è finanziabile. <a href="#cta-finale">Scopri come →</a></p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html#cobot">Cobot</a>
+            <a href="manifattura-logistica.html#amr">AMR</a>
+            <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
+            <a href="manifattura-logistica.html#umanoidi">Umanoidi</a>
+          </div>
+        </div>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+            <a href="universita-ricerca.html">Università e Ricerca</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <a href="#cta-finale" class="btn btn-dark btn-sm">Prenota una chiamata <span class="arrow">→</span></a>
+        <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html#cobot">Cobot</a>
+        <a href="manifattura-logistica.html#amr">AMR</a>
+        <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
+        <a href="manifattura-logistica.html#umanoidi">Umanoidi</a>
+      </div>
+    </div>
+    <a href="assessment.html">Trova il robot giusto</a>
+    <a href="finanziamenti.html">Finanziamenti</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+        <a href="universita-ricerca.html">Università e Ricerca</a>
+      </div>
+    </div>
+    <a href="#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero on-dark">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow light">Robotica applicata</span>
+          <h1>Il robot giusto, <span class="accent">configurato</span>, consegnato.</h1>
+          <p class="hero-sub">Selezioniamo l'hardware, scriviamo il software, formiamo il team, gestiamo il finanziamento. Un unico interlocutore dal POC alla produzione.</p>
+          <div class="hero-ctas">
+            <a href="#cta-finale" class="btn btn-primary">Prenota una chiamata <span class="arrow">→</span></a>
+            <a href="#soluzioni" class="btn btn-ghost">Esplora le soluzioni</a>
+          </div>
+          <div class="hero-rating">
+            <span class="stars">★★★★★</span>
+            <span>Aziende, università e istituti di ricerca si affidano ad Abra</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <span class="hero-chip">Pronto all'uso</span>
+          <img src="images/g1-card.png" alt="Robot umanoide Unitree G1">
+        </div>
+      </div>
+
+      <div class="marquee">
+        <div class="container" style="padding:0;"><p class="marquee-label">Brand distribuiti</p></div>
+        <div class="marquee-track">
+          <img src="logos/mir.svg" alt="MiR"><img src="logos/universal-robots.svg" alt="Universal Robots"><img src="logos/onrobot.svg" alt="OnRobot"><img src="logos/robotiq.svg" alt="Robotiq"><img src="logos/roeq.svg" alt="ROEQ"><img src="logos/keyence.svg" alt="Keyence"><img src="logos/datasensing.svg" alt="Datasensing"><img src="logos/qbrobotics.svg" alt="qb robotics">
+          <img src="logos/mir.svg" alt=""><img src="logos/universal-robots.svg" alt=""><img src="logos/onrobot.svg" alt=""><img src="logos/robotiq.svg" alt=""><img src="logos/roeq.svg" alt=""><img src="logos/keyence.svg" alt=""><img src="logos/datasensing.svg" alt=""><img src="logos/qbrobotics.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cosa facciamo -->
+  <section id="soluzioni" class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Cosa facciamo</span>
+        <h2>Tutto il mondo robotico<br>da un solo interlocutore.</h2>
+        <p>Ti aiutiamo a capire quale robot fa al caso tuo e lo integriamo in base alle tue necessità: sviluppo software, training, assistenza, formazione. Verifichiamo se il progetto è finanziabile e gestiamo la pratica dall'inizio alla fine.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-media"><img src="images/g1-card.png" alt="Unitree G1"><span class="ghost-num">01</span></div>
+          <p class="kicker">Hardware</p>
+          <h3>Fornitura e configurazione robot</h3>
+          <p>Umanoidi, quadrupedi, cobot industriali e robot autonomi. Li selezioniamo, configuriamo e consegniamo pronti all'uso. Per università, laboratori e team R&D.</p>
+          <div class="card-foot"><a href="#cta-finale" class="btn btn-dark btn-sm">Acquista un robot <span class="arrow">→</span></a></div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=600&h=360&q=75&auto=format&fit=crop') center/cover;"><span class="ghost-num">02</span></div>
+          <p class="kicker">Assessment</p>
+          <h3>Assessment e POC</h3>
+          <p>Non sai ancora quale robot fa per te? Partiamo da un assessment approfondito dei tuoi processi, identifichiamo le soluzioni migliori e ti proponiamo un progetto con ROI assicurato.</p>
+          <div class="card-foot"><a href="#cta-finale" class="btn btn-dark btn-sm">Scopri come funziona <span class="arrow">→</span></a></div>
+        </div>
+        <div class="card">
+          <div class="card-media" style="background:url('https://images.unsplash.com/photo-1769149068959-b11392164add?w=600&h=360&q=75&auto=format&fit=crop') center/cover;"><span class="ghost-num">03</span></div>
+          <p class="kicker">Software</p>
+          <h3>Sviluppo software custom</h3>
+          <p>Programmazione, integrazione ERP/MES, AI integrata ai robot. Costruiamo il layer software che trasforma il robot in un asset intelligente e misurabile nel tempo.</p>
+          <div class="card-foot"><a href="#cta-finale" class="btn btn-dark btn-sm">Scopri di più <span class="arrow">→</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Come lavoriamo -->
+  <section id="come-lavoriamo" class="section on-dark">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow light">Come lavoriamo</span>
+        <h2>Dal primo contatto<br>al robot operativo.</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Chiamata conoscitiva</h3>
+          <p>Capiamo il tuo contesto e il caso d'uso desiderato. Usciamo dalla chiamata con una direzione chiara, o con la consapevolezza che non siamo il partner giusto per te.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Proposta su misura</h3>
+          <p>Prepariamo una proposta trasparente con hardware selezionato, configurazione necessaria, timeline e costi. Tutto chiaro prima di firmare.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Deployment e supporto</h3>
+          <p>Consegna, configurazione, training e supporto continuativo. Sei operativo in tempi chiari con un interlocutore tecnico per ogni problema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prodotti -->
+  <section id="prodotti" class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Prodotti</span>
+        <h2>I più richiesti</h2>
+        <p>Selezioniamo il modello giusto per il tuo caso d'uso. Tutti configurabili e integrabili con i tuoi sistemi.</p>
+      </div>
+      <div class="grid-3 products">
+        <div class="prod-card card">
+          <span class="badge">Più richiesto</span>
+          <div class="prod-media"><img src="images/manifattura/unitree-go2-edu.png" alt="Unitree Go2 Pro"></div>
+          <div class="prod-body">
+            <h3>Unitree Go2 Pro — Quadrupede</h3>
+            <ul class="spec"><li>Velocità max 3,5 m/s</li><li>Autonomia 4h</li><li>Portata 8 kg</li><li>LiDAR integrato</li></ul>
+            <p class="prod-use">Ispezione autonoma, sorveglianza perimetrale, ricerca</p>
+            <div class="prod-foot"><a href="#cta-finale" class="btn btn-primary btn-sm">Richiedi preventivo</a></div>
+          </div>
+        </div>
+        <div class="prod-card card">
+          <div class="prod-media"><img src="images/g1-product.png" alt="Unitree G1"></div>
+          <div class="prod-body">
+            <h3>Unitree G1 — Umanoide</h3>
+            <ul class="spec"><li>127 cm · 35 kg</li><li>43 gradi di libertà</li><li>Velocità 2 m/s</li><li>Manipolazione avanzata</li></ul>
+            <p class="prod-use">POC manifattura, ricerca avanzata, dimostrazione</p>
+            <div class="prod-foot"><a href="#cta-finale" class="btn btn-primary btn-sm">Richiedi preventivo</a></div>
+          </div>
+        </div>
+        <div class="prod-card card">
+          <div class="prod-media"><img src="images/manifattura/unitree-b2.png" alt="Unitree B2"></div>
+          <div class="prod-body">
+            <h3>Unitree B2 — Quadrupede Industriale</h3>
+            <ul class="spec"><li>Portata 40 kg</li><li>Autonomia 5h</li><li>IP67</li><li>Terrain adattivo</li></ul>
+            <p class="prod-use">Ambienti industriali pesanti, ispezione outdoor</p>
+            <div class="prod-foot"><a href="#cta-finale" class="btn btn-primary btn-sm">Richiedi preventivo</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Finanziamenti -->
+  <section id="finanziamenti" class="section">
+    <div class="container">
+      <div class="finance-wrap">
+        <div>
+          <span class="eyebrow light">Finanziamenti</span>
+          <h2>Il costo non è un ostacolo.</h2>
+          <p class="sec-sub">La maggior parte dei progetti di robotica è finanziabile. Facciamo scouting degli incentivi disponibili: Industria 4.0, PNRR, bandi regionali. Ti affianchiamo in tutto il processo di accesso ai fondi.</p>
+          <a href="finanziamenti.html" class="btn btn-light">Scopri incentivi 2026 <span class="arrow" style="background:rgba(0,0,0,0.12);">→</span></a>
+        </div>
+        <div class="finance-stats">
+          <div><span class="fstat-num">30–50%</span><span class="fstat-label">Del costo spesso coperto da incentivi</span></div>
+          <div><span class="fstat-num">0€</span><span class="fstat-label">Costo della verifica iniziale con noi</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Per chi -->
+  <section id="per-chi" class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Per chi</span>
+        <h2>Conosci il tuo caso d'uso?</h2>
+        <p>Lavoriamo con chi ha già le idee chiare, ma anche con chi vuole capire da dove partire.</p>
+      </div>
+      <div class="grid-2">
+        <div class="use-case">
+          <div class="uc-media" style="background-image:url('https://images.unsplash.com/photo-1647427060118-4911c9821b82?w=800&h=440&q=75&auto=format&fit=crop');"></div>
+          <div class="uc-body">
+            <span class="eyebrow">Industria & Logistica</span>
+            <h3>Aziende manifatturiere e logistiche</h3>
+            <p>Vuoi automatizzare un processo specifico senza partire da zero. Facciamo l'assessment, proponiamo il pilot giusto, lo implementiamo e lo integriamo ai tuoi sistemi aziendali.</p>
+          </div>
+        </div>
+        <div class="use-case">
+          <div class="uc-media" style="background-image:url('https://images.unsplash.com/photo-1661882217431-b64b303fb1d0?w=800&h=440&q=75&auto=format&fit=crop');"></div>
+          <div class="uc-body">
+            <span class="eyebrow">Ricerca & Accademia</span>
+            <h3>Università e istituti di ricerca</h3>
+            <p>Hai bisogno di hardware affidabile, supporto tecnico competente e documentazione strutturata. Forniamo robot già configurati per ambienti R&D, con assistenza continuativa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section class="section on-dark">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow light">Track record</span>
+        <h2>Numeri da chi lavora sul campo.</h2>
+        <p>Non siamo rivenditori. Installiamo, integriamo e supportiamo robot da oltre 10 anni: in aziende industriali, università e laboratori di ricerca.</p>
+      </div>
+      <div class="stat-band">
+        <div class="stat-item"><div class="num">100+</div><div class="lbl">Robot installati</div></div>
+        <div class="stat-item"><div class="num">10+</div><div class="lbl">Anni di esperienza</div></div>
+        <div class="stat-item"><div class="num">80%</div><div class="lbl">Progetti finanziabili</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="sec-head" style="text-align:center; margin-left:auto; margin-right:auto;">
+        <span class="eyebrow">FAQ</span>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item"><summary>Chi è il distributore ufficiale Unitree in Italia?</summary><p>Abra Robotics è il distributore ufficiale Unitree in Italia. Forniamo tutta la gamma (Go2, G1, B2) con configurazione, software custom, formazione e supporto tecnico dedicato per aziende, università e istituti di ricerca.</p></details>
+        <details class="faq-item"><summary>Posso acquistare solo l'hardware senza servizi?</summary><p>Sì. Forniamo robot Unitree anche senza pacchetto software o formazione, per chi ha già un team tecnico interno. Consegniamo il robot configurato e pronto all'uso.</p></details>
+        <details class="faq-item"><summary>I robot Unitree sono compatibili con ROS2?</summary><p>Sì. Tutta la gamma Unitree supporta ROS2 nativamente. Offriamo anche supporto all'integrazione, documentazione tecnica e formazione per il tuo team di sviluppo.</p></details>
+        <details class="faq-item"><summary>Quanto tempo ci vuole dalla firma alla consegna?</summary><p>In media 2-4 settimane per la fornitura hardware. Il deployment completo, incluso configurazione, integrazione e training, varia in base alla complessità del progetto.</p></details>
+        <details class="faq-item"><summary>Il progetto robotico è finanziabile?</summary><p>La maggior parte dei progetti rientra negli incentivi Industria 4.0 / Transizione 5.0 o nei bandi PNRR regionali. Facciamo una verifica gratuita della finanziabilità prima di procedere con la proposta.</p></details>
+        <details class="faq-item"><summary>Lavorate solo in Italia?</summary><p>Operiamo principalmente in Italia, con focus sul Nord Italia. Per progetti specifici valutiamo anche collaborazioni all'estero.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Form -->
+  <section id="cta-finale" class="section cta-final">
+    <div class="container">
+      <span class="eyebrow light">Parliamone</span>
+      <h2 class="cta-big">Hai un progetto<br>in <span class="accent">mente?</span></h2>
+      <div class="cta-row">
+        <div class="cta-lead">
+          <p>Compila il form, un consulente Abra ti ricontatterà entro 12 ore. Niente script di vendita: parli direttamente con chi installa e integra robot sul campo.</p>
+        </div>
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group"><label for="nome">Nome e cognome</label><input type="text" id="nome" name="nome" placeholder="Mario Rossi" required></div>
+            <div class="form-group"><label for="azienda">Azienda</label><input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l." required></div>
+          </div>
+          <div class="form-group"><label for="ruolo">Ruolo</label><input type="text" id="ruolo" name="ruolo" placeholder="CTO, Responsabile R&D, Ricercatore..." required></div>
+          <div class="form-group"><label for="messaggio">La tua richiesta</label><textarea id="messaggio" name="messaggio" placeholder="Raccontaci il tuo progetto e chiedici tutto quello che vuoi sapere." rows="5" required></textarea></div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary form-submit">Invia la richiesta <span class="arrow">→</span></button>
+            <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
+          </div>
+          <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img" style="filter:brightness(0) invert(1);"></a>
+          <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigazione</h4>
+          <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+          <a href="universita-ricerca.html">Università e Ricerca</a>
+          <a href="assessment.html">Trova il robot giusto</a>
+          <a href="finanziamenti.html">Finanziamenti</a>
+        </div>
+        <div class="footer-col">
+          <h4>Prodotti</h4>
+          <a href="manifattura-logistica.html#cobot">Cobot</a>
+          <a href="manifattura-logistica.html#amr">AMR</a>
+          <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
+          <a href="manifattura-logistica.html#umanoidi">Umanoidi</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contatti</h4>
+          <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+          <p>Italia</p>
+          <a href="#cta-finale" class="btn btn-primary btn-sm" style="margin-top:6px;">Prenota una chiamata</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Abra Robotics. Tutti i diritti riservati. P.IVA [DA COMPLETARE].</p>
+        <nav class="footer-legal" aria-label="Note legali">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="cookie-policy.html">Cookie Policy</a>
+          <a href="note-legali.html">Note legali</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
