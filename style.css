@@ -2133,3 +2133,78 @@ body::before {
   .cookie-banner { flex-direction: column; align-items: stretch; }
   .cookie-banner .cookie-actions button { width: 100%; }
 }
+
+/* === Image placeholder (per asset da generare esternamente) === */
+.img-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  min-height: 140px;
+  padding: 20px;
+  border: 2px dashed var(--gray-400);
+  border-radius: var(--radius);
+  background:
+    repeating-linear-gradient(45deg, var(--gray-100), var(--gray-100) 12px, var(--gray-50) 12px, var(--gray-50) 24px);
+  color: var(--gray-600);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.use-case-cta { margin-top: 18px; }
+
+/* === Box richiesta informazioni (schede prodotto) === */
+.quote-box {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  background: var(--gray-50);
+  padding: 18px 20px;
+  margin: 0 0 24px;
+}
+.quote-box-title { font-weight: 700; font-size: 0.98rem; margin-bottom: 12px; }
+.quote-form-top { display: flex; flex-direction: column; gap: 10px; }
+.quote-form-top .quote-row { display: flex; gap: 10px; }
+.quote-form-top input,
+.quote-form-top textarea {
+  font-family: var(--font); font-size: 0.92rem; width: 100%;
+  padding: 10px 12px; border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+  background: var(--white); color: var(--black); resize: vertical;
+}
+.quote-form-top input:focus,
+.quote-form-top textarea:focus { outline: none; border-color: var(--orange); }
+.quote-form-top button { align-self: flex-start; }
+.quote-form-feedback { font-size: 0.85rem; }
+.quote-form-feedback.success { color: #1a8a52; }
+.quote-form-feedback.error { color: var(--orange); }
+@media (max-width: 600px) { .quote-form-top .quote-row { flex-direction: column; } }
+
+/* === Sottocategorie prodotti (contenitori placeholder) === */
+.subcat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 0 0 40px;
+}
+.subcat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+  border: 1px dashed var(--gray-400);
+  border-radius: var(--radius);
+  background: var(--gray-50);
+  text-decoration: none;
+  color: var(--black);
+  transition: border-color .2s, transform .2s;
+}
+.subcat-card:hover { border-color: var(--black); transform: translateY(-2px); }
+.subcat-label { font-weight: 700; font-size: 1rem; }
+.subcat-note { font-size: 0.78rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.06em; }
+.img-ph.is-dark {
+  border-color: rgba(255,255,255,0.25);
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.08) 12px, rgba(255,255,255,0.08) 24px);
+  color: var(--gray-200);
+}
