@@ -127,6 +127,20 @@
 %%KEYSPECS%%
           </div>
 
+          <div class="quote-box">
+            <p class="quote-box-title">Richiedi informazioni su questo prodotto</p>
+            <form class="quote-form-top" data-product="%%TITLE%%">
+              <div class="quote-row">
+                <input type="text" name="nome" placeholder="Nome e cognome" required>
+                <input type="text" name="azienda" placeholder="Azienda" required>
+              </div>
+              <input type="email" name="email" placeholder="Email" required>
+              <textarea name="messaggio" rows="2" placeholder="La tua richiesta..."></textarea>
+              <button type="submit" class="btn btn-primary btn-sm">Invia richiesta</button>
+              <span class="quote-form-feedback" aria-live="polite"></span>
+            </form>
+          </div>
+
           <p class="product-desc">%%DESC%%</p>
 
 %%BUY_AREA%%
@@ -390,5 +404,7 @@
 
   <script src="../script.js"></script>
   <script src="product.js"></script>
+  <script src="stripe-config.js"></script>
+  <script src="ecommerce.js"></script>
 </body>
 </html>
