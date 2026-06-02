@@ -17,15 +17,11 @@ def grab(pattern, text, default=""):
     return m.group(1).strip() if m else default
 
 def parse_price(text):
-    # cerca "77.954,23 €" -> "77954.23 EUR"
-    m = re.search(r'class="product-price-value"[^>]*>\s*([\d.\s]+,\d{2})\s*€', text)
+    # prezzo dallo schema JSON-LD: "price": "73276.98" -> "73276.98 EUR"
+    m = re.search(r'"price":\s*"(\d+\.\d{1,2})"', text)
     if not m:
         return None
-    raw = m.group(1).replace(".", "").replace(" ", "").replace(",", ".")
-    try:
-        return f"{float(raw):.2f} EUR"
-    except ValueError:
-        return None
+    return f"{float(m.group(1)):.2f} EUR"
 
 items, skipped = [], []
 for path in sorted(glob.glob("unitree-*.html")):
@@ -37,7 +33,12 @@ for path in sorted(glob.glob("unitree-*.html")):
     title = html.unescape(grab(r"<title>(.*?)</title>", text)).split("|")[0].strip()
     desc = html.unescape(grab(r'<meta\s+name="description"\s+content="(.*?)"', text))
     link = grab(r'<link\s+rel="canonical"\s+href="(.*?)"', text, SITE + "prodotti/" + path)
-    image = grab(r'<meta\s+property="og:image"\s+content="(.*?)"', text)
+    # immagine prodotto reale (gallery main); fallback all'og:image
+    gal = grab(r'id="gallery-main-img"\s+src="([^"]*)"', text)
+    if gal:
+        image = gal if gal.startswith("http") else SITE + "prodotti/" + gal.lstrip("./")
+    else:
+        image = grab(r'<meta\s+property="og:image"\s+content="(.*?)"', text)
     items.append({
         "id": path.replace(".html", ""),
         "title": title, "description": desc, "link": link,
