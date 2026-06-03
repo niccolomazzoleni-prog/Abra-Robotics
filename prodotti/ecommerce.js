@@ -49,6 +49,10 @@
 
         var payload = Object.fromEntries(new FormData(form).entries());
         payload.prodotto = form.getAttribute("data-product") || document.title;
+        payload.origine = "Richiesta info scheda: " + payload.prodotto;
+        payload.pagina = document.title;
+        payload.url = location.href;
+        payload.timestamp = new Date().toISOString();
 
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
