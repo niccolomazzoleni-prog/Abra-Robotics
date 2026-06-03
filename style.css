@@ -2250,3 +2250,8 @@ body::before {
 @media (max-width: 600px) {
   .spec-cards { grid-template-columns: 1fr; }
 }
+
+/* ── Fix overflow mobile: tabelle legali scrollabili nel proprio contenitore ── */
+.legal .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 24px; }
+.legal .table-wrap > table { margin-bottom: 0; }
+@media (max-width: 600px) { .legal .table-wrap > table { min-width: 480px; } }
