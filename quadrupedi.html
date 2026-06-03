@@ -297,6 +297,10 @@
     .matrix tbody tr:hover td { background: rgba(0,0,0,0.025); }
     .matrix tbody tr:last-child td { border-bottom:none; }
     @media (max-width: 900px) { .robot-grid { grid-template-columns: 1fr; } }
+    .coll-filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px; }
+    .coll-filters button { font-family:var(--font); font-size:0.82rem; font-weight:700; padding:9px 18px; border-radius:999px; border:1px solid var(--gray-200); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all .2s; }
+    .coll-filters button:hover { border-color:var(--gray-400); color:var(--black); }
+    .coll-filters button.active { background:var(--black); color:var(--white); border-color:var(--black); }
   </style>
 </head>
 <body>
@@ -375,9 +379,15 @@
 
   <section class="section" style="padding-top:24px;">
     <div class="container">
+      <div class="coll-filters" aria-label="Filtra per famiglia">
+        <button data-filter="all" class="active">Tutti</button>
+        <button data-filter="go2">Go2</button>
+        <button data-filter="a2">A2</button>
+        <button data-filter="b2">B2</button>
+      </div>
       <div class="robot-grid">
 
-        <article class="robot-card">
+        <article class="robot-card" data-family="go2">
           <div class="robot-media">
             <span class="robot-media-tag">Consumer / base</span>
             <img src="prodotti/assets/variants/go2-pro/img-01.jpg" alt="Unitree Go2 Pro, quadrupede Unitree" loading="lazy"
@@ -411,7 +421,7 @@
           </div>
         </article>
 
-        <article class="robot-card">
+        <article class="robot-card" data-family="go2">
           <div class="robot-media">
             <span class="robot-media-tag">Education · 40 TOPS</span>
             <img src="prodotti/assets/variants/go2-edu/img-01.jpg" alt="Unitree Go2 EDU, quadrupede Unitree" loading="lazy"
@@ -445,7 +455,7 @@
           </div>
         </article>
 
-        <article class="robot-card">
+        <article class="robot-card" data-family="go2">
           <div class="robot-media">
             <span class="robot-media-tag">Education · 100 TOPS</span>
             <img src="prodotti/assets/variants/go2-edu/img-02.jpg" alt="Unitree Go2 EDU+, quadrupede Unitree" loading="lazy"
@@ -479,7 +489,7 @@
           </div>
         </article>
 
-        <article class="robot-card">
+        <article class="robot-card" data-family="go2">
           <div class="robot-media">
             <span class="robot-media-tag">Enterprise · sorveglianza</span>
             <img src="prodotti/assets/variants/go2-ent-u2/img-01.jpg" alt="Unitree Go2 Enterprise+ U2, quadrupede Unitree" loading="lazy"
@@ -513,7 +523,7 @@
           </div>
         </article>
 
-        <article class="robot-card">
+        <article class="robot-card" data-family="a2">
           <div class="robot-media">
             <span class="robot-media-tag">Industriale · IP56</span>
             <img src="prodotti/assets/variants/a2/img-01.jpg" alt="Unitree A2, quadrupede Unitree" loading="lazy"
@@ -547,7 +557,7 @@
           </div>
         </article>
 
-        <article class="robot-card">
+        <article class="robot-card" data-family="a2">
           <div class="robot-media">
             <span class="robot-media-tag">Field autonomy · IP67</span>
             <img src="prodotti/assets/variants/a2-pro/img-01.jpg" alt="Unitree A2 Pro, quadrupede Unitree" loading="lazy"
@@ -581,7 +591,7 @@
           </div>
         </article>
 
-        <article class="robot-card">
+        <article class="robot-card" data-family="b2">
           <div class="robot-media">
             <span class="robot-media-tag">Industriale pesante · IP67</span>
             <img src="prodotti/assets/variants/b2/img-01.jpg" alt="Unitree B2, quadrupede Unitree" loading="lazy"
@@ -755,5 +765,17 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  (function(){
+    var bar=document.querySelector('.coll-filters'); if(!bar)return;
+    var cards=Array.prototype.slice.call(document.querySelectorAll('.robot-card'));
+    bar.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-filter]'); if(!b)return;
+      bar.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b);});
+      var f=b.dataset.filter;
+      cards.forEach(function(c){ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; });
+    });
+  })();
+  </script>
 </body>
 </html>
