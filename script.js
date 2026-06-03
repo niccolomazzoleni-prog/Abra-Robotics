@@ -1,6 +1,8 @@
-// Contact form → Google Sheets
-// Replace this URL with your deployed Google Apps Script URL
-const GOOGLE_SCRIPT_URL = 'INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT';
+// === ENDPOINT UNICO per TUTTI i form del sito ===
+// Tutti i form (contatti home/pagine, box "Richiedi informazioni" sulle schede) inviano qui.
+// Incolla l'URL del Web App Google Apps Script (vedi apps-script/README.md). Una sola riga da cambiare.
+window.GOOGLE_SCRIPT_URL = 'INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT';
+const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
 const contactForm = document.getElementById('contact-form');
 const formFeedback = document.getElementById('form-feedback');
@@ -15,6 +17,10 @@ if (contactForm) {
     formFeedback.textContent = '';
 
     const payload = Object.fromEntries(new FormData(contactForm).entries());
+    payload.origine = payload.prodotto || 'Form contatti';
+    payload.pagina = document.title;
+    payload.url = location.href;
+    payload.timestamp = new Date().toISOString();
 
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
