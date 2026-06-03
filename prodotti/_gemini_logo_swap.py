@@ -11,6 +11,7 @@ import os, sys
 from io import BytesIO
 from PIL import Image
 from google import genai
+from google.genai import types
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-image")
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,8 +39,10 @@ PROMPT = (
     "CRITICAL: keep the output IDENTICAL to the input in every other way. Same exact "
     "framing, same composition, same full-body view, same zoom level, same aspect ratio "
     "and same image dimensions. Do NOT crop, do NOT zoom in, do NOT recompose or change "
-    "the camera. Same robot, same pose, same background, same colors. Only the logo "
-    "changes. If no 'ROBOSTORE' logo is visible, return the image unchanged."
+    "the camera. The ENTIRE robot must remain visible from head to feet (full body), "
+    "with empty margin all around it exactly like the input; never cut off legs, feet or "
+    "head. Same robot, same pose, same background, same colors. Only the logo changes. "
+    "If no 'ROBOSTORE' logo is visible, return the image unchanged."
 )
 
 def main():
@@ -47,6 +50,12 @@ def main():
         sys.exit("ERRORE: GEMINI_API_KEY non impostata nell'ambiente.")
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
     logo = Image.open(LOGO)
+
+    # Forza l'aspect ratio dell'output (es. GEMINI_ASPECT=1:1) per evitare crop/reframe.
+    cfg = None
+    aspect = os.environ.get("GEMINI_ASPECT")
+    if aspect:
+        cfg = types.GenerateContentConfig(image_config=types.ImageConfig(aspect_ratio=aspect))
 
     # Se passo dei path come argomenti, lavoro solo su quelli (utile per il test).
     targets = sys.argv[1:] if len(sys.argv) > 1 else IMAGES
@@ -58,7 +67,7 @@ def main():
             print("  ! manca", rel); continue
         img = Image.open(src)
         try:
-            resp = client.models.generate_content(model=MODEL, contents=[PROMPT, img, logo])
+            resp = client.models.generate_content(model=MODEL, contents=[PROMPT, img, logo], config=cfg)
         except Exception as e:
             print(f"  ERR {rel}: {e}"); continue
 
