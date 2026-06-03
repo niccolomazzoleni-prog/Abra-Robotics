@@ -2255,3 +2255,9 @@ body::before {
 .legal .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 24px; }
 .legal .table-wrap > table { margin-bottom: 0; }
 @media (max-width: 600px) { .legal .table-wrap > table { min-width: 480px; } }
+
+/* ── Hero verticale split: testo a sinistra, immagine a destra ── */
+.vert-hero-split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+.vert-hero-split .vert-hero-inner { text-align: left; margin: 0; max-width: none; }
+.vert-hero-photo { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: 16px; min-height: 300px; border: 1px solid var(--gray-200); }
+@media (max-width: 860px) { .vert-hero-split { grid-template-columns: 1fr; gap: 28px; } .vert-hero-photo { aspect-ratio: 16 / 9; min-height: 0; } }
