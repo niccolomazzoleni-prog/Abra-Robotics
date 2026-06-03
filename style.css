@@ -2208,3 +2208,45 @@ body::before {
     repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.08) 12px, rgba(255,255,255,0.08) 24px);
   color: var(--gray-200);
 }
+
+/* === Spec cards (sostituiscono il collage foto nelle schede umanoidi) === */
+.spec-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.spec-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 150px;
+  justify-content: center;
+}
+.spec-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--orange);
+}
+.spec-card-value {
+  font-size: clamp(2rem, 3.4vw, 2.7rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.spec-card-label {
+  font-size: 0.95rem;
+  color: var(--gray-400);
+  line-height: 1.4;
+}
+@media (max-width: 600px) {
+  .spec-cards { grid-template-columns: 1fr; }
+}
