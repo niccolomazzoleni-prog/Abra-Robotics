@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abra Robotics — Checklist sito (da fare)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0c0e14; --ink2:#151821; --line:#252a36; --txt:#e7e9ee; --mut:#9aa3b2;
+      --accent:#f5631e; --green:#2fbf71; --crit:#ff5d5d; --med:#ffb02e; --low:#5b8def;
+      --font:'Satoshi',-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:var(--ink);color:var(--txt);line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent)}
+    .wrap{max-width:1000px;margin:0 auto;padding:32px 24px 80px}
+
+    /* Header */
+    header.top{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
+      background:linear-gradient(135deg,#1a1d27,#0e1017);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin-bottom:14px}
+    header.top h1{font-size:1.6rem;font-weight:900;letter-spacing:-.02em}
+    header.top p{color:var(--mut);font-size:.92rem;margin-top:4px}
+    .ring{display:flex;align-items:center;gap:16px}
+    .ring .pct{font-size:2.2rem;font-weight:900;letter-spacing:-.03em}
+    .ring .pct small{font-size:.9rem;color:var(--mut);font-weight:600}
+    .bar{height:10px;background:var(--ink2);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#ff8a4c);transition:width .4s ease}
+    .topbar{flex:1 1 280px}
+    .actions{display:flex;gap:10px}
+    .btn{font-family:var(--font);font-weight:700;font-size:.82rem;border:1px solid var(--line);background:var(--ink2);
+      color:var(--txt);border-radius:10px;padding:9px 14px;cursor:pointer;transition:.15s}
+    .btn:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* Legend */
+    .legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 2px 22px;color:var(--mut);font-size:.8rem}
+    .legend .chip{margin-right:6px}
+    .chip{display:inline-block;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+      padding:3px 8px;border-radius:999px;vertical-align:middle}
+    .chip.crit{background:rgba(255,93,93,.15);color:var(--crit)}
+    .chip.med{background:rgba(255,176,46,.15);color:var(--med)}
+    .chip.low{background:rgba(91,141,239,.15);color:var(--low)}
+
+    /* Group */
+    .group{background:var(--ink2);border:1px solid var(--line);border-radius:16px;margin-bottom:16px;overflow:hidden}
+    .group > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px}
+    .group > summary::-webkit-details-marker{display:none}
+    .group > summary .gnum{width:30px;height:30px;border-radius:8px;background:var(--ink);display:grid;place-items:center;font-weight:800;color:var(--accent);flex-shrink:0}
+    .group > summary h2{font-size:1.08rem;font-weight:800;flex:1}
+    .group > summary .gcount{font-size:.82rem;color:var(--mut);font-weight:700;white-space:nowrap}
+    .group > summary .gbar{width:120px}
+    .group .caret{color:var(--mut);transition:transform .2s}
+    .group[open] .caret{transform:rotate(90deg)}
+    .tasks{padding:4px 14px 16px}
+
+    .task{display:flex;align-items:flex-start;gap:12px;padding:12px 10px;border-top:1px solid var(--line)}
+    .task:first-child{border-top:none}
+    .task input[type=checkbox]{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid var(--line);
+      border-radius:6px;cursor:pointer;flex-shrink:0;margin-top:1px;position:relative;transition:.15s;background:var(--ink)}
+    .task input:checked{background:var(--green);border-color:var(--green)}
+    .task input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#04130b;font-weight:900;font-size:.8rem}
+    .task .body{flex:1}
+    .task .t{font-weight:700;font-size:.98rem}
+    .task .d{color:var(--mut);font-size:.86rem;margin-top:3px}
+    .task .d code{background:var(--ink);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.8rem;color:#cdd3df}
+    .task.done .t{text-decoration:line-through;color:var(--mut)}
+    .task.done .body{opacity:.55}
+    label.cbx{display:contents;cursor:pointer}
+    @media(max-width:600px){.group>summary .gbar{display:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <h1>Checklist sito Abra Robotics</h1>
+        <p>Spunta le voci man mano che le completi — lo stato resta salvato in questo browser.</p>
+      </div>
+      <div class="topbar">
+        <div class="ring"><span class="pct" id="pct">0%</span><span class="pct"><small id="done-count">0 / 0 completate</small></span></div>
+        <div class="bar" style="margin-top:8px"><i id="overall-bar"></i></div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="expand">Espandi tutto</button>
+        <button class="btn" id="reset">Azzera</button>
+      </div>
+    </header>
+
+    <div class="legend">
+      Priorità:
+      <span><span class="chip crit">Critico</span> blocca il go-live</span>
+      <span><span class="chip med">Medio</span> contenuti/qualità</span>
+      <span><span class="chip low">Nice to have</span></span>
+    </div>
+
+    <!-- 1. DATI LEGALI -->
+    <details class="group" open>
+      <summary><span class="gnum">1</span><h2>Dati legali <span class="chip crit">Critico</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-1"><span class="body"><span class="t">Ragione sociale completa + forma giuridica</span><span class="d">Es. "Abra Robotics S.r.l." — sostituisce <code>[DA COMPLETARE: ragione sociale]</code> in note-legali, privacy, condizioni e footer.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-2"><span class="body"><span class="t">Sede legale (indirizzo completo)</span><span class="d">Via, CAP, città, provincia. Compare in privacy-policy e note-legali.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-3"><span class="body"><span class="t">P.IVA / Codice Fiscale</span><span class="d">Obbligatoria nel footer di tutte le pagine + privacy/note legali/condizioni.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-4"><span class="body"><span class="t">Numero REA + Registro Imprese</span><span class="d">"Iscritta al Registro Imprese di [città] al n. REA [n]".</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-5"><span class="body"><span class="t">PEC</span><span class="d">Indirizzo PEC aziendale per privacy e note legali.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-6"><span class="body"><span class="t">Città del foro competente</span><span class="d">Per la clausola foro in <code>condizioni-di-vendita.html</code> e <code>note-legali.html</code>.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-7"><span class="body"><span class="t">Completare Condizioni di vendita</span><span class="d">12 sezioni con <code>[DA COMPLETARE]</code> (ordine, prezzi, pagamenti, consegna, garanzia, recesso...) da definire col consulente legale.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-8"><span class="body"><span class="t">Verificare DPO / endpoint privacy</span><span class="d">Indicare se nominato un DPO e l'email per esercizio diritti GDPR.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 2. FORM / LEAD -->
+    <details class="group" open>
+      <summary><span class="gnum">2</span><h2>Form contatti / lead <span class="chip crit">Critico</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="form-1"><span class="body"><span class="t">Creare endpoint raccolta lead</span><span class="d">Google Apps Script collegato a un Google Sheet (o altro endpoint) che riceve i form.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="form-2"><span class="body"><span class="t">Inserire l'URL nel sito</span><span class="d">Sostituire <code>INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT</code> in <code>script.js</code> e <code>prodotti/ecommerce.js</code>. Senza, nessun form invia.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="form-3"><span class="body"><span class="t">Test invio + ricezione</span><span class="d">Provare form home, schede prodotto e box "Richiedi informazioni". Verificare arrivo email/foglio entro pochi secondi.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 3. STRIPE / PAGAMENTI -->
+    <details class="group" open>
+      <summary><span class="gnum">3</span><h2>Stripe / pagamenti <span class="chip crit">Critico</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-1"><span class="body"><span class="t">Account Stripe + chiave pubblica</span><span class="d">Sostituire <code>pk_live_DA_COMPLETARE</code> in <code>prodotti/stripe-config.js</code>.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-2"><span class="body"><span class="t">Confermare i prezzi finali</span><span class="d">Prezzi attuali = End-User listino −5%. Confermare prima di creare i Payment Link.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-3"><span class="body"><span class="t">Creare 18 Payment Link (uno per prodotto)</span><span class="d">Crearli nella dashboard Stripe e incollarli nella mappa di <code>stripe-config.js</code> (18 voci ora vuote). Finché vuoti, "Acquista" rimanda al preventivo.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 4. IMMAGINI -->
+    <details class="group" open>
+      <summary><span class="gnum">4</span><h2>Immagini da fornire <span class="chip med">Medio</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-1"><span class="body"><span class="t">Home — umanoide in contesto universitario</span><span class="d">Foto reale, orizzontale ~16:9 (consigliato 1200×675 px). Sostituisce il box "IMG: umanoide contesto università".</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-2"><span class="body"><span class="t">Assessment — 4 immagini card "A chi serve"</span><span class="d">4 foto 16:9 (~800×450 px): azienda di prodotto, logistica, R&D/innovazione, università.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-3"><span class="body"><span class="t">Finanziamenti — 3 banner</span><span class="d">3 immagini orizzontali larghe ~21:9 (~1600×685 px) per spezzare il testo (incentivi/industria/officina).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-4"><span class="body"><span class="t">Manifattura — hero + sezione quadrupedi</span><span class="d">2 immagini wide ~24:9 (~2000×750 px): hero settore manifattura, quadrupede in ispezione impianto.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-5"><span class="body"><span class="t">Foto reali G1D e R1D</span><span class="d">Foto prodotto figura intera su sfondo bianco, ~2000×2000 px (per ritaglio sfondo come gli altri umanoidi). Sostituiscono i placeholder "IMG: G1D" / "IMG: R1D".</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-6"><span class="body"><span class="t">Università — hero + laboratorio</span><span class="d">2 immagini wide ~24:9: hero università, laboratorio di ricerca robotica (tono scuro).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-7"><span class="body"><span class="t">Foto prodotti nuovi (opzionale)</span><span class="d">Immagini aggiuntive per Franka FR3, Fairino, MC250, HikRobot, H2 (ne ho 1 ciascuno; più foto = gallery più ricca).</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 5. PREZZI -->
+    <details class="group" open>
+      <summary><span class="gnum">5</span><h2>Prezzi mancanti <span class="chip med">Medio</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="price-1"><span class="body"><span class="t">G1 EDU Ultimate F (U8)</span><span class="d">Mani BrainCo Revo 2 con tattili: non presente nel listino. Fornire prezzo End-User (poi −5%).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="price-2"><span class="body"><span class="t">Go2 Enterprise+ U2</span><span class="d">Confermare di quale prodotto si tratta e il prezzo (EDU Ultimate 20.075 € o GO2W-U2 24.784 €?).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="price-3"><span class="body"><span class="t">Unitree H2</span><span class="d">Ora "Prezzo su richiesta". Fornire il prezzo se vuoi mostrarlo (poi −5%).</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 6. SCHEDE PRODOTTO -->
+    <details class="group" open>
+      <summary><span class="gnum">6</span><h2>Schede prodotto da creare <span class="chip med">Medio</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-0"><span class="body"><span class="t">Unitree H2 ✓ (fatto)</span><span class="d">Scheda creata + in collection Umanoidi. (Spunta per memoria.)</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-1"><span class="body"><span class="t">Franka Research 3 (FR3)</span><span class="d">Braccio da ricerca 7 DoF. → collection Università. Specifiche dal sito Franka.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-2"><span class="body"><span class="t">Fairino FR5 / FR10 / FR20</span><span class="d">3 cobot (5/10/20 kg payload). → sezione Cobot in Manifattura.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-3"><span class="body"><span class="t">Enabled Robotics MC250</span><span class="d">Cobot mobile (MiR250 + braccio UR). → Manifattura/AMR.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-4"><span class="body"><span class="t">HikRobot LMR</span><span class="d">AMR latente (sotto-scaffale). → Manifattura/AMR.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 7. SEO / EXTRA -->
+    <details class="group" open>
+      <summary><span class="gnum">7</span><h2>SEO / extra <span class="chip low">Nice to have</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-1"><span class="body"><span class="t">Creare sitemap.xml</span><span class="d"><code>robots.txt</code> la dichiara ma il file manca. Genero la sitemap con tutte le pagine.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-2"><span class="body"><span class="t">og:image per-prodotto</span><span class="d">Alcune schede usano l'immagine social generica; impostare l'anteprima sociale per ogni prodotto.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-3"><span class="body"><span class="t">Caricare feed su Google Merchant Center</span><span class="d"><code>merchant-feed.xml</code> generato (16 prodotti). Va inviato in Merchant Center + account verificato.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-4"><span class="body"><span class="t">Overlay logo Abra sulle foto prodotto</span><span class="d">Applicare il logo sulle immagini (rimandato "ex post").</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-5"><span class="body"><span class="t">Dominio proprio</span><span class="d">Valutare un dominio (es. abrarobotics.com) al posto dell'URL github.io per ads/e-commerce.</span></span></label></div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+  (function(){
+    var KEY='abra_checklist_v1';
+    var saved={};
+    try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+    var boxes=Array.prototype.slice.call(document.querySelectorAll('.task input[type=checkbox]'));
+
+    function save(){ var o={}; boxes.forEach(function(b){ if(b.checked) o[b.id]=1; }); localStorage.setItem(KEY,JSON.stringify(o)); }
+
+    function refresh(){
+      // per gruppo
+      document.querySelectorAll('.group').forEach(function(g){
+        var bs=g.querySelectorAll('.task input'); var done=0;
+        bs.forEach(function(b){ if(b.checked) done++; });
+        var pct=bs.length?Math.round(done/bs.length*100):0;
+        var bar=g.querySelector('.gbar > i'); if(bar) bar.style.width=pct+'%';
+        var c=g.querySelector('.gcount'); if(c) c.textContent=done+'/'+bs.length;
+      });
+      // totale
+      var done=boxes.filter(function(b){return b.checked;}).length;
+      var pct=boxes.length?Math.round(done/boxes.length*100):0;
+      document.getElementById('pct').textContent=pct+'%';
+      document.getElementById('overall-bar').style.width=pct+'%';
+      document.getElementById('done-count').textContent=done+' / '+boxes.length+' completate';
+    }
+
+    boxes.forEach(function(b){
+      if(saved[b.id]) b.checked=true;
+      b.closest('.task').classList.toggle('done', b.checked);
+      b.addEventListener('change', function(){
+        b.closest('.task').classList.toggle('done', b.checked);
+        save(); refresh();
+      });
+    });
+    refresh();
+
+    document.getElementById('reset').addEventListener('click', function(){
+      if(!confirm('Azzerare tutte le spunte?')) return;
+      boxes.forEach(function(b){ b.checked=false; b.closest('.task').classList.remove('done'); });
+      save(); refresh();
+    });
+    var expanded=true;
+    document.getElementById('expand').addEventListener('click', function(){
+      expanded=!expanded;
+      document.querySelectorAll('.group').forEach(function(g){ g.open=expanded; });
+      this.textContent=expanded?'Comprimi tutto':'Espandi tutto';
+    });
+  })();
+  </script>
+</body>
+</html>
