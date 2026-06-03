@@ -862,6 +862,18 @@
         <div class="gallery">
           <div class="gallery-main">
             <img id="gallery-main-img" src="assets/images/g1-01-abra.jpg" alt="Unitree G1 Air — Robot Umanoide">
+            <div class="gallery-nav">
+              <button class="gallery-btn" id="gallery-prev" aria-label="Immagine precedente">←</button>
+              <button class="gallery-btn" id="gallery-next" aria-label="Immagine successiva">→</button>
+            </div>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb active" data-index="0"><img src="assets/images/g1-01-abra.jpg" alt="G1 vista frontale"></div>
+            <div class="gallery-thumb" data-index="1"><img src="assets/images/g1-02.jpg" alt="G1 dettaglio"></div>
+            <div class="gallery-thumb" data-index="2"><img src="assets/images/g1-03.jpg" alt="G1 in movimento"></div>
+            <div class="gallery-thumb" data-index="3"><img src="assets/images/g1-04.jpg" alt="G1 articolazioni"></div>
+            <div class="gallery-thumb" data-index="4"><img src="assets/images/g1-05.jpg" alt="G1 profilo"></div>
+            <div class="gallery-thumb" data-index="5"><img src="assets/images/g1-06.png" alt="G1 render"></div>
           </div>
         </div>
 
@@ -1135,11 +1147,39 @@
           <a href="#form" class="btn btn-primary" style="margin-top:8px;">Parla con un esperto</a>
         </div>
 
-        <div class="spec-cards">
-          <div class="spec-card"><span class="spec-card-value">23 DoF</span><span class="spec-card-label">Gradi di libertà totali</span></div>
-          <div class="spec-card"><span class="spec-card-value">35 kg</span><span class="spec-card-label">Peso totale con batteria</span></div>
-          <div class="spec-card"><span class="spec-card-value">2 m/s</span><span class="spec-card-label">Velocità massima</span></div>
-          <div class="spec-card"><span class="spec-card-value">90 N·m</span><span class="spec-card-label">Coppia massima ginocchio</span></div>
+        <div class="parallax-cols" id="parallax-container">
+          <div class="parallax-col-a" id="parallax-col-a">
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-01.jpg" alt="G1 struttura e articolazioni" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">23 DoF</span>
+                <span class="parallax-caption-label">Gradi di libertà totali</span>
+              </div>
+            </div>
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-base.jpg" alt="G1 Air dettaglio" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">35 kg</span>
+                <span class="parallax-caption-label">Peso totale con batteria</span>
+              </div>
+            </div>
+          </div>
+          <div class="parallax-col-b" id="parallax-col-b">
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-02.jpg" alt="G1 in movimento" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">2 m/s</span>
+                <span class="parallax-caption-label">Velocità massima</span>
+              </div>
+            </div>
+            <div class="parallax-img-wrap">
+              <img src="assets/images/collage-05.jpg" alt="G1 dettaglio sensori" loading="lazy">
+              <div class="parallax-caption">
+                <span class="parallax-caption-value">90 N·m</span>
+                <span class="parallax-caption-label">Coppia massima ginocchio</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1516,10 +1556,10 @@
     (function () {
       const images = [
         'assets/images/g1-01-abra.jpg',
-        'assets/images/g1-01-abra.jpg',
-        'assets/images/g1-01-abra.jpg',
-        'assets/images/g1-01-abra.jpg',
-        'assets/images/g1-01-abra.jpg',
+        'assets/images/g1-02.jpg',
+        'assets/images/g1-03.jpg',
+        'assets/images/g1-04.jpg',
+        'assets/images/g1-05.jpg',
         'assets/images/g1-06.png',
       ];
       let current = 0;
