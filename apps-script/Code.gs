@@ -9,7 +9,7 @@
 // ── CONFIG ──────────────────────────────────────────────────────────────
 var SHEET_ID    = '1nXl0QyElz1znYHiDb8xJ_bd7NYqfuCoLB3URLfNdcAc';  // Foglio "Abra Robotics — Contatti sito" (gia creato)
 var SHEET_NAME  = 'Contatti';               // nome del tab
-var NOTIFY_TO   = 'gio@abrarobotics.com';   // dove ricevere la notifica di nuovo contatto
+var NOTIFY_TO   = 'gio@abrarobotics.com,niccolomazzoleni@gmail.com';   // notifica nuovo contatto (più destinatari separati da virgola)
 // ────────────────────────────────────────────────────────────────────────
 
 function doPost(e) {
