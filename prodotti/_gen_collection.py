@@ -12,7 +12,8 @@ NAMES = {
  "g1-u6":"Unitree G1 EDU Ultimate D","g1-u7":"Unitree G1 EDU Ultimate E","g1-u8":"Unitree G1 EDU Ultimate F",
  "g1-comp":"Unitree G1 Comp",
 }
-UNUM = {"g1":"Base","g1-comp":"Comp","g1-u1":"U1","g1-u2":"U2","g1-u3":"U3","g1-u4":"U4","g1-u5":"U5","g1-u6":"U6","g1-u7":"U7","g1-u8":"U8"}
+UNUM = {"g1":"Air","g1-comp":"Comp","g1-u1":"U1","g1-u2":"U2","g1-u3":"U3","g1-u4":"U4","g1-u5":"U5","g1-u6":"U6","g1-u7":"U7","g1-u8":"U8"}
+TIER = {"g1":"air","g1-comp":"comp","g1-u1":"edu","g1-u2":"edu","g1-u3":"edu","g1-u4":"edu","g1-u5":"edu","g1-u6":"edu","g1-u7":"edu","g1-u8":"edu"}
 
 def img(code):
     if code == "g1":
@@ -28,7 +29,8 @@ def card(code):
     href = f"prodotti/{c['file']}"
     pz = PREZZI.get(c['file'])
     price = euro(pz['cent']) if pz and pz['stato'] == 'acquista' else 'Su richiesta'
-    return f'''        <article class="robot-card">
+    disp = name + (f" ({UNUM[code]})" if UNUM[code].startswith("U") else "")
+    return f'''        <article class="robot-card" data-family="g1" data-tier="{TIER[code]}">
           <div class="robot-media">
             <span class="robot-media-tag">{UNUM[code]} · {c['tag']}</span>
             <img src="{img(code)}" alt="{name}, robot umanoide Unitree" loading="lazy"
@@ -40,7 +42,7 @@ def card(code):
           </div>
           <div class="robot-body">
             <div>
-              <h3>{name}</h3>
+              <h3>{disp}</h3>
               <p class="robot-subtitle">Robot umanoide · {c['hands']}</p>
             </div>
 
@@ -125,6 +127,10 @@ HTML = f'''<!DOCTYPE html>
     .matrix tbody tr:last-child td {{ border-bottom:none; }}
 
     @media (max-width: 900px) {{ .robot-grid {{ grid-template-columns: 1fr; }} }}
+    .coll-filters {{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px; }}
+    .coll-filters button {{ font-family:var(--font); font-size:0.82rem; font-weight:700; padding:9px 18px; border-radius:999px; border:1px solid var(--gray-200); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all .2s; }}
+    .coll-filters button:hover {{ border-color:var(--gray-400); color:var(--black); }}
+    .coll-filters button.active {{ background:var(--black); color:var(--white); border-color:var(--black); }}
   </style>
 </head>
 <body>
@@ -206,6 +212,12 @@ HTML = f'''<!DOCTYPE html>
   <!-- GRID -->
   <section class="section" style="padding-top:24px;">
     <div class="container">
+      <div class="coll-filters" aria-label="Filtra per tier">
+        <button data-filter="all" class="active">Tutti</button>
+        <button data-filter="air">G1 Air</button>
+        <button data-filter="edu">EDU (U1–U8)</button>
+        <button data-filter="comp">Comp</button>
+      </div>
       <div class="robot-grid">
 
 {cards}
@@ -283,6 +295,18 @@ HTML = f'''<!DOCTYPE html>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  (function(){{
+    var bar=document.querySelector('.coll-filters'); if(!bar)return;
+    var cards=Array.prototype.slice.call(document.querySelectorAll('.robot-card'));
+    bar.addEventListener('click',function(e){{
+      var b=e.target.closest('button[data-filter]'); if(!b)return;
+      bar.querySelectorAll('button').forEach(function(x){{x.classList.toggle('active',x===b);}});
+      var f=b.dataset.filter;
+      cards.forEach(function(c){{ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; }});
+    }});
+  }})();
+  </script>
 </body>
 </html>
 '''

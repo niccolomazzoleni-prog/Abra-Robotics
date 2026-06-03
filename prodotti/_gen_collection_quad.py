@@ -16,11 +16,13 @@ IMG = {
 CLIMB = {"go2-pro":"40°","go2-edu":"40°","go2-edu-plus":"40°","go2-ent-u2":"40°","a2":"45°","a2-pro":"45°","b2":">45°"}
 RUN = {"go2-pro":"1–2 h","go2-edu":"2–4 h","go2-edu-plus":"2–4 h","go2-ent-u2":"1–2 h","a2":">5 h","a2-pro":">5 h","b2":"4–6 h"}
 
+FAM = {"go2-pro":"go2","go2-edu":"go2","go2-edu-plus":"go2","go2-ent-u2":"go2","a2":"a2","a2-pro":"a2","b2":"b2"}
+
 def card(code):
     c = COMPACT[code]; name = NAMES[code]
     pz = PREZZI.get(c['file'])
     price = euro(pz['cent']) if pz and pz['stato'] == 'acquista' else 'Su richiesta'
-    return f'''        <article class="robot-card">
+    return f'''        <article class="robot-card" data-family="{FAM[code]}">
           <div class="robot-media">
             <span class="robot-media-tag">{c['tag']}</span>
             <img src="prodotti/assets/variants/{IMG[code]}" alt="{name}, quadrupede Unitree" loading="lazy"
@@ -105,6 +107,10 @@ HTML = f'''<!DOCTYPE html>
     .matrix tbody tr:hover td {{ background: rgba(0,0,0,0.025); }}
     .matrix tbody tr:last-child td {{ border-bottom:none; }}
     @media (max-width: 900px) {{ .robot-grid {{ grid-template-columns: 1fr; }} }}
+    .coll-filters {{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px; }}
+    .coll-filters button {{ font-family:var(--font); font-size:0.82rem; font-weight:700; padding:9px 18px; border-radius:999px; border:1px solid var(--gray-200); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all .2s; }}
+    .coll-filters button:hover {{ border-color:var(--gray-400); color:var(--black); }}
+    .coll-filters button.active {{ background:var(--black); color:var(--white); border-color:var(--black); }}
   </style>
 </head>
 <body>
@@ -183,6 +189,12 @@ HTML = f'''<!DOCTYPE html>
 
   <section class="section" style="padding-top:24px;">
     <div class="container">
+      <div class="coll-filters" aria-label="Filtra per famiglia">
+        <button data-filter="all" class="active">Tutti</button>
+        <button data-filter="go2">Go2</button>
+        <button data-filter="a2">A2</button>
+        <button data-filter="b2">B2</button>
+      </div>
       <div class="robot-grid">
 
 {cards}
@@ -258,6 +270,18 @@ HTML = f'''<!DOCTYPE html>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  (function(){{
+    var bar=document.querySelector('.coll-filters'); if(!bar)return;
+    var cards=Array.prototype.slice.call(document.querySelectorAll('.robot-card'));
+    bar.addEventListener('click',function(e){{
+      var b=e.target.closest('button[data-filter]'); if(!b)return;
+      bar.querySelectorAll('button').forEach(function(x){{x.classList.toggle('active',x===b);}});
+      var f=b.dataset.filter;
+      cards.forEach(function(c){{ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; }});
+    }});
+  }})();
+  </script>
 </body>
 </html>
 '''
