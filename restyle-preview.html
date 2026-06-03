@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restyle Preview — Abra Robotics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Tokens ── */
+    :root {
+      --black:      #0a0a0a;
+      --dark:       #3a3a3a;
+      --mid:        #999;
+      --light:      #f5f5f5;
+      --border:     rgba(0,0,0,0.08);
+      --divider:    rgba(0,0,0,0.10);
+      --white:      #ffffff;
+      --max:        1100px;
+      --pad-x:      48px;
+      --pad-y:      120px;
+    }
+
+    /* ── Base ── */
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      line-height: 1.75;
+      /* Grid texture overlay */
+      background-image:
+        linear-gradient(rgba(0,0,0,0.035) 0.5px, transparent 0.5px),
+        linear-gradient(90deg, rgba(0,0,0,0.035) 0.5px, transparent 0.5px);
+      background-size: 100px 100px;
+    }
+
+    /* ── Typography ── */
+    h1, h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      line-height: 1.15;
+    }
+
+    h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
+
+    h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    p { color: var(--dark); font-size: 1rem; line-height: 1.75; }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    /* ── Section ── */
+    .section {
+      padding: var(--pad-y) 0;
+      border-bottom: 0.5px solid var(--divider);
+    }
+    .section:last-child { border-bottom: none; }
+
+    /* ── Eyebrow label ── */
+    .eyebrow {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      margin-bottom: 28px;
+    }
+
+    /* ── Section intro block ── */
+    .section-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+
+    .section-intro .lead {
+      font-size: 1.05rem;
+      color: var(--dark);
+      line-height: 1.75;
+      max-width: 420px;
+    }
+
+    /* ── Service rows ── */
+    .service-list {
+      border-top: 0.5px solid var(--divider);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 40px;
+      align-items: start;
+      padding: 40px 0;
+      border-bottom: 0.5px solid var(--divider);
+      transition: background 0.2s;
+    }
+
+    .service-row:hover {
+      background: rgba(0,0,0,0.015);
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .service-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+      padding-top: 6px;
+    }
+
+    .service-body h3 {
+      margin-bottom: 12px;
+    }
+
+    .service-body p {
+      font-size: 0.95rem;
+      color: var(--dark);
+      max-width: 520px;
+    }
+
+    .service-action {
+      padding-top: 6px;
+    }
+
+    .link-arrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .link-arrow:hover { border-color: var(--black); }
+
+    /* ── Compound CTA ── */
+    .compound-cta {
+      margin-top: 72px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .compound-pill {
+      display: inline-flex;
+      align-items: center;
+      background: #f0f0f0;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .compound-pill .pill-action {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .compound-pill .pill-action:hover { background: #222; }
+
+    .compound-pill .pill-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(0,0,0,0.15);
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+
+    .compound-pill .pill-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: var(--mid);
+      padding: 0 20px 0 12px;
+      white-space: nowrap;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 999px;
+      padding: 14px 28px;
+      transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(0,0,0,0.5); }
+
+    /* ── Process steps ── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-left: 0.5px solid var(--divider);
+    }
+
+    .process-step {
+      padding: 0 48px 0 40px;
+      border-right: 0.5px solid var(--divider);
+    }
+
+    .step-index {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 400;
+      color: rgba(0,0,0,0.06);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+      display: block;
+    }
+
+    .process-step h3 {
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+
+    .process-step p {
+      font-size: 0.9rem;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* ── Banner heading for Come lavoriamo ── */
+    .section-heading-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 80px;
+      gap: 40px;
+      border-bottom: 0.5px solid var(--divider);
+      padding-bottom: 40px;
+    }
+
+    .section-heading-row h2 { flex: 1; }
+
+    .section-heading-row .heading-note {
+      font-size: 0.875rem;
+      color: var(--mid);
+      max-width: 260px;
+      line-height: 1.6;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ── Preview label ── */
+    .preview-banner {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      :root { --pad-x: 24px; --pad-y: 80px; }
+
+      .section-intro { grid-template-columns: 1fr; gap: 32px; margin-bottom: 56px; }
+
+      .service-row { grid-template-columns: 40px 1fr; gap: 20px; }
+      .service-action { display: none; }
+
+      .process-grid { grid-template-columns: 1fr; border-left: none; }
+      .process-step {
+        padding: 40px 0;
+        border-right: none;
+        border-bottom: 0.5px solid var(--divider);
+      }
+      .process-step:last-child { border-bottom: none; }
+
+      .section-heading-row { flex-direction: column; gap: 16px; }
+      .section-heading-row .heading-note { text-align: left; max-width: 100%; }
+
+      .compound-cta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-banner">Restyle Preview — Solo a scopo di confronto</div>
+
+  <!-- ────────────────────────────────────────────
+       SEZIONE 1 — Cosa facciamo
+  ──────────────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+
+      <div class="section-intro">
+        <div>
+          <span class="eyebrow">Cosa facciamo</span>
+          <h2>Tutto il mondo robotico da un solo interlocutore.</h2>
+        </div>
+        <p class="lead">Ti aiutiamo a capire quale robot fa al caso tuo, integriamo il robot in base alle tue necessità — sviluppo software, training, assistenza, formazione. Verifichiamo per te se il progetto è finanziabile e gestiamo la pratica dall'inizio alla fine.</p>
+      </div>
+
+      <div class="service-list">
+
+        <div class="service-row">
+          <span class="service-num">01</span>
+          <div class="service-body">
+            <h3>Hardware</h3>
+            <p>Umanoidi, quadrupedi, cobot industriali e robot autonomi. Li selezioniamo, configuriamo e consegniamo pronti all'uso. Per università, laboratori e team R&D.</p>
+          </div>
+          <div class="service-action">
+            <a href="#" class="link-arrow">Acquista un robot →</a>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <span class="service-num">02</span>
+          <div class="service-body">
+            <h3>Assessment</h3>
+            <p>Non sai ancora quale robot fa per te? Partiamo da un assessment approfondito dei tuoi processi, identifichiamo le soluzioni migliori e ti proponiamo un progetto di implementazione con ROI assicurato.</p>
+          </div>
+          <div class="service-action">
+            <a href="#" class="link-arrow">Scopri come funziona →</a>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <span class="service-num">03</span>
+          <div class="service-body">
+            <h3>Software</h3>
+            <p>Programmazione, integrazione ERP/MES, AI integrata ai robot. Costruiamo il layer software che trasforma il robot in un asset intelligente e misurabile nel tempo.</p>
+          </div>
+          <div class="service-action">
+            <a href="#" class="link-arrow">Scopri di più →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="compound-cta">
+        <div class="compound-pill">
+          <a href="#" class="pill-action">Prenota una chiamata</a>
+          <span class="pill-divider"></span>
+          <span class="pill-note">Risposta entro 24h</span>
+        </div>
+        <a href="#" class="btn-ghost">Esplora le soluzioni</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────
+       SEZIONE 2 — Come lavoriamo
+  ──────────────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">Come lavoriamo</span>
+          <h2>Dal primo contatto al robot operativo.</h2>
+        </div>
+        <p class="heading-note">Tre step. Nessuna sorpresa. Un interlocutore dall'inizio alla fine.</p>
+      </div>
+
+      <div class="process-grid">
+
+        <div class="process-step">
+          <span class="step-index">01</span>
+          <h3>Chiamata conoscitiva</h3>
+          <p>Capiamo il tuo contesto e il caso d'uso desiderato. Usciamo dalla chiamata con una direzione chiara — o con la consapevolezza che non siamo il partner giusto per te.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-index">02</span>
+          <h3>Proposta su misura</h3>
+          <p>Prepariamo una proposta trasparente che include hardware selezionato, configurazione necessaria, timeline e costi. Tutto chiaro prima di firmare.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-index">03</span>
+          <h3>Deployment e supporto</h3>
+          <p>Consegna, configurazione, training e supporto continuativo. Sei operativo in tempi chiari con un interlocutore tecnico per ogni problema.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
