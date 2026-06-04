@@ -2262,10 +2262,13 @@ body::before {
 .vert-hero-photo { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: 16px; min-height: 300px; border: 1px solid var(--gray-200); }
 @media (max-width: 860px) { .vert-hero-split { grid-template-columns: 1fr; gap: 28px; } .vert-hero-photo { aspect-ratio: 16 / 9; min-height: 0; } }
 
-/* ── Fix header mobile: logo dimensionato + hamburger mai tagliato (tutte le pagine) ── */
-.navbar-inner { gap: 16px; }
+/* ── Fix overflow header mobile (tutte le pagine): logo invariato, piu' spazio ── */
+html, body { overflow-x: clip; }            /* niente scroll laterale; clip non rompe le position:sticky */
+.navbar-inner { gap: 16px; min-width: 0; }
 .logo { flex-shrink: 1; min-width: 0; }
 .menu-toggle { flex-shrink: 0; }
 @media (max-width: 768px) {
-  .logo-img { height: 30px; width: auto; max-width: 150px; object-fit: contain; display: block; }
+  /* il container mangiava 48px/lato: su mobile e' troppo e fa sforare la navbar */
+  .container { padding-left: 20px; padding-right: 20px; }
+  .top-bar { padding-left: 20px; padding-right: 20px; }
 }
