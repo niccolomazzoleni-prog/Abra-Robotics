@@ -55,7 +55,7 @@ def load_dotenv(path: str) -> None:
 
 load_dotenv(os.path.join(ROOT, ".env"))
 
-stripe.api_key = os.environ.get("STRIPE_SECRET_KEY", "")
+stripe.api_key = (os.environ.get("STRIPE_SECRET_KEY") or "").strip()
 if not stripe.api_key:
     sys.exit(
         "STRIPE_SECRET_KEY non impostata.\n"

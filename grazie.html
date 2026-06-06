@@ -63,13 +63,15 @@
     </div>
   </footer>
 
+  <script src="ads-config.js"></script>
+  <script src="ads-tracking.js"></script>
   <script src="script.js"></script>
   <script>
-    /* Mostra il riferimento sessione Stripe se presente (?session_id=...) */
     (function () {
       var p = new URLSearchParams(location.search);
       var sid = p.get("session_id") || p.get("payment_intent") || "";
       if (sid) document.getElementById("order-ref").textContent = "Riferimento ordine: " + sid;
+      if (sid && window.AbraAds && window.AbraAds.trackPurchase) window.AbraAds.trackPurchase();
     })();
   </script>
 </body>
