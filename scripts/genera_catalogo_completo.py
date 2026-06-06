@@ -290,16 +290,29 @@ def update_csv_pages(rows: list[dict]) -> None:
         w.writerows(rows)
 
 
+STRIPE_PUB_KEY = (
+    "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
+)
+
+
 def regenerate_stripe_config(filenames: list[str]) -> None:
+    cfg_path = PRODOTTI / "stripe-config.js"
+    existing_links: dict[str, str] = {}
+    if cfg_path.is_file():
+        import re
+
+        for m in re.finditer(r'"([^"]+\.html)":\s*"([^"]*)"', cfg_path.read_text(encoding="utf-8")):
+            existing_links[m.group(1)] = m.group(2)
     lines = [
         "/* Stripe — Payment Link per ogni scheda prodotto.",
         "   Valore vuoto = bottone Acquista rimanda a richiesta preventivo finche non configuri Stripe. */",
-        'window.STRIPE_PUBLISHABLE_KEY = "pk_live_DA_COMPLETARE";',
+        f'window.STRIPE_PUBLISHABLE_KEY = "{STRIPE_PUB_KEY}";',
         "window.STRIPE_PAYMENT_LINKS = {",
     ]
     for fn in sorted(set(filenames)):
         if fn.endswith(".html") and not fn.startswith("_"):
-            lines.append(f'  "{fn}": "",')
+            url = existing_links.get(fn, "")
+            lines.append(f'  "{fn}": "{url}",')
     lines.append("};")
     (PRODOTTI / "stripe-config.js").write_text("\n".join(lines) + "\n", encoding="utf-8")
 

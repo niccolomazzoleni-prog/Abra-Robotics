@@ -77,13 +77,13 @@ Architettura statica: nessun backend. Il checkout usa **Stripe Payment Link** cr
 | `prodotti/stripe-config.js` | Mappa `filename.html` → URL `https://buy.stripe.com/...` |
 | `prodotti/ecommerce.js` | Collega `.buy-btn` al Payment Link; fallback a `#form` se link vuoto |
 
-### Attivazione checkout
+### Attivazione checkout (sandbox / test)
 
-1. In Stripe Dashboard → **Payment Links** → crea un link per SKU (o per famiglia prodotto)
-2. Apri `prodotti/stripe-config.js`
-3. Incolla l'URL nel valore corrispondente, es. `"unitree-go2w-u3.html": "https://buy.stripe.com/..."`
+1. Crea `.env` nella root (copia da `.env.example`) con `STRIPE_SECRET_KEY=sk_test_...`
+2. Esegui: `python scripts/connect_stripe_sandbox.py` — crea Payment Link per ogni prodotto in `_prezzi.py` con stato `acquista`
+3. Commit + push di `prodotti/stripe-config.js` (contiene solo URL pubblici + `pk_test_...`)
 4. Link vuoto `""` = bottone "Acquista ora" rimanda al form preventivo
-5. Opzionale: sostituisci `pk_live_DA_COMPLETARE` solo se usi Stripe Elements (non necessario con Payment Link)
+5. Per produzione: sostituisci `pk_test_` / `sk_test_` con chiavi live e rilancia lo script
 
 ### UX trust badge
 
