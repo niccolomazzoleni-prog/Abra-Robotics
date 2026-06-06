@@ -143,7 +143,7 @@
     .robot-card.dark h3 { color: var(--white); }
     .robot-subtitle {
       font-size: 0.85rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0;
       font-weight: 500;
     }
@@ -177,7 +177,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 4px;
     }
     .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
@@ -190,7 +190,7 @@
     .robot-card.dark .key-spec-value { color: var(--white); }
     .key-spec-value small {
       font-weight: 500;
-      color: var(--gray-400);
+      color: var(--gray-600);
       font-size: 0.78em;
     }
     .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
@@ -219,7 +219,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.07em;
-      color: var(--gray-400);
+      color: var(--gray-600);
       padding-top: 2px;
     }
     .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
@@ -246,7 +246,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 6px;
     }
     .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
@@ -288,7 +288,7 @@
     .collection-hero .hero-meta { display:flex; gap:28px; flex-wrap:wrap; margin-top:28px; }
     .collection-hero .hero-meta div { display:flex; flex-direction:column; }
     .collection-hero .hero-meta strong { font-size:1.6rem; font-weight:900; letter-spacing:-0.03em; }
-    .collection-hero .hero-meta span { font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-400); font-weight:600; }
+    .collection-hero .hero-meta span { font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-600); font-weight:600; }
     .matrix-wrap { border:1px solid var(--gray-200); border-radius: var(--radius); overflow:auto; -webkit-overflow-scrolling:touch; }
     .matrix { width:100%; border-collapse:collapse; min-width: 880px; }
     .matrix thead td { background: var(--black); color:#fff; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; padding:14px 16px; text-align:center; }
@@ -298,7 +298,7 @@
     .matrix tbody tr:last-child td { border-bottom:none; }
     @media (max-width: 900px) { .robot-grid { grid-template-columns: 1fr; } }
     .coll-filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px; }
-    .coll-filters button { font-family:var(--font); font-size:0.82rem; font-weight:700; padding:9px 18px; border-radius:999px; border:1px solid var(--gray-200); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all .2s; }
+    .coll-filters button { font-family:var(--font); font-size:0.82rem; font-weight:700; min-height:44px; display:inline-flex; align-items:center; padding:9px 18px; border-radius:999px; border:1px solid var(--gray-200); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all .2s; }
     .coll-filters button:hover { border-color:var(--gray-400); color:var(--black); }
     .coll-filters button.active { background:var(--black); color:var(--white); border-color:var(--black); }
   </style>
@@ -767,13 +767,32 @@
   <script src="script.js"></script>
   <script>
   (function(){
-    var bar=document.querySelector('.coll-filters'); if(!bar)return;
-    var cards=Array.prototype.slice.call(document.querySelectorAll('.robot-card'));
-    bar.addEventListener('click',function(e){
-      var b=e.target.closest('button[data-filter]'); if(!b)return;
-      bar.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b);});
-      var f=b.dataset.filter;
-      cards.forEach(function(c){ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; });
+    var bar=document.querySelector('.coll-filters');
+    if(bar){
+      var cards=Array.prototype.slice.call(document.querySelectorAll('.robot-card'));
+      // a11y: esponi lo stato selezionato dei filtri agli screen reader
+      bar.querySelectorAll('button[data-filter]').forEach(function(x){
+        x.setAttribute('aria-pressed', x.classList.contains('active')?'true':'false');
+      });
+      bar.addEventListener('click',function(e){
+        var b=e.target.closest('button[data-filter]'); if(!b)return;
+        bar.querySelectorAll('button').forEach(function(x){
+          var on=x===b;
+          x.classList.toggle('active',on);
+          x.setAttribute('aria-pressed', on?'true':'false');
+        });
+        var f=b.dataset.filter;
+        cards.forEach(function(c){ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; });
+      });
+    }
+    // a11y: nomi accessibili univoci per i link ripetuti
+    document.querySelectorAll('.robot-card').forEach(function(card){
+      var t=card.querySelector('h3'); var cta=card.querySelector('.robot-card-cta a.btn');
+      if(t&&cta) cta.setAttribute('aria-label','Vedi scheda '+t.textContent.trim());
+    });
+    document.querySelectorAll('table a.btn-card').forEach(function(a){
+      var row=a.closest('tr'); var name=row&&row.querySelector('th,td');
+      if(name) a.setAttribute('aria-label','Apri scheda '+name.textContent.trim());
     });
   })();
   </script>
