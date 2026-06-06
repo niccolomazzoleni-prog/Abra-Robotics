@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Gestione Listini — Abra Robotics (interno)</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body { background: var(--gray-50); }
+    .admin-wrap { padding: calc(40px + 48px) 48px 80px; }
+    .admin-head { margin-bottom: 32px; }
+    .admin-head h1 { font-size: 2rem; letter-spacing: -0.03em; margin: 8px 0; }
+    .admin-head p { color: var(--gray-600); max-width: 720px; }
+    .admin-toolbar {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+      margin-bottom: 20px; padding: 16px 20px;
+      background: rgba(255,255,255,0.7); backdrop-filter: blur(12px);
+      border: 1px solid var(--gray-200); border-radius: var(--radius);
+    }
+    .admin-toolbar input, .admin-toolbar select {
+      padding: 10px 14px; border: 1px solid var(--gray-200); border-radius: 8px;
+      font-family: inherit; font-size: 0.9rem; background: var(--white);
+    }
+    .admin-toolbar input[type="search"] { min-width: 220px; flex: 1; }
+    .admin-toolbar label { font-size: 0.82rem; font-weight: 700; color: var(--gray-600); }
+    .admin-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+    .stat-pill {
+      padding: 10px 16px; border-radius: 999px; font-size: 0.8rem; font-weight: 700;
+      border: 1px solid var(--gray-200); background: var(--white);
+    }
+    .stat-pill.verde { border-color: #86efac; background: #f0fdf4; color: #166534; }
+    .stat-pill.giallo { border-color: #fde68a; background: #fffbeb; color: #92400e; }
+    .stat-pill.rosso { border-color: #fecaca; background: #fef2f2; color: #991b1b; }
+    .table-wrap {
+      overflow-x: auto; background: rgba(255,255,255,0.75); backdrop-filter: blur(12px);
+      border: 1px solid var(--gray-200); border-radius: var(--radius);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--gray-100); }
+    th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); cursor: pointer; user-select: none; white-space: nowrap; }
+    th:hover { color: var(--black); }
+    tr:hover td { background: var(--gray-50); }
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
+    .badge-pubblicato { background: #dcfce7; color: #166534; }
+    .badge-presente { background: #fef9c3; color: #854d0e; }
+    .badge-mancante { background: #fee2e2; color: #991b1b; }
+    .gold-col { color: var(--gray-500); font-size: 0.82rem; }
+    .upload-zone { margin-top: 12px; font-size: 0.82rem; color: var(--gray-500); }
+    .upload-zone input { font-size: 0.82rem; }
+    @media (max-width: 768px) { .admin-wrap { padding: 100px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <nav style="display:flex;gap:12px;margin-bottom:16px;">
+      <a href="immagini.html" style="font-size:0.88rem;font-weight:700;color:var(--gray-600);text-decoration:none;">Gestione immagini →</a>
+    </nav>
+    <div class="admin-head">
+      <p class="label">Interno · Non indicizzato</p>
+      <h1>Gestione listini Unitree</h1>
+      <p>Tabella di copertura prezzi sul sito. Carica il CSV master locale per vedere i prezzi Gold; senza CSV mostra solo i dati pubblici da <code>end-user.json</code>.</p>
+    </div>
+
+    <div class="admin-stats" id="stats">
+      <span class="stat-pill verde" id="stat-verde">Pubblicato: —</span>
+      <span class="stat-pill giallo" id="stat-giallo">Sul sito senza prezzo: —</span>
+      <span class="stat-pill rosso" id="stat-rosso">Assente dal sito: —</span>
+    </div>
+
+    <div class="admin-toolbar">
+      <input type="search" id="filter-search" placeholder="Cerca nome o SKU…" aria-label="Cerca">
+      <label>
+        Categoria
+        <select id="filter-cat">
+          <option value="">Tutte</option>
+          <option value="UMANOIDI">Umanoidi</option>
+          <option value="MANI_BRACCI">Mani &amp; bracci</option>
+          <option value="COMPONENTISTICA">Componentistica</option>
+        </select>
+      </label>
+      <label>
+        Stato sito
+        <select id="filter-stato">
+          <option value="">Tutti</option>
+          <option value="pubblicato">Pubblicato</option>
+          <option value="presente">Presente</option>
+          <option value="mancante">Mancante</option>
+        </select>
+      </label>
+      <div class="upload-zone">
+        <label>CSV master (locale): <input type="file" id="csv-upload" accept=".csv,text/csv"></label>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="listino-table">
+        <thead>
+          <tr>
+            <th data-sort="sku">SKU</th>
+            <th data-sort="nome">Nome Prodotto</th>
+            <th data-sort="gold" class="gold-col">Gold €</th>
+            <th data-sort="enduser">End-User €</th>
+            <th data-sort="sped">Spedizione</th>
+            <th data-sort="stato">Stato sito</th>
+          </tr>
+        </thead>
+        <tbody id="listino-body">
+          <tr><td colspan="6">Caricamento…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let rows = [];
+    let sortKey = 'nome';
+    let sortAsc = true;
+    let hasGold = false;
+
+    function fmt(n) {
+      if (n === null || n === undefined || n === '') return '—';
+      const v = typeof n === 'number' ? n : parseFloat(String(n).replace(',', '.'));
+      if (isNaN(v)) return '—';
+      return v.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function parseCsv(text) {
+      const lines = text.trim().split(/\r?\n/);
+      const header = lines[0].split(';');
+      return lines.slice(1).map(line => {
+        const cols = line.split(';');
+        const obj = {};
+        header.forEach((h, i) => { obj[h.trim()] = (cols[i] || '').trim(); });
+        return {
+          sku: obj.sku,
+          nome: obj.nome_prodotto,
+          categoria: obj.categoria,
+          gold: obj.prezzo_gold_eur,
+          enduser: obj.prezzo_enduser_eur,
+          sped: obj.spedizione_eur,
+          stato: obj.stato_sito || 'mancante',
+          pubblicabile: obj.pubblicabile === 'true',
+        };
+      });
+    }
+
+    function badgeClass(stato) {
+      if (stato === 'pubblicato') return 'badge-pubblicato';
+      if (stato === 'presente') return 'badge-presente';
+      return 'badge-mancante';
+    }
+
+    function updateStats(data) {
+      const v = data.filter(r => r.stato === 'pubblicato').length;
+      const g = data.filter(r => r.stato === 'presente').length;
+      const r = data.filter(r => r.stato === 'mancante').length;
+      document.getElementById('stat-verde').textContent = `Pubblicato: ${v}`;
+      document.getElementById('stat-giallo').textContent = `Sul sito senza prezzo: ${g}`;
+      document.getElementById('stat-rosso').textContent = `Assente dal sito: ${r}`;
+    }
+
+    function getFiltered() {
+      const q = document.getElementById('filter-search').value.toLowerCase();
+      const cat = document.getElementById('filter-cat').value;
+      const stato = document.getElementById('filter-stato').value;
+      return rows.filter(r => {
+        if (cat && r.categoria !== cat) return false;
+        if (stato && r.stato !== stato) return false;
+        if (q && !(`${r.sku} ${r.nome}`.toLowerCase().includes(q))) return false;
+        return true;
+      });
+    }
+
+    function render() {
+      const data = getFiltered().sort((a, b) => {
+        let av = a[sortKey], bv = b[sortKey];
+        if (sortKey === 'gold' || sortKey === 'enduser' || sortKey === 'sped') {
+          av = parseFloat(String(av).replace(',', '.')) || 0;
+          bv = parseFloat(String(bv).replace(',', '.')) || 0;
+        } else {
+          av = String(av || '').toLowerCase();
+          bv = String(bv || '').toLowerCase();
+        }
+        if (av < bv) return sortAsc ? -1 : 1;
+        if (av > bv) return sortAsc ? 1 : -1;
+        return 0;
+      });
+
+      const tbody = document.getElementById('listino-body');
+      if (!data.length) {
+        tbody.innerHTML = '<tr><td colspan="6">Nessun risultato</td></tr>';
+        return;
+      }
+      tbody.innerHTML = data.map(r => `
+        <tr>
+          <td><code>${r.sku}</code></td>
+          <td>${r.nome}</td>
+          <td class="gold-col">${hasGold ? fmt(r.gold) : '—'}</td>
+          <td>${r.pubblicabile && r.enduser ? fmt(r.enduser) : '—'}</td>
+          <td>${fmt(r.sped)}</td>
+          <td><span class="badge ${badgeClass(r.stato)}">${r.stato}</span></td>
+        </tr>
+      `).join('');
+      updateStats(rows);
+    }
+
+    async function loadPublic() {
+      const res = await fetch('../listini/pubblico/end-user.json');
+      const json = await res.json();
+      rows = Object.entries(json).map(([sku, v]) => ({
+        sku, nome: v.nome, categoria: 'UMANOIDI',
+        gold: '', enduser: v.prezzo_eur, sped: '',
+        stato: 'pubblicato', pubblicabile: true,
+      }));
+      hasGold = false;
+      render();
+    }
+
+    document.getElementById('filter-search').addEventListener('input', render);
+    document.getElementById('filter-cat').addEventListener('change', render);
+    document.getElementById('filter-stato').addEventListener('change', render);
+
+    document.querySelectorAll('th[data-sort]').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        if (sortKey === key) sortAsc = !sortAsc;
+        else { sortKey = key; sortAsc = true; }
+        render();
+      });
+    });
+
+    document.getElementById('csv-upload').addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        rows = parseCsv(ev.target.result);
+        hasGold = true;
+        render();
+      };
+      reader.readAsText(file, 'UTF-8');
+    });
+
+    loadPublic().catch(() => {
+      document.getElementById('listino-body').innerHTML =
+        '<tr><td colspan="6">Errore caricamento. Esegui <code>python scripts/genera_prezzi.py</code>.</td></tr>';
+    });
+  </script>
+</body>
+</html>

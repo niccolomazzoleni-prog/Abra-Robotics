@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unitree R1-D Dual-Arm Humanoid Robot — Famiglia | Abra Robotics</title>
+  <meta name="description" content="Unitree Dual-Arm Humanoid Robot (R1-D): scheda ufficiale Unitree con tabella configurazioni R1-A5, R1-A7, R1-A5-D, R1-A7-D. Un prodotto Abra, configurazione su preventivo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/r1-d.html">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .collection-hero { padding: calc(40px + 72px + 48px) 48px 48px; border-bottom: 1px solid var(--gray-200); }
+    .collection-hero h1 { font-size: clamp(2rem,4vw,3rem); margin: 12px 0 16px; letter-spacing: -0.03em; }
+    .collection-hero .lead { color: var(--gray-600); max-width: 720px; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 28px; }
+    .hero-meta div { display: flex; flex-direction: column; gap: 2px; }
+    .hero-meta strong { font-size: 1.4rem; font-weight: 900; }
+    .hero-meta span { font-size: 0.75rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.06em; }
+    .robot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .robot-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+    .robot-card:hover { transform: translateY(-4px); box-shadow: 0 18px 48px rgba(0,0,0,0.08); }
+    .robot-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--gray-50), var(--gray-100)); border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .robot-media img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
+    .robot-media-tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.9); backdrop-filter: blur(8px); padding: 6px 12px; border-radius: 999px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-600); }
+    .robot-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .robot-body h3 { margin: 0; font-size: 1.15rem; }
+    .robot-subtitle { color: var(--gray-500); font-size: 0.88rem; margin: 4px 0 0; }
+    .key-specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .key-spec { background: var(--gray-50); border-radius: 8px; padding: 10px 12px; }
+    .key-spec-label { display: block; font-size: 0.68rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; }
+    .key-spec-value { font-weight: 800; font-size: 0.92rem; }
+    .spec-rows { list-style: none; padding: 0; margin: 0; font-size: 0.86rem; }
+    .spec-rows li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--gray-100); }
+    .spec-rows li span:first-child { color: var(--gray-500); }
+    .robot-card-cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 8px; }
+    .card-price { font-size: 1.05rem; font-weight: 900; }
+    .family-hero-card { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; background: var(--white); }
+    .family-hero-media img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
+    .family-hero-body { padding: 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+    .matrix-wrap { overflow-x: auto; margin-top: 48px; border: 1px solid var(--gray-200); border-radius: var(--radius); }
+    .matrix { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    .matrix th, .matrix td { padding: 12px 14px; border-bottom: 1px solid var(--gray-100); text-align: center; }
+    .matrix th { background: var(--gray-50); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-500); }
+    .matrix td:first-child, .matrix th:first-child { text-align: left; font-weight: 700; }
+    @media (max-width: 900px) { .robot-grid, .family-hero-card { grid-template-columns: 1fr; } .collection-hero { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <p>Distributore ufficiale Unitree in Italia. <a href="catalogo-unitree.html">Catalogo completo →</a></p>
+  </div>
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="quadrupedi.html">Quadrupedi</a>
+            <a href="umanoidi.html">Umanoidi G1</a>
+            <a href="r1-d.html">R1-D Dual-Arm</a>
+            <a href="accessori.html">Accessori</a>
+            <a href="catalogo-unitree.html">Catalogo completo</a>
+          </div>
+        </div>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+        <a href="index.html#chi-siamo">Chi siamo</a>
+      </div>
+      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="quadrupedi.html">Quadrupedi</a>
+    <a href="umanoidi.html">Umanoidi G1</a>
+    <a href="r1-d.html">R1-D Dual-Arm</a>
+    <a href="catalogo-unitree.html">Catalogo completo</a>
+    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
+  </div>
+
+  <header class="collection-hero">
+    <div class="container">
+      <p class="label">Famiglia R1-D · Dual-Arm Humanoid</p>
+      <h1>Unitree Dual-Arm Humanoid Robot</h1>
+      <p class="lead">Piattaforma umanoide dual-arm di Unitree per deploy rapido e applicazioni multi-scenario: bracci 5 o 7 DoF, base fissa o mobile con LiDAR, modulo visivo binoculare e sviluppo secondario full-stack. Specifiche da <a href="https://www.unitree.com/mobile/R1-D/" target="_blank" rel="noopener">unitree.com/mobile/R1-D</a>.</p>
+      <div class="hero-meta">
+        <div><strong>15–31</strong><span>DoF totali</span></div>
+        <div><strong>2–4 kg</strong><span>Payload braccio</span></div>
+        <div><strong>±0,1 mm</strong><span>Precisione pinza</span></div>
+        <div><strong>4 config.</strong><span>Tabella ufficiale Unitree</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:32px;">
+    <div class="container">
+      <div class="family-hero-card">
+        <div class="family-hero-media">
+          <img src="images/manifattura/unitree-r1-d-hero.png" alt="Unitree Dual-Arm Humanoid Robot R1-D" loading="lazy">
+        </div>
+        <div class="family-hero-body">
+          <p class="label">Prodotto principale</p>
+          <h2 style="margin:0;font-size:1.6rem;">Dual-Arm Humanoid Robot</h2>
+          <p style="color:var(--gray-600);line-height:1.6;margin:0;">Ultra-fast deployment, multi-scenario application. Interazione vocale (array 4 mic + dual speaker), collaborazione visiva con modulo binoculare, framework di sviluppo maturo con interfacce aperte per bracci, audio, luci e controllo visivo.</p>
+          <ul class="spec-rows" style="margin-top:8px;">
+            <li><span>Bracci</span><span>5×2 o 7×2 DoF</span></li>
+            <li><span>Base</span><span>Fissa o mobile (LiDAR + 3 DoF)</span></li>
+            <li><span>Computing</span><span>CPU 8-core + 10 TOPS (testa)</span></li>
+            <li><span>Autonomia</span><span>~1,5 h (batteria)</span></li>
+          </ul>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px;">
+            <span class="card-price">A partire da 12.000,00 €</span>
+            <a href="prodotti/unitree-r1-d.html" class="btn btn-primary btn-sm">Scheda prodotto R1-D →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:20px;padding:16px 20px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;font-size:0.9rem;color:var(--gray-600);line-height:1.6;">
+        <strong>Nota su Abra Robotics vs Unitree.</strong> Sul nostro listino c&apos;è <strong>un solo SKU: R1-D</strong> (Dual-Arm Humanoid Robot).
+        I nomi <strong>R1-A5, R1-A7, R1-A5-D, R1-A7-D</strong> compaiono nella sezione <em>Application scenarios</em> e nella tabella <em>Mechanical Dimensions</em> della
+        <a href="https://www.unitree.com/mobile/R1-D/" target="_blank" rel="noopener">scheda ufficiale Unitree</a> — sono <strong>configurazioni</strong>, non prodotti separati nel catalogo Abra.
+        Prezzo Unitree: <em>from $4,290</em> (sito produttore). Prezzo Abra indicativo: su preventivo / da listino R1-D.
+      </div>
+
+      <h2 style="font-size:1.35rem;margin-bottom:12px;">Tabella configurazioni (copia fedele Unitree)</h2>
+      <p style="color:var(--gray-500);font-size:0.88rem;margin-bottom:20px;">Dati dalla tabella &quot;Mechanical Dimensions&quot; su unitree.com/mobile/R1-D — giugno 2025.</p>
+
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <thead>
+            <tr><th>Parametro</th><th>R1-A5</th><th>R1-A7</th><th>R1-A5-D</th><th>R1-A7-D</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Dimensioni</td><td>700×357×190 mm</td><td>835×357×190 mm</td><td>683×520×440 mm (chiuso)<br>1600×520×440 mm (aperto)</td><td>683×520×440 mm (chiuso)<br>1600×520×440 mm (aperto)</td></tr>
+            <tr><td>Peso</td><td>~11 kg (alim. esterna)</td><td>~13 kg (alim. esterna)</td><td>~30 kg</td><td>~32 kg</td></tr>
+            <tr><td>DoF (con gripper)</td><td>15</td><td>19</td><td>18</td><td>22</td></tr>
+            <tr><td>DoF per braccio</td><td>5</td><td>7</td><td>5</td><td>7</td></tr>
+            <tr><td>DoF vita</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+            <tr><td>DoF testa</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td>DoF chassis</td><td>—</td><td>—</td><td>3</td><td>3</td></tr>
+            <tr><td>Coppia spalla</td><td>60 N·m</td><td>60 N·m</td><td>60 N·m</td><td>60 N·m</td></tr>
+            <tr><td>Payload braccio [1]</td><td>2–4 kg</td><td>2–4 kg</td><td>2–4 kg</td><td>2–4 kg</td></tr>
+            <tr><td>Lunghezza braccio</td><td>420 mm</td><td>555 mm</td><td>420 mm</td><td>555 mm</td></tr>
+            <tr><td>Range vita</td><td>Yaw ±150°</td><td>Yaw ±150°</td><td>Yaw ±35°</td><td>Yaw ±35°</td></tr>
+            <tr><td>Range testa</td><td colspan="4">Yaw ±115° · Pitch ±36°</td></tr>
+            <tr><td>Camera</td><td colspan="2">Binoculare + polso opz.</td><td colspan="2">LiDAR chassis + binoculare + polso opz.</td></tr>
+            <tr><td>Compute opzionale</td><td colspan="4">NVIDIA Jetson Orin 40–100 TOPS</td></tr>
+            <tr><td>Autonomia batteria</td><td colspan="4">~1,5 h</td></tr>
+            <tr><td>Garanzia</td><td colspan="4">12 mesi</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="margin-top:16px;color:var(--gray-500);font-size:0.82rem;line-height:1.6;">[1] Il payload varia in base alla postura del braccio (nota Unitree). End-effector e prezzo finale su preventivo Abra.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Distributore ufficiale Unitree in Italia.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Famiglie</span>
+        <a href="umanoidi.html">Umanoidi G1</a>
+        <a href="r1-d.html">R1-D Dual-Arm</a>
+        <a href="quadrupedi.html">Quadrupedi</a>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Listini</span>
+        <a href="catalogo-unitree.html">Catalogo</a>
+        <a href="listino-unitree.html">Prezzi</a>
+      </div>
+    </div>
+    <div class="container footer-bottom"><p>© 2026 Abra Robotics</p></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
