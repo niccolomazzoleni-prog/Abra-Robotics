@@ -20,6 +20,8 @@
      Questa variante piu' scura passa AA (5.4:1 su bianco). Usare SOLO per testo/link
      su sfondo chiaro; #b37eff resta per badge, bullet, glow e usi decorativi/grandi. */
   --accent-text: #7c4dd6;
+  /* Variante accento piu' satura per hover/stati attivi del CTA transazionale */
+  --accent-strong: #9a5cf0;
   --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
   --container: 1200px;
   --radius: 12px;
@@ -775,7 +777,7 @@ select:focus-visible,
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #555;
+  color: var(--gray-600);
   margin-bottom: 22px;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -2289,7 +2291,7 @@ body::before {
 /* ── Hero verticale split: testo a sinistra, immagine a destra ── */
 .vert-hero-split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
 .vert-hero-split .vert-hero-inner { text-align: left; margin: 0; max-width: none; }
-.vert-hero-photo { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: 16px; min-height: 300px; border: 1px solid var(--gray-200); }
+.vert-hero-photo { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: var(--radius); min-height: 300px; border: 1px solid var(--gray-200); }
 @media (max-width: 860px) { .vert-hero-split { grid-template-columns: 1fr; gap: 28px; } .vert-hero-photo { aspect-ratio: 16 / 9; min-height: 0; } }
 
 /* ── Fix overflow header mobile (tutte le pagine): logo invariato, piu' spazio ── */
@@ -2304,8 +2306,9 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
 }
 
 /* ── Bottone "Acquista" (checkout Stripe): CTA viola, coerente col sito (var --orange = #b37eff) ── */
-.btn.buy-btn { background: var(--orange); border-color: var(--orange); color: var(--white); border-radius: 6px; }
-.btn.buy-btn:hover { background: #9a5cf0; border-color: #9a5cf0; color: var(--white); }
+/* CTA transazionale "Acquista": pill coerente col sistema (era radius 6px, fuori sistema) */
+.btn.buy-btn { background: var(--orange); border-color: var(--orange); color: var(--white); border-radius: 999px; }
+.btn.buy-btn:hover { background: var(--accent-strong); border-color: var(--accent-strong); color: var(--white); }
 .btn.buy-btn.is-disabled, .btn.buy-btn[aria-disabled="true"] { background: var(--orange); border-color: var(--orange); opacity: 0.45; }
 .btn.buy-btn.is-loading { pointer-events: none; opacity: 0.8; }
 
