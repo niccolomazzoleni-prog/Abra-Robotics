@@ -25,6 +25,7 @@ PREZZI = {
   "unitree-a2-pro.html":             dict(cent=4167316, link="", stato="acquista"),                 # A2 PRO
   "unitree-b2.html":                 dict(cent=7795423, link="", stato="acquista"),                 # B2+LIDAR
   "unitree-r1-edu.html":             dict(cent=3228720, link="", stato="acquista"),                 # R1 / R1-U3
+  "unitree-h2.html":                 dict(cent=0,       link="", stato="preventivo"),               # H2 — prezzo EUR mancante a listino (da fornire)
 }
 
 def euro(cent):

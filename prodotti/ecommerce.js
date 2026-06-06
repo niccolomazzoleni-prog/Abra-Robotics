@@ -20,15 +20,30 @@
     var buyBtns = document.querySelectorAll(".buy-btn");
     buyBtns.forEach(function (btn) {
       if (url) {
-        // Payment Link configurato: checkout reale
+        // Payment Link configurato: checkout reale (apre Stripe in nuova scheda)
         btn.setAttribute("href", url);
         btn.setAttribute("target", "_blank");
         btn.setAttribute("rel", "noopener");
         btn.removeAttribute("data-buy-pending");
+        // Stato loading sul click (il checkout apre in una nuova scheda)
+        btn.addEventListener("click", function () {
+          var label = btn.textContent;
+          btn.classList.add("is-loading");
+          btn.setAttribute("aria-busy", "true");
+          btn.textContent = "Apertura checkout…";
+          setTimeout(function () {
+            btn.classList.remove("is-loading");
+            btn.removeAttribute("aria-busy");
+            btn.textContent = label;
+          }, 2500);
+        });
       } else {
-        // Nessun Payment Link ancora: fallback a richiesta preventivo
+        // Nessun Payment Link ancora: fallback alla richiesta preventivo
         btn.setAttribute("href", "#form");
         btn.setAttribute("title", "Checkout in attivazione — richiedi un preventivo");
+        btn.addEventListener("click", function () {
+          console.warn("[Stripe] Payment Link non configurato per", currentSlug(), "→ fallback al form.");
+        });
       }
     });
   }

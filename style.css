@@ -2272,3 +2272,9 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
   .container { padding-left: 20px; padding-right: 20px; }
   .top-bar { padding-left: 20px; padding-right: 20px; }
 }
+
+/* ── Bottone "Acquista" (checkout Stripe): CTA arancione dedicata #F05A00 ── */
+.btn.buy-btn { background: #F05A00; border-color: #F05A00; color: #fff; border-radius: 6px; }
+.btn.buy-btn:hover { background: #d24e00; border-color: #d24e00; color: #fff; }
+.btn.buy-btn.is-disabled, .btn.buy-btn[aria-disabled="true"] { background: #F05A00; border-color: #F05A00; opacity: 0.45; }
+.btn.buy-btn.is-loading { pointer-events: none; opacity: 0.8; }
