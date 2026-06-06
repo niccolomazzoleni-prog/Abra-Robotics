@@ -21,6 +21,9 @@ if (contactForm) {
     payload.pagina = document.title;
     payload.url = location.href;
     payload.timestamp = new Date().toISOString();
+    if (window.AbraAds && window.AbraAds.getGclid) {
+      payload.gclid = payload.gclid || window.AbraAds.getGclid();
+    }
 
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
@@ -31,6 +34,7 @@ if (contactForm) {
       });
       formFeedback.className = 'form-feedback success';
       formFeedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
+      if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
       contactForm.reset();
     } catch {
       formFeedback.className = 'form-feedback error';

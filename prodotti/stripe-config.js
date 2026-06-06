@@ -2,6 +2,7 @@
    Valore vuoto = bottone Acquista rimanda al form preventivo.
    Per generare i link: python scripts/connect_stripe_sandbox.py (serve sk_test in .env). */
 window.STRIPE_PUBLISHABLE_KEY = "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si";
+window.GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQHcWp5OFlAssEajk03akHm2T_JlxAf_-SwWkKP773dXIt0Q0WvAJ1HtNdKl5E54vc/exec";
 window.STRIPE_PAYMENT_LINKS = {
   "unitree-a2-battery.html": "",
   "unitree-a2-charger.html": "",
