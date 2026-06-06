@@ -21,7 +21,10 @@ Note:
   immutabili): rilancialo solo quando cambi un prezzo in _prezzi.py.
 - after_completion -> redirect a /grazie.html con l'id sessione.
 """
-import os, re, sys, glob
+import glob
+import os
+import re
+import sys
 
 try:
     import stripe
@@ -31,13 +34,36 @@ except ImportError:
 from _prezzi import PREZZI, euro  # FONTE UNICA prezzi
 
 BASE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(BASE)
 SITE_URL = "https://niccolomazzoleni-prog.github.io/Abra-Robotics"  # base per success redirect
 SHIP_COUNTRIES = ["IT", "FR", "DE", "ES", "AT", "BE", "NL", "PT", "CH"]  # B2B EU
+DEFAULT_PUB_KEY = "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
+
+
+def load_dotenv(path: str) -> None:
+    """Carica .env nella root senza dipendenze extra."""
+    if not os.path.isfile(path):
+        return
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, val = line.split("=", 1)
+            os.environ.setdefault(key.strip(), val.strip().strip('"').strip("'"))
+
+
+load_dotenv(os.path.join(ROOT, ".env"))
 
 stripe.api_key = os.environ.get("STRIPE_SECRET_KEY", "")
 if not stripe.api_key:
-    sys.exit("STRIPE_SECRET_KEY non impostata. export STRIPE_SECRET_KEY=sk_test_...")
-PUB_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", "pk_live_DA_COMPLETARE")
+    sys.exit(
+        "STRIPE_SECRET_KEY non impostata.\n"
+        "Crea .env nella root con STRIPE_SECRET_KEY=sk_test_... oppure:\n"
+        "  $env:STRIPE_SECRET_KEY='sk_test_...'  (PowerShell)\n"
+        "  python scripts/connect_stripe_sandbox.py"
+    )
+PUB_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", DEFAULT_PUB_KEY)
 GAS_URL = os.environ.get("GOOGLE_SCRIPT_URL", "INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT")
 
 
@@ -78,14 +104,32 @@ def make_payment_link(slug, name, cent):
     return link.url
 
 
+def existing_payment_links() -> dict[str, str]:
+    """Mantiene i link già configurati e tutte le schede HTML del catalogo."""
+    out: dict[str, str] = {}
+    cfg = os.path.join(BASE, "stripe-config.js")
+    if os.path.isfile(cfg):
+        text = open(cfg, encoding="utf-8").read()
+        for m in re.finditer(r'"([^"]+\.html)":\s*"([^"]*)"', text):
+            out[m.group(1)] = m.group(2)
+    for path in sorted(glob.glob(os.path.join(BASE, "unitree-*.html"))):
+        slug = os.path.basename(path)
+        out.setdefault(slug, "")
+    return out
+
+
 def write_config(links):
     out = os.path.join(BASE, "stripe-config.js")
-    body = ["/* Stripe — generato da _gen_stripe.py (fonte prezzi: _prezzi.py). NON contiene segreti. */",
-            f'window.STRIPE_PUBLISHABLE_KEY = "{PUB_KEY}";',
-            f'window.GOOGLE_SCRIPT_URL = "{GAS_URL}";',
-            "window.STRIPE_PAYMENT_LINKS = {"]
-    for slug in sorted(PREZZI):
-        body.append(f'  "{slug}": "{links.get(slug, "")}",')
+    merged = existing_payment_links()
+    merged.update(links)
+    body = [
+        "/* Stripe — generato da _gen_stripe.py (sandbox/test). NON contiene segreti. */",
+        f'window.STRIPE_PUBLISHABLE_KEY = "{PUB_KEY}";',
+        f'window.GOOGLE_SCRIPT_URL = "{GAS_URL}";',
+        "window.STRIPE_PAYMENT_LINKS = {",
+    ]
+    for slug in sorted(merged):
+        body.append(f'  "{slug}": "{merged[slug]}",')
     body.append("};\n")
     open(out, "w", encoding="utf-8").write("\n".join(body))
     print("Scritto", out)

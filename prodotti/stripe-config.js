@@ -1,6 +1,7 @@
-/* Stripe — Payment Link per ogni scheda prodotto.
-   Valore vuoto = bottone Acquista rimanda a richiesta preventivo finche non configuri Stripe. */
-window.STRIPE_PUBLISHABLE_KEY = "pk_live_DA_COMPLETARE";
+/* Stripe sandbox (test) — Payment Link per ogni scheda prodotto.
+   Valore vuoto = bottone Acquista rimanda al form preventivo.
+   Per generare i link: python scripts/connect_stripe_sandbox.py (serve sk_test in .env). */
+window.STRIPE_PUBLISHABLE_KEY = "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si";
 window.STRIPE_PAYMENT_LINKS = {
   "unitree-a2-battery.html": "",
   "unitree-a2-charger.html": "",
