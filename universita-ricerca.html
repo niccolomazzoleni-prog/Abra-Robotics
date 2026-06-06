@@ -17,6 +17,15 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Abra Robotics">
 
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/logo-full.png">
+  <link rel="apple-touch-icon" href="images/logo-full.png">
+  <meta property="og:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Robotica per università e ricerca | Umanoidi, quadrupedi, Franka FR3, mani Inspire | Abra Robotics">
+  <meta name="twitter:description" content="Abra Robotics fornisce a università, laboratori e centri di ricerca le piattaforme robotiche più avanzate: umanoidi Unitree G1/R1/H2, quadrupedi Go2/A2/B2, Franka Research 3, mani Inspire RH56. SDK aperti, supporto sviluppo, percorsi formativi.">
+  <meta name="twitter:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -73,7 +82,7 @@
     }
     .anchor-strip-inner a:hover { color: var(--black); }
     .anchor-strip-inner a span {
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-right: 6px;
       font-weight: 700;
     }
@@ -99,7 +108,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0 0 24px;
     }
 
@@ -120,7 +129,7 @@
       font-weight: 800;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--accent-text);
       margin-bottom: 10px;
     }
     .subsection-head h3 {
@@ -265,15 +274,15 @@
       gap: 16px;
       flex: 1;
     }
-    .robot-card h3 {
+    .robot-card h3, .robot-card h4 {
       font-size: 1.35rem;
       letter-spacing: -0.015em;
       margin: 0 0 2px;
     }
-    .robot-card.dark h3 { color: var(--white); }
+    .robot-card.dark h3, .robot-card.dark h4 { color: var(--white); }
     .robot-subtitle {
       font-size: 0.84rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0;
       font-weight: 500;
     }
@@ -307,7 +316,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 4px;
     }
     .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
@@ -320,7 +329,7 @@
     .robot-card.dark .key-spec-value { color: var(--white); }
     .key-spec-value small {
       font-weight: 500;
-      color: var(--gray-400);
+      color: var(--gray-600);
       font-size: 0.78em;
     }
     .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
@@ -347,7 +356,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.07em;
-      color: var(--gray-400);
+      color: var(--gray-600);
       padding-top: 2px;
     }
     .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
@@ -374,7 +383,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 6px;
     }
     .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
@@ -489,7 +498,7 @@
       .vert-hero-ctas { flex-direction: column; align-items: stretch; }
       .vert-hero-ctas .btn { width: 100%; justify-content: center; }
 
-      .vert-section { padding: 52px 0; }
+      .vert-section { padding: 56px 0; }
       .vert-section-head { margin-bottom: 32px; }
       .vert-section-head h2 { font-size: clamp(1.55rem, 6vw, 2rem); margin: 10px 0 14px; line-height: 1.15; }
       .vert-section-head p { font-size: 0.95rem; line-height: 1.6; }
@@ -510,7 +519,7 @@
       .robot-media { aspect-ratio: 16 / 10; }
       .robot-media img { padding: 18px; }
       .robot-body { padding: 20px 18px 22px; gap: 13px; }
-      .robot-card h3 { font-size: 1.15rem; }
+      .robot-card h3, .robot-card h4 { font-size: 1.15rem; }
       .robot-subtitle { font-size: 0.8rem; }
       .robot-card-cta { flex-direction: column; gap: 8px; }
       .robot-card-cta .btn { width: 100%; justify-content: center; }
@@ -590,7 +599,7 @@
     @media (max-width: 380px) {
       .vert-hero h1 { font-size: 1.6rem; }
       .vert-section-head h2 { font-size: 1.45rem; }
-      .robot-card h3 { font-size: 1.08rem; }
+      .robot-card h3, .robot-card h4 { font-size: 1.08rem; }
       .robot-media-placeholder strong { font-size: 1rem; }
     }
   </style>
@@ -721,7 +730,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree G1 EDU Standard</h3>
+                <h4>Unitree G1 EDU Standard</h4>
                 <p class="robot-subtitle">23 DoF base · espandibile a 43</p>
               </div>
 
@@ -778,7 +787,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree R1 EDU</h3>
+                <h4>Unitree R1 EDU</h4>
                 <p class="robot-subtitle">26 DoF · entry-level ricerca</p>
               </div>
 
@@ -832,7 +841,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree H2 EDU</h3>
+                <h4>Unitree H2 EDU</h4>
                 <p class="robot-subtitle">31 DoF · 180 cm · scala umana</p>
               </div>
 
@@ -901,7 +910,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree Go2 EDU+</h3>
+                <h4>Unitree Go2 EDU+</h4>
                 <p class="robot-subtitle">LiDAR 4D · Jetson Orin 100 TOPS</p>
               </div>
 
@@ -953,7 +962,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree A2 (Standard / Pro)</h3>
+                <h4>Unitree A2 (Standard / Pro)</h4>
                 <p class="robot-subtitle">Dual LiDAR · 5 m/s · 5 ore</p>
               </div>
 
@@ -1013,7 +1022,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree B2</h3>
+                <h4>Unitree B2</h4>
                 <p class="robot-subtitle">IP67 · &gt;6 m/s · &gt;40 kg payload</p>
               </div>
 
@@ -1079,7 +1088,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Franka Research 3 (FR3)</h3>
+                <h4>Franka Research 3 (FR3)</h4>
                 <p class="robot-subtitle">Prodotto in Germania · TÜV certificato · 1 kHz</p>
               </div>
 
