@@ -2273,8 +2273,8 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
   .top-bar { padding-left: 20px; padding-right: 20px; }
 }
 
-/* ── Bottone "Acquista" (checkout Stripe): CTA arancione dedicata #F05A00 ── */
-.btn.buy-btn { background: #F05A00; border-color: #F05A00; color: #fff; border-radius: 6px; }
-.btn.buy-btn:hover { background: #d24e00; border-color: #d24e00; color: #fff; }
-.btn.buy-btn.is-disabled, .btn.buy-btn[aria-disabled="true"] { background: #F05A00; border-color: #F05A00; opacity: 0.45; }
+/* ── Bottone "Acquista" (checkout Stripe): CTA viola, coerente col sito (var --orange = #b37eff) ── */
+.btn.buy-btn { background: var(--orange); border-color: var(--orange); color: var(--white); border-radius: 6px; }
+.btn.buy-btn:hover { background: #9a5cf0; border-color: #9a5cf0; color: var(--white); }
+.btn.buy-btn.is-disabled, .btn.buy-btn[aria-disabled="true"] { background: var(--orange); border-color: var(--orange); opacity: 0.45; }
 .btn.buy-btn.is-loading { pointer-events: none; opacity: 0.8; }
