@@ -8,6 +8,8 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/OoGMhxhA3CBp0sG6UqHTmku/qsaaNM98hKYYqG9j04O+Fz8lEeq6j9gjgZoG6P9tGWzf5BzNk8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="auth.js"></script>
+  <script src="github-publish.js"></script>
   <style>
     body { background: var(--gray-50); }
     .admin-wrap { padding: calc(40px + 48px) 48px 80px; }
@@ -67,13 +69,15 @@
 <body>
   <div class="admin-wrap">
     <nav class="admin-nav">
-      <a href="listini.html">← Listini</a>
+      <a href="index.html">← Admin</a>
+      <a href="listini.html">Listini</a>
       <a href="../catalogo-unitree.html" target="_blank">Catalogo pubblico</a>
+      <button type="button" class="btn btn-secondary btn-sm" style="margin-left:auto;" onclick="AbraAdmin.logout()">Esci</button>
     </nav>
     <div class="admin-head">
       <p class="label">Interno · Non indicizzato</p>
       <h1>Gestione immagini prodotto</h1>
-      <p>Importa un'immagine per SKU, aggiorna il percorso o incolla un URL Unitree. Salva nella cartella del progetto (Chrome/Edge) oppure esporta uno ZIP e lancia <code>python scripts/publish_images.py --from-zip export.zip</code>.</p>
+      <p>Importa un'immagine per SKU, aggiorna il percorso o incolla un URL Unitree. Poi clicca <strong>Pubblica sul sito live</strong>: le immagini e il JSON vanno su GitHub e il catalogo si rigenera automaticamente (circa 1–2 minuti).</p>
     </div>
 
     <div class="admin-toolbar">
@@ -81,14 +85,15 @@
       <select id="filter-family" aria-label="Famiglia">
         <option value="">Tutte le famiglie</option>
       </select>
+      <button type="button" class="btn btn-primary btn-sm" id="btn-publish-live">Pubblica sul sito live</button>
       <button type="button" class="btn btn-secondary btn-sm" id="btn-folder">Collega cartella progetto</button>
-      <button type="button" class="btn btn-primary btn-sm" id="btn-save-json">Salva JSON nel progetto</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-save-json">Salva JSON locale</button>
       <button type="button" class="btn btn-secondary btn-sm" id="btn-export-zip">Esporta ZIP</button>
       <button type="button" class="btn btn-secondary btn-sm" id="btn-download-json">Scarica JSON</button>
     </div>
 
     <div class="cmd-box">
-      Dopo le modifiche, da terminale nella root del progetto:<br>
+      Alternativa da terminale (sviluppo locale):<br>
       <code>python scripts/publish_images.py</code><br>
       oppure con ZIP: <code>python scripts/publish_images.py --from-zip percorso/export.zip</code>
     </div>
@@ -211,22 +216,55 @@
     }
 
     function buildJson() {
-      const out = {};
-      Object.keys(manifest).forEach(sku => {
-        const o = overrides[sku];
-        const path = (o && o.path) || manifest[sku].immagine;
-        if (!path) return;
-        const entry = { path };
-        if (o && o.source_url) entry.source_url = o.source_url;
-        if (o && o._dirty) entry._dirty = undefined;
-        if (pendingFiles[sku] || (o && (o._dirty || o.source_url)) || (overrides[sku] && overrides[sku].path !== manifest[sku].immagine)) {
-          out[sku] = entry;
+      const out = JSON.parse(JSON.stringify(overrides));
+      Object.keys(out).forEach(sku => delete out[sku]._dirty);
+      document.querySelectorAll('.img-card').forEach(card => {
+        const sku = card.dataset.sku;
+        const path = card.querySelector('.path-input').value.trim();
+        const url = card.querySelector('.url-input').value.trim();
+        if (!path) {
+          delete out[sku];
+          return;
         }
+        out[sku] = { path };
+        if (url) out[sku].source_url = url;
       });
       Object.keys(pendingFiles).forEach(sku => {
-        if (!out[sku]) out[sku] = { path: pendingFiles[sku].path };
+        out[sku] = { ...(out[sku] || {}), path: pendingFiles[sku].path };
       });
       return out;
+    }
+
+    async function publishLive() {
+      const hasChanges = Object.keys(pendingFiles).length ||
+        document.querySelectorAll('.img-card.changed').length;
+      if (!hasChanges) {
+        alert('Nessuna modifica da pubblicare.');
+        return;
+      }
+      if (!window.AbraAdmin || !window.AbraAdmin.getGithubToken()) {
+        alert('Token GitHub mancante. Esci e rientra inserendo il token al login.');
+        return;
+      }
+      const btn = document.getElementById('btn-publish-live');
+      btn.disabled = true;
+      const status = document.getElementById('status');
+      try {
+        await AbraGithub.publishLive({
+          jsonObject: buildJson(),
+          pendingFiles,
+          onProgress: msg => { status.textContent = msg; }
+        });
+        pendingFiles = {};
+        Object.keys(overrides).forEach(sku => delete overrides[sku]._dirty);
+        status.textContent = 'Pubblicato su GitHub. Il catalogo si aggiorna in 1–2 minuti — ricarica catalogo-unitree.html.';
+        render();
+      } catch (err) {
+        status.textContent = 'Errore pubblicazione: ' + (err.message || err);
+        alert(status.textContent);
+      } finally {
+        btn.disabled = false;
+      }
     }
 
     async function saveJsonToProject() {
@@ -279,6 +317,7 @@
       URL.revokeObjectURL(a.href);
     }
 
+    document.getElementById('btn-publish-live').addEventListener('click', publishLive);
     document.getElementById('btn-folder').addEventListener('click', async () => {
       if (!window.showDirectoryPicker) {
         alert('Usa Chrome o Edge per salvare direttamente nel progetto, oppure Esporta ZIP.');

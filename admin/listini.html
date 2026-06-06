@@ -7,6 +7,7 @@
   <title>Gestione Listini — Abra Robotics (interno)</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <script src="auth.js"></script>
   <style>
     body { background: var(--gray-50); }
     .admin-wrap { padding: calc(40px + 48px) 48px 80px; }
@@ -54,8 +55,10 @@
 </head>
 <body>
   <div class="admin-wrap">
-    <nav style="display:flex;gap:12px;margin-bottom:16px;">
+    <nav style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <a href="index.html" style="font-size:0.88rem;font-weight:700;color:var(--gray-600);text-decoration:none;">← Admin</a>
       <a href="immagini.html" style="font-size:0.88rem;font-weight:700;color:var(--gray-600);text-decoration:none;">Gestione immagini →</a>
+      <button type="button" class="btn btn-secondary btn-sm" style="margin-left:auto;" onclick="AbraAdmin.logout()">Esci</button>
     </nav>
     <div class="admin-head">
       <p class="label">Interno · Non indicizzato</p>
