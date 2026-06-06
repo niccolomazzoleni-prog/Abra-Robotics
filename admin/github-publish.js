@@ -1,0 +1,97 @@
+/* Pubblica immagini e override su GitHub → trigger rigenerazione sito (Actions). */
+window.AbraGithub = (function () {
+  'use strict';
+
+  const OWNER = 'niccolomazzoleni-prog';
+  const REPO = 'Abra-Robotics';
+  const BRANCH = 'main';
+
+  function api(path, token, opts = {}) {
+    return fetch(`https://api.github.com/repos/${OWNER}/${REPO}${path}`, {
+      ...opts,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+        ...(opts.headers || {})
+      }
+    });
+  }
+
+  async function getFileSha(path, token) {
+    const r = await api(`/contents/${encodeURIComponent(path).replace(/%2F/g, '/')}?ref=${BRANCH}`, token);
+    if (r.status === 404) return null;
+    if (!r.ok) throw new Error(await r.text());
+    return (await r.json()).sha;
+  }
+
+  async function putBinary(path, file, message, token) {
+    const sha = await getFileSha(path, token);
+    const b64 = await new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr.result.split(',')[1]);
+      fr.onerror = reject;
+      fr.readAsDataURL(file);
+    });
+    const r = await api(`/contents/${path}`, token, {
+      method: 'PUT',
+      body: JSON.stringify({
+        message,
+        content: b64,
+        branch: BRANCH,
+        ...(sha ? { sha } : {})
+      })
+    });
+    if (!r.ok) throw new Error(`${path}: ${await r.text()}`);
+  }
+
+  async function putText(path, text, message, token) {
+    const sha = await getFileSha(path, token);
+    const b64 = btoa(unescape(encodeURIComponent(text)));
+    const r = await api(`/contents/${path}`, token, {
+      method: 'PUT',
+      body: JSON.stringify({
+        message,
+        content: b64,
+        branch: BRANCH,
+        ...(sha ? { sha } : {})
+      })
+    });
+    if (!r.ok) throw new Error(`${path}: ${await r.text()}`);
+  }
+
+  async function triggerRegenerate(token) {
+    const r = await api('/actions/workflows/regenerate-site.yml/dispatches', token, {
+      method: 'POST',
+      body: JSON.stringify({ ref: BRANCH })
+    });
+    if (!r.ok) throw new Error('Workflow: ' + await r.text());
+  }
+
+  async function publishLive({ jsonObject, pendingFiles, onProgress }) {
+    const token = window.AbraAdmin && window.AbraAdmin.getGithubToken();
+    if (!token) throw new Error('Token GitHub mancante. Esci e rientra inserendo il token.');
+
+    const files = Object.entries(pendingFiles || {});
+    for (let i = 0; i < files.length; i++) {
+      const [sku, pf] = files[i];
+      if (onProgress) onProgress(`Carico immagine ${sku} (${i + 1}/${files.length})…`);
+      await putBinary(pf.path, pf.file, `admin: immagine ${sku}`, token);
+    }
+
+    if (onProgress) onProgress('Aggiorno product-images.json…');
+    const jsonText = JSON.stringify(jsonObject, null, 2) + '\n';
+    await putText('data/product-images.json', jsonText, 'admin: override immagini prodotto', token);
+
+    if (onProgress) onProgress('Avvio rigenerazione catalogo (GitHub Actions)…');
+    try {
+      await triggerRegenerate(token);
+    } catch (_) {
+      /* push dei file può già aver triggerato il workflow */
+    }
+
+    return true;
+  }
+
+  return { publishLive };
+})();

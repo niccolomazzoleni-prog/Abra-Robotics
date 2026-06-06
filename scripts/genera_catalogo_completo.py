@@ -414,6 +414,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
     document.getElementById('cat-filter').addEventListener('change', filterCatalog);
     document.getElementById('family-filter').addEventListener('change', filterCatalog);
   </script>
+  <script src="scripts/image-runtime.js"></script>
   <script src="script.js"></script>
 </body>
 </html>"""
