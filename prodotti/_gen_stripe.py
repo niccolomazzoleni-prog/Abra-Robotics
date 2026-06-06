@@ -31,10 +31,11 @@ try:
 except ImportError:
     sys.exit("Manca la libreria Stripe. Esegui:  pip install stripe")
 
-from _prezzi import PREZZI, euro  # FONTE UNICA prezzi
+from _prezzi import euro
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(BASE)
+END_USER = os.path.join(ROOT, "listini", "pubblico", "end-user.json")
 SITE_URL = "https://niccolomazzoleni-prog.github.io/Abra-Robotics"  # base per success redirect
 SHIP_COUNTRIES = ["IT", "FR", "DE", "ES", "AT", "BE", "NL", "PT", "CH"]  # B2B EU
 DEFAULT_PUB_KEY = "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
@@ -118,6 +119,32 @@ def existing_payment_links() -> dict[str, str]:
     return out
 
 
+def catalog_from_end_user() -> list[dict]:
+    """Tutti i prodotti pubblicabili con prezzo da end-user.json (stesso prezzo sul sito)."""
+    import json
+
+    data = json.load(open(END_USER, encoding="utf-8"))
+    items = []
+    for sku, entry in sorted(data.items()):
+        prezzo = entry.get("prezzo_eur") or 0
+        if prezzo <= 0:
+            continue
+        slug = entry.get("slug", "")
+        if not slug.endswith(".html"):
+            slug += ".html"
+        if not os.path.isfile(os.path.join(BASE, slug)):
+            print(f"- skip {slug} (scheda HTML assente)")
+            continue
+        cent = int(round(float(prezzo) * 100))
+        items.append({
+            "slug": slug,
+            "sku": sku,
+            "nome": entry.get("nome", sku),
+            "cent": cent,
+        })
+    return items
+
+
 def write_config(links):
     out = os.path.join(BASE, "stripe-config.js")
     merged = existing_payment_links()
@@ -136,17 +163,17 @@ def write_config(links):
 
 
 def main():
+    catalog = catalog_from_end_user()
+    print(f"Prodotti con prezzo: {len(catalog)}\n")
     links = {}
-    for slug, p in PREZZI.items():
-        if p["stato"] != "acquista" or p["cent"] <= 0:
-            print(f"- skip {slug} (stato={p['stato']}, cent={p['cent']})")
-            continue
-        name = product_name(slug)
-        url = make_payment_link(slug, name, p["cent"])
+    for i, item in enumerate(catalog, 1):
+        slug = item["slug"]
+        name = product_name(slug) or item["nome"]
+        url = make_payment_link(slug, name, item["cent"])
         links[slug] = url
-        print(f"OK {slug}: {name} -> {euro(p['cent'])} -> {url}")
+        print(f"OK [{i}/{len(catalog)}] {slug}: {name} -> {euro(item['cent'])} -> {url}")
     write_config(links)
-    print("\nFatto. Controlla stripe-config.js e fai commit (contiene solo URL pubblici).")
+    print(f"\nFatto. {len(links)} Payment Link in stripe-config.js")
 
 
 if __name__ == "__main__":
