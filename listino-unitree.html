@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listino pubblico End-User Unitree | Abra Robotics</title>
+  <meta name="description" content="Listino prezzi End-User Unitree distribuiti da Abra Robotics in Italia. Valori indicativi, IVA esclusa, spedizione e dazio inclusi.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/listino-unitree.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Listino End-User Unitree — Abra Robotics">
+  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/listino-unitree.html">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .listino-hero { padding: calc(40px + 72px + 60px) 48px 48px; border-bottom: 1px solid var(--gray-200); }
+    .listino-hero h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; margin: 12px 0 16px; }
+    .listino-hero p { color: var(--gray-600); max-width: 720px; line-height: 1.6; }
+    .listino-body { padding: 48px; }
+    .listino-toolbar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .listino-toolbar input, .listino-toolbar select {
+      padding: 10px 14px; border: 1px solid var(--gray-200); border-radius: 8px;
+      font-family: inherit; background: var(--white);
+    }
+    .listino-toolbar input { flex: 1; min-width: 200px; }
+    .listino-table-wrap {
+      background: rgba(255,255,255,0.7); backdrop-filter: blur(12px);
+      border: 1px solid var(--gray-200); border-radius: var(--radius); overflow-x: auto;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+    th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); }
+    .thumb-col { width: 56px; }
+    .listino-thumb { width: 48px; height: 48px; object-fit: contain; border-radius: 6px; background: var(--gray-50); }
+    .price-col { font-weight: 800; white-space: nowrap; }
+    .listino-note { margin-top: 24px; font-size: 0.85rem; color: var(--gray-500); max-width: 720px; line-height: 1.6; }
+    .prod-link { color: var(--black); font-weight: 600; text-decoration: none; }
+    .prod-link:hover { text-decoration: underline; }
+    @media (max-width: 768px) { .listino-hero, .listino-body { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <p>Listino pubblico End-User · IVA esclusa · <a href="listino-unitree.html">Tabella prezzi</a> · <a href="catalogo-unitree.html">Catalogo</a></p>
+  </div>
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="quadrupedi.html">Quadrupedi</a>
+            <a href="umanoidi.html">Umanoidi G1</a>
+            <a href="r1-d.html">R1-D Dual-Arm</a>
+            <a href="accessori.html">Accessori</a>
+            <a href="catalogo-unitree.html">Catalogo completo</a>
+            <a href="listino-unitree.html">Listino prezzi</a>
+          </div>
+        </div>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+        <a href="index.html#chi-siamo">Chi siamo</a>
+      </div>
+      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="quadrupedi.html">Quadrupedi</a>
+    <a href="umanoidi.html">Umanoidi G1</a>
+    <a href="r1-d.html">R1-D Dual-Arm</a>
+    <a href="accessori.html">Accessori</a>
+    <a href="catalogo-unitree.html">Catalogo completo</a>
+    <a href="listino-unitree.html">Listino prezzi</a>
+    <a href="assessment.html">Trova il robot giusto</a>
+    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
+  </div>
+
+  <header class="listino-hero">
+    <p class="label">Listino pubblico End-User</p>
+    <h1>Prezzi End-User Unitree</h1>
+    <p>Valori indicativi per il mercato italiano. IVA esclusa. Spedizione e dazio doganale (3,7%) inclusi. Ogni ordine richiede conferma con preventivo aggiornato.</p>
+
+    <p class="pub-notice" style="margin-top:12px;padding:12px 16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;font-size:0.88rem;color:var(--gray-600);max-width:720px;">
+      <strong>Pagina pubblica.</strong> Mostra solo prezzi End-User (IVA esclusa, spedizione e dazio inclusi).
+      I prezzi Gold distributore sono visibili solo in <code>admin/listini.html</code> (area interna, non indicizzata).
+    </p>
+
+  </header>
+
+  <main class="listino-body">
+    <div class="listino-toolbar">
+      <input type="search" id="search" placeholder="Cerca prodotto…" aria-label="Cerca">
+      <select id="cat-filter" aria-label="Categoria">
+        <option value="">Tutte le categorie</option>
+      </select>
+    </div>
+
+    <div class="listino-table-wrap">
+      <table>
+        <thead>
+          <tr><th class="thumb-col"></th><th>Prodotto</th><th>Categoria</th><th>Prezzo End-User</th></tr>
+        </thead>
+        <tbody id="rows"><tr><td colspan="4">Caricamento…</td></tr></tbody>
+      </table>
+    </div>
+
+    <p class="listino-note">I prezzi sono soggetti a variazione del cambio EUR/USD. Non include prezzi distributore (Gold). Per uso interno: <code>admin/listini.html</code> (non indicizzato). Per configurazioni EDU avanzate, <a href="index.html#cta-finale">richiedi un preventivo personalizzato</a>.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Distributore ufficiale Unitree in Italia. Prezzi End-User pubblici — prezzi Gold solo in area admin interna.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Listini pubblici</span>
+        <a href="catalogo-unitree.html">Catalogo completo</a>
+        <a href="listino-unitree.html">Tabella prezzi</a>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Prodotti</span>
+        <a href="umanoidi.html">Umanoidi G1</a>
+        <a href="r1-d.html">R1-D Dual-Arm</a>
+        <a href="quadrupedi.html">Quadrupedi</a>
+        <a href="accessori.html">Accessori</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Contatti</span>
+        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+        <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Listino End-User pubblico — non include prezzi distributore Gold.</p>
+    </div>
+  </footer>
+
+  <script>
+    let items = [];
+    const CAT_LABEL = { UMANOIDI: "Umanoidi & robot", MANI_BRACCI: "Mani & bracci", COMPONENTISTICA: "Componentistica" };
+
+    function fmt(n) {
+      return n.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function render() {
+      const q = document.getElementById('search').value.toLowerCase();
+      const cat = document.getElementById('cat-filter').value;
+      const filtered = items.filter(i => {
+        if (cat && i.cat !== cat) return false;
+        if (q && !i.nome.toLowerCase().includes(q) && !i.sku.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      document.getElementById('rows').innerHTML = filtered.length
+        ? filtered.map(i => `<tr>
+            <td class="thumb-col">${i.img ? `<img class="listino-thumb" src="${i.img}" alt="" loading="lazy">` : ''}</td>
+            <td><a class="prod-link" href="prodotti/${i.slug}">${i.nome}</a></td>
+            <td>${i.catLabel}</td>
+            <td class="price-col">${i.prezzoDa ? 'da ' : ''}€ ${fmt(i.prezzo)}</td>
+          </tr>`).join('')
+        : '<tr><td colspan="4">Nessun risultato</td></tr>';
+    }
+
+    fetch('listini/pubblico/end-user.json')
+      .then(r => r.json())
+      .then(json => {
+        const cats = new Set();
+        items = Object.entries(json).map(([sku, v]) => {
+          const catKey = v.categoria || '';
+          const catLabel = CAT_LABEL[catKey] || catKey || '—';
+          cats.add(catLabel);
+          return {
+            sku, nome: v.nome, prezzo: v.prezzo_eur, prezzoDa: !!v.prezzo_da, slug: v.slug || '',
+            img: v.immagine || '', cat: catLabel, catLabel
+          };
+        }).sort((a, b) => a.nome.localeCompare(b.nome, 'it'));
+
+        const sel = document.getElementById('cat-filter');
+        [...cats].sort().forEach(c => {
+          const o = document.createElement('option');
+          o.value = c; o.textContent = c;
+          sel.appendChild(o);
+        });
+        render();
+      });
+
+    document.getElementById('search').addEventListener('input', render);
+    document.getElementById('cat-filter').addEventListener('change', render);
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
