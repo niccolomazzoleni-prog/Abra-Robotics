@@ -14,23 +14,35 @@
     return parts[parts.length - 1] || "";
   }
 
+  function wireStripeTrust(url) {
+    var online = document.querySelector(".trust-stripe-online");
+    var pending = document.querySelector(".trust-stripe-pending");
+    if (url) {
+      if (online) online.style.display = "";
+      if (pending) pending.style.display = "none";
+    } else {
+      if (online) online.style.display = "none";
+      if (pending) pending.style.display = "";
+    }
+  }
+
   function wireBuyButtons() {
     var links = (window.STRIPE_PAYMENT_LINKS || {});
     var url = links[currentSlug()] || "";
     var buyBtns = document.querySelectorAll(".buy-btn");
     buyBtns.forEach(function (btn) {
       if (url) {
-        // Payment Link configurato: checkout reale
         btn.setAttribute("href", url);
         btn.setAttribute("target", "_blank");
         btn.setAttribute("rel", "noopener");
         btn.removeAttribute("data-buy-pending");
+        btn.removeAttribute("title");
       } else {
-        // Nessun Payment Link ancora: fallback a richiesta preventivo
         btn.setAttribute("href", "#form");
-        btn.setAttribute("title", "Checkout in attivazione — richiedi un preventivo");
+        btn.setAttribute("title", "Pagamento online su richiesta — compila il form preventivo");
       }
     });
+    wireStripeTrust(url);
   }
 
   // ── 2. Form "Richiedi informazioni" (box in alto) ───────────────────────────

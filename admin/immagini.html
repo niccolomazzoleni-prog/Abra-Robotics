@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Gestione Immagini — Abra Robotics (interno)</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/OoGMhxhA3CBp0sG6UqHTmku/qsaaNM98hKYYqG9j04O+Fz8lEeq6j9gjgZoG6P9tGWzf5BzNk8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    body { background: var(--gray-50); }
+    .admin-wrap { padding: calc(40px + 48px) 48px 80px; }
+    .admin-head { margin-bottom: 24px; }
+    .admin-head h1 { font-size: 2rem; letter-spacing: -0.03em; margin: 8px 0; }
+    .admin-head p { color: var(--gray-600); max-width: 820px; line-height: 1.55; }
+    .admin-nav { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+    .admin-nav a { font-size: 0.88rem; font-weight: 700; color: var(--gray-600); text-decoration: none; }
+    .admin-nav a:hover { color: var(--black); }
+    .admin-toolbar {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+      margin-bottom: 20px; padding: 16px 20px;
+      background: rgba(255,255,255,0.7); backdrop-filter: blur(12px);
+      border: 1px solid var(--gray-200); border-radius: var(--radius);
+    }
+    .admin-toolbar input, .admin-toolbar select {
+      padding: 10px 14px; border: 1px solid var(--gray-200); border-radius: 8px;
+      font-family: inherit; font-size: 0.9rem; background: var(--white);
+    }
+    .admin-toolbar input[type="search"] { min-width: 200px; flex: 1; }
+    .cmd-box {
+      margin: 16px 0 24px; padding: 14px 18px; background: #0f172a; color: #e2e8f0;
+      border-radius: 10px; font-family: ui-monospace, monospace; font-size: 0.82rem;
+    }
+    .cmd-box code { color: #7dd3fc; }
+    .img-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;
+    }
+    .img-card {
+      background: rgba(255,255,255,0.8); backdrop-filter: blur(12px);
+      border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden;
+    }
+    .img-card.changed { border-color: #f97316; box-shadow: 0 0 0 1px #f97316; }
+    .img-preview {
+      aspect-ratio: 1/1; background: var(--gray-50); display: flex; align-items: center;
+      justify-content: center; border-bottom: 1px solid var(--gray-100); overflow: hidden;
+    }
+    .img-preview img { max-width: 100%; max-height: 100%; object-fit: contain; padding: 12px; }
+    .img-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+    .img-body .sku { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; color: var(--gray-500); }
+    .img-body h3 { font-size: 0.95rem; margin: 0; letter-spacing: -0.02em; }
+    .img-body input[type="text"] {
+      width: 100%; padding: 8px 10px; border: 1px solid var(--gray-200); border-radius: 6px;
+      font-size: 0.78rem; font-family: ui-monospace, monospace;
+    }
+    .img-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .img-actions label, .img-actions button {
+      font-size: 0.78rem; font-weight: 700; padding: 6px 10px; border-radius: 6px;
+      border: 1px solid var(--gray-200); background: var(--white); cursor: pointer;
+    }
+    .img-actions label:hover, .img-actions button:hover { border-color: var(--black); }
+    .img-actions input[type="file"] { display: none; }
+    .status { font-size: 0.82rem; color: var(--gray-600); margin-top: 8px; }
+    @media (max-width: 768px) { .admin-wrap { padding: 100px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <nav class="admin-nav">
+      <a href="listini.html">← Listini</a>
+      <a href="../catalogo-unitree.html" target="_blank">Catalogo pubblico</a>
+    </nav>
+    <div class="admin-head">
+      <p class="label">Interno · Non indicizzato</p>
+      <h1>Gestione immagini prodotto</h1>
+      <p>Importa un'immagine per SKU, aggiorna il percorso o incolla un URL Unitree. Salva nella cartella del progetto (Chrome/Edge) oppure esporta uno ZIP e lancia <code>python scripts/publish_images.py --from-zip export.zip</code>.</p>
+    </div>
+
+    <div class="admin-toolbar">
+      <input type="search" id="filter-search" placeholder="Cerca SKU o nome…" aria-label="Cerca">
+      <select id="filter-family" aria-label="Famiglia">
+        <option value="">Tutte le famiglie</option>
+      </select>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-folder">Collega cartella progetto</button>
+      <button type="button" class="btn btn-primary btn-sm" id="btn-save-json">Salva JSON nel progetto</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-export-zip">Esporta ZIP</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-download-json">Scarica JSON</button>
+    </div>
+
+    <div class="cmd-box">
+      Dopo le modifiche, da terminale nella root del progetto:<br>
+      <code>python scripts/publish_images.py</code><br>
+      oppure con ZIP: <code>python scripts/publish_images.py --from-zip percorso/export.zip</code>
+    </div>
+
+    <p class="status" id="status">Caricamento…</p>
+    <div class="img-grid" id="grid"></div>
+  </div>
+
+  <script>
+    const BASE = '../';
+    let manifest = {};
+    let overrides = {};
+    let pendingFiles = {};
+    let projectDirHandle = null;
+
+    function familyFromSku(sku) {
+      const p = sku.split('-')[0];
+      const map = { GO2: 'Go2', GO2W: 'Go2W', H2: 'H2', G1: 'G1', R1: 'R1', B2: 'B2', B2W: 'B2W', A2: 'A2', A2W: 'A2W' };
+      return map[p] || p;
+    }
+
+    function defaultPath(sku) {
+      const e = manifest[sku];
+      return (overrides[sku] && overrides[sku].path) || (e && e.immagine) || '';
+    }
+
+    function mergeOverride(sku, patch) {
+      overrides[sku] = { ...(overrides[sku] || {}), path: defaultPath(sku), ...patch };
+    }
+
+    async function loadData() {
+      const [mRes, oRes] = await Promise.all([
+        fetch(BASE + 'listini/pubblico/catalogo-manifest.json'),
+        fetch(BASE + 'data/product-images.json').catch(() => null)
+      ]);
+      manifest = await mRes.json();
+      if (oRes && oRes.ok) overrides = await oRes.json();
+      const families = new Set();
+      Object.keys(manifest).forEach(sku => families.add(familyFromSku(sku)));
+      const sel = document.getElementById('filter-family');
+      [...families].sort().forEach(f => {
+        const o = document.createElement('option');
+        o.value = f; o.textContent = f;
+        sel.appendChild(o);
+      });
+      render();
+      document.getElementById('status').textContent =
+        Object.keys(manifest).length + ' prodotti · ' + Object.keys(overrides).length + ' override';
+    }
+
+    function filteredSkus() {
+      const q = document.getElementById('filter-search').value.toLowerCase();
+      const fam = document.getElementById('filter-family').value;
+      return Object.keys(manifest).filter(sku => {
+        const e = manifest[sku];
+        const name = (e.titolo || sku).toLowerCase();
+        if (fam && familyFromSku(sku) !== fam) return false;
+        if (q && !sku.toLowerCase().includes(q) && !name.includes(q)) return false;
+        return true;
+      }).sort();
+    }
+
+    function render() {
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      filteredSkus().forEach(sku => {
+        const e = manifest[sku];
+        const path = defaultPath(sku);
+        const changed = !!pendingFiles[sku] || (overrides[sku] && overrides[sku]._dirty);
+        const card = document.createElement('article');
+        card.className = 'img-card' + (changed ? ' changed' : '');
+        card.dataset.sku = sku;
+        const previewSrc = pendingFiles[sku]
+          ? pendingFiles[sku].preview
+          : (path ? BASE + path : '');
+        card.innerHTML = `
+          <div class="img-preview">
+            ${previewSrc ? `<img src="${previewSrc}" alt="${e.titolo || sku}" onerror="this.style.opacity=0.2">` : '<span style="color:var(--gray-400);font-size:0.8rem">Nessuna immagine</span>'}
+          </div>
+          <div class="img-body">
+            <span class="sku">${sku} · ${familyFromSku(sku)}</span>
+            <h3>${e.titolo || sku}</h3>
+            <input type="text" class="path-input" value="${path}" placeholder="images/prodotti/…" aria-label="Percorso immagine">
+            <input type="text" class="url-input" value="${(overrides[sku] && overrides[sku].source_url) || ''}" placeholder="URL Unitree (opzionale)" aria-label="URL sorgente">
+            <div class="img-actions">
+              <label>Importa file<input type="file" accept="image/*" class="file-input"></label>
+              <button type="button" class="test-url">Anteprima URL</button>
+            </div>
+          </div>`;
+        const pathInput = card.querySelector('.path-input');
+        const urlInput = card.querySelector('.url-input');
+        pathInput.addEventListener('change', () => {
+          mergeOverride(sku, { path: pathInput.value.trim(), _dirty: true });
+          card.classList.add('changed');
+        });
+        urlInput.addEventListener('change', () => {
+          mergeOverride(sku, { source_url: urlInput.value.trim(), _dirty: true });
+          card.classList.add('changed');
+        });
+        card.querySelector('.file-input').addEventListener('change', ev => {
+          const file = ev.target.files[0];
+          if (!file) return;
+          const ext = file.name.split('.').pop().toLowerCase() || 'png';
+          const newPath = `images/prodotti/${sku.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.${ext}`;
+          pathInput.value = newPath;
+          const reader = new FileReader();
+          reader.onload = () => {
+            pendingFiles[sku] = { file, preview: reader.result, path: newPath };
+            mergeOverride(sku, { path: newPath, _dirty: true });
+            render();
+          };
+          reader.readAsDataURL(file);
+        });
+        card.querySelector('.test-url').addEventListener('click', () => {
+          const u = urlInput.value.trim();
+          if (u) card.querySelector('.img-preview img').src = u;
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    function buildJson() {
+      const out = {};
+      Object.keys(manifest).forEach(sku => {
+        const o = overrides[sku];
+        const path = (o && o.path) || manifest[sku].immagine;
+        if (!path) return;
+        const entry = { path };
+        if (o && o.source_url) entry.source_url = o.source_url;
+        if (o && o._dirty) entry._dirty = undefined;
+        if (pendingFiles[sku] || (o && (o._dirty || o.source_url)) || (overrides[sku] && overrides[sku].path !== manifest[sku].immagine)) {
+          out[sku] = entry;
+        }
+      });
+      Object.keys(pendingFiles).forEach(sku => {
+        if (!out[sku]) out[sku] = { path: pendingFiles[sku].path };
+      });
+      return out;
+    }
+
+    async function saveJsonToProject() {
+      if (!projectDirHandle) {
+        alert('Collega prima la cartella progetto (pulsante in alto).');
+        return;
+      }
+      const json = JSON.stringify(buildJson(), null, 2) + '\n';
+      const fh = await projectDirHandle.getFileHandle('data/product-images.json', { create: true });
+      const w = await fh.createWritable();
+      await w.write(json);
+      await w.close();
+      for (const [sku, pf] of Object.entries(pendingFiles)) {
+        const parts = pf.path.split('/');
+        let dir = projectDirHandle;
+        for (let i = 0; i < parts.length - 1; i++) {
+          dir = await dir.getDirectoryHandle(parts[i], { create: true });
+        }
+        const imgFh = await dir.getFileHandle(parts[parts.length - 1], { create: true });
+        const iw = await imgFh.createWritable();
+        await iw.write(pf.file);
+        await iw.close();
+      }
+      pendingFiles = {};
+      document.getElementById('status').textContent = 'Salvato in data/product-images.json — esegui publish_images.py';
+      render();
+    }
+
+    async function exportZip() {
+      const zip = new JSZip();
+      const json = buildJson();
+      zip.file('data/product-images.json', JSON.stringify(json, null, 2) + '\n');
+      for (const [sku, pf] of Object.entries(pendingFiles)) {
+        zip.file(pf.path, pf.file);
+      }
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'abra-images-export.zip';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function downloadJson() {
+      const blob = new Blob([JSON.stringify(buildJson(), null, 2) + '\n'], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'product-images.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    document.getElementById('btn-folder').addEventListener('click', async () => {
+      if (!window.showDirectoryPicker) {
+        alert('Usa Chrome o Edge per salvare direttamente nel progetto, oppure Esporta ZIP.');
+        return;
+      }
+      projectDirHandle = await window.showDirectoryPicker();
+      document.getElementById('status').textContent = 'Cartella progetto collegata: ' + projectDirHandle.name;
+    });
+    document.getElementById('btn-save-json').addEventListener('click', saveJsonToProject);
+    document.getElementById('btn-export-zip').addEventListener('click', exportZip);
+    document.getElementById('btn-download-json').addEventListener('click', downloadJson);
+    document.getElementById('filter-search').addEventListener('input', render);
+    document.getElementById('filter-family').addEventListener('change', render);
+
+    loadData().catch(err => {
+      document.getElementById('status').textContent = 'Errore caricamento: ' + err.message;
+    });
+  </script>
+</body>
+</html>
