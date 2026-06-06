@@ -73,7 +73,7 @@
     }
     .anchor-strip-inner a:hover { color: var(--black); }
     .anchor-strip-inner a span {
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-right: 6px;
       font-weight: 700;
     }
@@ -99,7 +99,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0 0 24px;
     }
 
@@ -120,7 +120,7 @@
       font-weight: 800;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--accent-text);
       margin-bottom: 10px;
     }
     .subsection-head h3 {
@@ -265,15 +265,15 @@
       gap: 16px;
       flex: 1;
     }
-    .robot-card h3 {
+    .robot-card h3, .robot-card h4 {
       font-size: 1.35rem;
       letter-spacing: -0.015em;
       margin: 0 0 2px;
     }
-    .robot-card.dark h3 { color: var(--white); }
+    .robot-card.dark h3, .robot-card.dark h4 { color: var(--white); }
     .robot-subtitle {
       font-size: 0.84rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0;
       font-weight: 500;
     }
@@ -307,7 +307,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 4px;
     }
     .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
@@ -320,7 +320,7 @@
     .robot-card.dark .key-spec-value { color: var(--white); }
     .key-spec-value small {
       font-weight: 500;
-      color: var(--gray-400);
+      color: var(--gray-600);
       font-size: 0.78em;
     }
     .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
@@ -347,7 +347,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.07em;
-      color: var(--gray-400);
+      color: var(--gray-600);
       padding-top: 2px;
     }
     .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
@@ -374,7 +374,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 6px;
     }
     .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
@@ -499,7 +499,7 @@
       .robot-media { aspect-ratio: 16 / 10; }
       .robot-media img { padding: 18px; }
       .robot-body { padding: 20px 18px 22px; gap: 13px; }
-      .robot-card h3 { font-size: 1.15rem; }
+      .robot-card h3, .robot-card h4 { font-size: 1.15rem; }
       .robot-subtitle { font-size: 0.8rem; }
       .robot-card-cta { flex-direction: column; gap: 8px; }
       .robot-card-cta .btn { width: 100%; justify-content: center; }
@@ -579,7 +579,7 @@
     @media (max-width: 380px) {
       .vert-hero h1 { font-size: 1.6rem; }
       .vert-section-head h2 { font-size: 1.45rem; }
-      .robot-card h3 { font-size: 1.08rem; }
+      .robot-card h3, .robot-card h4 { font-size: 1.08rem; }
       .robot-media-placeholder strong { font-size: 1rem; }
     }
   </style>
@@ -710,7 +710,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree G1 EDU Standard</h3>
+                <h4>Unitree G1 EDU Standard</h4>
                 <p class="robot-subtitle">23 DoF base · espandibile a 43</p>
               </div>
 
@@ -765,7 +765,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree R1 EDU</h3>
+                <h4>Unitree R1 EDU</h4>
                 <p class="robot-subtitle">26 DoF · entry-level ricerca</p>
               </div>
 
@@ -817,7 +817,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree H2 EDU</h3>
+                <h4>Unitree H2 EDU</h4>
                 <p class="robot-subtitle">31 DoF · 180 cm · scala umana</p>
               </div>
 
@@ -883,7 +883,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree Go2 EDU+</h3>
+                <h4>Unitree Go2 EDU+</h4>
                 <p class="robot-subtitle">LiDAR 4D · Jetson Orin 100 TOPS</p>
               </div>
 
@@ -933,7 +933,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree A2 (Standard / Pro)</h3>
+                <h4>Unitree A2 (Standard / Pro)</h4>
                 <p class="robot-subtitle">Dual LiDAR · 5 m/s · 5 ore</p>
               </div>
 
@@ -990,7 +990,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree B2</h3>
+                <h4>Unitree B2</h4>
                 <p class="robot-subtitle">IP67 · &gt;6 m/s · &gt;40 kg payload</p>
               </div>
 
@@ -1053,7 +1053,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Franka Research 3 (FR3)</h3>
+                <h4>Franka Research 3 (FR3)</h4>
                 <p class="robot-subtitle">Prodotto in Germania · TÜV certificato · 1 kHz</p>
               </div>
 

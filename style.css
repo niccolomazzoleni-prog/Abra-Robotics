@@ -16,6 +16,10 @@
   --gray-800: #262626;
   --orange: #b37eff;
   --orange-light: #f0e8ff;
+  /* Accent per TESTO su fondo chiaro: #b37eff fallisce AA (2.86:1).
+     Questa variante piu' scura passa AA (5.4:1 su bianco). Usare SOLO per testo/link
+     su sfondo chiaro; #b37eff resta per badge, bullet, glow e usi decorativi/grandi. */
+  --accent-text: #7c4dd6;
   --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
   --container: 1200px;
   --radius: 12px;
@@ -395,13 +399,38 @@ h3 {
 }
 
 
+/* === Focus visibile (accessibilita' tastiera) ===
+   Indicatore di focus coerente su tutti gli elementi interattivi.
+   I campi form mantengono anche il loro box-shadow ring. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+/* Su fondi scuri l'outline scuro non si vede: usa il viola chiaro decorativo */
+.section-dark a:focus-visible,
+.section-dark button:focus-visible,
+.section-cta a:focus-visible,
+.section-cta button:focus-visible,
+.hero a:focus-visible,
+.hero button:focus-visible,
+.top-bar a:focus-visible {
+  outline-color: var(--orange);
+}
+
 /* === Eyebrow === */
 .eyebrow {
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--orange);
+  color: var(--accent-text);
   margin-bottom: 16px;
 }
 
@@ -830,7 +859,7 @@ h3 {
   display: block;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--orange);
+  color: var(--accent-text);
   margin-bottom: 20px;
   font-variant-numeric: tabular-nums;
 }
@@ -1071,7 +1100,7 @@ h3 {
 
 .team-role {
   font-size: 0.85rem;
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 
 /* === Reports === */
@@ -1103,7 +1132,7 @@ h3 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--orange);
+  color: var(--accent-text);
   background: var(--orange-light);
   padding: 4px 12px;
   border-radius: 20px;
@@ -1160,7 +1189,7 @@ h3 {
 }
 
 .faq-item summary:hover {
-  color: var(--orange);
+  color: var(--accent-text);
 }
 
 .faq-item p {
@@ -1236,7 +1265,7 @@ h3 {
 
 .form-note {
   font-size: 0.88rem;
-  color: var(--gray-400);
+  color: var(--gray-600);
   margin: 0;
 }
 
@@ -1296,7 +1325,7 @@ h3 {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gray-400);
+  color: var(--gray-600);
   margin-bottom: 10px;
 }
 .about-value h3 {
@@ -1382,7 +1411,7 @@ h3 {
 }
 
 .section-cta .form-note {
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 
 
@@ -1451,7 +1480,7 @@ h3 {
 
 .footer-copy {
   font-size: 0.85rem;
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 
 /* === Responsive === */
@@ -1687,10 +1716,11 @@ h3 {
   gap: 56px;
   padding: 80px 48px 56px;
 }
+/* Footer chiaro: testo scuro su bianco (era gray-400/white = sotto AA e hover invisibile) */
 .footer-brand .footer-desc {
   max-width: 320px;
   line-height: 1.6;
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 .footer-nav,
 .footer-contact {
@@ -1701,18 +1731,18 @@ h3 {
 .footer-nav a,
 .footer-contact a {
   text-decoration: none;
-  color: var(--gray-400);
+  color: var(--gray-600);
   font-size: 0.95rem;
   transition: color 0.2s;
 }
 .footer-nav a:hover,
-.footer-contact a:hover { color: var(--white); }
+.footer-contact a:hover { color: var(--black); }
 .footer-heading {
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--black);
   margin-bottom: 6px;
 }
 .footer-contact .btn {
@@ -1986,7 +2016,7 @@ body::before {
   letter-spacing: 0.12em;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--orange);
+  color: var(--accent-text);
   margin: 0 0 12px;
 }
 .legal-hero h1 {
@@ -2025,7 +2055,7 @@ body::before {
 .legal ul,
 .legal ol { margin: 0 0 16px; padding-left: 22px; }
 .legal li { margin: 0 0 8px; }
-.legal a { color: var(--orange); text-decoration: underline; }
+.legal a { color: var(--accent-text); text-decoration: underline; }
 .legal strong { font-weight: 700; }
 .legal .legal-lead {
   font-size: 1.1rem;
@@ -2067,7 +2097,7 @@ body::before {
 .legal .legal-toc strong { display: block; margin-bottom: 10px; }
 .legal .legal-toc ol { margin: 0; }
 .legal .legal-toc a { color: var(--gray-800); text-decoration: none; }
-.legal .legal-toc a:hover { color: var(--orange); text-decoration: underline; }
+.legal .legal-toc a:hover { color: var(--accent-text); text-decoration: underline; }
 
 /* === Footer legal links === */
 .footer-bottom {
@@ -2084,7 +2114,7 @@ body::before {
 }
 .footer-legal a {
   font-size: 0.85rem;
-  color: var(--gray-400);
+  color: var(--gray-600);
   text-decoration: none;
 }
 .footer-legal a:hover { color: var(--black); }
@@ -2177,7 +2207,7 @@ body::before {
 .quote-form-top button { align-self: flex-start; }
 .quote-form-feedback { font-size: 0.85rem; }
 .quote-form-feedback.success { color: #1a8a52; }
-.quote-form-feedback.error { color: var(--orange); }
+.quote-form-feedback.error { color: #dc2626; }
 @media (max-width: 600px) { .quote-form-top .quote-row { flex-direction: column; } }
 
 /* === Sottocategorie prodotti (contenitori placeholder) === */
@@ -2201,7 +2231,7 @@ body::before {
 }
 .subcat-card:hover { border-color: var(--black); transform: translateY(-2px); }
 .subcat-label { font-weight: 700; font-size: 1rem; }
-.subcat-note { font-size: 0.78rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.06em; }
+.subcat-note { font-size: 0.78rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.06em; }
 .img-ph.is-dark {
   border-color: rgba(255,255,255,0.25);
   background:
@@ -2278,3 +2308,36 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
 .btn.buy-btn:hover { background: #9a5cf0; border-color: #9a5cf0; color: var(--white); }
 .btn.buy-btn.is-disabled, .btn.buy-btn[aria-disabled="true"] { background: var(--orange); border-color: var(--orange); opacity: 0.45; }
 .btn.buy-btn.is-loading { pointer-events: none; opacity: 0.8; }
+
+/* ===========================================================
+   PREFERS-REDUCED-MOTION — rispetta chi disattiva le animazioni
+   Disattiva loop infiniti (beam-sweep, grid-drift, scroll loghi),
+   entrate hero, hover-lift e transizioni. La grana statica resta.
+   =========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+  .logo-bar-track,
+  .section-dark::before,
+  .section-dark::after { animation: none !important; }
+  /* Niente lift/scale al hover per chi preferisce ridurre il movimento */
+  .card:hover,
+  .use-case:hover,
+  .report-card:hover,
+  .social-proof-card:hover,
+  .about-value:hover,
+  .subcat-card:hover,
+  .btn:hover,
+  .label:hover { transform: none !important; }
+  /* Elementi rivelati via JS: forzane la visibilita' (no fade-in) */
+  .card, .use-case, .step, .about-stat, .report-card, .faq-item, .social-proof-stat {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
