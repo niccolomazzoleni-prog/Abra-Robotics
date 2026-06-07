@@ -452,9 +452,13 @@
           return;
         }
         if (failures.length) {
+          const onlyJsonLag = failures.every(f => f.includes('live JSON ha'));
           status.textContent = `Verifica live: ${failures.length} problemi su ${checked} SKU.`;
           console.warn('Verifica live fallita:', failures);
-          alert('Problemi sul live:\n\n' + failures.slice(0, 8).join('\n') + (failures.length > 8 ? '\n…' : ''));
+          const hint = onlyJsonLag
+            ? '\n\nSe hai appena cliccato Pubblica: aspetta 1–2 minuti (il JSON si aggiorna dopo i file) e riprova. Oppure ricarica la pagina admin (F5) prima di verificare.'
+            : '';
+          alert('Problemi sul live:\n\n' + failures.slice(0, 8).join('\n') + (failures.length > 8 ? '\n…' : '') + hint);
         } else {
           status.textContent = `Verifica live OK (${checked} SKU). JSON e catalogo allineati.`;
         }
