@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """Genera accessori.html (catalogo accessori Unitree) + scarica immagini.
 Dati da RoboStore. Prezzi tenuti in commento HTML (convenzione sito)."""
-import os, urllib.request, ssl
+import os, sys, urllib.request, ssl
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from site_nav import render_site_nav
+
+SITE_NAV_HTML = render_site_nav("")
 IMGDIR = os.path.join(ROOT, "images", "accessori")
 os.makedirs(IMGDIR, exist_ok=True)
 CDN = "https://robostore.com/cdn/shop/files/"
@@ -94,7 +98,7 @@ HTML = f'''<!DOCTYPE html>
   <title>Accessori Unitree — Mani, batterie, LiDAR e bracci | Abra Robotics</title>
   <meta name="description" content="Catalogo accessori Unitree distribuiti in Italia da Abra Robotics: mani dexterous Dex3/Dex5/Inspire, batterie, LiDAR Livox e Hesai, telecomandi, bracci Z1 e D1, moduli di calcolo.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/accessori.html">
+  <link rel="canonical" href="https://abrarobotics.com/accessori.html">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -125,59 +129,7 @@ HTML = f'''<!DOCTYPE html>
     <p>Distributore ufficiale Unitree in Italia. <a href="assessment.html">Trova il robot giusto →</a></p>
   </div>
 
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-      <div class="nav-links">
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="manifattura-logistica.html#cobot">Cobot</a>
-            <a href="manifattura-logistica.html#amr">AMR</a>
-            <a href="quadrupedi.html">Quadrupedi</a>
-            <a href="umanoidi.html">Umanoidi</a>
-            <a href="accessori.html">Accessori</a>
-          </div>
-        </div>
-        <a href="assessment.html">Trova il robot giusto</a>
-        <a href="finanziamenti.html">Finanziamenti</a>
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-            <a href="universita-ricerca.html">Università e Ricerca</a>
-          </div>
-        </div>
-        <a href="index.html#chi-siamo">Chi siamo</a>
-      </div>
-      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <div class="mobile-menu">
-    <div class="mobile-dropdown">
-      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-      <div class="mobile-dropdown-panel">
-        <a href="manifattura-logistica.html#cobot">Cobot</a>
-        <a href="manifattura-logistica.html#amr">AMR</a>
-        <a href="quadrupedi.html">Quadrupedi</a>
-        <a href="umanoidi.html">Umanoidi</a>
-        <a href="accessori.html">Accessori</a>
-      </div>
-    </div>
-    <a href="assessment.html">Trova il robot giusto</a>
-    <a href="finanziamenti.html">Finanziamenti</a>
-    <div class="mobile-dropdown">
-      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
-      <div class="mobile-dropdown-panel">
-        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-        <a href="universita-ricerca.html">Università e Ricerca</a>
-      </div>
-    </div>
-    <a href="index.html#chi-siamo">Chi siamo</a>
-    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
-  </div>
+{SITE_NAV_HTML}
 
   <section class="collection-hero">
     <div class="container">

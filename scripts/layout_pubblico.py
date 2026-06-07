@@ -1,43 +1,13 @@
 # -*- coding: utf-8 -*-
 """Fragmenti HTML condivisi per pagine pubbliche catalogo/listino."""
 
-SITE_NAV = """
+from site_nav import render_site_nav
+
+SITE_NAV = f"""
   <div class="top-bar">
     <p>Listino pubblico End-User · IVA esclusa · <a href="listino-unitree.html">Tabella prezzi</a> · <a href="catalogo-unitree.html">Catalogo</a></p>
   </div>
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-      <div class="nav-links">
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="quadrupedi.html">Quadrupedi</a>
-            <a href="umanoidi.html">Umanoidi G1</a>
-            <a href="r1-d.html">R1-D Dual-Arm</a>
-            <a href="accessori.html">Accessori</a>
-            <a href="catalogo-unitree.html">Catalogo completo</a>
-            <a href="listino-unitree.html">Listino prezzi</a>
-          </div>
-        </div>
-        <a href="assessment.html">Trova il robot giusto</a>
-        <a href="finanziamenti.html">Finanziamenti</a>
-        <a href="index.html#chi-siamo">Chi siamo</a>
-      </div>
-      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
-    </div>
-  </nav>
-  <div class="mobile-menu">
-    <a href="quadrupedi.html">Quadrupedi</a>
-    <a href="umanoidi.html">Umanoidi G1</a>
-    <a href="r1-d.html">R1-D Dual-Arm</a>
-    <a href="accessori.html">Accessori</a>
-    <a href="catalogo-unitree.html">Catalogo completo</a>
-    <a href="listino-unitree.html">Listino prezzi</a>
-    <a href="assessment.html">Trova il robot giusto</a>
-    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
-  </div>
+{render_site_nav("")}
 """
 
 SITE_FOOTER = """

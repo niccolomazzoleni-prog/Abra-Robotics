@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 """Genera la pagina collezione Umanoidi (umanoidi.html, livello root)."""
 import os
+import sys
 from _gen_variants import LINEUP, COMPACT, V
 from _prezzi import PREZZI, euro
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repo root
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from site_nav import render_site_nav
+
+SITE_NAV_HTML = render_site_nav("")
 
 NAMES = {
  "g1":"Unitree G1 Air","g1-u1":"Unitree G1 EDU Standard","g1-u2":"Unitree G1 EDU Plus",
@@ -98,7 +103,7 @@ HTML = f'''<!DOCTYPE html>
   <title>Robot Umanoidi Unitree G1 — Tutta la gamma | Abra Robotics</title>
   <meta name="description" content="Tutti i modelli di robot umanoide Unitree G1 distribuiti in Italia da Abra Robotics: G1 Base, EDU Standard, EDU Plus, EDU Ultimate A-F e G1 Comp. Specifiche, confronto e schede tecniche.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/umanoidi.html">
+  <link rel="canonical" href="https://abrarobotics.com/umanoidi.html">
 
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -140,59 +145,7 @@ HTML = f'''<!DOCTYPE html>
     <p>Distributore ufficiale Unitree in Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
   </div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-      <div class="nav-links">
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="manifattura-logistica.html#cobot">Cobot</a>
-            <a href="manifattura-logistica.html#amr">AMR</a>
-            <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
-            <a href="umanoidi.html">Umanoidi</a>
-          </div>
-        </div>
-        <a href="assessment.html">Trova il robot giusto</a>
-        <a href="finanziamenti.html">Finanziamenti</a>
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-            <a href="universita-ricerca.html">Università e Ricerca</a>
-          </div>
-        </div>
-        <a href="index.html#chi-siamo">Chi siamo</a>
-      </div>
-      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <div class="mobile-dropdown">
-      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-      <div class="mobile-dropdown-panel">
-        <a href="manifattura-logistica.html#cobot">Cobot</a>
-        <a href="manifattura-logistica.html#amr">AMR</a>
-        <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
-        <a href="umanoidi.html">Umanoidi</a>
-      </div>
-    </div>
-    <a href="assessment.html">Trova il robot giusto</a>
-    <a href="finanziamenti.html">Finanziamenti</a>
-    <div class="mobile-dropdown">
-      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
-      <div class="mobile-dropdown-panel">
-        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-        <a href="universita-ricerca.html">Università e Ricerca</a>
-      </div>
-    </div>
-    <a href="index.html#chi-siamo">Chi siamo</a>
-    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
-  </div>
+{SITE_NAV_HTML}
 
   <!-- HERO -->
   <section class="collection-hero">
