@@ -6,10 +6,18 @@
   <title>Listino pubblico End-User Unitree | Abra Robotics</title>
   <meta name="description" content="Listino prezzi End-User Unitree distribuiti da Abra Robotics in Italia. Valori indicativi, IVA esclusa, spedizione e dazio inclusi.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/listino-unitree.html">
+  <link rel="canonical" href="https://abrarobotics.com/listino-unitree.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Listino End-User Unitree — Abra Robotics">
-  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/listino-unitree.html">
+  <meta property="og:description" content="Listino prezzi End-User Unitree in Italia. Valori indicativi, IVA esclusa, spedizione e dazio inclusi.">
+  <meta property="og:url" content="https://abrarobotics.com/listino-unitree.html">
+  <meta property="og:image" content="https://abrarobotics.com/images/g1-hero.png">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Abra Robotics">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Listino End-User Unitree — Abra Robotics">
+  <meta name="twitter:description" content="Listino prezzi End-User Unitree in Italia. Valori indicativi, IVA esclusa.">
+  <meta name="twitter:image" content="https://abrarobotics.com/images/g1-hero.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -44,6 +52,7 @@
   <div class="top-bar">
     <p>Listino pubblico End-User · IVA esclusa · <a href="listino-unitree.html">Tabella prezzi</a> · <a href="catalogo-unitree.html">Catalogo</a></p>
   </div>
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
@@ -51,9 +60,10 @@
         <div class="nav-item-dropdown">
           <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
           <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html#cobot">Cobot</a>
+            <a href="manifattura-logistica.html#amr">AMR</a>
             <a href="quadrupedi.html">Quadrupedi</a>
-            <a href="umanoidi.html">Umanoidi G1</a>
-            <a href="r1-d.html">R1-D Dual-Arm</a>
+            <a href="umanoidi.html">Umanoidi</a>
             <a href="accessori.html">Accessori</a>
             <a href="catalogo-unitree.html">Catalogo completo</a>
             <a href="listino-unitree.html">Listino prezzi</a>
@@ -61,20 +71,47 @@
         </div>
         <a href="assessment.html">Trova il robot giusto</a>
         <a href="finanziamenti.html">Finanziamenti</a>
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+            <a href="universita-ricerca.html">Università e Ricerca</a>
+          </div>
+        </div>
         <a href="index.html#chi-siamo">Chi siamo</a>
       </div>
       <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
   <div class="mobile-menu">
-    <a href="quadrupedi.html">Quadrupedi</a>
-    <a href="umanoidi.html">Umanoidi G1</a>
-    <a href="r1-d.html">R1-D Dual-Arm</a>
-    <a href="accessori.html">Accessori</a>
-    <a href="catalogo-unitree.html">Catalogo completo</a>
-    <a href="listino-unitree.html">Listino prezzi</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html#cobot">Cobot</a>
+        <a href="manifattura-logistica.html#amr">AMR</a>
+        <a href="quadrupedi.html">Quadrupedi</a>
+        <a href="umanoidi.html">Umanoidi</a>
+        <a href="accessori.html">Accessori</a>
+        <a href="catalogo-unitree.html">Catalogo completo</a>
+        <a href="listino-unitree.html">Listino prezzi</a>
+      </div>
+    </div>
     <a href="assessment.html">Trova il robot giusto</a>
+    <a href="finanziamenti.html">Finanziamenti</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
+        <a href="universita-ricerca.html">Università e Ricerca</a>
+      </div>
+    </div>
+    <a href="index.html#chi-siamo">Chi siamo</a>
     <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
   </div>
 
@@ -157,7 +194,7 @@
       });
       document.getElementById('rows').innerHTML = filtered.length
         ? filtered.map(i => `<tr>
-            <td class="thumb-col">${i.img ? `<img class="listino-thumb" src="${i.img}?v=${Date.now()}" alt="" loading="lazy">` : ''}</td>
+            <td class="thumb-col">${i.img ? `<img class="listino-thumb" src="${i.img}" alt="" loading="lazy">` : ''}</td>
             <td><a class="prod-link" href="prodotti/${i.slug}">${i.nome}</a></td>
             <td>${i.catLabel}</td>
             <td class="price-col">${i.prezzoDa ? 'da ' : ''}€ ${fmt(i.prezzo)}</td>
@@ -165,20 +202,17 @@
         : '<tr><td colspan="4">Nessun risultato</td></tr>';
     }
 
-    Promise.all([
-      fetch('listini/pubblico/end-user.json?v=' + Date.now(), { cache: 'no-store' }).then(r => r.json()),
-      fetch('data/product-images.json?v=' + Date.now(), { cache: 'no-store' }).then(r => r.ok ? r.json() : {})
-    ]).then(([json, imgOverrides]) => {
+    fetch('listini/pubblico/end-user.json')
+      .then(r => r.json())
+      .then(json => {
         const cats = new Set();
         items = Object.entries(json).map(([sku, v]) => {
           const catKey = v.categoria || '';
           const catLabel = CAT_LABEL[catKey] || catKey || '—';
           cats.add(catLabel);
-          const ov = imgOverrides[sku];
-          const img = (ov && (ov.path || (ov.gallery && ov.gallery[0]))) || v.immagine || '';
           return {
             sku, nome: v.nome, prezzo: v.prezzo_eur, prezzoDa: !!v.prezzo_da, slug: v.slug || '',
-            img, cat: catLabel, catLabel
+            img: v.immagine || '', cat: catLabel, catLabel
           };
         }).sort((a, b) => a.nome.localeCompare(b.nome, 'it'));
 
