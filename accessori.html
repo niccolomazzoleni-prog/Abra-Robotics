@@ -7,6 +7,19 @@
   <meta name="description" content="Catalogo accessori Unitree distribuiti in Italia da Abra Robotics: mani dexterous Dex3/Dex5/Inspire, batterie, LiDAR Livox e Hesai, telecomandi, bracci Z1 e D1, moduli di calcolo.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/accessori.html">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/logo-full.png">
+  <link rel="apple-touch-icon" href="images/logo-full.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Accessori Unitree — Mani, batterie, LiDAR e bracci | Abra Robotics">
+  <meta property="og:description" content="Catalogo accessori Unitree distribuiti in Italia da Abra Robotics: mani dexterous Dex3/Dex5/Inspire, batterie, LiDAR Livox e Hesai, telecomandi, bracci Z1 e D1, moduli di calcolo.">
+  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/accessori.html">
+  <meta property="og:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accessori Unitree — Mani, batterie, LiDAR e bracci | Abra Robotics">
+  <meta name="twitter:description" content="Catalogo accessori Unitree distribuiti in Italia da Abra Robotics: mani dexterous Dex3/Dex5/Inspire, batterie, LiDAR Livox e Hesai, telecomandi, bracci Z1 e D1, moduli di calcolo.">
+  <meta name="twitter:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -26,7 +39,10 @@
     .acc-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
     .acc-body h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
     .acc-desc { font-size: 0.85rem; color: var(--gray-600); line-height: 1.5; flex: 1; }
-    .acc-spec { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); }
+    .acc-spec { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-600); }
+    .acc-price { font-size: 1rem; font-weight: 800; color: var(--black); margin: 4px 0 10px; }
+    .acc-link { font-size: 0.82rem; font-weight: 700; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--gray-300); }
+    .acc-link:hover { border-color: var(--black); }
     @media (max-width: 1024px) { .acc-grid { grid-template-columns: repeat(3,1fr); } }
     @media (max-width: 768px) { .acc-grid { grid-template-columns: repeat(2,1fr); } }
   </style>
@@ -95,7 +111,7 @@
     <div class="container">
       <p class="label">Accessori Unitree</p>
       <h1>Accessori e moduli Unitree</h1>
-      <p class="lead">Mani dexterous, batterie, sensori LiDAR, telecomandi, bracci robotici e moduli di calcolo per estendere i robot Unitree. Tutti gli accessori sono disponibili tramite Abra Robotics, distributore ufficiale in Italia.</p>
+      <p class="lead">Mani dexterous, batterie, sensori LiDAR, telecomandi, bracci robotici e moduli di calcolo — <strong>51 accessori con prezzo End-User pubblico</strong> e scheda dedicata. <a href="catalogo-unitree.html" style="font-weight:700;color:var(--black);">Catalogo completo →</a> · <a href="listino-unitree.html" style="font-weight:700;color:var(--black);">Listino prezzi →</a></p>
     </div>
   </section>
 
@@ -109,8 +125,10 @@
           <div class="acc-media"><img src="images/accessori/dex3-1.jpg" alt="Unitree Dex3-1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-img');"></div>
           <div class="acc-body">
             <h3>Unitree Dex3-1</h3>
+            <p class="acc-price">da 10.577,40 €</p>
             <p class="acc-desc">Mano robotica a 3 dita leggera per manipolazione di precisione e ricerca.</p>
             <span class="acc-spec">7 DoF · 710 g · opz. 33 sensori tattili</span>
+            <a href="prodotti/unitree-hand-dex3-1-no-tac.html" class="acc-link">Scheda senza tattile →</a>
           </div>
         </article>
         <!-- Unitree Dex5-1 — prezzo rif. $25.000 USD -->
@@ -178,8 +196,10 @@
           <div class="acc-media"><img src="images/accessori/batt-g1.jpg" alt="Batteria G1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-img');"></div>
           <div class="acc-body">
             <h3>Batteria G1</h3>
+            <p class="acc-price">925,83 €</p>
             <p class="acc-desc">Batteria di ricambio ad alte prestazioni per umanoide G1.</p>
             <span class="acc-spec">High-performance</span>
+            <a href="prodotti/unitree-g1-battery.html" class="acc-link">Scheda prodotto →</a>
           </div>
         </article>
         <!-- Batteria H1 — prezzo rif. $1.580 USD -->
@@ -358,6 +378,21 @@
     </div>
   </section>
 
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div style="padding:28px 32px;background:rgba(255,255,255,0.8);backdrop-filter:blur(12px);border:1px solid var(--gray-200);border-radius:var(--radius);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;">
+        <div>
+          <p class="label" style="margin-bottom:8px;">Listino completo</p>
+          <h2 style="font-size:1.35rem;margin:0;">Tutti gli accessori hanno scheda prodotto con prezzo e checkout Stripe</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="catalogo-unitree.html#componentistica" class="btn btn-primary btn-sm">Componentistica (35)</a>
+          <a href="catalogo-unitree.html#mani_bracci" class="btn btn-secondary btn-sm">Mani &amp; bracci (16)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section section-cta">
     <div class="container">
       <div class="cta-content">
@@ -389,6 +424,8 @@
         <a href="quadrupedi.html">Quadrupedi</a>
         <a href="umanoidi.html">Umanoidi</a>
         <a href="accessori.html">Accessori</a>
+        <a href="catalogo-unitree.html">Catalogo completo</a>
+        <a href="listino-unitree.html">Listino prezzi</a>
       </div>
       <div class="footer-contact">
         <span class="footer-heading">Contatti</span>

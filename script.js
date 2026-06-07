@@ -19,6 +19,9 @@ document.querySelectorAll('.contact-form').forEach(form => {
     payload.pagina = document.title;
     payload.url = location.href;
     payload.timestamp = new Date().toISOString();
+    if (window.AbraAds && window.AbraAds.getGclid) {
+      payload.gclid = payload.gclid || window.AbraAds.getGclid();
+    }
 
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
@@ -29,6 +32,7 @@ document.querySelectorAll('.contact-form').forEach(form => {
       });
       feedback.className = 'form-feedback success';
       feedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
+      if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
       form.reset();
     } catch {
       feedback.className = 'form-feedback error';
@@ -44,27 +48,60 @@ document.querySelectorAll('.contact-form').forEach(form => {
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 
-menuToggle.addEventListener('click', () => {
-  const isOpen = mobileMenu.style.display === 'flex';
-  mobileMenu.style.display = isOpen ? 'none' : 'flex';
-  menuToggle.classList.toggle('active');
-});
+if (menuToggle && mobileMenu) {
+  // a11y: collega il toggle al menu ed esponi lo stato aperto/chiuso
+  if (!mobileMenu.id) mobileMenu.id = 'mobile-menu';
+  menuToggle.setAttribute('aria-controls', mobileMenu.id);
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-haspopup', 'true');
 
-// Close mobile menu on link click
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.style.display = 'none';
-    menuToggle.classList.remove('active');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = isOpen ? 'none' : 'flex';
+    menuToggle.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
   });
-});
 
-// Mobile dropdown accordion
-mobileMenu.querySelectorAll('.mobile-dropdown-trigger').forEach(trigger => {
-  trigger.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    trigger.closest('.mobile-dropdown').classList.toggle('open');
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
   });
+
+  // Mobile dropdown accordion (con stato ARIA)
+  mobileMenu.querySelectorAll('.mobile-dropdown-trigger').forEach((trigger, i) => {
+    const dd = trigger.closest('.mobile-dropdown');
+    const panel = dd && dd.querySelector('.mobile-dropdown-panel');
+    if (panel && !panel.id) panel.id = `mobile-dd-panel-${i}`;
+    trigger.setAttribute('aria-haspopup', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+    if (panel) trigger.setAttribute('aria-controls', panel.id);
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const open = dd.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(open));
+    });
+  });
+}
+
+// Dropdown desktop (apertura via CSS hover/focus-within): sincronizza aria-expanded
+document.querySelectorAll('.nav-item-dropdown').forEach((item, i) => {
+  const trigger = item.querySelector('.nav-dropdown-trigger');
+  const panel = item.querySelector('.nav-dropdown-panel');
+  if (!trigger) return;
+  if (panel && !panel.id) panel.id = `nav-dd-panel-${i}`;
+  trigger.setAttribute('aria-haspopup', 'true');
+  trigger.setAttribute('aria-expanded', 'false');
+  if (panel) trigger.setAttribute('aria-controls', panel.id);
+  const setExpanded = (v) => trigger.setAttribute('aria-expanded', String(v));
+  item.addEventListener('mouseenter', () => setExpanded(true));
+  item.addEventListener('mouseleave', () => setExpanded(false));
+  item.addEventListener('focusin', () => setExpanded(true));
+  item.addEventListener('focusout', () => setExpanded(false));
 });
 
 // Navbar background on scroll
@@ -92,7 +129,9 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-const animatedElements = document.querySelectorAll(
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const animatedElements = prefersReducedMotion ? [] : document.querySelectorAll(
   '.card, .use-case, .step, .about-stat, .report-card, .faq-item, .social-proof-stat'
 );
 

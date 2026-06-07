@@ -17,6 +17,15 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Abra Robotics">
 
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/logo-full.png">
+  <link rel="apple-touch-icon" href="images/logo-full.png">
+  <meta property="og:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Robotica per università e ricerca | Umanoidi, quadrupedi, Franka FR3, mani Inspire | Abra Robotics">
+  <meta name="twitter:description" content="Abra Robotics fornisce a università, laboratori e centri di ricerca le piattaforme robotiche più avanzate: umanoidi Unitree G1/R1/H2, quadrupedi Go2/A2/B2, Franka Research 3, mani Inspire RH56. SDK aperti, supporto sviluppo, percorsi formativi.">
+  <meta name="twitter:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -73,7 +82,7 @@
     }
     .anchor-strip-inner a:hover { color: var(--black); }
     .anchor-strip-inner a span {
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-right: 6px;
       font-weight: 700;
     }
@@ -99,7 +108,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0 0 24px;
     }
 
@@ -120,7 +129,7 @@
       font-weight: 800;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--accent-text);
       margin-bottom: 10px;
     }
     .subsection-head h3 {
@@ -265,15 +274,15 @@
       gap: 16px;
       flex: 1;
     }
-    .robot-card h3 {
+    .robot-card h3, .robot-card h4 {
       font-size: 1.35rem;
       letter-spacing: -0.015em;
       margin: 0 0 2px;
     }
-    .robot-card.dark h3 { color: var(--white); }
+    .robot-card.dark h3, .robot-card.dark h4 { color: var(--white); }
     .robot-subtitle {
       font-size: 0.84rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0;
       font-weight: 500;
     }
@@ -307,7 +316,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 4px;
     }
     .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
@@ -320,7 +329,7 @@
     .robot-card.dark .key-spec-value { color: var(--white); }
     .key-spec-value small {
       font-weight: 500;
-      color: var(--gray-400);
+      color: var(--gray-600);
       font-size: 0.78em;
     }
     .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
@@ -347,7 +356,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.07em;
-      color: var(--gray-400);
+      color: var(--gray-600);
       padding-top: 2px;
     }
     .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
@@ -374,7 +383,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 6px;
     }
     .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
@@ -412,6 +421,17 @@
     .robot-card.dark .avviso-box { color: rgba(255,255,255,0.85); }
     .avviso-box strong { display: block; margin-bottom: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--black); font-weight: 800; }
     .robot-card.dark .avviso-box strong { color: var(--white); }
+
+    /* Prezzo card */
+    .card-price {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .robot-card.dark .card-price { color: var(--white); }
 
     /* CTA in card */
     .robot-card-cta {
@@ -478,7 +498,7 @@
       .vert-hero-ctas { flex-direction: column; align-items: stretch; }
       .vert-hero-ctas .btn { width: 100%; justify-content: center; }
 
-      .vert-section { padding: 52px 0; }
+      .vert-section { padding: 56px 0; }
       .vert-section-head { margin-bottom: 32px; }
       .vert-section-head h2 { font-size: clamp(1.55rem, 6vw, 2rem); margin: 10px 0 14px; line-height: 1.15; }
       .vert-section-head p { font-size: 0.95rem; line-height: 1.6; }
@@ -499,7 +519,7 @@
       .robot-media { aspect-ratio: 16 / 10; }
       .robot-media img { padding: 18px; }
       .robot-body { padding: 20px 18px 22px; gap: 13px; }
-      .robot-card h3 { font-size: 1.15rem; }
+      .robot-card h3, .robot-card h4 { font-size: 1.15rem; }
       .robot-subtitle { font-size: 0.8rem; }
       .robot-card-cta { flex-direction: column; gap: 8px; }
       .robot-card-cta .btn { width: 100%; justify-content: center; }
@@ -579,7 +599,7 @@
     @media (max-width: 380px) {
       .vert-hero h1 { font-size: 1.6rem; }
       .vert-section-head h2 { font-size: 1.45rem; }
-      .robot-card h3 { font-size: 1.08rem; }
+      .robot-card h3, .robot-card h4 { font-size: 1.08rem; }
       .robot-media-placeholder strong { font-size: 1rem; }
     }
   </style>
@@ -710,7 +730,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree G1 EDU Standard</h3>
+                <h4>Unitree G1 EDU Standard</h4>
                 <p class="robot-subtitle">23 DoF base · espandibile a 43</p>
               </div>
 
@@ -743,8 +763,10 @@
               </div>
 
               <div class="robot-card-cta">
-                <!-- PREZZO DA VERIFICARE: G1 EDU Standard (U1) ~$25.000-30.000 USD su RoboStore -->
-                <a href="prodotti/unitree-g1.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
+                <!-- LISTINO:card:G1-U1 -->
+                <span class="card-price">da € 37.562,52</span>
+                <!-- /LISTINO:card:G1-U1 -->
+                <a href="prodotti/unitree-g1-edu-standard.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo G1</a>
               </div>
             </div>
@@ -765,7 +787,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree R1 EDU</h3>
+                <h4>Unitree R1 EDU</h4>
                 <p class="robot-subtitle">26 DoF · entry-level ricerca</p>
               </div>
 
@@ -795,7 +817,9 @@
               </div>
 
               <div class="robot-card-cta">
-                <!-- PREZZO DA VERIFICARE: R1 EDU Standard ~$10.000-12.000 USD; R1 EDU Pro ~$20.000-35.000 USD -->
+                <!-- LISTINO:card:R1-U3 -->
+                <span class="card-price">da € 32.287,20</span>
+                <!-- /LISTINO:card:R1-U3 -->
                 <a href="prodotti/unitree-r1-edu.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo R1</a>
               </div>
@@ -817,7 +841,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree H2 EDU</h3>
+                <h4>Unitree H2 EDU</h4>
                 <p class="robot-subtitle">31 DoF · 180 cm · scala umana</p>
               </div>
 
@@ -849,8 +873,11 @@
               </div>
 
               <div class="robot-card-cta">
-                <!-- PREZZO DA VERIFICARE: H2 EDU listino RoboStore ~$68.900 USD; versione internazionale con mani avanzate sup. -->
-                <a href="prodotti/unitree-h2.html" class="btn btn-primary btn-sm">Vedi scheda H2 →</a>
+                <!-- LISTINO:card:H2-EDU -->
+                <span class="card-price">da € 67.366,23</span>
+                <!-- /LISTINO:card:H2-EDU -->
+                <a href="prodotti/unitree-h2.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
+                <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo H2</a>
               </div>
             </div>
           </article>
@@ -872,7 +899,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Entry-level ricerca</span>
-              <img src="images/manifattura/unitree-go2-edu.png"
+              <img src="images/prodotti/unitree-go2-card.png"
                    alt="Unitree Go2 EDU+, quadrupede entry-level ricerca"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -883,7 +910,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree Go2 EDU+</h3>
+                <h4>Unitree Go2 EDU+</h4>
                 <p class="robot-subtitle">LiDAR 4D · Jetson Orin 100 TOPS</p>
               </div>
 
@@ -911,7 +938,9 @@
               </div>
 
               <div class="robot-card-cta">
-                <!-- PREZZO DA VERIFICARE: Go2 EDU+ ~$4.000-5.000 USD su RoboStore -->
+                <!-- LISTINO:card:GO2-EDU-SMART -->
+                <span class="card-price">da € 15.450,06</span>
+                <!-- /LISTINO:card:GO2-EDU-SMART -->
                 <a href="prodotti/unitree-go2-edu-plus.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
               </div>
@@ -922,7 +951,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Mid-tier · Ispezione e campo</span>
-              <img src="images/universita/unitree-a2.png"
+              <img src="images/prodotti/unitree-a2.png"
                    alt="Unitree A2, quadrupede mid-tier dual LiDAR"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -933,7 +962,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree A2 (Standard / Pro)</h3>
+                <h4>Unitree A2 (Standard / Pro)</h4>
                 <p class="robot-subtitle">Dual LiDAR · 5 m/s · 5 ore</p>
               </div>
 
@@ -969,7 +998,10 @@
               </div>
 
               <div class="robot-card-cta">
-                <!-- PREZZO DA VERIFICARE: A2 Pro listino non ancora pubblico, contattare per quotazione -->
+                <!-- LISTINO:card:A2-STD -->
+                <span class="card-price">da € 30.848,48</span>
+                <!-- /LISTINO:card:A2-STD -->
+                <a href="prodotti/unitree-a2.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo A2</a>
               </div>
             </div>
@@ -979,7 +1011,7 @@
           <article class="robot-card">
             <div class="robot-media">
               <span class="robot-media-tag">Industriale · Top performance</span>
-              <img src="images/manifattura/unitree-b2.png"
+              <img src="images/prodotti/unitree-b2.png"
                    alt="Unitree B2, quadrupede industriale IP67"
                    loading="lazy"
                    onerror="this.parentElement.classList.add('no-img');">
@@ -990,7 +1022,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Unitree B2</h3>
+                <h4>Unitree B2</h4>
                 <p class="robot-subtitle">IP67 · &gt;6 m/s · &gt;40 kg payload</p>
               </div>
 
@@ -1021,7 +1053,10 @@
               </div>
 
               <div class="robot-card-cta">
-                <!-- PREZZO DA VERIFICARE: B2 listino RoboStore ~$84.999 USD -->
+                <!-- LISTINO:card:B2 -->
+                <span class="card-price">da € 76.076,94</span>
+                <!-- /LISTINO:card:B2 -->
+                <a href="prodotti/unitree-b2.html" class="btn btn-secondary btn-sm">Scheda tecnica</a>
                 <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo B2</a>
               </div>
             </div>
@@ -1053,7 +1088,7 @@
             </div>
             <div class="robot-body">
               <div>
-                <h3>Franka Research 3 (FR3)</h3>
+                <h4>Franka Research 3 (FR3)</h4>
                 <p class="robot-subtitle">Prodotto in Germania · TÜV certificato · 1 kHz</p>
               </div>
 

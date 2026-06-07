@@ -17,6 +17,15 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Abra Robotics">
 
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/logo-full.png">
+  <link rel="apple-touch-icon" href="images/logo-full.png">
+  <meta property="og:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Automazione per manifattura e logistica | Cobot, Robot ispezione, Embodied AI | Abra Robotics">
+  <meta name="twitter:description" content="Abra Robotics: cobot Fairino 6 assi, robot quadrupedi Unitree per ispezione industriale e POC di embodied AI. Soluzioni di automazione per PMI manifatturiere italiane.">
+  <meta name="twitter:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -73,7 +82,7 @@
     }
     .anchor-strip-inner a:hover { color: var(--black); }
     .anchor-strip-inner a span {
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-right: 6px;
       font-weight: 700;
     }
@@ -99,7 +108,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0 0 24px;
     }
 
@@ -235,7 +244,7 @@
     .robot-card.dark h3 { color: var(--white); }
     .robot-subtitle {
       font-size: 0.85rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin: 0;
       font-weight: 500;
     }
@@ -269,7 +278,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 4px;
     }
     .robot-card.dark .key-spec-label { color: rgba(255,255,255,0.4); }
@@ -278,11 +287,12 @@
       font-weight: 700;
       color: var(--black);
       line-height: 1.3;
+      overflow-wrap: anywhere;
     }
     .robot-card.dark .key-spec-value { color: var(--white); }
     .key-spec-value small {
       font-weight: 500;
-      color: var(--gray-400);
+      color: var(--gray-600);
       font-size: 0.78em;
     }
     .robot-card.dark .key-spec-value small { color: rgba(255,255,255,0.45); }
@@ -311,7 +321,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.07em;
-      color: var(--gray-400);
+      color: var(--gray-600);
       padding-top: 2px;
     }
     .robot-card.dark .spec-rows li span:first-child { color: rgba(255,255,255,0.4); }
@@ -338,7 +348,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-bottom: 6px;
     }
     .robot-card.dark .use-case-label { color: rgba(255,255,255,0.4); }
@@ -571,7 +581,7 @@
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--accent-text);
       margin-bottom: 6px;
     }
     .video-showcase-title {
@@ -892,25 +902,25 @@
 
         <!-- Unitree R1-D -->
         <article class="robot-card dark">
-          <div class="robot-media no-img">
-            <span class="robot-media-tag">Compatto · Manipolazione bimane</span>
+          <div class="robot-media">
+            <span class="robot-media-tag">Dual-Arm · Deploy rapido</span>
             <img src="images/manifattura/unitree-r1-d.png"
-                 alt="Unitree R1-D, umanoide compatto deployment-ready"
+                 alt="Unitree Dual-Arm Humanoid Robot R1-D"
                  loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
-              <strong>IMG: R1D</strong>
-              <span>Umanoide · Compatto</span>
+              <strong>Unitree R1-D</strong>
+              <span>Dual-Arm · 15–31 DoF</span>
             </div>
           </div>
           <div class="robot-body short-body">
             <div>
-              <h3>Unitree R1-D</h3>
-              <p class="robot-subtitle">Variante "D" di R1 · piattaforma compatta deployment-ready</p>
+              <h3>Unitree Dual-Arm Humanoid Robot</h3>
+              <p class="robot-subtitle">Famiglia R1-D · configurazioni su scheda Unitree</p>
             </div>
 
             <p class="robot-blurb">
-              R1-D porta la piattaforma R1 verso un uso operativo: braccia con attuatori specifici per la manipolazione bimane, camera binoculare, computing onboard espandibile. Compatto, mobile su postazione, pensato per task collaborativi in ambienti semi-strutturati.
+              Piattaforma dual-arm Unitree per manipolazione bimanuale: bracci 5 o 7 DoF, base fissa o mobile con LiDAR, modulo visivo binoculare e sviluppo secondario full-stack. Ideale per assemblaggio leggero, kitting e ricerca su embodied AI.
             </p>
 
             <ul class="chip-list">
@@ -926,8 +936,9 @@
             </div>
 
             <div class="robot-card-cta">
-              <!-- PREZZO DA VERIFICARE: R1-D listino non ancora pubblico in Italia, contattare per quotazione -->
-              <a href="#contact-form" class="btn btn-primary btn-sm" style="background:var(--white);color:var(--black);border-color:var(--white);">Scopri di più</a>
+              <span class="card-price" style="color:var(--white);">da 12.000,00 €</span>
+              <a href="r1-d.html" class="btn btn-secondary btn-sm" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,0.5);">Famiglia R1-D</a>
+              <a href="prodotti/unitree-r1-d.html" class="btn btn-primary btn-sm" style="background:var(--white);color:var(--black);border-color:var(--white);">Scheda prodotto</a>
             </div>
           </div>
         </article>
@@ -970,7 +981,7 @@
         <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">Ispezione leggera · Ambienti semi-strutturati</span>
-            <img src="images/manifattura/unitree-go2-edu.png"
+            <img src="images/prodotti/unitree-go2-card.png"
                  alt="Unitree Go2 EDU+, quadrupede per ispezione leggera"
                  loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
@@ -1027,7 +1038,7 @@
         <article class="robot-card">
           <div class="robot-media">
             <span class="robot-media-tag">Ispezione industriale pesante</span>
-            <img src="images/manifattura/unitree-b2.png"
+            <img src="images/prodotti/unitree-b2.png"
                  alt="Unitree B2, quadrupede industriale IP67"
                  loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
@@ -1392,6 +1403,7 @@
           <video
             src="videos/fairino-palletizing.mp4"
             title="Fairino FR Series · ciclo di palletizzazione"
+            poster="images/manifattura/fairino-fr20.png"
             autoplay
             muted
             loop

@@ -5,30 +5,35 @@
    in the DOM, so no per-page image array is needed.
 ─────────────────────────────────────────────── */
 
-/* ── Gallery Slider ── */
+/* ── Gallery Slider (dopo image-runtime.js se presente) ── */
 (function () {
-  const mainImg = document.getElementById('gallery-main-img');
-  const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
-  if (!mainImg || !thumbs.length) return;
+  function initGallery() {
+    const mainImg = document.getElementById('gallery-main-img');
+    const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+    if (!mainImg || !thumbs.length) return;
 
-  const images = thumbs.map(t => t.querySelector('img').getAttribute('src'));
-  let current = 0;
+    const images = thumbs.map(t => t.querySelector('img').getAttribute('src'));
+    let current = 0;
 
-  function setImage(index) {
-    current = (index + images.length) % images.length;
-    mainImg.classList.add('fade');
-    setTimeout(() => {
-      mainImg.src = images[current];
-      mainImg.classList.remove('fade');
-    }, 150);
-    thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+    function setImage(index) {
+      current = (index + images.length) % images.length;
+      mainImg.classList.add('fade');
+      setTimeout(() => {
+        mainImg.src = images[current];
+        mainImg.classList.remove('fade');
+      }, 150);
+      thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+    }
+
+    const prev = document.getElementById('gallery-prev');
+    const next = document.getElementById('gallery-next');
+    if (prev) prev.addEventListener('click', () => setImage(current - 1));
+    if (next) next.addEventListener('click', () => setImage(current + 1));
+    thumbs.forEach((t, i) => t.addEventListener('click', () => setImage(i)));
   }
 
-  const prev = document.getElementById('gallery-prev');
-  const next = document.getElementById('gallery-next');
-  if (prev) prev.addEventListener('click', () => setImage(current - 1));
-  if (next) next.addEventListener('click', () => setImage(current + 1));
-  thumbs.forEach((t, i) => t.addEventListener('click', () => setImage(i)));
+  document.addEventListener('abra-images-ready', initGallery);
+  initGallery();
 })();
 
 /* ── Animated Counters ── */
