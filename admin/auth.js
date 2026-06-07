@@ -42,7 +42,7 @@
           <p style="color:var(--gray-600);font-size:0.88rem;line-height:1.5;margin-bottom:20px;">
             ${needsSetup
               ? 'Prima configurazione: scegli una password (min. 8 caratteri). Servirà anche un token GitHub per pubblicare sul sito live.'
-              : 'Inserisci la password admin. Per pubblicare le immagini sul sito live serve un token GitHub (memorizzato solo in questa sessione).'}
+              : 'Inserisci la password admin. Per pubblicare sul live incolla anche il token GitHub (PAT) — resta solo in questa sessione del browser.'}
           </p>
           <label style="display:block;font-size:0.78rem;font-weight:700;margin-bottom:6px;">Password</label>
           <input type="password" id="admin-pwd" required minlength="8" style="width:100%;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;margin-bottom:14px;font:inherit;">

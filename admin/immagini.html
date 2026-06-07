@@ -98,6 +98,7 @@
       oppure con ZIP: <code>python scripts/publish_images.py --from-zip percorso/export.zip</code>
     </div>
 
+    <p class="status" id="token-status" style="margin-bottom:8px;"></p>
     <p class="status" id="status">Caricamento…</p>
     <div class="img-grid" id="grid"></div>
   </div>
@@ -142,6 +143,7 @@
       render();
       document.getElementById('status').textContent =
         Object.keys(manifest).length + ' prodotti · ' + Object.keys(overrides).length + ' override';
+      updateTokenStatus();
     }
 
     function filteredSkus() {
@@ -215,11 +217,19 @@
       });
     }
 
+    function changedSkus() {
+      const skus = new Set(Object.keys(pendingFiles));
+      document.querySelectorAll('.img-card.changed').forEach(c => skus.add(c.dataset.sku));
+      return skus;
+    }
+
+    /** Solo le modifiche, fuse nel JSON già sul server (non riscrive tutto il catalogo). */
     function buildJson() {
       const out = JSON.parse(JSON.stringify(overrides));
       Object.keys(out).forEach(sku => delete out[sku]._dirty);
-      document.querySelectorAll('.img-card').forEach(card => {
-        const sku = card.dataset.sku;
+      changedSkus().forEach(sku => {
+        const card = document.querySelector(`.img-card[data-sku="${sku}"]`);
+        if (!card) return;
         const path = card.querySelector('.path-input').value.trim();
         const url = card.querySelector('.url-input').value.trim();
         if (!path) {
@@ -235,15 +245,35 @@
       return out;
     }
 
+    function updateTokenStatus() {
+      const el = document.getElementById('token-status');
+      if (!el || !window.AbraAdmin) return;
+      const ok = !!window.AbraAdmin.getGithubToken();
+      el.textContent = ok
+        ? 'Token GitHub attivo in questa sessione — puoi pubblicare.'
+        : 'Token GitHub non in sessione — al login incollalo nel campo PAT, oppure te lo chiederemo al publish.';
+      el.style.color = ok ? 'var(--gray-600)' : '#b45309';
+    }
+
+    async function ensureGithubToken() {
+      if (window.AbraAdmin && window.AbraAdmin.getGithubToken()) return true;
+      const t = prompt('Incolla il Personal Access Token GitHub per pubblicare sul sito live:');
+      if (t && t.trim()) {
+        window.AbraAdmin.setGithubToken(t.trim());
+        updateTokenStatus();
+        return true;
+      }
+      return false;
+    }
+
     async function publishLive() {
-      const hasChanges = Object.keys(pendingFiles).length ||
-        document.querySelectorAll('.img-card.changed').length;
-      if (!hasChanges) {
-        alert('Nessuna modifica da pubblicare.');
+      const n = changedSkus().size;
+      if (!n) {
+        alert('Nessuna modifica da pubblicare. Importa un file o cambia un percorso (la card diventa arancione).');
         return;
       }
-      if (!window.AbraAdmin || !window.AbraAdmin.getGithubToken()) {
-        alert('Token GitHub mancante. Esci e rientra inserendo il token al login.');
+      if (!(await ensureGithubToken())) {
+        alert('Serve il token GitHub per pubblicare.');
         return;
       }
       const btn = document.getElementById('btn-publish-live');
@@ -257,8 +287,9 @@
         });
         pendingFiles = {};
         Object.keys(overrides).forEach(sku => delete overrides[sku]._dirty);
-        status.textContent = 'Pubblicato su GitHub. Il catalogo si aggiorna in 1–2 minuti — ricarica catalogo-unitree.html.';
+        status.textContent = `Pubblicato su GitHub (${n} modifiche). Catalogo aggiornato in 1–2 min — ricarica catalogo-unitree.html con Ctrl+F5.`;
         render();
+        updateTokenStatus();
       } catch (err) {
         status.textContent = 'Errore pubblicazione: ' + (err.message || err);
         alert(status.textContent);

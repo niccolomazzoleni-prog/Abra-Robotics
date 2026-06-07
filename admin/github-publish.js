@@ -6,6 +6,15 @@ window.AbraGithub = (function () {
   const REPO = 'Abra-Robotics';
   const BRANCH = 'main';
 
+  function parseGhError(text) {
+    try {
+      const j = JSON.parse(text);
+      return j.message || text;
+    } catch (_) {
+      return text;
+    }
+  }
+
   function api(path, token, opts = {}) {
     return fetch(`https://api.github.com/repos/${OWNER}/${REPO}${path}`, {
       ...opts,
@@ -42,7 +51,7 @@ window.AbraGithub = (function () {
         ...(sha ? { sha } : {})
       })
     });
-    if (!r.ok) throw new Error(`${path}: ${await r.text()}`);
+    if (!r.ok) throw new Error(`${path}: ${parseGhError(await r.text())}`);
   }
 
   async function putText(path, text, message, token) {
@@ -57,7 +66,7 @@ window.AbraGithub = (function () {
         ...(sha ? { sha } : {})
       })
     });
-    if (!r.ok) throw new Error(`${path}: ${await r.text()}`);
+    if (!r.ok) throw new Error(`${path}: ${parseGhError(await r.text())}`);
   }
 
   async function triggerRegenerate(token) {
@@ -65,12 +74,16 @@ window.AbraGithub = (function () {
       method: 'POST',
       body: JSON.stringify({ ref: BRANCH })
     });
-    if (!r.ok) throw new Error('Workflow: ' + await r.text());
+    if (!r.ok) {
+      const msg = parseGhError(await r.text());
+      if (/not found|404/i.test(msg)) return;
+      throw new Error('Workflow: ' + msg);
+    }
   }
 
   async function publishLive({ jsonObject, pendingFiles, onProgress }) {
     const token = window.AbraAdmin && window.AbraAdmin.getGithubToken();
-    if (!token) throw new Error('Token GitHub mancante. Esci e rientra inserendo il token.');
+    if (!token) throw new Error('Token GitHub mancante. Esci e rientra inserendo il PAT, oppure incollalo quando richiesto.');
 
     const files = Object.entries(pendingFiles || {});
     for (let i = 0; i < files.length; i++) {
