@@ -48,25 +48,33 @@ def abs_url(path: str) -> str:
     return f"{SITE}{clean}"
 
 
+def old_paths_for_sku(sku: str, new_path: str) -> set[str]:
+    olds = {IMAGE.get(sku, "")}
+    if sku == "B2":
+        olds.update({"images/prodotti/unitree-b2-hero.png", "images/prodotti/unitree-b2.png"})
+    return {p for p in olds if p and p != new_path}
+
+
 def patch_product_file(path: Path, sku: str, new_path: str) -> int:
-    old_path = IMAGE.get(sku, "")
-    if not old_path or old_path == new_path or not path.is_file():
+    old_candidates = old_paths_for_sku(sku, new_path)
+    if not old_candidates or not path.is_file():
         return 0
     text = path.read_text(encoding="utf-8")
     n = 0
-    for a, b in rel_variants(old_path):
-        for new_a, new_b in [(new_path, f"../{new_path}")]:
-            for old, new in ((a, new_a), (b, new_b)):
-                if old in text:
-                    c = text.count(old)
-                    text = text.replace(old, new)
-                    n += c
-    for old_abs in (abs_url(old_path), f"{SITE}{old_path}"):
-        new_abs = abs_url(new_path)
-        if old_abs in text and old_abs != new_abs:
-            c = text.count(old_abs)
-            text = text.replace(old_abs, new_abs)
-            n += c
+    for old_path in old_candidates:
+        for a, b in rel_variants(old_path):
+            for new_a, new_b in [(new_path, f"../{new_path}")]:
+                for old, new in ((a, new_a), (b, new_b)):
+                    if old in text:
+                        c = text.count(old)
+                        text = text.replace(old, new)
+                        n += c
+        for old_abs in (abs_url(old_path), f"{SITE}{old_path}"):
+            new_abs = abs_url(new_path)
+            if old_abs in text and old_abs != new_abs:
+                c = text.count(old_abs)
+                text = text.replace(old_abs, new_abs)
+                n += c
     if n:
         path.write_text(text, encoding="utf-8")
     return n
