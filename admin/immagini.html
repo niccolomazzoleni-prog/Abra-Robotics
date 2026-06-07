@@ -180,7 +180,7 @@
       grid.innerHTML = '';
       filteredSkus().forEach(sku => {
         const e = manifest[sku];
-        const path = defaultPath(sku);
+        const path = (pendingFiles[sku] && pendingFiles[sku].path) || defaultPath(sku);
         const gList = galleryList(sku, path);
         const extra = (pendingGallery[sku] || []).map(g => g.path);
         const allGallery = [...new Set([...gList, ...extra])];
@@ -234,8 +234,11 @@
           const reader = new FileReader();
           reader.onload = () => {
             pendingFiles[sku] = { file, preview: reader.result, path: newPath };
+            mergeOverride(sku, { path: newPath, _dirty: true });
+            pathInput.value = newPath;
+            const preview = card.querySelector('.img-preview');
+            preview.innerHTML = `<img src="${reader.result}" alt="${e.titolo || sku}" onerror="this.style.opacity=0.2">`;
             markDirty(sku, card);
-            render();
           };
           reader.readAsDataURL(file);
         });
@@ -295,11 +298,12 @@
       Object.keys(out).forEach(sku => delete out[sku]._dirty);
       changedSkus().forEach(sku => {
         const card = document.querySelector(`.img-card[data-sku="${sku}"]`);
-        if (!card) return;
-        const path = card.querySelector('.path-input').value.trim();
-        const url = card.querySelector('.url-input').value.trim();
-        const extra = [...card.querySelectorAll('.gallery-path-input')].map(i => i.value.trim()).filter(Boolean);
-        const gallery = [...new Set([path, ...extra].filter(Boolean))];
+        const pathFromPending = pendingFiles[sku] && pendingFiles[sku].path;
+        const path = pathFromPending || (card && card.querySelector('.path-input').value.trim()) || defaultPath(sku);
+        const url = card ? card.querySelector('.url-input').value.trim() : ((overrides[sku] && overrides[sku].source_url) || '');
+        const extraFromDom = card ? [...card.querySelectorAll('.gallery-path-input')].map(i => i.value.trim()).filter(Boolean) : [];
+        const extraFromPending = (pendingGallery[sku] || []).map(g => g.path);
+        const gallery = [...new Set([path, ...extraFromDom, ...extraFromPending].filter(Boolean))];
         if (!gallery.length) {
           delete out[sku];
           return;
