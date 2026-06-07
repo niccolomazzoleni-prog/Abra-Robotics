@@ -58,7 +58,14 @@ def sync_manifest_images(manifest: dict) -> dict:
     return manifest
 
 
+def inject_image_runtime() -> None:
+    from inject_image_runtime import main as inject_main
+
+    inject_main()
+
+
 def main() -> None:
+    inject_image_runtime()
     manifest = load_manifest()
     manifest = sync_manifest_images(manifest)
     rows = rows_from_end_user()

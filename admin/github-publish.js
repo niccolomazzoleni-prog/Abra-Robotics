@@ -81,15 +81,15 @@ window.AbraGithub = (function () {
     }
   }
 
-  async function publishLive({ jsonObject, pendingFiles, onProgress }) {
+  async function publishLive({ jsonObject, allUploads, pendingFiles, onProgress }) {
     const token = window.AbraAdmin && window.AbraAdmin.getGithubToken();
     if (!token) throw new Error('Token GitHub mancante. Esci e rientra inserendo il PAT, oppure incollalo quando richiesto.');
 
-    const files = Object.entries(pendingFiles || {});
-    for (let i = 0; i < files.length; i++) {
-      const [sku, pf] = files[i];
-      if (onProgress) onProgress(`Carico immagine ${sku} (${i + 1}/${files.length})…`);
-      await putBinary(pf.path, pf.file, `admin: immagine ${sku}`, token);
+    const uploads = allUploads || Object.entries(pendingFiles || {}).map(([sku, pf]) => ({ sku, ...pf }));
+    for (let i = 0; i < uploads.length; i++) {
+      const u = uploads[i];
+      if (onProgress) onProgress(`Carico immagine ${u.sku} (${i + 1}/${uploads.length})…`);
+      await putBinary(u.path, u.file, `admin: immagine ${u.sku}`, token);
     }
 
     if (onProgress) onProgress('Aggiorno product-images.json…');
