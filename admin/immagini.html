@@ -62,6 +62,11 @@
     }
     .img-actions label:hover, .img-actions button:hover { border-color: var(--black); }
     .img-actions input[type="file"] { display: none; }
+    .gallery-block { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--gray-200); }
+    .gallery-block p { font-size: 0.72rem; font-weight: 700; color: var(--gray-500); margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .gallery-item { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
+    .gallery-item input { flex: 1; font-size: 0.72rem; padding: 6px 8px; border: 1px solid var(--gray-200); border-radius: 6px; font-family: ui-monospace, monospace; }
+    .gallery-item button { font-size: 0.7rem; padding: 4px 8px; border: 1px solid var(--gray-200); border-radius: 6px; background: #fff; cursor: pointer; }
     .status { font-size: 0.82rem; color: var(--gray-600); margin-top: 8px; }
     @media (max-width: 768px) { .admin-wrap { padding: 100px 20px 60px; } }
   </style>
@@ -77,7 +82,7 @@
     <div class="admin-head">
       <p class="label">Interno · Non indicizzato</p>
       <h1>Gestione immagini prodotto</h1>
-      <p>Importa un'immagine per SKU, aggiorna il percorso o incolla un URL Unitree. Poi clicca <strong>Pubblica sul sito live</strong>: le immagini e il JSON vanno su GitHub e il catalogo si rigenera automaticamente (circa 1–2 minuti).</p>
+      <p>Immagine principale + <strong>galleria</strong> (più foto per scheda). Poi <strong>Pubblica sul sito live</strong>: catalogo e schede prodotto si aggiornano in 1–2 minuti (Ctrl+F5).</p>
     </div>
 
     <div class="admin-toolbar">
@@ -108,7 +113,19 @@
     let manifest = {};
     let overrides = {};
     let pendingFiles = {};
+    let pendingGallery = {};
     let projectDirHandle = null;
+
+    function galleryList(sku, primaryPath) {
+      const o = overrides[sku];
+      if (o && Array.isArray(o.gallery) && o.gallery.length) return [...o.gallery];
+      return primaryPath ? [primaryPath] : [];
+    }
+
+    function markDirty(sku, card) {
+      mergeOverride(sku, { _dirty: true });
+      if (card) card.classList.add('changed');
+    }
 
     function familyFromSku(sku) {
       const p = sku.split('-')[0];
@@ -164,13 +181,21 @@
       filteredSkus().forEach(sku => {
         const e = manifest[sku];
         const path = defaultPath(sku);
-        const changed = !!pendingFiles[sku] || (overrides[sku] && overrides[sku]._dirty);
+        const gList = galleryList(sku, path);
+        const extra = (pendingGallery[sku] || []).map(g => g.path);
+        const allGallery = [...new Set([...gList, ...extra])];
+        const changed = !!pendingFiles[sku] || (pendingGallery[sku] && pendingGallery[sku].length) || (overrides[sku] && overrides[sku]._dirty);
         const card = document.createElement('article');
         card.className = 'img-card' + (changed ? ' changed' : '');
         card.dataset.sku = sku;
         const previewSrc = pendingFiles[sku]
           ? pendingFiles[sku].preview
           : (path ? BASE + path : '');
+        const galleryHtml = allGallery.length > 1 ? allGallery.slice(1).map((p, i) => `
+            <div class="gallery-item" data-idx="${i + 1}">
+              <input type="text" class="gallery-path-input" value="${p}" readonly>
+              <button type="button" class="rm-gallery">✕</button>
+            </div>`).join('') : '';
         card.innerHTML = `
           <div class="img-preview">
             ${previewSrc ? `<img src="${previewSrc}" alt="${e.titolo || sku}" onerror="this.style.opacity=0.2">` : '<span style="color:var(--gray-400);font-size:0.8rem">Nessuna immagine</span>'}
@@ -178,11 +203,16 @@
           <div class="img-body">
             <span class="sku">${sku} · ${familyFromSku(sku)}</span>
             <h3>${e.titolo || sku}</h3>
-            <input type="text" class="path-input" value="${path}" placeholder="images/prodotti/…" aria-label="Percorso immagine">
+            <input type="text" class="path-input" value="${path}" placeholder="images/prodotti/… (principale)" aria-label="Percorso immagine principale">
             <input type="text" class="url-input" value="${(overrides[sku] && overrides[sku].source_url) || ''}" placeholder="URL Unitree (opzionale)" aria-label="URL sorgente">
             <div class="img-actions">
-              <label>Importa file<input type="file" accept="image/*" class="file-input"></label>
+              <label>Immagine principale<input type="file" accept="image/*" class="file-input"></label>
+              <label>+ Galleria<input type="file" accept="image/*" class="gallery-file-input" multiple></label>
               <button type="button" class="test-url">Anteprima URL</button>
+            </div>
+            <div class="gallery-block">
+              <p>Galleria (${allGallery.length} img)</p>
+              ${galleryHtml || '<span style="font-size:0.75rem;color:var(--gray-400)">Aggiungi foto extra con + Galleria</span>'}
             </div>
           </div>`;
         const pathInput = card.querySelector('.path-input');
@@ -204,10 +234,39 @@
           const reader = new FileReader();
           reader.onload = () => {
             pendingFiles[sku] = { file, preview: reader.result, path: newPath };
-            mergeOverride(sku, { path: newPath, _dirty: true });
+            markDirty(sku, card);
             render();
           };
           reader.readAsDataURL(file);
+        });
+        card.querySelector('.gallery-file-input').addEventListener('change', ev => {
+          const files = [...(ev.target.files || [])];
+          if (!files.length) return;
+          pendingGallery[sku] = pendingGallery[sku] || [];
+          let n = pendingGallery[sku].length + allGallery.length;
+          files.forEach(file => {
+            const ext = file.name.split('.').pop().toLowerCase() || 'png';
+            const newPath = `images/prodotti/${sku.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-g${++n}.${ext}`;
+            pendingGallery[sku].push({ file, path: newPath, preview: '' });
+          });
+          markDirty(sku, card);
+          render();
+        });
+        card.querySelectorAll('.rm-gallery').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const p = btn.parentElement.querySelector('.gallery-path-input').value;
+            if (pendingGallery[sku]) {
+              pendingGallery[sku] = pendingGallery[sku].filter(x => x.path !== p);
+              if (!pendingGallery[sku].length) delete pendingGallery[sku];
+            }
+            const o = overrides[sku] || {};
+            if (o.gallery) {
+              o.gallery = o.gallery.filter(x => x !== p);
+              overrides[sku] = o;
+            }
+            markDirty(sku, card);
+            render();
+          });
         });
         card.querySelector('.test-url').addEventListener('click', () => {
           const u = urlInput.value.trim();
@@ -219,11 +278,18 @@
 
     function changedSkus() {
       const skus = new Set(Object.keys(pendingFiles));
+      Object.keys(pendingGallery).forEach(s => skus.add(s));
       document.querySelectorAll('.img-card.changed').forEach(c => skus.add(c.dataset.sku));
       return skus;
     }
 
-    /** Solo le modifiche, fuse nel JSON già sul server (non riscrive tutto il catalogo). */
+    function collectAllUploads() {
+      const list = [];
+      Object.entries(pendingFiles).forEach(([sku, pf]) => list.push({ sku, ...pf }));
+      Object.entries(pendingGallery).forEach(([sku, arr]) => arr.forEach(pf => list.push({ sku, ...pf })));
+      return list;
+    }
+
     function buildJson() {
       const out = JSON.parse(JSON.stringify(overrides));
       Object.keys(out).forEach(sku => delete out[sku]._dirty);
@@ -232,15 +298,14 @@
         if (!card) return;
         const path = card.querySelector('.path-input').value.trim();
         const url = card.querySelector('.url-input').value.trim();
-        if (!path) {
+        const extra = [...card.querySelectorAll('.gallery-path-input')].map(i => i.value.trim()).filter(Boolean);
+        const gallery = [...new Set([path, ...extra].filter(Boolean))];
+        if (!gallery.length) {
           delete out[sku];
           return;
         }
-        out[sku] = { path };
+        out[sku] = { path: path || gallery[0], gallery };
         if (url) out[sku].source_url = url;
-      });
-      Object.keys(pendingFiles).forEach(sku => {
-        out[sku] = { ...(out[sku] || {}), path: pendingFiles[sku].path };
       });
       return out;
     }
@@ -282,12 +347,13 @@
       try {
         await AbraGithub.publishLive({
           jsonObject: buildJson(),
-          pendingFiles,
+          allUploads: collectAllUploads(),
           onProgress: msg => { status.textContent = msg; }
         });
         pendingFiles = {};
+        pendingGallery = {};
         Object.keys(overrides).forEach(sku => delete overrides[sku]._dirty);
-        status.textContent = `Pubblicato su GitHub (${n} modifiche). Catalogo aggiornato in 1–2 min — ricarica catalogo-unitree.html con Ctrl+F5.`;
+        status.textContent = `Pubblicato su GitHub (${n} SKU). Aggiorna catalogo e schede prodotto in 1–2 min — Ctrl+F5 su entrambe.`;
         render();
         updateTokenStatus();
       } catch (err) {
@@ -308,7 +374,7 @@
       const w = await fh.createWritable();
       await w.write(json);
       await w.close();
-      for (const [sku, pf] of Object.entries(pendingFiles)) {
+      for (const pf of collectAllUploads()) {
         const parts = pf.path.split('/');
         let dir = projectDirHandle;
         for (let i = 0; i < parts.length - 1; i++) {
@@ -320,6 +386,7 @@
         await iw.close();
       }
       pendingFiles = {};
+      pendingGallery = {};
       document.getElementById('status').textContent = 'Salvato in data/product-images.json — esegui publish_images.py';
       render();
     }
@@ -328,7 +395,7 @@
       const zip = new JSZip();
       const json = buildJson();
       zip.file('data/product-images.json', JSON.stringify(json, null, 2) + '\n');
-      for (const [sku, pf] of Object.entries(pendingFiles)) {
+      for (const pf of collectAllUploads()) {
         zip.file(pf.path, pf.file);
       }
       const blob = await zip.generateAsync({ type: 'blob' });
