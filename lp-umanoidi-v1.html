@@ -199,6 +199,46 @@
     </div>
   </div>
 
+  <!-- FORM TOP -->
+  <section class="section section-cta" id="form" style="scroll-margin-top:80px;">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Vuoi capire quale umanoide fa per te?</h2>
+        <p class="cta-subtitle">Compila il form, un consulente Abra ti ricontatta entro 12 ore.</p>
+      </div>
+      <form id="contact-form-top" class="contact-form" novalidate>
+        <input type="hidden" name="prodotto" value="Vetrina Umanoidi">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome-top">Nome e cognome</label>
+            <input type="text" id="nome-top" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="form-group">
+            <label for="azienda-top">Azienda o ente</label>
+            <input type="text" id="azienda-top" name="azienda" placeholder="Acme S.r.l. / Università di..." required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="email-top">Email</label><input type="email" id="email-top" name="email" placeholder="nome@azienda.it" required></div>
+          <div class="form-group"><label for="telefono-top">Telefono</label><input type="tel" id="telefono-top" name="telefono" placeholder="+39 ..." required></div>
+        </div>
+        <div class="form-group">
+          <label for="ruolo-top">Ruolo</label>
+          <input type="text" id="ruolo-top" name="ruolo" placeholder="CTO, Responsabile R&D, Ricercatore..." required>
+        </div>
+        <div class="form-group">
+          <label for="messaggio-top">La tua richiesta</label>
+          <textarea id="messaggio-top" name="messaggio" placeholder="Raccontaci il tuo progetto e chiedici tutto quello che vuoi sapere." rows="6" required></textarea>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+          <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
+        </div>
+        <div id="form-feedback-top" class="form-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
   <!-- 3. A CHI SERVE -->
   <section class="section">
     <div class="container">
@@ -307,7 +347,7 @@
   </section>
 
   <!-- 9. FORM FINALE -->
-  <section class="section section-cta" id="form" style="scroll-margin-top:120px;">
+  <section class="section section-cta" id="form-bottom">
     <div class="container">
       <div class="cta-content">
         <h2>Vuoi capire quale umanoide fa per te?</h2>
@@ -404,5 +444,38 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  (function(){
+    var form = document.getElementById('contact-form-top');
+    var fb = document.getElementById('form-feedback-top');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('.form-submit');
+      var orig = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Invio in corso...';
+      fb.className = 'form-feedback'; fb.textContent = '';
+      var payload = Object.fromEntries(new FormData(form).entries());
+      payload.origine = 'Vetrina Umanoidi (form top)';
+      payload.pagina = document.title;
+      payload.url = location.href;
+      payload.timestamp = new Date().toISOString();
+      fetch(window.GOOGLE_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      }).then(function() {
+        fb.className = 'form-feedback success';
+        fb.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
+        form.reset();
+      }).catch(function() {
+        fb.className = 'form-feedback error';
+        fb.textContent = 'Errore nell\'invio. Scrivi a info@abrarobotics.com.';
+      }).finally(function() {
+        btn.disabled = false; btn.textContent = orig;
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
