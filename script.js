@@ -4,19 +4,17 @@
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQHcWp5OFlAssEajk03akHm2T_JlxAf_-SwWkKP773dXIt0Q0WvAJ1HtNdKl5E54vc/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
-const contactForm = document.getElementById('contact-form');
-const formFeedback = document.getElementById('form-feedback');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
+document.querySelectorAll('.contact-form').forEach(form => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const submitBtn = contactForm.querySelector('.form-submit');
+    const submitBtn = form.querySelector('.form-submit');
+    const feedback = form.querySelector('.form-feedback');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Invio in corso...';
-    formFeedback.className = 'form-feedback';
-    formFeedback.textContent = '';
+    feedback.className = 'form-feedback';
+    feedback.textContent = '';
 
-    const payload = Object.fromEntries(new FormData(contactForm).entries());
+    const payload = Object.fromEntries(new FormData(form).entries());
     payload.origine = payload.prodotto || 'Form contatti';
     payload.pagina = document.title;
     payload.url = location.href;
@@ -29,18 +27,18 @@ if (contactForm) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      formFeedback.className = 'form-feedback success';
-      formFeedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
-      contactForm.reset();
+      feedback.className = 'form-feedback success';
+      feedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
+      form.reset();
     } catch {
-      formFeedback.className = 'form-feedback error';
-      formFeedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.';
+      feedback.className = 'form-feedback error';
+      feedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.';
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Invia la richiesta';
     }
   });
-}
+});
 
 // Mobile menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
