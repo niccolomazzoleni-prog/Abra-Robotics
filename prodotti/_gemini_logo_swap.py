@@ -19,14 +19,14 @@ LOGO = os.environ.get("ABRA_LOGO", "/Users/niccolomazzoleni/Downloads/Abra_Logo_
 
 # Immagini su cui sostituire il logo (originali, NON i -nobg.png)
 IMAGES = [
-    "prodotti/assets/variants/g1-u1/img-01.jpg",
-    "prodotti/assets/variants/g1-u2/img-01.jpg",
-    "prodotti/assets/variants/g1-u3/img-01.jpg",
-    "prodotti/assets/variants/g1-u4/img-01.jpg",
-    "prodotti/assets/variants/g1-u5/img-01.jpg",
-    "prodotti/assets/variants/g1-u6/img-01.jpg",
-    "prodotti/assets/variants/g1-u7/img-01.jpg",
-    "prodotti/assets/variants/g1-u8/img-01.jpg",
+    "prodotti/assets/variants/g1-u1/img-01.png",
+    "prodotti/assets/variants/g1-u2/img-01.png",
+    "prodotti/assets/variants/g1-u3/img-01.png",
+    "prodotti/assets/variants/g1-u4/img-01.png",
+    "prodotti/assets/variants/g1-u5/img-01.png",
+    "prodotti/assets/variants/g1-u6/img-01.png",
+    "prodotti/assets/variants/g1-u7/img-01.png",
+    "prodotti/assets/variants/g1-u8/img-01.png",
     "prodotti/assets/images/g1-01.jpg",
 ]
 
