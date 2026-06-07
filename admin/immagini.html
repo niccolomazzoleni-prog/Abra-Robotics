@@ -91,6 +91,7 @@
         <option value="">Tutte le famiglie</option>
       </select>
       <button type="button" class="btn btn-primary btn-sm" id="btn-publish-live">Pubblica sul sito live</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-verify-live">Verifica live</button>
       <button type="button" class="btn btn-secondary btn-sm" id="btn-folder">Collega cartella progetto</button>
       <button type="button" class="btn btn-secondary btn-sm" id="btn-save-json">Salva JSON locale</button>
       <button type="button" class="btn btn-secondary btn-sm" id="btn-export-zip">Esporta ZIP</button>
@@ -349,15 +350,16 @@
       btn.disabled = true;
       const status = document.getElementById('status');
       try {
+        const json = buildJson();
         await AbraGithub.publishLive({
-          jsonObject: buildJson(),
+          jsonObject: json,
           allUploads: collectAllUploads(),
           onProgress: msg => { status.textContent = msg; }
         });
+        overrides = json;
         pendingFiles = {};
         pendingGallery = {};
-        Object.keys(overrides).forEach(sku => delete overrides[sku]._dirty);
-        status.textContent = `Pubblicato su GitHub (${n} SKU). Aggiorna catalogo e schede prodotto in 1–2 min — Ctrl+F5 su entrambe.`;
+        status.textContent = `Pubblicato su GitHub (${n} SKU). Catalogo e schede si aggiornano in 1–2 min — Ctrl+Shift+R sul sito live.`;
         render();
         updateTokenStatus();
       } catch (err) {
@@ -419,7 +421,50 @@
       URL.revokeObjectURL(a.href);
     }
 
+    async function verifyLive() {
+      const status = document.getElementById('status');
+      status.textContent = 'Verifica sito live in corso…';
+      try {
+        const bust = '?v=' + Date.now();
+        const [liveJson, catalogHtml] = await Promise.all([
+          fetch(BASE + 'data/product-images.json' + bust, { cache: 'no-store' }).then(r => r.json()),
+          fetch(BASE + 'catalogo-unitree.html' + bust, { cache: 'no-store' }).then(r => r.text())
+        ]);
+        const failures = [];
+        let checked = 0;
+        Object.keys(overrides).forEach(sku => {
+          const localPath = (overrides[sku] && overrides[sku].path) || '';
+          if (!localPath) return;
+          checked++;
+          const livePath = (liveJson[sku] && liveJson[sku].path) || '';
+          if (livePath !== localPath) {
+            failures.push(`${sku}: live JSON ha "${livePath || 'vuoto'}", atteso "${localPath}"`);
+            return;
+          }
+          const re = new RegExp('data-sku="' + sku.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[\\s\\S]*?src="([^"]+)"');
+          const m = catalogHtml.match(re);
+          if (m && !m[1].includes(localPath.split('/').pop())) {
+            failures.push(`${sku}: catalogo mostra "${m[1]}" invece di "${localPath}"`);
+          }
+        });
+        if (!checked) {
+          status.textContent = 'Nessun override da verificare.';
+          return;
+        }
+        if (failures.length) {
+          status.textContent = `Verifica live: ${failures.length} problemi su ${checked} SKU.`;
+          console.warn('Verifica live fallita:', failures);
+          alert('Problemi sul live:\n\n' + failures.slice(0, 8).join('\n') + (failures.length > 8 ? '\n…' : ''));
+        } else {
+          status.textContent = `Verifica live OK (${checked} SKU). JSON e catalogo allineati.`;
+        }
+      } catch (err) {
+        status.textContent = 'Errore verifica live: ' + (err.message || err);
+      }
+    }
+
     document.getElementById('btn-publish-live').addEventListener('click', publishLive);
+    document.getElementById('btn-verify-live').addEventListener('click', verifyLive);
     document.getElementById('btn-folder').addEventListener('click', async () => {
       if (!window.showDirectoryPicker) {
         alert('Usa Chrome o Edge per salvare direttamente nel progetto, oppure Esporta ZIP.');
