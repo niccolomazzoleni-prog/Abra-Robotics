@@ -41,6 +41,25 @@
     });
   }
 
+  function applyRobotCards(overrides, slugToSku) {
+    document.querySelectorAll('.robot-card').forEach(function (card) {
+      var link = card.querySelector('a[href*="prodotti/"]');
+      if (!link) return;
+      var slug = (link.getAttribute('href') || '').split('/').pop();
+      var sku = slugToSku[slug];
+      if (!sku) return;
+      var paths = entryImages(overrides[sku]);
+      if (!paths.length) return;
+      var img = card.querySelector('.robot-media img, img');
+      if (img) {
+        img.src = withBust(resolveSrc(paths[0]));
+        img.style.display = '';
+        var media = card.querySelector('.robot-media');
+        if (media) media.classList.remove('no-img');
+      }
+    });
+  }
+
   function buildThumbs(galleryEl, paths, alt) {
     var existing = galleryEl.querySelector('.gallery-thumbs');
     if (existing) existing.remove();
@@ -93,7 +112,10 @@
       if (s) slugToSku[s] = sku;
     });
     if (inProduct) applyProduct(overrides, slugToSku);
-    else applyCatalog(overrides);
+    else {
+      applyCatalog(overrides);
+      applyRobotCards(overrides, slugToSku);
+    }
     document.dispatchEvent(new Event('abra-images-ready'));
   }).catch(function () {});
 })();

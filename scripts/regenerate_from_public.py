@@ -77,6 +77,7 @@ def main() -> None:
             created += 1
     sync_end_user_images(manifest)
     regenerate_catalogo_html(rows, manifest)
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "patch_html_images.py")], check=False)
     print(f"Rigenerate {created} schede · catalogo-unitree.html aggiornato")
 
 
