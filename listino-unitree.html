@@ -157,7 +157,7 @@
       });
       document.getElementById('rows').innerHTML = filtered.length
         ? filtered.map(i => `<tr>
-            <td class="thumb-col">${i.img ? `<img class="listino-thumb" src="${i.img}" alt="" loading="lazy">` : ''}</td>
+            <td class="thumb-col">${i.img ? `<img class="listino-thumb" src="${i.img}?v=${Date.now()}" alt="" loading="lazy">` : ''}</td>
             <td><a class="prod-link" href="prodotti/${i.slug}">${i.nome}</a></td>
             <td>${i.catLabel}</td>
             <td class="price-col">${i.prezzoDa ? 'da ' : ''}€ ${fmt(i.prezzo)}</td>
@@ -165,17 +165,20 @@
         : '<tr><td colspan="4">Nessun risultato</td></tr>';
     }
 
-    fetch('listini/pubblico/end-user.json')
-      .then(r => r.json())
-      .then(json => {
+    Promise.all([
+      fetch('listini/pubblico/end-user.json?v=' + Date.now(), { cache: 'no-store' }).then(r => r.json()),
+      fetch('data/product-images.json?v=' + Date.now(), { cache: 'no-store' }).then(r => r.ok ? r.json() : {})
+    ]).then(([json, imgOverrides]) => {
         const cats = new Set();
         items = Object.entries(json).map(([sku, v]) => {
           const catKey = v.categoria || '';
           const catLabel = CAT_LABEL[catKey] || catKey || '—';
           cats.add(catLabel);
+          const ov = imgOverrides[sku];
+          const img = (ov && (ov.path || (ov.gallery && ov.gallery[0]))) || v.immagine || '';
           return {
             sku, nome: v.nome, prezzo: v.prezzo_eur, prezzoDa: !!v.prezzo_da, slug: v.slug || '',
-            img: v.immagine || '', cat: catLabel, catLabel
+            img, cat: catLabel, catLabel
           };
         }).sort((a, b) => a.nome.localeCompare(b.nome, 'it'));
 
