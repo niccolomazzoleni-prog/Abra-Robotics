@@ -17,6 +17,15 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Abra Robotics">
 
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/logo-full.png">
+  <link rel="apple-touch-icon" href="images/logo-full.png">
+  <meta property="og:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Finanziamenti e incentivi per la robotica 2026 | Iperammortamento, Sabatini, ISI INAIL | Abra Robotics">
+  <meta name="twitter:description" content="Verifica gratuita di iperammortamento 2026, Nuova Sabatini, bando ISI INAIL e SIMEST per il tuo investimento in robotica. Fino al 43% di risparmio fiscale e contributi fino a 130.000&nbsp;euro a fondo perduto.">
+  <meta name="twitter:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -57,11 +66,11 @@
     .anchor-strip-inner {
       display: flex;
       gap: 28px;
-      padding: 14px 0;
+      padding: 8px 0;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      justify-content: center;
+      justify-content: safe center; /* 'safe' evita di tagliare i primi item quando va in overflow */
     }
     .anchor-strip-inner::-webkit-scrollbar { display: none; }
     .anchor-strip-inner a {
@@ -71,10 +80,13 @@
       color: var(--gray-600);
       white-space: nowrap;
       transition: color 0.2s;
+      min-height: 44px;          /* touch target AA */
+      display: inline-flex;
+      align-items: center;
     }
     .anchor-strip-inner a:hover { color: var(--black); }
     .anchor-strip-inner a span {
-      color: var(--gray-400);
+      color: var(--gray-600);
       margin-right: 6px;
       font-weight: 700;
     }
@@ -182,7 +194,7 @@
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
     }
     .tool-eyebrow .tool-num {
       font-size: 1.05rem;
@@ -198,7 +210,7 @@
     }
     .tool-tagline {
       font-size: 0.92rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       font-weight: 600;
       margin: -8px 0 0;
     }
@@ -278,7 +290,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
       padding-top: 2px;
     }
     .tool-meta-item span:last-child {
@@ -292,7 +304,7 @@
       margin: 0 auto 48px;
       text-align: center;
       font-size: 0.95rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -328,7 +340,7 @@
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-400);
+      color: var(--gray-600);
     }
     .savings-card-value {
       font-size: clamp(2rem, 3.4vw, 2.6rem);
@@ -411,7 +423,7 @@
     }
     .fin-form label .optional {
       font-size: 0.66rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       text-transform: none;
       letter-spacing: 0.02em;
       font-weight: 600;
@@ -489,7 +501,7 @@
     .fin-form-note {
       margin-top: 14px;
       font-size: 0.82rem;
-      color: var(--gray-400);
+      color: var(--gray-600);
       text-align: center;
       line-height: 1.5;
     }
