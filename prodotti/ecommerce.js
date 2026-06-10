@@ -90,6 +90,7 @@
           body: JSON.stringify(payload)
         }).then(function () {
           if (fb) { fb.className = "quote-form-feedback success"; fb.textContent = "Richiesta inviata! Ti ricontattiamo entro 12 ore."; }
+          if (window.fbq) fbq('track', 'Lead');
           form.reset();
         }).catch(function () {
           if (fb) { fb.className = "quote-form-feedback error"; fb.textContent = "Errore. Scrivi a info@abrarobotics.com."; }
