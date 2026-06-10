@@ -81,6 +81,9 @@ def main() -> None:
     amr_gen = ROOT / "scripts" / "_gen_amr_section.py"
     if amr_gen.is_file():
         subprocess.run([sys.executable, str(amr_gen)], check=False)
+    merchant = ROOT / "prodotti" / "_gen_merchant_feed.py"
+    if merchant.is_file():
+        subprocess.run([sys.executable, str(merchant)], cwd=ROOT / "prodotti", check=False)
     print(f"Rigenerate {created} schede · catalogo-unitree.html aggiornato")
 
 

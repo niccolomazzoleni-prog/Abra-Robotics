@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>%%LANG_TITLE%%</title>
+  <meta name="description" content="%%METADESC%%">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://abrarobotics.com/prodotti/%%FILENAME%%">
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="%%LANG_TITLE%%">
+  <meta property="og:description" content="%%METADESC%%">
+  <meta property="og:url" content="https://abrarobotics.com/prodotti/%%FILENAME%%">
+  <meta property="og:image" content="https://abrarobotics.com/%%OG_IMAGE%%">
+  <meta property="og:site_name" content="Abra Robotics">
+  <meta property="og:locale" content="it_IT">
+  <meta property="product:price:amount" content="%%PRICE_AMOUNT%%">
+  <meta property="product:price:currency" content="EUR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="%%LANG_TITLE%%">
+  <meta name="twitter:description" content="%%METADESC%%">
+  <meta name="twitter:image" content="https://abrarobotics.com/%%OG_IMAGE%%">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="product.css">
+%%PRODUCT_SCHEMA%%
+</head>
+<body>
+  <div class="top-bar">
+    <p>AMR · prezzi indicativi IVA esclusa · <a href="../catalogo-amr.html">Catalogo AMR completo →</a></p>
+  </div>
+%%SITE_NAV%%
+
+  <section class="product-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span>
+        <a href="../catalogo-amr.html">Catalogo AMR</a><span class="breadcrumb-sep">›</span>
+        <span>%%TITLE%%</span>
+      </nav>
+      <div class="product-hero-grid">
+        <div class="gallery">
+          <div class="gallery-main amr-gallery-main" style="background:linear-gradient(135deg,#ececef,#d8d8de);">
+            %%MEDIA_MAIN%%
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="label">%%BADGE%%</p>
+          <h1 class="product-title">%%TITLE%%</h1>
+          <p class="product-subtitle">%%SUBTITLE%%</p>
+          <div class="key-specs-grid">%%KEYSPECS%%</div>
+          <p class="product-desc">%%DESC%%</p>
+          <!-- LISTINO:sku:%%SKU%% -->
+%%BUY_AREA%%
+          <!-- /LISTINO:sku:%%SKU%% -->
+          <div class="product-trust">
+            <div class="trust-item"><span class="trust-check">✓</span><span>Integrazione AMR in Italia</span></div>
+            <div class="trust-item"><span class="trust-check">✓</span><span>Assessment e sopralluogo inclusi nel prezzo «da»</span></div>
+            <div class="trust-item"><span class="trust-check">✓</span><span>Supporto flotta, WMS/MES su progetto</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:32px;padding-bottom:32px;">
+    <div class="container" style="max-width:900px;">
+      <div class="use-case-box" style="margin:0;">
+        <span class="use-case-label">Caso d'uso chiave</span>
+        <p class="use-case-text">%%USE_CASE%%</p>
+      </div>
+      <div class="amr-inclusion-box" style="margin-top:20px;">
+        <p><strong>Inclusi nel prezzo «da»:</strong> assessment iniziale, sopralluogo e prima analisi di fattibilità Abra.</p>
+        <p style="margin:0;"><strong>Non inclusi</strong> (preventivo dedicato): digital twin, integrazione WMS/MES/ERP, software flotta, stazioni di ricarica, commissioning avanzato e top module extra.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="specs" class="section section-dark specs-section">
+    <div class="container">
+      <div class="section-header" style="text-align:left;max-width:100%;margin-bottom:32px;">
+        <p class="label label-light">Scheda tecnica</p>
+        <h2>Specifiche %%TITLE%%</h2>
+      </div>
+      <div class="specs-accordion faq-list" style="max-width:100%;">
+        <div class="faq-item open">
+          <button class="faq-question" type="button"><span>Dettagli prodotto</span><span class="faq-icon">+</span></button>
+          <div class="faq-answer"><ul class="spec-table">%%SPECS_ROWS%%</ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container" style="max-width:800px;">
+      <div class="section-header" style="text-align:center;">
+        <p class="label">FAQ</p>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Il prezzo «da» è definitivo?</span><span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>No: è un prezzo indicativo IVA esclusa basato sul listino distributore + margine Abra. Il preventivo finale dipende da layout impianto, integrazioni e top module.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Quanto tempo serve per il go-live?</span><span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Per AMR industriali stimiamo circa 4 settimane dal sopralluogo alla messa in servizio del primo percorso, in base a complessità e IT.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>%%BRAND%% è disponibile in Italia tramite Abra?</span><span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Sì: Abra Robotics seleziona, integra e supporta %%BRAND%% in progetti di logistica interna e manifattura in Italia.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="form" class="section section-dark">
+    <div class="container" style="max-width:720px;">
+      <div class="section-header" style="text-align:center;">
+        <p class="label label-light">Preventivo</p>
+        <h2>Richiedi quotazione per %%TITLE%%</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,.65);">Risposta entro 12 ore lavorative · nessun impegno</p>
+      </div>
+      <form class="quote-form-top" data-product="%%TITLE%%" style="max-width:100%;">
+        <input type="text" name="nome" placeholder="Nome e cognome" required>
+        <input type="email" name="email" placeholder="Email aziendale" required>
+        <input type="tel" name="telefono" placeholder="Telefono" required>
+        <textarea name="messaggio" rows="3" placeholder="Descrivi percorsi, payload e sistemi da integrare…"></textarea>
+        <button type="submit" class="btn btn-primary">Invia richiesta preventivo</button>
+        <span class="quote-form-feedback" aria-live="polite"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robot AMR e automazione logistica in Italia.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">AMR</span>
+        <a href="../catalogo-amr.html">Catalogo AMR</a>
+        <a href="../manifattura-logistica.html#amr">Modelli in evidenza</a>
+        <a href="../lp-amr.html">Landing AMR</a>
+      </div>
+    </div>
+    <div class="container footer-bottom"><p class="footer-copy">&copy; 2026 Abra Robotics.</p></div>
+  </footer>
+  <script src="../script.js"></script>
+  <script src="product.js"></script>
+</body>
+</html>
