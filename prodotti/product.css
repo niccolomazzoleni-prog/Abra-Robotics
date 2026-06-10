@@ -785,3 +785,127 @@
     .buy-box-cards { display:inline-flex; gap:5px; align-items:center; }
     .buy-box-cards span { font-size:0.58rem; font-weight:800; letter-spacing:0.03em; color:var(--gray-600); border:1px solid var(--gray-200); border-radius:4px; padding:2px 5px; background:var(--gray-50); }
     .buy-box-note { font-size:0.74rem; color:var(--gray-400); line-height:1.5; margin:14px 0 0; text-align:center; }
+
+    /* ── AMR / product page shared boxes ── */
+    .use-case-box {
+      background: var(--gray-50);
+      border-left: 3px solid var(--black);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .use-case-label {
+      display: block;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: 6px;
+    }
+    .use-case-text {
+      font-size: 0.92rem;
+      color: var(--gray-800);
+      line-height: 1.55;
+      font-weight: 500;
+      margin: 0;
+    }
+    .amr-inclusion-box {
+      margin-top: 20px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      display: grid;
+      gap: 10px;
+    }
+    .amr-inclusion-box p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+    }
+    .amr-inclusion-box strong { color: var(--black); font-weight: 700; }
+
+    .amr-gallery-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      background: linear-gradient(145deg, #e8e8ec 0%, #d6d6dc 100%);
+    }
+    .amr-gallery-main img,
+    .amr-gallery-main video {
+      max-width: 100%;
+      max-height: 480px;
+      width: 100%;
+      object-fit: contain;
+      padding: 24px;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,.12));
+      mix-blend-mode: multiply;
+    }
+
+    /* spec-table (compact template) — allineato a specs-table */
+    ul.spec-table {
+      list-style: none;
+      margin: 0;
+      padding: 0 24px 20px;
+    }
+    ul.spec-table li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    ul.spec-table li:last-child { border-bottom: none; }
+    ul.spec-table li span:first-child {
+      color: rgba(255,255,255,0.4);
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      flex: 0 0 42%;
+    }
+    ul.spec-table li span:last-child {
+      color: var(--gray-400);
+      text-align: right;
+    }
+
+    .specs-accordion .faq-item button.faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 20px 24px;
+      text-align: left;
+    }
+    .specs-accordion .faq-item button.faq-question:hover {
+      color: rgba(255,255,255,0.7);
+    }
+    .specs-accordion .faq-item .faq-icon {
+      color: rgba(255,255,255,0.25);
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* Accessory pilot — included su sfondo chiaro */
+    .section .included-strip.light-strip .included-card {
+      background: rgba(0,0,0,0.03);
+      border-color: rgba(0,0,0,0.08);
+    }
+    .section .included-strip.light-strip .included-card-label {
+      color: var(--gray-400);
+    }
+    .section .included-strip.light-strip .included-card-name {
+      color: var(--gray-800);
+    }

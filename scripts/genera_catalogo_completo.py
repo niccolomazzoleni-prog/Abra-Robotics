@@ -283,6 +283,13 @@ def generate_page(row: dict, manifest: dict) -> str | None:
         "%%OG_IMAGE%%": og_image,
         "%%KEYSPECS%%": key_specs(entry),
         "%%SPECS_ROWS%%": spec_rows(entry),
+        "%%SPECS_BLOCK%%": (
+            f'        <div class="faq-item open">\n'
+            f'          <button class="faq-question" type="button"><span>Dettagli prodotto</span><span class="faq-icon">+</span></button>\n'
+            f'          <div class="faq-answer"><ul class="spec-table">{spec_rows(entry)}</ul></div>\n'
+            f"        </div>"
+        ),
+        "%%EXTRA_SECTIONS%%": "",
         "%%BUY_AREA%%": buy_area(price if pub else None, pub and price is not None, sku),
         "%%PRODUCT_SCHEMA%%": product_schema(
             title, desc[:200], og_image, price if pub else None, filename, coll_file, coll_name

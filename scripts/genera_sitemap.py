@@ -33,6 +33,7 @@ PRIORITY = {
     "index.html": 1.0,
     "catalogo-unitree.html": 0.9,
     "catalogo-amr.html": 0.9,
+    "catalogo-cobot.html": 0.9,
     "quadrupedi.html": 0.9,
     "umanoidi.html": 0.9,
     "accessori.html": 0.85,
@@ -69,6 +70,8 @@ def priority_for(path: Path) -> str:
     if path.parent.name == "prodotti" and name.startswith("unitree-"):
         return "0.8"
     if path.parent.name == "prodotti" and name.startswith("amr-"):
+        return "0.85"
+    if path.parent.name == "prodotti" and name.startswith("cobot-"):
         return "0.85"
     if name.endswith("-policy.html") or name == "note-legali.html":
         return "0.3"

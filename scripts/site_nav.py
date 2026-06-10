@@ -16,6 +16,7 @@ def render_site_nav(prefix: str = "") -> str:
           <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
           <div class="nav-dropdown-panel">
             <a href="{p}manifattura-logistica.html#cobot">Cobot</a>
+            <a href="{p}catalogo-cobot.html">Catalogo cobot</a>
             <a href="{p}manifattura-logistica.html#amr">AMR</a>
             <a href="{p}quadrupedi.html">Quadrupedi</a>
             <a href="{p}umanoidi.html">Umanoidi</a>
