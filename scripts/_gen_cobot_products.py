@@ -132,12 +132,18 @@ def spec_mini_html(specs: list[tuple[str, str]], rows: list[tuple[str, str]]) ->
     )
 
 
-def media_main(slug: str, title: str) -> str:
+def media_main(slug: str, title: str, group: str) -> str:
     img_rel = f"../{image_for(slug)}"
     style = (
         "max-width:100%;max-height:480px;width:100%;object-fit:contain;padding:24px;"
         "filter:drop-shadow(0 8px 24px rgba(0,0,0,.35));"
     )
+    if group == "palletizing":
+        vid = "../videos/fairino-palletizing.mp4"
+        return (
+            f'<video src="{vid}" poster="{img_rel}" autoplay loop muted playsinline '
+            f'style="{style}"></video>'
+        )
     return f'<img id="gallery-main-img" src="{img_rel}" alt="{title}" style="{style}">'
 
 
@@ -197,7 +203,7 @@ def product_schema(name: str, desc: str, img: str, price: float, filename: str, 
 
 
 def generate_one(row: tuple) -> dict:
-    slug, tag, title, subtitle, blurb, specs, rows, use_case, alibaba_usd = row
+    slug, group, tag, title, subtitle, blurb, specs, rows, use_case, alibaba_usd = row
     filename = filename_for(slug)
     sku = sku_for(slug)
     price = float(sell_price_eur(alibaba_usd))
@@ -225,7 +231,7 @@ def generate_one(row: tuple) -> dict:
         "%%SPEC_MINI%%": spec_mini_html(specs, rows),
         "%%PROCESS%%": PROCESS_HTML,
         "%%WA_BAR%%": WA_BAR_HTML,
-        "%%MEDIA_MAIN%%": media_main(slug, title),
+        "%%MEDIA_MAIN%%": media_main(slug, title, group),
         "%%BUY_AREA%%": buy_area(alibaba_usd),
         "%%PRODUCT_SCHEMA%%": product_schema(title, meta, og_image, price, filename, sku),
         "%%SITE_NAV%%": render_site_nav("../"),
@@ -236,6 +242,7 @@ def generate_one(row: tuple) -> dict:
     (OUT_DIR / filename).write_text(html, encoding="utf-8")
     return {
         "slug": slug,
+        "group": group,
         "sku": sku,
         "filename": filename,
         "title": title,
@@ -252,10 +259,11 @@ def generate_one(row: tuple) -> dict:
 
 def catalog_card(item: dict) -> str:
     img = image_for(item["slug"])
+    family = "Soluzione palletizzazione" if item.get("group") == "palletizing" else "Fairino · Cobot 6 assi"
     return f"""        <article class="cat-card">
           <div class="cat-media amr-media"><img src="{img}" alt="{item['title']}" loading="lazy"></div>
           <div class="cat-body">
-            <p class="cat-family">Fairino · Cobot 6 assi</p>
+            <p class="cat-family">{family}</p>
             <h3>{item['title']}</h3>
             <p class="cat-sub">{item['subtitle']}</p>
             <p class="cat-blurb">{item['blurb'][:120]}…</p>
@@ -266,7 +274,7 @@ def catalog_card(item: dict) -> str:
 
 
 def lp_model_card(row: tuple, item: dict) -> str:
-    slug, tag, title, *_ = row
+    slug, _group, tag, title, *_ = row
     chips = CHIPS_BY_SLUG.get(slug, ())
     chips_html = "".join(f"<span>{c}</span>" for c in chips)
     img = image_for(slug)
@@ -283,30 +291,46 @@ def lp_model_card(row: tuple, item: dict) -> str:
         </a>"""
 
 
+def _patch_lp_block(text: str, start: str, end: str, cards: str) -> str:
+    if start not in text or end not in text:
+        return text
+    before, rest = text.split(start, 1)
+    _, after = rest.split(end, 1)
+    return f"{before}{start}\n{cards}\n{end}{after}"
+
+
 def patch_lp_cobot(manifest: list[dict]) -> None:
     lp_path = ROOT / "lp-cobot.html"
     if not lp_path.exists():
         return
     text = lp_path.read_text(encoding="utf-8")
-    start = "<!-- COBOT_MODELS_START -->"
-    end = "<!-- COBOT_MODELS_END -->"
-    if start not in text or end not in text:
-        return
-    cards = "\n".join(lp_model_card(row, m) for row, m in zip(CATALOG, manifest))
-    before, rest = text.split(start, 1)
-    _, after = rest.split(end, 1)
-    lp_path.write_text(f"{before}{start}\n{cards}\n{end}{after}", encoding="utf-8")
+    by_slug = {m["slug"]: m for m in manifest}
+    robot_cards = "\n".join(
+        lp_model_card(row, by_slug[row[0]])
+        for row in CATALOG
+        if row[1] == "robot" and row[0] in by_slug
+    )
+    pallet_cards = "\n".join(
+        lp_model_card(row, by_slug[row[0]])
+        for row in CATALOG
+        if row[1] == "palletizing" and row[0] in by_slug
+    )
+    text = _patch_lp_block(text, "<!-- COBOT_MODELS_START -->", "<!-- COBOT_MODELS_END -->", robot_cards)
+    text = _patch_lp_block(text, "<!-- COBOT_PALLET_START -->", "<!-- COBOT_PALLET_END -->", pallet_cards)
+    lp_path.write_text(text, encoding="utf-8")
 
 
 def write_catalog(manifest: list[dict]) -> None:
-    cards = "\n".join(catalog_card(m) for m in manifest)
+    robots = "\n".join(catalog_card(m) for m in manifest if m.get("group") == "robot")
+    pallets = "\n".join(catalog_card(m) for m in manifest if m.get("group") == "palletizing")
+    n = len(manifest)
     page = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo Cobot Fairino | Abra Robotics</title>
-  <meta name="description" content="Cobot industriali Fairino FR5, FR10, FR20. Prezzi indicativi IVA esclusa (riferimento Alibaba +100%). Integrazione in Italia con Abra Robotics.">
+  <meta name="description" content="Catalogo Fairino: cobot FR3–FR30 e soluzioni palletizzazione. Prezzi indicativi IVA esclusa (Alibaba +100%). Integrazione in Italia con Abra Robotics.">
   <link rel="canonical" href="https://abrarobotics.com/catalogo-cobot.html">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -333,16 +357,26 @@ def write_catalog(manifest: list[dict]) -> None:
   <header class="cat-hero">
     <p class="label">Manifattura</p>
     <h1>Catalogo Cobot Fairino</h1>
-    <p style="color:var(--gray-600);max-width:680px;">3 modelli FR Series con prezzi «da» calcolati su riferimento Alibaba + 100% margine Abra. IVA esclusa.</p>
+    <p style="color:var(--gray-600);max-width:680px;">{n} configurazioni Fairino — robot cobot e celle palletizzazione. Prezzi «da» Alibaba +100%. IVA esclusa.</p>
   </header>
   <main class="cat-body-page">
     <div class="amr-note">
-      <p><strong>Metodo prezzo:</strong> riferimento listing Alibaba (robot base) × 2, convertito in EUR (USD/EUR 0,93).</p>
-      <p style="margin:0;"><strong>Non inclusi:</strong> gripper, visione, safety scanner, celle turnkey, spedizione e dazi (preventivo dedicato).</p>
+      <p><strong>Metodo prezzo:</strong> riferimento listing Alibaba × 2, convertito in EUR (USD/EUR 0,93).</p>
+      <p style="margin:0;"><strong>Non inclusi:</strong> spedizione, dazi, gripper/visione extra e varianti safety oltre il pacchetto indicato.</p>
     </div>
-    <div class="cat-grid">
-{cards}
-    </div>
+    <section class="cat-group" style="margin-bottom:48px;">
+      <h2 style="font-size:1.35rem;margin:0 0 16px;">Robot cobot FR Series</h2>
+      <div class="cat-grid">
+{robots}
+      </div>
+    </section>
+    <section class="cat-group">
+      <h2 style="font-size:1.35rem;margin:0 0 16px;">Soluzioni palletizzazione</h2>
+      <p style="color:var(--gray-600);margin:0 0 16px;max-width:720px;">Workstation modulare e celle turnkey con cobot integrato — video ciclo reale in ogni scheda.</p>
+      <div class="cat-grid">
+{pallets}
+      </div>
+    </section>
   </main>
   <footer class="footer" style="margin-top:48px;">
     <div class="container footer-bottom">
