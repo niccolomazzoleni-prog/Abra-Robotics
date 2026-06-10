@@ -17,7 +17,7 @@ MIR1350_ROWS = [("Dimensioni (L×P×H)", "1.350 × 920 × 320 mm"), ("Peso", "35
 DEFAULT_ASSETS = {
     "juno-plus": {"file": "juno-plus.webp"},
     "juno-lift": {"file": "juno-lift.webp"},
-    "l300": {"file": "youibot-l300.png"},
+    "l300": {"file": "youibot-l300-gallery.png"},
     "mir250-base": {"file": "mir250-base.png", "video": "mir250-hero.mp4"},
     "mir250-shelf": {"file": "mir250-shelf.png"},
     "mir250-hook": {"file": "mir250-hook.png"},
@@ -29,7 +29,7 @@ DEFAULT_ASSETS = {
     "mir1200": {"file": "mir1200-palletjack.png"},
     "l1000": {"file": "youibot-l1000.png"},
     "mav-1500": {"file": "neura-mav-1500.webp"},
-    "xp15": {"file": "ep-xp15.jpg"},
+    "xp15": {"file": "ep-xp15.png"},
     "mav-lara": {"file": "neura-mav-1500-side.webp"},
 }
 
@@ -136,16 +136,21 @@ GROUPS = {
 }
 
 AMR_MEDIA_CSS = """
+    .robot-media.amr-media,
+    .cat-media.amr-media {
+      background: linear-gradient(145deg, #e8e8ec 0%, #d6d6dc 100%);
+    }
     .robot-media.amr-media img,
     .robot-media.amr-media video,
     .cat-media.amr-media img,
     .cat-media.amr-media video {
       width: 100%; height: 100%; object-fit: contain; padding: 20px;
       filter: drop-shadow(0 12px 16px rgba(0,0,0,0.14));
+      mix-blend-mode: multiply;
     }
     .robot-media.amr-media video,
-    .cat-media.amr-media video { padding: 12px; }
-    .cat-media.amr-media { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: var(--gray-50); }
+    .cat-media.amr-media video { padding: 12px; mix-blend-mode: normal; }
+    .cat-media.amr-media { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
 """
 
 

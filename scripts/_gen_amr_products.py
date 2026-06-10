@@ -89,7 +89,10 @@ def media_main(slug: str, title: str) -> str:
     a = get_assets()[slug]
     img_rel = f"../{IMG}/{a['file']}"
     video = a.get("video")
-    style = "max-width:100%;max-height:480px;width:100%;object-fit:contain;padding:24px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.12));"
+    style = (
+        "max-width:100%;max-height:480px;width:100%;object-fit:contain;padding:24px;"
+        "filter:drop-shadow(0 12px 20px rgba(0,0,0,.12));mix-blend-mode:multiply;"
+    )
     if video:
         vid_rel = f"../{IMG}/{video}"
         return (
