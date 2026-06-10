@@ -33,6 +33,7 @@ document.querySelectorAll('.contact-form').forEach(form => {
       feedback.className = 'form-feedback success';
       feedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
       if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
+      if (window.fbq) fbq('track', 'Lead');
       form.reset();
     } catch {
       feedback.className = 'form-feedback error';
@@ -155,6 +156,22 @@ document.head.insertAdjacentHTML('beforeend', `
     }
   </style>
 `);
+
+// Meta Pixel — eventi click globali
+document.addEventListener('click', (e) => {
+  if (!window.fbq) return;
+  const el = e.target.closest('a, button');
+  if (!el) return;
+  // WhatsApp
+  if (el.classList.contains('wa-btn') || (el.href && el.href.includes('wa.me'))) {
+    fbq('track', 'Contact', { content_name: 'whatsapp' });
+  }
+  // Prenota una chiamata
+  const txt = el.textContent.trim().toLowerCase();
+  if (txt.includes('prenota') || txt.includes('chiama') || txt.includes('chiamata')) {
+    fbq('track', 'Contact', { content_name: 'prenota_chiamata' });
+  }
+});
 
 // WhatsApp bar — gradiente che segue il cursore
 (function () {
