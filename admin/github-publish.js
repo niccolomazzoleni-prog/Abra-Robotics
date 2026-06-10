@@ -106,5 +106,30 @@ window.AbraGithub = (function () {
     return true;
   }
 
-  return { publishLive };
+  async function publishAmrLive({ jsonObject, allUploads, onProgress }) {
+    const token = window.AbraAdmin && window.AbraAdmin.getGithubToken();
+    if (!token) throw new Error('Token GitHub mancante. Esci e rientra inserendo il PAT, oppure incollalo quando richiesto.');
+
+    const uploads = allUploads || [];
+    for (let i = 0; i < uploads.length; i++) {
+      const u = uploads[i];
+      if (onProgress) onProgress(`Carico immagine AMR ${u.slug} (${i + 1}/${uploads.length})…`);
+      await putBinary(u.path, u.file, `admin: immagine AMR ${u.slug}`, token);
+    }
+
+    if (onProgress) onProgress('Aggiorno amr-images.json…');
+    const jsonText = JSON.stringify(jsonObject, null, 2) + '\n';
+    await putText('data/amr-images.json', jsonText, 'admin: override immagini AMR', token);
+
+    if (onProgress) onProgress('Avvio rigenerazione catalogo (GitHub Actions)…');
+    try {
+      await triggerRegenerate(token);
+    } catch (_) {
+      /* push dei file può già aver triggerato il workflow */
+    }
+
+    return true;
+  }
+
+  return { publishLive, publishAmrLive };
 })();
