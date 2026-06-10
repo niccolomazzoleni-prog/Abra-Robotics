@@ -3,6 +3,19 @@
 from __future__ import annotations
 
 ACCORDION_BY_SLUG: dict[str, list[tuple[str, list[tuple[str, str]]]]] = {
+    "fairino-fr3": [
+        ("Meccanica", [
+            ("Payload nominale", "3 kg"),
+            ("Sbraccio", "922 mm"),
+            ("Ripetibilità", "±0,02 mm"),
+            ("Gradi di libertà", "6"),
+        ]),
+        ("Controllo", [
+            ("Programmazione", "Pendant · Web App"),
+            ("SDK", "ROS2 · Python · C++"),
+            ("Protezione", "IP54"),
+        ]),
+    ],
     "fairino-fr5": [
         ("Meccanica", [
             ("Payload nominale", "5 kg (max 7 kg)"),
@@ -77,6 +90,66 @@ ACCORDION_BY_SLUG: dict[str, list[tuple[str, list[tuple[str, str]]]]] = {
             ("Integrazione", "Gripper vacuum · pinza parallela"),
         ]),
     ],
+    "fairino-fr16": [
+        ("Meccanica", [
+            ("Payload nominale", "16 kg"),
+            ("Sbraccio", "1.034 mm"),
+            ("Ripetibilità", "±0,05 mm"),
+            ("Gradi di libertà", "6"),
+        ]),
+        ("Applicazioni", [
+            ("Machine tending", "CNC · presse"),
+            ("Logistica", "Handling casse"),
+            ("Certificazioni", "CE · ISO 10218"),
+        ]),
+    ],
+    "fairino-fr30": [
+        ("Meccanica", [
+            ("Payload nominale", "30 kg (max 35 kg)"),
+            ("Sbraccio", "1.403 mm"),
+            ("Ripetibilità", "±0,1 mm"),
+            ("Gradi di libertà", "6"),
+        ]),
+        ("Applicazioni", [
+            ("Palletizzazione", "EUR · alta produttività"),
+            ("Handling", "Carico pesante fine linea"),
+            ("Protezione", "IP54 (IP65 optional)"),
+        ]),
+    ],
+    "fairino-palletizing-station": [
+        ("Workstation", [
+            ("Dimensioni", "1.200 × 1.100 mm"),
+            ("Peso", "~330 kg (senza robot)"),
+            ("Alimentazione", "110–240 VAC"),
+            ("Compatibilità", "FR10 · FR16 · FR20 · FR30"),
+        ]),
+        ("Software", [
+            ("Funzione", "Pattern pallet integrati"),
+            ("Integrazione", "Fairino Web App"),
+        ]),
+    ],
+    "fairino-palletizing-fr10": [
+        ("Cella turnkey", [
+            ("Robot", "Fairino FR10 · 10 kg"),
+            ("Workstation", "Palletizing Station"),
+            ("Pallet", "EUR standard"),
+        ]),
+        ("Servizi Abra", [
+            ("Incluso", "Assessment · commissioning base"),
+            ("Opzionale", "Gripper vacuum · safety scanner"),
+        ]),
+    ],
+    "fairino-palletizing-fr20": [
+        ("Cella turnkey", [
+            ("Robot", "Fairino FR20 · 20 kg"),
+            ("Reach", "1.854 mm"),
+            ("Workstation", "Palletizing Station"),
+        ]),
+        ("Servizi Abra", [
+            ("Incluso", "Layout cella · go-live"),
+            ("Applicazioni", "Palletizzazione · depalletizzazione"),
+        ]),
+    ],
 }
 
 
@@ -87,9 +160,15 @@ def included_cards(slug: str, title: str) -> list[tuple[str, str]]:
         ("Integrazione", "Abra Robotics Italia"),
     ]
     extra = {
+        "fairino-fr3": ("Payload", "3 kg"),
         "fairino-fr5": ("Pendant", "10,1\" touch (opz.)"),
         "fairino-fr10": ("Reach", "1.400 mm"),
+        "fairino-fr16": ("Payload", "16 kg"),
         "fairino-fr20": ("Payload", "20 kg"),
+        "fairino-fr30": ("Payload", "30 kg"),
+        "fairino-palletizing-station": ("Tipo", "Solo struttura"),
+        "fairino-palletizing-fr10": ("Robot", "FR10 incluso"),
+        "fairino-palletizing-fr20": ("Robot", "FR20 incluso"),
     }
     if slug in extra:
         base.append(extra[slug])
