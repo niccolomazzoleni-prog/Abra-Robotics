@@ -458,10 +458,21 @@ def spec_mini(d):
 # ── Page template ──
 TEMPLATE = open(os.path.join(BASE, "_template.html"), encoding="utf-8").read()
 
+def variant_imgs(imgdir: str, n: int = 5) -> list[str]:
+    out = []
+    for i in range(1, n + 1):
+        base = f'assets/variants/{imgdir}/img-0{i}'
+        if i == 1:
+            out.append(f'{base}.png')
+        else:
+            out.append(f'{base}.jpg')
+    return out
+
+
 def render(code):
     d = V[code]
     n = 5
-    imgs = [f'assets/variants/{d["imgdir"]}/img-0{i}.jpg' for i in range(1, n+1)]
+    imgs = variant_imgs(d["imgdir"], n)
     cards, trio = comp_cards(code)
     title_full = d["title"] + (f' ({d["unum"]})' if d["unum"] else "")
     repl = {
