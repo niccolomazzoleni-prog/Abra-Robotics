@@ -74,7 +74,15 @@
     <div class="admin-head">
       <p class="label">Interno · Non indicizzato</p>
       <h1>Immagini catalogo AMR</h1>
-      <p>16 modelli MiR, Youibot, Neura, AutoXing ed EP. Sostituisci foto o video, poi <strong>Pubblica sul sito live</strong>: catalogo AMR e sezione manifattura si aggiornano in 1–2 minuti (Ctrl+Shift+R).</p>
+      <p>16 modelli MiR, Youibot, Neura, AutoXing ed EP. Qui cambi foto e video: si aggiornano <strong>catalogo AMR</strong>, <strong>landing manifattura</strong> (#amr) e <strong>schede prodotto</strong> amr-*.html.</p>
+    </div>
+
+    <div class="admin-toolbar" style="flex-direction:column;align-items:stretch;gap:10px;">
+      <ol style="margin:0;padding-left:20px;font-size:0.88rem;color:var(--gray-600);line-height:1.55;">
+        <li>Clicca <strong>Sostituisci foto</strong> (PNG/WebP con sfondo trasparente per MiR) o incolla un percorso in <code>images/manifattura/amr/…</code></li>
+        <li>Per le basi MiR puoi caricare anche un <strong>video MP4</strong> (luci animate) — opzionale</li>
+        <li><strong>Pubblica sul sito live</strong> con token GitHub → il sito si aggiorna in 1–2 min (Ctrl+Shift+R)</li>
+      </ol>
     </div>
 
     <div class="admin-toolbar">
@@ -160,9 +168,15 @@
         const previewSrc = pendingFiles[slug]
           ? pendingFiles[slug].preview
           : (filePath ? BASE + filePath : '');
+        const videoPreview = videoPath && !pendingFiles[slug]
+          ? `<video src="${BASE + videoPath}" muted loop autoplay playsinline style="max-width:100%;max-height:100%"></video>`
+          : '';
+        const previewHtml = previewSrc
+          ? `<img src="${previewSrc}" alt="${item.title}" onerror="this.style.opacity=0.2">`
+          : (videoPreview || '<span style="color:var(--gray-400);font-size:0.8rem">Nessuna immagine</span>');
         card.innerHTML = `
           <div class="img-preview">
-            ${previewSrc ? `<img src="${previewSrc}" alt="${item.title}" onerror="this.style.opacity=0.2">` : '<span style="color:var(--gray-400);font-size:0.8rem">Nessuna immagine</span>'}
+            ${previewHtml}
           </div>
           <div class="img-body">
             <span class="slug">${slug} · ${item.group}</span>
@@ -246,13 +260,13 @@
         const video = card.querySelector('.video-input').value.trim();
         out[slug] = { file };
         if (video) out[slug].video = video;
-        else if (overrides[slug] && 'video' in overrides[slug]) out[slug].video = '';
+        else out[slug].video = '';
       });
       Object.keys(overrides).forEach(slug => {
         if (out[slug]) return;
         const o = { ...overrides[slug] };
         delete o._dirty;
-        if (Object.keys(o).length) out[slug] = o;
+        if (o.file) out[slug] = o;
       });
       return out;
     }
