@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "prodotti"))
 
 from _cobot_catalog_data import (  # noqa: E402
     CATALOG,
+    CHIPS_BY_SLUG,
     IMG,
     image_for,
     price_display,
@@ -264,6 +265,39 @@ def catalog_card(item: dict) -> str:
         </article>"""
 
 
+def lp_model_card(row: tuple, item: dict) -> str:
+    slug, tag, title, *_ = row
+    chips = CHIPS_BY_SLUG.get(slug, ())
+    chips_html = "".join(f"<span>{c}</span>" for c in chips)
+    img = image_for(slug)
+    return f"""
+        <a class="model-card" href="prodotti/{item['filename']}">
+          <div class="model-media"><img src="{img}" alt="{title}"></div>
+          <div class="model-body">
+            <h3>{title}</h3>
+            <span class="model-tag">{tag}</span>
+            <div class="model-chips">{chips_html}</div>
+            <span class="model-price">{item['price_display']} <small>IVA escl.</small></span>
+            <span class="model-link">Scheda prodotto →</span>
+          </div>
+        </a>"""
+
+
+def patch_lp_cobot(manifest: list[dict]) -> None:
+    lp_path = ROOT / "lp-cobot.html"
+    if not lp_path.exists():
+        return
+    text = lp_path.read_text(encoding="utf-8")
+    start = "<!-- COBOT_MODELS_START -->"
+    end = "<!-- COBOT_MODELS_END -->"
+    if start not in text or end not in text:
+        return
+    cards = "\n".join(lp_model_card(row, m) for row, m in zip(CATALOG, manifest))
+    before, rest = text.split(start, 1)
+    _, after = rest.split(end, 1)
+    lp_path.write_text(f"{before}{start}\n{cards}\n{end}{after}", encoding="utf-8")
+
+
 def write_catalog(manifest: list[dict]) -> None:
     cards = "\n".join(catalog_card(m) for m in manifest)
     page = f"""<!DOCTYPE html>
@@ -294,7 +328,7 @@ def write_catalog(manifest: list[dict]) -> None:
   </style>
 </head>
 <body>
-  <div class="top-bar"><p>Catalogo Cobot · IVA esclusa · <a href="manifattura-logistica.html#cobot">Manifattura</a></p></div>
+  <div class="top-bar"><p>Catalogo Cobot · IVA esclusa · <a href="lp-cobot.html">Landing cobot</a></p></div>
 {render_site_nav("")}
   <header class="cat-hero">
     <p class="label">Manifattura</p>
@@ -329,7 +363,9 @@ def main() -> None:
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     write_catalog(manifest)
+    patch_lp_cobot(manifest)
     print(f"Wrote {len(manifest)} schede cobot-*.html")
+    print("Patched lp-cobot.html")
     print(f"Wrote {MANIFEST_PATH}")
     print("Wrote catalogo-cobot.html")
 

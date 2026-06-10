@@ -46,6 +46,7 @@ PRIORITY = {
     "lp-quadrupedi.html": 0.8,
     "lp-umanoidi.html": 0.8,
     "lp-amr.html": 0.8,
+    "lp-cobot.html": 0.8,
     "r1-d.html": 0.75,
 }
 
