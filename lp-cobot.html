@@ -115,38 +115,38 @@
     .track-record .finance-stat-number{color:var(--black)}
     .track-record .finance-stat-label{color:var(--gray-600)}
 
-    /* LP navbar minimale — full width, allineata al .container sotto */
+    /* LP: navbar fissa in cima, un blocco con la pagina (no sticky flottante) */
+    body.lp-cobot{padding-top:72px}
+    body.lp-cobot.has-wa-bar{padding-bottom:60px}
     .lp-navbar{
-      position:sticky;top:0;z-index:1001;width:100%;
+      position:fixed;top:0;left:0;right:0;z-index:1001;
       background:#fff;border-bottom:1px solid var(--gray-200);
-      box-shadow:0 1px 0 rgba(0,0,0,.04);
     }
     .lp-navbar-inner{
-      position:relative;display:flex;align-items:center;justify-content:space-between;
-      height:72px;gap:16px;padding-top:0;padding-bottom:0;
+      display:flex;align-items:center;justify-content:space-between;
+      height:72px;gap:24px;padding-top:0;padding-bottom:0;
     }
+    .lp-navbar-start{display:flex;align-items:center;gap:40px;min-width:0}
     .lp-logo-link{display:flex;align-items:center;flex-shrink:0;text-decoration:none}
-    .lp-logo{height:44px;width:auto;display:block}
-    .lp-nav-links{
-      position:absolute;left:50%;transform:translateX(-50%);
-      display:flex;align-items:center;gap:32px;
-    }
+    .lp-logo{height:40px;width:auto;display:block}
+    .lp-nav-links{display:flex;align-items:center;gap:28px}
     .lp-nav-links a{
-      text-decoration:none;color:var(--gray-600);font-size:.98rem;font-weight:500;
-      white-space:nowrap;padding:6px 0;border-bottom:2px solid transparent;
-      transition:color .2s,border-color .2s;
+      text-decoration:none;color:var(--gray-600);font-size:.95rem;font-weight:500;
+      white-space:nowrap;
     }
-    .lp-nav-links a:hover{color:var(--black);border-bottom-color:var(--black)}
+    .lp-nav-links a:hover{color:var(--black)}
     .lp-navbar .btn{flex-shrink:0;margin:0}
     /* Loghi nel trust bar */
     .lpv-trust .logo-bar-logos img{filter:grayscale(1) brightness(0.15);opacity:.6;}
     .lpv-trust .logo-bar-logos img:hover{opacity:.9;filter:grayscale(1) brightness(0.05);}
-    .lpv-hero{padding:56px 0 64px !important;margin-top:0}
+    .lpv-hero{padding:48px 0 64px !important}
     #modelli,#palletizzazione,#form,#faq{scroll-margin-top:88px}
     @media(max-width:820px){
+      body.lp-cobot{padding-top:64px}
       .lp-nav-links{display:none}
       .lp-navbar-inner{height:64px}
-      .lp-logo{height:38px}
+      .lp-logo{height:34px}
+      body.lp-cobot.has-wa-bar{padding-bottom:108px}
     }
     @media(max-width:820px){
       .lpv-hero-grid{grid-template-columns:1fr;gap:36px}
@@ -157,15 +157,17 @@
   </style>
 
 </head>
-<body>
+<body class="lp-cobot has-wa-bar">
   <!-- LP_NAV_START -->
   <nav class="lp-navbar" aria-label="Navigazione landing">
     <div class="container lp-navbar-inner">
-      <a href="#" class="lp-logo-link" aria-label="Abra Robotics"><img src="images/logo.png" alt="Abra Robotics" class="lp-logo"></a>
-      <div class="lp-nav-links">
-        <a href="#modelli">Modelli</a>
-        <a href="#palletizzazione">Palletizzazione</a>
-        <a href="#faq">FAQ</a>
+      <div class="lp-navbar-start">
+        <a href="#" class="lp-logo-link" aria-label="Abra Robotics"><img src="images/logo.png" alt="Abra Robotics" class="lp-logo"></a>
+        <div class="lp-nav-links">
+          <a href="#modelli">Modelli</a>
+          <a href="#palletizzazione">Palletizzazione</a>
+          <a href="#faq">FAQ</a>
+        </div>
       </div>
       <a href="#form" class="btn btn-primary btn-sm">Richiedi un preventivo</a>
     </div>
@@ -532,7 +534,7 @@
     <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">Contattaci su WhatsApp</a>
     <button class="wa-bar-close" id="wa-bar-close" aria-label="Chiudi">&times;</button>
   </div>
-  <script>(function(){var K="abra_wa_bar_closed";try{if(localStorage.getItem(K)==="1"){document.getElementById("wa-bar").style.display="none";return;}}catch(e){}document.body.classList.add("has-wa-bar");var b=document.getElementById("wa-bar-close");if(b)b.addEventListener("click",function(){document.getElementById("wa-bar").style.display="none";document.body.classList.remove("has-wa-bar");try{localStorage.setItem(K,"1");}catch(e){};});}());</script>
+  <script>(function(){var bar=document.getElementById("wa-bar");if(!bar)return;bar.style.display="";document.body.classList.add("has-wa-bar");var b=document.getElementById("wa-bar-close");if(b)b.addEventListener("click",function(){bar.style.display="none";document.body.classList.remove("has-wa-bar");});}());</script>
 
   <script src="script.js"></script>
 
