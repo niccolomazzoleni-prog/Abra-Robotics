@@ -1665,15 +1665,25 @@
             <input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l." required>
           </div>
         </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="mario@azienda.com" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+39 ..." required>
+          </div>
+        </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="mario@azienda.com" required>
+          <label for="ruolo">Ruolo</label>
+          <input type="text" id="ruolo" name="ruolo" placeholder="Responsabile Produzione, Operations Manager, CTO..." required>
         </div>
         <div class="form-group">
           <label for="messaggio">Descrivi il tuo processo o caso d'uso</label>
           <textarea id="messaggio" name="messaggio" placeholder="Esempio: linea di assemblaggio con 3 operatori su pick & place; vorrei capire se un cobot ha senso." rows="5" required></textarea>
         </div>
-        <input type="hidden" name="vertical" value="Manifattura e Logistica">
+        <input type="hidden" name="prodotto" value="Manifattura e Logistica">
         <div class="form-footer">
           <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
           <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
