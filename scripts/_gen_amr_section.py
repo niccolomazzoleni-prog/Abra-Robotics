@@ -269,7 +269,7 @@ def manifattura_card_v2(prod):
             </div>
             <div class="robot-card-cta">
               <span class="card-price">{p(price)}</span>
-              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
+              <a href="prodotti/amr-{slug}.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
             </div>
           </div>
         </article>"""
@@ -287,7 +287,7 @@ def catalogo_card(prod):
             <p class="cat-sub">{subtitle}</p>
             <p class="cat-blurb">{blurb}</p>
             <p class="cat-price">{p(price)}</p>
-            <a href="manifattura-logistica.html#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
+            <a href="prodotti/amr-{slug}.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
           </div>
         </article>"""
 
@@ -433,3 +433,8 @@ if __name__ == "__main__":
     write_amr_catalog_json()
     write_catalogo()
     patch_manifattura()
+    import subprocess
+    import sys
+
+    prod = ROOT / "scripts" / "_gen_amr_products.py"
+    subprocess.run([sys.executable, str(prod)], check=True)
