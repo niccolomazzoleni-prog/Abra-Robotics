@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "prodotti"))
 
 from _gen_amr_section import CATALOG, IMG, get_assets, p  # noqa: E402
+from _amr_specs_data import ACCORDION_BY_SLUG, included_cards  # noqa: E402
 from site_nav import render_site_nav  # noqa: E402
 
 try:
@@ -83,6 +84,85 @@ def keyspecs_html(specs: list[tuple[str, str]]) -> str:
 def specs_rows_html(specs: list[tuple[str, str]], rows: list[tuple[str, str]]) -> str:
     all_rows = list(specs) + list(rows)
     return "\n".join(f"<li><span>{k}</span><span>{v}</span></li>" for k, v in all_rows)
+
+
+def stats_html(specs: list[tuple[str, str]]) -> str:
+    out = []
+    for label, val in specs[:3]:
+        num = "".join(c for c in val if c.isdigit() or c in ",.")
+        unit = val.replace(num, "").strip() if num else ""
+        target = num.replace(",", ".") if num else "0"
+        u = f'<span class="stat-unit">{unit}</span>' if unit else ""
+        out.append(
+            f'        <div class="product-stat">\n'
+            f'          <span class="stat-number"><span class="counter" data-target="{target.split("–")[0].split("-")[0]}">0</span>{u}</span>\n'
+            f'          <span class="stat-label">{label}</span>\n'
+            f"        </div>"
+        )
+    return "\n".join(out)
+
+
+def included_html(slug: str, title: str, brand: str) -> str:
+    return "\n".join(
+        f'        <div class="included-card">\n'
+        f'          <span class="included-card-label">{lbl}</span>\n'
+        f'          <span class="included-card-name">{name}</span>\n'
+        f"        </div>"
+        for lbl, name in included_cards(slug, title, brand)
+    )
+
+
+def specs_accordion_html(slug: str) -> str:
+    cats = ACCORDION_BY_SLUG.get(slug, [])
+    parts = []
+    for i, (title, rows) in enumerate(cats):
+        open_attr = " open" if i == 0 else ""
+        trs = "\n".join(f"              <tr><td>{k}</td><td>{v}</td></tr>" for k, v in rows)
+        parts.append(
+            f'          <details class="faq-item"{open_attr}>\n'
+            f"            <summary>{title}</summary>\n"
+            f'            <table class="specs-table">\n{trs}\n'
+            f"            </table>\n"
+            f"          </details>"
+        )
+    return "\n".join(parts)
+
+
+def spec_mini_html(specs: list[tuple[str, str]], rows: list[tuple[str, str]]) -> str:
+    all_rows = list(specs) + list(rows)
+    return "\n".join(
+        f'        <div class="spec-mini-card">\n'
+        f'          <span class="spec-mini-value">{v}</span>\n'
+        f'          <span class="spec-mini-label">{k}</span>\n'
+        f"        </div>"
+        for k, v in all_rows[:9]
+    )
+
+
+PROCESS_HTML = """      <div class="process-steps-product">
+        <div class="step">
+          <span class="step-number">01</span>
+          <h3>Assessment</h3>
+          <p>Analizziamo layout, percorsi e sistemi IT. Sopralluogo incluso nel prezzo «da».</p>
+        </div>
+        <div class="step">
+          <span class="step-number">02</span>
+          <h3>Progettazione</h3>
+          <p>Mappatura, integrazione WMS/MES su progetto, configurazione flotta e top module.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">03</span>
+          <h3>Go-live</h3>
+          <p>Commissioning e messa in servizio del primo percorso — tipicamente ~4 settimane.</p>
+        </div>
+      </div>"""
+
+WA_BAR_HTML = """  <div class="wa-bar" id="wa-bar">
+    <p><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Vuoi ricevere più informazioni?</p>
+    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">Contattaci su WhatsApp</a>
+    <button class="wa-bar-close" id="wa-bar-close" aria-label="Chiudi">&times;</button>
+  </div>
+  <script>(function(){var K="abra_wa_bar_closed";try{if(localStorage.getItem(K)==="1"){document.getElementById("wa-bar").style.display="none";return;}}catch(e){}document.body.classList.add("has-wa-bar");var b=document.getElementById("wa-bar-close");if(b)b.addEventListener("click",function(){document.getElementById("wa-bar").style.display="none";document.body.classList.remove("has-wa-bar");try{localStorage.setItem(K,"1");}catch(e){};});}());</script>"""
 
 
 def media_main(slug: str, title: str) -> str:
@@ -199,6 +279,12 @@ def generate_one(row: tuple) -> dict:
         "%%PRICE_AMOUNT%%": f"{price:.2f}",
         "%%KEYSPECS%%": keyspecs_html(specs),
         "%%SPECS_ROWS%%": specs_rows_html(specs, rows),
+        "%%STATS%%": stats_html(specs),
+        "%%INCLUDED%%": included_html(slug, title, brand),
+        "%%SPECS_ACCORDION%%": specs_accordion_html(slug),
+        "%%SPEC_MINI%%": spec_mini_html(specs, rows),
+        "%%PROCESS%%": PROCESS_HTML,
+        "%%WA_BAR%%": WA_BAR_HTML,
         "%%MEDIA_MAIN%%": media_main(slug, title),
         "%%BUY_AREA%%": buy_area(net),
         "%%PRODUCT_SCHEMA%%": product_schema(

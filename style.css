@@ -1971,8 +1971,8 @@ select:focus-visible,
 .step:nth-child(3),
 .finance-card:nth-child(3) { transition-delay: 0.2s; }
 
-/* === FAQ Smooth Transitions === */
-.faq-item p {
+/* === FAQ Smooth Transitions (solo <details>, non i button legacy) === */
+details.faq-item p {
   overflow: hidden;
   max-height: 0;
   padding: 0;
@@ -1980,18 +1980,74 @@ select:focus-visible,
   transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease;
 }
 
-.faq-item[open] p {
+details.faq-item[open] p {
   max-height: 200px;
   opacity: 1;
   padding: 0 0 24px;
 }
 
-.faq-item summary::after {
+details.faq-item summary::after {
   transition: transform 0.3s ease;
 }
 
-.faq-item[open] summary::after {
+details.faq-item[open] summary::after {
   transform: rotate(45deg);
+}
+
+/* FAQ con button (schede prodotto compatte / legacy) */
+.faq-list .faq-item button.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.faq-list .faq-item button.faq-question:hover {
+  color: var(--accent-text);
+}
+
+.faq-list .faq-item .faq-icon {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gray-400);
+  line-height: 1;
+  transition: transform 0.25s ease, color 0.2s;
+}
+
+.faq-list .faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-list .faq-item .faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+
+.faq-list .faq-item.open .faq-answer {
+  max-height: 280px;
+  opacity: 1;
+}
+
+.faq-list .faq-item .faq-answer p {
+  padding: 0 0 24px;
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin: 0;
 }
 
 /* === Grain Texture Overlay === */
@@ -2352,6 +2408,7 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
 .wa-bar {
   --wa-mx: 50%;
   --wa-my: 50%;
+  --wa-angle: 0deg;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -2363,17 +2420,14 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
   gap: 16px;
   padding: 13px 24px;
   background:
-    radial-gradient(ellipse 90% 120% at var(--wa-mx) var(--wa-my), rgba(255,255,255,0.22) 0%, transparent 58%),
-    linear-gradient(128deg, #1a9a4a 0%, #24b85a 38%, #17803c 72%, #1e8f48 100%);
-  box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
-  transition: box-shadow 0.3s ease, background 0.35s ease;
+    radial-gradient(ellipse 140% 120% at var(--wa-mx) var(--wa-my), rgba(255,255,255,0.52) 0%, rgba(255,255,255,0.14) 38%, transparent 72%),
+    linear-gradient(132deg, #1e6b3f 0%, #248f52 42%, #1a5c36 100%);
+  box-shadow: 0 -1px 12px rgba(0,0,0,0.08);
+  transition: box-shadow 0.35s ease;
 }
 
 .wa-bar:hover {
-  background:
-    radial-gradient(ellipse 100% 140% at var(--wa-mx) var(--wa-my), rgba(255,255,255,0.32) 0%, transparent 62%),
-    linear-gradient(128deg, #1fb355 0%, #2dcc6a 42%, #1a8f45 78%, #22a858 100%);
-  box-shadow: 0 -4px 28px rgba(36, 184, 90, 0.38);
+  box-shadow: 0 -3px 24px rgba(30, 107, 63, 0.28);
 }
 
 .wa-bar p {
@@ -2391,6 +2445,7 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
 }
 
 .wa-bar a.wa-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2402,13 +2457,43 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
   border-radius: 999px;
   text-decoration: none;
   white-space: nowrap;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  border: none;
+  isolation: isolate;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.wa-bar a.wa-btn::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--wa-angle),
+    rgba(255,107,107,0.55),
+    rgba(255,217,61,0.5),
+    rgba(107,203,119,0.55),
+    rgba(77,150,255,0.5),
+    rgba(155,89,182,0.5),
+    rgba(255,107,107,0.55)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.58;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wa-bar:hover a.wa-btn::before {
+  opacity: 0.95;
 }
 
 .wa-bar a.wa-btn:hover {
-  transform: translateY(-1px) scale(1.03);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.14), 0 0 20px rgba(255,255,255,0.25);
 }
 
 .wa-bar-close {
@@ -2431,7 +2516,25 @@ html, body { overflow-x: clip; }            /* niente scroll laterale; clip non 
 body.has-wa-bar { padding-bottom: 60px; }
 
 @media (max-width: 600px) {
-  .wa-bar { flex-wrap: wrap; gap: 10px; padding: 12px 16px 12px; }
-  .wa-bar p { font-size: 0.9rem; }
-  .wa-bar-close { top: 10px; transform: none; }
+  .wa-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 48px 14px 16px;
+    justify-content: center;
+    text-align: center;
+  }
+  .wa-bar p {
+    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .wa-bar a.wa-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 10px 18px;
+  }
+  .wa-bar-close { top: 8px; right: 10px; transform: none; }
+  body.has-wa-bar { padding-bottom: 108px; }
 }

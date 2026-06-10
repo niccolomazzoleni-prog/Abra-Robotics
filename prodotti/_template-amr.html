@@ -90,18 +90,49 @@
     </div>
   </section>
 
+  <section class="section section-dark" style="padding-bottom:0;">
+    <div class="container">
+      <div class="product-stats" id="stats-section">
+%%STATS%%
+      </div>
+    </div>
+  </section>
+
   <section id="specs" class="section section-dark specs-section">
     <div class="container">
-      <div class="section-header" style="text-align:left;max-width:100%;margin-bottom:32px;">
+      <div class="section-header" style="text-align:left;max-width:100%;margin-bottom:48px;">
         <p class="label label-light">Scheda tecnica</p>
         <h2>Specifiche %%TITLE%%</h2>
       </div>
-      <div class="specs-accordion faq-list" style="max-width:100%;">
-        <div class="faq-item open">
-          <button class="faq-question" type="button"><span>Dettagli prodotto</span><span class="faq-icon">+</span></button>
-          <div class="faq-answer"><ul class="spec-table">%%SPECS_ROWS%%</ul></div>
-        </div>
+      <div class="included-strip">
+%%INCLUDED%%
       </div>
+      <div class="specs-accordion faq-list" style="max-width:100%;">
+%%SPECS_ACCORDION%%
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:24px;">
+        <p class="label label-light">Dati tecnici</p>
+        <h2>Specifiche in sintesi</h2>
+      </div>
+      <div class="spec-mini-grid">
+%%SPEC_MINI%%
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="label label-light">Il processo</p>
+        <h2>Dal sopralluogo<br>al robot operativo.</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,.65);">Tre step. Un interlocutore dall'inizio alla fine.</p>
+      </div>
+%%PROCESS%%
     </div>
   </section>
 
@@ -112,18 +143,18 @@
         <h2>Domande frequenti</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" type="button"><span>Il prezzo «da» è definitivo?</span><span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>No: è un prezzo indicativo IVA esclusa basato sul listino distributore + margine Abra. Il preventivo finale dipende da layout impianto, integrazioni e top module.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" type="button"><span>Quanto tempo serve per il go-live?</span><span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Per AMR industriali stimiamo circa 4 settimane dal sopralluogo alla messa in servizio del primo percorso, in base a complessità e IT.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" type="button"><span>%%BRAND%% è disponibile in Italia tramite Abra?</span><span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Sì: Abra Robotics seleziona, integra e supporta %%BRAND%% in progetti di logistica interna e manifattura in Italia.</p></div>
-        </div>
+        <details class="faq-item">
+          <summary>Il prezzo «da» è definitivo?</summary>
+          <p>No: è un prezzo indicativo IVA esclusa basato sul listino distributore + margine Abra. Il preventivo finale dipende da layout impianto, integrazioni e top module.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quanto tempo serve per il go-live?</summary>
+          <p>Per AMR industriali stimiamo circa 4 settimane dal sopralluogo alla messa in servizio del primo percorso, in base a complessità e IT.</p>
+        </details>
+        <details class="faq-item">
+          <summary>%%BRAND%% è disponibile in Italia tramite Abra?</summary>
+          <p>Sì: Abra Robotics seleziona, integra e supporta %%BRAND%% in progetti di logistica interna e manifattura in Italia.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -170,5 +201,6 @@
   <script src="../scripts/amr-image-runtime.js"></script>
   <script src="../script.js"></script>
   <script src="product.js"></script>
+%%WA_BAR%%
 </body>
 </html>

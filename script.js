@@ -173,21 +173,47 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// WhatsApp bar — gradiente che segue il cursore
+// FAQ accordion (button pattern — schede compatte)
 (function () {
-  const bar = document.getElementById('wa-bar');
-  if (!bar) return;
-  bar.addEventListener('mousemove', (e) => {
-    const r = bar.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width) * 100;
-    const y = ((e.clientY - r.top) / r.height) * 100;
-    bar.style.setProperty('--wa-mx', `${x}%`);
-    bar.style.setProperty('--wa-my', `${y}%`);
+  document.querySelectorAll('.faq-list .faq-item button.faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      if (!item) return;
+      const open = item.classList.contains('open');
+      item.closest('.faq-list')?.querySelectorAll('.faq-item.open').forEach((el) => {
+        if (el !== item) el.classList.remove('open');
+      });
+      item.classList.toggle('open', !open);
+    });
   });
-  bar.addEventListener('mouseleave', () => {
-    bar.style.setProperty('--wa-mx', '50%');
-    bar.style.setProperty('--wa-my', '50%');
-  });
+})();
+
+// WhatsApp bar — gradiente che segue il cursore (dopo che #wa-bar è nel DOM)
+(function () {
+  function initWaBar() {
+    const bar = document.getElementById('wa-bar');
+    if (!bar || bar.dataset.waInit === '1') return;
+    bar.dataset.waInit = '1';
+    bar.addEventListener('mousemove', (e) => {
+      const r = bar.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      const angle = Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * (180 / Math.PI);
+      bar.style.setProperty('--wa-mx', `${x}%`);
+      bar.style.setProperty('--wa-my', `${y}%`);
+      bar.style.setProperty('--wa-angle', `${angle}deg`);
+    });
+    bar.addEventListener('mouseleave', () => {
+      bar.style.setProperty('--wa-mx', '50%');
+      bar.style.setProperty('--wa-my', '50%');
+      bar.style.setProperty('--wa-angle', '0deg');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWaBar);
+  } else {
+    initWaBar();
+  }
 })();
 
 // Cookie / privacy informational notice (technical cookies only)
