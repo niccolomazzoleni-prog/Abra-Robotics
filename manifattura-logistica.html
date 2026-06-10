@@ -373,6 +373,68 @@
     }
     .avviso-box strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
 
+    .card-price {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .robot-card.dark .card-price { color: var(--white); }
+    .price-note {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+      margin: -8px 0 0;
+      max-width: 720px;
+    }
+    .price-note a {
+      color: var(--black);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .price-note a:hover { opacity: 0.7; }
+    .amr-inclusion-box {
+      margin-top: 20px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      display: grid;
+      gap: 10px;
+      max-width: 880px;
+    }
+    .amr-inclusion-box p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+    }
+    .amr-inclusion-box strong { color: var(--black); font-weight: 700; }
+    .amr-catalog-group {
+      margin-bottom: 56px;
+      scroll-margin-top: 160px;
+    }
+    .amr-catalog-group:last-child { margin-bottom: 0; }
+    .amr-group-head {
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .amr-group-head h3 {
+      font-size: 1.15rem;
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .amr-group-head p {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      margin: 0;
+      line-height: 1.55;
+    }
+
     /* CTA */
     .robot-card-cta {
       margin-top: auto;
@@ -381,6 +443,11 @@
       flex-wrap: wrap;
       padding-top: 4px;
     }
+    .robot-card-cta:has(.card-price) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .robot-card-cta:has(.card-price) .btn { width: 100%; justify-content: center; }
 
     /* KPI box */
     .kpi-strip {
@@ -753,6 +820,34 @@
       .robot-card h3 { font-size: 1.08rem; }
       .kpi-box .kpi-value { font-size: 1.3rem; }
     }
+  
+    .robot-media.amr-media .amr-media-stage,
+    .cat-media.amr-media .amr-media-stage {
+      position: relative; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .robot-media.amr-media .amr-media-stage img,
+    .robot-media.amr-media .amr-media-stage video,
+    .cat-media.amr-media .amr-media-stage img,
+    .cat-media.amr-media .amr-media-stage video {
+      width: 100%; height: 100%; object-fit: contain; padding: 16px;
+      filter: drop-shadow(0 12px 16px rgba(0,0,0,0.14));
+    }
+    .amr-media-stage video { padding: 8px; }
+    .cat-media.amr-media { position: relative; aspect-ratio: 4/3; }
+
+  
+    .robot-media.amr-media img,
+    .robot-media.amr-media video,
+    .cat-media.amr-media img,
+    .cat-media.amr-media video {
+      width: 100%; height: 100%; object-fit: contain; padding: 20px;
+      filter: drop-shadow(0 12px 16px rgba(0,0,0,0.14));
+    }
+    .robot-media.amr-media video,
+    .cat-media.amr-media video { padding: 12px; }
+    .cat-media.amr-media { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: var(--gray-50); }
+
   </style>
 </head>
 <body>
@@ -775,7 +870,8 @@
             <a href="quadrupedi.html">Quadrupedi</a>
             <a href="umanoidi.html">Umanoidi</a>
             <a href="accessori.html">Accessori</a>
-            <a href="catalogo-unitree.html">Catalogo completo</a>
+            <a href="catalogo-unitree.html">Catalogo Unitree</a>
+            <a href="catalogo-amr.html">Catalogo AMR</a>
             <a href="listino-unitree.html">Listino prezzi</a>
           </div>
         </div>
@@ -808,7 +904,8 @@
         <a href="quadrupedi.html">Quadrupedi</a>
         <a href="umanoidi.html">Umanoidi</a>
         <a href="accessori.html">Accessori</a>
-        <a href="catalogo-unitree.html">Catalogo completo</a>
+        <a href="catalogo-unitree.html">Catalogo Unitree</a>
+        <a href="catalogo-amr.html">Catalogo AMR</a>
         <a href="listino-unitree.html">Listino prezzi</a>
       </div>
     </div>
@@ -1119,106 +1216,177 @@
   <section id="amr" class="vert-section" style="background:var(--gray-50);">
     <div class="container">
 
-      <div class="vert-section-head">
+<div class="vert-section-head">
         <p class="label">03 · AMR</p>
         <h2>I tuoi materiali arrivano in linea. Sempre, in orario, senza operatori logistici.</h2>
-        <p>Gli AMR sostituiscono il trasporto manuale interno: tote, cassette, semilavorati, carrelli. Navigazione autonoma, integrazione con il tuo WMS, percorsi dinamici che si adattano in real-time alla produzione.</p>
+        <p>Gli AMR sostituiscono il trasporto manuale interno: tote, cassette, semilavorati, carrelli e pallet. Qui trovi <strong>6 modelli in evidenza</strong> — i più richiesti per latent lift, shelf MiR, pallet EUR e muletti. Il <a href="catalogo-amr.html">catalogo completo</a> include <strong>16 configurazioni</strong> MiR, Youibot, Neura, AutoXing ed EP Equipment. Prezzi indicativi — IVA esclusa.</p>
+        <div class="amr-inclusion-box">
+          <p><strong>Inclusi nel prezzo «da»:</strong> assessment iniziale, sopralluogo virtuale o fisico e prima analisi di fattibilità Abra.</p>
+          <p><strong>Non inclusi</strong> (preventivo dedicato): digital twin, progettazione isola o cella, integrazione WMS/MES/ERP, software flotta, stazione di ricarica, commissioning in sito e top module aggiuntivi.</p>
+        </div>
+        <p class="price-note"><a href="catalogo-amr.html">Vedi tutte le 16 configurazioni AMR →</a></p>
       </div>
 
-      <div class="robot-grid">
+      <div class="robot-grid cols-3">
 
-        <!-- HikRobot LMR -->
-        <article class="robot-card">
-          <div class="robot-media">
-            <span class="robot-media-tag">Logistica interna · Tote e carrelli</span>
-            <img src="images/manifattura/hikrobot-lmr.png"
-                 alt="HikRobot LMR, robot mobile autonomo per logistica interna"
-                 loading="lazy"
-                 style="max-width:50%;max-height:50%;"
-                 onerror="this.parentElement.classList.add('no-img');">
-            <div class="robot-media-placeholder">
-              <strong>HikRobot LMR</strong>
-              <span>AMR · SLAM laser</span>
+        <article class="robot-card" id="amr-l300">
+          <div class="robot-media amr-media"><span class="robot-media-tag">Pesi leggeri · Latent</span><img src="images/manifattura/amr/youibot-l300.png" alt="Youibot L300" loading="lazy" onerror="this.closest('.robot-media').classList.add('no-img');"><div class="robot-media-placeholder"><strong>Youibot</strong><span>Youibot L300</span></div></div>
+          <div class="robot-body">
+            <div><h3>Youibot L300</h3><p class="robot-subtitle">Latent AMR · 300 kg · lift 60 mm</p></div>
+            <p class="robot-blurb">Va sotto carrelli e scaffali, solleva e trasporta in autonomia. Laser SLAM ±5 mm, YOUIFLEET, CE.</p>
+            <div class="key-specs">              <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">300 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Lift</span><span class="key-spec-value">60 mm · 360°</span></div>
+              <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">8 h</span></div>
+              <div class="key-spec"><span class="key-spec-label">Precisione</span><span class="key-spec-value">±5 mm</span></div>
             </div>
-          </div>
-          <div class="robot-body short-body">
-            <div>
-              <h3>HikRobot LMR Series</h3>
-              <p class="robot-subtitle">Latent Mobile Robot · payload 200-1500 kg</p>
-            </div>
-
-            <p class="robot-blurb">
-              Famiglia di AMR HikRobot a sollevamento sottoscocca. Naviga sotto carrelli e scaffali, li solleva e li trasporta in autonomia. SLAM laser, integrazione con sistemi MES/WMS, flotta gestita centralmente.
-            </p>
-
-            <ul class="chip-list">
-              <li>Payload 200-1500 kg</li>
-              <li>SLAM laser</li>
-              <li>Multi-robot fleet</li>
-              <li>API REST</li>
+            <ul class="spec-rows">              <li><span>Dimensioni</span><span>800 × 619 × 330 mm</span></li>
+              <li><span>Peso</span><span>180 kg</span></li>
+              <li><span>Velocità max</span><span>1,5 m/s</span></li>
+              <li><span>Navigazione</span><span>Laser SLAM</span></li>
             </ul>
-
             <div class="use-case-box">
               <span class="use-case-label">Caso d'uso chiave</span>
-              <p class="use-case-text">Trasporto tote tra reparti, rifornimento bordo linea con kanban automatico, picking in magazzino.</p>
+              <p class="use-case-text">Logistica interna in corridoi stretti, rifornimento bordo linea.</p>
             </div>
-
             <div class="robot-card-cta">
-              <!-- PREZZO DA VERIFICARE: HikRobot listino non pubblico, quotazione su configurazione flotta -->
-              <a href="#contact-form" class="btn btn-primary btn-sm">Scopri di più</a>
+              <span class="card-price">da 29.988,00 €</span>
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
             </div>
           </div>
         </article>
-
-        <!-- Enabled Robotics MC250 -->
-        <article class="robot-card">
-          <div class="robot-media">
-            <span class="robot-media-tag">Mobile cobot · Pick &amp; deliver</span>
-            <img src="images/manifattura/enabled-mc250.png"
-                 alt="Enabled Robotics MC250, mobile cobot MiR250 + Universal Robots"
-                 loading="lazy"
-                 onerror="this.parentElement.classList.add('no-img');">
-            <div class="robot-media-placeholder">
-              <strong>MC250</strong>
-              <span>AMR + cobot</span>
+        <article class="robot-card" id="amr-mir250-shelf">
+          <div class="robot-media amr-media"><span class="robot-media-tag">MiR · Leggero-medio</span><img src="images/manifattura/amr/mir250-shelf.png" alt="MiR250 Shelf Carrier" loading="lazy" onerror="this.closest('.robot-media').classList.add('no-img');"><div class="robot-media-placeholder"><strong>MiR250</strong><span>MiR250 Shelf Carrier</span></div></div>
+          <div class="robot-body">
+            <div><h3>MiR250 Shelf Carrier</h3><p class="robot-subtitle">Mobile Industrial Robots · 250 kg · IP52</p></div>
+            <p class="robot-blurb">Portascarrelli integrato per shelf-to-person e trasporto carrelli tra reparti.</p>
+            <div class="key-specs">              <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">250 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">2,0 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">~13 h</span></div>
+              <div class="key-spec"><span class="key-spec-label">Protezione</span><span class="key-spec-value">IP52</span></div>
             </div>
-          </div>
-          <div class="robot-body short-body">
-            <div>
-              <h3>Enabled Robotics MC250</h3>
-              <p class="robot-subtitle">Mobile cobot · MiR250 + Universal Robots</p>
-            </div>
-
-            <p class="robot-blurb">
-              Piattaforma mobile MiR250 integrata con un cobot Universal Robots (UR5e / UR10e / UR16e). Il robot si sposta autonomamente in produzione e svolge task di manipolazione sul posto: machine tending mobile, ispezione, kitting.
-            </p>
-
-            <ul class="chip-list">
-              <li>Base AMR 250 kg</li>
-              <li>Cobot UR fino a 16 kg</li>
-              <li>Una flotta, due funzioni</li>
-              <li>MiR Fleet compatibile</li>
+            <ul class="spec-rows">              <li><span>Dimensioni (L×P×H)</span><span>800 × 580 × 300 mm</span></li>
+              <li><span>Peso</span><span>78 kg</span></li>
+              <li><span>Navigazione</span><span>SLAM laser 2D/3D</span></li>
+              <li><span>Corridoio min.</span><span>800 mm</span></li>
             </ul>
-
             <div class="use-case-box">
               <span class="use-case-label">Caso d'uso chiave</span>
-              <p class="use-case-text">Machine tending distribuito su più macchine senza dedicare un cobot fisso per ciascuna. Ispezione e kitting mobile in produzione e laboratorio.</p>
+              <p class="use-case-text">Trasporto materiali in manifattura con integrazione MiR Fleet.</p>
             </div>
-
             <div class="robot-card-cta">
-              <!-- PREZZO DA VERIFICARE: MC250 distribuzione Enabled Robotics / Konica Minolta -->
-              <a href="#contact-form" class="btn btn-primary btn-sm">Scopri di più</a>
+              <span class="card-price">da 63.614,00 €</span>
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
             </div>
           </div>
         </article>
-
+        <article class="robot-card" id="amr-mir600-pallet">
+          <div class="robot-media amr-media"><span class="robot-media-tag">MiR · Medio</span><img src="images/manifattura/amr/mir600-hero.png" alt="MiR600 EU Pallet Lift" loading="lazy" onerror="this.closest('.robot-media').classList.add('no-img');"><div class="robot-media-placeholder"><strong>MiR600</strong><span>MiR600 EU Pallet Lift</span></div></div>
+          <div class="robot-body">
+            <div><h3>MiR600 EU Pallet Lift</h3><p class="robot-subtitle">Mobile Industrial Robots · 600 kg · IP52</p></div>
+            <p class="robot-blurb">Sollevamento pallet EUR 800×1200 mm — sostituisce movimenti muletto su percorsi fissi.</p>
+            <div class="key-specs">              <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">600 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">2,0 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">~8 h</span></div>
+              <div class="key-spec"><span class="key-spec-label">Protezione</span><span class="key-spec-value">IP52</span></div>
+            </div>
+            <ul class="spec-rows">              <li><span>Dimensioni (L×P×H)</span><span>1.350 × 920 × 320 mm</span></li>
+              <li><span>Peso</span><span>238 kg</span></li>
+              <li><span>Navigazione</span><span>SLAM laser</span></li>
+              <li><span>Corridoio min.</span><span>1.400 mm</span></li>
+            </ul>
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Trasporto pallet e materiali tra produzione e magazzino.</p>
+            </div>
+            <div class="robot-card-cta">
+              <span class="card-price">da 87.374,00 €</span>
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
+            </div>
+          </div>
+        </article>
+        <article class="robot-card" id="amr-l1000">
+          <div class="robot-media amr-media"><span class="robot-media-tag">Latent · Medio</span><img src="images/manifattura/amr/youibot-l1000.png" alt="Youibot L1000-R" loading="lazy" onerror="this.closest('.robot-media').classList.add('no-img');"><div class="robot-media-placeholder"><strong>Youibot</strong><span>Youibot L1000-R</span></div></div>
+          <div class="robot-body">
+            <div><h3>Youibot L1000-R</h3><p class="robot-subtitle">Latent AMR · 1.000 kg</p></div>
+            <p class="robot-blurb">Sollevamento sottoscocca 1 ton, laser SLAM ±5 mm. Deploy con Michelin, DHL, TSMC.</p>
+            <div class="key-specs">              <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">1.000 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Lift</span><span class="key-spec-value">60 mm</span></div>
+              <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">8 h</span></div>
+              <div class="key-spec"><span class="key-spec-label">Precisione</span><span class="key-spec-value">±5 mm</span></div>
+            </div>
+            <ul class="spec-rows">              <li><span>Dimensioni</span><span>1.060 × 838 × 300 mm</span></li>
+              <li><span>Peso</span><span>310 kg</span></li>
+              <li><span>Velocità max</span><span>1,5 m/s</span></li>
+              <li><span>Software</span><span>YOUIFLEET</span></li>
+            </ul>
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Trasporto carrelli e pallet tra magazzino e produzione.</p>
+            </div>
+            <div class="robot-card-cta">
+              <span class="card-price">da 60.000,00 €</span>
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
+            </div>
+          </div>
+        </article>
+        <article class="robot-card" id="amr-xp15">
+          <div class="robot-media amr-media"><span class="robot-media-tag">Muletto · AMR</span><img src="images/manifattura/amr/ep-xp15.jpg" alt="EP Equipment XP15" loading="lazy" onerror="this.closest('.robot-media').classList.add('no-img');"><div class="robot-media-placeholder"><strong>EP</strong><span>EP Equipment XP15</span></div></div>
+          <div class="robot-body">
+            <div><h3>EP Equipment XP15</h3><p class="robot-subtitle">Transpallet AMR · 1.500 kg</p></div>
+            <p class="robot-blurb">Muletto elettrico autonomo con forche. LiDAR + camera, anche in modalità manuale.</p>
+            <div class="key-specs">              <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">1.500 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Forche</span><span class="key-spec-value">1.150–1.500 mm</span></div>
+              <div class="key-spec"><span class="key-spec-label">Precisione</span><span class="key-spec-value">±20 mm</span></div>
+              <div class="key-spec"><span class="key-spec-label">Batteria</span><span class="key-spec-value">24V / 60Ah</span></div>
+            </div>
+            <ul class="spec-rows">              <li><span>Dimensioni</span><span>1.695 × 842 mm</span></li>
+              <li><span>Peso</span><span>335 kg</span></li>
+              <li><span>Velocità max</span><span>1,25 m/s</span></li>
+              <li><span>Navigazione</span><span>LiDAR 2D</span></li>
+            </ul>
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Movimentazione pallet tra dock, magazzino e linea.</p>
+            </div>
+            <div class="robot-card-cta">
+              <span class="card-price">da 30.000,00 €</span>
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
+            </div>
+          </div>
+        </article>
+        <article class="robot-card" id="amr-mav-1500">
+          <div class="robot-media amr-media"><span class="robot-media-tag">Pesante · EU</span><img src="images/manifattura/amr/neura-mav-1500.webp" alt="Neura Robotics MAV-1500" loading="lazy" onerror="this.closest('.robot-media').classList.add('no-img');"><div class="robot-media-placeholder"><strong>Neura</strong><span>Neura Robotics MAV-1500</span></div></div>
+          <div class="robot-body">
+            <div><h3>Neura Robotics MAV-1500</h3><p class="robot-subtitle">AMR · 1.500 kg · PLd Cat.3</p></div>
+            <p class="robot-blurb">Progettato in Germania: SLAM dinamico, lift 55 mm, ROS2 / OPC UA / VDA 5050.</p>
+            <div class="key-specs">              <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">1.500 kg</span></div>
+              <div class="key-spec"><span class="key-spec-label">Lift</span><span class="key-spec-value">0–55 mm</span></div>
+              <div class="key-spec"><span class="key-spec-label">Autonomia</span><span class="key-spec-value">10 h</span></div>
+              <div class="key-spec"><span class="key-spec-label">Safety</span><span class="key-spec-value">PLd Cat.3</span></div>
+            </div>
+            <ul class="spec-rows">              <li><span>Dimensioni</span><span>1.530 × 910 × 294 mm</span></li>
+              <li><span>Peso</span><span>400 kg</span></li>
+              <li><span>Velocità max</span><span>1,5 m/s</span></li>
+              <li><span>IP</span><span>IP44 (IP54 opt.)</span></li>
+            </ul>
+            <div class="use-case-box">
+              <span class="use-case-label">Caso d'uso chiave</span>
+              <p class="use-case-text">Movimentazione carichi pesanti in automotive e metalmeccanica.</p>
+            </div>
+            <div class="robot-card-cta">
+              <span class="card-price">da 53.880,00 €</span>
+              <a href="#contact-form" class="btn btn-primary btn-sm">Richiedi preventivo</a>
+            </div>
+          </div>
+        </article>
       </div>
 
       <div class="section-cta-row">
-        <a href="#contact-form" class="btn btn-primary">Scopri gli AMR disponibili</a>
+        <a href="catalogo-amr.html" class="btn btn-primary">Catalogo AMR completo (16 modelli)</a>
+        <a href="#contact-form" class="btn btn-secondary">Richiedi preventivo</a>
       </div>
 
-    </div>
+</div>
   </section>
 
   <!-- SEZIONE 4 - COBOT -->
