@@ -1,6 +1,6 @@
-/* Stripe — generato da _gen_stripe.py (sandbox/test). NON contiene segreti. */
+/* Stripe — Payment Link per ogni scheda prodotto.
+   Valore vuoto = bottone Acquista rimanda a richiesta preventivo finche non configuri Stripe. */
 window.STRIPE_PUBLISHABLE_KEY = "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si";
-window.GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQHcWp5OFlAssEajk03akHm2T_JlxAf_-SwWkKP773dXIt0Q0WvAJ1HtNdKl5E54vc/exec";
 window.STRIPE_PAYMENT_LINKS = {
   "unitree-a2-battery.html": "https://buy.stripe.com/test_14A6oAa6Fgogg79g5genS0g",
   "unitree-a2-charger.html": "https://buy.stripe.com/test_bJe3codiR7RK5svbP0enS0h",
@@ -35,7 +35,6 @@ window.STRIPE_PAYMENT_LINKS = {
   "unitree-g1-edu-ultimate-c.html": "https://buy.stripe.com/test_dRm9AM6Uteg83kn6uGenS0O",
   "unitree-g1-edu-ultimate-d.html": "https://buy.stripe.com/test_6oU9AMa6F2xq1cff1cenS0P",
   "unitree-g1-edu-ultimate-e.html": "https://buy.stripe.com/test_aFa5kw3Ihb3Wf358COenS0Q",
-  "unitree-g1-edu-ultimate-f.html": "",
   "unitree-g1-frame.html": "https://buy.stripe.com/test_4gM6oA4Ml2xqg799GSenS0G",
   "unitree-g1-remote.html": "https://buy.stripe.com/test_00waEQemV3Bu5sv9GSenS0H",
   "unitree-g1-u10.html": "https://buy.stripe.com/test_7sYaEQ4Mleg85sv9GSenS0J",
