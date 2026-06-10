@@ -156,6 +156,23 @@ document.head.insertAdjacentHTML('beforeend', `
   </style>
 `);
 
+// WhatsApp bar — gradiente che segue il cursore
+(function () {
+  const bar = document.getElementById('wa-bar');
+  if (!bar) return;
+  bar.addEventListener('mousemove', (e) => {
+    const r = bar.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    bar.style.setProperty('--wa-mx', `${x}%`);
+    bar.style.setProperty('--wa-my', `${y}%`);
+  });
+  bar.addEventListener('mouseleave', () => {
+    bar.style.setProperty('--wa-mx', '50%');
+    bar.style.setProperty('--wa-my', '50%');
+  });
+})();
+
 // Cookie / privacy informational notice (technical cookies only)
 (function () {
   const KEY = 'abra_cookie_notice';

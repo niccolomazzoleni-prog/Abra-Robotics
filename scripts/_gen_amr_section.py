@@ -259,7 +259,7 @@ def manifattura_card_v2(prod):
     )
     rows_html = "\n".join(f"              <li><span>{k}</span><span>{v}</span></li>" for k, v in rows)
     return f"""
-        <article class="robot-card" id="amr-{slug}">
+        <article class="robot-card" id="amr-{slug}" data-amr-slug="{slug}">
           {media_block(slug, title, tag)}
           <div class="robot-body">
             <div><h3>{title}</h3><p class="robot-subtitle">{subtitle}</p></div>
@@ -284,7 +284,7 @@ def catalogo_card(prod):
     slug, group, tag, title, subtitle, blurb, *_rest = prod
     price = prod[-1]
     return f"""
-        <article class="cat-card" id="{slug}" data-group="{group}" data-name="{title.lower()}">
+        <article class="cat-card" id="{slug}" data-group="{group}" data-name="{title.lower()}" data-amr-slug="{slug}">
           {cat_media_block(slug, title)}
           <div class="cat-body">
             <p class="cat-family">{tag}</p>
@@ -331,6 +331,13 @@ for gid, (heading, desc) in GROUPS.items():
       <div class="cat-grid">{''.join(items)}
       </div>
     </section>""")
+
+
+def inject_amr_runtime_script(html: str) -> str:
+    tag = '  <script src="scripts/amr-image-runtime.js"></script>\n'
+    if "amr-image-runtime.js" in html:
+        return html
+    return html.replace("  <script src=\"script.js\"></script>", tag + "  <script src=\"script.js\"></script>", 1)
 
 
 def inject_amr_css(html: str) -> str:
@@ -409,6 +416,7 @@ def write_catalogo():
     </p>
   </main>
   <footer class="footer"><div class="container footer-inner"><p>© 2026 Abra Robotics</p></div></footer>
+  <script src="scripts/amr-image-runtime.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
@@ -430,6 +438,7 @@ def patch_manifattura():
     container_close = html.rindex("</div>", end, section_end)
     html = html[:start] + MANIFATTURA_BODY.strip() + "\n\n" + html[container_close:]
     html = re.sub(r"\n  <script>\s*\(function \(\) \{[\s\S]*?data-amr-gallery[\s\S]*?\}\)\(\);\s*</script>", "", html)
+    html = inject_amr_runtime_script(html)
     path.write_text(html, encoding="utf-8")
     print("Patched manifattura-logistica.html")
 
