@@ -16,7 +16,7 @@ if not os.path.exists("stripe-config.js"):
         "/* Stripe — incolla qui i Payment Link creati nella dashboard Stripe.",
         "   Chiave = nome file della scheda. Valore = URL del Payment Link (https://buy.stripe.com/...).",
         "   Finche' il valore resta vuoto, il bottone 'Acquista' rimanda alla richiesta preventivo. */",
-        'window.STRIPE_PUBLISHABLE_KEY = "pk_live_DA_COMPLETARE";',
+        'window.STRIPE_PUBLISHABLE_KEY = "";',
         "window.STRIPE_PAYMENT_LINKS = {",
     ]
     for p in pages:

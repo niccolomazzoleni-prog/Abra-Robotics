@@ -36,9 +36,9 @@ from _prezzi import euro
 BASE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(BASE)
 END_USER = os.path.join(ROOT, "listini", "pubblico", "end-user.json")
-SITE_URL = "https://niccolomazzoleni-prog.github.io/Abra-Robotics"  # base per success redirect
+SITE_URL = "https://abrarobotics.com"  # redirect post-checkout (grazie.html)
 SHIP_COUNTRIES = ["IT", "FR", "DE", "ES", "AT", "BE", "NL", "PT", "CH"]  # B2B EU
-DEFAULT_PUB_KEY = "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
+DEFAULT_PUB_KEY_TEST = "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
 
 
 def load_dotenv(path: str) -> None:
@@ -60,12 +60,30 @@ stripe.api_key = (os.environ.get("STRIPE_SECRET_KEY") or "").strip()
 if not stripe.api_key:
     sys.exit(
         "STRIPE_SECRET_KEY non impostata.\n"
-        "Crea .env nella root con STRIPE_SECRET_KEY=sk_test_... oppure:\n"
-        "  $env:STRIPE_SECRET_KEY='sk_test_...'  (PowerShell)\n"
-        "  python scripts/connect_stripe_sandbox.py"
+        "Crea .env nella root con STRIPE_SECRET_KEY=sk_test_... o sk_live_... oppure:\n"
+        "  $env:STRIPE_SECRET_KEY='sk_live_...'  (PowerShell)\n"
+        "  python scripts/connect_stripe_live.py   (produzione)\n"
+        "  python scripts/connect_stripe_sandbox.py (test)"
     )
-PUB_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", DEFAULT_PUB_KEY)
+
+LIVE_MODE = stripe.api_key.startswith("sk_live_")
+TEST_MODE = stripe.api_key.startswith("sk_test_")
+if not LIVE_MODE and not TEST_MODE:
+    sys.exit("STRIPE_SECRET_KEY non valida: deve iniziare con sk_live_ o sk_test_.")
+
+if "--live" in sys.argv and not LIVE_MODE:
+    sys.exit("Flag --live richiede STRIPE_SECRET_KEY=sk_live_...")
+
+PUB_KEY = (os.environ.get("STRIPE_PUBLISHABLE_KEY") or "").strip()
+if not PUB_KEY:
+    PUB_KEY = "" if LIVE_MODE else DEFAULT_PUB_KEY_TEST
+if LIVE_MODE and not PUB_KEY.startswith("pk_live_"):
+    sys.exit("In modalità LIVE serve STRIPE_PUBLISHABLE_KEY=pk_live_... nel .env")
+if TEST_MODE and PUB_KEY and not PUB_KEY.startswith("pk_test_"):
+    sys.exit("Con sk_test_ usa STRIPE_PUBLISHABLE_KEY=pk_test_...")
+
 GAS_URL = os.environ.get("GOOGLE_SCRIPT_URL", "INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT")
+MODE_LABEL = "live/produzione" if LIVE_MODE else "sandbox/test"
 
 
 def product_name(slug):
@@ -106,13 +124,15 @@ def make_payment_link(slug, name, cent):
 
 
 def existing_payment_links() -> dict[str, str]:
-    """Mantiene i link già configurati e tutte le schede HTML del catalogo."""
+    """Mantiene i link già configurati solo per schede HTML esistenti."""
     out: dict[str, str] = {}
     cfg = os.path.join(BASE, "stripe-config.js")
     if os.path.isfile(cfg):
         text = open(cfg, encoding="utf-8").read()
         for m in re.finditer(r'"([^"]+\.html)":\s*"([^"]*)"', text):
-            out[m.group(1)] = m.group(2)
+            slug = m.group(1)
+            if os.path.isfile(os.path.join(BASE, slug)):
+                out[slug] = m.group(2)
     for path in sorted(glob.glob(os.path.join(BASE, "unitree-*.html"))):
         slug = os.path.basename(path)
         out.setdefault(slug, "")
@@ -150,7 +170,7 @@ def write_config(links):
     merged = existing_payment_links()
     merged.update(links)
     body = [
-        "/* Stripe — generato da _gen_stripe.py (sandbox/test). NON contiene segreti. */",
+        f"/* Stripe — generato da _gen_stripe.py ({MODE_LABEL}). NON contiene segreti. */",
         f'window.STRIPE_PUBLISHABLE_KEY = "{PUB_KEY}";',
         f'window.GOOGLE_SCRIPT_URL = "{GAS_URL}";',
         "window.STRIPE_PAYMENT_LINKS = {",
@@ -164,6 +184,7 @@ def write_config(links):
 
 def main():
     catalog = catalog_from_end_user()
+    print(f"Modalità: {MODE_LABEL}")
     print(f"Prodotti con prezzo: {len(catalog)}\n")
     links = {}
     for i, item in enumerate(catalog, 1):

@@ -21,7 +21,7 @@ GEN = ROOT / "prodotti" / "_gen_stripe.py"
 def main() -> None:
     if not GEN.is_file():
         raise SystemExit(f"Script non trovato: {GEN}")
-    print("Stripe sandbox — generazione Payment Link da _prezzi.py …\n")
+    print("Stripe sandbox — generazione Payment Link da end-user.json …\n")
     subprocess.run([sys.executable, str(GEN)], cwd=str(GEN.parent), check=True)
     print("\nOK. Controlla prodotti/stripe-config.js e fai commit + push.")
 

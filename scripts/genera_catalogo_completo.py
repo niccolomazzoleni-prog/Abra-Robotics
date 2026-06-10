@@ -319,9 +319,23 @@ def update_csv_pages(rows: list[dict]) -> None:
         w.writerows(rows)
 
 
-STRIPE_PUB_KEY = (
-    "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
-)
+def _stripe_pub_key() -> str:
+    """Legge pk da .env o da stripe-config.js esistente (non sovrascrive live con test)."""
+    import os
+    import re
+    from pathlib import Path
+
+    env_pk = (os.environ.get("STRIPE_PUBLISHABLE_KEY") or "").strip()
+    if env_pk:
+        return env_pk
+    cfg = PRODOTTI / "stripe-config.js"
+    if cfg.is_file():
+        m = re.search(r'STRIPE_PUBLISHABLE_KEY\s*=\s*"([^"]+)"', cfg.read_text(encoding="utf-8"))
+        if m:
+            return m.group(1)
+    return (
+        "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
+    )
 
 
 def regenerate_stripe_config(filenames: list[str]) -> None:
@@ -335,7 +349,7 @@ def regenerate_stripe_config(filenames: list[str]) -> None:
     lines = [
         "/* Stripe — Payment Link per ogni scheda prodotto.",
         "   Valore vuoto = bottone Acquista rimanda a richiesta preventivo finche non configuri Stripe. */",
-        f'window.STRIPE_PUBLISHABLE_KEY = "{STRIPE_PUB_KEY}";',
+        f'window.STRIPE_PUBLISHABLE_KEY = "{_stripe_pub_key()}";',
         "window.STRIPE_PAYMENT_LINKS = {",
     ]
     for fn in sorted(set(filenames)):
