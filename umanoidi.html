@@ -3,11 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robot Umanoidi Unitree G1 — Tutta la gamma | Abra Robotics</title>
+  <title>Robot Umanoidi Unitree G1: tutta la gamma | Abra Robotics</title>
   <meta name="description" content="Tutti i modelli di robot umanoide Unitree G1 distribuiti in Italia da Abra Robotics: G1 Base, EDU Standard, EDU Plus, EDU Ultimate A-F e G1 Comp. Specifiche, confronto e schede tecniche.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://abrarobotics.com/umanoidi.html">
 
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/logo-full.png">
+  <link rel="apple-touch-icon" href="images/logo-full.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Robot Umanoidi Unitree G1: tutta la gamma | Abra Robotics">
+  <meta property="og:description" content="Tutti i modelli di robot umanoide Unitree G1 distribuiti in Italia da Abra Robotics: G1 Base, EDU Standard, EDU Plus, EDU Ultimate A-F e G1 Comp. Specifiche, confronto e schede tecniche.">
+  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/umanoidi.html">
+  <meta property="og:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Robot Umanoidi Unitree G1: tutta la gamma | Abra Robotics">
+  <meta name="twitter:description" content="Tutti i modelli di robot umanoide Unitree G1 distribuiti in Italia da Abra Robotics: G1 Base, EDU Standard, EDU Plus, EDU Ultimate A-F e G1 Comp. Specifiche, confronto e schede tecniche.">
+  <meta name="twitter:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -326,7 +339,7 @@
           <div class="nav-dropdown-panel">
             <a href="manifattura-logistica.html#cobot">Cobot</a>
             <a href="manifattura-logistica.html#amr">AMR</a>
-            <a href="quadrupedi.html">Quadrupedi</a>
+            <a href="lp-quadrupedi.html">Quadrupedi</a>
             <a href="umanoidi.html">Umanoidi</a>
             <a href="accessori.html">Accessori</a>
             <a href="catalogo-unitree.html">Catalogo completo</a>
@@ -383,7 +396,7 @@
   <section class="collection-hero">
     <div class="container">
       <p class="label">Robot Umanoidi</p>
-      <h1>Unitree G1 — tutta la gamma</h1>
+      <h1>Unitree G1: tutta la gamma</h1>
       <p class="lead">La famiglia di robot umanoidi Unitree G1, distribuita in Italia da Abra Robotics. Dal modello base alle configurazioni EDU per la ricerca, fino alla versione atletica Comp: dieci modelli, una sola piattaforma, una scheda tecnica dedicata per ciascuno.</p>
       <div class="hero-meta">
         <div><strong>10</strong><span>Modelli G1</span></div>
@@ -391,6 +404,46 @@
         <div><strong>100 TOPS</strong><span>Computing Jetson Orin NX</span></div>
         <div><strong>Italia</strong><span>Distributore ufficiale</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- FORM PRIMA DEL CATALOGO -->
+  <section class="section section-cta" id="form" style="scroll-margin-top:120px;padding-top:64px;padding-bottom:64px;">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Vuoi capire quale G1 fa per te?</h2>
+        <p class="cta-subtitle">Compila il form, un consulente Abra ti ricontatta entro 12 ore.</p>
+      </div>
+      <form id="contact-form" class="contact-form" novalidate>
+        <input type="hidden" name="prodotto" value="Umanoidi G1">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome e cognome</label>
+            <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="form-group">
+            <label for="azienda">Azienda o ente</label>
+            <input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l. / Università di..." required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="nome@azienda.it" required></div>
+          <div class="form-group"><label for="telefono">Telefono</label><input type="tel" id="telefono" name="telefono" placeholder="+39 ..." required></div>
+        </div>
+        <div class="form-group">
+          <label for="ruolo">Ruolo</label>
+          <input type="text" id="ruolo" name="ruolo" placeholder="CTO, Responsabile R&D, Ricercatore..." required>
+        </div>
+        <div class="form-group">
+          <label for="messaggio">La tua richiesta</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Raccontaci il tuo progetto o dimmi quale modello stai valutando." rows="4" required></textarea>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+          <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
+        </div>
+        <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+      </form>
     </div>
   </section>
 
@@ -405,41 +458,20 @@
       </div>
       <div class="robot-grid">
 
-        <article class="robot-card" data-family="g1" data-tier="air">
-          <div class="robot-media">
-            <span class="robot-media-tag">Air · Marketing e Comunicazione</span>
-            <img src="prodotti/assets/images/g1-01.jpg" alt="Unitree G1 Air, robot umanoide Unitree" loading="lazy"
-                 onerror="this.parentElement.classList.add('no-img');">
-            <div class="robot-media-placeholder">
-              <strong>Unitree G1 Air</strong>
-              <span>Umanoide · 23 DoF</span>
-            </div>
+        <article class="robot-card dark" data-family="g1" data-tier="air" style="background:var(--black);display:flex;flex-direction:column;justify-content:space-between;padding:32px;">
+          <div>
+            <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:20px;">Parla con un tecnico</p>
+            <h3 style="color:#fff;font-size:1.35rem;margin-bottom:10px;">Non sai quale G1 scegliere?</h3>
+            <p style="color:rgba(255,255,255,.65);font-size:.95rem;line-height:1.55;margin-bottom:24px;">Dicci il tuo caso d'uso: ti aiutiamo a scegliere tra mani, computing e configurazione. Risposta in 12 ore.</p>
           </div>
-          <div class="robot-body">
-            <div>
-              <h3>Unitree G1 Air</h3>
-              <p class="robot-subtitle">Robot umanoide · Dummy (no polsi)</p>
-            </div>
-
-            <div class="key-specs">
-              <div class="key-spec"><span class="key-spec-label">Gradi di libertà</span><span class="key-spec-value">23</span></div>
-              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">2 m/s</span></div>
-              <div class="key-spec"><span class="key-spec-label">Coppia ginocchio</span><span class="key-spec-value">90 N·m</span></div>
-              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core CPU</span></div>
-            </div>
-
-            <ul class="spec-rows">
-              <li><span>Mani</span><span>Dummy (no polsi)</span></li>
-              <li><span>Sensori tattili</span><span>—</span></li>
-              <li><span>Percezione</span><span>LiDAR 3D MID-360 · RealSense</span></li>
-              <li><span>Garanzia</span><span>8 mesi</span></li>
-            </ul>
-
-            <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-              <span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">22.797,54 €</span>
-              <a href="prodotti/unitree-g1.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
-            </div>
-          </div>
+          <form id="contact-form-g1air" style="display:flex;flex-direction:column;gap:10px;">
+            <input name="nome" placeholder="Nome e cognome" required style="padding:11px 14px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:10px;color:#fff;font-family:inherit;font-size:.95rem;">
+            <input name="email" type="email" placeholder="Email" required style="padding:11px 14px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:10px;color:#fff;font-family:inherit;font-size:.95rem;">
+            <input name="telefono" type="tel" placeholder="Telefono" required style="padding:11px 14px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:10px;color:#fff;font-family:inherit;font-size:.95rem;">
+            <input type="hidden" name="prodotto" value="Umanoidi G1 Air">
+            <button type="submit" class="btn btn-primary" style="width:100%;background:#fff;color:var(--black);border-color:#fff;margin-top:4px;">Invia la richiesta</button>
+            <p class="air-form-fb" style="font-size:.82rem;text-align:center;color:rgba(255,255,255,.6);min-height:1.2em;" aria-live="polite"></p>
+          </form>
         </article>
 
         <article class="robot-card" data-family="g1" data-tier="edu">
@@ -966,6 +998,26 @@
       bar.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b);});
       var f=b.dataset.filter;
       cards.forEach(function(c){ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; });
+    });
+  })();
+  // Mini form G1 Air card
+  (function(){
+    var f=document.getElementById('contact-form-g1air'); if(!f) return;
+    var inputs=f.querySelectorAll('input[name="nome"],input[name="email"],input[name="telefono"]');
+    inputs.forEach(function(i){
+      i.addEventListener('focus',function(){ i.style.borderColor='rgba(255,255,255,.6)'; });
+      i.addEventListener('blur',function(){ i.style.borderColor='rgba(255,255,255,.2)'; });
+    });
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var btn=f.querySelector('button[type=submit]'), fb=f.querySelector('.air-form-fb');
+      var orig=btn.textContent; btn.disabled=true; btn.textContent='Invio…'; fb.textContent='';
+      var d=Object.fromEntries(new FormData(f).entries());
+      d.origine='Umanoidi G1 Air (card)'; d.pagina=document.title; d.url=location.href; d.timestamp=new Date().toISOString();
+      fetch(window.GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+        .then(function(){ fb.style.color='#6ee7a0'; fb.textContent='Inviato! Ti ricontattiamo entro 12 ore.'; f.reset(); })
+        .catch(function(){ fb.style.color='#fca5a5'; fb.textContent='Errore. Scrivi a info@abrarobotics.com.'; })
+        .finally(function(){ btn.disabled=false; btn.textContent=orig; });
     });
   })();
   </script>

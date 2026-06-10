@@ -119,3 +119,90 @@
     obs.observe(el);
   });
 })();
+
+/* ── Availability sync ──────────────────────────────────────────────────────
+   Legge ../availability.json (aggiornato da GitHub Actions ogni mattina).
+   Aggiorna il buy-box solo quando quadruped.de è vantaggioso rispetto alla
+   nostra filiera standard (4-6 settimane):
+     - "available" (Sofort verfügbar) → prodotto in stock, consegna nei tempi normali
+     - "date" con data entro 6 settimane → quadruped più veloce, mostra la data
+     - "date" con data oltre 6 settimane → la nostra filiera è più rapida, non toccare
+     - "unavailable" (Ausverkauft) → segnala indisponibilità
+──────────────────────────────────────────────────────────────────────────── */
+(function () {
+  const FAMILIES = [
+    [/unitree-g1d|unitree-g1-d/, 'g1d'],
+    [/unitree-g1/,               'g1'],
+    [/unitree-go2w/,             'go2w'],
+    [/unitree-go2/,              'go2'],
+    [/unitree-b2w/,              'b2w'],
+    [/unitree-b2/,               'b2'],
+    [/unitree-h2/,               'h2'],
+    [/unitree-h1/,               'h1'],
+    [/unitree-r1/,               'r1'],
+  ];
+
+  function getFamily() {
+    const path = location.pathname.toLowerCase();
+    for (const [re, key] of FAMILIES) if (re.test(path)) return key;
+    return null;
+  }
+
+  function fmtDate(iso) {
+    return new Date(iso).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function setDeliveryText(deliveryLi, text) {
+    if (!deliveryLi) return;
+    const ico = deliveryLi.querySelector('.bp-ico');
+    if (ico && ico.nextSibling && ico.nextSibling.nodeType === 3)
+      ico.nextSibling.textContent = text;
+  }
+
+  function applyStatus(info) {
+    const badge = document.querySelector('.buy-box-stock');
+    if (!badge) return;
+    const nodes = badge.childNodes;
+    const textNode = nodes[nodes.length - 1];
+    const deliveryLi = [...document.querySelectorAll('.buy-box-perks li')]
+      .find(li => li.textContent.includes('Consegna stimata'));
+
+    badge.classList.remove('status-date', 'status-unavailable');
+
+    if (info.status === 'available') {
+      // Sofort verfügbar: prodotto in stock sul mercato, filiera regolare
+      if (textNode && textNode.nodeType === 3) textNode.textContent = ' Disponibile';
+      setDeliveryText(deliveryLi, ' Disponibile in stock · Consegna stimata 4–6 settimane');
+
+    } else if (info.status === 'date') {
+      // Mostra la data solo se è entro 6 settimane da oggi (altrimenti la nostra filiera è più rapida)
+      const sixWeeksFromNow = new Date();
+      sixWeeksFromNow.setDate(sixWeeksFromNow.getDate() + 42);
+      const availDate = new Date(info.available_from);
+
+      if (availDate <= sixWeeksFromNow) {
+        const d = fmtDate(info.available_from);
+        badge.classList.add('status-date');
+        if (textNode && textNode.nodeType === 3) textNode.textContent = ' Dal ' + d;
+        setDeliveryText(deliveryLi, ' Prima disponibilità stimata: ' + d);
+      }
+      // altrimenti: non toccare nulla, la nostra filiera 4-6 sett. è più rapida
+
+    } else if (info.status === 'unavailable') {
+      badge.classList.add('status-unavailable');
+      if (textNode && textNode.nodeType === 3) textNode.textContent = ' Non disponibile';
+      setDeliveryText(deliveryLi, ' Verifica disponibilità con il nostro team');
+    }
+  }
+
+  const family = getFamily();
+  if (!family) return;
+  const base = location.pathname.includes('/prodotti/') ? '../' : './';
+  fetch(base + 'availability.json')
+    .then(r => r.json())
+    .then(data => {
+      const info = data.products && data.products[family];
+      if (info) applyStatus(info);
+    })
+    .catch(() => {/* silent fail — HTML statico come fallback */});
+})();

@@ -1,0 +1,34 @@
+name: Sync Availability
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # ogni giorno alle 8:00 UTC
+  workflow_dispatch:        # avvio manuale da GitHub
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install requests beautifulsoup4
+
+      - name: Scrape quadruped.de
+        run: python prodotti/_sync_availability.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "availability-bot"
+          git config user.email "bot@abra-robotics.it"
+          git diff --quiet availability.json || (
+            git add availability.json &&
+            git commit -m "chore: sync availability da quadruped.de [skip ci]" &&
+            git push
+          )
