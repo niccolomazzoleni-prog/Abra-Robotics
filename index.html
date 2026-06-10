@@ -103,6 +103,10 @@
 
   <!-- Hero -->
   <header class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero-robots.png">
+      <source src="images/hero-bg-desktop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
     <div class="hero-inner">
       <div class="hero-grid">
         <div class="hero-content">
@@ -151,14 +155,6 @@
       </div>
     </div>
   </header>
-
-  <!-- Video Background Section -->
-  <section class="video-bg-section">
-    <video class="video-bg-video" autoplay muted loop playsinline preload="auto">
-      <source src="images/hero-bg-desktop.mp4" type="video/mp4">
-    </video>
-    <div class="video-bg-overlay"></div>
-  </section>
 
   <!-- Cosa facciamo -->
   <section id="soluzioni" class="section">
@@ -478,12 +474,12 @@
       <div class="footer-contact">
         <span class="footer-heading">Contatti</span>
         <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
-        <p>Italia</p>
+        <p>Viale Trieste 105<br>30026 Portogruaro (VE)</p>
         <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
       </div>
     </div>
     <div class="container footer-bottom">
-      <p class="footer-copy">&copy; 2026 Abra Robotics. Tutti i diritti riservati. P.IVA 04800170278.</p>
+      <p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
       <nav class="footer-legal" aria-label="Note legali">
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="cookie-policy.html">Cookie Policy</a>
@@ -499,9 +495,21 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Abra Robotics",
+    "legalName": "Niccolò Mazzoleni",
     "url": "https://abrarobotics.com/",
     "logo": "https://abrarobotics.com/images/logo.png",
     "description": "Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.",
+    "email": "info@abrarobotics.com",
+    "vatID": "IT04800170278",
+    "taxID": "IT04800170278",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Viale Trieste 105",
+      "postalCode": "30026",
+      "addressLocality": "Portogruaro",
+      "addressRegion": "VE",
+      "addressCountry": "IT"
+    },
     "foundingDate": "2024",
     "areaServed": {
       "@type": "Country",
