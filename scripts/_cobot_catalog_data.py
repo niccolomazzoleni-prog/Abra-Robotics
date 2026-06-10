@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Catalogo cobot Fairino — prezzi da riferimento Alibaba + 100% markup (×2), cambio USD/EUR 0,93."""
+"""Catalogo cobot Fairino — prezzi vendita EUR (calcolo interno, non esposto sul sito)."""
 from __future__ import annotations
 
 USD_EUR = 0.93
-MARKUP = 2.0  # rincaro 100% sul prezzo Alibaba
+MARKUP = 2.0  # margine interno
 
 IMG = "images/manifattura"
 

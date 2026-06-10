@@ -115,16 +115,39 @@
     .track-record .finance-stat-number{color:var(--black)}
     .track-record .finance-stat-label{color:var(--gray-600)}
 
-    /* LP Navbar minima */
-    .lp-navbar{position:sticky;top:56px;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);}
-    .lp-navbar-inner{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 32px;max-width:100%;}
-    .lp-logo{height:100px;width:auto;}
-    /* Loghi bianchi nel trust bar nero */
+    /* LP navbar minimale — full width, allineata al .container sotto */
+    .lp-navbar{
+      position:sticky;top:0;z-index:1001;width:100%;
+      background:#fff;border-bottom:1px solid var(--gray-200);
+      box-shadow:0 1px 0 rgba(0,0,0,.04);
+    }
+    .lp-navbar-inner{
+      position:relative;display:flex;align-items:center;justify-content:space-between;
+      height:72px;gap:16px;padding-top:0;padding-bottom:0;
+    }
+    .lp-logo-link{display:flex;align-items:center;flex-shrink:0;text-decoration:none}
+    .lp-logo{height:44px;width:auto;display:block}
+    .lp-nav-links{
+      position:absolute;left:50%;transform:translateX(-50%);
+      display:flex;align-items:center;gap:32px;
+    }
+    .lp-nav-links a{
+      text-decoration:none;color:var(--gray-600);font-size:.98rem;font-weight:500;
+      white-space:nowrap;padding:6px 0;border-bottom:2px solid transparent;
+      transition:color .2s,border-color .2s;
+    }
+    .lp-nav-links a:hover{color:var(--black);border-bottom-color:var(--black)}
+    .lp-navbar .btn{flex-shrink:0;margin:0}
+    /* Loghi nel trust bar */
     .lpv-trust .logo-bar-logos img{filter:grayscale(1) brightness(0.15);opacity:.6;}
     .lpv-trust .logo-bar-logos img:hover{opacity:.9;filter:grayscale(1) brightness(0.05);}
-    /* Hero: aggiusta top per WA bar (56px) + LP navbar (60px) */
-    .lpv-hero{padding-top:40px !important;}
-    @media(max-width:600px){.lp-navbar-inner{padding:0 16px;}.lp-logo{height:72px;}}
+    .lpv-hero{padding:56px 0 64px !important;margin-top:0}
+    #modelli,#palletizzazione,#form,#faq{scroll-margin-top:88px}
+    @media(max-width:820px){
+      .lp-nav-links{display:none}
+      .lp-navbar-inner{height:64px}
+      .lp-logo{height:38px}
+    }
     @media(max-width:820px){
       .lpv-hero-grid{grid-template-columns:1fr;gap:36px}
       .lpv-hero-visual{aspect-ratio:1/1;max-height:320px;max-width:320px;margin:0 auto;order:-1}
@@ -133,21 +156,23 @@
     }
   </style>
 
-  <style>
-    /* LP: WA bar in cima */
-    .wa-bar { bottom: auto !important; top: 0 !important; box-shadow: 0 2px 16px rgba(0,0,0,.12) !important; }
-    body.has-wa-bar { padding-bottom: 0 !important; padding-top: 56px !important; }
-  </style>
 </head>
 <body>
-  <!-- LP Navbar -->
-  <nav class="lp-navbar">
-    <div class="lp-navbar-inner">
-      <a href="index.html"><img src="images/logo.png" alt="Abra Robotics" class="lp-logo"></a>
+  <!-- LP_NAV_START -->
+  <nav class="lp-navbar" aria-label="Navigazione landing">
+    <div class="container lp-navbar-inner">
+      <a href="#" class="lp-logo-link" aria-label="Abra Robotics"><img src="images/logo.png" alt="Abra Robotics" class="lp-logo"></a>
+      <div class="lp-nav-links">
+        <a href="#modelli">Modelli</a>
+        <a href="#palletizzazione">Palletizzazione</a>
+        <a href="#faq">FAQ</a>
+      </div>
       <a href="#form" class="btn btn-primary btn-sm">Richiedi un preventivo</a>
     </div>
   </nav>
-<!-- 1. HERO -->
+  <!-- LP_NAV_END -->
+
+  <!-- 1. HERO -->
   <header class="lpv-hero">
     <div class="container">
       <div class="lpv-hero-grid">
@@ -185,7 +210,7 @@
   </section>
 
   <!-- FORM TOP -->
-  <section class="section section-cta" id="form" style="scroll-margin-top:80px;">
+  <section class="section section-cta" id="form" style="scroll-margin-top:120px;">
     <div class="container">
       <div class="cta-content">
         <h2>Vuoi capire quale cobot fa per te?</h2>
@@ -315,7 +340,7 @@
         </a>
 <!-- COBOT_MODELS_END -->
       </div>
-      <p class="model-note">Prezzi indicativi IVA esclusa. <a href="catalogo-cobot.html">Catalogo cobot completo →</a></p>
+      <p class="model-note">Prezzi indicativi IVA esclusa. Preventivo personalizzato su richiesta.</p>
     </div>
   </section>
 
@@ -472,7 +497,7 @@
   </section>
 
   <!-- 10. FAQ -->
-  <section class="section" style="background:var(--gray-50)">
+  <section class="section" id="faq" style="background:var(--gray-50)">
     <div class="container">
       <div class="section-header">
         <p class="label">FAQ</p>
@@ -488,39 +513,13 @@
       </div>
     </div>
   </section>
-  <!-- Footer -->
+  <!-- Footer minimale -->
   <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
-      </div>
-      <div class="footer-nav">
-        <span class="footer-heading">Navigazione</span>
-        <a href="umanoidi.html">Umanoidi</a>
-        <a href="lp-quadrupedi.html">Quadrupedi</a>
-        <a href="assessment.html">Trova il robot giusto</a>
-        <a href="finanziamenti.html">Finanziamenti</a>
-      </div>
-      <div class="footer-nav">
-        <span class="footer-heading">Modelli cobot</span>
-        <a href="prodotti/cobot-fairino-fr5.html">Fairino FR5</a>
-        <a href="prodotti/cobot-fairino-fr10.html">Fairino FR10</a>
-        <a href="prodotti/cobot-fairino-fr20.html">Fairino FR20</a>
-        <a href="catalogo-cobot.html">Catalogo cobot</a>
-      </div>
-      <div class="footer-contact">
-        <span class="footer-heading">Contatti</span>
-        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
-        <p>Italia</p>
-        <a href="#form" class="btn btn-primary btn-sm">Richiedi un preventivo</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p class="footer-copy">&copy; 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278.</p>
+    <div class="container footer-bottom" style="padding-top:32px;padding-bottom:32px;">
+      <p class="footer-copy">&copy; 2026 Abra Robotics di Niccolò Mazzoleni. P.IVA 04800170278 — Portogruaro (VE).</p>
       <nav class="footer-legal" aria-label="Note legali">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="cookie-policy.html">Cookie</a>
         <a href="condizioni-di-vendita.html">Condizioni di vendita</a>
         <a href="note-legali.html">Note legali</a>
       </nav>
