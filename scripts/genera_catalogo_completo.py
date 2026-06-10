@@ -13,12 +13,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from layout_pubblico import PUBLIC_NOTICE, SITE_FOOTER, SITE_NAV  # noqa: E402
+from site_nav import render_site_nav  # noqa: E402
 
 CSV_PATH = ROOT / "listini" / "interno" / "listino-master.csv"
 MANIFEST_PATH = ROOT / "listini" / "pubblico" / "catalogo-manifest.json"
 TEMPLATE = (ROOT / "prodotti" / "_template-compact.html").read_text(encoding="utf-8")
 PRODOTTI = ROOT / "prodotti"
-SITE = "https://niccolomazzoleni-prog.github.io/Abra-Robotics"
+sys.path.insert(0, str(ROOT / "prodotti"))
+from _site import SITE  # noqa: E402
 
 CAT_LABEL = {
     "UMANOIDI": "Umanoidi & robot",
@@ -179,20 +181,44 @@ def buy_area(price: float | None, has_price: bool, sku: str = "") -> str:
           </div>"""
 
 
-def product_schema(name: str, desc: str, img: str, price: float | None, filename: str) -> str:
+def product_schema(
+    name: str,
+    desc: str,
+    img: str,
+    price: float | None,
+    filename: str,
+    coll_file: str = "catalogo-unitree.html",
+    coll_name: str = "Catalogo",
+) -> str:
     img_url = img if img.startswith("http") else f"{SITE}/{img}"
     nm, ds = name.replace('"', '\\"'), desc.replace('"', '\\"')
+    sku = filename.replace(".html", "")
+    canon = f"{SITE}/prodotti/{filename}"
     offer = ""
     if price is not None:
         offer = f''',
   "offers": {{"@type": "Offer", "priceCurrency": "EUR", "price": "{price:.2f}",
+    "priceValidUntil": "2026-12-31",
+    "itemCondition": "https://schema.org/NewCondition",
     "availability": "https://schema.org/InStock",
-    "url": "{SITE}/prodotti/{filename}"}}'''
+    "url": "{canon}",
+    "seller": {{"@type": "Organization", "name": "Abra Robotics", "url": "{SITE}"}}}}'''
+    breadcrumb = f"""  <script type="application/ld+json">
+  {{"@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type": "ListItem", "position": 1, "name": "Home", "item": "{SITE}/"}},
+    {{"@type": "ListItem", "position": 2, "name": "{coll_name}", "item": "{SITE}/{coll_file}"}},
+    {{"@type": "ListItem", "position": 3, "name": "{nm}", "item": "{canon}"}}
+  ]}}
+  </script>"""
     return f"""  <script type="application/ld+json">
   {{"@context": "https://schema.org/", "@type": "Product", "name": "{nm}",
+  "sku": "{sku}",
   "image": ["{img_url}"], "description": "{ds}",
+  "itemCondition": "https://schema.org/NewCondition",
   "brand": {{"@type": "Brand", "name": "Unitree"}}{offer}}}
-  </script>"""
+  </script>
+{breadcrumb}"""
 
 
 def key_specs(entry: dict) -> str:
@@ -258,7 +284,10 @@ def generate_page(row: dict, manifest: dict) -> str | None:
         "%%KEYSPECS%%": key_specs(entry),
         "%%SPECS_ROWS%%": spec_rows(entry),
         "%%BUY_AREA%%": buy_area(price if pub else None, pub and price is not None, sku),
-        "%%PRODUCT_SCHEMA%%": product_schema(title, desc[:200], og_image, price if pub else None, filename),
+        "%%PRODUCT_SCHEMA%%": product_schema(
+            title, desc[:200], og_image, price if pub else None, filename, coll_file, coll_name
+        ),
+        "%%SITE_NAV%%": render_site_nav("../"),
     }
     for k, v in repl.items():
         html = html.replace(k, v)

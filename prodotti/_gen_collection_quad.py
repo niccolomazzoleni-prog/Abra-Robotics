@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 """Genera quadrupedi.html (collezione, livello root)."""
 import os
+import sys
 from _gen_quadrupeds import LINEUP, COMPACT
 from _prezzi import PREZZI, euro
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from site_nav import render_site_nav
+
+SITE_NAV_HTML = render_site_nav("")
 NAMES = {
  "go2-pro":"Unitree Go2 Pro","go2-edu":"Unitree Go2 EDU","go2-edu-plus":"Unitree Go2 EDU+",
  "go2-ent-u2":"Unitree Go2 Enterprise+ U2","a2":"Unitree A2","a2-pro":"Unitree A2 Pro","b2":"Unitree B2",
@@ -83,7 +88,7 @@ HTML = f'''<!DOCTYPE html>
   <title>Robot Quadrupedi Unitree — Tutta la gamma | Abra Robotics</title>
   <meta name="description" content="Tutti i robot quadrupedi Unitree distribuiti in Italia da Abra Robotics: Go2 Pro, Go2 EDU, Go2 EDU+, Go2 Enterprise+ U2, A2, A2 Pro e B2. Specifiche, confronto e schede tecniche.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://niccolomazzoleni-prog.github.io/Abra-Robotics/quadrupedi.html">
+  <link rel="canonical" href="https://abrarobotics.com/quadrupedi.html">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -119,59 +124,7 @@ HTML = f'''<!DOCTYPE html>
     <p>Distributore ufficiale Unitree in Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
   </div>
 
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-      <div class="nav-links">
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="manifattura-logistica.html#cobot">Cobot</a>
-            <a href="manifattura-logistica.html#amr">AMR</a>
-            <a href="quadrupedi.html">Quadrupedi</a>
-            <a href="umanoidi.html">Umanoidi</a>
-            <a href="accessori.html">Accessori</a>
-          </div>
-        </div>
-        <a href="assessment.html">Trova il robot giusto</a>
-        <a href="finanziamenti.html">Finanziamenti</a>
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-            <a href="universita-ricerca.html">Università e Ricerca</a>
-          </div>
-        </div>
-        <a href="index.html#chi-siamo">Chi siamo</a>
-      </div>
-      <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <div class="mobile-menu">
-    <div class="mobile-dropdown">
-      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-      <div class="mobile-dropdown-panel">
-        <a href="manifattura-logistica.html#cobot">Cobot</a>
-        <a href="manifattura-logistica.html#amr">AMR</a>
-        <a href="quadrupedi.html">Quadrupedi</a>
-        <a href="umanoidi.html">Umanoidi</a>
-        <a href="accessori.html">Accessori</a>
-      </div>
-    </div>
-    <a href="assessment.html">Trova il robot giusto</a>
-    <a href="finanziamenti.html">Finanziamenti</a>
-    <div class="mobile-dropdown">
-      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
-      <div class="mobile-dropdown-panel">
-        <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-        <a href="universita-ricerca.html">Università e Ricerca</a>
-      </div>
-    </div>
-    <a href="index.html#chi-siamo">Chi siamo</a>
-    <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
-  </div>
+{SITE_NAV_HTML}
 
   <section class="collection-hero">
     <div class="container">

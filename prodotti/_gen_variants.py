@@ -3,9 +3,12 @@
 Dati specifiche/immagini da RoboStore. Produce le pagine U1-U8 + Comp
 replicando la struttura di unitree-g1.html, con CSS/JS condivisi."""
 import os
+import sys
 from _buy import buy_area, schema
 
 BASE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(BASE), "scripts"))
+from site_nav import render_site_nav
 
 # ── Dati compatti per tutta la gamma (per neighbor-comparison) ──
 # code -> dict(file, short, tag, hands, dof, tactile, computing, knee, warranty)
@@ -492,6 +495,7 @@ def render(code):
       "%%FORM_PRODUCT%%": title_full,
       "%%BUY_AREA%%": buy_area(d["cmp"]["file"]),
       "%%PRODUCT_SCHEMA%%": schema(d["cmp"]["file"], title_full, d["metadesc"], imgs[0]),
+      "%%SITE_NAV%%": render_site_nav("../"),
     }
     html = TEMPLATE
     for k, v in repl.items():

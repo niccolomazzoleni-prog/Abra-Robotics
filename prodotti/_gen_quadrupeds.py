@@ -2,8 +2,11 @@
 """Generatore schede prodotto quadrupedi Unitree (Abra Robotics).
 Dati da RoboStore. Riusa _template.html + product.css/js."""
 import os
+import sys
 from _buy import buy_area, schema
 BASE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(BASE), "scripts"))
+from site_nav import render_site_nav
 TEMPLATE = open(os.path.join(BASE, "_template.html"), encoding="utf-8").read()
 
 # Lineup ordinato (per neighbor-comparison). go2-edu-plus = pagina esistente.
@@ -408,6 +411,7 @@ def render(code):
       "%%FORM_PRODUCT%%": d["title"],
       "%%BUY_AREA%%": buy_area(d["cmp"]["file"]),
       "%%PRODUCT_SCHEMA%%": schema(d["cmp"]["file"], d["title"], d["metadesc"], imgs[0]),
+      "%%SITE_NAV%%": render_site_nav("../"),
     }
     html = TEMPLATE
     for k, v in repl.items(): html = html.replace(k, v)

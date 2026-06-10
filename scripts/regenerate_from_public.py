@@ -78,6 +78,9 @@ def main() -> None:
     sync_end_user_images(manifest)
     regenerate_catalogo_html(rows, manifest)
     subprocess.run([sys.executable, str(ROOT / "scripts" / "patch_html_images.py")], check=False)
+    amr_gen = ROOT / "scripts" / "_gen_amr_section.py"
+    if amr_gen.is_file():
+        subprocess.run([sys.executable, str(amr_gen)], check=False)
     print(f"Rigenerate {created} schede · catalogo-unitree.html aggiornato")
 
 
