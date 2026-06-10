@@ -3,24 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robot Umanoidi Unitree G1: tutta la gamma | Abra Robotics</title>
+  <title>Robot Umanoidi Unitree G1 — Tutta la gamma | Abra Robotics</title>
   <meta name="description" content="Tutti i modelli di robot umanoide Unitree G1 distribuiti in Italia da Abra Robotics: G1 Base, EDU Standard, EDU Plus, EDU Ultimate A-F e G1 Comp. Specifiche, confronto e schede tecniche.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://abrarobotics.com/umanoidi.html">
 
-  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-  <link rel="icon" type="image/png" href="images/logo-full.png">
-  <link rel="apple-touch-icon" href="images/logo-full.png">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Robot Umanoidi Unitree G1: tutta la gamma | Abra Robotics">
-  <meta property="og:description" content="Tutti i modelli di robot umanoide Unitree G1 distribuiti in Italia da Abra Robotics: G1 Base, EDU Standard, EDU Plus, EDU Ultimate A-F e G1 Comp. Specifiche, confronto e schede tecniche.">
-  <meta property="og:url" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/umanoidi.html">
-  <meta property="og:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Robot Umanoidi Unitree G1: tutta la gamma | Abra Robotics">
-  <meta name="twitter:description" content="Tutti i modelli di robot umanoide Unitree G1 distribuiti in Italia da Abra Robotics: G1 Base, EDU Standard, EDU Plus, EDU Ultimate A-F e G1 Comp. Specifiche, confronto e schede tecniche.">
-  <meta name="twitter:image" content="https://niccolomazzoleni-prog.github.io/Abra-Robotics/images/hero-robots.png">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -287,6 +274,68 @@
     }
     .avviso-box strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
 
+    .card-price {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .robot-card.dark .card-price { color: var(--white); }
+    .price-note {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+      margin: -8px 0 0;
+      max-width: 720px;
+    }
+    .price-note a {
+      color: var(--black);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .price-note a:hover { opacity: 0.7; }
+    .amr-inclusion-box {
+      margin-top: 20px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      display: grid;
+      gap: 10px;
+      max-width: 880px;
+    }
+    .amr-inclusion-box p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+    }
+    .amr-inclusion-box strong { color: var(--black); font-weight: 700; }
+    .amr-catalog-group {
+      margin-bottom: 56px;
+      scroll-margin-top: 160px;
+    }
+    .amr-catalog-group:last-child { margin-bottom: 0; }
+    .amr-group-head {
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .amr-group-head h3 {
+      font-size: 1.15rem;
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .amr-group-head p {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      margin: 0;
+      line-height: 1.55;
+    }
+
     /* CTA */
     .robot-card-cta {
       margin-top: auto;
@@ -295,6 +344,11 @@
       flex-wrap: wrap;
       padding-top: 4px;
     }
+    .robot-card-cta:has(.card-price) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .robot-card-cta:has(.card-price) .btn { width: 100%; justify-content: center; }
 
     /* ── Pagina collezione ── */
     .collection-hero { padding: calc(40px + 72px + 64px) 0 56px; background: var(--white); }
@@ -321,20 +375,6 @@
     .coll-filters button:hover { border-color:var(--gray-400); color:var(--black); }
     .coll-filters button.active { background:var(--black); color:var(--white); border-color:var(--black); }
   </style>
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
-  "https://connect.facebook.net/en_US/fbevents.js");
-  fbq("init","1478056171004711");
-  fbq("track","PageView");
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1478056171004711&ev=PageView&noscript=1"></noscript>
-  <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -353,7 +393,7 @@
           <div class="nav-dropdown-panel">
             <a href="manifattura-logistica.html#cobot">Cobot</a>
             <a href="manifattura-logistica.html#amr">AMR</a>
-            <a href="lp-quadrupedi.html">Quadrupedi</a>
+            <a href="quadrupedi.html">Quadrupedi</a>
             <a href="umanoidi.html">Umanoidi</a>
             <a href="accessori.html">Accessori</a>
             <a href="catalogo-unitree.html">Catalogo completo</a>
@@ -369,7 +409,7 @@
             <a href="universita-ricerca.html">Università e Ricerca</a>
           </div>
         </div>
-        
+        <a href="index.html#chi-siamo">Chi siamo</a>
       </div>
       <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
       <button class="menu-toggle" aria-label="Menu">
@@ -402,7 +442,7 @@
         <a href="universita-ricerca.html">Università e Ricerca</a>
       </div>
     </div>
-    
+    <a href="index.html#chi-siamo">Chi siamo</a>
     <a href="index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
   </div>
 
@@ -410,7 +450,7 @@
   <section class="collection-hero">
     <div class="container">
       <p class="label">Robot Umanoidi</p>
-      <h1>Unitree G1: tutta la gamma</h1>
+      <h1>Unitree G1 — tutta la gamma</h1>
       <p class="lead">La famiglia di robot umanoidi Unitree G1, distribuita in Italia da Abra Robotics. Dal modello base alle configurazioni EDU per la ricerca, fino alla versione atletica Comp: dieci modelli, una sola piattaforma, una scheda tecnica dedicata per ciascuno.</p>
       <div class="hero-meta">
         <div><strong>10</strong><span>Modelli G1</span></div>
@@ -418,46 +458,6 @@
         <div><strong>100 TOPS</strong><span>Computing Jetson Orin NX</span></div>
         <div><strong>Italia</strong><span>Distributore ufficiale</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- FORM PRIMA DEL CATALOGO -->
-  <section class="section section-cta" id="form" style="scroll-margin-top:120px;padding-top:64px;padding-bottom:64px;">
-    <div class="container">
-      <div class="cta-content">
-        <h2>Vuoi capire quale G1 fa per te?</h2>
-        <p class="cta-subtitle">Compila il form, un consulente Abra ti ricontatta entro 12 ore.</p>
-      </div>
-      <form id="contact-form" class="contact-form" novalidate>
-        <input type="hidden" name="prodotto" value="Umanoidi G1">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nome">Nome e cognome</label>
-            <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
-          </div>
-          <div class="form-group">
-            <label for="azienda">Azienda o ente</label>
-            <input type="text" id="azienda" name="azienda" placeholder="Acme S.r.l. / Università di..." required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="nome@azienda.it" required></div>
-          <div class="form-group"><label for="telefono">Telefono</label><input type="tel" id="telefono" name="telefono" placeholder="+39 ..." required></div>
-        </div>
-        <div class="form-group">
-          <label for="ruolo">Ruolo</label>
-          <input type="text" id="ruolo" name="ruolo" placeholder="CTO, Responsabile R&D, Ricercatore..." required>
-        </div>
-        <div class="form-group">
-          <label for="messaggio">La tua richiesta</label>
-          <textarea id="messaggio" name="messaggio" placeholder="Raccontaci il tuo progetto o dimmi quale modello stai valutando." rows="4" required></textarea>
-        </div>
-        <div class="form-footer">
-          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
-          <p class="form-note">Risposta garantita entro 12 ore lavorative.</p>
-        </div>
-        <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
-      </form>
     </div>
   </section>
 
@@ -472,26 +472,47 @@
       </div>
       <div class="robot-grid">
 
-        <article class="robot-card dark" data-family="g1" data-tier="air" style="background:var(--black);display:flex;flex-direction:column;justify-content:space-between;padding:32px;">
-          <div>
-            <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:20px;">Parla con un tecnico</p>
-            <h3 style="color:#fff;font-size:1.35rem;margin-bottom:10px;">Non sai quale G1 scegliere?</h3>
-            <p style="color:rgba(255,255,255,.65);font-size:.95rem;line-height:1.55;margin-bottom:24px;">Dicci il tuo caso d'uso: ti aiutiamo a scegliere tra mani, computing e configurazione. Risposta in 12 ore.</p>
+        <article class="robot-card" data-family="g1" data-tier="air">
+          <div class="robot-media">
+            <span class="robot-media-tag">Air · Marketing e Comunicazione</span>
+            <img src="prodotti/assets/images/g1-01.jpg" alt="Unitree G1 Air, robot umanoide Unitree" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img');">
+            <div class="robot-media-placeholder">
+              <strong>Unitree G1 Air</strong>
+              <span>Umanoide · 23 DoF</span>
+            </div>
           </div>
-          <form id="contact-form-g1air" style="display:flex;flex-direction:column;gap:10px;">
-            <input name="nome" placeholder="Nome e cognome" required style="padding:11px 14px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:10px;color:#fff;font-family:inherit;font-size:.95rem;">
-            <input name="email" type="email" placeholder="Email" required style="padding:11px 14px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:10px;color:#fff;font-family:inherit;font-size:.95rem;">
-            <input name="telefono" type="tel" placeholder="Telefono" required style="padding:11px 14px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:10px;color:#fff;font-family:inherit;font-size:.95rem;">
-            <input type="hidden" name="prodotto" value="Umanoidi G1 Air">
-            <button type="submit" class="btn btn-primary" style="width:100%;background:#fff;color:var(--black);border-color:#fff;margin-top:4px;">Invia la richiesta</button>
-            <p class="air-form-fb" style="font-size:.82rem;text-align:center;color:rgba(255,255,255,.6);min-height:1.2em;" aria-live="polite"></p>
-          </form>
+          <div class="robot-body">
+            <div>
+              <h3>Unitree G1 Air</h3>
+              <p class="robot-subtitle">Robot umanoide · Dummy (no polsi)</p>
+            </div>
+
+            <div class="key-specs">
+              <div class="key-spec"><span class="key-spec-label">Gradi di libertà</span><span class="key-spec-value">23</span></div>
+              <div class="key-spec"><span class="key-spec-label">Velocità max</span><span class="key-spec-value">2 m/s</span></div>
+              <div class="key-spec"><span class="key-spec-label">Coppia ginocchio</span><span class="key-spec-value">90 N·m</span></div>
+              <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core CPU</span></div>
+            </div>
+
+            <ul class="spec-rows">
+              <li><span>Mani</span><span>Dummy (no polsi)</span></li>
+              <li><span>Sensori tattili</span><span>—</span></li>
+              <li><span>Percezione</span><span>LiDAR 3D MID-360 · RealSense</span></li>
+              <li><span>Garanzia</span><span>8 mesi</span></li>
+            </ul>
+
+            <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+              <span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">22.797,54 €</span>
+              <a href="prodotti/unitree-g1.html" class="btn btn-primary btn-sm">Vedi scheda →</a>
+            </div>
+          </div>
         </article>
 
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U1 · Ricerca e sviluppo</span>
-            <img src="prodotti/assets/variants/g1-u1/img-01-abra.png" alt="Unitree G1 EDU Standard, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u1/img-01.png" alt="Unitree G1 EDU Standard, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Standard</strong>
@@ -528,7 +549,7 @@
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U2 · Sviluppo avanzato</span>
-            <img src="prodotti/assets/variants/g1-u2/img-01-abra.png" alt="Unitree G1 EDU Plus, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u2/img-01.png" alt="Unitree G1 EDU Plus, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Plus</strong>
@@ -565,7 +586,7 @@
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U3 · Manipolazione Dex3</span>
-            <img src="prodotti/assets/variants/g1-u3/img-01-abra.png" alt="Unitree G1 EDU Ultimate A, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u3/img-01.png" alt="Unitree G1 EDU Ultimate A, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Ultimate A</strong>
@@ -602,7 +623,7 @@
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U4 · Dex3 tattile</span>
-            <img src="prodotti/assets/variants/g1-u4/img-01-abra.png" alt="Unitree G1 EDU Ultimate B, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u4/img-01.png" alt="Unitree G1 EDU Ultimate B, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Ultimate B</strong>
@@ -639,7 +660,7 @@
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U5 · Inspire 5 dita</span>
-            <img src="prodotti/assets/variants/g1-u5/img-01-abra.png" alt="Unitree G1 EDU Ultimate C, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u5/img-01.png" alt="Unitree G1 EDU Ultimate C, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Ultimate C</strong>
@@ -676,7 +697,7 @@
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U6 · Inspire tattile top</span>
-            <img src="prodotti/assets/variants/g1-u6/img-01-abra.png" alt="Unitree G1 EDU Ultimate D, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u6/img-01.png" alt="Unitree G1 EDU Ultimate D, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Ultimate D</strong>
@@ -713,7 +734,7 @@
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U7 · BrainCo 5 dita</span>
-            <img src="prodotti/assets/variants/g1-u7/img-01-abra.png" alt="Unitree G1 EDU Ultimate E, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u7/img-01.png" alt="Unitree G1 EDU Ultimate E, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Ultimate E</strong>
@@ -750,7 +771,7 @@
         <article class="robot-card" data-family="g1" data-tier="edu">
           <div class="robot-media">
             <span class="robot-media-tag">U8 · BrainCo Touch</span>
-            <img src="prodotti/assets/variants/g1-u8/img-01-abra.png" alt="Unitree G1 EDU Ultimate F, robot umanoide Unitree" loading="lazy"
+            <img src="prodotti/assets/variants/g1-u8/img-01.png" alt="Unitree G1 EDU Ultimate F, robot umanoide Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>Unitree G1 EDU Ultimate F</strong>
@@ -993,12 +1014,12 @@
       <div class="footer-contact">
         <span class="footer-heading">Contatti</span>
         <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
-        <p>Viale Trieste 105<br>30026 Portogruaro (VE)</p>
+        <p>Italia</p>
         <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
       </div>
     </div>
     <div class="container footer-bottom">
-      <p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Tutti i diritti riservati.</p>
     </div>
   </footer>
 
@@ -1014,58 +1035,6 @@
       cards.forEach(function(c){ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; });
     });
   })();
-  // Mini form G1 Air card
-  (function(){
-    var f=document.getElementById('contact-form-g1air'); if(!f) return;
-    var inputs=f.querySelectorAll('input[name="nome"],input[name="email"],input[name="telefono"]');
-    inputs.forEach(function(i){
-      i.addEventListener('focus',function(){ i.style.borderColor='rgba(255,255,255,.6)'; });
-      i.addEventListener('blur',function(){ i.style.borderColor='rgba(255,255,255,.2)'; });
-    });
-    f.addEventListener('submit',function(e){
-      e.preventDefault();
-      var btn=f.querySelector('button[type=submit]'), fb=f.querySelector('.air-form-fb');
-      var orig=btn.textContent; btn.disabled=true; btn.textContent='Invio…'; fb.textContent='';
-      var d=Object.fromEntries(new FormData(f).entries());
-      d.origine='Umanoidi G1 Air (card)'; d.pagina=document.title; d.url=location.href; d.timestamp=new Date().toISOString();
-      fetch(window.GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
-        .then(function(){ fb.style.color='#6ee7a0'; fb.textContent='Inviato! Ti ricontattiamo entro 12 ore.'; f.reset(); })
-        .catch(function(){ fb.style.color='#fca5a5'; fb.textContent='Errore. Scrivi a info@abrarobotics.com.'; })
-        .finally(function(){ btn.disabled=false; btn.textContent=orig; });
-    });
-  })();
   </script>
-<!-- itemlist-schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Robot Umanoidi Unitree",
-    "url": "https://abrarobotics.com/umanoidi.html",
-    "mainEntity": {
-      "@type": "ItemList",
-      "numberOfItems": 10,
-      "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1.html"},
-    {"@type": "ListItem", "position": 2, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-standard.html"},
-    {"@type": "ListItem", "position": 3, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-plus.html"},
-    {"@type": "ListItem", "position": 4, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-ultimate-a.html"},
-    {"@type": "ListItem", "position": 5, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-ultimate-b.html"},
-    {"@type": "ListItem", "position": 6, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-ultimate-c.html"},
-    {"@type": "ListItem", "position": 7, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-ultimate-d.html"},
-    {"@type": "ListItem", "position": 8, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-ultimate-e.html"},
-    {"@type": "ListItem", "position": 9, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-edu-ultimate-f.html"},
-    {"@type": "ListItem", "position": 10, "name": "Unitree G1 Air", "url": "https://abrarobotics.com/prodotti/unitree-g1-comp.html"}
-      ]
-    }
-  }
-  </script>
-  <!-- WhatsApp sticky bar -->
-  <div class="wa-bar" id="wa-bar">
-    <p><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Vuoi ricevere più informazioni?</p>
-    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">Contattaci su WhatsApp</a>
-    <button class="wa-bar-close" id="wa-bar-close" aria-label="Chiudi">&times;</button>
-  </div>
-  <script>(function(){var K="abra_wa_bar_closed";try{if(localStorage.getItem(K)==="1"){document.getElementById("wa-bar").style.display="none";return;}}catch(e){}document.body.classList.add("has-wa-bar");var b=document.getElementById("wa-bar-close");if(b)b.addEventListener("click",function(){document.getElementById("wa-bar").style.display="none";document.body.classList.remove("has-wa-bar");try{localStorage.setItem(K,"1");}catch(e){};});}());</script>
 </body>
 </html>

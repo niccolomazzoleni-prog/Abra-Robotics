@@ -23,7 +23,7 @@ TIER = {"g1":"air","g1-comp":"comp","g1-u1":"edu","g1-u2":"edu","g1-u3":"edu","g
 def img(code):
     if code == "g1":
         return "prodotti/assets/images/g1-01.jpg"
-    return f"prodotti/assets/variants/{code}/img-01.jpg"
+    return f"prodotti/assets/variants/{code}/img-01.png"
 
 def speed(code):
     return ">2 m/s" if code == "g1-comp" else "2 m/s"
