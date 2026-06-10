@@ -88,13 +88,15 @@
     .model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
     .model-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--gray-200);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--black);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s}
     .model-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(0,0,0,.10);border-color:rgba(0,0,0,.18)}
-    .model-media{aspect-ratio:1;background:linear-gradient(160deg,var(--gray-50),var(--gray-100));display:grid;place-items:center;border-bottom:1px solid var(--gray-200)}
+    .model-media{aspect-ratio:1;background:#0a0a0a;display:grid;place-items:center;border-bottom:1px solid var(--gray-200)}
     .model-media img{width:100%;height:100%;object-fit:contain;padding:18px;filter:drop-shadow(0 12px 16px rgba(0,0,0,.10))}
     .model-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
     .model-body h3{font-size:1.2rem;margin:0}
     .model-tag{font-size:.82rem;color:var(--gray-400);font-weight:600}
     .model-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
     .model-chips span{font-size:.72rem;font-weight:700;color:var(--gray-600);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:999px;padding:3px 9px}
+    .model-price{font-size:1.05rem;font-weight:900;color:var(--black);margin-top:4px}
+    .model-price small{font-size:.72rem;font-weight:600;color:var(--gray-500)}
     .model-link{margin-top:auto;align-self:flex-start;display:inline-block;background:var(--black);color:#fff;font-weight:700;font-size:.9rem;padding:10px 20px;border-radius:999px;transition:background .2s}
     .model-card:hover .model-link{background:var(--orange)}
     .model-note{text-align:center;margin-top:30px;color:var(--gray-600)}
@@ -244,39 +246,43 @@
         <p class="section-sub">Tutti certificati CE, conformi ISO 10218 e ISO/TS 15066. Consegnati, installati e pronti all'uso.</p>
       </div>
       <div class="model-grid">
+<!-- COBOT_MODELS_START -->
 
-        <a class="model-card" href="manifattura-logistica.html#cobot">
+        <a class="model-card" href="prodotti/cobot-fairino-fr5.html">
           <div class="model-media"><img src="images/manifattura/fairino-fr5.png" alt="Fairino FR5"></div>
           <div class="model-body">
             <h3>Fairino FR5</h3>
-            <span class="model-tag">Pick &amp; Place · Machine Tending</span>
+            <span class="model-tag">Pick & Place · Machine Tending</span>
             <div class="model-chips"><span>5 kg</span><span>922 mm</span><span>±0,02 mm</span><span>6 assi</span></div>
-            <span class="model-link">Scopri di più →</span>
+            <span class="model-price">da 6.324,00 € <small>IVA escl.</small></span>
+            <span class="model-link">Scheda prodotto →</span>
           </div>
         </a>
 
-        <a class="model-card" href="manifattura-logistica.html#cobot">
+        <a class="model-card" href="prodotti/cobot-fairino-fr10.html">
           <div class="model-media"><img src="images/manifattura/fairino-fr10.png" alt="Fairino FR10"></div>
           <div class="model-body">
             <h3>Fairino FR10</h3>
             <span class="model-tag">Machine Tending · Palletizzazione</span>
-            <div class="model-chips"><span>10 kg</span><span>1400 mm</span><span>±0,05 mm</span><span>6 assi</span></div>
-            <span class="model-link">Scopri di più →</span>
+            <div class="model-chips"><span>10 kg</span><span>1.400 mm</span><span>±0,05 mm</span><span>6 assi</span></div>
+            <span class="model-price">da 12.090,00 € <small>IVA escl.</small></span>
+            <span class="model-link">Scheda prodotto →</span>
           </div>
         </a>
 
-        <a class="model-card" href="manifattura-logistica.html#cobot">
+        <a class="model-card" href="prodotti/cobot-fairino-fr20.html">
           <div class="model-media"><img src="images/manifattura/fairino-fr20.png" alt="Fairino FR20"></div>
           <div class="model-body">
             <h3>Fairino FR20</h3>
             <span class="model-tag">Palletizzazione · Handling pesante</span>
-            <div class="model-chips"><span>20 kg</span><span>1854 mm</span><span>±0,05 mm</span><span>6 assi</span></div>
-            <span class="model-link">Scopri di più →</span>
+            <div class="model-chips"><span>20 kg</span><span>1.854 mm</span><span>±0,05 mm</span><span>6 assi</span></div>
+            <span class="model-price">da 14.415,00 € <small>IVA escl.</small></span>
+            <span class="model-link">Scheda prodotto →</span>
           </div>
         </a>
-
+<!-- COBOT_MODELS_END -->
       </div>
-      <p class="model-note">Non sai quale modello fa al caso tuo? Scopriamolo assieme. <a href="#form" class="btn btn-primary btn-sm" style="margin-left:8px;">Parla con un tecnico</a></p>
+      <p class="model-note">Prezzi indicativi · riferimento Alibaba +100%. <a href="catalogo-cobot.html">Catalogo cobot completo →</a> · <a href="#form" class="btn btn-primary btn-sm" style="margin-left:8px;">Parla con un tecnico</a></p>
     </div>
   </section>
 
@@ -401,7 +407,46 @@
       </div>
     </div>
   </section>
-<!-- WhatsApp sticky bar -->
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Navigazione</span>
+        <a href="umanoidi.html">Umanoidi</a>
+        <a href="lp-quadrupedi.html">Quadrupedi</a>
+        <a href="assessment.html">Trova il robot giusto</a>
+        <a href="finanziamenti.html">Finanziamenti</a>
+      </div>
+      <div class="footer-nav">
+        <span class="footer-heading">Modelli cobot</span>
+        <a href="prodotti/cobot-fairino-fr5.html">Fairino FR5</a>
+        <a href="prodotti/cobot-fairino-fr10.html">Fairino FR10</a>
+        <a href="prodotti/cobot-fairino-fr20.html">Fairino FR20</a>
+        <a href="catalogo-cobot.html">Catalogo cobot</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Contatti</span>
+        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+        <p>Italia</p>
+        <a href="#form" class="btn btn-primary btn-sm">Richiedi un preventivo</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278.</p>
+      <nav class="footer-legal" aria-label="Note legali">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="condizioni-di-vendita.html">Condizioni di vendita</a>
+        <a href="note-legali.html">Note legali</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- WhatsApp sticky bar -->
   <div class="wa-bar" id="wa-bar">
     <p><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Vuoi ricevere più informazioni?</p>
     <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">Contattaci su WhatsApp</a>
@@ -410,38 +455,6 @@
   <script>(function(){var K="abra_wa_bar_closed";try{if(localStorage.getItem(K)==="1"){document.getElementById("wa-bar").style.display="none";return;}}catch(e){}document.body.classList.add("has-wa-bar");var b=document.getElementById("wa-bar-close");if(b)b.addEventListener("click",function(){document.getElementById("wa-bar").style.display="none";document.body.classList.remove("has-wa-bar");try{localStorage.setItem(K,"1");}catch(e){};});}());</script>
 
   <script src="script.js"></script>
-  <script>
-  // Form bottom separato
-  (function(){
-    var form = document.getElementById('contact-form-bottom');
-    var fb = document.getElementById('form-feedback-bottom');
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var btn = form.querySelector('.form-submit'), orig = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Invio in corso...';
-      fb.className = 'form-feedback'; fb.textContent = '';
-      var payload = Object.fromEntries(new FormData(form).entries());
-      payload.origine = 'Cobot Fairino (fondo pagina)';
-      payload.pagina = document.title;
-      payload.url = location.href;
-      payload.timestamp = new Date().toISOString();
-      fetch(window.GOOGLE_SCRIPT_URL, {
-        method: 'POST', mode: 'no-cors',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload)
-      }).then(function() {
-        fb.className = 'form-feedback success';
-        fb.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
-        if (window.fbq) fbq('track', 'Lead');
-        form.reset();
-      }).catch(function() {
-        fb.className = 'form-feedback error';
-        fb.textContent = 'Errore. Scrivi a info@abrarobotics.com.';
-      }).finally(function() { btn.disabled = false; btn.textContent = orig; });
-    });
-  })();
-  </script>
 
 </body>
 </html>

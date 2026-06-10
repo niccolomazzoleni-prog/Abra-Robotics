@@ -93,3 +93,11 @@ def price_display(alibaba_usd: float) -> str:
 
 def image_for(slug: str) -> str:
     return f"{IMG}/fairino-{slug.replace('fairino-', '')}.png"
+
+
+# chip labels per landing lp-cobot
+CHIPS_BY_SLUG: dict[str, tuple[str, ...]] = {
+    "fairino-fr5": ("5 kg", "922 mm", "±0,02 mm", "6 assi"),
+    "fairino-fr10": ("10 kg", "1.400 mm", "±0,05 mm", "6 assi"),
+    "fairino-fr20": ("20 kg", "1.854 mm", "±0,05 mm", "6 assi"),
+}
