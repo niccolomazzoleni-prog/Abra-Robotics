@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* ===== Vetrina umanoidi ===== */
-    .lpv-hero{position:relative;background:#fff;color:var(--black);padding:calc(40px + 72px + 56px) 0 64px;overflow:hidden}
+    .lpv-hero{position:relative;background:#fff;color:var(--black);padding:80px 0 64px;overflow:hidden}
     .lpv-hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
     .lpv-hero h1{font-size:clamp(2.2rem,4.8vw,3.6rem);line-height:1.06;letter-spacing:-.03em;margin:0 0 20px;color:var(--black)}
     .lpv-hero-sub{font-size:1.14rem;color:var(--gray-600);line-height:1.6;margin:0 0 30px;max-width:560px}
@@ -155,55 +155,15 @@
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1478056171004711&ev=PageView&noscript=1"></noscript>
   <!-- End Meta Pixel Code -->
+
+  <style>
+    /* LP: WA bar in cima */
+    .wa-bar { bottom: auto !important; top: 0 !important; box-shadow: 0 2px 16px rgba(0,0,0,.12) !important; }
+    body.has-wa-bar { padding-bottom: 0 !important; padding-top: 56px !important; }
+  </style>
 </head>
 <body>
-
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <p>La maggior parte dei progetti è finanziabile. <a href="#form">Scopri come →</a></p>
-  </div>
-
-  <!-- Navbar (coerente col sito) -->
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-      <div class="nav-links">
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="umanoidi.html">Umanoidi</a>
-            <a href="quadrupedi.html">Quadrupedi</a>
-            <a href="manifattura-logistica.html#cobot">Cobot</a>
-            <a href="accessori.html">Accessori</a>
-          </div>
-        </div>
-        <a href="assessment.html">Trova il robot giusto</a>
-        <a href="finanziamenti.html">Finanziamenti</a>
-        <div class="nav-item-dropdown">
-          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
-          <div class="nav-dropdown-panel">
-            <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-            <a href="universita-ricerca.html">Università e Ricerca</a>
-          </div>
-        </div>
-      </div>
-      <a href="#form" class="btn btn-primary btn-sm">Richiedi un preventivo</a>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <a href="umanoidi.html">Umanoidi</a>
-    <a href="quadrupedi.html">Quadrupedi</a>
-    <a href="assessment.html">Trova il robot giusto</a>
-    <a href="finanziamenti.html">Finanziamenti</a>
-    <a href="manifattura-logistica.html">Manifattura e Logistica</a>
-    <a href="universita-ricerca.html">Università e Ricerca</a>
-    <a href="#form" class="btn btn-primary">Richiedi un preventivo</a>
-  </div>
-
-  <!-- 1. HERO -->
+<!-- 1. HERO -->
   <header class="lpv-hero">
     <div class="container">
       <div class="lpv-hero-grid">
@@ -531,46 +491,7 @@
       </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-        <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
-      </div>
-      <div class="footer-nav">
-        <span class="footer-heading">Navigazione</span>
-        <a href="umanoidi.html">Umanoidi</a>
-        <a href="quadrupedi.html">Quadrupedi</a>
-        <a href="assessment.html">Trova il robot giusto</a>
-        <a href="finanziamenti.html">Finanziamenti</a>
-      </div>
-      <div class="footer-nav">
-        <span class="footer-heading">Modelli umanoidi</span>
-        <a href="prodotti/unitree-g1.html">Unitree G1</a>
-        <a href="prodotti/unitree-h2.html">Unitree H2</a>
-        <a href="prodotti/unitree-r1-edu.html">Unitree R1</a>
-      </div>
-      <div class="footer-contact">
-        <span class="footer-heading">Contatti</span>
-        <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
-        <p>Viale Trieste 105<br>30026 Portogruaro (VE)</p>
-        <a href="#form" class="btn btn-primary btn-sm">Richiedi un preventivo</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
-      <nav class="footer-legal" aria-label="Note legali">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="cookie-policy.html">Cookie Policy</a>
-        <a href="condizioni-di-vendita.html">Condizioni di vendita</a>
-        <a href="note-legali.html">Note legali</a>
-      </nav>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
   <script>
   (function(){
     var form = document.getElementById('contact-form-top');
