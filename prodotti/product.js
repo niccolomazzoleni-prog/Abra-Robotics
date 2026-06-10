@@ -170,9 +170,9 @@
     badge.classList.remove('status-date', 'status-unavailable');
 
     if (info.status === 'available') {
-      // Sofort verfügbar: prodotto in stock sul mercato, filiera regolare
+      // Sofort verfügbar: prodotto in stock — rimuovi stima consegna, non applicabile
       if (textNode && textNode.nodeType === 3) textNode.textContent = ' Disponibile';
-      setDeliveryText(deliveryLi, ' Disponibile in stock · Consegna stimata 4–6 settimane');
+      if (deliveryLi) deliveryLi.remove();
 
     } else if (info.status === 'date') {
       // Mostra la data solo se è entro 6 settimane da oggi (altrimenti la nostra filiera è più rapida)
