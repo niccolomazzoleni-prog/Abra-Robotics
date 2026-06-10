@@ -153,7 +153,7 @@ def buy_area(alibaba_usd: float) -> str:
             <div class="buy-box-head">
               <div class="buy-box-price">
                 <span class="buy-box-amount">{vis}</span>
-                <span class="buy-box-sub">IVA esclusa · riferimento Alibaba +100%</span>
+                <span class="buy-box-sub">IVA esclusa · prezzo indicativo</span>
               </div>
             </div>
             <ul class="buy-box-perks">
@@ -268,7 +268,7 @@ def catalog_card(item: dict) -> str:
             <p class="cat-sub">{item['subtitle']}</p>
             <p class="cat-blurb">{item['blurb'][:120]}…</p>
             <p class="cat-price">{item['price_display']}</p>
-            <a href="prodotti/{item['filename']}" class="btn btn-primary btn-sm">Scheda prodotto</a>
+            <a href="prodotti/{item['filename']}" class="btn btn-primary btn-sm">Vedi scheda →</a>
           </div>
         </article>"""
 
@@ -330,7 +330,7 @@ def write_catalog(manifest: list[dict]) -> None:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo Cobot Fairino | Abra Robotics</title>
-  <meta name="description" content="Catalogo Fairino: cobot FR3–FR30 e soluzioni palletizzazione. Prezzi indicativi IVA esclusa (Alibaba +100%). Integrazione in Italia con Abra Robotics.">
+  <meta name="description" content="Catalogo cobot Fairino FR3–FR30 e soluzioni palletizzazione. Prezzi indicativi IVA esclusa. Integrazione e supporto Abra in Italia.">
   <link rel="canonical" href="https://abrarobotics.com/catalogo-cobot.html">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -357,22 +357,28 @@ def write_catalog(manifest: list[dict]) -> None:
   <header class="cat-hero">
     <p class="label">Manifattura</p>
     <h1>Catalogo Cobot Fairino</h1>
-    <p style="color:var(--gray-600);max-width:680px;">{n} configurazioni Fairino — robot cobot e celle palletizzazione. Prezzi «da» Alibaba +100%. IVA esclusa.</p>
+    <p style="color:var(--gray-600);max-width:680px;">{n} configurazioni Fairino — cobot a 6 assi e celle palletizzazione. Prezzi «da» indicativi, IVA esclusa.</p>
   </header>
   <main class="cat-body-page">
     <div class="amr-note">
-      <p><strong>Metodo prezzo:</strong> riferimento listing Alibaba × 2, convertito in EUR (USD/EUR 0,93).</p>
-      <p style="margin:0;"><strong>Non inclusi:</strong> spedizione, dazi, gripper/visione extra e varianti safety oltre il pacchetto indicato.</p>
+      <p><strong>Inclusi nel prezzo «da»:</strong> assessment applicativo, analisi di fattibilità e prima configurazione Abra.</p>
+      <p style="margin:0;"><strong>Non inclusi</strong> (preventivo dedicato): gripper, visione, safety scanner, spedizione e commissioning avanzato.</p>
     </div>
-    <section class="cat-group" style="margin-bottom:48px;">
-      <h2 style="font-size:1.35rem;margin:0 0 16px;">Robot cobot FR Series</h2>
+    <nav class="cat-jump" aria-label="Sezioni catalogo cobot" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;">
+      <a href="#cat-robot" style="font-size:0.85rem;padding:8px 14px;border:1px solid var(--gray-200);border-radius:999px;text-decoration:none;color:var(--black);">Robot cobot</a>
+      <a href="#cat-pallet" style="font-size:0.85rem;padding:8px 14px;border:1px solid var(--gray-200);border-radius:999px;text-decoration:none;color:var(--black);">Palletizzazione</a>
+      <a href="lp-cobot.html" style="font-size:0.85rem;padding:8px 14px;border:1px solid var(--gray-200);border-radius:999px;text-decoration:none;color:var(--black);">Landing cobot</a>
+    </nav>
+    <section class="cat-group" id="cat-robot" style="margin-bottom:48px;">
+      <h2 style="font-size:1.35rem;margin:0 0 8px;">Robot cobot FR Series</h2>
+      <p style="color:var(--gray-600);margin:0 0 16px;max-width:720px;">Da FR3 compatto a FR30 heavy-duty. CE, ISO 10218 e ISO/TS 15066.</p>
       <div class="cat-grid">
 {robots}
       </div>
     </section>
-    <section class="cat-group">
-      <h2 style="font-size:1.35rem;margin:0 0 16px;">Soluzioni palletizzazione</h2>
-      <p style="color:var(--gray-600);margin:0 0 16px;max-width:720px;">Workstation modulare e celle turnkey con cobot integrato — video ciclo reale in ogni scheda.</p>
+    <section class="cat-group" id="cat-pallet">
+      <h2 style="font-size:1.35rem;margin:0 0 8px;">Soluzioni palletizzazione</h2>
+      <p style="color:var(--gray-600);margin:0 0 16px;max-width:720px;">Workstation modulare o celle chiavi in mano con cobot integrato. Ideali per fine linea senza recinto.</p>
       <div class="cat-grid">
 {pallets}
       </div>
