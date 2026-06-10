@@ -38,7 +38,13 @@
       background: var(--white);
       border-bottom: 1px solid var(--gray-200);
     }
-    .vert-hero-inner { max-width: 980px; }
+    .vert-hero-split { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+    .vert-hero-photo { border-radius:20px; aspect-ratio:4/3; background-size:contain; background-repeat:no-repeat; background-position:center; }
+    .vert-hero-inner { max-width:980px; }
+    @media(max-width:820px) {
+      .vert-hero-split { grid-template-columns:1fr; }
+      .vert-hero-photo { aspect-ratio:16/10; max-height:320px; order:-1; }
+    }
     .vert-hero h1 {
       font-size: clamp(2.4rem, 5vw, 4rem);
       letter-spacing: -0.03em;
@@ -980,7 +986,7 @@
 
         <!-- Unitree G1-D -->
         <article class="robot-card dark">
-          <div class="robot-media no-img">
+          <div class="robot-media">
             <span class="robot-media-tag">Umanoide industrial-ready</span>
             <img src="images/manifattura/unitree-g1-d.png"
                  alt="Unitree G1-D, umanoide deployment-ready"
