@@ -80,10 +80,10 @@ Architettura statica: nessun backend. Il checkout usa **Stripe Payment Link** cr
 ### Attivazione checkout (sandbox / test)
 
 1. Crea `.env` nella root (copia da `.env.example`) con `STRIPE_SECRET_KEY=sk_test_...`
-2. Esegui: `python scripts/connect_stripe_sandbox.py` — crea Payment Link per ogni prodotto in `_prezzi.py` con stato `acquista`
+2. Esegui: `python scripts/connect_stripe_sandbox.py` — crea Payment Link per ogni prodotto con prezzo in `end-user.json`
 3. Commit + push di `prodotti/stripe-config.js` (contiene solo URL pubblici + `pk_test_...`)
-4. Link vuoto `""` = bottone "Acquista ora" rimanda al form preventivo
-5. Per produzione: sostituisci `pk_test_` / `sk_test_` con chiavi live e rilancia lo script
+4. Link vuoto `""` = bottone "Acquista" rimanda al form preventivo
+5. Per produzione: metti `sk_live_` + `pk_live_` in `.env` e lancia `python scripts/connect_stripe_live.py`
 
 ### UX trust badge
 

@@ -137,9 +137,10 @@
     <details class="group" open>
       <summary><span class="gnum">3</span><h2>Stripe / pagamenti <span class="chip crit">Critico</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
       <div class="tasks">
-        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-1"><span class="body"><span class="t">Account Stripe + chiave pubblica</span><span class="d">Sostituire <code>pk_live_DA_COMPLETARE</code> in <code>prodotti/stripe-config.js</code>.</span></span></label></div>
-        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-2"><span class="body"><span class="t">Confermare i prezzi finali</span><span class="d">Prezzi attuali = End-User listino −5%. Confermare prima di creare i Payment Link.</span></span></label></div>
-        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-3"><span class="body"><span class="t">Creare 18 Payment Link (uno per prodotto)</span><span class="d">Crearli nella dashboard Stripe e incollarli nella mappa di <code>stripe-config.js</code> (18 voci ora vuote). Finché vuoti, "Acquista" rimanda al preventivo.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-1" checked><span class="body"><span class="t">Go-live — 98 Payment Link live</span><span class="d"><code>prodotti/stripe-config.js</code> con <code>pk_live_...</code> e URL <code>buy.stripe.com</code> (no test). Redirect → <code>abrarobotics.com/grazie.html</code>.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-2"><span class="body"><span class="t">Confermare i prezzi finali</span><span class="d">Prezzi = End-User listino. Se cambiano, rilancia <code>connect_stripe_live.py</code> e push <code>stripe-config.js</code>.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-3" checked><span class="body"><span class="t">Chiavi live in .env + script</span><span class="d"><code>scripts/connect_stripe_live.py</code> genera i link da <code>end-user.json</code>. Secret key solo in <code>.env</code> locale (gitignored).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-4"><span class="body"><span class="t">Test checkout sandbox</span><span class="d">Apri una scheda prodotto, clicca Acquista, paga con carta test <code>4242 4242 4242 4242</code>. Verifica redirect su <code>grazie.html</code> e email ricevuta.</span></span></label></div>
       </div>
     </details>
 
