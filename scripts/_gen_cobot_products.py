@@ -135,15 +135,9 @@ def media_main(slug: str, title: str) -> str:
     img_rel = f"../{image_for(slug)}"
     style = (
         "max-width:100%;max-height:480px;width:100%;object-fit:contain;padding:24px;"
-        "filter:drop-shadow(0 12px 20px rgba(0,0,0,.12));mix-blend-mode:multiply;"
+        "filter:drop-shadow(0 8px 24px rgba(0,0,0,.35));"
     )
-    return (
-        f'<img id="gallery-main-img" src="{img_rel}" alt="{title}" style="{style}" '
-        f"onerror=\"this.style.display='none';this.nextElementSibling.style.display='flex'\">"
-        f'<div style="display:none;flex-direction:column;align-items:center;justify-content:center;'
-        f'min-height:360px;gap:8px;color:#555"><strong style="font-size:1.4rem">{title}</strong>'
-        f"<span>Fairino · Cobot 6 assi</span></div>"
-    )
+    return f'<img id="gallery-main-img" src="{img_rel}" alt="{title}" style="{style}">'
 
 
 def buy_area(alibaba_usd: float) -> str:
@@ -258,7 +252,7 @@ def generate_one(row: tuple) -> dict:
 def catalog_card(item: dict) -> str:
     img = image_for(item["slug"])
     return f"""        <article class="cat-card">
-          <div class="cat-media amr-media"><img src="{img}" alt="{item['title']}" loading="lazy" onerror="this.style.opacity='0.3'"></div>
+          <div class="cat-media amr-media"><img src="{img}" alt="{item['title']}" loading="lazy"></div>
           <div class="cat-body">
             <p class="cat-family">Fairino · Cobot 6 assi</p>
             <h3>{item['title']}</h3>
@@ -294,8 +288,8 @@ def write_catalog(manifest: list[dict]) -> None:
     .cat-blurb {{ font-size: 0.82rem; color: var(--gray-600); margin: 4px 0; flex: 1; line-height: 1.45; }}
     .cat-price {{ font-size: 1.1rem; font-weight: 900; margin: 4px 0 8px; }}
     .cat-family {{ font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin: 0; }}
-    .cat-media.amr-media {{ aspect-ratio: 4/3; background: linear-gradient(145deg,#e8e8ec,#d6d6dc); display:flex; align-items:center; justify-content:center; }}
-    .cat-media.amr-media img {{ width:100%; height:100%; object-fit:contain; padding:20px; mix-blend-mode:multiply; }}
+    .cat-media.amr-media {{ aspect-ratio: 4/3; background: #0a0a0a; display:flex; align-items:center; justify-content:center; }}
+    .cat-media.amr-media img {{ width:100%; height:100%; object-fit:contain; padding:20px; }}
     .amr-note {{ background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 40px; font-size: 0.92rem; color: var(--gray-600); }}
   </style>
 </head>
