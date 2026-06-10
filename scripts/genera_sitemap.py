@@ -21,7 +21,6 @@ EXCLUDE_FILES = {
     "index.backup.html",
     "index-zenixa.html",
     "restyle-preview.html",
-    "catalogo.html",
     "grazie.html",
     "condizioni-di-vendita.html",
     "checklist.html",
@@ -31,6 +30,7 @@ EXCLUDE_DIRS = {"admin", "node_modules", "__pycache__"}
 
 PRIORITY = {
     "index.html": 1.0,
+    "catalogo.html": 0.95,
     "catalogo-unitree.html": 0.9,
     "catalogo-amr.html": 0.9,
     "catalogo-cobot.html": 0.9,
