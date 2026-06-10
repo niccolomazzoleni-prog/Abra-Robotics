@@ -27,16 +27,21 @@
     .cat-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
     .cat-jump a { font-size: 0.85rem; padding: 8px 14px; border: 1px solid var(--gray-200); border-radius: 999px; text-decoration: none; color: var(--black); }
     
+    .robot-media.amr-media,
+    .cat-media.amr-media {
+      background: linear-gradient(145deg, #e8e8ec 0%, #d6d6dc 100%);
+    }
     .robot-media.amr-media img,
     .robot-media.amr-media video,
     .cat-media.amr-media img,
     .cat-media.amr-media video {
       width: 100%; height: 100%; object-fit: contain; padding: 20px;
       filter: drop-shadow(0 12px 16px rgba(0,0,0,0.14));
+      mix-blend-mode: multiply;
     }
     .robot-media.amr-media video,
-    .cat-media.amr-media video { padding: 12px; }
-    .cat-media.amr-media { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: var(--gray-50); }
+    .cat-media.amr-media video { padding: 12px; mix-blend-mode: normal; }
+    .cat-media.amr-media { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
 
   </style>
 </head>
@@ -95,7 +100,7 @@
           </div>
         </article>
         <article class="cat-card" id="l300" data-group="leggeri" data-name="youibot l300">
-          <div class="cat-media amr-media"><img src="images/manifattura/amr/youibot-l300.png" alt="Youibot L300" loading="lazy"></div>
+          <div class="cat-media amr-media"><img src="images/manifattura/amr/youibot-l300-gallery.png" alt="Youibot L300" loading="lazy"></div>
           <div class="cat-body">
             <p class="cat-family">Pesi leggeri · Latent</p>
             <h3>Youibot L300</h3>
@@ -248,7 +253,7 @@
       <p class="cat-group-desc">Transpallet AMR per sostituire movimenti manuali con forche.</p>
       <div class="cat-grid">
         <article class="cat-card" id="xp15" data-group="muletti" data-name="ep equipment xp15">
-          <div class="cat-media amr-media"><img src="images/manifattura/amr/ep-xp15.jpg" alt="EP Equipment XP15" loading="lazy"></div>
+          <div class="cat-media amr-media"><img src="images/manifattura/amr/ep-xp15.png" alt="EP Equipment XP15" loading="lazy"></div>
           <div class="cat-body">
             <p class="cat-family">Muletto · AMR</p>
             <h3>EP Equipment XP15</h3>
