@@ -1,7 +1,7 @@
 // === ENDPOINT UNICO per TUTTI i form del sito ===
 // Tutti i form (contatti home/pagine, box "Richiedi informazioni" sulle schede) inviano qui.
 // Incolla l'URL del Web App Google Apps Script (vedi apps-script/README.md). Una sola riga da cambiare.
-window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQHcWp5OFlAssEajk03akHm2T_JlxAf_-SwWkKP773dXIt0Q0WvAJ1HtNdKl5E54vc/exec';
+window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxLVHzIut6LZScnDY6RqOlCSVdEpSofmW21cNI9v_LeJZ-51o8ZJI0MRwI-kxwd0fZQ/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
 document.querySelectorAll('.contact-form').forEach(form => {
