@@ -4,17 +4,18 @@
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxLVHzIut6LZScnDY6RqOlCSVdEpSofmW21cNI9v_LeJZ-51o8ZJI0MRwI-kxwd0fZQ/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
-document.querySelectorAll('.contact-form').forEach(form => {
+document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const submitBtn = form.querySelector('.form-submit');
-    const feedback = form.querySelector('.form-feedback');
+    const submitBtn = form.querySelector('.form-submit') || form.querySelector('[type="submit"]');
+    const feedback = form.querySelector('.form-feedback') || form.querySelector('.quote-form-feedback');
+    const origText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Invio in corso...';
-    feedback.className = 'form-feedback';
-    feedback.textContent = '';
+    if (feedback) { feedback.className = feedback.className.split(' ')[0]; feedback.textContent = ''; }
 
     const payload = Object.fromEntries(new FormData(form).entries());
+    payload.prodotto = payload.prodotto || form.dataset.product || '';
     payload.origine = payload.prodotto || 'Form contatti';
     payload.pagina = document.title;
     payload.url = location.href;
@@ -30,17 +31,15 @@ document.querySelectorAll('.contact-form').forEach(form => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      feedback.className = 'form-feedback success';
-      feedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.';
+      if (feedback) { feedback.className = feedback.className.split(' ')[0] + ' success'; feedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.'; }
       if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
       if (window.fbq) fbq('track', 'Lead');
       form.reset();
     } catch {
-      feedback.className = 'form-feedback error';
-      feedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.';
+      if (feedback) { feedback.className = feedback.className.split(' ')[0] + ' error'; feedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.'; }
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Invia la richiesta';
+      submitBtn.textContent = origText;
     }
   });
 });
