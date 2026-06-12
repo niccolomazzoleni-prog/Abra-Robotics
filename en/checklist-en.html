@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="canonical" href="https://abrarobotics.com/en/checklist-en.html">
+  <meta name="google-site-verification" content="G6A_4xRUkEdTQnXeAm_M37_ovtX1XVe5bjkGzvsCHzk">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MNLWZSN7');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T4ZC7CM8RX');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abra Robotics — Site Checklist (to do)</title>
+  <meta name="robots" content="index, follow">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0c0e14; --ink2:#151821; --line:#252a36; --txt:#e7e9ee; --mut:#9aa3b2;
+      --accent:#f5631e; --green:#2fbf71; --crit:#ff5d5d; --med:#ffb02e; --low:#5b8def;
+      --font:'Satoshi',-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:var(--ink);color:var(--txt);line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent)}
+    .wrap{max-width:1000px;margin:0 auto;padding:32px 24px 80px}
+
+    /* Header */
+    header.top{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
+      background:linear-gradient(135deg,#1a1d27,#0e1017);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin-bottom:14px}
+    header.top h1{font-size:1.6rem;font-weight:900;letter-spacing:-.02em}
+    header.top p{color:var(--mut);font-size:.92rem;margin-top:4px}
+    .ring{display:flex;align-items:center;gap:16px}
+    .ring .pct{font-size:2.2rem;font-weight:900;letter-spacing:-.03em}
+    .ring .pct small{font-size:.9rem;color:var(--mut);font-weight:600}
+    .bar{height:10px;background:var(--ink2);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#ff8a4c);transition:width .4s ease}
+    .topbar{flex:1 1 280px}
+    .actions{display:flex;gap:10px}
+    .btn{font-family:var(--font);font-weight:700;font-size:.82rem;border:1px solid var(--line);background:var(--ink2);
+      color:var(--txt);border-radius:10px;padding:9px 14px;cursor:pointer;transition:.15s}
+    .btn:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* Legend */
+    .legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 2px 22px;color:var(--mut);font-size:.8rem}
+    .legend .chip{margin-right:6px}
+    .chip{display:inline-block;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+      padding:3px 8px;border-radius:999px;vertical-align:middle}
+    .chip.crit{background:rgba(255,93,93,.15);color:var(--crit)}
+    .chip.med{background:rgba(255,176,46,.15);color:var(--med)}
+    .chip.low{background:rgba(91,141,239,.15);color:var(--low)}
+
+    /* Group */
+    .group{background:var(--ink2);border:1px solid var(--line);border-radius:16px;margin-bottom:16px;overflow:hidden}
+    .group > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px}
+    .group > summary::-webkit-details-marker{display:none}
+    .group > summary .gnum{width:30px;height:30px;border-radius:8px;background:var(--ink);display:grid;place-items:center;font-weight:800;color:var(--accent);flex-shrink:0}
+    .group > summary h2{font-size:1.08rem;font-weight:800;flex:1}
+    .group > summary .gcount{font-size:.82rem;color:var(--mut);font-weight:700;white-space:nowrap}
+    .group > summary .gbar{width:120px}
+    .group .caret{color:var(--mut);transition:transform .2s}
+    .group[open] .caret{transform:rotate(90deg)}
+    .tasks{padding:4px 14px 16px}
+
+    .task{display:flex;align-items:flex-start;gap:12px;padding:12px 10px;border-top:1px solid var(--line)}
+    .task:first-child{border-top:none}
+    .task input[type=checkbox]{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid var(--line);
+      border-radius:6px;cursor:pointer;flex-shrink:0;margin-top:1px;position:relative;transition:.15s;background:var(--ink)}
+    .task input:checked{background:var(--green);border-color:var(--green)}
+    .task input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#04130b;font-weight:900;font-size:.8rem}
+    .task .body{flex:1}
+    .task .t{font-weight:700;font-size:.98rem}
+    .task .d{color:var(--mut);font-size:.86rem;margin-top:3px}
+    .task .d code{background:var(--ink);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.8rem;color:#cdd3df}
+    .task.done .t{text-decoration:line-through;color:var(--mut)}
+    .task.done .body{opacity:.55}
+    label.cbx{display:contents;cursor:pointer}
+    @media(max-width:600px){.group>summary .gbar{display:none}}
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  "https://connect.facebook.net/en_US/fbevents.js");
+  fbq("init","1478056171004711");
+  fbq("track","PageView");
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1478056171004711&ev=PageView&noscript=1"></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="alternate" hreflang="it" href="https://abrarobotics.com/checklist.html">
+  <link rel="alternate" hreflang="en" href="https://abrarobotics.com/en/checklist-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://abrarobotics.com/checklist.html">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <h1>Abra Robotics Site Checklist</h1>
+        <p>Check items as you complete them - progress is saved in this browser.</p>
+      </div>
+      <div class="topbar">
+        <div class="ring"><span class="pct" id="pct">0%</span><span class="pct"><small id="done-count">0 / 0 completed</small></span></div>
+        <div class="bar" style="margin-top:8px"><i id="overall-bar"></i></div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="expand">Expand all</button>
+        <button class="btn" id="reset">Reset</button>
+      </div>
+    </header>
+
+    <div class="legend">
+      Priority:
+      <span><span class="chip crit">Critical</span> blocks go-live</span>
+      <span><span class="chip med">Medium</span> content/quality</span>
+      <span><span class="chip low">Nice to have</span></span>
+    </div>
+
+    <!-- 1. LEGAL DATA -->
+    <details class="group" open>
+      <summary><span class="gnum">1</span><h2>Legal data <span class="chip crit">Critical</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-1"><span class="body"><span class="t">Full company name + legal entity type</span><span class="d">E.g. "Abra Robotics S.r.l." - replaces <code>[TO COMPLETE: company name]</code> in legal notices, privacy, terms and footer.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-2"><span class="body"><span class="t">Registered office (full address)</span><span class="d">Street, ZIP, city, province. Appears in privacy-policy and legal notices.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-3"><span class="body"><span class="t">VAT Number / Tax Code</span><span class="d">Required in the footer of all pages + privacy/legal notices/terms.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-4"><span class="body"><span class="t">REA Number + Companies Registry</span><span class="d">"Registered at the Companies Registry of [city] at REA no. [n]".</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-5"><span class="body"><span class="t">PEC (Certified Email)</span><span class="d">Corporate certified email address for privacy and legal notices.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-6"><span class="body"><span class="t">Jurisdiction city</span><span class="d">For the jurisdiction clause in <code>condizioni-di-vendita.html</code> and <code>note-legali.html</code>.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-7"><span class="body"><span class="t">Complete Terms of sale</span><span class="d">12 sections with <code>[TO COMPLETE]</code> (order, pricing, payment, delivery, warranty, withdrawal...) to be defined with legal counsel.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="leg-8"><span class="body"><span class="t">Verify DPO / privacy endpoint</span><span class="d">Indicate whether a DPO has been appointed and the email for exercising GDPR rights.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 2. FORMS / LEADS -->
+    <details class="group" open>
+      <summary><span class="gnum">2</span><h2>Contact forms / leads <span class="chip crit">Critical</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="form-1"><span class="body"><span class="t">Create lead collection endpoint</span><span class="d">Google Apps Script connected to a Google Sheet (or other endpoint) that receives form submissions.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="form-2"><span class="body"><span class="t">Insert the URL in the site</span><span class="d">Replace <code>INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT</code> in <code>script.js</code> and <code>prodotti/ecommerce.js</code>. Without this, no form will submit.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="form-3"><span class="body"><span class="t">Send + receive test</span><span class="d">Test the home form, product pages and "Request information" box. Verify email/sheet arrival within a few seconds.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 3. STRIPE / PAYMENTS -->
+    <details class="group" open>
+      <summary><span class="gnum">3</span><h2>Stripe / payments <span class="chip crit">Critical</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-1" checked><span class="body"><span class="t">Go-live - 98 Payment Links live</span><span class="d"><code>prodotti/stripe-config.js</code> with <code>pk_live_...</code> and <code>buy.stripe.com</code> URLs (no test). Redirect → <code>abrarobotics.com/grazie.html</code>.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-2"><span class="body"><span class="t">Confirm final prices</span><span class="d">Prices = End-User price list. If they change, re-run <code>connect_stripe_live.py</code> and push <code>stripe-config.js</code>.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-3" checked><span class="body"><span class="t">Live keys in .env + script</span><span class="d"><code>scripts/connect_stripe_live.py</code> generates links from <code>end-user.json</code>. Secret key only in local <code>.env</code> (gitignored).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="stripe-4"><span class="body"><span class="t">Sandbox checkout test</span><span class="d">Open a product page, click Buy, pay with test card <code>4242 4242 4242 4242</code>. Verify redirect to <code>grazie.html</code> and email received.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 4. IMAGES -->
+    <details class="group" open>
+      <summary><span class="gnum">4</span><h2>Images to provide <span class="chip med">Medium</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-1"><span class="body"><span class="t">Home - humanoid in university setting</span><span class="d">Real photo, landscape ~16:9 (recommended 1200x675 px). Replaces the "IMG: humanoid university setting" placeholder.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-2"><span class="body"><span class="t">Assessment - 4 card images "Who it serves"</span><span class="d">4 photos 16:9 (~800x450 px): product company, logistics, R&D/innovation, university.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-3"><span class="body"><span class="t">Financing - 3 banners</span><span class="d">3 wide landscape images ~21:9 (~1600x685 px) to break up text (incentives/industry/workshop).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-4"><span class="body"><span class="t">Manufacturing - hero + quadruped section</span><span class="d">2 wide images ~24:9 (~2000x750 px): manufacturing sector hero, quadruped in plant inspection.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-5"><span class="body"><span class="t">Real photos G1D and R1D</span><span class="d">Full-body product photo on white background, ~2000x2000 px (for background removal like other humanoids). Replace the "IMG: G1D" / "IMG: R1D" placeholders.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-6"><span class="body"><span class="t">University - hero + laboratory</span><span class="d">2 wide images ~24:9: university hero, robotics research laboratory (dark tone).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="img-7"><span class="body"><span class="t">New product photos (optional)</span><span class="d">Additional images for Franka FR3, Fairino, MC250, HikRobot, H2 (1 each currently; more photos = richer gallery).</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 5. PRICES -->
+    <details class="group" open>
+      <summary><span class="gnum">5</span><h2>Missing prices <span class="chip med">Medium</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="price-1"><span class="body"><span class="t">G1 EDU Ultimate F (U8)</span><span class="d">BrainCo Revo 2 hands with tactile sensors: not in the price list. Provide End-User price (then -5%).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="price-2"><span class="body"><span class="t">Go2 Enterprise+ U2</span><span class="d">Confirm which product this refers to and the price (EDU Ultimate €20,075 or GO2W-U2 €24,784?).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="price-3"><span class="body"><span class="t">Unitree H2</span><span class="d">Currently "Price on request". Provide the price if you want to display it (then -5%).</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 6. PRODUCT PAGES -->
+    <details class="group" open>
+      <summary><span class="gnum">6</span><h2>Product pages to create <span class="chip med">Medium</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-0"><span class="body"><span class="t">Unitree H2 ✓ (done)</span><span class="d">Page created + added to Humanoids collection. (Check for reference.)</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-1"><span class="body"><span class="t">Franka Research 3 (FR3)</span><span class="d">7 DoF research arm. → University collection. Specs from Franka website.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-2"><span class="body"><span class="t">Fairino FR5 / FR10 / FR20</span><span class="d">3 cobots (5/10/20 kg payload). → Cobot section in Manufacturing.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-3"><span class="body"><span class="t">Enabled Robotics MC250</span><span class="d">Mobile cobot (MiR250 + UR arm). → Manufacturing/AMR.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="prod-4"><span class="body"><span class="t">HikRobot LMR</span><span class="d">Latent AMR (under-shelf). → Manufacturing/AMR.</span></span></label></div>
+      </div>
+    </details>
+
+    <!-- 7. SEO / EXTRAS -->
+    <details class="group" open>
+      <summary><span class="gnum">7</span><h2>SEO / extras <span class="chip low">Nice to have</span></h2><div class="bar gbar"><i></i></div><span class="gcount"></span><span class="caret">▸</span></summary>
+      <div class="tasks">
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-1"><span class="body"><span class="t">Create sitemap.xml</span><span class="d"><code>robots.txt</code> declares it but the file is missing. Generate the sitemap with all pages.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-2"><span class="body"><span class="t">og:image per product</span><span class="d">Some pages use the generic social image; set a custom social preview for each product.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-3"><span class="body"><span class="t">Upload feed to Google Merchant Center</span><span class="d"><code>merchant-feed.xml</code> generated (16 products). Must be submitted to Merchant Center + account verified.</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-4"><span class="body"><span class="t">Apply Abra logo overlay on product photos</span><span class="d">Apply the logo to the images (deferred to post-launch).</span></span></label></div>
+        <div class="task"><label class="cbx"><input type="checkbox" id="seo-5"><span class="body"><span class="t">Custom domain</span><span class="d">Consider a custom domain (e.g. abrarobotics.com) instead of the github.io URL for ads/e-commerce.</span></span></label></div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+  (function(){
+    var KEY='abra_checklist_v1';
+    var saved={};
+    try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+    var boxes=Array.prototype.slice.call(document.querySelectorAll('.task input[type=checkbox]'));
+
+    function save(){ var o={}; boxes.forEach(function(b){ if(b.checked) o[b.id]=1; }); localStorage.setItem(KEY,JSON.stringify(o)); }
+
+    function refresh(){
+      // per gruppo
+      document.querySelectorAll('.group').forEach(function(g){
+        var bs=g.querySelectorAll('.task input'); var done=0;
+        bs.forEach(function(b){ if(b.checked) done++; });
+        var pct=bs.length?Math.round(done/bs.length*100):0;
+        var bar=g.querySelector('.gbar > i'); if(bar) bar.style.width=pct+'%';
+        var c=g.querySelector('.gcount'); if(c) c.textContent=done+'/'+bs.length;
+      });
+      // totale
+      var done=boxes.filter(function(b){return b.checked;}).length;
+      var pct=boxes.length?Math.round(done/boxes.length*100):0;
+      document.getElementById('pct').textContent=pct+'%';
+      document.getElementById('overall-bar').style.width=pct+'%';
+      document.getElementById('done-count').textContent=done+' / '+boxes.length+' completate';
+    }
+
+    boxes.forEach(function(b){
+      if(saved[b.id]) b.checked=true;
+      b.closest('.task').classList.toggle('done', b.checked);
+      b.addEventListener('change', function(){
+        b.closest('.task').classList.toggle('done', b.checked);
+        save(); refresh();
+      });
+    });
+    refresh();
+
+    document.getElementById('reset').addEventListener('click', function(){
+      if(!confirm('Azzerare tutte le spunte?')) return;
+      boxes.forEach(function(b){ b.checked=false; b.closest('.task').classList.remove('done'); });
+      save(); refresh();
+    });
+    var expanded=true;
+    document.getElementById('expand').addEventListener('click', function(){
+      expanded=!expanded;
+      document.querySelectorAll('.group').forEach(function(g){ g.open=expanded; });
+      this.textContent=expanded?'Comprimi tutto':'Espandi tutto';
+    });
+  })();
+  </script>
+  <!-- WhatsApp sticky bar -->
+  <div class="wa-bar" id="wa-bar">
+    <p><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Want to receive more information?</p>
+    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">Contact us on WhatsApp</a>
+    <button class="wa-bar-close" id="wa-bar-close" aria-label="Close">&times;</button>
+  </div>
+</body>
+</html>
