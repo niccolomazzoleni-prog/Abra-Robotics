@@ -31,10 +31,11 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if (feedback) { feedback.className = feedback.className.split(' ')[0] + ' success'; feedback.textContent = 'Messaggio inviato! Ti contatteremo entro 12 ore.'; }
       if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
       if (window.fbq) fbq('track', 'Lead');
       form.reset();
+      const isEn = window.location.pathname.includes('/en/');
+      window.location.href = isEn ? '../lp-thank-you-en.html' : 'lp-thank-you.html';
     } catch {
       if (feedback) { feedback.className = feedback.className.split(' ')[0] + ' error'; feedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.'; }
     } finally {
