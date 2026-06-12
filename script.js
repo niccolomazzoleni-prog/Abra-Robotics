@@ -35,7 +35,7 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
       if (window.fbq) fbq('track', 'Lead');
       form.reset();
       const isEn = window.location.pathname.includes('/en/');
-      window.location.href = isEn ? '../lp-thank-you-en.html' : 'lp-thank-you.html';
+      window.location.href = isEn ? '../lp-thank-you-en/' : 'lp-thank-you/';
     } catch {
       if (feedback) { feedback.className = feedback.className.split(' ')[0] + ' error'; feedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.'; }
     } finally {
