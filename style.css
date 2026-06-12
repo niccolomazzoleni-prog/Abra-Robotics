@@ -2512,24 +2512,18 @@ body.has-wa-bar { padding-bottom: 60px; }
 
 @media (max-width: 600px) {
   .wa-bar {
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px 48px 14px 16px;
-    justify-content: center;
-    text-align: center;
-  }
-  .wa-bar p {
-    font-size: 0.85rem;
-    width: 100%;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 11px 44px 11px 16px;
     justify-content: center;
   }
+  .wa-bar p { display: none; }
   .wa-bar a.wa-btn {
-    width: 100%;
-    max-width: 280px;
-    justify-content: center;
+    width: auto;
+    max-width: none;
     font-size: 0.9rem;
-    padding: 10px 18px;
+    padding: 9px 22px;
   }
-  .wa-bar-close { top: 8px; right: 10px; transform: none; }
-  body.has-wa-bar { padding-bottom: 108px; }
+  .wa-bar-close { top: 50%; right: 12px; transform: translateY(-50%); }
+  body.has-wa-bar { padding-bottom: 60px; }
 }
