@@ -197,7 +197,7 @@ document.addEventListener('click', (e) => {
 
   function waBarHtml() {
     return `<div class="wa-bar" id="wa-bar">
-    <p>${WA_SVG} Vuoi ricevere più informazioni?</p>
+    <p>${WA_SVG} Vuoi più informazioni? Scrivici su WhatsApp</p>
     <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">Contattaci su WhatsApp</a>
     <button class="wa-bar-close" id="wa-bar-close" aria-label="Chiudi">&times;</button>
   </div>`;
