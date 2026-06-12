@@ -45,6 +45,23 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
   });
 });
 
+// Response-time note below every submit button
+(function () {
+  const isEn = document.documentElement.lang === 'en' || window.location.pathname.includes('/en/');
+  const msg = isEn
+    ? 'We will get back to you within 2 business hours.'
+    : 'Ti ricontattiamo entro 2 ore lavorative.';
+  document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
+    const btn = form.querySelector('.form-submit, [type="submit"]');
+    if (!btn) return;
+    const note = document.createElement('p');
+    note.className = 'form-note';
+    note.style.marginTop = '10px';
+    note.textContent = msg;
+    btn.insertAdjacentElement('afterend', note);
+  });
+})();
+
 // Mobile menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
