@@ -2520,13 +2520,19 @@ body.has-wa-bar { padding-bottom: 60px; }
   .wa-bar p {
     flex: 1;
     min-width: 0;
-    font-size: 0.76rem;
+    font-size: 0.73rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     justify-content: flex-start;
   }
-  .wa-bar a.wa-btn { display: none; }
+  .wa-bar a.wa-btn {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 7px 12px;
+    gap: 0;
+  }
+  .wa-bar a.wa-btn svg { display: none; }
   .wa-bar-close { top: 50%; right: 12px; transform: translateY(-50%); }
   body.has-wa-bar { padding-bottom: 60px; }
 }
