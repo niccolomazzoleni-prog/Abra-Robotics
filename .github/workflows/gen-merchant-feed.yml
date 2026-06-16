@@ -1,0 +1,51 @@
+name: Genera merchant feed
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'prodotti/unitree-*.html'
+      - 'prodotti/amr-*.html'
+      - 'prodotti/cobot-*.html'
+      - 'prodotti/_gen_merchant_feed.py'
+  schedule:
+    - cron: '0 5 * * *'   # ogni giorno alle 5:00 UTC come rete di sicurezza
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Genera merchant-feed.xml
+        run: |
+          cd prodotti
+          python _gen_merchant_feed.py
+
+      - name: Verifica prodotti nel feed
+        run: |
+          count=$(grep -c "<g:id>" merchant-feed.xml || true)
+          echo "Prodotti nel feed: $count"
+          if [ "$count" -eq 0 ]; then
+            echo "ERRORE: feed vuoto" >&2
+            exit 1
+          fi
+
+      - name: Commit se cambiato
+        run: |
+          git config user.name "feed-bot"
+          git config user.email "bot@abra-robotics.it"
+          git diff --quiet merchant-feed.xml || (
+            git add merchant-feed.xml &&
+            git commit -m "chore: rigenera merchant-feed.xml [skip ci]" &&
+            git push
+          )
