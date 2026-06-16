@@ -23,12 +23,15 @@ jobs:
       - name: Scrape quadruped.de
         run: python prodotti/_sync_availability.py
 
+      - name: Rigenera merchant feed con disponibilita aggiornata
+        run: cd prodotti && python _gen_merchant_feed.py
+
       - name: Commit if changed
         run: |
           git config user.name "availability-bot"
           git config user.email "bot@abra-robotics.it"
-          git diff --quiet availability.json || (
-            git add availability.json &&
-            git commit -m "chore: sync availability da quadruped.de [skip ci]" &&
+          git add availability.json merchant-feed.xml
+          git diff --staged --quiet || (
+            git commit -m "chore: sync availability + rigenera feed [skip ci]" &&
             git push
           )
