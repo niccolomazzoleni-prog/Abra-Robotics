@@ -2221,8 +2221,24 @@ body::before {
 }
 .cookie-banner button:hover { transform: scale(1.05); }
 @media (max-width: 600px) {
-  .cookie-banner { flex-direction: column; align-items: stretch; }
-  .cookie-banner .cookie-actions button { width: 100%; }
+  .cookie-banner {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 14px;
+    gap: 10px;
+    bottom: 12px;
+  }
+  .cookie-banner p {
+    font-size: 0.72rem;
+    line-height: 1.4;
+    flex: 1 1 0;
+  }
+  .cookie-banner .cookie-actions { flex-shrink: 0; }
+  .cookie-banner button {
+    padding: 7px 12px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
 }
 
 /* === Image placeholder (per asset da generare esternamente) === */
