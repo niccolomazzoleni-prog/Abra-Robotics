@@ -151,6 +151,9 @@ h3 {
   border: none;
   cursor: pointer;
   padding: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
 }
 
 .menu-toggle span {
@@ -1821,16 +1824,32 @@ select:focus-visible,
   .about-intro .label,
   .about-intro .about-lead { text-align: center; }
 
-  /* Footer mobile center */
+  /* Footer mobile */
   .footer-grid {
-    padding: 56px 0 32px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 48px 24px 32px;
     text-align: center;
   }
   .footer-brand,
   .footer-nav,
   .footer-contact { align-items: center; }
-  .footer-brand .footer-desc { margin-left: auto; margin-right: auto; }
+  .footer-brand .footer-desc { margin-left: auto; margin-right: auto; max-width: 100%; }
   .footer-contact .btn { align-self: center; }
+  .footer-bottom {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
 
   /* Anchor strip on finanziamenti page — center scrollable */
   .anchor-strip-inner { padding-left: 20px; padding-right: 20px; }
@@ -2180,6 +2199,29 @@ body::before {
 }
 .footer-legal a:hover { color: var(--black); }
 
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding: 48px 24px 32px !important;
+    text-align: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .footer-legal {
+    justify-content: center;
+  }
+  .footer-copy { text-align: center; }
+  .footer-brand, .footer-nav, .footer-contact { align-items: center; }
+  .footer-contact .btn { align-self: center; }
+  .navbar .btn { display: none !important; }
+}
+
 /* === Cookie banner === */
 .cookie-banner {
   position: fixed;
@@ -2309,6 +2351,25 @@ body::before {
 .subcat-card:hover { border-color: var(--black); transform: translateY(-2px); }
 .subcat-label { font-weight: 700; font-size: 1rem; }
 .subcat-note { font-size: 0.78rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.06em; }
+
+@media (max-width: 640px) {
+  .subcat-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 28px;
+  }
+  .subcat-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 7px 14px;
+    border-radius: 100px;
+    border-style: solid;
+  }
+  .subcat-note { display: none; }
+  .subcat-label { font-size: 0.82rem; }
+}
 .img-ph.is-dark {
   border-color: rgba(255,255,255,0.25);
   background:
