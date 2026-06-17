@@ -220,7 +220,7 @@
       document.getElementById('rows').innerHTML = filtered.length
         ? filtered.map(i => `<tr>
             <td class="thumb-col">${i.img ? `<img class="listino-thumb" src="${i.img}" alt="" loading="lazy">` : ''}</td>
-            <td><a class="prod-link" href="prodotti/${i.slug}">${i.nome}</a></td>
+            <td><a class="prod-link" href="../prodotti/${i.slug}">${i.nome}</a></td>
             <td>${i.catLabel}</td>
             <td class="price-col">${i.prezzoDa ? 'da ' : ''}€ ${fmt(i.prezzo)}</td>
           </tr>`).join('')
