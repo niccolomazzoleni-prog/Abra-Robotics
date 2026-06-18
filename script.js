@@ -7,6 +7,8 @@ const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const invalid = [...form.querySelectorAll('[required]')].filter(f => !f.value.trim());
+    if (invalid.length) { invalid[0].focus(); invalid[0].reportValidity(); return; }
     const submitBtn = form.querySelector('.form-submit') || form.querySelector('[type="submit"]');
     const feedback = form.querySelector('.form-feedback') || form.querySelector('.quote-form-feedback');
     const origText = submitBtn.textContent;
