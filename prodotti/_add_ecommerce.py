@@ -36,7 +36,7 @@ def form_box(product):
                 <input type="text" name="nome" placeholder="Nome e cognome" required>
                 <input type="email" name="email" placeholder="Email" required>
               </div>
-              <textarea name="messaggio" rows="2" placeholder="La tua richiesta..."></textarea>
+              <textarea name="messaggio" required="" rows="2" placeholder="La tua richiesta..."></textarea>
               <button type="submit" class="btn btn-primary btn-sm">Invia richiesta</button>
               <span class="quote-form-feedback" aria-live="polite"></span>
             </form>
