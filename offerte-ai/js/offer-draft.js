@@ -270,6 +270,8 @@
 
       this._productHighlight(offer, 'A2-STD');
 
+      this._productHighlight(offer, 'A2-PRO');
+
       this._productHighlight(offer, 'GO2-EDU-STD');
 
       this._productHighlight(offer, 'GO2-EDU-SMART');
