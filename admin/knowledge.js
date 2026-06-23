@@ -4,11 +4,12 @@
 
   const GH_EDIT = 'https://github.com/niccolomazzoleni-prog/Abra-Robotics/edit/main/offerte-ai/data/knowledge/';
   const KB_FILES = [
+    'faq-sorveglianza-quadrupedi.md',
+    'prodotti-as2.md',
+    'prodotti-a2.md',
+    'listino-integrazione-poc.md',
     'faq-vendita.md',
     'faq-prezzi-spedizione.md',
-    'faq-sorveglianza-quadrupedi.md',
-    'listino-integrazione-poc.md',
-    'prodotti-as2.md',
   ];
   const INDEX_URL = '../offerte-ai/data/knowledge-index.json';
   const KB_BASE = '../offerte-ai/data/knowledge/';

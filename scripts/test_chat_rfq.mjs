@@ -28,7 +28,7 @@ globalThis.sessionStorage = {
   setItem() {},
 };
 
-const MSG = `Preventivo formale Go2 EDU PLUS Orin NX e anche base Orin Nano per confronto.`;
+const MSG = `Preventivo formale sorveglianza area confinata con umidità, termocamera e sensori gas. Confronto As2 Pro, A2 Standard e A2 Pro.`;
 
 loadScript('js/prompt-guard.js');
 loadScript('js/kb-search.js');

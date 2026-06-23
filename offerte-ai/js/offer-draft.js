@@ -443,7 +443,9 @@
       const skus = offer.line_items.map(l => l.sku).filter(Boolean);
 
       let msg;
-      if (skus.some(s => /^GO2-EDU/i.test(s))) {
+      if (skus.some(s => /^AS2|^A2/i.test(s)) && robots.length > 1) {
+        msg = 'Ho preparato un preventivo sorveglianza/perlustrazione con **As2 Pro**, **A2 Standard** e **A2 Pro** come alternative robot (sceglierne una), più sensori e PoC.\n\n';
+      } else if (skus.some(s => /^GO2-EDU/i.test(s))) {
         msg = 'Ho preparato un preventivo formale Go2 EDU con confronto configurazioni Standard (Orin Nano) e Smart/EDU+ (Orin NX).\n\n';
       } else if (robots.length > 1) {
         msg = 'Ho preparato un preventivo formale con ' + robots.length + ' alternative robot (sceglierne una) più accessori e PoC.\n\n';
