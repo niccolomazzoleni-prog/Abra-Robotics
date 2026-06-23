@@ -437,12 +437,19 @@
 
 
     formatChatIntro(offer) {
-
       const t = this.builder.recalculate(offer);
-
       const onRequest = offer.line_items.filter(l => l.su_richiesta || l.prezzo_unit === 0);
+      const robots = offer.line_items.filter(l => l.opzione_robot);
+      const skus = offer.line_items.map(l => l.sku).filter(Boolean);
 
-      let msg = 'Ho preparato un preventivo formale con confronto As2 Pro, A2 Standard e A2 Pro, più accessori e PoC.\n\n';
+      let msg;
+      if (skus.some(s => /^GO2-EDU/i.test(s))) {
+        msg = 'Ho preparato un preventivo formale Go2 EDU con confronto configurazioni Standard (Orin Nano) e Smart/EDU+ (Orin NX).\n\n';
+      } else if (robots.length > 1) {
+        msg = 'Ho preparato un preventivo formale con ' + robots.length + ' alternative robot (sceglierne una) più accessori e PoC.\n\n';
+      } else {
+        msg = 'Ho preparato un preventivo formale con le voci richieste.\n\n';
+      }
 
       if (t.opzioni?.length > 1) {
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Statistiche sito — Abra Robotics (interno)</title>
+  <title>Statistiche sito — Abra Robotics</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="admin.css">
@@ -15,20 +15,26 @@
     <nav class="admin-nav">
       <a href="index.html">← Admin</a>
       <a href="listini.html">Listini</a>
-      <a href="offerte-ai.html">Offerte AI</a>
+      <a href="knowledge.html">Knowledge</a>
       <span class="spacer"></span>
-      <a href="#" class="is-active">Statistiche</a>
+      <a href="#" class="is-active">Statistiche sito</a>
       <button type="button" class="btn btn-secondary btn-sm" onclick="AbraAdmin.logout()">Esci</button>
     </nav>
 
     <div class="admin-head">
-      <p class="label">Interno · Non indicizzato</p>
-      <h1>Accessi al sito</h1>
-      <p>Visite, provenienza traffico e contatti su <strong>abrarobotics.com</strong>. Ogni pagina pubblica invia un beacon al foglio Google (scheda Analytics). Non sono statistiche del repository GitHub.</p>
+      <p class="label">Interno · abrarobotics.com</p>
+      <h1>Accessi e visualizzazioni sito</h1>
+      <p>Dashboard first-party: ogni pagina pubblica registra una visita nel foglio Google (scheda <strong>Analytics</strong>). In basso: stato deploy GitHub Pages (infrastruttura, non traffico visitatori).</p>
     </div>
 
     <div class="stats-toolbar">
+      <div class="stats-period">
+        <button type="button" class="btn btn-sm" data-stats-days="7">7 gg</button>
+        <button type="button" class="btn btn-sm" data-stats-days="30">30 gg</button>
+        <button type="button" class="btn btn-sm" data-stats-days="90">90 gg</button>
+      </div>
       <button type="button" class="btn btn-primary btn-sm" id="btn-refresh">Aggiorna dati sito</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-export-pages">Esporta pagine CSV</button>
       <span class="stats-updated" id="stats-updated">Caricamento…</span>
     </div>
 
@@ -37,34 +43,45 @@
     <div class="quick-links" style="margin-bottom:16px">
       <a href="https://analytics.google.com/" target="_blank" rel="noopener">Google Analytics</a>
       <a href="https://business.facebook.com/events_manager2/list/pixel/1478056171004711" target="_blank" rel="noopener">Meta Pixel</a>
-      <a href="https://docs.google.com/spreadsheets/d/1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY/edit" target="_blank" rel="noopener">Foglio Contatti + Analytics</a>
+      <a href="https://docs.google.com/spreadsheets/d/1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY/edit#gid=0" target="_blank" rel="noopener">Foglio raw Analytics</a>
     </div>
 
     <div class="kpi-grid" id="kpi-grid"></div>
 
     <section class="admin-card">
-      <h2>Da dove arrivano</h2>
-      <p class="hint">Referrer delle visite sul sito (Google, LinkedIn, direct, ecc.).</p>
-      <div id="site-referrers"></div>
+      <h2>Visite per giorno</h2>
+      <p class="hint">Trend sul periodo selezionato (beacon first-party).</p>
+      <div id="site-daily"></div>
     </section>
 
     <section class="admin-card">
       <h2>Pagine più visitate</h2>
-      <p class="hint">Path registrati dal beacon first-party.</p>
+      <p class="hint">Path su abrarobotics.com — homepage, catalogo, prodotti, landing.</p>
       <div id="site-pages"></div>
     </section>
 
     <section class="admin-card">
+      <h2>Provenienza traffico</h2>
+      <p class="hint">Referrer (Google, LinkedIn, direct, ecc.).</p>
+      <div id="site-referrers"></div>
+    </section>
+
+    <section class="admin-card">
       <h2>Campagne UTM</h2>
-      <p class="hint">Parametro utm_source quando presente nell'URL.</p>
       <div id="site-utm"></div>
     </section>
 
     <section class="admin-card">
+      <h2>Infrastruttura GitHub</h2>
+      <p class="hint">Deploy Pages e workflow — utile per verificare che il sito sia aggiornato, non sostituisce le visite reali sopra.</p>
+      <div id="github-panel"></div>
+    </section>
+
+    <section class="admin-card">
       <h2>Setup beacon</h2>
-      <p class="hint">La chiave è già precompilata (<code>abra-stats-2026</code>, uguale a <code>STATS_KEY</code> in <code>apps-script/Code.gs</code>). Cambiala solo se modifichi lo script.</p>
+      <p class="hint">Chiave precompilata = <code>STATS_KEY</code> in <code>apps-script/Code.gs</code>. Dopo modifiche allo script: <strong>Distribuisci → Nuova versione Web App</strong>.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
-        <input type="text" id="stats-key-input" placeholder="Chiave stats" style="flex:1;min-width:200px;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;font:inherit">
+        <input type="text" id="stats-key-input" style="flex:1;min-width:200px;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;font:inherit">
         <button type="button" class="btn btn-primary btn-sm" id="btn-save-stats-key">Salva chiave</button>
       </div>
     </section>

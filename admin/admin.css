@@ -263,6 +263,31 @@ body.admin-page { background: var(--gray-50); }
 .stats-ok { color: #166534; }
 .stats-warn { color: #92400e; }
 
+.stats-period { display: flex; gap: 6px; flex-wrap: wrap; }
+.stats-period .btn.is-active { background: var(--black); color: var(--white); border-color: var(--black); }
+
+.stats-chart {
+  display: flex; align-items: flex-end; gap: 4px; height: 140px;
+  padding: 12px 0 0; overflow-x: auto;
+}
+.stats-chart-col {
+  flex: 1; min-width: 28px; max-width: 48px; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+}
+.stats-chart-bar {
+  width: 100%; max-width: 32px; background: linear-gradient(180deg, #7c4dd6, #b37eff);
+  border-radius: 4px 4px 0 0; min-height: 4px;
+}
+.stats-chart-lbl {
+  font-size: 0.62rem; color: var(--gray-500); margin-top: 4px;
+  writing-mode: vertical-rl; transform: rotate(180deg); max-height: 52px;
+}
+.stats-gh-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px; font-size: 0.88rem;
+}
+.stats-gh-grid .hint { font-size: 0.72rem; color: var(--gray-500); }
+
 @media (max-width: 768px) {
   .admin-wrap { padding: 88px 20px 72px; }
   .stats-updated { width: 100%; margin-left: 0; margin-top: 4px; }
