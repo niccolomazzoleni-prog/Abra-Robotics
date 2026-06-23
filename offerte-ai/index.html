@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Abra Lab — Training chat</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/offerte-ai.css?v=20260623j">
+</head>
+<body class="app-body app-lab">
+  <div id="app-nav-mount"></div>
+
+  <div class="app-shell app-shell-lab">
+    <main class="chat-thread" id="chat-root"></main>
+
+    <aside class="chat-sidebar">
+      <section class="sidebar-card lab-badge-card">
+        <span class="lab-platinum-badge">✦ LAB TRAINING</span>
+        <p class="lab-badge-desc">Dopo ogni risposta del bot scegli: <strong>Va bene</strong>, <strong>Da correggere</strong> o <strong>Integra in knowledge</strong>. I dati restano qui finché non li esporti.</p>
+      </section>
+
+      <section class="sidebar-card">
+        <h3>Stato sessione</h3>
+        <div class="stat-row"><span>AI</span><strong id="sb-mode">—</strong></div>
+        <div class="stat-row"><span>Knowledge</span><strong id="sb-kb">—</strong></div>
+        <div class="stat-row"><span>Feedback dati</span><strong id="sb-fb">0</strong></div>
+        <div class="stat-row"><span>In coda KB</span><strong id="sb-kb-pending">0</strong></div>
+        <div class="sidebar-actions-row">
+          <button type="button" class="sidebar-btn" id="sb-test-ai">Test AI</button>
+          <a class="sidebar-btn subtle" href="../admin/offerte-ai.html">Admin</a>
+        </div>
+      </section>
+
+      <section class="sidebar-card sidebar-export-card">
+        <h3>Esporta training</h3>
+        <p class="sidebar-explainer">Scarica sul PC le conversazioni corrette. Poi le usi per aggiornare la knowledge o addestrare Gemma in locale.</p>
+        <button type="button" class="sidebar-cta" id="sb-export-all">Scarica pacchetto training</button>
+        <details class="sidebar-details">
+          <summary>Cosa succede dopo il download?</summary>
+          <code class="sidebar-code">python scripts/merge_feedback_to_kb.py percorso/feedback-export.jsonl<br>python scripts/build_knowledge_index.py<br>.\scripts\train-abra-gemma.ps1</code>
+        </details>
+      </section>
+
+      <section class="sidebar-card sidebar-links-card">
+        <a class="sidebar-btn" href="offerta.html">Apri Crea offerta PDF</a>
+        <button type="button" class="sidebar-btn subtle" id="sb-clear-chat">Nuova conversazione</button>
+      </section>
+    </aside>
+  </div>
+
+  <script src="js/prompt-guard.js"></script>
+  <script src="js/app-shell.js"></script>
+  <script src="js/kb-search.js"></script>
+  <script src="js/quote-engine.js"></script>
+  <script src="js/offer-builder.js"></script>
+  <script src="js/offer-draft.js"></script>
+  <script src="js/llm-providers.js"></script>
+  <script src="js/rag-chat.js"></script>
+  <script src="js/chat-ui.js"></script>
+  <script src="js/lab-page.js"></script>
+</body>
+</html>

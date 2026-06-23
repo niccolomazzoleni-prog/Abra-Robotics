@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Assistente Offerte — Abra Robotics</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../offerte-ai/css/offerte-ai.css">
+  <style>
+    body { background: var(--gray-50); }
+    .admin-wrap { max-width: 720px; margin: 0 auto; padding: 24px 24px 80px; }
+    .admin-wrap h1 { font-size: 1.75rem; letter-spacing: -0.03em; }
+    .admin-card {
+      background: rgba(255,255,255,0.9); border: 1px solid var(--gray-200);
+      border-radius: var(--radius); padding: 20px 24px; margin-top: 20px;
+    }
+    .admin-card label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--gray-600); margin: 14px 0 6px; }
+    .admin-card input, .admin-card select, .admin-card textarea {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--gray-200); border-radius: 8px; font: inherit;
+    }
+    .admin-card textarea { min-height: 120px; font-family: ui-monospace, monospace; font-size: 0.82rem; }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .btn {
+      padding: 10px 16px; border-radius: 8px; border: 1px solid var(--gray-200);
+      background: var(--white); font-weight: 700; cursor: pointer;
+    }
+    .btn-primary { background: var(--black); color: var(--white); border-color: var(--black); }
+    .admin-nav { display: flex; gap: 16px; margin-bottom: 8px; font-size: 0.88rem; }
+    .admin-nav a { color: var(--black); }
+    .hint { font-size: 0.82rem; color: var(--gray-600); margin-top: 8px; }
+    .test-result { margin-top: 12px; padding: 10px; border-radius: 8px; font-size: 0.85rem; }
+    .test-ok { background: #f0fdf4; border: 1px solid #86efac; }
+    .test-err { background: #fef2f2; border: 1px solid #fecaca; }
+  </style>
+  <script src="auth.js"></script>
+</head>
+<body class="oai-page">
+  <div id="app-nav-mount"></div>
+  <div class="admin-wrap">
+    <nav class="admin-nav">
+      <a href="index.html">← Admin</a>
+      <a href="../offerte-ai/">Anteprima assistente</a>
+      <a href="#" id="btn-logout">Esci</a>
+    </nav>
+    <span class="oai-badge">Beta</span>
+    <h1>Assistente Offerte AI</h1>
+    <p class="hint">Configura provider LLM e knowledge base. Le API key restano solo in <strong>sessionStorage</strong> del browser (non nel repo).</p>
+
+    <section class="admin-card">
+      <h2 style="margin:0;font-size:1rem">Provider LLM</h2>
+      <label for="cfg-mode">Modalità</label>
+      <select id="cfg-mode">
+        <option value="offline">Offline — solo RAG + prezzi (zero costi)</option>
+        <option value="ollama">Ollama locale — Gemma 4 (gratis, privato)</option>
+        <option value="google">Google AI Studio — Gemma (free tier)</option>
+        <option value="deepseek">DeepSeek API — V4-Flash (a consumo, economico)</option>
+        <option value="proxy">Proxy sicuro — Ollama dietro server</option>
+      </select>
+
+      <div id="block-ollama">
+        <label for="cfg-ollama-url">URL Ollama</label>
+        <input id="cfg-ollama-url" type="url" placeholder="http://127.0.0.1:11434">
+        <label for="cfg-ollama-model">Modello</label>
+        <input id="cfg-ollama-model" type="text" placeholder="gemma4:e4b" list="ollama-models">
+        <datalist id="ollama-models">
+          <option value="gemma4:e4b">Gemma 4 E4B (~9 GB) — chat commerciale</option>
+          <option value="gemma4:e2b">Gemma 4 E2B (~7 GB) — ultra leggero</option>
+          <option value="deepseek-r1:1.5b">DeepSeek-R1 1.5B (~1 GB) — reasoning minimo</option>
+          <option value="deepseek-r1:7b">DeepSeek-R1 7B (~5 GB) — reasoning bilanciato</option>
+          <option value="deepseek-r1:8b">DeepSeek-R1 8B distill (~5 GB)</option>
+          <option value="deepseek-r1:14b">DeepSeek-R1 14B (~9 GB) — reasoning forte</option>
+        </datalist>
+        <p class="hint">Gemma: risposte pulite per vendita. DeepSeek-R1: migliore su logica/regole bundle.<br>
+        Installa: <code>ollama pull gemma4:e4b</code> o <code>ollama pull deepseek-r1:7b</code></p>
+      </div>
+
+      <div id="block-deepseek" style="display:none">
+        <label for="cfg-deepseek-key">API Key DeepSeek</label>
+        <input id="cfg-deepseek-key" type="password" placeholder="sk-…">
+        <label for="cfg-deepseek-model">Modello API</label>
+        <select id="cfg-deepseek-model">
+          <option value="deepseek-chat">deepseek-chat → V4-Flash (consigliato)</option>
+          <option value="deepseek-reasoner">deepseek-reasoner (thinking mode)</option>
+        </select>
+        <p class="hint">~$0.14/1M token input · <a href="https://platform.deepseek.com" target="_blank" rel="noopener">platform.deepseek.com</a><br>
+        Non è gratis come Ollama locale, ma molto economico vs OpenAI.</p>
+      </div>
+
+      <div id="block-google" style="display:none">
+        <label for="cfg-google-key">API Key Google AI Studio</label>
+        <input id="cfg-google-key" type="password" placeholder="AIza…">
+        <label for="cfg-google-model">Modello</label>
+        <input id="cfg-google-model" type="text" value="gemma-3-4b-it">
+        <p class="hint">Crea la key su <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com</a>. Free tier generoso.</p>
+      </div>
+
+      <div id="block-proxy" style="display:none">
+        <label for="cfg-proxy-url">URL proxy (es. http://127.0.0.1:8787)</label>
+        <input id="cfg-proxy-url" type="url">
+        <label for="cfg-proxy-key">Chiave proxy (X-Abra-Key)</label>
+        <input id="cfg-proxy-key" type="password">
+        <p class="hint">Avvia: <code>python offerte-ai/server/proxy.py</code></p>
+      </div>
+
+      <div class="admin-actions">
+        <button type="button" class="btn btn-primary" id="btn-save">Salva configurazione</button>
+        <button type="button" class="btn" id="btn-test">Test connessione</button>
+      </div>
+      <div id="test-result"></div>
+    </section>
+
+    <section class="admin-card">
+      <h2 style="margin:0;font-size:1rem">Knowledge base</h2>
+      <p class="hint">Aggiungi note in Markdown in <code>offerte-ai/data/knowledge/</code>, poi rigenera l'indice.</p>
+      <label for="kb-note">Nota rapida (anteprima locale, non pubblicata)</label>
+      <textarea id="kb-note" placeholder="## Nuova FAQ&#10;Testo…"></textarea>
+      <div class="admin-actions">
+        <button type="button" class="btn" id="btn-preview-kb">Anteprima ricerca</button>
+      </div>
+      <pre id="kb-preview" style="margin-top:12px;font-size:0.8rem;background:var(--gray-100);padding:12px;border-radius:8px;overflow:auto;max-height:200px"></pre>
+      <p class="hint">In produzione: <code>python scripts/build_knowledge_index.py</code> + commit del JSON generato.</p>
+    </section>
+
+    <section class="admin-card">
+      <h2 style="margin:0;font-size:1rem">Voci extra (catalogo offerte)</h2>
+      <p class="hint">Prodotti/servizi ricorrenti non in listino (installazione, formazione, accessori web). Salvati in sessione + export JSON per commit.</p>
+      <label>Nome voce</label>
+      <input id="ve-nome" type="text" placeholder="Installazione on-site 2 giorni">
+      <label>Descrizione</label>
+      <input id="ve-desc" type="text">
+      <label>Prezzo EUR</label>
+      <input id="ve-prezzo" type="number" step="0.01" min="0">
+      <label>Fonte</label>
+      <input id="ve-source" type="text" placeholder="manuale / fornitore XYZ / web">
+      <div class="admin-actions">
+        <button type="button" class="btn btn-primary" id="btn-add-voce">Aggiungi voce</button>
+        <button type="button" class="btn" id="btn-export-voci">Esporta voci-extra.json</button>
+        <a class="btn" href="../offerte-ai/offerta.html">Apri crea offerta</a>
+      </div>
+      <ul id="ve-list" style="margin-top:12px;font-size:0.85rem"></ul>
+    </section>
+
+    <section class="admin-card">
+      <h2 style="margin:0;font-size:1rem">Feedback chat (locale → KB / fine-tuning)</h2>
+      <p class="hint">I feedback restano in <code>localStorage</code> del browser. Esportali, poi merge con lo script Python.</p>
+      <div class="admin-actions">
+        <button type="button" class="btn btn-primary" id="btn-export-fb">Esporta feedback.jsonl</button>
+        <button type="button" class="btn" id="btn-export-ft">Esporta fine-tune.jsonl</button>
+        <button type="button" class="btn" id="btn-export-kb-md">Esporta KB markdown</button>
+      </div>
+      <pre id="fb-stats" style="margin-top:12px;font-size:0.82rem;background:var(--gray-100);padding:10px;border-radius:8px"></pre>
+      <p class="hint">Merge in repo:<br>
+        <code>python scripts/merge_feedback_to_kb.py offerte-ai/data/feedback/feedback-export.jsonl</code><br>
+        Fine-tune locale: <a href="https://github.com/unslothai/unsloth" target="_blank" rel="noopener">Unsloth</a> o
+        <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank" rel="noopener">LLaMA-Factory</a> con il JSONL esportato.</p>
+    </section>
+
+    <section class="admin-card">
+      <h2 style="margin:0;font-size:1rem">Embed nel sito</h2>
+      <pre style="background:var(--gray-100);padding:12px;border-radius:8px;font-size:0.8rem;overflow:auto">&lt;script src="/offerte-ai/js/widget.js" data-base="/offerte-ai/" defer&gt;&lt;/script&gt;</pre>
+    </section>
+  </div>
+
+  <script src="../offerte-ai/js/app-shell.js"></script>
+  <script src="../offerte-ai/js/kb-search.js"></script>
+  <script src="../offerte-ai/js/llm-providers.js"></script>
+  <script src="../offerte-ai/js/chat-ui.js"></script>
+  <script>
+    AbraUI.mountNav('admin');
+    document.getElementById('btn-logout').addEventListener('click', e => {
+      e.preventDefault();
+      AbraAdmin.logout();
+    });
+
+    const modeEl = document.getElementById('cfg-mode');
+    const blocks = {
+      ollama: document.getElementById('block-ollama'),
+      google: document.getElementById('block-google'),
+      deepseek: document.getElementById('block-deepseek'),
+      proxy: document.getElementById('block-proxy'),
+    };
+
+    function showBlocks() {
+      const m = modeEl.value;
+      blocks.ollama.style.display = (m === 'ollama' || m === 'proxy') ? 'block' : 'none';
+      blocks.google.style.display = m === 'google' ? 'block' : 'none';
+      blocks.deepseek.style.display = m === 'deepseek' ? 'block' : 'none';
+      blocks.proxy.style.display = m === 'proxy' ? 'block' : 'none';
+    }
+
+    function loadForm() {
+      const c = AbraLLM.loadConfig();
+      modeEl.value = c.mode;
+      document.getElementById('cfg-ollama-url').value = c.ollamaUrl || '';
+      document.getElementById('cfg-ollama-model').value = c.ollamaModel || '';
+      document.getElementById('cfg-google-key').value = c.googleApiKey || '';
+      document.getElementById('cfg-google-model').value = c.googleModel || '';
+      document.getElementById('cfg-deepseek-key').value = c.deepseekApiKey || '';
+      document.getElementById('cfg-deepseek-model').value = c.deepseekModel || 'deepseek-chat';
+      document.getElementById('cfg-proxy-url').value = c.proxyUrl || '';
+      document.getElementById('cfg-proxy-key').value = c.proxyKey || '';
+      showBlocks();
+    }
+
+    modeEl.addEventListener('change', showBlocks);
+
+    document.getElementById('btn-save').addEventListener('click', () => {
+      AbraLLM.saveConfig({
+        mode: modeEl.value,
+        ollamaUrl: document.getElementById('cfg-ollama-url').value.trim(),
+        ollamaModel: document.getElementById('cfg-ollama-model').value.trim(),
+        googleApiKey: document.getElementById('cfg-google-key').value.trim(),
+        googleModel: document.getElementById('cfg-google-model').value.trim(),
+        deepseekApiKey: document.getElementById('cfg-deepseek-key').value.trim(),
+        deepseekModel: document.getElementById('cfg-deepseek-model').value,
+        proxyUrl: document.getElementById('cfg-proxy-url').value.trim(),
+        proxyKey: document.getElementById('cfg-proxy-key').value.trim(),
+      });
+      alert('Configurazione salvata in sessionStorage (questo browser).');
+    });
+
+    document.getElementById('btn-test').addEventListener('click', async () => {
+      const el = document.getElementById('test-result');
+      el.textContent = 'Test in corso…';
+      el.className = 'test-result';
+      AbraLLM.saveConfig({
+        mode: modeEl.value,
+        ollamaUrl: document.getElementById('cfg-ollama-url').value.trim(),
+        ollamaModel: document.getElementById('cfg-ollama-model').value.trim(),
+        googleApiKey: document.getElementById('cfg-google-key').value.trim(),
+        googleModel: document.getElementById('cfg-google-model').value.trim(),
+        deepseekApiKey: document.getElementById('cfg-deepseek-key').value.trim(),
+        deepseekModel: document.getElementById('cfg-deepseek-model').value,
+        proxyUrl: document.getElementById('cfg-proxy-url').value.trim(),
+        proxyKey: document.getElementById('cfg-proxy-key').value.trim(),
+      });
+      const r = await AbraLLM.testConnection({});
+      el.className = 'test-result ' + (r.ok ? 'test-ok' : 'test-err');
+      el.textContent = r.ok ? ('OK — ' + r.preview) : ('Errore: ' + r.error);
+    });
+
+    document.getElementById('btn-preview-kb').addEventListener('click', async () => {
+      const kb = new AbraKBSearch();
+      await kb.load('../offerte-ai/data/knowledge-index.json');
+      const q = document.getElementById('kb-note').value.split('\n')[0].replace(/^#+\s*/, '') || 'finanziamenti';
+      const res = kb.search(q, 3);
+      document.getElementById('kb-preview').textContent = JSON.stringify(res, null, 2);
+    });
+
+    const VE_KEY = 'abra_voci_extra_session';
+    function loadVoci() {
+      return JSON.parse(sessionStorage.getItem(VE_KEY) || '[]');
+    }
+    function renderVoci() {
+      const list = document.getElementById('ve-list');
+      const voci = loadVoci();
+      list.innerHTML = voci.length ? voci.map(v => `<li>${v.nome} — € ${v.prezzo_eur} <small>(${v.source})</small></li>`).join('') : '<li style="color:#71717a">Nessuna voce in sessione</li>';
+    }
+    document.getElementById('btn-add-voce').addEventListener('click', () => {
+      const v = {
+        id: 'voce-' + Date.now(),
+        nome: document.getElementById('ve-nome').value.trim(),
+        descrizione: document.getElementById('ve-desc').value.trim(),
+        prezzo_eur: parseFloat(document.getElementById('ve-prezzo').value) || 0,
+        source: document.getElementById('ve-source').value.trim() || 'manuale',
+      };
+      if (!v.nome || !v.prezzo_eur) return alert('Nome e prezzo richiesti');
+      const all = loadVoci();
+      all.push(v);
+      sessionStorage.setItem(VE_KEY, JSON.stringify(all));
+      renderVoci();
+      ['ve-nome','ve-desc','ve-prezzo','ve-source'].forEach(id => document.getElementById(id).value = '');
+    });
+    document.getElementById('btn-export-voci').addEventListener('click', async () => {
+      const base = await fetch('../offerte-ai/data/voci-extra.json').then(r => r.json()).catch(() => ({ version: 1, voci: [] }));
+      const merged = { version: 1, voci: [...(base.voci || []), ...loadVoci()] };
+      const blob = new Blob([JSON.stringify(merged, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'voci-extra.json';
+      a.click();
+    });
+    renderVoci();
+
+    function refreshFbStats() {
+      const log = AbraFeedbackStore.all();
+      const pending = AbraFeedbackStore.pendingKb().length;
+      document.getElementById('fb-stats').textContent =
+        `Feedback totali: ${log.length} | 👍 ${log.filter(x=>x.rating===1).length} | 👎 ${log.filter(x=>x.rating===-1).length} | Correzioni: ${log.filter(x=>x.correction).length} | In coda KB: ${pending}`;
+    }
+    document.getElementById('btn-export-fb').addEventListener('click', () => {
+      AbraFeedbackStore.download('feedback-export.jsonl', AbraFeedbackStore.exportJsonl(), 'application/x-ndjson');
+    });
+    document.getElementById('btn-export-ft').addEventListener('click', () => {
+      AbraFeedbackStore.download('finetune-export.jsonl', AbraFeedbackStore.exportFinetuneJsonl(), 'application/x-ndjson');
+    });
+    document.getElementById('btn-export-kb-md').addEventListener('click', () => {
+      const md = AbraFeedbackStore.exportPendingKbMarkdown();
+      if (!md) return alert('Nessuna voce in coda KB — usa "Aggiungi a KB" nella chat');
+      AbraFeedbackStore.download('feedback-knowledge.md', md, 'text/markdown');
+    });
+    refreshFbStats();
+    setInterval(refreshFbStats, 3000);
+
+    loadForm();
+  </script>
+</body>
+</html>
