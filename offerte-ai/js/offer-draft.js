@@ -426,6 +426,8 @@
 
 
 
+      this._insertBlock(offer, 'finanziamenti');
+
       this._insertBlock(offer, 'perche-abra');
 
       offer.chiusura =
