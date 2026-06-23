@@ -391,7 +391,7 @@
         <title>Offerta ${escapeHtml(offer.id)} — ${escapeHtml(offer.client.azienda || 'Cliente')}</title>
         <style>${this._printStyles()}
         .doc-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #111}
-        .doc-logo-img{max-height:48px;width:auto}
+        .doc-logo-img{max-height:56px;width:auto}
         .doc-fiscal{font-size:0.82rem;text-align:right;line-height:1.45}
         </style></head><body>
         ${header}
