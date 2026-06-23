@@ -122,12 +122,13 @@ h3 {
 }
 
 .logo-img {
-  height: 36px;
+  height: 128px;
   width: auto;
 }
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 36px;
 }
 
@@ -1626,8 +1627,7 @@ select:focus-visible,
   }
 
   .logo-img {
-    height: 28px;
-    max-height: 32px;
+    height: 64px;
   }
 
   .finance-stats {
@@ -2442,54 +2442,9 @@ body::before {
 
 /* ── Fix overflow header mobile (tutte le pagine): logo invariato, piu' spazio ── */
 html, body { overflow-x: clip; }            /* niente scroll laterale; clip non rompe le position:sticky */
-.navbar .logo-img {
-  height: 36px;
-  max-height: 40px;
-  width: auto;
-  max-width: min(160px, 38vw);
-  object-fit: contain;
-  display: block;
-  flex-shrink: 0;
-}
-
-.navbar-inner {
-  gap: 16px;
-  min-width: 0;
-}
-
-.navbar .logo {
-  flex-shrink: 0;
-  min-width: 0;
-  max-width: 38%;
-  z-index: 1;
-}
-
-.navbar .nav-links {
-  flex: 1 1 auto;
-  min-width: 0;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  gap: clamp(12px, 2vw, 28px);
-}
-
-.navbar .nav-links a,
-.navbar .nav-dropdown-trigger {
-  white-space: nowrap;
-  font-size: clamp(0.82rem, 1.1vw, 1rem);
-}
-
-.navbar .btn {
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .navbar .logo-img {
-    height: 28px;
-    max-height: 32px;
-    max-width: 120px;
-  }
-}
+.navbar-inner { gap: 16px; min-width: 0; }
+.logo { flex-shrink: 1; min-width: 0; }
+.menu-toggle { flex-shrink: 0; }
 @media (max-width: 768px) {
   /* il container mangiava 48px/lato: su mobile e' troppo e fa sforare la navbar */
   .container { padding-left: 20px; padding-right: 20px; }
