@@ -32,7 +32,7 @@
     <div class="admin-links">
       <a href="statistiche.html">
         Statistiche &amp; accessi
-        <span>Visite, provenienza traffico, contatti, GitHub Actions</span>
+        <span>Visite sul sito, provenienza traffico, contatti</span>
       </a>
       <a href="listini.html">
         Gestione listini
@@ -48,7 +48,11 @@
       </a>
       <a href="offerte-ai.html">
         Assistente Offerte AI
-        <span>Config LLM, knowledge base e feedback</span>
+        <span>Config LLM, DeepSeek, feedback chat</span>
+      </a>
+      <a href="knowledge.html">
+        Knowledge base RAG
+        <span>Documenti FAQ, test ricerca, fonti indice</span>
       </a>
       <a href="../catalogo-unitree.html">
         Catalogo Unitree
@@ -60,26 +64,37 @@
       </a>
     </div>
   </div>
+  <script src="../script.js"></script>
   <script>
   (function () {
     var fmt = new Intl.NumberFormat('it-IT');
-    fetch('../data/site-stats.json?t=' + Date.now())
+    var key = 'abra-stats-2026';
+    var base = window.GOOGLE_SCRIPT_URL;
+    function showFallback() {
+      document.getElementById('admin-preview-kpis').innerHTML = [
+        { v: '→', l: 'Visite sito' },
+        { v: '→', l: 'Contatti' },
+        { v: '178', l: 'Chunk RAG' },
+        { v: '→', l: 'Apri Statistiche' }
+      ].map(function (k) {
+        return '<div class="kpi"><div class="kpi-value">' + k.v + '</div><div class="kpi-label">' + k.l + '</div></div>';
+      }).join('');
+    }
+    if (!base) { showFallback(); return; }
+    fetch(base + '?action=stats&key=' + encodeURIComponent(key) + '&days=30')
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        var gh = d.github || {};
-        var v7 = (gh.traffic && gh.traffic.views || []).slice(-7).reduce(function (a, x) {
-          return a + (x.count || 0);
-        }, 0);
+        if (!d.ok) { showFallback(); return; }
         document.getElementById('admin-preview-kpis').innerHTML = [
-          { v: fmt.format(v7), l: 'View GitHub (7 gg)' },
-          { v: fmt.format(gh.stars || 0), l: 'Stelle repo' },
-          { v: (d.workflows && d.workflows[0] && d.workflows[0].conclusion === 'success') ? 'OK' : '—', l: 'Ultimo workflow' },
+          { v: fmt.format(d.totals.pageviews), l: 'Visite (30 gg)' },
+          { v: fmt.format(d.totals.sessions), l: 'Sessioni' },
+          { v: fmt.format(d.totals.leads), l: 'Contatti' },
           { v: '→', l: 'Dettagli in Statistiche' }
         ].map(function (k) {
           return '<div class="kpi"><div class="kpi-value">' + k.v + '</div><div class="kpi-label">' + k.l + '</div></div>';
         }).join('');
       })
-      .catch(function () {});
+      .catch(showFallback);
   })();
   </script>
 </body>

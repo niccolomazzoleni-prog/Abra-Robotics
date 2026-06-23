@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Knowledge base RAG — Abra Robotics</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="auth.js"></script>
+</head>
+<body class="admin-page">
+  <div class="admin-wrap admin-wrap--wide">
+    <nav class="admin-nav">
+      <a href="index.html">← Admin</a>
+      <a href="offerte-ai.html">Config AI</a>
+      <a href="statistiche.html">Statistiche</a>
+      <span class="spacer"></span>
+      <a href="#" class="is-active">Knowledge RAG</a>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="AbraAdmin.logout()">Esci</button>
+    </nav>
+
+    <div class="admin-head">
+      <p class="label">Interno · RAG offerte-ai</p>
+      <h1>Knowledge base</h1>
+      <p>Qui vedi e controlli i documenti aggiuntivi usati dalla chat. L'indice unisce anche listino, catalogo AMR/cobot e regole offerta (generati automaticamente).</p>
+    </div>
+
+    <div class="kpi-grid" id="kb-kpis"></div>
+
+    <section class="admin-card">
+      <h2>Come modificare</h2>
+      <ol class="kb-steps">
+        <li>Modifica i file <code>.md</code> sotto (o su GitHub con «Modifica su GitHub»).</li>
+        <li>Al push su <code>main</code>, GitHub Actions rigenera <code>knowledge-index.json</code> (~1 min).</li>
+        <li>In locale: <code>python scripts/build_knowledge_index.py</code> poi commit del JSON.</li>
+        <li>Usa «Test ricerca» sotto per verificare che la chat trovi i nuovi contenuti.</li>
+      </ol>
+      <p class="hint">Feedback dalla chat → Admin Offerte AI → «Esporta KB markdown» → merge con <code>scripts/merge_feedback_to_kb.py</code>.</p>
+    </section>
+
+    <section class="admin-card">
+      <h2>Test ricerca RAG</h2>
+      <p class="hint">Simula cosa riceve la chat quando un cliente fa una domanda.</p>
+      <div class="kb-search-row">
+        <input type="search" id="kb-search-q" placeholder="Es. sorveglianza As2 termocamera PoC" class="kb-search-input">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-kb-search">Cerca</button>
+      </div>
+      <div id="kb-search-out" class="kb-search-out"></div>
+    </section>
+
+    <section class="admin-card">
+      <h2>Documenti knowledge aggiuntivi</h2>
+      <p class="hint">Questi sono i file che potete editare direttamente. Ogni sezione <code>##</code> diventa un chunk nell'indice.</p>
+      <div id="kb-docs"></div>
+    </section>
+
+    <section class="admin-card">
+      <h2>Tutte le fonti nell'indice</h2>
+      <div id="kb-sources"></div>
+    </section>
+  </div>
+
+  <script src="../offerte-ai/js/kb-search.js"></script>
+  <script src="../offerte-ai/js/prompt-guard.js"></script>
+  <script src="knowledge.js"></script>
+</body>
+</html>

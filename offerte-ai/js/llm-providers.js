@@ -83,6 +83,9 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
   async function generateReply(userMessage, ragResults, quoteBlock, history = [], flags = {}) {
     const cfg = loadConfig();
     if (cfg.mode === 'offline') return null;
+    if (!global.AbraPromptGuard) {
+      throw new Error('Modulo prompt-guard non caricato — ricarica la pagina admin.');
+    }
 
     const secureContext = global.AbraPromptGuard.formatSecureContext(ragResults, quoteBlock);
     const userPayload = global.AbraPromptGuard.buildUserPayload(userMessage, secureContext);
