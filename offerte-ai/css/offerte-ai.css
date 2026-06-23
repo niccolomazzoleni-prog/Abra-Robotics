@@ -1050,6 +1050,58 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
 }
 .abra-offer-doc .doc-chiusura { font-weight: 600; color: var(--gray-800); margin-top: 12px; }
 
+/* Hero robot — griglia anteprima offerta (pipeline + curata) */
+.abra-offer-doc .doc-robot-hero {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin: 20px 0 8px;
+}
+.abra-offer-doc .doc-robot-hero figure {
+  margin: 0;
+  text-align: center;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 10px 6px;
+}
+.abra-offer-doc .doc-robot-hero figure.rec {
+  border-color: var(--accent-text);
+  box-shadow: 0 0 0 2px rgba(124, 77, 214, 0.2);
+}
+.abra-offer-doc .doc-robot-hero img {
+  width: 100%;
+  max-height: 88px;
+  object-fit: contain;
+}
+.abra-offer-doc .doc-robot-hero figcaption {
+  font-size: 0.62rem;
+  font-weight: 700;
+  margin-top: 6px;
+  line-height: 1.25;
+  color: var(--gray-700);
+}
+.abra-offer-doc .doc-robot-hero figure.rec figcaption { color: var(--accent-text); }
+
+/* Shell pagina sample / export PDF */
+.offer-sample-body { margin: 0; font-family: var(--font); background: #ece8f4; color: var(--black); -webkit-font-smoothing: antialiased; }
+.offer-sample-toolbar { background: var(--black); color: #fff; padding: 10px 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; font-size: 0.82rem; }
+.offer-sample-toolbar .badge { background: var(--accent-text); color: #fff; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 999px; }
+.offer-sample-toolbar .badge-curated { background: #b37eff; color: #111; }
+.offer-sample-toolbar a, .offer-sample-toolbar button { color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 0.78rem; cursor: pointer; text-decoration: none; }
+.offer-sample-wrap { max-width: 920px; margin: 28px auto 48px; padding: 0 16px; }
+.offer-sample-paper { background: var(--white); border-radius: var(--radius); box-shadow: 0 20px 60px rgba(17,17,17,0.12); padding: 36px 40px; }
+@media (max-width: 720px) {
+  .abra-offer-doc .doc-robot-hero { grid-template-columns: repeat(2, 1fr); }
+  .offer-sample-paper { padding: 22px 18px; }
+}
+@media print {
+  .offer-sample-toolbar { display: none; }
+  .offer-sample-body { background: #fff; }
+  .offer-sample-wrap { margin: 0; padding: 0; max-width: none; }
+  .offer-sample-paper { box-shadow: none; border-radius: 0; padding: 0; }
+}
+
 .chat-bubble.bot.streaming::after {
   content: '▋';
   display: inline-block;
