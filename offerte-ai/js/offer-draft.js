@@ -230,8 +230,8 @@
         'Gentile Cliente,\n\n' +
         'in riferimento alla Sua richiesta, Le sottoponiamo un **preventivo unico** con due blocchi:\n\n' +
         '**1) Applicazione sorveglianza / perlustrazione** (area confinata, possibile umidità, sensori custom): ' +
-        'consigliamo **Unitree As2 Pro** o la linea **A2 Standard / A2 Pro** — specifiche ufficiali unitree.com. ' +
-        'As2 e A2 sono prodotti distinti.\n\n' +
+        'consigliamo **Unitree As2 Pro** o la linea **A2 Standard / A2 Pro**. ' +
+        'As2 e A2 sono piattaforme distinte.\n\n' +
         '**2) Alternativa Go2 EDU** (se preferite quella piattaforma): confronto **Standard (Orin Nano)** vs **Smart / EDU+ (Orin NX)**.\n\n' +
         'Per ogni blocco robot: **scegliere una sola configurazione**. Accessori, PoC e spedizione sono condivisi.';
 
@@ -239,7 +239,7 @@
 
       this._section(offer, 'Blocco A — Sorveglianza (As2 / A2)',
 
-        'Opzione consigliata per payload sensori e ambienti umidi:\n' +
+        'Piattaforme adatte a payload sensori e ambienti umidi:\n' +
         '• As2 Pro — compatta IP54, dual camera, ~15 kg payload marcia\n' +
         '• A2 Standard — industriale IP56, 25 kg payload marcia\n' +
         '• A2 Pro — IP67, dual LiDAR, outdoor severo');
@@ -280,7 +280,7 @@
 
 
 
-      this._section(offer, 'Specifiche Unitree As2 Pro (fonte unitree.com/As2)',
+      this._section(offer, 'Specifiche tecniche — Unitree As2 Pro',
 
         '• Peso con batteria: ~18 kg · 12 DoF\n' +
 
@@ -294,7 +294,7 @@
 
 
 
-      this._section(offer, 'Specifiche Unitree A2 / A2 Pro (fonte unitree.com)',
+      this._section(offer, 'Specifiche tecniche — Unitree A2 / A2 Pro',
 
         'A2 Standard: ~37 kg, payload 25 kg in marcia, IP56, autonomia >5 h.\n' +
 
@@ -340,19 +340,13 @@
 
         cfg.condizioni_default || '',
 
-        '',
+        'Le configurazioni robot sono alternative non cumulabili: selezionare una piattaforma per ciascun blocco.',
 
-        'Specifiche tecniche robot: fonte ufficiale Unitree (unitree.com). Abra Robotics è distributore in Italia.',
+        'Integrazione / PoC: tariffa ingegneria € 110/h, giornata 8 h (stima in offerta). Trasferte a parte.',
 
-        'Robot in tabella: alternative non cumulabili — selezionare una configurazione.',
+        'Voci «Su richiesta»: importo da confermare dopo definizione payload e sensori.',
 
-        'Integrazione / PoC: tariffa ingegneria € 110/h, giornata 8 h (stima in offerta). Trasferte vitto/alloggio/trasporto a parte.',
-
-        'Voci "Su richiesta": importo da confermare dopo definizione payload e sensori.',
-
-        'Validità offerta: ' + (offer.validita_giorni || 30) + ' giorni.',
-
-      ].join('\n');
+      ].filter(Boolean).join('\n\n');
 
 
 
@@ -366,9 +360,7 @@
 
           'Le sottoponiamo il confronto tra configurazione Standard (Orin Nano) e Smart/EDU+ (Orin NX) ' +
 
-          'con eventuali accessori e servizi di integrazione.\n\n' +
-
-          'Specifiche robot secondo documentazione ufficiale Unitree.';
+          'con eventuali accessori e servizi di integrazione.';
 
 
 
@@ -380,7 +372,7 @@
 
         this._productHighlight(offer, 'GO2-EDU-SMART');
 
-        this._section(offer, 'Cosa include il prezzo robot (Go2 EDU — fonte Unitree)',
+        this._section(offer, 'Cosa include il prezzo robot (Go2 EDU)',
 
           '• Robot quadrupede completo con batteria\n' +
 
