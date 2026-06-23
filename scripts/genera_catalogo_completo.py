@@ -54,6 +54,8 @@ def product_family(sku: str, nome: str) -> str:
         return "Go2W"
     if s.startswith("GO2") or "GO2" in n:
         return "Go2"
+    if s.startswith("AS2") or " AS2" in n or "AS2" in s:
+        return "As2"
     if s.startswith("B2W") or "B2W" in n or "B2-W" in n:
         return "B2W"
     if s.startswith("B2") or " B2" in n:
@@ -87,6 +89,9 @@ FILENAME_MAP: dict[str, str] = {
     "GO2-EDU-STD": "unitree-go2-edu.html",
     "GO2-EDU-SMART": "unitree-go2-edu-plus.html",
     "GO2-EDU-ULT": "unitree-go2-enterprise-u2.html",
+    "AS2-AIR": "unitree-as2-air.html",
+    "AS2-PRO": "unitree-as2-pro.html",
+    "AS2-EDU": "unitree-as2-edu.html",
     "A2-STD": "unitree-a2.html",
     "A2-PRO": "unitree-a2-pro.html",
     "B2": "unitree-b2.html",

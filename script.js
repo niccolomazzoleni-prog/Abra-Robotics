@@ -301,3 +301,37 @@ document.addEventListener('click', (e) => {
     banner.remove();
   });
 })();
+
+// Pageview beacon (first-party stats → Apps Script; una volta per sessione/pagina)
+(function () {
+  if (location.pathname.includes('/admin/')) return;
+  if (location.protocol === 'file:') return;
+  var url = (window.GOOGLE_SCRIPT_URL || '').trim();
+  if (!url) return;
+  var sessKey = 'abra_pv_' + location.pathname;
+  try {
+    if (sessionStorage.getItem(sessKey)) return;
+    sessionStorage.setItem(sessKey, '1');
+  } catch (_) {}
+  var params = new URLSearchParams(location.search);
+  var ref = '';
+  try { ref = document.referrer || ''; } catch (_) {}
+  try {
+    fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'pageview',
+        path: location.pathname + location.search,
+        referrer: ref,
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        lang: document.documentElement.lang || 'it',
+        mobile: /Mobi|Android/i.test(navigator.userAgent),
+        timestamp: new Date().toISOString()
+      })
+    });
+  } catch (_) {}
+})();

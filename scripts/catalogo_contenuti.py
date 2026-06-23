@@ -37,6 +37,9 @@ IMAGE: dict[str, str] = {
     "GO2-EDU-STD": "images/prodotti/unitree-go2-card.png",
     "GO2-EDU-SMART": "images/prodotti/unitree-go2-card.png",
     "GO2-EDU-ULT": "images/prodotti/unitree-go2-card.png",
+    "AS2-AIR": "images/prodotti/unitree-go2-card.png",
+    "AS2-PRO": "images/prodotti/unitree-go2-card.png",
+    "AS2-EDU": "images/prodotti/unitree-go2-card.png",
     "GO2W-U2": "images/prodotti/unitree-go2w-card.png",
     "GO2W-U3": "images/prodotti/unitree-go2w-card.png",
     "GO2W-U4": "images/prodotti/unitree-go2w-card.png",
@@ -260,6 +263,36 @@ MANIFEST["GO2-EDU-SMART"] = _entry("Unitree Go2 EDU Smart", "Go2 EDU con Jetson 
 MANIFEST["GO2-EDU-ULT"] = _entry("Unitree Go2 EDU Ultimate", "Go2 EDU con LiDAR Hesai XT16.",
     "Versione Ultimate del Go2 EDU con sensore Hesai XT16 per perception ad alta risoluzione in ambienti industriali e di ricerca outdoor.",
     _go2_common + [("LiDAR", "Hesai XT16"), ("Computing", "Orin NX 100 TOPS")])
+
+# --- AS2 (Unitree As2 — unitree.com/As2, 2026) ---
+_as2_common = [
+    ("Peso", "~18 kg"),
+    ("DoF", "12"),
+    ("Velocità max", "fino a 5 m/s"),
+    ("Coppia max giunto", "~90 N·m"),
+    ("Dimensioni in piedi", "720×378×457 mm"),
+]
+MANIFEST["AS2-AIR"] = _entry(
+    "Unitree As2 Air",
+    "Quadrupede compatto entry — dinamica ~2× Go2.",
+    "As2 Air è la variante entry della gamma As2 Unitree: telaio leggero ~18 kg, payload fino a ~10 kg in marcia e ~45 kg statico. Adatto a demo e prime valutazioni rispetto a Go2 EDU.",
+    _as2_common + [("Payload marcia", "~10 kg"), ("Payload statico", "~45 kg"), ("Autonomia", "~2 h / ~10 km"), ("Protezione", "—")],
+    "unitree.com/As2",
+)
+MANIFEST["AS2-PRO"] = _entry(
+    "Unitree As2 Pro",
+    "Quadrupede industriale IP54 — sorveglianza e ispezione.",
+    "As2 Pro è la configurazione industrial-ready: protezione IP54 su componenti core, LiDAR ultra-wide-angle, doppia camera frontale e posteriore, payload fino a ~15 kg in marcia e ~65 kg statico. Evoluzione del Go2 con maggiore carico utile, resistenza a polvere e spruzzi d'acqua.",
+    _as2_common + [("IP", "IP54"), ("Payload marcia", "~15 kg"), ("Payload statico", "~65 kg"), ("Autonomia", ">4 h / ~20 km"), ("LiDAR", "Ultra-wide-angle"), ("Camera", "Frontale + posteriore"), ("Batteria", "648 Wh long range")],
+    "unitree.com/As2",
+)
+MANIFEST["AS2-EDU"] = _entry(
+    "Unitree As2 EDU",
+    "As2 programmabile — ROS 2 e SDK Unitree.",
+    "As2 EDU combina le specifiche Pro (IP54, payload elevato) con ecosistema developer: ROS 2, Python, C++ e secondary development per payload custom e ricerca.",
+    _as2_common + [("IP", "IP54"), ("Payload marcia", "~15 kg"), ("SDK", "ROS 2 · Python · C++"), ("Autonomia", ">4 h"), ("LiDAR", "Ultra-wide-angle")],
+    "unitree.com/As2",
+)
 
 # --- GO2W ---
 _go2w = [("Peso", "~18 kg"), ("Dimensioni", "70×43×50 cm"), ("Velocità", "0–2,5 m/s"),
