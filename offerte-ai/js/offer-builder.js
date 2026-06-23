@@ -27,6 +27,14 @@
     return s.replace(/\n/g, '<br>');
   }
 
+  /** Path assoluti dal root del sito — funzionano da /offerte-ai/, /offerte-ai/samples/ e chat. */
+  function assetUrl(rel) {
+    if (!rel) return '';
+    if (/^https?:\/\//i.test(rel)) return rel;
+    const clean = String(rel).replace(/^\.\.\//, '').replace(/^\//, '');
+    return '/' + clean;
+  }
+
   class OfferBuilder {
     constructor(quoteEngine) {
       this.quote = quoteEngine;
@@ -233,7 +241,7 @@
         type: 'highlight',
         title: m.titolo || sku,
         body: [m.sottotitolo, m.descrizione, specs].filter(Boolean).join('\n\n'),
-        image_url: m.immagine ? '../' + m.immagine.replace(/^\//, '') : '',
+        image_url: m.immagine ? assetUrl(m.immagine) : '',
         caption: m.categoria || '',
         sku,
       });
@@ -280,7 +288,7 @@
     }
 
     renderCompanyHeader(co) {
-      const logo = co.logo_url || '../images/logo.png';
+      const logo = assetUrl(co.logo_url || 'images/logo.png');
       return `
         <div class="doc-header">
           <img class="doc-logo-img" src="${escapeHtml(logo)}" alt="${escapeHtml(co.nome || 'Abra Robotics')}" width="140" height="40">

@@ -54,9 +54,9 @@
       const res = await fetch(base + configFile, { cache: 'no-store' });
       if (!res.ok) return loadConfig();
       const local = await res.json();
-      const current = loadConfig();
-      const shouldApply = !(localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY)) || current.mode === 'offline';
-      if (shouldApply) saveConfig({ ...current, ...local });
+      const stored = localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY);
+      if (stored) return loadConfig();
+      saveConfig({ ...loadConfig(), ...local });
       return loadConfig();
     } catch {
       return loadConfig();

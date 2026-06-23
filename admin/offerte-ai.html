@@ -207,36 +207,37 @@
 
     modeEl.addEventListener('change', showBlocks);
 
-    document.getElementById('btn-save').addEventListener('click', () => {
-      AbraLLM.saveConfig({
-        mode: modeEl.value,
+    function collectConfig() {
+      const deepseekKey = document.getElementById('cfg-deepseek-key').value.trim();
+      let mode = modeEl.value;
+      if (deepseekKey && mode === 'offline') mode = 'deepseek';
+      return {
+        mode,
         ollamaUrl: document.getElementById('cfg-ollama-url').value.trim(),
         ollamaModel: document.getElementById('cfg-ollama-model').value.trim(),
         googleApiKey: document.getElementById('cfg-google-key').value.trim(),
         googleModel: document.getElementById('cfg-google-model').value.trim(),
-        deepseekApiKey: document.getElementById('cfg-deepseek-key').value.trim(),
+        deepseekApiKey: deepseekKey,
         deepseekModel: document.getElementById('cfg-deepseek-model').value,
         proxyUrl: document.getElementById('cfg-proxy-url').value.trim(),
         proxyKey: document.getElementById('cfg-proxy-key').value.trim(),
-      });
-      alert('Configurazione salvata in localStorage (questo browser).');
+      };
+    }
+
+    document.getElementById('btn-save').addEventListener('click', () => {
+      const cfg = collectConfig();
+      if (cfg.deepseekApiKey) modeEl.value = cfg.mode;
+      AbraLLM.saveConfig(cfg);
+      alert('Configurazione salvata in localStorage (questo browser). Se hai inserito la key DeepSeek, la modalità è impostata su DeepSeek API.');
     });
 
     document.getElementById('btn-test').addEventListener('click', async () => {
       const el = document.getElementById('test-result');
       el.textContent = 'Test in corso…';
       el.className = 'test-result';
-      AbraLLM.saveConfig({
-        mode: modeEl.value,
-        ollamaUrl: document.getElementById('cfg-ollama-url').value.trim(),
-        ollamaModel: document.getElementById('cfg-ollama-model').value.trim(),
-        googleApiKey: document.getElementById('cfg-google-key').value.trim(),
-        googleModel: document.getElementById('cfg-google-model').value.trim(),
-        deepseekApiKey: document.getElementById('cfg-deepseek-key').value.trim(),
-        deepseekModel: document.getElementById('cfg-deepseek-model').value,
-        proxyUrl: document.getElementById('cfg-proxy-url').value.trim(),
-        proxyKey: document.getElementById('cfg-proxy-key').value.trim(),
-      });
+      const cfg = collectConfig();
+      if (cfg.deepseekApiKey) modeEl.value = cfg.mode;
+      AbraLLM.saveConfig(cfg);
       const r = await AbraLLM.testConnection({});
       el.className = 'test-result ' + (r.ok ? 'test-ok' : 'test-err');
       el.textContent = r.ok ? ('OK — ' + r.preview) : ('Errore: ' + r.error);
