@@ -1,45 +1,41 @@
 # Listino integrazione software e PoC Abra Robotics
 
-Prezzi IVA esclusa. Ogni progetto viene quotato dopo brief tecnico; le fasce sotto sono indicative e partono dai minimi indicati.
+Prezzi IVA esclusa. Tariffa ingegneria: **€ 110/ora**, giornata tecnica **8 ore** (= € 880/giorno).
 
-## Fascia base — da € 15.000
+Trasferte (trasporto, vitto, alloggio tecnici on-site): **sempre a parte**, quantificate su preventivo dedicato.
+
+## Stime indicative (giornate × 8 h × € 110/h)
+
+| Fascia | Giornate stimate | Ore | Importo indicativo |
+|--------|------------------|-----|-------------------|
+| Base | 12 gg | 96 h | **€ 10.560** |
+| Standard sorveglianza / sensori | 22 gg | 176 h | **€ 19.360** |
+| Avanzata / produzione | 35 gg | 280 h | **€ 30.800** |
+
+## Fascia base (~12 giornate)
 
 - Integrazione driver payload e mount meccanico
 - Nodi ROS 2 / SDK Unitree di base
 - Test in laboratorio Abra
-- Durata indicativa: 2–3 settimane
-- Ideale per: università, prime prove SDK, teleoperazione con sensori semplici
 
-## Fascia standard — da € 25.000
+## Fascia standard (~22 giornate)
 
 - Integrazione sensori custom (termocamera, gas, LiDAR aggiuntivo)
 - Telemetria, logging e dashboard operatore
 - Test campo e affinamento payload
-- Durata indicativa: 4–6 settimane
 - Ideale per: sorveglianza, perlustrazione, ispezione industriale
 
-## Fascia avanzata — da € 50.000
+## Fascia avanzata (~35 giornate)
 
 - Perception / SLAM custom, mission planning
 - Integrazione SCADA o piattaforme cliente
-- Deployment multi-robot o ridondanza
+- Deployment multi-robot
 - Formazione team e documentazione produzione
-- Durata indicativa: 8–12 settimane
-- Ideale per: rollout produzione, ambienti ATEX-adjacent, integrazione IT/OT
 
 ## Cosa non include
 
-- Hardware robot (quotato a parte da listino Unitree)
-- Sensori e termocamere (quotati su richiesta dopo selezione modello)
+- Hardware robot (listino Unitree separato)
+- Sensori e termocamere (spesso su richiesta dopo selezione modello)
 - Spedizione robot
+- Trasferte team (voce dedicata in offerta)
 - IVA
-
-## Come scegliere la fascia
-
-| Richiesta cliente | Fascia consigliata |
-|-------------------|-------------------|
-| Solo ROS 2 + mount | Base (da € 15.000) |
-| Sorveglianza + sensori multipli | Standard (da € 25.000) |
-| Produzione / IT integration | Avanzata (da € 50.000) |
-
-Per preventivo formale la chat Abra propone automaticamente la fascia coerente con il testo della richiesta.

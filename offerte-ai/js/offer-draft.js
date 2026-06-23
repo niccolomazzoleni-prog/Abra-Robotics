@@ -12,6 +12,8 @@
 
   const RFQ_RE = /preventivo|offert|quot|intestat|termocamera|sensori|perlustrazione|sorveglianza|setup|accessori|umidit|gas|fumo|payload|consegna|noleggio|poc|integrazione|quanto cost|configurazione robot/i;
 
+  const POC_TARIFFA = { hourly: 110, hoursPerDay: 8 };
+
 
 
   const OfferDraft = {
@@ -72,13 +74,13 @@
 
       const t = String(text || '').toLowerCase();
 
-      if (/go2.*edu|orin nx|orin nano|go2 edu plus|edu\+/i.test(t)) return 'go2-edu-rfq';
+      if (/sorveglianza|perlustrazione|termocamera|sensori|umidit|gas|fumo|incendio|area confinat|payload|as2|\ba2\b/i.test(t)) {
 
-      if (/sorveglianza|perlustrazione|termocamera|sensori|umidit|gas|fumo|incendio|area confinat|payload/i.test(t)) {
-
-        return 'sorveglianza-as2';
+        return 'sorveglianza-combo';
 
       }
+
+      if (/go2.*edu|orin nx|orin nano|go2 edu plus|edu\+/i.test(t)) return 'go2-edu-rfq';
 
       if (/as2|as 2/i.test(t)) return 'as2-standard';
 
@@ -150,31 +152,71 @@
 
 
 
-    _pocTierId(text) {
+    _pocDays(text) {
 
       const t = String(text || '').toLowerCase();
 
-      if (/avanzat|deployment|produzione|multi.?robot|compless|full stack|scada|integrazione it/i.test(t)) {
+      if (/avanzat|deployment|produzione|multi.?robot|compless|full stack|scada|integrazione it/i.test(t)) return 35;
 
-        return 'EXTRA-POC-ADVANCED';
+      if (/semplice|solo sdk|driver base|ros base|universit/i.test(t)) return 12;
 
-      }
-
-      if (/semplice|solo sdk|driver base|ros base|universit/i.test(t)) {
-
-        return 'EXTRA-POC-LIGHT';
-
-      }
-
-      return 'EXTRA-POC-STANDARD';
+      return 22;
 
     },
 
 
 
-    _addPocTier(offer, text) {
+    _addPocHourly(offer, text) {
 
-      this._addExtra(offer, this._pocTierId(text));
+      const days = this._pocDays(text);
+
+      const hours = days * POC_TARIFFA.hoursPerDay;
+
+      const total = hours * POC_TARIFFA.hourly;
+
+      const fmtEur = n => n.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      this.builder.addCustomLine(
+
+        offer,
+
+        'Integrazione software / PoC — ingegneria e test campo',
+
+        total,
+
+        1,
+
+        `${days} giornate × ${POC_TARIFFA.hoursPerDay} h/giorno × € ${POC_TARIFFA.hourly}/h = € ${fmtEur(total)} (stima post-brief).`,
+
+        'extra'
+
+      );
+
+    },
+
+
+
+    _addTrasfertePoc(offer) {
+
+      this.builder.addCustomLine(
+
+        offer,
+
+        'Trasferte team integrazione (trasporto, vitto, alloggio)',
+
+        0,
+
+        1,
+
+        'Da quantificare a parte in base a sede cliente, numero tecnici e pernottamenti.',
+
+        'extra'
+
+      );
+
+      const line = offer.line_items[offer.line_items.length - 1];
+
+      line.su_richiesta = true;
 
     },
 
@@ -184,29 +226,43 @@
 
       offer.intro =
         'Gentile Cliente,\n\n' +
-        'in riferimento alla Sua richiesta per **sorveglianza e perlustrazione** in area con possibile umidità, ' +
-        'Le sottoponiamo un **confronto tra tre piattaforme Unitree** — specifiche da documentazione ufficiale unitree.com.\n\n' +
-        '**Nota importante:** Unitree **As2** e Unitree **A2** sono prodotti distinti. As2 è la gamma compatta (~18 kg, IP54). ' +
-        'A2 Standard e A2 Pro sono la linea industriale intermedia (~37 kg, payload fino a 25 kg in marcia) già a catalogo Abra.\n\n' +
-        'Nella tabella: **tre alternative robot** (selezionarne una) più accessori, **integrazione PoC** e spedizione.';
+        'in riferimento alla Sua richiesta, Le sottoponiamo un **preventivo unico** con due blocchi:\n\n' +
+        '**1) Applicazione sorveglianza / perlustrazione** (area confinata, possibile umidità, sensori custom): ' +
+        'consigliamo **Unitree As2 Pro** o la linea **A2 Standard / A2 Pro** — specifiche ufficiali unitree.com. ' +
+        'As2 e A2 sono prodotti distinti.\n\n' +
+        '**2) Alternativa Go2 EDU** (se preferite quella piattaforma): confronto **Standard (Orin Nano)** vs **Smart / EDU+ (Orin NX)**.\n\n' +
+        'Per ogni blocco robot: **scegliere una sola configurazione**. Accessori, PoC e spedizione sono condivisi.';
 
 
 
-      this._section(offer, 'Confronto piattaforme proposte',
+      this._section(offer, 'Blocco A — Sorveglianza (As2 / A2)',
 
-        'Opzione A — Unitree As2 Pro: compatta, IP54, dual camera, payload ~15 kg in marcia. Consigliata per perlustrazione agile.\n\n' +
-
-        'Opzione B — Unitree A2 Standard: industriale IP56, payload 25 kg in marcia, autonomia >5 h.\n\n' +
-
-        'Opzione C — Unitree A2 Pro: IP67, dual LiDAR industriale, ideale per ambienti umidi/ostili e payload elevato.');
-
+        'Opzione consigliata per payload sensori e ambienti umidi:\n' +
+        '• As2 Pro — compatta IP54, dual camera, ~15 kg payload marcia\n' +
+        '• A2 Standard — industriale IP56, 25 kg payload marcia\n' +
+        '• A2 Pro — IP67, dual LiDAR, outdoor severo');
 
 
-      this._addSku(offer, 'AS2-PRO', 1, { opzione_robot: true, principale: true });
 
-      this._addSku(offer, 'A2-STD', 1, { opzione_robot: true, alternativa: true });
+      this._addSku(offer, 'AS2-PRO', 1, { opzione_robot: true, principale: true, robot_gruppo: 'sorveglianza' });
 
-      this._addSku(offer, 'A2-PRO', 1, { opzione_robot: true, alternativa: true });
+      this._addSku(offer, 'A2-STD', 1, { opzione_robot: true, robot_gruppo: 'sorveglianza', alternativa: true });
+
+      this._addSku(offer, 'A2-PRO', 1, { opzione_robot: true, robot_gruppo: 'sorveglianza', alternativa: true });
+
+
+
+      this._section(offer, 'Blocco B — Alternativa Go2 EDU',
+
+        'Per confronto, se orientati a Go2 EDU per lab/POC software:\n' +
+        '• Go2 EDU Standard — Jetson Orin Nano ~40 TOPS\n' +
+        '• Go2 EDU Smart / EDU+ — Jetson Orin NX 100 TOPS');
+
+
+
+      this._addSku(offer, 'GO2-EDU-STD', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
+
+      this._addSku(offer, 'GO2-EDU-SMART', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
 
 
 
@@ -214,7 +270,9 @@
 
       this._productHighlight(offer, 'A2-STD');
 
-      this._productHighlight(offer, 'A2-PRO');
+      this._productHighlight(offer, 'GO2-EDU-STD');
+
+      this._productHighlight(offer, 'GO2-EDU-SMART');
 
 
 
@@ -284,7 +342,7 @@
 
         'Robot in tabella: alternative non cumulabili — selezionare una configurazione.',
 
-        'Integrazione / PoC: fascia da € 15.000 a € 50.000 in base a complessità (vedi listino Abra).',
+        'Integrazione / PoC: tariffa ingegneria € 110/h, giornata 8 h (stima in offerta). Trasferte vitto/alloggio/trasporto a parte.',
 
         'Voci "Su richiesta": importo da confermare dopo definizione payload e sensori.',
 
@@ -342,7 +400,7 @@
 
           'Indicativa — conferma su destinazione.', 'extra');
 
-      } else if (scenario === 'sorveglianza-as2' || scenario === 'as2-standard') {
+      } else if (scenario === 'sorveglianza-combo' || scenario === 'sorveglianza-as2' || scenario === 'as2-standard') {
 
         this._buildSorveglianza(offer, userText, shipQuad);
 
@@ -416,7 +474,9 @@
 
       if (scenarioNeedsDefaultExtras(t) || /integrazione|poc|ros|sdk|software/i.test(t)) {
 
-        add(this._pocTierId(text));
+        this._addPocHourly(offer, text);
+
+        this._addTrasfertePoc(offer);
 
       }
 
@@ -443,9 +503,13 @@
       const skus = offer.line_items.map(l => l.sku).filter(Boolean);
 
       let msg;
-      if (skus.some(s => /^AS2|^A2/i.test(s)) && robots.length > 1) {
-        msg = 'Ho preparato un preventivo sorveglianza/perlustrazione con **As2 Pro**, **A2 Standard** e **A2 Pro** come alternative robot (sceglierne una), più sensori e PoC.\n\n';
-      } else if (skus.some(s => /^GO2-EDU/i.test(s))) {
+      const hasGo2 = skus.some(s => /^GO2-EDU/i.test(s));
+      const hasAs2A2 = skus.some(s => /^AS2|^A2/i.test(s));
+      if (hasAs2A2 && hasGo2) {
+        msg = 'Ho preparato un preventivo **combinato**: blocco sorveglianza (**As2 / A2**) + alternativa **Go2 EDU** (Standard / Smart), sensori e PoC a tariffa oraria.\n\n';
+      } else if (hasAs2A2 && robots.length > 1) {
+        msg = 'Ho preparato un preventivo sorveglianza con **As2 Pro**, **A2 Standard** e **A2 Pro** (sceglierne una), più sensori e PoC.\n\n';
+      } else if (hasGo2) {
         msg = 'Ho preparato un preventivo formale Go2 EDU con confronto configurazioni Standard (Orin Nano) e Smart/EDU+ (Orin NX).\n\n';
       } else if (robots.length > 1) {
         msg = 'Ho preparato un preventivo formale con ' + robots.length + ' alternative robot (sceglierne una) più accessori e PoC.\n\n';
@@ -453,7 +517,23 @@
         msg = 'Ho preparato un preventivo formale con le voci richieste.\n\n';
       }
 
-      if (t.opzioni?.length > 1) {
+      if (t.gruppi?.length > 1) {
+
+        msg += 'Totali per blocco (IVA escl., sensori su richiesta esclusi):\n';
+
+        for (const g of t.gruppi) {
+
+          msg += `\n**${g.label}**\n`;
+
+          for (const o of g.opzioni) {
+
+            msg += '• ' + o.nome.split('(')[0].trim() + ': € ' + o.totale.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + '\n';
+
+          }
+
+        }
+
+      } else if (t.opzioni?.length > 1) {
 
         msg += 'Totali per configurazione (IVA escl., sensori su richiesta esclusi):\n';
 
