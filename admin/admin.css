@@ -233,6 +233,36 @@ body.admin-page { background: var(--gray-50); }
   font-size: 0.88rem;
 }
 
+.kb-steps { margin: 12px 0 0; padding-left: 1.2rem; line-height: 1.6; color: var(--gray-600); }
+.kb-steps li { margin-bottom: 6px; }
+.kb-search-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.kb-search-input {
+  flex: 1; min-width: 220px; padding: 10px 12px;
+  border: 1px solid var(--gray-200); border-radius: 8px; font: inherit;
+}
+.kb-search-out { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+.kb-hit {
+  padding: 12px 14px; border: 1px solid var(--gray-200); border-radius: 8px;
+  background: var(--gray-50); font-size: 0.88rem;
+}
+.kb-hit header { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+.kb-hit-src { font-size: 0.72rem; color: var(--gray-500); font-family: ui-monospace, monospace; }
+.kb-hit p { margin: 0; color: var(--gray-700); line-height: 1.5; white-space: pre-wrap; }
+.kb-doc { margin-top: 12px; border: 1px solid var(--gray-200); border-radius: 8px; padding: 0 14px 14px; background: #fff; }
+.kb-doc summary { cursor: pointer; padding: 14px 0; font-size: 0.95rem; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.kb-doc summary::-webkit-details-marker { display: none; }
+.kb-doc-meta { font-size: 0.78rem; font-weight: 400; color: var(--gray-500); }
+.kb-doc-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.kb-md-preview {
+  margin: 0; padding: 12px; background: var(--gray-100); border-radius: 8px;
+  font-size: 0.78rem; line-height: 1.45; max-height: 280px; overflow: auto; white-space: pre-wrap;
+}
+.kb-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 8px; }
+.kb-table th, .kb-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+.kb-table code { font-size: 0.78rem; word-break: break-all; }
+.stats-ok { color: #166534; }
+.stats-warn { color: #92400e; }
+
 @media (max-width: 768px) {
   .admin-wrap { padding: 88px 20px 72px; }
   .stats-updated { width: 100%; margin-left: 0; margin-top: 4px; }

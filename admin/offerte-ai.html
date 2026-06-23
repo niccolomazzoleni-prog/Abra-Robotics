@@ -112,14 +112,15 @@
 
     <section class="admin-card">
       <h2 style="margin:0;font-size:1rem">Knowledge base</h2>
-      <p class="hint">Aggiungi note in Markdown in <code>offerte-ai/data/knowledge/</code>, poi rigenera l'indice.</p>
-      <label for="kb-note">Nota rapida (anteprima locale, non pubblicata)</label>
-      <textarea id="kb-note" placeholder="## Nuova FAQ&#10;Testo…"></textarea>
-      <div class="admin-actions">
-        <button type="button" class="btn" id="btn-preview-kb">Anteprima ricerca</button>
+      <p class="hint">I documenti aggiuntivi (FAQ, PoC, As2…) stanno in <code>offerte-ai/data/knowledge/*.md</code>.
+        <a href="knowledge.html"><strong>Apri Knowledge RAG →</strong></a> per vedere, cercare e modificare.</p>
+      <label for="kb-search-quick">Test rapido ricerca</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input id="kb-search-quick" type="search" placeholder="Es. finanziamenti As2 sorveglianza" style="flex:1;min-width:200px;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;font:inherit">
+        <button type="button" class="btn" id="btn-preview-kb">Cerca</button>
       </div>
-      <pre id="kb-preview" style="margin-top:12px;font-size:0.8rem;background:var(--gray-100);padding:12px;border-radius:8px;overflow:auto;max-height:200px"></pre>
-      <p class="hint">In produzione: <code>python scripts/build_knowledge_index.py</code> + commit del JSON generato.</p>
+      <pre id="kb-preview" style="margin-top:12px;font-size:0.8rem;background:var(--gray-100);padding:12px;border-radius:8px;overflow:auto;max-height:240px"></pre>
+      <p class="hint">Dopo modifiche ai .md: push su main (CI rigenera l'indice) oppure <code>python scripts/build_knowledge_index.py</code>.</p>
     </section>
 
     <section class="admin-card">
@@ -163,6 +164,7 @@
   </div>
 
   <script src="../offerte-ai/js/app-shell.js"></script>
+  <script src="../offerte-ai/js/prompt-guard.js"></script>
   <script src="../offerte-ai/js/kb-search.js"></script>
   <script src="../offerte-ai/js/llm-providers.js"></script>
   <script src="../offerte-ai/js/chat-ui.js"></script>
@@ -217,7 +219,7 @@
         proxyUrl: document.getElementById('cfg-proxy-url').value.trim(),
         proxyKey: document.getElementById('cfg-proxy-key').value.trim(),
       });
-      alert('Configurazione salvata in sessionStorage (questo browser).');
+      alert('Configurazione salvata in localStorage (questo browser).');
     });
 
     document.getElementById('btn-test').addEventListener('click', async () => {
@@ -243,9 +245,11 @@
     document.getElementById('btn-preview-kb').addEventListener('click', async () => {
       const kb = new AbraKBSearch();
       await kb.load('../offerte-ai/data/knowledge-index.json');
-      const q = document.getElementById('kb-note').value.split('\n')[0].replace(/^#+\s*/, '') || 'finanziamenti';
-      const res = kb.search(q, 3);
-      document.getElementById('kb-preview').textContent = JSON.stringify(res, null, 2);
+      const q = document.getElementById('kb-search-quick').value.trim() || 'finanziamenti';
+      const res = kb.search(q, 5);
+      document.getElementById('kb-preview').textContent = res.length
+        ? res.map((r, i) => `[${i + 1}] ${r.title}\nFonte: ${r.source}\n${(r.text || '').slice(0, 300)}…`).join('\n\n---\n\n')
+        : 'Nessun risultato per: ' + q;
     });
 
     const VE_KEY = 'abra_voci_extra_session';

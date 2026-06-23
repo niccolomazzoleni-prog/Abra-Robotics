@@ -23,54 +23,48 @@
 
     <div class="admin-head">
       <p class="label">Interno · Non indicizzato</p>
-      <h1>Statistiche &amp; accessi</h1>
-      <p>Panoramica mobile-friendly: visite sul sito, provenienza traffico, contatti e metriche GitHub. I dati sito si aggiornano via beacon; GitHub via workflow giornaliero o refresh live con PAT.</p>
+      <h1>Accessi al sito</h1>
+      <p>Visite, provenienza traffico e contatti su <strong>abrarobotics.com</strong>. Ogni pagina pubblica invia un beacon al foglio Google (scheda Analytics). Non sono statistiche del repository GitHub.</p>
     </div>
 
     <div class="stats-toolbar">
-      <button type="button" class="btn btn-primary btn-sm" id="btn-refresh">Aggiorna da GitHub</button>
+      <button type="button" class="btn btn-primary btn-sm" id="btn-refresh">Aggiorna dati sito</button>
       <span class="stats-updated" id="stats-updated">Caricamento…</span>
     </div>
 
-    <div class="quick-links" style="margin-bottom:8px">
+    <p class="hint" id="setup-note" style="margin:0 0 16px"></p>
+
+    <div class="quick-links" style="margin-bottom:16px">
       <a href="https://analytics.google.com/" target="_blank" rel="noopener">Google Analytics</a>
       <a href="https://business.facebook.com/events_manager2/list/pixel/1478056171004711" target="_blank" rel="noopener">Meta Pixel</a>
-      <a href="https://docs.google.com/spreadsheets/d/1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY/edit" target="_blank" rel="noopener">Foglio Contatti</a>
-      <a href="https://github.com/niccolomazzoleni-prog/Abra-Robotics/pulse" target="_blank" rel="noopener">GitHub Pulse</a>
+      <a href="https://docs.google.com/spreadsheets/d/1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY/edit" target="_blank" rel="noopener">Foglio Contatti + Analytics</a>
     </div>
-    <p class="hint" style="font-size:0.82rem;color:var(--gray-600);margin:0 0 16px" id="live-gh-note"></p>
 
     <div class="kpi-grid" id="kpi-grid"></div>
 
     <section class="admin-card">
-      <h2>Da dove arrivano (sito)</h2>
-      <p class="hint">Referrer registrati dal beacon first-party sul sito pubblico.</p>
+      <h2>Da dove arrivano</h2>
+      <p class="hint">Referrer delle visite sul sito (Google, LinkedIn, direct, ecc.).</p>
       <div id="site-referrers"></div>
     </section>
 
     <section class="admin-card">
       <h2>Pagine più visitate</h2>
-      <p class="hint">Top path sul dominio abrarobotics.com / GitHub Pages.</p>
+      <p class="hint">Path registrati dal beacon first-party.</p>
       <div id="site-pages"></div>
     </section>
 
     <section class="admin-card">
-      <h2>Referrer GitHub (repo)</h2>
-      <p class="hint">Traffico verso il repository su github.com — aggiornato dal workflow <code>collect-site-stats</code>.</p>
-      <div id="gh-referrers"></div>
+      <h2>Campagne UTM</h2>
+      <p class="hint">Parametro utm_source quando presente nell'URL.</p>
+      <div id="site-utm"></div>
     </section>
 
     <section class="admin-card">
-      <h2>GitHub Actions</h2>
-      <p class="hint">Ultimi workflow (rigenerazione catalogo, sync, knowledge index).</p>
-      <div id="workflow-list"></div>
-    </section>
-
-    <section class="admin-card">
-      <h2>Chiave stats Apps Script</h2>
-      <p class="hint">Dopo aver ridistribuito <code>apps-script/Code.gs</code>, incolla qui la stessa <code>STATS_KEY</code> per vedere visite e contatti aggregati (resta solo in sessionStorage).</p>
+      <h2>Setup beacon</h2>
+      <p class="hint">La chiave è già precompilata (<code>abra-stats-2026</code>, uguale a <code>STATS_KEY</code> in <code>apps-script/Code.gs</code>). Cambiala solo se modifichi lo script.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
-        <input type="password" id="stats-key-input" placeholder="Chiave stats (opzionale)" style="flex:1;min-width:200px;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;font:inherit">
+        <input type="text" id="stats-key-input" placeholder="Chiave stats" style="flex:1;min-width:200px;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;font:inherit">
         <button type="button" class="btn btn-primary btn-sm" id="btn-save-stats-key">Salva chiave</button>
       </div>
     </section>
