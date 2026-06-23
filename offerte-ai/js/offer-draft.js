@@ -10,7 +10,7 @@
 
 
 
-  const RFQ_RE = /preventivo formale|intestat|quotare entramb|termocamera|sensori|perlustrazione|sorveglianza|setup aggiuntivo|accessori|umidit|gas|fumo|payload|consegna|noleggio|poc|integrazione/i;
+  const RFQ_RE = /preventivo|offert|quot|intestat|termocamera|sensori|perlustrazione|sorveglianza|setup|accessori|umidit|gas|fumo|payload|consegna|noleggio|poc|integrazione|quanto cost|configurazione robot/i;
 
 
 
@@ -57,9 +57,13 @@
 
 
     isFormalRfq(text) {
+      return RFQ_RE.test(String(text || '')) || this._localRfqHints(text);
+    },
 
-      return RFQ_RE.test(String(text || ''));
-
+    _localRfqHints(text) {
+      const t = String(text || '').toLowerCase();
+      return (/quot|offert|preventiv|prezz|configur|quanto cost|budget|proposta|mi serv|abbiamo bisogno|vorrei/i.test(t))
+        && (/robot|unitree|quadruped|go2|as2|\ba2\b|g1|sensor|termic|umanoide|poc|integraz|amr|cobot/i.test(t));
     },
 
 

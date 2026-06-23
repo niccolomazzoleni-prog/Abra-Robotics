@@ -91,6 +91,14 @@
     },
   };
 
+  function sleep(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+
+  function tokenizeForStream(text) {
+    return String(text || '').match(/\S+\s*|\n/g) || [text];
+  }
+
   class ChatUI {
     constructor(container, opts = {}) {
       this.container = typeof container === 'string' ? document.querySelector(container) : container;
@@ -199,6 +207,32 @@
     appendUser(text) {
       this._hideEmpty();
       return this._appendRow('user', text, {});
+    }
+
+    async appendBotStreamed(text, meta = {}, opts = {}) {
+      const minWait = opts.minWaitMs ?? 900;
+      const wordDelay = opts.wordDelayMs ?? 32;
+      await sleep(minWait);
+      this.hideTyping();
+      this._hideEmpty();
+      const row = this._appendRow('bot', '', meta);
+      const bubble = row.querySelector('.chat-bubble.bot');
+      bubble.classList.add('streaming');
+      const tokens = tokenizeForStream(text);
+      let acc = '';
+      for (const tok of tokens) {
+        acc += tok;
+        bubble.textContent = acc;
+        this.scrollBottom();
+        await sleep(wordDelay + Math.floor(Math.random() * 18));
+      }
+      bubble.innerHTML = formatBotHtml(text);
+      bubble.classList.remove('streaming');
+      if (meta.sources?.length) this._attachSources(row, meta.sources);
+      if (meta.quote?.lines?.length && !meta.offerDraft) this._attachQuoteCard(row, meta.quote);
+      if (meta.offerDraft) this._attachOfferPreview(row, meta.offerDraft);
+      if (this.opts.showFeedback && meta.feedbackId) this._attachFeedback(row, meta);
+      return row;
     }
 
     appendBot(text, meta = {}) {
@@ -483,7 +517,6 @@
       this.setStatus('Sta scrivendo…', false);
       try {
         const result = await this.opts.onSend(q);
-        this.hideTyping();
         const reply = result.reply || result;
         const fbId = uid();
         FeedbackStore.save({
@@ -496,7 +529,7 @@
           model_mode: global.AbraLLM?.loadConfig?.().mode || 'offline',
           rating: null, correction: null, action: 'pending',
         });
-        this.appendBot(reply, {
+        await this.appendBotStreamed(reply, {
           feedbackId: fbId,
           answer: reply,
           sources: result.sources || [],
