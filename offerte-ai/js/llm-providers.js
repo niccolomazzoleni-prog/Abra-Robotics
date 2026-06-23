@@ -23,9 +23,18 @@
 
   let localBootstrapDone = false;
 
+  function readStoredConfig() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY) || '{}';
+      return JSON.parse(raw);
+    } catch {
+      return {};
+    }
+  }
+
   function loadConfig() {
     try {
-      return { ...DEFAULTS, ...JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}') };
+      return { ...DEFAULTS, ...readStoredConfig() };
     } catch {
       return { ...DEFAULTS };
     }
@@ -46,7 +55,7 @@
       if (!res.ok) return loadConfig();
       const local = await res.json();
       const current = loadConfig();
-      const shouldApply = !sessionStorage.getItem(STORAGE_KEY) || current.mode === 'offline';
+      const shouldApply = !(localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY)) || current.mode === 'offline';
       if (shouldApply) saveConfig({ ...current, ...local });
       return loadConfig();
     } catch {
@@ -56,7 +65,9 @@
 
   function saveConfig(partial) {
     const next = { ...loadConfig(), ...partial };
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    const json = JSON.stringify(next);
+    localStorage.setItem(STORAGE_KEY, json);
+    sessionStorage.setItem(STORAGE_KEY, json);
     return next;
   }
 
@@ -179,6 +190,33 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
     return stripThinking(data.reply || '');
   }
 
+  async function miniChat(userContent, cfg, maxTokens = 80) {
+    const messages = [{ role: 'user', content: userContent }];
+    const miniCfg = { ...cfg, maxTokens: maxTokens || 80, temperature: 0.1 };
+    if (miniCfg.mode === 'ollama') return chatOllama(messages, miniCfg);
+    if (miniCfg.mode === 'google') return chatGoogle(messages, miniCfg);
+    if (miniCfg.mode === 'deepseek') return chatDeepSeekApi(messages, miniCfg);
+    if (miniCfg.mode === 'proxy') return chatProxy(messages, miniCfg);
+    return null;
+  }
+
+  async function classifyRfqIntent(userMessage) {
+    const cfg = loadConfig();
+    if (cfg.mode === 'offline') return false;
+    const prompt =
+      'Classifica se il messaggio chiede un preventivo/offerta commerciale per robot o integrazione.\n' +
+      'Rispondi SOLO con JSON valido: {"rfq":true} oppure {"rfq":false}\n\n' +
+      `Messaggio: ${String(userMessage || '').slice(0, 600)}`;
+    try {
+      const raw = await miniChat(prompt, cfg, 48);
+      const m = String(raw || '').match(/\{[\s\S]*?\}/);
+      if (!m) return false;
+      return !!JSON.parse(m[0]).rfq;
+    } catch {
+      return false;
+    }
+  }
+
   async function testConnection(cfg) {
     const testCfg = { ...loadConfig(), ...cfg };
     if (testCfg.mode === 'offline') {
@@ -197,6 +235,7 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
     saveConfig,
     bootstrapLocalConfig,
     generateReply,
+    classifyRfqIntent,
     testConnection,
     DEFAULTS,
     SYSTEM_PROMPT,

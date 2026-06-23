@@ -38,6 +38,11 @@
       this.opts.onStatus('Pronto');
     }
 
+    async _wantsFormalOffer(userText) {
+      if (global.AbraOfferDraft?.isFormalRfq(userText)) return true;
+      return global.AbraLLM?.classifyRfqIntent?.(userText) || false;
+    }
+
     _offlineReply(query, ragResults, autoQuote) {
       const parts = [];
 
@@ -58,7 +63,7 @@
 
       const cfg = global.AbraLLM.loadConfig();
       if (cfg.mode === 'offline') {
-        parts.push('\n\n_Modalità offline: ricerca KB + calcolo prezzi. Per risposte AI attiva Ollama (Gemma 4) o Google AI dall\'admin._');
+        parts.push('\n\n_Modalità offline: ricerca KB + calcolo prezzi. Per risposte AI attiva DeepSeek o Ollama dall\'admin._');
       }
 
       return parts.join('\n\n');
@@ -71,9 +76,26 @@
       const searchQuery = guard.cleanQuery || userText;
       const ragResults = global.AbraPromptGuard.filterKbResults(this.kb.search(searchQuery, 5));
       const autoQuote = this.quote.tryAutoQuote(searchQuery) || this.quote.tryAutoQuote(userText);
-      const quoteBlock = autoQuote?.lines?.length ? this.quote.formatQuote(autoQuote) : '';
+      let quoteBlock = autoQuote?.lines?.length ? this.quote.formatQuote(autoQuote) : '';
 
       this.history.push({ role: 'user', content: guard.sanitized });
+
+      let offerDraft = null;
+      const wantsOffer = await this._wantsFormalOffer(userText);
+      if (wantsOffer && global.AbraOfferDraft) {
+        try {
+          this.opts.onStatus('Preparazione preventivo…');
+          offerDraft = global.AbraOfferDraft.build(userText, this.quote);
+          if (offerDraft) {
+            global.AbraOfferDraft.saveSession(offerDraft);
+            quoteBlock += (quoteBlock ? '\n\n' : '') +
+              '=== PREVENTIVO FORMALE GENERATO (usa questi dati, non inventare prezzi) ===\n' +
+              global.AbraOfferDraft.formatChatIntro(offerDraft);
+          }
+        } catch (e) {
+          quoteBlock += `\n\n(Errore generazione preventivo: ${e.message})`;
+        }
+      }
 
       let reply = null;
       const cfg = global.AbraLLM.loadConfig();
@@ -102,16 +124,10 @@
 
       reply = global.AbraPromptGuard.validateOutput(reply, quoteBlock, guard.flags);
 
-      let offerDraft = null;
-      if (global.AbraOfferDraft?.isFormalRfq(userText)) {
-        try {
-          offerDraft = global.AbraOfferDraft.build(userText, this.quote);
-          if (offerDraft) {
-            global.AbraOfferDraft.saveSession(offerDraft);
-            reply = global.AbraOfferDraft.formatChatIntro(offerDraft);
-          }
-        } catch (e) {
-          reply += `\n\n_(Errore generazione preventivo: ${e.message})_`;
+      if (offerDraft) {
+        const intro = global.AbraOfferDraft.formatChatIntro(offerDraft);
+        if (!/preventivo formale|totale.*configurazione|totale quotato/i.test(reply)) {
+          reply = reply.trim() + '\n\n' + intro;
         }
       }
 

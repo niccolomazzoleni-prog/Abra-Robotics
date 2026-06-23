@@ -125,5 +125,6 @@
     }
   }
 
-  init();
+  if (window.AbraAdmin?.whenUnlocked) window.AbraAdmin.whenUnlocked(init);
+  else init();
 })();
