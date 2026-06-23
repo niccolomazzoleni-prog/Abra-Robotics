@@ -1050,6 +1050,227 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
 }
 .abra-offer-doc .doc-chiusura { font-weight: 600; color: var(--gray-800); margin-top: 12px; }
 
+/* ── Layout PDF-first (anteprima + stampa) ── */
+.abra-offer-doc--pdf {
+  background: var(--white);
+  padding: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.abra-offer-doc--pdf .doc-header {
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom-width: 2px;
+}
+.abra-offer-doc--pdf .doc-logo-img { height: 44px; max-height: 44px; }
+.abra-offer-doc--pdf .doc-fiscal { font-size: 0.72rem; line-height: 1.4; }
+.abra-offer-doc--pdf .doc-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.abra-offer-doc--pdf .doc-meta {
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  flex: 1 1 200px;
+}
+.abra-offer-doc--pdf .doc-client {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.abra-offer-doc--pdf .doc-client strong { font-size: 0.92rem; }
+.abra-offer-doc--pdf .doc-intro-compact {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+}
+
+/* Configurazione consigliata — focus principale */
+.doc-config-summary {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  background: var(--orange-light);
+  border: 1px solid rgba(124, 77, 214, 0.28);
+  border-radius: var(--radius-sm);
+  page-break-inside: avoid;
+}
+.doc-config-summary-title {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent-text);
+}
+.doc-config-rec {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(124, 77, 214, 0.2);
+}
+.doc-config-rec-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-600); width: 100%; }
+.doc-config-rec-name { font-size: 1.05rem; font-weight: 800; }
+.doc-config-rec-total { font-size: 0.95rem; font-weight: 800; margin-left: auto; }
+.doc-config-rec-total small { font-weight: 500; font-size: 0.72rem; color: var(--gray-600); }
+.doc-config-group { margin-top: 8px; }
+.doc-config-group-label { margin: 0 0 4px; font-size: 0.75rem; font-weight: 700; color: var(--gray-800); }
+.doc-config-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+}
+.doc-config-options li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.76rem;
+  padding: 3px 0;
+}
+.doc-config-options li.is-rec { font-weight: 700; color: var(--accent-text); }
+.doc-config-options li strong { font-weight: 700; white-space: nowrap; }
+
+/* Hero robot compatto */
+.abra-offer-doc--pdf .doc-robot-hero {
+  margin: 12px 0;
+  gap: 6px;
+}
+.abra-offer-doc--pdf .doc-robot-hero img { max-height: 64px; }
+.abra-offer-doc--pdf .doc-robot-hero figcaption { font-size: 0.58rem; }
+
+/* Prodotti — schede compatte */
+.doc-products { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+.doc-block-highlight-compact {
+  margin: 0 !important;
+  padding: 10px 12px !important;
+  grid-template-columns: minmax(100px, 130px) 1fr !important;
+  gap: 12px !important;
+  page-break-inside: avoid;
+}
+.doc-block-highlight-compact .doc-block-highlight-img img {
+  max-height: 100px;
+  padding: 4px;
+}
+.doc-block-highlight-compact .doc-block-title { font-size: 0.88rem; margin-bottom: 4px; }
+.doc-block-highlight-compact .doc-block-body { font-size: 0.74rem; line-height: 1.45; }
+.doc-block-highlight-compact .doc-block-caption { font-size: 0.62rem; margin-top: 4px; }
+.doc-block-section-compact {
+  margin: 8px 0 !important;
+  padding: 8px 12px !important;
+  border-left-width: 3px;
+}
+.doc-block-section-compact .doc-block-title { font-size: 0.82rem; margin-bottom: 4px; }
+.doc-block-section-compact .doc-block-body { font-size: 0.72rem; line-height: 1.45; }
+.doc-intro-blocs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.doc-intro-bloc { font-size: 0.72rem; padding: 8px 10px; background: var(--gray-50); border-radius: 6px; border: 1px solid var(--gray-200); }
+.doc-intro-bloc strong { display: block; font-size: 0.75rem; margin-bottom: 4px; }
+
+/* Prezzi — compatti, non dominanti */
+.doc-price-block { margin: 14px 0; page-break-inside: avoid; }
+.doc-price-block-title {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gray-700);
+}
+.doc-lines-compact { font-size: 0.74rem; margin: 0 !important; }
+.doc-lines-compact th { padding: 6px 8px !important; font-size: 0.6rem !important; }
+.doc-lines-compact td { padding: 6px 8px !important; }
+.doc-lines-compact .col-qty { width: 36px; text-align: center; }
+.doc-lines-compact .col-price { width: 88px; text-align: right; white-space: nowrap; }
+.doc-lines-compact .col-note { width: 72px; font-size: 0.65rem; color: var(--gray-600); }
+.doc-lines-compact tr.is-rec { background: var(--orange-light); }
+.doc-lines-compact .line-sku { display: block; font-size: 0.62rem; color: var(--gray-500); font-weight: 500; }
+.doc-lines-compact .line-desc { display: block; font-size: 0.65rem; color: var(--gray-600); margin-top: 2px; }
+.doc-price-note { margin: 4px 0 0; font-size: 0.65rem; color: var(--gray-600); }
+
+/* Da quotare */
+.doc-pending {
+  margin: 14px 0;
+  padding: 10px 12px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius-sm);
+  page-break-inside: avoid;
+}
+.doc-pending-title { margin: 0 0 4px; font-size: 0.82rem; font-weight: 800; color: #92400e; }
+.doc-pending-lead { margin: 0 0 6px; font-size: 0.72rem; color: #78350f; }
+.doc-pending-list { margin: 0; padding-left: 18px; font-size: 0.72rem; }
+.doc-pending-list li { margin: 3px 0; }
+.doc-pending-list span { display: block; color: var(--gray-600); font-size: 0.68rem; }
+
+/* Totale — discreto */
+.doc-total-compact {
+  text-align: right;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin: 12px 0;
+  padding: 8px 12px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  color: var(--black);
+}
+.doc-total-compact strong { font-size: 0.95rem; }
+.doc-total-compact .doc-iva-note { display: block; font-size: 0.65rem; font-weight: 500; color: var(--gray-600); margin-top: 2px; }
+
+/* Prossimi passi */
+.doc-next-steps {
+  margin: 16px 0;
+  padding: 12px 14px;
+  border: 2px solid var(--accent-text);
+  border-radius: var(--radius-sm);
+  page-break-inside: avoid;
+}
+.doc-next-steps-title { margin: 0 0 8px; font-size: 0.88rem; font-weight: 800; color: var(--accent-text); }
+.doc-next-steps-list { margin: 0; padding-left: 18px; font-size: 0.76rem; line-height: 1.5; }
+.doc-next-steps-list li { margin: 4px 0; }
+.doc-next-steps-note { margin: 8px 0 0; font-size: 0.72rem; color: var(--gray-700); }
+
+/* Sezioni secondarie — piccole, in fondo */
+.doc-secondary { margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--gray-300); }
+.doc-block-secondary {
+  margin: 8px 0 !important;
+  padding: 8px 10px !important;
+  border-left-width: 2px;
+  background: var(--gray-50) !important;
+}
+.doc-block-secondary .doc-block-title { font-size: 0.72rem; margin-bottom: 4px; color: var(--gray-700); }
+.doc-block-secondary .doc-block-body { font-size: 0.68rem; line-height: 1.45; color: var(--gray-600); }
+.doc-footer-compact { margin-top: 10px; font-size: 0.65rem; line-height: 1.45; color: var(--gray-500); }
+.doc-extra-compact { font-size: 0.72rem; margin: 8px 0; color: var(--gray-600); }
+
+@media (max-width: 640px) {
+  .doc-intro-blocs { grid-template-columns: 1fr; }
+  .doc-block-highlight-compact { grid-template-columns: 1fr !important; }
+}
+@media print {
+  .abra-offer-doc--pdf .doc-block-highlight-compact,
+  .doc-config-summary,
+  .doc-pending,
+  .doc-next-steps,
+  .doc-price-block { page-break-inside: avoid; }
+  .doc-secondary { page-break-before: auto; }
+}
+
 /* Hero robot — griglia anteprima offerta (pipeline + curata) */
 .abra-offer-doc .doc-robot-hero {
   display: grid;
