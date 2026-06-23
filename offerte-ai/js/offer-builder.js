@@ -338,42 +338,202 @@
       return `<div class="doc-robot-hero" aria-label="Piattaforme robot quotate">${items}</div>`;
     }
 
-    renderPreviewFragment(offer) {
+    _partitionLines(offer) {
+      const lines = offer.line_items || [];
+      return {
+        robots: lines.filter(l => l.opzione_robot),
+        priced: lines.filter(l => !l.opzione_robot && !l.su_richiesta && Number(l.prezzo_unit) > 0),
+        pending: lines.filter(l => !l.opzione_robot && (l.su_richiesta || !Number(l.prezzo_unit))),
+      };
+    }
+
+    _splitContentBlocks(blocks) {
+      const all = blocks || [];
+      const isSecondary = b =>
+        b.type === 'section' && /finanziament|agevolaz|sgravi|perché|perche|consegna|supporto/i.test(String(b.title || '') + String(b.body || '').slice(0, 80));
+      const isIntroBlocco = b =>
+        b.type === 'section' && /^Blocco [AB]/i.test(String(b.title || ''));
+      return {
+        highlights: all.filter(b => b.type === 'highlight'),
+        specs: all.filter(b => b.type === 'section' && /specifiche|payload sensori|integrazione software|poc/i.test(String(b.title || ''))),
+        introSections: all.filter(b => isIntroBlocco(b)),
+        secondary: all.filter(b => isSecondary(b)),
+        other: all.filter(b => !['highlight'].includes(b.type) && !isSecondary(b) && !isIntroBlocco(b)
+          && !/specifiche|payload sensori|integrazione software|poc/i.test(String(b.title || ''))),
+      };
+    }
+
+    _recommendedRobot(offer, t) {
+      const robots = (offer.line_items || []).filter(l => l.opzione_robot);
+      return robots.find(r => r.principale) || robots.find(r => r.robot_gruppo === 'sorveglianza') || robots[0];
+    }
+
+    renderConfigSummary(offer, t) {
+      const rec = this._recommendedRobot(offer, t);
+      if (!rec && !t.gruppi?.length) return '';
+      const recName = rec ? String(rec.nome).replace(/^Unitree\s+/i, '') : '—';
+      let html = `<section class="doc-config-summary">
+        <h2 class="doc-config-summary-title">Configurazione consigliata</h2>
+        <div class="doc-config-rec">
+          <span class="doc-config-rec-label">Piattaforma di riferimento</span>
+          <strong class="doc-config-rec-name">${escapeHtml(recName)}</strong>
+          <span class="doc-config-rec-total">€ ${fmt(t.subtotal)} <small>IVA escl.</small></span>
+        </div>`;
+      if (t.gruppi?.length) {
+        html += t.gruppi.map(g => `
+          <div class="doc-config-group">
+            <h3 class="doc-config-group-label">${escapeHtml(g.label)} <span class="muted">— scegliere una</span></h3>
+            <ul class="doc-config-options">${g.opzioni.map(o => {
+              const isRec = rec && o.sku === rec.sku;
+              return `<li class="${isRec ? 'is-rec' : ''}"><span>${escapeHtml(o.nome.split('(')[0].trim())}</span><strong>€ ${fmt(o.totale)}</strong></li>`;
+            }).join('')}</ul>
+          </div>`).join('');
+      } else if (t.opzioni?.length > 1) {
+        html += `<ul class="doc-config-options">${t.opzioni.map(o =>
+          `<li><span>${escapeHtml(o.nome.split('(')[0].trim())}</span><strong>€ ${fmt(o.totale)}</strong></li>`
+        ).join('')}</ul>`;
+      }
+      html += '</section>';
+      return html;
+    }
+
+    renderCompactLineTable(title, lines, { compact = false } = {}) {
+      if (!lines.length) return '';
+      const rows = lines.map(l => `
+        <tr>
+          <td><strong>${escapeHtml(l.nome)}</strong>${l.sku ? `<span class="line-sku">${escapeHtml(l.sku)}</span>` : ''}${compact ? '' : (l.descrizione ? `<span class="line-desc">${escapeHtml(l.descrizione.split(' · ')[0])}</span>` : '')}</td>
+          <td class="col-qty">${l.qty}</td>
+          <td class="col-price">${this._priceCell(l)}</td>
+          <td class="col-price">${this._totalCell(l)}</td>
+        </tr>`).join('');
+      return `<section class="doc-price-block">
+        <h3 class="doc-price-block-title">${escapeHtml(title)}</h3>
+        <table class="doc-lines doc-lines-compact"><thead><tr><th>Voce</th><th>Qtà</th><th>Unit.</th><th>Tot.</th></tr></thead><tbody>${rows}</tbody></table>
+      </section>`;
+    }
+
+    renderRobotAltTable(robots, sharedTotal) {
+      if (!robots.length) return '';
+      const rows = robots.map(r => `
+        <tr class="${r.principale ? 'is-rec' : ''}">
+          <td><strong>${escapeHtml(r.nome)}</strong><span class="line-sku">${escapeHtml(r.sku || '')}</span></td>
+          <td class="col-price">€ ${fmt(r.prezzo_unit)}</td>
+          <td class="col-price"><strong>€ ${fmt(sharedTotal + (r.su_richiesta ? 0 : r.prezzo_totale))}</strong></td>
+          <td class="col-note">${r.principale ? 'Consigliata' : 'Alternativa'}</td>
+        </tr>`).join('');
+      return `<section class="doc-price-block">
+        <h3 class="doc-price-block-title">Piattaforme robot — alternative</h3>
+        <table class="doc-lines doc-lines-compact"><thead><tr><th>Modello</th><th>Robot</th><th>Totale*</th><th></th></tr></thead><tbody>${rows}</tbody></table>
+        <p class="doc-price-note">* Totale indicativo con voci comuni (PoC, spedizione, formazione). Selezionare <strong>una sola</strong> configurazione per blocco.</p>
+      </section>`;
+    }
+
+    renderPendingSection(pending) {
+      if (!pending.length) return '';
+      const items = pending.map(l =>
+        `<li><strong>${escapeHtml(l.nome)}</strong>${l.descrizione ? `<span>${escapeHtml(l.descrizione.split('.')[0])}</span>` : ''}</li>`
+      ).join('');
+      return `<section class="doc-pending">
+        <h3 class="doc-pending-title">Da definire e quotare</h3>
+        <p class="doc-pending-lead">Importi da confermare dopo call tecnica e scelta payload definitivo:</p>
+        <ul class="doc-pending-list">${items}</ul>
+      </section>`;
+    }
+
+    renderNextSteps(offer) {
+      return `<section class="doc-next-steps">
+        <h3 class="doc-next-steps-title">Prossimi passi</h3>
+        <ol class="doc-next-steps-list">
+          <li><strong>Conferma configurazione</strong> — selezione robot per ogni blocco alternativo (As2/A2 e/o Go2).</li>
+          <li><strong>Call tecnica</strong> — definizione payload sensori, staffa e voci «su richiesta».</li>
+          <li><strong>PoC e trasferte</strong> — durata definitiva ingegneria e stima trasferte team.</li>
+          <li><strong>Ordine e finanziamenti</strong> — verifica agevolazioni; conferma d'ordine e tempi consegna.</li>
+        </ol>
+        ${offer.chiusura ? `<p class="doc-next-steps-note">${richText(String(offer.chiusura).split('\n\n')[0])}</p>` : ''}
+      </section>`;
+    }
+
+    renderProductBlocks(blocks, { highlights, specs, introSections }) {
+      let html = '';
+      if (introSections.length) {
+        html += `<div class="doc-intro-blocs">${introSections.map(b =>
+          `<div class="doc-intro-bloc"><strong>${escapeHtml(b.title)}</strong><div>${richText(b.body)}</div></div>`
+        ).join('')}</div>`;
+      }
+      if (highlights.length) {
+        html += `<div class="doc-products">${highlights.map(b =>
+          `<article class="doc-block doc-block-highlight doc-block-highlight-compact">
+            ${b.image_url ? `<div class="doc-block-highlight-img"><img src="${escapeHtml(b.image_url)}" alt="${escapeHtml(b.title || '')}"></div>` : ''}
+            <div class="doc-block-highlight-text">
+              ${b.title ? `<h3 class="doc-block-title">${escapeHtml(b.title)}</h3>` : ''}
+              <div class="doc-block-body">${richText(b.body)}</div>
+              ${b.caption ? `<p class="doc-block-caption">${escapeHtml(b.caption)}</p>` : ''}
+            </div>
+          </article>`
+        ).join('')}</div>`;
+      }
+      if (specs.length) {
+        html += specs.map(b =>
+          `<section class="doc-block doc-block-section doc-block-section-compact">
+            ${b.title ? `<h3 class="doc-block-title">${escapeHtml(b.title)}</h3>` : ''}
+            <div class="doc-block-body">${richText(b.body)}</div>
+          </section>`
+        ).join('');
+      }
+      return html;
+    }
+
+    renderSecondaryBlocks(blocks) {
+      if (!blocks.length) return '';
+      return `<div class="doc-secondary">${blocks.map(b =>
+        `<section class="doc-block doc-block-section doc-block-secondary">
+          ${b.title ? `<h3 class="doc-block-title">${escapeHtml(b.title)}</h3>` : ''}
+          <div class="doc-block-body">${richText(b.body)}</div>
+        </section>`
+      ).join('')}</div>`;
+    }
+
+    renderOfferDocument(offer) {
       const co = this.config?.azienda || {};
       const t = this.recalculate(offer);
+      const parts = this._partitionLines(offer);
+      const split = this._splitContentBlocks(offer.content_blocks);
       const hasContent = offer.line_items.length || offer.client.azienda || offer.content_blocks?.length;
       if (!hasContent) {
         return '<div class="offer-preview-empty">Aggiungi cliente, righe o sezioni narrative per l\'anteprima</div>';
       }
-      const rows = offer.line_items.map(l => `
-        <tr>
-          <td><strong>${escapeHtml(l.nome)}</strong>${l.sku ? `<br><small>${escapeHtml(l.sku)}</small>` : ''}${l.descrizione ? `<br><small class="line-desc">${escapeHtml(l.descrizione)}</small>` : ''}</td>
-          <td>${l.qty}</td>
-          <td>${this._priceCell(l)}</td>
-          <td>${this._totalCell(l)}</td>
-        </tr>`).join('');
-      const blocksHtml = this.renderContentBlocksHtml(offer.content_blocks);
+
       return `
-        <div class="abra-offer-doc">
+        <div class="abra-offer-doc abra-offer-doc--pdf">
         ${this.renderCompanyHeader(co)}
-        <div class="doc-meta">Offerta <strong>${escapeHtml(offer.id)}</strong> · ${escapeHtml(offer.data)} · Valida ${offer.validita_giorni} gg</div>
-        <div class="doc-client">
-          <strong>${escapeHtml(offer.client.azienda || 'Cliente — da compilare')}</strong><br>
-          ${offer.client.contatto ? escapeHtml(offer.client.contatto) + '<br>' : '<span class="muted">Referente — da compilare</span><br>'}
-          ${offer.client.email ? escapeHtml(offer.client.email) : ''}
+        <div class="doc-topbar">
+          <div class="doc-meta">Offerta <strong>${escapeHtml(offer.id)}</strong> · ${escapeHtml(offer.data)} · Valida ${offer.validita_giorni} gg</div>
+          <div class="doc-client">
+            <strong>${escapeHtml(offer.client.azienda || 'Cliente — da compilare')}</strong>
+            ${offer.client.contatto ? `<span>${escapeHtml(offer.client.contatto)}</span>` : ''}
+            ${offer.client.email ? `<span>${escapeHtml(offer.client.email)}</span>` : ''}
+          </div>
         </div>
-        ${offer.intro ? `<div class="doc-intro">${richText(offer.intro)}</div>` : ''}
+        ${offer.intro ? `<div class="doc-intro doc-intro-compact">${richText(offer.intro)}</div>` : ''}
+        ${this.renderConfigSummary(offer, t)}
         ${this.renderRobotHeroHtml(offer)}
-        ${blocksHtml}
-        ${offer.prompt_extra ? `<div class="doc-intro doc-extra"><em>${richText(offer.prompt_extra)}</em></div>` : ''}
-        ${rows ? `<table class="doc-lines"><thead><tr><th>Descrizione</th><th>Qtà</th><th>Unit.</th><th>Tot.</th></tr></thead><tbody>${rows}</tbody></table>` : ''}
-        ${t.gruppi?.length > 1
-          ? t.gruppi.map(g => `<div class="doc-options"><strong>${escapeHtml(g.label)}</strong> <span class="muted">(scegliere una)</span><ul>${g.opzioni.map(o => `<li>${escapeHtml(o.nome.split('(')[0].trim())}: <strong>€ ${fmt(o.totale)}</strong></li>`).join('')}</ul></div>`).join('')
-          : (t.opzioni?.length > 1 ? `<div class="doc-options"><strong>Totali per configurazione robot</strong> <span class="muted">(alternativa — scegliere una)</span><ul>${t.opzioni.map(o => `<li>${escapeHtml(o.nome.split('(')[0].trim())}: <strong>€ ${fmt(o.totale)}</strong></li>`).join('')}</ul></div>` : '')}
-        <div class="doc-total">Totale configurazione consigliata: <strong>€ ${fmt(t.subtotal)}</strong> <span class="doc-iva-note">(${escapeHtml(offer.note_iva)})</span></div>
-        ${offer.condizioni ? `<div class="doc-footer">${richText(offer.condizioni)}</div>` : ''}
-        ${offer.chiusura ? `<div class="doc-footer doc-chiusura">${richText(offer.chiusura)}</div>` : ''}
+        ${this.renderProductBlocks(offer.content_blocks, split)}
+        ${this.renderRobotAltTable(parts.robots, t.sharedTotal)}
+        ${this.renderCompactLineTable('Servizi e voci comuni quotate', parts.priced, { compact: true })}
+        ${this.renderPendingSection(parts.pending)}
+        <div class="doc-total doc-total-compact">
+          Totale configurazione consigliata: <strong>€ ${fmt(t.subtotal)}</strong>
+          <span class="doc-iva-note">${escapeHtml(offer.note_iva)}</span>
+        </div>
+        ${this.renderNextSteps(offer)}
+        ${offer.prompt_extra ? `<div class="doc-extra-compact"><em>${richText(offer.prompt_extra)}</em></div>` : ''}
+        ${this.renderSecondaryBlocks(split.secondary)}
+        ${offer.condizioni ? `<div class="doc-footer doc-footer-compact">${richText(offer.condizioni)}</div>` : ''}
         </div>`;
+    }
+
+    renderPreviewFragment(offer) {
+      return this.renderOfferDocument(offer);
     }
 
     _printStyles() {
@@ -410,45 +570,16 @@
     }
 
     toPrintHtml(offer) {
-      const co = this.config?.azienda || {};
-      const t = this.recalculate(offer);
-      const rows = offer.line_items.map((l, i) => `
-        <tr>
-          <td>${i + 1}</td>
-          <td><strong>${escapeHtml(l.nome)}</strong>${l.sku ? `<br><small>${escapeHtml(l.sku)}</small>` : ''}${l.descrizione ? `<br><small>${escapeHtml(l.descrizione)}</small>` : ''}</td>
-          <td style="text-align:center">${l.qty}</td>
-          <td style="text-align:right">${this._priceCell(l)}</td>
-          <td style="text-align:right">${this._totalCell(l)}</td>
-        </tr>`).join('');
-      const blocksHtml = this.renderContentBlocksHtml(offer.content_blocks, { print: true });
-      const header = this.renderCompanyHeader(co);
-
+      const body = this.renderOfferDocument(offer);
       return `<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8">
         <title>Offerta ${escapeHtml(offer.id)} — ${escapeHtml(offer.client.azienda || 'Cliente')}</title>
-        <style>${this._printStyles()}
-        .doc-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #111}
-        .doc-logo-img{max-height:56px;width:auto}
-        .doc-fiscal{font-size:0.82rem;text-align:right;line-height:1.45}
-        </style></head><body>
-        ${header}
-        <div class="meta">Offerta n. <strong>${escapeHtml(offer.id)}</strong> del ${escapeHtml(offer.data)} · Valida ${offer.validita_giorni} giorni</div>
-        <p><strong>Cliente:</strong> ${escapeHtml(offer.client.azienda || '—')}<br>
-        ${offer.client.contatto ? `Referente: ${escapeHtml(offer.client.contatto)}<br>` : ''}
-        ${offer.client.email ? escapeHtml(offer.client.email) : ''}</p>
-        <div class="block">${escapeHtml(offer.intro || '')}</div>
-        ${blocksHtml}
-        ${offer.prompt_extra ? `<div class="block"><em>${escapeHtml(offer.prompt_extra)}</em></div>` : ''}
-        ${rows ? `<table><thead><tr><th>#</th><th>Descrizione</th><th>Qtà</th><th>Prezzo unit.</th><th>Totale</th></tr></thead><tbody>${rows}</tbody></table>` : ''}
-        ${t.opzioni?.length > 1 ? `<div class="doc-options"><strong>Totali per configurazione robot</strong> (alternativa — scegliere una)<ul>${t.opzioni.map(o => `<li>${escapeHtml(o.nome)}: € ${fmt(o.totale)}</li>`).join('')}</ul></div>` : ''}
-        <div class="totals">
-          <div>Subtotale configurazione consigliata: € ${fmt(t.subtotal)}</div>
-          ${t.iva_eur ? `<div>IVA ${t.iva_pct}%: € ${fmt(t.iva_eur)}</div>` : ''}
-          <div class="grand">Totale: € ${fmt(t.totale)}</div>
-          <div style="font-size:0.82rem;color:#737373;margin-top:4px">${escapeHtml(offer.note_iva)}</div>
-        </div>
-        <div class="block">${escapeHtml(offer.condizioni || '')}</div>
-        <div class="block">${escapeHtml(offer.chiusura || '')}</div>
-        </body></html>`;
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/offerte-ai.css">
+        <style>
+          body{margin:0;padding:24px 28px;background:#fff;font-family:'Satoshi',system-ui,sans-serif}
+          @page{margin:14mm 12mm}
+          @media print{body{padding:0}.offer-sample-toolbar{display:none}}
+        </style></head><body>${body}</body></html>`;
     }
 
     exportPrint(offer) {
