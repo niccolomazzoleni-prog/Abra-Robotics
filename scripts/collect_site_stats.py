@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Raccoglie metriche GitHub e le salva in data/site-stats.json (per admin/statistiche)."""
+"""Aggiorna site-stats.json preservando config beacon/GA."""
 from __future__ import annotations
 
 import json
@@ -31,10 +31,7 @@ def gh_get(path: str, token: str) -> dict | list | None:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.loads(resp.read().decode())
     except urllib.error.HTTPError as e:
-        if e.code == 403:
-            print(f"skip {path}: {e.code} (permessi o rate limit)", file=sys.stderr)
-        else:
-            print(f"skip {path}: {e.code}", file=sys.stderr)
+        print(f"skip {path}: {e.code}", file=sys.stderr)
         return None
 
 
@@ -44,20 +41,19 @@ def main() -> int:
         print("GITHUB_TOKEN mancante", file=sys.stderr)
         return 1
 
-    repo = gh_get("", token) or {}
-    views = gh_get("/traffic/views", token) or {}
-    clones = gh_get("/traffic/clones", token) or {}
-    referrers = gh_get("/traffic/popular/referrers", token) or []
-    paths = gh_get("/traffic/popular/paths", token) or []
-    runs_payload = gh_get("/actions/runs?per_page=8", token) or {}
-    runs = runs_payload.get("workflow_runs") or []
-
-    existing = {}
+    existing: dict = {}
     if OUT.exists():
         try:
             existing = json.loads(OUT.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             pass
+
+    repo = gh_get("", token) or {}
+    views = gh_get("/traffic/views", token) or {}
+    clones = gh_get("/traffic/clones", token) or {}
+    runs_payload = gh_get("/actions/runs?per_page=8", token) or {}
+    runs = runs_payload.get("workflow_runs") or []
+    pages_deploy = gh_get("/pages", token) or {}
 
     payload = {
         "updated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
@@ -66,16 +62,20 @@ def main() -> int:
             "meta_pixel": "1478056171004711",
             "contacts_sheet_id": "1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY",
         },
+        "beacon": existing.get("beacon") or {
+            "stats_key": "abra-stats-2026",
+            "note": "Chiave uguale a STATS_KEY in apps-script/Code.gs",
+        },
         "github": {
             "stars": repo.get("stargazers_count", 0),
             "forks": repo.get("forks_count", 0),
             "open_issues": repo.get("open_issues_count", 0),
+            "pages_url": (pages_deploy or {}).get("html_url") or f"https://{OWNER}.github.io/{REPO}/",
+            "pages_status": (pages_deploy or {}).get("status"),
             "traffic": {
                 "views": views.get("views") or [],
                 "clones": clones.get("clones") or [],
             },
-            "referrers": referrers if isinstance(referrers, list) else [],
-            "paths": paths if isinstance(paths, list) else [],
         },
         "workflows": [
             {
@@ -91,7 +91,7 @@ def main() -> int:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"Scritto {OUT} — {payload['github']['stars']} stelle, {len(payload['github']['referrers'])} referrer")
+    print(f"Scritto {OUT} — deploy Pages: {payload['github'].get('pages_status')}")
     return 0
 
 

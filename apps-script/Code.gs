@@ -118,7 +118,9 @@ function buildStats(days) {
     },
     referrers: analytics.referrers,
     pages: analytics.pages,
-    sources: analytics.sources
+    sources: analytics.sources,
+    daily: analytics.daily || [],
+    mobile_pct: analytics.mobile_pct || 0
   };
 }
 
@@ -130,7 +132,7 @@ function aggregateSheet(sh, cutoff, dateCol, valueCol) {
   var total = 0;
 
   if (!sh || sh.getLastRow() < 2) {
-    return { total: 0, sessions: 0, referrers: [], pages: [], sources: [] };
+    return { total: 0, sessions: 0, referrers: [], pages: [], sources: [], daily: [], mobile_pct: 0 };
   }
 
   var rows = sh.getDataRange().getValues();
@@ -168,8 +170,34 @@ function aggregateSheet(sh, cutoff, dateCol, valueCol) {
     sessions: Object.keys(sessions).length,
     referrers: top(referrers, 12).map(function (x) { return { referrer: x.key, count: x.count }; }),
     pages: top(pages, 12).map(function (x) { return { path: x.key, count: x.count }; }),
-    sources: top(sources, 12).map(function (x) { return { source: x.key, count: x.count }; })
+    sources: top(sources, 12).map(function (x) { return { source: x.key, count: x.count }; }),
+    daily: dailySeries(rows, cutoff, dateCol),
+    mobile_pct: mobilePct(rows, cutoff, dateCol)
   };
+}
+
+function dailySeries(rows, cutoff, dateCol) {
+  var byDay = {};
+  for (var i = 1; i < rows.length; i++) {
+    var d = rows[i][dateCol - 1];
+    if (!(d instanceof Date) || d < cutoff) continue;
+    var key = Utilities.formatDate(d, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+    byDay[key] = (byDay[key] || 0) + 1;
+  }
+  return Object.keys(byDay).sort().map(function (k) {
+    return { date: k, count: byDay[k] };
+  });
+}
+
+function mobilePct(rows, cutoff, dateCol) {
+  var mob = 0, tot = 0;
+  for (var i = 1; i < rows.length; i++) {
+    var d = rows[i][dateCol - 1];
+    if (!(d instanceof Date) || d < cutoff) continue;
+    tot++;
+    if (String(rows[i][7] || '').toLowerCase() === 'sì') mob++;
+  }
+  return tot ? Math.round((mob / tot) * 100) : 0;
 }
 
 function normalizeReferrer(ref) {
