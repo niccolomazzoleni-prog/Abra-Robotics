@@ -42,6 +42,19 @@
       this.vociExtra = [];
       this.catalogIndex = [];
       this.recurringBlocks = [];
+      this.productManifest = {};
+    }
+
+    setProductManifest(manifest) {
+      this.productManifest = manifest || {};
+    }
+
+    _productCaption(sku, m) {
+      const t = String(m?.titolo || sku || '').toLowerCase();
+      if (/go2|as2|\ba2\b|b2|quadruped|quadrupede/.test(t + sku)) return 'Quadrupede';
+      if (/amr|mir|mav|logistica/.test(t)) return 'AMR';
+      if (/g1|h2|r1|umanoide|humanoid/.test(t)) return 'Umanoide';
+      return m?.categoria || '';
     }
 
     async load(configUrl, vociUrl, blocchiUrl) {
@@ -242,7 +255,7 @@
         title: m.titolo || sku,
         body: [m.sottotitolo, m.descrizione, specs].filter(Boolean).join('\n\n'),
         image_url: m.immagine ? assetUrl(m.immagine) : '',
-        caption: m.categoria || '',
+        caption: this._productCaption(sku, m),
         sku,
       });
       return true;
@@ -296,7 +309,7 @@
             <strong>${escapeHtml(co.ragione_sociale || co.nome || '')}</strong><br>
             P.IVA ${escapeHtml(co.piva || '')}<br>
             ${escapeHtml(co.indirizzo || '')}<br>
-            ${escapeHtml(co.email || '')}${co.telefono ? ' · ' + escapeHtml(co.telefono) : ''}
+            ${escapeHtml(co.email || '')}${co.telefono ? ' · ' + escapeHtml(co.telefono) : ''}${co.sito ? '<br><a href="' + escapeHtml(co.sito) + '" style="color:#7c4dd6">' + escapeHtml(co.sito.replace(/^https?:\/\//, '')) + '</a>' : ''}
           </div>
         </div>`;
     }
@@ -309,6 +322,20 @@
     _totalCell(l) {
       if (l.su_richiesta || (l.tipo === 'custom' && !l.prezzo_totale)) return '—';
       return '€ ' + fmt(l.prezzo_totale);
+    }
+
+    renderRobotHeroHtml(offer) {
+      const robots = (offer.line_items || []).filter(l => l.opzione_robot && l.sku);
+      if (robots.length < 2) return '';
+      const items = robots.map(l => {
+        const m = this.productManifest[l.sku] || {};
+        const img = assetUrl(m.immagine || '');
+        const short = String(l.nome || l.sku).replace(/^Unitree\s+/i, '').split('(')[0].trim();
+        const rec = l.principale ? ' rec' : '';
+        const badge = l.principale ? ' ★ consigliato' : '';
+        return `<figure class="${rec.trim()}"><img src="${escapeHtml(img)}" alt="${escapeHtml(l.nome || l.sku)}" loading="lazy"><figcaption>${escapeHtml(short)}${badge}</figcaption></figure>`;
+      }).join('');
+      return `<div class="doc-robot-hero" aria-label="Piattaforme robot quotate">${items}</div>`;
     }
 
     renderPreviewFragment(offer) {
@@ -336,6 +363,7 @@
           ${offer.client.email ? escapeHtml(offer.client.email) : ''}
         </div>
         ${offer.intro ? `<div class="doc-intro">${richText(offer.intro)}</div>` : ''}
+        ${this.renderRobotHeroHtml(offer)}
         ${blocksHtml}
         ${offer.prompt_extra ? `<div class="doc-intro doc-extra"><em>${richText(offer.prompt_extra)}</em></div>` : ''}
         ${rows ? `<table class="doc-lines"><thead><tr><th>Descrizione</th><th>Qtà</th><th>Unit.</th><th>Tot.</th></tr></thead><tbody>${rows}</tbody></table>` : ''}

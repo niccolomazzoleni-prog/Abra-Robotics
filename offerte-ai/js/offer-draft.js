@@ -44,6 +44,8 @@
 
       }
 
+      this.builder.setProductManifest(this.manifest);
+
       try {
 
         this.blocchi = (await fetch('data/blocchi-ricorrenti.json').then(r => r.json())).blocchi || [];

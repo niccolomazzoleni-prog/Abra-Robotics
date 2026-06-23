@@ -21,6 +21,9 @@ DOWNLOADS: dict[str, str] = {
     # Go2W — unitree.com/go2-w/
     "prodotti/unitree-go2w-card.png": "https://www.unitree.com/images/11d0a76afbb74e8fb7f692652b4c33e0_800x800.png",
     "prodotti/unitree-go2w-hero.png": "https://www.unitree.com/images/038fa156aa884270afeb255789da44b2_1478x788.png",
+    # As2 — unitree.com/As2
+    "prodotti/unitree-as2-pro.jpg": "https://www.unitree.com/images/a3a04d8f8fd248cc82f9f11075feb265_1920x1080.jpg",
+    "prodotti/unitree-as2-card.png": "https://www.unitree.com/images/8ce7b07719ba4b58adca7d7268e0651e_428x404.png",
     # Go2 — unitree.com/go2/ (quadrupede prodotto, foto unica condivisa)
     "prodotti/unitree-go2-card.png": "https://www.unitree.com/images/f60e629392fc4164a865869f9d51cf63_1920x1080.png",
     "prodotti/unitree-go2-edu.png": "https://www.unitree.com/images/f60e629392fc4164a865869f9d51cf63_1920x1080.png",
