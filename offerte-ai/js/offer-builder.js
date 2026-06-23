@@ -110,6 +110,7 @@
         qty, prezzo_unit: prezzo, prezzo_totale: prezzo * qty,
       };
       if (opts.opzione_robot) line.opzione_robot = true;
+      if (opts.robot_gruppo) line.robot_gruppo = opts.robot_gruppo;
       if (opts.principale) line.principale = true;
       if (opts.alternativa) {
         line.descrizione = [line.descrizione, 'Alternativa — selezionare una sola configurazione robot'].filter(Boolean).join(' · ');
@@ -146,13 +147,37 @@
         nome: r.nome,
         totale: sharedTotal + (r.su_richiesta ? 0 : r.prezzo_totale),
       }));
-      const primary = robots.find(r => r.principale) || robots[0];
+
+      const GRUPPO_LABEL = {
+        sorveglianza: 'Applicazione sorveglianza (As2 / A2 — consigliato)',
+        go2: 'Alternativa Go2 EDU (Standard / Smart)',
+        default: 'Configurazione robot',
+      };
+      const byGruppo = new Map();
+      for (const r of robots) {
+        const g = r.robot_gruppo || 'default';
+        if (!byGruppo.has(g)) byGruppo.set(g, []);
+        byGruppo.get(g).push(r);
+      }
+      const gruppi = [...byGruppo.entries()].map(([id, rs]) => ({
+        id,
+        label: GRUPPO_LABEL[id] || id,
+        opzioni: rs.map(r => ({
+          sku: r.sku,
+          nome: r.nome,
+          totale: sharedTotal + (r.su_richiesta ? 0 : r.prezzo_totale),
+        })),
+      }));
+
+      const primary = robots.find(r => r.principale)
+        || robots.find(r => r.robot_gruppo === 'sorveglianza')
+        || robots[0];
       const subtotal = primary
         ? sharedTotal + (primary.su_richiesta ? 0 : primary.prezzo_totale)
         : sharedTotal;
       const iva_pct = offer.applica_iva ? (offer.iva_pct || 22) : 0;
       const iva_eur = subtotal * (iva_pct / 100);
-      return { subtotal, sharedTotal, opzioni, iva_pct, iva_eur, totale: subtotal + iva_eur, count: lines.length };
+      return { subtotal, sharedTotal, opzioni, gruppi, iva_pct, iva_eur, totale: subtotal + iva_eur, count: lines.length };
     }
 
     applyTemplate(offer, templateId) {
@@ -306,7 +331,9 @@
         ${blocksHtml}
         ${offer.prompt_extra ? `<div class="doc-intro doc-extra"><em>${richText(offer.prompt_extra)}</em></div>` : ''}
         ${rows ? `<table class="doc-lines"><thead><tr><th>Descrizione</th><th>Qtà</th><th>Unit.</th><th>Tot.</th></tr></thead><tbody>${rows}</tbody></table>` : ''}
-        ${t.opzioni?.length > 1 ? `<div class="doc-options"><strong>Totali per configurazione robot</strong> <span class="muted">(alternativa — scegliere una)</span><ul>${t.opzioni.map(o => `<li>${escapeHtml(o.nome.split('(')[0].trim())}: <strong>€ ${fmt(o.totale)}</strong></li>`).join('')}</ul></div>` : ''}
+        ${t.gruppi?.length > 1
+          ? t.gruppi.map(g => `<div class="doc-options"><strong>${escapeHtml(g.label)}</strong> <span class="muted">(scegliere una)</span><ul>${g.opzioni.map(o => `<li>${escapeHtml(o.nome.split('(')[0].trim())}: <strong>€ ${fmt(o.totale)}</strong></li>`).join('')}</ul></div>`).join('')
+          : (t.opzioni?.length > 1 ? `<div class="doc-options"><strong>Totali per configurazione robot</strong> <span class="muted">(alternativa — scegliere una)</span><ul>${t.opzioni.map(o => `<li>${escapeHtml(o.nome.split('(')[0].trim())}: <strong>€ ${fmt(o.totale)}</strong></li>`).join('')}</ul></div>` : '')}
         <div class="doc-total">Totale configurazione consigliata: <strong>€ ${fmt(t.subtotal)}</strong> <span class="doc-iva-note">(${escapeHtml(offer.note_iva)})</span></div>
         ${offer.condizioni ? `<div class="doc-footer">${richText(offer.condizioni)}</div>` : ''}
         ${offer.chiusura ? `<div class="doc-footer doc-chiusura">${richText(offer.chiusura)}</div>` : ''}

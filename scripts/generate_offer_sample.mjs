@@ -1,6 +1,6 @@
 /**
  * Genera campioni offerta dal pipeline chat.
- * Uso: node scripts/generate_offer_sample.mjs [sorveglianza|go2]
+ * Uso: node scripts/generate_offer_sample.mjs [combo|sorveglianza|go2|all]
  */
 import fs from 'fs';
 import path from 'path';
@@ -10,23 +10,28 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OFFERTE = path.join(ROOT, 'offerte-ai');
 
 const SCENARIOS = {
+  combo: {
+    out: 'offerta-completa-sorveglianza-go2.html',
+    title: 'Preventivo sorveglianza + Go2 EDU — Abra Robotics',
+    msg: `Richiediamo preventivo formale intestato alla nostra società.
+
+1) APPLICAZIONE SORVEILIANZA: area confinata con possibile umidità, termocamera radiometrica, sensori gas e fumo. 
+   Soluzione consigliata As2 / A2 — quotare As2 Pro, A2 Standard e A2 Pro (Unitree ufficiale).
+
+2) ALTERNATIVA GO2 EDU: se orientati a Go2, quotare EDU Standard (Orin Nano) e EDU Smart / PLUS (Orin NX 100 TOPS) per confronto.
+
+Integrazione software / PoC livello standard con ingegneria on-site.
+Spedizione Italia.`,
+  },
   sorveglianza: {
     out: 'offerta-sorveglianza-as2-a2.html',
-    title: 'Preventivo sorveglianza As2 / A2 — campione Abra',
-    msg: `Richiediamo un preventivo formale intestato alla nostra società per sorveglianza e perlustrazione di un'area confinata con possibile umidità.
-
-Configurazione di interesse:
-- Confronto tra Unitree As2 Pro, A2 Standard e A2 Pro (specifiche ufficiali Unitree)
-- Termocamera radiometrica, sensori gas e fumo/temperatura su payload
-- Integrazione software / PoC livello standard
-- Spedizione in Italia
-
-As2 e A2 sono prodotti distinti — quotare come alternative non cumulative.`,
+    title: 'Preventivo sorveglianza As2 / A2',
+    msg: `Preventivo sorveglianza con As2 Pro, A2 Standard, A2 Pro, termocamera, sensori, PoC.`,
   },
   go2: {
     out: 'offerta-go2-edu-rfq.html',
-    title: 'Preventivo Go2 EDU — campione Abra',
-    msg: `Preventivo formale Go2 EDU PLUS Orin NX e configurazione base Orin Nano per confronto.`,
+    title: 'Preventivo Go2 EDU',
+    msg: `Preventivo Go2 EDU Standard e Smart Orin NX.`,
   },
 };
 
@@ -51,7 +56,7 @@ async function generate(key, cfg) {
   await quote.load('../listini/pubblico/end-user.json', 'data/offerte-regole.json');
   await globalThis.AbraOfferDraft.init(quote);
   const offer = globalThis.AbraOfferDraft.build(cfg.msg, quote);
-  if (!offer) throw new Error(`OfferDraft null per scenario ${key}`);
+  if (!offer) throw new Error(`OfferDraft null: ${key}`);
 
   const builder = globalThis.AbraOfferDraft.builder;
   const previewHtml = builder.renderPreviewFragment(offer);
@@ -72,7 +77,7 @@ async function generate(key, cfg) {
 <body>
   <div class="wrap">
     <p style="font-size:0.82rem;color:#525252;margin-bottom:16px">
-      Campione pipeline chat · scenario <strong>${key}</strong> · Totale opzione consigliata € ${totals.totale.toLocaleString('it-IT', { minimumFractionDigits: 2 })}
+      Pipeline chat · <strong>${key}</strong> · Totale consigliato € ${totals.totale.toLocaleString('it-IT', { minimumFractionDigits: 2 })}
       · <a href="../offerta.html">Crea offerta</a>
     </p>
     ${previewHtml}
@@ -82,26 +87,20 @@ async function generate(key, cfg) {
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, page, 'utf8');
-  console.log(`\n=== ${key} ===`);
-  console.log('File:', outPath);
-  console.log('Righe:', offer.line_items.length, '| Totale €', totals.totale.toFixed(2));
-  if (totals.opzioni?.length) {
-    console.log('Alternative robot:');
-    totals.opzioni.forEach((o) => console.log(`  • ${o.nome}: € ${o.totale.toLocaleString('it-IT')}`));
+  console.log(`\n=== ${key} → ${cfg.out} ===`);
+  console.log('Totale consigliato €', totals.totale.toFixed(2));
+  if (totals.gruppi?.length) {
+    for (const g of totals.gruppi) {
+      console.log(`\n${g.label}:`);
+      g.opzioni.forEach(o => console.log(`  • ${o.nome}: € ${o.totale.toLocaleString('it-IT')}`));
+    }
   }
-  offer.line_items.forEach((l) => {
-    const p = l.prezzo_unit ?? l.prezzo_unitario ?? 0;
-    console.log(`  - ${l.nome || l.sku}: ${l.su_richiesta ? 'su richiesta' : '€ ' + p.toLocaleString('it-IT')}`);
-  });
 }
 
 loadScript('js/quote-engine.js');
 loadScript('js/offer-builder.js');
 loadScript('js/offer-draft.js');
 
-const arg = (process.argv[2] || 'sorveglianza').toLowerCase();
-const keys = arg === 'all' ? Object.keys(SCENARIOS) : [arg in SCENARIOS ? arg : 'sorveglianza'];
-
-for (const key of keys) {
-  await generate(key, SCENARIOS[key]);
-}
+const arg = (process.argv[2] || 'combo').toLowerCase();
+const keys = arg === 'all' ? Object.keys(SCENARIOS) : [SCENARIOS[arg] ? arg : 'combo'];
+for (const key of keys) await generate(key, SCENARIOS[key]);
