@@ -173,18 +173,35 @@
       const robots = lines.filter(l => l.opzione_robot);
       const shared = lines.filter(l => !l.opzione_robot);
       let sharedTotal = 0;
+      const sharedLines = [];
       for (const line of shared) {
         line.prezzo_totale = line.su_richiesta ? 0 : line.prezzo_unit * line.qty;
-        if (!line.su_richiesta) sharedTotal += line.prezzo_totale;
+        if (!line.su_richiesta && line.prezzo_unit > 0) {
+          sharedTotal += line.prezzo_totale;
+          sharedLines.push({
+            nome: line.nome,
+            sku: line.sku || '',
+            qty: line.qty,
+            prezzo_unit: line.prezzo_unit,
+            prezzo_totale: line.prezzo_totale,
+            descrizione: line.descrizione || '',
+          });
+        }
       }
       for (const line of robots) {
         line.prezzo_totale = line.su_richiesta ? 0 : line.prezzo_unit * line.qty;
       }
-      const opzioni = robots.map(r => ({
-        sku: r.sku,
-        nome: r.nome,
-        totale: sharedTotal + (r.su_richiesta ? 0 : r.prezzo_totale),
-      }));
+      const mapOption = r => {
+        const robot = r.su_richiesta ? 0 : r.prezzo_totale;
+        return {
+          sku: r.sku,
+          nome: r.nome,
+          robot,
+          servizi: sharedTotal,
+          totale: robot + sharedTotal,
+        };
+      };
+      const opzioni = robots.map(mapOption);
 
       const GRUPPO_LABEL = {
         sorveglianza: 'Applicazione sorveglianza (As2 / A2)',
@@ -200,22 +217,29 @@
       const gruppi = [...byGruppo.entries()].map(([id, rs]) => ({
         id,
         label: GRUPPO_LABEL[id] || id,
-        opzioni: rs.map(r => ({
-          sku: r.sku,
-          nome: r.nome,
-          totale: sharedTotal + (r.su_richiesta ? 0 : r.prezzo_totale),
-        })),
+        opzioni: rs.map(mapOption),
       }));
 
       const primary = robots.find(r => r.principale)
         || robots.find(r => r.robot_gruppo === 'sorveglianza')
         || robots[0];
-      const subtotal = primary
-        ? sharedTotal + (primary.su_richiesta ? 0 : primary.prezzo_totale)
-        : sharedTotal;
+      const primaryRobot = primary && !primary.su_richiesta ? primary.prezzo_totale : 0;
+      const subtotal = primary ? sharedTotal + primaryRobot : sharedTotal;
       const iva_pct = offer.applica_iva ? (offer.iva_pct || 22) : 0;
       const iva_eur = subtotal * (iva_pct / 100);
-      return { subtotal, sharedTotal, opzioni, gruppi, iva_pct, iva_eur, totale: subtotal + iva_eur, count: lines.length };
+      return {
+        subtotal,
+        sharedTotal,
+        sharedLines,
+        primaryRobot,
+        primarySku: primary?.sku || '',
+        opzioni,
+        gruppi,
+        iva_pct,
+        iva_eur,
+        totale: subtotal + iva_eur,
+        count: lines.length,
+      };
     }
 
     applyTemplate(offer, templateId) {
@@ -387,13 +411,17 @@
     renderConfigSummary(offer, t) {
       const rec = this._recommendedRobot(offer, t);
       if (!rec && !t.gruppi?.length) return '';
+      const recOpt = t.opzioni.find(o => o.sku === rec?.sku) || t.opzioni[0];
       const recName = rec ? String(rec.nome).replace(/^Unitree\s+/i, '') : '—';
       let html = `<section class="doc-config-summary">
-        <h2 class="doc-config-summary-title">Riepilogo configurazione</h2>
+        <h2 class="doc-config-summary-title">Riepilogo prezzi</h2>
         <div class="doc-config-rec">
-          <span class="doc-config-rec-label">Piattaforma di riferimento</span>
-          <strong class="doc-config-rec-name">${escapeHtml(recName)}</strong>
-          <span class="doc-config-rec-total">€ ${fmt(t.subtotal)} <small>IVA escl.</small></span>
+          <span class="doc-config-rec-label">Configurazione di riferimento — ${escapeHtml(recName)}</span>
+          <div class="doc-price-stack">
+            <div class="doc-price-stack-row"><span>Prezzo robot (listino End-User)</span><strong>€ ${fmt(recOpt?.robot || t.primaryRobot || 0)}</strong></div>
+            <div class="doc-price-stack-row doc-price-stack-add"><span>Voci aggiuntive (servizi comuni)</span><strong>€ ${fmt(t.sharedTotal)}</strong></div>
+            <div class="doc-price-stack-row doc-price-stack-total"><span>Totale progetto stimato</span><strong>€ ${fmt(t.subtotal)} <small>IVA escl.</small></strong></div>
+          </div>
         </div>`;
       if (t.gruppi?.length) {
         html += t.gruppi.map(g => `
@@ -401,16 +429,57 @@
             <h3 class="doc-config-group-label">${escapeHtml(g.label)} <span class="muted">— scegliere una</span></h3>
             <ul class="doc-config-options">${g.opzioni.map(o => {
               const isRec = rec && o.sku === rec.sku;
-              return `<li class="${isRec ? 'is-rec' : ''}"><span>${escapeHtml(o.nome.split('(')[0].trim())}</span><strong>€ ${fmt(o.totale)}</strong></li>`;
+              return `<li class="${isRec ? 'is-rec' : ''}">
+                <span>${escapeHtml(o.nome.split('(')[0].trim())}</span>
+                <span class="doc-config-option-prices">
+                  <span class="doc-config-robot">robot € ${fmt(o.robot)}</span>
+                  <span class="doc-config-plus">+ servizi € ${fmt(o.servizi)}</span>
+                  <strong class="doc-config-total">= € ${fmt(o.totale)}</strong>
+                </span>
+              </li>`;
             }).join('')}</ul>
           </div>`).join('');
       } else if (t.opzioni?.length > 1) {
         html += `<ul class="doc-config-options">${t.opzioni.map(o =>
-          `<li><span>${escapeHtml(o.nome.split('(')[0].trim())}</span><strong>€ ${fmt(o.totale)}</strong></li>`
+          `<li><span>${escapeHtml(o.nome.split('(')[0].trim())}</span>
+            <span class="doc-config-option-prices">
+              <span class="doc-config-robot">robot € ${fmt(o.robot)}</span>
+              <span class="doc-config-plus">+ servizi € ${fmt(o.servizi)}</span>
+              <strong class="doc-config-total">= € ${fmt(o.totale)}</strong>
+            </span></li>`
         ).join('')}</ul>`;
       }
       html += '</section>';
       return html;
+    }
+
+    renderSharedServicesBlock(sharedLines, sharedTotal) {
+      if (!sharedLines?.length) return '';
+      const rows = sharedLines.map(l => `
+        <tr>
+          <td><strong>${escapeHtml(l.nome)}</strong>${l.descrizione ? `<span class="line-desc">${escapeHtml(l.descrizione.split('.')[0])}</span>` : ''}</td>
+          <td class="col-qty">${l.qty}</td>
+          <td class="col-price">€ ${fmt(l.prezzo_unit)}</td>
+          <td class="col-price"><strong>€ ${fmt(l.prezzo_totale)}</strong></td>
+        </tr>`).join('');
+      return `<section class="doc-shared-services">
+        <h2 class="doc-shared-services-title">Voci aggiuntive al costo robot</h2>
+        <p class="doc-shared-services-lead">Servizi e accessori quotati <strong>in aggiunta</strong> al prezzo listino del robot. Valgono per tutte le configurazioni robot dell'offerta.</p>
+        <table class="doc-lines doc-lines-shared"><thead><tr><th>Voce</th><th>Qtà</th><th>Unit.</th><th>Tot.</th></tr></thead><tbody>${rows}</tbody>
+        <tfoot><tr><td colspan="3"><strong>Totale voci aggiuntive</strong></td><td class="col-price"><strong>€ ${fmt(sharedTotal)}</strong></td></tr></tfoot></table>
+      </section>`;
+    }
+
+    renderTotalBreakdown(t, recName) {
+      if (!t.primaryRobot && !t.sharedTotal) return '';
+      return `<section class="doc-total-breakdown">
+        <h3 class="doc-total-breakdown-title">Composizione totale di riferimento (${escapeHtml(recName || 'configurazione selezionata')})</h3>
+        <dl class="doc-total-breakdown-list">
+          <div><dt>Prezzo robot</dt><dd>€ ${fmt(t.primaryRobot)}</dd></div>
+          <div><dt>Voci aggiuntive</dt><dd>€ ${fmt(t.sharedTotal)}</dd></div>
+          <div class="is-total"><dt>Totale progetto</dt><dd>€ ${fmt(t.subtotal)} <small>IVA escl.</small></dd></div>
+        </dl>
+      </section>`;
     }
 
     renderCompactLineTable(title, lines, { compact = false } = {}) {
@@ -428,19 +497,23 @@
       </section>`;
     }
 
-    renderRobotAltTable(robots, sharedTotal) {
+    renderRobotAltTable(robots, t) {
       if (!robots.length) return '';
-      const rows = robots.map(r => `
+      const sharedTotal = t.sharedTotal || 0;
+      const rows = robots.map(r => {
+        const robot = r.su_richiesta ? 0 : r.prezzo_totale;
+        return `
         <tr class="${r.principale ? 'is-rec' : ''}">
           <td><strong>${escapeHtml(r.nome)}</strong><span class="line-sku">${escapeHtml(r.sku || '')}</span></td>
           <td class="col-price">€ ${fmt(r.prezzo_unit)}</td>
-          <td class="col-price"><strong>€ ${fmt(sharedTotal + (r.su_richiesta ? 0 : r.prezzo_totale))}</strong></td>
-          <td class="col-note">${r.principale ? 'Consigliata' : 'Alternativa'}</td>
-        </tr>`).join('');
-      return `<section class="doc-price-block">
-        <h3 class="doc-price-block-title">Piattaforme robot — alternative</h3>
-        <table class="doc-lines doc-lines-compact"><thead><tr><th>Modello</th><th>Robot</th><th>Totale*</th><th></th></tr></thead><tbody>${rows}</tbody></table>
-        <p class="doc-price-note">* Totale indicativo con voci comuni (PoC, spedizione, formazione). Selezionare <strong>una sola</strong> configurazione per blocco.</p>
+          <td class="col-price col-add">€ ${fmt(sharedTotal)}</td>
+          <td class="col-price"><strong>€ ${fmt(robot + sharedTotal)}</strong></td>
+        </tr>`;
+      }).join('');
+      return `<section class="doc-price-block doc-price-block-robots">
+        <h3 class="doc-price-block-title">Confronto piattaforme robot</h3>
+        <p class="doc-price-block-lead">Colonna «Voci aggiuntive» = somma servizi comuni sotto. Selezionare <strong>una sola</strong> configurazione per blocco.</p>
+        <table class="doc-lines doc-lines-compact doc-lines-robot-alt"><thead><tr><th>Modello</th><th>Robot (listino)</th><th>Voci aggiuntive</th><th>Totale progetto</th></tr></thead><tbody>${rows}</tbody></table>
       </section>`;
     }
 
@@ -518,6 +591,9 @@
         return '<div class="offer-preview-empty">Aggiungi cliente, righe o sezioni narrative per l\'anteprima</div>';
       }
 
+      const rec = this._recommendedRobot(offer, t);
+      const recName = rec ? String(rec.nome).replace(/^Unitree\s+/i, '') : '';
+
       return `
         <div class="abra-offer-doc abra-offer-doc--pdf">
         ${this.renderCompanyHeader(co)}
@@ -527,15 +603,16 @@
         </div>
         ${offer.intro ? `<div class="doc-intro doc-intro-compact">${richText(offer.intro)}</div>` : ''}
         ${this.renderConfigSummary(offer, t)}
+        ${this.renderSharedServicesBlock(t.sharedLines, t.sharedTotal)}
+        ${this.renderRobotAltTable(parts.robots, t)}
+        ${this.renderPendingSection(parts.pending)}
+        ${this.renderTotalBreakdown(t, recName)}
+        <div class="doc-total doc-total-compact">
+          Totale progetto di riferimento: <strong>€ ${fmt(t.subtotal)}</strong>
+          <span class="doc-iva-note">${escapeHtml(offer.note_iva)} · Robot € ${fmt(t.primaryRobot)} + voci aggiuntive € ${fmt(t.sharedTotal)}</span>
+        </div>
         ${this.renderRobotHeroHtml(offer)}
         ${this.renderProductBlocks(offer.content_blocks, split)}
-        ${this.renderRobotAltTable(parts.robots, t.sharedTotal)}
-        ${this.renderCompactLineTable('Servizi e voci comuni quotate', parts.priced, { compact: true })}
-        ${this.renderPendingSection(parts.pending)}
-        <div class="doc-total doc-total-compact">
-          Totale configurazione di riferimento: <strong>€ ${fmt(t.subtotal)}</strong>
-          <span class="doc-iva-note">${escapeHtml(offer.note_iva)}</span>
-        </div>
         ${this.renderNextSteps(offer)}
         ${offer.prompt_extra ? `<div class="doc-extra-compact"><em>${richText(offer.prompt_extra)}</em></div>` : ''}
         ${this.renderSecondaryBlocks(split.secondary)}

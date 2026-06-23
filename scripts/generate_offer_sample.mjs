@@ -94,6 +94,9 @@ globalThis.fetch = async (url) => {
 };
 
 function samplePage({ title, previewHtml, offerId, totals, badge, badgeClass = '', altLink }) {
+  const robot = totals.primaryRobot ?? 0;
+  const extra = totals.sharedTotal ?? 0;
+  const total = totals.totale ?? 0;
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -106,7 +109,7 @@ function samplePage({ title, previewHtml, offerId, totals, badge, badgeClass = '
 </head>
 <body class="offer-sample-body">
   <div class="offer-sample-toolbar">
-    <div><span class="badge${badgeClass}">${badge}</span> ${offerId} · Totale di riferimento <strong>€ ${totals.toLocaleString('it-IT', { minimumFractionDigits: 2 })}</strong></div>
+    <div><span class="badge${badgeClass}">${badge}</span> ${offerId} · Robot <strong>€ ${robot.toLocaleString('it-IT', { minimumFractionDigits: 2 })}</strong> + voci aggiuntive <strong>€ ${extra.toLocaleString('it-IT', { minimumFractionDigits: 2 })}</strong> = <strong>€ ${total.toLocaleString('it-IT', { minimumFractionDigits: 2 })}</strong></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button type="button" onclick="window.print()">Stampa / PDF</button>
       ${altLink || ''}
@@ -145,7 +148,7 @@ async function generate(key, cfg) {
     title: cfg.title,
     previewHtml,
     offerId: offer.id,
-    totals: totals.totale,
+    totals,
     badge: cfg.badge || 'Generata dal pipeline',
     badgeClass: cfg.badgeClass || '',
     altLink,
@@ -157,7 +160,7 @@ async function generate(key, cfg) {
   if (cfg.legacy) fs.writeFileSync(path.join(OFFERTE, 'samples', cfg.legacy), page, 'utf8');
 
   console.log(`\n=== ${key} → ${cfg.out} ===`);
-  console.log('Totale di riferimento €', totals.totale.toFixed(2));
+  console.log('Robot €', totals.primaryRobot.toFixed(2), '+ voci aggiuntive €', totals.sharedTotal.toFixed(2), '= totale €', totals.totale.toFixed(2));
   if (totals.gruppi?.length) {
     for (const g of totals.gruppi) {
       console.log(`\n${g.label}:`);

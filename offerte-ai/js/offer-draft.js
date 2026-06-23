@@ -466,7 +466,7 @@
 
       if (/staffa|mount|payload/i.test(t)) add('EXTRA-PAYLOAD-MOUNT');
 
-      if (/formazione|training|on-site/i.test(t)) add('EXTRA-FORMAZIONE');
+      if (/formazione|training operatore|training on/i.test(t)) add('EXTRA-FORMAZIONE');
 
       if (/dock|ricarica|charging/i.test(t)) add('EXTRA-DOCK-CHARGE');
 

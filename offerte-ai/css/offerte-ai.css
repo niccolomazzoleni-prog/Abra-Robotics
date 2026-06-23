@@ -1139,10 +1139,125 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
 .doc-config-options li {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 12px;
   font-size: 0.76rem;
-  padding: 3px 0;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(124, 77, 214, 0.15);
 }
+.doc-config-option-prices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  text-align: right;
+  min-width: 140px;
+}
+.doc-config-robot { font-size: 0.72rem; color: var(--gray-700); }
+.doc-config-plus { font-size: 0.72rem; color: var(--accent-text); font-weight: 600; }
+.doc-config-total { font-size: 0.82rem; font-weight: 800; color: var(--gray-900); }
+.doc-price-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+.doc-price-stack-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.78rem;
+}
+.doc-price-stack-row strong { font-weight: 800; white-space: nowrap; }
+.doc-price-stack-add { color: var(--accent-text); font-weight: 600; }
+.doc-price-stack-total {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 2px solid rgba(124, 77, 214, 0.35);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+/* Voci aggiuntive — box evidente */
+.doc-shared-services {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  page-break-inside: avoid;
+}
+.doc-shared-services-title {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--accent-text);
+}
+.doc-shared-services-lead {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--gray-700);
+}
+.doc-lines-shared tfoot td {
+  border-top: 2px solid var(--accent);
+  font-weight: 800;
+  padding-top: 8px;
+}
+.doc-lines-shared tbody tr:nth-child(even) { background: var(--gray-50); }
+.doc-lines-robot-alt .col-add {
+  color: var(--accent-text);
+  font-weight: 700;
+  background: rgba(124, 77, 214, 0.06);
+}
+.doc-price-block-lead {
+  margin: 0 0 8px;
+  font-size: 0.74rem;
+  color: var(--gray-700);
+  line-height: 1.4;
+}
+.doc-total-breakdown {
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  page-break-inside: avoid;
+}
+.doc-total-breakdown-title {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gray-700);
+}
+.doc-total-breakdown-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.doc-total-breakdown-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+.doc-total-breakdown-list dt { margin: 0; font-weight: 500; color: var(--gray-700); }
+.doc-total-breakdown-list dd { margin: 0; font-weight: 700; text-align: right; }
+.doc-total-breakdown-list .is-total {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 2px solid var(--gray-300);
+  font-size: 0.9rem;
+}
+.doc-total-breakdown-list .is-total dt,
+.doc-total-breakdown-list .is-total dd { font-weight: 900; color: var(--gray-900); }
+.doc-total-breakdown-list dd small { font-weight: 500; font-size: 0.72rem; color: var(--gray-600); }
 .doc-config-options li.is-rec { font-weight: 700; color: var(--accent-text); }
 .doc-config-options li strong { font-weight: 700; white-space: nowrap; }
 
