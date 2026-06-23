@@ -26,6 +26,9 @@
   --container: 1200px;
   --radius: 12px;
   --radius-sm: 8px;
+  /* Logo navbar: cap fisso (~70% del vecchio 128px). Modifica solo queste due variabili. */
+  --nav-logo-max-h: 90px;
+  --nav-logo-max-h-mobile: 45px;
 }
 
 html {
@@ -122,8 +125,21 @@ h3 {
 }
 
 .logo-img {
-  height: 128px;
   width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Solo header: altezza con tetto massimo (non cresce oltre anche se l'asset PNG è più grande) */
+.navbar .logo-img {
+  height: var(--nav-logo-max-h);
+  max-height: var(--nav-logo-max-h);
+  max-width: min(220px, 40vw);
+}
+
+.footer-brand .logo-img {
+  height: 56px;
+  max-height: 56px;
 }
 
 .nav-links {
@@ -1626,8 +1642,15 @@ select:focus-visible,
     grid-template-columns: 1fr;
   }
 
-  .logo-img {
-    height: 64px;
+  .navbar .logo-img {
+    height: var(--nav-logo-max-h-mobile);
+    max-height: var(--nav-logo-max-h-mobile);
+    max-width: min(160px, 48vw);
+  }
+
+  .footer-brand .logo-img {
+    height: 44px;
+    max-height: 44px;
   }
 
   .finance-stats {
