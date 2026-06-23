@@ -49,12 +49,29 @@
       this.productManifest = manifest || {};
     }
 
-    _productCaption(sku, m) {
-      const t = String(m?.titolo || sku || '').toLowerCase();
-      if (/go2|as2|\ba2\b|b2|quadruped|quadrupede/.test(t + sku)) return 'Quadrupede';
-      if (/amr|mir|mav|logistica/.test(t)) return 'AMR';
-      if (/g1|h2|r1|umanoide|humanoid/.test(t)) return 'Umanoide';
-      return m?.categoria || '';
+    _productCaption() {
+      return '';
+    }
+
+    _cleanDisplayTitle(title) {
+      return String(title || '')
+        .replace(/\s*\(fonte[^)]*\)/gi, '')
+        .replace(/\s*—\s*fonte[^\n]*/gi, '')
+        .trim();
+    }
+
+    renderClientBlock(client) {
+      const c = client || {};
+      if (!c.azienda && !c.contatto) {
+        return `<div class="doc-client"><strong>Cliente</strong><span class="muted">Da compilare</span></div>`;
+      }
+      return `<div class="doc-client">
+          <strong>${escapeHtml(c.azienda || '')}</strong>
+          ${c.contatto ? `<span>${escapeHtml(c.contatto)}</span>` : ''}
+          ${c.piva ? `<span>P.IVA IT${escapeHtml(String(c.piva).replace(/^IT/i, ''))}</span>` : ''}
+          ${c.indirizzo ? `<span>${escapeHtml(c.indirizzo)}</span>` : ''}
+          ${c.email ? `<span>${escapeHtml(c.email)}</span>` : ''}
+        </div>`;
     }
 
     async load(configUrl, vociUrl, blocchiUrl) {
@@ -170,7 +187,7 @@
       }));
 
       const GRUPPO_LABEL = {
-        sorveglianza: 'Applicazione sorveglianza (As2 / A2 — consigliato)',
+        sorveglianza: 'Applicazione sorveglianza (As2 / A2)',
         go2: 'Alternativa Go2 EDU (Standard / Smart)',
         default: 'Configurazione robot',
       };
@@ -255,7 +272,7 @@
         title: m.titolo || sku,
         body: [m.sottotitolo, m.descrizione, specs].filter(Boolean).join('\n\n'),
         image_url: m.immagine ? assetUrl(m.immagine) : '',
-        caption: this._productCaption(sku, m),
+        caption: '',
         sku,
       });
       return true;
@@ -332,8 +349,7 @@
         const img = assetUrl(m.immagine || '');
         const short = String(l.nome || l.sku).replace(/^Unitree\s+/i, '').split('(')[0].trim();
         const rec = l.principale ? ' rec' : '';
-        const badge = l.principale ? ' ★ consigliato' : '';
-        return `<figure class="${rec.trim()}"><img src="${escapeHtml(img)}" alt="${escapeHtml(l.nome || l.sku)}" loading="lazy"><figcaption>${escapeHtml(short)}${badge}</figcaption></figure>`;
+        return `<figure class="${rec.trim()}"><img src="${escapeHtml(img)}" alt="${escapeHtml(l.nome || l.sku)}" loading="lazy"><figcaption>${escapeHtml(short)}</figcaption></figure>`;
       }).join('');
       return `<div class="doc-robot-hero" aria-label="Piattaforme robot quotate">${items}</div>`;
     }
@@ -373,7 +389,7 @@
       if (!rec && !t.gruppi?.length) return '';
       const recName = rec ? String(rec.nome).replace(/^Unitree\s+/i, '') : '—';
       let html = `<section class="doc-config-summary">
-        <h2 class="doc-config-summary-title">Configurazione consigliata</h2>
+        <h2 class="doc-config-summary-title">Riepilogo configurazione</h2>
         <div class="doc-config-rec">
           <span class="doc-config-rec-label">Piattaforma di riferimento</span>
           <strong class="doc-config-rec-name">${escapeHtml(recName)}</strong>
@@ -465,9 +481,8 @@
           `<article class="doc-block doc-block-highlight doc-block-highlight-compact">
             ${b.image_url ? `<div class="doc-block-highlight-img"><img src="${escapeHtml(b.image_url)}" alt="${escapeHtml(b.title || '')}"></div>` : ''}
             <div class="doc-block-highlight-text">
-              ${b.title ? `<h3 class="doc-block-title">${escapeHtml(b.title)}</h3>` : ''}
+              ${b.title ? `<h3 class="doc-block-title">${escapeHtml(this._cleanDisplayTitle(b.title))}</h3>` : ''}
               <div class="doc-block-body">${richText(b.body)}</div>
-              ${b.caption ? `<p class="doc-block-caption">${escapeHtml(b.caption)}</p>` : ''}
             </div>
           </article>`
         ).join('')}</div>`;
@@ -475,7 +490,7 @@
       if (specs.length) {
         html += specs.map(b =>
           `<section class="doc-block doc-block-section doc-block-section-compact">
-            ${b.title ? `<h3 class="doc-block-title">${escapeHtml(b.title)}</h3>` : ''}
+            ${b.title ? `<h3 class="doc-block-title">${escapeHtml(this._cleanDisplayTitle(b.title))}</h3>` : ''}
             <div class="doc-block-body">${richText(b.body)}</div>
           </section>`
         ).join('');
@@ -508,11 +523,7 @@
         ${this.renderCompanyHeader(co)}
         <div class="doc-topbar">
           <div class="doc-meta">Offerta <strong>${escapeHtml(offer.id)}</strong> · ${escapeHtml(offer.data)} · Valida ${offer.validita_giorni} gg</div>
-          <div class="doc-client">
-            <strong>${escapeHtml(offer.client.azienda || 'Cliente — da compilare')}</strong>
-            ${offer.client.contatto ? `<span>${escapeHtml(offer.client.contatto)}</span>` : ''}
-            ${offer.client.email ? `<span>${escapeHtml(offer.client.email)}</span>` : ''}
-          </div>
+          ${this.renderClientBlock(offer.client)}
         </div>
         ${offer.intro ? `<div class="doc-intro doc-intro-compact">${richText(offer.intro)}</div>` : ''}
         ${this.renderConfigSummary(offer, t)}
@@ -522,7 +533,7 @@
         ${this.renderCompactLineTable('Servizi e voci comuni quotate', parts.priced, { compact: true })}
         ${this.renderPendingSection(parts.pending)}
         <div class="doc-total doc-total-compact">
-          Totale configurazione consigliata: <strong>€ ${fmt(t.subtotal)}</strong>
+          Totale configurazione di riferimento: <strong>€ ${fmt(t.subtotal)}</strong>
           <span class="doc-iva-note">${escapeHtml(offer.note_iva)}</span>
         </div>
         ${this.renderNextSteps(offer)}

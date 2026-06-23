@@ -9,11 +9,21 @@ import { fileURLToPath } from 'url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OFFERTE = path.join(ROOT, 'offerte-ai');
 
-const CURATED_INTRO = `Gentile Cliente,
+const NEXSOFT_CLIENT = {
+  azienda: 'Nexsoft S.p.A.',
+  contatto: 'Olexiy Lysytsya',
+  piva: '04157150659',
+  indirizzo: 'Via Antonio Amato 20/22, 84131 Salerno (SA)',
+  email: 'info@nexsoft.it',
+};
 
-a seguito del Vostro interesse per un sistema di **sorveglianza e perlustrazione** in area confinata (presenza di umidità, termocamera radiometrica e sensori gas/fumo), Le sottoponiamo un **preventivo unico strutturato** con due blocchi di piattaforma robotica:
+const CURATED_INTRO = `Spett.le Nexsoft S.p.A.
 
-**Blocco A — Sorveglianza industriale (consigliato):** Unitree **As2 Pro** oppure linea **A2 Standard / A2 Pro** — selezionando *una sola* configurazione tra le alternative quotate.
+Egr. Olexiy Lysytsya,
+
+a seguito del Vostro interesse per un sistema di **sorveglianza e perlustrazione** in area confinata (presenza di umidità, termocamera radiometrica e sensori gas/fumo), Le sottoponiamo un **preventivo strutturato** con due blocchi di piattaforma robotica:
+
+**Blocco A — Sorveglianza industriale:** Unitree **As2 Pro** oppure linea **A2 Standard / A2 Pro** — selezionando *una sola* configurazione tra le alternative quotate.
 **Blocco B — Alternativa Go2 EDU:** confronto tra **Standard (Jetson Orin Nano)** e **Smart / EDU+ (Orin NX 100 TOPS)**.
 
 Accessori sensori, integrazione software (PoC), formazione e spedizione sono **condivisi** tra le configurazioni. Prezzi **IVA esclusa**, dazio incluso sul robot.`;
@@ -22,9 +32,10 @@ const SCENARIOS = {
   combo: {
     out: 'offerta-pipeline-sorveglianza-go2.html',
     legacy: 'offerta-completa-sorveglianza-go2.html',
-    title: 'Preventivo sorveglianza + Go2 EDU — Abra Robotics',
+    title: 'Preventivo sorveglianza + Go2 EDU — Nexsoft S.p.A.',
     badge: 'Generata dal pipeline',
     badgeClass: '',
+    client: NEXSOFT_CLIENT,
     msg: `Richiediamo preventivo formale intestato alla nostra società.
 
 1) APPLICAZIONE SORVEILIANZA: area confinata con possibile umidità, termocamera radiometrica, sensori gas e fumo. 
@@ -37,10 +48,11 @@ Spedizione Italia.`,
   },
   curata: {
     out: 'offerta-curata-sorveglianza-go2.html',
-    title: 'Preventivo sorveglianza As2/A2 + Go2 EDU — Abra Robotics',
+    title: 'Preventivo sorveglianza As2/A2 + Go2 EDU — Nexsoft S.p.A.',
     badge: 'Versione curata Abra',
     badgeClass: ' badge-curated',
     curatedIntro: true,
+    client: NEXSOFT_CLIENT,
     msg: `Richiediamo preventivo formale intestato alla nostra società.
 
 1) APPLICAZIONE SORVEILIANZA: area confinata con possibile umidità, termocamera radiometrica, sensori gas e fumo. 
@@ -94,7 +106,7 @@ function samplePage({ title, previewHtml, offerId, totals, badge, badgeClass = '
 </head>
 <body class="offer-sample-body">
   <div class="offer-sample-toolbar">
-    <div><span class="badge${badgeClass}">${badge}</span> ${offerId} · Totale consigliato <strong>€ ${totals.toLocaleString('it-IT', { minimumFractionDigits: 2 })}</strong></div>
+    <div><span class="badge${badgeClass}">${badge}</span> ${offerId} · Totale di riferimento <strong>€ ${totals.toLocaleString('it-IT', { minimumFractionDigits: 2 })}</strong></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button type="button" onclick="window.print()">Stampa / PDF</button>
       ${altLink || ''}
@@ -117,6 +129,10 @@ async function generate(key, cfg) {
   if (!offer) throw new Error(`OfferDraft null: ${key}`);
 
   if (cfg.curatedIntro) offer.intro = CURATED_INTRO;
+  else if (cfg.client?.contatto) {
+    offer.intro = offer.intro.replace(/^Gentile Cliente,/m, `Spett.le ${cfg.client.azienda || 'Cliente'},\n\nEgr. ${cfg.client.contatto},`);
+  }
+  if (cfg.client) offer.client = { ...offer.client, ...cfg.client };
 
   const builder = globalThis.AbraOfferDraft.builder;
   const previewHtml = builder.renderPreviewFragment(offer);
@@ -141,7 +157,7 @@ async function generate(key, cfg) {
   if (cfg.legacy) fs.writeFileSync(path.join(OFFERTE, 'samples', cfg.legacy), page, 'utf8');
 
   console.log(`\n=== ${key} → ${cfg.out} ===`);
-  console.log('Totale consigliato €', totals.totale.toFixed(2));
+  console.log('Totale di riferimento €', totals.totale.toFixed(2));
   if (totals.gruppi?.length) {
     for (const g of totals.gruppi) {
       console.log(`\n${g.label}:`);
