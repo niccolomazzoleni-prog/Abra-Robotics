@@ -6,6 +6,9 @@
 
   const STORAGE_KEY = 'abra_feedback_log';
   const PENDING_KB_KEY = 'abra_feedback_pending_kb';
+  const CHAT_WA_URL = 'https://wa.me/393408592926?text=' + encodeURIComponent('Ciao Abra Robotics, vorrei informazioni su ');
+  const CHAT_GAS_URL = () => (typeof window !== 'undefined' && window.GOOGLE_SCRIPT_URL)
+    || 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
 
   function uid() {
     return 'fb-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
@@ -113,6 +116,7 @@
         onSend: opts.onSend || (async () => ''),
         onFeedback: opts.onFeedback || (() => {}),
         suggestions: opts.suggestions || [],
+        showContact: opts.showContact !== false,
       };
       this._typingEl = null;
       this._renderShell();
@@ -139,6 +143,25 @@
         <div class="chat-app-messages" id="chat-app-messages" role="log" aria-live="polite"></div>
         <div class="chat-app-chips" id="chat-app-chips"></div>
         <footer class="chat-app-compose-wrap">
+          ${this.opts.showContact ? `
+          <div class="chat-contact-bar">
+            <a class="chat-contact-wa" href="${CHAT_WA_URL}" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+            <button type="button" class="chat-contact-toggle" id="chat-contact-toggle">Modulo contatto</button>
+          </div>
+          <div class="chat-contact-panel hidden" id="chat-contact-panel">
+            <form class="chat-contact-form" id="chat-contact-form">
+              <input type="text" name="_gotcha" class="chat-contact-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <label class="chat-contact-field"><span>Nome *</span><input name="nome" required autocomplete="name"></label>
+              <label class="chat-contact-field"><span>Email *</span><input name="email" type="email" required autocomplete="email"></label>
+              <label class="chat-contact-field"><span>Telefono</span><input name="telefono" type="tel" autocomplete="tel"></label>
+              <label class="chat-contact-field"><span>Messaggio</span><textarea name="messaggio" rows="2" placeholder="Di cosa hai bisogno?"></textarea></label>
+              <button type="submit" class="chat-contact-submit">Invia richiesta</button>
+              <p class="chat-contact-note">Ti ricontattiamo entro 2 ore lavorative.</p>
+            </form>
+          </div>` : ''}
           <p class="compose-suggestions-label" id="compose-suggestions-label" hidden>Domande rapide</p>
           <form class="chat-app-compose" id="chat-app-form">
             <div class="compose-inner">
@@ -156,6 +179,8 @@
       this.inputEl = this.container.querySelector('#chat-app-input');
       this.statusEl = this.container.querySelector('#chat-app-status');
       this.sendBtn = this.container.querySelector('#chat-app-send');
+
+      if (this.opts.showContact) this._bindContact();
 
       const chips = this.container.querySelector('#chat-app-chips');
       const chipsLabel = this.container.querySelector('#compose-suggestions-label');
@@ -191,6 +216,71 @@
       this.inputEl.addEventListener('input', () => {
         this.inputEl.style.height = 'auto';
         this.inputEl.style.height = Math.min(this.inputEl.scrollHeight, 140) + 'px';
+      });
+    }
+
+    _bindContact() {
+      const toggle = this.container.querySelector('#chat-contact-toggle');
+      const panel = this.container.querySelector('#chat-contact-panel');
+      const form = this.container.querySelector('#chat-contact-form');
+      if (!toggle || !panel || !form) return;
+
+      toggle.addEventListener('click', () => {
+        panel.classList.toggle('hidden');
+        toggle.setAttribute('aria-expanded', panel.classList.contains('hidden') ? 'false' : 'true');
+        if (!panel.classList.contains('hidden')) {
+          form.querySelector('[name="nome"]')?.focus();
+          this.scrollBottom();
+        }
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const hp = form.querySelector('[name="_gotcha"]');
+        if (hp?.value.trim()) return;
+
+        const nome = form.querySelector('[name="nome"]')?.value.trim();
+        const email = form.querySelector('[name="email"]')?.value.trim();
+        if (!nome || !email) {
+          form.reportValidity();
+          return;
+        }
+
+        const btn = form.querySelector('.chat-contact-submit');
+        const orig = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Invio…';
+
+        const payload = {
+          nome,
+          email,
+          telefono: form.querySelector('[name="telefono"]')?.value.trim() || '',
+          messaggio: form.querySelector('[name="messaggio"]')?.value.trim() || '',
+          origine: 'Chat Abra',
+          pagina: document.title,
+          url: location.href,
+          timestamp: new Date().toISOString(),
+        };
+
+        try {
+          await fetch(CHAT_GAS_URL(), {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          if (window.fbq) window.fbq('track', 'Lead');
+          form.reset();
+          panel.classList.add('hidden');
+          toggle.setAttribute('aria-expanded', 'false');
+          this.appendBot('**Grazie!** Abbiamo ricevuto la tua richiesta. Un consulente Abra ti ricontatta entro **2 ore lavorative**. Puoi anche scriverci su WhatsApp.', {});
+          global.AbraUI?.toast?.('Richiesta inviata', 'ok');
+        } catch {
+          this.appendBot('Invio non riuscito. Scrivi a **info@abrarobotics.com** o usa **WhatsApp**.', {});
+        } finally {
+          btn.disabled = false;
+          btn.textContent = orig;
+        }
       });
     }
 

@@ -115,9 +115,9 @@
 
       ui.appendBot(
         'Benvenuto nel **Lab Training**.\n\n' +
-        '**Come funziona:** fai una domanda → sotto ogni risposta compare *Com\'è andata questa risposta?* con tre scelte.\n\n' +
-        aiNote + '\n\n' +
-        'Se chiedi un prezzo compare la **card preventivo** → clic → **Crea offerta PDF**.',
+        'Fai una domanda → valuta la risposta sotto.\n' +
+        'Preferisci un umano? Usa **WhatsApp** o **Modulo contatto** in basso.\n\n' +
+        aiNote,
         {}
       );
     } catch (err) {
