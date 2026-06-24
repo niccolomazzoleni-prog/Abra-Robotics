@@ -394,8 +394,14 @@ COLLECTION_STYLE = """
     .family-head h2 { font-size: 1.75rem; margin: 8px 0; }
     .family-head p { color: var(--gray-600); line-height: 1.6; margin: 0; }
     .family-link { font-weight: 700; font-size: 0.9rem; }
-    .robot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-    .robot-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .robot-grid,
+    .robot-grid.cols-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 769px) {
+      .robot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    }
+    @media (min-width: 1101px) {
+      .robot-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
     .robot-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; scroll-margin-top: 96px; }
     .robot-card:hover { transform: translateY(-4px); box-shadow: 0 18px 48px rgba(0,0,0,0.08); }
     .robot-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--gray-50), var(--gray-100)); border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -419,12 +425,7 @@ COLLECTION_STYLE = """
     .coll-filters button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--gray-200); background: var(--white); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
     .coll-filters button.active { background: var(--black); color: var(--white); border-color: var(--black); }
     .hub-grid-section { padding-top: 32px; }
-    @media (max-width: 1100px) {
-      .robot-grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
     @media (max-width: 768px) {
-      .robot-grid,
-      .robot-grid.cols-3 { grid-template-columns: 1fr !important; gap: 20px; }
       .collection-hero { padding: calc(40px + 72px + 20px) 20px 28px; }
       .collection-hero h1 { font-size: clamp(1.65rem, 7vw, 2.2rem); }
       .collection-hero .lead { font-size: 1rem; max-width: none; }
