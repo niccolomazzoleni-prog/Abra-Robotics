@@ -2426,6 +2426,8 @@ body.app-lab .sidebar-cta:hover { opacity: 0.92; }
   color: #fde68a !important;
 }
 .lab-training-card .sidebar-actions-row { margin-top: 4px; }
+.lab-quiz-note { margin: 6px 0 10px; font-size: 0.78rem; line-height: 1.45; color: #b8bcc4; }
+body.app-lab .lab-quiz-note strong { color: #e5e7eb; }
 
 .lab-mobile-bar {
   display: none;
@@ -2438,7 +2440,7 @@ body.app-lab .sidebar-cta:hover { opacity: 0.92; }
   background: rgba(17, 17, 20, 0.96);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1.2fr 1fr;
   gap: 6px;
 }
 .lab-mbar-btn {
@@ -2470,6 +2472,7 @@ body.app-lab .sidebar-cta:hover { opacity: 0.92; }
 }
 
 @media (max-width: 960px) {
+  .lab-mobile-bar { display: grid; }
   body.app-lab .chat-app-compose-wrap {
     padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
   }
