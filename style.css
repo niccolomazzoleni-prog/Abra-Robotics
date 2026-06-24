@@ -30,6 +30,7 @@
   --nav-logo-max-h: 90px;
   --nav-logo-max-h-mobile: 72px;
   --nav-bar-h-mobile: 72px;
+  --top-bar-h: 40px;
   --top-bar-h-mobile: 34px;
 }
 
@@ -85,9 +86,15 @@ h3 {
   background: var(--black);
   color: var(--white);
   text-align: center;
-  padding: 10px 24px;
+  height: var(--top-bar-h);
+  min-height: var(--top-bar-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
   font-size: 0.85rem;
   font-weight: 500;
+  box-sizing: border-box;
 }
 
 .top-bar p {
@@ -114,7 +121,7 @@ h3 {
 /* === Navbar === */
 .navbar {
   position: fixed;
-  top: 40px;
+  top: var(--top-bar-h);
   left: 0;
   right: 0;
   z-index: 1000;
@@ -1561,9 +1568,11 @@ select:focus-visible,
     align-items: center;
     justify-content: center;
     font-size: clamp(0.68rem, 2.8vw, 0.78rem);
-    padding: 6px 12px;
+    height: var(--top-bar-h-mobile);
     min-height: var(--top-bar-h-mobile);
+    padding: 0 12px;
     line-height: 1.15;
+    box-sizing: border-box;
   }
 
   .top-bar .tb-long {

@@ -4,6 +4,32 @@
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
+(function initHeroVideo() {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+  const base = window.location.pathname.includes('/en/') ? '../images/' : 'images/';
+  const sources = {
+    mobile: base + 'hero-bg-mobile.mp4',
+    desktop: base + 'hero-bg-desktop.mp4',
+  };
+  const mql = window.matchMedia('(max-width: 768px)');
+  function apply() {
+    const src = mql.matches ? sources.mobile : sources.desktop;
+    if (video.dataset.activeSrc === src) return;
+    video.dataset.activeSrc = src;
+    video.innerHTML = '';
+    const source = document.createElement('source');
+    source.src = src;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    video.load();
+    const playPromise = video.play();
+    if (playPromise && playPromise.catch) playPromise.catch(() => {});
+  }
+  apply();
+  mql.addEventListener('change', apply);
+})();
+
 function injectContactHoneypots() {
   document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
     if (form.querySelector('input[name="_gotcha"]')) return;
