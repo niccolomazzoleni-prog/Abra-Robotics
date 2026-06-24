@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree G1-D — dual-arm su colonna | Abra Robotics</title>
+<meta name="description" content="Dieci configurazioni G1-D (U1–U10): piattaforma wheeled humanoid Unitree per data collection AI, manipolazione bimanuale e deployment industriale. Standard = base fissa; Flagship = base mobile a ruote con LiDAR."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/g1-d.html"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .collection-hero { padding: calc(40px + 72px + 48px) 48px 48px; border-bottom: 1px solid var(--gray-200); }
+    .collection-hero h1 { font-size: clamp(2rem,4vw,3rem); margin: 12px 0 16px; letter-spacing: -0.03em; }
+    .collection-hero .lead { color: var(--gray-600); max-width: 820px; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 28px; }
+    .hero-meta div { display: flex; flex-direction: column; gap: 2px; }
+    .hero-meta strong { font-size: 1.4rem; font-weight: 900; }
+    .hero-meta span { font-size: 0.75rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.06em; }
+    .family-nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 8px; }
+    .family-nav a { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--gray-200); font-size: 0.82rem; font-weight: 700; text-decoration: none; color: var(--black); }
+    .family-nav a:hover { border-color: var(--black); }
+    .family-section { scroll-margin-top: 100px; padding-top: 48px; }
+    .family-head { margin-bottom: 24px; max-width: 720px; }
+    .family-head h2 { font-size: 1.75rem; margin: 8px 0; }
+    .family-head p { color: var(--gray-600); line-height: 1.6; margin: 0; }
+    .family-link { font-weight: 700; font-size: 0.9rem; }
+    .robot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .robot-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+    .robot-card:hover { transform: translateY(-4px); box-shadow: 0 18px 48px rgba(0,0,0,0.08); }
+    .robot-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--gray-50), var(--gray-100)); border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .robot-media img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
+    .robot-media-tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.9); padding: 6px 12px; border-radius: 999px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-600); }
+    .robot-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .robot-body h3 { margin: 0; font-size: 1.15rem; }
+    .robot-subtitle { color: var(--gray-500); font-size: 0.88rem; margin: 4px 0 0; }
+    .key-specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .key-spec { background: var(--gray-50); border-radius: 8px; padding: 10px 12px; }
+    .key-spec-label { display: block; font-size: 0.68rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; }
+    .key-spec-value { font-weight: 800; font-size: 0.92rem; }
+    .spec-rows { list-style: none; padding: 0; margin: 0; font-size: 0.86rem; }
+    .spec-rows li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--gray-100); }
+    .spec-rows li span:first-child { color: var(--gray-500); }
+    .coll-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .coll-filters button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--gray-200); background: var(--white); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+    .coll-filters button.active { background: var(--black); color: var(--white); border-color: var(--black); }
+    @media (max-width: 900px) { .robot-grid { grid-template-columns: 1fr; } .collection-hero { padding-left: 20px; padding-right: 20px; } }
+</style>
+</head>
+<body>
+<div class="top-bar">
+<p>Supply chain ufficiale Unitree in Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.png"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="lp-cobot.html">Cobot</a>
+<a href="manifattura-logistica.html#amr">AMR</a>
+<a href="quadrupedi.html">Quadrupedi</a>
+<a href="umanoidi.html">Umanoidi</a>
+<a href="accessori.html">Accessori</a>
+<a href="catalogo-unitree.html">Catalogo completo</a>
+<a href="listino-unitree.html">Listino prezzi</a>
+</div>
+</div>
+<a href="assessment.html">Trova il robot giusto</a>
+<a href="finanziamenti.html">Finanziamenti</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="universita-ricerca.html">Università e Ricerca</a>
+</div>
+</div>
+<a href="index.html#chi-siamo">Chi siamo</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="lp-cobot.html">Cobot</a>
+<a href="manifattura-logistica.html#amr">AMR</a>
+<a href="quadrupedi.html">Quadrupedi</a>
+<a href="umanoidi.html">Umanoidi</a>
+<a href="accessori.html">Accessori</a>
+<a href="catalogo-unitree.html">Catalogo completo</a>
+<a href="listino-unitree.html">Listino prezzi</a>
+</div>
+</div>
+<a href="assessment.html">Trova il robot giusto</a>
+<a href="finanziamenti.html">Finanziamenti</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="universita-ricerca.html">Università e Ricerca</a>
+</div>
+</div>
+<a href="index.html#chi-siamo">Chi siamo</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+<!-- HERO -->
+
+<section class="collection-hero">
+<div class="container">
+<p class="label"><a href="umanoidi.html" style="color:inherit;text-decoration:none;">Umanoidi</a></p>
+<h1>Unitree G1-D — dual-arm su colonna</h1>
+<p class="lead">Dieci configurazioni G1-D (U1–U10): piattaforma wheeled humanoid Unitree per data collection AI, manipolazione bimanuale e deployment industriale. Standard = base fissa; Flagship = base mobile a ruote con LiDAR.</p>
+<div class="hero-meta"><div><strong>10</strong><span>Modelli U1–U10</span></div><div><strong>17–33</strong><span>DoF</span></div><div><strong>100 TOPS</strong><span>Jetson Orin NX</span></div><div><strong>2026</strong><span>Disponibilità IT</span></div></div>
+</div>
+</section>
+<section class="section" style="padding-top:24px;">
+<div class="container">
+<div aria-label="Filtra G1-D" class="coll-filters"><button class="active" data-filter="all">Tutti</button><button data-filter="standard">Standard (fissa)</button><button data-filter="flagship">Flagship (mobile)</button></div>
+<div class="robot-grid"><article class="robot-card" data-family="g1d" data-tier="standard">
+<div class="robot-media"><span class="robot-media-tag">Standard A · Fissa</span>
+<img alt="Unitree G1-D Standard A (U1)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="prodotti/assets/variants/g1-u2/img-01.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Standard A (U1)</h3><p class="robot-subtitle">Dex1-1 gripper 2 dita</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">19</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Fissa</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U1</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 36.840,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u1.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="standard">
+<div class="robot-media"><span class="robot-media-tag">Standard B · Fissa</span>
+<img alt="Unitree G1-D Standard B (U2)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="prodotti/assets/variants/g1-u3/img-01.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Standard B (U2)</h3><p class="robot-subtitle">Dex3-1 no tattile</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">31</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Fissa</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U2</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 51.462,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u2.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="standard">
+<div class="robot-media"><span class="robot-media-tag">Standard C · Fissa</span>
+<img alt="Unitree G1-D Standard C (U3)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="prodotti/assets/variants/g1-u4/img-01.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Standard C (U3)</h3><p class="robot-subtitle">Dex3-1 con tattile</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">31</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Fissa</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U3</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 54.462,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u3.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="standard">
+<div class="robot-media"><span class="robot-media-tag">Standard D · Fissa</span>
+<img alt="Unitree G1-D Standard D (U4)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="prodotti/assets/variants/g1-u7/img-01.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Standard D (U4)</h3><p class="robot-subtitle">BrainCo Revo2 Basic 5 dita</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">29</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Fissa</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U4</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 47.762,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u4.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="standard">
+<div class="robot-media"><span class="robot-media-tag">Standard E · Fissa</span>
+<img alt="Unitree G1-D Standard E (U5)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="prodotti/assets/variants/g1-u8/img-01.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Standard E (U5)</h3><p class="robot-subtitle">BrainCo Revo2 Touch tattile</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">29</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Fissa</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U5</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 53.462,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u5.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="flagship">
+<div class="robot-media"><span class="robot-media-tag">Flagship A · Mobile ruote</span>
+<img alt="Unitree G1-D Flagship A (U6)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-g1-d-nobg.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Flagship A (U6)</h3><p class="robot-subtitle">Dex1-1 gripper 2 dita</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">21</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Mobile</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U6</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 50.519,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u6.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="flagship">
+<div class="robot-media"><span class="robot-media-tag">Flagship B · Mobile ruote</span>
+<img alt="Unitree G1-D Flagship B (U7)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-g1-d-nobg.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Flagship B (U7)</h3><p class="robot-subtitle">Dex3-1 no tattile</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">33</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Mobile</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U7</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 65.038,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u7.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="flagship">
+<div class="robot-media"><span class="robot-media-tag">Flagship C · Mobile ruote</span>
+<img alt="Unitree G1-D Flagship C (U8)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-g1-d-nobg.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Flagship C (U8)</h3><p class="robot-subtitle">Dex3-1 con tattile</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">33</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Mobile</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U8</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 68.038,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u8.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="flagship">
+<div class="robot-media"><span class="robot-media-tag">Flagship D · Mobile ruote</span>
+<img alt="Unitree G1-D Flagship D (U9)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-g1-d-nobg.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Flagship D (U9)</h3><p class="robot-subtitle">BrainCo Revo2 Basic</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">31</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Mobile</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U9</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 61.259,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u9.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="g1d" data-tier="flagship">
+<div class="robot-media"><span class="robot-media-tag">Flagship E · Mobile ruote</span>
+<img alt="Unitree G1-D Flagship E (U10)" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-g1-d-nobg.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree G1-D Flagship E (U10)</h3><p class="robot-subtitle">BrainCo Revo2 Touch</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">31</span></div><div class="key-spec"><span class="key-spec-label">Base</span><span class="key-spec-value">Mobile</span></div><div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">~3 kg/braccio</span></div><div class="key-spec"><span class="key-spec-label">Compute</span><span class="key-spec-value">Orin NX 100T</span></div></div>
+<ul class="spec-rows"><li><span>Variante</span><span>G1D-U10</span></li><li><span>SDK</span><span>ROS2 · AI pipeline</span></li></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 67.059,00 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-g1d-u10.html">Vedi scheda →</a>
+</div></div></article></div>
+</div>
+</section>
+<section class="section section-cta">
+<div class="container"><div class="cta-content">
+<h2>Quale G1-D per il tuo PoC industriale?</h2>
+<p class="cta-subtitle">Raccontaci il caso d'uso: ti aiutiamo a scegliere piattaforma, mani e computing. Risposta entro due ore lavorative.</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+<a class="btn btn-primary" href="assessment.html">Trova il robot giusto</a>
+<a class="btn btn-secondary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div></div></div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.png"/></a>
+<p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigazione</span>
+<a href="manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="universita-ricerca.html">Università e Ricerca</a>
+<a href="assessment.html">Trova il robot giusto</a>
+<a href="finanziamenti.html">Finanziamenti</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Prodotti</span>
+<a href="lp-cobot.html">Cobot</a>
+<a href="manifattura-logistica.html#amr">AMR</a>
+<a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
+<a href="umanoidi.html">Umanoidi</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contatti</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italia</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Tutti i diritti riservati.</p>
+</div>
+</footer>
+<script src="script.js"></script>
+<script>
+  (function(){
+    var bar=document.querySelector('.coll-filters'); if(!bar)return;
+    var cards=Array.prototype.slice.call(document.querySelectorAll('.robot-card'));
+    bar.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-filter]'); if(!b)return;
+      bar.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b);});
+      var f=b.dataset.filter;
+      cards.forEach(function(c){ c.style.display=(f==='all'||c.dataset.tier===f||c.dataset.family===f)?'':'none'; });
+    });
+  })();
+  </script>
+</body>
+
+<script src="script.js"></script>
+<script>
+(function(){
+  var bar=document.querySelector('.coll-filters'); if(!bar)return;
+  var cards=[].slice.call(document.querySelectorAll('.robot-card[data-tier],.robot-card[data-family]'));
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-filter]'); if(!b)return;
+    bar.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b);});
+    var f=b.dataset.filter;
+    cards.forEach(function(c){
+      var show=f==='all'||c.dataset.tier===f||c.dataset.family===f;
+      c.style.display=show?'':'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -24,6 +24,17 @@ IMAGE: dict[str, str] = {
     "G1-COMP": "prodotti/assets/variants/g1-comp/img-01.png",
     "H2-AIR": "images/prodotti/unitree-h2-hero.png",
     "H2-EDU": "images/prodotti/unitree-h2-hero.png",
+    "G1D-U1": "prodotti/assets/variants/g1-u2/img-01.png",
+    "G1D-U2": "prodotti/assets/variants/g1-u3/img-01.png",
+    "G1D-U3": "prodotti/assets/variants/g1-u4/img-01.png",
+    "G1D-U4": "prodotti/assets/variants/g1-u7/img-01.png",
+    "G1D-U5": "prodotti/assets/variants/g1-u8/img-01.png",
+    "G1D-U6": "images/manifattura/unitree-g1-d-nobg.png",
+    "G1D-U7": "images/manifattura/unitree-g1-d-nobg.png",
+    "G1D-U8": "images/manifattura/unitree-g1-d-nobg.png",
+    "G1D-U9": "images/manifattura/unitree-g1-d-nobg.png",
+    "G1D-U10": "images/manifattura/unitree-g1-d-nobg.png",
+    "H2-PLUS": "images/prodotti/unitree-h2-hero.png",
     "R1-D": "images/manifattura/unitree-r1-d.png",
     "R1-AIR": "images/manifattura/unitree-r1.png",
     "R1-U1": "images/manifattura/unitree-r1.png",
@@ -190,6 +201,48 @@ MANIFEST["H2-EDU"] = _entry(
     _h2_base + [("Variante", "EDU · ricerca avanzata"), ("Mani", "Dex3/Dex5/Inspire opzionali")],
     "unitree.com/h2",
 )
+MANIFEST["H2-PLUS"] = _entry(
+    "Unitree H2 Plus",
+    "Reference NVIDIA Isaac GR00T — ricerca accademica full-size.",
+    "Unitree H2 Plus: umanoide ~182 cm con 31 DoF corpo + mani Sharpa Wave (75 DoF totali), "
+    "NVIDIA Jetson AGX Thor T5000 e piattaforma Isaac GR00T. Disponibilità prevista fine 2026.",
+    [
+        ("Altezza", "~182 cm"), ("Peso", "~70 kg"), ("DoF", "75 (31 corpo + 44 mani)"),
+        ("Compute", "Jetson AGX Thor T5000"), ("Payload braccio", "7 kg rated / 15 kg peak"),
+        ("Coppia gamba", "360 N·m"), ("Batteria", "0,972 kWh · ~3 h"),
+        ("Disponibilità", "Fine 2026 (prev.)"), ("Piattaforma", "NVIDIA Isaac GR00T"),
+    ],
+    "unitree.com/H2plus",
+)
+
+# --- G1-D (dual-arm su colonna / ruote — NON bipede G1) ---
+_g1d_common = [
+    ("Bracci", "7×2 DoF"), ("Payload braccio", "~3 kg"), ("Altezza colonna", "1260–1680 mm"),
+    ("Compute", "Jetson Orin NX 100 TOPS"), ("Camere", "Binoculare testa + HD polso ×2"),
+    ("SDK", "ROS2 · pipeline AI end-to-end"),
+]
+for sku, tier, base, hands, dof in [
+    ("G1D-U1", "Standard A", "Base fissa", "Dex1-1 gripper 2 dita", "19"),
+    ("G1D-U2", "Standard B", "Base fissa", "Dex3-1 no tattile", "31"),
+    ("G1D-U3", "Standard C", "Base fissa", "Dex3-1 con tattile", "31"),
+    ("G1D-U4", "Standard D", "Base fissa", "BrainCo Revo2 Basic 5 dita", "29"),
+    ("G1D-U5", "Standard E", "Base fissa", "BrainCo Revo2 Touch tattile", "29"),
+    ("G1D-U6", "Flagship A", "Base mobile ruote", "Dex1-1 gripper 2 dita", "21"),
+    ("G1D-U7", "Flagship B", "Base mobile ruote", "Dex3-1 no tattile", "33"),
+    ("G1D-U8", "Flagship C", "Base mobile ruote", "Dex3-1 con tattile", "33"),
+    ("G1D-U9", "Flagship D", "Base mobile ruote", "BrainCo Revo2 Basic", "31"),
+    ("G1D-U10", "Flagship E", "Base mobile ruote", "BrainCo Revo2 Touch", "31"),
+]:
+    bat = "~6 h (upper + chassis)" if "mobile" in base else "~2 h (upper body)"
+    mob = "Diff-drive 1,5 m/s · LiDAR" if "mobile" in base else "Piantana fissa"
+    MANIFEST[sku] = _entry(
+        f"Unitree G1-D {tier} ({sku.replace('G1D-', '')})",
+        f"Dual-arm su colonna · {base} · {hands}.",
+        f"Unitree G1-D {tier}: piattaforma dual-arm per acquisizione dati AI e manipolazione bimanuale. "
+        f"{base}, {hands}, {dof} DoF. Non è il G1 bipede.",
+        [("Variante", tier), ("Base", mob), ("Mani", hands), ("DoF totali", dof), ("Autonomia", bat)] + _g1d_common,
+        "unitree-robot.com/G1-D",
+    )
 
 # --- R1 ---
 MANIFEST["R1-D"] = _entry(

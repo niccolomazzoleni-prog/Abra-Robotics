@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Robot Umanoidi Unitree — Tutta la gamma | Abra Robotics</title>
-<meta name="description" content="Tutti i robot umanoidi Unitree in Italia: G1 bipede, G1-D dual-arm, R1, R1-D, H2 e H2 Plus. Schede, prezzi End-User e supporto Abra Robotics."/>
-<link rel="canonical" href="https://abrarobotics.com/umanoidi.html"/>
+<title>Unitree R1 — umanoide entry | Abra Robotics</title>
+<meta name="description" content="R1 è l'umanoide compatto Unitree per università, lab e POC: più leggero del G1, ROS2 nativo, configurazioni EDU U1–U6 con mani dexterous opzionali."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/r1.html"/>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
 <link href="style.css" rel="stylesheet"/>
 <style>
@@ -44,10 +45,6 @@
     .coll-filters button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--gray-200); background: var(--white); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
     .coll-filters button.active { background: var(--black); color: var(--white); border-color: var(--black); }
     @media (max-width: 900px) { .robot-grid { grid-template-columns: 1fr; } .collection-hero { padding-left: 20px; padding-right: 20px; } }
-    @media (max-width: 1100px) { .robot-grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 640px) { .robot-grid.cols-3 { grid-template-columns: 1fr; } }
-
-.family-nav a.active { background: var(--black); color: var(--white); border-color: var(--black); }
 </style>
 </head>
 <body>
@@ -119,105 +116,108 @@
 
 <section class="collection-hero">
 <div class="container">
-<p class="label">Robot Umanoidi</p>
-<h1>Unitree — tutta la gamma umanoide</h1>
-<p class="lead">Sei famiglie, un unico hub: bipedi da ricerca (G1, R1, H2), piattaforme dual-arm industriali (G1-D, R1-D) e il reference NVIDIA H2 Plus. Ogni famiglia ha schede tecniche, prezzi indicativi e supporto integrazione in Italia.</p>
-<div class="hero-meta">
-<div><strong>6</strong><span>Famiglie</span></div>
-<div><strong>30+</strong><span>Configurazioni</span></div>
-<div><strong>ROS2</strong><span>Nativo</span></div>
-<div><strong>Italia</strong><span>Supply chain ufficiale</span></div>
-</div>
-<nav class="family-nav" aria-label="Famiglie umanoidi">
-<a href="#g1">G1 bipede</a>
-<a href="#g1d">G1-D dual-arm</a>
-<a href="#r1">R1</a>
-<a href="#r1d">R1-D</a>
-<a href="#h2">H2</a>
-<a href="#h2plus">H2 Plus</a>
-</nav>
+<p class="label"><a href="umanoidi.html" style="color:inherit;text-decoration:none;">Umanoidi</a></p>
+<h1>Unitree R1 — umanoide entry</h1>
+<p class="lead">R1 è l'umanoide compatto Unitree per università, lab e POC: più leggero del G1, ROS2 nativo, configurazioni EDU U1–U6 con mani dexterous opzionali.</p>
+<div class="hero-meta"><div><strong>7</strong><span>Modelli</span></div><div><strong>~122 cm</strong><span>Altezza</span></div><div><strong>ROS2</strong><span>Nativo</span></div><div><strong>EDU</strong><span>U1–U6</span></div></div>
 </div>
 </section>
-<section class="section" style="padding-top:32px;">
+<section class="section" style="padding-top:24px;">
 <div class="container">
-<div class="robot-grid cols-3" style="grid-template-columns:repeat(3,minmax(0,1fr));">
-<article class="robot-card" data-family="g1">
-<div class="robot-media"><span class="robot-media-tag">Famiglia umanoide</span>
-<img alt="Unitree G1" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="prodotti/assets/images/g1-01-nobg.png"/>
+<div class="coll-filters"><button class="active" data-filter="all">Tutti</button><button data-filter="air">Air</button><button data-filter="edu">EDU</button></div>
+<div class="robot-grid"><article class="robot-card" data-family="r1" data-tier="air">
+<div class="robot-media"><span class="robot-media-tag">Air</span>
+<img alt="Unitree R1 Air" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/r1-air.png"/>
 </div>
 <div class="robot-body">
-<div><h3>Unitree G1</h3><p class="robot-subtitle">Bipede ricerca · Air, EDU U1–U8, Comp</p></div>
-<div class="key-specs"><div class="key-spec"><span class="key-spec-label">Gamma</span><span class="key-spec-value">10 modelli</span></div><div class="key-spec"><span class="key-spec-label">Tipo</span><span class="key-spec-value">Bipede ricerca</span></div></div>
+<div><h3>Unitree R1 Air</h3><p class="robot-subtitle">Entry · demo</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">23</span></div><div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core CPU</span></div><div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">~122 cm</span></div><div class="key-spec"><span class="key-spec-label">SDK</span><span class="key-spec-value">ROS2</span></div></div>
 <ul class="spec-rows"></ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">23.997,41 €</span>
-<a class="btn btn-primary btn-sm" href="g1.html">Esplora gamma →</a>
-</div></div></article><article class="robot-card" data-family="g1d">
-<div class="robot-media"><span class="robot-media-tag">Famiglia umanoide</span>
-<img alt="Unitree G1-D" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-g1-d-nobg.png"/>
-</div>
-<div class="robot-body">
-<div><h3>Unitree G1-D</h3><p class="robot-subtitle">Dual-arm su colonna · Standard + Flagship</p></div>
-<div class="key-specs"><div class="key-spec"><span class="key-spec-label">Gamma</span><span class="key-spec-value">U1–U10</span></div><div class="key-spec"><span class="key-spec-label">Tipo</span><span class="key-spec-value">Dual-arm su colonna</span></div></div>
-<ul class="spec-rows"></ul>
-<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">Vedi gamma</span>
-<a class="btn btn-primary btn-sm" href="g1-d.html">Esplora gamma →</a>
-</div></div></article><article class="robot-card" data-family="r1">
-<div class="robot-media"><span class="robot-media-tag">Famiglia umanoide</span>
-<img alt="Unitree R1" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-r1.png"/>
-</div>
-<div class="robot-body">
-<div><h3>Unitree R1</h3><p class="robot-subtitle">Bipede entry · AIR e EDU U1–U6</p></div>
-<div class="key-specs"><div class="key-spec"><span class="key-spec-label">Gamma</span><span class="key-spec-value">Compatto</span></div><div class="key-spec"><span class="key-spec-label">Tipo</span><span class="key-spec-value">Bipede entry</span></div></div>
-<ul class="spec-rows"></ul>
-<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">Vedi gamma</span>
-<a class="btn btn-primary btn-sm" href="r1.html">Esplora gamma →</a>
-</div></div></article><article class="robot-card" data-family="r1d">
-<div class="robot-media"><span class="robot-media-tag">Famiglia umanoide</span>
-<img alt="Unitree R1-D" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/manifattura/unitree-r1-d.png"/>
-</div>
-<div class="robot-body">
-<div><h3>Unitree R1-D</h3><p class="robot-subtitle">Dual-arm tavolo/mobile · manipolazione bimanuale</p></div>
-<div class="key-specs"><div class="key-spec"><span class="key-spec-label">Gamma</span><span class="key-spec-value">15–31 DoF</span></div><div class="key-spec"><span class="key-spec-label">Tipo</span><span class="key-spec-value">Dual-arm tavolo/mobile</span></div></div>
-<ul class="spec-rows"></ul>
-<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">da 12.000,00 €</span>
-<a class="btn btn-primary btn-sm" href="r1-d.html">Esplora gamma →</a>
-</div></div></article><article class="robot-card" data-family="h2">
-<div class="robot-media"><span class="robot-media-tag">Famiglia umanoide</span>
-<img alt="Unitree H2" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/universita/unitree-h2-nobg.png"/>
-</div>
-<div class="robot-body">
-<div><h3>Unitree H2</h3><p class="robot-subtitle">Full-size ~180 cm · Air e EDU</p></div>
-<div class="key-specs"><div class="key-spec"><span class="key-spec-label">Gamma</span><span class="key-spec-value">31 DoF</span></div><div class="key-spec"><span class="key-spec-label">Tipo</span><span class="key-spec-value">Full-size ~180 cm</span></div></div>
-<ul class="spec-rows"></ul>
-<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">Vedi gamma</span>
-<a class="btn btn-primary btn-sm" href="h2.html">Esplora gamma →</a>
-</div></div></article><article class="robot-card" data-family="h2plus">
-<div class="robot-media"><span class="robot-media-tag">Famiglia umanoide</span>
-<img alt="Unitree H2 Plus" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/unitree-h2-hero.png"/>
-</div>
-<div class="robot-body">
-<div><h3>Unitree H2 Plus</h3><p class="robot-subtitle">NVIDIA Isaac GR00T · Sharpa Wave · fine 2026</p></div>
-<div class="key-specs"><div class="key-spec"><span class="key-spec-label">Gamma</span><span class="key-spec-value">75 DoF</span></div><div class="key-spec"><span class="key-spec-label">Tipo</span><span class="key-spec-value">NVIDIA Isaac GR00T</span></div></div>
-<ul class="spec-rows"></ul>
-<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">Preordine 2026</span>
-<a class="btn btn-primary btn-sm" href="prodotti/unitree-h2-plus.html">Esplora gamma →</a>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">10.158,26 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-r1-air.html">Vedi scheda →</a>
 </div></div></article>
+<article class="robot-card" data-family="r1" data-tier="edu">
+<div class="robot-media"><span class="robot-media-tag">U1 EDU</span>
+<img alt="Unitree R1 U1 EDU" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/r1-u1.png"/>
 </div>
+<div class="robot-body">
+<div><h3>Unitree R1 U1 EDU</h3><p class="robot-subtitle">Expansion Dock 100T</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">23</span></div><div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX</span></div><div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">~122 cm</span></div><div class="key-spec"><span class="key-spec-label">SDK</span><span class="key-spec-value">ROS2</span></div></div>
+<ul class="spec-rows"></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">16.461,24 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-r1-edu.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="r1" data-tier="edu">
+<div class="robot-media"><span class="robot-media-tag">U2</span>
+<img alt="Unitree R1 U2" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/r1-u2.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree R1 U2</h3><p class="robot-subtitle">Vita 3DoF · braccio 7DoF</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">29</span></div><div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX</span></div><div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">~122 cm</span></div><div class="key-spec"><span class="key-spec-label">SDK</span><span class="key-spec-value">ROS2</span></div></div>
+<ul class="spec-rows"></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">19.544,22 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-r1-u2.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="r1" data-tier="edu">
+<div class="robot-media"><span class="robot-media-tag">U3</span>
+<img alt="Unitree R1 U3" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/r1-u3.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree R1 U3</h3><p class="robot-subtitle">Dex3-1</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">43</span></div><div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX</span></div><div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">~122 cm</span></div><div class="key-spec"><span class="key-spec-label">SDK</span><span class="key-spec-value">ROS2</span></div></div>
+<ul class="spec-rows"></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">32.287,20 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-r1-u3.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="r1" data-tier="edu">
+<div class="robot-media"><span class="robot-media-tag">U4</span>
+<img alt="Unitree R1 U4" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/r1-u4.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree R1 U4</h3><p class="robot-subtitle">Dex3-1 tattile</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">43</span></div><div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX</span></div><div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">~122 cm</span></div><div class="key-spec"><span class="key-spec-label">SDK</span><span class="key-spec-value">ROS2</span></div></div>
+<ul class="spec-rows"></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">35.027,63 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-r1-u4.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="r1" data-tier="edu">
+<div class="robot-media"><span class="robot-media-tag">U5</span>
+<img alt="Unitree R1 U5" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/r1-u5.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree R1 U5</h3><p class="robot-subtitle">Revo2 Basic</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">24+</span></div><div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX</span></div><div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">~122 cm</span></div><div class="key-spec"><span class="key-spec-label">SDK</span><span class="key-spec-value">ROS2</span></div></div>
+<ul class="spec-rows"></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">29.546,77 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-r1-u5.html">Vedi scheda →</a>
+</div></div></article>
+<article class="robot-card" data-family="r1" data-tier="edu">
+<div class="robot-media"><span class="robot-media-tag">U6</span>
+<img alt="Unitree R1 U6" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/r1-u6.png"/>
+</div>
+<div class="robot-body">
+<div><h3>Unitree R1 U6</h3><p class="robot-subtitle">Revo2 haptic</p></div>
+<div class="key-specs"><div class="key-spec"><span class="key-spec-label">DoF</span><span class="key-spec-value">24+</span></div><div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX</span></div><div class="key-spec"><span class="key-spec-label">Altezza</span><span class="key-spec-value">~122 cm</span></div><div class="key-spec"><span class="key-spec-label">SDK</span><span class="key-spec-value">ROS2</span></div></div>
+<ul class="spec-rows"></ul>
+<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">35.027,63 €</span>
+<a class="btn btn-primary btn-sm" href="prodotti/unitree-r1-u6.html">Vedi scheda →</a>
+</div></div></article></div>
 </div>
 </section>
 <section class="section section-cta">
 <div class="container"><div class="cta-content">
-<h2>Quale umanoide per il tuo progetto?</h2>
-<p class="cta-subtitle">Locomozione bipede, dual-arm industriale o full-size da ricerca: ti orientiamo tra G1, G1-D, R1, R1-D, H2 e H2 Plus.</p>
+<h2>Quale R1 per il tuo lab?</h2>
+<p class="cta-subtitle">Raccontaci il caso d'uso: ti aiutiamo a scegliere piattaforma, mani e computing. Risposta entro due ore lavorative.</p>
 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
 <a class="btn btn-primary" href="assessment.html">Trova il robot giusto</a>
-<a class="btn btn-secondary" href="listino-unitree.html">Listino End-User</a>
+<a class="btn btn-secondary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
 </div></div></div>
 </section>
 <!-- Footer -->
@@ -268,5 +268,20 @@
 </body>
 
 <script src="script.js"></script>
+<script>
+(function(){
+  var bar=document.querySelector('.coll-filters'); if(!bar)return;
+  var cards=[].slice.call(document.querySelectorAll('.robot-card[data-tier],.robot-card[data-family]'));
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-filter]'); if(!b)return;
+    bar.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b);});
+    var f=b.dataset.filter;
+    cards.forEach(function(c){
+      var show=f==='all'||c.dataset.tier===f||c.dataset.family===f;
+      c.style.display=show?'':'none';
+    });
+  });
+})();
+</script>
 </body>
 </html>
