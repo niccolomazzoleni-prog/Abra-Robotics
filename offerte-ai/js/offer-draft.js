@@ -10,7 +10,7 @@
 
 
 
-  const RFQ_RE = /preventivo|offert|quot|intestat|termocamera|sensori|perlustrazione|sorveglianza|setup|accessori|umidit|gas|fumo|payload|consegna|noleggio|poc|integrazione|quanto cost|configurazione robot/i;
+  const RFQ_RE = /preventivo|offert|quot|intestat|termocamera|sensori|perlustrazione|sorveglianza|setup|accessori|umidit|gas|fumo|payload|consegna|noleggio|poc|integrazione|quanto cost|configurazione robot|pick.?place|manifattur|scatole|piantana|gantry|dual.?arm|r1-d|g1-d/i;
 
   const POC_TARIFFA = { hourly: 110, hoursPerDay: 8 };
 
@@ -79,6 +79,12 @@
       if (/sorveglianza|perlustrazione|termocamera|sensori|umidit|gas|fumo|incendio|area confinat|payload|as2|\ba2\b/i.test(t)) {
 
         return 'sorveglianza-combo';
+
+      }
+
+      if (/pick.?place|manifattur|scatole|punto\s*[ab]|piantana|gantry|dual.?arm|r1-d|g1-d|bimanual|assemblaggio/i.test(t)) {
+
+        return 'manifattura-poc';
 
       }
 
@@ -219,6 +225,130 @@
       const line = offer.line_items[offer.line_items.length - 1];
 
       line.su_richiesta = true;
+
+    },
+
+
+
+    _buildManifatturaPoc(offer, userText) {
+
+      const shipHum = this.builder.quote?.rules?.shipping_defaults_eur?.umanoide || 2000;
+
+      offer.intro =
+
+        'Gentile Cliente,\n\n' +
+
+        'in riferimento alla Sua richiesta di **PoC pick-place / manifattura**, Le proponiamo un preventivo con ' +
+
+        '**più architetture alternative** (sceglierne una per blocco robot):\n\n' +
+
+        '• **Dual-arm montato** (R1-D) — ideale per manipolazione bimanuale in cella\n' +
+
+        '• **Mono-arm umanoide** (G1-U2) — PoC più economico e rapido\n' +
+
+        '• **G1-D industrial** — configurazione deployment su piantana/gantry (su preventivo dedicato)\n\n' +
+
+        'Integrazione software, mount/piantana e trasferte sono stimate separatamente.';
+
+
+
+      this._section(offer, 'Blocco A — Dual-arm (R1-D)',
+
+        'Piattaforma bimanuale Unitree per pick-place in cella:\n' +
+
+        '• Base fissa o mobile (configurazione in call)\n' +
+
+        '• Bracci 5 o 7 DoF — ideali se servono due mani o presa simultanea\n' +
+
+        '• Preferibile se priorità = certificazione in workspace delimitato');
+
+
+
+      this._addSku(offer, 'R1-D', 1, { opzione_robot: true, principale: true, robot_gruppo: 'manifattura' });
+
+
+
+      this._section(offer, 'Blocco B — Mono-arm umanoide (G1-U2)',
+
+        'Alternativa più accessibile per pick-place singolo braccio:\n' +
+
+        '• 29 DoF, braccio 7 DOF\n' +
+
+        '• Bipede — flessibile ma meno adatto a primo PoC certificato in reparto condiviso');
+
+
+
+      this._addSku(offer, 'G1-U2', 1, { opzione_robot: true, robot_gruppo: 'manifattura', alternativa: true });
+
+      this._addSku(offer, 'G1-U1', 1, { opzione_robot: true, robot_gruppo: 'manifattura', alternativa: true });
+
+
+
+      this._productHighlight(offer, 'R1-D');
+
+      this._productHighlight(offer, 'G1-U2');
+
+
+
+      if (/piantana|gantry|fiss|mount|staffa/i.test(userText)) {
+
+        this.builder.addCustomLine(
+
+          offer,
+
+          'Mount / piantana industriale (configurazione G1-D o R1-D)',
+
+          0,
+
+          1,
+
+          'Progettazione staffa o piantana fissa/mobile, interlock e layout cella — importo da definire post-brief.',
+
+          'extra'
+
+        );
+
+        const line = offer.line_items[offer.line_items.length - 1];
+
+        line.su_richiesta = true;
+
+      }
+
+
+
+      if (/g1-d|g1 d|industrial.?ready/i.test(userText)) {
+
+        this.builder.addCustomLine(
+
+          offer,
+
+          'Unitree G1-D — configurazione industrial deployment',
+
+          0,
+
+          1,
+
+          'Piattaforma G1-D su preventivo Abra (mount, ROS2, varianti). Non cumulabile con R1-D nello stesso blocco operativo.',
+
+          'extra'
+
+        );
+
+        const line = offer.line_items[offer.line_items.length - 1];
+
+        line.su_richiesta = true;
+
+      }
+
+
+
+      this._addExtrasFromText(offer, userText);
+
+      this._insertBlock(offer, 'consegna-supporto');
+
+      this.builder.addCustomLine(offer, 'Spedizione e imballo — umanoide (Italia)', shipHum, 1,
+
+        'Indicativa — conferma su destinazione.', 'extra');
 
     },
 
@@ -400,6 +530,10 @@
 
         this._buildSorveglianza(offer, userText, shipQuad);
 
+      } else if (scenario === 'manifattura-poc') {
+
+        this._buildManifatturaPoc(offer, userText);
+
       } else {
 
         const q = quoteEngine.tryAutoQuote(userText);
@@ -503,7 +637,10 @@
       let msg;
       const hasGo2 = skus.some(s => /^GO2-EDU/i.test(s));
       const hasAs2A2 = skus.some(s => /^AS2|^A2/i.test(s));
-      if (hasAs2A2 && hasGo2) {
+      const hasManif = skus.some(s => /^R1-D|^G1-U/i.test(s)) && robots.length > 1;
+      if (hasManif) {
+        msg = 'Ho preparato un preventivo **PoC manifattura / pick-place** con **R1-D dual-arm** e alternative **G1-U2 / G1-U1**, più integrazione PoC a tariffa oraria.\n\n';
+      } else if (hasAs2A2 && hasGo2) {
         msg = 'Ho preparato un preventivo **combinato**: blocco sorveglianza (**As2 / A2**) + alternativa **Go2 EDU** (Standard / Smart), sensori e PoC a tariffa oraria.\n\n';
       } else if (hasAs2A2 && robots.length > 1) {
         msg = 'Ho preparato un preventivo sorveglianza con **As2 Pro**, **A2 Standard** e **A2 Pro** (sceglierne una), più sensori e PoC.\n\n';

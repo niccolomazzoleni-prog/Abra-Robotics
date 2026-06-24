@@ -59,18 +59,38 @@
       if (/tessile|tessuti|textile/.test(lower)) {
         parts.push('PoC manifattura ispezione pick-place');
       }
+      if (/pick.?place|scatole|piantana|gantry|punto\s*[ab]|r1-d|g1-d/.test(lower)) {
+        parts.push('PoC manifattura pick-place dual-arm piantana certificazione');
+      }
       return parts.join(' ');
     }
 
     _tryConsultingReply(userText, ragResults) {
       const lower = this._normalizeQuery(userText);
-      const isPoc = /poc|proof|prova\s+concept|pilota|struttur/.test(lower)
-        && /umanoid|g1|robot|tessile|manifattur|industri/.test(lower);
+      const isPickPlace = /pick.?place|scatole|punto\s*[ab]|piantana|gantry|manifattur.*poc/.test(lower)
+        && /g1|r1|h2|umanoid|dual|biped|piantana|mobile|fiss/.test(lower);
+      const isPoc = (/poc|proof|prova\s+concept|pilota|struttur/.test(lower)
+        && /umanoid|g1|robot|tessile|manifattur|industri/.test(lower)) || isPickPlace;
       const isSupport = /assistenz|riparaz|garanzia|manutenz|quanto\s+costa.*(assist|ripar)|quanto\s+dura/.test(lower);
 
       const hit = (re) => (ragResults || []).find(r => re.test(r.title + ' ' + r.text));
-      const pocHit = hit(/poc|umanoidi industri|5 step/i);
+      const pocHit = hit(/poc|umanoidi industri|5 step|pick.?place|piantana|dual-arm/i);
       const supHit = hit(/assistenza|riparazione|garanzia/i);
+
+      if (isPickPlace && pocHit) {
+        return (
+          '**PoC pick-place manifattura — come scegliere la piattaforma**\n\n' +
+          '| Priorità | Scelta tipica |\n' +
+          '|----------|---------------|\n' +
+          '| Certificazione / cella fissa | **R1-D o G1-D su piantana fissa** |\n' +
+          '| Layout che cambia | **R1-D / G1-D mobile** o rail |\n' +
+          '| Budget PoC contenuto | **G1-U2** mono-arm |\n' +
+          '| Demo / mobilità | **G1 bipede** o **H2** (fase 2, non primo PoC prod) |\n\n' +
+          '**Step Abra:** brief → scelta architettura → PoC lab (~€ 10.560) → pilot cella (~€ 19.360) → report.\n\n' +
+          'Per **preventivo formale** con R1-D + G1-U2 a confronto: scrivi «preventivo PoC pick-place manifattura».\n\n' +
+          '_Dettagli peso scatole, distanza A→B e vincoli safety in call._'
+        );
+      }
 
       if (isPoc && pocHit) {
         return (
