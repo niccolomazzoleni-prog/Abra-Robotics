@@ -364,7 +364,7 @@ def card_html(
     )
     rows = "".join(f"<li><span>{k}</span><span>{v}</span></li>" for k, v in specs[4:8])
     tier_attr = f' data-tier="{tier}"' if tier else ""
-    return f"""<article class="robot-card" data-family="{family}"{tier_attr}>
+    return f"""<article class="robot-card" id="{family}" data-family="{family}"{tier_attr}>
 <div class="robot-media"><span class="robot-media-tag">{tag}</span>
 <img alt="{title}" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="{img}"/>
 </div>
@@ -372,8 +372,8 @@ def card_html(
 <div><h3>{title}</h3><p class="robot-subtitle">{subtitle}</p></div>
 <div class="key-specs">{ks}</div>
 <ul class="spec-rows">{rows}</ul>
-<div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">{price}</span>
+<div class="robot-card-cta">
+<span class="robot-card-price">{price}</span>
 <a class="btn btn-primary btn-sm" href="{href}">Vedi scheda →</a>
 </div></div></article>"""
 
@@ -395,27 +395,56 @@ COLLECTION_STYLE = """
     .family-head p { color: var(--gray-600); line-height: 1.6; margin: 0; }
     .family-link { font-weight: 700; font-size: 0.9rem; }
     .robot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-    .robot-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+    .robot-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .robot-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; scroll-margin-top: 96px; }
     .robot-card:hover { transform: translateY(-4px); box-shadow: 0 18px 48px rgba(0,0,0,0.08); }
     .robot-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--gray-50), var(--gray-100)); border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .robot-media img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
-    .robot-media-tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.9); padding: 6px 12px; border-radius: 999px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-600); }
-    .robot-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
-    .robot-body h3 { margin: 0; font-size: 1.15rem; }
-    .robot-subtitle { color: var(--gray-500); font-size: 0.88rem; margin: 4px 0 0; }
-    .key-specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .key-spec { background: var(--gray-50); border-radius: 8px; padding: 10px 12px; }
+    .robot-media-tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.9); padding: 6px 12px; border-radius: 999px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-600); z-index: 1; }
+    .robot-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; flex: 1; min-width: 0; }
+    .robot-body h3 { margin: 0; font-size: 1.15rem; line-height: 1.25; }
+    .robot-subtitle { color: var(--gray-500); font-size: 0.88rem; margin: 4px 0 0; line-height: 1.45; }
+    .key-specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .key-spec { background: var(--gray-50); border-radius: 8px; padding: 10px 12px; min-width: 0; }
     .key-spec-label { display: block; font-size: 0.68rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; }
-    .key-spec-value { font-weight: 800; font-size: 0.92rem; }
+    .key-spec-value { font-weight: 800; font-size: 0.92rem; word-break: break-word; }
     .spec-rows { list-style: none; padding: 0; margin: 0; font-size: 0.86rem; }
     .spec-rows li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--gray-100); }
-    .spec-rows li span:first-child { color: var(--gray-500); }
+    .spec-rows li span:first-child { color: var(--gray-500); flex-shrink: 0; }
+    .spec-rows li span:last-child { text-align: right; }
+    .robot-card-cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; flex-wrap: wrap; }
+    .robot-card-price { font-size: 1.05rem; font-weight: 900; letter-spacing: -0.02em; }
+    .robot-card-cta .btn { flex-shrink: 0; white-space: nowrap; }
     .coll-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .coll-filters button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--gray-200); background: var(--white); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
     .coll-filters button.active { background: var(--black); color: var(--white); border-color: var(--black); }
-    @media (max-width: 900px) { .robot-grid { grid-template-columns: 1fr; } .collection-hero { padding-left: 20px; padding-right: 20px; } }
-    @media (max-width: 1100px) { .robot-grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 640px) { .robot-grid.cols-3 { grid-template-columns: 1fr; } }
+    .hub-grid-section { padding-top: 32px; }
+    @media (max-width: 1100px) {
+      .robot-grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 768px) {
+      .robot-grid,
+      .robot-grid.cols-3 { grid-template-columns: 1fr !important; gap: 20px; }
+      .collection-hero { padding: calc(40px + 72px + 20px) 20px 28px; }
+      .collection-hero h1 { font-size: clamp(1.65rem, 7vw, 2.2rem); }
+      .collection-hero .lead { font-size: 1rem; max-width: none; }
+      .hero-meta { gap: 14px 22px; margin-top: 20px; }
+      .hero-meta strong { font-size: 1.15rem; }
+      .family-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; margin-right: -4px; scrollbar-width: none; }
+      .family-nav::-webkit-scrollbar { display: none; }
+      .family-nav a { flex-shrink: 0; font-size: 0.78rem; padding: 9px 14px; }
+      .robot-media { aspect-ratio: 16/10; min-height: 200px; }
+      .robot-media img { padding: 16px; }
+      .robot-body { padding: 18px; gap: 12px; }
+      .robot-body h3 { font-size: 1.2rem; }
+      .robot-card-cta { flex-direction: column; align-items: stretch; gap: 10px; }
+      .robot-card-cta .btn { width: 100%; justify-content: center; text-align: center; white-space: normal; }
+      .robot-card-price { font-size: 1.12rem; }
+      .hub-grid-section .container { padding-left: 20px; padding-right: 20px; }
+    }
+    @media (max-width: 480px) {
+      .key-specs { grid-template-columns: 1fr; }
+    }
 """
 
 
@@ -434,8 +463,10 @@ def read_footer() -> str:
     src = ROOT / "g1.html" if (ROOT / "g1.html").exists() else ROOT / "umanoidi.html"
     text = src.read_text(encoding="utf-8")
     start = text.find("<!-- Footer -->")
-    end = text.find("</html>")
-    return text[start:end] if start >= 0 else ""
+    end = text.find('<script src="script.js">')
+    if end < 0:
+        end = text.find("</body>")
+    return text[start:end].strip() if start >= 0 and end > start else ""
 
 
 def build_collection_page(
@@ -622,9 +653,9 @@ def generate_hub_umanoidi() -> None:
 </nav>
 </div>
 </section>
-<section class="section" style="padding-top:32px;">
+<section class="section hub-grid-section">
 <div class="container">
-<div class="robot-grid cols-3" style="grid-template-columns:repeat(3,minmax(0,1fr));">
+<div class="robot-grid cols-3">
 {fam_cards}
 </div>
 </div>
