@@ -94,6 +94,7 @@
 
     formatQuote(quote) {
       if (quote.error) return quote.error;
+      if (quote.ranked) return this.formatRankedQuote(quote);
       const lines = quote.lines.map(l =>
         `• ${l.nome} (${l.sku}): € ${fmt(l.prezzo_finale)}`
       ).join('\n');
@@ -103,12 +104,57 @@
       return out;
     }
 
+    formatRankedQuote(quote) {
+      const dir = quote.sort_dir === 'desc' ? 'dal più caro al più economico' : 'dal più economico al più caro';
+      const family = quote.family_label || 'configurazioni';
+      const lines = quote.lines.map((l, i) =>
+        `${i + 1}. **${l.nome}** (${l.sku}) — **€ ${fmt(l.prezzo_finale)}** IVA escl.`
+      ).join('\n');
+      return (
+        `**Gamma ${family} — ordinata ${dir}** (listino End-User Abra)\n\n${lines}\n\n` +
+        `_Prezzi ufficiali · spedizione e dazio inclusi salvo note. Per preventivo PDF: **Crea offerta** o WhatsApp._`
+      );
+    }
+
+    _normalizeText(text) {
+      return String(text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    _wantsPriceRanking(lower) {
+      return /ordine\s+(di\s+)?costo|ordinat[oi]?\s+per\s+prezzo|dal\s+piu\s+economico|dal\s+meno\s+caro|dal\s+piu\s+caro|classifica|confronto\s+prezz|metti\s+in\s+ordine|ordine\s+prezzo|ranking|quanto\s+costa\s+ciascun|prezzi\s+dei|lista\s+prezzi|economico\s+al\s+caro|caro\s+al\s+economico/.test(lower)
+        || (/confront|compar|ordine|classifica/.test(lower) && /prezz|costo|econom/.test(lower));
+    }
+
+    _tryFamilyRank(userText) {
+      const lower = this._normalizeText(userText);
+      if (!this._wantsPriceRanking(lower)) return null;
+
+      const families = [
+        { re: /\bg1\b|g1[\s-]u|umanoid.*g1|prodotti g1/, set: 'g1-gamma', label: 'Unitree G1' },
+        { re: /\bas2\b|as\s*2\b|\ba2s\b/, set: 'as2-gamma', label: 'Unitree As2' },
+        { re: /\bgo2\b|go\s*2/, set: 'go2-edu-duo', label: 'Go2 EDU' },
+      ];
+      for (const f of families) {
+        if (f.re.test(lower)) {
+          return this._quoteCompareSet(f.set, {
+            ranked: true,
+            desc: /piu\s+caro|decrescente|caro\s+al\s+economico/.test(lower),
+            family_label: f.label,
+          });
+        }
+      }
+      return null;
+    }
+
     tryAutoQuote(userText) {
+      const ranked = this._tryFamilyRank(userText);
+      if (ranked?.lines?.length) return ranked;
+
       const skus = this.findSkusInText(userText);
       if (skus.length) {
         return this.calculateLineItems(skus);
       }
-      const lower = userText.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const lower = this._normalizeText(userText);
 
       const aliasHit = this._matchAlias(lower);
       if (aliasHit) {
@@ -150,12 +196,22 @@
       return null;
     }
 
-    _quoteCompareSet(setId) {
+    _quoteCompareSet(setId, opts = {}) {
       const sets = this.rules.compare_sets || {};
       const skus = sets[setId];
       if (!skus?.length) return null;
       const quote = this.calculateLineItems(skus);
-      quote.bundle_name = quote.lines.length > 1 ? `Confronto configurazioni` : quote.bundle_name;
+      if (opts.ranked && quote.lines.length > 1) {
+        quote.lines.sort((a, b) =>
+          opts.desc ? b.prezzo_finale - a.prezzo_finale : a.prezzo_finale - b.prezzo_finale
+        );
+        quote.ranked = true;
+        quote.sort_dir = opts.desc ? 'desc' : 'asc';
+        quote.family_label = opts.family_label || setId;
+      } else {
+        quote.bundle_name = quote.lines.length > 1 ? 'Confronto configurazioni' : quote.bundle_name;
+      }
+      quote.note_iva = quote.note_iva || this.rules.note_iva || 'IVA esclusa';
       return quote;
     }
   }

@@ -104,6 +104,8 @@
         reply = global.AbraPromptGuard.hardRefusal(guard.flags, quoteBlock);
       } else if (guard.flags.priceClaim && quoteBlock) {
         reply = global.AbraPromptGuard.hardRefusal({ leak: true }, quoteBlock);
+      } else if (autoQuote?.ranked) {
+        reply = this.quote.formatQuote(autoQuote);
       } else if (cfg.mode !== 'offline') {
         try {
           this.opts.onStatus('Generazione risposta AI…');

@@ -6,6 +6,7 @@
 
   const SUGGESTIONS = [
     'Prezzo G1-U1',
+    'G1 in ordine di costo',
     'Go2 EDU per università',
     'Preventivo formale sorveglianza As2 con termocamera e sensori gas',
     'MiR250 quanto costa?',
