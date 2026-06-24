@@ -1469,10 +1469,82 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
   .offer-sample-paper { padding: 22px 18px; }
 }
 @media print {
-  .offer-sample-toolbar { display: none; }
+  @page {
+    size: A4 portrait;
+    margin: 10mm 9mm;
+  }
+  html, body {
+    width: 210mm;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .offer-sample-toolbar,
+  #offer-gate,
+  #admin-gate { display: none !important; }
   .offer-sample-body { background: #fff; }
   .offer-sample-wrap { margin: 0; padding: 0; max-width: none; }
   .offer-sample-paper { box-shadow: none; border-radius: 0; padding: 0; }
+  .abra-offer-doc,
+  .abra-offer-doc--pdf {
+    font-size: 8.25pt;
+    line-height: 1.38;
+    color: #0a0a0a;
+  }
+  .abra-offer-doc--pdf .doc-header {
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  .abra-offer-doc--pdf .doc-logo-img { height: 36px; max-height: 36px; }
+  .abra-offer-doc--pdf .doc-fiscal { font-size: 7pt; }
+  .abra-offer-doc--pdf .doc-meta,
+  .abra-offer-doc--pdf .doc-client { font-size: 7.5pt; padding: 5px 8px; }
+  .abra-offer-doc--pdf .doc-intro-compact {
+    font-size: 7.5pt;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+  }
+  .doc-config-summary {
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+  .doc-config-summary-title { font-size: 10pt; }
+  .doc-config-group-label { font-size: 8pt; }
+  .doc-config-options { font-size: 7.5pt; }
+  .abra-offer-doc table.doc-lines {
+    font-size: 7.5pt;
+    page-break-inside: avoid;
+  }
+  .abra-offer-doc table.doc-lines th,
+  .abra-offer-doc table.doc-lines td { padding: 4px 6px; }
+  .doc-price-block,
+  .doc-total-ref,
+  .doc-pending,
+  .doc-next-steps {
+    page-break-inside: avoid;
+  }
+  .abra-offer-doc--pdf .doc-block-highlight-compact,
+  .doc-config-summary,
+  .doc-pending,
+  .doc-next-steps,
+  .doc-price-block { page-break-inside: avoid; }
+  .doc-secondary { page-break-before: auto; }
+  .abra-offer-doc .doc-robot-hero {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin: 10px 0 6px;
+    page-break-inside: avoid;
+  }
+  .abra-offer-doc .doc-robot-hero img { max-height: 42px; }
+  .abra-offer-doc .doc-robot-hero figcaption { font-size: 6pt; }
+  .doc-block-highlight,
+  .doc-block-section {
+    page-break-inside: avoid;
+    margin: 8px 0;
+  }
+  .doc-block-highlight-img img { max-height: 72px; object-fit: cover; }
+  h2, h3 { page-break-after: avoid; }
+  .doc-footer-compact { font-size: 6.5pt; }
 }
 
 .chat-bubble.bot.streaming::after {

@@ -664,8 +664,9 @@
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/offerte-ai.css">
         <style>
-          body{margin:0;padding:24px 28px;background:#fff;font-family:'Satoshi',system-ui,sans-serif}
-          @page{margin:14mm 12mm}
+          @page { size: A4 portrait; margin: 10mm 9mm; }
+          body{margin:0;padding:0;background:#fff;font-family:'Satoshi',system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+          .abra-offer-doc--pdf{font-size:8.25pt;line-height:1.38}
           @media print{body{padding:0}.offer-sample-toolbar{display:none}}
         </style></head><body>${body}</body></html>`;
     }
