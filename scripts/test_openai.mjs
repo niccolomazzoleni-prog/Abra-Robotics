@@ -12,7 +12,18 @@ function readKey() {
 }
 
 const key = readKey();
-const model = process.argv[2] || 'gpt-4o-mini';
+const model = process.argv[2] || 'gpt-5.4-mini';
+const useCompletionTokens = /^gpt-5|^o[3-9]/.test(model);
+const payload = {
+  model,
+  messages: [
+    { role: 'system', content: 'Rispondi solo OK in italiano.' },
+    { role: 'user', content: 'Test connessione Abra Robotics.' },
+  ],
+};
+if (useCompletionTokens) payload.max_completion_tokens = 16;
+else payload.max_tokens = 16;
+if (!/^gpt-5\.5/.test(model)) payload.temperature = 0;
 
 const res = await fetch('https://api.openai.com/v1/chat/completions', {
   method: 'POST',
@@ -20,15 +31,7 @@ const res = await fetch('https://api.openai.com/v1/chat/completions', {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${key}`,
   },
-  body: JSON.stringify({
-    model,
-    messages: [
-      { role: 'system', content: 'Rispondi solo OK in italiano.' },
-      { role: 'user', content: 'Test connessione Abra Robotics.' },
-    ],
-    max_tokens: 16,
-    temperature: 0,
-  }),
+  body: JSON.stringify(payload),
 });
 
 const body = await res.text();

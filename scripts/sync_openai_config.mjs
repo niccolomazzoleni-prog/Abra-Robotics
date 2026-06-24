@@ -23,7 +23,7 @@ if (!openaiApiKey.startsWith('sk-')) {
 const cfg = {
   mode: 'openai',
   openaiApiKey,
-  openaiModel: 'gpt-4o-mini',
+  openaiModel: 'gpt-5.4-mini',
   maxTokens: 512,
   temperature: 0.3,
 };
