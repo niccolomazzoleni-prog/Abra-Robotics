@@ -99,6 +99,7 @@
 
       let reply = null;
       const cfg = global.AbraLLM.loadConfig();
+      const deliveryInfo = this.quote._tryDeliveryInfo?.(userText);
 
       if (guard.flags.severe) {
         reply = global.AbraPromptGuard.hardRefusal(guard.flags, quoteBlock);
@@ -106,6 +107,9 @@
         reply = global.AbraPromptGuard.hardRefusal({ leak: true }, quoteBlock);
       } else if (autoQuote?.ranked) {
         reply = this.quote.formatQuote(autoQuote);
+      } else if (deliveryInfo) {
+        reply = deliveryInfo;
+        if (quoteBlock) reply += '\n\n' + quoteBlock;
       } else if (cfg.mode !== 'offline') {
         try {
           this.opts.onStatus('Generazione risposta AI…');

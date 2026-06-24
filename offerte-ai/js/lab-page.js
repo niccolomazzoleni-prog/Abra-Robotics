@@ -5,12 +5,9 @@
   'use strict';
 
   const SUGGESTIONS = [
-    'Prezzo G1-U1',
     'G1 in ordine di costo',
-    'Go2 EDU per università',
-    'Preventivo formale sorveglianza As2 con termocamera e sensori gas',
-    'MiR250 quanto costa?',
-    'Tempi consegna umanoidi',
+    'Prezzo Go2 EDU',
+    'Preventivo sorveglianza As2',
     'Finanziamenti Industria 4.0',
   ];
 
@@ -115,9 +112,7 @@
         : `Modalità **${MODE_LABELS[cfg.mode] || cfg.mode}** attiva.`;
 
       ui.appendBot(
-        'Benvenuto nel **Lab Training**.\n\n' +
-        'Fai una domanda → valuta la risposta sotto.\n' +
-        'Preferisci un umano? Usa **WhatsApp** o **Modulo contatto** in basso.\n\n' +
+        'Ciao, sono l’assistente Abra. Chiedimi **prezzi**, **confronti** o un **preventivo**.\n\n' +
         aiNote,
         {}
       );
