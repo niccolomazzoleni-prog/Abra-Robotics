@@ -585,7 +585,7 @@ def generate_hub_umanoidi() -> None:
     families = [
         ("g1", "Unitree G1", "Bipede ricerca · Air, EDU U1–U8, Comp", "prodotti/assets/images/g1-01-nobg.png", "g1.html", "10 modelli · 23–43 DoF"),
         ("g1d", "Unitree G1-D", "Dual-arm su colonna · Standard + Flagship", G1D_STD_IMG, "g1-d.html", "U1–U10 · data AI · industria"),
-        ("r1", "Unitree R1", "Bipede entry · AIR e EDU U1–U6", "images/manifattura/unitree-r1.png", "r1.html", "Compatto · ROS2 · lab"),
+        ("r1", "Unitree R1", "Bipede entry · AIR e EDU U1–U6", "images/prodotti/r1-u1.png", "r1.html", "Compatto · ROS2 · lab"),
         ("r1d", "Unitree R1-D", "Dual-arm tavolo/mobile · manipolazione bimanuale", "images/manifattura/unitree-r1-d.png", "r1-d.html", "15–31 DoF · deploy rapido"),
         ("h2", "Unitree H2", "Full-size ~180 cm · Air e EDU", "images/universita/unitree-h2-nobg.png", "h2.html", "31 DoF · 360 N·m gamba"),
         ("h2plus", "Unitree H2 Plus", "NVIDIA Isaac GR00T · Sharpa Wave · fine 2026", H2_PLUS_IMG, "prodotti/unitree-h2-plus.html", "75 DoF · Jetson Thor"),
