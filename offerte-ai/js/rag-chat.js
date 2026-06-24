@@ -63,7 +63,7 @@
 
       const cfg = global.AbraLLM.loadConfig();
       if (cfg.mode === 'offline') {
-        parts.push('\n\n_Modalità offline: ricerca KB + calcolo prezzi. Per risposte AI attiva DeepSeek o Ollama dall\'admin._');
+        parts.push('\n\n_Modalità offline: ricerca KB + calcolo prezzi. Per risposte AI attiva OpenAI dall\'admin._');
       }
 
       return parts.join('\n\n');
