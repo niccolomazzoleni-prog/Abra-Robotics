@@ -120,6 +120,7 @@ function samplePage({ title, previewHtml, offerId, totals, badge, badgeClass = '
   <div class="offer-sample-wrap">
     <div class="offer-sample-paper">${previewHtml}</div>
   </div>
+  <script src="../js/offer-auth.js"></script>
 </body>
 </html>`;
 }
