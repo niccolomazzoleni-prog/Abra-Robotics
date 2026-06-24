@@ -12,8 +12,8 @@ DOWNLOADS: dict[str, str] = {
     # R1-D — unitree.com/mobile/R1-D/
     "manifattura/unitree-r1-d.png": "https://www.unitree.com/images/71d58b69974c4f51b36c24ab72be29dc_1508x1100.png",
     "manifattura/unitree-r1-d-hero.png": "https://www.unitree.com/images/629fd2b320cf4952a9bf4333f49d1f01_1920x1080.png",
-    # R1 EDU — unitree.com/R1/
-    "manifattura/unitree-r1.png": "https://www.unitree.com/images/e9607f806eb4483f93b5a5553446c2bc_800x800.png",
+    # R1 EDU — hero famiglia (umanoide bipede; NON e9607… che è Go2W su CDN Unitree)
+    "manifattura/unitree-r1.png": "__local__",
     # H2 — unitree.com/H2/ (umanoide full-body)
     "prodotti/unitree-h2-card.png": "https://www.unitree.com/images/32686742408341c5af3b5dc2f4c85b0e_3840x2160.jpg",
     "prodotti/unitree-h2-hero.png": "https://www.unitree.com/images/32686742408341c5af3b5dc2f4c85b0e_3840x2160.jpg",
