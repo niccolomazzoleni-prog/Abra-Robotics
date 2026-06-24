@@ -43,6 +43,68 @@
       return global.AbraLLM?.classifyRfqIntent?.(userText) || false;
     }
 
+    _normalizeQuery(text) {
+      return String(text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    _expandSearchQuery(text) {
+      const lower = this._normalizeQuery(text);
+      const parts = [text];
+      if (/poc|proof|prova\s+concept|pilota/.test(lower) && /umanoid|g1|h1|r1|tessile|manifattur|industri/.test(lower)) {
+        parts.push('PoC umanoidi industriale integrazione step listino');
+      }
+      if (/assistenz|riparaz|garanzia|manutenz|supporto\s+post/.test(lower)) {
+        parts.push('assistenza riparazione garanzia costi tempi step');
+      }
+      if (/tessile|tessuti|textile/.test(lower)) {
+        parts.push('PoC manifattura ispezione pick-place');
+      }
+      return parts.join(' ');
+    }
+
+    _tryConsultingReply(userText, ragResults) {
+      const lower = this._normalizeQuery(userText);
+      const isPoc = /poc|proof|prova\s+concept|pilota|struttur/.test(lower)
+        && /umanoid|g1|robot|tessile|manifattur|industri/.test(lower);
+      const isSupport = /assistenz|riparaz|garanzia|manutenz|quanto\s+costa.*(assist|ripar)|quanto\s+dura/.test(lower);
+
+      const hit = (re) => (ragResults || []).find(r => re.test(r.title + ' ' + r.text));
+      const pocHit = hit(/poc|umanoidi industri|5 step/i);
+      const supHit = hit(/assistenza|riparazione|garanzia/i);
+
+      if (isPoc && pocHit) {
+        return (
+          '**PoC umanoidi in azienda — percorso Abra (5 step)**\n\n' +
+          '1. **Call scoperta** — task, layout, KPI\n' +
+          '2. **Scelta piattaforma** — es. G1-U1 (lab) o G1-U2 (manipolazione)\n' +
+          '3. **PoC in laboratorio Abra** — integrazione ROS/SDK\n' +
+          '4. **Pilot on-site** (opz.) — test in reparto + formazione\n' +
+          '5. **Report + preventivo fase 2**\n\n' +
+          '**Integrazione PoC (solo servizi, IVA escl.):** base **€ 10.560** · standard **€ 19.360** · avanzata **€ 30.800** ' +
+          '(€ 110/h · 8 h/giorno). Robot e sensori **a listino separato**.\n\n' +
+          'Per **tessile/manifattura**: use case tipici ispezione qualità, pick-place leggero, telepresenza — da definire in call. ' +
+          'Durata indicativa PoC completo: **8–14 settimane**.\n\n' +
+          '_Vuoi un preventivo formale? Descrivi reparto e task prioritario, oppure apri **Crea offerta**._'
+        );
+      }
+
+      if (isSupport && supHit) {
+        return (
+          '**Assistenza e riparazione Abra**\n\n' +
+          '**Step:** contatto → diagnosi remota → preventivo → intervento (lab o on-site) → collaudo.\n\n' +
+          '**Costi indicativi (IVA escl.):**\n' +
+          '• Ingegneria / diagnosi / riparazione: **€ 110/ora**\n' +
+          '• Giornata tecnico on-site: **€ 880** (8 h)\n' +
+          '• Formazione operatore: **€ 890**/giornata\n' +
+          '• Ricambi Unitree: **a preventivo**\n\n' +
+          '**Tempi indicativi:** diagnosi remota 1–3 gg lavorativi · ricambi 2–6 sett se import · riparazione 3–10 gg dopo pezzi.\n\n' +
+          '**Garanzia:** 12 mesi produttore Unitree (salvo condizioni modello). Danni da urto/uso improprio esclusi.\n\n' +
+          '_Per aprire ticket: WhatsApp o info@abrarobotics.com con modello, serial e foto del problema._'
+        );
+      }
+      return null;
+    }
+
     _offlineReply(query, ragResults, autoQuote) {
       const parts = [];
 
@@ -73,8 +135,8 @@
       if (!this.ready) throw new Error('Assistente non inizializzato');
 
       const guard = global.AbraPromptGuard.analyzeInput(userText);
-      const searchQuery = guard.cleanQuery || userText;
-      const ragResults = global.AbraPromptGuard.filterKbResults(this.kb.search(searchQuery, 5));
+      const searchQuery = this._expandSearchQuery(guard.cleanQuery || userText);
+      const ragResults = global.AbraPromptGuard.filterKbResults(this.kb.search(searchQuery, 8));
       const autoQuote = this.quote.tryAutoQuote(searchQuery) || this.quote.tryAutoQuote(userText);
       let quoteBlock = autoQuote?.lines?.length ? this.quote.formatQuote(autoQuote) : '';
 
@@ -100,6 +162,7 @@
       let reply = null;
       const cfg = global.AbraLLM.loadConfig();
       const deliveryInfo = this.quote._tryDeliveryInfo?.(userText);
+      const consultingReply = this._tryConsultingReply(userText, ragResults);
 
       if (guard.flags.severe) {
         reply = global.AbraPromptGuard.hardRefusal(guard.flags, quoteBlock);
@@ -107,6 +170,9 @@
         reply = global.AbraPromptGuard.hardRefusal({ leak: true }, quoteBlock);
       } else if (autoQuote?.ranked) {
         reply = this.quote.formatQuote(autoQuote);
+      } else if (consultingReply) {
+        reply = consultingReply;
+        if (quoteBlock) reply += '\n\n' + quoteBlock;
       } else if (deliveryInfo) {
         reply = deliveryInfo;
         if (quoteBlock) reply += '\n\n' + quoteBlock;

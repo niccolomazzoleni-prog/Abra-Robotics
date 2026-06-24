@@ -25,8 +25,21 @@ function normalize(t) {
   return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-function kbSearch(q, limit = 3) {
-  const qt = normalize(q).split(/\W+/).filter(w => w.length > 2);
+function expandSearchQuery(text) {
+  const lower = normalize(text);
+  const parts = [text];
+  if (/poc|proof|pilota/.test(lower) && /umanoid|g1|tessile|manifattur|industri/.test(lower)) {
+    parts.push('PoC umanoidi industriale integrazione step listino');
+  }
+  if (/assistenz|riparaz|garanzia|manutenz/.test(lower)) {
+    parts.push('assistenza riparazione garanzia costi tempi step');
+  }
+  if (/tessile|tessuti/.test(lower)) parts.push('PoC manifattura ispezione');
+  return parts.join(' ');
+}
+
+function kbSearch(q, limit = 5) {
+  const qt = normalize(expandSearchQuery(q)).split(/\W+/).filter(w => w.length > 2);
   const scored = kb.chunks.map(c => {
     const text = normalize(c.text + ' ' + c.title);
     let s = 0;
@@ -99,6 +112,8 @@ const QUESTIONS = [
   'confronto Go2 EDU standard vs smart, prezzi',
   'quale G1 consigliate per laboratorio universitario di ricerca?',
   'differenza di prezzo tra G1-U1 e G1-U2',
+  'Ho un\'azienda tessile: come strutturiamo un PoC per umanoidi? Step e costi?',
+  'Fate assistenza e riparazione? Quanto costa, quanto dura, quali step?',
 ];
 
 async function askOpenAI(question, quoteBlock, kbHits, key) {
@@ -155,6 +170,14 @@ function grade(question, quote, reply, kbHits) {
     if (/settiman|4-6|4–6|8 sett|giorni/i.test(reply)) ok.push('Indica tempi consegna');
     else issues.push('Tempi consegna non chiari');
   }
+  if (/tessile|poc.*umanoid/.test(normalize(question))) {
+    if (/step|call scoperta|10\.560|19\.360|laboratorio/i.test(reply)) ok.push('Percorso PoC tessile/umanoidi');
+    else issues.push('PoC tessile: mancano step o fasce listino');
+  }
+  if (/assistenz|riparaz/.test(normalize(question))) {
+    if (/110|880|890|garanzia|diagnosi/i.test(reply)) ok.push('Tariffe assistenza/riparazione');
+    else issues.push('Assistenza: mancano costi o step');
+  }
   if (/non posso inventare|mancano|non ho.*prezzi|inviami.*listino|blocco preventivo ufficiale/i.test(reply)) {
     issues.push('Risposta evasiva — chiede dati che abbiamo già');
   }
@@ -192,7 +215,7 @@ for (let i = 0; i < QUESTIONS.length; i++) {
 
   const g = grade(q, quote, reply, kbHits);
   results.push({ n: i + 1, q, mode, reply: reply.slice(0, 500), quote: quoteBlock.slice(0, 300), grade: g });
-  process.stdout.write(`\n--- ${i + 1}/10 ${g.pass ? 'OK' : 'WARN'} ---\n${q}\n`);
+  process.stdout.write(`\n--- ${i + 1}/${QUESTIONS.length} ${g.pass ? 'OK' : 'WARN'} ---\n${q}\n`);
 }
 
 const reportPath = path.join(ROOT, 'scripts', 'chat-scenarios-report.json');
