@@ -39,6 +39,14 @@ DOWNLOADS: dict[str, str] = {
     "prodotti/unitree-b2-hero.png": "https://oss-global-cdn.unitree.com/static/576f0e6518824d7299556a07a9674325_1920x1080.jpg",
     # B2W — unitree.com/b2-w/
     "prodotti/unitree-b2w.png": "https://www.unitree.com/images/21a982b50f674ec3986ba52c73d284f7_1920x1080.png",
+    # G1-D — unitree.com/mobile/G1-D + Meko SRL + RoboStore (dual-arm su colonna, NON G1 bipede)
+    "manifattura/unitree-g1-d-standard.png": "https://static.wixstatic.com/media/0d5672_c3513cf910874a2ab6a1e36ae3405682~mv2.png",
+    "manifattura/unitree-g1-d-flagship.png": "https://static.wixstatic.com/media/0d5672_252fdf1a7f574a178b409709ee3b567b~mv2.png",
+    "manifattura/unitree-g1-d-nobg.png": "https://www.unitree.com/images/06b395ae98ec49c0a6344dfa49e10aab_1450x1834.png",
+    "manifattura/unitree-g1-d-hero.png": "https://robostore.com/cdn/shop/files/unitree-g1-d-ultimate-wheeled-dual-arm-humanoid-robot-1514665.jpg",
+    # H2 Plus — unitree.com/mobile/H2plus/ (NON H2 EDU)
+    "prodotti/unitree-h2-plus-hero.png": "https://www.unitree.com/images/7a417fe9fa774a00922ae10306f20aff_1560x2260.jpg",
+    "prodotti/unitree-h2-plus-card.png": "https://www.unitree.com/images/14dcccb4690d4344bd6754f13f78d342_1386x1284.png",
     # Accessori / compute — pagine prodotto Unitree
     "accessori/dex3-1-official.jpg": "https://www.unitree.com/images/62b5ebbd23cc428489bf358a2d463b9e_1920x1080.jpg",
     "accessori/compute-orin-nx.png": "https://oss-global-cdn.unitree.com/static/de6f3d3261a240cd9c2d88e67ea29291_400x400.png",

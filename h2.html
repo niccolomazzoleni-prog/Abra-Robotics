@@ -45,6 +45,8 @@
     .coll-filters button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--gray-200); background: var(--white); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
     .coll-filters button.active { background: var(--black); color: var(--white); border-color: var(--black); }
     @media (max-width: 900px) { .robot-grid { grid-template-columns: 1fr; } .collection-hero { padding-left: 20px; padding-right: 20px; } }
+    @media (max-width: 1100px) { .robot-grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .robot-grid.cols-3 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -151,7 +153,7 @@
 </div></div></article>
 <article class="robot-card" data-family="h2plus" data-tier="plus">
 <div class="robot-media"><span class="robot-media-tag">Plus · 2026</span>
-<img alt="Unitree H2 Plus" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/unitree-h2-hero.png"/>
+<img alt="Unitree H2 Plus" loading="lazy" onerror="this.parentElement.classList.add('no-img');" src="images/prodotti/unitree-h2-plus-hero.png"/>
 </div>
 <div class="robot-body">
 <div><h3>Unitree H2 Plus</h3><p class="robot-subtitle">NVIDIA Isaac GR00T reference</p></div>

@@ -27,7 +27,14 @@ END_USER = ROOT / "listini" / "pubblico" / "end-user.json"
 MANIFEST_PATH = ROOT / "listini" / "pubblico" / "catalogo-manifest.json"
 PRODOTTI = ROOT / "prodotti"
 NOTE = "IVA esclusa, spedizione e dazio inclusi"
-G1D_IMG = "images/manifattura/unitree-g1-d-nobg.png"
+# G1-D: dual-arm su colonna/ruote — asset da Unitree + Meko (NON immagini G1 bipede)
+G1D_STD_IMG = "images/manifattura/unitree-g1-d-standard.png"
+G1D_FLAG_IMG = "images/manifattura/unitree-g1-d-flagship.png"
+H2_PLUS_IMG = "images/prodotti/unitree-h2-plus-hero.png"
+
+
+def g1d_image(sku: str) -> str:
+    return G1D_FLAG_IMG if sku in {"G1D-U6", "G1D-U7", "G1D-U8", "G1D-U9", "G1D-U10"} else G1D_STD_IMG
 
 # Prezzi Reichelt (EUR, fonte reichelt.com, giu 2026) + markup Abra 9–13% per SKU
 G1D_REICHELT_MARKUP: dict[str, tuple[float, float]] = {
@@ -65,7 +72,7 @@ def g1d_abra_price(sku: str) -> float:
 def build_g1d_catalog() -> list[tuple]:
     out = []
     for sku, tier, base, hands, dof in G1D_META:
-        out.append((sku, tier, base, hands, dof, g1d_abra_price(sku), G1D_IMG))
+        out.append((sku, tier, base, hands, dof, g1d_abra_price(sku), g1d_image(sku)))
     return out
 
 
@@ -134,7 +141,7 @@ def ensure_g1d_manifest() -> None:
     }
     from catalogo_contenuti import IMAGE  # noqa: WPS433
 
-    IMAGE["H2-PLUS"] = "images/prodotti/unitree-h2-hero.png"
+    IMAGE["H2-PLUS"] = H2_PLUS_IMG
 
 
 def patch_end_user() -> None:
@@ -155,7 +162,7 @@ def patch_end_user() -> None:
         "nome": "H2 Plus (NVIDIA Isaac GR00T Reference)",
         "prezzo_eur": 0,
         "note": "Preordine · disponibilità fine 2026 · prezzo su preventivo",
-        "immagine": "images/prodotti/unitree-h2-hero.png",
+        "immagine": H2_PLUS_IMG,
         "slug": "unitree-h2-plus.html",
         "categoria": "UMANOIDI",
         "prezzo_su_richiesta": True,
@@ -545,11 +552,11 @@ def generate_hub_umanoidi() -> None:
     eu = json.loads(END_USER.read_text(encoding="utf-8"))
     families = [
         ("g1", "Unitree G1", "Bipede ricerca · Air, EDU U1–U8, Comp", "prodotti/assets/images/g1-01-nobg.png", "g1.html", "10 modelli · 23–43 DoF"),
-        ("g1d", "Unitree G1-D", "Dual-arm su colonna · Standard + Flagship", "images/manifattura/unitree-g1-d-nobg.png", "g1-d.html", "U1–U10 · data AI · industria"),
+        ("g1d", "Unitree G1-D", "Dual-arm su colonna · Standard + Flagship", G1D_STD_IMG, "g1-d.html", "U1–U10 · data AI · industria"),
         ("r1", "Unitree R1", "Bipede entry · AIR e EDU U1–U6", "images/manifattura/unitree-r1.png", "r1.html", "Compatto · ROS2 · lab"),
         ("r1d", "Unitree R1-D", "Dual-arm tavolo/mobile · manipolazione bimanuale", "images/manifattura/unitree-r1-d.png", "r1-d.html", "15–31 DoF · deploy rapido"),
         ("h2", "Unitree H2", "Full-size ~180 cm · Air e EDU", "images/universita/unitree-h2-nobg.png", "h2.html", "31 DoF · 360 N·m gamba"),
-        ("h2plus", "Unitree H2 Plus", "NVIDIA Isaac GR00T · Sharpa Wave · fine 2026", "images/prodotti/unitree-h2-hero.png", "prodotti/unitree-h2-plus.html", "75 DoF · Jetson Thor"),
+        ("h2plus", "Unitree H2 Plus", "NVIDIA Isaac GR00T · Sharpa Wave · fine 2026", H2_PLUS_IMG, "prodotti/unitree-h2-plus.html", "75 DoF · Jetson Thor"),
     ]
     fam_cards = ""
     for fid, name, sub, img, href, chips in families:
@@ -676,7 +683,7 @@ def generate_r1_h2_pages() -> None:
         card_html("EDU", "Unitree H2 EDU", "Ricerca avanzata · mani opz.", "images/prodotti/h2-edu.png",
                   [("DoF", "31"), ("Compute", "Jetson espandibile"), ("Payload braccio", "120 N·m"), ("Mani", "Dex3/Dex5/Inspire")],
                   fmt_price_card(eu["H2-EDU"]), "prodotti/unitree-h2.html", "h2", "edu"),
-        card_html("Plus · 2026", "Unitree H2 Plus", "NVIDIA Isaac GR00T reference", "images/prodotti/unitree-h2-hero.png",
+        card_html("Plus · 2026", "Unitree H2 Plus", "NVIDIA Isaac GR00T reference", H2_PLUS_IMG,
                   [("DoF", "75"), ("Compute", "Jetson Thor T5000"), ("Mani", "Sharpa Wave ×2"), ("Disponibilità", "Fine 2026")],
                   "Preordine", "prodotti/unitree-h2-plus.html", "h2plus", "plus"),
     ]
