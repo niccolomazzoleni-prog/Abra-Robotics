@@ -42,6 +42,8 @@ SKIP_OVERWRITE = {
 def product_family(sku: str, nome: str) -> str:
     s = sku.upper()
     n = nome.upper()
+    if s.startswith("G1D") or "G1-D" in n or "G1D" in n:
+        return "G1-D"
     if s.startswith("G1") or " G1" in n:
         return "G1"
     if s == "R1-D" or "R1-D" in n or "DUAL-ARM" in n:
