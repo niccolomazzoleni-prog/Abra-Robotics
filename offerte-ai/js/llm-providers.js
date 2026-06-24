@@ -16,7 +16,7 @@
     googleModel: 'gemma-3-4b-it',
     googleApiKey: '',
     openaiApiKey: '',
-    openaiModel: 'gpt-4o-mini',
+    openaiModel: 'gpt-5.4-mini',
     deepseekApiKey: '',
     deepseekModel: 'deepseek-chat',
     maxTokens: 512,
@@ -133,6 +133,19 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
     return stripThinking(data.message?.content || '');
   }
 
+  /** GPT-5+ e o-series usano max_completion_tokens; gpt-5.5 accetta solo temperature default */
+  function buildOpenAIChatBody(model, messages, cfg) {
+    const body = {
+      model: model || 'gpt-5.4-mini',
+      messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
+    };
+    const useCompletionTokens = /^gpt-5|^o[3-9]/.test(body.model);
+    if (useCompletionTokens) body.max_completion_tokens = cfg.maxTokens;
+    else body.max_tokens = cfg.maxTokens;
+    if (!/^gpt-5\.5/.test(body.model)) body.temperature = cfg.temperature;
+    return body;
+  }
+
   async function chatOpenAI(messages, cfg) {
     if (!cfg.openaiApiKey) throw new Error('API key OpenAI non configurata (admin)');
     const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -141,12 +154,7 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
         'Content-Type': 'application/json',
         Authorization: `Bearer ${cfg.openaiApiKey}`,
       },
-      body: JSON.stringify({
-        model: cfg.openaiModel || 'gpt-4o-mini',
-        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
-        temperature: cfg.temperature,
-        max_tokens: cfg.maxTokens,
-      }),
+      body: JSON.stringify(buildOpenAIChatBody(cfg.openaiModel, messages, cfg)),
     });
     if (!res.ok) {
       const err = await res.text();

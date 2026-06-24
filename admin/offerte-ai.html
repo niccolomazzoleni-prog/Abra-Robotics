@@ -65,7 +65,7 @@
       <label for="cfg-mode">Modalità</label>
       <select id="cfg-mode">
         <option value="offline">Offline — solo RAG + prezzi (zero costi)</option>
-        <option value="openai">OpenAI API — GPT-4o mini (consigliato, veloce)</option>
+        <option value="openai">OpenAI API — GPT-5.4 mini (consigliato, veloce)</option>
         <option value="ollama">Ollama locale — Gemma 4 (gratis, privato)</option>
         <option value="google">Google AI Studio — Gemma (free tier)</option>
         <option value="deepseek">DeepSeek API — V4-Flash (a consumo)</option>
@@ -77,9 +77,10 @@
         <input id="cfg-openai-key" type="password" placeholder="sk-proj-…">
         <label for="cfg-openai-model">Modello</label>
         <select id="cfg-openai-model">
-          <option value="gpt-4o-mini">gpt-4o-mini — veloce ed economico (consigliato)</option>
-          <option value="gpt-4o">gpt-4o — più capace</option>
-          <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+          <option value="gpt-5.4-mini">gpt-5.4-mini — veloce, attuale (consigliato giugno 2026)</option>
+          <option value="gpt-4.1-mini">gpt-4.1-mini — economico, stabile</option>
+          <option value="gpt-5.5">gpt-5.5 — massima qualità (più lento/costoso)</option>
+          <option value="gpt-4o-mini">gpt-4o-mini — legacy (deprecato)</option>
         </select>
         <p class="hint">Usa la knowledge base Abra (RAG) + i tuoi feedback export — non serve fine-tuning separato.<br>
         Crea la key su <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com</a></p>
@@ -232,7 +233,7 @@
       document.getElementById('cfg-google-key').value = c.googleApiKey || '';
       document.getElementById('cfg-google-model').value = c.googleModel || '';
       document.getElementById('cfg-openai-key').value = c.openaiApiKey || '';
-      document.getElementById('cfg-openai-model').value = c.openaiModel || 'gpt-4o-mini';
+      document.getElementById('cfg-openai-model').value = c.openaiModel || 'gpt-5.4-mini';
       document.getElementById('cfg-deepseek-key').value = c.deepseekApiKey || '';
       document.getElementById('cfg-deepseek-model').value = c.deepseekModel || 'deepseek-chat';
       document.getElementById('cfg-proxy-url').value = c.proxyUrl || '';
