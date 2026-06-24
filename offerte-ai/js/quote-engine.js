@@ -165,6 +165,7 @@
       const ranked = this._tryFamilyRank(userText);
       if (ranked?.lines?.length) return ranked;
 
+      const lower = this._normalizeText(userText);
       const skus = this.findSkusInText(userText);
       if (skus.length >= 2 && /differenz|confront|tra\s+g1/.test(lower)) {
         return this.calculateLineItems(skus.slice(0, 4));
@@ -172,7 +173,6 @@
       if (skus.length) {
         return this.calculateLineItems(skus);
       }
-      const lower = this._normalizeText(userText);
 
       const aliasHit = this._matchAlias(lower);
       if (aliasHit) {
