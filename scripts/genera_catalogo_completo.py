@@ -104,6 +104,7 @@ FILENAME_MAP: dict[str, str] = {
 
 COLLECTION = {
     "UMANOIDI": ("umanoidi.html", "Umanoidi"),
+    "QUADRUPEDI": ("quadrupedi.html", "Quadrupedi"),
     "MANI_BRACCI": ("accessori.html", "Accessori"),
     "COMPONENTISTICA": ("accessori.html", "Accessori"),
 }

@@ -12,7 +12,7 @@ siamo a disposizione per la Sua richiesta: abbiamo già realizzato PoC e deploym
 
 Per questo tipo di applicazione consigliamo di valutare Unitree As2 Pro o As2 EDU (maggiore payload, IP54, dual camera) oppure A2 Standard / A2 Pro se servono payload più elevati e protezione IP56/IP67 in ambienti industriali severi. Go2 EDU resta valido per prime fasi di POC universitarie o test software, ma con payload e protezione più limitati.
 
-Integrazione software e PoC Abra: fascia da € 15.000 (base) a € 50.000 (avanzata) in base a complessità — vedi listino integrazione in knowledge base.
+Integrazione software e PoC Abra (IVA escl., solo servizi): **€ 10.560** (base, 12 gg) · **€ 19.360** (standard, 22 gg) · **€ 30.800** (avanzata, 35 gg) — vedi `listino-integrazione-poc.md`.
 
 Il setup sensori (termocamera radiometrica, gas, fumo, temperatura) va definito insieme in base al caso d'uso: possiamo proporre un payload di riferimento da integrare sulla piattaforma oppure quotare i sensori richiesti a parte.
 

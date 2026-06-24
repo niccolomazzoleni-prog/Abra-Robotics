@@ -1,10 +1,10 @@
 /**
- * Lab Training v20260625fix2 — Quiz esperto = domanda cliente casuale → tu rispondi → knowledge.
+ * Lab Training v20260625gamma4 — Quiz esperto → knowledge strutturata.
  */
 (function () {
   'use strict';
 
-  window.ABRA_LAB_VERSION = '20260625gamma3';
+  window.ABRA_LAB_VERSION = '20260625gamma4';
 
   const SUGGESTIONS = [
     'G1 in ordine di costo',
@@ -328,7 +328,9 @@
       model_mode: 'expert-quiz',
       rating: 1,
       action: 'expert_quiz',
-      scenario_meta: scenario.meta || {},
+      industry: scenario.industry || '',
+      family: scenario.family || '',
+      scenario_meta: { ...(scenario.meta || {}), family: scenario.family, industry: scenario.industry },
     };
     AbraFeedbackStore.save(entry);
     AbraFeedbackStore.queueForKb(entry);
@@ -339,6 +341,7 @@
     return {
       reply:
         '✅ **Risposta salvata in knowledge** (in coda: **' + AbraFeedbackStore.pendingKb().length + '**)\n\n' +
+        'Famiglia: _' + (scenario.family || '—') + '_ · Esporta con **Scarica KB quiz** o **Pacchetto training**.\n\n' +
         'Tra un attimo appare la **prossima domanda casuale**…',
       skipFeedback: true,
       labSystem: true,
@@ -371,7 +374,17 @@
       if (!pack.feedback) return AbraUI?.toast?.('Nessun feedback', 'warn');
       AbraFeedbackStore.download('feedback-export.jsonl', pack.feedback, 'application/x-ndjson');
       if (pack.kbMd) AbraFeedbackStore.download('feedback-knowledge.md', pack.kbMd, 'text/markdown');
-      AbraUI?.toast?.('Scaricato', 'ok');
+      if (pack.kbJsonl) AbraFeedbackStore.download('feedback-kb-quiz.jsonl', pack.kbJsonl, 'application/x-ndjson');
+      AbraUI?.toast?.('Scaricato pacchetto training', 'ok');
+    });
+
+    document.getElementById('sb-export-kb-quiz')?.addEventListener('click', () => {
+      const pack = AbraFeedbackStore.exportTrainingPack();
+      const jsonl = pack.kbJsonl || pack.feedback;
+      if (!jsonl) return AbraUI?.toast?.('Nessuna risposta in coda KB', 'warn');
+      AbraFeedbackStore.download('feedback-kb-quiz.jsonl', jsonl, 'application/x-ndjson');
+      if (pack.kbMd) AbraFeedbackStore.download('feedback-knowledge.md', pack.kbMd, 'text/markdown');
+      AbraUI?.toast?.('KB quiz scaricata — merge sul PC', 'ok');
     });
 
     document.getElementById('sb-copy-feedback')?.addEventListener('click', async () => {
