@@ -2461,8 +2461,15 @@ body.app-lab .sidebar-cta:hover { opacity: 0.92; }
   border-color: rgba(212, 175, 55, 0.5);
 }
 
+.chat-row-scenario .chat-bubble.bot {
+  border-left: 3px solid #d4af37;
+  background: rgba(212, 175, 55, 0.08);
+}
+.chat-row-lab-system .chat-bubble.bot {
+  opacity: 0.95;
+}
+
 @media (max-width: 960px) {
-  .lab-mobile-bar { display: grid; }
   body.app-lab .chat-app-compose-wrap {
     padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
   }
