@@ -65,11 +65,25 @@
       <label for="cfg-mode">Modalità</label>
       <select id="cfg-mode">
         <option value="offline">Offline — solo RAG + prezzi (zero costi)</option>
+        <option value="openai">OpenAI API — GPT-4o mini (consigliato, veloce)</option>
         <option value="ollama">Ollama locale — Gemma 4 (gratis, privato)</option>
         <option value="google">Google AI Studio — Gemma (free tier)</option>
-        <option value="deepseek">DeepSeek API — V4-Flash (a consumo, economico)</option>
+        <option value="deepseek">DeepSeek API — V4-Flash (a consumo)</option>
         <option value="proxy">Proxy sicuro — Ollama dietro server</option>
       </select>
+
+      <div id="block-openai">
+        <label for="cfg-openai-key">API Key OpenAI</label>
+        <input id="cfg-openai-key" type="password" placeholder="sk-proj-…">
+        <label for="cfg-openai-model">Modello</label>
+        <select id="cfg-openai-model">
+          <option value="gpt-4o-mini">gpt-4o-mini — veloce ed economico (consigliato)</option>
+          <option value="gpt-4o">gpt-4o — più capace</option>
+          <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+        </select>
+        <p class="hint">Usa la knowledge base Abra (RAG) + i tuoi feedback export — non serve fine-tuning separato.<br>
+        Crea la key su <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com</a></p>
+      </div>
 
       <div id="block-ollama">
         <label for="cfg-ollama-url">URL Ollama</label>
@@ -196,6 +210,7 @@
     const blocks = {
       ollama: document.getElementById('block-ollama'),
       google: document.getElementById('block-google'),
+      openai: document.getElementById('block-openai'),
       deepseek: document.getElementById('block-deepseek'),
       proxy: document.getElementById('block-proxy'),
     };
@@ -204,6 +219,7 @@
       const m = modeEl.value;
       blocks.ollama.style.display = (m === 'ollama' || m === 'proxy') ? 'block' : 'none';
       blocks.google.style.display = m === 'google' ? 'block' : 'none';
+      blocks.openai.style.display = m === 'openai' ? 'block' : 'none';
       blocks.deepseek.style.display = m === 'deepseek' ? 'block' : 'none';
       blocks.proxy.style.display = m === 'proxy' ? 'block' : 'none';
     }
@@ -215,6 +231,8 @@
       document.getElementById('cfg-ollama-model').value = c.ollamaModel || '';
       document.getElementById('cfg-google-key').value = c.googleApiKey || '';
       document.getElementById('cfg-google-model').value = c.googleModel || '';
+      document.getElementById('cfg-openai-key').value = c.openaiApiKey || '';
+      document.getElementById('cfg-openai-model').value = c.openaiModel || 'gpt-4o-mini';
       document.getElementById('cfg-deepseek-key').value = c.deepseekApiKey || '';
       document.getElementById('cfg-deepseek-model').value = c.deepseekModel || 'deepseek-chat';
       document.getElementById('cfg-proxy-url').value = c.proxyUrl || '';
@@ -225,15 +243,19 @@
     modeEl.addEventListener('change', showBlocks);
 
     function collectConfig() {
+      const openaiKey = document.getElementById('cfg-openai-key').value.trim();
       const deepseekKey = document.getElementById('cfg-deepseek-key').value.trim();
       let mode = modeEl.value;
-      if (deepseekKey && mode === 'offline') mode = 'deepseek';
+      if (openaiKey && mode === 'offline') mode = 'openai';
+      else if (deepseekKey && mode === 'offline') mode = 'deepseek';
       return {
         mode,
         ollamaUrl: document.getElementById('cfg-ollama-url').value.trim(),
         ollamaModel: document.getElementById('cfg-ollama-model').value.trim(),
         googleApiKey: document.getElementById('cfg-google-key').value.trim(),
         googleModel: document.getElementById('cfg-google-model').value.trim(),
+        openaiApiKey: openaiKey,
+        openaiModel: document.getElementById('cfg-openai-model').value,
         deepseekApiKey: deepseekKey,
         deepseekModel: document.getElementById('cfg-deepseek-model').value,
         proxyUrl: document.getElementById('cfg-proxy-url').value.trim(),
@@ -243,9 +265,9 @@
 
     document.getElementById('btn-save').addEventListener('click', () => {
       const cfg = collectConfig();
-      if (cfg.deepseekApiKey) modeEl.value = cfg.mode;
+      if (cfg.openaiApiKey || cfg.deepseekApiKey) modeEl.value = cfg.mode;
       AbraLLM.saveConfig(cfg);
-      alert('Configurazione salvata in localStorage (questo browser). Se hai inserito la key DeepSeek, la modalità è impostata su DeepSeek API.');
+      alert('Configurazione salvata in localStorage (questo browser). Modalità: ' + cfg.mode);
     });
 
     document.getElementById('btn-test').addEventListener('click', async () => {
@@ -253,7 +275,7 @@
       el.textContent = 'Test in corso…';
       el.className = 'test-result';
       const cfg = collectConfig();
-      if (cfg.deepseekApiKey) modeEl.value = cfg.mode;
+      if (cfg.openaiApiKey || cfg.deepseekApiKey) modeEl.value = cfg.mode;
       AbraLLM.saveConfig(cfg);
       const r = await AbraLLM.testConnection({});
       el.className = 'test-result ' + (r.ok ? 'test-ok' : 'test-err');

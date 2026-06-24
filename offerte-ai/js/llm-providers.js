@@ -15,6 +15,8 @@
     proxyKey: '',
     googleModel: 'gemma-3-4b-it',
     googleApiKey: '',
+    openaiApiKey: '',
+    openaiModel: 'gpt-4o-mini',
     deepseekApiKey: '',
     deepseekModel: 'deepseek-chat',
     maxTokens: 512,
@@ -99,6 +101,7 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
     let reply;
     if (cfg.mode === 'ollama') reply = await chatOllama(messages, cfg);
     else if (cfg.mode === 'google') reply = await chatGoogle(messages, cfg);
+    else if (cfg.mode === 'openai') reply = await chatOpenAI(messages, cfg);
     else if (cfg.mode === 'deepseek') reply = await chatDeepSeekApi(messages, cfg);
     else if (cfg.mode === 'proxy') reply = await chatProxy(messages, cfg);
     else return null;
@@ -128,6 +131,29 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
     if (!res.ok) throw new Error(`Ollama: ${res.status}`);
     const data = await res.json();
     return stripThinking(data.message?.content || '');
+  }
+
+  async function chatOpenAI(messages, cfg) {
+    if (!cfg.openaiApiKey) throw new Error('API key OpenAI non configurata (admin)');
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${cfg.openaiApiKey}`,
+      },
+      body: JSON.stringify({
+        model: cfg.openaiModel || 'gpt-4o-mini',
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
+        temperature: cfg.temperature,
+        max_tokens: cfg.maxTokens,
+      }),
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`OpenAI API: ${res.status} — ${err.slice(0, 160)}`);
+    }
+    const data = await res.json();
+    return stripThinking(data.choices?.[0]?.message?.content || '');
   }
 
   async function chatDeepSeekApi(messages, cfg) {
@@ -198,6 +224,7 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
     const miniCfg = { ...cfg, maxTokens: maxTokens || 80, temperature: 0.1 };
     if (miniCfg.mode === 'ollama') return chatOllama(messages, miniCfg);
     if (miniCfg.mode === 'google') return chatGoogle(messages, miniCfg);
+    if (miniCfg.mode === 'openai') return chatOpenAI(messages, miniCfg);
     if (miniCfg.mode === 'deepseek') return chatDeepSeekApi(messages, miniCfg);
     if (miniCfg.mode === 'proxy') return chatProxy(messages, miniCfg);
     return null;

@@ -17,6 +17,7 @@
     offline: 'Offline (RAG gratis)',
     ollama: 'Ollama · Gemma locale',
     google: 'Google AI free tier',
+    openai: 'OpenAI API',
     deepseek: 'DeepSeek API',
     proxy: 'Proxy sicuro',
   };
