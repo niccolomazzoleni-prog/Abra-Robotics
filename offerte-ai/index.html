@@ -65,10 +65,11 @@
         <h3>Esporta training</h3>
         <p class="sidebar-explainer">Scarica o copia il feedback per aggiornare la knowledge sul PC.</p>
         <button type="button" class="sidebar-cta" id="sb-export-all">Scarica pacchetto training</button>
+        <button type="button" class="sidebar-btn" id="sb-export-kb-quiz">Scarica KB quiz</button>
         <button type="button" class="sidebar-btn subtle" id="sb-copy-feedback">Copia feedback (mobile)</button>
         <details class="sidebar-details">
           <summary>Cosa succede dopo il download?</summary>
-          <code class="sidebar-code">python scripts/merge_feedback_to_kb.py percorso/feedback-export.jsonl<br>python scripts/build_knowledge_index.py</code>
+          <code class="sidebar-code">python scripts/merge_feedback_to_kb.py feedback-kb-quiz.jsonl<br>python scripts/build_knowledge_index.py</code>
         </details>
       </section>
 
@@ -94,7 +95,7 @@
   <script src="js/offer-draft.js?v=20260625fix2"></script>
   <script src="js/llm-providers.js?v=20260625fix2"></script>
   <script src="js/rag-chat.js?v=20260625fix2"></script>
-  <script src="js/chat-ui.js?v=20260625fix2"></script>
-  <script src="js/lab-page.js?v=20260625gamma3"></script>
+  <script src="js/chat-ui.js?v=20260625gamma4"></script>
+  <script src="js/lab-page.js?v=20260625gamma4"></script>
 </body>
 </html>

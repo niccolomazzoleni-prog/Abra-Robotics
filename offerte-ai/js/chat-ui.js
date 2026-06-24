@@ -69,20 +69,55 @@
     },
     queueForKb(entry) {
       const q = JSON.parse(localStorage.getItem(PENDING_KB_KEY) || '[]');
+      const meta = entry.scenario_meta || {};
       q.push({
         title: entry.question.slice(0, 120),
+        question: entry.question,
         body: entry.correction || entry.answer,
         feedback_id: entry.id,
+        action: entry.action || 'feedback',
+        family: meta.family || entry.family || '',
+        industry: entry.industry || meta.industry || '',
+        scenario_id: meta.scenarioId || (meta.seed ? 'seed' : ''),
         created_at: new Date().toISOString(),
       });
       localStorage.setItem(PENDING_KB_KEY, JSON.stringify(q));
     },
     pendingKb() { return JSON.parse(localStorage.getItem(PENDING_KB_KEY) || '[]'); },
+    clearPendingKb() {
+      localStorage.setItem(PENDING_KB_KEY, '[]');
+    },
+    exportPendingKbJsonl() {
+      const items = this.pendingKb();
+      if (!items.length) return '';
+      return items.map(it => JSON.stringify({
+        id: it.feedback_id || uid(),
+        timestamp: it.created_at || new Date().toISOString(),
+        question: it.question || it.title,
+        correction: it.body,
+        action: it.action || 'expert_quiz',
+        model_mode: 'expert-quiz',
+        rating: 1,
+        scenario_meta: {
+          family: it.family,
+          industry: it.industry,
+          scenarioId: it.scenario_id,
+        },
+        industry: it.industry,
+      })).join('\n');
+    },
     exportPendingKbMarkdown() {
       const items = this.pendingKb();
       if (!items.length) return '';
-      let md = '# Feedback — knowledge\n\n';
-      for (const it of items) md += `## ${it.title}\n\n${it.body}\n\n`;
+      let md = '# Feedback — knowledge (export Lab)\n\n';
+      md += '_Import: `python scripts/merge_feedback_to_kb.py feedback-export.jsonl`_\n\n';
+      for (const it of items) {
+        const fam = it.family ? `[${it.family}] ` : '';
+        md += `## ${fam}${it.title}\n\n`;
+        if (it.industry) md += `**Contesto settore:** ${it.industry}\n\n`;
+        md += `**Domanda cliente:** ${it.question || it.title}\n\n`;
+        md += `**Risposta consulente Abra:**\n\n${it.body}\n\n`;
+      }
       return md;
     },
     exportTrainingPack() {
@@ -90,6 +125,7 @@
         feedback: this.exportJsonl(),
         finetune: this.exportFinetuneJsonl(),
         kbMd: this.exportPendingKbMarkdown(),
+        kbJsonl: this.exportPendingKbJsonl(),
       };
     },
   };

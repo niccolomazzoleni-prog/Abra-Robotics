@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from html import unescape
 from pathlib import Path
 
@@ -19,6 +20,22 @@ REGOLE = ROOT / "offerte-ai" / "data" / "offerte-regole.json"
 VOCI_EXTRA = ROOT / "offerte-ai" / "data" / "voci-extra.json"
 INDEX_HTML = ROOT / "index.html"
 SAMPLE = ROOT / "offerte-ai" / "data" / "sample-prices.json"
+
+QUADRUPED_SKUS = frozenset({
+    "GO2-AIR", "GO2-PRO", "GO2-EDU-STD", "GO2-EDU-SMART", "GO2-EDU-ULT", "GO2-EDU-LASER",
+    "GO2W-U2", "GO2W-U3", "GO2W-U4", "GO2W-U5",
+    "AS2-AIR", "AS2-PRO", "AS2-EDU",
+    "A2-STD", "A2-PRO", "A2W-STD", "A2W-PRO",
+    "B2", "B2W", "B2-LIDAR", "B2W-LIDAR",
+})
+
+
+def resolve_categoria(sku: str, item: dict, manifest: dict | None = None) -> str:
+    if sku in QUADRUPED_SKUS:
+        return "QUADRUPEDI"
+    manifest = manifest or {}
+    m = manifest.get(sku, {})
+    return item.get("categoria") or m.get("categoria") or "N/D"
 
 
 def tokenize(text: str) -> list[str]:
@@ -73,13 +90,15 @@ def chunk_listino(data: dict, manifest: dict | None = None) -> list[dict]:
     manifest = manifest or {}
     for sku, item in data.items():
         m = manifest.get(sku, {})
+        cat = resolve_categoria(sku, item, manifest)
         specs_txt = ""
         if m.get("specs"):
             specs_txt = " Specifiche: " + "; ".join(f"{a}: {b}" for a, b in m["specs"][:8])
         desc = m.get("descrizione") or m.get("sottotitolo") or ""
+        famiglia = "Quadrupede" if cat == "QUADRUPEDI" else ("Umanoide" if cat == "UMANOIDI" else cat)
         text = (
             f"SKU {sku}: {item.get('nome', sku)}. "
-            f"Categoria {item.get('categoria', m.get('categoria', 'N/D'))}. "
+            f"Famiglia {famiglia}. Categoria catalogo {cat}. "
             f"Prezzo End-User {item.get('prezzo_eur')} EUR. "
             f"{desc}{specs_txt} "
             f"{item.get('note', '')}"
@@ -90,7 +109,8 @@ def chunk_listino(data: dict, manifest: dict | None = None) -> list[dict]:
             {
                 "sku": sku,
                 "prezzo_eur": item.get("prezzo_eur"),
-                "categoria": item.get("categoria") or m.get("categoria"),
+                "categoria": cat,
+                "famiglia": famiglia.lower(),
                 "slug": item.get("slug") or m.get("slug"),
             },
         ))
@@ -170,6 +190,11 @@ def main() -> None:
     chunks: list[dict] = []
     listino_data: dict = {}
     manifest_data: dict = {}
+
+    fix_script = ROOT / "scripts" / "fix_product_categories.py"
+    if fix_script.exists():
+        import subprocess
+        subprocess.run([sys.executable, str(fix_script)], check=False, cwd=str(ROOT))
 
     if LISTINO.exists():
         listino_data = json.loads(LISTINO.read_text(encoding="utf-8"))

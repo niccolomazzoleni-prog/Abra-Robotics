@@ -8,8 +8,8 @@
 |----------|------------------------|------------|
 | Go2 EDU | GO2-EDU-STD, GO2-EDU-SMART | Lab, ROS2, POC software, budget contenuto |
 | As2 | AS2-AIR, AS2-PRO, AS2-EDU | Sorveglianza compatta IP54, payload sensori |
-| A2 | A2-STD, A2-PRO | Industriale IP56/IP67, payload 25 kg |
-| B2 | B2-STD, B2-WHEELED | Outdoor severo, carico pesante |
+| A2 | A2-STD, A2-PRO, A2W-STD, A2W-PRO | Industriale IP56/IP67, payload 25 kg |
+| B2 | B2, B2W, B2-LIDAR, B2W-LIDAR | Outdoor severo, carico pesante |
 
 ## Umanoidi — hub Abra (umanoidi.html)
 | Famiglia | Modelli Abra (listino) | Tipo |
@@ -27,7 +27,7 @@
 | Prodotto | In listino Abra | Note |
 |----------|-----------------|------|
 | **G1-D** | G1D-U1 … G1D-U10 | Data collection AI, pick-place industriale, base fissa o mobile |
-| **R1-D** | SKU R1-D (prezzo da confermare) | Dual-arm compatto; base fissa o mobile con LiDAR |
+| **R1-D** | SKU R1-D (listino **da € 12.000**, `prezzo_da: true`) | Dual-arm compatto; base fissa o mobile con LiDAR |
 
 Per **pick-place scatole A→B** con **certificazione cella**: orientare verso **R1-D o G1-D montati**, non quadrupede.
 

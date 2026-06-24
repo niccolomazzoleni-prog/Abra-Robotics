@@ -27,20 +27,49 @@ END_USER = ROOT / "listini" / "pubblico" / "end-user.json"
 MANIFEST_PATH = ROOT / "listini" / "pubblico" / "catalogo-manifest.json"
 PRODOTTI = ROOT / "prodotti"
 NOTE = "IVA esclusa, spedizione e dazio inclusi"
+G1D_IMG = "images/manifattura/unitree-g1-d-nobg.png"
 
-# Prezzi indicativi EU (riferimento reichelt/quadruped, IVA esclusa Abra) — prezzo_da fino a stock IT
-G1D_CATALOG = [
-    ("G1D-U1", "Standard A", "Fissa", "Dex1-1 gripper 2 dita", "19", 36840.0, "prodotti/assets/variants/g1-u2/img-01.png"),
-    ("G1D-U2", "Standard B", "Fissa", "Dex3-1 no tattile", "31", 51462.0, "prodotti/assets/variants/g1-u3/img-01.png"),
-    ("G1D-U3", "Standard C", "Fissa", "Dex3-1 con tattile", "31", 54462.0, "prodotti/assets/variants/g1-u4/img-01.png"),
-    ("G1D-U4", "Standard D", "Fissa", "BrainCo Revo2 Basic 5 dita", "29", 47762.0, "prodotti/assets/variants/g1-u7/img-01.png"),
-    ("G1D-U5", "Standard E", "Fissa", "BrainCo Revo2 Touch tattile", "29", 53462.0, "prodotti/assets/variants/g1-u8/img-01.png"),
-    ("G1D-U6", "Flagship A", "Mobile ruote", "Dex1-1 gripper 2 dita", "21", 50519.0, "images/manifattura/unitree-g1-d-nobg.png"),
-    ("G1D-U7", "Flagship B", "Mobile ruote", "Dex3-1 no tattile", "33", 65038.0, "images/manifattura/unitree-g1-d-nobg.png"),
-    ("G1D-U8", "Flagship C", "Mobile ruote", "Dex3-1 con tattile", "33", 68038.0, "images/manifattura/unitree-g1-d-nobg.png"),
-    ("G1D-U9", "Flagship D", "Mobile ruote", "BrainCo Revo2 Basic", "31", 61259.0, "images/manifattura/unitree-g1-d-nobg.png"),
-    ("G1D-U10", "Flagship E", "Mobile ruote", "BrainCo Revo2 Touch", "31", 67059.0, "images/manifattura/unitree-g1-d-nobg.png"),
+# Prezzi Reichelt (EUR, fonte reichelt.com, giu 2026) + markup Abra 9–13% per SKU
+G1D_REICHELT_MARKUP: dict[str, tuple[float, float]] = {
+    "G1D-U1":  (30700.0, 11.0),
+    "G1D-U2":  (42900.0, 10.0),
+    "G1D-U3":  (45400.0, 12.0),
+    "G1D-U4":  (39800.0, 9.0),
+    "G1D-U5":  (44550.0, 13.0),
+    "G1D-U6":  (42100.0, 10.5),
+    "G1D-U7":  (54200.0, 11.5),
+    "G1D-U8":  (56700.0, 12.5),
+    "G1D-U9":  (51050.0, 9.5),
+    "G1D-U10": (55850.0, 13.0),
+}
+
+G1D_META = [
+    ("G1D-U1", "Standard A", "Fissa", "Dex1-1 gripper 2 dita", "19"),
+    ("G1D-U2", "Standard B", "Fissa", "Dex3-1 no tattile", "31"),
+    ("G1D-U3", "Standard C", "Fissa", "Dex3-1 con tattile", "31"),
+    ("G1D-U4", "Standard D", "Fissa", "BrainCo Revo2 Basic 5 dita", "29"),
+    ("G1D-U5", "Standard E", "Fissa", "BrainCo Revo2 Touch tattile", "29"),
+    ("G1D-U6", "Flagship A", "Mobile ruote", "Dex1-1 gripper 2 dita", "21"),
+    ("G1D-U7", "Flagship B", "Mobile ruote", "Dex3-1 no tattile", "33"),
+    ("G1D-U8", "Flagship C", "Mobile ruote", "Dex3-1 con tattile", "33"),
+    ("G1D-U9", "Flagship D", "Mobile ruote", "BrainCo Revo2 Basic", "31"),
+    ("G1D-U10", "Flagship E", "Mobile ruote", "BrainCo Revo2 Touch", "31"),
 ]
+
+
+def g1d_abra_price(sku: str) -> float:
+    base, pct = G1D_REICHELT_MARKUP[sku]
+    return round(base * (1 + pct / 100), 2)
+
+
+def build_g1d_catalog() -> list[tuple]:
+    out = []
+    for sku, tier, base, hands, dof in G1D_META:
+        out.append((sku, tier, base, hands, dof, g1d_abra_price(sku), G1D_IMG))
+    return out
+
+
+G1D_CATALOG = build_g1d_catalog()
 
 G1D_COMMON_SPECS = [
     ("Bracci", "7×2 DoF"),
@@ -118,7 +147,8 @@ def patch_end_user() -> None:
             "immagine": img,
             "slug": slug_g1d(sku),
             "categoria": "UMANOIDI",
-            "prezzo_da": True,
+            "prezzo_da": False,
+            "prezzo_fonte": "reichelt+markup",
             "disponibilita": "2026-08",
         }
     data["H2-PLUS"] = {
@@ -187,7 +217,14 @@ def generate_product_page(sku: str) -> None:
     metadesc = f"{title}. {entry.get('sottotitolo', '')}"[:160]
 
     prezzo_da = eu[sku].get("prezzo_da")
-    buy = buy_area(price if price else None, price is not None or prezzo_da, sku)
+    if sku.startswith("G1D-") and price:
+        buy = g1d_buy_area(price)
+        schema = g1d_product_schema(title, desc, og_image, price, filename)
+    else:
+        buy = buy_area(price if price else None, price is not None or prezzo_da, sku)
+        schema = product_schema(
+            title, desc[:200], og_image, price, filename, "umanoidi.html", "Umanoidi"
+        )
     if eu[sku].get("prezzo_su_richiesta"):
         buy = """          <div class="buy-box">
             <div class="buy-box-head">
@@ -226,9 +263,7 @@ def generate_product_page(sku: str) -> None:
         ),
         "%%EXTRA_SECTIONS%%": "",
         "%%BUY_AREA%%": buy,
-        "%%PRODUCT_SCHEMA%%": product_schema(
-            title, desc[:200], og_image, price, filename, "umanoidi.html", "Umanoidi"
-        ),
+        "%%PRODUCT_SCHEMA%%": schema,
         "%%SITE_NAV%%": render_site_nav("../"),
     }
     for k, v in repl.items():
@@ -243,8 +278,65 @@ def fmt_price_card(eu_entry: dict) -> str:
     p = eu_entry.get("prezzo_eur")
     if not p:
         return "Su preventivo"
-    prefix = "da " if eu_entry.get("prezzo_da") else ""
-    return f"{prefix}{fmt_eur(float(p))} €"
+    if eu_entry.get("prezzo_da"):
+        return f"da {fmt_eur(float(p))} €"
+    return f"{fmt_eur(float(p))} €"
+
+
+def g1d_buy_area(price: float) -> str:
+    vis = fmt_eur(price)
+    return f"""          <div class="buy-box">
+            <div class="buy-box-head">
+              <div class="buy-box-price">
+                <span class="buy-box-amount">{vis} €</span>
+                <span class="buy-box-sub">Prezzo chiavi in mano · IVA esclusa</span>
+              </div>
+              <span class="buy-box-stock buy-box-stock--preorder"><span class="dot"></span> Preordine · ago 2026</span>
+            </div>
+            <ul class="buy-box-perks">
+              <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
+              <li><span class="bp-ico">✓</span> Distributore ufficiale Unitree</li>
+              <li><span class="bp-ico">✓</span> Listino calcolato su Reichelt + margine Abra</li>
+            </ul>
+            <div class="buy-box-cta">
+              <a href="#form" class="btn btn-primary buy-btn" data-buy-pending="1">Richiedi preordine</a>
+              <a href="#form" class="btn btn-secondary">Preventivo configurazione</a>
+            </div>
+            <div class="buy-box-pay">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Pagamento sicuro · Stripe
+              <span class="buy-box-cards"><span>VISA</span><span>MC</span><span>AMEX</span></span>
+            </div>
+<p class="buy-box-note">Prezzo End-User da listino Reichelt +9–13% · conferma su preventivo.</p>
+          </div>"""
+
+
+def g1d_product_schema(title: str, desc: str, img: str, price: float, filename: str) -> str:
+    img_url = img if img.startswith("http") else f"https://abrarobotics.com/{img.lstrip('/')}"
+    nm, ds = title.replace('"', '\\"'), desc.replace('"', '\\"')[:200]
+    canon = f"https://abrarobotics.com/prodotti/{filename}"
+    return f"""  <script type="application/ld+json">
+  {{"@context": "https://schema.org/", "@type": "Product", "name": "{nm}",
+  "sku": "{filename.replace('.html', '')}",
+  "image": ["{img_url}"], "description": "{ds}",
+  "itemCondition": "https://schema.org/NewCondition",
+  "brand": {{"@type": "Brand", "name": "Unitree"}},
+  "offers": {{"@type": "Offer", "priceCurrency": "EUR", "price": "{price:.2f}",
+    "priceValidUntil": "2026-12-31",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/PreOrder",
+    "url": "{canon}",
+    "seller": {{"@type": "Organization", "name": "Abra Robotics", "url": "https://abrarobotics.com"}}}}}}
+  </script>
+  <script type="application/ld+json">
+  {{"@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://abrarobotics.com/"}},
+    {{"@type": "ListItem", "position": 2, "name": "Umanoidi", "item": "https://abrarobotics.com/umanoidi.html"}},
+    {{"@type": "ListItem", "position": 3, "name": "G1-D", "item": "https://abrarobotics.com/g1-d.html"}},
+    {{"@type": "ListItem", "position": 4, "name": "{nm}", "item": "{canon}"}}
+  ]}}
+  </script>"""
 
 
 def card_html(
@@ -461,13 +553,16 @@ def generate_hub_umanoidi() -> None:
     ]
     fam_cards = ""
     for fid, name, sub, img, href, chips in families:
-        price = ""
-        if fid == "r1d":
+        if fid == "g1d":
+            price = f"da {fmt_eur(g1d_abra_price('G1D-U1'))} €"
+        elif fid == "r1d":
             price = fmt_price_card(eu["R1-D"])
         elif fid == "h2plus":
             price = "Preordine 2026"
         elif fid == "g1":
             price = fmt_price_card(eu["G1-AIR"])
+        else:
+            price = "Vedi gamma"
         fam_cards += card_html(
             "Famiglia umanoide",
             name,
