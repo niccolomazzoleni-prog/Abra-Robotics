@@ -7,7 +7,7 @@ Fonte specs: [unitree.com/As2](https://www.unitree.com/As2) · prezzi listino Ab
 | SKU | Nome | Prezzo indicativo (IVA escl.) |
 |-----|------|--------------------------------|
 | AS2-AIR | As2 Air | € 17.900 |
-| AS2-PRO | As2 Pro | € 19.900 |
+| AS2-PRO | As2 Pro | € 29.900 |
 | AS2-EDU | As2 EDU | € 21.900 |
 
 Prezzi distributor EU (MyBotShop, Quadruped.de, Robostore, Reichelt): **non listati pubblicamente** a giugno 2026 — Unitree shop mostra prezzo placeholder; Abra usa listino End-User sopra.

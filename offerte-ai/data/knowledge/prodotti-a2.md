@@ -36,7 +36,7 @@ Fonte specs: [unitree.com](https://www.unitree.com) · prezzi listino Abra End-U
 | IP | IP54 | IP56 (Std) / **IP67 (Pro)** |
 | Spazi confinati | **Preferito** | Possibile se passaggi ampi |
 | Umidità / outdoor severo | IP54 — spruzzi | **A2 Pro IP67** |
-| Budget entry sorveglianza | **As2 Pro da € 19.900** | A2 Std da € 30.848 |
+| Budget entry sorveglianza | **As2 Pro da € 29.900** | A2 Std da € 30.848 |
 
 ## Offerta formale tipo sorveglianza Abra
 
