@@ -488,11 +488,16 @@
         const correction = panel.querySelector('textarea').value.trim();
         if (!correction) return;
         FeedbackStore.update(fbId, { correction, rating: -1, action: 'corrected' });
+        const entry = FeedbackStore.all().find(x => x.id === fbId);
+        if (entry && entry.action !== 'queued_kb') {
+          FeedbackStore.queueForKb({ ...entry, correction });
+          FeedbackStore.update(fbId, { action: 'corrected_kb' });
+        }
         const bubble = row.querySelector('.chat-bubble.bot');
         bubble.innerHTML = formatBotHtml(correction);
         bubble.classList.add('corrected');
-        setDone('✎ Correzione salvata — verrà usata per addestrare il modello', 'fix');
-        notify('Correzione salvata');
+        setDone('✎ Correzione salvata + in coda KB', 'fix');
+        notify('Correzione e knowledge aggiornati');
       });
       panel.querySelector('.fb-lab-cancel').addEventListener('click', () => panel.classList.add('hidden'));
     }

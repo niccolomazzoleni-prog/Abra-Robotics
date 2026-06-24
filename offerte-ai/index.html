@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Abra Lab — Training chat</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/offerte-ai.css?v=20260624ui">
+  <link rel="stylesheet" href="css/offerte-ai.css?v=20260624train">
   <script src="../admin/auth.js"></script>
 </head>
 <body class="app-body app-lab">
@@ -29,6 +29,24 @@
         <p class="lab-badge-desc">Dopo ogni risposta del bot scegli: <strong>Va bene</strong>, <strong>Da correggere</strong> o <strong>Integra in knowledge</strong>. I dati restano qui finché non li esporti.</p>
       </section>
 
+      <section class="sidebar-card lab-training-card">
+        <h3>Modalità training</h3>
+        <p class="sidebar-explainer" id="sb-training-mode-hint">Test bot: chiedi e correggi la risposta AI</p>
+        <div class="training-mode-toggle">
+          <button type="button" class="sidebar-btn training-mode-btn active" data-training-mode="bot-test">Test bot</button>
+          <button type="button" class="sidebar-btn training-mode-btn" data-training-mode="expert-quiz">Quiz esperto</button>
+        </div>
+        <div class="sidebar-actions-row">
+          <button type="button" class="sidebar-btn" id="sb-scenario-random">Scenario casuale</button>
+          <button type="button" class="sidebar-btn subtle" id="sb-scenario-seed">Domanda curata</button>
+        </div>
+        <ol class="training-steps">
+          <li><strong>Test bot</strong> — chiedi → correggi → Integra KB</li>
+          <li><strong>Quiz</strong> — scenario cliente → rispondi tu → auto KB</li>
+          <li>Export settimanale → merge nel repo</li>
+        </ol>
+      </section>
+
       <section class="sidebar-card">
         <h3>Stato sessione</h3>
         <div class="stat-row"><span>AI</span><strong id="sb-mode">—</strong></div>
@@ -45,6 +63,7 @@
         <h3>Esporta training</h3>
         <p class="sidebar-explainer">Scarica sul PC le conversazioni corrette. Poi le usi per aggiornare la knowledge o addestrare Gemma in locale.</p>
         <button type="button" class="sidebar-cta" id="sb-export-all">Scarica pacchetto training</button>
+        <button type="button" class="sidebar-btn subtle" id="sb-copy-feedback">Copia feedback (mobile)</button>
         <details class="sidebar-details">
           <summary>Cosa succede dopo il download?</summary>
           <code class="sidebar-code">python scripts/merge_feedback_to_kb.py percorso/feedback-export.jsonl<br>python scripts/build_knowledge_index.py<br>.\scripts\train-abra-gemma.ps1</code>
@@ -57,7 +76,14 @@
       </section>
     </aside>
     </div>
-  </div>
+
+    <nav class="lab-mobile-bar" id="lab-mobile-bar" aria-label="Training rapido mobile">
+      <button type="button" class="lab-mbar-btn" data-training-mode="bot-test">Test bot</button>
+      <button type="button" class="lab-mbar-btn" data-training-mode="expert-quiz">Quiz</button>
+      <button type="button" class="lab-mbar-btn accent" id="lab-btn-scenario">Scenario</button>
+      <button type="button" class="lab-mbar-btn" id="lab-btn-seed">Curata</button>
+    </nav>
+    </div>
 
   <script src="js/prompt-guard.js"></script>
   <script src="js/app-shell.js"></script>
@@ -68,6 +94,7 @@
   <script src="js/llm-providers.js"></script>
   <script src="js/rag-chat.js"></script>
   <script src="js/chat-ui.js"></script>
+  <script src="js/training-scenarios.js"></script>
   <script src="js/lab-page.js"></script>
 </body>
 </html>

@@ -2413,3 +2413,63 @@ body.app-lab .sidebar-cta:hover { opacity: 0.92; }
   color: #fde68a;
 }
 
+/* Lab — modalità training + barra mobile */
+.training-mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.training-mode-btn.active {
+  border-color: rgba(212, 175, 55, 0.55) !important;
+  background: rgba(212, 175, 55, 0.12) !important;
+  color: #fde68a !important;
+}
+.lab-training-card .sidebar-actions-row { margin-top: 4px; }
+
+.lab-mobile-bar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+  background: rgba(17, 17, 20, 0.96);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.lab-mbar-btn {
+  padding: 10px 4px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e5e7eb;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.lab-mbar-btn.accent {
+  border-color: rgba(212, 175, 55, 0.45);
+  color: #fde68a;
+}
+.lab-mbar-btn.active {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+@media (max-width: 960px) {
+  .lab-mobile-bar { display: grid; }
+  body.app-lab .chat-app-compose-wrap {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+  body.app-lab .lab-page-head p { font-size: 0.88rem; }
+  .lab-training-card { order: -1; }
+}
+
+@media (min-width: 961px) {
+  .lab-mobile-bar { display: none !important; }
+}
