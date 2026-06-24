@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Admin — Abra Robotics (interno)</title>
+  <title>Admin — Abra Robotics</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="admin.css">
@@ -12,93 +12,72 @@
 </head>
 <body class="admin-page">
   <div class="admin-wrap admin-wrap--wide">
-    <nav class="admin-nav">
-      <a href="index.html" class="is-active">Dashboard</a>
-      <a href="statistiche.html">Statistiche</a>
-      <a href="listini.html">Listini</a>
-      <a href="immagini.html">Immagini</a>
-      <span class="spacer"></span>
-      <button type="button" class="btn btn-secondary btn-sm" onclick="AbraAdmin.logout()">Esci</button>
-    </nav>
+    <div id="admin-nav-mount"></div>
 
-    <div class="admin-head">
-      <p class="label">Interno · Non indicizzato</p>
-      <h1>Area admin</h1>
-      <p>Gestione listini, immagini, offerte AI e statistiche accessi. Ottimizzato per smartphone — aggiungi questa pagina ai preferiti.</p>
+    <div class="admin-head admin-head--compact">
+      <h1>Admin</h1>
+      <p>Listini, statistiche accessi, immagini e assistente offerte.</p>
     </div>
 
-    <div class="kpi-grid" id="admin-preview-kpis" style="margin-top:20px"></div>
+    <div class="kpi-grid" id="admin-preview-kpis"></div>
+    <p class="hint admin-kpi-note" id="admin-kpi-note" hidden></p>
 
-    <div class="admin-links">
-      <a href="statistiche.html">
-        Statistiche sito
-        <span>Visite, pagine, referrer, trend giornaliero</span>
-      </a>
-      <a href="../offerte-ai/samples/index.html">
-        Archivio offerte (password)
-        <span>Preventivi HTML memorizzati · stampa PDF A4</span>
-      </a>
-      <a href="listini.html">
-        Gestione listini
-        <span>Copertura prezzi Gold / End-User sul sito</span>
-      </a>
-      <a href="immagini.html">
-        Immagini Unitree
-        <span>Importa e sostituisci foto prodotto per SKU</span>
-      </a>
-      <a href="immagini-amr.html">
-        Immagini AMR
-        <span>MiR, Youibot, Neura, EP — catalogo manifattura</span>
-      </a>
-      <a href="offerte-ai.html">
-        Assistente Offerte AI
-        <span>Config LLM, DeepSeek, feedback chat</span>
-      </a>
-      <a href="knowledge.html">
-        Knowledge base RAG
-        <span>Documenti FAQ, test ricerca, fonti indice</span>
-      </a>
-      <a href="../catalogo-unitree.html">
-        Catalogo Unitree
-        <span>Anteprima sito live</span>
-      </a>
-      <a href="../catalogo-amr.html">
-        Catalogo AMR
-        <span>16 configurazioni con prezzi</span>
-      </a>
+    <div class="admin-links admin-links--compact">
+      <a href="statistiche.html">Statistiche<span>Visite, pagine, contatti, referrer</span></a>
+      <a href="listini.html">Listini<span>Prezzi Gold / End-User</span></a>
+      <a href="immagini.html">Immagini Unitree<span>Foto prodotto per SKU</span></a>
+      <a href="immagini-amr.html">Immagini AMR<span>MiR, Youibot, Neura…</span></a>
+      <a href="offerte-ai.html">Offerte AI<span>Config OpenAI · Lab · PDF</span></a>
+      <a href="knowledge.html">Knowledge RAG<span>FAQ e documenti chat</span></a>
+      <a href="../offerte-ai/samples/index.html">Archivio offerte<span>HTML password · stampa PDF</span></a>
+      <a href="../catalogo-unitree.html">Catalogo live<span>Anteprima sito</span></a>
     </div>
   </div>
   <script src="../script.js"></script>
+  <script src="admin-nav.js"></script>
   <script>
+  AbraAdminNav.mount('home');
   (function () {
     var fmt = new Intl.NumberFormat('it-IT');
     var key = 'abra-stats-2026';
     var base = window.GOOGLE_SCRIPT_URL;
-    function showFallback() {
-      document.getElementById('admin-preview-kpis').innerHTML = [
-        { v: '→', l: 'Visite sito' },
-        { v: '→', l: 'Contatti' },
-        { v: '178', l: 'Chunk RAG' },
-        { v: '→', l: 'Apri Statistiche' }
-      ].map(function (k) {
+    var kpis = document.getElementById('admin-preview-kpis');
+    var note = document.getElementById('admin-kpi-note');
+
+    function render(items) {
+      kpis.innerHTML = items.map(function (k) {
         return '<div class="kpi"><div class="kpi-value">' + k.v + '</div><div class="kpi-label">' + k.l + '</div></div>';
       }).join('');
     }
-    if (!base) { showFallback(); return; }
+
+    render([
+      { v: '—', l: 'Visite (30 gg)' },
+      { v: '—', l: 'Sessioni' },
+      { v: '—', l: 'Contatti' },
+      { v: '→', l: 'Statistiche' }
+    ]);
+
+    if (!base) return;
+
     fetch(base + '?action=stats&key=' + encodeURIComponent(key) + '&days=30')
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        if (!d.ok) { showFallback(); return; }
-        document.getElementById('admin-preview-kpis').innerHTML = [
+      .then(function (r) { return r.text(); })
+      .then(function (text) {
+        var d;
+        try { d = JSON.parse(text); } catch (_) {
+          note.hidden = false;
+          note.className = 'hint stats-warn admin-kpi-note';
+          note.textContent = 'Dashboard numeri: ridistribuisci apps-script/Code.gs come Web App (Nuova versione). I dati grezzi restano nel foglio Google Analytics.';
+          return;
+        }
+        if (!d.ok) return;
+        render([
           { v: fmt.format(d.totals.pageviews), l: 'Visite (30 gg)' },
           { v: fmt.format(d.totals.sessions), l: 'Sessioni' },
           { v: fmt.format(d.totals.leads), l: 'Contatti' },
-          { v: '→', l: 'Dettagli in Statistiche' }
-        ].map(function (k) {
-          return '<div class="kpi"><div class="kpi-value">' + k.v + '</div><div class="kpi-label">' + k.l + '</div></div>';
-        }).join('');
+          { v: '→', l: 'Dettagli' }
+        ]);
       })
-      .catch(showFallback);
+      .catch(function () {});
   })();
   </script>
 </body>

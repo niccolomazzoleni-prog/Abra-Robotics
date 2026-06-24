@@ -35,12 +35,19 @@
     const url = `${base}?action=stats&key=${encodeURIComponent(key)}&days=${days}`;
     const r = await fetch(url);
     if (!r.ok) return null;
-    const data = await r.json();
-    return data.ok ? data : null;
+    const text = await r.text();
+    try {
+      const data = JSON.parse(text);
+      return data.ok ? data : null;
+    } catch (_) {
+      if (/endpoint form attivo/i.test(text)) return { _deployNeeded: true };
+      return null;
+    }
   }
 
   function renderKpis(beacon, staticData) {
-    const site = beacon || null;
+    const deploy = beacon && beacon._deployNeeded;
+    const site = deploy ? null : beacon;
     const gh = (staticData && staticData.github) || {};
     const items = [
       {
@@ -159,12 +166,17 @@
     const note = el('setup-note');
     if (!note) return;
     const key = getStatsKey(config);
+    if (beacon && beacon._deployNeeded) {
+      note.innerHTML = 'API stats non attiva sul deploy GAS corrente → <strong>Apps Script → Distribuisci → Nuova versione Web App</strong> (codice in <code>apps-script/Code.gs</code>). Nel frattempo i pageview finiscono nel foglio <strong>Analytics</strong>.';
+      note.className = 'hint stats-warn';
+      return;
+    }
     if (beacon && beacon.totals) {
-      note.innerHTML = `Live · chiave <code>${key}</code> · GA <code>${config.site?.ga_property || '—'}</code> · aggiornato ${fmtDate.format(new Date())}`;
+      note.textContent = `Live · chiave ${key} · GA ${config.site?.ga_property || '—'}`;
       note.className = 'hint stats-ok';
       return;
     }
-    note.innerHTML = `Per attivare i numeri: ridistribuisci <code>apps-script/Code.gs</code> come Web App, poi visita il sito pubblico. Chiave: <code>${key}</code>`;
+    note.textContent = 'Nessun dato nel periodo — visita il sito pubblico o verifica il foglio Analytics.';
     note.className = 'hint stats-warn';
   }
 
@@ -206,34 +218,23 @@
     let config = {};
     try {
       config = await loadSiteConfig();
-      el('stats-updated').textContent = 'Config: ' + fmtDate.format(new Date(config.updated_at || Date.now()));
+      el('stats-updated').textContent = 'Config ' + fmtDate.format(new Date(config.updated_at || Date.now()));
     } catch (e) {
       el('kpi-grid').innerHTML = `<p class="stats-empty">${e.message}</p>`;
     }
 
     const days = getPeriod();
-    sessionStorage.setItem(STATS_KEY_STORAGE, getStatsKey(config));
     bindPeriodButtons();
-
-    const keyInput = el('stats-key-input');
-    if (keyInput) keyInput.value = getStatsKey(config);
 
     let beacon = null;
     try { beacon = await refreshAll(config, days); } catch (_) {}
 
-    el('btn-save-stats-key')?.addEventListener('click', () => {
-      const key = keyInput.value.trim();
-      if (key) sessionStorage.setItem(STATS_KEY_STORAGE, key);
-      else sessionStorage.removeItem(STATS_KEY_STORAGE);
-      location.reload();
-    });
-
     el('btn-refresh')?.addEventListener('click', async () => {
       const btn = el('btn-refresh');
       btn.disabled = true;
-      btn.textContent = 'Aggiorno…';
-      try { await refreshAll(config, days); } catch (ex) { alert(ex.message); }
-      finally { btn.disabled = false; btn.textContent = 'Aggiorna dati sito'; }
+      btn.textContent = '…';
+      try { beacon = await refreshAll(config, days); } catch (ex) { alert(ex.message); }
+      finally { btn.disabled = false; btn.textContent = 'Aggiorna'; }
     });
 
     el('btn-export-pages')?.addEventListener('click', () => exportPagesCsv(beacon));

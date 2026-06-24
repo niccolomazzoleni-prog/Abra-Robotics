@@ -288,6 +288,41 @@ body.admin-page { background: var(--gray-50); }
 }
 .stats-gh-grid .hint { font-size: 0.72rem; color: var(--gray-500); }
 
+/* Compatto */
+.admin-head--compact { margin-bottom: 8px; }
+.admin-head--compact h1 { font-size: 1.35rem; margin: 0 0 4px; }
+.admin-head--compact p { font-size: 0.88rem; margin: 0; max-width: 56ch; }
+.admin-links--compact { margin-top: 16px; gap: 10px; }
+.admin-links--compact a { padding: 14px 16px; }
+.admin-links--compact span { font-size: 0.8rem; margin-top: 2px; }
+.admin-card--tight { padding: 16px 18px; margin-top: 12px; }
+.admin-card--tight h2 { font-size: 0.92rem; margin: 0 0 10px; }
+.admin-card--tight .hint { margin-bottom: 10px; }
+.admin-fold {
+  margin-top: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.6);
+}
+.admin-fold summary { cursor: pointer; font-weight: 700; font-size: 0.88rem; }
+.admin-nav-ext { font-size: 0.82rem !important; color: var(--accent-text) !important; }
+.admin-kpi-note { margin: 8px 0 0; font-size: 0.82rem; }
+.admin-quick-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.admin-input {
+  display: block; width: 100%; margin-bottom: 10px;
+  padding: 10px 12px; border: 1px solid var(--gray-200); border-radius: 8px; font: inherit;
+}
+.admin-card label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--gray-600); margin: 0 0 4px; }
+.llm-block { margin-top: 10px; }
+.admin-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.test-result { margin-top: 10px; padding: 10px; border-radius: 8px; font-size: 0.85rem; }
+.test-ok { background: #f0fdf4; border: 1px solid #86efac; }
+.test-err { background: #fef2f2; border: 1px solid #fecaca; }
+.quick-links--compact { margin-bottom: 12px; }
+.offer-history-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.offer-history-table th, .offer-history-table td { padding: 6px 8px; border-bottom: 1px solid var(--gray-200); text-align: left; }
+
 @media (max-width: 768px) {
   .admin-wrap { padding: 88px 20px 72px; }
   .stats-updated { width: 100%; margin-left: 0; margin-top: 4px; }
