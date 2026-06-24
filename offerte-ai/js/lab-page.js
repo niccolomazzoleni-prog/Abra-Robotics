@@ -1,5 +1,5 @@
 /**
- * Lab Training — sidebar, export, quiz esperto, test bot.
+ * Lab Training — Test bot vs Quiz esperto (= domanda cliente casuale, rispondi tu).
  */
 (function () {
   'use strict';
@@ -28,25 +28,21 @@
 
   function updateComposeUi() {
     if (!ui) return;
-    if (trainingMode === 'expert-quiz') {
-      if (pendingScenario) {
-        ui.setComposePlaceholder('Scrivi la risposta da consulente Abra per il cliente sopra…');
-        ui.setComposeHint('Quiz attivo: la tua risposta va in knowledge (non chiedere al bot)');
-      } else {
-        ui.setComposePlaceholder('Premi Scenario o Curata per la domanda cliente…');
-        ui.setComposeHint('Quiz esperto — genera prima uno scenario');
-      }
+    if (trainingMode === 'expert-quiz' && pendingScenario) {
+      ui.setComposePlaceholder('Risposta consulente Abra al cliente sopra…');
+      ui.setComposeHint('Quiz: la tua risposta → knowledge · Prossima = altra domanda casuale');
+    } else if (trainingMode === 'expert-quiz') {
+      ui.setComposePlaceholder('Caricamento domanda cliente…');
+      ui.setComposeHint('Quiz esperto — domanda casuale in arrivo');
     } else {
       ui.setComposePlaceholder('Scrivi come farebbe un cliente…');
-      ui.setComposeHint('Test bot: chiedi → valuta la risposta AI sotto');
+      ui.setComposeHint('Test bot: chiedi → valuta la risposta AI');
     }
   }
 
   function refreshSidebar() {
     const cfg = AbraLLM.loadConfig();
-    const modeEl = document.getElementById('sb-mode');
-    modeEl.textContent = MODE_LABELS[cfg.mode] || cfg.mode;
-    modeEl.title = cfg.mode === 'ollama' ? `${cfg.ollamaUrl} · ${cfg.ollamaModel}` : '';
+    document.getElementById('sb-mode').textContent = MODE_LABELS[cfg.mode] || cfg.mode;
 
     const fb = AbraFeedbackStore.all();
     document.getElementById('sb-fb').textContent = fb.length;
@@ -55,69 +51,87 @@
     document.querySelectorAll('[data-training-mode]').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.trainingMode === trainingMode);
     });
+
     const modeHint = document.getElementById('sb-training-mode-hint');
     if (modeHint) {
       modeHint.textContent = trainingMode === 'expert-quiz'
-        ? (pendingScenario ? 'Quiz attivo — rispondi al cliente simulato' : 'Quiz: premi Scenario o Curata')
-        : 'Test bot: chiedi e correggi la risposta AI';
+        ? 'Domanda cliente casuale — rispondi tu (il bot vendite è spento)'
+        : 'Chiedi come un cliente e correggi la risposta AI';
     }
+
+    const nextBtn = document.getElementById('sb-quiz-next');
+    if (nextBtn) nextBtn.hidden = trainingMode !== 'expert-quiz';
+
     updateComposeUi();
   }
 
-  function setTrainingMode(mode, opts = {}) {
-    trainingMode = mode;
-    localStorage.setItem(TRAINING_MODE_KEY, mode);
-    if (mode !== 'expert-quiz') pendingScenario = null;
+  /** Quiz esperto = scenario cliente casuale (sempre). */
+  function enterQuizMode(kind) {
+    trainingMode = 'expert-quiz';
+    localStorage.setItem(TRAINING_MODE_KEY, 'expert-quiz');
+    pendingScenario = null;
     refreshSidebar();
-    AbraUI.toast(mode === 'expert-quiz' ? 'Modalità Quiz esperto' : 'Modalità Test bot', 'info');
-    if (mode === 'expert-quiz' && opts.startScenario !== false && !pendingScenario) {
-      startSeedScenario();
-    }
+    if (kind === 'seed') startSeedScenario();
+    else startRandomScenario();
+  }
+
+  function enterBotTestMode() {
+    trainingMode = 'bot-test';
+    localStorage.setItem(TRAINING_MODE_KEY, 'bot-test');
+    pendingScenario = null;
+    refreshSidebar();
+    AbraUI.toast('Test bot — chiedi come un cliente', 'info');
   }
 
   function showScenario(scenario) {
     pendingScenario = scenario;
     trainingMode = 'expert-quiz';
     localStorage.setItem(TRAINING_MODE_KEY, 'expert-quiz');
+
     ui.appendBot(
-      `**🎭 DOMANDA CLIENTE** · ${scenario.industry}\n\n${scenario.question}\n\n` +
-      '👇 **Tu rispondi sotto** come consulente Abra (prezzi listino, step, raccomandazioni). ' +
-      'Non chiedere nulla al bot — scrivi la risposta al cliente.',
+      `**🎭 Cliente** · ${scenario.industry}\n\n${scenario.question}\n\n` +
+      '✏️ **Rispondi tu** qui sotto (consulente Abra: prezzi, step, raccomandazione).',
       { isScenario: true, labSystem: true }
     );
+
     refreshSidebar();
     ui.inputEl?.focus();
-    document.getElementById('lab-mobile-bar')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    ui.scrollBottom?.();
   }
 
   function startRandomScenario() {
     if (!global.AbraTrainingScenarios) {
-      return AbraUI.toast('Modulo scenari non caricato', 'warn');
+      return AbraUI.toast('Modulo scenari non caricato — ricarica la pagina', 'warn');
     }
     showScenario(AbraTrainingScenarios.generate());
+    AbraUI.toast('Domanda cliente casuale', 'info');
   }
 
   function startSeedScenario() {
     if (!global.AbraTrainingScenarios) return;
     showScenario(AbraTrainingScenarios.nextSeed());
+    AbraUI.toast('Domanda curata Abra', 'info');
+  }
+
+  function scheduleNextRandom(delayMs = 1400) {
+    setTimeout(() => {
+      if (trainingMode === 'expert-quiz' && !pendingScenario) startRandomScenario();
+    }, delayMs);
   }
 
   async function handleExpertAnswer(text) {
     const scenario = pendingScenario;
     if (!scenario) {
-      return {
-        reply: 'Errore interno quiz — rigenera lo scenario.',
-        skipFeedback: true,
-      };
+      startRandomScenario();
+      return { silent: true };
     }
+
     pendingScenario = null;
-    refreshSidebar();
-    const fbId = 'fb-' + Date.now().toString(36);
     const entry = {
-      id: fbId,
+      id: 'fb-' + Date.now().toString(36),
       timestamp: new Date().toISOString(),
       question: scenario.question.replace(/\n\n_.*_$/, ''),
-      answer: '(risposta consulente — quiz esperto)',
+      answer: '(risposta consulente — quiz)',
       correction: text,
       sources: [],
       quote: null,
@@ -129,11 +143,12 @@
     AbraFeedbackStore.save(entry);
     AbraFeedbackStore.queueForKb(entry);
     refreshSidebar();
+    scheduleNextRandom();
+
     return {
       reply:
-        '✓ **Salvato in knowledge** (' + AbraFeedbackStore.pendingKb().length + ' in coda)\n\n' +
-        'Prossimo passo: **Scenario** / **Curata** per un’altra domanda, oppure **Test bot** per verificare l’AI.\n\n' +
-        '_Da mobile: sidebar → **Copia feedback** quando hai finito la sessione._',
+        '✓ **Salvato in knowledge** · in coda: ' + AbraFeedbackStore.pendingKb().length + '\n\n' +
+        '_Tra poco appare la **prossima domanda casuale** — oppure tocca **Prossima**._',
       skipFeedback: true,
       labSystem: true,
     };
@@ -141,107 +156,65 @@
 
   async function handleSend(q) {
     if (trainingMode === 'expert-quiz') {
-      if (pendingScenario) {
-        return handleExpertAnswer(q);
-      }
-      if (/^(scenario|curata|aiuto|help)$/i.test(q.trim())) {
-        startSeedScenario();
-        return { silent: true };
-      }
-      return {
-        reply:
-          '**Sei in Quiz esperto** — il bot commerciale è disattivato.\n\n' +
-          '1. Tocca **Scenario** o **Curata** (barra in basso su mobile)\n' +
-          '2. Leggi la **domanda cliente** che appare sopra\n' +
-          '3. Scrivi **la tua risposta** da consulente\n\n' +
-          '_«Preventivo ufficiale» è jargon interno del bot vendite — qui non serve. Tu sei il consulente._',
-        skipFeedback: true,
-        labSystem: true,
-      };
+      if (pendingScenario) return handleExpertAnswer(q);
+      startRandomScenario();
+      return { silent: true };
     }
     return rag.ask(q);
   }
 
   function bindSidebar() {
-    document.querySelectorAll('[data-training-mode]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const mode = btn.dataset.trainingMode;
-        setTrainingMode(mode, { startScenario: mode === 'expert-quiz' });
-      });
+    document.querySelectorAll('[data-training-mode="bot-test"]').forEach(btn => {
+      btn.addEventListener('click', enterBotTestMode);
+    });
+    document.querySelectorAll('[data-training-mode="expert-quiz"]').forEach(btn => {
+      btn.addEventListener('click', () => enterQuizMode('random'));
     });
 
-    document.getElementById('sb-scenario-random')?.addEventListener('click', () => {
-      setTrainingMode('expert-quiz', { startScenario: false });
-      startRandomScenario();
-    });
-    document.getElementById('sb-scenario-seed')?.addEventListener('click', () => {
-      setTrainingMode('expert-quiz', { startScenario: false });
-      startSeedScenario();
-    });
-    document.getElementById('lab-btn-scenario')?.addEventListener('click', () => {
-      setTrainingMode('expert-quiz', { startScenario: false });
-      startRandomScenario();
-    });
-    document.getElementById('lab-btn-seed')?.addEventListener('click', () => {
-      setTrainingMode('expert-quiz', { startScenario: false });
-      startSeedScenario();
-    });
+    document.getElementById('sb-quiz-next')?.addEventListener('click', () => enterQuizMode('random'));
+    document.getElementById('sb-scenario-seed')?.addEventListener('click', () => enterQuizMode('seed'));
+    document.getElementById('lab-btn-seed')?.addEventListener('click', () => enterQuizMode('seed'));
+    document.getElementById('lab-btn-quiz')?.addEventListener('click', () => enterQuizMode('random'));
 
     document.getElementById('sb-export-all').addEventListener('click', () => {
       const pack = AbraFeedbackStore.exportTrainingPack();
-      if (!pack.feedback) {
-        return AbraUI.toast('Nessun feedback — valuta o completa almeno un quiz', 'warn');
-      }
-      const saved = [];
+      if (!pack.feedback) return AbraUI.toast('Nessun feedback ancora', 'warn');
       AbraFeedbackStore.download('feedback-export.jsonl', pack.feedback, 'application/x-ndjson');
-      saved.push('feedback');
-      if (pack.finetune) {
-        AbraFeedbackStore.download('finetune-export.jsonl', pack.finetune, 'application/x-ndjson');
-        saved.push('finetune');
-      }
-      if (pack.kbMd) {
-        AbraFeedbackStore.download('feedback-knowledge.md', pack.kbMd, 'text/markdown');
-        saved.push('knowledge');
-      }
-      AbraUI.toast(`Scaricati: ${saved.join(', ')}`, 'ok');
+      if (pack.kbMd) AbraFeedbackStore.download('feedback-knowledge.md', pack.kbMd, 'text/markdown');
+      AbraUI.toast('Training scaricato', 'ok');
     });
 
     document.getElementById('sb-copy-feedback')?.addEventListener('click', async () => {
       const jsonl = AbraFeedbackStore.exportJsonl();
-      if (!jsonl) return AbraUI.toast('Nessun feedback da copiare', 'warn');
+      if (!jsonl) return AbraUI.toast('Nessun feedback', 'warn');
       try {
         await navigator.clipboard.writeText(jsonl);
-        AbraUI.toast('Feedback copiato — incollalo in un file .jsonl sul PC', 'ok');
+        AbraUI.toast('Feedback copiato', 'ok');
       } catch {
         AbraFeedbackStore.download('feedback-export.jsonl', jsonl, 'application/x-ndjson');
-        AbraUI.toast('Download avviato (clipboard non disponibile)', 'info');
       }
     });
 
-    document.getElementById('sb-test-ai').addEventListener('click', async () => {
+    document.getElementById('sb-test-ai')?.addEventListener('click', async () => {
       const btn = document.getElementById('sb-test-ai');
       btn.disabled = true;
-      btn.textContent = '…';
       const r = await AbraLLM.testConnection({});
-      AbraUI.toast(r.ok ? ('AI OK: ' + (r.preview || '').slice(0, 60)) : ('AI errore: ' + r.error), r.ok ? 'ok' : 'warn');
+      AbraUI.toast(r.ok ? 'AI OK' : ('Errore: ' + r.error), r.ok ? 'ok' : 'warn');
       btn.disabled = false;
-      btn.textContent = 'Test AI';
       refreshSidebar();
     });
 
-    document.getElementById('sb-clear-chat').addEventListener('click', () => {
+    document.getElementById('sb-clear-chat')?.addEventListener('click', () => {
       rag.clearHistory();
       pendingScenario = null;
       ui.messagesEl.innerHTML = '';
-      ui.appendBot(
-        'Chat resettata.\n\n' +
-        '• **Test bot** — scrivi una domanda cliente\n' +
-        '• **Quiz esperto** — premi Scenario, poi rispondi tu',
-        { labSystem: true }
-      );
-      if (trainingMode === 'expert-quiz') startSeedScenario();
+      if (trainingMode === 'expert-quiz') {
+        ui.appendBot('Nuova sessione quiz — domanda casuale in arrivo…', { labSystem: true });
+        setTimeout(() => startRandomScenario(), 300);
+      } else {
+        ui.appendBot('Nuova sessione test bot — scrivi una domanda cliente.', { labSystem: true });
+      }
       refreshSidebar();
-      AbraUI.toast('Chat resettata', 'info');
     });
   }
 
@@ -268,28 +241,22 @@
 
     bindSidebar();
 
-    try {
-      await rag.init();
-      await AbraLLM.bootstrapLocalConfig();
-      const idx = await fetch('data/knowledge-index.json').then(r => r.json());
-      document.getElementById('sb-kb').textContent = idx.chunk_count + ' chunk';
-      refreshSidebar();
-      ui.setStatus('Online', true);
+    await rag.init();
+    await AbraLLM.bootstrapLocalConfig();
+    const idx = await fetch('data/knowledge-index.json').then(r => r.json());
+    document.getElementById('sb-kb').textContent = idx.chunk_count + ' chunk';
+    ui.setStatus('Online', true);
+    refreshSidebar();
 
+    if (trainingMode === 'expert-quiz') {
+      ui.appendBot('**Quiz esperto** — domanda cliente casuale…', { labSystem: true });
+      setTimeout(() => startRandomScenario(), 350);
+    } else {
       ui.appendBot(
-        '**Come funziona**\n\n' +
-        '**Test bot** — scrivi come un cliente; sotto la risposta: Va bene / Da correggere.\n\n' +
-        '**Quiz esperto** — premi **Scenario** o **Curata**: appare una domanda cliente e **rispondi tu** (va in knowledge). Il bot vendite **non** risponde in quiz.\n\n' +
-        (trainingMode === 'expert-quiz' ? '_Caricamento primo scenario…_' : '_Suggerimento: prova **Quiz** + **Curata**._'),
+        '**Test bot** — scrivi come un cliente, correggi l’AI.\n\n' +
+        '**Quiz esperto** — tocca il pulsante: appare una **domanda cliente a caso** e **rispondi tu**.',
         { labSystem: true }
       );
-
-      if (trainingMode === 'expert-quiz') {
-        setTimeout(() => startSeedScenario(), 400);
-      }
-    } catch (err) {
-      ui.appendBot('Errore avvio: ' + err.message, { labSystem: true });
-      ui.setStatus('Offline', false);
     }
   }
 
