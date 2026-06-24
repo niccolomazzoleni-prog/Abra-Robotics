@@ -12,13 +12,25 @@
 
   function loadScript(src) {
     return new Promise((resolve, reject) => {
-      if (document.querySelector(`script[src="${src}"]`)) return resolve();
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        if (existing.dataset.abraLoaded === '1') return resolve();
+        existing.addEventListener('load', () => resolve(), { once: true });
+        existing.addEventListener('error', () => reject(new Error(src)), { once: true });
+        return;
+      }
       const s = document.createElement('script');
       s.src = src;
-      s.onload = resolve;
-      s.onerror = reject;
+      s.onload = () => { s.dataset.abraLoaded = '1'; resolve(); };
+      s.onerror = () => reject(new Error('Script non caricato: ' + src));
       document.head.appendChild(s);
     });
+  }
+
+  async function loadScriptsSequential(files) {
+    for (const file of files) {
+      await loadScript(baseUrl + 'js/' + file);
+    }
   }
 
   function ensureStyles() {
@@ -34,15 +46,15 @@
     if (window.__abraWidgetBooted) return;
     window.__abraWidgetBooted = true;
     ensureStyles();
-    await Promise.all([
-      loadScript(baseUrl + 'js/prompt-guard.js'),
-      loadScript(baseUrl + 'js/kb-search.js'),
-      loadScript(baseUrl + 'js/quote-engine.js'),
-      loadScript(baseUrl + 'js/offer-builder.js'),
-      loadScript(baseUrl + 'js/offer-draft.js'),
-      loadScript(baseUrl + 'js/llm-providers.js'),
-      loadScript(baseUrl + 'js/rag-chat.js'),
-      loadScript(baseUrl + 'js/chat-ui.js'),
+    await loadScriptsSequential([
+      'prompt-guard.js',
+      'kb-search.js',
+      'quote-engine.js',
+      'offer-builder.js',
+      'offer-draft.js',
+      'llm-providers.js',
+      'rag-chat.js',
+      'chat-ui.js',
     ]);
     await AbraLLM.bootstrapLocalConfig();
 
