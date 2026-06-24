@@ -593,44 +593,53 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
   text-align: center;
 }
 
-/* Contatto in chat — WhatsApp + modulo */
-.chat-contact-bar {
+/* Contatto in chat — link discreti sotto l'input */
+.chat-compose-footer {
   display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.chat-contact-wa,
-.chat-contact-toggle {
-  flex: 1;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 9px 12px;
-  border-radius: 10px;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 4px;
+}
+.chat-footer-link {
+  border: none;
+  background: none;
+  padding: 0;
   font: inherit;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray-500);
   cursor: pointer;
   text-decoration: none;
-  border: 1px solid var(--gray-200);
-  background: var(--white);
-  color: var(--gray-800);
-  transition: border-color 0.15s, background 0.15s;
 }
-.chat-contact-wa:hover,
-.chat-contact-toggle:hover {
-  border-color: #25d366;
-  background: #f0fdf4;
-  color: #166534;
+.chat-footer-link:hover { color: var(--accent-text); text-decoration: underline; }
+.chat-suggestions-fold {
+  margin-top: 10px;
+  border-top: 1px solid var(--gray-200);
+  padding-top: 6px;
+}
+.chat-suggestions-fold summary {
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gray-500);
+  list-style: none;
+  user-select: none;
+}
+.chat-suggestions-fold summary::-webkit-details-marker { display: none; }
+.chat-suggestions-fold .chat-app-chips-thread {
+  padding: 10px 0 4px;
+  gap: 8px;
 }
 .chat-contact-panel {
-  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 12px 14px;
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-sm);
   background: var(--gray-50);
 }
+.chat-contact-bar { display: none; }
 .chat-contact-panel.hidden { display: none; }
 .chat-contact-hp {
   position: absolute;
@@ -677,6 +686,13 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
   color: var(--gray-500);
   text-align: center;
 }
+.abra-chat-platinum .chat-compose-footer { border-color: rgba(255,255,255,0.08); }
+.abra-chat-platinum .chat-footer-link { color: #9ca3af; }
+.abra-chat-platinum .chat-footer-link:hover { color: #c4b5fd; }
+.abra-chat-platinum .chat-suggestions-fold {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+.abra-chat-platinum .chat-suggestions-fold summary { color: #9ca3af; }
 .abra-chat-platinum .chat-contact-wa,
 .abra-chat-platinum .chat-contact-toggle {
   background: rgba(255, 255, 255, 0.08);
@@ -1955,11 +1971,15 @@ body.app-lab .chat-thread {
   min-height: 0;
 }
 body.app-lab .abra-chat-app.abra-chat-thread {
+  display: flex;
+  flex-direction: column;
   height: clamp(560px, calc(100vh - 220px), 880px);
   max-height: none;
 }
 body.app-lab .chat-app-messages {
-  padding: 28px 32px 40px;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 28px 32px 48px;
   gap: 12px;
 }
 body.app-lab .chat-row {
@@ -1978,11 +1998,16 @@ body.app-lab .chat-app-header {
   padding: 18px 24px;
 }
 body.app-lab .chat-app-compose-wrap {
-  padding: 16px 24px 18px;
+  flex-shrink: 0;
+  padding: 12px 24px 14px;
 }
+body.app-lab .chat-compose-footer .chat-footer-link { color: #9ca3af; }
+body.app-lab .chat-compose-footer .chat-footer-link:hover { color: #c4b5fd; }
+body.app-lab .chat-suggestions-fold { border-top-color: rgba(255,255,255,0.08); }
+body.app-lab .chat-suggestions-fold summary { color: #9ca3af; }
 body.app-lab .chat-app-chips-thread {
-  padding: 0 24px 12px;
-  gap: 10px;
+  padding: 0;
+  gap: 8px;
 }
 body.app-lab .chat-app-chips-thread .chat-chip {
   padding: 8px 14px;

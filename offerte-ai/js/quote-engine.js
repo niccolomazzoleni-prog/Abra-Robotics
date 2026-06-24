@@ -146,11 +146,29 @@
       return null;
     }
 
+    _tryDeliveryInfo(userText) {
+      const lower = this._normalizeText(userText);
+      if (!/tempi?\s*(di\s+)?consegna|quando\s+arriv|delivery|tempo\s+consegna/.test(lower)) return null;
+      if (/\bg1\b|umanoide|umanoidi/.test(lower)) {
+        return '**Tempi di consegna umanoidi G1:** in genere **4–8 settimane** dalla conferma ordine (configurazione e stock da verificare).';
+      }
+      if (/\bgo2\b|\bas2\b|\ba2\b|quadruped/.test(lower)) {
+        return '**Tempi di consegna quadrupedi:** in genere **4–6 settimane** dalla conferma ordine.';
+      }
+      if (/\bmir\b|\bamr\b|cobot/.test(lower)) {
+        return '**Tempi di consegna AMR/cobot:** in genere **circa 4 settimane** dalla conferma ordine.';
+      }
+      return '**Tempi indicativi Abra:** quadrupedi 4–6 settimane · umanoidi 4–8 settimane · AMR/cobot ~4 settimane (dalla conferma ordine).';
+    }
+
     tryAutoQuote(userText) {
       const ranked = this._tryFamilyRank(userText);
       if (ranked?.lines?.length) return ranked;
 
       const skus = this.findSkusInText(userText);
+      if (skus.length >= 2 && /differenz|confront|tra\s+g1/.test(lower)) {
+        return this.calculateLineItems(skus.slice(0, 4));
+      }
       if (skus.length) {
         return this.calculateLineItems(skus);
       }
