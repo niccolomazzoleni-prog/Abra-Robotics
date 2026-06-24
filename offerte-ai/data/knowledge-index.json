@@ -10437,7 +10437,7 @@
     {
       "id": "faq:poc-manifattura-—-pick-&-place-(scatole-",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "PoC manifattura — pick & place (scatole A→B) — scelta piattaforma",
       "text": "PoC manifattura — pick & place (scatole A→B) — scelta piattaforma\nPoC manifattura — pick & place (scatole A→B) — scelta piattaforma",
       "tokens": [
@@ -10476,7 +10476,7 @@
     {
       "id": "faq:domanda-tipica-cliente",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "Domanda tipica cliente",
       "text": "Domanda tipica cliente\n«Ho un reparto manifattura: devo spostare scatole dal punto A al punto B. Valuto G1-D, R1-D (su piantana fissa o mobile), oppure G1 bipede o H2. La piantana è più facile da certificare. Quale modello per un PoC?»",
       "tokens": [
@@ -10533,7 +10533,7 @@
     {
       "id": "faq:regola-generale-abra",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "Regola generale Abra",
       "text": "Regola generale Abra\nPer **pick-place ripetitivo in cella** la scelta dipende da tre assi:\n1. **Manipolazione** — serve dual-arm (R1-D / G1-D) o basta un braccio (G1-U2+)?\n2. **Mobilità** — il task è **fisso in cella** (piantana/gantry) o serve **spostarsi** tra postazioni (bipede / base mobile)?\n3. **Certificazione / safety** — base **fissa** (piantana, gantry, cella caged) semplifica CE/safety rispetto a bipede libero in reparto condiviso.",
       "tokens": [
@@ -10614,7 +10614,7 @@
     {
       "id": "faq:matrice-decisionale-(indicativa)",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "Matrice decisionale (indicativa)",
       "text": "Matrice decisionale (indicativa)\n| Scenario | Piattaforma consigliata | Perché |\n|----------|-------------------------|--------|\n| Scatole leggere (<3 kg), tray A→B, cella dedicata, priorità certificazione | **R1-D o G1-D su piantana fissa** | Workspace prevedibile, niente equilibrio dinamico, safety più lineare |\n| Stesso task ma layout cambia spesso / più postazioni | **R1-D / G1-D su base mobile** (AMR o rail) | Dual-arm + spostamento senza bipede instabile in traffico |\n| Pick-place singolo braccio, budget contenuto, lab/POC software | **G1-U2** (29 DoF, braccio 7 DOF) | Listino End-User chiaro, ROS 2, meno complesso di dual-arm |\n| Ricerca / demo prestigio, mobilità umanoide | **G1 bipede (U2/U3+)** o **H2** | Più wow e flessibile, **peggio per certificazione rapida** in reparto produttivo condiviso |\n| Solo ispezione / telepresenza, no manipolazione pesante | **G1-U1** o quadrupede se solo patrol | Non serve dual-arm |",
       "tokens": [
@@ -10756,7 +10756,7 @@
     {
       "id": "faq:g1-d-vs-r1-d-(dual-arm-industrial)",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "G1-D vs R1-D (dual-arm industrial)",
       "text": "G1-D vs R1-D (dual-arm industrial)\n- **R1-D** — dual-arm nativo Unitree, bracci 5 o 7 DoF, base fissa o mobile con LiDAR; **in listino Abra** (SKU R1-D, prezzo da confermare configurazione).\n- **G1-D** — gamma deployment industriale Unitree (industrial-ready, ROS2); **configurazione su preventivo Abra** — mount, piantana e varianti non sono SKU singolo standard come G1-U1.\n\nPer **PoC pick-place scatole** Abra orienta spesso verso **R1-D o G1-D fissi/montati** se il cliente cita esplicitamente certificazione e cella; verso **G1-U2** se budget e scope sono più contenuti.",
       "tokens": [
@@ -10870,7 +10870,7 @@
     {
       "id": "faq:piantana-fissa-vs-mobile-vs-bipede-liber",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "Piantana fissa vs mobile vs bipede libero",
       "text": "Piantana fissa vs mobile vs bipede libero\n- **Piantana / gantry fissa** — footprint noto, limiti software hard, interlock più semplici, ideale **fase 1 PoC** in manifattura regolamentata.\n- **Piantana / pedestal mobile** — stessa logica safety con area di lavoro delimitata, utile se A e B sono lontani ma il percorso è mappato.\n- **Bipede libero (G1, H2)** — massima flessibilità, **non** la scelta migliore per primo PoC produttivo pick-place se la priorità è certificazione e ciclo stabile; meglio come **fase 2** dopo validazione algoritmi in lab/cella.",
       "tokens": [
@@ -10969,7 +10969,7 @@
     {
       "id": "faq:step-poc-consigliati-(pick-place-manifat",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "Step PoC consigliati (pick-place manifattura)",
       "text": "Step PoC consigliati (pick-place manifattura)\n1. **Brief** — peso/dimensioni scatole, distanza A→B, ciclo target, ambiente (umido/polvere?), vincoli safety.\n2. **Scelta architettura** — dual-arm montato vs mono-arm vs bipede (tabella sopra).\n3. **PoC lab Abra** — grasping, vision, cycle time in mockup (fascia base ~€ 10.560).\n4. **Pilot in cella** — mount/piantana, interlock, 1–2 settimane on-site (fascia standard ~€ 19.360 + trasferte).\n5. **Report** — KPI raggiunti, roadmap verso produzione o stop/go.\n\nDurata indicativa: **10–16 settimane** (hardware 4–8 sett + integrazione).",
       "tokens": [
@@ -11072,7 +11072,7 @@
     {
       "id": "faq:cosa-chiedere-al-cliente-prima-di-quotar",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "Cosa chiedere al cliente prima di quotare",
       "text": "Cosa chiedere al cliente prima di quotare\n- Peso max scatola e formato (L×W×H)\n- Distanza A→B e se il layout cambia\n- Requisito **CE / safety** e presenza operatori nel raggio\n- Preferenza **fissa vs mobile vs bipede**\n- Budget indicativo hardware + integrazione",
       "tokens": [
@@ -11132,7 +11132,7 @@
     {
       "id": "faq:preventivo-formale",
       "type": "faq",
-      "source": "offerte-ai\\data\\knowledge\\faq-poc-manifattura-pick-place.md",
+      "source": "offerte-ai/data/knowledge/faq-poc-manifattura-pick-place.md",
       "title": "Preventivo formale",
       "text": "Preventivo formale\nChiedere: «preventivo PoC pick-place manifattura con R1-D e G1-U2 a confronto» — la chat genera offerta con alternative robot + PoC a € 110/h.",
       "tokens": [
