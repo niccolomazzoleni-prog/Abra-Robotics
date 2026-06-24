@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>Abra Lab — Training chat</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/offerte-ai.css?v=20260625quiz">
-  <script src="../admin/auth.js"></script>
+  <link rel="stylesheet" href="css/offerte-ai.css?v=20260625fix2">
+  <script src="../admin/auth.js?v=20260625fix2"></script>
 </head>
 <body class="app-body app-lab">
   <div id="app-nav-mount"></div>
@@ -16,7 +17,7 @@
     <header class="lab-page-head">
       <div class="lab-page-head-text">
         <h1>Lab Training</h1>
-        <p>Allena l’assistente commerciale: fai domande, valuta le risposte e esporta il training per la knowledge base.</p>
+        <p>Quiz esperto: domanda cliente casuale → rispondi tu → knowledge. Test bot: correggi l’AI.</p>
       </div>
     </header>
 
@@ -26,17 +27,16 @@
     <aside class="chat-sidebar" aria-label="Pannello training">
       <section class="sidebar-card lab-badge-card">
         <span class="lab-platinum-badge">✦ LAB TRAINING</span>
-        <p class="lab-badge-desc">Dopo ogni risposta del bot scegli: <strong>Va bene</strong>, <strong>Da correggere</strong> o <strong>Integra in knowledge</strong>. I dati restano qui finché non li esporti.</p>
+        <p class="lab-badge-desc"><strong>Quiz:</strong> leggi la domanda cliente, scrivi la risposta, Invio → salvata in KB. <strong>Test bot:</strong> valuta la risposta AI.</p>
       </section>
 
       <section class="sidebar-card lab-training-card">
-        <h3>Modalità training</h3>
-        <p class="sidebar-explainer" id="sb-training-mode-hint">Chiedi come un cliente e correggi la risposta AI</p>
+        <h3>Modalità</h3>
+        <p class="sidebar-explainer" id="sb-training-mode-hint">Scrivi come un cliente — correggi la risposta AI</p>
         <div class="training-mode-toggle">
           <button type="button" class="sidebar-btn training-mode-btn active" data-training-mode="bot-test">Test bot</button>
           <button type="button" class="sidebar-btn training-mode-btn" data-training-mode="expert-quiz">Quiz esperto</button>
         </div>
-        <p class="sidebar-explainer lab-quiz-note"><strong>Quiz esperto</strong> = domanda cliente <em>casuale</em> (settore, budget, use case). Rispondi tu → knowledge.</p>
         <div class="sidebar-actions-row">
           <button type="button" class="sidebar-btn sidebar-cta" id="sb-quiz-next">Quiz ↻ prossima</button>
           <button type="button" class="sidebar-btn subtle" id="sb-scenario-seed">Domanda curata</button>
@@ -50,6 +50,7 @@
 
       <section class="sidebar-card">
         <h3>Stato sessione</h3>
+        <div class="stat-row"><span>Lab</span><strong id="sb-lab-ver">—</strong></div>
         <div class="stat-row"><span>AI</span><strong id="sb-mode">—</strong></div>
         <div class="stat-row"><span>Knowledge</span><strong id="sb-kb">—</strong></div>
         <div class="stat-row"><span>Feedback dati</span><strong id="sb-fb">0</strong></div>
@@ -62,12 +63,12 @@
 
       <section class="sidebar-card sidebar-export-card">
         <h3>Esporta training</h3>
-        <p class="sidebar-explainer">Scarica sul PC le conversazioni corrette. Poi le usi per aggiornare la knowledge o addestrare Gemma in locale.</p>
+        <p class="sidebar-explainer">Scarica o copia il feedback per aggiornare la knowledge sul PC.</p>
         <button type="button" class="sidebar-cta" id="sb-export-all">Scarica pacchetto training</button>
         <button type="button" class="sidebar-btn subtle" id="sb-copy-feedback">Copia feedback (mobile)</button>
         <details class="sidebar-details">
           <summary>Cosa succede dopo il download?</summary>
-          <code class="sidebar-code">python scripts/merge_feedback_to_kb.py percorso/feedback-export.jsonl<br>python scripts/build_knowledge_index.py<br>.\scripts\train-abra-gemma.ps1</code>
+          <code class="sidebar-code">python scripts/merge_feedback_to_kb.py percorso/feedback-export.jsonl<br>python scripts/build_knowledge_index.py</code>
         </details>
       </section>
 
@@ -80,20 +81,20 @@
 
     <nav class="lab-mobile-bar" id="lab-mobile-bar" aria-label="Training rapido mobile">
       <button type="button" class="lab-mbar-btn" data-training-mode="bot-test">Test bot</button>
-      <button type="button" class="lab-mbar-btn accent" data-training-mode="expert-quiz" id="lab-btn-quiz">Quiz ↻</button>
+      <button type="button" class="lab-mbar-btn accent" data-training-mode="expert-quiz">Quiz ↻</button>
       <button type="button" class="lab-mbar-btn" id="lab-btn-seed">Curata</button>
     </nav>
     </div>
 
-  <script src="js/prompt-guard.js"></script>
-  <script src="js/app-shell.js"></script>
-  <script src="js/kb-search.js"></script>
-  <script src="js/quote-engine.js"></script>
-  <script src="js/offer-builder.js"></script>
-  <script src="js/offer-draft.js"></script>
-  <script src="js/llm-providers.js"></script>
-  <script src="js/rag-chat.js"></script>
-  <script src="js/chat-ui.js?v=20260625quiz"></script>
-  <script src="js/lab-page.js?v=20260625quiz"></script>
+  <script src="js/prompt-guard.js?v=20260625fix2"></script>
+  <script src="js/app-shell.js?v=20260625fix2"></script>
+  <script src="js/kb-search.js?v=20260625fix2"></script>
+  <script src="js/quote-engine.js?v=20260625fix2"></script>
+  <script src="js/offer-builder.js?v=20260625fix2"></script>
+  <script src="js/offer-draft.js?v=20260625fix2"></script>
+  <script src="js/llm-providers.js?v=20260625fix2"></script>
+  <script src="js/rag-chat.js?v=20260625fix2"></script>
+  <script src="js/chat-ui.js?v=20260625fix2"></script>
+  <script src="js/lab-page.js?v=20260625fix2"></script>
 </body>
 </html>

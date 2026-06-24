@@ -1,9 +1,10 @@
 /**
- * Lab Training — Quiz esperto = domanda cliente casuale → tu rispondi → knowledge.
- * Generatore scenari integrato (no dipendenze esterne).
+ * Lab Training v20260625fix2 — Quiz esperto = domanda cliente casuale → tu rispondi → knowledge.
  */
 (function () {
   'use strict';
+
+  window.ABRA_LAB_VERSION = '20260625fix2';
 
   const SUGGESTIONS = [
     'G1 in ordine di costo',
@@ -181,6 +182,8 @@
       const fb = AbraFeedbackStore.all();
       const fbEl = document.getElementById('sb-fb');
       const kbEl = document.getElementById('sb-kb-pending');
+      const verEl = document.getElementById('sb-lab-ver');
+      if (verEl) verEl.textContent = window.ABRA_LAB_VERSION || '?';
       if (fbEl) fbEl.textContent = fb.length;
       if (kbEl) kbEl.textContent = AbraFeedbackStore.pendingKb().length;
 
@@ -196,7 +199,7 @@
       }
 
       const nextBtn = document.getElementById('sb-quiz-next');
-      if (nextBtn) nextBtn.hidden = trainingMode !== 'expert-quiz';
+      if (nextBtn) nextBtn.disabled = trainingMode !== 'expert-quiz';
 
       updateComposeUi();
     } catch (e) {
