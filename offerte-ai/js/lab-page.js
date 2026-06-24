@@ -6,8 +6,8 @@
 
   const SUGGESTIONS = [
     'G1 in ordine di costo',
-    'Prezzo Go2 EDU',
-    'Preventivo sorveglianza As2',
+    'PoC umanoidi per azienda tessile',
+    'Assistenza e riparazione: costi e tempi',
     'Finanziamenti Industria 4.0',
   ];
 
