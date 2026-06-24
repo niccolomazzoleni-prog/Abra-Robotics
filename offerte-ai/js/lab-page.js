@@ -4,13 +4,13 @@
 (function () {
   'use strict';
 
-  window.ABRA_LAB_VERSION = '20260625fix2';
+  window.ABRA_LAB_VERSION = '20260625gamma3';
 
   const SUGGESTIONS = [
     'G1 in ordine di costo',
-    'PoC pick-place scatole A→B: R1-D vs G1-D vs G1 bipede',
-    'Preventivo formale PoC manifattura R1-D',
-    'Assistenza e riparazione: costi e tempi',
+    'PoC pick-place: R1-D vs G1-D vs G1-U2',
+    'H2 Air vs H2 EDU per ricerca',
+    'As2 Pro vs A2 Pro sorveglianza',
   ];
 
   const MODE_LABELS = {
@@ -23,91 +23,152 @@
   };
 
   const TRAINING_MODE_KEY = 'abra_lab_training_mode';
+  const QUIZ_RECENT_KEY = 'abra_quiz_recent_ids';
 
-  /* ── Generatore scenari (inline, sempre disponibile) ── */
-  const INDUSTRIES = [
-    { id: 'tessile', label: 'Tessile / abbigliamento' },
-    { id: 'alimentare', label: 'Alimentare / beverage' },
-    { id: 'automotive', label: 'Automotive tier-2' },
-    { id: 'logistica', label: 'Logistica / e-commerce' },
-    { id: 'farmaceutico', label: 'Farmaceutico / medical device' },
-    { id: 'metalmeccanico', label: 'Metalmeccanico' },
-    { id: 'elettronica', label: 'Elettronica / EMS' },
-    { id: 'packaging', label: 'Packaging / converting' },
+  const BUDGETS = ['€ 50–80k totale', '€ 90–120k hw+integrazione', 'sotto € 40k solo robot', 'da definire post-brief'];
+  const TIMELINES = ['3 mesi', '4–6 mesi PoC', '6–8 settimane demo hardware', 'Q3 2026', 'entro fine anno (bando)'];
+
+  const SCENARIO_POOL = [
+    {
+      id: 'quad-sorveglianza',
+      family: 'Quadrupede · sorveglianza / ispezione',
+      industries: ['Logistica / capannone', 'Metalmeccanico', 'Farmaceutico', 'Oil & gas'],
+      build(c) {
+        return `${c.industry}: perlustrazione **${c.area}** con **${c.sensor}**. Confronto quadrupedi **${c.compare}**. Budget ${c.budget}, timeline ${c.timeline}.`;
+      },
+      vars: () => ({
+        area: pick(['capannone 12.000 m²', 'deposito esterno', 'zona umida', 'perimetro notturno']),
+        sensor: pick(['termocamera radiometrica', 'multi-gas + umidità', 'LiDAR aggiuntivo', 'camera + AI']),
+        compare: pick(['As2 Pro vs A2 Pro', 'Go2 EDU Smart vs As2 Pro', 'As2 EDU vs A2 Standard']),
+      }),
+    },
+    {
+      id: 'uni-locomozione',
+      family: 'Umanoide bipede · università / ROS2',
+      industries: ['Università / ricerca'],
+      build(c) {
+        return `${c.industry}, ${c.dept}: ricerca **${c.goal}** con ROS2. Budget ${c.budget}, ${c.timeline}. Confronto **${c.compare}** (umanoide, non quadrupede).`;
+      },
+      vars: () => ({
+        dept: pick(['meccatronica', 'robotica', 'AI lab']),
+        goal: pick(['locomozione dinamica', 'sim-to-real', 'teleoperazione', 'acquisizione dataset']),
+        compare: pick(['G1-U1 vs R1-U1', 'G1-U2 vs R1-U2', 'R1-U2 vs G1-U2']),
+      }),
+    },
+    {
+      id: 'uni-bimanuale',
+      family: 'Dual-arm · manipolazione bimanuale',
+      industries: ['Università / ricerca applied', 'Packaging / manifattura', 'Automotive tier-2'],
+      build(c) {
+        return `${c.industry}: PoC **${c.goal}**. Piattaforme **${c.compare}** — non Go2/As2. Priorità ${c.priority}. Budget ${c.budget}, PoC ${c.timeline}.`;
+      },
+      vars: () => ({
+        goal: pick(['manipolazione bimanuale', 'pick-place scatole A→B', 'assemblaggio leggero due mani']),
+        compare: pick(['R1-D vs G1-D su piantana fissa', 'R1-D mobile vs G1-D fisso', 'R1-D vs G1-U2 mono-arm']),
+        priority: pick(['certificazione cella', 'time-to-demo', 'budget contenuto']),
+      }),
+    },
+    {
+      id: 'manif-pickplace',
+      family: 'Industrial PoC · pick & place',
+      industries: ['Packaging / converting', 'Elettronica / EMS', 'Tessile / QC', 'Alimentare'],
+      build(c) {
+        return `${c.industry}: **${c.object}** da A a B in **${c.area}**, ciclo ${c.cycle}. **${c.compare}**. Priorità ${c.priority}. Budget ${c.budget}, PoC ${c.timeline}.`;
+      },
+      vars: () => ({
+        object: pick(['scatole fino a 2 kg', 'tray componenti', 'confezioni singole', 'campioni tessuto']),
+        area: pick(['cella 5×4 m con operatori', 'linea packaging', 'area QC']),
+        cycle: pick(['12 pezzi/min', '6 cicli/min', 'batch 50 pezzi/ora']),
+        compare: pick(['R1-D piantana vs G1-D', 'R1-D vs G1-U2 bipede', 'G1-D mobile vs G1-U2']),
+        priority: pick(['certificazione CE/safety', 'costo PoC', 'scalabilità']),
+      }),
+    },
+    {
+      id: 'h2-fullsize',
+      family: 'H2 full-size · top gamma umanoide',
+      industries: ['Università / ricerca', 'R&D corporate', 'Demo / innovation hub'],
+      build(c) {
+        return `${c.industry}: **${c.goal}**. Confronto **${c.compare}**. Budget ${c.budget}, ${c.timeline}. (H2 Plus: verificare con Abra.)`;
+      },
+      vars: () => ({
+        goal: pick(['manipolazione alta coppia', 'locomozione full-size', 'showcase internazionale']),
+        compare: pick(['H2 Air vs H2 EDU', 'H2 EDU vs G1-U7', 'H2 EDU vs R1-D']),
+      }),
+    },
+    {
+      id: 'g1-r1-lab',
+      family: 'G1 / R1 · mono-manipolazione lab',
+      industries: ['Università / ricerca', 'Tessile / QC', 'Startup deep-tech'],
+      build(c) {
+        return `${c.industry}: **${c.task}** (mono-arm). **${c.compare}**. PoC ${c.timeline}, budget ${c.budget}.`;
+      },
+      vars: () => ({
+        task: pick(['ispezione qualità', 'pick-place leggero', 'telepresenza reparto']),
+        compare: pick(['G1-U1 vs G1-U2', 'R1-U1 vs G1-U1', 'R1-U2 vs G1-U2']),
+      }),
+    },
+    {
+      id: 'integrazione-poc',
+      family: 'PoC integrazione software',
+      industries: ['Automotive tier-2', 'Logistica / capannone', 'Farmaceutico'],
+      build(c) {
+        return `${c.industry}: integrare **${c.robot}** con **${c.system}**. Fascia PoC ${c.poc}. ${c.timeline}. Quale robot per questo stack?`;
+      },
+      vars: () => ({
+        robot: pick(['G1-U2', 'R1-D', 'As2 Pro', 'H2 EDU']),
+        system: pick(['MES / SAP', 'SCADA Ignition', 'OPC UA', 'ROS2 + dashboard']),
+        poc: pick(['base ~€ 10.560', 'standard ~€ 19.360', 'avanzata ~€ 30.800']),
+      }),
+    },
+    {
+      id: 'trap-quad-bimanual',
+      family: '⚠️ Training — correggere richiesta errata',
+      industries: ['Packaging / converting', 'Università / ricerca'],
+      build(c) {
+        return `${c.industry}: il cliente chiede **"${c.wrongAsk}"** (budget ${c.budget}). Come riformuli e cosa proponi?`;
+      },
+      vars: () => ({
+        wrongAsk: pick([
+          'Go2 EDU vs As2 Pro per manipolazione bimanuale',
+          'As2 Pro per pick-place scatole in cella',
+          'quadrupede per assemblaggio bimanuale',
+        ]),
+      }),
+    },
   ];
-
-  const USE_CASES = [
-    {
-      id: 'pick-place',
-      templates: [
-        'Dobbiamo spostare {object} dal punto A al punto B in {area}. Ciclo {cycle}. Valutiamo {platforms}. Priorità: {priority}. Budget {budget}, tempi {timeline}.',
-        'PoC pick-place: {object}, reparto {area}. {platforms}? Budget {budget}.',
-      ],
-      object: ['scatole fino a 2 kg', 'tray componenti', 'campioni tessuto', 'confezioni singole'],
-      area: ['cella 4×5 m', 'linea packaging con operatori', 'magazzino picking', 'area QC'],
-      cycle: ['12 pezzi/min', '6 cicli/min', '20 s/ciclo'],
-      platforms: ['R1-D su piantana fissa vs mobile', 'G1-D vs G1-U2 bipede', 'G1-U2 vs H2'],
-      priority: ['certificazione CE', 'time-to-demo', 'costo contenuto'],
-    },
-    {
-      id: 'surveillance',
-      templates: ['Sorveglianza {area} con {sensor}. Quadrupede vs umanoide? Budget {budget}, {timeline}.'],
-      area: ['capannone 8000 m²', 'deposito esterno', 'perimetro notturno'],
-      sensor: ['termocamera', 'gas + umidità', 'LiDAR aggiuntivo'],
-    },
-    {
-      id: 'university',
-      templates: ['Università {dept}: {goal}. ROS2, budget {budget}, entro {timeline}. {platforms}?'],
-      dept: ['meccatronica', 'robotica', 'AI lab'],
-      goal: ['ricerca locomozione', 'manipolazione bimanuale', 'sim-to-real'],
-      platforms: ['R1 EDU vs G1-U1', 'Go2 EDU vs As2 Pro', 'G1-U2 vs G1-U4'],
-    },
-    {
-      id: 'integration',
-      templates: ['Integrazione {system} per {goal}. Robot: {robot}. PoC {poc}. {timeline}.'],
-      system: ['MES SAP', 'SCADA', 'OPC UA', 'ROS2'],
-      goal: ['telemetria', 'mission planning', 'dashboard operatore'],
-      robot: ['G1-U2', 'As2 Pro', 'MiR250', 'da definire'],
-      poc: ['base lab', 'standard test campo', 'avanzato multi-robot'],
-    },
-  ];
-
-  const BUDGETS = ['€ 50–80k totale', '€ 120k hw+integrazione', 'sotto € 40k robot', 'da definire'];
-  const TIMELINES = ['entro 3 mesi', 'Q3 2026', '6–8 settimane demo', 'fine anno bando PNRR'];
 
   const SEED_QUESTIONS = [
     {
       id: 'seed-pick-place',
       industry: 'Packaging / manifattura',
+      family: 'Dual-arm · pick & place',
       question:
-        'Linea packaging: scatole 1,5 kg dal nastro (A) al pallet (B), cella 5×4 m, operatori a 2 m. ' +
-        'R1-D e G1-D su piantana fissa/mobile, oppure G1-U2/H2 bipedi. Priorità certificazione. ' +
-        'Quale piattaforma per PoC, step e costi?',
+        'Linea packaging: scatole 1,5 kg A→B, cella 5×4 m, operatori a 2 m. R1-D / G1-D piantana vs G1-U2/H2 bipedi. Certificazione. PoC 3–6 mesi, step e costi?',
     },
     {
-      id: 'seed-tessile',
-      industry: 'Tessile',
+      id: 'seed-bimanual-uni',
+      industry: 'Università / ricerca',
+      family: 'Dual-arm · università',
       question:
-        'Azienda tessile 120 dipendenti: PoC umanoide ispezione campioni + pick-place leggero QC. ' +
-        'Budget € 90k, demo 4 mesi. G1-U1 vs G1-U2 vs quadrupede?',
+        'Lab robotica: manipolazione bimanuale. Budget € 80k, PoC 4–6 mesi. R1-D vs G1-D vs G1-U2 — non quadrupedi.',
     },
     {
-      id: 'seed-alimentare',
-      industry: 'Alimentare',
-      question:
-        'Cooperativa alimentare: campionamento e ispezione visiva area lavaggio (umido, IP). Quadrupede o umanoide? Finanziamenti 4.0?',
+      id: 'seed-quad-sorv',
+      industry: 'Logistica / capannone',
+      family: 'Quadrupede · sorveglianza',
+      question: 'Capannone 10.000 m², umidità: sorveglianza termocamera + gas. As2 Pro vs A2 Pro vs Go2 EDU.',
+    },
+    {
+      id: 'seed-h2',
+      industry: 'Università / ricerca',
+      family: 'H2 full-size',
+      question: 'Robotica: piattaforma full-size. H2 Air vs H2 EDU vs G1-U7. Budget € 120k.',
     },
     {
       id: 'seed-assistenza',
       industry: 'Post-vendita',
-      question:
-        'G1-U2 in garanzia, braccio bloccato dopo caduta 40 cm. Costi riparazione, tempi e step assistenza Abra?',
-    },
-    {
-      id: 'seed-offerta',
-      industry: 'Preventivo',
-      question:
-        'Preventivo formale: PoC pick-place con R1-D su piantana + integrazione standard + formazione 1 giornata.',
+      family: 'Assistenza',
+      question: 'G1-U2 in garanzia, braccio bloccato post-caduta 40 cm. Costi, tempi, step assistenza Abra?',
     },
   ];
 
@@ -115,35 +176,25 @@
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  function fillTemplate(tpl, ctx) {
-    return tpl.replace(/\{(\w+)\}/g, (_, k) => (ctx[k] != null ? ctx[k] : '—'));
+  function pickScenarioFromPool() {
+    const recent = JSON.parse(sessionStorage.getItem(QUIZ_RECENT_KEY) || '[]');
+    let pool = SCENARIO_POOL.filter(s => !recent.includes(s.id));
+    if (pool.length < 4) pool = SCENARIO_POOL.slice();
+    const sc = pick(pool);
+    sessionStorage.setItem(QUIZ_RECENT_KEY, JSON.stringify([sc.id, ...recent.filter(x => x !== sc.id)].slice(0, 14)));
+    const industry = pick(sc.industries);
+    const ctx = { industry, budget: pick(BUDGETS), timeline: pick(TIMELINES), ...(sc.vars ? sc.vars() : {}) };
+    return {
+      id: sc.id + '-' + Date.now().toString(36),
+      industry,
+      family: sc.family,
+      question: sc.build(ctx),
+      meta: { scenarioId: sc.id, family: sc.family },
+    };
   }
 
   function randomScenario() {
-    const industry = pick(INDUSTRIES);
-    const useCase = pick(USE_CASES);
-    const ctx = {
-      object: pick(useCase.object || ['componenti']),
-      area: pick(useCase.area || ['reparto produzione']),
-      cycle: pick(useCase.cycle || ['10 cicli/min']),
-      platforms: pick(useCase.platforms || ['G1 vs R1-D']),
-      priority: pick(useCase.priority || ['certificazione']),
-      sensor: pick(useCase.sensor || ['termocamera']),
-      dept: pick(useCase.dept || ['robotica']),
-      goal: pick(useCase.goal || ['PoC']),
-      system: pick(useCase.system || ['ROS2']),
-      robot: pick(useCase.robot || ['G1-U2']),
-      poc: pick(useCase.poc || ['standard']),
-      budget: pick(BUDGETS),
-      timeline: pick(TIMELINES),
-    };
-    const question = fillTemplate(pick(useCase.templates), ctx);
-    return {
-      id: 'sc-' + Date.now().toString(36),
-      industry: industry.label,
-      question: question + '\n\n_Settore: ' + industry.label + ' · Budget: ' + ctx.budget + ' · ' + ctx.timeline + '_',
-      meta: { industry: industry.id, useCase: useCase.id, random: true },
-    };
+    return pickScenarioFromPool();
   }
 
   function seedScenario() {
@@ -151,7 +202,7 @@
     const idx = parseInt(localStorage.getItem(key) || '0', 10);
     const item = SEED_QUESTIONS[idx % SEED_QUESTIONS.length];
     localStorage.setItem(key, String(idx + 1));
-    return { id: item.id, industry: item.industry, question: item.question, meta: { seed: true } };
+    return { id: item.id, industry: item.industry, family: item.family || 'Curata', question: item.question, meta: { seed: true } };
   }
 
   /* ── Stato Lab ── */
@@ -218,10 +269,10 @@
 
     ui.appendBot(
       '**🎭 DOMANDA CLIENTE**\n' +
-      '**Settore:** ' + scenario.industry + '\n\n' +
+      '**Famiglia:** ' + (scenario.family || '—') + '\n' +
+      '**Contesto:** ' + scenario.industry + '\n\n' +
       scenario.question + '\n\n' +
-      '---\n' +
-      '👇 **Scrivi qui sotto la risposta** che darebbe un consulente Abra (prezzi, step, raccomandazione).',
+      '---\n👇 **Risposta consulente Abra** (prezzi listino, gamma corretta, step PoC).',
       { isScenario: true, labSystem: true }
     );
 
