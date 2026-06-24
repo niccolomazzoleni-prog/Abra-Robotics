@@ -86,7 +86,7 @@ ${global.AbraPromptGuard?.SECURITY_RULES || ''}`;
     const cfg = loadConfig();
     if (cfg.mode === 'offline') return null;
     if (!global.AbraPromptGuard) {
-      throw new Error('Modulo prompt-guard non caricato — ricarica la pagina admin.');
+      throw new Error('Modulo prompt-guard non caricato — ricarica la pagina.');
     }
 
     const secureContext = global.AbraPromptGuard.formatSecureContext(ragResults, quoteBlock);
