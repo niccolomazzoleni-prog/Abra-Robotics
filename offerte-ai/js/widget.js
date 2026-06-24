@@ -87,7 +87,7 @@
     rag.init().then(() => {
       ready = true;
       ui.setStatus('Online', true);
-      ui.appendBot('Ciao! Chiedimi prezzi, tempi di consegna o un preventivo formale — ad esempio sorveglianza con As2.', {});
+      ui.appendBot('Ciao! Chiedimi prezzi o un preventivo. Oppure **WhatsApp** / **Modulo contatto** in basso.', {});
     }).catch(err => {
       ui.appendBot('Errore: ' + err.message, {});
     });
