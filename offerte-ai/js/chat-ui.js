@@ -149,7 +149,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 20.4l17.45-7.48c.81-.35.81-1.49 0-1.84L3.4 3.6c-.66-.29-1.39.2-1.39.91L2 9.12c0 .5.37.93.87.99L15 12 2.87 13.89c-.5.07-.87.5-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z"/></svg>
               </button>
             </div>
-            <p class="compose-hint">Invio per inviare · Shift+Invio a capo</p>
+            <p class="compose-hint" id="chat-compose-hint">Invio per inviare · Shift+Invio a capo</p>
           </form>
           ${this.opts.showContact ? `
           <div class="chat-compose-footer">
@@ -393,6 +393,8 @@
       const time = new Date().toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
       if (role === 'bot') {
         wrap.className = 'chat-row chat-row-bot';
+        if (meta.isScenario) wrap.classList.add('chat-row-scenario');
+        if (meta.labSystem) wrap.classList.add('chat-row-lab-system');
         wrap.innerHTML = `
           <div class="chat-avatar chat-avatar-sm">${escapeHtml(this.opts.avatarLetter)}</div>
           <div class="chat-bubble-wrap">
@@ -599,33 +601,53 @@
       this.setStatus('Sta scrivendo…', false);
       try {
         const result = await this.opts.onSend(q);
-        const reply = result.reply || result;
-        const fbId = uid();
-        FeedbackStore.save({
-          id: fbId,
-          timestamp: new Date().toISOString(),
-          question: q,
-          answer: reply,
-          sources: (result.sources || []).map(s => ({ id: s.id, title: s.title, score: s.score, text: s.text })),
-          quote: result.quote || null,
-          model_mode: global.AbraLLM?.loadConfig?.().mode || 'offline',
-          rating: null, correction: null, action: 'pending',
-        });
+        if (result?.silent) {
+          this.hideTyping();
+          this.setStatus('Online', true);
+          this.sendBtn.disabled = false;
+          this.inputEl.focus();
+          return;
+        }
+        const reply = typeof result === 'string' ? result : (result?.reply ?? '');
+        const skipFeedback = !!result?.skipFeedback;
+        const fbId = skipFeedback ? null : uid();
+        if (!skipFeedback && fbId) {
+          FeedbackStore.save({
+            id: fbId,
+            timestamp: new Date().toISOString(),
+            question: q,
+            answer: reply,
+            sources: (result.sources || []).map(s => ({ id: s.id, title: s.title, score: s.score, text: s.text })),
+            quote: result.quote || null,
+            model_mode: global.AbraLLM?.loadConfig?.().mode || 'offline',
+            rating: null, correction: null, action: 'pending',
+          });
+        }
         await this.appendBotStreamed(reply, {
           feedbackId: fbId,
           answer: reply,
           sources: result.sources || [],
           quote: result.quote || null,
           offerDraft: result.offerDraft || null,
+          labSystem: skipFeedback,
         });
         this.setStatus('Online', true);
       } catch (err) {
         this.hideTyping();
-        this.appendBot('Errore: ' + err.message, {});
+        this.appendBot('Errore: ' + err.message, { labSystem: true });
         this.setStatus('Errore', false);
       }
       this.sendBtn.disabled = false;
       this.inputEl.focus();
+    }
+
+    setComposePlaceholder(text) {
+      if (this.inputEl) this.inputEl.placeholder = text;
+    }
+
+    setComposeHint(text) {
+      const el = document.getElementById('chat-compose-hint');
+      if (el) el.textContent = text;
     }
   }
 
