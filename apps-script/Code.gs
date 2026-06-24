@@ -22,6 +22,11 @@ function doPost(e) {
       return handlePageview(data);
     }
 
+    var contact = normalizeContactData(data);
+    if (!contact) {
+      return jsonOut({ ok: false, error: 'invalid_contact' });
+    }
+
     var ss = SpreadsheetApp.openById(SHEET_ID);
     var sh = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
 
@@ -31,28 +36,28 @@ function doPost(e) {
 
     sh.appendRow([
       new Date(),
-      data.nome      || '',
-      data.azienda   || '',
-      data.ruolo     || '',
-      data.email     || '',
-      data.telefono  || '',
-      data.messaggio || '',
-      data.origine   || data.prodotto || '',
-      data.pagina    || '',
-      data.url       || ''
+      contact.nome,
+      contact.azienda,
+      contact.ruolo,
+      contact.email,
+      contact.telefono,
+      contact.messaggio,
+      contact.origine,
+      contact.pagina,
+      contact.url
     ]);
 
     var corpo =
-      'Nome: '      + (data.nome      || '') + '\n' +
-      'Azienda: '   + (data.azienda   || '') + '\n' +
-      'Ruolo: '     + (data.ruolo     || '') + '\n' +
-      'Email: '     + (data.email     || '') + '\n' +
-      'Telefono: '  + (data.telefono  || '') + '\n' +
-      'Messaggio: ' + (data.messaggio || '') + '\n' +
-      'Origine: '   + (data.origine   || data.prodotto || '') + '\n' +
-      'URL: '       + (data.url       || '');
+      'Nome: '      + contact.nome + '\n' +
+      'Azienda: '   + contact.azienda + '\n' +
+      'Ruolo: '     + contact.ruolo + '\n' +
+      'Email: '     + contact.email + '\n' +
+      'Telefono: '  + contact.telefono + '\n' +
+      'Messaggio: ' + contact.messaggio + '\n' +
+      'Origine: '   + contact.origine + '\n' +
+      'URL: '       + contact.url;
 
-    MailApp.sendEmail(NOTIFY_TO, 'Nuovo contatto Abra: ' + (data.nome || '---'), corpo);
+    MailApp.sendEmail(NOTIFY_TO, 'Nuovo contatto Abra: ' + contact.nome, corpo);
 
     return jsonOut({ ok: true });
 
@@ -207,6 +212,53 @@ function normalizeReferrer(ref) {
   } catch (e) {
     return ref || '(direct)';
   }
+}
+
+function trimField(v) {
+  return String(v || '').replace(/^\s+|\s+$/g, '');
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function normalizeContactData(data) {
+  data = data || {};
+
+  // Honeypot: bot che compilano campi nascosti
+  if (trimField(data._gotcha) || trimField(data.website) || trimField(data.company_url)) {
+    return null;
+  }
+
+  var nome = trimField(data.nome);
+  var email = trimField(data.email);
+  var messaggio = trimField(data.messaggio);
+  var azienda = trimField(data.azienda) || trimField(data.istituzione);
+  var telefono = trimField(data.telefono);
+  var ruolo = trimField(data.ruolo);
+
+  // Rifiuta invii vuoti o quasi (bot che POSTano solo url/pagina)
+  if (!nome && !email && !messaggio && !telefono && !azienda) {
+    return null;
+  }
+  if (!nome || !email) {
+    return null;
+  }
+  if (!isValidEmail(email)) {
+    return null;
+  }
+
+  return {
+    nome: nome,
+    azienda: azienda,
+    ruolo: ruolo,
+    email: email,
+    telefono: telefono,
+    messaggio: messaggio,
+    origine: trimField(data.origine) || trimField(data.prodotto) || 'Form contatti',
+    pagina: trimField(data.pagina),
+    url: trimField(data.url)
+  };
 }
 
 function jsonOut(obj) {

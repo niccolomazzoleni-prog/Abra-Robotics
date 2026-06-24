@@ -62,47 +62,7 @@
     wireStripeTrust(url);
   }
 
-  // ── 2. Form "Richiedi informazioni" (box in alto) ───────────────────────────
-  // Stesso endpoint del form principale del sito (configura GOOGLE_SCRIPT_URL).
-  var GOOGLE_SCRIPT_URL = (window.GOOGLE_SCRIPT_URL || "INSERISCI_QUI_IL_TUO_URL_APPS_SCRIPT");
-
-  function wireQuoteForms() {
-    document.querySelectorAll(".quote-form-top").forEach(function (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var btn = form.querySelector("button[type=submit]");
-        var fb = form.querySelector(".quote-form-feedback");
-        var original = btn ? btn.textContent : "";
-        if (btn) { btn.disabled = true; btn.textContent = "Invio..."; }
-        if (fb) { fb.className = "quote-form-feedback"; fb.textContent = ""; }
-
-        var payload = Object.fromEntries(new FormData(form).entries());
-        payload.prodotto = form.getAttribute("data-product") || document.title;
-        payload.origine = "Richiesta info scheda: " + payload.prodotto;
-        payload.pagina = document.title;
-        payload.url = location.href;
-        payload.timestamp = new Date().toISOString();
-
-        fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }).then(function () {
-          if (fb) { fb.className = "quote-form-feedback success"; fb.textContent = "Richiesta inviata! Ti ricontattiamo entro 12 ore."; }
-          if (window.fbq) fbq('track', 'Lead');
-          form.reset();
-        }).catch(function () {
-          if (fb) { fb.className = "quote-form-feedback error"; fb.textContent = "Errore. Scrivi a info@abrarobotics.com."; }
-        }).finally(function () {
-          if (btn) { btn.disabled = false; btn.textContent = original; }
-        });
-      });
-    });
-  }
-
   document.addEventListener("DOMContentLoaded", function () {
     wireBuyButtons();
-    wireQuoteForms();
   });
 })();
