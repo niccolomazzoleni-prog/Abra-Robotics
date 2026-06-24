@@ -32,6 +32,9 @@
     .test-result { margin-top: 12px; padding: 10px; border-radius: 8px; font-size: 0.85rem; }
     .test-ok { background: #f0fdf4; border: 1px solid #86efac; }
     .test-err { background: #fef2f2; border: 1px solid #fecaca; }
+    .offer-history-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 8px; }
+    .offer-history-table th, .offer-history-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+    .offer-history-table th { font-size: 0.75rem; color: var(--gray-600); }
   </style>
   <script src="auth.js"></script>
 </head>
@@ -46,6 +49,16 @@
     <span class="oai-badge">Beta</span>
     <h1>Assistente Offerte AI</h1>
     <p class="hint">Configura provider LLM e knowledge base. Le API key restano solo nel browser (<strong>localStorage</strong>, non nel repo).</p>
+
+    <section class="admin-card">
+      <h2 style="margin:0;font-size:1rem">Offerte generate</h2>
+      <p class="hint">Cronologia salvata in questo browser + esempi di riferimento dal repo (23 giu 2026). I prezzi nel PDF usano sempre il listino deterministico, non l'LLM.</p>
+      <div id="offer-history-admin"></div>
+      <div class="admin-actions">
+        <a class="btn btn-primary" href="../offerte-ai/offerta.html">Apri Crea offerta</a>
+        <a class="btn" href="../offerte-ai/">Lab Training</a>
+      </div>
+    </section>
 
     <section class="admin-card">
       <h2 style="margin:0;font-size:1rem">Provider LLM</h2>
@@ -167,9 +180,13 @@
   <script src="../offerte-ai/js/prompt-guard.js"></script>
   <script src="../offerte-ai/js/kb-search.js"></script>
   <script src="../offerte-ai/js/llm-providers.js"></script>
+  <script src="../offerte-ai/js/offer-history.js"></script>
   <script src="../offerte-ai/js/chat-ui.js"></script>
   <script>
     AbraUI.mountNav('admin');
+    if (window.AbraOfferHistory) {
+      AbraOfferHistory.renderList(document.getElementById('offer-history-admin'));
+    }
     document.getElementById('btn-logout').addEventListener('click', e => {
       e.preventDefault();
       AbraAdmin.logout();

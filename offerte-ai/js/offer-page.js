@@ -72,6 +72,23 @@
     document.getElementById('live-preview').innerHTML = builder.renderPreviewFragment(offer);
   }
 
+  function renderOfferMeta() {
+    const el = document.getElementById('offer-meta-banner');
+    if (!el || !offer) return;
+    const t = builder.recalculate(offer);
+    const primary = (offer.line_items || []).find(l => l.principale)
+      || (offer.line_items || []).find(l => l.robot_gruppo === 'sorveglianza')
+      || (offer.line_items || []).find(l => l.opzione_robot);
+    const marginLabels = { end_user: 'End-User', partner_a: 'Partner A (−5%)', partner_b: 'Partner B (−10%)' };
+    const altCount = (t.opzioni || []).length;
+    el.innerHTML =
+      `<span><strong>${esc(offer.id || 'Nuova offerta')}</strong> · ${esc(offer.data || '')} · validità ${offer.validita_giorni || 30} gg</span>` +
+      `<span class="meta-chip">${esc(marginLabels[offer.margin_key] || offer.margin_key)}</span>` +
+      (primary ? `<span>Config. di riferimento: <strong>${esc(primary.nome)}</strong></span>` : '') +
+      (altCount > 1 ? `<span>${altCount} alternative robot nel PDF</span>` : '') +
+      `<span>Totale riferimento: <strong>€ ${fmt(t.totale)}</strong> <span class="iva-note">(${esc(offer.note_iva)})</span></span>`;
+  }
+
   function renderLines() {
     const tbody = document.getElementById('lines-body');
     tbody.innerHTML = offer.line_items.map((l, i) => `
@@ -84,8 +101,8 @@
           ${l.sku && manifest[l.sku] ? `<br><button type="button" class="btn-link-sm btn-sheet" data-sku="${esc(l.sku)}">+ Scheda prodotto</button>` : ''}
         </td>
         <td><input type="number" min="1" value="${l.qty}" data-idx="${i}" class="qty-inp" style="width:60px"></td>
-        <td>${l.su_richiesta || !l.prezzo_unit ? 'Su richiesta' : '€ ' + fmt(l.prezzo_unit)}</td>
-        <td>${l.su_richiesta || !l.prezzo_totale ? '—' : '€ ' + fmt(l.prezzo_totale)}</td>
+        <td>${l.su_richiesta || !l.prezzo_unit ? '<span title="Escluso dal totale">Su richiesta</span>' : '€ ' + fmt(l.prezzo_unit)}</td>
+        <td>${l.su_richiesta || !l.prezzo_totale ? '<span title="Escluso dal totale">—</span>' : '€ ' + fmt(l.prezzo_totale)}</td>
         <td><button type="button" class="btn-del" data-idx="${i}">×</button></td>
       </tr>`).join('') || '<tr><td colspan="5" class="lines-empty">Cerca un prodotto o aggiungi voce custom</td></tr>';
 
@@ -106,9 +123,15 @@
     }));
 
     const t = builder.recalculate(offer);
+    const refName = (offer.line_items || []).find(l => l.principale)?.nome
+      || (offer.line_items || []).find(l => l.robot_gruppo === 'sorveglianza')?.nome
+      || (offer.line_items || []).find(l => l.opzione_robot)?.nome
+      || 'configurazione di riferimento';
     document.getElementById('totals-box').innerHTML =
-      `<div>Subtotale: <strong>€ ${fmt(t.subtotal)}</strong></div>` +
-      `<div class="grand">Totale: <strong>€ ${fmt(t.totale)}</strong> <span class="iva-note">(${esc(offer.note_iva)})</span></div>`;
+      `<div class="hint" style="margin-bottom:8px">Totale calcolato sulla <strong>${esc(refName)}</strong> + voci condivise. Le alternative robot sono nel PDF.</div>` +
+      `<div>Subtotale riferimento: <strong>€ ${fmt(t.subtotal)}</strong></div>` +
+      `<div class="grand">Totale riferimento: <strong>€ ${fmt(t.totale)}</strong> <span class="iva-note">(${esc(offer.note_iva)})</span></div>`;
+    renderOfferMeta();
     renderPreview();
   }
 
@@ -234,11 +257,14 @@
     document.getElementById('btn-save-draft').addEventListener('click', () => {
       syncFormToOffer();
       builder.saveDraft(offer);
-      AbraUI.toast('Bozza salvata', 'ok');
+      if (window.AbraOfferHistory) AbraOfferHistory.record(offer, builder);
+      renderOfferMeta();
+      AbraUI.toast(`Bozza salvata (${offer.id})`, 'ok');
     });
 
     document.getElementById('btn-export').addEventListener('click', () => {
       syncFormToOffer();
+      if (window.AbraOfferHistory) AbraOfferHistory.record(offer, builder);
       builder.exportPrint(offer);
     });
 
@@ -368,6 +394,7 @@
     bindEvents();
     renderBlocks();
     renderLines();
+    renderOfferMeta();
   }
 
   if (window.AbraAdmin?.whenUnlocked) window.AbraAdmin.whenUnlocked(init);

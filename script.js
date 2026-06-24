@@ -4,11 +4,62 @@
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
+function injectContactHoneypots() {
+  document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
+    if (form.querySelector('input[name="_gotcha"]')) return;
+    const hp = document.createElement('input');
+    hp.type = 'text';
+    hp.name = '_gotcha';
+    hp.tabIndex = -1;
+    hp.autocomplete = 'off';
+    hp.setAttribute('aria-hidden', 'true');
+    hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
+    form.appendChild(hp);
+  });
+}
+
+function validateContactForm(form) {
+  const hp = form.querySelector('input[name="_gotcha"]');
+  if (hp && hp.value.trim()) return false;
+
+  const invalid = [...form.querySelectorAll('[required]')].filter(f => !f.value.trim());
+  if (invalid.length) {
+    invalid[0].focus();
+    invalid[0].reportValidity();
+    return false;
+  }
+
+  const nome = (form.querySelector('[name="nome"]')?.value || '').trim();
+  const email = (form.querySelector('[name="email"]')?.value || '').trim();
+  if (!nome || !email) {
+    const missing = !nome ? form.querySelector('[name="nome"]') : form.querySelector('[name="email"]');
+    if (missing) { missing.focus(); missing.reportValidity(); }
+    return false;
+  }
+  return true;
+}
+
+function buildContactPayload(form) {
+  const payload = Object.fromEntries(new FormData(form).entries());
+  if (!payload.azienda && payload.istituzione) payload.azienda = payload.istituzione;
+  payload.prodotto = payload.prodotto || form.dataset.product || '';
+  payload.origine = payload.prodotto || payload.origine || 'Form contatti';
+  payload.pagina = document.title;
+  payload.url = location.href;
+  payload.timestamp = new Date().toISOString();
+  if (window.AbraAds && window.AbraAds.getGclid) {
+    payload.gclid = payload.gclid || window.AbraAds.getGclid();
+  }
+  return payload;
+}
+
+injectContactHoneypots();
+
 document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const invalid = [...form.querySelectorAll('[required]')].filter(f => !f.value.trim());
-    if (invalid.length) { invalid[0].focus(); invalid[0].reportValidity(); return; }
+    e.stopImmediatePropagation();
+    if (!validateContactForm(form)) return;
     const submitBtn = form.querySelector('.form-submit') || form.querySelector('[type="submit"]');
     const feedback = form.querySelector('.form-feedback') || form.querySelector('.quote-form-feedback');
     const origText = submitBtn.textContent;
@@ -16,15 +67,7 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
     submitBtn.textContent = 'Invio in corso...';
     if (feedback) { feedback.className = feedback.className.split(' ')[0]; feedback.textContent = ''; }
 
-    const payload = Object.fromEntries(new FormData(form).entries());
-    payload.prodotto = payload.prodotto || form.dataset.product || '';
-    payload.origine = payload.prodotto || 'Form contatti';
-    payload.pagina = document.title;
-    payload.url = location.href;
-    payload.timestamp = new Date().toISOString();
-    if (window.AbraAds && window.AbraAds.getGclid) {
-      payload.gclid = payload.gclid || window.AbraAds.getGclid();
-    }
+    const payload = buildContactPayload(form);
 
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
@@ -44,7 +87,7 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
       submitBtn.disabled = false;
       submitBtn.textContent = origText;
     }
-  });
+  }, true);
 });
 
 // Response-time note below every submit button
