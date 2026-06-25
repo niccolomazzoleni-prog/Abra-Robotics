@@ -1,10 +1,20 @@
 // === ENDPOINT UNICO per TUTTI i form del sito ===
-// Tutti i form (contatti home/pagine, box "Richiedi informazioni" sulle schede) inviano qui.
-// Incolla l'URL del Web App Google Apps Script (vedi apps-script/README.md). Una sola riga da cambiare.
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
+// reCAPTCHA v3 — inserisci la site key dopo registrazione su https://www.google.com/recaptcha/admin
+// Lascia vuoto per disabilitare (la validazione server-side resta attiva)
+const RECAPTCHA_SITE_KEY = '';
+
 window._formLoadTime = Date.now();
+
+(function loadRecaptcha() {
+  if (!RECAPTCHA_SITE_KEY) return;
+  const s = document.createElement('script');
+  s.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
+  s.async = true;
+  document.head.appendChild(s);
+})();
 
 (function initHeroVideo() {
   const video = document.querySelector('.hero-video');
@@ -57,9 +67,27 @@ function validateContactForm(form) {
 
   const nome = (form.querySelector('[name="nome"]')?.value || '').trim();
   const email = (form.querySelector('[name="email"]')?.value || '').trim();
-  if (!nome || !email) {
-    const missing = !nome ? form.querySelector('[name="nome"]') : form.querySelector('[name="email"]');
-    if (missing) { missing.focus(); missing.reportValidity(); }
+  const telefono = (form.querySelector('[name="telefono"]')?.value || '').trim();
+  const messaggio = (form.querySelector('[name="messaggio"]')?.value || '').trim();
+
+  if (nome.length < 2) {
+    const f = form.querySelector('[name="nome"]');
+    if (f) { f.focus(); f.setCustomValidity('Inserisci il tuo nome completo.'); f.reportValidity(); f.setCustomValidity(''); }
+    return false;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    const f = form.querySelector('[name="email"]');
+    if (f) { f.focus(); f.setCustomValidity('Inserisci un indirizzo email valido.'); f.reportValidity(); f.setCustomValidity(''); }
+    return false;
+  }
+  if (telefono.replace(/\D/g, '').length < 6) {
+    const f = form.querySelector('[name="telefono"]');
+    if (f) { f.focus(); f.setCustomValidity('Inserisci un numero di telefono valido.'); f.reportValidity(); f.setCustomValidity(''); }
+    return false;
+  }
+  if (messaggio.length < 5) {
+    const f = form.querySelector('[name="messaggio"]');
+    if (f) { f.focus(); f.setCustomValidity('Inserisci un messaggio.'); f.reportValidity(); f.setCustomValidity(''); }
     return false;
   }
   return true;
@@ -94,6 +122,12 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
     if (feedback) { feedback.className = feedback.className.split(' ')[0]; feedback.textContent = ''; }
 
     const payload = buildContactPayload(form);
+
+    if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+      try {
+        payload.recaptcha_token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' });
+      } catch (_) {}
+    }
 
     try {
       await fetch(GOOGLE_SCRIPT_URL, {

@@ -1,31 +1,49 @@
 var SHEET_ID   = '1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY';
 var SHEET_NAME = 'Contatti';
-var ANALYTICS_SHEET = 'Analytics';
 var NOTIFY_TO  = 'gio@abrarobotics.com,niccolomazzoleni@gmail.com';
-/** Cambia prima di ridistribuire; la stessa chiave va incollata in admin/statistiche.html */
-var STATS_KEY  = 'abra-stats-2026';
+
+// reCAPTCHA v3 secret key — inserisci dopo registrazione su https://www.google.com/recaptcha/admin
+// Lascia vuoto per disabilitare la verifica (non consigliato in produzione)
+var RECAPTCHA_SECRET = '';
+
+function verifyRecaptcha(token) {
+  if (!RECAPTCHA_SECRET) return true;
+  if (!token) return false;
+  var res = UrlFetchApp.fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'post',
+    payload: { secret: RECAPTCHA_SECRET, response: token }
+  });
+  var result = JSON.parse(res.getContentText());
+  return result.success === true && (result.score === undefined || result.score >= 0.5);
+}
 
 function doPost(e) {
   try {
     var data = {};
     if (e && e.postData && e.postData.contents) {
-      try {
-        data = JSON.parse(e.postData.contents);
-      } catch (err) {
-        data = e.parameter || {};
-      }
+      try { data = JSON.parse(e.postData.contents); } catch (_) { data = e.parameter || {}; }
     } else {
       data = (e && e.parameter) || {};
     }
 
-    if (data.type === 'pageview') {
-      return handlePageview(data);
+    // Honeypot
+    if (data._gotcha && String(data._gotcha).trim()) {
+      return ok();
     }
 
-    var contact = normalizeContactData(data);
-    if (!contact) {
-      return jsonOut({ ok: false, error: 'invalid_contact' });
-    }
+    // Validazione campi obbligatori
+    var nome     = String(data.nome     || '').trim();
+    var email    = String(data.email    || '').trim();
+    var telefono = String(data.telefono || '').trim();
+    var messaggio = String(data.messaggio || '').trim();
+
+    if (!nome || nome.length < 2)      return err('missing_nome');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return err('invalid_email');
+    if (!telefono || telefono.replace(/\D/g, '').length < 6)     return err('missing_telefono');
+    if (!messaggio || messaggio.length < 5)                       return err('missing_messaggio');
+
+    // reCAPTCHA
+    if (!verifyRecaptcha(data.recaptcha_token)) return err('captcha_failed');
 
     var ss = SpreadsheetApp.openById(SHEET_ID);
     var sh = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
@@ -36,233 +54,41 @@ function doPost(e) {
 
     sh.appendRow([
       new Date(),
-      contact.nome,
-      contact.azienda,
-      contact.ruolo,
-      contact.email,
-      contact.telefono,
-      contact.messaggio,
-      contact.origine,
-      contact.pagina,
-      contact.url
+      nome,
+      String(data.azienda   || '').trim(),
+      String(data.ruolo     || '').trim(),
+      email,
+      telefono,
+      messaggio,
+      String(data.origine   || data.prodotto || '').trim(),
+      String(data.pagina    || '').trim(),
+      String(data.url       || '').trim()
     ]);
 
     var corpo =
-      'Nome: '      + contact.nome + '\n' +
-      'Azienda: '   + contact.azienda + '\n' +
-      'Ruolo: '     + contact.ruolo + '\n' +
-      'Email: '     + contact.email + '\n' +
-      'Telefono: '  + contact.telefono + '\n' +
-      'Messaggio: ' + contact.messaggio + '\n' +
-      'Origine: '   + contact.origine + '\n' +
-      'URL: '       + contact.url;
+      'Nome: '      + nome + '\n' +
+      'Azienda: '   + (data.azienda   || '') + '\n' +
+      'Ruolo: '     + (data.ruolo     || '') + '\n' +
+      'Email: '     + email + '\n' +
+      'Telefono: '  + telefono + '\n' +
+      'Messaggio: ' + messaggio + '\n' +
+      'Origine: '   + (data.origine || data.prodotto || '') + '\n' +
+      'URL: '       + (data.url || '');
 
-    MailApp.sendEmail(NOTIFY_TO, 'Nuovo contatto Abra: ' + contact.nome, corpo);
+    MailApp.sendEmail(NOTIFY_TO, 'Nuovo contatto Abra: ' + nome, corpo);
 
-    return jsonOut({ ok: true });
+    return ok();
 
   } catch (err) {
-    return jsonOut({ ok: false, error: String(err) });
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: false, error: String(err) }))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-function handlePageview(data) {
-  var ss = SpreadsheetApp.openById(SHEET_ID);
-  var sh = ss.getSheetByName(ANALYTICS_SHEET) || ss.insertSheet(ANALYTICS_SHEET);
-  if (sh.getLastRow() === 0) {
-    sh.appendRow(['Data','Path','Referrer','UTM Source','UTM Medium','UTM Campaign','Lang','Mobile']);
-  }
-  sh.appendRow([
-    new Date(),
-    data.path || '',
-    data.referrer || '',
-    data.utm_source || '',
-    data.utm_medium || '',
-    data.utm_campaign || '',
-    data.lang || '',
-    data.mobile ? 'sì' : 'no'
-  ]);
-  return jsonOut({ ok: true });
-}
+function ok()      { return ContentService.createTextOutput(JSON.stringify({ ok: true })).setMimeType(ContentService.MimeType.JSON); }
+function err(code) { return ContentService.createTextOutput(JSON.stringify({ ok: false, error: code })).setMimeType(ContentService.MimeType.JSON); }
 
-function doGet(e) {
-  e = e || { parameter: {} };
-  if (e.parameter.action === 'stats') {
-    if (e.parameter.key !== STATS_KEY) {
-      return jsonOut({ ok: false, error: 'Chiave non valida' });
-    }
-    var days = parseInt(e.parameter.days, 10) || 30;
-    return jsonOut(buildStats(days));
-  }
+function doGet() {
   return ContentService.createTextOutput('Abra Robotics — endpoint form attivo.');
-}
-
-function buildStats(days) {
-  var cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - days);
-
-  var ss = SpreadsheetApp.openById(SHEET_ID);
-  var analytics = aggregateSheet(ss.getSheetByName(ANALYTICS_SHEET), cutoff, 1, 2);
-  var contacts = ss.getSheetByName(SHEET_NAME);
-  var leads = 0;
-  if (contacts && contacts.getLastRow() > 1) {
-    var rows = contacts.getDataRange().getValues();
-    for (var i = 1; i < rows.length; i++) {
-      var d = rows[i][0];
-      if (d instanceof Date && d >= cutoff) leads++;
-    }
-  }
-
-  return {
-    ok: true,
-    days: days,
-    totals: {
-      pageviews: analytics.total,
-      sessions: analytics.sessions,
-      leads: leads
-    },
-    referrers: analytics.referrers,
-    pages: analytics.pages,
-    sources: analytics.sources,
-    daily: analytics.daily || [],
-    mobile_pct: analytics.mobile_pct || 0
-  };
-}
-
-function aggregateSheet(sh, cutoff, dateCol, valueCol) {
-  var referrers = {};
-  var pages = {};
-  var sources = {};
-  var sessions = {};
-  var total = 0;
-
-  if (!sh || sh.getLastRow() < 2) {
-    return { total: 0, sessions: 0, referrers: [], pages: [], sources: [], daily: [], mobile_pct: 0 };
-  }
-
-  var rows = sh.getDataRange().getValues();
-  for (var i = 1; i < rows.length; i++) {
-    var d = rows[i][dateCol - 1];
-    if (!(d instanceof Date) || d < cutoff) continue;
-    total++;
-
-    var path = String(rows[i][valueCol - 1] || '/');
-    var ref = String(rows[i][valueCol] || '');
-    var src = String(rows[i][valueCol + 1] || '');
-
-    pages[path] = (pages[path] || 0) + 1;
-
-    var refKey = ref ? normalizeReferrer(ref) : '(direct)';
-    referrers[refKey] = (referrers[refKey] || 0) + 1;
-
-    if (src) sources[src] = (sources[src] || 0) + 1;
-
-    var day = Utilities.formatDate(d, Session.getScriptTimeZone(), 'yyyy-MM-dd');
-    var sessId = day + '|' + refKey;
-    sessions[sessId] = true;
-  }
-
-  function top(obj, limit) {
-    return Object.keys(obj)
-      .map(function (k) { return { key: k, count: obj[k] }; })
-      .sort(function (a, b) { return b.count - a.count; })
-      .slice(0, limit)
-      .map(function (x) { return x; });
-  }
-
-  return {
-    total: total,
-    sessions: Object.keys(sessions).length,
-    referrers: top(referrers, 12).map(function (x) { return { referrer: x.key, count: x.count }; }),
-    pages: top(pages, 12).map(function (x) { return { path: x.key, count: x.count }; }),
-    sources: top(sources, 12).map(function (x) { return { source: x.key, count: x.count }; }),
-    daily: dailySeries(rows, cutoff, dateCol),
-    mobile_pct: mobilePct(rows, cutoff, dateCol)
-  };
-}
-
-function dailySeries(rows, cutoff, dateCol) {
-  var byDay = {};
-  for (var i = 1; i < rows.length; i++) {
-    var d = rows[i][dateCol - 1];
-    if (!(d instanceof Date) || d < cutoff) continue;
-    var key = Utilities.formatDate(d, Session.getScriptTimeZone(), 'yyyy-MM-dd');
-    byDay[key] = (byDay[key] || 0) + 1;
-  }
-  return Object.keys(byDay).sort().map(function (k) {
-    return { date: k, count: byDay[k] };
-  });
-}
-
-function mobilePct(rows, cutoff, dateCol) {
-  var mob = 0, tot = 0;
-  for (var i = 1; i < rows.length; i++) {
-    var d = rows[i][dateCol - 1];
-    if (!(d instanceof Date) || d < cutoff) continue;
-    tot++;
-    if (String(rows[i][7] || '').toLowerCase() === 'sì') mob++;
-  }
-  return tot ? Math.round((mob / tot) * 100) : 0;
-}
-
-function normalizeReferrer(ref) {
-  try {
-    var u = ref.replace(/^https?:\/\//, '').split('/')[0];
-    return u || '(direct)';
-  } catch (e) {
-    return ref || '(direct)';
-  }
-}
-
-function trimField(v) {
-  return String(v || '').replace(/^\s+|\s+$/g, '');
-}
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function normalizeContactData(data) {
-  data = data || {};
-
-  // Honeypot: bot che compilano campi nascosti
-  if (trimField(data._gotcha) || trimField(data.website) || trimField(data.company_url)) {
-    return null;
-  }
-
-  var nome = trimField(data.nome);
-  var email = trimField(data.email);
-  var messaggio = trimField(data.messaggio);
-  var azienda = trimField(data.azienda) || trimField(data.istituzione);
-  var telefono = trimField(data.telefono);
-  var ruolo = trimField(data.ruolo);
-
-  // Rifiuta invii vuoti o quasi (bot che POSTano solo url/pagina)
-  if (!nome && !email && !messaggio && !telefono && !azienda) {
-    return null;
-  }
-  if (!nome || !email) {
-    return null;
-  }
-  if (!isValidEmail(email)) {
-    return null;
-  }
-
-  return {
-    nome: nome,
-    azienda: azienda,
-    ruolo: ruolo,
-    email: email,
-    telefono: telefono,
-    messaggio: messaggio,
-    origine: trimField(data.origine) || trimField(data.prodotto) || 'Form contatti',
-    pagina: trimField(data.pagina),
-    url: trimField(data.url)
-  };
-}
-
-function jsonOut(obj) {
-  return ContentService
-    .createTextOutput(JSON.stringify(obj))
-    .setMimeType(ContentService.MimeType.JSON);
 }
