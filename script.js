@@ -4,6 +4,8 @@
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
+window._formLoadTime = Date.now();
+
 (function initHeroVideo() {
   const video = document.querySelector('.hero-video');
   if (!video) return;
@@ -47,6 +49,8 @@ function injectContactHoneypots() {
 function validateContactForm(form) {
   const hp = form.querySelector('input[name="_gotcha"]');
   if (hp && hp.value.trim()) return false;
+
+  if (Date.now() - window._formLoadTime < 3000) return false;
 
   const invalid = [...form.querySelectorAll('[required]')].filter(f => !f.value.trim());
   if (invalid.length) {
