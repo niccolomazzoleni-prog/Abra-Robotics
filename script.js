@@ -36,12 +36,8 @@ function injectContactHoneypots() {
   document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
     if (form.querySelector('input[name="_gotcha"]')) return;
     const hp = document.createElement('input');
-    hp.type = 'text';
+    hp.type = 'hidden';
     hp.name = '_gotcha';
-    hp.tabIndex = -1;
-    hp.autocomplete = 'off';
-    hp.setAttribute('aria-hidden', 'true');
-    hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
     form.appendChild(hp);
   });
 }
