@@ -4,7 +4,7 @@ const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
 // reCAPTCHA v3 — inserisci la site key dopo registrazione su https://www.google.com/recaptcha/admin
 // Lascia vuoto per disabilitare (la validazione server-side resta attiva)
-const RECAPTCHA_SITE_KEY = '';
+const RECAPTCHA_SITE_KEY = '6LeozTQtAAAAAJ8MLsZiT7a5mdol2TSR043VP0-2';
 
 window._formLoadTime = Date.now();
 
