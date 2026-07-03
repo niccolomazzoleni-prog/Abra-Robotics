@@ -24,33 +24,19 @@ IMAGE: dict[str, str] = {
     "G1-COMP": "prodotti/assets/variants/g1-comp/img-01.png",
     "H2-AIR": "images/prodotti/unitree-h2-hero.png",
     "H2-EDU": "images/prodotti/unitree-h2-hero.png",
-    "G1D-U1": "images/manifattura/unitree-g1-d-standard.png",
-    "G1D-U2": "images/manifattura/unitree-g1-d-standard.png",
-    "G1D-U3": "images/manifattura/unitree-g1-d-standard.png",
-    "G1D-U4": "images/manifattura/unitree-g1-d-standard.png",
-    "G1D-U5": "images/manifattura/unitree-g1-d-standard.png",
-    "G1D-U6": "images/manifattura/unitree-g1-d-flagship.png",
-    "G1D-U7": "images/manifattura/unitree-g1-d-flagship.png",
-    "G1D-U8": "images/manifattura/unitree-g1-d-flagship.png",
-    "G1D-U9": "images/manifattura/unitree-g1-d-flagship.png",
-    "G1D-U10": "images/manifattura/unitree-g1-d-flagship.png",
-    "H2-PLUS": "images/prodotti/unitree-h2-plus-hero.png",
     "R1-D": "images/manifattura/unitree-r1-d.png",
-    "R1-AIR": "images/prodotti/r1-air.png",
-    "R1-U1": "images/prodotti/r1-u1.png",
-    "R1-U2": "images/prodotti/r1-u2.png",
-    "R1-U3": "images/prodotti/r1-u3.png",
-    "R1-U4": "images/prodotti/r1-u4.png",
-    "R1-U5": "images/prodotti/r1-u5.png",
-    "R1-U6": "images/prodotti/r1-u6.png",
+    "R1-AIR": "images/manifattura/unitree-r1.png",
+    "R1-U1": "images/manifattura/unitree-r1.png",
+    "R1-U2": "images/manifattura/unitree-r1.png",
+    "R1-U3": "images/manifattura/unitree-r1.png",
+    "R1-U4": "images/manifattura/unitree-r1.png",
+    "R1-U5": "images/manifattura/unitree-r1.png",
+    "R1-U6": "images/manifattura/unitree-r1.png",
     "GO2-AIR": "images/prodotti/unitree-go2-card.png",
     "GO2-PRO": "images/prodotti/unitree-go2-card.png",
     "GO2-EDU-STD": "images/prodotti/unitree-go2-card.png",
     "GO2-EDU-SMART": "images/prodotti/unitree-go2-card.png",
     "GO2-EDU-ULT": "images/prodotti/unitree-go2-card.png",
-    "AS2-AIR": "images/prodotti/unitree-as2-pro.png",
-    "AS2-PRO": "images/prodotti/unitree-as2-pro.png",
-    "AS2-EDU": "images/prodotti/unitree-as2-pro.png",
     "GO2W-U2": "images/prodotti/unitree-go2w-card.png",
     "GO2W-U3": "images/prodotti/unitree-go2w-card.png",
     "GO2W-U4": "images/prodotti/unitree-go2w-card.png",
@@ -201,48 +187,6 @@ MANIFEST["H2-EDU"] = _entry(
     _h2_base + [("Variante", "EDU · ricerca avanzata"), ("Mani", "Dex3/Dex5/Inspire opzionali")],
     "unitree.com/h2",
 )
-MANIFEST["H2-PLUS"] = _entry(
-    "Unitree H2 Plus",
-    "Reference NVIDIA Isaac GR00T — ricerca accademica full-size.",
-    "Unitree H2 Plus: umanoide ~182 cm con 31 DoF corpo + mani Sharpa Wave (75 DoF totali), "
-    "NVIDIA Jetson AGX Thor T5000 e piattaforma Isaac GR00T. Disponibilità prevista fine 2026.",
-    [
-        ("Altezza", "~182 cm"), ("Peso", "~70 kg"), ("DoF", "75 (31 corpo + 44 mani)"),
-        ("Compute", "Jetson AGX Thor T5000"), ("Payload braccio", "7 kg rated / 15 kg peak"),
-        ("Coppia gamba", "360 N·m"), ("Batteria", "0,972 kWh · ~3 h"),
-        ("Disponibilità", "Fine 2026 (prev.)"), ("Piattaforma", "NVIDIA Isaac GR00T"),
-    ],
-    "unitree.com/H2plus",
-)
-
-# --- G1-D (dual-arm su colonna / ruote — NON bipede G1) ---
-_g1d_common = [
-    ("Bracci", "7×2 DoF"), ("Payload braccio", "~3 kg"), ("Altezza colonna", "1260–1680 mm"),
-    ("Compute", "Jetson Orin NX 100 TOPS"), ("Camere", "Binoculare testa + HD polso ×2"),
-    ("SDK", "ROS2 · pipeline AI end-to-end"),
-]
-for sku, tier, base, hands, dof in [
-    ("G1D-U1", "Standard A", "Base fissa", "Dex1-1 gripper 2 dita", "19"),
-    ("G1D-U2", "Standard B", "Base fissa", "Dex3-1 no tattile", "31"),
-    ("G1D-U3", "Standard C", "Base fissa", "Dex3-1 con tattile", "31"),
-    ("G1D-U4", "Standard D", "Base fissa", "BrainCo Revo2 Basic 5 dita", "29"),
-    ("G1D-U5", "Standard E", "Base fissa", "BrainCo Revo2 Touch tattile", "29"),
-    ("G1D-U6", "Flagship A", "Base mobile ruote", "Dex1-1 gripper 2 dita", "21"),
-    ("G1D-U7", "Flagship B", "Base mobile ruote", "Dex3-1 no tattile", "33"),
-    ("G1D-U8", "Flagship C", "Base mobile ruote", "Dex3-1 con tattile", "33"),
-    ("G1D-U9", "Flagship D", "Base mobile ruote", "BrainCo Revo2 Basic", "31"),
-    ("G1D-U10", "Flagship E", "Base mobile ruote", "BrainCo Revo2 Touch", "31"),
-]:
-    bat = "~6 h (upper + chassis)" if "mobile" in base else "~2 h (upper body)"
-    mob = "Diff-drive 1,5 m/s · LiDAR" if "mobile" in base else "Piantana fissa"
-    MANIFEST[sku] = _entry(
-        f"Unitree G1-D {tier} ({sku.replace('G1D-', '')})",
-        f"Dual-arm su colonna · {base} · {hands}.",
-        f"Unitree G1-D {tier}: piattaforma dual-arm per acquisizione dati AI e manipolazione bimanuale. "
-        f"{base}, {hands}, {dof} DoF. Non è il G1 bipede.",
-        [("Variante", tier), ("Base", mob), ("Mani", hands), ("DoF totali", dof), ("Autonomia", bat)] + _g1d_common,
-        "unitree-robot.com/G1-D",
-    )
 
 # --- R1 ---
 MANIFEST["R1-D"] = _entry(
@@ -316,36 +260,6 @@ MANIFEST["GO2-EDU-SMART"] = _entry("Unitree Go2 EDU Smart", "Go2 EDU con Jetson 
 MANIFEST["GO2-EDU-ULT"] = _entry("Unitree Go2 EDU Ultimate", "Go2 EDU con LiDAR Hesai XT16.",
     "Versione Ultimate del Go2 EDU con sensore Hesai XT16 per perception ad alta risoluzione in ambienti industriali e di ricerca outdoor.",
     _go2_common + [("LiDAR", "Hesai XT16"), ("Computing", "Orin NX 100 TOPS")])
-
-# --- AS2 (Unitree As2 — unitree.com/As2, 2026) ---
-_as2_common = [
-    ("Peso", "~18 kg"),
-    ("DoF", "12"),
-    ("Velocità max", "fino a 5 m/s"),
-    ("Coppia max giunto", "~90 N·m"),
-    ("Dimensioni in piedi", "720×378×457 mm"),
-]
-MANIFEST["AS2-AIR"] = _entry(
-    "Unitree As2 Air",
-    "Quadrupede compatto entry — dinamica ~2× Go2.",
-    "As2 Air è la variante entry della gamma As2 Unitree: telaio leggero ~18 kg, payload fino a ~10 kg in marcia e ~45 kg statico. Adatto a demo e prime valutazioni rispetto a Go2 EDU.",
-    _as2_common + [("Payload marcia", "~10 kg"), ("Payload statico", "~45 kg"), ("Autonomia", "~2 h / ~10 km"), ("Protezione", "—")],
-    "unitree.com/As2",
-)
-MANIFEST["AS2-PRO"] = _entry(
-    "Unitree As2 Pro",
-    "Quadrupede industriale IP54 — sorveglianza e ispezione.",
-    "As2 Pro è la configurazione industrial-ready: protezione IP54 su componenti core, LiDAR ultra-wide-angle, doppia camera frontale e posteriore, payload fino a ~15 kg in marcia e ~65 kg statico. Evoluzione del Go2 con maggiore carico utile, resistenza a polvere e spruzzi d'acqua.",
-    _as2_common + [("IP", "IP54"), ("Payload marcia", "~15 kg"), ("Payload statico", "~65 kg"), ("Autonomia", ">4 h / ~20 km"), ("LiDAR", "Ultra-wide-angle"), ("Camera", "Frontale + posteriore"), ("Batteria", "648 Wh long range")],
-    "unitree.com/As2",
-)
-MANIFEST["AS2-EDU"] = _entry(
-    "Unitree As2 EDU",
-    "As2 programmabile — ROS 2 e SDK Unitree.",
-    "As2 EDU combina le specifiche Pro (IP54, payload elevato) con ecosistema developer: ROS 2, Python, C++ e secondary development per payload custom e ricerca.",
-    _as2_common + [("IP", "IP54"), ("Payload marcia", "~15 kg"), ("SDK", "ROS 2 · Python · C++"), ("Autonomia", ">4 h"), ("LiDAR", "Ultra-wide-angle")],
-    "unitree.com/As2",
-)
 
 # --- GO2W ---
 _go2w = [("Peso", "~18 kg"), ("Dimensioni", "70×43×50 cm"), ("Velocità", "0–2,5 m/s"),

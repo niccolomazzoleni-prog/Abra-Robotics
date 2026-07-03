@@ -44,16 +44,20 @@ window._formLoadTime = Date.now();
 
 function injectContactHoneypots() {
   document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
-    if (form.querySelector('input[name="_gotcha"]')) return;
+    if (form.querySelector('input[name="website"]')) return;
     const hp = document.createElement('input');
-    hp.type = 'hidden';
-    hp.name = '_gotcha';
+    hp.type = 'text';
+    hp.name = 'website';
+    hp.className = 'hp-website';
+    hp.tabIndex = -1;
+    hp.autocomplete = 'off';
+    hp.setAttribute('aria-hidden', 'true');
     form.appendChild(hp);
   });
 }
 
 function validateContactForm(form) {
-  const hp = form.querySelector('input[name="_gotcha"]');
+  const hp = form.querySelector('input[name="website"]');
   if (hp && hp.value.trim()) return false;
 
   if (Date.now() - window._formLoadTime < 3000) return false;
@@ -101,6 +105,7 @@ function buildContactPayload(form) {
   payload.pagina = document.title;
   payload.url = location.href;
   payload.timestamp = new Date().toISOString();
+  payload.form_load_time = window._formLoadTime || 0;
   if (window.AbraAds && window.AbraAds.getGclid) {
     payload.gclid = payload.gclid || window.AbraAds.getGclid();
   }
@@ -269,12 +274,22 @@ animatedElements.forEach((el, i) => {
   observer.observe(el);
 });
 
-// Visible class
+// Visible class + honeypot hide
 document.head.insertAdjacentHTML('beforeend', `
   <style>
     .visible {
       opacity: 1 !important;
       transform: translateY(0) !important;
+    }
+    .hp-website {
+      position: absolute !important;
+      left: -9999px !important;
+      top: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
     }
   </style>
 `);
