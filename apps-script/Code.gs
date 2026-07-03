@@ -5,7 +5,7 @@
 //  Versione 2 — time trap corretta, rate limit, email dedup
 // ============================================================
 
-var SHEET_ID         = '1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY';
+var SHEET_ID         = '1nXl0QyElz1znYHiDb8xJ_bd7NYqfuCoLB3URLfNdcAc';
 var SHEET_LEADS      = 'Contatti';
 var SHEET_REJECTED   = 'Scartati';
 var NOTIFY_TO        = 'gio@abrarobotics.com,niccolomazzoleni@gmail.com';
