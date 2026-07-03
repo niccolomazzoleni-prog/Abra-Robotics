@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from layout_pubblico import SITE_FOOTER, SITE_NAV  # noqa: E402
+from layout_pubblico import PUBLIC_NOTICE, SITE_FOOTER, SITE_NAV  # noqa: E402
 from site_nav import render_site_nav  # noqa: E402
 
 CSV_PATH = ROOT / "listini" / "interno" / "listino-master.csv"
@@ -42,8 +42,6 @@ SKIP_OVERWRITE = {
 def product_family(sku: str, nome: str) -> str:
     s = sku.upper()
     n = nome.upper()
-    if s.startswith("G1D") or "G1-D" in n or "G1D" in n:
-        return "G1-D"
     if s.startswith("G1") or " G1" in n:
         return "G1"
     if s == "R1-D" or "R1-D" in n or "DUAL-ARM" in n:
@@ -56,8 +54,6 @@ def product_family(sku: str, nome: str) -> str:
         return "Go2W"
     if s.startswith("GO2") or "GO2" in n:
         return "Go2"
-    if s.startswith("AS2") or " AS2" in n or "AS2" in s:
-        return "As2"
     if s.startswith("B2W") or "B2W" in n or "B2-W" in n:
         return "B2W"
     if s.startswith("B2") or " B2" in n:
@@ -91,9 +87,6 @@ FILENAME_MAP: dict[str, str] = {
     "GO2-EDU-STD": "unitree-go2-edu.html",
     "GO2-EDU-SMART": "unitree-go2-edu-plus.html",
     "GO2-EDU-ULT": "unitree-go2-enterprise-u2.html",
-    "AS2-AIR": "unitree-as2-air.html",
-    "AS2-PRO": "unitree-as2-pro.html",
-    "AS2-EDU": "unitree-as2-edu.html",
     "A2-STD": "unitree-a2.html",
     "A2-PRO": "unitree-a2-pro.html",
     "B2": "unitree-b2.html",
@@ -104,7 +97,6 @@ FILENAME_MAP: dict[str, str] = {
 
 COLLECTION = {
     "UMANOIDI": ("umanoidi.html", "Umanoidi"),
-    "QUADRUPEDI": ("quadrupedi.html", "Quadrupedi"),
     "MANI_BRACCI": ("accessori.html", "Accessori"),
     "COMPONENTISTICA": ("accessori.html", "Accessori"),
 }
@@ -452,6 +444,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
     <p class="label">Catalogo pubblico End-User</p>
     <h1>Tutti i prodotti Unitree</h1>
     <p style="color:var(--gray-600);max-width:640px;">Listino pubblico End-User — IVA esclusa, spedizione e dazio inclusi. {len(pub)} prodotti con scheda e prezzo trasparente.</p>
+{PUBLIC_NOTICE}
   </header>
   <main class="cat-body-page">
     <div class="cat-toolbar">
@@ -540,6 +533,7 @@ def regenerate_listino_html() -> None:
     <p class="label">Listino pubblico End-User</p>
     <h1>Prezzi End-User Unitree</h1>
     <p>Valori indicativi per il mercato italiano. IVA esclusa. Spedizione e dazio doganale (3,7%) inclusi. Ogni ordine richiede conferma con preventivo aggiornato.</p>
+{PUBLIC_NOTICE}
   </header>
 
   <main class="listino-body">
@@ -559,7 +553,7 @@ def regenerate_listino_html() -> None:
       </table>
     </div>
 
-    <p class="listino-note">I prezzi sono soggetti a variazione del cambio EUR/USD. Per configurazioni EDU avanzate, <a href="index.html#cta-finale">richiedi un preventivo personalizzato</a>.</p>
+    <p class="listino-note">I prezzi sono soggetti a variazione del cambio EUR/USD. Non include prezzi distributore (Gold). Per uso interno: <code>admin/listini.html</code> (non indicizzato). Per configurazioni EDU avanzate, <a href="index.html#cta-finale">richiedi un preventivo personalizzato</a>.</p>
   </main>
 {SITE_FOOTER}
   <script>

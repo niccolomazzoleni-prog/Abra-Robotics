@@ -26,12 +26,6 @@
   --container: 1200px;
   --radius: 12px;
   --radius-sm: 8px;
-  /* Logo navbar: cap fisso (~70% del vecchio 128px). Modifica solo queste due variabili. */
-  --nav-logo-max-h: 90px;
-  --nav-logo-max-h-mobile: 72px;
-  --nav-bar-h-mobile: 72px;
-  --top-bar-h: 40px;
-  --top-bar-h-mobile: 34px;
 }
 
 html {
@@ -86,24 +80,9 @@ h3 {
   background: var(--black);
   color: var(--white);
   text-align: center;
-  height: var(--top-bar-h);
-  min-height: var(--top-bar-h);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 24px;
+  padding: 10px 24px;
   font-size: 0.85rem;
   font-weight: 500;
-  box-sizing: border-box;
-}
-
-.top-bar p {
-  margin: 0;
-  line-height: 1.35;
-}
-
-.top-bar .tb-short {
-  display: none;
 }
 
 .top-bar a {
@@ -111,7 +90,6 @@ h3 {
   text-decoration: none;
   font-weight: 600;
   margin-left: 4px;
-  white-space: nowrap;
 }
 
 .top-bar a:hover {
@@ -121,7 +99,7 @@ h3 {
 /* === Navbar === */
 .navbar {
   position: fixed;
-  top: var(--top-bar-h);
+  top: 40px;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -141,35 +119,15 @@ h3 {
   text-decoration: none;
   display: flex;
   align-items: center;
-  line-height: 0;
-}
-
-.navbar .logo {
-  align-self: center;
-  margin-top: -2px;
 }
 
 .logo-img {
+  height: 128px;
   width: auto;
-  object-fit: contain;
-  display: block;
-}
-
-/* Solo header: altezza con tetto massimo (non cresce oltre anche se l'asset PNG è più grande) */
-.navbar .logo-img {
-  height: var(--nav-logo-max-h);
-  max-height: var(--nav-logo-max-h);
-  max-width: min(220px, 40vw);
-}
-
-.footer-brand .logo-img {
-  height: 56px;
-  max-height: 56px;
 }
 
 .nav-links {
   display: flex;
-  align-items: center;
   gap: 36px;
 }
 
@@ -188,18 +146,11 @@ h3 {
 .menu-toggle {
   display: none;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  align-self: center;
+  padding: 8px;
   -webkit-appearance: none;
   appearance: none;
   border-radius: 0;
@@ -1562,83 +1513,20 @@ select:focus-visible,
     padding: 0 20px;
   }
 
-  /* Top bar — una riga su mobile stretto (Oppo Reno, iPhone SE…) */
+  /* Top bar */
   .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(0.68rem, 2.8vw, 0.78rem);
-    height: var(--top-bar-h-mobile);
-    min-height: var(--top-bar-h-mobile);
-    padding: 0 12px;
-    line-height: 1.15;
-    box-sizing: border-box;
-  }
-
-  .top-bar .tb-long {
-    display: none;
-  }
-
-  .top-bar .tb-short {
-    display: inline;
-  }
-
-  .top-bar p {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    gap: 4px;
-    max-width: 100%;
-    margin: 0;
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    line-height: 1.4;
   }
 
   .top-bar a {
     display: inline;
-    margin-left: 0;
-    flex-shrink: 0;
   }
 
   /* Navbar */
   .navbar {
-    top: var(--top-bar-h-mobile);
-  }
-
-  .navbar-inner {
-    height: var(--nav-bar-h-mobile);
-    min-height: var(--nav-bar-h-mobile);
-    align-items: center;
-  }
-
-  .navbar .logo {
-    margin: 0;
-    align-self: center;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .navbar .logo-img {
-    height: var(--nav-logo-max-h-mobile);
-    max-height: var(--nav-logo-max-h-mobile);
-    max-width: min(200px, 54vw);
-    object-fit: contain;
-    object-position: left center;
-  }
-
-  .menu-toggle {
-    display: flex;
-    align-self: center;
-    height: 44px;
-    width: 44px;
-    margin: 0;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mobile-menu {
-    top: calc(var(--top-bar-h-mobile) + var(--nav-bar-h-mobile));
+    top: 36px;
   }
 
   .nav-links {
@@ -1647,6 +1535,14 @@ select:focus-visible,
 
   .navbar .btn {
     display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu {
+    top: 108px;
   }
 
   /* Hero */
@@ -1729,17 +1625,8 @@ select:focus-visible,
     grid-template-columns: 1fr;
   }
 
-  .nav-links {
-    display: none;
-  }
-
-  .navbar .btn {
-    display: none;
-  }
-
-  .footer-brand .logo-img {
-    height: 44px;
-    max-height: 44px;
+  .logo-img {
+    height: 64px;
   }
 
   .finance-stats {

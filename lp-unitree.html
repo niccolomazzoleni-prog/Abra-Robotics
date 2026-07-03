@@ -54,6 +54,25 @@
     body.lp-unitree { padding-top: 72px; }
     body.lp-unitree.has-wa-bar { padding-bottom: 60px; }
 
+    /* Hero override LP: niente top-bar, contenuto centrato, font più grande */
+    body.lp-unitree .hero { min-height: calc(100vh - 72px); }
+    body.lp-unitree .hero-grid {
+      padding-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    body.lp-unitree .hero-content {
+      max-width: 860px;
+      text-align: center;
+    }
+    body.lp-unitree .hero-content h1,
+    body.lp-unitree .hero-content .hero-sub,
+    body.lp-unitree .hero-content .hero-ctas { text-align: center; }
+    body.lp-unitree .hero h1 { font-size: clamp(3.4rem, 6.5vw, 5.8rem); }
+    body.lp-unitree .hero-sub { font-size: 1.2rem; max-width: 680px; margin: 0 auto 16px; }
+    body.lp-unitree .hero-ctas { justify-content: center; }
+
     /* Navbar */
     .lp-navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
@@ -72,84 +91,6 @@
     }
     .lp-nav-links a:hover { color: var(--black); }
     .lp-navbar .btn { flex-shrink: 0; margin: 0; }
-
-    /* Hero */
-    .lpu-hero {
-      padding: 60px 48px 64px;
-      background: #fff;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .lpu-hero-grid {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center;
-    }
-    .lpu-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--black); color: #fff;
-      font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 999px; margin-bottom: 20px;
-    }
-    .lpu-badge svg { flex-shrink: 0; }
-    .lpu-hero h1 {
-      font-size: clamp(2.2rem, 4.8vw, 3.6rem); line-height: 1.06;
-      letter-spacing: -.03em; margin: 0 0 18px; color: var(--black);
-    }
-    .lpu-hero-sub {
-      font-size: 1.12rem; color: var(--gray-600); line-height: 1.65;
-      margin: 0 0 28px; max-width: 540px;
-    }
-    .lpu-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-    .lpu-proof {
-      display: flex; align-items: center; gap: 8px;
-      color: var(--gray-500); font-size: .9rem; flex-wrap: wrap;
-    }
-    .lpu-proof .dot { width: 8px; height: 8px; border-radius: 50%; background: #34c759; flex-shrink: 0; }
-    .lpu-hero-visual {
-      border: 1px solid var(--gray-200); border-radius: 24px;
-      background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
-      aspect-ratio: 1/1; display: grid; place-items: center; overflow: hidden;
-      max-width: 460px; width: 100%;
-    }
-    .lpu-hero-visual img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
-
-    /* Anchor nav buttons */
-    .lpu-anchor-nav {
-      display: flex; gap: 12px; flex-wrap: wrap; padding: 24px 48px;
-      border-bottom: 1px solid var(--gray-200); background: var(--gray-50);
-    }
-    .lpu-anchor-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 22px; border-radius: 999px;
-      background: #fff; border: 1px solid var(--gray-200);
-      font-weight: 700; font-size: .92rem; color: var(--black);
-      text-decoration: none; transition: background .2s, border-color .2s, transform .2s;
-    }
-    .lpu-anchor-btn:hover { background: var(--black); color: #fff; border-color: var(--black); transform: translateY(-2px); }
-    .lpu-anchor-btn .cnt {
-      background: var(--black); color: #fff; font-size: .72rem;
-      font-weight: 900; padding: 2px 7px; border-radius: 999px;
-      min-width: 22px; text-align: center;
-    }
-    .lpu-anchor-btn:hover .cnt { background: rgba(255,255,255,.2); }
-
-    /* Trust bar */
-    .lpu-trust {
-      padding: 28px 48px 24px;
-      border-bottom: 1px solid var(--gray-200);
-      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
-    }
-    .lpu-trust-badge {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--black); color: #fff;
-      padding: 12px 20px; border-radius: 14px; flex-shrink: 0;
-    }
-    .lpu-trust-badge strong { font-size: .95rem; font-weight: 900; display: block; }
-    .lpu-trust-badge span { font-size: .75rem; opacity: .7; }
-    .lpu-trust-stats {
-      display: flex; gap: 32px; flex-wrap: wrap;
-    }
-    .lpu-stat { text-align: left; }
-    .lpu-stat-num { font-size: 1.6rem; font-weight: 900; color: var(--black); line-height: 1; }
-    .lpu-stat-lbl { font-size: .78rem; color: var(--gray-500); font-weight: 600; margin-top: 2px; }
 
     /* Sections */
     .lpu-section { padding: 56px 48px; }
@@ -198,9 +139,58 @@
       margin-top: auto; font-size: .82rem; padding: 8px 14px;
     }
 
-    /* Form section */
+    /* Picker / smistamento */
+    .lpu-picker {
+      padding: 72px 48px;
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .lpu-picker-header { text-align: center; margin-bottom: 48px; }
+    .lpu-picker-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900;
+      letter-spacing: -.03em; margin: 0 0 10px;
+    }
+    .lpu-picker-header p { color: var(--gray-500); font-size: 1.05rem; margin: 0; }
+    .lpu-picker-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .lpu-picker-card {
+      display: flex; flex-direction: column;
+      background: rgba(255,255,255,.9); backdrop-filter: blur(10px);
+      border: 1px solid var(--gray-200); border-radius: 20px;
+      overflow: hidden; text-decoration: none; color: var(--black);
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, border-color .3s;
+    }
+    .lpu-picker-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,.1); border-color: var(--black); }
+    .lpu-picker-img {
+      aspect-ratio: 4/3; overflow: hidden; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .lpu-picker-img img { width: 100%; height: 100%; object-fit: contain; padding: 24px; }
+    .lpu-picker-body { padding: 24px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .lpu-picker-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gray-400); margin: 0;
+    }
+    .lpu-picker-body h3 { font-size: 1.35rem; font-weight: 900; margin: 0; letter-spacing: -.02em; }
+    .lpu-picker-body p { color: var(--gray-600); font-size: .92rem; line-height: 1.55; margin: 0; }
+    .lpu-picker-models {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;
+    }
+    .lpu-picker-model-tag {
+      font-size: .72rem; font-weight: 700; background: var(--gray-100);
+      border: 1px solid var(--gray-200); border-radius: 6px;
+      padding: 3px 8px; color: var(--gray-600);
+    }
+    .lpu-picker-arrow {
+      margin-top: auto; padding-top: 16px;
+      font-weight: 700; font-size: .88rem; display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Form / advice section */
     .lpu-form-section {
-      padding: 64px 48px;
+      padding: 72px 48px;
       background: var(--black);
       color: #fff;
     }
@@ -208,9 +198,9 @@
       font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; margin: 0 0 10px;
       letter-spacing: -.02em; color: #fff;
     }
-    .lpu-form-section .sub { color: rgba(255,255,255,.65); font-size: 1.05rem; margin: 0 0 36px; }
+    .lpu-form-section .sub { color: rgba(255,255,255,.65); font-size: 1.05rem; margin: 0 0 32px; }
     .lpu-form-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
     }
     .lpu-form-whys { display: flex; flex-direction: column; gap: 18px; }
     .lpu-why-item { display: flex; gap: 12px; align-items: flex-start; }
@@ -220,10 +210,8 @@
     .lpu-form-box .contact-form { background: transparent; }
     .lpu-form-box .contact-form label { color: rgba(255,255,255,.75); }
     .lpu-form-box .contact-form input,
-    .lpu-form-box .contact-form textarea,
-    .lpu-form-box .contact-form select {
-      background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18);
-      color: #fff;
+    .lpu-form-box .contact-form textarea {
+      background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); color: #fff;
     }
     .lpu-form-box .contact-form input::placeholder,
     .lpu-form-box .contact-form textarea::placeholder { color: rgba(255,255,255,.35); }
@@ -263,18 +251,24 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .lpu-hero { padding: 40px 20px 48px; }
-      .lpu-hero-grid { grid-template-columns: 1fr; gap: 36px; }
-      .lpu-hero-visual { max-height: 420px; max-width: 100%; margin: 0 auto; order: -1; }
-      .lpu-anchor-nav { padding: 16px 20px; }
-      .lpu-trust { padding: 24px 20px; }
+      body.lp-unitree { padding-top: 64px; }
+      body.lp-unitree .hero { min-height: calc(100vh - 64px); }
+      body.lp-unitree .hero-grid { padding-top: 56px; align-items: flex-start; }
+      body.lp-unitree .hero-content { text-align: left; max-width: 100%; }
+      body.lp-unitree .hero-content h1,
+      body.lp-unitree .hero-content .hero-sub,
+      body.lp-unitree .hero-content .hero-ctas { text-align: left; }
+      body.lp-unitree .hero-ctas { justify-content: flex-start; }
+      body.lp-unitree .hero h1 { font-size: clamp(2.4rem, 8vw, 3.2rem); }
+      .lp-navbar-inner { height: 64px; }
+      .lp-nav-links { display: none; }
+      .lpu-picker { padding: 48px 20px; }
+      .lpu-picker-grid { grid-template-columns: 1fr; gap: 16px; }
+      .lpu-picker-img { aspect-ratio: 3/2; }
       .lpu-section { padding: 40px 20px; }
       .lpu-form-section { padding: 48px 20px; }
       .lpu-form-inner { grid-template-columns: 1fr; gap: 36px; }
       .lpu-footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
-      .lp-nav-links { display: none; }
-      .lp-navbar-inner { height: 64px; }
-      body.lp-unitree { padding-top: 64px; }
     }
   </style>
 </head>
@@ -301,82 +295,161 @@
   </nav>
 
   <!-- HERO -->
-  <header class="lpu-hero">
-    <div class="lpu-hero-grid">
-      <div>
-        <div class="lpu-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Distributore Ufficiale Unitree in Italia
-        </div>
-        <h1>Scopri tutta la gamma Unitree.</h1>
-        <p class="lpu-hero-sub">
-          Umanoidi, quadrupedi e accessori, formazione e supporto tecnico dedicato con possibilità di sviluppo applicazioni custom e co-design.
-        </p>
-        <div class="lpu-hero-ctas">
-          <a href="#form" class="btn btn-primary">Richiedi informazioni</a>
-          <a href="#umanoidi" class="btn btn-secondary">Esplora il catalogo</a>
+  <header class="hero">
+    <video autoplay class="hero-video" loop muted playsinline preload="auto">
+      <source src="images/hero-bg-desktop.mp4" type="video/mp4"/>
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1>Il robot giusto,<br/>configurato,<br/>consegnato.</h1>
+          <p class="hero-sub">Selezioniamo l'hardware, scriviamo il software, formiamo il team, gestiamo il finanziamento. Un unico interlocutore dal POC alla produzione.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#form">Richiedi informazioni</a>
+            <a class="btn btn-secondary" href="#umanoidi">Esplora il catalogo</a>
+          </div>
         </div>
       </div>
-      <div class="lpu-hero-visual">
-        <img src="prodotti/assets/variants/g1-u1/img-01.png" alt="Unitree G1 — Robot umanoide">
+      <div class="hero-logos">
+        <div class="container"><p class="hero-logos-label">Brand distribuiti</p></div>
+        <div class="logo-bar-track">
+          <div class="logo-bar-logos">
+            <img alt="MiR Mobile Industrial Robots" src="logos/mir.svg"/>
+            <img alt="Universal Robots" src="logos/universal-robots.svg"/>
+            <img alt="OnRobot" src="logos/onrobot.svg"/>
+            <img alt="Robotiq" src="logos/robotiq.svg"/>
+            <img alt="ROEQ" src="logos/roeq.svg"/>
+            <img alt="Keyence" src="logos/keyence.svg"/>
+            <img alt="Datasensing" src="logos/datasensing.svg"/>
+            <img alt="qb robotics" src="logos/qbrobotics.svg"/>
+          </div>
+          <div aria-hidden="true" class="logo-bar-logos">
+            <img alt="" src="logos/mir.svg"/>
+            <img alt="" src="logos/universal-robots.svg"/>
+            <img alt="" src="logos/onrobot.svg"/>
+            <img alt="" src="logos/robotiq.svg"/>
+            <img alt="" src="logos/roeq.svg"/>
+            <img alt="" src="logos/keyence.svg"/>
+            <img alt="" src="logos/datasensing.svg"/>
+            <img alt="" src="logos/qbrobotics.svg"/>
+          </div>
+          <div aria-hidden="true" class="logo-bar-logos">
+            <img alt="" src="logos/mir.svg"/>
+            <img alt="" src="logos/universal-robots.svg"/>
+            <img alt="" src="logos/onrobot.svg"/>
+            <img alt="" src="logos/robotiq.svg"/>
+            <img alt="" src="logos/roeq.svg"/>
+            <img alt="" src="logos/keyence.svg"/>
+            <img alt="" src="logos/datasensing.svg"/>
+            <img alt="" src="logos/qbrobotics.svg"/>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- FORM -->
-  <section class="lpu-form-section" id="form">
-    <div class="lpu-form-inner">
-      <div class="lpu-form-whys">
-        <h2>Interessato a un prodotto Unitree?</h2>
-        <p class="sub">Compila il form, ti risponde un consulente Abra entro due ore lavorative.</p>
-        <div class="lpu-why-item">
-          <span class="chk">✓</span>
-          <p><strong>Consulenza tecnica inclusa:</strong> ti aiutiamo a scegliere la configurazione giusta per il tuo caso d'uso.</p>
+  <!-- SMISTAMENTO -->
+  <section class="lpu-picker">
+    <div class="lpu-picker-header">
+      <h2>A quale prodotto sei interessato?</h2>
+      <p>Seleziona la categoria per esplorare la gamma completa con prezzi e schede tecniche.</p>
+    </div>
+    <div class="lpu-picker-grid">
+      <a href="#umanoidi" class="lpu-picker-card">
+        <div class="lpu-picker-img">
+          <img src="prodotti/assets/variants/g1-u1/img-01.png" alt="Robot umanoide Unitree G1" loading="lazy">
         </div>
-        <div class="lpu-why-item">
-          <span class="chk">✓</span>
-          <p><strong>Assistenza post-vendita in Italia:</strong> supporto tecnico dedicato dalla consegna in poi.</p>
-        </div>
-        <div class="lpu-why-item">
-          <span class="chk">✓</span>
-          <p><strong>Finanziamento verificabile:</strong> verifichiamo insieme l'accesso ai bandi per finanziare il tuo acquisto.</p>
-        </div>
-      </div>
-      <div class="lpu-form-box">
-        <form id="contact-form-unitree" class="contact-form">
-          <input type="hidden" name="prodotto" value="Unitree (LP)">
-          <!-- honeypot -->
-          <input type="hidden" name="_gotcha">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="lpu-nome">Nome e cognome</label>
-              <input type="text" id="lpu-nome" name="nome" placeholder="Mario Rossi" required>
-            </div>
-            <div class="form-group">
-              <label for="lpu-azienda">Azienda</label>
-              <input type="text" id="lpu-azienda" name="azienda" placeholder="Acme S.r.l." required>
-            </div>
+        <div class="lpu-picker-body">
+          <p class="lpu-picker-label">Robot umanoidi</p>
+          <h3>Umanoidi</h3>
+          <p>Piattaforme antropomorfe per ricerca applicata, manipulation e AI embodied.</p>
+          <div class="lpu-picker-models">
+            <span class="lpu-picker-model-tag">G1</span>
+            <span class="lpu-picker-model-tag">H2</span>
+            <span class="lpu-picker-model-tag">R1</span>
+            <span class="lpu-picker-model-tag">R1-D</span>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="lpu-email">Email</label>
-              <input type="email" id="lpu-email" name="email" placeholder="nome@azienda.it" required>
-            </div>
-            <div class="form-group">
-              <label for="lpu-telefono">Telefono</label>
-              <input type="tel" id="lpu-telefono" name="telefono" placeholder="+39 ..." required>
-            </div>
+          <span class="lpu-picker-arrow">Esplora gli umanoidi →</span>
+        </div>
+      </a>
+      <a href="#quadrupedi" class="lpu-picker-card">
+        <div class="lpu-picker-img">
+          <img src="images/prodotti/b2.png" alt="Robot quadrupede Unitree B2" loading="lazy">
+        </div>
+        <div class="lpu-picker-body">
+          <p class="lpu-picker-label">Robot quadrupedi</p>
+          <h3>Quadrupedi</h3>
+          <p>Quattro zampe per ispezione, sorveglianza e ambienti non strutturati.</p>
+          <div class="lpu-picker-models">
+            <span class="lpu-picker-model-tag">Go2</span>
+            <span class="lpu-picker-model-tag">A2</span>
+            <span class="lpu-picker-model-tag">B2</span>
+            <span class="lpu-picker-model-tag">Go2W</span>
+            <span class="lpu-picker-model-tag">B2W</span>
+          </div>
+          <span class="lpu-picker-arrow">Esplora i quadrupedi →</span>
+        </div>
+      </a>
+      <a href="#accessori" class="lpu-picker-card">
+        <div class="lpu-picker-img">
+          <img src="images/accessori/z1.jpg" alt="Braccio robotico Unitree Z1" loading="lazy">
+        </div>
+        <div class="lpu-picker-body">
+          <p class="lpu-picker-label">Mani, bracci e componentistica</p>
+          <h3>Accessori</h3>
+          <p>Bracci Z1 e D1, mani destrali Dex3/Dex5, gripper, LiDAR e upgrade hardware.</p>
+          <div class="lpu-picker-models">
+            <span class="lpu-picker-model-tag">Z1</span>
+            <span class="lpu-picker-model-tag">D1</span>
+            <span class="lpu-picker-model-tag">Dex3</span>
+            <span class="lpu-picker-model-tag">Dex5</span>
+            <span class="lpu-picker-model-tag">REVO2</span>
+          </div>
+          <span class="lpu-picker-arrow">Esplora gli accessori →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- NON SAI QUALE ROBOT -->
+  <section class="section section-cta" id="form" style="scroll-margin-top:88px;">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Non sai quale robot fa per te?</h2>
+        <p class="cta-subtitle">Ti aiutiamo noi a capirlo. Compila il form - un consulente Abra ti ricontatterà entro due ore lavorative.</p>
+      </div>
+      <form id="contact-form-unitree" class="contact-form">
+        <input type="hidden" name="prodotto" value="Unitree — consulenza (LP)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lpu-nome">Nome e cognome</label>
+            <input type="text" id="lpu-nome" name="nome" placeholder="Mario Rossi" required>
           </div>
           <div class="form-group">
-            <label for="lpu-messaggio">Prodotto e richiesta</label>
-            <textarea id="lpu-messaggio" name="messaggio" placeholder="Quale robot ti interessa? Hai un caso d'uso specifico?" rows="4" required></textarea>
+            <label for="lpu-azienda">Azienda</label>
+            <input type="text" id="lpu-azienda" name="azienda" placeholder="Acme S.r.l." required>
           </div>
-          <div class="form-footer">
-            <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lpu-email">Email</label>
+            <input type="email" id="lpu-email" name="email" placeholder="nome@azienda.it" required>
           </div>
-          <div class="form-feedback" aria-live="polite"></div>
-        </form>
-      </div>
+          <div class="form-group">
+            <label for="lpu-telefono">Telefono</label>
+            <input type="tel" id="lpu-telefono" name="telefono" placeholder="+39 ..." required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lpu-messaggio">Prodotto e richiesta</label>
+          <textarea id="lpu-messaggio" name="messaggio" placeholder="Quale robot ti interessa? Hai un caso d'uso specifico?" rows="4" required></textarea>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary form-submit">Invia la richiesta</button>
+        </div>
+        <div class="form-feedback" aria-live="polite"></div>
+      </form>
     </div>
   </section>
 

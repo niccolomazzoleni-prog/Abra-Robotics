@@ -1,4 +1,4 @@
-/* Protezione area admin + Lab offerte-ai — password + sessione (8 h). */
+/* Protezione area admin — password + sessione (8 h). */
 (function () {
   'use strict';
 
@@ -6,10 +6,6 @@
   const SESSION_KEY = 'abra_admin_until';
   const GH_TOKEN_KEY = 'abra_gh_token';
   const SESSION_MS = 8 * 60 * 60 * 1000;
-
-  function notifyUnlock() {
-    document.dispatchEvent(new CustomEvent('abra-auth-unlock'));
-  }
 
   window.AbraAdmin = {
     getGithubToken() {
@@ -29,12 +25,7 @@
     },
     unlock() {
       sessionStorage.setItem(SESSION_KEY, String(Date.now() + SESSION_MS));
-      notifyUnlock();
-    },
-    whenUnlocked(fn) {
-      if (this.isUnlocked()) fn();
-      else document.addEventListener('abra-auth-unlock', fn, { once: true });
-    },
+    }
   };
 
   async function sha256(text) {
@@ -44,26 +35,25 @@
 
   function gateHtml(needsSetup) {
     return `
-      <div id="admin-gate" style="position:fixed;inset:0;z-index:9999;background:#fafafa;display:flex;align-items:center;justify-content:center;padding:24px;font-family:'Satoshi',system-ui,sans-serif;">
-        <form id="admin-login-form" style="width:100%;max-width:400px;background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,0.08);">
-          <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#7c4dd6;margin:0;">Abra Robotics · area interna</p>
-          <h2 style="margin:8px 0 16px;font-size:1.5rem;">${needsSetup ? 'Imposta password admin' : 'Accedi'}</h2>
-          <p style="color:#525252;font-size:0.88rem;line-height:1.5;margin-bottom:20px;">
+      <div id="admin-gate" style="position:fixed;inset:0;z-index:9999;background:var(--gray-50);display:flex;align-items:center;justify-content:center;padding:24px;">
+        <form id="admin-login-form" style="width:100%;max-width:400px;background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:28px;">
+          <p class="label">Area interna</p>
+          <h2 style="margin:8px 0 16px;font-size:1.5rem;">${needsSetup ? 'Imposta password admin' : 'Accedi all\'admin'}</h2>
+          <p style="color:var(--gray-600);font-size:0.88rem;line-height:1.5;margin-bottom:20px;">
             ${needsSetup
-              ? 'Prima configurazione: scegli una password (min. 8 caratteri).'
-              : 'Admin, Lab chat, Crea offerta e strumenti AI sono protetti da questa password.'}
+              ? 'Prima configurazione: scegli una password (min. 8 caratteri). Servirà anche un token GitHub per pubblicare sul sito live.'
+              : 'Inserisci la password admin. Per pubblicare sul live incolla anche il token GitHub (PAT) — resta solo in questa sessione del browser.'}
           </p>
           <label style="display:block;font-size:0.78rem;font-weight:700;margin-bottom:6px;">Password</label>
-          <input type="password" id="admin-pwd" required minlength="8" autocomplete="current-password" style="width:100%;padding:10px 12px;border:1px solid #e5e5e5;border-radius:8px;margin-bottom:14px;font:inherit;">
+          <input type="password" id="admin-pwd" required minlength="8" style="width:100%;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;margin-bottom:14px;font:inherit;">
           ${needsSetup ? `
             <label style="display:block;font-size:0.78rem;font-weight:700;margin-bottom:6px;">Conferma password</label>
-            <input type="password" id="admin-pwd2" required minlength="8" style="width:100%;padding:10px 12px;border:1px solid #e5e5e5;border-radius:8px;margin-bottom:14px;font:inherit;">
+            <input type="password" id="admin-pwd2" required minlength="8" style="width:100%;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;margin-bottom:14px;font:inherit;">
           ` : ''}
-          <details style="margin-bottom:16px;font-size:0.82rem;color:#525252;">
-            <summary style="cursor:pointer;font-weight:600;">Token GitHub (opzionale — solo per pubblicare dal browser)</summary>
-            <input type="password" id="admin-gh" placeholder="ghp_…" style="width:100%;padding:10px 12px;border:1px solid #e5e5e5;border-radius:8px;margin-top:8px;font:inherit;">
-          </details>
-          <button type="submit" style="width:100%;padding:12px;border:none;border-radius:8px;background:#0a0a0a;color:#fff;font-weight:700;font:inherit;cursor:pointer;">${needsSetup ? 'Salva e accedi' : 'Accedi'}</button>
+          <label style="display:block;font-size:0.78rem;font-weight:700;margin-bottom:6px;">Token GitHub (per pubblicare live)</label>
+          <input type="password" id="admin-gh" placeholder="ghp_… o github_pat_…" style="width:100%;padding:10px 12px;border:1px solid var(--gray-200);border-radius:8px;margin-bottom:8px;font:inherit;">
+          <p style="font-size:0.75rem;color:var(--gray-500);margin-bottom:16px;">Crea un <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal Access Token</a> con permesso <strong>Contents: Read and write</strong> sul repo Abra-Robotics.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%;">${needsSetup ? 'Salva e accedi' : 'Accedi'}</button>
           <p id="admin-login-err" style="color:#b91c1c;font-size:0.82rem;margin-top:12px;display:none;"></p>
         </form>
       </div>`;
@@ -75,27 +65,24 @@
     const b64 = btoa(unescape(encodeURIComponent(content)));
     let sha = null;
     const get = await fetch(`https://api.github.com/repos/niccolomazzoleni-prog/Abra-Robotics/contents/${path}`, {
-      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
     });
     if (get.ok) sha = (await get.json()).sha;
     const put = await fetch(`https://api.github.com/repos/niccolomazzoleni-prog/Abra-Robotics/contents/${path}`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: 'admin: aggiorna password',
+        message: 'admin: imposta password',
         content: b64,
         branch: 'main',
-        ...(sha ? { sha } : {}),
-      }),
+        ...(sha ? { sha } : {})
+      })
     });
     if (!put.ok) throw new Error(await put.text());
   }
 
   async function initGate() {
-    if (window.AbraAdmin.isUnlocked()) {
-      notifyUnlock();
-      return;
-    }
+    if (window.AbraAdmin.isUnlocked()) return;
 
     const auth = await fetch(AUTH_URL).then(r => r.json()).catch(() => ({}));
     const needsSetup = !auth.password_sha256;
@@ -108,7 +95,7 @@
       const err = document.getElementById('admin-login-err');
       err.style.display = 'none';
       const pwd = document.getElementById('admin-pwd').value;
-      const gh = document.getElementById('admin-gh')?.value?.trim() || '';
+      const gh = document.getElementById('admin-gh').value.trim();
 
       try {
         if (needsSetup) {

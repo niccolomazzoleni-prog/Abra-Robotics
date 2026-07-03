@@ -12,8 +12,8 @@ DOWNLOADS: dict[str, str] = {
     # R1-D — unitree.com/mobile/R1-D/
     "manifattura/unitree-r1-d.png": "https://www.unitree.com/images/71d58b69974c4f51b36c24ab72be29dc_1508x1100.png",
     "manifattura/unitree-r1-d-hero.png": "https://www.unitree.com/images/629fd2b320cf4952a9bf4333f49d1f01_1920x1080.png",
-    # R1 EDU — hero famiglia (umanoide bipede; NON e9607… che è Go2W su CDN Unitree)
-    "manifattura/unitree-r1.png": "__local__",
+    # R1 EDU — unitree.com/R1/
+    "manifattura/unitree-r1.png": "https://www.unitree.com/images/e9607f806eb4483f93b5a5553446c2bc_800x800.png",
     # H2 — unitree.com/H2/ (umanoide full-body)
     "prodotti/unitree-h2-card.png": "https://www.unitree.com/images/32686742408341c5af3b5dc2f4c85b0e_3840x2160.jpg",
     "prodotti/unitree-h2-hero.png": "https://www.unitree.com/images/32686742408341c5af3b5dc2f4c85b0e_3840x2160.jpg",
@@ -21,9 +21,6 @@ DOWNLOADS: dict[str, str] = {
     # Go2W — unitree.com/go2-w/
     "prodotti/unitree-go2w-card.png": "https://www.unitree.com/images/11d0a76afbb74e8fb7f692652b4c33e0_800x800.png",
     "prodotti/unitree-go2w-hero.png": "https://www.unitree.com/images/038fa156aa884270afeb255789da44b2_1478x788.png",
-    # As2 — asset ufficiale Abra (quadrupede grigio/blu, sfondo nero)
-    "prodotti/unitree-as2-pro.png": "__local__",
-    "prodotti/unitree-as2-card.png": "__local__",
     # Go2 — unitree.com/go2/ (quadrupede prodotto, foto unica condivisa)
     "prodotti/unitree-go2-card.png": "https://www.unitree.com/images/f60e629392fc4164a865869f9d51cf63_1920x1080.png",
     "prodotti/unitree-go2-edu.png": "https://www.unitree.com/images/f60e629392fc4164a865869f9d51cf63_1920x1080.png",
@@ -39,14 +36,6 @@ DOWNLOADS: dict[str, str] = {
     "prodotti/unitree-b2-hero.png": "https://oss-global-cdn.unitree.com/static/576f0e6518824d7299556a07a9674325_1920x1080.jpg",
     # B2W — unitree.com/b2-w/
     "prodotti/unitree-b2w.png": "https://www.unitree.com/images/21a982b50f674ec3986ba52c73d284f7_1920x1080.png",
-    # G1-D — unitree.com/mobile/G1-D + Meko SRL + RoboStore (dual-arm su colonna, NON G1 bipede)
-    "manifattura/unitree-g1-d-standard.png": "https://static.wixstatic.com/media/0d5672_c3513cf910874a2ab6a1e36ae3405682~mv2.png",
-    "manifattura/unitree-g1-d-flagship.png": "https://static.wixstatic.com/media/0d5672_252fdf1a7f574a178b409709ee3b567b~mv2.png",
-    "manifattura/unitree-g1-d-nobg.png": "https://www.unitree.com/images/06b395ae98ec49c0a6344dfa49e10aab_1450x1834.png",
-    "manifattura/unitree-g1-d-hero.png": "https://robostore.com/cdn/shop/files/unitree-g1-d-ultimate-wheeled-dual-arm-humanoid-robot-1514665.jpg",
-    # H2 Plus — unitree.com/mobile/H2plus/ (NON H2 EDU)
-    "prodotti/unitree-h2-plus-hero.png": "https://www.unitree.com/images/7a417fe9fa774a00922ae10306f20aff_1560x2260.jpg",
-    "prodotti/unitree-h2-plus-card.png": "https://www.unitree.com/images/14dcccb4690d4344bd6754f13f78d342_1386x1284.png",
     # Accessori / compute — pagine prodotto Unitree
     "accessori/dex3-1-official.jpg": "https://www.unitree.com/images/62b5ebbd23cc428489bf358a2d463b9e_1920x1080.jpg",
     "accessori/compute-orin-nx.png": "https://oss-global-cdn.unitree.com/static/de6f3d3261a240cd9c2d88e67ea29291_400x400.png",
@@ -59,9 +48,6 @@ DOWNLOADS: dict[str, str] = {
 def main() -> None:
     ok, fail = 0, 0
     for rel, url in DOWNLOADS.items():
-        if url == "__local__":
-            print(f"Skip {rel} (asset locale)")
-            continue
         dest = ROOT / "images" / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         clean = url.split("?")[0]
