@@ -46,12 +46,8 @@ function injectContactHoneypots() {
   document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
     if (form.querySelector('input[name="website"]')) return;
     const hp = document.createElement('input');
-    hp.type = 'text';
+    hp.type = 'hidden';
     hp.name = 'website';
-    hp.className = 'hp-website';
-    hp.tabIndex = -1;
-    hp.autocomplete = 'off';
-    hp.setAttribute('aria-hidden', 'true');
     form.appendChild(hp);
   });
 }
@@ -280,16 +276,6 @@ document.head.insertAdjacentHTML('beforeend', `
     .visible {
       opacity: 1 !important;
       transform: translateY(0) !important;
-    }
-    .hp-website {
-      position: absolute !important;
-      left: -9999px !important;
-      top: -9999px !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-      width: 0 !important;
-      height: 0 !important;
-      overflow: hidden !important;
     }
   </style>
 `);
