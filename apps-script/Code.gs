@@ -2,6 +2,7 @@
 //  Abra Robotics — Google Apps Script
 //  Incolla tutto questo file nell'Apps Script Editor,
 //  poi crea una NUOVA distribuzione (Deploy > New deployment).
+//  DEPLOY_VERSION 2026-07-14-v3
 //  Versione 2 — time trap corretta, rate limit, email dedup
 // ============================================================
 
