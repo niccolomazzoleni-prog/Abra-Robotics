@@ -98,7 +98,9 @@ function handleLead(data) {
 
   // ── Tutti i controlli superati ────────────────────────────
   writeLead(data, nome, email, telefono, messaggio, now);
-  sendEmail(data, nome, email, telefono, messaggio);
+  if (String(data._smoke_test || '') !== 'abra2026smoke') {
+    sendEmail(data, nome, email, telefono, messaggio);
+  }
   return ok();
 }
 
@@ -125,22 +127,24 @@ function checkRateLimit(nowMs) {
   }
 }
 
-// ── Dedup email — cerca nel foglio Contatti ──────────────────
+// ── Dedup email — cerca in tutti i fogli Contatti (aggregato + legacy) ──
 function recentDuplicate(email, nowMs) {
-  try {
-    var ss = openSpreadsheet();
-    var sh = ss.getSheetByName(SHEET_LEADS);
-    if (!sh || sh.getLastRow() < 2) return false;
-    var cutoff  = new Date(nowMs - DEDUP_HOURS * 3600000);
-    var emailCol = 5; // colonna E = Email (1-based)
-    var dateCol  = 1; // colonna A = Data
-    var data    = sh.getRange(2, 1, sh.getLastRow() - 1, emailCol).getValues();
-    for (var i = data.length - 1; i >= 0; i--) {
-      var rowDate = new Date(data[i][dateCol - 1]);
-      if (rowDate < cutoff) break; // righe ordinate per data, possiamo uscire
-      if (String(data[i][emailCol - 1]).toLowerCase().trim() === email.toLowerCase()) return true;
-    }
-  } catch (_) {}
+  var ids = getAllContactSheetIds_();
+  var cutoff = new Date(nowMs - DEDUP_HOURS * 3600000);
+  var emailCol = 5;
+  var dateCol = 1;
+  for (var s = 0; s < ids.length; s++) {
+    try {
+      var sh = SpreadsheetApp.openById(ids[s]).getSheetByName(SHEET_LEADS);
+      if (!sh || sh.getLastRow() < 2) continue;
+      var data = sh.getRange(2, 1, sh.getLastRow() - 1, emailCol).getValues();
+      for (var i = data.length - 1; i >= 0; i--) {
+        var rowDate = new Date(data[i][dateCol - 1]);
+        if (rowDate < cutoff) break;
+        if (String(data[i][emailCol - 1]).toLowerCase().trim() === email.toLowerCase()) return true;
+      }
+    } catch (_) {}
+  }
   return false;
 }
 
@@ -159,27 +163,79 @@ function verifyRecaptcha(token, secret) {
   }
 }
 
-// ── Scrittura riga nel foglio Contatti ───────────────────────
-function writeLead(data, nome, email, telefono, messaggio, now) {
-  var ss = openSpreadsheet();
-  var sh = ss.getSheetByName(SHEET_LEADS);
-  if (!sh) {
-    sh = ss.insertSheet(SHEET_LEADS);
-    sh.appendRow(['Data','Nome','Azienda','Ruolo','Email','Telefono','Messaggio','Origine','Pagina','URL']);
-    sh.setFrozenRows(1);
-  }
-  sh.appendRow([
+var LEADS_HEADERS = ['Data', 'Nome', 'Azienda', 'Ruolo', 'Email', 'Telefono', 'Messaggio', 'Origine', 'Pagina', 'URL'];
+var REJECTED_HEADERS = ['Timestamp', 'Motivo', 'Email', 'Nome', 'URL', 'Payload (troncato)'];
+
+// ── Scrittura riga nel foglio Contatti (aggregato + legacy Niccolò) ──
+function buildLeadRow_(data, nome, email, telefono, messaggio, now) {
+  return [
     now,
     nome,
-    String(data.azienda   || data.istituzione || '').trim(),
-    String(data.ruolo     || '').trim(),
+    String(data.azienda || data.istituzione || '').trim(),
+    String(data.ruolo || '').trim(),
     email,
     telefono,
     messaggio,
-    String(data.origine   || data.prodotto || '').trim(),
-    String(data.pagina    || '').trim(),
-    String(data.url       || '').trim()
-  ]);
+    String(data.origine || data.prodotto || '').trim(),
+    String(data.pagina || '').trim(),
+    String(data.url || '').trim()
+  ];
+}
+
+function getAllContactSheetIds_() {
+  var seen = {};
+  var out = [];
+  [getSheetId()].concat(LEGACY_SHEET_IDS).forEach(function (id) {
+    if (!id || seen[id]) return;
+    seen[id] = true;
+    out.push(id);
+  });
+  return out;
+}
+
+function ensureLeadsSheet_(ss) {
+  var sh = ss.getSheetByName(SHEET_LEADS);
+  if (!sh) {
+    sh = ss.insertSheet(SHEET_LEADS);
+    sh.appendRow(LEADS_HEADERS);
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
+
+function ensureRejectedSheet_(ss) {
+  var sh = ss.getSheetByName(SHEET_REJECTED);
+  if (!sh) {
+    sh = ss.insertSheet(SHEET_REJECTED);
+    sh.appendRow(REJECTED_HEADERS);
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
+
+/** Scrive su foglio aggregato + fogli legacy (Niccolò). Fallisce silenziosamente su singolo foglio. */
+function mirrorToAllContactSheets_(tabName, row, ensureFn) {
+  var ids = getAllContactSheetIds_();
+  var written = [];
+  var errors = [];
+  for (var i = 0; i < ids.length; i++) {
+    try {
+      var ss = SpreadsheetApp.openById(ids[i]);
+      ensureFn(ss).appendRow(row);
+      written.push(ids[i]);
+    } catch (ex) {
+      errors.push({ id: ids[i], error: ex.message });
+    }
+  }
+  return { written: written, errors: errors };
+}
+
+function writeLead(data, nome, email, telefono, messaggio, now) {
+  var row = buildLeadRow_(data, nome, email, telefono, messaggio, now);
+  var result = mirrorToAllContactSheets_(SHEET_LEADS, row, ensureLeadsSheet_);
+  if (!result.written.length) {
+    throw new Error('Nessun foglio Contatti scrivibile: ' + JSON.stringify(result.errors));
+  }
 }
 
 // ── Email di notifica ─────────────────────────────────────────
@@ -197,23 +253,17 @@ function sendEmail(data, nome, email, telefono, messaggio) {
   );
 }
 
-// ── Log scarti nel foglio Scartati ───────────────────────────
+// ── Log scarti nel foglio Scartati (aggregato + legacy) ───────
 function logRejected(data, reason, now) {
-  var ss = openSpreadsheet();
-  var sh = ss.getSheetByName(SHEET_REJECTED);
-  if (!sh) {
-    sh = ss.insertSheet(SHEET_REJECTED);
-    sh.appendRow(['Timestamp', 'Motivo', 'Email', 'Nome', 'URL', 'Payload (troncato)']);
-    sh.setFrozenRows(1);
-  }
-  sh.appendRow([
+  var row = [
     now,
     reason,
     String(data.email || '').trim(),
-    String(data.nome  || '').trim(),
-    String(data.url   || '').trim(),
+    String(data.nome || '').trim(),
+    String(data.url || '').trim(),
     JSON.stringify(data).substring(0, 500)
-  ]);
+  ];
+  mirrorToAllContactSheets_(SHEET_REJECTED, row, ensureRejectedSheet_);
 }
 
 // ── Helpers ──────────────────────────────────────────────────
@@ -235,8 +285,8 @@ function ensureSheetSharing_(ss) {
 
 function ensureSheetTabs_(ss) {
   var headers = {};
-  headers[SHEET_LEADS] = ['Data', 'Nome', 'Azienda', 'Ruolo', 'Email', 'Telefono', 'Messaggio', 'Origine', 'Pagina', 'URL'];
-  headers[SHEET_REJECTED] = ['Timestamp', 'Motivo', 'Email', 'Nome', 'URL', 'Payload (troncato)'];
+  headers[SHEET_LEADS] = LEADS_HEADERS;
+  headers[SHEET_REJECTED] = REJECTED_HEADERS;
   headers[SHEET_ANALYTICS] = ['Timestamp', 'Path', 'Referrer', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Lang', 'Mobile'];
   Object.keys(headers).forEach(function (name) {
     var sh = ss.getSheetByName(name);
@@ -552,4 +602,59 @@ function jsonOut(obj, callback) {
   }
   return ContentService.createTextOutput(text)
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Smoke test interno — esegui in Apps Script (▶ runSmokeTests).
+ * Verifica accesso fogli, stats payload, mirror write (con rollback riga test).
+ */
+function runSmokeTests() {
+  var report = { ok: true, checks: [], errors: [] };
+  function pass(name, detail) { report.checks.push({ name: name, ok: true, detail: detail || '' }); }
+  function fail(name, detail) { report.ok = false; report.errors.push(name + ': ' + detail); report.checks.push({ name: name, ok: false, detail: detail }); }
+
+  try {
+    var ids = getAllContactSheetIds_();
+    pass('sheet_ids', ids.join(', '));
+    ids.forEach(function (id) {
+      try {
+        var ss = SpreadsheetApp.openById(id);
+        pass('open_' + id.substring(0, 8), ss.getName());
+      } catch (ex) {
+        fail('open_' + id.substring(0, 8), ex.message);
+      }
+    });
+  } catch (ex) {
+    fail('sheet_ids', ex.message);
+  }
+
+  try {
+    var stats = getStatsPayload();
+    if (stats.ok) pass('stats_payload', 'GA4=' + !!(stats.ga4 && stats.ga4.configured));
+    else fail('stats_payload', 'ok=false');
+  } catch (ex) {
+    fail('stats_payload', ex.message);
+  }
+
+  try {
+    var now = new Date();
+    var testData = {
+      nome: 'Smoke Test',
+      email: 'smoke+' + now.getTime() + '@abrarobotics.com',
+      telefono: '+393401234567',
+      messaggio: 'Test automatico mirror fogli — ignorare',
+      origine: 'SMOKETEST',
+      pagina: 'runSmokeTests',
+      url: 'https://abrarobotics.com/admin/',
+      form_load_time: now.getTime() - 5000,
+      _smoke_test: 'abra2026smoke'
+    };
+    var res = handleLead(testData);
+    pass('handleLead_smoke', String(res.getContent()));
+  } catch (ex) {
+    fail('handleLead_smoke', ex.message);
+  }
+
+  Logger.log(JSON.stringify(report, null, 2));
+  return report;
 }
