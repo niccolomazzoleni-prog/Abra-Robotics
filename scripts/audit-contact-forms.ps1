@@ -5,7 +5,7 @@ $formFiles = 0
 $formCount = 0
 
 Get-ChildItem -Path $root -Recurse -Include *.html -File |
-  Where-Object { $_.FullName -notmatch '\\admin\\|\\offerte-ai\\|\\.venv' } |
+  Where-Object { $_.FullName -notmatch '\\admin\\|\\offerte-ai\\|\\scripts\\|\\.venv' } |
   ForEach-Object {
     $rel = $_.FullName.Substring($root.Length + 1).Replace('\', '/')
     $html = Get-Content $_.FullName -Raw -Encoding UTF8
