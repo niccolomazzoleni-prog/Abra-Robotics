@@ -38,6 +38,17 @@ l'URL finisca in `/exec`.
 `Data · Nome · Azienda · Ruolo · Email · Telefono · Messaggio · Origine · Pagina · URL`
 (`Origine` indica da quale form/scheda arriva il contatto.)
 
+**Dual-write:** ogni contatto valido viene scritto sul foglio **aggregato** (`15zvBH…`) **e** sui fogli legacy di Niccolò (`1nXl0…`, `1XpXE…`), se lo script ha accesso.
+
+## Smoke test
+
+Da terminale (dopo redeploy Web App):
+```powershell
+powershell -File scripts/smoke-apps-script.ps1
+```
+
+In Apps Script editor: esegui **`runSmokeTests`** (loggato come gio@).
+
 ## Estensioni possibili dell'automazione
 Nel `doPost`, dopo l'invio email, si può aggiungere: webhook Slack/Telegram, invio a
 Make/Zapier, creazione lead in un CRM, autorisposta automatica al cliente.
