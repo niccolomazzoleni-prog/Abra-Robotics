@@ -2,7 +2,7 @@
 //  Abra Robotics — Google Apps Script
 //  Incolla tutto questo file nell'Apps Script Editor,
 //  poi crea una NUOVA distribuzione (Deploy > New deployment).
-//  DEPLOY_VERSION 2026-07-14-v3
+//  DEPLOY_VERSION 2026-07-14-v4
 //  Versione 2 — time trap corretta, rate limit, email dedup
 // ============================================================
 
@@ -108,16 +108,24 @@ function handleLead(data) {
   }
 
   // ── Tutti i controlli superati ────────────────────────────
-  try {
-    writeLead(data, nome, email, telefono, messaggio, now);
-    if (String(data._smoke_test || '') !== 'abra2026smoke') {
+  var writeResult = writeLead(data, nome, email, telefono, messaggio, now);
+  if (String(data._smoke_test || '') !== 'abra2026smoke') {
+    try {
       sendEmail(data, nome, email, telefono, messaggio);
+    } catch (mailEx) {
+      try {
+        MailApp.sendEmail(NOTIFY_TO, 'ERRORE invio email contatto Abra: ' + nome,
+          'Lead valido ma MailApp.sendEmail e\' fallito.\n\nErrore: ' + mailEx.message +
+          '\n\nNome: ' + nome + '\nEmail: ' + email + '\nTelefono: ' + telefono +
+          '\nMessaggio: ' + messaggio + '\nURL: ' + String(data.url || ''));
+      } catch (_) {}
     }
-  } catch (ex) {
+  }
+  if (!writeResult.written && writeResult.errors.length) {
     try {
       MailApp.sendEmail(NOTIFY_TO, 'ERRORE salvataggio contatto Abra: ' + nome,
-        'Il form e\' stato inviato ma la scrittura sul foglio e\' fallita.\n\n' +
-        'Errore: ' + ex.message + '\n\n' +
+        'Il form e\' stato inviato ma nessun foglio e\' scrivibile.\n\n' +
+        'Errori:\n' + writeResult.errors.join('\n') + '\n\n' +
         'Nome: ' + nome + '\nEmail: ' + email + '\nTelefono: ' + telefono + '\n' +
         'Messaggio: ' + messaggio + '\nURL: ' + String(data.url || ''));
     } catch (_) {}
@@ -254,19 +262,29 @@ function mirrorToAllContactSheets_(tabName, row, ensureFn) {
 function writeLead(data, nome, email, telefono, messaggio, now) {
   var row = buildLeadRow_(data, nome, email, telefono, messaggio, now);
   var primaryId = getSheetId();
-  if (!primaryId) throw new Error('SHEET_ID non configurato');
-  try {
-    ensureLeadsSheet_(SpreadsheetApp.openById(primaryId)).appendRow(row);
-  } catch (ex) {
-    throw new Error('Foglio aggregato non scrivibile (' + primaryId + '): ' + ex.message);
+  var written = false;
+  var errors = [];
+  if (primaryId) {
+    try {
+      ensureLeadsSheet_(SpreadsheetApp.openById(primaryId)).appendRow(row);
+      written = true;
+    } catch (ex) {
+      errors.push('aggregato ' + primaryId + ': ' + ex.message);
+    }
+  } else {
+    errors.push('SHEET_ID non configurato');
   }
   for (var i = 0; i < LEGACY_SHEET_IDS.length; i++) {
     var legacyId = LEGACY_SHEET_IDS[i];
     if (!legacyId || legacyId === primaryId) continue;
     try {
       ensureLeadsSheet_(SpreadsheetApp.openById(legacyId)).appendRow(row);
-    } catch (_) {}
+      written = true;
+    } catch (ex) {
+      errors.push('legacy ' + legacyId + ': ' + ex.message);
+    }
   }
+  return { written: written, errors: errors };
 }
 
 // ── Email di notifica ─────────────────────────────────────────

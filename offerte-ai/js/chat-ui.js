@@ -13,11 +13,14 @@
     }
     const url = (typeof window !== 'undefined' && window.GOOGLE_SCRIPT_URL)
       || 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
+    var body = (typeof window !== 'undefined' && typeof window.encodeLeadPayloadForAppsScript === 'function')
+      ? window.encodeLeadPayloadForAppsScript(payload).toString()
+      : new URLSearchParams(Object.entries(payload || {}).map(function (e) { return [e[0], String(e[1])]; })).toString();
     return fetch(url, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: body,
     });
   }
 

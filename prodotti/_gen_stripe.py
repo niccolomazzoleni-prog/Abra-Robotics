@@ -172,7 +172,6 @@ def write_config(links):
     body = [
         f"/* Stripe — generato da _gen_stripe.py ({MODE_LABEL}). NON contiene segreti. */",
         f'window.STRIPE_PUBLISHABLE_KEY = "{PUB_KEY}";',
-        f'window.GOOGLE_SCRIPT_URL = "{GAS_URL}";',
         "window.STRIPE_PAYMENT_LINKS = {",
     ]
     for slug in sorted(merged):
