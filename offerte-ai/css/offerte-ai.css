@@ -350,12 +350,13 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
 }
 
 .chat-avatar {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 2px rgba(196, 181, 253, 0.35);
+  color: var(--black);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,10 +369,10 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 6px;
+  padding: 5px;
   background: var(--white);
 }
-.chat-avatar-sm { width: 32px; height: 32px; font-size: 0.85rem; }
+.chat-avatar-sm { width: 34px; height: 34px; font-size: 0.85rem; }
 .chat-avatar-sm img { padding: 4px; }
 
 .chat-app-title { flex: 1; min-width: 0; }
@@ -961,44 +962,100 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
 .abra-chat-launcher {
   position: fixed;
   right: 20px;
-  bottom: 88px;
-  z-index: 9998;
-  width: 56px;
-  height: 56px;
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  z-index: 10050;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  border: 2px solid var(--white);
-  background: var(--black);
-  color: var(--white);
+  border: 2px solid #fff;
+  background: linear-gradient(145deg, #111 0%, #000 100%);
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.32);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
 }
 .abra-chat-launcher:hover {
   transform: scale(1.06);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.36);
 }
-.abra-chat-launcher img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  display: block;
+.abra-chat-launcher-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(196, 181, 253, 0.55);
+  animation: abra-chat-ring 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes abra-chat-ring {
+  0% { transform: scale(1); opacity: 0.85; }
+  70% { transform: scale(1.18); opacity: 0; }
+  100% { transform: scale(1.18); opacity: 0; }
 }
 .abra-chat-launcher-icon {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 0;
+  opacity: 0.22;
+  pointer-events: none;
+}
+.abra-chat-launcher-logo {
+  width: 36px;
+  height: 36px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+@media (max-width: 768px) {
+  .abra-chat-launcher {
+    width: 64px;
+    height: 64px;
+    right: 16px;
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+  .abra-chat-launcher-logo {
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+  }
+  .abra-chat-launcher-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .chat-avatar {
+    width: 48px;
+    height: 48px;
+  }
+  .chat-avatar-sm {
+    width: 38px;
+    height: 38px;
+  }
+  .abra-chat-panel {
+    right: 12px;
+    bottom: calc(152px + env(safe-area-inset-bottom, 0px));
+    width: calc(100vw - 24px);
+    height: min(620px, calc(100vh - 168px));
+  }
 }
 
 .abra-chat-panel {
   position: fixed;
   right: 20px;
-  bottom: 156px;
-  z-index: 9999;
+  bottom: calc(156px + env(safe-area-inset-bottom, 0px));
+  z-index: 10051;
   width: min(400px, calc(100vw - 24px));
   height: min(620px, calc(100vh - 180px));
   display: none;

@@ -37,7 +37,7 @@
     if (document.querySelector('link[data-abra-chat]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = baseUrl + 'css/offerte-ai.css?v=20260713chat';
+    link.href = baseUrl + 'css/offerte-ai.css?v=20260714chat';
     link.setAttribute('data-abra-chat', '1');
     document.head.appendChild(link);
   }
@@ -69,7 +69,15 @@
     launcher.type = 'button';
     launcher.title = 'Assistente Abra — prezzi e info';
     launcher.setAttribute('aria-label', 'Apri assistente Abra');
-    launcher.innerHTML = `<img src="${logoUrl}" alt="" width="30" height="30" loading="lazy">`;
+    launcher.innerHTML = `
+      <span class="abra-chat-launcher-ring" aria-hidden="true"></span>
+      <span class="abra-chat-launcher-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </span>
+      <img class="abra-chat-launcher-logo" src="${logoUrl}" alt="" width="34" height="34" loading="lazy">
+    `;
 
     const panel = document.createElement('div');
     panel.className = 'abra-chat-panel';

@@ -20,6 +20,8 @@ Foglio contatti: **https://docs.google.com/spreadsheets/d/15zvBHBRrsnC7b4qB7J3tt
 4. **Servizi** (+) → **Google Analytics Data API** → ON
 5. **Deploy** → **Gestisci distribuzioni** → matita → **Nuova versione** → Deploy
 
+> **IMPORTANTE — email che non partono:** se crei una *nuova* distribuzione ma l'URL finisce chiedendo login Google, i form del sito **non arrivano** (il browser mostra "inviato" ma il server non riceve nulla). Usa **Gestisci distribuzioni → matita → Nuova versione** sulla Web App esistente con accesso **Chiunque**, oppure verifica in incognito che l'URL `/exec` risponda `Abra Robotics - endpoint form + analytics attivo.` **senza** pagina di login.
+
 ### Web App (se partite da zero)
 
 1. **Distribuisci** → **Nuova distribuzione** → **Applicazione web**:
