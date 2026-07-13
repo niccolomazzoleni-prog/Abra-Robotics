@@ -37,9 +37,13 @@
     if (document.querySelector('link[data-abra-chat]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = baseUrl + 'css/offerte-ai.css';
+    link.href = baseUrl + 'css/offerte-ai.css?v=20260713chat';
     link.setAttribute('data-abra-chat', '1');
     document.head.appendChild(link);
+  }
+
+  function siteAsset(path) {
+    return baseUrl.replace(/offerte-ai\/$/i, '') + path;
   }
 
   async function boot() {
@@ -58,12 +62,14 @@
     ]);
     await AbraLLM.bootstrapLocalConfig();
 
+    const logoUrl = siteAsset('images/logo.png');
+
     const launcher = document.createElement('button');
     launcher.className = 'abra-chat-launcher';
     launcher.type = 'button';
-    launcher.title = 'Chat Abra Robotics';
-    launcher.setAttribute('aria-label', 'Apri chat');
-    launcher.innerHTML = '💬';
+    launcher.title = 'Assistente Abra — prezzi e info';
+    launcher.setAttribute('aria-label', 'Apri assistente Abra');
+    launcher.innerHTML = `<img src="${logoUrl}" alt="" width="30" height="30" loading="lazy">`;
 
     const panel = document.createElement('div');
     panel.className = 'abra-chat-panel';
@@ -90,16 +96,23 @@
 
     ui = new AbraChatUI(panel.querySelector('#abra-widget-root'), {
       title: 'Assistente Abra',
-      subtitle: 'Prodotti & preventivi',
+      subtitle: 'Listino End-User · IVA esclusa',
+      avatarLogoUrl: logoUrl,
       showFeedback: false,
-      suggestions: ['Prezzo Go2 EDU', 'G1-U1', 'Tempi consegna'],
+      suggestions: ['Quanto costa Go2 EDU?', 'Prezzo G1-U1', 'Tempi di consegna'],
       onSend: async (q) => rag.ask(q),
     });
 
     rag.init().then(() => {
       ready = true;
       ui.setStatus('Online', true);
-      ui.appendBot('Ciao! Chiedimi prezzi o un preventivo. Oppure **WhatsApp** / **Modulo contatto** in basso.', {});
+      ui.appendBot(
+        'Ciao! Posso aiutarti con:\n\n' +
+        '• **Prezzi** dal listino pubblico aggiornato (es. «Quanto costa Go2 EDU?», «G1-U1»)\n' +
+        '• **Confronti** tra modelli e **tempi di consegna**\n\n' +
+        'Per un preventivo su misura usa **WhatsApp** o il **modulo contatto** qui sotto.',
+        {}
+      );
     }).catch(err => {
       ui.appendBot('Errore: ' + err.message, {});
     });

@@ -145,6 +145,7 @@
         title: opts.title || 'Assistente Abra',
         subtitle: opts.subtitle || 'Listini & offerte',
         avatarLetter: opts.avatarLetter || 'A',
+        avatarLogoUrl: opts.avatarLogoUrl || '',
         variant: opts.variant || 'compact',
         theme: opts.theme || 'default',
         showFeedback: opts.showFeedback !== false,
@@ -159,13 +160,25 @@
       this._bind();
     }
 
+    _avatarHtml(sm) {
+      if (this.opts.avatarLogoUrl) {
+        const cls = sm ? 'chat-avatar chat-avatar-sm' : 'chat-avatar';
+        return `<div class="${cls}"><img src="${escapeHtml(this.opts.avatarLogoUrl)}" alt="Abra Robotics" loading="lazy"></div>`;
+      }
+      const cls = sm ? 'chat-avatar chat-avatar-sm' : 'chat-avatar';
+      return `<div class="${cls}">${escapeHtml(this.opts.avatarLetter)}</div>`;
+    }
+
     _renderShell() {
       this.container.classList.add('abra-chat-app');
       if (this.opts.variant === 'thread') this.container.classList.add('abra-chat-thread');
       if (this.opts.theme === 'platinum') this.container.classList.add('abra-chat-platinum');
+      const emptyIcon = this.opts.avatarLogoUrl
+        ? `<div class="chat-empty-icon"><img src="${escapeHtml(this.opts.avatarLogoUrl)}" alt="" loading="lazy"></div>`
+        : '<div class="chat-empty-icon" aria-hidden="true"></div>';
       this.container.innerHTML = `
         <header class="chat-app-header">
-          <div class="chat-avatar">${escapeHtml(this.opts.avatarLetter)}</div>
+          ${this._avatarHtml(false)}
           <div class="chat-app-title">
             <strong>${escapeHtml(this.opts.title)}</strong>
             <span class="chat-app-sub">${escapeHtml(this.opts.subtitle)}</span>
@@ -173,8 +186,8 @@
           <span class="chat-app-status online" id="chat-app-status" title="Online"></span>
         </header>
         <div class="chat-empty" id="chat-empty">
-          <div class="chat-empty-icon">💬</div>
-          <p>Chiedi prezzi, bundle o tempi di consegna</p>
+          ${emptyIcon}
+          <p>Prezzi dal listino End-User, confronti modelli, tempi di consegna</p>
         </div>
         <div class="chat-app-messages" id="chat-app-messages" role="log" aria-live="polite"></div>
         <footer class="chat-app-compose-wrap">
@@ -432,7 +445,7 @@
         if (meta.isScenario) wrap.classList.add('chat-row-scenario');
         if (meta.labSystem) wrap.classList.add('chat-row-lab-system');
         wrap.innerHTML = `
-          <div class="chat-avatar chat-avatar-sm">${escapeHtml(this.opts.avatarLetter)}</div>
+          ${this._avatarHtml(true)}
           <div class="chat-bubble-wrap">
             <div class="chat-bubble bot">${formatBotHtml(text)}</div>
             <time class="chat-meta">${time}</time>
