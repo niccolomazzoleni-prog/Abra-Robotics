@@ -8,7 +8,7 @@
   const PENDING_KB_KEY = 'abra_feedback_pending_kb';
   const CHAT_WA_URL = 'https://wa.me/393408592926?text=' + encodeURIComponent('Ciao Abra Robotics, vorrei informazioni su ');
   const CHAT_GAS_URL = () => (typeof window !== 'undefined' && window.GOOGLE_SCRIPT_URL)
-    || 'https://script.google.com/a/macros/abrarobotics.com/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec';
+    || 'https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec';
 
   function uid() {
     return 'fb-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
