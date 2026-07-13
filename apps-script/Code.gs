@@ -87,8 +87,18 @@ function handleLead(data) {
 
   if (!nome || nome.length < 2)                              { logRejected(data, 'campo:nome',     now); return ok(); }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { logRejected(data, 'campo:email',    now); return ok(); }
-  if (telefono.replace(/\D/g, '').length < 6)               { logRejected(data, 'campo:telefono', now); return ok(); }
-  if (messaggio.length < 5)                                  { logRejected(data, 'campo:messaggio',now); return ok(); }
+  if (telefono.replace(/\D/g, '').length < 6) {
+    var isChat = String(data.origine || '').indexOf('Chat') >= 0;
+    if (isChat) telefono = telefono || 'N/D';
+    if (telefono.replace(/\D/g, '').length < 6) {
+      logRejected(data, 'campo:telefono', now); return ok();
+    }
+  }
+  if (messaggio.length < 5) {
+    var isChatMsg = String(data.origine || '').indexOf('Chat') >= 0;
+    if (isChatMsg) messaggio = messaggio || 'Richiesta via chat Abra';
+    if (messaggio.length < 5) { logRejected(data, 'campo:messaggio',now); return ok(); }
+  }
 
   // 6. EMAIL DEDUP — stesso indirizzo già inviato nelle ultime DEDUP_HOURS ore
   if (recentDuplicate(email, nowMs)) {
@@ -97,9 +107,19 @@ function handleLead(data) {
   }
 
   // ── Tutti i controlli superati ────────────────────────────
-  writeLead(data, nome, email, telefono, messaggio, now);
-  if (String(data._smoke_test || '') !== 'abra2026smoke') {
-    sendEmail(data, nome, email, telefono, messaggio);
+  try {
+    writeLead(data, nome, email, telefono, messaggio, now);
+    if (String(data._smoke_test || '') !== 'abra2026smoke') {
+      sendEmail(data, nome, email, telefono, messaggio);
+    }
+  } catch (ex) {
+    try {
+      MailApp.sendEmail(NOTIFY_TO, 'ERRORE salvataggio contatto Abra: ' + nome,
+        'Il form e\' stato inviato ma la scrittura sul foglio e\' fallita.\n\n' +
+        'Errore: ' + ex.message + '\n\n' +
+        'Nome: ' + nome + '\nEmail: ' + email + '\nTelefono: ' + telefono + '\n' +
+        'Messaggio: ' + messaggio + '\nURL: ' + String(data.url || ''));
+    } catch (_) {}
   }
   return ok();
 }
@@ -232,9 +252,19 @@ function mirrorToAllContactSheets_(tabName, row, ensureFn) {
 
 function writeLead(data, nome, email, telefono, messaggio, now) {
   var row = buildLeadRow_(data, nome, email, telefono, messaggio, now);
-  var result = mirrorToAllContactSheets_(SHEET_LEADS, row, ensureLeadsSheet_);
-  if (!result.written.length) {
-    throw new Error('Nessun foglio Contatti scrivibile: ' + JSON.stringify(result.errors));
+  var primaryId = getSheetId();
+  if (!primaryId) throw new Error('SHEET_ID non configurato');
+  try {
+    ensureLeadsSheet_(SpreadsheetApp.openById(primaryId)).appendRow(row);
+  } catch (ex) {
+    throw new Error('Foglio aggregato non scrivibile (' + primaryId + '): ' + ex.message);
+  }
+  for (var i = 0; i < LEGACY_SHEET_IDS.length; i++) {
+    var legacyId = LEGACY_SHEET_IDS[i];
+    if (!legacyId || legacyId === primaryId) continue;
+    try {
+      ensureLeadsSheet_(SpreadsheetApp.openById(legacyId)).appendRow(row);
+    } catch (_) {}
   }
 }
 
@@ -255,15 +285,25 @@ function sendEmail(data, nome, email, telefono, messaggio) {
 
 // ── Log scarti nel foglio Scartati (aggregato + legacy) ───────
 function logRejected(data, reason, now) {
-  var row = [
-    now,
-    reason,
-    String(data.email || '').trim(),
-    String(data.nome || '').trim(),
-    String(data.url || '').trim(),
-    JSON.stringify(data).substring(0, 500)
-  ];
-  mirrorToAllContactSheets_(SHEET_REJECTED, row, ensureRejectedSheet_);
+  try {
+    var row = [
+      now,
+      reason,
+      String(data.email || '').trim(),
+      String(data.nome || '').trim(),
+      String(data.url || '').trim(),
+      JSON.stringify(data).substring(0, 500)
+    ];
+    var primaryId = getSheetId();
+    if (primaryId) {
+      try { ensureRejectedSheet_(SpreadsheetApp.openById(primaryId)).appendRow(row); } catch (_) {}
+    }
+    for (var i = 0; i < LEGACY_SHEET_IDS.length; i++) {
+      var legacyId = LEGACY_SHEET_IDS[i];
+      if (!legacyId || legacyId === primaryId) continue;
+      try { ensureRejectedSheet_(SpreadsheetApp.openById(legacyId)).appendRow(row); } catch (_) {}
+    }
+  } catch (_) {}
 }
 
 // ── Helpers ──────────────────────────────────────────────────
@@ -401,7 +441,11 @@ function doGet(e) {
     if (key !== expected) {
       return jsonOut({ ok: false, error: 'Chiave stats non valida' }, params.callback);
     }
-    return jsonOut(getStatsPayload(), params.callback);
+    try {
+      return jsonOut(getStatsPayload(), params.callback);
+    } catch (ex) {
+      return jsonOut({ ok: false, error: ex.message }, params.callback);
+    }
   }
   return ContentService
     .createTextOutput('Abra Robotics — endpoint form + analytics attivo.')

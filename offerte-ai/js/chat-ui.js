@@ -275,12 +275,18 @@
         const hp = form.querySelector('[name="_gotcha"]');
         if (hp?.value.trim()) return;
 
-        const nome = form.querySelector('[name="nome"]')?.value.trim();
-        const email = form.querySelector('[name="email"]')?.value.trim();
+        const telefono = form.querySelector('[name="telefono"]')?.value.trim() || '';
+        const messaggioRaw = form.querySelector('[name="messaggio"]')?.value.trim() || '';
         if (!nome || !email) {
           form.reportValidity();
           return;
         }
+        if (telefono.replace(/\D/g, '').length < 6) {
+          const tel = form.querySelector('[name="telefono"]');
+          if (tel) { tel.focus(); tel.setCustomValidity('Inserisci un numero di telefono valido.'); tel.reportValidity(); tel.setCustomValidity(''); }
+          return;
+        }
+        const messaggio = messaggioRaw.length >= 5 ? messaggioRaw : 'Richiesta contatto via chat widget Abra';
 
         const btn = form.querySelector('.chat-contact-submit');
         const orig = btn.textContent;
@@ -290,12 +296,13 @@
         const payload = {
           nome,
           email,
-          telefono: form.querySelector('[name="telefono"]')?.value.trim() || '',
-          messaggio: form.querySelector('[name="messaggio"]')?.value.trim() || '',
+          telefono,
+          messaggio,
           origine: 'Chat Abra',
           pagina: document.title,
           url: location.href,
           timestamp: new Date().toISOString(),
+          form_load_time: (typeof window._formLoadTime === 'number' ? window._formLoadTime : Date.now() - 5000),
         };
 
         try {
