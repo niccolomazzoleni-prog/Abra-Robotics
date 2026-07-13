@@ -7,16 +7,18 @@ prodotto) inviano allo **stesso endpoint**. L'endpoint è un Web App Google Apps
 
 ## Setup (una volta)
 
-### Foglio Google (account gio@)
+### Foglio Google (produzione)
 
-1. Vai su **https://script.google.com** → progetto Abra Web App.
-2. Incolla il contenuto aggiornato di `Code.gs`.
-3. Nel menu funzioni seleziona **`setupAbraSheetForGio`** → ▶ **Esegui** (loggato come **gio@abrarobotics.com**).
-4. Autorizza i permessi → in **Visualizza → Log** trovi l’URL del foglio nuovo (tab Contatti, Scartati, Analytics).
-5. **Deploy** → **Gestisci distribuzioni** → matita → **Nuova versione** → Deploy.
+Foglio contatti: **https://docs.google.com/spreadsheets/d/15zvBHBRrsnC7b4qB7J3ttp0tXXJg8JFu27m4wXuWccQ/edit**
 
-Il foglio si chiama *Abra Robotics — Contatti sito (gio@abrarobotics.com)* ed è di proprietà di gio@.
-Niccolò (`niccolomazzoleni@gmail.com`) viene aggiunto come editor automaticamente.
+1. Condividi il foglio con **gio@abrarobotics.com** → permesso **Editor** (se non sei già gio@).
+2. Vai su **https://script.google.com** → progetto Abra Web App → incolla `Code.gs` aggiornato.
+3. Seleziona **`bootstrapAbraSheet`** → ▶ **Esegui** (account **gio@abrarobotics.com**).
+   - Crea tab **Scartati** / **Analytics** se mancano
+   - Condivide con gio@ + niccolomazzoleni@gmail.com
+   - Copia righe dai fogli legacy (se gio@ ha accesso)
+4. **Servizi** (+) → **Google Analytics Data API** → ON
+5. **Deploy** → **Gestisci distribuzioni** → matita → **Nuova versione** → Deploy
 
 ### Web App (se partite da zero)
 
