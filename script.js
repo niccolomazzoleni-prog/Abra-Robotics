@@ -439,3 +439,23 @@ document.addEventListener('click', (e) => {
     });
   } catch (_) {}
 })();
+
+// Assistente chat (KB offline + WhatsApp / modulo contatto)
+(function () {
+  if (location.pathname.includes('/admin/')) return;
+  if (location.pathname.includes('/offerte-ai/')) return;
+  if (document.querySelector('script[data-abra-chat-widget]')) return;
+
+  var depth = 0;
+  if (location.pathname.includes('/prodotti/')) depth = 1;
+  if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
+  if (location.pathname.includes('/en/prodotti/')) depth = 2;
+  var prefix = depth ? '../'.repeat(depth) : '';
+
+  var s = document.createElement('script');
+  s.src = prefix + 'offerte-ai/js/widget.js';
+  s.setAttribute('data-base', prefix + 'offerte-ai/');
+  s.setAttribute('data-abra-chat-widget', '1');
+  s.defer = true;
+  document.body.appendChild(s);
+})();

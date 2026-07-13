@@ -38,6 +38,9 @@
     }
     .cat-toolbar input { flex: 1; min-width: 200px; }
     .cat-card.hidden { display: none !important; }
+    .cat-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .cat-jump a { font-size: 0.85rem; padding: 8px 14px; border: 1px solid var(--gray-200); border-radius: 999px; text-decoration: none; color: var(--black); font-weight: 600; }
+    .cat-jump a:hover, .cat-jump a.active { background: var(--black); color: var(--white); border-color: var(--black); }
     @media (max-width:768px) { .cat-hero, .cat-body-page { padding-left: 20px; padding-right: 20px; } }
   </style>
 <link href="https://abrarobotics.com/catalogo-unitree.html" hreflang="it" rel="alternate"/>
@@ -120,8 +123,20 @@
 <div class="cat-toolbar">
 <input aria-label="Search" id="cat-search" placeholder="Search product or SKU..." type="search"/>
 <select aria-label="Category" id="cat-filter"><option value="">All categories</option><option value="Umanoidi &amp; robot">Humanoids &amp; robots</option><option value="Mani &amp; bracci">Hands &amp; arms</option><option value="Componentistica">Components</option></select>
-<select aria-label="Family" id="family-filter"><option value="">All families</option><option value="A2">A2</option><option value="A2W">A2W</option><option value="Accessori">Accessories</option><option value="B2">B2</option><option value="B2W">B2W</option><option value="G1">G1</option><option value="Go2">Go2</option><option value="Go2W">Go2W</option><option value="H2">H2</option><option value="R1">R1</option><option value="R1-D">R1-D</option></select>
+<select aria-label="Family" id="family-filter"><option value="">All families</option><option value="H2">H2</option><option value="G1">G1</option><option value="R1">R1</option><option value="R1-D">R1-D</option><option value="G1-D">G1-D</option><option value="Go2">Go2</option><option value="Go2W">Go2W</option><option value="AS2">AS2</option><option value="A2">A2</option><option value="A2W">A2W</option><option value="B2">B2</option><option value="B2W">B2W</option><option value="Accessori">Accessories</option></select>
 </div>
+<nav aria-label="Unitree families" class="cat-jump" id="cat-family-jump">
+<a data-family="H2" href="#">H2</a>
+<a data-family="G1" href="#">G1</a>
+<a data-family="R1" href="#">R1</a>
+<a data-family="R1-D" href="#">R1-D</a>
+<a data-family="G1-D" href="#">G1-D</a>
+<a data-family="Go2" href="#">Go2</a>
+<a data-family="AS2" href="#">AS2</a>
+<a data-family="A2" href="#">A2</a>
+<a data-family="B2" href="#">B2</a>
+<a data-family="Accessori" href="#">Accessories</a>
+</nav>
 <div class="cat-grid" id="cat-grid">
 <article class="cat-card" data-cat="Componentistica" data-family="A2" data-name="unitree a2 batteria" data-sku="A2-BATTERY">
 <a class="cat-media" href="../prodotti/unitree-a2-battery-en.html"><img alt="Unitree A2 Battery" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-img');" src="../images/accessori/batt-go2.webp"/></a>
@@ -1037,6 +1052,26 @@
 </div>
 </footer>
 <script>
+    var FAMILY_ORDER = ['H2','G1','R1','R1-D','G1-D','Go2','Go2W','AS2','A2','A2W','B2','B2W','Accessori'];
+    var CAT_TIER = {'Umanoidi & robot': 0, 'Mani & bracci': 1, 'Componentistica': 2};
+    function catalogSortKey(card) {
+      var fam = card.dataset.family || '';
+      var fi = FAMILY_ORDER.indexOf(fam);
+      if (fi < 0) fi = FAMILY_ORDER.length;
+      var ci = CAT_TIER[card.dataset.cat] != null ? CAT_TIER[card.dataset.cat] : 9;
+      return (fi * 100) + (ci * 10) + (card.dataset.sku || '').length;
+    }
+    function sortCatalogCards() {
+      var grid = document.getElementById('cat-grid');
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.cat-card'));
+      cards.sort(function(a, b) {
+        var ka = catalogSortKey(a), kb = catalogSortKey(b);
+        if (ka !== kb) return ka - kb;
+        return (a.dataset.name || '').localeCompare(b.dataset.name || '', 'en');
+      });
+      cards.forEach(function(c) { grid.appendChild(c); });
+    }
     function filterCatalog() {
       const q = document.getElementById('cat-search').value.toLowerCase();
       const cat = document.getElementById('cat-filter').value;
@@ -1051,9 +1086,21 @@
       });
       document.getElementById('cat-empty').style.display = visible ? 'none' : 'block';
     }
+    sortCatalogCards();
     document.getElementById('cat-search').addEventListener('input', filterCatalog);
     document.getElementById('cat-filter').addEventListener('change', filterCatalog);
     document.getElementById('family-filter').addEventListener('change', filterCatalog);
+    document.getElementById('cat-family-jump').addEventListener('click', function(e) {
+      var link = e.target.closest('a[data-family]');
+      if (!link) return;
+      e.preventDefault();
+      var fam = link.dataset.family;
+      document.getElementById('family-filter').value = fam;
+      filterCatalog();
+      var first = document.querySelector('.cat-card[data-family="' + fam + '"]:not(.hidden)');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.querySelectorAll('a').forEach(function(a) { a.classList.toggle('active', a === link); });
+    });
   </script>
 <script src="../scripts/image-runtime.js"></script>
 <script src="../script.js"></script>

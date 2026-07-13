@@ -37,6 +37,9 @@
     }
     .cat-toolbar input { flex: 1; min-width: 200px; }
     .cat-card.hidden { display: none !important; }
+    .cat-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .cat-jump a { font-size: 0.85rem; padding: 8px 14px; border: 1px solid var(--gray-200); border-radius: 999px; text-decoration: none; color: var(--black); font-weight: 600; }
+    .cat-jump a:hover, .cat-jump a.active { background: var(--black); color: var(--white); border-color: var(--black); }
     @media (max-width:768px) { .cat-hero, .cat-body-page { padding-left: 20px; padding-right: 20px; } }
   </style>
 </head>
@@ -120,8 +123,20 @@
     <div class="cat-toolbar">
       <input type="search" id="cat-search" placeholder="Cerca prodotto o SKU…" aria-label="Cerca">
       <select id="cat-filter" aria-label="Categoria"><option value="">Tutte le categorie</option><option value="Umanoidi & robot">Umanoidi & robot</option><option value="Mani & bracci">Mani & bracci</option><option value="Componentistica">Componentistica</option></select>
-      <select id="family-filter" aria-label="Famiglia"><option value="">Tutte le famiglie</option><option value="A2">A2</option><option value="A2W">A2W</option><option value="Accessori">Accessori</option><option value="B2">B2</option><option value="B2W">B2W</option><option value="G1">G1</option><option value="Go2">Go2</option><option value="Go2W">Go2W</option><option value="H2">H2</option><option value="R1">R1</option><option value="R1-D">R1-D</option></select>
+      <select id="family-filter" aria-label="Famiglia"><option value="">Tutte le famiglie</option><option value="H2">H2</option><option value="G1">G1</option><option value="R1">R1</option><option value="R1-D">R1-D</option><option value="G1-D">G1-D</option><option value="Go2">Go2</option><option value="Go2W">Go2W</option><option value="AS2">AS2</option><option value="A2">A2</option><option value="A2W">A2W</option><option value="B2">B2</option><option value="B2W">B2W</option><option value="Accessori">Accessori</option></select>
     </div>
+    <nav class="cat-jump" aria-label="Famiglie Unitree" id="cat-family-jump">
+      <a href="#" data-family="H2">H2</a>
+      <a href="#" data-family="G1">G1</a>
+      <a href="#" data-family="R1">R1</a>
+      <a href="#" data-family="R1-D">R1-D</a>
+      <a href="#" data-family="G1-D">G1-D</a>
+      <a href="#" data-family="Go2">Go2</a>
+      <a href="#" data-family="AS2">AS2</a>
+      <a href="#" data-family="A2">A2</a>
+      <a href="#" data-family="B2">B2</a>
+      <a href="#" data-family="Accessori">Accessori</a>
+    </nav>
     <div class="cat-grid" id="cat-grid">
         <article class="cat-card" data-cat="Componentistica" data-family="A2" data-sku="A2-BATTERY" data-name="unitree a2 batteria">
           <a href="prodotti/unitree-a2-battery.html" class="cat-media"><img src="images/accessori/batt-go2.webp" alt="Unitree A2 Batteria" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-img');"></a>
@@ -1039,6 +1054,26 @@
   </footer>
 
   <script>
+    var FAMILY_ORDER = ['H2','G1','R1','R1-D','G1-D','Go2','Go2W','AS2','A2','A2W','B2','B2W','Accessori'];
+    var CAT_TIER = {'Umanoidi & robot': 0, 'Mani & bracci': 1, 'Componentistica': 2};
+    function catalogSortKey(card) {
+      var fam = card.dataset.family || '';
+      var fi = FAMILY_ORDER.indexOf(fam);
+      if (fi < 0) fi = FAMILY_ORDER.length;
+      var ci = CAT_TIER[card.dataset.cat] != null ? CAT_TIER[card.dataset.cat] : 9;
+      return (fi * 100) + (ci * 10) + (card.dataset.sku || '').length;
+    }
+    function sortCatalogCards() {
+      var grid = document.getElementById('cat-grid');
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.cat-card'));
+      cards.sort(function(a, b) {
+        var ka = catalogSortKey(a), kb = catalogSortKey(b);
+        if (ka !== kb) return ka - kb;
+        return (a.dataset.name || '').localeCompare(b.dataset.name || '', 'it');
+      });
+      cards.forEach(function(c) { grid.appendChild(c); });
+    }
     function filterCatalog() {
       const q = document.getElementById('cat-search').value.toLowerCase();
       const cat = document.getElementById('cat-filter').value;
@@ -1053,9 +1088,21 @@
       });
       document.getElementById('cat-empty').style.display = visible ? 'none' : 'block';
     }
+    sortCatalogCards();
     document.getElementById('cat-search').addEventListener('input', filterCatalog);
     document.getElementById('cat-filter').addEventListener('change', filterCatalog);
     document.getElementById('family-filter').addEventListener('change', filterCatalog);
+    document.getElementById('cat-family-jump').addEventListener('click', function(e) {
+      var link = e.target.closest('a[data-family]');
+      if (!link) return;
+      e.preventDefault();
+      var fam = link.dataset.family;
+      document.getElementById('family-filter').value = fam;
+      filterCatalog();
+      var first = document.querySelector('.cat-card[data-family="' + fam + '"]:not(.hidden)');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.querySelectorAll('a').forEach(function(a) { a.classList.toggle('active', a === link); });
+    });
   </script>
   <script src="scripts/image-runtime.js"></script>
   <script src="script.js"></script>
