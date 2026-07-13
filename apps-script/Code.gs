@@ -403,22 +403,29 @@ function migrateLegacyContactsInto_(targetSs) {
  */
 function bootstrapAbraSheet() {
   var id = SHEET_ID;
-  var ss = SpreadsheetApp.openById(id);
-  ensureSheetTabs_(ss);
-  ensureSheetSharing_(ss);
-  var copied = migrateLegacyContactsInto_(ss);
-  PropertiesService.getScriptProperties().setProperty('ABRA_SHEET_ID', id);
   var url = 'https://docs.google.com/spreadsheets/d/' + id + '/edit';
-  Logger.log('Foglio produzione collegato: ' + url);
-  Logger.log('Migrati Contatti: ' + copied.contatti + ', Scartati: ' + copied.scartati);
-  if (copied.sources.length) Logger.log('Fonti legacy: ' + JSON.stringify(copied.sources));
   try {
-    var stats = getStatsPayload();
-    Logger.log('Stats OK — GA4 configured: ' + (stats.ga4 && stats.ga4.configured));
+    var ss = SpreadsheetApp.openById(id);
+    ensureSheetTabs_(ss);
+    ensureSheetSharing_(ss);
+    var copied = migrateLegacyContactsInto_(ss);
+    PropertiesService.getScriptProperties().setProperty('ABRA_SHEET_ID', id);
+    Logger.log('Foglio produzione collegato: ' + url);
+    Logger.log('Migrati Contatti: ' + copied.contatti + ', Scartati: ' + copied.scartati);
+    if (copied.sources.length) Logger.log('Fonti legacy: ' + JSON.stringify(copied.sources));
+    else Logger.log('Legacy Niccolò: skip (condividi 1nXl0… con gio@ per mirror automatico)');
+    try {
+      var stats = getStatsPayload();
+      Logger.log('Stats OK — GA4 configured: ' + (stats.ga4 && stats.ga4.configured));
+    } catch (ex) {
+      Logger.log('Stats test: ' + ex.message);
+    }
+    Logger.log('Bootstrap completato. Ora: Deploy → Gestisci distribuzioni → Nuova versione.');
+    return { ok: true, id: id, url: url, migrated: copied };
   } catch (ex) {
-    Logger.log('Stats test: ' + ex.message);
+    Logger.log('Bootstrap errore foglio aggregato: ' + ex.message);
+    return { ok: false, id: id, url: url, error: ex.message };
   }
-  return { id: id, url: url, migrated: copied };
 }
 
 /** @deprecated usa bootstrapAbraSheet */
