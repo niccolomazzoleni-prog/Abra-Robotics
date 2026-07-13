@@ -5,7 +5,8 @@
 //  Versione 2 — time trap corretta, rate limit, email dedup
 // ============================================================
 
-var SHEET_ID         = '1nXl0QyElz1znYHiDb8xJ_bd7NYqfuCoLB3URLfNdcAc';
+var SHEET_ID         = '';  // fallback legacy; usa ABRA_SHEET_ID dopo setupAbraSheetForGio()
+var SHEET_OWNER      = 'gio@abrarobotics.com';
 var SHEET_LEADS      = 'Contatti';
 var SHEET_REJECTED   = 'Scartati';
 var SHEET_ANALYTICS  = 'Analytics';
@@ -122,7 +123,7 @@ function checkRateLimit(nowMs) {
 // ── Dedup email — cerca nel foglio Contatti ──────────────────
 function recentDuplicate(email, nowMs) {
   try {
-    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var ss = openSpreadsheet();
     var sh = ss.getSheetByName(SHEET_LEADS);
     if (!sh || sh.getLastRow() < 2) return false;
     var cutoff  = new Date(nowMs - DEDUP_HOURS * 3600000);
@@ -155,7 +156,7 @@ function verifyRecaptcha(token, secret) {
 
 // ── Scrittura riga nel foglio Contatti ───────────────────────
 function writeLead(data, nome, email, telefono, messaggio, now) {
-  var ss = SpreadsheetApp.openById(SHEET_ID);
+  var ss = openSpreadsheet();
   var sh = ss.getSheetByName(SHEET_LEADS);
   if (!sh) {
     sh = ss.insertSheet(SHEET_LEADS);
@@ -193,7 +194,7 @@ function sendEmail(data, nome, email, telefono, messaggio) {
 
 // ── Log scarti nel foglio Scartati ───────────────────────────
 function logRejected(data, reason, now) {
-  var ss = SpreadsheetApp.openById(SHEET_ID);
+  var ss = openSpreadsheet();
   var sh = ss.getSheetByName(SHEET_REJECTED);
   if (!sh) {
     sh = ss.insertSheet(SHEET_REJECTED);
@@ -211,6 +212,49 @@ function logRejected(data, reason, now) {
 }
 
 // ── Helpers ──────────────────────────────────────────────────
+function getSheetId() {
+  var id = PropertiesService.getScriptProperties().getProperty('ABRA_SHEET_ID') || SHEET_ID || '';
+  if (!id) throw new Error('Foglio non configurato. Esegui setupAbraSheetForGio() in Apps Script.');
+  return id;
+}
+
+function openSpreadsheet() {
+  return SpreadsheetApp.openById(getSheetId());
+}
+
+/**
+ * Esegui UNA VOLTA da Apps Script (loggato come gio@abrarobotics.com).
+ * Crea il Google Sheet contatti + tab Analytics e salva l'ID in ABRA_SHEET_ID.
+ */
+function setupAbraSheetForGio() {
+  var title = 'Abra Robotics — Contatti sito (' + SHEET_OWNER + ')';
+  var ss = SpreadsheetApp.create(title);
+  var id = ss.getId();
+
+  var contatti = ss.getSheets()[0];
+  contatti.setName(SHEET_LEADS);
+  contatti.appendRow(['Data', 'Nome', 'Azienda', 'Ruolo', 'Email', 'Telefono', 'Messaggio', 'Origine', 'Pagina', 'URL']);
+  contatti.setFrozenRows(1);
+
+  var scartati = ss.insertSheet(SHEET_REJECTED);
+  scartati.appendRow(['Timestamp', 'Motivo', 'Email', 'Nome', 'URL', 'Payload (troncato)']);
+  scartati.setFrozenRows(1);
+
+  var analytics = ss.insertSheet(SHEET_ANALYTICS);
+  analytics.appendRow(['Timestamp', 'Path', 'Referrer', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Lang', 'Mobile']);
+  analytics.setFrozenRows(1);
+
+  try { ss.addEditor('niccolomazzoleni@gmail.com'); } catch (_) {}
+
+  PropertiesService.getScriptProperties().setProperty('ABRA_SHEET_ID', id);
+
+  var url = 'https://docs.google.com/spreadsheets/d/' + id + '/edit';
+  Logger.log('Foglio creato per ' + SHEET_OWNER);
+  Logger.log('ID: ' + id);
+  Logger.log('URL: ' + url);
+  return { id: id, url: url };
+}
+
 function ok() {
   return ContentService
     .createTextOutput(JSON.stringify({ ok: true }))
@@ -236,7 +280,7 @@ function doGet(e) {
 // ── Analytics pageview (first-party) ─────────────────────────
 function handlePageview(data) {
   try {
-    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var ss = openSpreadsheet();
     var sh = ss.getSheetByName(SHEET_ANALYTICS);
     if (!sh) {
       sh = ss.insertSheet(SHEET_ANALYTICS);
@@ -270,14 +314,14 @@ function getStatsPayload() {
       ga4_measurement_id: 'G-T4ZC7CM8RX',
       gtm_id: 'GTM-MNLWZSN7',
       meta_pixel_id: '1478056171004711',
-      sheet_id: SHEET_ID,
+      sheet_id: getSheetId(),
       sheet_tab: SHEET_ANALYTICS
     },
     links: {
       ga4: 'https://analytics.google.com/analytics/web/#/p' + GA4_PROPERTY_ID + '/reports/intelligenthome',
       gsc: 'https://search.google.com/search-console',
       gtm: 'https://tagmanager.google.com/#/container/accounts/~/containers/GTM-MNLWZSN7/workspaces/1',
-      sheet: 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit'
+      sheet: 'https://docs.google.com/spreadsheets/d/' + getSheetId() + '/edit'
     }
   };
 }
@@ -292,7 +336,7 @@ function aggregateFirstPartyStats(days) {
     note: ''
   };
   try {
-    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var ss = openSpreadsheet();
     var sh = ss.getSheetByName(SHEET_ANALYTICS);
     if (!sh || sh.getLastRow() < 2) {
       out.note = 'Foglio Analytics vuoto — i pageview partiranno dalle prossime visite al sito live.';

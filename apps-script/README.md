@@ -7,24 +7,25 @@ prodotto) inviano allo **stesso endpoint**. L'endpoint è un Web App Google Apps
 
 ## Setup (una volta)
 
-1. **Crea un Google Sheet** (es. "Abra — Contatti sito"). Copia l'**ID** dalla URL:
-   `https://docs.google.com/spreadsheets/d/`**`<QUESTO_È_L_ID>`**`/edit`
-2. Vai su **https://script.google.com** → **Nuovo progetto**.
-3. Incolla il contenuto di `Code.gs` (questa cartella).
-4. In alto nel file imposta:
-   - `SHEET_ID` = l'ID del foglio del punto 1
-   - `NOTIFY_TO` = email dove ricevere le notifiche (es. `gio@abrarobotics.com`)
-5. **Distribuisci** → **Nuova distribuzione** → tipo **App web**:
-   - *Esegui come*: **Me stesso**
+### Foglio Google (account gio@)
+
+1. Vai su **https://script.google.com** → progetto Abra Web App.
+2. Incolla il contenuto aggiornato di `Code.gs`.
+3. Nel menu funzioni seleziona **`setupAbraSheetForGio`** → ▶ **Esegui** (loggato come **gio@abrarobotics.com**).
+4. Autorizza i permessi → in **Visualizza → Log** trovi l’URL del foglio nuovo (tab Contatti, Scartati, Analytics).
+5. **Deploy** → **Gestisci distribuzioni** → matita → **Nuova versione** → Deploy.
+
+Il foglio si chiama *Abra Robotics — Contatti sito (gio@abrarobotics.com)* ed è di proprietà di gio@.
+Niccolò (`niccolomazzoleni@gmail.com`) viene aggiunto come editor automaticamente.
+
+### Web App (se partite da zero)
+
+1. **Distribuisci** → **Nuova distribuzione** → **Applicazione web**:
+   - *Esegui come*: **Me stesso** (gio@abrarobotics.com)
    - *Chi ha accesso*: **Chiunque**
    - **Distribuisci** → autorizza i permessi (Fogli + invio email).
 6. Copia l'**URL della Web App** (finisce in `/exec`).
-7. Nel sito apri `script.js` (root) e incolla l'URL in **una sola riga**:
-   ```js
-   window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/XXXXX/exec';
-   ```
-   Tutti i form lo usano automaticamente (anche `prodotti/ecommerce.js` lo legge da lì).
-8. Commit + push. Fatto.
+7. Nel sito `script.js` → `window.GOOGLE_SCRIPT_URL` (già configurato se usi il deploy Abra).
 
 ## Test
 Invia un form dal sito: deve comparire una riga nel foglio **e** arrivare l'email di notifica
