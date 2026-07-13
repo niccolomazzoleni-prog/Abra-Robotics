@@ -30,8 +30,11 @@
     .cat-hero h1 { font-size: clamp(2rem,4vw,3rem); margin: 12px 0; }
     .cat-body-page { padding: 48px; }
     .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
-    .hub-card { background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--black); transition: transform .25s ease, box-shadow .25s ease, border-color .25s; }
+    .hub-card { background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: var(--black); transition: transform .25s ease, box-shadow .25s ease, border-color .25s; }
     .hub-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); border-color: rgba(0,0,0,.15); }
+    .hub-card-media { aspect-ratio: 16/10; background: linear-gradient(135deg, var(--gray-50), var(--gray-100)); border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hub-card-media img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
+    .hub-card-body { padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
     .hub-card h2 { font-size: 1.35rem; margin: 0; }
     .hub-card p { margin: 0; color: var(--gray-600); line-height: 1.55; font-size: 0.95rem; flex: 1; }
     .hub-meta { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); }
@@ -69,52 +72,76 @@
 <main class="cat-body-page">
 <div class="hub-grid">
 <a class="hub-card" href="catalogo-unitree.html">
+<div class="hub-card-media"><img src="images/g1-hero.png" alt="Catalogo Unitree — umanoidi e quadrupedi" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Unitree · Umanoidi · Quadrupedi · Accessori</span>
 <h2>Catalogo Unitree</h2>
 <p>G1, H2, Go2, B2, R1 e oltre 90 accessori. La gamma completa distribuita in Italia con listino pubblico.</p>
 <span class="hub-link">Apri catalogo Unitree →</span>
+</div>
 </a>
 <a class="hub-card" href="catalogo-amr.html">
+<div class="hub-card-media"><img src="images/manifattura/amr/mir250-base.png" alt="Catalogo AMR industriali" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Manifattura · Logistica</span>
 <h2>Catalogo AMR</h2>
 <p>16 configurazioni MiR, Youibot, Neura, AutoXing ed EP Equipment. Da piattaforme leggere a muletti autonomi.</p>
 <span class="hub-link">Apri catalogo AMR →</span>
+</div>
 </a>
 <a class="hub-card" href="catalogo-cobot.html">
+<div class="hub-card-media"><img src="images/manifattura/fairino-fr5.png" alt="Catalogo cobot Fairino" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Manifattura · Automazione</span>
 <h2>Catalogo Cobot Fairino</h2>
 <p>6 cobot FR Series (FR3–FR30) e 3 soluzioni palletizzazione. CE, collaborativi senza recinto.</p>
 <span class="hub-link">Apri catalogo cobot →</span>
+</div>
 </a>
 <a class="hub-card" href="umanoidi.html">
+<div class="hub-card-media"><img src="images/g1-card.png" alt="Robot umanoidi Unitree" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Landing · Umanoidi</span>
 <h2>Umanoidi</h2>
 <p>Unitree G1, H2, R1 e configurazioni EDU. Per ricerca, POC e manifattura avanzata.</p>
 <span class="hub-link">Vai alla landing →</span>
+</div>
 </a>
 <a class="hub-card" href="quadrupedi.html">
+<div class="hub-card-media"><img src="images/prodotti/go2-pro.webp" alt="Robot quadrupedi Unitree" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Landing · Quadrupedi</span>
 <h2>Quadrupedi</h2>
-<p>Go2, B2, A2 e varianti industriali. Ispezione, sorveglianza e ricerca.</p>
+<p>Go2, AS2, A2, B2 e varianti industriali. Ispezione, sorveglianza e ricerca.</p>
 <span class="hub-link">Vai alla landing →</span>
+</div>
 </a>
 <a class="hub-card" href="lp-cobot.html">
+<div class="hub-card-media"><img src="images/manifattura/fairino-cobot.png" alt="Landing cobot Fairino" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Landing · Cobot</span>
 <h2>Cobot Fairino</h2>
 <p>Presentazione commerciale, modelli, finanziabilità e form contatti dedicato.</p>
 <span class="hub-link">Vai alla landing →</span>
+</div>
 </a>
 <a class="hub-card" href="lp-amr.html">
+<div class="hub-card-media"><img src="images/manifattura/amr/mir600-base.png" alt="Landing AMR logistica" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Landing · AMR</span>
 <h2>AMR per la logistica</h2>
 <p>I modelli più richiesti per magazzino e produzione, con prezzi e casi d'uso.</p>
 <span class="hub-link">Vai alla landing →</span>
+</div>
 </a>
 <a class="hub-card" href="listino-unitree.html">
+<div class="hub-card-media"><img src="images/hero-robots.png" alt="Listino prezzi Unitree" loading="lazy"/></div>
+<div class="hub-card-body">
 <span class="hub-meta">Listino · Unitree</span>
 <h2>Listino prezzi Unitree</h2>
 <p>Tabella prezzi pubblica aggiornata per confronto rapido tra SKU Unitree.</p>
 <span class="hub-link">Apri listino →</span>
+</div>
 </a>
 </div>
 </main>

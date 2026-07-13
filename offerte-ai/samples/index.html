@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Offerte archiviate — Abra Robotics</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/offerte-ai.css">
+  <style>
+    body { margin: 0; font-family: 'Satoshi', system-ui, sans-serif; background: #fafafa; color: #0a0a0a; }
+    .samples-wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 1.6rem; margin: 0 0 8px; }
+    .hint { color: #525252; font-size: 0.9rem; margin-bottom: 24px; }
+    .samples-grid { display: grid; gap: 12px; }
+    .sample-card {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+      background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px 18px;
+    }
+    .sample-card strong { display: block; font-size: 1rem; }
+    .sample-card small { color: #525252; }
+    .sample-card a {
+      text-decoration: none; font-weight: 700; font-size: 0.85rem;
+      color: #7c4dd6; border: 1px solid #e5e5e5; border-radius: 999px; padding: 8px 14px;
+    }
+    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+    .toolbar a, .toolbar button {
+      font: inherit; font-size: 0.85rem; font-weight: 700; border-radius: 999px; padding: 8px 14px;
+      border: 1px solid #e5e5e5; background: #fff; cursor: pointer; text-decoration: none; color: #0a0a0a;
+    }
+    .toolbar a.primary { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
+  </style>
+  <script src="../js/offer-auth.js"></script>
+</head>
+<body>
+  <div class="samples-wrap" style="visibility:hidden">
+    <h1>Offerte archiviate</h1>
+    <p class="hint">Preventivi HTML memorizzati nel repo. Apri, rivedi e stampa in PDF A4.</p>
+    <div class="toolbar">
+      <a class="primary" href="../offerta.html">+ Crea nuova offerta</a>
+      <a href="../index.html">Lab chat</a>
+      <a href="../../admin/offerte-ai.html">Admin</a>
+      <button type="button" id="btn-logout">Esci</button>
+    </div>
+    <div class="samples-grid" id="samples-list">
+      <div class="sample-card">
+        <div>
+          <strong>OFF-20260623-YSZJ — Sorveglianza + Go2 (completa)</strong>
+          <small>Nexsoft · € 50.260 IVA escl. · 24 giu 2026</small>
+        </div>
+        <a href="offerta-completa-sorveglianza-go2.html">Apri / PDF</a>
+      </div>
+      <div class="sample-card">
+        <div>
+          <strong>OFF-20260623-MCQR — Sorveglianza + Go2 (curata)</strong>
+          <small>Versione commerciale curata · € 50.260 · 24 giu 2026</small>
+        </div>
+        <a href="offerta-curata-sorveglianza-go2.html">Apri / PDF</a>
+      </div>
+      <div class="sample-card">
+        <div>
+          <strong>OFF-20260623-RYSM — Sorveglianza As2/A2</strong>
+          <small>Solo blocco sorveglianza · 23 giu 2026</small>
+        </div>
+        <a href="offerta-sorveglianza-as2-a2.html">Apri / PDF</a>
+      </div>
+      <div class="sample-card">
+        <div>
+          <strong>OFF-20260623-FHFD — Go2 EDU RFQ</strong>
+          <small>Standard vs Smart · 23 giu 2026</small>
+        </div>
+        <a href="offerta-go2-edu-rfq.html">Apri / PDF</a>
+      </div>
+      <div class="sample-card">
+        <div>
+          <strong>OFF-20260623 — Pipeline sorveglianza + Go2</strong>
+          <small>Output pipeline automatico · 23 giu 2026</small>
+        </div>
+        <a href="offerta-pipeline-sorveglianza-go2.html">Apri / PDF</a>
+      </div>
+    </div>
+    <div id="local-offers" style="margin-top:28px"></div>
+  </div>
+  <script>
+    document.addEventListener('abra-offers-unlock', () => {
+      document.querySelector('.samples-wrap').style.visibility = '';
+      const hist = JSON.parse(localStorage.getItem('abra_offer_history') || '[]');
+      if (!hist.length) return;
+      const box = document.getElementById('local-offers');
+      box.innerHTML = '<h2 style="font-size:1.1rem">Salvate in questo browser</h2><div class="samples-grid">' +
+        hist.map(h => `<div class="sample-card"><div><strong>${h.id}</strong><small>${h.client || '—'} · ${h.date || ''} · € ${Number(h.total||0).toLocaleString('it-IT',{minimumFractionDigits:2})}</small></div><a href="../offerta.html">Riapri in editor</a></div>`).join('') +
+        '</div>';
+    });
+    document.getElementById('btn-logout').addEventListener('click', () => AbraOffersAuth.logout());
+    if (AbraOffersAuth.isUnlocked()) document.querySelector('.samples-wrap').style.visibility = '';
+  </script>
+</body>
+</html>

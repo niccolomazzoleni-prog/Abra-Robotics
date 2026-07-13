@@ -39,9 +39,25 @@ SKIP_OVERWRITE = {
     "unitree-a2.html", "unitree-a2-pro.html", "unitree-b2.html", "unitree-h2.html",
 }
 
+FAMILY_ORDER = ["H2", "G1", "R1", "R1-D", "G1-D", "Go2", "Go2W", "AS2", "A2", "A2W", "B2", "B2W", "Accessori"]
+CAT_TIER = {"UMANOIDI": 0, "MANI_BRACCI": 1, "COMPONENTISTICA": 2}
+
+
+def catalog_sort_key(row: dict, manifest: dict) -> tuple:
+    sku = row["sku"]
+    entry = manifest_entry(sku, manifest, row)
+    family = product_family(sku, row["nome_prodotto"])
+    fi = FAMILY_ORDER.index(family) if family in FAMILY_ORDER else len(FAMILY_ORDER)
+    cat_key = row.get("categoria", "")
+    ci = CAT_TIER.get(cat_key, 9)
+    return (fi, ci, row["nome_prodotto"].lower())
+
+
 def product_family(sku: str, nome: str) -> str:
     s = sku.upper()
     n = nome.upper()
+    if s.startswith("G1D") or s.startswith("G1-D") or "G1-D" in n or "G1D" in n:
+        return "G1-D"
     if s.startswith("G1") or " G1" in n:
         return "G1"
     if s == "R1-D" or "R1-D" in n or "DUAL-ARM" in n:
@@ -50,6 +66,8 @@ def product_family(sku: str, nome: str) -> str:
         return "R1"
     if s.startswith("H2") or " H2" in n:
         return "H2"
+    if s.startswith("AS2") or " AS2" in n:
+        return "AS2"
     if s.startswith("GO2W") or "GO2W" in n:
         return "Go2W"
     if s.startswith("GO2") or "GO2" in n:
@@ -373,7 +391,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
 
     cards = []
     families: set[str] = set()
-    for r in sorted(pub, key=lambda x: x["nome_prodotto"]):
+    for r in sorted(pub, key=lambda x: catalog_sort_key(x, manifest)):
         sku = r["sku"]
         entry = manifest_entry(sku, manifest, r)
         fn = slug_file(sku)
@@ -393,7 +411,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
             <a href="prodotti/{fn}" class="btn btn-secondary btn-sm">Scheda prodotto</a>
           </div>
         </article>""")
-    family_opts = "".join(f'<option value="{f}">{f}</option>' for f in sorted(families))
+    family_opts = "".join(f'<option value="{f}">{f}</option>' for f in FAMILY_ORDER if f in families)
     cat_opts = "".join(f'<option value="{v}">{v}</option>' for v in CAT_LABEL.values())
 
     html = f"""<!DOCTYPE html>
