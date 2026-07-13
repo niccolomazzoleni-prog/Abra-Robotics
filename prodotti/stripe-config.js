@@ -1,6 +1,5 @@
 /* Stripe — generato da _gen_stripe.py (live/produzione). NON contiene segreti. */
 window.STRIPE_PUBLISHABLE_KEY = "pk_live_51TfGsZ4z2BNRdFpDziAWS3JUuQK8KWwdYWjOiS6Hxnjkr6Kx15zfLJZpZHV5vsZBnR3dvcjb8K4GNJsObKh2zDPk00tYw4Nhpe";
-window.GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQHcWp5OFlAssEajk03akHm2T_JlxAf_-SwWkKP773dXIt0Q0WvAJ1HtNdKl5E54vc/exec";
 window.STRIPE_PAYMENT_LINKS = {
   "unitree-a2-battery.html": "https://buy.stripe.com/6oU28k3Jzeqj5oa8yoeZ21C",
   "unitree-a2-charger.html": "https://buy.stripe.com/4gM8wIbc1gyr9EqeWMeZ21D",

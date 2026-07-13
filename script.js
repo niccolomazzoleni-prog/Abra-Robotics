@@ -13,19 +13,31 @@ function getGoogleScriptLeadEndpoints() {
   )];
 }
 
+function encodeLeadPayloadForAppsScript(payload) {
+  var params = new URLSearchParams();
+  Object.keys(payload || {}).forEach(function (key) {
+    var val = payload[key];
+    if (val === undefined || val === null) return;
+    params.append(key, String(val));
+  });
+  return params;
+}
+
 function postLeadToGoogleScripts(payload) {
+  var body = encodeLeadPayloadForAppsScript(payload).toString();
   return Promise.allSettled(getGoogleScriptLeadEndpoints().map(function (url) {
     return fetch(url, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: body
     });
   }));
 }
 
 window.getGoogleScriptLeadEndpoints = getGoogleScriptLeadEndpoints;
 window.postLeadToGoogleScripts = postLeadToGoogleScripts;
+window.encodeLeadPayloadForAppsScript = encodeLeadPayloadForAppsScript;
 
 // reCAPTCHA v3 — inserisci la site key dopo registrazione su https://www.google.com/recaptcha/admin
 // Lascia vuoto per disabilitare (la validazione server-side resta attiva)
