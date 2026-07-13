@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Statistiche sito — Abra Robotics (interno)</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="auth.js"></script>
+</head>
+<body class="admin-body">
+  <div class="admin-wrap-wide">
+    <nav class="admin-nav">
+      <a href="index.html">← Admin</a>
+      <a href="statistiche.html" class="active">Statistiche</a>
+      <a href="listini.html">Listini</a>
+      <a href="immagini.html">Immagini</a>
+      <span class="spacer"></span>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-refresh">Aggiorna</button>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="AbraAdmin.logout()">Esci</button>
+    </nav>
+
+    <header class="admin-head">
+      <p class="label">Interno · Traffico web</p>
+      <h1>Statistiche abrarobotics.com</h1>
+      <p>Dashboard unificata: dati <strong>Google Analytics 4</strong> (property <code>541272624</code> / <code>G-T4ZC7CM8RX</code>) + pageview first-party salvati nel foglio Google <strong>Analytics</strong>. Non è la stessa schermata di analytics.google.com — ma riassume qui i numeri principali.</p>
+    </header>
+
+    <div id="stats-loading" class="stats-loading">Caricamento dati da Google Apps Script…</div>
+
+    <div id="stats-content" style="display:none">
+      <div id="stats-setup" class="stats-setup"></div>
+
+      <div class="stats-kpi-grid" id="kpi-grid"></div>
+
+      <section class="stats-section">
+        <h2>Google Analytics 4 <span class="stats-badge" id="ga4-badge">…</span></h2>
+        <p id="ga4-note" class="stats-empty" style="padding:0 0 12px;margin:0;font-size:0.85rem"></p>
+        <h3 style="font-size:0.95rem;margin:20px 0 10px">Top pagine (30 gg)</h3>
+        <div id="ga4-pages"></div>
+        <h3 style="font-size:0.95rem;margin:24px 0 10px">Canali di acquisizione</h3>
+        <div id="ga4-sources"></div>
+      </section>
+
+      <section class="stats-section">
+        <h2>Pageview first-party (beacon Abra) <span class="stats-badge" id="fp-badge">…</span></h2>
+        <p id="fp-note" class="stats-empty" style="padding:0 0 12px;margin:0;font-size:0.85rem"></p>
+        <p style="font-size:0.85rem;color:var(--gray-600);margin-bottom:16px">Un pageview per sessione/pagina inviato dal sito a Apps Script. Utile per path e referrer anche senza GA4.</p>
+        <h3 style="font-size:0.95rem;margin:20px 0 10px">Top pagine</h3>
+        <div id="fp-pages"></div>
+        <h3 style="font-size:0.95rem;margin:24px 0 10px">Referrer</h3>
+        <div id="fp-referrers"></div>
+      </section>
+
+      <section class="stats-section">
+        <h2>Collegamenti rapidi</h2>
+        <div class="stats-links" id="stats-links"></div>
+        <p id="stats-meta" style="margin-top:16px;font-size:0.78rem;color:var(--gray-500)"></p>
+      </section>
+
+      <section class="stats-section">
+        <h2>Tracking installato sul sito</h2>
+        <div class="stats-table-wrap">
+          <table class="stats-table">
+            <thead><tr><th>Servizio</th><th>ID</th><th>Dove vedere tutto</th></tr></thead>
+            <tbody>
+              <tr><td>Google Analytics 4</td><td><code>G-T4ZC7CM8RX</code></td><td><a href="https://analytics.google.com/analytics/web/#/p541272624/reports/intelligenthome" target="_blank" rel="noopener">Apri GA4 ↗</a></td></tr>
+              <tr><td>Google Tag Manager</td><td><code>GTM-MNLWZSN7</code></td><td><a href="https://tagmanager.google.com/" target="_blank" rel="noopener">Apri GTM ↗</a></td></tr>
+              <tr><td>Meta Pixel</td><td><code>1478056171004711</code></td><td><a href="https://business.facebook.com/events_manager" target="_blank" rel="noopener">Events Manager ↗</a></td></tr>
+              <tr><td>Search Console</td><td>verificato</td><td><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Search Console ↗</a></td></tr>
+              <tr><td>Sitemap</td><td><code>/sitemap.xml</code></td><td>Invia in GSC → Sitemap</td></tr>
+              <tr><td>robots.txt</td><td><code>/robots.txt</code></td><td>Allow / · Disallow /admin/</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="stats.js"></script>
+</body>
+</html>
