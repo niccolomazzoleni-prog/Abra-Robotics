@@ -12,7 +12,7 @@
       return window.postLeadToGoogleScripts(payload);
     }
     const url = (typeof window !== 'undefined' && window.GOOGLE_SCRIPT_URL)
-      || 'https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec';
+      || 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
     return fetch(url, {
       method: 'POST',
       mode: 'no-cors',
