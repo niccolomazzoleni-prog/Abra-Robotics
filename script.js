@@ -1,7 +1,31 @@
-// === ENDPOINT UNICO per TUTTI i form del sito ===
-// Web App pubblica (Chiunque). Dopo ogni modifica a Code.gs: Deploy → Gestisci distribuzioni → matita → Nuova versione.
+// === Endpoint form (primario + secondario in parallelo) ===
+// Primario — Web App storica Abra (NON rimuovere).
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec';
+// Secondario — nuovo deploy Abra_Deployment (Code.gs aggiornato + foglio 15zvBH…).
+window.GOOGLE_SCRIPT_URL_SECONDARY = 'https://script.google.com/macros/s/AKfycbxPPfh3qZRF0GwnKJicY5rcgdMSRoW_liBenRQValdCPSCM2MrZR_Y6fwrAZOHgCrDW/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
+
+function getGoogleScriptLeadEndpoints() {
+  return [...new Set(
+    [window.GOOGLE_SCRIPT_URL, window.GOOGLE_SCRIPT_URL_SECONDARY]
+      .map(function (u) { return String(u || '').trim(); })
+      .filter(Boolean)
+  )];
+}
+
+function postLeadToGoogleScripts(payload) {
+  return Promise.allSettled(getGoogleScriptLeadEndpoints().map(function (url) {
+    return fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  }));
+}
+
+window.getGoogleScriptLeadEndpoints = getGoogleScriptLeadEndpoints;
+window.postLeadToGoogleScripts = postLeadToGoogleScripts;
 
 // reCAPTCHA v3 — inserisci la site key dopo registrazione su https://www.google.com/recaptcha/admin
 // Lascia vuoto per disabilitare (la validazione server-side resta attiva)
@@ -158,12 +182,7 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
     }
 
     try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+      await postLeadToGoogleScripts(payload);
       if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
       if (window.fbq) fbq('track', 'Lead');
       if (showInlineFormSuccess(form, feedback)) return;

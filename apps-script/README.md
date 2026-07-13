@@ -29,7 +29,10 @@ Foglio contatti: **https://docs.google.com/spreadsheets/d/15zvBHBRrsnC7b4qB7J3tt
    - *Chi ha accesso*: **Chiunque**
    - **Distribuisci** → autorizza i permessi (Fogli + invio email).
 6. Copia l'**URL della Web App** (finisce in `/exec`).
-7. Nel sito `script.js` → `window.GOOGLE_SCRIPT_URL` (già configurato se usi il deploy Abra).
+7. Nel sito `script.js`:
+   - `window.GOOGLE_SCRIPT_URL` — deploy **primario** (storico, non rimuovere)
+   - `window.GOOGLE_SCRIPT_URL_SECONDARY` — deploy **secondario** in parallelo (Code.gs nuovo)
+   - Ogni form invia a **entrambi**; pageview/analytics resta solo sul primario.
 
 ## Test
 Invia un form dal sito: deve comparire una riga nel foglio **e** arrivare l'email di notifica

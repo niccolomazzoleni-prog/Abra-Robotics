@@ -11,6 +11,7 @@ function Get-JsonOrError($response) {
   return @{ ok = $false; detail = $c.Substring(0, [Math]::Min(120, $c.Length)) }
 }
 $Base = "https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec"
+$BaseSecondary = "https://script.google.com/macros/s/AKfycbxPPfh3qZRF0GwnKJicY5rcgdMSRoW_liBenRQValdCPSCM2MrZR_Y6fwrAZOHgCrDW/exec"
 $StatsKey = "abra2026stats"
 $SmokeKey = "abra2026smoke"
 $Passed = 0
@@ -107,4 +108,19 @@ try {
 }
 
 Write-Host "`n=== Results: $Passed passed, $Failed failed ===`n"
+
+Write-Host "=== Secondary deploy (parallel) ===`n"
+try {
+  $sec = Invoke-WebRequest -Uri $BaseSecondary -UseBasicParsing -TimeoutSec 20
+  if ($sec.Content -match 'attivo') {
+    Write-Host "[PASS] GET root secondary" -ForegroundColor Green
+  } elseif ($sec.Content -match 'Sign in|Accedi|accounts\.google') {
+    Write-Host "[WARN] Secondary richiede login Google — imposta Chiunque sul deploy Abra_Deployment" -ForegroundColor Yellow
+  } else {
+    Write-Host "[FAIL] GET root secondary" -ForegroundColor Red
+  }
+} catch {
+  Write-Host "[FAIL] GET root secondary — $($_.Exception.Message)" -ForegroundColor Red
+}
+
 if ($Failed -gt 0) { exit 1 }
