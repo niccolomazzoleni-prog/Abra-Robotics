@@ -34,12 +34,19 @@
 
 <div class="article-content">
 
-<p>Dopo la <a href="unitree-g1-guida-operativa.html">parte hardware e accensione</a>, qui il lavoro vero: far parlare il tuo PC con il G1. È lo stesso percorso che seguiamo quando un ateneo riceve il robot e vuole partire con ROS2 in due settimane.</p>
+<p>Prerequisito: aver completato <a href="unitree-g1-guida-operativa.html">accensione, debug mode (L2+R2) e rete 192.168.123.x</a>. Qui: SDK2, ROS2 e primi test su hardware.</p>
 
-<h2>Due computer a bordo</h2>
-<p>Sul G1 EDU ci sono due unità di calcolo. <strong>PC1</strong> fa girare il controller di movimento Unitree — non ci entri. <strong>PC2</strong> (Jetson Orin) è il tuo mondo: percezione, pianificazione, bridge ROS2. L’IP che userai quasi sempre è <code>192.168.123.164</code>.</p>
+<h2>Architettura compute a bordo</h2>
+<div class="ip-grid">
+<div class="ip-card"><code>192.168.123.161</code><span>PC1 — motion controller Unitree (non SSH utente)</span></div>
+<div class="ip-card"><code>192.168.123.164</code><span>PC2 Jetson Orin — SSH <code>unitree</code> / <code>123</code></span></div>
+</div>
+<p>Il tuo codice gira su PC2 o sul laptop collegato via DDS. Connessione: Ethernet diretto al robot <em>oppure</em> Wi‑Fi/Ethernet tramite modulo router a bordo — in entrambi i casi il PC deve stare su <code>192.168.123.x</code> (indirizzo libero, mai .161/.164/.120).</p>
 
-<h2>Rete di lab (5 minuti)</h2>
+<pre><code>ssh unitree@192.168.123.164
+# Password predefinita: 123</code></pre>
+
+<h2>Rete di lab</h2>
 <ol>
 <li>Ethernet dal PC al robot.</li>
 <li>IP del PC su <code>192.168.123.x</code> (es. <code>.99</code> o <code>.222</code>).</li>
@@ -69,8 +76,8 @@ cmake .. &amp;&amp; sudo make install</code></pre>
 <p>L’SDK diretto è più veloce per motori e test isolati. ROS2 entra quando devi integrare Nav2, MoveIt, pipeline vision standard o più robot nello stesso lab.</p>
 <p>Il G1 EDU espone DDS compatibile con ROS2: scegli un RMW adapter adatto, fai bridge dei topic, e simula prima con l’URDF ufficiale in Gazebo o Isaac.</p>
 
-<h2>Mani Dex3-1</h2>
-<p>Sulle Ultimate, dita e tattile (versione B) hanno topic separati dalla locomozione. Non mescolare loop a 500 Hz del walking con grasping lento: thread e priorità diversi.</p>
+<h2>Mani Dex3-1 / Inspire / Revo (U3–U10)</h2>
+<p>Sui modelli con manipolatore (G1-U3, U4, U5, U6, U7, U9, U10), dita e sensori tattili hanno topic separati dalla locomozione. Non mescolare loop ad alta frequenza del walking con grasping lento.</p>
 
 <h2>Cosa chiedono i lab che seguiamo</h2>
 <ul>
