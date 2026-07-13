@@ -8,6 +8,8 @@
 var SHEET_ID         = '1nXl0QyElz1znYHiDb8xJ_bd7NYqfuCoLB3URLfNdcAc';
 var SHEET_LEADS      = 'Contatti';
 var SHEET_REJECTED   = 'Scartati';
+var SHEET_ANALYTICS  = 'Analytics';
+var GA4_PROPERTY_ID  = '541272624';
 var NOTIFY_TO        = 'gio@abrarobotics.com,niccolomazzoleni@gmail.com';
 var MIN_FORM_TIME_MS = 3000;   // min 3 s tra caricamento pagina e invio
 var MAX_FORM_TIME_MS = 3600000; // max 1 h (pagina aperta da più di 1 h = sospetto)
@@ -24,7 +26,7 @@ function doPost(e) {
     } else {
       data = (e && e.parameter) || {};
     }
-    if (data.type === 'pageview') return ok();
+    if (data.type === 'pageview') return handlePageview(data);
     return handleLead(data);
   } catch (ex) {
     return ok();
@@ -215,8 +217,214 @@ function ok() {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function doGet() {
+function doGet(e) {
+  var params = (e && e.parameter) || {};
+  var action = String(params.action || '');
+  if (action === 'stats') {
+    var key = String(params.key || '');
+    var expected = PropertiesService.getScriptProperties().getProperty('ABRA_STATS_KEY') || 'abra2026stats';
+    if (key !== expected) {
+      return jsonOut({ ok: false, error: 'Chiave stats non valida' }, params.callback);
+    }
+    return jsonOut(getStatsPayload(), params.callback);
+  }
   return ContentService
-    .createTextOutput('Abra Robotics — endpoint form attivo.')
+    .createTextOutput('Abra Robotics — endpoint form + analytics attivo.')
     .setMimeType(ContentService.MimeType.TEXT);
+}
+
+// ── Analytics pageview (first-party) ─────────────────────────
+function handlePageview(data) {
+  try {
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var sh = ss.getSheetByName(SHEET_ANALYTICS);
+    if (!sh) {
+      sh = ss.insertSheet(SHEET_ANALYTICS);
+      sh.appendRow(['Timestamp', 'Path', 'Referrer', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Lang', 'Mobile']);
+      sh.setFrozenRows(1);
+    }
+    sh.appendRow([
+      new Date(),
+      String(data.path || '').substring(0, 500),
+      String(data.referrer || '').substring(0, 500),
+      String(data.utm_source || ''),
+      String(data.utm_medium || ''),
+      String(data.utm_campaign || ''),
+      String(data.lang || ''),
+      data.mobile ? 'yes' : 'no'
+    ]);
+  } catch (_) {}
+  return ok();
+}
+
+function getStatsPayload() {
+  var fp = aggregateFirstPartyStats(30);
+  var ga4 = fetchGA4Stats();
+  return {
+    ok: true,
+    generated_at: new Date().toISOString(),
+    period_days: 30,
+    first_party: fp,
+    ga4: ga4,
+    tracking: {
+      ga4_measurement_id: 'G-T4ZC7CM8RX',
+      gtm_id: 'GTM-MNLWZSN7',
+      meta_pixel_id: '1478056171004711',
+      sheet_id: SHEET_ID,
+      sheet_tab: SHEET_ANALYTICS
+    },
+    links: {
+      ga4: 'https://analytics.google.com/analytics/web/#/p' + GA4_PROPERTY_ID + '/reports/intelligenthome',
+      gsc: 'https://search.google.com/search-console',
+      gtm: 'https://tagmanager.google.com/#/container/accounts/~/containers/GTM-MNLWZSN7/workspaces/1',
+      sheet: 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit'
+    }
+  };
+}
+
+function aggregateFirstPartyStats(days) {
+  var out = {
+    configured: false,
+    pageviews: 0,
+    top_pages: [],
+    referrers: [],
+    daily: [],
+    note: ''
+  };
+  try {
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var sh = ss.getSheetByName(SHEET_ANALYTICS);
+    if (!sh || sh.getLastRow() < 2) {
+      out.note = 'Foglio Analytics vuoto — i pageview partiranno dalle prossime visite al sito live.';
+      return out;
+    }
+    out.configured = true;
+    var cutoff = new Date(Date.now() - days * 86400000);
+    var rows = sh.getRange(2, 1, sh.getLastRow() - 1, 8).getValues();
+    var byPath = {};
+    var byRef = {};
+    var byDay = {};
+    var count = 0;
+    for (var i = 0; i < rows.length; i++) {
+      var ts = new Date(rows[i][0]);
+      if (ts < cutoff) continue;
+      count++;
+      var path = String(rows[i][1] || '/');
+      var ref = String(rows[i][2] || '(direct)').trim() || '(direct)';
+      var day = Utilities.formatDate(ts, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+      byPath[path] = (byPath[path] || 0) + 1;
+      byRef[ref] = (byRef[ref] || 0) + 1;
+      byDay[day] = (byDay[day] || 0) + 1;
+    }
+    out.pageviews = count;
+    out.top_pages = topN(byPath, 15);
+    out.referrers = topN(byRef, 10);
+    out.daily = Object.keys(byDay).sort().map(function (d) {
+      return { date: d, pageviews: byDay[d] };
+    });
+  } catch (ex) {
+    out.note = 'Errore lettura foglio: ' + ex.message;
+  }
+  return out;
+}
+
+function topN(map, n) {
+  return Object.keys(map)
+    .map(function (k) { return { label: k, count: map[k] }; })
+    .sort(function (a, b) { return b.count - a.count; })
+    .slice(0, n);
+}
+
+function fetchGA4Stats() {
+  var out = {
+    configured: false,
+    active_users: 0,
+    page_views: 0,
+    sessions: 0,
+    new_users: 0,
+    events: 0,
+    top_pages: [],
+    sources: [],
+    daily: [],
+    note: 'Abilita Google Analytics Data API in Apps Script (Servizi) e ridistribuisci la Web App.'
+  };
+  try {
+    if (typeof AnalyticsData === 'undefined') return out;
+    var prop = 'properties/' + GA4_PROPERTY_ID;
+    var summary = AnalyticsData.Properties.runReport({
+      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+      metrics: [
+        { name: 'activeUsers' },
+        { name: 'screenPageViews' },
+        { name: 'sessions' },
+        { name: 'newUsers' },
+        { name: 'eventCount' }
+      ]
+    }, prop);
+    if (summary.rows && summary.rows.length) {
+      var v = summary.rows[0].metricValues;
+      out.active_users = num(v, 0);
+      out.page_views = num(v, 1);
+      out.sessions = num(v, 2);
+      out.new_users = num(v, 3);
+      out.events = num(v, 4);
+      out.configured = true;
+      out.note = '';
+    }
+    var pages = AnalyticsData.Properties.runReport({
+      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+      dimensions: [{ name: 'pagePath' }],
+      metrics: [{ name: 'screenPageViews' }],
+      orderBys: [{ desc: true, metric: { metricName: 'screenPageViews' } }],
+      limit: 15
+    }, prop);
+    out.top_pages = rowsToList(pages, 'pagePath', 'screenPageViews');
+    var sources = AnalyticsData.Properties.runReport({
+      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+      dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+      metrics: [{ name: 'sessions' }],
+      orderBys: [{ desc: true, metric: { metricName: 'sessions' } }],
+      limit: 10
+    }, prop);
+    out.sources = rowsToList(sources, 'sessionDefaultChannelGroup', 'sessions');
+    var daily = AnalyticsData.Properties.runReport({
+      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+      dimensions: [{ name: 'date' }],
+      metrics: [{ name: 'activeUsers' }],
+      orderBys: [{ dimension: { dimensionName: 'date' } }]
+    }, prop);
+    out.daily = (daily.rows || []).map(function (r) {
+      var raw = r.dimensionValues[0].value;
+      var d = raw.substring(0, 4) + '-' + raw.substring(4, 6) + '-' + raw.substring(6, 8);
+      return { date: d, active_users: parseInt(r.metricValues[0].value, 10) || 0 };
+    });
+  } catch (ex) {
+    out.note = 'GA4 API: ' + ex.message;
+  }
+  return out;
+}
+
+function rowsToList(report, dimName, metricName) {
+  if (!report.rows) return [];
+  return report.rows.map(function (r) {
+    return {
+      label: r.dimensionValues[0].value,
+      count: parseInt(r.metricValues[0].value, 10) || 0
+    };
+  });
+}
+
+function num(metricValues, i) {
+  return parseInt((metricValues[i] && metricValues[i].value) || '0', 10) || 0;
+}
+
+function jsonOut(obj, callback) {
+  var text = JSON.stringify(obj);
+  if (callback) {
+    var safe = String(callback).replace(/[^\w$.]/g, '');
+    return ContentService.createTextOutput(safe + '(' + text + ')')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+  return ContentService.createTextOutput(text)
+    .setMimeType(ContentService.MimeType.JSON);
 }
