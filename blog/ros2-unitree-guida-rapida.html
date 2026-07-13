@@ -3,29 +3,50 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ROS2 su robot Unitree: guida rapida | Abra Robotics</title>
-<meta name="description" content="ROS2 Humble su Go2 EDU, G1, R1, H2: bridge DDS, URDF, simulazione Isaac/MuJoCo e best practice lab italiani."/>
+<title>ROS2 su robot Unitree | Abra Robotics</title>
+<meta name="description" content="ROS2 Humble su Go2 EDU, G1, R1, H2: rete, DDS, simulazione e primi passi in lab. Workflow che usiamo con atenei italiani."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/blog/ros2-unitree-guida-rapida.html"/>
+<meta property="og:image" content="https://abrarobotics.com/prodotti/assets/variants/g1-u2/img-01.png"/>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
 <link href="../style.css" rel="stylesheet"/>
 <link href="blog.css" rel="stylesheet"/>
 </head>
 <body>
+<nav class="navbar"><div class="container navbar-inner"><a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a><a href="../universita-ricerca.html">Università</a></div></nav>
 <article class="article-wrap"><div class="container">
-<header class="article-header"><h1>ROS2 su robot Unitree: guida rapida per laboratori</h1>
-<div class="article-tldr"><strong>In sintesi:</strong> I modelli EDU Unitree espongono DDS compatibile ROS2. Stack consigliato: Ubuntu 20.04/22.04, ROS2 Humble, unitree_sdk2, simulazione URDF prima del deploy hardware.</div></header>
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / ROS2 Unitree</nav>
+
+<figure class="article-cover">
+<img src="../prodotti/assets/variants/go2-edu/img-01.png" alt="Unitree Go2 EDU — piattaforma ROS2" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">ROS2 · Sviluppo</p>
+<h1>ROS2 su Unitree: da zero al primo topic in lab</h1>
+<div class="article-meta"><time datetime="2026-07-13">13 luglio 2026</time><span>Abra Robotics</span></div>
+</header>
+
 <div class="article-content">
-<h2>Modelli compatibili</h2>
-<p>Go2 EDU, A2, B2, R1 EDU, G1 EDU, H2 EDU — tutti con SDK2 e URDF ufficiali.</p>
-<h2>Workflow Abra</h2>
+<p>I modelli EDU (Go2, A2, B2, R1, G1, H2) espongono DDS compatibile con ROS2. Non è plug-and-play come un TurtleBot, ma nemmeno reverse engineering: SDK2 + URDF ufficiali.</p>
+
+<h2>Stack consigliato</h2>
+<ul>
+<li>Ubuntu 20.04 o 22.04 sul PC di sviluppo</li>
+<li>ROS2 Humble</li>
+<li><a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> + bridge ROS2</li>
+<li>Simulazione (Gazebo, Isaac, MuJoCo) prima del hardware</li>
+</ul>
+
+<h2>Workflow in 4 passi</h2>
 <ol>
-<li>Clone unitree_sdk2 + bridge ROS2 con RMW adatto</li>
-<li>Sim policy in Gazebo / Isaac Sim / MuJoCo</li>
-<li>Rete 192.168.123.x per umanoidi; test ping PC2</li>
-<li>Deploy in debug mode, limiti coppia conservativi</li>
+<li>Clone SDK2, configura RMW adapter adatto al robot</li>
+<li>Simula policy con URDF ufficiale</li>
+<li>Rete <code>192.168.123.x</code> per umanoidi; ping al PC2 del robot</li>
+<li>Deploy in debug mode, limiti coppia conservativi, imbracatura pronta</li>
 </ol>
-<p>Approfondimento G1: <a href="unitree-g1-programmazione.html">programmazione G1</a>. Supporto: <a href="../universita-ricerca.html">Università e Ricerca</a>.</p>
+
+<p>Dettaglio G1: <a href="unitree-g1-programmazione.html">programmazione G1</a>. Supporto formazione: <a href="../universita-ricerca.html">Università e Ricerca</a>.</p>
 </div>
 </div></article>
+<script src="../script.js"></script>
 </body></html>
