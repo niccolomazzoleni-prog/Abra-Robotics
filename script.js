@@ -97,7 +97,7 @@ function buildContactPayload(form) {
   const payload = Object.fromEntries(new FormData(form).entries());
   if (!payload.azienda && payload.istituzione) payload.azienda = payload.istituzione;
   payload.prodotto = payload.prodotto || form.dataset.product || '';
-  payload.origine = payload.prodotto || payload.origine || 'Form contatti';
+  payload.origine = form.dataset.origine || payload.prodotto || payload.origine || 'Form contatti';
   payload.pagina = document.title;
   payload.url = location.href;
   payload.timestamp = new Date().toISOString();
@@ -106,6 +106,32 @@ function buildContactPayload(form) {
     payload.gclid = payload.gclid || window.AbraAds.getGclid();
   }
   return payload;
+}
+
+function contactFormDepthPrefix() {
+  const p = location.pathname;
+  let depth = 0;
+  if (p.includes('/en/prodotti/') || p.includes('/en/blog/')) depth = 2;
+  else if (p.includes('/prodotti/') || p.includes('/blog/') || p.includes('/en/')) depth = 1;
+  return depth ? '../'.repeat(depth) : '';
+}
+
+function getThankYouHref() {
+  const isEn = location.pathname.includes('/en/');
+  return contactFormDepthPrefix() + (isEn ? 'lp-thank-you-en/' : 'lp-thank-you/');
+}
+
+function showInlineFormSuccess(form, feedback) {
+  if (!feedback) return false;
+  const isEn = document.documentElement.lang === 'en' || location.pathname.includes('/en/');
+  const msg = form.classList.contains('quote-form-top')
+    ? (isEn ? 'Request sent! We will get back to you within 12 hours.' : 'Richiesta inviata! Ti ricontattiamo entro 12 ore.')
+    : (isEn ? 'Message sent! We will contact you within 2 business hours.' : 'Messaggio inviato! Ti contattiamo entro 2 ore lavorative.');
+  const base = feedback.className.split(' ').filter(c => c && c !== 'success' && c !== 'error')[0] || 'form-feedback';
+  feedback.className = base + ' success';
+  feedback.textContent = msg;
+  form.reset();
+  return true;
 }
 
 injectContactHoneypots();
@@ -139,9 +165,9 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
       });
       if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
       if (window.fbq) fbq('track', 'Lead');
+      if (showInlineFormSuccess(form, feedback)) return;
       form.reset();
-      const isEn = window.location.pathname.includes('/en/');
-      window.location.href = isEn ? '../lp-thank-you-en/' : 'lp-thank-you/';
+      window.location.href = getThankYouHref();
     } catch {
       if (feedback) { feedback.className = feedback.className.split(' ')[0] + ' error'; feedback.textContent = 'Errore nell\'invio. Scrivi direttamente a info@abrarobotics.com.'; }
     } finally {
