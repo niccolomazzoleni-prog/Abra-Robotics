@@ -5,7 +5,7 @@
 //  Versione 2 — time trap corretta, rate limit, email dedup
 // ============================================================
 
-var SHEET_ID         = '';  // fallback legacy; usa ABRA_SHEET_ID dopo setupAbraSheetForGio()
+var SHEET_ID         = '15zvBHBRrsnC7b4qB7J3ttp0tXXJg8JFu27m4wXuWccQ';  // Abra Contatti sito (produzione)
 var SHEET_OWNER      = 'gio@abrarobotics.com';
 var SHEET_LEADS      = 'Contatti';
 var SHEET_REJECTED   = 'Scartati';
@@ -17,6 +17,11 @@ var MAX_FORM_TIME_MS = 3600000; // max 1 h (pagina aperta da più di 1 h = sospe
 var RATE_LIMIT_N     = 8;      // max invii legittimi per finestra
 var RATE_LIMIT_MS    = 300000; // finestra da 5 min
 var DEDUP_HOURS      = 24;     // blocca stesso indirizzo email per 24 h
+var LEGACY_SHEET_IDS = [
+  '1nXl0QyElz1znYHiDb8xJ_bd7NYqfuCoLB3URLfNdcAc',  // produzione (Niccolò)
+  '1XpXE3odenRl9nlkR3Te_-RjNlOA-5PINxpI14uBdvnY'   // condiviso cliente (giu 2026)
+];
+var SHEET_SHARE_WITH = ['gio@abrarobotics.com', 'niccolomazzoleni@gmail.com'];
 
 // ── Entry point ──────────────────────────────────────────────
 function doPost(e) {
@@ -213,46 +218,122 @@ function logRejected(data, reason, now) {
 
 // ── Helpers ──────────────────────────────────────────────────
 function getSheetId() {
-  var id = PropertiesService.getScriptProperties().getProperty('ABRA_SHEET_ID') || SHEET_ID || '';
-  if (!id) throw new Error('Foglio non configurato. Esegui setupAbraSheetForGio() in Apps Script.');
-  return id;
+  return PropertiesService.getScriptProperties().getProperty('ABRA_SHEET_ID') || SHEET_ID || '';
 }
 
 function openSpreadsheet() {
-  return SpreadsheetApp.openById(getSheetId());
+  var id = getSheetId();
+  if (!id) throw new Error('SHEET_ID non configurato in Code.gs');
+  return SpreadsheetApp.openById(id);
+}
+
+function ensureSheetSharing_(ss) {
+  for (var i = 0; i < SHEET_SHARE_WITH.length; i++) {
+    try { ss.addEditor(SHEET_SHARE_WITH[i]); } catch (_) {}
+  }
+}
+
+function ensureSheetTabs_(ss) {
+  var headers = {};
+  headers[SHEET_LEADS] = ['Data', 'Nome', 'Azienda', 'Ruolo', 'Email', 'Telefono', 'Messaggio', 'Origine', 'Pagina', 'URL'];
+  headers[SHEET_REJECTED] = ['Timestamp', 'Motivo', 'Email', 'Nome', 'URL', 'Payload (troncato)'];
+  headers[SHEET_ANALYTICS] = ['Timestamp', 'Path', 'Referrer', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Lang', 'Mobile'];
+  Object.keys(headers).forEach(function (name) {
+    var sh = ss.getSheetByName(name);
+    if (!sh) {
+      sh = ss.insertSheet(name);
+      sh.appendRow(headers[name]);
+      sh.setFrozenRows(1);
+    } else if (sh.getLastRow() < 1) {
+      sh.appendRow(headers[name]);
+      sh.setFrozenRows(1);
+    }
+  });
+}
+
+function rowKey_(row, tabName) {
+  if (tabName === SHEET_LEADS) {
+    return String(row[0]) + '|' + String(row[4] || '').toLowerCase().trim();
+  }
+  return String(row[0]) + '|' + String(row[2] || '').toLowerCase().trim();
+}
+
+function existingRowKeys_(sh, tabName) {
+  var keys = {};
+  if (!sh || sh.getLastRow() < 2) return keys;
+  var rows = sh.getRange(2, 1, sh.getLastRow(), sh.getLastColumn()).getValues();
+  for (var i = 0; i < rows.length; i++) keys[rowKey_(rows[i], tabName)] = true;
+  return keys;
+}
+
+function copyTabRows_(sourceSs, sourceTab, targetSs, targetTab) {
+  var src = sourceSs.getSheetByName(sourceTab);
+  if (!src || src.getLastRow() < 2) return 0;
+  var tgt = targetSs.getSheetByName(targetTab);
+  if (!tgt) return 0;
+  var cols = Math.max(src.getLastColumn(), tgt.getLastColumn());
+  var rows = src.getRange(2, 1, src.getLastRow(), src.getLastColumn()).getValues();
+  var existing = existingRowKeys_(tgt, targetTab);
+  var toAppend = [];
+  for (var r = 0; r < rows.length; r++) {
+    var key = rowKey_(rows[r], targetTab);
+    if (existing[key]) continue;
+    while (rows[r].length < cols) rows[r].push('');
+    toAppend.push(rows[r].slice(0, cols));
+    existing[key] = true;
+  }
+  if (!toAppend.length) return 0;
+  var startRow = tgt.getLastRow() + 1;
+  tgt.getRange(startRow, 1, startRow + toAppend.length - 1, cols).setValues(toAppend);
+  return toAppend.length;
+}
+
+function migrateLegacyContactsInto_(targetSs) {
+  var copied = { contatti: 0, scartati: 0, sources: [] };
+  for (var i = 0; i < LEGACY_SHEET_IDS.length; i++) {
+    var legacyId = LEGACY_SHEET_IDS[i];
+    if (legacyId === getSheetId()) continue;
+    try {
+      var legacy = SpreadsheetApp.openById(legacyId);
+      var n1 = copyTabRows_(legacy, SHEET_LEADS, targetSs, SHEET_LEADS);
+      var n2 = copyTabRows_(legacy, SHEET_REJECTED, targetSs, SHEET_REJECTED);
+      if (n1 || n2) copied.sources.push({ id: legacyId, contatti: n1, scartati: n2 });
+      copied.contatti += n1;
+      copied.scartati += n2;
+    } catch (ex) {
+      Logger.log('Legacy ' + legacyId + ': ' + ex.message);
+    }
+  }
+  return copied;
 }
 
 /**
- * Esegui UNA VOLTA da Apps Script (loggato come gio@abrarobotics.com).
- * Crea il Google Sheet contatti + tab Analytics e salva l'ID in ABRA_SHEET_ID.
+ * Esegui UNA VOLTA in Apps Script (gio@abrarobotics.com).
+ * Collega il foglio produzione, crea tab mancanti, condivide il team, copia legacy.
  */
-function setupAbraSheetForGio() {
-  var title = 'Abra Robotics — Contatti sito (' + SHEET_OWNER + ')';
-  var ss = SpreadsheetApp.create(title);
-  var id = ss.getId();
-
-  var contatti = ss.getSheets()[0];
-  contatti.setName(SHEET_LEADS);
-  contatti.appendRow(['Data', 'Nome', 'Azienda', 'Ruolo', 'Email', 'Telefono', 'Messaggio', 'Origine', 'Pagina', 'URL']);
-  contatti.setFrozenRows(1);
-
-  var scartati = ss.insertSheet(SHEET_REJECTED);
-  scartati.appendRow(['Timestamp', 'Motivo', 'Email', 'Nome', 'URL', 'Payload (troncato)']);
-  scartati.setFrozenRows(1);
-
-  var analytics = ss.insertSheet(SHEET_ANALYTICS);
-  analytics.appendRow(['Timestamp', 'Path', 'Referrer', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'Lang', 'Mobile']);
-  analytics.setFrozenRows(1);
-
-  try { ss.addEditor('niccolomazzoleni@gmail.com'); } catch (_) {}
-
+function bootstrapAbraSheet() {
+  var id = SHEET_ID;
+  var ss = SpreadsheetApp.openById(id);
+  ensureSheetTabs_(ss);
+  ensureSheetSharing_(ss);
+  var copied = migrateLegacyContactsInto_(ss);
   PropertiesService.getScriptProperties().setProperty('ABRA_SHEET_ID', id);
-
   var url = 'https://docs.google.com/spreadsheets/d/' + id + '/edit';
-  Logger.log('Foglio creato per ' + SHEET_OWNER);
-  Logger.log('ID: ' + id);
-  Logger.log('URL: ' + url);
-  return { id: id, url: url };
+  Logger.log('Foglio produzione collegato: ' + url);
+  Logger.log('Migrati Contatti: ' + copied.contatti + ', Scartati: ' + copied.scartati);
+  if (copied.sources.length) Logger.log('Fonti legacy: ' + JSON.stringify(copied.sources));
+  try {
+    var stats = getStatsPayload();
+    Logger.log('Stats OK — GA4 configured: ' + (stats.ga4 && stats.ga4.configured));
+  } catch (ex) {
+    Logger.log('Stats test: ' + ex.message);
+  }
+  return { id: id, url: url, migrated: copied };
+}
+
+/** @deprecated usa bootstrapAbraSheet */
+function setupAbraSheetForGio() {
+  return bootstrapAbraSheet();
 }
 
 function ok() {
