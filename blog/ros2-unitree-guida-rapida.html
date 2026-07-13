@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ROS2 su robot Unitree: guida rapida | Abra Robotics</title>
+<meta name="description" content="ROS2 Humble su Go2 EDU, G1, R1, H2: bridge DDS, URDF, simulazione Isaac/MuJoCo e best practice lab italiani."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/ros2-unitree-guida-rapida.html"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+</head>
+<body>
+<article class="article-wrap"><div class="container">
+<header class="article-header"><h1>ROS2 su robot Unitree: guida rapida per laboratori</h1>
+<div class="article-tldr"><strong>In sintesi:</strong> I modelli EDU Unitree espongono DDS compatibile ROS2. Stack consigliato: Ubuntu 20.04/22.04, ROS2 Humble, unitree_sdk2, simulazione URDF prima del deploy hardware.</div></header>
+<div class="article-content">
+<h2>Modelli compatibili</h2>
+<p>Go2 EDU, A2, B2, R1 EDU, G1 EDU, H2 EDU — tutti con SDK2 e URDF ufficiali.</p>
+<h2>Workflow Abra</h2>
+<ol>
+<li>Clone unitree_sdk2 + bridge ROS2 con RMW adatto</li>
+<li>Sim policy in Gazebo / Isaac Sim / MuJoCo</li>
+<li>Rete 192.168.123.x per umanoidi; test ping PC2</li>
+<li>Deploy in debug mode, limiti coppia conservativi</li>
+</ol>
+<p>Approfondimento G1: <a href="unitree-g1-programmazione.html">programmazione G1</a>. Supporto: <a href="../universita-ricerca.html">Università e Ricerca</a>.</p>
+</div>
+</div></article>
+</body></html>

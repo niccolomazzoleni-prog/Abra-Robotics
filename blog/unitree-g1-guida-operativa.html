@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta content="G6A_4xRUkEdTQnXeAm_M37_ovtX1XVe5bjkGzvsCHzk" name="google-site-verification"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree G1: guida operativa e specifiche tecniche | Abra Robotics</title>
+<meta name="description" content="Guida al robot umanoide Unitree G1 EDU per laboratori e aziende: DoF, LiDAR, Jetson Orin, accensione sicura, debug mode. Distributore ufficiale Unitree in Italia."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/unitree-g1-guida-operativa.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Unitree G1: guida operativa e specifiche"/>
+<meta property="og:url" content="https://abrarobotics.com/blog/unitree-g1-guida-operativa.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/g1-hero.png"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Unitree G1: guida operativa e specifiche tecniche","author":{"@type":"Organization","name":"Abra Robotics","url":"https://abrarobotics.com/"},"publisher":{"@type":"Organization","name":"Abra Robotics","logo":{"@type":"ImageObject","url":"https://abrarobotics.com/images/logo-full.png"}},"datePublished":"2026-07-13","dateModified":"2026-07-13","mainEntityOfPage":"https://abrarobotics.com/blog/unitree-g1-guida-operativa.html","inLanguage":"it"}
+</script>
+</head>
+<body>
+<div class="top-bar"><p>Unitree G1 — supply chain ufficiale in Italia. <a href="../g1.html">Scopri i modelli →</a></p></div>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a>
+<div class="nav-links"><a href="../blog.html">Blog</a><a href="../g1.html">G1</a><a href="../umanoidi.html">Umanoidi</a></div>
+<a class="btn btn-primary btn-sm" href="../index.html#cta-finale">Prenota una chiamata</a>
+</div></nav>
+
+<article class="article-wrap">
+<div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Guida G1</nav>
+<header class="article-header">
+<p class="label">Unitree · Umanoidi · Guida tecnica</p>
+<h1>Unitree G1: guida operativa, specifiche e avvio sicuro</h1>
+<div class="article-meta"><time datetime="2026-07-13">13 luglio 2026</time><span>Team Abra Robotics</span><span>14 min lettura</span></div>
+<div class="article-tldr"><strong>In sintesi:</strong> Il G1 è un bipede da 132 cm e ~35 kg, con 23–43 DoF a seconda della variante EDU. Integra LiDAR 3D e depth camera, compute NVIDIA Jetson sulle versioni da sviluppo, e autonomia di circa 2 ore. È oggi una delle piattaforme più diffuse in laboratorio per embodied AI — come documentato anche da analisi di settore su piattaforme orientate alla ricerca (Noreils, 2024).</div>
+</header>
+
+<div class="article-content">
+
+<h2>Perché il G1 è rilevante nel 2026</h2>
+<p>Il mercato degli umanoidi sta passando da demo spettacolari a <strong>pilot industriali in perimetri controllati</strong>. Un paper indipendente su arXiv (Noreils, 2024) analizza 12 produttori e conclude che i primi impieghi realistici riguardano logistica e magazzino in aree recintate, mentre il deploy general-purpose richiederà probabilmente 5–10 anni — analogamente a quanto accaduto con i veicoli autonomi.</p>
+<p>Il Unitree G1 si colloca nella fascia <strong>platform-oriented</strong>: hardware maturo, locomozione dinamica, SDK aperto, prezzo accessibile rispetto ai flagship industriali. Per università e PMI che vogliono entrare nell'umanoid robotics senza investimenti da centinaia di migliaia di euro, è spesso il punto di partenza naturale in Italia.</p>
+
+<h2>Configurazioni disponibili</h2>
+<table>
+<thead><tr><th>Variante EDU</th><th>DoF corpo</th><th>Mani</th><th>Uso tipico</th></tr></thead>
+<tbody>
+<tr><td>Standard</td><td>23</td><td>—</td><td>Locomozione, balance, RL base</td></tr>
+<tr><td>Advanced</td><td>29</td><td>—</td><td>Braccio 7 DoF, manipolazione</td></tr>
+<tr><td>Ultimate A</td><td>29 + mani</td><td>Dex3-1 (3 dita)</td><td>Grasping, teleoperazione</td></tr>
+<tr><td>Ultimate B</td><td>29 + mani</td><td>Dex3-1 tattile</td><td>Force control, manipolazione fine</td></tr>
+<tr><td>Ultimate C</td><td>29 + mani</td><td>5 dita Inspire tattile</td><td>Dexterous manipulation</td></tr>
+</tbody>
+</table>
+<p>Prezzi e SKU aggiornati: <a href="../listino-unitree.html">listino End-User Abra</a> · <a href="../g1.html">pagina gamma G1</a>.</p>
+
+<h2>Architettura meccanica</h2>
+<p>Ogni gamba ha 6 DoF (anca ×3, ginocchio, caviglia ×2). La vita aggiunge 1 DoF yaw — fino a 3 con roll/pitch sulle versioni avanzate. Il braccio base ha 5 DoF; con polso espanso arriva a 7. Le mani Dex3-1 contano 7 DoF ciascuna.</p>
+<p>I motori Unitree PMSM a rotore interno raggiungono <strong>120 N·m al ginocchio</strong> sulle versioni EDU (90 N·m sul base). L'asse cavo e i doppi encoder riducono inerzia e migliorano il feedback di posizione — scelte coerenti con la letteratura su quasi-direct drive per piattaforme leggere ad alta bandwidth (Wensing et al., citati in Noreils 2024).</p>
+
+<h3>Payload e limiti operativi</h3>
+<p>Il carico utile al braccio è dell'ordine di <strong>2–3 kg</strong>, variabile con l'estensione. L'IFR, nel position paper sui humanoid robots (2025), sottolinea che molti pilot partono da task leggeri (kitting, tending) prima di affrontare carichi dinamici tipici della logistica — dove le linee guida NIOSH indicano limiti di sollevamento intorno a 23 kg per operatori umani.</p>
+
+<h2>Sensori e compute</h2>
+<ul>
+<li><strong>Livox MID360</strong> — LiDAR 3D, FOV omnidirezionale, nuvola di punti per SLAM e obstacle avoidance</li>
+<li><strong>Intel RealSense D435i</strong> — depth + IMU per percezione RGB-D</li>
+<li><strong>Jetson Orin NX 16 GB</strong> (EDU) — ~100 TOPS, storage 2 TB, IP sviluppo 192.168.123.164</li>
+<li>Array 4 microfoni, speaker 5 W, WiFi 6, Bluetooth 5.2</li>
+</ul>
+<p>Il motion controller di bordo (PC1) resta dedicato al firmware Unitree; gli sviluppatori accedono a PC2 per ROS2, SDK e pipeline AI custom.</p>
+
+<h2>Specifiche di riferimento</h2>
+<table>
+<thead><tr><th>Parametro</th><th>Valore</th></tr></thead>
+<tbody>
+<tr><td>Dimensioni (in piedi)</td><td>1320 × 450 × 200 mm</td></tr>
+<tr><td>Peso con batteria</td><td>~35 kg</td></tr>
+<tr><td>DoF totali</td><td>23 – 43</td></tr>
+<tr><td>Velocità deambulazione</td><td>fino a ~2 m/s (Unitree)</td></tr>
+<tr><td>Batteria</td><td>9000 mAh, ~421 Wh, ~2 h autonomia</td></tr>
+<tr><td>Sensori standard</td><td>Depth camera + LiDAR 3D</td></tr>
+</tbody>
+</table>
+
+<h2>Avvio sicuro: sequenza consigliata</h2>
+<p>La stabilità dinamica è il rischio n. 1 negli umanoidi bipedi. L'IEEE Humanoid Study Group (2025) evidenzia che un arresto d'emergenza classico può far cadere il robot — a differenza di un cobot fissato. Per questo l'avvio del G1 va eseguito con procedure rigorose.</p>
+
+<h3>Da seduto (laboratorio)</h3>
+<ol>
+<li>Posizionare il G1 su sedia stabile, arti in posa naturale.</li>
+<li>Inserire batteria fino al click di blocco.</li>
+<li>Accensione: pressione breve + lunga; attendere ~60 s (coppia zero).</li>
+<li><strong>L1 + A</strong> → smorzamento.</li>
+<li><strong>L1 + UP</strong> (tenendo la spalla) → stato pronto.</li>
+<li><strong>R1 + X</strong> o <strong>R1 + Y</strong> → controllo operativo (1 o 3 DoF vita).</li>
+</ol>
+
+<h3>In sospensione (primo utilizzo)</h3>
+<p>Appendere con imbracatura certificata, accendere, portare in ready, abbassare fino al contatto piedi-suolo, poi attivare controllo locomozione. Non rimuovere l'imbracatura finché la postura non è stabile.</p>
+
+<h2>Debug mode prima dello sviluppo software</h2>
+<p>Con il robot acceso, il motion controller invia comandi a zero in parallelo. Usare l'SDK senza debug mode genera conflitti e vibrazioni.</p>
+<ol>
+<li><strong>L2 + R2</strong> → debug mode</li>
+<li><strong>L2 + A</strong> → posizione diagnostica</li>
+<li><strong>L2 + B</strong> → ritorno smorzamento</li>
+</ol>
+<p>Prossimo passo: <a href="unitree-g1-programmazione.html">guida alla programmazione con SDK e ROS2</a>.</p>
+
+<h2>Sicurezza e normativa</h2>
+<p>Oggi non esiste ancora uno standard ISO dedicato esclusivamente agli umanoidi bipedi. ISO 25785-1 è in sviluppo; nel frattempo valgono i principi di ISO 10218:2025 per applicazioni collaborative e le specifiche del costruttore. L'IEEE raccomanda metriche quantificabili di stabilità prima del deploy in co-presenza umana — per il G1 in PoC Abra consigliamo sempre perimetro recintato o teleoperazione.</p>
+
+<h2>Quando scegliere il G1</h2>
+<ul>
+<li>Laboratorio universitario su embodied AI, locomozione, manipulation</li>
+<li>PoC industriale in area confinata (ispezione, replenishment scaffali)</li>
+<li>Acquisizione dataset per policy learning (sim + real)</li>
+<li>Demo tecnologica con budget contenuto vs H2 o piattaforme north-americane</li>
+</ul>
+<p>Per pick-place certificato in cella fissa, valuta anche <a href="../g1-d.html">G1-D</a> o <a href="../r1-d.html">R1-D</a> — torso dual-arm su piantana, spesso più adatto al manufacturing tradizionale.</p>
+</div>
+
+<section class="article-faq">
+<h2>Domande frequenti</h2>
+<div class="faq-item"><h3>Quanto costa il G1 in Italia?</h3><p>Dal listino End-User Abra: G1 EDU Standard da ~€16.000; configurazioni Ultimate con mani tattili oltre €50.000. IVA esclusa, spedizione inclusa.</p></div>
+<div class="faq-item"><h3>Abra fornisce formazione sull'uso del G1?</h3><p>Sì: configurazione, avvio sicuro, introduzione SDK e percorsi PoC. <a href="../index.html#cta-finale">Richiedi informazioni</a>.</p></div>
+<div class="faq-item"><h3>Il G1 può lavorare accanto agli operatori?</h3><p>Solo con valutazione di rischio dedicata. Gli standard attuali non trattano gli umanoidi come i cobot tradizionali; per co-presenza serve perimetro, velocità limitate o teleoperazione.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Riferimenti e fonti</h2>
+<ol>
+<li>Noreils, F.R. (2024). <em>Humanoid Robots at work: where are we?</em> arXiv:2404.04249. <a href="https://arxiv.org/abs/2404.04249" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2404.04249</a></li>
+<li>International Federation of Robotics (2025). <em>Position Paper: Humanoid Robots.</em></li>
+<li>IEEE Humanoid Study Group (2025). <em>A Pathway Study For Future Humanoid Standards.</em> IEEE RAS. <a href="https://www.ieee-ras.org/industry-activities/standards/active-projects/study-group-humanoid-robots/" rel="noopener noreferrer" target="_blank">ieee-ras.org</a></li>
+<li>Unitree Robotics — specifiche ufficiali G1. <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+</ol>
+</section>
+
+<div class="article-cta">
+<h2>Configura il tuo G1 con Abra Robotics</h2>
+<p>Hardware, formazione SDK, PoC in lab e supporto post-vendita in Italia.</p>
+<a class="btn btn-primary" href="../index.html#cta-finale">Richiedi preventivo</a>
+</div>
+</div>
+</article>
+<footer class="footer"><div class="container footer-bottom"><p class="footer-copy">© 2026 Abra Robotics</p></div></footer>
+<script src="../script.js"></script>
+</body>
+</html>

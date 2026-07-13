@@ -27,6 +27,7 @@ def render_site_nav(prefix: str = "") -> str:
         </div>
         <a href="{p}assessment.html">Trova il robot giusto</a>
         <a href="{p}finanziamenti.html">Finanziamenti</a>
+        <a href="{p}blog.html">Blog</a>
         <div class="nav-item-dropdown">
           <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
           <div class="nav-dropdown-panel">
@@ -61,6 +62,7 @@ def render_site_nav(prefix: str = "") -> str:
     </div>
     <a href="{p}assessment.html">Trova il robot giusto</a>
     <a href="{p}finanziamenti.html">Finanziamenti</a>
+    <a href="{p}blog.html">Blog</a>
     <div class="mobile-dropdown">
       <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
       <div class="mobile-dropdown-panel">

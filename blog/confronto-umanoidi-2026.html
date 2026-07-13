@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Confronto umanoidi 2026: G1, H2, R1 e panorama mercato | Abra Robotics</title>
+<meta name="description" content="Panoramica robot umanoidi 2026: Unitree G1, H2, R1, Tesla Optimus, Figure, Atlas. DoF, prezzi, disponibilità Italia e criteri di scelta per lab e industria."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/confronto-umanoidi-2026.html"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a>
+<a href="../umanoidi.html">Umanoidi</a><a href="../blog.html">Blog</a>
+</div></nav>
+
+<article class="article-wrap">
+<div class="container">
+<header class="article-header">
+<p class="label">Mercato · Umanoidi 2026</p>
+<h1>Tipi di umanoidi oggi: panorama e confronto tra le piattaforme disponibili</h1>
+<div class="article-meta"><time datetime="2026-07-13">13 luglio 2026</time><span>11 min lettura</span></div>
+<div class="article-tldr"><strong>In sintesi:</strong> Il mercato umanoide si segmenta in piattaforme research (G1, R1), flagship industriali (H2), dual-arm fissi (G1-D, R1-D) e prototipi non commerciali (Optimus, Figure). In Italia, Unitree via Abra è oggi l'unica gamma acquistabile con listino pubblico e supporto locale.</div>
+</header>
+
+<div class="article-content">
+
+<h2>Come classificare un umanoide</h2>
+<p>L'IEEE Humanoid Study Group (2025) propone una tassonomia basata su: morfologia, stabilità dinamica, complessità comportamentale e dominio applicativo. Per chi deve acquistare, Abra usa criteri operativi più semplici:</p>
+<ol>
+<li><strong>Locomozione</strong> — bipede / ruote / fisso su piantana</li>
+<li><strong>DoF e mani</strong> — da 23 DoF senza mani a 43+ con dexterous hands</li>
+<li><strong>Compute e SDK</strong> — Jetson/AGX, ROS2, accesso low-level</li>
+<li><strong>Commercializzazione</strong> — acquistabile oggi vs pilot-only</li>
+<li><strong>Supporto in Italia</strong> — distributore, pezzi, formazione</li>
+</ol>
+
+<h2>Tabella comparativa (luglio 2026)</h2>
+<table>
+<thead><tr><th>Piattaforma</th><th>Tipo</th><th>DoF</th><th>Peso</th><th>Prezzo indicativo</th><th>Acquisto IT</th></tr></thead>
+<tbody>
+<tr><td><a href="../g1.html">Unitree G1</a></td><td>Bipede research</td><td>23–43</td><td>~35 kg</td><td>€16k–55k</td><td>Abra ✓</td></tr>
+<tr><td><a href="../r1.html">Unitree R1</a></td><td>Bipede compatto</td><td>~26</td><td>~25 kg</td><td>€9k–25k</td><td>Abra ✓</td></tr>
+<tr><td><a href="../h2.html">Unitree H2</a></td><td>Bipede flagship</td><td>31+</td><td>~70 kg</td><td>€80k–150k+</td><td>Abra ✓</td></tr>
+<tr><td><a href="../g1-d.html">G1-D / R1-D</a></td><td>Dual-arm industriale</td><td>19–33</td><td>Torso</td><td>€34k–64k</td><td>Abra ✓</td></tr>
+<tr><td>Tesla Optimus</td><td>Bipede</td><td>~28</td><td>~57 kg</td><td>Non in vendita</td><td>—</td></tr>
+<tr><td>Figure 02</td><td>Bipede</td><td>Variabile</td><td>~70 kg</td><td>Pilot OEM</td><td>—</td></tr>
+<tr><td>Agility Digit</td><td>Bipede logistica</td><td>—</td><td>~65 kg</td><td>RaaS pilot</td><td>—</td></tr>
+<tr><td>Boston Dynamics Atlas</td><td>Bipede R&amp;D</td><td>~28</td><td>~89 kg</td><td>Non commerciale</td><td>—</td></tr>
+</tbody>
+</table>
+<p>Prezzi Unitree = <a href="../listino-unitree.html">listino End-User Abra</a>. Altri: stime da comunicati e pilot pubblici.</p>
+
+<h2>Unitree G1 — piattaforma research di riferimento</h2>
+<p>Noreils (2024) classifica Unitree tra le aziende "platform oriented": hardware maturo, locomozione spettacolare, incentivo esplicito ai lab per sviluppare applicazioni. Punti di forza: rapporto prezzo/capabilità, SDK2, ecosistema URDF, community globale. Limiti: autonomia ~2 h, payload braccio ~3 kg, normativa co-presenza in evoluzione.</p>
+
+<h2>Unitree H2 — full-size industriale</h2>
+<p>180 cm, 70 kg, compute opzionale AGX Thor. Target: pilot industriali dove serve presenza fisica full-scale. Non è la prima scelta per un lab con budget &lt; €100k — ma è la direzione che molti OEM automotive stanno valutando per task ergonomici.</p>
+
+<h2>Unitree R1 — entry compact</h2>
+<p>Form factor ridotto, stesso stack software Unitree. Ideale per corsi universitari e primi esperimenti RL senza investimento G1 Ultimate.</p>
+
+<h2>G1-D / R1-D — quando serve il torso, non le gambe</h2>
+<p>Dual-arm su colonna fissa o base mobile. L'IFR (2025) nota che molti use case industriali early-stage (kitting, pick-place scatole) non richiedono locomozione bipede — un torso manipolatore in cella può essere più efficiente e certificabile.</p>
+
+<h2>Optimus, Figure, Atlas: hype vs supply chain</h2>
+<p>Tesla, Figure e Boston Dynamics dominano i titoli ma non offrono acquisto tramite distributore europeo nel 2026. Sono riferimenti di roadmap, non alternative operative per un PoC con consegna in 4–8 settimane. Per chi deve <em>iniziare oggi</em> in Italia, la scelta pratica resta Unitree via canale ufficiale.</p>
+
+<h2>Albero decisionale Abra</h2>
+<ol>
+<li>Budget &lt; €20k, lab → <strong>R1 EDU</strong> o <strong>G1 Standard</strong></li>
+<li>Manipolazione tattile → <strong>G1 Ultimate B/C</strong></li>
+<li>Pick-place in cella → <strong>G1-D / R1-D</strong></li>
+<li>Full-size, locomozione industriale → <strong>H2</strong> (PoC su preventivo)</li>
+<li>Task ripetitivo certificato CE → <strong>cobot / AMR</strong>, non bipede</li>
+</ol>
+
+<h2>Trend 2026–2028</h2>
+<p>Secondo Roland Berger, la Cina ha prodotto oltre 15.000 umanoidi nel 2025 vs volumi molto inferiori in EMEA — segnale di learning-by-deploying. In Europa, l'adozione partirà da casi industriali mirati con convergenza tra miglioramento software AI e pressione demografica sulla manodopera.</p>
+</div>
+
+<section class="article-references">
+<h2>Riferimenti</h2>
+<ol>
+<li>Noreils, F.R. (2024). arXiv:2404.04249 — analisi 12 produttori</li>
+<li>IFR (2025). Position Paper: Humanoid Robots</li>
+<li>IEEE Humanoid Study Group (2025). Classification framework</li>
+<li>Roland Berger (2026). Humanoid Robots market report</li>
+<li>Unitree Robotics — specifiche prodotto ufficiali</li>
+</ol>
+</section>
+
+<div class="article-cta">
+<h2>Scegli la piattaforma giusta</h2>
+<a class="btn btn-primary" href="../assessment.html">Assessment gratuito</a>
+<a class="btn btn-secondary" href="../umanoidi.html" style="margin-left:12px">Gamma umanoidi</a>
+</div>
+</div>
+</article>
+<script src="../script.js"></script>
+</body>
+</html>

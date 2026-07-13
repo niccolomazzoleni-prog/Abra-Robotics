@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Programmare il Unitree G1: SDK, ROS2 e architettura software | Abra Robotics</title>
+<meta name="description" content="Stack software Unitree G1 EDU: DDS, unitree_sdk2, ROS2, rete di sviluppo, controllo low-level e best practice per laboratori e integratori in Italia."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/unitree-g1-programmazione.html"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Programmare il Unitree G1: SDK, ROS2 e architettura software","author":{"@type":"Organization","name":"Abra Robotics"},"datePublished":"2026-07-13","proficiencyLevel":"Expert"}
+</script>
+</head>
+<body>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a>
+<div class="nav-links"><a href="../blog.html">Blog</a><a href="unitree-g1-guida-operativa.html">Guida G1</a></div>
+<a class="btn btn-primary btn-sm" href="../index.html#cta-finale">Prenota una chiamata</a>
+</div></nav>
+
+<article class="article-wrap">
+<div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Programmazione G1</nav>
+<header class="article-header">
+<p class="label">Unitree · Sviluppo software</p>
+<h1>Programmare il Unitree G1: architettura DDS, SDK2 e integrazione ROS2</h1>
+<div class="article-meta"><time datetime="2026-07-13">13 luglio 2026</time><span>Team Abra Robotics</span><span>16 min lettura</span></div>
+<div class="article-tldr"><strong>In sintesi:</strong> Il G1 EDU espone API via DDS (OMG standard per sistemi real-time). Gli sviluppatori usano <code>unitree_sdk2</code> su Ubuntu 20.04, collegando il PC di lab alla subnet onboard 192.168.123.x. ROS2 è integrabile grazie alla compatibilità DDS IDL. Attivare sempre debug mode prima di inviare comandi motori.</div>
+</header>
+
+<div class="article-content">
+
+<h2>Il modello software del G1</h2>
+<p>A differenza di un cobot industriali con controller PLC chiuso, il G1 EDU separa due mondi:</p>
+<ul>
+<li><strong>PC1 (motion stack)</strong> — firmware Unitree per equilibrio e locomozione; non accessibile</li>
+<li><strong>PC2 (development)</strong> — Jetson Orin NX per percezione, pianificazione e applicazioni custom</li>
+</ul>
+<p>La comunicazione tra moduli sensori, attuatori e applicazioni passa da <strong>DDS</strong> (Data Distribution Service), standard OMG adottato anche nell'ecosistema ROS2. Questo permette latenze basse su topic ad alta frequenza (500 Hz sul controllo motori) e pattern request/response per comandi sporadici.</p>
+
+<h2>Repository e toolchain</h2>
+<ul>
+<li><a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> — C++, esempi low-level e high-level</li>
+<li><a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a> — binding Python</li>
+<li>URDF ufficiali G1 — per Gazebo, Isaac Sim, MuJoCo</li>
+</ul>
+<p>Abra consiglia Ubuntu 20.04 LTS su workstation dedicata. Sviluppo nativo su Windows/macOS non è supportato ufficialmente; WSL2 è possibile ma complica l'Ethernet diretto al robot.</p>
+
+<h2>Setup rete di laboratorio</h2>
+<ol>
+<li>Cavo Ethernet PC ↔ switch/payload G1.</li>
+<li>IP PC su 192.168.123.0/24 (es. .99 o .222).</li>
+<li>Verifica: ping verso 192.168.123.164 (PC2 dev).</li>
+<li>Annotare il nome interfaccia (<code>ifconfig</code> / <code>ip a</code>) — serve negli esempi SDK.</li>
+</ol>
+
+<h3>Installazione SDK</h3>
+<pre><code>git clone https://github.com/unitreerobotics/unitree_sdk2.git
+cd unitree_sdk2
+mkdir build &amp;&amp; cd build
+cmake ..
+sudo make install</code></pre>
+
+<h2>Controllo low-level: concetti chiave</h2>
+<p>Gli esempi in <code>example/g1/low_level/</code> mostrano il pattern standard Abra insegna nei corsi SDK:</p>
+<ul>
+<li><strong>Publisher</strong> su topic comandi (es. <code>rt/lowcmd</code>)</li>
+<li><strong>Subscriber</strong> su stato motori (<code>rt/lowstate</code>) con verifica CRC32</li>
+<li>Thread recurrenti a 500 Hz per scrittura comandi e logica di controllo</li>
+</ul>
+<p>Ogni comando motore include modalità, coppia (<code>tau</code>), posizione (<code>q</code>), velocità (<code>dq</code>), gains <code>kp</code>/<code>kd</code>.</p>
+
+<h3>Caviglia: meccanismo parallelo PR vs AB</h3>
+<p>Le caviglie G1 usano un parallel mechanism con due modalità:</p>
+<ul>
+<li><strong>PR mode</strong> — controllo pitch/roll (default, allineato URDF)</li>
+<li><strong>AB mode</strong> — controllo diretto attuatori A/B (richiede cinematica custom)</li>
+</ul>
+<p>Capire questa distinzione è essenziale per sim2real: policy addestrate in simulazione sul modello URDF devono rispettare la modalità attiva sul hardware.</p>
+
+<h2>ROS2: quando conviene</h2>
+<p>L'SDK nativo minimizza latenza. ROS2 aggiunge interoperabilità con Nav2, MoveIt, pipeline vision standard — utile quando il G1 deve convivere con altri robot in un lab multi-piattaforma.</p>
+<p>Workflow tipico Abra per università:</p>
+<ol>
+<li>ROS2 Humble su Ubuntu 22.04 (o Foxy su 20.04).</li>
+<li>Bridge DDS ↔ ROS2 con RMW compatibile.</li>
+<li>Simulazione policy in Isaac/MuJoCo con URDF ufficiale.</li>
+<li>Deploy hardware in debug mode, limiti di coppia conservativi.</li>
+</ol>
+<p>La ricerca su policy learning sta convergendo verso framework che combinano simulazione ad alta fedeltà, teleoperazione e dataset multi-modali (Noreils, 2024 cita Diffusion Policy e approcci imitation learning come frontiera attiva per la manipulation umanoide).</p>
+
+<h2>Mani Dex3-1 e pipeline manipulation</h2>
+<p>Sulle varianti Ultimate, il controllo dita e la lettura tattile (versione B/C) usano topic dedicati. Per grasping adattivo Abra integra tipicamente:</p>
+<ul>
+<li>Percezione RGB-D da D435i</li>
+<li>Stima pose oggetto (model-based o learned)</li>
+<li>Chiusura dita con force threshold da sensori tattili</li>
+</ul>
+
+<h2>Reinforcement learning: note pratiche</h2>
+<p>Il G1 è target per sim2real, ma Noreils (2024) avverte che molti pilot falliscono per gap tra demo controllate e robustezza operativa. Best practice Abra:</p>
+<ol>
+<li>Domain randomization aggressivo in sim (attrito, massa, delay sensori).</li>
+<li>Limiti di joint torque nel primo deploy reale.</li>
+<li>Logging sincronizzato sim/real per debug drift.</li>
+<li>Non saltare la fase teleoperata per validare workspace safety.</li>
+</ol>
+
+<h2>Checklist pre-sessione di sviluppo</h2>
+<ul>
+<li>Robot in debug mode (L2+R2)</li>
+<li>Imbracatura o area libera ≥ 3 m</li>
+<li>Versione firmware e commit SDK documentati</li>
+<li>Arresto emergenza: L1+A testato</li>
+<li>Backup configurazione rete PC</li>
+</ul>
+</div>
+
+<section class="article-faq">
+<h2>FAQ sviluppo</h2>
+<div class="faq-item"><h3>SDK vs ROS2: quale scegliere?</h3><p>SDK per controllo motori e bassa latenza; ROS2 per ecosistema lab e integrazione multi-robot. Spesso si usano entrambi con bridge.</p></div>
+<div class="faq-item"><h3>Abra supporta lo sviluppo custom?</h3><p>Sì: formazione SDK, integrazione ROS2, PoC manipulation e sorveglianza. Vedi <a href="../software.html">servizi software</a>.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Riferimenti</h2>
+<ol>
+<li>Object Management Group — DDS Specification. <a href="https://www.omg.org/spec/DDS/" rel="noopener noreferrer" target="_blank">omg.org/spec/DDS</a></li>
+<li>Unitree Robotics — unitree_sdk2 GitHub. <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2</a></li>
+<li>Noreils, F.R. (2024). arXiv:2404.04249 — sez. manipulation e AI policy.</li>
+<li>Chi et al. (2023). Diffusion Policy — visuomotor policy learning. <a href="https://diffusion-policy.cs.columbia.edu/" rel="noopener noreferrer" target="_blank">diffusion-policy.cs.columbia.edu</a></li>
+</ol>
+</section>
+
+<div class="article-cta">
+<h2>Corso SDK G1 per il tuo team</h2>
+<a class="btn btn-primary" href="../universita-ricerca.html">Università e Ricerca</a>
+</div>
+</div>
+</article>
+<script src="../script.js"></script>
+</body>
+</html>
