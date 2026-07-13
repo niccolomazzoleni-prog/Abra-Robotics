@@ -155,7 +155,7 @@
     } catch (_) {
       config = { stats_read_key: 'abra2026stats', google_script_url: window.GOOGLE_SCRIPT_URL || '' };
     }
-    var url = config.google_script_url || 'https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec';
+    var url = config.google_script_url || 'https://script.google.com/macros/s/AKfycbxtbdMWnnFwmsDxZIZaG5xwHyUEQGaeG5jtoe2VHC8/exec';
     var key = config.stats_read_key || 'abra2026stats';
     try {
       var data = await fetchStatsJsonp(url, key);

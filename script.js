@@ -1,5 +1,5 @@
 // === ENDPOINT UNICO per TUTTI i form del sito ===
-window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec';
+window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtbdMWnnFwmsDxZIZaG5xwHyUEQGaeG5jtoe2VHC8/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
 // reCAPTCHA v3 — inserisci la site key dopo registrazione su https://www.google.com/recaptcha/admin
