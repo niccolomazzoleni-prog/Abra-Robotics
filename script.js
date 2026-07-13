@@ -1,7 +1,7 @@
 // === Endpoint form (primario + secondario in parallelo) ===
-// Primario — Web App storica Abra (NON rimuovere).
-window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec';
-// Secondario — nuovo deploy Abra_Deployment (Code.gs aggiornato + foglio 15zvBH…).
+// Primario — deployment live al 12 luglio 2026 (funzionante, foglio Niccolò 1nXl0…).
+window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
+// Secondario — nuovo deploy Abra_Deployment (Code.gs aggiornato + foglio 15zvBH…); attivo quando pubblico.
 window.GOOGLE_SCRIPT_URL_SECONDARY = 'https://script.google.com/macros/s/AKfycbxPPfh3qZRF0GwnKJicY5rcgdMSRoW_liBenRQValdCPSCM2MrZR_Y6fwrAZOHgCrDW/exec';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 

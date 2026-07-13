@@ -10,7 +10,7 @@ function Get-JsonOrError($response) {
   if ($c -match '<html') { return @{ ok = $false; detail = 'Risposta HTML errore (redeploy Apps Script?)' } }
   return @{ ok = $false; detail = $c.Substring(0, [Math]::Min(120, $c.Length)) }
 }
-$Base = "https://script.google.com/macros/s/AKfycbwdJ4taKMGrLP79eQDujrx7vxhbmGI-qhkvlD9k9kLqyUGDOWW-_3_HFMAxqvooPaY1/exec"
+$Base = "https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec"
 $BaseSecondary = "https://script.google.com/macros/s/AKfycbxPPfh3qZRF0GwnKJicY5rcgdMSRoW_liBenRQValdCPSCM2MrZR_Y6fwrAZOHgCrDW/exec"
 $StatsKey = "abra2026stats"
 $SmokeKey = "abra2026smoke"
