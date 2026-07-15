@@ -412,6 +412,18 @@
     }
     .parallax-img-wrap:hover img { transform: scale(1.03); }
 
+    /* Scroll fade-in — stato finale dopo IntersectionObserver */
+    .parallax-img-wrap.visible,
+    .feature-card.visible,
+    .product-stat.visible,
+    .step.visible,
+    .key-spec.visible,
+    .spec-mini-card.visible,
+    .comp-model-card.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
     .parallax-caption {
       position: absolute;
       bottom: 0; left: 0; right: 0;
