@@ -8,5 +8,4 @@ def render_favicon_links(prefix: str = "") -> str:
     return f"""<link href="{p}favicon.ico" rel="icon" sizes="any"/>
 <link href="{p}images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
 <link href="{p}images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
-<link href="{p}images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<link href="{p}images/favicon.svg" rel="icon" type="image/svg+xml"/>"""
+<link href="{p}images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>"""
