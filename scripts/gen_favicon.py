@@ -16,8 +16,9 @@ FG = (255, 255, 255, 255)
 
 
 def render_letter(size: int) -> Image.Image:
-    img = Image.new("RGBA", (size, size), BG)
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
+    draw.ellipse((0, 0, size - 1, size - 1), fill=BG)
     fsize = int(size * 0.58)
     font = ImageFont.truetype(str(FONT), fsize)
     bbox = draw.textbbox((0, 0), "A", font=font)
@@ -62,7 +63,8 @@ def main() -> None:
 
     write_ico([16, 32, 48])
     write_svg()
-    print("Favicon Nasalization generati in images/")
+    (ROOT / "favicon.ico").write_bytes((IMG / "favicon.ico").read_bytes())
+    print("Favicon Nasalization generati in images/ e favicon.ico in root")
 
 
 if __name__ == "__main__":
