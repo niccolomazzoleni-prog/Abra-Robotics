@@ -28,6 +28,14 @@
   --radius-sm: 8px;
 }
 
+@font-face {
+  font-family: "Nasalization";
+  src: url("fonts/nasalization-rg.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -2622,4 +2630,26 @@ body.has-wa-bar { padding-bottom: 60px; }
   .wa-bar a.wa-btn svg { display: none; }
   .wa-bar-close { top: 50%; right: 12px; transform: translateY(-50%); }
   body.has-wa-bar { padding-bottom: 60px; }
+}
+
+/* Landing cobot: top-bar (40px) + navbar fissa (72px) */
+body.lp-cobot {
+  padding-top: 112px;
+}
+
+body.lp-cobot.has-wa-bar {
+  padding-bottom: 60px;
+}
+
+body.lp-cobot #modelli,
+body.lp-cobot #palletizzazione,
+body.lp-cobot #form,
+body.lp-cobot #faq {
+  scroll-margin-top: 120px;
+}
+
+@media (max-width: 768px) {
+  body.lp-cobot {
+    padding-top: 108px;
+  }
 }

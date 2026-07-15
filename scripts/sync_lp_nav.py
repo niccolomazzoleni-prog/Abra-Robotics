@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from site_nav import render_site_nav  # noqa: E402
+from site_nav import render_site_chrome  # noqa: E402
 
 LP_FILES = [
     "lp-cobot.html",
@@ -35,7 +35,7 @@ def main() -> None:
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
-        nav = render_site_nav(prefix_for(name))
+        nav = render_site_chrome(prefix_for(name))
         new_text, count = LP_NAV_RE.subn(nav + "\n\n", text, count=1)
         if count and new_text != text:
             path.write_text(new_text, encoding="utf-8")
