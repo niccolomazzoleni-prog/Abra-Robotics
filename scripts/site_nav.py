@@ -2,6 +2,19 @@
 """Navbar canonica condivisa — unica fonte di verità per tutte le pagine pubbliche."""
 
 
+def render_top_bar(prefix: str = "", message: str | None = None) -> str:
+    """Barra promozionale fissa sopra la navbar."""
+    p = prefix
+    if message is None:
+        message = (
+            f'La maggior parte dei progetti è finanziabile. '
+            f'<a href="{p}finanziamenti.html">Scopri come →</a>'
+        )
+    return f"""  <div class="top-bar">
+    <p>{message}</p>
+  </div>"""
+
+
 def render_site_nav(prefix: str = "") -> str:
     """Restituisce <nav> + <div class="mobile-menu"> con href relativi al prefisso."""
     p = prefix
@@ -73,3 +86,8 @@ def render_site_nav(prefix: str = "") -> str:
     <a href="{home}#chi-siamo">Chi siamo</a>
     <a href="{home}#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
   </div>"""
+
+
+def render_site_chrome(prefix: str = "", top_message: str | None = None) -> str:
+    """Top bar + navbar + mobile menu."""
+    return render_top_bar(prefix, top_message) + "\n\n" + render_site_nav(prefix)
