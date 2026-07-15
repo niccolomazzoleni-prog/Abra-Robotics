@@ -32,8 +32,10 @@
 
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-  <link rel="icon" type="image/png" href="../images/logo-full.png">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="../images/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../images/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 
   <!-- Meta Pixel Code -->
@@ -184,16 +186,72 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- LP_NAV_START -->
-    <nav class="lp-navbar">
-    <div class="lp-navbar-inner">
-      <img src="../images/logo.png" alt="Abra Robotics" class="lp-logo">
-      <div style="display:flex;align-items:center;gap:20px;">
-        <a href="lp-cobot-en.html" style="font-size:.85rem;color:var(--gray-500);text-decoration:none;white-space:nowrap;">Browse products →</a>
-        <a href="#form" class="btn btn-primary btn-sm">Request information</a>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Abra Robotics" class="logo-img"></a>
+      <div class="nav-links">
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="../lp-cobot.html">Cobot</a>
+            <a href="../catalogo-cobot.html">Catalogo cobot</a>
+            <a href="../manifattura-logistica.html#amr">AMR</a>
+            <a href="../quadrupedi.html">Quadrupedi</a>
+            <a href="../umanoidi.html">Umanoidi</a>
+            <a href="../accessori.html">Accessori</a>
+            <a href="../catalogo.html">Catalogo completo</a>
+            <a href="../listino-unitree.html">Listino prezzi</a>
+          </div>
+        </div>
+        <a href="../assessment.html">Trova il robot giusto</a>
+        <a href="../finanziamenti.html">Finanziamenti</a>
+        <a href="../blog.html">Blog</a>
+        <div class="nav-item-dropdown">
+          <button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+          <div class="nav-dropdown-panel">
+            <a href="../manifattura-logistica.html">Manifattura e Logistica</a>
+            <a href="../universita-ricerca.html">Università e Ricerca</a>
+          </div>
+        </div>
+        <a href="../index.html#chi-siamo">Chi siamo</a>
       </div>
+      <a href="../index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="../lp-cobot.html">Cobot</a>
+        <a href="../catalogo-cobot.html">Catalogo cobot</a>
+        <a href="../manifattura-logistica.html#amr">AMR</a>
+        <a href="../quadrupedi.html">Quadrupedi</a>
+        <a href="../umanoidi.html">Umanoidi</a>
+        <a href="../accessori.html">Accessori</a>
+        <a href="../catalogo.html">Catalogo completo</a>
+        <a href="../listino-unitree.html">Listino prezzi</a>
+      </div>
+    </div>
+    <a href="../assessment.html">Trova il robot giusto</a>
+    <a href="../finanziamenti.html">Finanziamenti</a>
+    <a href="../blog.html">Blog</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+      <div class="mobile-dropdown-panel">
+        <a href="../manifattura-logistica.html">Manifattura e Logistica</a>
+        <a href="../universita-ricerca.html">Università e Ricerca</a>
+      </div>
+    </div>
+    <a href="../index.html#chi-siamo">Chi siamo</a>
+    <a href="../index.html#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
+  </div>
 
   <!-- 1. HERO -->
   <header class="lpv-hero">
