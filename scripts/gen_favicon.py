@@ -54,36 +54,6 @@ def write_ico(sizes: list[int]) -> None:
     imgs[0].save(IMG / "favicon.ico", format="ICO", sizes=[(s, s) for s in sizes], append_images=imgs[1:])
 
 
-def write_logo() -> None:
-    """Wordmark navbar: ABRA ROBOTICS in Nasalization su sfondo nero."""
-    text = "ABRA ROBOTICS"
-    pad_x, pad_y = 36, 28
-    target_w = 740
-
-    draw_probe = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
-    fsize = 48
-    for size in range(48, 140):
-        font = ImageFont.truetype(str(FONT), size)
-        bbox = draw_probe.textbbox((0, 0), text, font=font)
-        tw = bbox[2] - bbox[0]
-        if tw + pad_x * 2 > target_w:
-            fsize = size - 1
-            break
-        fsize = size
-
-    font = ImageFont.truetype(str(FONT), fsize)
-    bbox = draw_probe.textbbox((0, 0), text, font=font)
-    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
-    w, h = tw + pad_x * 2, th + pad_y * 2
-
-    img = Image.new("RGBA", (w, h), BG)
-    draw = ImageDraw.Draw(img)
-    x = pad_x - bbox[0]
-    y = pad_y - bbox[1]
-    draw.text((x, y), text, font=font, fill=FG)
-    img.save(IMG / "logo.png")
-
-
 def write_logo_icon(size: int = 512) -> None:
     """Icona quadrata per schema.org / Google (non il wordmark orizzontale)."""
     render_letter(size).save(IMG / "logo-icon.png")
@@ -98,10 +68,9 @@ def main() -> None:
 
     write_ico([16, 32, 48])
     write_svg()
-    write_logo()
     write_logo_icon(512)
     (ROOT / "favicon.ico").write_bytes((IMG / "favicon.ico").read_bytes())
-    print("Brand assets Nasalization: favicon, logo.png, logo-icon.png")
+    print("Favicon + logo-icon Nasalization (logo.png navbar non toccato)")
 
 
 if __name__ == "__main__":
