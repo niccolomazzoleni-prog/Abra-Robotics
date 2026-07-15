@@ -12,10 +12,10 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from site_head import render_favicon_links  # noqa: E402
 
 SKIP_DIRS = {"admin", "node_modules", "__pycache__", ".git", ".cursor"}
-OLD_PATTERNS = [
-    re.compile(r'\s*<link[^>]+rel="icon"[^>]*>\s*', re.I),
-    re.compile(r'\s*<link[^>]+rel="apple-touch-icon"[^>]*>\s*', re.I),
-]
+FAVICON_BLOCK_RE = re.compile(
+    r'(?:<link[^>]+(?:favicon|apple-touch-icon)[^>]*>\s*)+',
+    re.I,
+)
 
 
 def prefix_for(path: Path) -> str:
@@ -25,9 +25,8 @@ def prefix_for(path: Path) -> str:
 
 def inject_into_html(text: str, prefix: str) -> str:
     favicon = render_favicon_links(prefix)
-    for pat in OLD_PATTERNS:
-        text = pat.sub("\n", text)
-    if "images/favicon.svg" in text or f"{prefix}images/favicon.svg" in text:
+    if FAVICON_BLOCK_RE.search(text):
+        text = FAVICON_BLOCK_RE.sub(favicon + "\n", text, count=1)
         return text
     for anchor in ('rel="stylesheet"', "rel='stylesheet'", '<link href="style.css"', '<link rel="stylesheet"'):
         idx = text.find(anchor)
