@@ -921,3 +921,23 @@
     .section .included-strip.light-strip .included-card-name {
       color: var(--gray-800);
     }
+
+    /* Prezzo "da …" nel buy-box (nota sotto l'importo) */
+    .buy-box-price { display:flex; flex-direction:column; gap:2px; }
+    .buy-box-price .buy-box-note { margin:0; text-align:left; }
+
+    /* Tabella prezzi per configurazione (G1-D) */
+    .variant-price-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--gray-200); border-radius:var(--radius-md, 12px); }
+    .variant-price-table { width:100%; border-collapse:collapse; font-size:0.95rem; min-width:560px; }
+    .variant-price-table thead th {
+      text-align:left; font-size:0.68rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase;
+      color:var(--gray-500); background:var(--gray-50); padding:14px 18px; border-bottom:1px solid var(--gray-200);
+    }
+    .variant-price-table tbody td { padding:15px 18px; border-bottom:1px solid var(--gray-100); color:var(--gray-800); vertical-align:middle; }
+    .variant-price-table tbody tr:last-child td { border-bottom:none; }
+    .variant-price-table tbody tr:hover td { background:var(--gray-50); }
+    .variant-price-table tbody td:first-child { font-weight:700; color:var(--black); white-space:nowrap; }
+    .variant-price-table tbody td:last-child { font-weight:800; color:var(--black); white-space:nowrap; text-align:right; }
+    .variant-price-table thead th:last-child { text-align:right; }
+    .variant-price-foot { margin:16px 0 0; font-size:0.86rem; color:var(--gray-600); line-height:1.6; }
+    .variant-price-foot a { font-weight:700; color:var(--black); text-decoration:underline; }
