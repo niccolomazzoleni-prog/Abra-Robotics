@@ -279,6 +279,56 @@ h3 {
   color: var(--black);
 }
 
+/* === Evidenzia "Catalogo completo" nel dropdown Prodotti === */
+.nav-dropdown-panel a[href$="catalogo.html"],
+.nav-dropdown-panel a[href$="catalogo-unitree.html"],
+.mobile-dropdown-panel a[href$="catalogo.html"],
+.mobile-dropdown-panel a[href$="catalogo-unitree.html"] {
+  position: relative;
+  margin-top: 6px;
+  color: #fff !important;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-text) 0%, var(--accent-strong) 100%);
+  background-size: 200% auto;
+  box-shadow: 0 6px 18px rgba(124, 77, 214, 0.35);
+  overflow: hidden;
+  animation: catalog-shine 3.2s linear infinite;
+}
+.nav-dropdown-panel a[href$="catalogo.html"]::after,
+.nav-dropdown-panel a[href$="catalogo-unitree.html"]::after,
+.mobile-dropdown-panel a[href$="catalogo.html"]::after,
+.mobile-dropdown-panel a[href$="catalogo-unitree.html"]::after {
+  content: " →";
+  font-weight: 800;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.nav-dropdown-panel a[href$="catalogo.html"]:hover,
+.nav-dropdown-panel a[href$="catalogo-unitree.html"]:hover,
+.mobile-dropdown-panel a[href$="catalogo.html"]:hover,
+.mobile-dropdown-panel a[href$="catalogo-unitree.html"]:hover {
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent-text) 100%);
+  box-shadow: 0 8px 22px rgba(124, 77, 214, 0.5);
+  transform: translateY(-1px);
+}
+.nav-dropdown-panel a[href$="catalogo.html"]:hover::after,
+.nav-dropdown-panel a[href$="catalogo-unitree.html"]:hover::after,
+.mobile-dropdown-panel a[href$="catalogo.html"]:hover::after,
+.mobile-dropdown-panel a[href$="catalogo-unitree.html"]:hover::after {
+  transform: translateX(4px);
+}
+@keyframes catalog-shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-dropdown-panel a[href$="catalogo.html"],
+  .nav-dropdown-panel a[href$="catalogo-unitree.html"],
+  .mobile-dropdown-panel a[href$="catalogo.html"],
+  .mobile-dropdown-panel a[href$="catalogo-unitree.html"] { animation: none; }
+}
+
 /* === Dropdown nav (mobile accordion) === */
 .mobile-dropdown { display: flex; flex-direction: column; }
 .mobile-dropdown-trigger {

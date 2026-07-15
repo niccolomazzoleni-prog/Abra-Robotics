@@ -511,7 +511,7 @@ document.addEventListener('click', (e) => {
   var prefix = depth ? '../'.repeat(depth) : '';
 
   var s = document.createElement('script');
-  s.src = prefix + 'offerte-ai/js/widget.js';
+  s.src = prefix + 'offerte-ai/js/widget.js?v=20260715g1';
   s.setAttribute('data-base', prefix + 'offerte-ai/');
   s.setAttribute('data-abra-chat-widget', '1');
   s.defer = true;
