@@ -1643,7 +1643,12 @@
       const els = document.querySelectorAll('.feature-card, .product-stat, .step, .parallax-img-wrap, .key-spec, .spec-mini-card');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          el.classList.add('visible');
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          obs.unobserve(el);
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
