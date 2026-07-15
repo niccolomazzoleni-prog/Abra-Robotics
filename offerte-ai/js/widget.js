@@ -62,7 +62,7 @@
     ]);
     await AbraLLM.bootstrapLocalConfig();
 
-    const logoUrl = siteAsset('images/logo.png');
+    const logoUrl = siteAsset('images/chat-g1-face.png');
 
     const launcher = document.createElement('button');
     launcher.className = 'abra-chat-launcher';
