@@ -47,7 +47,7 @@ PRIORITY = {
     "lp-umanoidi.html": 0.8,
     "lp-amr.html": 0.8,
     "lp-cobot.html": 0.8,
-    "r1-d.html": 0.75,
+    "g1-d.html": 0.85,
     "lp-unitree.html": 0.9,
     "blog.html": 0.75,
     "unitree-italia-guida-completa.html": 0.9,
