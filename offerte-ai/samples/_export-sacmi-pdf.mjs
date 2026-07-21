@@ -58,20 +58,20 @@ const abraLogo = fileToDataUri(path.join(root, 'images', 'logo.png'))
 
 await page.evaluate(({ sacmiLogo, abraLogo }) => {
   if (sacmiLogo) {
-    document.querySelectorAll('img.doc-client-logo, img[alt*="SACMI"]').forEach(img => {
+    document.querySelectorAll(
+      'img.doc-client-logo, img[alt*="SACMI"], img[alt="SACMI"], .pv-client img'
+    ).forEach(img => {
       img.src = sacmiLogo;
       img.removeAttribute('loading');
     });
     if (window.__OFFER__?.client) window.__OFFER__.client.logo_url = sacmiLogo;
   }
   if (abraLogo) {
-    document.querySelectorAll('img.doc-logo-img').forEach(img => {
+    document.querySelectorAll('img.doc-logo-img, img.abra, .pv-head img.abra').forEach(img => {
       img.src = abraLogo;
       img.removeAttribute('loading');
     });
   }
-  // Risolvi anche le altre immagini prodotto dal DOM corrente via fetch→blob non disponibile offline;
-  // lasciamo gli URL http per il PDF da localhost.
 }, { sacmiLogo, abraLogo });
 
 // Attendi caricamento immagini
@@ -154,8 +154,8 @@ body.offer-sample-body { background: #e8e8e8; margin: 0; }
   max-width: 820px; margin: 0 auto; background: #fff; padding: 28px 32px;
   box-shadow: 0 8px 30px rgba(0,0,0,.12);
 }
-.doc-client-logo { width: 150px !important; max-height: 96px !important; object-fit: contain !important; }
-.doc-client.has-logo { align-items: center !important; gap: 16px !important; }
+.doc-client-logo, .pv-client img { width: 150px !important; max-height: 96px !important; object-fit: contain !important; }
+.doc-client.has-logo, .pv-client { align-items: center !important; gap: 16px !important; }
 @media print {
   .offer-sample-toolbar { display: none !important; }
   body.offer-sample-body { background: #fff; }
@@ -198,7 +198,7 @@ fs.copyFileSync(outPdf, outPdfRepo);
 // Verifica logo presente
 const hasLogo = standalone.includes('data:image') && standalone.includes('doc-client-logo');
 const logoOk = await pdfPage.evaluate(() => {
-  const img = document.querySelector('img.doc-client-logo');
+  const img = document.querySelector('img.doc-client-logo, .pv-client img, img[alt="SACMI"]');
   return !!(img && img.src.startsWith('data:') && img.naturalWidth > 0);
 });
 
