@@ -30,10 +30,13 @@
         <section class="oai-panel">
           <div class="oai-panel-head"><h2>Cliente & template</h2></div>
           <div class="oai-form-grid">
-            <label>Azienda <input id="c-azienda" type="text" placeholder="Nome azienda"></label>
+            <label>Azienda <input id="c-azienda" type="text" placeholder="Ragione sociale"></label>
             <label>Referente <input id="c-contatto" type="text"></label>
-            <label>Email <input id="c-email" type="email"></label>
+            <label>P.IVA <input id="c-piva" type="text" placeholder="IT00000000000"></label>
             <label>Telefono <input id="c-tel" type="tel"></label>
+            <label class="full">Indirizzo / sede <input id="c-indirizzo" type="text" placeholder="Via, CAP, Città (PR)"></label>
+            <label>Email <input id="c-email" type="email"></label>
+            <label>Logo cliente (URL) <input id="c-logo" type="url" placeholder="/images/clienti/… o https://…"></label>
             <label>Template <select id="c-template"></select></label>
             <label>Listino
               <select id="c-margin">
@@ -41,6 +44,10 @@
                 <option value="partner_a">Partner A (−5%)</option>
                 <option value="partner_b">Partner B (−10%)</option>
               </select>
+            </label>
+            <label class="full oai-check">
+              <input id="c-preventivo-formale" type="checkbox" checked>
+              Preventivo formale IT (clausole + accettazione + firme)
             </label>
             <label class="full">Intro / messaggio <textarea id="c-intro" rows="2"></textarea></label>
             <label class="full">Note in fondo offerta <textarea id="c-prompt-extra" rows="2" placeholder="Appaiono in fondo al PDF, prima delle condizioni finali…"></textarea></label>

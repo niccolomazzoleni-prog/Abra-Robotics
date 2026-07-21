@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Offerte — Abra Robotics</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script src="auth.js"></script>
+  <style>
+    body { background: var(--gray-50); }
+    .admin-wrap { padding: calc(40px + 48px) 48px 80px; max-width: 860px; }
+    .admin-wrap h1 { font-size: 2rem; letter-spacing: -0.03em; margin: 8px 0 8px; }
+    .admin-wrap .lead { color: var(--gray-600); margin: 0 0 28px; max-width: 52ch; }
+    .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .admin-card {
+      display: block; padding: 18px 20px; border-radius: var(--radius);
+      background: rgba(255,255,255,0.9); border: 1px solid var(--gray-200);
+      text-decoration: none; color: var(--black);
+    }
+    .admin-card:hover { border-color: var(--black); }
+    .admin-card strong { display: block; font-size: 1.05rem; margin-bottom: 6px; }
+    .admin-card span { display: block; font-size: 0.88rem; color: var(--gray-600); line-height: 1.45; }
+    .admin-card .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .admin-card button, .admin-card a.btn-mini {
+      font: inherit; font-size: 0.8rem; font-weight: 700; padding: 8px 12px;
+      border-radius: 8px; border: 1px solid var(--gray-300); background: #fff; cursor: pointer;
+      text-decoration: none; color: inherit;
+    }
+    .admin-card button.primary { background: var(--black); color: #fff; border-color: var(--black); }
+    .section-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-500); margin: 28px 0 12px; }
+    @media (max-width: 700px) { .admin-grid { grid-template-columns: 1fr; } .admin-wrap { padding: 80px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <p class="label">Interno · Non indicizzato</p>
+    <h1>Offerte & preventivi</h1>
+    <p class="lead">Crea preventivi formali IT (clausole, accettazione, firme), gestisci bozze e apri preset cliente già compilati — allineati al pipeline Go2 + coprogettazione.</p>
+
+    <div class="section-label">Strumenti</div>
+    <div class="admin-grid">
+      <a class="admin-card" href="../offerte-ai/offerta.html">
+        <strong>Editor offerte</strong>
+        <span>Anagrafica cliente (P.IVA, sede, logo), listino, righe, preventivo formale con firme. Anteprima live e PDF.</span>
+      </a>
+      <a class="admin-card" href="../offerte-ai/index.html">
+        <strong>Lab Training chat</strong>
+        <span>Chat interna, RFQ → bozza offerta, feedback e training modello.</span>
+      </a>
+    </div>
+
+    <div class="section-label">Preset pronti</div>
+    <div class="admin-grid">
+      <div class="admin-card">
+        <strong>SACMI IMOLA S.C.</strong>
+        <span>
+          Destinatario compilato (P.IVA IT00498321207, Imola). Linea Go2 EDU (Std/Smart/Mid-360/XT16) +
+          alternative A2/As2 e R1-D packaging + 85 h coprogettazione remota + formazione.
+        </span>
+        <div class="actions">
+          <button type="button" class="primary" data-open-preset="sacmi">Apri in editor</button>
+          <a class="btn-mini" href="../offerte-ai/samples/_gen-sacmi-preventivo.html">Anteprima PDF</a>
+        </div>
+      </div>
+      <div class="admin-card">
+        <strong>Go2 EDU + coprogettazione 85 h</strong>
+        <span>Quattro alternative Go2 (incl. XT16), pacchetto remoto 6 mesi, preventivo formale. Cliente da compilare.</span>
+        <div class="actions">
+          <a class="btn-mini primary" href="../offerte-ai/samples/_gen-go2-smart-coprogettazione.html" style="background:var(--black);color:#fff;border-color:var(--black)">Anteprima / genera</a>
+          <a class="btn-mini" href="../offerte-ai/samples/offerta-go2-smart-coprogettazione-85h.html">HTML salvato</a>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:28px;">
+      <a href="index.html" class="btn btn-secondary btn-sm">← Area admin</a>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="AbraAdmin.logout()">Esci</button>
+    </p>
+  </div>
+
+  <script>
+  (function () {
+    async function openSacmiPreset() {
+      // Genera bozza aprendo la pagina generatore in background via fetch HTML non basta —
+      // redirect alla pagina gen che può aprire l'editor, oppure costruisci JSON minimo e salva.
+      const res = await fetch('../offerte-ai/samples/_gen-sacmi-preventivo.html');
+      if (!res.ok) {
+        location.href = '../offerte-ai/samples/_gen-sacmi-preventivo.html';
+        return;
+      }
+      // Apri generatore: da lì «Apri in editor» carica la bozza completa.
+      location.href = '../offerte-ai/samples/_gen-sacmi-preventivo.html#editor';
+    }
+
+    document.querySelectorAll('[data-open-preset="sacmi"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        location.href = '../offerte-ai/samples/_gen-sacmi-preventivo.html?openEditor=1';
+      });
+    });
+
+    // Auto-open editor se hash
+    if (location.hash === '#sacmi') openSacmiPreset();
+  })();
+  </script>
+</body>
+</html>
