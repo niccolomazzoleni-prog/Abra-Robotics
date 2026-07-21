@@ -205,7 +205,7 @@
 
       const GRUPPO_LABEL = {
         sorveglianza: 'Applicazione sorveglianza (As2 / A2)',
-        go2: 'Alternativa Go2 EDU (Standard / Smart)',
+        go2: 'Alternativa Go2 EDU (Standard / Smart / Mid-360 / XT16)',
         default: 'Configurazione robot',
       };
       const byGruppo = new Map();
@@ -581,6 +581,89 @@
       ).join('')}</div>`;
     }
 
+    renderPreventivoLegale(offer, t) {
+      const co = this.config?.azienda || {};
+      const robots = (offer.line_items || []).filter(l => l.opzione_robot);
+      const choices = robots.map(r => {
+        const short = String(r.nome || r.sku).replace(/^Unitree\s+/i, '').split('(')[0].trim();
+        const tot = (r.su_richiesta ? 0 : r.prezzo_totale) + (t.sharedTotal || 0);
+        return `<label class="doc-accept-choice${r.principale ? ' is-rec' : ''}">
+          <span class="doc-accept-box" aria-hidden="true"></span>
+          <span><strong>${escapeHtml(short)}</strong>
+          <small>€ ${fmt(tot)} IVA escl. (robot + voci aggiuntive)</small></span>
+        </label>`;
+      }).join('');
+
+      const condizioniExtra = offer.condizioni
+        ? `<div class="doc-clausole-extra">${richText(offer.condizioni)}</div>`
+        : '';
+
+      return `
+        <section class="doc-preventivo-legale">
+          <h2 class="doc-preventivo-title">Accettazione del preventivo</h2>
+          <p class="doc-preventivo-lead">
+            Il Cliente, preso atto delle condizioni sotto riportate, dichiara di accettare il presente preventivo
+            n. <strong>${escapeHtml(offer.id)}</strong> del <strong>${escapeHtml(offer.data)}</strong>
+            e di selezionare <strong>una sola</strong> delle seguenti configurazioni robot
+            (alternative non cumulabili), unitamente alle voci aggiuntive indicate:
+          </p>
+          ${choices ? `<div class="doc-accept-choices">${choices}</div>` : ''}
+          <p class="doc-preventivo-tot">
+            Totale di riferimento (config. consigliata): <strong>€ ${fmt(t.subtotal)}</strong>
+            <span>IVA esclusa — importo definitivo = robot selezionato + voci aggiuntive</span>
+          </p>
+
+          <h3 class="doc-clausole-title">Condizioni generali di fornitura</h3>
+          <ol class="doc-clausole-list">
+            <li><strong>Validità.</strong> Il presente preventivo ha validità di ${offer.validita_giorni || 30} giorni dalla data di emissione, salvo diversa indicazione scritta.</li>
+            <li><strong>Prezzi e IVA.</strong> Tutti gli importi sono espressi in euro e si intendono <strong>IVA esclusa</strong>, salvo diversa indicazione. L'IVA sarà applicata in fattura secondo la normativa vigente.</li>
+            <li><strong>Pagamento.</strong> Salvo diversi accordi scritti: 50% all'ordine (acconto), 50% prima della spedizione. Il ritardo nei pagamenti sospende i termini di consegna.</li>
+            <li><strong>Consegna.</strong> Tempi indicativi: quadrupedi 4–6 settimane, umanoidi 4–8 settimane, AMR/cobot ~4 settimane dalla conferma d'ordine scritta e acconto. I termini non sono essenziali ai sensi dell'art. 1457 c.c., salvo patto contrario.</li>
+            <li><strong>Proprietà e rischi.</strong> La merce resta di proprietà del Fornitore fino al saldo integrale. I rischi si trasferiscono al Cliente con la consegna al vettore.</li>
+            <li><strong>Garanzia.</strong> Hardware Unitree: garanzia commerciale del produttore (tipicamente 12 mesi). Sono esclusi danni da urto, uso improprio, modifiche non autorizzate e usura di batterie/consumabili.</li>
+            <li><strong>Servizi di coprogettazione / assistenza.</strong> Se presenti in preventivo: monte ore e durata come da riga dedicata; erogazione remota a slot su disponibilità; ore non godute a scadenza da concordare (proroga o chiusura). Non includono trasferte on-site né ricambi.</li>
+            <li><strong>Accettazione.</strong> L'accettazione del preventivo (firma, PEC, e-mail di conferma o ordine) costituisce proposta irrevocabile del Cliente e perfeziona il contratto ai sensi degli artt. 1326 e ss. c.c.</li>
+            <li><strong>Privacy.</strong> I dati personali sono trattati ai sensi del Reg. UE 2016/679 (GDPR) e della normativa italiana; informativa su abrarobotics.com.</li>
+            <li><strong>Foro competente.</strong> Per ogni controversia è competente in via esclusiva il Foro di Venezia, fatto salvo il foro del consumatore ove applicabile.</li>
+          </ol>
+          ${condizioniExtra}
+
+          <div class="doc-luogo-data">
+            <span>Luogo e data: _____________________________, ____ / ____ / ________</span>
+          </div>
+
+          <div class="doc-firme">
+            <div class="doc-firma-box">
+              <h4>Il Fornitore</h4>
+              <p class="doc-firma-anag">
+                <strong>${escapeHtml(co.ragione_sociale || co.nome || 'Abra Robotics')}</strong><br>
+                P.IVA ${escapeHtml(co.piva || '')}<br>
+                ${escapeHtml(co.indirizzo || '')}
+              </p>
+              <div class="doc-firma-line">
+                <span>Timbro e firma</span>
+              </div>
+            </div>
+            <div class="doc-firma-box">
+              <h4>Il Cliente per accettazione</h4>
+              <p class="doc-firma-anag">
+                <strong>${escapeHtml(offer.client?.azienda || '________________________________')}</strong><br>
+                Referente: ${escapeHtml(offer.client?.contatto || '________________________________')}<br>
+                P.IVA / C.F.: ${escapeHtml(offer.client?.piva || '________________________________')}
+              </p>
+              <div class="doc-firma-line">
+                <span>Timbro e firma del legale rappresentante</span>
+              </div>
+            </div>
+          </div>
+          <p class="doc-firma-note">
+            Ai sensi degli artt. 1341 e 1342 c.c., il Cliente dichiara di aver letto e di accettare specificamente
+            le clausole relative a: validità, pagamento, consegna, proprietà e rischi, garanzia, servizi,
+            accettazione e foro competente.
+          </p>
+        </section>`;
+    }
+
     renderOfferDocument(offer) {
       const co = this.config?.azienda || {};
       const t = this.recalculate(offer);
@@ -593,12 +676,13 @@
 
       const rec = this._recommendedRobot(offer, t);
       const recName = rec ? String(rec.nome).replace(/^Unitree\s+/i, '') : '';
+      const showLegale = offer.preventivo_formale !== false;
 
       return `
         <div class="abra-offer-doc abra-offer-doc--pdf">
         ${this.renderCompanyHeader(co)}
         <div class="doc-topbar">
-          <div class="doc-meta">Offerta <strong>${escapeHtml(offer.id)}</strong> · ${escapeHtml(offer.data)} · Valida ${offer.validita_giorni} gg</div>
+          <div class="doc-meta">Preventivo <strong>${escapeHtml(offer.id)}</strong> · ${escapeHtml(offer.data)} · Valido ${offer.validita_giorni} gg</div>
           ${this.renderClientBlock(offer.client)}
         </div>
         ${offer.intro ? `<div class="doc-intro doc-intro-compact">${richText(offer.intro)}</div>` : ''}
@@ -616,7 +700,7 @@
         ${this.renderNextSteps(offer)}
         ${offer.prompt_extra ? `<div class="doc-extra-compact"><em>${richText(offer.prompt_extra)}</em></div>` : ''}
         ${this.renderSecondaryBlocks(split.secondary)}
-        ${offer.condizioni ? `<div class="doc-footer doc-footer-compact">${richText(offer.condizioni)}</div>` : ''}
+        ${showLegale ? this.renderPreventivoLegale(offer, t) : (offer.condizioni ? `<div class="doc-footer doc-footer-compact">${richText(offer.condizioni)}</div>` : '')}
         </div>`;
     }
 

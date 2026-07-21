@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Genera offerta Go2 + coprogettazione</title>
+  <title>Genera preventivo Go2 + coprogettazione</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/offerte-ai.css">
 </head>
@@ -41,35 +41,38 @@
       azienda: 'Cliente — da compilare',
       contatto: 'Referente — da compilare',
       email: '',
+      piva: '',
     });
     offer.id = 'OFF-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-G2CP';
     offer.template_id = 'standard';
+    offer.preventivo_formale = true;
+    offer.note_iva = 'Prezzi IVA esclusa. Dazio doganale incluso nel robot. Listino competitivo IT (~DE +10%).';
     offer.intro =
-      'Gentile Cliente,\n\n' +
-      'in riferimento alla Sua richiesta, sottoponiamo preventivo per **Unitree Go2 EDU** ' +
-      'con tre **configurazioni robot alternative** (Standard / Smart / Laser Smart) — ' +
-      '**selezionarne una sola**, non cumulabili — e un pacchetto di **coprogettazione / assistenza remota di ' + mesi + ' mesi** ' +
+      'Spett.le Cliente,\n\n' +
+      'con la presente sottoponiamo **preventivo commerciale** per fornitura di **Unitree Go2 EDU** ' +
+      'in **quattro configurazioni alternative** (Standard / Smart / Laser Mid-360 / Ultimate XT16) — ' +
+      '**selezionarne una sola**, non cumulabili — unitamente a pacchetto di **coprogettazione / assistenza remota di ' + mesi + ' mesi** ' +
       '(monte ore **' + ore + ' h**, corrispettivo forfettario **€ ' + servizioEur.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + '** IVA esclusa).\n\n' +
       'Configurazione consigliata: **Go2 EDU Smart** (Orin NX 100 TOPS).\n\n' +
-      '**Prezzi robot:** listino End-User Abra, IVA esclusa, allineato al mercato DE ' +
-      '(riferimento quadruped.de / reichelt netto + ~10% per distribuzione Italia, dazio incluso).\n\n' +
-      'Le ore sono erogabili a **slot prenotabili** in base alle disponibilità del team Abra. ' +
-      'L\'attività è **sempre da remoto** e si suddivide tra **sviluppo autonomo** Abra e **sessioni di assistenza** (videocall / ticket).';
+      'I prezzi robot sono listino End-User Abra, IVA esclusa, allineati al mercato DE ' +
+      '(riferimento quadruped.de / reichelt netto + ~10% distribuzione Italia, dazio incluso).\n\n' +
+      'Le ore di servizio sono erogabili a **slot prenotabili** su disponibilità Abra, **sempre da remoto**, ' +
+      'tra **sviluppo autonomo** e **sessioni di assistenza** (videocall / ticket).';
     offer.chiusura =
-      'Restiamo a disposizione per confermare la configurazione robot scelta e il calendario degli slot.\n\nCordiali saluti,\nAbra Robotics';
+      'Restiamo a disposizione per call tecnico-commerciale e per la compilazione dei dati anagrafici del Cliente.\n\nCordiali saluti,\nAbra Robotics — Niccolò Mazzoleni';
     offer.prompt_extra =
-      'Robot in tabella: alternative non cumulabili — selezionare una sola configurazione Go2.\n' +
-      'Modalità erogazione servizio: 100% remoto. Gli slot ore si prenotano su disponibilità. ' +
-      'Il monte ore (' + ore + ' h in ' + mesi + ' mesi) include sia lo sviluppo autonomo lato Abra sia le sessioni di assistenza congiunta. ' +
+      'Barrare una sola casella nella sezione «Accettazione del preventivo». ' +
+      'Il monte ore (' + ore + ' h / ' + mesi + ' mesi) include sviluppo autonomo Abra e assistenza remota. ' +
       'Tariffa implicita pacchetto: € ' + (servizioEur / ore).toFixed(2).replace('.', ',') + '/h.';
     offer.condizioni =
-      (builder.config?.condizioni_default || '') +
-      '\n\nRobot: scegliere una sola tra le configurazioni Go2 quotate (non cumulabili).\n' +
-      'Pacchetto coprogettazione: durata ' + mesi + ' mesi dalla conferma d\'ordine; monte ' + ore +
-      ' ore totali; prenotazione slot in base a disponibilità; erogazione esclusivamente remota ' +
-      '(sviluppo autonomo + assistenza). Non include trasferte on-site né ricambi hardware.';
+      '**Condizioni specifiche di questo preventivo**\n' +
+      '• Robot: scegliere una sola tra le quattro configurazioni Go2 (non cumulabili).\n' +
+      '• Pacchetto coprogettazione: durata ' + mesi + ' mesi dalla conferma d\'ordine; monte ' + ore +
+      ' ore; slot su disponibilità; erogazione esclusivamente remota (sviluppo autonomo + assistenza).\n' +
+      '• Esclusi: trasferte on-site, ricambi hardware, sensori/accessori non elencati.\n' +
+      '• Condizioni generali di vendita Abra Robotics applicabili ove non in contrasto con il presente preventivo.';
 
-    // Tre scelte separate (mutuamente esclusive) — qty 1 ciascuna, non si sommano
+    // Quattro scelte separate (mutuamente esclusive)
     builder.addCatalogLine(offer, 'GO2-EDU-STD', 1, {
       opzione_robot: true,
       robot_gruppo: 'go2',
@@ -81,6 +84,11 @@
       robot_gruppo: 'go2',
     });
     builder.addCatalogLine(offer, 'GO2-EDU-LASER', 1, {
+      opzione_robot: true,
+      robot_gruppo: 'go2',
+      alternativa: true,
+    });
+    builder.addCatalogLine(offer, 'GO2-EDU-ULT', 1, {
       opzione_robot: true,
       robot_gruppo: 'go2',
       alternativa: true,
@@ -102,41 +110,33 @@
 
     builder.addBlock(offer, {
       type: 'section',
-      title: 'Cosa differenzia le tre configurazioni Go2 EDU',
+      title: 'Cosa differenzia le quattro configurazioni Go2 EDU',
       body:
-        'Chassis, payload (~8 kg), velocità, batteria e SDK sono **comuni** a tutte e tre. ' +
-        'Cambia solo **compute onboard** e **LiDAR 3D aggiuntivo**.\n\n' +
-        '**1) Go2 EDU Standard** — Jetson **Orin Nano 40 TOPS**. ' +
-        'LiDAR 4D L2 + RealSense D435i. Nessun LiDAR 3D esterno. ' +
-        'Scelta per didattica, ROS 2, teleoperazione e PoC leggeri.\n\n' +
-        '**2) Go2 EDU Smart (EDU Plus) — consigliata** — Jetson **Orin NX 100 TOPS**. ' +
-        'Stessi sensori della Standard, ma 2,5× compute per AI, perception e integrazione software. ' +
-        'Base corretta se prevedete braccio D1 o upgrade LiDAR futuri.\n\n' +
-        '**3) Go2 EDU Laser Smart (+ Livox Mid-360)** — Orin NX **100 TOPS** + **LiDAR 3D Livox Mid-360** ' +
-        'oltre al 4D L2. Per SLAM, mapping e navigazione autonoma in ambienti complessi.\n\n' +
+        'Chassis, payload (~8 kg), velocità, batteria e SDK sono **comuni**. ' +
+        'Cambia **compute onboard** e **LiDAR 3D aggiuntivo**.\n\n' +
+        '**1) Go2 EDU Standard** — Orin **Nano 40 TOPS**. LiDAR 4D L2 + RealSense D435i. Nessun LiDAR 3D esterno. Lab / corsi / PoC.\n\n' +
+        '**2) Go2 EDU Smart (EDU Plus) — consigliata** — Orin **NX 100 TOPS**. Stessi sensori della Standard, più compute per AI e integrazione.\n\n' +
+        '**3) Go2 EDU Laser Smart (+ Livox Mid-360)** — Orin NX 100 TOPS + **Livox Mid-360**. SLAM / navigazione autonoma.\n\n' +
+        '**4) Go2 EDU Ultimate (+ Hesai XT16)** — Orin NX 100 TOPS + **Hesai XT16**. Perception outdoor / R&S ad alta risoluzione.\n\n' +
         '**Confronto rapido**\n' +
-        '• **Compute:** Standard = Orin Nano 40 TOPS · Smart = Orin NX 100 TOPS · Laser = Orin NX 100 TOPS\n' +
-        '• **LiDAR onboard:** tutte 4D L2\n' +
-        '• **LiDAR 3D extra:** solo Laser → Livox Mid-360\n' +
-        '• **Camera depth:** tutte RealSense D435i\n' +
-        '• **SDK / ROS 2:** tutte sì\n' +
-        '• **Ideale per:** Standard → lab/corsi · Smart → AI + integrazione · Laser → SLAM / autonomy',
+        '• Compute: Std 40 TOPS · Smart/Laser/XT16 = 100 TOPS\n' +
+        '• LiDAR onboard: tutte 4D L2\n' +
+        '• LiDAR 3D extra: Laser → Mid-360 · Ultimate → XT16\n' +
+        '• Camera: tutte RealSense D435i · SDK / ROS 2: sì',
     });
     builder.addProductSheetBlock(offer, 'GO2-EDU-STD', manifest);
     builder.addProductSheetBlock(offer, 'GO2-EDU-SMART', manifest);
     builder.addProductSheetBlock(offer, 'GO2-EDU-LASER', manifest);
+    builder.addProductSheetBlock(offer, 'GO2-EDU-ULT', manifest);
     builder.addBlock(offer, {
       type: 'section',
       title: 'Come funziona il monte ore di coprogettazione',
       body:
         '• **Durata:** ' + mesi + ' mesi dalla conferma d\'ordine.\n' +
-        '• **Monte ore:** ' + ore + ' ore totali, consumabili a **slot prenotabili** in base alle disponibilità del team Abra.\n' +
-        '• **Modalità:** esclusivamente **remota** (nessuna trasferta on-site inclusa).\n' +
-        '• **Suddivisione attività:**\n' +
-        '  – **Sviluppo autonomo** — lavoro tecnico Abra su integrazioni, configurazioni, software e deliverable di progetto;\n' +
-        '  – **Assistenza remota** — sessioni con il cliente (videocall, ticket, diagnosi e supporto operativo).\n' +
-        '• **Prenotazione:** gli slot si concordano con il referente Abra; l\'erogazione segue la disponibilità calendariale.\n' +
-        '• **Fuori scope:** hardware aggiuntivo, ricambi, interventi on-site, trasferte (quotabili a parte).',
+        '• **Monte ore:** ' + ore + ' ore totali, a **slot prenotabili** su disponibilità Abra.\n' +
+        '• **Modalità:** esclusivamente **remota**.\n' +
+        '• **Suddivisione:** sviluppo autonomo Abra + assistenza remota (videocall/ticket).\n' +
+        '• **Fuori scope:** hardware aggiuntivo, ricambi, on-site, trasferte.',
     });
     builder.insertRecurringBlock(offer, 'perche-abra');
     builder.insertRecurringBlock(offer, 'consegna-supporto');
@@ -145,8 +145,8 @@
     const body = builder.renderOfferDocument(offer);
     document.getElementById('paper').innerHTML = body;
     document.getElementById('toolbar').querySelector('div').innerHTML =
-      '<span class="badge">Pipeline offerte-ai</span> ' +
-      offer.id + ' · 3 scelte Go2 (1 sola) + ' + ore + ' h / ' + mesi + ' mesi · Totale consigliato <strong>€ ' +
+      '<span class="badge">Preventivo formale</span> ' +
+      offer.id + ' · 4 scelte Go2 (1 sola) + XT16 + ' + ore + ' h · Totale consigliato <strong>€ ' +
       totals.subtotal.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</strong>';
 
     window.__OFFER__ = offer;
