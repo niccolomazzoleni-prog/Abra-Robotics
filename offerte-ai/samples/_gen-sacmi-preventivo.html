@@ -6,6 +6,53 @@
   <title>Preventivo SACMI — Abra Robotics</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/offerte-ai.css">
+  <style>
+    .pv-doc { font-family: 'Satoshi', system-ui, sans-serif; color: #111; max-width: 820px; margin: 0 auto; }
+    .pv-head { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid #111; }
+    .pv-head img.abra { width: 150px; height: auto; }
+    .pv-fiscal { font-size: 0.78rem; line-height: 1.45; text-align: right; color: #333; }
+    .pv-meta { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 18px; }
+    .pv-meta-id { font-size: 0.85rem; background: #f3eefc; padding: 8px 12px; border-radius: 6px; }
+    .pv-client { display: flex; gap: 16px; align-items: center; }
+    .pv-client img { width: 150px; max-height: 96px; object-fit: contain; }
+    .pv-client-text { font-size: 0.8rem; line-height: 1.4; }
+    .pv-client-text strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+    .pv-intro { font-size: 0.9rem; line-height: 1.5; margin: 0 0 22px; }
+    .pv-h2 { margin: 28px 0 12px; font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; border-bottom: 1px solid #ddd; padding-bottom: 6px; }
+    .pv-note { font-size: 0.78rem; color: #555; margin: 0 0 14px; }
+    .pv-product { display: grid; grid-template-columns: 160px 1fr 140px; gap: 16px; align-items: start; padding: 14px 0; border-bottom: 1px solid #eee; }
+    .pv-product.is-rec { background: #faf8ff; margin: 0 -10px; padding: 14px 10px; border-radius: 8px; border-bottom: 1px solid #e8e0f5; }
+    .pv-product img { width: 160px; height: 120px; object-fit: contain; background: #f7f7f7; border-radius: 8px; }
+    .pv-product h3 { margin: 0 0 6px; font-size: 0.95rem; }
+    .pv-product .badge-rec { display: inline-block; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; background: #7c4dd6; color: #fff; padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+    .pv-specs { margin: 0; padding: 0; list-style: none; font-size: 0.78rem; line-height: 1.45; color: #333; }
+    .pv-specs li { margin: 2px 0; }
+    .pv-price { text-align: right; font-size: 1.05rem; font-weight: 800; white-space: nowrap; }
+    .pv-price small { display: block; font-size: 0.68rem; font-weight: 500; color: #666; margin-top: 4px; }
+    .pv-service { display: grid; grid-template-columns: 1fr 120px; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.88rem; }
+    .pv-service strong { display: block; margin-bottom: 4px; }
+    .pv-service p { margin: 0; font-size: 0.78rem; color: #555; line-height: 1.4; }
+    .pv-service .amt { text-align: right; font-weight: 800; }
+    .pv-total { margin-top: 22px; padding: 16px 18px; background: #111; color: #fff; border-radius: 8px; }
+    .pv-total .row { display: flex; justify-content: space-between; gap: 12px; font-size: 0.88rem; margin: 4px 0; opacity: 0.9; }
+    .pv-total .grand { display: flex; justify-content: space-between; gap: 12px; font-size: 1.25rem; font-weight: 800; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.25); }
+    .pv-total .grand small { display: block; font-size: 0.7rem; font-weight: 500; opacity: 0.75; margin-top: 2px; }
+    .pv-firme { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 32px; page-break-inside: avoid; }
+    .pv-firma { border: 1px solid #ccc; border-radius: 8px; padding: 14px; min-height: 140px; font-size: 0.78rem; }
+    .pv-firma h4 { margin: 0 0 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .pv-firma .line { margin-top: 48px; border-top: 1px solid #111; padding-top: 6px; color: #666; font-size: 0.68rem; text-align: center; }
+    .pv-legal { margin-top: 18px; font-size: 0.65rem; line-height: 1.4; color: #666; }
+    @media (max-width: 700px) {
+      .pv-product { grid-template-columns: 1fr; }
+      .pv-price { text-align: left; }
+      .pv-firme { grid-template-columns: 1fr; }
+    }
+    @media print {
+      .offer-sample-toolbar { display: none !important; }
+      .pv-product.is-rec { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .pv-total { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
 </head>
 <body class="offer-sample-body">
   <div class="offer-sample-toolbar" id="toolbar">
@@ -13,7 +60,6 @@
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button type="button" id="btn-editor">Apri in editor</button>
       <button type="button" onclick="window.print()">Stampa / PDF</button>
-      <a href="../../admin/offerte-ai.html">Admin offerte</a>
     </div>
   </div>
   <div class="offer-sample-wrap">
@@ -23,18 +69,140 @@
   <script src="../js/offer-builder.js"></script>
   <script>
   (async function () {
+    const fmt = n => Number(n).toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const esc = s => String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
     const ore = 85;
     const servizioEur = 8500;
     const mesi = 6;
+    const formEur = 890;
 
     const quote = new AbraQuoteEngine();
     await quote.load('../../listini/pubblico/end-user.json', '../data/offerte-regole.json');
     const builder = new AbraOfferBuilder(quote);
-    await builder.load('../data/offerte-config.json', '../data/voci-extra.json', '../data/blocchi-ricorrenti.json');
+    await builder.load('../data/offerte-config.json', '../data/voci-extra.json');
     let manifest = {};
     try { manifest = await fetch('../../listini/pubblico/catalogo-manifest.json').then(r => r.json()); } catch (_) {}
-    builder.setProductManifest(manifest);
 
+    const products = [
+      { sku: 'GO2-EDU-STD', rec: false },
+      { sku: 'GO2-EDU-SMART', rec: true },
+      { sku: 'GO2-EDU-LASER', rec: false },
+      { sku: 'GO2-EDU-ULT', rec: false },
+    ];
+
+    const id = 'OFF-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-SACMI';
+    const data = new Date().toISOString().slice(0, 10);
+    const co = builder.config?.azienda || {};
+
+    function imgUrl(rel) {
+      if (!rel) return '';
+      if (/^https?:\/\//i.test(rel)) return rel;
+      return '/' + String(rel).replace(/^\//, '');
+    }
+
+    function productCard(sku, rec) {
+      const p = quote.getPrice(sku);
+      const m = manifest[sku] || {};
+      const img = imgUrl(m.immagine || p?.immagine || '');
+      const specs = (m.specs || []).slice(0, 6).map(([k, v]) => `<li><strong>${esc(k)}:</strong> ${esc(v)}</li>`).join('');
+      const title = m.titolo || p?.nome || sku;
+      return `<article class="pv-product${rec ? ' is-rec' : ''}">
+        <img src="${esc(img)}" alt="${esc(title)}">
+        <div>
+          <h3>${esc(title)}${rec ? '<span class="badge-rec">Consigliata</span>' : ''}</h3>
+          <ul class="pv-specs">${specs}</ul>
+        </div>
+        <div class="pv-price">€ ${fmt(p.prezzo_eur)}<small>IVA escl. · 1×</small></div>
+      </article>`;
+    }
+
+    const smart = quote.getPrice('GO2-EDU-SMART').prezzo_eur;
+    const servizi = servizioEur + formEur;
+    const totale = smart + servizi;
+
+    const html = `<div class="pv-doc abra-offer-doc">
+      <header class="pv-head">
+        <img class="abra" src="${esc(imgUrl(co.logo_url || 'images/logo.png'))}" alt="Abra Robotics">
+        <div class="pv-fiscal">
+          <strong>${esc(co.ragione_sociale || co.nome || '')}</strong><br>
+          P.IVA ${esc(co.piva || '')}<br>
+          ${esc(co.indirizzo || '')}<br>
+          ${esc(co.email || '')} · ${esc(co.telefono || '')}
+        </div>
+      </header>
+
+      <div class="pv-meta">
+        <div class="pv-meta-id">Preventivo <strong>${esc(id)}</strong> · ${esc(data)} · Valido 30 gg</div>
+        <div class="pv-client">
+          <img src="/images/clienti/sacmi-logo.jpg" alt="SACMI">
+          <div class="pv-client-text">
+            <strong>SACMI IMOLA S.C.</strong>
+            Ufficio Acquisti / R&amp;D Automation<br>
+            P.IVA IT00498321207<br>
+            Via Selice Provinciale 17/A, 40026 Imola (BO)
+          </div>
+        </div>
+      </div>
+
+      <p class="pv-intro">
+        Spett.le SACMI IMOLA S.C., in allegato la proposta per <strong>Unitree Go2 EDU</strong>
+        (una configurazione a scelta) con pacchetto di coprogettazione remota e formazione.
+      </p>
+
+      <h2 class="pv-h2">1. Prodotti proposti</h2>
+      <p class="pv-note">Selezionare <strong>una sola</strong> configurazione. Prezzi listino End-User, IVA esclusa.</p>
+      ${products.map(p => productCard(p.sku, p.rec)).join('')}
+
+      <h2 class="pv-h2">2. Servizi proposti</h2>
+      <div class="pv-service">
+        <div>
+          <strong>Coprogettazione e assistenza remota — ${mesi} mesi (${ore} h)</strong>
+          <p>Monte ore a slot prenotabili su disponibilità. Sempre da remoto: sviluppo autonomo Abra + sessioni di assistenza (videocall/ticket).</p>
+        </div>
+        <div class="amt">€ ${fmt(servizioEur)}</div>
+      </div>
+      <div class="pv-service">
+        <div>
+          <strong>Formazione operatore (1 giornata)</strong>
+          <p>Training uso robot, sicurezza, teleoperazione e manutenzione ordinaria.</p>
+        </div>
+        <div class="amt">€ ${fmt(formEur)}</div>
+      </div>
+
+      <div class="pv-total">
+        <div class="row"><span>Go2 EDU Smart (config. di riferimento)</span><span>€ ${fmt(smart)}</span></div>
+        <div class="row"><span>Servizi (coprogettazione + formazione)</span><span>€ ${fmt(servizi)}</span></div>
+        <div class="grand">
+          <span>Totale finale<span><small>IVA esclusa — con Smart; se scegliete altra config. sostituire solo il prezzo robot</small></span></span>
+          <span>€ ${fmt(totale)}</span>
+        </div>
+      </div>
+
+      <div class="pv-firme">
+        <div class="pv-firma">
+          <h4>Il Fornitore</h4>
+          ${esc(co.ragione_sociale || 'Abra Robotics')}<br>P.IVA ${esc(co.piva || '')}
+          <div class="line">Timbro e firma</div>
+        </div>
+        <div class="pv-firma">
+          <h4>Il Cliente per accettazione</h4>
+          SACMI IMOLA S.C.<br>P.IVA IT00498321207<br>
+          Config. scelta: _______________________
+          <div class="line">Timbro e firma del legale rappresentante</div>
+        </div>
+      </div>
+      <p class="pv-legal">
+        Offerta valida 30 giorni. Pagamento: 50% all’ordine, 50% pre-spedizione. Consegna quadrupedi indicativa 4–6 settimane.
+        Garanzia produttore Unitree. Foro di Venezia. Ai sensi degli artt. 1341–1342 c.c. si accettano le clausole su pagamento, consegna e foro.
+      </p>
+    </div>`;
+
+    document.getElementById('paper').innerHTML = html;
+    document.getElementById('toolbar').querySelector('div').innerHTML =
+      `<span class="badge">Preventivo SACMI</span> ${id} · Totale <strong>€ ${fmt(totale)}</strong>`;
+
+    // Draft minimale per editor (senza caos confronti)
     const offer = builder.createEmpty({
       azienda: 'SACMI IMOLA S.C.',
       contatto: 'Ufficio Acquisti / R&D Automation',
@@ -44,94 +212,26 @@
       indirizzo: 'Via Selice Provinciale 17/A, 40026 Imola (BO)',
       logo_url: '/images/clienti/sacmi-logo.jpg',
     });
-    offer.id = 'OFF-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-SACMI';
-    offer.template_id = 'industria';
+    offer.id = id;
+    offer.data = data;
     offer.preventivo_formale = true;
-    offer.note_iva = 'Prezzi IVA esclusa. Dazio doganale incluso nel robot. Listino competitivo IT (~DE +10%).';
-
-    offer.intro =
-      'Spett.le **SACMI IMOLA S.C.**,\n\n' +
-      'sottoponiamo preventivo per **Unitree Go2 EDU** — quadrupede programmabile per R&D, perception e PoC in ambito industriale/automazione — ' +
-      'in **quattro configurazioni alternative** (selezionarne **una sola**):\n\n' +
-      '• **Standard** — Orin Nano 40 TOPS\n' +
-      '• **Smart** (consigliata) — Orin NX 100 TOPS\n' +
-      '• **Laser Mid-360** — 100 TOPS + LiDAR 3D Livox Mid-360\n' +
-      '• **Ultimate XT16** — 100 TOPS + LiDAR 3D Hesai XT16\n\n' +
-      'Incluso: **coprogettazione / assistenza remota ' + mesi + ' mesi** ' +
-      '(**' + ore + ' h** a slot prenotabili, € ' + servizioEur.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + ' IVA escl.) ' +
-      'e **1 giornata formazione** operatore.\n\n' +
-      'Totale di riferimento: **Go2 EDU Smart** + servizi.';
-
-    offer.chiusura =
-      'Restiamo a disposizione per una call tecnica con il team R&D / Automation.\n\n' +
-      'Cordiali saluti,\nAbra Robotics — Niccolò Mazzoleni';
-
-    offer.prompt_extra =
-      'Barrare una sola casella nella sezione accettazione. ' +
-      'Monte ore ' + ore + ' h / ' + mesi + ' mesi, sempre da remoto (sviluppo autonomo + assistenza).';
-
-    offer.condizioni =
-      '**Condizioni specifiche**\n' +
-      '• Una sola configurazione Go2 EDU tra le quattro quotate.\n' +
-      '• Coprogettazione: ' + mesi + ' mesi, ' + ore + ' h remote a slot; esclusi on-site e ricambi.\n' +
-      '• Destinatario: SACMI IMOLA S.C. — P.IVA IT00498321207 — Via Selice Provinciale 17/A, 40026 Imola (BO).\n' +
-      '• PEC: sacmiimola@legalmail.it · Tel. +39 0542 607111.';
-
-    // Solo Go2 — niente umanoidi, niente altre linee
-    builder.addCatalogLine(offer, 'GO2-EDU-STD', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
-    builder.addCatalogLine(offer, 'GO2-EDU-SMART', 1, { opzione_robot: true, principale: true, robot_gruppo: 'go2' });
-    builder.addCatalogLine(offer, 'GO2-EDU-LASER', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
-    builder.addCatalogLine(offer, 'GO2-EDU-ULT', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
-
-    builder.addCustomLine(
-      offer,
-      'Coprogettazione e assistenza remota — pacchetto ' + mesi + ' mesi (' + ore + ' h)',
-      servizioEur,
-      1,
-      'Monte ore ' + ore + ' h a slot su disponibilità. Sempre da remoto: sviluppo autonomo Abra + sessioni assistenza.',
-      'servizio'
-    );
-    const formVoce = builder.vociExtra.find(x => x.id === 'EXTRA-FORMAZIONE');
-    if (formVoce) {
-      builder.addCustomLine(offer, formVoce.nome, formVoce.prezzo_eur || 0, 1, formVoce.descrizione || '', 'extra');
-    }
-
-    builder.addBlock(offer, {
-      type: 'section',
-      title: 'Cosa cambia tra le quattro configurazioni',
-      body:
-        'Chassis, payload (~8 kg), batteria e SDK/ROS 2 sono **comuni**. Differiscono solo **compute** e **LiDAR 3D**.\n\n' +
-        '• **Standard** → ingresso lab / didattica (40 TOPS)\n' +
-        '• **Smart** → AI e integrazione software (100 TOPS) — consigliata\n' +
-        '• **Laser Mid-360** → SLAM / navigazione autonoma\n' +
-        '• **Ultimate XT16** → perception ad alta risoluzione (outdoor / impianti)',
-    });
-    builder.addProductSheetBlock(offer, 'GO2-EDU-SMART', manifest);
-    builder.addProductSheetBlock(offer, 'GO2-EDU-ULT', manifest);
-
-    const totals = builder.recalculate(offer);
-    const body = builder.renderOfferDocument(offer);
-    document.getElementById('paper').innerHTML = body;
-    document.getElementById('toolbar').querySelector('div').innerHTML =
-      '<span class="badge">Preventivo SACMI</span> ' + offer.id +
-      ' · Go2 Smart + servizi <strong>€ ' +
-      totals.subtotal.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) +
-      '</strong>';
+    offer.intro = 'Spett.le SACMI IMOLA S.C., proposta Go2 EDU (una config. a scelta) + coprogettazione remota + formazione.';
+    offer.layout = 'lineare';
+    products.forEach((p, i) => builder.addCatalogLine(offer, p.sku, 1, {
+      opzione_robot: true, robot_gruppo: 'go2', principale: !!p.rec, alternativa: !p.rec,
+    }));
+    builder.addCustomLine(offer, `Coprogettazione e assistenza remota — ${mesi} mesi (${ore} h)`, servizioEur, 1, '', 'servizio');
+    builder.addCustomLine(offer, 'Formazione operatore (1 giornata)', formEur, 1, '', 'extra');
 
     window.__OFFER__ = offer;
-    window.__TOTALS__ = totals;
-    window.__OFFER_HTML__ = body;
+    window.__TOTALS__ = { subtotal: totale };
+    window.__OFFER_HTML__ = html;
     document.documentElement.dataset.ready = '1';
 
-    function openInEditor() {
+    document.getElementById('btn-editor').onclick = () => {
       sessionStorage.setItem('abra_offerta_draft', JSON.stringify(offer));
-      sessionStorage.setItem('abra_offer_draft', JSON.stringify(offer));
       location.href = '../offerta.html?from=sacmi';
-    }
-    document.getElementById('btn-editor').onclick = openInEditor;
-    if (new URLSearchParams(location.search).get('openEditor') === '1') {
-      setTimeout(openInEditor, 200);
-    }
+    };
   })().catch(err => {
     document.getElementById('paper').textContent = 'Errore: ' + err.message;
     console.error(err);
