@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preventivo SACMI — Abra Robotics</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/offerte-ai.css">
+</head>
+<body class="offer-sample-body">
+  <div class="offer-sample-toolbar" id="toolbar">
+    <div><span class="badge">Preventivo SACMI</span> Generazione…</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button type="button" id="btn-editor">Apri in editor</button>
+      <button type="button" onclick="window.print()">Stampa / PDF</button>
+      <a href="../../admin/offerte-ai.html">Admin offerte</a>
+    </div>
+  </div>
+  <div class="offer-sample-wrap">
+    <div class="offer-sample-paper" id="paper">Caricamento…</div>
+  </div>
+  <script src="../js/quote-engine.js"></script>
+  <script src="../js/offer-builder.js"></script>
+  <script>
+  (async function () {
+    const ore = 85;
+    const servizioEur = 8500;
+    const mesi = 6;
+
+    const quote = new AbraQuoteEngine();
+    await quote.load('../../listini/pubblico/end-user.json', '../data/offerte-regole.json');
+    const builder = new AbraOfferBuilder(quote);
+    await builder.load('../data/offerte-config.json', '../data/voci-extra.json', '../data/blocchi-ricorrenti.json');
+    let manifest = {};
+    try { manifest = await fetch('../../listini/pubblico/catalogo-manifest.json').then(r => r.json()); } catch (_) {}
+    builder.setProductManifest(manifest);
+
+    const offer = builder.createEmpty({
+      azienda: 'SACMI IMOLA S.C.',
+      contatto: 'Ufficio Acquisti / R&D Automation',
+      email: 'sacmi@sacmi.it',
+      telefono: '+39 0542 607111',
+      piva: 'IT00498321207',
+      indirizzo: 'Via Selice Provinciale 17/A, 40026 Imola (BO)',
+      logo_url: '/images/clienti/sacmi-logo.jpg',
+    });
+    offer.id = 'OFF-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-SACMI';
+    offer.template_id = 'industria';
+    offer.preventivo_formale = true;
+    offer.note_iva = 'Prezzi IVA esclusa. Dazio doganale incluso nel robot. Listino competitivo IT (~DE +10%).';
+
+    offer.intro =
+      'Spett.le **SACMI IMOLA S.C.**,\n\n' +
+      'in riferimento al Vostro interesse per piattaforme robotiche mobili e di ricerca, ' +
+      'sottoponiamo **preventivo commerciale** articolato su **tre linee di progetto alternative** ' +
+      '(scegliere **una** linea di riferimento; le configurazioni robot entro ogni linea non sono cumulabili).\n\n' +
+      '**Linea A — Go2 EDU (R&D / perception / PoC mobile)** consigliata per laboratori e sviluppo software: ' +
+      'quattro varianti (Standard / Smart / Mid-360 / XT16).\n\n' +
+      '**Linea B — Ispezione industriale** (A2 / As2): quadrupedi con payload e protezione IP per percorsi in stabilimento ceramico/packaging.\n\n' +
+      '**Linea C — Umanoide dual-arm R1-D**: piattaforma aperta per sperimentazione pick & place / packaging cell, ' +
+      'allineata alle vostre attività di robotica di processo.\n\n' +
+      'In tutte le linee è incluso il pacchetto **coprogettazione remota ' + mesi + ' mesi / ' + ore + ' h** ' +
+      '(€ ' + servizioEur.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + ' IVA escl.), a slot prenotabili.\n\n' +
+      'Configurazione di riferimento per totali: **Go2 EDU Smart** + pacchetto ore.';
+
+    offer.chiusura =
+      'Restiamo a disposizione per una call con il team R&D / Automation SACMI e per adattare payload, sensori e PoC.\n\n' +
+      'Cordiali saluti,\nAbra Robotics — Niccolò Mazzoleni\nDistributore ufficiale Unitree in Italia';
+
+    offer.prompt_extra =
+      'Barrare una sola casella robot nella sezione accettazione (totale = robot scelto + voci aggiuntive). ' +
+      'Monte ore ' + ore + ' h in ' + mesi + ' mesi, remoto, ≈ € ' + (servizioEur / ore).toFixed(2).replace('.', ',') + '/h.';
+
+    offer.condizioni =
+      '**Condizioni specifiche preventivo SACMI**\n' +
+      '• Tre linee di progetto (Go2 EDU / Ispezione A2–As2 / R1-D): scegliere il percorso applicativo; entro ogni linea una sola configurazione robot.\n' +
+      '• Pacchetto coprogettazione: ' + mesi + ' mesi, ' + ore + ' h remote a slot su disponibilità; esclusi on-site e ricambi.\n' +
+      '• Destinatario: SACMI IMOLA S.C., P.IVA IT00498321207, Via Selice Provinciale 17/A, 40026 Imola (BO).\n' +
+      '• Riferimenti PEC: sacmiimola@legalmail.it · Tel. +39 0542 607111.';
+
+    // Linea A — Go2
+    builder.addCatalogLine(offer, 'GO2-EDU-STD', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
+    builder.addCatalogLine(offer, 'GO2-EDU-SMART', 1, { opzione_robot: true, principale: true, robot_gruppo: 'go2' });
+    builder.addCatalogLine(offer, 'GO2-EDU-LASER', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
+    builder.addCatalogLine(offer, 'GO2-EDU-ULT', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
+
+    // Linea B — industriale
+    builder.addCatalogLine(offer, 'A2-STD', 1, { opzione_robot: true, robot_gruppo: 'industriale', alternativa: true });
+    builder.addCatalogLine(offer, 'A2-PRO', 1, { opzione_robot: true, robot_gruppo: 'industriale', alternativa: true });
+    builder.addCatalogLine(offer, 'AS2-PRO', 1, { opzione_robot: true, robot_gruppo: 'industriale', alternativa: true });
+
+    // Linea C — packaging / dual-arm
+    builder.addCatalogLine(offer, 'R1-D', 1, { opzione_robot: true, robot_gruppo: 'manifattura', alternativa: true });
+
+    builder.addCustomLine(
+      offer,
+      'Coprogettazione e assistenza remota — pacchetto ' + mesi + ' mesi (' + ore + ' h)',
+      servizioEur,
+      1,
+      'Monte ore ' + ore + ' h a slot su disponibilità. Sempre da remoto: sviluppo autonomo Abra + sessioni assistenza. ' +
+        'Corrispettivo forfettario € ' + servizioEur.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + '.',
+      'servizio'
+    );
+    const formVoce = builder.vociExtra.find(x => x.id === 'EXTRA-FORMAZIONE');
+    if (formVoce) {
+      builder.addCustomLine(
+        offer,
+        formVoce.nome,
+        formVoce.prezzo_eur || 0,
+        1,
+        formVoce.descrizione || '',
+        'extra'
+      );
+    }
+
+    builder.addBlock(offer, {
+      type: 'section',
+      title: 'Perché queste piattaforme per SACMI',
+      body:
+        'SACMI opera su impianti ceramici, packaging e automazione di processo ad alto contenuto R&D. ' +
+        'Proponiamo piattaforme **aperte (SDK / ROS 2)** per:\n\n' +
+        '• **Go2 EDU** — perception, SLAM, PoC software, formazione team, test in area controllata.\n' +
+        '• **A2 / As2** — ispezione e pattugliamento in ambienti industriali (payload, IP, autonomia).\n' +
+        '• **R1-D dual-arm** — cella sperimentale pick & place / packaging, allineata alle vostre linee robotiche di processo.\n\n' +
+        'Il pacchetto ore consente coprogettazione remota su integrazioni, driver e workflow senza vincolare da subito un PoC on-site.',
+    });
+    builder.addBlock(offer, {
+      type: 'section',
+      title: 'Differenziazione Go2 EDU (Linea A)',
+      body:
+        '• **Standard** — Orin Nano 40 TOPS · lab / corsi\n' +
+        '• **Smart (consigliata)** — Orin NX 100 TOPS · AI + integrazione\n' +
+        '• **Laser Mid-360** — 100 TOPS + Livox Mid-360 · SLAM\n' +
+        '• **Ultimate XT16** — 100 TOPS + Hesai XT16 · perception outdoor/industriale',
+    });
+    builder.addProductSheetBlock(offer, 'GO2-EDU-SMART', manifest);
+    builder.addProductSheetBlock(offer, 'GO2-EDU-ULT', manifest);
+    builder.addProductSheetBlock(offer, 'A2-PRO', manifest);
+    builder.addProductSheetBlock(offer, 'AS2-PRO', manifest);
+    builder.addProductSheetBlock(offer, 'R1-D', manifest);
+    builder.insertRecurringBlock(offer, 'perche-abra');
+    builder.insertRecurringBlock(offer, 'consegna-supporto');
+
+    const totals = builder.recalculate(offer);
+    const body = builder.renderOfferDocument(offer);
+    document.getElementById('paper').innerHTML = body;
+    document.getElementById('toolbar').querySelector('div').innerHTML =
+      '<span class="badge">Preventivo SACMI</span> ' + offer.id +
+      ' · rif. Smart+85h <strong>€ ' +
+      totals.subtotal.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) +
+      '</strong>';
+
+    window.__OFFER__ = offer;
+    window.__TOTALS__ = totals;
+    window.__OFFER_HTML__ = body;
+    document.documentElement.dataset.ready = '1';
+
+    function openInEditor() {
+      sessionStorage.setItem('abra_offerta_draft', JSON.stringify(offer));
+      sessionStorage.setItem('abra_offer_draft', JSON.stringify(offer));
+      location.href = '../offerta.html?from=sacmi';
+    }
+    document.getElementById('btn-editor').onclick = openInEditor;
+    if (new URLSearchParams(location.search).get('openEditor') === '1') {
+      setTimeout(openInEditor, 200);
+    }
+  })().catch(err => {
+    document.getElementById('paper').textContent = 'Errore: ' + err.message;
+    console.error(err);
+  });
+  </script>
+</body>
+</html>

@@ -62,15 +62,22 @@
 
     renderClientBlock(client) {
       const c = client || {};
-      if (!c.azienda && !c.contatto) {
+      if (!c.azienda && !c.contatto && !c.logo_url) {
         return `<div class="doc-client"><strong>Cliente</strong><span class="muted">Da compilare</span></div>`;
       }
-      return `<div class="doc-client">
-          <strong>${escapeHtml(c.azienda || '')}</strong>
-          ${c.contatto ? `<span>${escapeHtml(c.contatto)}</span>` : ''}
-          ${c.piva ? `<span>P.IVA IT${escapeHtml(String(c.piva).replace(/^IT/i, ''))}</span>` : ''}
-          ${c.indirizzo ? `<span>${escapeHtml(c.indirizzo)}</span>` : ''}
-          ${c.email ? `<span>${escapeHtml(c.email)}</span>` : ''}
+      const logo = c.logo_url
+        ? `<img class="doc-client-logo" src="${escapeHtml(assetUrl(c.logo_url))}" alt="${escapeHtml(c.azienda || 'Cliente')}" loading="lazy">`
+        : '';
+      return `<div class="doc-client${c.logo_url ? ' has-logo' : ''}">
+          ${logo}
+          <div class="doc-client-text">
+            <strong>${escapeHtml(c.azienda || '')}</strong>
+            ${c.contatto ? `<span>${escapeHtml(c.contatto)}</span>` : ''}
+            ${c.piva ? `<span>P.IVA IT${escapeHtml(String(c.piva).replace(/^IT/i, ''))}</span>` : ''}
+            ${c.indirizzo ? `<span>${escapeHtml(c.indirizzo)}</span>` : ''}
+            ${c.email ? `<span>${escapeHtml(c.email)}</span>` : ''}
+            ${c.telefono ? `<span>${escapeHtml(c.telefono)}</span>` : ''}
+          </div>
         </div>`;
     }
 
@@ -120,13 +127,18 @@
         data: new Date().toISOString().slice(0, 10),
         validita_giorni: this.config?.default_validita_giorni || 30,
         template_id: tpl.id || 'standard',
-        client: { azienda: '', contatto: '', email: '', telefono: '', ...client },
+        client: {
+          azienda: '', contatto: '', email: '', telefono: '',
+          piva: '', indirizzo: '', logo_url: '',
+          ...client,
+        },
         intro: tpl.intro || '',
         chiusura: tpl.chiusura || '',
         note_iva: this.config?.note_iva_default || 'IVA esclusa',
         condizioni: this.config?.condizioni_default || '',
         prompt_extra: '',
         margin_key: 'end_user',
+        preventivo_formale: true,
         line_items: [],
         content_blocks: [],
       };
@@ -205,7 +217,9 @@
 
       const GRUPPO_LABEL = {
         sorveglianza: 'Applicazione sorveglianza (As2 / A2)',
+        industriale: 'Ispezione industriale (A2 / As2) — percorso alternativo',
         go2: 'Alternativa Go2 EDU (Standard / Smart / Mid-360 / XT16)',
+        manifattura: 'Umanoide dual-arm / packaging (R1-D / G1) — percorso alternativo',
         default: 'Configurazione robot',
       };
       const byGruppo = new Map();

@@ -38,13 +38,21 @@
   }
 
   function syncFormToOffer() {
+    const prev = offer.client || {};
     offer.client = {
+      ...prev,
       azienda: document.getElementById('c-azienda').value,
       contatto: document.getElementById('c-contatto').value,
       email: document.getElementById('c-email').value,
       telefono: document.getElementById('c-tel').value,
+      piva: document.getElementById('c-piva')?.value || '',
+      indirizzo: document.getElementById('c-indirizzo')?.value || '',
+      logo_url: document.getElementById('c-logo')?.value || '',
     };
     offer.margin_key = document.getElementById('c-margin').value;
+    offer.preventivo_formale = document.getElementById('c-preventivo-formale')
+      ? document.getElementById('c-preventivo-formale').checked
+      : offer.preventivo_formale !== false;
     offer.intro = document.getElementById('c-intro').value;
     offer.prompt_extra = document.getElementById('c-prompt-extra').value;
     offer.condizioni = document.getElementById('c-condizioni').value;
@@ -55,10 +63,19 @@
   }
 
   function syncOfferToForm() {
-    document.getElementById('c-azienda').value = offer.client.azienda || '';
-    document.getElementById('c-contatto').value = offer.client.contatto || '';
-    document.getElementById('c-email').value = offer.client.email || '';
-    document.getElementById('c-tel').value = offer.client.telefono || '';
+    const c = offer.client || {};
+    document.getElementById('c-azienda').value = c.azienda || '';
+    document.getElementById('c-contatto').value = c.contatto || '';
+    document.getElementById('c-email').value = c.email || '';
+    document.getElementById('c-tel').value = c.telefono || '';
+    const piva = document.getElementById('c-piva');
+    if (piva) piva.value = c.piva || '';
+    const indirizzo = document.getElementById('c-indirizzo');
+    if (indirizzo) indirizzo.value = c.indirizzo || '';
+    const logo = document.getElementById('c-logo');
+    if (logo) logo.value = c.logo_url || '';
+    const formale = document.getElementById('c-preventivo-formale');
+    if (formale) formale.checked = offer.preventivo_formale !== false;
     document.getElementById('c-margin').value = offer.margin_key || 'end_user';
     document.getElementById('c-intro').value = offer.intro || '';
     document.getElementById('c-prompt-extra').value = offer.prompt_extra || '';
@@ -213,9 +230,11 @@
   }
 
   function bindEvents() {
-    document.querySelectorAll('#c-azienda,#c-contatto,#c-email,#c-tel,#c-intro,#c-prompt-extra,#c-condizioni,#c-chiusura').forEach(el => {
-      el.addEventListener('input', renderPreview);
+    document.querySelectorAll('#c-azienda,#c-contatto,#c-email,#c-tel,#c-piva,#c-indirizzo,#c-logo,#c-intro,#c-prompt-extra,#c-condizioni,#c-chiusura').forEach(el => {
+      if (el) el.addEventListener('input', renderPreview);
     });
+    const formaleEl = document.getElementById('c-preventivo-formale');
+    if (formaleEl) formaleEl.addEventListener('change', renderPreview);
 
     document.getElementById('search-prod').addEventListener('input', () => {
       const searchInp = document.getElementById('search-prod');
