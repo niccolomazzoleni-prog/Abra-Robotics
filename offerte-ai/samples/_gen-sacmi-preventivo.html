@@ -51,102 +51,70 @@
 
     offer.intro =
       'Spett.le **SACMI IMOLA S.C.**,\n\n' +
-      'in riferimento al Vostro interesse per piattaforme robotiche mobili e di ricerca, ' +
-      'sottoponiamo **preventivo commerciale** articolato su **tre linee di progetto alternative** ' +
-      '(scegliere **una** linea di riferimento; le configurazioni robot entro ogni linea non sono cumulabili).\n\n' +
-      '**Linea A — Go2 EDU (R&D / perception / PoC mobile)** consigliata per laboratori e sviluppo software: ' +
-      'quattro varianti (Standard / Smart / Mid-360 / XT16).\n\n' +
-      '**Linea B — Ispezione industriale** (A2 / As2): quadrupedi con payload e protezione IP per percorsi in stabilimento ceramico/packaging.\n\n' +
-      '**Linea C — Umanoide dual-arm R1-D**: piattaforma aperta per sperimentazione pick & place / packaging cell, ' +
-      'allineata alle vostre attività di robotica di processo.\n\n' +
-      'In tutte le linee è incluso il pacchetto **coprogettazione remota ' + mesi + ' mesi / ' + ore + ' h** ' +
-      '(€ ' + servizioEur.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + ' IVA escl.), a slot prenotabili.\n\n' +
-      'Configurazione di riferimento per totali: **Go2 EDU Smart** + pacchetto ore.';
+      'sottoponiamo preventivo per **Unitree Go2 EDU** — quadrupede programmabile per R&D, perception e PoC in ambito industriale/automazione — ' +
+      'in **quattro configurazioni alternative** (selezionarne **una sola**):\n\n' +
+      '• **Standard** — Orin Nano 40 TOPS\n' +
+      '• **Smart** (consigliata) — Orin NX 100 TOPS\n' +
+      '• **Laser Mid-360** — 100 TOPS + LiDAR 3D Livox Mid-360\n' +
+      '• **Ultimate XT16** — 100 TOPS + LiDAR 3D Hesai XT16\n\n' +
+      'Incluso: **coprogettazione / assistenza remota ' + mesi + ' mesi** ' +
+      '(**' + ore + ' h** a slot prenotabili, € ' + servizioEur.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + ' IVA escl.) ' +
+      'e **1 giornata formazione** operatore.\n\n' +
+      'Totale di riferimento: **Go2 EDU Smart** + servizi.';
 
     offer.chiusura =
-      'Restiamo a disposizione per una call con il team R&D / Automation SACMI e per adattare payload, sensori e PoC.\n\n' +
-      'Cordiali saluti,\nAbra Robotics — Niccolò Mazzoleni\nDistributore ufficiale Unitree in Italia';
+      'Restiamo a disposizione per una call tecnica con il team R&D / Automation.\n\n' +
+      'Cordiali saluti,\nAbra Robotics — Niccolò Mazzoleni';
 
     offer.prompt_extra =
-      'Barrare una sola casella robot nella sezione accettazione (totale = robot scelto + voci aggiuntive). ' +
-      'Monte ore ' + ore + ' h in ' + mesi + ' mesi, remoto, ≈ € ' + (servizioEur / ore).toFixed(2).replace('.', ',') + '/h.';
+      'Barrare una sola casella nella sezione accettazione. ' +
+      'Monte ore ' + ore + ' h / ' + mesi + ' mesi, sempre da remoto (sviluppo autonomo + assistenza).';
 
     offer.condizioni =
-      '**Condizioni specifiche preventivo SACMI**\n' +
-      '• Tre linee di progetto (Go2 EDU / Ispezione A2–As2 / R1-D): scegliere il percorso applicativo; entro ogni linea una sola configurazione robot.\n' +
-      '• Pacchetto coprogettazione: ' + mesi + ' mesi, ' + ore + ' h remote a slot su disponibilità; esclusi on-site e ricambi.\n' +
-      '• Destinatario: SACMI IMOLA S.C., P.IVA IT00498321207, Via Selice Provinciale 17/A, 40026 Imola (BO).\n' +
-      '• Riferimenti PEC: sacmiimola@legalmail.it · Tel. +39 0542 607111.';
+      '**Condizioni specifiche**\n' +
+      '• Una sola configurazione Go2 EDU tra le quattro quotate.\n' +
+      '• Coprogettazione: ' + mesi + ' mesi, ' + ore + ' h remote a slot; esclusi on-site e ricambi.\n' +
+      '• Destinatario: SACMI IMOLA S.C. — P.IVA IT00498321207 — Via Selice Provinciale 17/A, 40026 Imola (BO).\n' +
+      '• PEC: sacmiimola@legalmail.it · Tel. +39 0542 607111.';
 
-    // Linea A — Go2
+    // Solo Go2 — niente umanoidi, niente altre linee
     builder.addCatalogLine(offer, 'GO2-EDU-STD', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
     builder.addCatalogLine(offer, 'GO2-EDU-SMART', 1, { opzione_robot: true, principale: true, robot_gruppo: 'go2' });
     builder.addCatalogLine(offer, 'GO2-EDU-LASER', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
     builder.addCatalogLine(offer, 'GO2-EDU-ULT', 1, { opzione_robot: true, robot_gruppo: 'go2', alternativa: true });
-
-    // Linea B — industriale
-    builder.addCatalogLine(offer, 'A2-STD', 1, { opzione_robot: true, robot_gruppo: 'industriale', alternativa: true });
-    builder.addCatalogLine(offer, 'A2-PRO', 1, { opzione_robot: true, robot_gruppo: 'industriale', alternativa: true });
-    builder.addCatalogLine(offer, 'AS2-PRO', 1, { opzione_robot: true, robot_gruppo: 'industriale', alternativa: true });
-
-    // Linea C — packaging / dual-arm
-    builder.addCatalogLine(offer, 'R1-D', 1, { opzione_robot: true, robot_gruppo: 'manifattura', alternativa: true });
 
     builder.addCustomLine(
       offer,
       'Coprogettazione e assistenza remota — pacchetto ' + mesi + ' mesi (' + ore + ' h)',
       servizioEur,
       1,
-      'Monte ore ' + ore + ' h a slot su disponibilità. Sempre da remoto: sviluppo autonomo Abra + sessioni assistenza. ' +
-        'Corrispettivo forfettario € ' + servizioEur.toLocaleString('it-IT', { minimumFractionDigits: 2 }) + '.',
+      'Monte ore ' + ore + ' h a slot su disponibilità. Sempre da remoto: sviluppo autonomo Abra + sessioni assistenza.',
       'servizio'
     );
     const formVoce = builder.vociExtra.find(x => x.id === 'EXTRA-FORMAZIONE');
     if (formVoce) {
-      builder.addCustomLine(
-        offer,
-        formVoce.nome,
-        formVoce.prezzo_eur || 0,
-        1,
-        formVoce.descrizione || '',
-        'extra'
-      );
+      builder.addCustomLine(offer, formVoce.nome, formVoce.prezzo_eur || 0, 1, formVoce.descrizione || '', 'extra');
     }
 
     builder.addBlock(offer, {
       type: 'section',
-      title: 'Perché queste piattaforme per SACMI',
+      title: 'Cosa cambia tra le quattro configurazioni',
       body:
-        'SACMI opera su impianti ceramici, packaging e automazione di processo ad alto contenuto R&D. ' +
-        'Proponiamo piattaforme **aperte (SDK / ROS 2)** per:\n\n' +
-        '• **Go2 EDU** — perception, SLAM, PoC software, formazione team, test in area controllata.\n' +
-        '• **A2 / As2** — ispezione e pattugliamento in ambienti industriali (payload, IP, autonomia).\n' +
-        '• **R1-D dual-arm** — cella sperimentale pick & place / packaging, allineata alle vostre linee robotiche di processo.\n\n' +
-        'Il pacchetto ore consente coprogettazione remota su integrazioni, driver e workflow senza vincolare da subito un PoC on-site.',
-    });
-    builder.addBlock(offer, {
-      type: 'section',
-      title: 'Differenziazione Go2 EDU (Linea A)',
-      body:
-        '• **Standard** — Orin Nano 40 TOPS · lab / corsi\n' +
-        '• **Smart (consigliata)** — Orin NX 100 TOPS · AI + integrazione\n' +
-        '• **Laser Mid-360** — 100 TOPS + Livox Mid-360 · SLAM\n' +
-        '• **Ultimate XT16** — 100 TOPS + Hesai XT16 · perception outdoor/industriale',
+        'Chassis, payload (~8 kg), batteria e SDK/ROS 2 sono **comuni**. Differiscono solo **compute** e **LiDAR 3D**.\n\n' +
+        '• **Standard** → ingresso lab / didattica (40 TOPS)\n' +
+        '• **Smart** → AI e integrazione software (100 TOPS) — consigliata\n' +
+        '• **Laser Mid-360** → SLAM / navigazione autonoma\n' +
+        '• **Ultimate XT16** → perception ad alta risoluzione (outdoor / impianti)',
     });
     builder.addProductSheetBlock(offer, 'GO2-EDU-SMART', manifest);
     builder.addProductSheetBlock(offer, 'GO2-EDU-ULT', manifest);
-    builder.addProductSheetBlock(offer, 'A2-PRO', manifest);
-    builder.addProductSheetBlock(offer, 'AS2-PRO', manifest);
-    builder.addProductSheetBlock(offer, 'R1-D', manifest);
-    builder.insertRecurringBlock(offer, 'perche-abra');
-    builder.insertRecurringBlock(offer, 'consegna-supporto');
 
     const totals = builder.recalculate(offer);
     const body = builder.renderOfferDocument(offer);
     document.getElementById('paper').innerHTML = body;
     document.getElementById('toolbar').querySelector('div').innerHTML =
       '<span class="badge">Preventivo SACMI</span> ' + offer.id +
-      ' · rif. Smart+85h <strong>€ ' +
+      ' · Go2 Smart + servizi <strong>€ ' +
       totals.subtotal.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) +
       '</strong>';
 

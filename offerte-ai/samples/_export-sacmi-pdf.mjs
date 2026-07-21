@@ -154,7 +154,8 @@ body.offer-sample-body { background: #e8e8e8; margin: 0; }
   max-width: 820px; margin: 0 auto; background: #fff; padding: 28px 32px;
   box-shadow: 0 8px 30px rgba(0,0,0,.12);
 }
-.doc-client-logo { width: 88px !important; max-height: 56px !important; object-fit: contain !important; }
+.doc-client-logo { width: 150px !important; max-height: 96px !important; object-fit: contain !important; }
+.doc-client.has-logo { align-items: center !important; gap: 16px !important; }
 @media print {
   .offer-sample-toolbar { display: none !important; }
   body.offer-sample-body { background: #fff; }
