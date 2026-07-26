@@ -1853,16 +1853,216 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
 .abra-offer-doc .doc-robot-hero figure.rec figcaption { color: var(--accent-text); }
 
 /* Shell pagina sample / export PDF */
-.offer-sample-body { margin: 0; font-family: var(--font); background: #ece8f4; color: var(--black); -webkit-font-smoothing: antialiased; }
-.offer-sample-toolbar { background: var(--black); color: #fff; padding: 10px 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; font-size: 0.82rem; }
-.offer-sample-toolbar .badge { background: var(--accent-text); color: #fff; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 999px; }
-.offer-sample-toolbar .badge-curated { background: #b37eff; color: #111; }
-.offer-sample-toolbar a, .offer-sample-toolbar button { color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 0.78rem; cursor: pointer; text-decoration: none; }
-.offer-sample-wrap { max-width: 920px; margin: 28px auto 48px; padding: 0 16px; }
-.offer-sample-paper { background: var(--white); border-radius: var(--radius); box-shadow: 0 20px 60px rgba(17,17,17,0.12); padding: 36px 40px; }
+.offer-sample-body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1200px 480px at 12% -10%, rgba(124, 77, 214, 0.08), transparent 55%),
+    radial-gradient(900px 420px at 88% 0%, rgba(0, 0, 0, 0.06), transparent 50%),
+    linear-gradient(180deg, #f4f4f5 0%, #ebebed 100%);
+}
+.offer-sample-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #fff;
+  padding: 12px 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.offer-sample-toolbar .badge {
+  background: #fff;
+  color: #0a0a0a;
+  font-weight: 800;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+.offer-sample-toolbar .badge-curated { background: var(--accent-text); color: #fff; }
+.offer-sample-toolbar a,
+.offer-sample-toolbar button {
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.offer-sample-toolbar a:hover,
+.offer-sample-toolbar button:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.offer-sample-wrap {
+  max-width: 880px;
+  margin: 36px auto 64px;
+  padding: 0 20px;
+  animation: offerSampleIn 0.55s ease both;
+}
+@keyframes offerSampleIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.offer-sample-paper {
+  position: relative;
+  background: var(--white);
+  border-radius: 18px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 24px 64px rgba(17, 17, 17, 0.1),
+    0 2px 8px rgba(17, 17, 17, 0.04);
+  padding: 40px 44px 44px;
+  overflow: hidden;
+}
+.offer-sample-paper::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0a0a0a 0%, #0a0a0a 62%, var(--accent-text) 62%, var(--accent-text) 100%);
+}
+.abra-offer-doc--pdf .doc-cover {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -8px 0 22px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.abra-offer-doc--pdf .doc-cover-kicker {
+  margin: 0 0 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+.abra-offer-doc--pdf .doc-cover-title {
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: var(--black);
+}
+.abra-offer-doc--pdf .doc-cover-sub {
+  margin: 8px 0 0;
+  max-width: 42ch;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--gray-600);
+}
+.abra-offer-doc--pdf .doc-cover-total {
+  text-align: right;
+  min-width: 160px;
+}
+.abra-offer-doc--pdf .doc-cover-total span {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+.abra-offer-doc--pdf .doc-cover-total strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--black);
+}
+.abra-offer-doc--pdf .doc-cover-total small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gray-500);
+}
+.abra-offer-doc--pdf .doc-config-summary {
+  background: linear-gradient(165deg, #fafafa 0%, #fff 55%);
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.03);
+}
+.abra-offer-doc--pdf .doc-config-rec {
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.abra-offer-doc--pdf .doc-config-rec-label { color: rgba(255, 255, 255, 0.62); }
+.abra-offer-doc--pdf .doc-config-rec .doc-price-stack-row { color: rgba(255, 255, 255, 0.88); }
+.abra-offer-doc--pdf .doc-config-rec .doc-price-stack-row strong { color: #fff; }
+.abra-offer-doc--pdf .doc-config-rec .doc-price-stack-add { color: #d4c4f7; }
+.abra-offer-doc--pdf .doc-config-rec .doc-price-stack-add strong { color: #efe8ff; }
+.abra-offer-doc--pdf .doc-config-rec .doc-price-stack-total {
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+.abra-offer-doc--pdf .doc-config-rec .doc-price-stack-total small { color: rgba(255, 255, 255, 0.55); }
+.abra-offer-doc--pdf .doc-config-options li.is-rec {
+  border-color: rgba(124, 77, 214, 0.35);
+  background: rgba(124, 77, 214, 0.06);
+  box-shadow: inset 3px 0 0 var(--accent-text);
+}
+.abra-offer-doc--pdf .doc-robot-hero figure {
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f7f7f8 0%, #fff 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.abra-offer-doc--pdf .doc-robot-hero figure:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(17, 17, 17, 0.08);
+}
+.abra-offer-doc--pdf .doc-robot-hero figure.rec {
+  border-color: rgba(124, 77, 214, 0.4);
+  box-shadow: 0 0 0 1px rgba(124, 77, 214, 0.15);
+}
+.abra-offer-doc--pdf .doc-block-highlight {
+  border-radius: 14px;
+  border: 1px solid var(--gray-200);
+  background: #fff;
+  overflow: hidden;
+}
+.abra-offer-doc--pdf .doc-next-steps {
+  border-radius: 14px;
+  border: 1px solid var(--gray-200);
+  background: #fafafa;
+  padding: 16px 18px;
+}
+.abra-offer-doc--pdf .doc-total-compact {
+  border-radius: 14px;
+  letter-spacing: -0.02em;
+}
 @media (max-width: 720px) {
   .abra-offer-doc .doc-robot-hero { grid-template-columns: repeat(2, 1fr); }
-  .offer-sample-paper { padding: 22px 18px; }
+  .offer-sample-paper { padding: 24px 18px 28px; }
+  .abra-offer-doc--pdf .doc-cover-total { text-align: left; }
 }
 @media print {
   @page {
@@ -1879,8 +2079,24 @@ body.app-lab .sidebar-details summary { color: #c4b5fd; }
   #offer-gate,
   #admin-gate { display: none !important; }
   .offer-sample-body { background: #fff; }
-  .offer-sample-wrap { margin: 0; padding: 0; max-width: none; }
-  .offer-sample-paper { box-shadow: none; border-radius: 0; padding: 0; }
+  .offer-sample-wrap { margin: 0; padding: 0; max-width: none; animation: none; }
+  .offer-sample-paper {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+  }
+  .offer-sample-paper::before { display: none; }
+  .abra-offer-doc--pdf .doc-cover {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+  .abra-offer-doc--pdf .doc-cover-title { font-size: 14pt; }
+  .abra-offer-doc--pdf .doc-cover-total strong { font-size: 13pt; }
+  .abra-offer-doc--pdf .doc-robot-hero figure:hover {
+    transform: none;
+    box-shadow: none;
+  }
   .abra-offer-doc,
   .abra-offer-doc--pdf {
     font-size: 8.25pt;
