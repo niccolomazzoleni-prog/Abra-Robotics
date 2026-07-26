@@ -20,8 +20,8 @@ const BASE = process.env.OFFER_BASE || 'http://127.0.0.1:8765';
 const jobs = [
   {
     url: `${BASE}/offerte-ai/samples/offerta-h2-base-assistenza-6m.html`,
-    pdf: path.join(__dirname, 'Preventivo-H2-Base-assistenza-6m.pdf'),
-    desktop: path.join(process.env.USERPROFILE || '', 'Desktop', 'Preventivo-H2-Base-assistenza-6m.pdf'),
+    pdf: path.join(__dirname, 'Preventivo-H2-EDU-OrinNX-REVO2-avviamento.pdf'),
+    desktop: path.join(process.env.USERPROFILE || '', 'Desktop', 'Preventivo-H2-EDU-OrinNX-REVO2-avviamento.pdf'),
   },
   {
     url: `${BASE}/offerte-ai/samples/offerta-marchesini-go2-as2-edu.html`,
