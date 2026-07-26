@@ -24,9 +24,9 @@ const jobs = [
     desktop: path.join(process.env.USERPROFILE || '', 'Desktop', 'Preventivo-H2-Base-assistenza-6m.pdf'),
   },
   {
-    url: `${BASE}/offerte-ai/samples/offerta-marchesini-as2-go2-g1u2.html`,
-    pdf: path.join(__dirname, 'Preventivo-Marchesini-AS2-Go2-G1U2.pdf'),
-    desktop: path.join(process.env.USERPROFILE || '', 'Desktop', 'Preventivo-Marchesini-AS2-Go2-G1U2.pdf'),
+    url: `${BASE}/offerte-ai/samples/offerta-marchesini-go2-as2-edu.html`,
+    pdf: path.join(__dirname, 'Preventivo-Marchesini-Go2-AS2-EDU.pdf'),
+    desktop: path.join(process.env.USERPROFILE || '', 'Desktop', 'Preventivo-Marchesini-Go2-AS2-EDU.pdf'),
   },
 ];
 
