@@ -1,24 +1,30 @@
 # Unitree As2 — gamma e posizionamento Abra
 
-Fonte specs: [unitree.com/As2](https://www.unitree.com/As2) · prezzi listino Abra End-User.
+Fonte specs: [unitree.com/As2](https://www.unitree.com/As2) · prezzi listino Abra End-User (target margine 30%, ship quadrupedi €500 nel costing).
 
 ## Varianti e SKU Abra
 
 | SKU | Nome | Prezzo indicativo (IVA escl.) |
 |-----|------|--------------------------------|
-| AS2-AIR | As2 Air | € 17.900 |
-| AS2-PRO | As2 Pro | € 29.900 |
-| AS2-EDU | As2 EDU | € 21.900 |
+| AS2-AIR | As2 Air | € 17.900 *(FOB TBD — non ricalcolato)* |
+| AS2-X | As2-X | € 13.240 |
+| AS2-PRO | As2 Pro | € 29.900 *(FOB TBD — non ricalcolato)* |
+| AS2-EDU | As2 EDU Standard (U1) | € 15.600 |
+| AS2-EDU-SMART | As2 EDU Smart (U2) | € 17.940 |
+| AS2-EDU-LASER | As2 EDU Laser Smart (U3 / Mid360) | € 22.640 |
+| AS2-EDU-ULT | As2 EDU Flagship (U4) | € 24.990 |
 
-Prezzi distributor EU (MyBotShop, Quadruped.de, Robostore, Reichelt): **non listati pubblicamente** a giugno 2026 — Unitree shop mostra prezzo placeholder; Abra usa listino End-User sopra.
+Equivalenze commerciali vs Go2 EDU: U1↔Std, U2↔Smart, U3↔Laser Mid360, U4↔Ultimate XT16.
+
+Prezzi distributor EU (MyBotShop, Quadruped.de): spesso su richiesta; Abra usa listino End-User sopra.
 
 ## Cosa include il prezzo (As2)
 
 - Robot completo con batteria
 - Controller / telecomando (secondo configurazione Unitree)
-- Dazio doganale incluso nel prezzo listino Abra
+- Dazio doganale e spedizione Italia già considerati nel listino End-User Abra
 - SDK Unitree (modelli EDU) — ROS 2, Python, C++ · [documentazione Unitree](https://support.unitree.com)
-- **Non incluso:** spedizione verso cliente (calcolata a checkout, indicativa da € 1.000 per quadrupedi), IVA (22% Italia B2B se applicabile), payload/sensori custom, docking, formazione on-site
+- **Non incluso:** IVA (22% Italia B2B se applicabile), payload/sensori custom oltre configurazione, docking, formazione on-site
 
 ## Specifiche chiave (Pro / EDU)
 
@@ -37,4 +43,4 @@ Prezzi distributor EU (MyBotShop, Quadruped.de, Robostore, Reichelt): **non list
 
 ## Sinonimi riconoscibili in chat
 
-As2, AS2, A2S (errore comune), As2 Pro, As2 EDU, Unitree As2 industrial.
+As2, AS2, A2S (errore comune), As2 Pro, As2 EDU, As2 U1–U4, As2-X, Unitree As2 industrial.

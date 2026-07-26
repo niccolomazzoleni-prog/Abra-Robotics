@@ -36,7 +36,15 @@ IMAGE: dict[str, str] = {
     "GO2-PRO": "images/prodotti/unitree-go2-card.png",
     "GO2-EDU-STD": "images/prodotti/unitree-go2-card.png",
     "GO2-EDU-SMART": "images/prodotti/unitree-go2-card.png",
+    "GO2-EDU-LASER": "images/prodotti/go2-edu-laser-mid360.jpg",
     "GO2-EDU-ULT": "images/prodotti/unitree-go2-card.png",
+    "AS2-AIR": "images/prodotti/unitree-as2-card.png",
+    "AS2-PRO": "images/prodotti/unitree-as2-pro.png",
+    "AS2-EDU": "images/prodotti/unitree-as2-card.png",
+    "AS2-EDU-SMART": "images/prodotti/unitree-as2-card.png",
+    "AS2-EDU-LASER": "images/prodotti/unitree-as2-pro.png",
+    "AS2-EDU-ULT": "images/prodotti/unitree-as2-pro.png",
+    "AS2-X": "images/prodotti/unitree-as2-card.png",
     "GO2W-U2": "images/prodotti/unitree-go2w-card.png",
     "GO2W-U3": "images/prodotti/unitree-go2w-card.png",
     "GO2W-U4": "images/prodotti/unitree-go2w-card.png",
@@ -257,9 +265,39 @@ MANIFEST["GO2-EDU-STD"] = _entry("Unitree Go2 EDU Standard", "Quadrupede educati
 MANIFEST["GO2-EDU-SMART"] = _entry("Unitree Go2 EDU Smart", "Go2 EDU con Jetson Orin 100 TOPS.",
     "Go2 EDU Smart monta NVIDIA Jetson Orin NX da 100 TOPS per AI onboard, navigazione SLAM e ricerca su robotica mobile. Configurazione mappata sulla pagina Go2 EDU+ del sito.",
     _go2_common + [("Computing", "Orin NX 100 TOPS"), ("LiDAR", "4D L2"), ("Velocità", "2 m/s")])
+MANIFEST["GO2-EDU-LASER"] = _entry(
+    "Unitree Go2 EDU Laser Smart (+ Livox Mid-360)",
+    "EDU Plus 100 TOPS + LiDAR 3D Livox Mid-360 per SLAM.",
+    "Configurazione Go2 EDU Plus (Orin NX 100 TOPS) con LiDAR 3D Livox Mid-360 aggiuntivo per mapping, navigazione autonoma e perception avanzata. Include RealSense D435i, SDK ROS 2 / Python e batteria long-endurance.",
+    _go2_common + [("Computing", "Orin NX 100 TOPS"), ("LiDAR 3D extra", "Livox Mid-360"), ("Camera", "RealSense D435i")],
+)
 MANIFEST["GO2-EDU-ULT"] = _entry("Unitree Go2 EDU Ultimate", "Go2 EDU con LiDAR Hesai XT16.",
     "Versione Ultimate del Go2 EDU con sensore Hesai XT16 per perception ad alta risoluzione in ambienti industriali e di ricerca outdoor.",
     _go2_common + [("LiDAR", "Hesai XT16"), ("Computing", "Orin NX 100 TOPS")])
+
+# --- AS2 ---
+_as2 = [("Peso", "~18 kg"), ("DoF", "12"), ("Velocità", "fino a ~5 m/s"), ("Payload marcia", "~15 kg"), ("IP", "IP54 (core)")]
+MANIFEST["AS2-AIR"] = _entry("Unitree AS2 Air", "Quadrupede AS2 entry — compatto e dinamico.",
+    "AS2 Air è la configurazione entry della piattaforma AS2 per demo, POC e ispezione leggera.",
+    _as2 + [("Autonomia", ">2,5–4 h")], "unitree.com/As2")
+MANIFEST["AS2-PRO"] = _entry("Unitree AS2 Pro", "AS2 industriale compatto — dual camera, LiDAR wide-angle.",
+    "AS2 Pro con suite di percezione avanzata per ispezione e sorveglianza professionale.",
+    _as2 + [("Percezione", "LiDAR wide-angle + dual camera"), ("Coppia giunto", "~90 N·m")], "unitree.com/As2")
+MANIFEST["AS2-EDU"] = _entry("Unitree AS2 EDU Standard (U1)", "AS2 education — SDK aperto (equivalente Go2 EDU Std).",
+    "AS2 EDU Standard (U1): piattaforma education con SDK ROS 2 / Python / C++, payload e IP superiori a Go2 EDU.",
+    _as2 + [("Variante", "EDU Standard · U1"), ("SDK", "ROS 2 · Python · C++")], "unitree.com/As2")
+MANIFEST["AS2-EDU-SMART"] = _entry("Unitree AS2 EDU Smart (U2)", "AS2 EDU con compute AI potenziato (eq. Go2 EDU Smart).",
+    "AS2 EDU Smart (U2): education con compute potenziato per AI onboard e SLAM.",
+    _as2 + [("Variante", "EDU Smart · U2"), ("Computing", "AI onboard potenziato")], "unitree.com/As2")
+MANIFEST["AS2-EDU-LASER"] = _entry("Unitree AS2 EDU Laser Smart (U3)", "AS2 EDU + Livox Mid-360 (eq. Go2 EDU Laser).",
+    "AS2 EDU Laser Smart (U3): LiDAR 3D Livox Mid-360 per mapping e navigazione autonoma.",
+    _as2 + [("Variante", "EDU Laser · U3"), ("LiDAR 3D", "Livox Mid-360")], "unitree.com/As2")
+MANIFEST["AS2-EDU-ULT"] = _entry("Unitree AS2 EDU Flagship (U4)", "AS2 EDU top perception (eq. Go2 EDU Ultimate).",
+    "AS2 EDU Flagship (U4): configurazione education top per research outdoor e perception ad alta densità.",
+    _as2 + [("Variante", "EDU Flagship · U4"), ("Percezione", "LiDAR high-density")], "unitree.com/As2")
+MANIFEST["AS2-X"] = _entry("Unitree AS2-X", "AS2 configurazione X — ponte tra entry e EDU.",
+    "AS2-X: configurazione intermedia della piattaforma AS2 per demo, POC e ispezione.",
+    _as2 + [("Piattaforma", "AS2-X")], "unitree.com/As2")
 
 # --- GO2W ---
 _go2w = [("Peso", "~18 kg"), ("Dimensioni", "70×43×50 cm"), ("Velocità", "0–2,5 m/s"),
