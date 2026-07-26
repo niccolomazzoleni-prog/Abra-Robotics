@@ -19,7 +19,16 @@ Non ricommittare preventivi nominativi (SACMI, Nexsoft, Marchesini, …) sulla r
 
 ## Offerte pronte (locale)
 
-- `offerta-h2-base-assistenza-6m.html` — H2 Base + assistenza 6 mesi
-- `offerta-marchesini-as2-go2-g1u2.html` — Marchesini (AS2 / Go2 / G1-U2)
+| File | Contenuto |
+|------|-----------|
+| `Preventivo-H2-Base-assistenza-6m.pdf` | H2 Base + assistenza 6 mesi · € 45.318,34 |
+| `Preventivo-Marchesini-AS2-Go2-G1U2.pdf` | Marchesini · AS2 / Go2 / G1-U2 |
+| HTML omonimi `.html` | Sorgenti editabili |
 
-Aprile con il server locale o direttamente dal filesystem, poi **Stampa / PDF**.
+Copia anche sul Desktop. Rigenera:
+
+```powershell
+python -m http.server 8765
+# altro terminale, dalla root repo:
+node offerte-ai/samples/_export-offers-pdf.mjs
+```
