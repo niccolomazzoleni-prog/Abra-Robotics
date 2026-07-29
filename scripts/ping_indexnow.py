@@ -21,7 +21,9 @@ URLS = [
     f"https://{HOST}/blog/unitree-as2-italia.html",
     f"https://{HOST}/blog/unitree-h2-italia.html",
     f"https://{HOST}/prodotti/unitree-as2-pro.html",
+    f"https://{HOST}/prodotti/unitree-as2-w.html",
     f"https://{HOST}/prodotti/unitree-h2.html",
+    f"https://{HOST}/prodotti/unitree-h2-d.html",
     f"https://{HOST}/prodotti/unitree-h2-plus.html",
 ]
 
