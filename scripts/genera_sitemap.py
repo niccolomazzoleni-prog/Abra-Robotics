@@ -30,9 +30,9 @@ EXCLUDE_FILES = {
     "read-this.html",
     # legacy redirect stubs (noindex) — keep out of sitemap
     "g1.html",
-    "h2.html",
     "r1.html",
     "software-en.html",
+    # h2.html is a live hub page (not a stub) — include in sitemap
 }
 
 EXCLUDE_DIRS = {
@@ -71,6 +71,8 @@ PRIORITY = {
     "lp-amr.html": 0.8,
     "lp-cobot.html": 0.8,
     "g1-d.html": 0.85,
+    "as2.html": 0.9,
+    "h2.html": 0.9,
     "lp-unitree.html": 0.9,
     "blog.html": 0.75,
     "unitree-italia-guida-completa.html": 0.9,
