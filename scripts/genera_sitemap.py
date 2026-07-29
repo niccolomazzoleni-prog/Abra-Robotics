@@ -22,11 +22,34 @@ EXCLUDE_FILES = {
     "index-zenixa.html",
     "restyle-preview.html",
     "grazie.html",
+    "grazie-en.html",
     "condizioni-di-vendita.html",
+    "condizioni-di-vendita-en.html",
     "checklist.html",
+    "checklist-en.html",
+    "read-this.html",
+    # legacy redirect stubs (noindex) — keep out of sitemap
+    "g1.html",
+    "h2.html",
+    "r1.html",
+    "software-en.html",
 }
 
-EXCLUDE_DIRS = {"admin", "node_modules", "__pycache__"}
+EXCLUDE_DIRS = {
+    "admin",
+    "node_modules",
+    "__pycache__",
+    "offerte-ai",
+    "fonts",
+    "lp-thank-you",
+    "lp-thank-you-en",
+    "listini",
+    "stripe",
+    "apps-script",
+}
+
+# Extra path substrings to drop (ads LC variants + thank-you)
+EXCLUDE_NAME_SUFFIXES = ("-lc.html", "-lc-en.html")
 
 PRIORITY = {
     "index.html": 1.0,
@@ -98,8 +121,13 @@ def collect_urls() -> list[tuple[str, str, str]]:
             continue
         if rel.name in EXCLUDE_FILES:
             continue
+        if any(rel.name.endswith(suf) for suf in EXCLUDE_NAME_SUFFIXES):
+            continue
         text = html.read_text(encoding="utf-8", errors="replace")
         if is_noindex(text):
+            continue
+        # skip meta-refresh redirect stubs
+        if re.search(r'http-equiv=["\']refresh["\']', text, re.I):
             continue
         loc = SITE + "/" + rel.as_posix().replace("index.html", "").rstrip("/")
         if loc.endswith("/") and not loc.endswith("://"):
