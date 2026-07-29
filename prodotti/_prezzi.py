@@ -22,7 +22,11 @@ PREZZI = {
   "unitree-go2-edu.html":            dict(cent=1215951, link="", stato="acquista"),# 12.159,51 €
   "unitree-go2-enterprise-u2.html":  dict(cent=0, link="", stato="preventivo"),# (vuoto)
   "unitree-go2-pro.html":            dict(cent=384157, link="", stato="acquista"),# 3.841,57 €
-  "unitree-h2.html":                 dict(cent=0, link="", stato="preventivo"),# Prezzo su richiesta
+  "unitree-h2.html":                 dict(cent=6370000, link="", stato="acquista"),# 63.700,00 €
+  "unitree-h2-air.html":             dict(cent=4500000, link="", stato="acquista"),# 45.000,00 €
+  "unitree-as2-w.html":              dict(cent=4290000, link="", stato="stimato", prov=True),# da 42.900 € stim.
+  "unitree-h2-d.html":               dict(cent=7990000, link="", stato="stimato", prov=True),# da 79.900 € stim.
+  "unitree-h2-plus.html":            dict(cent=14990000, link="", stato="stimato", prov=True),# da 149.900 € stim.
   "unitree-r1-edu.html":             dict(cent=3067284, link="", stato="acquista"),# 30.672,84 €
 }
 
