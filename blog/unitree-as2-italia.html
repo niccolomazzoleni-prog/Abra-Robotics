@@ -3,39 +3,142 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Unitree AS2 in Italia: modelli e prezzi | Abra Robotics</title>
-<meta name="description" content="Guida Unitree AS2 in Italia: Air, X, EDU U1–U4, Pro e AS2-W con prezzi End-User Abra Robotics. Differenze vs Go2 e A2."/>
+<title>Unitree AS2 in Italia: modelli, prezzi e ricerca 2026 | Abra</title>
+<meta name="description" content="Guida tecnica Unitree AS2 in Italia: Air, EDU, Pro, AS2-W con prezzi End-User. Contesto da paper arXiv su locomozione Go2/quadrupedi e criteri di scelta vs Go2 e A2."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/blog/unitree-as2-italia.html"/>
+<link href="https://abrarobotics.com/blog/unitree-as2-italia.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-as2-italia.html" hreflang="x-default" rel="alternate"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Unitree AS2 in Italia: modelli, prezzi e ricerca"/>
+<meta property="og:description" content="Serie AS2 con listino End-User e riferimenti arXiv su locomozione quadrupede e ispezione."/>
+<meta property="og:url" content="https://abrarobotics.com/blog/unitree-as2-italia.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/prodotti/unitree-as2-pro.png"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
 <link href="../style.css" rel="stylesheet"/>
 <link href="blog.css" rel="stylesheet"/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Unitree AS2 in Italia: modelli e prezzi","datePublished":"2026-07-29","dateModified":"2026-07-29","author":{"@type":"Organization","name":"Abra Robotics"},"mainEntityOfPage":"https://abrarobotics.com/blog/unitree-as2-italia.html"}
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree AS2 in Italia: modelli, prezzi e ricerca 2026",
+  "description": "Guida tecnica Unitree AS2 in Italia con prezzi End-User e riferimenti arXiv su locomozione quadrupede.",
+  "datePublished": "2026-07-29",
+  "dateModified": "2026-07-30",
+  "author": {"@type": "Organization", "name": "Abra Robotics", "url": "https://abrarobotics.com"},
+  "publisher": {"@type": "Organization", "name": "Abra Robotics", "logo": {"@type": "ImageObject", "url": "https://abrarobotics.com/images/logo-icon.png"}},
+  "mainEntityOfPage": "https://abrarobotics.com/blog/unitree-as2-italia.html",
+  "image": "https://abrarobotics.com/images/prodotti/unitree-as2-pro.png",
+  "inLanguage": "it",
+  "citation": [
+    "https://arxiv.org/abs/2606.03340",
+    "https://arxiv.org/abs/2503.21401",
+    "https://arxiv.org/abs/2602.00678",
+    "https://arxiv.org/abs/2510.13488",
+    "https://arxiv.org/abs/2606.14433"
+  ]
+}
 </script>
 </head>
 <body>
-<nav class="navbar"><div class="container navbar-inner"><a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a><a href="../as2.html">Hub AS2</a></div></nav>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a>
+<a href="../as2.html">Hub AS2</a>
+<a href="../blog.html">Blog</a>
+</div></nav>
+
 <article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Unitree AS2 Italia</nav>
+
+<figure class="article-cover">
+<img src="../images/prodotti/unitree-as2-pro.png" alt="Unitree AS2 Pro — quadrupede compatto IP54" loading="eager" onerror="this.src='../images/prodotti/as2-w.png'"/>
+</figure>
+
 <header class="article-header">
-<p class="label">Guida · Quadrupedi · 2026-07-29</p>
-<h1>Unitree AS2 in Italia: cosa possiamo fornirti oggi</h1>
-<div class="article-tldr"><strong>In sintesi:</strong> Abra Robotics lista pubblicamente la famiglia AS2 (X, Air, EDU U1–U4, Pro, AS2-W) con prezzi End-User. È un vantaggio competitivo rispetto a cataloghi che mostrano solo Go2.</div>
+<p class="label">Guida · Quadrupedi · Aggiornato 30 lug 2026</p>
+<h1>Unitree AS2 in Italia: cosa possiamo fornirti (e perché la ricerca parla ancora di Go2)</h1>
+<div class="article-meta"><time datetime="2026-07-30">30 luglio 2026</time><span>Abra Robotics · Portogruaro (VE)</span></div>
+<div class="article-tldr"><strong>In sintesi:</strong> Abra pubblica listino End-User sulla famiglia AS2 (X, Air, EDU U1–U4, Pro, AS2-W). La letteratura recente su locomozione, fault-tolerance e navigazione indoor è ancora prevalentemente validata su <em>Go2</em>: usiamo quei risultati come base metodologica per POC AS2, dove payload, IP54 e suite sensori salgono di livello rispetto al Go2 consumer.</div>
 </header>
+
 <div class="article-content">
-<p>La serie <strong>Unitree AS2</strong> si posiziona tra Go2 e A2/B2: payload tipico ~15 kg, IP54, velocità fino a ~5 m/s. Serve a demo, laboratori e ispezione/sorveglianza compatta.</p>
-<h2>Quali modelli AS2 sono disponibili?</h2>
+
+<p>Se stai valutando un quadrupede Unitree in Italia nel 2026, la domanda non è più solo “Go2 o A2?”. La serie <strong>AS2</strong> occupa lo spazio intermedio: piattaforma compatta con payload tipico ~15 kg in marcia, protezione IP54 sui componenti core e velocità fino a ~5 m/s — adatta a demo professionali, laboratori e ispezione/sorveglianza dove Go2 inizia a stare stretto e A2/B2 sarebbero overspec.</p>
+
+<p>Questa guida combina due piani: (1) <strong>offerta commerciale Abra</strong> con prezzi End-User IVA esclusa; (2) <strong>contesto scientifico</strong> da preprint arXiv recenti su locomozione e deployment di quadrupedi Unitree, perché le decisioni di POC non possono basarsi solo sulla brochure.</p>
+
+<h2>Perché citare paper su Go2 quando parliamo di AS2</h2>
+<p>AS2 è più recente come SKU commerciale esposto in listino pubblico. La comunità di ricerca (RL, sim-to-real, navigazione) continua a pubblicare massicciamente su <strong>Unitree Go2</strong> perché è lo standard de facto per dataset e benchmark. Tre esempi utili per chi compra AS2:</p>
 <ul>
-<li><a href="../prodotti/unitree-as2-x.html">AS2-X</a> — 13.240 €</li>
-<li><a href="../prodotti/unitree-as2-edu.html">AS2 EDU Standard U1</a> — 15.600 €</li>
-<li><a href="../prodotti/unitree-as2-air.html">AS2 Air</a> — 17.900 €</li>
-<li><a href="../prodotti/unitree-as2-edu-smart.html">AS2 EDU Smart U2</a> — 17.940 €</li>
-<li><a href="../prodotti/unitree-as2-edu-laser.html">AS2 EDU Laser U3</a> — 22.640 €</li>
-<li><a href="../prodotti/unitree-as2-edu-ult.html">AS2 EDU Flagship U4</a> — 24.990 €</li>
-<li><a href="../prodotti/unitree-as2-pro.html">AS2 Pro</a> — 29.900 € (LiDAR wide + dual camera)</li>
-<li><a href="../prodotti/unitree-as2-w.html">AS2-W</a> — wheeled, su preventivo</li>
+<li><a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">AcL (arXiv:2503.21401)</a> dimostra gait fault-tolerant su Go2 fisico con PPO in Isaac Gym — rilevante se il tuo caso d’uso prevede urti o joint fault in ispezione.</li>
+<li><a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">MoE + RoboGauge (arXiv:2602.00678)</a> affronta predittività sim-to-real e robustezza multi-terreno (neve, sabbia, scale) su Go2 — utile come checklist di acceptance test prima del go-live.</li>
+<li><a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">Navigazione libreria su Go2 EDU (arXiv:2606.03340)</a> integra RTAB-Map + Nav2 in ambienti indoor affollati con errori metrici ~3,7 cm — pattern trasferibile a AS2 EDU/Pro in corridoi e plant floor.</li>
 </ul>
-<p>Hub aggiornato: <a href="../as2.html">abrarobotics.com/as2.html</a>. Prezzi IVA esclusa, indicativi End-User.</p>
-<h2>AS2 vs Go2 vs A2</h2>
-<p>Go2 resta la porta d'ingresso education/consumer. AS2 alza percezione e uso professionale compatto. A2/B2 restano la scelta per payload e ruggedizzazione industriale superiore.</p>
-</div></div></article>
-</body></html>
+<p>In Abra usiamo questa letteratura per definire <em>cosa misurare</em> in un POC (tasso di successo percorso, recovery da fault, gap sim-to-real), non per promettere prestazioni identiche al paper: hardware, payload e firmware AS2 vanno validati sul tuo layout.</p>
+
+<h2>Modelli AS2 disponibili in Italia (listino End-User)</h2>
+<p>Hub aggiornato: <a href="../as2.html">abrarobotics.com/as2.html</a>. Prezzi indicativi IVA esclusa; alcuni SKU possono subire variazioni.</p>
+<table>
+<thead><tr><th>Modello</th><th>Ruolo tipico</th><th>Prezzo da</th></tr></thead>
+<tbody>
+<tr><td><a href="../prodotti/unitree-as2-x.html">AS2-X</a></td><td>Entry / ponte verso EDU</td><td>13.240 €</td></tr>
+<tr><td><a href="../prodotti/unitree-as2-edu.html">AS2 EDU Standard (U1)</a></td><td>Lab ROS 2 / SDK</td><td>15.600 €</td></tr>
+<tr><td><a href="../prodotti/unitree-as2-air.html">AS2 Air</a></td><td>Demo, POC, ispezione leggera</td><td>17.900 €</td></tr>
+<tr><td><a href="../prodotti/unitree-as2-edu-smart.html">AS2 EDU Smart (U2)</a></td><td>Education + computing</td><td>17.940 €</td></tr>
+<tr><td><a href="../prodotti/unitree-as2-edu-laser.html">AS2 EDU Laser (U3)</a></td><td>Mapping Mid360</td><td>22.640 €</td></tr>
+<tr><td><a href="../prodotti/unitree-as2-edu-ult.html">AS2 EDU Flagship (U4)</a></td><td>R&amp;D top EDU</td><td>24.990 €</td></tr>
+<tr><td><a href="../prodotti/unitree-as2-pro.html">AS2 Pro</a></td><td>Sorveglianza: LiDAR wide + dual camera</td><td>29.900 €</td></tr>
+<tr><td><a href="../prodotti/unitree-as2-w.html">AS2-W</a></td><td>Wheeled, superfici piane</td><td>da 42.900 €</td></tr>
+</tbody>
+</table>
+
+<h2>AS2 vs Go2 vs A2: criterio di scelta</h2>
+<ul>
+<li><strong>Go2</strong> — education, HRI entry, tanti paper e policy open-source (vedi anche <a href="https://arxiv.org/abs/2606.14433" rel="noopener noreferrer" target="_blank">Kine2Go</a>, dataset cinematico Go2). Ideale se il team deve riprodurre paper RL.</li>
+<li><strong>AS2</strong> — stesso “formato compatto” ma con più margine su payload/IP/percezione. Sceglilo per demo clienti, patrol indoor, POC ispezione dove serve LiDAR/camera più serie (Pro) senza passare a A2.</li>
+<li><strong>A2 / B2</strong> — payload e ruggedizzazione industriali (IP56/IP67). Overkill per un lab; giustificati su outdoor/plant harsh.</li>
+</ul>
+
+<h2>Cosa implica la ricerca per un POC AS2 in azienda</h2>
+<ol>
+<li><strong>Sim-to-real non è gratis.</strong> I lavori su Go2 mostrano che policy addestrate in Isaac/MuJoCo richiedono domain randomization e metriche di transfer (<a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">2602.00678</a>). Budgetta tempo di fine-tuning on-site.</li>
+<li><strong>Indoor dinamico ≠ mappa statica.</strong> Il caso libreria (<a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">2606.03340</a>) ricorda che persone e carrelli degradano il success rate: in plant usa percorsi e regole di precedenza.</li>
+<li><strong>Perturbazioni del suolo contano.</strong> Training su superfici oscillanti (<a href="https://arxiv.org/abs/2510.13488" rel="noopener noreferrer" target="_blank">2510.13488</a>) migliora robustezza — rilevante su passerelle e pavimenti vibranti.</li>
+<li><strong>Outdoor vegetato è un failure mode a parte.</strong> Dataset ForEnt su entrapment forestale (<a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">2606.19675</a>): se il tuo caso è sottobosco, non assumere che un gait “indoor paper” basti.</li>
+</ol>
+
+<h2>Stack software tipico che montiamo</h2>
+<ul>
+<li>Ubuntu + ROS 2 Humble su PC di sviluppo (modelli EDU)</li>
+<li><a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> e bridge DDS</li>
+<li>Simulazione Isaac Lab / MuJoCo prima del deploy (stesso approccio dei paper citati)</li>
+<li>Per ispezione: payload camera/termocamera + logging — vedi anche <a href="robot-quadrupede-ispezione-industriale.html">guida ispezione</a></li>
+</ul>
+<p>Formazione e lab: <a href="../universita-ricerca.html">Università e Ricerca</a>. Roundup paper: <a href="ricerca-unitree-arxiv.html">paper Unitree su arXiv</a>.</p>
+
+<h2>Prossimi passi con Abra</h2>
+<ol>
+<li>Apri l’<a href="../as2.html">hub AS2</a> e individua 1–2 SKU candidati</li>
+<li>Richiedi assessment: <a href="../assessment.html">trova il robot giusto</a></li>
+<li>Definisci metriche POC ispirate ai paper (success rate percorso, recovery, ore autonomy)</li>
+</ol>
+</div>
+
+<section class="article-references" id="riferimenti">
+<h2>Riferimenti (arXiv e risorse)</h2>
+<ol>
+<li>Li et al., <em>Autonomous Navigation System for Library Service Robot Based on Unitree Go2 Edu</em>, arXiv:2606.03340 — <a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2606.03340</a></li>
+<li>AcL team, <em>Action Learner for Fault-Tolerant Quadruped Locomotion</em>, arXiv:2503.21401 — <a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2503.21401</a></li>
+<li><em>Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion</em>, arXiv:2602.00678 — <a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2602.00678</a></li>
+<li>Stasica et al., <em>Bridge the Gap: Enhancing Quadruped Locomotion with Vertical Ground Perturbations</em>, arXiv:2510.13488 — <a href="https://arxiv.org/abs/2510.13488" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2510.13488</a></li>
+<li>Pałucki et al., <em>Kine2Go: Kinematic dataset for Unitree Go2</em>, arXiv:2606.14433 — <a href="https://arxiv.org/abs/2606.14433" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2606.14433</a></li>
+<li>Kirdwichai &amp; Tarapore, <em>ForEnt</em>, arXiv:2606.19675 — <a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2606.19675</a></li>
+</ol>
+<p>Nota: i paper validano soprattutto Go2. Le conclusioni operative per AS2 vanno rieseguite sul tuo hardware e layout.</p>
+</section>
+
+<p style="margin:2rem 0 3rem;font-size:0.9rem;"><a href="../as2.html">← Hub AS2</a> · <a href="unitree-h2-italia.html">Guida H2 →</a> · <a href="../listino-unitree.html">Listino</a></p>
+</div></article>
+</body>
+</html>

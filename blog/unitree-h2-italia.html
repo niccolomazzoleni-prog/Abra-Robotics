@@ -3,35 +3,136 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Unitree H2 in Italia: Air, H2-D, Plus | Abra Robotics</title>
-<meta name="description" content="Unitree H2 full-size in Italia: Air 45.000 €, H2 63.700 €, H2-D e H2 Plus Isaac GR00T. Confronto vs G1 — Abra Robotics."/>
+<title>Unitree H2 in Italia: Air, H2-D, Plus e ricerca | Abra</title>
+<meta name="description" content="Unitree H2 full-size in Italia: prezzi Air/H2, H2-D, H2 Plus. Contesto da paper arXiv su G1 (teleop, power, GR00T) e roadmap Isaac GR00T — Abra Robotics."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/blog/unitree-h2-italia.html"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-italia.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-italia.html" hreflang="x-default" rel="alternate"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Unitree H2 in Italia: Air, H2-D, Plus e ricerca"/>
+<meta property="og:url" content="https://abrarobotics.com/blog/unitree-h2-italia.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/prodotti/h2-edu.png"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
 <link href="../style.css" rel="stylesheet"/>
 <link href="blog.css" rel="stylesheet"/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Unitree H2 in Italia","datePublished":"2026-07-29","dateModified":"2026-07-29","author":{"@type":"Organization","name":"Abra Robotics"},"mainEntityOfPage":"https://abrarobotics.com/blog/unitree-h2-italia.html"}
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree H2 in Italia: Air, H2-D, Plus e ricerca",
+  "description": "Guida H2 full-size con prezzi End-User e riferimenti arXiv / NVIDIA GR00T.",
+  "datePublished": "2026-07-29",
+  "dateModified": "2026-07-30",
+  "author": {"@type": "Organization", "name": "Abra Robotics", "url": "https://abrarobotics.com"},
+  "publisher": {"@type": "Organization", "name": "Abra Robotics", "logo": {"@type": "ImageObject", "url": "https://abrarobotics.com/images/logo-icon.png"}},
+  "mainEntityOfPage": "https://abrarobotics.com/blog/unitree-h2-italia.html",
+  "image": "https://abrarobotics.com/images/prodotti/h2-edu.png",
+  "inLanguage": "it",
+  "citation": [
+    "https://arxiv.org/abs/2606.15915",
+    "https://arxiv.org/abs/2605.12347",
+    "https://arxiv.org/abs/2512.01358",
+    "https://arxiv.org/abs/2607.19903",
+    "https://arxiv.org/abs/2605.01477"
+  ]
+}
 </script>
 </head>
 <body>
-<nav class="navbar"><div class="container navbar-inner"><a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a><a href="../h2.html">Hub H2</a></div></nav>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.png"/></a>
+<a href="../h2.html">Hub H2</a>
+<a href="../blog.html">Blog</a>
+</div></nav>
+
 <article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Unitree H2 Italia</nav>
+
+<figure class="article-cover">
+<img src="../images/prodotti/h2-edu.png" alt="Unitree H2 EDU — umanoide full-size" loading="eager"/>
+</figure>
+
 <header class="article-header">
-<p class="label">Guida · Umanoidi · 2026-07-29</p>
-<h1>Unitree H2 in Italia: Air, H2, H2-D e H2 Plus</h1>
-<div class="article-tldr"><strong>In sintesi:</strong> H2 è l'umanoide Unitree a scala umana (~180 cm). Abra pubblica prezzi Air/H2 e schede H2-D / H2 Plus — non solo G1.</div>
+<p class="label">Guida · Umanoidi · Aggiornato 30 lug 2026</p>
+<h1>Unitree H2 in Italia: Air, H2, H2-D, H2 Plus — e cosa dicono i paper sul G1</h1>
+<div class="article-meta"><time datetime="2026-07-30">30 luglio 2026</time><span>Abra Robotics · Portogruaro (VE)</span></div>
+<div class="article-tldr"><strong>In sintesi:</strong> H2 è l’umanoide Unitree a scala umana (~180 cm, 31 DoF). Abra pubblica prezzi Air/H2 e schede H2-D / H2 Plus. La ricerca open (teleop, power modeling, GR00T, motion tracking) è ancora concentrata sul <em>G1</em>: la usiamo come base per dimensionare stack e rischi di un POC H2 full-size.</div>
 </header>
+
 <div class="article-content">
-<p><strong>Unitree H2</strong> è pensato per HRI e ricerca full-size: ~180 cm, 31 DoF, coppia elevata alle gambe. Non sostituisce il G1 compatto: lo completa verso scenari human-scale.</p>
-<h2>Linee prodotto</h2>
-<ul>
-<li><a href="../prodotti/unitree-h2-air.html">H2 Air</a> — 45.000 €</li>
-<li><a href="../prodotti/unitree-h2.html">H2</a> — 63.700 €</li>
-<li><a href="../prodotti/unitree-h2-d.html">H2-D</a> — dual-arm, preventivo</li>
-<li><a href="../prodotti/unitree-h2-plus.html">H2 Plus</a> — AGX Thor + Isaac GR00T, preordine fine 2026</li>
-</ul>
-<p>Hub: <a href="../h2.html">abrarobotics.com/h2.html</a>.</p>
+
+<p><strong>Unitree H2</strong> non è “un G1 più alto”. Cambia il contratto con l’ambiente: presenza human-scale, coppia elevata alle gambe (fino a ~360 N·m tipici di piattaforma), HRI e scenari dove un robot da ~130 cm non basta. In Italia pochi cataloghi espongono Air, H2, H2-D e H2 Plus insieme a prezzi End-User — è il motivo per cui abbiamo un <a href="../h2.html">hub dedicato</a>.</p>
+
+<h2>Linee prodotto e prezzi (IVA esclusa)</h2>
+<table>
+<thead><tr><th>Linea</th><th>Profilo</th><th>Prezzo</th></tr></thead>
+<tbody>
+<tr><td><a href="../prodotti/unitree-h2-air.html">H2 Air</a></td><td>Entry full-size</td><td>45.000 €</td></tr>
+<tr><td><a href="../prodotti/unitree-h2.html">H2</a></td><td>Ricerca / EDU, computing espandibile</td><td>63.700 €</td></tr>
+<tr><td><a href="../prodotti/unitree-h2-d.html">H2-D</a></td><td>Dual-arm / deployment cella</td><td>da 79.900 €</td></tr>
+<tr><td><a href="../prodotti/unitree-h2-plus.html">H2 Plus</a></td><td>AGX Thor + Isaac GR00T (preordine ~fine 2026)</td><td>da 149.900 €</td></tr>
+</tbody>
+</table>
+<p>I prezzi di H2-D e H2 Plus possono subire variazioni; conferma sempre su preventivo.</p>
+
+<h2>Cosa impara un buyer dalla letteratura sul G1</h2>
+<p>I preprint 2025–2026 su umanoidi Unitree parlano soprattutto di <strong>G1</strong>. Non è un limite: le lezioni su energia, teleoperazione e foundation model si trasferiscono al modo in cui progetti un POC H2.</p>
+
+<h3>1. Energia e pianificazione del moto</h3>
+<p><a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">Deniz et al. (arXiv:2606.15915)</a> identificano un modello di potenza elettrica sul braccio 7-DoF del G1 con R² ≈ 0,93–0,96. Traduzione pratica: se il tuo caso H2 prevede manipolazione ripetuta, budgetta thermal/battery management e non solo “autonomie da brochure”.</p>
+
+<h3>2. Teleoperazione whole-body</h3>
+<p><a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">Durrani &amp; Khan (arXiv:2605.12347)</a> mostrano teleop IMU → G1 con pipeline sim2sim/sim2real in MuJoCo. Per H2, la stessa disciplina (retargeting cinematico, latenza, safety harness) resta il punto di partenza di qualsiasi demo HRI.</p>
+
+<h3>3. Foundation model e cross-embodiment</h3>
+<p><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Park et al. (arXiv:2512.01358)</a> fine-tunano policy foundation su GR1 e G1 con modalità contatto/depth, portando success rate da ~48% a ~94% su un task pick. È il contesto in cui ha senso la roadmap <strong>H2 Plus + Isaac GR00T</strong>: non magia out-of-the-box, ma piattaforma per post-training su dati tuoi.</p>
+<p>Documentazione NVIDIA: <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">Isaac GR00T</a> e benchmark loco-manipulation su G1.</p>
+
+<h3>4. Motion tracking generalista</h3>
+<p><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">Amadio &amp; Hoffman (arXiv:2607.19903)</a> studiano empiricamente cosa conta nel whole-body motion tracking su G1 (YAHMP). Utile per chi valuta H2 in ricerca HRI/entertainment: molti fallimenti non sono “hardware”, sono scelte di rappresentazione comando/azione.</p>
+
+<h3>5. Navigazione language-guided</h3>
+<p><a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">Action Agent (arXiv:2605.01477)</a> combina generazione video e comandi velocità su G1 reale (~65% task completion indoor). Segnale: i POC “segui istruzioni in linguaggio naturale” richiedono stack pesante e acceptance criteria chiari.</p>
+
 <h2>H2 o G1?</h2>
-<p>Scegli <strong>G1</strong> per demo, molti lab e budget più contenuti. Scegli <strong>H2</strong> quando serve presenza a scala umana, locomozione full-size o roadmap H2 Plus. Assessment: <a href="../assessment.html">assessment.html</a>.</p>
-</div></div></article>
-</body></html>
+<table>
+<thead><tr><th></th><th>G1</th><th>H2</th></tr></thead>
+<tbody>
+<tr><td>Scala</td><td>~127 cm</td><td>~180 cm</td></tr>
+<tr><td>Ecosistema paper / policy</td><td>Molto ricco</td><td>In crescita; Plus → GR00T</td></tr>
+<tr><td>Budget tipico</td><td>Da ~23–24k € (Air)</td><td>Da 45k € (Air)</td></tr>
+<tr><td>Quando sceglierlo</td><td>Demo, molti lab, loco-manipulation paper-driven</td><td>HRI human-scale, presenza, roadmap full-size</td></tr>
+</tbody>
+</table>
+<p>Albero decisionale più ampio: <a href="confronto-umanoidi-2026.html">quale umanoide nel 2026</a>. Assessment: <a href="../assessment.html">assessment.html</a>.</p>
+
+<h2>H2 Plus e Isaac GR00T: aspettative realistiche</h2>
+<p>H2 Plus (Jetson AGX Thor, mani Sharpa Wave, stack Isaac GR00T) è in preordine con disponibilità prevista fine 2026. I risultati GR00T pubblicati oggi sono tipicamente su <strong>G1 / altre embodiment</strong> dopo fine-tuning. In preventivo Abra distinguiamo sempre: (a) piattaforma hardware; (b) dataset e post-training; (c) safety e cella — tre voci di costo diverse.</p>
+
+<h2>Come avviare un POC H2 con Abra</h2>
+<ol>
+<li>Definisci se ti serve locomozione full-size o solo manipolazione (in quel caso valuta anche <a href="../g1-d.html">G1-D</a> / H2-D)</li>
+<li>Allinea stack software (ROS 2, teleop, eventuale GR00T) con il lab — vedi <a href="ros2-unitree-guida-rapida.html">ROS2 Unitree</a></li>
+<li>Fissa metriche ispirate ai paper: success rate task, potenza media, latenza teleop, recovery da push</li>
+<li>Richiedi preventivo su <a href="../h2.html">hub H2</a></li>
+</ol>
+</div>
+
+<section class="article-references" id="riferimenti">
+<h2>Riferimenti</h2>
+<ol>
+<li>Deniz et al., <em>Power consumption model for Unitree G1 arm</em>, arXiv:2606.15915 — <a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Durrani &amp; Khan, <em>Whole-body teleoperation Unitree G1</em>, arXiv:2605.12347 — <a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Park et al., <em>Modality-Augmented Fine-Tuning … GR1 and G1</em>, arXiv:2512.01358 — <a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Amadio &amp; Hoffman, <em>What Matters in Humanoid General Motion Tracking?</em>, arXiv:2607.19903 — <a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Sam et al., <em>Action Agent</em>, arXiv:2605.01477 — <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>NVIDIA, <em>Isaac GR00T</em> — <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">developer.nvidia.com/isaac/gr00t</a></li>
+</ol>
+</section>
+
+<p style="margin:2rem 0 3rem;font-size:0.9rem;"><a href="../h2.html">← Hub H2</a> · <a href="unitree-as2-italia.html">Guida AS2 →</a> · <a href="ricerca-unitree-arxiv.html">Paper arXiv</a></p>
+</div></article>
+</body>
+</html>
