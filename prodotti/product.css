@@ -684,6 +684,9 @@
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .included-strip { grid-template-columns: repeat(3, 1fr); }
+      /* Meta' schermo: evita gallery+testo schiacciati in due colonne strette */
+      .product-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery { position: static; }
     }
 
     @media (max-width: 768px) {

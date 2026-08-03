@@ -132,12 +132,15 @@ h3 {
 .logo-img {
   height: 128px;
   width: auto;
-  max-width: 100%; /* .logo puo' essere ristretto dal flex-shrink della navbar: senza questo l'immagine trabocca invece di rimpicciolirsi */
+  max-width: none; /* non schiacciare il logo quando la navbar e' stretta */
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
   gap: 36px;
+  flex-shrink: 0;
 }
 
 .nav-links a {
@@ -1567,6 +1570,44 @@ select:focus-visible,
   }
 }
 
+/* Meta' schermo / tablet landscape: menu hamburger prima che logo+nav si comprimano */
+@media (max-width: 1100px) {
+  .container {
+    padding: 0 28px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar .btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .logo {
+    flex-shrink: 0;
+    min-width: auto;
+  }
+
+  .logo-img {
+    height: 72px;
+    max-width: none;
+  }
+
+  .navbar-inner {
+    height: 64px;
+    gap: 12px;
+  }
+
+  .mobile-menu {
+    top: 104px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 20px;
@@ -2498,10 +2539,10 @@ body::before {
 .vert-hero-photo { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: var(--radius); min-height: 300px; border: 1px solid var(--gray-200); }
 @media (max-width: 860px) { .vert-hero-split { grid-template-columns: 1fr; gap: 28px; } .vert-hero-photo { aspect-ratio: 16 / 9; min-height: 0; } }
 
-/* ── Fix overflow header mobile (tutte le pagine): logo invariato, piu' spazio ── */
-html, body { overflow-x: clip; }            /* niente scroll laterale; clip non rompe le position:sticky */
+/* ── Fix overflow header: niente scroll laterale, logo non compresso ── */
+html, body { overflow-x: clip; }            /* clip non rompe le position:sticky */
 .navbar-inner { gap: 16px; min-width: 0; }
-.logo { flex-shrink: 1; min-width: 0; }
+.logo { flex-shrink: 0; min-width: auto; }
 .menu-toggle { flex-shrink: 0; }
 @media (max-width: 768px) {
   /* il container mangiava 48px/lato: su mobile e' troppo e fa sforare la navbar */
