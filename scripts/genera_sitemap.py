@@ -86,10 +86,19 @@ CHANGEFREQ = {
 
 
 def is_noindex(text: str) -> bool:
-    m = re.search(r'<meta\s+name="robots"\s+content="([^"]+)"', text, re.I)
+    # support both attribute orders: name=… content=… OR content=… name=…
+    m = re.search(
+        r'<meta\s+[^>]*name=["\']robots["\'][^>]*>',
+        text,
+        re.I,
+    )
     if not m:
         return False
-    return "noindex" in m.group(1).lower()
+    tag = m.group(0)
+    cm = re.search(r'content=["\']([^"\']+)["\']', tag, re.I)
+    if not cm:
+        return False
+    return "noindex" in cm.group(1).lower()
 
 
 def priority_for(path: Path) -> str:
