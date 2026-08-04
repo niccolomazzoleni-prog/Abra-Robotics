@@ -62,7 +62,15 @@ window._formLoadTime = Date.now();
     desktop: base + 'hero-bg-desktop.mp4',
   };
   const mql = window.matchMedia('(max-width: 768px)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
+
   function apply() {
+    if (reduceMotion || saveData) {
+      video.removeAttribute('autoplay');
+      video.pause();
+      return;
+    }
     const src = mql.matches ? sources.mobile : sources.desktop;
     if (video.dataset.activeSrc === src) return;
     video.dataset.activeSrc = src;
@@ -73,9 +81,19 @@ window._formLoadTime = Date.now();
     video.appendChild(source);
     video.load();
     const playPromise = video.play();
-    if (playPromise && playPromise.catch) playPromise.catch(() => {});
+    if (playPromise && playPromise.catch) playPromise.catch(function () {});
   }
-  apply();
+
+  // Non competere con FCP/LCP: carica il video dopo il first paint.
+  function schedule() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(apply, { timeout: 2000 });
+    } else {
+      setTimeout(apply, 1);
+    }
+  }
+  if (document.readyState === 'complete') schedule();
+  else window.addEventListener('load', schedule, { once: true });
   mql.addEventListener('change', apply);
 })();
 
