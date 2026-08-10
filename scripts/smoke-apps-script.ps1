@@ -109,18 +109,21 @@ try {
 
 Write-Host "`n=== Results: $Passed passed, $Failed failed ===`n"
 
-Write-Host "=== Secondary deploy (parallel) ===`n"
+Write-Host "=== Secondary deploy (parallel, optional) ===`n"
 try {
   $sec = Invoke-WebRequest -Uri $BaseSecondary -UseBasicParsing -TimeoutSec 20
-  if ($sec.Content -match 'attivo') {
+  $secBody = ($sec.Content | Out-String).Trim()
+  if ($secBody -match 'attivo') {
     Write-Host "[PASS] GET root secondary" -ForegroundColor Green
-  } elseif ($sec.Content -match 'Sign in|Accedi|accounts\.google') {
-    Write-Host "[WARN] Secondary richiede login Google — imposta Chiunque sul deploy Abra_Deployment" -ForegroundColor Yellow
+  } elseif ($secBody -match 'Sign in|Accedi|accounts\.google') {
+    Write-Host "[WARN] Secondary richiede login Google - imposta Chiunque sul deploy" -ForegroundColor Yellow
   } else {
     Write-Host "[FAIL] GET root secondary" -ForegroundColor Red
+    Write-Host "       $secBody"
   }
 } catch {
-  Write-Host "[FAIL] GET root secondary — $($_.Exception.Message)" -ForegroundColor Red
+  Write-Host "[FAIL] GET root secondary - $($_.Exception.Message)" -ForegroundColor Red
 }
 
+Write-Host "Nota: secondary e' disabilitato in script.js finche' POST non torna ok." -ForegroundColor Yellow
 if ($Failed -gt 0) { exit 1 }
