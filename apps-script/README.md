@@ -5,6 +5,28 @@ prodotto) inviano allo **stesso endpoint**. L'endpoint è un Web App Google Apps
 1. scrive una riga nel Google Sheet "Contatti";
 2. invia un'email di notifica a ogni nuovo contatto (l'automazione).
 
+## EMERGENCY — Code.gs svuotato (ago 2026)
+
+Se in [project history](https://script.google.com/home/projects/1AT0Y4vgFTdrGbKRcnhNzojBDXWVQBN6ySmYt-mZSb7rZvT3Y1iJWO2lw/projecthistory?hl=it)
+la versione corrente mostra solo:
+
+```js
+function myFunction() {}
+```
+
+lo script in **editor è brasato**. I deploy vecchi possono ancora rispondere, ma non puoi più
+aggiornare le mail/`NOTIFY_TO` finché non ripristini.
+
+### Fix in 3 minuti (account gio@)
+
+1. Apri il progetto Apps Script → file **Codice.gs**
+2. Cancella tutto e incolla il contenuto di `apps-script/Code.gs` (locale, gitignored)
+3. Verifica `NOTIFY_TO` = `gio@abrarobotics.com,nico@abrarobotics.com,niccolomazzoleni@gmail.com`
+4. **Deploy → Gestisci distribuzioni → matita → Nuova versione → Distribuisci**
+   (accesso **Chiunque**, esegui come **Me stesso**)
+5. Test: `powershell -File scripts/watchdog-forms.ps1`
+6. Invia un form dal sito e controlla inbox `gio@` + `nico@`
+
 ## Setup (una volta)
 
 ### Foglio Google (produzione)

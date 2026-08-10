@@ -1,8 +1,10 @@
 // === Endpoint form (primario + secondario in parallelo) ===
 // Primario — deployment live al 12 luglio 2026 (funzionante, foglio Niccolò 1nXl0…).
 window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec';
-// Secondario — nuovo deploy Abra_Deployment (Code.gs aggiornato + foglio 15zvBH…); attivo quando pubblico.
-window.GOOGLE_SCRIPT_URL_SECONDARY = 'https://script.google.com/macros/s/AKfycbxPPfh3qZRF0GwnKJicY5rcgdMSRoW_liBenRQValdCPSCM2MrZR_Y6fwrAZOHgCrDW/exec';
+// Secondario — DISABILITATO (2026-08-10): POST fallisce con "autorizzazione documento".
+// Redeploy Code.gs + condividi foglio 15zvBH… con gio@, poi ripristina l'URL sotto.
+// window.GOOGLE_SCRIPT_URL_SECONDARY = 'https://script.google.com/macros/s/AKfycbxPPfh3qZRF0GwnKJicY5rcgdMSRoW_liBenRQValdCPSCM2MrZR_Y6fwrAZOHgCrDW/exec';
+window.GOOGLE_SCRIPT_URL_SECONDARY = '';
 const GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL;
 
 function getGoogleScriptLeadEndpoints() {
