@@ -254,7 +254,7 @@ def main() -> None:
     quad_items = [
         ("Unitree Go2 Pro", "https://abrarobotics.com/prodotti/unitree-go2-pro.html"),
         ("Unitree Go2 EDU", "https://abrarobotics.com/prodotti/unitree-go2-edu.html"),
-        ("Unitree Go2 EDU+", "https://abrarobotics.com/prodotti/unitree-go2-edu-plus.html"),
+        ("Unitree Go2 EDU+", "https://abrarobotics.com/prodotti/unitree-go2-edu-smart.html"),
         ("Unitree Go2 Enterprise", "https://abrarobotics.com/prodotti/unitree-go2-enterprise-u2.html"),
         ("Unitree A2", "https://abrarobotics.com/prodotti/unitree-a2.html"),
         ("Unitree A2 Pro", "https://abrarobotics.com/prodotti/unitree-a2-pro.html"),
