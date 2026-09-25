@@ -42,6 +42,8 @@ def rows_from_end_user() -> list[dict]:
             "sku": sku,
             "nome_prodotto": v.get("nome", sku),
             "prezzo_enduser_eur": str(v.get("prezzo_eur", "")).replace(".", ","),
+            # prezzo di listino (MAP) se il prezzo pubblicato e' scontato
+            "prezzo_listino_eur": str(v.get("prezzo_listino_eur", "")).replace(".", ","),
             "pubblicabile": "true",
             "categoria": v.get("categoria", ""),
             "pagina_sito": f"prodotti/{v.get('slug', slug_file(sku))}",
