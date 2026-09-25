@@ -23,7 +23,7 @@ PRICES = {
     "unitree-r1-edu.html": 30672.84,
     "unitree-go2-pro.html": 3841.57,
     "unitree-go2-edu.html": 12159.51,
-    "unitree-go2-edu-plus.html": 14677.56,
+    "unitree-go2-edu-smart.html": 14677.56,
     "unitree-go2-enterprise-u2.html": None,   # da confermare, bianco
     "unitree-a2.html": 29116.06,
     "unitree-a2-pro.html": 39589.50,

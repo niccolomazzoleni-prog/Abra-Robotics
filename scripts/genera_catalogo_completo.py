@@ -35,7 +35,7 @@ SKIP_OVERWRITE = {
     "unitree-g1-edu-ultimate-c.html", "unitree-g1-edu-ultimate-d.html",
     "unitree-g1-edu-ultimate-e.html", "unitree-g1-edu-ultimate-f.html",
     "unitree-g1-comp.html", "unitree-r1-edu.html", "unitree-go2-pro.html",
-    "unitree-go2-edu.html", "unitree-go2-edu-plus.html", "unitree-go2-enterprise-u2.html",
+    "unitree-go2-edu.html", "unitree-go2-edu-smart.html", "unitree-go2-enterprise-u2.html",
     "unitree-a2.html", "unitree-a2-pro.html", "unitree-b2.html", "unitree-h2.html",
 }
 
@@ -103,8 +103,11 @@ FILENAME_MAP: dict[str, str] = {
     "R1-U1": "unitree-r1-edu.html",
     "GO2-PRO": "unitree-go2-pro.html",
     "GO2-EDU-STD": "unitree-go2-edu.html",
-    "GO2-EDU-SMART": "unitree-go2-edu-plus.html",
-    "GO2-EDU-LASER": "unitree-go2-edu-laser.html",
+    # GO2-EDU-SMART ha la sua pagina (ex unitree-go2-edu-plus.html, contenuto Smart);
+    # "Go2 Edu Plus" del listino = versione Laser/Mid-360 -> unitree-go2-edu-plus.html.
+    # unitree-go2-edu-laser.html resta come redirect verso unitree-go2-edu-plus.html.
+    "GO2-EDU-SMART": "unitree-go2-edu-smart.html",
+    "GO2-EDU-LASER": "unitree-go2-edu-plus.html",
     "GO2-EDU-ULT": "unitree-go2-enterprise-u2.html",
     "AS2-AIR": "unitree-as2-air.html",
     "AS2-PRO": "unitree-as2-pro.html",
@@ -168,6 +171,38 @@ def parse_price(raw: str) -> float | None:
     if not raw or raw in ("—", "-"):
         return None
     return float(raw.replace(",", "."))
+
+
+# Go2 / Go2-W superati da AS2 / AS2-W: SKU Go2 -> SKU AS2 equivalente (accessori Go2 esclusi)
+GO2_SUCCESSOR: dict[str, str] = {
+    "GO2-AIR": "AS2-AIR", "GO2-PRO": "AS2-PRO", "GO2-X": "AS2-X",
+    "GO2-EDU-STD": "AS2-EDU", "GO2-EDU-SMART": "AS2-EDU-SMART",
+    "GO2-EDU-LASER": "AS2-EDU-LASER", "GO2-EDU-ULT": "AS2-EDU-ULT",
+    # bundle industriali basati su Go2 Edu Zero -> AS2 EDU Standard
+    "GO2-SCREEN-DC": "AS2-EDU", "GO2-SCREEN-DC-3IN1": "AS2-EDU", "GO2-SCREEN-DC-GIMBAL": "AS2-EDU", "GO2-GAS": "AS2-EDU",
+    "GO2W-STD": "AS2W-EDU-STD", "GO2W-U2": "AS2W-EDU-SMART", "GO2W-U3": "AS2W-EDU-PLUS",
+    "GO2W-U4": "AS2W-EDU-ULT", "GO2W-U5": "AS2W-EDU-ULT",
+    "GO2W-SCREEN-3IN1": "AS2W-EDU-STD", "GO2W-SCREEN-GIMBAL": "AS2W-EDU-STD",
+}
+
+
+def successor_notice(sku: str, manifest: dict, href_prefix: str = "") -> str:
+    """Avviso 'Go2 superato da AS2' con link alla pagina AS2 di pari livello ('' se non applicabile)."""
+    target = GO2_SUCCESSOR.get(sku)
+    if not target:
+        return ""
+    t_entry = manifest.get(target, {})
+    t_name = t_entry.get("titolo") or f"Unitree {target}"
+    t_file = FILENAME_MAP.get(target) or t_entry.get("slug") or slug_file(target)
+    wheeled = sku.startswith("GO2W")
+    old, new = ("Go2-W", "AS2-W") if wheeled else ("Go2", "AS2")
+    return (
+        '          <div class="successor-notice" role="note">\n'
+        f'            <p>La piattaforma {old} è superata: Unitree l\'ha sostituita con l\'{new}, con più capacità di calcolo '
+        f'a bordo e pensato per l\'uso continuativo. Ti consigliamo l\'{new} equivalente:</p>\n'
+        f'            <a class="successor-link" href="{href_prefix}{t_file}">{t_name} →</a>\n'
+        '          </div>\n'
+    )
 
 
 def discount_parts(price: float | None, listino: float | None) -> tuple[str, str]:
@@ -350,7 +385,7 @@ def generate_page(row: dict, manifest: dict) -> str | None:
             f"        </div>"
         ),
         "%%EXTRA_SECTIONS%%": extra_sections(entry),
-        "%%BUY_AREA%%": buy_area(
+        "%%BUY_AREA%%": successor_notice(sku, manifest) + buy_area(
             price if pub else None, pub and price is not None, sku, parse_price(row.get("prezzo_listino_eur", ""))
         ),
         "%%PRODUCT_SCHEMA%%": product_schema(
