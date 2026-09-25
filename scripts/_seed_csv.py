@@ -25,7 +25,7 @@ PAGE_MAP = {
     "GO2-AIR": ("", "mancante"),
     "GO2-PRO": ("prodotti/unitree-go2-pro.html", "pubblicato"),
     "GO2-EDU-STD": ("prodotti/unitree-go2-edu.html", "pubblicato"),
-    "GO2-EDU-SMART": ("prodotti/unitree-go2-edu-plus.html", "pubblicato"),
+    "GO2-EDU-SMART": ("prodotti/unitree-go2-edu-smart.html", "pubblicato"),
     "GO2-EDU-ULT": ("prodotti/unitree-go2-enterprise-u2.html", "pubblicato"),
     "A2-STD": ("prodotti/unitree-a2.html", "pubblicato"),
     "A2-PRO": ("prodotti/unitree-a2-pro.html", "pubblicato"),

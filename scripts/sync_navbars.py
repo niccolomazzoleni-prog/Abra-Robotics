@@ -30,7 +30,7 @@ STATIC_PAGES = [
 
 HAND_BUILT_PRODUCTS = [
     "prodotti/unitree-g1.html",
-    "prodotti/unitree-go2-edu-plus.html",
+    "prodotti/unitree-go2-edu-smart.html",
     "prodotti/unitree-h2.html",
     "prodotti/unitree-r1-edu.html",
 ]

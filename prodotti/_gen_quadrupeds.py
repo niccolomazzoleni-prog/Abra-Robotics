@@ -14,7 +14,7 @@ LINEUP = ["go2-pro", "go2-edu", "go2-edu-plus", "go2-ent-u2", "a2", "a2-pro", "b
 COMPACT = {
  "go2-pro":     dict(file="unitree-go2-pro.html",          short="Go2 Pro",        tag="Consumer / base",        payload="10 kg", speed="1,7 m/s", computing="8-core CPU",        lidar="3D L1",       ip="—",    warranty="12 mesi"),
  "go2-edu":     dict(file="unitree-go2-edu.html",          short="Go2 EDU",        tag="Education · 40 TOPS",    payload="12 kg", speed="2 m/s",   computing="Orin Nano 40 TOPS", lidar="4D L2",       ip="—",    warranty="12 mesi"),
- "go2-edu-plus":dict(file="unitree-go2-edu-plus.html",     short="Go2 EDU+",       tag="Education · 100 TOPS",   payload="12 kg", speed="2 m/s",   computing="Orin NX 100 TOPS",  lidar="4D L2",       ip="—",    warranty="12 mesi"),
+ "go2-edu-plus":dict(file="unitree-go2-edu-smart.html",     short="Go2 EDU+",       tag="Education · 100 TOPS",   payload="12 kg", speed="2 m/s",   computing="Orin NX 100 TOPS",  lidar="4D L2",       ip="—",    warranty="12 mesi"),
  "go2-ent-u2":  dict(file="unitree-go2-enterprise-u2.html",short="Go2 Ent+ U2",    tag="Enterprise · sorveglianza",payload="10 kg",speed="1,7 m/s", computing="8-core CPU",        lidar="L1",          ip="—",    warranty="12 mesi"),
  "a2":          dict(file="unitree-a2.html",               short="A2",             tag="Industriale · IP56",     payload="25 kg", speed="~5 m/s",  computing="8-core + Intel i7", lidar="Industriale", ip="IP56", warranty="12 mesi"),
  "a2-pro":      dict(file="unitree-a2-pro.html",           short="A2 Pro",         tag="Field autonomy · IP67",  payload="25 kg", speed="~5 m/s",  computing="Tri-processore i7", lidar="Dual ind.",   ip="IP67", warranty="12 mesi"),
