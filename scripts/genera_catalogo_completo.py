@@ -117,6 +117,10 @@ FILENAME_MAP: dict[str, str] = {
     "A2-PRO": "unitree-a2-pro.html",
     "B2": "unitree-b2.html",
     "B2-LIDAR": "unitree-b2-lidar.html",
+    # Pagine esistenti "prezzo su richiesta" prezzate con il MAP del listino 2026
+    "D1T-STD": "unitree-d1-t-standard.html",
+    "D1T-FULL": "unitree-d1-t-full.html",
+    "G1-U8": "unitree-g1-edu-ultimate-f.html",
 }
 
 # Dopo genera_prezzi: B2 su unitree-b2.html, B2-LIDAR su unitree-b2-lidar.html
@@ -166,7 +170,17 @@ def parse_price(raw: str) -> float | None:
     return float(raw.replace(",", "."))
 
 
-def buy_area(price: float | None, has_price: bool, sku: str = "") -> str:
+def discount_parts(price: float | None, listino: float | None) -> tuple[str, str]:
+    """Prezzo pubblicato sotto il prezzo di listino (MAP): barrato + etichetta sconto."""
+    if price is None or not listino or listino <= price:
+        return "", ""
+    pct = round((1 - price / listino) * 100)
+    was = (f'                <span class="buy-box-was">Prezzo di listino <s>{fmt_eur(listino)} €</s></span>\n')
+    badge = (f'                <span class="buy-box-discount">Scontato dal prezzo di listino · −{pct}%</span>\n')
+    return was, badge
+
+
+def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float | None = None) -> str:
     perks = """            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
               <li><span class="bp-ico">✓</span> Distributore ufficiale Unitree</li>
@@ -187,14 +201,15 @@ def buy_area(price: float | None, has_price: bool, sku: str = "") -> str:
             <div class="buy-box-cta"><a href="#form" class="btn btn-primary">Richiedi preventivo</a></div>
           </div>"""
     vis = fmt_eur(price)
+    was, badge = discount_parts(price, listino)
     amount = f"A partire da {vis} €" if sku in PRICE_FROM_SKUS else f"{vis} €"
     sub = "Prezzo indicativo · IVA esclusa" if sku in PRICE_FROM_SKUS else "Prezzo chiavi in mano · IVA esclusa"
     return f"""          <div class="buy-box">
             <div class="buy-box-head">
               <div class="buy-box-price">
-                <span class="buy-box-amount">{amount}</span>
+{was}                <span class="buy-box-amount">{amount}</span>
                 <span class="buy-box-sub">{sub}</span>
-              </div>
+{badge}              </div>
               <span class="buy-box-stock"><span class="dot"></span> Disponibile</span>
             </div>
 {perks}
@@ -258,6 +273,25 @@ def key_specs(entry: dict) -> str:
     return "\n".join(html) if html else '            <div class="key-spec"><span class="key-spec-value">—</span><span class="key-spec-label">Scheda tecnica</span></div>'
 
 
+def extra_sections(entry: dict) -> str:
+    """Sezione descrizione dal listino (punti elenco), se presente nel manifest."""
+    punti = entry.get("punti_chiave") or []
+    if not punti:
+        return ""
+    items = "\n".join(f"        <li>{p}</li>" for p in punti)
+    return f"""  <section id="descrizione" class="section">
+    <div class="container">
+      <div class="section-header" style="text-align:left;max-width:100%;margin-bottom:24px;">
+        <p class="label">Descrizione</p>
+        <h2>Caratteristiche e dotazione</h2>
+      </div>
+      <ul class="product-bullets">
+{items}
+      </ul>
+    </div>
+  </section>"""
+
+
 def spec_rows(entry: dict) -> str:
     specs = entry.get("specs") or []
     return "\n".join(f"<li><span>{k}</span><span>{v}</span></li>" for k, v in specs)
@@ -315,8 +349,10 @@ def generate_page(row: dict, manifest: dict) -> str | None:
             f'          <div class="faq-answer"><ul class="spec-table">{spec_rows(entry)}</ul></div>\n'
             f"        </div>"
         ),
-        "%%EXTRA_SECTIONS%%": "",
-        "%%BUY_AREA%%": buy_area(price if pub else None, pub and price is not None, sku),
+        "%%EXTRA_SECTIONS%%": extra_sections(entry),
+        "%%BUY_AREA%%": buy_area(
+            price if pub else None, pub and price is not None, sku, parse_price(row.get("prezzo_listino_eur", ""))
+        ),
         "%%PRODUCT_SCHEMA%%": product_schema(
             title, desc[:200], og_image, price if pub else None, filename, coll_file, coll_name
         ),
@@ -404,6 +440,9 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
         entry = manifest_entry(sku, manifest, r)
         fn = slug_file(sku)
         price = parse_price(r["prezzo_enduser_eur"])
+        listino = parse_price(r.get("prezzo_listino_eur", ""))
+        was = (f'<s class="cat-price-was">{fmt_eur(listino)} €</s> '
+               if listino and price and listino > price else "")
         img = entry.get("immagine", "images/g1-hero.png")
         titolo = entry.get("titolo", r["nome_prodotto"])
         cat_key = r["categoria"]
@@ -415,7 +454,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
           <div class="cat-body">
             <p class="cat-family">{family}</p>
             <h3><a href="prodotti/{fn}">{titolo}</a></h3>
-            <p class="cat-price">{"A partire da " if sku in PRICE_FROM_SKUS else ""}{fmt_eur(price)} €</p>
+            <p class="cat-price">{was}{"A partire da " if sku in PRICE_FROM_SKUS else ""}{fmt_eur(price)} €</p>
             <a href="prodotti/{fn}" class="btn btn-secondary btn-sm">Scheda prodotto</a>
           </div>
         </article>""")
@@ -453,6 +492,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
     .cat-card h3 {{ font-size: 0.95rem; margin: 0; }}
     .cat-card h3 a {{ color: var(--black); text-decoration: none; font-weight: 700; }}
     .cat-price {{ font-size: 1.1rem; font-weight: 900; margin: 0; }}
+    .cat-price-was {{ font-size: 0.8rem; font-weight: 600; color: var(--gray-400); margin-right: 4px; }}
     .cat-family {{ font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin: 0; }}
     .cat-toolbar {{ display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }}
     .cat-toolbar input, .cat-toolbar select {{
@@ -547,6 +587,7 @@ def regenerate_listino_html() -> None:
     .thumb-col {{ width: 56px; }}
     .listino-thumb {{ width: 48px; height: 48px; object-fit: contain; border-radius: 6px; background: var(--gray-50); }}
     .price-col {{ font-weight: 800; white-space: nowrap; }}
+    .price-was {{ display: block; font-weight: 500; font-size: 0.78rem; color: var(--gray-400); }}
     .listino-note {{ margin-top: 24px; font-size: 0.85rem; color: var(--gray-500); max-width: 720px; line-height: 1.6; }}
     .prod-link {{ color: var(--black); font-weight: 600; text-decoration: none; }}
     .prod-link:hover {{ text-decoration: underline; }}
@@ -603,7 +644,7 @@ def regenerate_listino_html() -> None:
             <td class="thumb-col">${{i.img ? `<img class="listino-thumb" src="${{i.img}}" alt="" loading="lazy">` : ''}}</td>
             <td><a class="prod-link" href="prodotti/${{i.slug}}">${{i.nome}}</a></td>
             <td>${{i.catLabel}}</td>
-            <td class="price-col">${{i.prezzoDa ? 'da ' : ''}}€ ${{fmt(i.prezzo)}}</td>
+            <td class="price-col">${{i.listino > i.prezzo ? `<s class="price-was">€ ${{fmt(i.listino)}}</s>` : ''}}${{i.prezzoDa ? 'da ' : ''}}€ ${{fmt(i.prezzo)}}</td>
           </tr>`).join('')
         : '<tr><td colspan="4">Nessun risultato</td></tr>';
     }}
@@ -617,7 +658,7 @@ def regenerate_listino_html() -> None:
           const catLabel = CAT_LABEL[catKey] || catKey || '—';
           cats.add(catLabel);
           return {{
-            sku, nome: v.nome, prezzo: v.prezzo_eur, prezzoDa: !!v.prezzo_da, slug: v.slug || '',
+            sku, nome: v.nome, prezzo: v.prezzo_eur, listino: v.prezzo_listino_eur || 0, prezzoDa: !!v.prezzo_da, slug: v.slug || '',
             img: v.immagine || '', cat: catLabel, catLabel
           }};
         }}).sort((a, b) => a.nome.localeCompare(b.nome, 'it'));
