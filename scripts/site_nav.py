@@ -38,6 +38,7 @@ def render_site_nav(prefix: str = "") -> str:
             <a href="{p}listino-unitree.html">Listino prezzi</a>
           </div>
         </div>
+        <a href="{p}listino-unitree.html">Prezzi</a>
         <a href="{p}assessment.html">Trova il robot giusto</a>
         <a href="{p}finanziamenti.html">Finanziamenti</a>
         <a href="{p}blog.html">Blog</a>
@@ -73,6 +74,7 @@ def render_site_nav(prefix: str = "") -> str:
         <a href="{p}listino-unitree.html">Listino prezzi</a>
       </div>
     </div>
+    <a href="{p}listino-unitree.html">Prezzi</a>
     <a href="{p}assessment.html">Trova il robot giusto</a>
     <a href="{p}finanziamenti.html">Finanziamenti</a>
     <a href="{p}blog.html">Blog</a>

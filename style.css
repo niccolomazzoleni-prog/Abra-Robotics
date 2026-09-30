@@ -2780,3 +2780,17 @@ body.lp-cobot #faq {
 .section-dark .matrix tbody td:first-child a { color: var(--black); font-weight: 700; }
 .section-dark .matrix tbody tr:hover td { background: var(--gray-50); }
 .section-dark .matrix a { color: var(--black); }
+
+/* Navbar su schermi medi (1101-1400px): con la voce "Prezzi" il pulsante
+   "Prenota una chiamata" usciva dal bordo destro. */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .nav-links { gap: 22px; }
+  .nav-links a, .nav-dropdown-trigger { font-size: 0.92rem; }
+  .navbar .btn-sm { padding: 10px 16px; }
+}
+
+/* Sotto i 1200px il menu completo non ci sta più: si passa all'hamburger. */
+@media (max-width: 1200px) {
+  .nav-links, .navbar .btn { display: none; }
+  .menu-toggle { display: flex; }
+}
