@@ -32,11 +32,14 @@
 
       this.builder = new global.AbraOfferBuilder(quoteEngine);
 
-      await this.builder.load('data/offerte-config.json', 'data/voci-extra.json');
+      // Base opzionale (widget sul sito, pagine fuori da /offerte-ai/); nel Lab resta relativa
+      const base = global.ABRA_OFFERTE_BASE || '';
+
+      await this.builder.load(base + 'data/offerte-config.json', base + 'data/voci-extra.json');
 
       try {
 
-        this.manifest = await fetch('../listini/pubblico/catalogo-manifest.json').then(r => r.json());
+        this.manifest = await fetch(base + '../listini/pubblico/catalogo-manifest.json').then(r => r.json());
 
       } catch {
 
@@ -48,7 +51,7 @@
 
       try {
 
-        this.blocchi = (await fetch('data/blocchi-ricorrenti.json').then(r => r.json())).blocchi || [];
+        this.blocchi = (await fetch(base + 'data/blocchi-ricorrenti.json').then(r => r.json())).blocchi || [];
 
       } catch {
 
