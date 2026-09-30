@@ -2770,3 +2770,13 @@ body.lp-cobot #faq {
   color: var(--gray-600, #525252);
   line-height: 1.55;
 }
+
+/* Tabelle di confronto (.matrix) dentro sezioni scure: riquadro chiaro leggibile.
+   Prima il testo era grigio scuro / nero su sfondo nero. */
+.section-dark .matrix-wrap { background: var(--white); border-color: rgba(255,255,255,0.14); border-radius: var(--radius); box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
+.section-dark .matrix thead td { background: var(--gray-100); color: var(--black); border-bottom: 1px solid var(--gray-200); }
+.section-dark .matrix tbody td { color: var(--gray-800); background: var(--white); border-bottom: 1px solid var(--gray-200); }
+.section-dark .matrix tbody td:first-child,
+.section-dark .matrix tbody td:first-child a { color: var(--black); font-weight: 700; }
+.section-dark .matrix tbody tr:hover td { background: var(--gray-50); }
+.section-dark .matrix a { color: var(--black); }
