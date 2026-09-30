@@ -381,7 +381,7 @@
         lines.push(this.ctaLine(it.nome));
         this.last = { skus: [it.sku], families: it.family ? [it.family.id] : [] };
       } else {
-        lines.push('Ecco i prezzi dal listino ufficiale:');
+        lines.push('Ecco i prezzi dal listino pubblico:');
         items.forEach(it => lines.push('• ' + mdLink(it.nome, productUrl(it)) + ' — ' + this.priceLine(it)));
         const fams = dedupe(items.map(i => i.family).filter(Boolean));
         if (fams.length === 1) lines.push(mdLink('Tutte le configurazioni ' + fams[0].label.replace('Unitree ', '') + ' →', fams[0].href));
@@ -410,7 +410,7 @@
         lines.push(this.footer());
         lines.push(this.ctaLine(label));
       } else {
-        lines.push('Prezzi di partenza dal listino ufficiale:');
+        lines.push('Prezzi di partenza dal listino pubblico:');
         groups.forEach(({ fam, members }) => {
           const min = members[0];
           lines.push('• ' + mdLink(fam.label, fam.href) + ' — da **' + formatEuro(min.prezzo) + '**' +
@@ -491,15 +491,15 @@
     answerPayment() {
       return [
         'Condizioni standard: **50% all\'ordine, 50% prima della spedizione**, salvo accordi diversi.',
-        'Molti progetti sono finanziabili (Industria 4.0 / Transizione 5.0, bandi PNRR): facciamo una verifica gratuita.',
+        'Molti progetti sono finanziabili: l\'acquisto può rientrare nell\'iperammortamento 2026 (maggiorazione fino al 180%) o nella Nuova Sabatini. Facciamo una verifica gratuita.',
         'Per un\'offerta formale: ' + mdLink('WhatsApp', waUrl('Ciao Abra Robotics, vorrei un\'offerta formale per ')) + ' · ' + mdLink('Prenota una call', BOOKING_URL),
       ].join('\n');
     }
 
     greeting() {
       return [
-        'Ciao! Sono l\'assistente di Abra Robotics, supply chain ufficiale Unitree in Italia.',
-        'Posso darti subito **prezzi dal listino ufficiale** (es. «quanto costa il G1?», «prezzo H2-D»), tempi di consegna e contatti con un tecnico.',
+        'Ciao! Sono l\'assistente di Abra Robotics, parte della filiera Unitree Italia.',
+        'Posso darti subito **prezzi dal listino pubblico** (es. «quanto costa il G1?», «prezzo H2-D»), tempi di consegna e contatti con un tecnico.',
       ].join('\n');
     }
 
