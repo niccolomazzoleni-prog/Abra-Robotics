@@ -166,6 +166,18 @@ def main():
 
     # stile della pagina
     t = sostituisci(t, "STILE", STYLE, ancora_prima="</head>")
+    # dati strutturati: elenco di tutte le configurazioni (ItemList) per Google e assistenti AI
+    voci = [(k, v) for f in FAMIGLIE for k, v in prodotti(f)]
+    lista = {"@context": "https://schema.org", "@type": "ItemList", "name": "Robot umanoidi Unitree in Italia — configurazioni e prezzi",
+             "numberOfItems": len(voci),
+             "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"https://abrarobotics.com/prodotti/{v['slug']}",
+                                  "item": {"@type": "Product", "name": v["nome"], "brand": {"@type": "Brand", "name": "Unitree"},
+                                           "url": f"https://abrarobotics.com/prodotti/{v['slug']}",
+                                           "offers": {"@type": "Offer", "price": f"{v['prezzo_eur']:.2f}", "priceCurrency": "EUR",
+                                                      "availability": "https://schema.org/InStock"}}}
+                                 for i, (k, v) in enumerate(voci)]}
+    t = sostituisci(t, "JSONLD", '<script type="application/ld+json">' + json.dumps(lista, ensure_ascii=False) + "</script>",
+                    ancora_prima="</head>")
 
     # hero: titolo, sottotitolo e numeri
     t = re.sub(r"<h1>Robot umanoidi Unitree in Italia[^<]*</h1>",
