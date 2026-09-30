@@ -121,7 +121,7 @@ HTML = f'''<!DOCTYPE html>
 <body>
 
   <div class="top-bar">
-    <p>Distributore ufficiale Unitree in Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
+    <p>Parte della filiera Unitree Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
   </div>
 
 {SITE_NAV_HTML}
@@ -130,12 +130,12 @@ HTML = f'''<!DOCTYPE html>
     <div class="container">
       <p class="label">Robot Quadrupedi</p>
       <h1>Quadrupedi Unitree — tutta la gamma</h1>
-      <p class="lead">Dal Go2 agile per education e ispezione leggera fino al B2 industriale pesante IP67: la gamma completa di robot quadrupedi Unitree, distribuita in Italia da Abra Robotics. Una scheda tecnica dedicata per ciascun modello.</p>
+      <p class="lead">Dal Go2 agile per education e ispezione leggera fino al B2 industriale pesante IP67: la gamma completa di robot quadrupedi Unitree, disponibile in Italia tramite Abra Robotics. Una scheda tecnica dedicata per ciascun modello.</p>
       <div class="hero-meta">
         <div><strong>7</strong><span>Modelli</span></div>
         <div><strong>10–120 kg</strong><span>Carico utile</span></div>
         <div><strong>IP67</strong><span>Fino a (A2 Pro / B2)</span></div>
-        <div><strong>Italia</strong><span>Distributore ufficiale</span></div>
+        <div><strong>Italia</strong><span>Filiera Unitree Italia</span></div>
       </div>
     </div>
   </section>

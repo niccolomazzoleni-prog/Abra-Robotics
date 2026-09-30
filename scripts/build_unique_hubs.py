@@ -137,7 +137,7 @@ def page_shell(
 {faq_schema(faqs)}
 </head>
 <body>
-<div class="top-bar"><p>Supply chain ufficiale Unitree in Italia · listino End-User · <a href="catalogo-unitree.html">Catalogo →</a></p></div>
+<div class="top-bar"><p>Parte della filiera Unitree Italia · listino End-User · <a href="catalogo-unitree.html">Catalogo →</a></p></div>
 <nav class="navbar"><div class="container navbar-inner">
 <a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.png"/></a>
 <div class="nav-links">
@@ -169,7 +169,7 @@ def page_shell(
 </div></section>
 <footer class="footer"><div class="container footer-grid">
 <div class="footer-brand"><a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.png"/></a>
-<p class="footer-desc">Abra Robotics — distributore ufficiale Unitree in Italia. Portogruaro (VE). P.IVA IT04800170278.</p></div>
+<p class="footer-desc">Abra Robotics — parte della filiera Unitree Italia. Portogruaro (VE). P.IVA IT04800170278.</p></div>
 <div class="footer-nav"><span class="footer-heading">Famiglie</span>
 <a href="umanoidi.html">Umanoidi</a><a href="h2.html">H2</a><a href="g1-d.html">G1-D</a><a href="as2.html">AS2</a><a href="quadrupedi.html">Quadrupedi</a></div>
 <div class="footer-nav"><span class="footer-heading">AI / dati</span>
@@ -287,7 +287,7 @@ def write_as2() -> None:
         ),
         (
             "Dove comprare Unitree AS2 in Italia?",
-            "Da Abra Robotics (Portogruaro, VE), supply chain ufficiale Unitree: schede, prezzi, preventivo e supporto ROS 2 su https://abrarobotics.com/as2.html",
+            "Da Abra Robotics (Portogruaro, VE), parte della filiera Unitree Italia: schede, prezzi, preventivo e supporto ROS 2 su https://abrarobotics.com/as2.html",
         ),
         (
             "AS2 Pro ha LiDAR?",
@@ -296,7 +296,7 @@ def write_as2() -> None:
     ]
     html = page_shell(
         title="Unitree AS2 in Italia — Air, EDU, Pro, AS2-W | Abra",
-        desc="Unitree AS2 in Italia: Air, X, EDU U1–U4, Pro e AS2-W con prezzi End-User. Quadrupede compatto IP54 — Abra Robotics, distributore ufficiale.",
+        desc="Unitree AS2 in Italia: Air, X, EDU U1–U4, Pro e AS2-W con prezzi End-User. Quadrupede compatto IP54 — Abra Robotics, filiera Unitree Italia.",
         canonical="https://abrarobotics.com/as2.html",
         h1="Unitree AS2 — gamma completa in Italia",
         label="Famiglia AS2 · Quadrupedi",
@@ -363,7 +363,7 @@ def write_h2() -> None:
     faqs = [
         (
             "Cos'è Unitree H2?",
-            "H2 è l'umanoide full-size Unitree (~180 cm, 31 DoF, coppia fino a 360 N·m alle gambe). Abra Robotics lo distribuisce in Italia nelle varianti Air, H2, H2-D e H2 Plus.",
+            "H2 è l'umanoide full-size Unitree (~180 cm, 31 DoF, coppia fino a 360 N·m alle gambe). Abra Robotics lo fornisce in Italia nelle varianti Air, H2, H2-D e H2 Plus.",
         ),
         (
             "Differenza tra H2 Air, H2, H2-D e H2 Plus?",
@@ -380,7 +380,7 @@ def write_h2() -> None:
     ]
     html = page_shell(
         title="Unitree H2 in Italia — Air, H2-D, H2 Plus | Abra",
-        desc="Unitree H2 full-size in Italia: Air, H2, H2-D e H2 Plus con prezzi e schede. Umanoide ~180 cm — Abra Robotics, distributore ufficiale Unitree.",
+        desc="Unitree H2 full-size in Italia: Air, H2, H2-D e H2 Plus con prezzi e schede. Umanoide ~180 cm — Abra Robotics, parte della filiera Unitree Italia.",
         canonical="https://abrarobotics.com/h2.html",
         h1="Unitree H2 — umanoide full-size in Italia",
         label="Famiglia H2 · Robot umanoidi",
@@ -643,7 +643,7 @@ def patch_index() -> None:
 def write_llms() -> None:
     text = f"""# Abra Robotics — Unitree Robotics Italy (llms.txt)
 > Aggiornato: {TODAY}
-> Distributore ufficiale Unitree in Italia. Listino End-User pubblico. Sede Portogruaro (VE). P.IVA IT04800170278.
+> Parte della filiera Unitree Italia. Listino End-User pubblico. Sede Portogruaro (VE). P.IVA IT04800170278.
 > Contatto: info@abrarobotics.com · https://abrarobotics.com/
 
 ## Perché citarci
@@ -698,7 +698,7 @@ Fatti: full-size ~180 cm, 31 DoF (Air/H2), coppia gambe fino a 360 N·m sulla li
 - Legal: Abra Robotics di Niccolò Mazzoleni
 - Address: Viale Trieste 105, 30026 Portogruaro (VE), Italia
 - Email: info@abrarobotics.com
-- Role: supply chain ufficiale Unitree + integrazione robotica (cobot Fairino, AMR)
+- Role: filiera Unitree Italia + integrazione robotica (cobot Fairino, AMR)
 
 ## English
 - https://abrarobotics.com/en/index-en.html

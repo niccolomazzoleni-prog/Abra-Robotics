@@ -24,8 +24,8 @@ COMPACT = {
 V = {}
 V["go2-pro"] = dict(
   title="Unitree Go2 Pro", short="Go2 Pro", tag="Consumer / base", imgdir="go2-pro",
-  subtitle="Il quadrupede entry-level Unitree: agile, connesso e pronto all'uso per demo, education e prototipazione. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree Go2 Pro: quadrupede agile con LiDAR 3D L1, velocità 1,7 m/s, payload 10 kg, Wi-Fi 6 e 4G. Distributore ufficiale Unitree in Italia.",
+  subtitle="Il quadrupede entry-level Unitree: agile, connesso e pronto all'uso per demo, education e prototipazione. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree Go2 Pro: quadrupede agile con LiDAR 3D L1, velocità 1,7 m/s, payload 10 kg, Wi-Fi 6 e 4G. Parte della filiera Unitree Italia.",
   desc="Go2 Pro è la porta d'ingresso alla robotica quadrupede Unitree: LiDAR 3D L1 a campo ultra-ampio (360°×90°), camera frontale HD 120°, connettività Wi-Fi 6 e modulo 4G integrato. Agile e robusto, supera pendenze fino a 40° e gradini fino a 16 cm.",
   speed="1,7 m/s", payload="10 kg", payload_static=None, weight="15 kg",
   dims_stand="700 × 310 × 400 mm", dims_crouch="760 × 310 × 200 mm", dof="12", torque="45 N·m",
@@ -42,8 +42,8 @@ V["go2-pro"] = dict(
 )
 V["go2-edu"] = dict(
   title="Unitree Go2 EDU", short="Go2 EDU", tag="Education · 40 TOPS", imgdir="go2-edu",
-  subtitle="Il quadrupede per la didattica e lo sviluppo: NVIDIA Jetson Orin Nano (40 TOPS), LiDAR 4D L2 e SDK aperto. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree Go2 EDU: quadrupede da ricerca con NVIDIA Jetson Orin Nano 40 TOPS, LiDAR 4D L2, sensore di forza al piede e SDK aperto ROS. Distributore ufficiale Unitree in Italia.",
+  subtitle="Il quadrupede per la didattica e lo sviluppo: NVIDIA Jetson Orin Nano (40 TOPS), LiDAR 4D L2 e SDK aperto. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree Go2 EDU: quadrupede da ricerca con NVIDIA Jetson Orin Nano 40 TOPS, LiDAR 4D L2, sensore di forza al piede e SDK aperto ROS. Parte della filiera Unitree Italia.",
   desc="Go2 EDU porta lo sviluppo a bordo: 8-core CPU affiancata da NVIDIA Jetson Orin Nano 8GB (40 TOPS) con sviluppo secondario, LiDAR 4D L2 a campo ultra-ampio e sensore di forza al piede. Payload fino a 12 kg, pendenze fino a 40° e SDK aperto ROS/Python/C++.",
   speed="2 m/s", payload="12 kg", payload_static=None, weight="15 kg",
   dims_stand="700 × 310 × 400 mm", dims_crouch="760 × 310 × 200 mm", dof="12", torque="45 N·m",
@@ -60,8 +60,8 @@ V["go2-edu"] = dict(
 )
 V["go2-ent-u2"] = dict(
   title="Unitree Go2 Enterprise+ U2", short="Go2 Ent+ U2", tag="Enterprise · sorveglianza", imgdir="go2-ent-u2",
-  subtitle="Configurazione enterprise del Go2: segnalazione visiva e audio, comunicazione sicura dual-link e video HD in tempo reale. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree Go2 Enterprise+ U2: quadrupede per sorveglianza e ispezione con segnalazione visiva/audio, comunicazione dual-link sicura e video HD real-time. Distributore ufficiale Unitree in Italia.",
+  subtitle="Configurazione enterprise del Go2: segnalazione visiva e audio, comunicazione sicura dual-link e video HD in tempo reale. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree Go2 Enterprise+ U2: quadrupede per sorveglianza e ispezione con segnalazione visiva/audio, comunicazione dual-link sicura e video HD real-time. Parte della filiera Unitree Italia.",
   desc="Go2 Enterprise+ U2 estende la piattaforma Go2 con segnalazione visiva e diffusione audio, comunicazione sicura dual-link, video HD in tempo reale e luci di avviso. Pensato per sorveglianza, ispezione e operazioni sul campo, con controller dotato di schermo.",
   speed="1,7 m/s", payload="10 kg", payload_static=None, weight="15 kg",
   dims_stand="700 × 310 × 400 mm", dims_crouch="760 × 310 × 200 mm", dof="12", torque="45 N·m",
@@ -78,8 +78,8 @@ V["go2-ent-u2"] = dict(
 )
 V["a2"] = dict(
   title="Unitree A2", short="A2", tag="Industriale · IP56", imgdir="a2",
-  subtitle="Quadrupede di nuova generazione per ambienti industriali esigenti: 25 kg di carico in movimento, autonomia oltre 5 ore e Intel Core i7 a bordo. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree A2: quadrupede industriale IP56 con 25 kg di carico in movimento, 100 kg statico, autonomia >5 h, Intel Core i7 e LiDAR industriale. Distributore ufficiale Unitree in Italia.",
+  subtitle="Quadrupede di nuova generazione per ambienti industriali esigenti: 25 kg di carico in movimento, autonomia oltre 5 ore e Intel Core i7 a bordo. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree A2: quadrupede industriale IP56 con 25 kg di carico in movimento, 100 kg statico, autonomia >5 h, Intel Core i7 e LiDAR industriale. Parte della filiera Unitree Italia.",
   desc="A2 è il quadrupede industriale di nuova generazione: 25 kg di carico continuo in movimento (100 kg statico), autonomia oltre 5 ore con doppia batteria hot-swap e computing 8-core con Intel Core i7. Grado IP56, range operativo -20°C/+55°C e LiDAR industriale espandibile.",
   speed="~5 m/s", payload="25 kg", payload_static="100 kg", weight="37 kg",
   dims_stand="820 × 440 × 570 mm", dims_crouch="720 × 550 × 220 mm", dof="12", torque="180 N·m",
@@ -96,8 +96,8 @@ V["a2"] = dict(
 )
 V["a2-pro"] = dict(
   title="Unitree A2 Pro", short="A2 Pro", tag="Field autonomy · IP67", imgdir="a2-pro",
-  subtitle="Per navigazione autonoma avanzata, mapping e operazioni sul campo: dual LiDAR, GPS, architettura tri-processore e protezione fino a IP67. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree A2 Pro: quadrupede per navigazione autonoma con dual LiDAR, GPS, 4G, architettura tri-processore e protezione fino a IP67. Distributore ufficiale Unitree in Italia.",
+  subtitle="Per navigazione autonoma avanzata, mapping e operazioni sul campo: dual LiDAR, GPS, architettura tri-processore e protezione fino a IP67. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree A2 Pro: quadrupede per navigazione autonoma con dual LiDAR, GPS, 4G, architettura tri-processore e protezione fino a IP67. Parte della filiera Unitree Italia.",
   desc="A2 Pro è la versione per autonomia di campo dell'A2: doppio LiDAR industriale (anteriore e posteriore), GPS e 4G integrati, posizionamento vettoriale wireless e architettura tri-processore (8-core + Intel i7 + modulo di espansione). Protezione fino a IP67 e compatibilità NVIDIA Isaac Sim.",
   speed="~5 m/s", payload="25 kg", payload_static="100 kg", weight="37 kg",
   dims_stand="820 × 440 × 570 mm", dims_crouch="720 × 550 × 220 mm", dof="12", torque="180 N·m",
@@ -114,8 +114,8 @@ V["a2-pro"] = dict(
 )
 V["b2"] = dict(
   title="Unitree B2", short="B2", tag="Industriale pesante · IP67", imgdir="b2",
-  subtitle="Il quadrupede industriale ad alte prestazioni: oltre 6 m/s, carico statico 120 kg, IP67 e LiDAR automotive a 32 canali. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree B2: quadrupede industriale pesante IP67, velocità >6 m/s, carico statico 120 kg, LiDAR automotive 32 canali, batteria 2250 Wh. Distributore ufficiale Unitree in Italia.",
+  subtitle="Il quadrupede industriale ad alte prestazioni: oltre 6 m/s, carico statico 120 kg, IP67 e LiDAR automotive a 32 canali. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree B2: quadrupede industriale pesante IP67, velocità >6 m/s, carico statico 120 kg, LiDAR automotive 32 canali, batteria 2250 Wh. Parte della filiera Unitree Italia.",
   desc="B2 è il quadrupede industriale pesante di Unitree: velocità oltre 6 m/s, carico statico fino a 120 kg (oltre 40 kg in movimento), coppia al giunto di 360 N·m e batteria da 2250 Wh per 4-6 ore di autonomia. Grado IP67, LiDAR automotive a 32 canali e compatibilità con il braccio Z1.",
   speed=">6 m/s", payload="40 kg", payload_static="120 kg", weight="60 kg",
   dims_stand="1098 × 450 × 645 mm", dims_crouch="880 × 460 × 330 mm", dof="12", torque="360 N·m",
@@ -169,7 +169,7 @@ def key_specs(d):
 def marquee(d):
     items = [d["title"], f'Carico {d["payload"]}', f'{d["speed"]} velocità', f'LiDAR {d["cmp"]["lidar"]}',
              d["computing_short"]] + ([f'Protezione {d["ip"]}'] if d["ip"] not in ("Non dichiarato","—") else []) + \
-            [f'Garanzia {d["warranty"]}', 'Distributore ufficiale Italia']
+            [f'Garanzia {d["warranty"]}', 'Filiera Unitree Italia Italia']
     return "\n        ".join(f'<span class="marquee-text">{t}</span><span class="marquee-dot">●</span>' for t in items)
 
 def stats(d):

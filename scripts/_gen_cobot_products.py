@@ -42,7 +42,7 @@ PROCESS_HTML = """      <div class="process-steps-product">
         <div class="step">
           <span class="step-number">01</span>
           <h3>Assessment</h3>
-          <p>Analizziamo ciclo, payload, safety e layout cella. Sopralluogo incluso nel prezzo «da».</p>
+          <p>Analizziamo ciclo, payload, safety e layout cella. Sopralluogo e analisi sono quotati su progetto.</p>
         </div>
         <div class="step">
           <span class="step-number">02</span>
@@ -360,8 +360,8 @@ def write_catalog(manifest: list[dict]) -> None:
   </header>
   <main class="cat-body-page">
     <div class="amr-note">
-      <p><strong>Inclusi nel prezzo «da»:</strong> assessment applicativo, analisi di fattibilità e prima configurazione Abra.</p>
-      <p style="margin:0;"><strong>Non inclusi</strong> (preventivo dedicato): gripper, visione, safety scanner, spedizione e commissioning avanzato.</p>
+      <p><strong>Il prezzo «da» si riferisce al solo prodotto</strong>, IVA esclusa.</p>
+      <p style="margin:0;"><strong>Quotati a parte, su progetto:</strong> sopralluogo, analisi di fattibilità, gripper, visione, safety scanner, spedizione e commissioning avanzato.</p>
     </div>
     <nav class="cat-jump" aria-label="Sezioni catalogo cobot" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;">
       <a href="#cat-robot" style="font-size:0.85rem;padding:8px 14px;border:1px solid var(--gray-200);border-radius:999px;text-decoration:none;color:var(--black);">Robot cobot</a>

@@ -305,8 +305,8 @@ MANIFATTURA_BODY = f"""
         <h2>I tuoi materiali arrivano in linea. Sempre, in orario, senza operatori logistici.</h2>
         <p>Gli AMR sostituiscono il trasporto manuale interno: tote, cassette, semilavorati, carrelli e pallet. Qui trovi <strong>6 modelli in evidenza</strong> — i più richiesti per latent lift, shelf MiR, pallet EUR e muletti. Il <a href="catalogo-amr.html">catalogo completo</a> include <strong>16 configurazioni</strong> MiR, Youibot, Neura, AutoXing ed EP Equipment. Prezzi indicativi — IVA esclusa.</p>
         <div class="amr-inclusion-box">
-          <p><strong>Inclusi nel prezzo «da»:</strong> assessment iniziale, sopralluogo virtuale o fisico e prima analisi di fattibilità Abra.</p>
-          <p><strong>Non inclusi</strong> (preventivo dedicato): digital twin, progettazione isola o cella, integrazione WMS/MES/ERP, software flotta, stazione di ricarica, commissioning in sito e top module aggiuntivi.</p>
+          <p><strong>Il prezzo «da» si riferisce al solo prodotto</strong>, IVA esclusa.</p>
+          <p><strong>Quotati a parte, su progetto:</strong> sopralluogo, analisi di fattibilità, digital twin, progettazione isola o cella, integrazione WMS/MES/ERP, software flotta, stazione di ricarica, commissioning in sito e top module aggiuntivi.</p>
         </div>
         <p class="price-note"><a href="catalogo-amr.html">Vedi tutte le 16 configurazioni AMR →</a></p>
       </div>
@@ -403,8 +403,8 @@ def write_catalogo():
   </header>
   <main class="cat-body-page">
     <div class="amr-note">
-      <p><strong>Inclusi nel prezzo «da»:</strong> assessment, sopralluogo e prima analisi di fattibilità Abra.</p>
-      <p style="margin:0;"><strong>Non inclusi:</strong> digital twin, WMS/MES/ERP, software flotta, ricarica, commissioning.</p>
+      <p><strong>Il prezzo «da» si riferisce al solo prodotto</strong>, IVA esclusa.</p>
+      <p style="margin:0;"><strong>Quotati a parte, su progetto:</strong> sopralluogo, analisi di fattibilità, digital twin, WMS/MES/ERP, software flotta, ricarica, commissioning.</p>
     </div>
     <nav class="cat-jump" aria-label="Categorie AMR">
       <a href="#cat-leggeri">Leggeri</a><a href="#cat-mir">MiR</a><a href="#cat-latent">Latent</a><a href="#cat-muletti">Muletti</a><a href="#cat-mobile-cobot">Mobile cobot</a>
