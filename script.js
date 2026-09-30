@@ -537,3 +537,23 @@ document.addEventListener('click', (e) => {
   s.defer = true;
   document.body.appendChild(s);
 })();
+
+// reCAPTCHA v3: il badge è nascosto via CSS, quindi la nota va mostrata sotto ogni modulo con email
+(function addRecaptchaNote() {
+  if (!RECAPTCHA_SITE_KEY) return;
+  const en = window.location.pathname.includes('/en/');
+  const text = en
+    ? 'Protected by reCAPTCHA: Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms</a> apply.'
+    : 'Protetto da reCAPTCHA: si applicano la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> e i <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Termini</a> di Google.';
+  function run() {
+    document.querySelectorAll('form').forEach(f => {
+      if (!f.querySelector('input[type="email"]') || f.querySelector('.recaptcha-note')) return;
+      const p = document.createElement('p');
+      p.className = 'recaptcha-note';
+      p.innerHTML = text;
+      f.appendChild(p);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();
