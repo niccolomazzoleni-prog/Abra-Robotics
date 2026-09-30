@@ -90,6 +90,10 @@ def riassunto():
               f"- Cobot Fairino (bracci collaborativi e celle chiavi in mano): da {eur(co[0])} € — {BASE}catalogo-cobot.html",
               f"- AMR per logistica e intralogistica: da {eur(am[0])} € — {BASE}catalogo-amr.html",
               f"- Progetti di automazione, assessment e POC: {BASE}assessment.html · {BASE}manifattura-logistica.html", ""]
+    righe += ["## Certificazioni e conformità",
+              "- Marcatura CE di celle robotizzate e macchine integrate con TÜV Rheinland (https://www.tuv.com/italy/it/).",
+              "- Certificazioni di cybersecurity (es. ISO/IEC 27001) e AI compliance (es. ISO/IEC 42001, AI Act) con CSQA (https://www.csqa.it/).",
+              "- Incentivi: l'acquisto può rientrare nell'iperammortamento 2026 (maggiorazione fino al 180%); credito 4.0 e Transizione 5.0 PNRR sono chiusi.", ""]
     righe += [
         "## Pagine principali",
         f"- [Home]({BASE}) · [Umanoidi]({BASE}umanoidi.html) · [Quadrupedi]({BASE}quadrupedi.html) · [AS2]({BASE}as2.html) · [H2]({BASE}h2.html)",
