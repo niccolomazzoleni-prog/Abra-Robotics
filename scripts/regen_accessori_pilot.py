@@ -156,7 +156,7 @@ PROCESS_SECTION = """  <section class="section section-dark">
         <div class="step">
           <span class="step-number">03</span>
           <h3>Consegna</h3>
-          <p>Consegna stimata 2–4 settimane. Supporto tecnico dedicato.</p>
+          <p>Consegna stimata 4–6 settimane. Supporto tecnico dedicato.</p>
         </div>
       </div>
     </div>

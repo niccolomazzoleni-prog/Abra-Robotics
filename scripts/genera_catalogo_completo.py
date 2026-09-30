@@ -219,7 +219,7 @@ def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float
     perks = """            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
               <li><span class="bp-ico">✓</span> Distributore ufficiale Unitree</li>
-              <li><span class="bp-ico">✓</span> Consegna stimata 2–4 settimane</li>
+              <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
             </ul>"""
     pay = """            <div class="buy-box-pay">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
