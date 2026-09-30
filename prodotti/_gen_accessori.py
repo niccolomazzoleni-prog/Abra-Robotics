@@ -24,7 +24,6 @@ ACC = {
   ("batt-go2","Batteria Go2","Batteria di ricambio per quadrupede Go2 (EDU e Pro).","8.000 / 15.000 mAh","$560","unitree-go2-ai-robot-dog-battery-904150.webp"),
   ("batt-b2","Batteria B2 alta capacità","Batteria ad alta capacità per quadrupede industriale B2.","45 Ah · 2250 Wh","$4.200","unitree-b2-quadruped-robot-high-capacity-battery-6102761.jpg"),
   ("batt-g1","Batteria G1","Batteria di ricambio ad alte prestazioni per umanoide G1.","High-performance","$800","unitree-g1-humanoid-high-performance-battery-325427.jpg"),
-  ("batt-h1","Batteria H1","Batteria di ricambio ad alte prestazioni per umanoide H1.","High-performance","$1.580","unitree-h1-humanoid-high-performance-battery-2657496.png"),
   ("batt-go1","Batteria Go1","Batteria di ricambio per quadrupede Go1.","6.000 mAh","$499","unitree-go1-ai-robot-dog-battery-213508.webp"),
   ("go2-charging","Go2 Self-Charging Board","Base di ricarica wireless ad alta efficienza per Go2 EDU+.","Ricarica wireless","$1.050","unitree-go2-self-charging-board-568056.png"),
  ],
@@ -67,8 +66,7 @@ def card(item):
     slug, name, desc, spec, price, fn = item
     rel = fetch(fn, slug)
     img = f'<img src="images/{rel}" alt="{name}" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'no-img\');">' if rel else '<div class="acc-noimg">Unitree</div>'
-    return f'''        <!-- {name} — prezzo rif. {price} USD -->
-        <article class="acc-card">
+    return f'''        <article class="acc-card">
           <div class="acc-media">{img}</div>
           <div class="acc-body">
             <h3>{name}</h3>
@@ -126,7 +124,7 @@ HTML = f'''<!DOCTYPE html>
 <body>
 
   <div class="top-bar">
-    <p>Parte della filiera Unitree Italia. <a href="assessment.html">Trova il robot giusto →</a></p>
+    <p>Parte della filiera di distribuzione di Unitree Italia. <a href="assessment.html">Trova il robot giusto →</a></p>
   </div>
 
 {SITE_NAV_HTML}

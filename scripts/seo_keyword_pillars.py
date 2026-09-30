@@ -60,8 +60,8 @@ FAQ_IT_UMANOIDI = [
         "G1 Air per demo e comunicazione; G1 EDU (U1–U8) per università e R&D con mani e Orin NX; G1 Comp per performance atletiche. Un assessment Abra aiuta a mappare il caso d'uso in 5–9 settimane.",
     ),
     (
-        "Abra Robotics è parte della filiera Unitree Italia?",
-        "Sì: Abra Robotics fa parte della filiera Unitree Italia, con listino pubblico, ricambi, formazione e supporto tecnico.",
+        "Abra Robotics è parte della filiera di distribuzione di Unitree Italia?",
+        "Sì: Abra Robotics fa parte della filiera di distribuzione di Unitree Italia, con listino pubblico, ricambi, formazione e supporto tecnico.",
     ),
 ]
 
