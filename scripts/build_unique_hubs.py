@@ -263,7 +263,7 @@ def write_as2() -> None:
                 "Sorveglianza industriale · dual camera + LiDAR wide",
                 "29.900 €",
                 "prodotti/unitree-as2-pro.html",
-                "images/prodotti/unitree-as2-pro.png",
+                "images/prodotti/2026/as2.png",
                 [("LiDAR", "Ultra-wide"), ("Camera", "Dual"), ("Payload statico", "~65 kg"), ("IP", "IP54")],
             ),
             card(
