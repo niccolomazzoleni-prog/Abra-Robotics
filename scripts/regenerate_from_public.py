@@ -86,6 +86,7 @@ def main() -> None:
     merchant = ROOT / "prodotti" / "_gen_merchant_feed.py"
     if merchant.is_file():
         subprocess.run([sys.executable, str(merchant)], cwd=ROOT / "prodotti", check=False)
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "add_hreflang.py")], check=False)
     print(f"Rigenerate {created} schede · catalogo-unitree.html aggiornato")
 
 

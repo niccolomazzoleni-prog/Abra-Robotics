@@ -151,7 +151,7 @@ PROCESS_SECTION = """  <section class="section section-dark">
         <div class="step">
           <span class="step-number">02</span>
           <h3>Ordine</h3>
-          <p>Spedizione e dazio doganale inclusi. Parte della filiera ufficiale Unitree Italia.</p>
+          <p>Spedizione e dazio doganale inclusi. Parte della filiera di distribuzione di Unitree Italia.</p>
         </div>
         <div class="step">
           <span class="step-number">03</span>
