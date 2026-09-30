@@ -96,7 +96,7 @@ HTML = f'''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accessori Unitree — Mani, batterie, LiDAR e bracci | Abra Robotics</title>
-  <meta name="description" content="Catalogo accessori Unitree distribuiti in Italia da Abra Robotics: mani dexterous Dex3/Dex5/Inspire, batterie, LiDAR Livox e Hesai, telecomandi, bracci Z1 e D1, moduli di calcolo.">
+  <meta name="description" content="Catalogo accessori Unitree disponibili in Italia tramite Abra Robotics: mani dexterous Dex3/Dex5/Inspire, batterie, LiDAR Livox e Hesai, telecomandi, bracci Z1 e D1, moduli di calcolo.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://abrarobotics.com/accessori.html">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">

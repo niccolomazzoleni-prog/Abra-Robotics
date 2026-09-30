@@ -593,7 +593,7 @@ def regenerate_listino_html() -> None:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listino pubblico End-User Unitree | Abra Robotics</title>
-  <meta name="description" content="Listino prezzi End-User Unitree distribuiti da Abra Robotics in Italia. Valori indicativi, IVA esclusa, spedizione e dazio inclusi.">
+  <meta name="description" content="Listino prezzi End-User Unitree disponibili in Italia tramite Abra Robotics. Valori indicativi, IVA esclusa, spedizione e dazio inclusi.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{SITE}/listino-unitree.html">
   <meta property="og:type" content="website">
