@@ -142,7 +142,7 @@ HTML = f'''<!DOCTYPE html>
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <p>Parte della filiera ufficiale Unitree Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
+    <p>Parte della filiera di distribuzione di Unitree Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
   </div>
 
 {SITE_NAV_HTML}
@@ -157,7 +157,7 @@ HTML = f'''<!DOCTYPE html>
         <div><strong>10</strong><span>Modelli G1</span></div>
         <div><strong>23–42</strong><span>Gradi di libertà</span></div>
         <div><strong>100 TOPS</strong><span>Computing Jetson Orin NX</span></div>
-        <div><strong>Italia</strong><span>Filiera ufficiale Unitree Italia</span></div>
+        <div><strong>Italia</strong><span>Filiera di distribuzione di Unitree Italia</span></div>
       </div>
     </div>
   </section>

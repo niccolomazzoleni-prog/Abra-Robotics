@@ -30,7 +30,7 @@ PROXY_KEY = os.environ.get("ABRA_PROXY_KEY", "")
 MODEL_DEFAULT = os.environ.get("OLLAMA_MODEL", "gemma4:e4b")
 RATE_LIMIT = int(os.environ.get("ABRA_RATE_LIMIT", "30"))  # req/min per IP
 
-SYSTEM_PROMPT = """Sei l'assistente commerciale di Abra Robotics, parte della filiera ufficiale Unitree Italia (anche AMR e cobot).
+SYSTEM_PROMPT = """Sei l'assistente commerciale di Abra Robotics, parte della filiera di distribuzione di Unitree Italia (anche AMR e cobot).
 Regole:
 - Rispondi in italiano, conciso e professionale (massimo 5-6 righe).
 - I PREZZI nel blocco PREVENTIVO UFFICIALE sono l'unica fonte valida: non inventare cifre. Formato italiano "23.997,41 € IVA esclusa" + link [scheda](prodotti/<slug>).

@@ -1,14 +1,14 @@
 # Unitree As2 — gamma e posizionamento Abra
 
-Fonte specs: [unitree.com/As2](https://www.unitree.com/As2) · prezzi listino Abra End-User (target margine 30%, ship quadrupedi €500 nel costing).
+Fonte specs: [unitree.com/As2](https://www.unitree.com/As2) · prezzi listino Abra End-User.
 
 ## Varianti e SKU Abra
 
 | SKU | Nome | Prezzo indicativo (IVA escl.) |
 |-----|------|--------------------------------|
-| AS2-AIR | As2 Air | € 17.900 *(FOB TBD — non ricalcolato)* |
+| AS2-AIR | As2 Air | € 17.900 |
 | AS2-X | As2-X | € 13.240 |
-| AS2-PRO | As2 Pro | € 29.900 *(FOB TBD — non ricalcolato)* |
+| AS2-PRO | As2 Pro | € 29.900 |
 | AS2-EDU | As2 EDU Standard (U1) | € 15.600 |
 | AS2-EDU-SMART | As2 EDU Smart (U2) | € 17.940 |
 | AS2-EDU-LASER | As2 EDU Laser Smart (U3 / Mid360) | € 22.640 |

@@ -218,7 +218,7 @@ def discount_parts(price: float | None, listino: float | None) -> tuple[str, str
 def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float | None = None) -> str:
     perks = """            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
-              <li><span class="bp-ico">✓</span> Parte della filiera ufficiale Unitree Italia</li>
+              <li><span class="bp-ico">✓</span> Parte della filiera di distribuzione di Unitree Italia</li>
               <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
             </ul>"""
     pay = """            <div class="buy-box-pay">
@@ -502,7 +502,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo Unitree Italia: tutti i prodotti e prezzi | Abra</title>
-  <meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Filiera ufficiale Unitree Italia Italia.">
+  <meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Filiera di distribuzione di Unitree Italia Italia.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{SITE}/catalogo-unitree.html">
   <meta property="og:type" content="website">
