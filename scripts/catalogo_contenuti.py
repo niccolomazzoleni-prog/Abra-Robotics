@@ -165,7 +165,7 @@ for sku, dof, mani, comp, extra in [
     MANIFEST[sku] = _entry(
         f"Unitree G1 {sku.replace('G1-', '')}",
         f"Piattaforma G1 EDU — {extra}.",
-        f"Configurazione G1 {extra}: piattaforma umanoide da ricerca con {dof} DoF, computing NVIDIA Jetson Orin e percezione 3D integrata. Distribuita in Italia da Abra Robotics.",
+        f"Configurazione G1 {extra}: piattaforma umanoide da ricerca con {dof} DoF, computing NVIDIA Jetson Orin e percezione 3D integrata. Disponibile in Italia tramite Abra Robotics.",
         specs,
     )
 MANIFEST["G1-COMP"] = _entry(
@@ -191,7 +191,7 @@ MANIFEST["H2-AIR"] = _entry(
 MANIFEST["H2-EDU"] = _entry(
     "Unitree H2 EDU",
     "Umanoide full-size per ricerca avanzata — computing e mani espandibili.",
-    "H2 EDU è la piattaforma umanoide top di Unitree: ~180 cm, 31 DoF, coppia fino a 360 N·m alle gambe, moduli NVIDIA Jetson opzionali e mani dexterous dedicate. Distribuito in Italia da Abra Robotics per università e R&D.",
+    "H2 EDU è la piattaforma umanoide top di Unitree: ~180 cm, 31 DoF, coppia fino a 360 N·m alle gambe, moduli NVIDIA Jetson opzionali e mani dexterous dedicate. Disponibile in Italia tramite Abra Robotics per università e R&D.",
     _h2_base + [("Variante", "EDU · ricerca avanzata"), ("Mani", "Dex3/Dex5/Inspire opzionali")],
     "unitree.com/h2",
 )
@@ -390,7 +390,7 @@ def _comp(sku, nome, compat, specs_extra):
     MANIFEST[sku] = _entry(
         f"Unitree {nome.title()}" if not nome.startswith("Unitree") else nome,
         f"Componente originale — compatibile {compat}.",
-        f"{nome} è un componente originale Unitree per {compat}. Ricambio o upgrade certificato, distribuito in Italia da Abra Robotics.",
+        f"{nome} è un componente originale Unitree per {compat}. Ricambio o upgrade certificato, disponibile in Italia tramite Abra Robotics.",
         specs_extra + [("Compatibilità", compat), ("Origine", "Unitree OEM")],
     )
 
@@ -478,7 +478,7 @@ def build_manifest_entry(sku: str, row: dict) -> dict:
         e = _entry(
             f"Unitree {nome.split('(')[0].strip()}",
             f"Prodotto Unitree — {nome}.",
-            f"{nome}: componente o robot Unitree distribuito in Italia da Abra Robotics. Specifiche da confermare su preventivo.",
+            f"{nome}: componente o robot Unitree disponibile in Italia tramite Abra Robotics. Specifiche da confermare su preventivo.",
             [("Prodotto", nome), ("Categoria", cat.replace("_", " "))],
         )
     e["immagine"] = image_for(sku, cat)

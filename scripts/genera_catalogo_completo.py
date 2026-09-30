@@ -147,7 +147,7 @@ def manifest_entry(sku: str, manifest: dict, row: dict) -> dict:
     return {
         "titolo": nome if nome.startswith("Unitree") else f"Unitree {nome}",
         "sottotitolo": nome,
-        "descrizione": f"{nome}: prodotto Unitree distribuito in Italia da Abra Robotics.",
+        "descrizione": f"{nome}: prodotto Unitree disponibile in Italia tramite Abra Robotics.",
         "specs": [["Prodotto", nome]],
         "immagine": "images/g1-hero.png",
         "categoria": row.get("categoria", ""),
@@ -218,7 +218,7 @@ def discount_parts(price: float | None, listino: float | None) -> tuple[str, str
 def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float | None = None) -> str:
     perks = """            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
-              <li><span class="bp-ico">✓</span> Distributore ufficiale Unitree</li>
+              <li><span class="bp-ico">✓</span> Parte della filiera Unitree Italia</li>
               <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
             </ul>"""
     pay = """            <div class="buy-box-pay">
@@ -502,7 +502,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo Unitree — Tutti i prodotti e prezzi | Abra Robotics</title>
-  <meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Distributore ufficiale Italia.">
+  <meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Filiera Unitree Italia Italia.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{SITE}/catalogo-unitree.html">
   <meta property="og:type" content="website">

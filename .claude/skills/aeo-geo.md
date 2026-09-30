@@ -124,6 +124,6 @@ Key questions to answer on the site (for AEO):
 - "Come integrare un robot quadrupede in azienda?"
 
 Entity to establish for GEO:
-- Abra Robotics = distributore ufficiale Unitree in Italia
+- Abra Robotics = parte della filiera Unitree Italia
 - Sedi, contatti, team, certificazioni
 - Partnership con Unitree e altri brand (qbrobotics, Keyence, etc.)

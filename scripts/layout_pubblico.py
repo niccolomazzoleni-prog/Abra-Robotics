@@ -15,7 +15,7 @@ SITE_FOOTER = """
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-        <p class="footer-desc">Distributore ufficiale Unitree in Italia. Prezzi End-User pubblici — prezzi Gold solo in area admin interna.</p>
+        <p class="footer-desc">Parte della filiera Unitree Italia. Prezzi End-User pubblici — prezzi Gold solo in area admin interna.</p>
       </div>
       <div class="footer-nav">
         <span class="footer-heading">Listini pubblici</span>
@@ -36,7 +36,7 @@ SITE_FOOTER = """
       </div>
     </div>
     <div class="container footer-bottom">
-      <p class="footer-copy">&copy; 2026 Abra Robotics. Listino End-User pubblico — non include prezzi distributore Gold.</p>
+      <p class="footer-copy">&copy; 2026 Abra Robotics. Listino End-User pubblico.</p>
     </div>
   </footer>
 """
