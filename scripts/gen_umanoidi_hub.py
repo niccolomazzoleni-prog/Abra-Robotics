@@ -60,7 +60,7 @@ def prodotti(fam):
 
 def voce(k, v):
     listino = v.get("prezzo_listino_eur")
-    barrato = (f'<s class="fam-map" title="Prezzo di listino (MAP)">{eur(listino)} €</s>'
+    barrato = (f'<s class="fam-map" title="Prezzo di listino">{eur(listino)} €</s>'
                if listino and listino > v["prezzo_eur"] else "")
     return (f'<a class="fam-item" href="prodotti/{v["slug"]}">'
             f'<span class="fam-item-name">{html.escape(v["nome"])}</span>'
