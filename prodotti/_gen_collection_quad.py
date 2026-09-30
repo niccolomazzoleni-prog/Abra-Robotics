@@ -86,7 +86,7 @@ HTML = f'''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Robot Quadrupedi Unitree — Tutta la gamma | Abra Robotics</title>
-  <meta name="description" content="Tutti i robot quadrupedi Unitree distribuiti in Italia da Abra Robotics: Go2 Pro, Go2 EDU, Go2 EDU+, Go2 Enterprise+ U2, A2, A2 Pro e B2. Specifiche, confronto e schede tecniche.">
+  <meta name="description" content="Tutti i robot quadrupedi Unitree disponibili in Italia tramite Abra Robotics: Go2 Pro, Go2 EDU, Go2 EDU+, Go2 Enterprise+ U2, A2, A2 Pro e B2. Specifiche, confronto e schede tecniche.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://abrarobotics.com/quadrupedi.html">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
