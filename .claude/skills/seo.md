@@ -107,6 +107,6 @@ Target keywords for this project:
 - Primary: "Unitree distributore Italia", "robot quadrupede", "robot umanoide"
 - Product: "Unitree Go2", "Unitree Go2 Pro", "Unitree G1", "Unitree B2"
 - Service: "robotica industriale Italia", "soluzioni robotiche", "finanziamento robot"
-- Long-tail: "comprare robot Unitree Italia", "distributore ufficiale Unitree", "robot per università"
+- Long-tail: "comprare robot Unitree Italia", "parte della filiera Unitree Italia", "robot per università"
 
 Target audience: Italian businesses, universities, research institutes looking for Unitree robots and robotics solutions.

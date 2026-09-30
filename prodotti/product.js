@@ -130,7 +130,7 @@
    Aggiorna il buy-box solo quando quadruped.de è vantaggioso rispetto alla
    nostra filiera standard (4-6 settimane):
      - "available" (Sofort verfügbar) → prodotto in stock, consegna nei tempi normali
-     - "date" con data entro 6 settimane → quadruped più veloce, mostra la data
+     - "date" con data entro 4–6 settimane → quadruped più veloce, mostra la data
      - "date" con data oltre 6 settimane → la nostra filiera è più rapida, non toccare
      - "unavailable" (Ausverkauft) → segnala indisponibilità
 ──────────────────────────────────────────────────────────────────────────── */

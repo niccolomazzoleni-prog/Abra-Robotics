@@ -38,8 +38,8 @@ def base_specs(d):
 
 V["g1-u1"] = dict(
   title="Unitree G1 EDU Standard", unum="U1", short="G1 EDU Standard",
-  subtitle="Il robot umanoide entry-level per AI e ricerca: piattaforma G1 con NVIDIA Jetson Orin NX (100 TOPS) e sviluppo secondario abilitato. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Standard (U1): umanoide da ricerca con 23 gradi di libertà, NVIDIA Jetson Orin NX 16GB 100 TOPS, LiDAR 3D MID-360 e RealSense D435i. Distributore ufficiale Unitree in Italia.",
+  subtitle="Il robot umanoide entry-level per AI e ricerca: piattaforma G1 con NVIDIA Jetson Orin NX (100 TOPS) e sviluppo secondario abilitato. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Standard (U1): umanoide da ricerca con 23 gradi di libertà, NVIDIA Jetson Orin NX 16GB 100 TOPS, LiDAR 3D MID-360 e RealSense D435i. Parte della filiera Unitree Italia.",
   desc="G1 EDU Standard porta la piattaforma G1 nel mondo della ricerca: 8-core CPU affiancata da NVIDIA Jetson Orin NX 16GB (100 TOPS) per sviluppo secondario, con LiDAR 3D LIVOX MID-360 e depth camera Intel RealSense D435i. 23 gradi di libertà e coppia al ginocchio di 120 N·m per locomozione robusta in ambienti reali.",
   imgdir="g1-u1",
   hands_full="Mani dummy senza polsi", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -52,8 +52,8 @@ V["g1-u1"] = dict(
 )
 V["g1-u2"] = dict(
   title="Unitree G1 EDU Plus", unum="U2", short="G1 EDU Plus",
-  subtitle="Prestazioni potenziate per sviluppo robotico e AI: vita e polsi articolati (28 DoF), predisposto per mani Dex3, Dex5 e Inspire. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Plus (U2): umanoide da ricerca con 28 gradi di libertà, vita e polsi articolati, Jetson Orin NX 100 TOPS, predisposto per mani dexterous. Distributore ufficiale Unitree in Italia.",
+  subtitle="Prestazioni potenziate per sviluppo robotico e AI: vita e polsi articolati (28 DoF), predisposto per mani Dex3, Dex5 e Inspire. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Plus (U2): umanoide da ricerca con 28 gradi di libertà, vita e polsi articolati, Jetson Orin NX 100 TOPS, predisposto per mani dexterous. Parte della filiera Unitree Italia.",
   desc="G1 EDU Plus aggiunge vita e polsi articolati (28 gradi di libertà totali) ed è predisposto per il montaggio di mani dexterous Dex3, Dex5 o Inspire a 5 dita. Mantiene il computing NVIDIA Jetson Orin NX 16GB (100 TOPS), LiDAR 3D MID-360 e depth camera RealSense D435i.",
   imgdir="g1-u2",
   hands_full="Mani dummy con polsi (predisposte upgrade)", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -66,8 +66,8 @@ V["g1-u2"] = dict(
 )
 V["g1-u3"] = dict(
   title="Unitree G1 EDU Ultimate A", unum="U3", short="G1 EDU Ultimate A",
-  subtitle="Umanoide ad alte prestazioni per ricerca AI e manipolazione avanzata, con mani dexterous Dex3 a tre dita (42 DoF). Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Ultimate A (U3): umanoide da ricerca con 42 gradi di libertà e mani Dex3 a tre dita, Jetson Orin NX 100 TOPS. Distributore ufficiale Unitree in Italia.",
+  subtitle="Umanoide ad alte prestazioni per ricerca AI e manipolazione avanzata, con mani dexterous Dex3 a tre dita (42 DoF). Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Ultimate A (U3): umanoide da ricerca con 42 gradi di libertà e mani Dex3 a tre dita, Jetson Orin NX 100 TOPS. Parte della filiera Unitree Italia.",
   desc="G1 EDU Ultimate A integra le mani dexterous Dex3 a tre dita (7 DoF per mano) su polsi e vita articolati, per un totale di 42 gradi di libertà. Computing NVIDIA Jetson Orin NX 16GB (100 TOPS), LiDAR 3D MID-360 e depth camera RealSense D435i.",
   imgdir="g1-u3",
   hands_full="Mani Dex3 a 3 dita con polsi", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -80,8 +80,8 @@ V["g1-u3"] = dict(
 )
 V["g1-u4"] = dict(
   title="Unitree G1 EDU Ultimate B", unum="U4", short="G1 EDU Ultimate B",
-  subtitle="La piattaforma G1 per manipolazione fine: mani Dex3-1 a tre dita con sensori tattili (42 DoF). Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Ultimate B (U4): umanoide da ricerca con 42 gradi di libertà e mani Dex3-1 tattili a tre dita, Jetson Orin NX 100 TOPS. Distributore ufficiale Unitree in Italia.",
+  subtitle="La piattaforma G1 per manipolazione fine: mani Dex3-1 a tre dita con sensori tattili (42 DoF). Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Ultimate B (U4): umanoide da ricerca con 42 gradi di libertà e mani Dex3-1 tattili a tre dita, Jetson Orin NX 100 TOPS. Parte della filiera Unitree Italia.",
   desc="G1 EDU Ultimate B monta le mani Dex3-1 a controllo di forza con sensori tattili integrati: feedback di contatto per la manipolazione fine, su una piattaforma a 42 gradi di libertà. Computing NVIDIA Jetson Orin NX 16GB (100 TOPS), LiDAR 3D MID-360 e RealSense D435i.",
   imgdir="g1-u4",
   hands_full="Mani Dex3-1 a 3 dita con sensori tattili", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -94,8 +94,8 @@ V["g1-u4"] = dict(
 )
 V["g1-u5"] = dict(
   title="Unitree G1 EDU Ultimate C", unum="U5", short="G1 EDU Ultimate C",
-  subtitle="Massima destrezza con mani Inspire a 5 dita tattili (RH56DFQ): per interazione uomo-robot e task del mondo reale (40 DoF). Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Ultimate C (U5): umanoide da ricerca con 40 gradi di libertà e mani Inspire a 5 dita tattili RH56DFQ, Jetson Orin NX 100 TOPS. Distributore ufficiale Unitree in Italia.",
+  subtitle="Massima destrezza con mani Inspire a 5 dita tattili (RH56DFQ): per interazione uomo-robot e task del mondo reale (40 DoF). Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Ultimate C (U5): umanoide da ricerca con 40 gradi di libertà e mani Inspire a 5 dita tattili RH56DFQ, Jetson Orin NX 100 TOPS. Parte della filiera Unitree Italia.",
   desc="G1 EDU Ultimate C integra le mani Inspire a 5 dita tattili (RH56DFQ): manipolazione antropomorfa con feedback tattile su una piattaforma a 40 gradi di libertà. Computing NVIDIA Jetson Orin NX 16GB (100 TOPS), LiDAR 3D MID-360 e RealSense D435i.",
   imgdir="g1-u5",
   hands_full="Mani Inspire a 5 dita tattili (RH56DFQ)", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -108,8 +108,8 @@ V["g1-u5"] = dict(
 )
 V["g1-u6"] = dict(
   title="Unitree G1 EDU Ultimate D", unum="U6", short="G1 EDU Ultimate D",
-  subtitle="Il top della serie G1 EDU: mani Inspire a 5 dita tattili di fascia alta (RH56DFTP) per la ricerca più avanzata (40 DoF). Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Ultimate D (U6): top di gamma con 40 gradi di libertà e mani Inspire a 5 dita tattili RH56DFTP, Jetson Orin NX 100 TOPS. Distributore ufficiale Unitree in Italia.",
+  subtitle="Il top della serie G1 EDU: mani Inspire a 5 dita tattili di fascia alta (RH56DFTP) per la ricerca più avanzata (40 DoF). Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Ultimate D (U6): top di gamma con 40 gradi di libertà e mani Inspire a 5 dita tattili RH56DFTP, Jetson Orin NX 100 TOPS. Parte della filiera Unitree Italia.",
   desc="G1 EDU Ultimate D è il top della serie EDU: mani Inspire a 5 dita tattili di fascia alta (RH56DFTP) con feedback tattile evoluto, su una piattaforma a 40 gradi di libertà. Computing NVIDIA Jetson Orin NX 16GB (100 TOPS), LiDAR 3D MID-360 e RealSense D435i.",
   imgdir="g1-u6",
   hands_full="Mani Inspire a 5 dita tattili (RH56DFTP)", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -122,8 +122,8 @@ V["g1-u6"] = dict(
 )
 V["g1-u7"] = dict(
   title="Unitree G1 EDU Ultimate E", unum="U7", short="G1 EDU Ultimate E",
-  subtitle="Il set completo G1 EDU Plus con mani BrainCo a 5 dita dexterous (Revo 2): destrezza antropomorfa per la ricerca (40 DoF). Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Ultimate E (U7): umanoide da ricerca con 40 gradi di libertà e mani BrainCo Revo 2 a 5 dita, Jetson Orin NX 100 TOPS. Distributore ufficiale Unitree in Italia.",
+  subtitle="Il set completo G1 EDU Plus con mani BrainCo a 5 dita dexterous (Revo 2): destrezza antropomorfa per la ricerca (40 DoF). Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Ultimate E (U7): umanoide da ricerca con 40 gradi di libertà e mani BrainCo Revo 2 a 5 dita, Jetson Orin NX 100 TOPS. Parte della filiera Unitree Italia.",
   desc="G1 EDU Ultimate E abbina il set completo EDU Plus alle mani BrainCo Revo 2 a 5 dita dexterous (6 DoF, 11 giunti per mano): destrezza antropomorfa su una piattaforma a 40 gradi di libertà. Computing NVIDIA Jetson Orin NX 16GB (100 TOPS), LiDAR 3D MID-360 e RealSense D435i.",
   imgdir="g1-u7",
   hands_full="Mani BrainCo Revo 2 a 5 dita (Basic)", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -136,8 +136,8 @@ V["g1-u7"] = dict(
 )
 V["g1-u8"] = dict(
   title="Unitree G1 EDU Ultimate F", unum="U8", short="G1 EDU Ultimate F",
-  subtitle="Mani BrainCo Revo 2 Touch a 5 dita con sensori tattili: pressione, attrito e prossimità per manipolazione fine (40 DoF). Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 EDU Ultimate F (U8): umanoide da ricerca con 40 gradi di libertà e mani BrainCo Revo 2 Touch tattili, Jetson Orin NX 100 TOPS. Distributore ufficiale Unitree in Italia.",
+  subtitle="Mani BrainCo Revo 2 Touch a 5 dita con sensori tattili: pressione, attrito e prossimità per manipolazione fine (40 DoF). Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 EDU Ultimate F (U8): umanoide da ricerca con 40 gradi di libertà e mani BrainCo Revo 2 Touch tattili, Jetson Orin NX 100 TOPS. Parte della filiera Unitree Italia.",
   desc="G1 EDU Ultimate F monta le mani BrainCo Revo 2 Touch a 5 dita con sensori tattili: rilevamento di pressione, attrito, direzione e prossimità per la manipolazione fine. Piattaforma a 40 gradi di libertà, computing NVIDIA Jetson Orin NX 16GB (100 TOPS), LiDAR 3D MID-360 e RealSense D435i.",
   imgdir="g1-u8",
   hands_full="Mani BrainCo Revo 2 Touch a 5 dita (tattili)", computing_full="8-core CPU + NVIDIA Jetson Orin NX 16GB (100 TOPS)",
@@ -150,8 +150,8 @@ V["g1-u8"] = dict(
 )
 V["g1-comp"] = dict(
   title="Unitree G1 Comp", unum="", short="G1 Comp",
-  subtitle="L'umanoide atletico di Unitree per competizioni robotiche e sfide ad alta dinamica: testa articolata e velocità oltre i 2 m/s. Distribuito in Italia da Abra Robotics.",
-  metadesc="Unitree G1 Comp: umanoide atletico per competizioni robotiche (calcio robotico), testa articolata, velocità >2 m/s, coppia 120 N·m. Distributore ufficiale Unitree in Italia.",
+  subtitle="L'umanoide atletico di Unitree per competizioni robotiche e sfide ad alta dinamica: testa articolata e velocità oltre i 2 m/s. Disponibile in Italia tramite Abra Robotics.",
+  metadesc="Unitree G1 Comp: umanoide atletico per competizioni robotiche (calcio robotico), testa articolata, velocità >2 m/s, coppia 120 N·m. Parte della filiera Unitree Italia.",
   desc="G1 Comp è la piattaforma atletica di Unitree, pensata per le competizioni robotiche e le sfide ad alta dinamica come il calcio robotico. Testa articolata a 2 DoF, velocità oltre i 2 m/s, coppia al ginocchio di 120 N·m e depth camera Intel RealSense D455. Computing 8-core CPU, con NVIDIA Jetson Orin NX (100 TOPS) opzionale.",
   imgdir="g1-comp",
   hands_full="Mani dummy con polsi (aggiornabili)", computing_full="8-core CPU · NVIDIA Jetson Orin NX 16GB (100 TOPS) opzionale",
@@ -208,7 +208,7 @@ def key_specs(d):
 def marquee(d):
     items = [d["title"], f'{d["dof_total"]} Gradi di Libertà', f'{d["speed"]} velocità',
              'LiDAR 3D LIVOX MID-360', d["hands_full"], d["computing_full"].split(" + ")[-1].split(" · ")[0],
-             f'Garanzia {d["warranty"]}', 'Distributore ufficiale Italia']
+             f'Garanzia {d["warranty"]}', 'Filiera Unitree Italia Italia']
     one = "\n        ".join(f'<span class="marquee-text">{t}</span><span class="marquee-dot">●</span>' for t in items)
     return one
 

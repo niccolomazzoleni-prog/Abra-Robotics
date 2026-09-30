@@ -944,3 +944,17 @@
     .variant-price-table thead th:last-child { text-align:right; }
     .variant-price-foot { margin:16px 0 0; font-size:0.86rem; color:var(--gray-600); line-height:1.6; }
     .variant-price-foot a { font-weight:700; color:var(--black); text-decoration:underline; }
+
+    /* Prezzo scontato rispetto al prezzo di listino (MAP) */
+    .buy-box-was { font-size:0.82rem; font-weight:600; color:var(--gray-600); }
+    .buy-box-was s { color:var(--gray-400); margin-left:4px; }
+    .buy-box-discount { display:inline-block; align-self:flex-start; margin-top:6px; font-size:0.7rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; color:#15803d; background:rgba(22,163,74,0.1); border:1px solid rgba(22,163,74,0.25); border-radius:999px; padding:4px 10px; }
+    /* Punti elenco descrizione prodotto (listino) */
+    .product-bullets { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:10px 28px; }
+    .product-bullets li { position:relative; padding-left:18px; font-size:0.92rem; line-height:1.55; color:var(--gray-800); }
+    .product-bullets li::before { content:""; position:absolute; left:0; top:0.62em; width:7px; height:7px; border-radius:50%; background:var(--black); }
+    @media (max-width:600px) { .product-bullets { grid-template-columns:1fr; } }
+    /* Avviso Go2 superato da AS2 */
+    .successor-notice { border:1px solid #f59e0b; background:rgba(245,158,11,0.08); border-radius:var(--radius); padding:16px 18px; margin:0 0 18px; }
+    .successor-notice p { margin:0 0 10px; font-size:0.9rem; line-height:1.5; color:var(--gray-800); font-weight:500; }
+    .successor-link { display:inline-block; font-weight:800; font-size:0.92rem; color:var(--black); text-decoration:underline; text-underline-offset:3px; }

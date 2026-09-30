@@ -289,6 +289,8 @@
         const hp = form.querySelector('[name="_gotcha"]');
         if (hp?.value.trim()) return;
 
+        const nome = form.querySelector('[name="nome"]')?.value.trim() || '';
+        const email = form.querySelector('[name="email"]')?.value.trim() || '';
         const telefono = form.querySelector('[name="telefono"]')?.value.trim() || '';
         const messaggioRaw = form.querySelector('[name="messaggio"]')?.value.trim() || '';
         if (!nome || !email) {

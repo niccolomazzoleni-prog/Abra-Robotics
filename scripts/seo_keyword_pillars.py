@@ -49,7 +49,7 @@ def set_lead(html: str, lead: str) -> str:
 FAQ_IT_UMANOIDI = [
     (
         "Cos'è un robot umanoide?",
-        "Un robot umanoide è un robot bipede con forma antropomorfa, progettato per muoversi e interagire in ambienti pensati per le persone. In Italia Abra Robotics distribuisce la gamma Unitree G1 (Air, EDU, Comp) con listino e supporto locale.",
+        "Un robot umanoide è un robot bipede con forma antropomorfa, progettato per muoversi e interagire in ambienti pensati per le persone. In Italia Abra Robotics fornisce la gamma Unitree G1 (Air, EDU, Comp) con listino e supporto locale.",
     ),
     (
         "Quanto costa un Unitree G1 in Italia?",
@@ -60,15 +60,15 @@ FAQ_IT_UMANOIDI = [
         "G1 Air per demo e comunicazione; G1 EDU (U1–U8) per università e R&D con mani e Orin NX; G1 Comp per performance atletiche. Un assessment Abra aiuta a mappare il caso d'uso in 5–9 settimane.",
     ),
     (
-        "Abra Robotics è distributore ufficiale Unitree?",
-        "Sì: Abra Robotics è supply chain ufficiale Unitree in Italia, con listino pubblico, ricambi, formazione e supporto tecnico.",
+        "Abra Robotics è parte della filiera Unitree Italia?",
+        "Sì: Abra Robotics fa parte della filiera Unitree Italia, con listino pubblico, ricambi, formazione e supporto tecnico.",
     ),
 ]
 
 FAQ_EN_HUMANOID = [
     (
         "What is a humanoid robot?",
-        "A humanoid robot is a bipedal, human-shaped robot designed for human environments. Abra Robotics distributes the Unitree G1 range in Italy with local pricing and support.",
+        "A humanoid robot is a bipedal, human-shaped robot designed for human environments. Abra Robotics supplies the Unitree G1 range in Italy with local pricing and support.",
     ),
     (
         "How much does a Unitree G1 cost in Italy?",
@@ -83,7 +83,7 @@ FAQ_EN_HUMANOID = [
 FAQ_IT_QUAD = [
     (
         "Cos'è un robot quadrupede?",
-        "Un robot quadrupede (o robot cane) è una piattaforma mobile a quattro zampe per ispezione, security e logistica su terreni irregolari. Abra distribuisce Unitree Go2, A2 e B2 in Italia.",
+        "Un robot quadrupede (o robot cane) è una piattaforma mobile a quattro zampe per ispezione, security e logistica su terreni irregolari. Abra fornisce Unitree Go2, A2 e B2 in Italia.",
     ),
     (
         "Quale Unitree Go2 scegliere?",
@@ -98,7 +98,7 @@ FAQ_IT_QUAD = [
 FAQ_EN_QUAD = [
     (
         "What is a quadruped robot?",
-        "A quadruped robot (robot dog) is a four-legged mobile platform for inspection, security and rough-terrain logistics. Abra distributes Unitree Go2, A2 and B2 in Italy.",
+        "A quadruped robot (robot dog) is a four-legged mobile platform for inspection, security and rough-terrain logistics. Abra supplies Unitree Go2, A2 and B2 in Italy.",
     ),
     (
         "Which Unitree Go2 should I buy?",
@@ -109,7 +109,7 @@ FAQ_EN_QUAD = [
 FAQ_IT_COBOT = [
     (
         "Cos'è un robot collaborativo (cobot)?",
-        "Un cobot è un robot industriale progettato per lavorare a fianco dell'operatore senza recinzioni fisse, con limiti di forza e velocità secondo ISO/TS 15066. Abra distribuisce i cobot Fairino FR Series.",
+        "Un cobot è un robot industriale progettato per lavorare a fianco dell'operatore senza recinzioni fisse, con limiti di forza e velocità secondo ISO/TS 15066. Abra integra i cobot Fairino FR Series.",
     ),
     (
         "Quale cobot industriale scegliere?",
@@ -254,7 +254,7 @@ def main() -> None:
     quad_items = [
         ("Unitree Go2 Pro", "https://abrarobotics.com/prodotti/unitree-go2-pro.html"),
         ("Unitree Go2 EDU", "https://abrarobotics.com/prodotti/unitree-go2-edu.html"),
-        ("Unitree Go2 EDU+", "https://abrarobotics.com/prodotti/unitree-go2-edu-plus.html"),
+        ("Unitree Go2 EDU+", "https://abrarobotics.com/prodotti/unitree-go2-edu-smart.html"),
         ("Unitree Go2 Enterprise", "https://abrarobotics.com/prodotti/unitree-go2-enterprise-u2.html"),
         ("Unitree A2", "https://abrarobotics.com/prodotti/unitree-a2.html"),
         ("Unitree A2 Pro", "https://abrarobotics.com/prodotti/unitree-a2-pro.html"),
@@ -266,7 +266,7 @@ def main() -> None:
         title="Robot umanoide Unitree G1 in Italia | Abra Robotics",
         desc="Robot umanoide Unitree G1: gamma completa in Italia (Air, EDU, Comp). Prezzi, specifiche e supporto Abra Robotics — distributore ufficiale.",
         h1="Robot umanoide Unitree G1 — gamma completa",
-        lead="Cerchi un robot umanoide per azienda, università o demo? Qui trovi tutta la famiglia Unitree G1 distribuita in Italia da Abra Robotics: dal G1 Air alle configurazioni EDU e Comp, con scheda tecnica e prezzi per ciascun modello.",
+        lead="Cerchi un robot umanoide per azienda, università o demo? Qui trovi tutta la famiglia Unitree G1 disponibile in Italia tramite Abra Robotics: dal G1 Air alle configurazioni EDU e Comp, con scheda tecnica e prezzi per ciascun modello.",
         faqs=FAQ_IT_UMANOIDI,
         lang="it",
         collection=(
@@ -281,7 +281,7 @@ def main() -> None:
         title="Humanoid robot Unitree G1 in Italy | Abra Robotics",
         desc="Unitree G1 humanoid robot full range in Italy: Air, EDU and Comp. Specs, pricing and local support from Abra Robotics.",
         h1="Unitree G1 humanoid robot — full range",
-        lead="Looking for a humanoid robot for business, research or demos? Explore the full Unitree G1 family distributed in Italy by Abra Robotics — Air, EDU and Comp — with dedicated product pages.",
+        lead="Looking for a humanoid robot for business, research or demos? Explore the full Unitree G1 family available in Italy through Abra Robotics — Air, EDU and Comp — with dedicated product pages.",
         faqs=FAQ_EN_HUMANOID,
         lang="en",
     )
