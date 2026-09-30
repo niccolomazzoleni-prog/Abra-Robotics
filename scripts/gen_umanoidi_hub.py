@@ -188,7 +188,7 @@ def main():
     meta = (f'<div class="hero-meta">\n<div><strong>6</strong><span>Famiglie di umanoidi</span></div>\n'
             f'<div><strong>{tot}</strong><span>Configurazioni</span></div>\n'
             f'<div><strong>da {eur(minimo, dec=False)} €</strong><span>IVA esclusa</span></div>\n'
-            f'<div><strong>Italia</strong><span>Filiera Unitree Italia</span></div>\n</div>')
+            f'<div><strong>Italia</strong><span>Filiera ufficiale Unitree Italia</span></div>\n</div>')
     t = re.sub(r'<div class="hero-meta">.*?</div>\s*</div>', meta, t, count=1, flags=re.S)
     t = re.sub(r'\s*<div class="tldr"[^>]*>\s*<strong>Famiglie esposte:</strong>.*?</div>', "", t, count=1, flags=re.S)
 

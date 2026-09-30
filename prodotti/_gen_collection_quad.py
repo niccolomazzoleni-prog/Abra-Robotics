@@ -121,7 +121,7 @@ HTML = f'''<!DOCTYPE html>
 <body>
 
   <div class="top-bar">
-    <p>Parte della filiera Unitree Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
+    <p>Parte della filiera ufficiale Unitree Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
   </div>
 
 {SITE_NAV_HTML}
@@ -135,7 +135,7 @@ HTML = f'''<!DOCTYPE html>
         <div><strong>7</strong><span>Modelli</span></div>
         <div><strong>10–120 kg</strong><span>Carico utile</span></div>
         <div><strong>IP67</strong><span>Fino a (A2 Pro / B2)</span></div>
-        <div><strong>Italia</strong><span>Filiera Unitree Italia</span></div>
+        <div><strong>Italia</strong><span>Filiera ufficiale Unitree Italia</span></div>
       </div>
     </div>
   </section>
