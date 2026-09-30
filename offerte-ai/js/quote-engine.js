@@ -150,15 +150,15 @@
       const lower = this._normalizeText(userText);
       if (!/tempi?\s*(di\s+)?consegna|quando\s+arriv|delivery|tempo\s+consegna/.test(lower)) return null;
       if (/\bg1\b|umanoide|umanoidi/.test(lower)) {
-        return '**Tempi di consegna umanoidi G1:** in genere **4–8 settimane** dalla conferma ordine (configurazione e stock da verificare).';
+        return '**Tempi di consegna umanoidi G1:** in genere **4–6 settimane** dalla conferma ordine (configurazione e stock da verificare).';
       }
       if (/\bgo2\b|\bas2\b|\ba2\b|quadruped/.test(lower)) {
         return '**Tempi di consegna quadrupedi:** in genere **4–6 settimane** dalla conferma ordine.';
       }
       if (/\bmir\b|\bamr\b|cobot/.test(lower)) {
-        return '**Tempi di consegna AMR/cobot:** in genere **circa 4 settimane** dalla conferma ordine.';
+        return '**Tempi di consegna AMR/cobot:** in genere **circa 4–6 settimane** dalla conferma ordine.';
       }
-      return '**Tempi indicativi Abra:** quadrupedi 4–6 settimane · umanoidi 4–8 settimane · AMR/cobot ~4 settimane (dalla conferma ordine).';
+      return '**Tempi indicativi Abra:** quadrupedi 4–6 settimane · umanoidi 4–6 settimane · AMR/cobot 4–6 settimane (dalla conferma ordine).';
     }
 
     tryAutoQuote(userText) {

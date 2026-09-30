@@ -158,7 +158,7 @@ def buy_area(alibaba_usd: float) -> str:
             <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Assessment applicativo incluso</li>
               <li><span class="bp-ico">✓</span> Configurazione base e supporto Abra</li>
-              <li><span class="bp-ico">✓</span> Consegna stimata 3–5 settimane</li>
+              <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
             </ul>
             <div class="buy-box-cta"><a href="#form" class="btn btn-primary">Richiedi preventivo</a></div>
             <p class="buy-box-note">Prezzo indicativo — gripper e safety su preventivo dedicato.</p>
