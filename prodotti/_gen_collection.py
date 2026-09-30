@@ -142,7 +142,7 @@ HTML = f'''<!DOCTYPE html>
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <p>Distributore ufficiale Unitree in Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
+    <p>Parte della filiera Unitree Italia. <a href="assessment.html">Trova il modello giusto →</a></p>
   </div>
 
 {SITE_NAV_HTML}
@@ -152,12 +152,12 @@ HTML = f'''<!DOCTYPE html>
     <div class="container">
       <p class="label">Robot Umanoidi</p>
       <h1>Unitree G1 — tutta la gamma</h1>
-      <p class="lead">La famiglia di robot umanoidi Unitree G1, distribuita in Italia da Abra Robotics. Dal modello base alle configurazioni EDU per la ricerca, fino alla versione atletica Comp: dieci modelli, una sola piattaforma, una scheda tecnica dedicata per ciascuno.</p>
+      <p class="lead">La famiglia di robot umanoidi Unitree G1, disponibile in Italia tramite Abra Robotics. Dal modello base alle configurazioni EDU per la ricerca, fino alla versione atletica Comp: dieci modelli, una sola piattaforma, una scheda tecnica dedicata per ciascuno.</p>
       <div class="hero-meta">
         <div><strong>10</strong><span>Modelli G1</span></div>
         <div><strong>23–42</strong><span>Gradi di libertà</span></div>
         <div><strong>100 TOPS</strong><span>Computing Jetson Orin NX</span></div>
-        <div><strong>Italia</strong><span>Distributore ufficiale</span></div>
+        <div><strong>Italia</strong><span>Filiera Unitree Italia</span></div>
       </div>
     </div>
   </section>

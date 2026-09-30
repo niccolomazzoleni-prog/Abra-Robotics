@@ -143,7 +143,7 @@ PROCESS_HTML = """      <div class="process-steps-product">
         <div class="step">
           <span class="step-number">01</span>
           <h3>Assessment</h3>
-          <p>Analizziamo layout, percorsi e sistemi IT. Sopralluogo incluso nel prezzo «da».</p>
+          <p>Analizziamo layout, percorsi e sistemi IT. Sopralluogo e analisi sono quotati su progetto.</p>
         </div>
         <div class="step">
           <span class="step-number">02</span>
@@ -192,9 +192,9 @@ def buy_area(net: float) -> str:
               </div>
             </div>
             <ul class="buy-box-perks">
-              <li><span class="bp-ico">✓</span> Assessment e sopralluogo inclusi</li>
+              <li><span class="bp-ico">✓</span> Sopralluogo e integrazione su preventivo</li>
               <li><span class="bp-ico">✓</span> Progettazione percorsi e integrazione</li>
-              <li><span class="bp-ico">✓</span> Consegna stimata ~4 settimane</li>
+              <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
             </ul>
             <div class="buy-box-cta"><a href="#form" class="btn btn-primary">Richiedi preventivo</a></div>
             <p class="buy-box-note">Prezzo indicativo — quotazione aggiornata su richiesta.</p>

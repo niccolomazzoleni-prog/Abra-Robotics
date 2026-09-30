@@ -1,9 +1,9 @@
 # FAQ vendita Abra Robotics
 
 ## Tempi di consegna
-- Umanoidi: 4–8 settimane dalla firma
+- Umanoidi: 4–6 settimane dalla firma
 - Quadrupedi: 4–6 settimane
-- AMR e cobot: circa 4 settimane
+- AMR e cobot: circa 4–6 settimane
 
 ## Finanziamenti
 La maggior parte dei progetti è finanziabile con incentivi Industria 4.0, Transizione 5.0 o bandi PNRR regionali. Offriamo verifica gratuita della finanziabilità.

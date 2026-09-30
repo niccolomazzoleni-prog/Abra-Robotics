@@ -7,7 +7,7 @@
 - **Interventi on-site** in tutta Italia **su appuntamento**, preventivati a parte.
 - Possibile acquisto **solo hardware** per team con competenze interne (meno supporto incluso).
 
-Abra è **distributore ufficiale Unitree in Italia**: un unico interlocutore da ordine a PoC e assistenza.
+Abra è **parte della filiera Unitree Italia**: un unico interlocutore da ordine a PoC e assistenza.
 
 ## Garanzia produttore
 I robot Unitree hanno **garanzia commerciale del produttore** (tipicamente **12 mesi** dalla consegna, salvo condizioni specifiche del modello). Dettagli nella documentazione Unitree e in fattura.

@@ -151,12 +151,12 @@ PROCESS_SECTION = """  <section class="section section-dark">
         <div class="step">
           <span class="step-number">02</span>
           <h3>Ordine</h3>
-          <p>Spedizione e dazio doganale inclusi. Distributore ufficiale Unitree in Italia.</p>
+          <p>Spedizione e dazio doganale inclusi. Parte della filiera Unitree Italia.</p>
         </div>
         <div class="step">
           <span class="step-number">03</span>
           <h3>Consegna</h3>
-          <p>Consegna stimata 2–4 settimane. Supporto tecnico dedicato.</p>
+          <p>Consegna stimata 4–6 settimane. Supporto tecnico dedicato.</p>
         </div>
       </div>
     </div>
