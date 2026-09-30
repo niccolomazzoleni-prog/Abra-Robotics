@@ -12,7 +12,7 @@ _PAY_ROW = '''            <div class="buy-box-pay">
             </div>'''
 _PERKS = '''            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
-              <li><span class="bp-ico">✓</span> Parte della filiera Unitree Italia · garanzia inclusa</li>
+              <li><span class="bp-ico">✓</span> Parte della filiera ufficiale Unitree Italia · garanzia inclusa</li>
               <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
             </ul>'''
 _NOTE = '<p class="buy-box-note">Prezzo indicativo, soggetto a variazioni cambio EUR/USD — preventivo aggiornato su richiesta.</p>'

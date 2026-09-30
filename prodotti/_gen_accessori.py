@@ -126,7 +126,7 @@ HTML = f'''<!DOCTYPE html>
 <body>
 
   <div class="top-bar">
-    <p>Parte della filiera Unitree Italia. <a href="assessment.html">Trova il robot giusto →</a></p>
+    <p>Parte della filiera ufficiale Unitree Italia. <a href="assessment.html">Trova il robot giusto →</a></p>
   </div>
 
 {SITE_NAV_HTML}

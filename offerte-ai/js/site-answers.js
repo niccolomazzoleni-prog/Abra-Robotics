@@ -498,7 +498,7 @@
 
     greeting() {
       return [
-        'Ciao! Sono l\'assistente di Abra Robotics, parte della filiera Unitree Italia.',
+        'Ciao! Sono l\'assistente di Abra Robotics, parte della filiera ufficiale Unitree Italia.',
         'Posso darti subito **prezzi dal listino pubblico** (es. «quanto costa il G1?», «prezzo H2-D»), tempi di consegna e contatti con un tecnico.',
       ].join('\n');
     }

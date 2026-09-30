@@ -15,7 +15,7 @@ SITE_FOOTER = """
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-        <p class="footer-desc">Parte della filiera Unitree Italia. Prezzi IVA esclusa, spedizione e dazio inclusi.</p>
+        <p class="footer-desc">Parte della filiera ufficiale Unitree Italia. Prezzi IVA esclusa, spedizione e dazio inclusi.</p>
       </div>
       <div class="footer-nav">
         <span class="footer-heading">Listini pubblici</span>
