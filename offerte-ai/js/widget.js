@@ -182,7 +182,7 @@
 
     const ui = new window.AbraChatWidgetUI({
       title: 'Assistente Abra',
-      subtitle: 'Online · prezzi dal listino ufficiale',
+      subtitle: 'Online · prezzi dal listino pubblico',
       logoUrl: siteRoot + 'images/chat-g1-face.png',
       linkBase: siteRoot,
       chips: [
@@ -209,7 +209,7 @@
     });
 
     ui.addBot(
-      'Ciao! Sono l\'assistente di **Abra Robotics**, supply chain ufficiale Unitree in Italia.\n' +
+      'Ciao! Sono l\'assistente di **Abra Robotics**, parte della filiera Unitree Italia.\n' +
       'Chiedimi un prezzo — es. «quanto costa il G1?» o «prezzo H2-D» — e ti rispondo subito con cifra e link alla scheda.'
     );
     // conversazione della sessione: resta disponibile quando si apre una scheda prodotto dal link in chat
