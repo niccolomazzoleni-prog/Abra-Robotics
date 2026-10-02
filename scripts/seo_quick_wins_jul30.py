@@ -29,7 +29,7 @@ ROOT_PAGES = [
     "chi-siamo.html",
     "catalogo.html",
     "catalogo-cobot.html",
-    "catalogo-amr.html",
+    "amr.html",
     "lp-unitree.html",
     "lp-umanoidi.html",
     "lp-quadrupedi.html",

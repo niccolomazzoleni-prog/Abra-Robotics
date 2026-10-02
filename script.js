@@ -257,20 +257,43 @@ if (menuToggle && mobileMenu) {
   menuToggle.setAttribute('aria-expanded', 'false');
   menuToggle.setAttribute('aria-haspopup', 'true');
 
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = isOpen ? 'none' : 'flex';
-    menuToggle.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', String(!isOpen));
-  });
+  const isMenuOpen = () => mobileMenu.style.display === 'flex';
+  const setMenu = (open) => {
+    mobileMenu.style.display = open ? 'flex' : 'none';
+    menuToggle.classList.toggle('active', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Menu');
+    document.body.classList.toggle('menu-open', open);
+  };
+
+  // Pulsante "Chiudi" in cima al menu (aggiunto qui: vale per tutte le pagine)
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.className = 'mobile-menu-close';
+  closeBtn.setAttribute('aria-label', 'Chiudi menu');
+  closeBtn.innerHTML = '<span aria-hidden="true">✕</span> Chiudi';
+  closeBtn.addEventListener('click', () => setMenu(false));
+  mobileMenu.prepend(closeBtn);
+
+  menuToggle.addEventListener('click', () => setMenu(!isMenuOpen()));
 
   // Close mobile menu on link click
   mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.style.display = 'none';
-      menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', () => setMenu(false));
+  });
+
+  // Chiudi toccando fuori dal menu (senza attivare quello che c'e' sotto), con Esc o allargando la finestra
+  document.addEventListener('click', (e) => {
+    if (!isMenuOpen() || mobileMenu.contains(e.target) || menuToggle.contains(e.target)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setMenu(false);
+  }, true);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen()) { setMenu(false); menuToggle.focus(); }
+  });
+  window.addEventListener('resize', () => {
+    if (isMenuOpen() && window.innerWidth > 1024) setMenu(false);
   });
 
   // Mobile dropdown accordion (con stato ARIA)
@@ -525,9 +548,9 @@ document.addEventListener('click', (e) => {
   if (document.querySelector('script[data-abra-chat-widget]')) return;
 
   var depth = 0;
-  if (location.pathname.includes('/prodotti/')) depth = 1;
+  if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/')) depth = 1;
   if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
-  if (location.pathname.includes('/en/prodotti/')) depth = 2;
+  if (location.pathname.includes('/en/prodotti/') || location.pathname.includes('/en/blog/')) depth = 2;
   var prefix = depth ? '../'.repeat(depth) : '';
 
   var s = document.createElement('script');
@@ -553,6 +576,56 @@ document.addEventListener('click', (e) => {
       p.innerHTML = text;
       f.appendChild(p);
     });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();
+
+// Articoli del blog: barra di avanzamento in cima con i minuti che mancano alla fine.
+// Se il browser ha fatto l'accesso all'editor (/editor/), compare anche "Modifica".
+(function articleReadingProgress() {
+  function run() {
+    const content = document.querySelector('.article-content');
+    if (!content) return;
+    const words = (content.innerText || '').trim().split(/\s+/).length;
+    const totalMin = Math.max(1, Math.round(words / 200));
+    const bar = document.createElement('div');
+    bar.className = 'read-progress';
+    bar.setAttribute('role', 'progressbar');
+    bar.setAttribute('aria-label', 'Avanzamento lettura');
+    bar.setAttribute('aria-valuemin', '0');
+    bar.setAttribute('aria-valuemax', '100');
+    bar.innerHTML = '<div class="read-progress-fill"></div><span class="read-progress-label"></span>';
+    document.body.appendChild(bar);
+    const fill = bar.firstChild;
+    const label = bar.lastChild;
+    let ticking = false;
+    function update() {
+      ticking = false;
+      const rect = content.getBoundingClientRect();
+      const start = rect.top + window.scrollY - window.innerHeight * 0.25;
+      const end = rect.bottom + window.scrollY - window.innerHeight;
+      const p = Math.min(1, Math.max(0, (window.scrollY - start) / Math.max(1, end - start)));
+      fill.style.transform = 'scaleX(' + p + ')';
+      bar.setAttribute('aria-valuenow', String(Math.round(p * 100)));
+      const left = Math.ceil(totalMin * (1 - p));
+      label.textContent = p >= 0.99 ? 'Finito' : (left <= 1 ? 'Meno di 1 min alla fine' : left + ' min alla fine');
+      bar.classList.toggle('is-visible', window.scrollY > 120);
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    let editorOn = false;
+    try { editorOn = localStorage.getItem('abra-editor') === '1'; } catch (e) {}
+    const m = location.pathname.match(/\/blog\/([a-z0-9-]+)\.html$/);
+    if (editorOn && m) {
+      const a = document.createElement('a');
+      a.className = 'article-edit-btn';
+      a.href = '/editor/?file=' + encodeURIComponent('blog/' + m[1] + '.html');
+      a.textContent = 'Modifica articolo';
+      document.body.appendChild(a);
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
   else run();
