@@ -28,9 +28,8 @@ def render_site_nav(prefix: str = "") -> str:
         <div class="nav-item-dropdown">
           <button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
           <div class="nav-dropdown-panel">
-            <a href="{p}lp-cobot.html">Cobot</a>
-            <a href="{p}catalogo-cobot.html">Catalogo cobot</a>
-            <a href="{p}manifattura-logistica.html#amr">AMR</a>
+            <a href="{p}cobot.html">Cobot</a>
+            <a href="{p}amr.html">AMR</a>
             <a href="{p}quadrupedi.html">Quadrupedi</a>
             <a href="{p}umanoidi.html">Umanoidi</a>
             <a href="{p}accessori.html">Accessori</a>
@@ -64,9 +63,8 @@ def render_site_nav(prefix: str = "") -> str:
     <div class="mobile-dropdown">
       <button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
       <div class="mobile-dropdown-panel">
-        <a href="{p}lp-cobot.html">Cobot</a>
-        <a href="{p}catalogo-cobot.html">Catalogo cobot</a>
-        <a href="{p}manifattura-logistica.html#amr">AMR</a>
+        <a href="{p}cobot.html">Cobot</a>
+        <a href="{p}amr.html">AMR</a>
         <a href="{p}quadrupedi.html">Quadrupedi</a>
         <a href="{p}umanoidi.html">Umanoidi</a>
         <a href="{p}accessori.html">Accessori</a>
