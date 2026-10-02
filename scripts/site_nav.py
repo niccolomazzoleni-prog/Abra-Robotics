@@ -91,3 +91,53 @@ def render_site_nav(prefix: str = "") -> str:
 def render_site_chrome(prefix: str = "", top_message: str | None = None) -> str:
     """Top bar + navbar + mobile menu."""
     return render_top_bar(prefix, top_message) + "\n\n" + render_site_nav(prefix)
+
+
+def render_site_footer(prefix: str = "") -> str:
+    """Footer unico del sito italiano (sostituito in tutte le pagine tranne le landing lp-*)."""
+    p = prefix
+    cal = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF"
+    return f"""<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="{p}index.html"><img alt="Abra Robotics" class="logo-img" src="{p}images/logo.png" width="180" height="72" decoding="async"/></a>
+<p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Prodotti</span>
+<a href="{p}cobot.html">Cobot</a>
+<a href="{p}amr.html">AMR</a>
+<a href="{p}quadrupedi.html">Quadrupedi</a>
+<a href="{p}umanoidi.html">Umanoidi</a>
+<a href="{p}accessori.html">Accessori</a>
+<a href="{p}catalogo.html">Catalogo completo</a>
+<a href="{p}listino-unitree.html">Listino prezzi</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Servizi e risorse</span>
+<a href="{p}assessment.html">Trova il robot giusto</a>
+<a href="{p}software.html">Software</a>
+<a href="{p}finanziamenti.html">Finanziamenti</a>
+<a href="{p}manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="{p}universita-ricerca.html">Università e Ricerca</a>
+<a href="{p}blog.html">Blog</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contatti</span>
+<a href="{p}chi-siamo.html">Chi siamo</a>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Viale Trieste 105<br/>30026 Portogruaro (VE)</p>
+<a class="btn btn-primary btn-sm" href="{cal}" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<nav aria-label="Note legali" class="footer-legal">
+<a href="{p}privacy-policy.html">Privacy Policy</a>
+<a href="{p}cookie-policy.html">Cookie Policy</a>
+<a href="{p}condizioni-di-vendita.html">Condizioni di vendita</a>
+<a href="{p}politica-resi.html">Politica resi</a>
+<a href="{p}note-legali.html">Note legali</a>
+</nav>
+</div>
+</footer>"""
