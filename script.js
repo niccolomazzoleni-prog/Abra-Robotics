@@ -257,20 +257,43 @@ if (menuToggle && mobileMenu) {
   menuToggle.setAttribute('aria-expanded', 'false');
   menuToggle.setAttribute('aria-haspopup', 'true');
 
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = isOpen ? 'none' : 'flex';
-    menuToggle.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', String(!isOpen));
-  });
+  const isMenuOpen = () => mobileMenu.style.display === 'flex';
+  const setMenu = (open) => {
+    mobileMenu.style.display = open ? 'flex' : 'none';
+    menuToggle.classList.toggle('active', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Menu');
+    document.body.classList.toggle('menu-open', open);
+  };
+
+  // Pulsante "Chiudi" in cima al menu (aggiunto qui: vale per tutte le pagine)
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.className = 'mobile-menu-close';
+  closeBtn.setAttribute('aria-label', 'Chiudi menu');
+  closeBtn.innerHTML = '<span aria-hidden="true">✕</span> Chiudi';
+  closeBtn.addEventListener('click', () => setMenu(false));
+  mobileMenu.prepend(closeBtn);
+
+  menuToggle.addEventListener('click', () => setMenu(!isMenuOpen()));
 
   // Close mobile menu on link click
   mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.style.display = 'none';
-      menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', () => setMenu(false));
+  });
+
+  // Chiudi toccando fuori dal menu (senza attivare quello che c'e' sotto), con Esc o allargando la finestra
+  document.addEventListener('click', (e) => {
+    if (!isMenuOpen() || mobileMenu.contains(e.target) || menuToggle.contains(e.target)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setMenu(false);
+  }, true);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen()) { setMenu(false); menuToggle.focus(); }
+  });
+  window.addEventListener('resize', () => {
+    if (isMenuOpen() && window.innerWidth > 1024) setMenu(false);
   });
 
   // Mobile dropdown accordion (con stato ARIA)
