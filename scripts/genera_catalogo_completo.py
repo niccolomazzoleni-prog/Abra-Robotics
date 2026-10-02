@@ -658,7 +658,8 @@ def regenerate_listino_html() -> None:
     <p class="listino-note">I prezzi sono soggetti a variazione del cambio EUR/USD. Non include prezzi distributore (Gold). Per uso interno: <code>admin/listini.html</code> (non indicizzato). Per configurazioni EDU avanzate, <a href="index.html#cta-finale">richiedi un preventivo personalizzato</a>.</p>
   </main>
 {SITE_FOOTER}
-  <script>
+  <script src="listino-gate.js"></script>
+<script>
     let items = [];
     const CAT_LABEL = {{ UMANOIDI: "Umanoidi & robot", MANI_BRACCI: "Mani & bracci", COMPONENTISTICA: "Componentistica" }};
 
@@ -674,14 +675,16 @@ def regenerate_listino_html() -> None:
         if (q && !i.nome.toLowerCase().includes(q) && !i.sku.toLowerCase().includes(q)) return false;
         return true;
       }});
-      document.getElementById('rows').innerHTML = filtered.length
-        ? filtered.map(i => `<tr>
+      const shown = window.listinoGate ? window.listinoGate.limit(filtered) : filtered;
+      document.getElementById('rows').innerHTML = shown.length
+        ? shown.map(i => `<tr>
             <td class="thumb-col">${{i.img ? `<img class="listino-thumb" src="${{i.img}}" alt="" loading="lazy">` : ''}}</td>
             <td><a class="prod-link" href="prodotti/${{i.slug}}">${{i.nome}}</a></td>
             <td>${{i.catLabel}}</td>
             <td class="price-col">${{i.listino > i.prezzo ? `<s class="price-was">€ ${{fmt(i.listino)}}</s>` : ''}}${{i.prezzoDa ? 'da ' : ''}}€ ${{fmt(i.prezzo)}}</td>
           </tr>`).join('')
         : '<tr><td colspan="4">Nessun risultato</td></tr>';
+      if (window.listinoGate) window.listinoGate.after(filtered.length, shown.length);
     }}
 
     fetch('listini/pubblico/end-user.json')
