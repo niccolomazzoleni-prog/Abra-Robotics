@@ -958,3 +958,29 @@
     .successor-notice { border:1px solid #f59e0b; background:rgba(245,158,11,0.08); border-radius:var(--radius); padding:16px 18px; margin:0 0 18px; }
     .successor-notice p { margin:0 0 10px; font-size:0.9rem; line-height:1.5; color:var(--gray-800); font-weight:500; }
     .successor-link { display:inline-block; font-weight:800; font-size:0.92rem; color:var(--black); text-decoration:underline; text-underline-offset:3px; }
+
+    /* === Schede prodotto mobile ===
+       Le colonne "1fr" delle griglie non scendono sotto la larghezza minima del
+       contenuto (parole lunghe nelle key-spec, pulsanti, titoli): sul telefono la
+       colonna diventava piu' larga dello schermo e html{overflow-x:clip} tagliava
+       la pagina di lato. minmax(0,1fr) + min-width:0 + a capo forzato lo evitano. */
+    .product-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .product-hero-grid > * { min-width: 0; }
+    .key-specs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .key-spec, .key-spec-value, .key-spec-label,
+    .product-title, .product-subtitle, .product-desc, .breadcrumb,
+    .buy-box, .buy-box-perks li, .spec-table td, .spec-table th { overflow-wrap: anywhere; }
+    .gallery-main img { max-width: 100%; }
+    @media (max-width: 1024px) {
+      .product-hero-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .key-specs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .key-spec { padding: 14px 8px; }
+      .key-spec-value { font-size: 1.1rem; line-height: 1.15; hyphens: auto; }
+      .buy-box { padding: 18px; }
+      .buy-box-head { flex-wrap: wrap; }
+      /* product.css e' caricato solo sulle schede: vale per tutti i pulsanti della scheda */
+      main .btn, section .btn { white-space: normal; max-width: 100%; text-align: center; }
+      .breadcrumb { flex-wrap: wrap; }
+    }
