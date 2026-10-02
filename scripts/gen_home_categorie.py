@@ -33,13 +33,15 @@ def da_catalogo(path):
 um = unitree(lambda k, v: v["categoria"] == "UMANOIDI" and re.match(r"^(G1|H2|R1)", k))
 qu = unitree(lambda k, v: v["categoria"] == "UMANOIDI" and re.match(r"^(GO2|AS2|A2|B2)", k))
 ac = unitree(lambda k, v: v["categoria"] in ("COMPONENTISTICA", "MANI_BRACCI"))
-co = da_catalogo("catalogo-cobot.html")
+# Cobot: catalogo dentro cobot.html (che contiene anche le pinze) -> prezzi dal manifest cobot.
+_cobot = [m for m in json.loads((ROOT / "data" / "cobot-products.json").read_text(encoding="utf-8")) if m.get("price_eur")]
+co = (min(m["price_eur"] for m in _cobot), len(_cobot))
 am = da_catalogo("catalogo-amr.html")
 
 CATEGORIE = [
     ("Umanoidi", "Unitree G1, H2, R1 e versioni dual-arm", um, "umanoidi.html", "images/prodotti/2026/famiglia-g1.png"),
     ("Quadrupedi", "Unitree Go2, AS2, A2 e B2", qu, "quadrupedi.html", "images/prodotti/2026/as2.png"),
-    ("Cobot", "Bracci collaborativi Fairino, con celle chiavi in mano", co, "catalogo-cobot.html", "images/manifattura/fairino-fr5.png"),
+    ("Cobot", "Bracci collaborativi Fairino, con celle chiavi in mano", co, "cobot.html", "images/manifattura/fairino-fr5.png"),
     ("AMR", "Robot mobili per logistica e intralogistica", am, "catalogo-amr.html", "images/manifattura/amr/juno-plus.webp"),
     ("Accessori", "Mani, pinze, LiDAR, batterie e moduli di calcolo", ac, "accessori.html", "images/prodotti/2026/revo2-touch.png"),
 ]
