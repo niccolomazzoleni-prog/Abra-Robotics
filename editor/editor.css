@@ -1,0 +1,48 @@
+/* Editor blog: riusa style.css + blog/blog.css per vedere l'articolo come online. */
+.ed-body { background: var(--gray-50, #fafafa); padding: 0; }
+.ed-top { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #fff; border-bottom: 1px solid var(--gray-200); }
+.ed-logo { height: 26px; display: block; }
+.ed-top-title { font-weight: 700; }
+.ed-spacer { flex: 1; }
+.ed-user { font-size: 14px; color: var(--gray-600); }
+.ed-main { max-width: 980px; margin: 0 auto; padding: 24px 16px 80px; }
+.ed-panel { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius, 12px); padding: 24px; }
+.ed-panel h1 { font-size: 26px; margin: 0 0 12px; }
+.ed-panel ol { margin: 12px 0 16px 20px; }
+.ed-panel li { margin-bottom: 6px; }
+.ed-panel a { color: var(--accent-text, #7c4dd6); }
+.ed-login-form { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.ed-login-form input[type=password] { flex: 1 1 280px; padding: 10px 12px; border: 1px solid var(--gray-200); border-radius: 8px; font: inherit; }
+.ed-check { display: flex; gap: 6px; align-items: center; font-size: 14px; }
+.ed-note { font-size: 13px; color: var(--gray-600); margin-top: 12px; }
+.ed-btn { font: inherit; font-weight: 500; padding: 9px 16px; border-radius: 8px; border: 1px solid var(--black); background: var(--black); color: #fff; cursor: pointer; text-decoration: none; display: inline-block; }
+.ed-btn:disabled { opacity: .4; cursor: default; }
+.ed-btn-ghost { background: #fff; color: var(--black); border-color: var(--gray-200); }
+.ed-msg { padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; background: var(--orange-light, #f0e8ff); border: 1px solid var(--orange, #b37eff); }
+.ed-msg.is-error { background: #fdecec; border-color: #e5a3a3; }
+.ed-filter { width: 100%; padding: 10px 12px; border: 1px solid var(--gray-200); border-radius: 8px; font: inherit; margin-bottom: 12px; }
+.ed-articles { list-style: none; margin: 0; padding: 0; }
+.ed-articles li { border-bottom: 1px solid var(--gray-200); }
+.ed-articles li:last-child { border-bottom: 0; }
+.ed-articles button { all: unset; box-sizing: border-box; width: 100%; display: flex; justify-content: space-between; gap: 12px; padding: 12px 4px; cursor: pointer; }
+.ed-articles button:hover .ed-a-title, .ed-articles button:focus-visible .ed-a-title { color: var(--accent-text, #7c4dd6); }
+.ed-a-file { color: var(--gray-400); font-size: 13px; white-space: nowrap; }
+.ed-bar { position: sticky; top: 51px; z-index: 40; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 0; background: var(--gray-50, #fafafa); }
+.ed-file { font-size: 13px; color: var(--gray-600); overflow-wrap: anywhere; }
+.ed-seo { background: #fff; border: 1px solid var(--gray-200); border-radius: 10px; padding: 12px 16px; margin: 8px 0 12px; }
+.ed-seo summary { cursor: pointer; font-weight: 500; }
+.ed-seo label { display: grid; gap: 4px; margin-top: 10px; font-size: 14px; }
+.ed-seo input, .ed-seo textarea { font: inherit; padding: 8px 10px; border: 1px solid var(--gray-200); border-radius: 8px; resize: vertical; }
+.ed-count { font-size: 12px; color: var(--gray-600); }
+.ed-count.is-over { color: #b42318; font-weight: 700; }
+.ed-toolbar { position: sticky; top: 104px; z-index: 30; display: flex; flex-wrap: wrap; gap: 4px; padding: 8px; background: #fff; border: 1px solid var(--gray-200); border-radius: 10px; }
+.ed-toolbar button { font: inherit; font-size: 14px; padding: 6px 10px; border: 1px solid transparent; border-radius: 6px; background: transparent; cursor: pointer; }
+.ed-toolbar button:hover { background: var(--gray-100); border-color: var(--gray-200); }
+.ed-sep { width: 1px; background: var(--gray-200); margin: 2px 4px; }
+.ed-article { padding-top: 16px !important; background: #fff; border: 1px solid var(--gray-200); border-radius: 10px; margin-top: 12px; }
+.ed-article [contenteditable]:focus { outline: 2px dashed var(--orange, #b37eff); outline-offset: 6px; }
+.ed-article [contenteditable] { min-height: 1em; }
+@media (max-width: 640px) {
+  .ed-bar { top: 51px; }
+  .ed-toolbar { top: auto; position: static; }
+}

@@ -580,3 +580,53 @@ document.addEventListener('click', (e) => {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
   else run();
 })();
+
+// Articoli del blog: barra di avanzamento in cima con i minuti che mancano alla fine.
+// Se il browser ha fatto l'accesso all'editor (/editor/), compare anche "Modifica".
+(function articleReadingProgress() {
+  function run() {
+    const content = document.querySelector('.article-content');
+    if (!content) return;
+    const words = (content.innerText || '').trim().split(/\s+/).length;
+    const totalMin = Math.max(1, Math.round(words / 200));
+    const bar = document.createElement('div');
+    bar.className = 'read-progress';
+    bar.setAttribute('role', 'progressbar');
+    bar.setAttribute('aria-label', 'Avanzamento lettura');
+    bar.setAttribute('aria-valuemin', '0');
+    bar.setAttribute('aria-valuemax', '100');
+    bar.innerHTML = '<div class="read-progress-fill"></div><span class="read-progress-label"></span>';
+    document.body.appendChild(bar);
+    const fill = bar.firstChild;
+    const label = bar.lastChild;
+    let ticking = false;
+    function update() {
+      ticking = false;
+      const rect = content.getBoundingClientRect();
+      const start = rect.top + window.scrollY - window.innerHeight * 0.25;
+      const end = rect.bottom + window.scrollY - window.innerHeight;
+      const p = Math.min(1, Math.max(0, (window.scrollY - start) / Math.max(1, end - start)));
+      fill.style.transform = 'scaleX(' + p + ')';
+      bar.setAttribute('aria-valuenow', String(Math.round(p * 100)));
+      const left = Math.ceil(totalMin * (1 - p));
+      label.textContent = p >= 0.99 ? 'Finito' : (left <= 1 ? 'Meno di 1 min alla fine' : left + ' min alla fine');
+      bar.classList.toggle('is-visible', window.scrollY > 120);
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    let editorOn = false;
+    try { editorOn = localStorage.getItem('abra-editor') === '1'; } catch (e) {}
+    const m = location.pathname.match(/\/blog\/([a-z0-9-]+)\.html$/);
+    if (editorOn && m) {
+      const a = document.createElement('a');
+      a.className = 'article-edit-btn';
+      a.href = '/editor/?file=' + encodeURIComponent('blog/' + m[1] + '.html');
+      a.textContent = 'Modifica articolo';
+      document.body.appendChild(a);
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();
