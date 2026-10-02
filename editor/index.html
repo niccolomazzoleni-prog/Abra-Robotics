@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Editor blog | Abra Robotics</title>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../blog/blog.css" rel="stylesheet"/>
+<link href="editor.css" rel="stylesheet"/>
+</head>
+<body class="ed-body">
+
+<header class="ed-top">
+  <a href="../index.html"><img src="../images/logo.png" alt="Abra Robotics" class="ed-logo"/></a>
+  <span class="ed-top-title">Editor blog</span>
+  <span class="ed-spacer"></span>
+  <span id="ed-user" class="ed-user"></span>
+  <button id="ed-logout" class="ed-btn ed-btn-ghost" hidden>Esci</button>
+</header>
+
+<main class="ed-main">
+  <p id="ed-msg" class="ed-msg" role="status" hidden></p>
+
+  <!-- Accesso -->
+  <section id="ed-login" class="ed-panel" hidden>
+    <h1>Accedi all'editor</h1>
+    <p>Le modifiche vengono salvate direttamente sul sito tramite GitHub. Serve un token del tuo account GitHub (collaboratore del repository <code>niccolomazzoleni-prog/Abra-Robotics</code>).</p>
+    <ol>
+      <li><a href="https://github.com/settings/tokens/new?scopes=public_repo&amp;description=Editor%20blog%20abrarobotics.com" target="_blank" rel="noopener">Crea il token su GitHub</a>: il permesso <strong>public_repo</strong> è già selezionato, scegli una scadenza e premi <em>Generate token</em>.</li>
+      <li>Copia il token (inizia con <code>ghp_</code>) e incollalo qui.</li>
+    </ol>
+    <form id="ed-login-form" class="ed-login-form">
+      <input id="ed-token" type="password" autocomplete="off" placeholder="ghp_..." required/>
+      <label class="ed-check"><input id="ed-remember" type="checkbox"/> Ricorda su questo computer</label>
+      <button class="ed-btn" type="submit">Accedi</button>
+    </form>
+    <p class="ed-note">Il token resta solo in questo browser e viene usato solo per parlare con GitHub.</p>
+  </section>
+
+  <!-- Elenco articoli -->
+  <section id="ed-list" class="ed-panel" hidden>
+    <h1>Articoli del blog</h1>
+    <input id="ed-filter" class="ed-filter" type="search" placeholder="Cerca un articolo..."/>
+    <ul id="ed-articles" class="ed-articles"></ul>
+  </section>
+
+  <!-- Editor -->
+  <section id="ed-edit" hidden>
+    <div class="ed-bar">
+      <button id="ed-back" class="ed-btn ed-btn-ghost" type="button">← Articoli</button>
+      <span id="ed-file" class="ed-file"></span>
+      <span class="ed-spacer"></span>
+      <a id="ed-view" class="ed-btn ed-btn-ghost" target="_blank" rel="noopener">Vedi online</a>
+      <button id="ed-save" class="ed-btn" type="button" disabled>Salva e pubblica</button>
+    </div>
+
+    <details class="ed-seo" open>
+      <summary>Titolo e descrizione per Google</summary>
+      <label>Titolo pagina (Google) <span id="ed-title-count" class="ed-count"></span>
+        <input id="ed-title" maxlength="120"/></label>
+      <label>Descrizione (Google) <span id="ed-desc-count" class="ed-count"></span>
+        <textarea id="ed-desc" rows="2" maxlength="300"></textarea></label>
+    </details>
+
+    <div class="ed-toolbar" role="toolbar" aria-label="Formattazione">
+      <button type="button" data-cmd="formatBlock" data-val="P" title="Paragrafo">¶</button>
+      <button type="button" data-cmd="formatBlock" data-val="H2" title="Titolo sezione">H2</button>
+      <button type="button" data-cmd="formatBlock" data-val="H3" title="Sottotitolo">H3</button>
+      <span class="ed-sep"></span>
+      <button type="button" data-cmd="bold" title="Grassetto (Ctrl+B)"><strong>G</strong></button>
+      <button type="button" data-cmd="italic" title="Corsivo (Ctrl+I)"><em>C</em></button>
+      <span class="ed-sep"></span>
+      <button type="button" data-cmd="insertUnorderedList" title="Elenco puntato">• Elenco</button>
+      <button type="button" data-cmd="insertOrderedList" title="Elenco numerato">1. Elenco</button>
+      <span class="ed-sep"></span>
+      <button type="button" data-cmd="link" title="Inserisci link">Link</button>
+      <button type="button" data-cmd="unlink" title="Togli link">Togli link</button>
+      <button type="button" data-cmd="removeFormat" title="Togli formattazione">Pulisci</button>
+      <span class="ed-sep"></span>
+      <button type="button" data-cmd="undo" title="Annulla (Ctrl+Z)">↶</button>
+      <button type="button" data-cmd="redo" title="Ripeti (Ctrl+Y)">↷</button>
+    </div>
+
+    <article class="article-wrap ed-article"><div class="container">
+      <header class="article-header">
+        <h1 id="ed-h1" contenteditable="true" spellcheck="true"></h1>
+      </header>
+      <div id="ed-content" class="article-content" contenteditable="true" spellcheck="true"></div>
+    </div></article>
+  </section>
+</main>
+
+<script src="editor.js"></script>
+</body>
+</html>

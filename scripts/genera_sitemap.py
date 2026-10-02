@@ -37,6 +37,7 @@ EXCLUDE_FILES = {
 
 EXCLUDE_DIRS = {
     "admin",
+    "editor",
     "node_modules",
     "__pycache__",
     "offerte-ai",
