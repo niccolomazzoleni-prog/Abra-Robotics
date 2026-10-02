@@ -7,6 +7,9 @@ import json
 import re
 from datetime import date
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from site_nav import render_site_footer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 TODAY = date.today().isoformat()
@@ -167,16 +170,7 @@ def page_shell(
 <h2>Domande frequenti</h2>
 {faq_html}
 </div></section>
-<footer class="footer"><div class="container footer-grid">
-<div class="footer-brand"><a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.png"/></a>
-<p class="footer-desc">Abra Robotics — parte della filiera di distribuzione di Unitree Italia. Portogruaro (VE). P.IVA IT04800170278.</p></div>
-<div class="footer-nav"><span class="footer-heading">Famiglie</span>
-<a href="umanoidi.html">Umanoidi</a><a href="h2.html">H2</a><a href="g1-d.html">G1-D</a><a href="as2.html">AS2</a><a href="quadrupedi.html">Quadrupedi</a></div>
-<div class="footer-nav"><span class="footer-heading">AI / dati</span>
-<a href="llms.txt">llms.txt</a><a href="sitemap.xml">Sitemap</a><a href="listino-unitree.html">Listino</a></div>
-</div>
-<div class="container footer-bottom"><p class="footer-copy">© 2026 Abra Robotics · Aggiornato {TODAY}</p></div>
-</footer>
+{render_site_footer("")}
 <script src="script.js"></script>
 </body></html>
 """
