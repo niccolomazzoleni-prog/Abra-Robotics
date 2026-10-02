@@ -1,4 +1,11 @@
-"""Generate AMR HTML: 6 featured on manifattura-logistica, full catalog on catalogo-amr."""
+"""Genera l'HTML AMR.
+
+- amr.html: pagina unica AMR. Lo script riscrive solo i blocchi tra i marker
+  <!-- AMR:CATALOGO --> / <!-- AMR:ITEMLIST --> (card e JSON-LD); il resto della
+  pagina (testi, header, footer) si modifica a mano in amr.html.
+- catalogo-amr.html: solo redirect verso amr.html (vecchi link e indicizzazione).
+- manifattura-logistica.html: breve anteprima AMR con link ad amr.html.
+"""
 import json
 import re
 from pathlib import Path
@@ -297,41 +304,18 @@ def catalogo_card(prod):
         </article>"""
 
 
-featured_cards = "".join(manifattura_card_v2(by_slug(s)) for s in FEATURED_SLUGS)
-
-MANIFATTURA_BODY = f"""
+MANIFATTURA_BODY = """
       <div class="vert-section-head">
         <p class="label">03 · AMR</p>
         <h2>I tuoi materiali arrivano in linea. Sempre, in orario, senza operatori logistici.</h2>
-        <p>Gli AMR sostituiscono il trasporto manuale interno: tote, cassette, semilavorati, carrelli e pallet. Qui trovi <strong>6 modelli in evidenza</strong> — i più richiesti per latent lift, shelf MiR, pallet EUR e muletti. Il <a href="catalogo-amr.html">catalogo completo</a> include <strong>16 configurazioni</strong> MiR, Youibot, Neura, AutoXing ed EP Equipment. Prezzi indicativi — IVA esclusa.</p>
-        <div class="amr-inclusion-box">
-          <p><strong>Il prezzo «da» si riferisce al solo prodotto</strong>, IVA esclusa.</p>
-          <p><strong>Quotati a parte, su progetto:</strong> sopralluogo, analisi di fattibilità, digital twin, progettazione isola o cella, integrazione WMS/MES/ERP, software flotta, stazione di ricarica, commissioning in sito e top module aggiuntivi.</p>
-        </div>
-        <p class="price-note"><a href="catalogo-amr.html">Vedi tutte le 16 configurazioni AMR →</a></p>
-      </div>
-
-      <div class="robot-grid cols-3">
-{featured_cards}
+        <p>Gli AMR sostituiscono il trasporto manuale interno: tote, cassette, semilavorati, carrelli e pallet. Tutti i modelli (MiR, Youibot, Neura, AutoXing, EP Equipment), con prezzi «da» IVA esclusa, casi d'uso e integrazione, sono nella pagina dedicata.</p>
       </div>
 
       <div class="section-cta-row">
-        <a href="catalogo-amr.html" class="btn btn-primary">Catalogo AMR completo (16 modelli)</a>
+        <a href="amr.html" class="btn btn-primary">Vedi tutti gli AMR</a>
         <a href="#contact-form" class="btn btn-secondary">Richiedi preventivo</a>
       </div>
 """
-
-catalog_sections = []
-for gid, (heading, desc) in GROUPS.items():
-    items = [catalogo_card(p) for p in CATALOG if p[1] == gid]
-    catalog_sections.append(f"""
-    <section class="cat-group" id="cat-{gid}">
-      <h2>{heading}</h2>
-      <p class="cat-group-desc">{desc}</p>
-      <div class="cat-grid">{''.join(items)}
-      </div>
-    </section>""")
-
 
 def inject_amr_runtime_script(html: str) -> str:
     tag = '  <script src="scripts/amr-image-runtime.js"></script>\n'
@@ -349,80 +333,100 @@ def inject_amr_css(html: str) -> str:
     return html.replace("</style>", AMR_MEDIA_CSS + "\n  </style>", 1)
 
 
-def write_catalogo():
-    body = "\n".join(catalog_sections)
-    page = f"""<!DOCTYPE html>
+FILTER_LABELS = {
+    "leggeri": "Leggeri",
+    "mir": "MiR",
+    "latent": "Latent lift",
+    "muletti": "Muletti",
+    "mobile-cobot": "Mobile cobot",
+}
+
+
+def amr_card(prod):
+    slug, group, tag, title, subtitle, blurb, specs, rows, use_case, price = prod
+    specs_html = "".join(
+        f'<div class="key-spec"><span class="key-spec-label">{k}</span><span class="key-spec-value">{v}</span></div>'
+        for k, v in specs
+    )
+    rows_html = "".join(f"<li><span>{k}</span><span>{v}</span></li>" for k, v in rows)
+    return f"""
+<article class="robot-card" id="amr-{slug}" data-family="{group}" data-amr-slug="{slug}">
+{media_block(slug, title, tag)}
+<div class="robot-body">
+<div><h3>{title}</h3><p class="robot-subtitle">{subtitle}</p></div>
+<p class="robot-blurb">{blurb}</p>
+<div class="key-specs">{specs_html}</div>
+<ul class="spec-rows">{rows_html}</ul>
+<div class="use-case-box"><span class="use-case-label">Caso d'uso</span><p class="use-case-text">{use_case}</p></div>
+<div class="robot-card-cta"><span class="card-price">{p(price)}</span><a href="prodotti/amr-{slug}.html" class="btn btn-primary btn-sm">Vedi scheda →</a></div>
+</div>
+</article>"""
+
+
+def amr_catalog_block() -> str:
+    buttons = '<button class="active" data-filter="all">Tutti</button>' + "".join(
+        f'<button data-filter="{g}">{FILTER_LABELS[g]}</button>' for g in GROUPS
+    )
+    cards = "".join(amr_card(prod) for g in GROUPS for prod in CATALOG if prod[1] == g)
+    return (
+        f'<div aria-label="Filtra per tipologia" class="coll-filters">{buttons}</div>\n'
+        f'<div class="robot-grid cols-3">{cards}\n</div>'
+    )
+
+
+def amr_itemlist_block() -> str:
+    items = [
+        {"@type": "ListItem", "position": i, "name": prod[3],
+         "url": f"https://abrarobotics.com/prodotti/amr-{prod[0]}.html"}
+        for i, prod in enumerate((x for g in GROUPS for x in CATALOG if x[1] == g), 1)
+    ]
+    data = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Robot mobili autonomi (AMR)",
+        "url": "https://abrarobotics.com/amr.html",
+        "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": items},
+    }
+    return '<script type="application/ld+json">\n' + json.dumps(data, ensure_ascii=False, indent=2) + "\n</script>"
+
+
+def _replace_marker(html: str, name: str, content: str) -> str:
+    rx = re.compile(rf"<!-- {name} -->.*?<!-- /{name} -->", re.S)
+    if not rx.search(html):
+        raise SystemExit(f"marker {name} mancante in amr.html")
+    return rx.sub(lambda _m: f"<!-- {name} -->\n{content}\n<!-- /{name} -->", html, count=1)
+
+
+def write_amr_page():
+    path = ROOT / "amr.html"
+    html = path.read_text(encoding="utf-8")
+    html = _replace_marker(html, "AMR:CATALOGO", amr_catalog_block())
+    html = _replace_marker(html, "AMR:ITEMLIST", amr_itemlist_block())
+    path.write_text(html, encoding="utf-8")
+    print("Wrote amr.html (catalogo + ItemList)")
+
+
+REDIRECT_STUB = """<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogo AMR — 16 configurazioni | Abra Robotics</title>
-  <meta name="description" content="Catalogo completo AMR: MiR, Youibot, Neura, AutoXing, EP Equipment. 16 configurazioni con prezzi indicativi IVA esclusa.">
-  <link rel="canonical" href="https://abrarobotics.com/catalogo-amr.html">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .cat-hero {{ padding: calc(40px + 72px + 48px) 48px 40px; border-bottom: 1px solid var(--gray-200); }}
-    .cat-hero h1 {{ font-size: clamp(2rem,4vw,3rem); margin: 12px 0; }}
-    .cat-body-page {{ padding: 48px; }}
-    .cat-group {{ margin-bottom: 56px; }}
-    .cat-group h2 {{ font-size: 1.35rem; margin: 0 0 8px; }}
-    .cat-group-desc {{ color: var(--gray-600); margin: 0 0 24px; max-width: 720px; }}
-    .cat-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }}
-    .cat-card {{ background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }}
-    .cat-body {{ padding: 18px; display: flex; flex-direction: column; flex: 1; gap: 6px; }}
-    .cat-card h3 {{ font-size: 0.95rem; margin: 0; font-weight: 700; }}
-    .cat-sub {{ font-size: 0.78rem; color: var(--gray-500); margin: 0; }}
-    .cat-blurb {{ font-size: 0.82rem; color: var(--gray-600); margin: 4px 0; flex: 1; line-height: 1.45; }}
-    .cat-price {{ font-size: 1.1rem; font-weight: 900; margin: 4px 0 8px; }}
-    .cat-family {{ font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin: 0; }}
-    .amr-note {{ background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 40px; font-size: 0.92rem; color: var(--gray-600); }}
-    .cat-jump {{ display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }}
-    .cat-jump a {{ font-size: 0.85rem; padding: 8px 14px; border: 1px solid var(--gray-200); border-radius: 999px; text-decoration: none; color: var(--black); }}
-    {AMR_MEDIA_CSS}
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catalogo AMR spostato | Abra Robotics</title>
+<meta content="noindex, follow" name="robots"/>
+<link href="https://abrarobotics.com/amr.html" rel="canonical"/>
+<meta content="0; url=amr.html" http-equiv="refresh"/>
+<script>location.replace('amr.html' + location.hash);</script>
 </head>
 <body>
-  <div class="top-bar"><p>Catalogo AMR · IVA esclusa · <a href="manifattura-logistica.html#amr">Manifattura e Logistica</a></p></div>
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Abra Robotics" class="logo-img"></a>
-      <div class="nav-links">
-        <a href="manifattura-logistica.html#amr">AMR</a>
-        <a href="catalogo-amr.html">Catalogo AMR</a>
-        <a href="catalogo-unitree.html">Catalogo Unitree</a>
-        <a href="index.html#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
-      </div>
-      <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
-    </div>
-  </nav>
-  <header class="cat-hero">
-    <p class="label">Manifattura e logistica</p>
-    <h1>Catalogo AMR completo</h1>
-    <p style="color:var(--gray-600);max-width:680px;">16 configurazioni con foto prodotto corrette e video ufficiali MiR (luci in movimento sulle basi). Prezzi «da» — IVA esclusa.</p>
-  </header>
-  <main class="cat-body-page">
-    <div class="amr-note">
-      <p><strong>Il prezzo «da» si riferisce al solo prodotto</strong>, IVA esclusa.</p>
-      <p style="margin:0;"><strong>Quotati a parte, su progetto:</strong> sopralluogo, analisi di fattibilità, digital twin, WMS/MES/ERP, software flotta, ricarica, commissioning.</p>
-    </div>
-    <nav class="cat-jump" aria-label="Categorie AMR">
-      <a href="#cat-leggeri">Leggeri</a><a href="#cat-mir">MiR</a><a href="#cat-latent">Latent</a><a href="#cat-muletti">Muletti</a><a href="#cat-mobile-cobot">Mobile cobot</a>
-    </nav>
-{body}
-    <p style="margin-top:48px;text-align:center;">
-      <a href="manifattura-logistica.html#amr" class="btn btn-secondary">Modelli in evidenza</a>
-      <a href="manifattura-logistica.html#contact-form" class="btn btn-primary" style="margin-left:12px;">Richiedi preventivo</a>
-    </p>
-  </main>
-  <footer class="footer"><div class="container footer-inner"><p>© 2026 Abra Robotics</p></div></footer>
-  <script src="scripts/amr-image-runtime.js"></script>
-  <script src="script.js"></script>
+<p>Il catalogo AMR ora è nella pagina <a href="amr.html">Robot mobili autonomi (AMR)</a>.</p>
 </body>
 </html>
 """
-    (ROOT / "catalogo-amr.html").write_text(page, encoding="utf-8")
-    print("Wrote catalogo-amr.html")
+
+
+def write_catalogo():
+    (ROOT / "catalogo-amr.html").write_text(REDIRECT_STUB, encoding="utf-8")
+    print("Wrote catalogo-amr.html (redirect ad amr.html)")
 
 
 def patch_manifattura():
@@ -445,6 +449,7 @@ def patch_manifattura():
 
 if __name__ == "__main__":
     write_amr_catalog_json()
+    write_amr_page()
     write_catalogo()
     patch_manifattura()
     import subprocess

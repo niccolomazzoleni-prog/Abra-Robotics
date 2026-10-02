@@ -56,7 +56,7 @@ PRIORITY = {
     "index.html": 1.0,
     "catalogo.html": 0.95,
     "catalogo-unitree.html": 0.9,
-    "catalogo-amr.html": 0.9,
+    "amr.html": 0.9,
     "catalogo-cobot.html": 0.9,
     "quadrupedi.html": 0.9,
     "umanoidi.html": 0.9,
