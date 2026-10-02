@@ -2833,3 +2833,7 @@ body.menu-open { overflow: hidden; }
 /* Barre loghi brand: ogni logo e' un link al sito ufficiale */
 .logo-bar-logos a { display: inline-flex; align-items: center; line-height: 0; }
 .logo-bar-logos a:hover img, .logo-bar-logos a:focus-visible img { opacity: 1; }
+@media (max-width: 768px) {
+  /* il menu parte esattamente sotto la navbar (top 36px + altezza 64px) */
+  .mobile-menu { top: 100px; max-height: calc(100dvh - 100px); }
+}
