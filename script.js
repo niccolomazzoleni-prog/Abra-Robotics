@@ -548,9 +548,9 @@ document.addEventListener('click', (e) => {
   if (document.querySelector('script[data-abra-chat-widget]')) return;
 
   var depth = 0;
-  if (location.pathname.includes('/prodotti/')) depth = 1;
+  if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/')) depth = 1;
   if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
-  if (location.pathname.includes('/en/prodotti/')) depth = 2;
+  if (location.pathname.includes('/en/prodotti/') || location.pathname.includes('/en/blog/')) depth = 2;
   var prefix = depth ? '../'.repeat(depth) : '';
 
   var s = document.createElement('script');
