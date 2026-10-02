@@ -2837,3 +2837,10 @@ body.menu-open { overflow: hidden; }
   /* il menu parte esattamente sotto la navbar (top 36px + altezza 64px) */
   .mobile-menu { top: 100px; max-height: calc(100dvh - 100px); }
 }
+
+/* === Schede prodotto mobile ===
+   Pulsanti con testo lungo ("Richiedi la scheda tecnica completa →") restavano
+   su una riga e uscivano dallo schermo, tagliati da html{overflow-x:clip}. */
+@media (max-width: 600px) {
+  .btn { white-space: normal; max-width: 100%; text-align: center; }
+}
