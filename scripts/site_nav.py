@@ -48,7 +48,7 @@ def render_site_nav(prefix: str = "") -> str:
             <a href="{p}universita-ricerca.html">Università e Ricerca</a>
           </div>
         </div>
-        <a href="{home}#chi-siamo">Chi siamo</a>
+        <a href="{p}chi-siamo.html">Chi siamo</a>
       </div>
       <a href="{home}#cta-finale" class="btn btn-primary btn-sm">Prenota una chiamata</a>
       <button class="menu-toggle" aria-label="Menu">
@@ -83,7 +83,7 @@ def render_site_nav(prefix: str = "") -> str:
         <a href="{p}universita-ricerca.html">Università e Ricerca</a>
       </div>
     </div>
-    <a href="{home}#chi-siamo">Chi siamo</a>
+    <a href="{p}chi-siamo.html">Chi siamo</a>
     <a href="{home}#cta-finale" class="btn btn-primary">Prenota una chiamata</a>
   </div>"""
 
