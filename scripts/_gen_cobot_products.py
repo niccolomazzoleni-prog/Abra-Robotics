@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera schede cobot Fairino e catalogo-cobot.html."""
+"""Genera schede cobot Fairino, le card del catalogo in cobot.html e lo stub catalogo-cobot.html."""
 from __future__ import annotations
 
 import json
@@ -173,7 +173,7 @@ def product_schema(name: str, desc: str, img: str, price: float, filename: str, 
   {{"@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
     {{"@type": "ListItem", "position": 1, "name": "Home", "item": "{SITE}/"}},
-    {{"@type": "ListItem", "position": 2, "name": "Catalogo Cobot", "item": "{SITE}/catalogo-cobot.html"}},
+    {{"@type": "ListItem", "position": 2, "name": "Cobot", "item": "{SITE}/cobot.html"}},
     {{"@type": "ListItem", "position": 3, "name": "{nm}", "item": "{canon}"}}
   ]}}
   </script>"""
@@ -319,81 +319,73 @@ def patch_lp_cobot(manifest: list[dict]) -> None:
     lp_path.write_text(text, encoding="utf-8")
 
 
-def write_catalog(manifest: list[dict]) -> None:
-    robots = "\n".join(catalog_card(m) for m in manifest if m.get("group") == "robot")
-    pallets = "\n".join(catalog_card(m) for m in manifest if m.get("group") == "palletizing")
-    n = len(manifest)
-    page = f"""<!DOCTYPE html>
+HUB_SPECS = {row[0]: row[6] for row in CATALOG}
+HUB_TAGS = {row[0]: row[2] for row in CATALOG}
+
+
+def hub_card(item: dict) -> str:
+    """Card prodotto per cobot.html (stesso componente robot-card degli hub quadrupedi/umanoidi)."""
+    slug = item["slug"]
+    group = item.get("group", "robot")
+    specs = HUB_SPECS.get(slug, [])[:4]
+    specs_html = "".join(
+        f'<div class="key-spec"><span class="key-spec-label">{k}</span><span class="key-spec-value">{v}</span></div>'
+        for k, v in specs
+    )
+    family = "pallet" if group == "palletizing" else "cobot"
+    return f"""<article class="robot-card" data-family="{family}">
+<div class="robot-media">
+<span class="robot-media-tag">{HUB_TAGS.get(slug, item.get('tag', ''))}</span>
+<img alt="{item['title']}" loading="lazy" src="{image_for(slug)}"/>
+</div>
+<div class="robot-body">
+<div>
+<h3>{item['title']}</h3>
+<p class="robot-subtitle">{item['subtitle']}</p>
+</div>
+<div class="key-specs">{specs_html}</div>
+<div class="robot-card-cta">
+<span class="hub-price">{item['price_display']} <small>IVA escl.</small></span>
+<a class="btn btn-primary btn-sm" href="prodotti/{item['filename']}">Vedi scheda →</a>
+</div>
+</div>
+</article>"""
+
+
+def patch_cobot_hub(manifest: list[dict]) -> None:
+    """Riscrive solo le card tra i marcatori di cobot.html (il resto della pagina e' a mano)."""
+    hub = ROOT / "cobot.html"
+    if not hub.exists():
+        return
+    text = hub.read_text(encoding="utf-8")
+    robots = "\n".join(hub_card(m) for m in manifest if m.get("group") == "robot")
+    pallets = "\n".join(hub_card(m) for m in manifest if m.get("group") == "palletizing")
+    text = _patch_lp_block(text, "<!-- COBOT_HUB_ROBOTS_START -->", "<!-- COBOT_HUB_ROBOTS_END -->", robots)
+    text = _patch_lp_block(text, "<!-- COBOT_HUB_PALLET_START -->", "<!-- COBOT_HUB_PALLET_END -->", pallets)
+    hub.write_text(text, encoding="utf-8")
+
+
+CATALOG_STUB = """<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogo Cobot Fairino | Abra Robotics</title>
-  <meta name="description" content="Catalogo cobot Fairino FR3–FR30 e soluzioni palletizzazione. Prezzi indicativi IVA esclusa. Integrazione e supporto Abra in Italia.">
-  <link rel="canonical" href="https://abrarobotics.com/catalogo-cobot.html">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .cat-hero {{ padding: calc(40px + 72px + 48px) 48px 40px; border-bottom: 1px solid var(--gray-200); }}
-    .cat-hero h1 {{ font-size: clamp(2rem,4vw,3rem); margin: 12px 0; }}
-    .cat-body-page {{ padding: 48px; }}
-    .cat-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }}
-    .cat-card {{ background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }}
-    .cat-body {{ padding: 18px; display: flex; flex-direction: column; flex: 1; gap: 6px; }}
-    .cat-card h3 {{ font-size: 0.95rem; margin: 0; font-weight: 700; }}
-    .cat-sub {{ font-size: 0.78rem; color: var(--gray-500); margin: 0; }}
-    .cat-blurb {{ font-size: 0.82rem; color: var(--gray-600); margin: 4px 0; flex: 1; line-height: 1.45; }}
-    .cat-price {{ font-size: 1.1rem; font-weight: 900; margin: 4px 0 8px; }}
-    .cat-family {{ font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin: 0; }}
-    .cat-media.amr-media {{ aspect-ratio: 4/3; background: #0a0a0a; display:flex; align-items:center; justify-content:center; }}
-    .cat-media.amr-media img {{ width:100%; height:100%; object-fit:contain; padding:20px; }}
-    .amr-note {{ background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 40px; font-size: 0.92rem; color: var(--gray-600); }}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Catalogo cobot spostato | Abra Robotics</title>
+<meta name="robots" content="noindex, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/cobot.html"/>
+<meta http-equiv="refresh" content="0; url=cobot.html"/>
+<script>location.replace('cobot.html' + location.hash);</script>
 </head>
 <body>
-  <div class="top-bar"><p>Catalogo Cobot · IVA esclusa · <a href="lp-cobot.html">Landing cobot</a></p></div>
-{render_site_nav("")}
-  <header class="cat-hero">
-    <p class="label">Manifattura</p>
-    <h1>Catalogo Cobot Fairino</h1>
-    <p style="color:var(--gray-600);max-width:680px;">{n} configurazioni Fairino — cobot a 6 assi e celle palletizzazione. Prezzi «da» indicativi, IVA esclusa.</p>
-  </header>
-  <main class="cat-body-page">
-    <div class="amr-note">
-      <p><strong>Il prezzo «da» si riferisce al solo prodotto</strong>, IVA esclusa.</p>
-      <p style="margin:0;"><strong>Quotati a parte, su progetto:</strong> sopralluogo, analisi di fattibilità, gripper, visione, safety scanner, spedizione e commissioning avanzato.</p>
-    </div>
-    <nav class="cat-jump" aria-label="Sezioni catalogo cobot" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;">
-      <a href="#cat-robot" style="font-size:0.85rem;padding:8px 14px;border:1px solid var(--gray-200);border-radius:999px;text-decoration:none;color:var(--black);">Robot cobot</a>
-      <a href="#cat-pallet" style="font-size:0.85rem;padding:8px 14px;border:1px solid var(--gray-200);border-radius:999px;text-decoration:none;color:var(--black);">Palletizzazione</a>
-      <a href="lp-cobot.html" style="font-size:0.85rem;padding:8px 14px;border:1px solid var(--gray-200);border-radius:999px;text-decoration:none;color:var(--black);">Landing cobot</a>
-    </nav>
-    <section class="cat-group" id="cat-robot" style="margin-bottom:48px;">
-      <h2 style="font-size:1.35rem;margin:0 0 8px;">Robot cobot FR Series</h2>
-      <p style="color:var(--gray-600);margin:0 0 16px;max-width:720px;">Da FR3 compatto a FR30 heavy-duty. CE, ISO 10218 e ISO/TS 15066.</p>
-      <div class="cat-grid">
-{robots}
-      </div>
-    </section>
-    <section class="cat-group" id="cat-pallet">
-      <h2 style="font-size:1.35rem;margin:0 0 8px;">Soluzioni palletizzazione</h2>
-      <p style="color:var(--gray-600);margin:0 0 16px;max-width:720px;">Workstation modulare o celle chiavi in mano con cobot integrato. Ideali per fine linea senza recinto.</p>
-      <div class="cat-grid">
-{pallets}
-      </div>
-    </section>
-  </main>
-  <footer class="footer" style="margin-top:48px;">
-    <div class="container footer-bottom">
-      <p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. P.IVA 04800170278 — Portogruaro (VE).</p>
-    </div>
-  </footer>
-  <script src="script.js"></script>
-{WA_BAR_HTML}
+<p>Il catalogo cobot ora è nella pagina <a href="cobot.html">Cobot</a>.</p>
 </body>
 </html>
 """
-    (ROOT / "catalogo-cobot.html").write_text(page, encoding="utf-8")
+
+
+def write_catalog_stub() -> None:
+    """catalogo-cobot.html resta solo come redirect verso cobot.html (link vecchi e Google)."""
+    (ROOT / "catalogo-cobot.html").write_text(CATALOG_STUB, encoding="utf-8")
 
 
 def main() -> None:
@@ -401,12 +393,13 @@ def main() -> None:
     MANIFEST_PATH.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    write_catalog(manifest)
+    write_catalog_stub()
+    patch_cobot_hub(manifest)
     patch_lp_cobot(manifest)
     print(f"Wrote {len(manifest)} schede cobot-*.html")
     print("Patched lp-cobot.html")
     print(f"Wrote {MANIFEST_PATH}")
-    print("Wrote catalogo-cobot.html")
+    print("Patched cobot.html · catalogo-cobot.html = redirect")
 
 
 if __name__ == "__main__":
