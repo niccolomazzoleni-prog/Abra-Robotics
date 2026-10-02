@@ -591,3 +591,60 @@
   color: #92400e;
   margin-bottom: 12px;
 }
+
+/* === Barra di lettura (script.js: articleReadingProgress) === */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 1100;
+  background: var(--gray-100, #f5f5f5);
+  pointer-events: none;
+}
+.read-progress-fill {
+  height: 100%;
+  background: var(--accent-strong, #9a5cf0);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 80ms linear;
+}
+.read-progress-label {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--black, #0a0a0a);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--gray-200, #e5e5e5);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.read-progress.is-visible .read-progress-label {
+  opacity: 1;
+  transform: none;
+}
+.article-edit-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 88px;
+  z-index: 1100;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--black, #0a0a0a);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .read-progress-fill, .read-progress-label { transition: none; }
+}

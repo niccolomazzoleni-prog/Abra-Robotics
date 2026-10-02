@@ -2802,3 +2802,45 @@ body.lp-cobot #faq {
 
 /* riga con parole chiave dentro la H1 della home */
 .hero-kicker { display: block; margin-bottom: 14px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4; opacity: 0.8; }
+
+/* === Menu mobile: X sul pulsante, chiusura comoda, scorrimento (script.js setMenu) === */
+.menu-toggle.active span:first-child { transform: translateY(3.5px) rotate(45deg); }
+.menu-toggle.active span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+.mobile-menu {
+  max-height: calc(100dvh - 108px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.35);
+}
+.mobile-menu-close {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: -16px -8px -8px 0;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--black);
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
+  cursor: pointer;
+}
+body.menu-open { overflow: hidden; }
+
+/* Barre loghi brand: ogni logo e' un link al sito ufficiale */
+.logo-bar-logos a { display: inline-flex; align-items: center; line-height: 0; }
+.logo-bar-logos a:hover img, .logo-bar-logos a:focus-visible img { opacity: 1; }
+@media (max-width: 768px) {
+  /* il menu parte esattamente sotto la navbar (top 36px + altezza 64px) */
+  .mobile-menu { top: 100px; max-height: calc(100dvh - 100px); }
+}
+
+/* === Schede prodotto mobile ===
+   Pulsanti con testo lungo ("Richiedi la scheda tecnica completa →") restavano
+   su una riga e uscivano dallo schermo, tagliati da html{overflow-x:clip}. */
+@media (max-width: 600px) {
+  .btn { white-space: normal; max-width: 100%; text-align: center; }
+}

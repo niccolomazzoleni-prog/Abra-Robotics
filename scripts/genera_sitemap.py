@@ -37,6 +37,7 @@ EXCLUDE_FILES = {
 
 EXCLUDE_DIRS = {
     "admin",
+    "editor",
     "node_modules",
     "__pycache__",
     "offerte-ai",
@@ -55,8 +56,8 @@ PRIORITY = {
     "index.html": 1.0,
     "catalogo.html": 0.95,
     "catalogo-unitree.html": 0.9,
-    "catalogo-amr.html": 0.9,
-    "catalogo-cobot.html": 0.9,
+    "amr.html": 0.9,
+    "cobot.html": 0.9,
     "quadrupedi.html": 0.9,
     "umanoidi.html": 0.9,
     "accessori.html": 0.85,
