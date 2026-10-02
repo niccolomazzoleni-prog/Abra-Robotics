@@ -231,7 +231,7 @@ HTML = f'''<!DOCTYPE html>
       <div class="footer-nav">
         <span class="footer-heading">Prodotti</span>
         <a href="manifattura-logistica.html#cobot">Cobot</a>
-        <a href="manifattura-logistica.html#amr">AMR</a>
+        <a href="amr.html">AMR</a>
         <a href="manifattura-logistica.html#quadrupedi">Quadrupedi</a>
         <a href="umanoidi.html">Umanoidi</a>
       </div>

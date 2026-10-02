@@ -85,10 +85,10 @@ def riassunto():
               "Mani dexterous (Dex3, Dex5, BrainCo Revo, Inspire, Linker, Wuji), pinze Dex1-1, bracci Z1 e D1, "
               "LiDAR (Livox Mid-360, Hesai XT16), batterie, caricabatterie, moduli di calcolo NVIDIA Jetson.",
               f"Da {eur(min(v['prezzo_eur'] for _, v in acc))} € — {BASE}accessori.html", ""]
-    co, am = da_catalogo("catalogo-cobot.html"), da_catalogo("catalogo-amr.html")
+    co, am = da_catalogo("catalogo-cobot.html"), da_catalogo("amr.html")
     righe += ["## Cobot e AMR",
               f"- Cobot Fairino (bracci collaborativi e celle chiavi in mano): da {eur(co[0])} € — {BASE}catalogo-cobot.html",
-              f"- AMR per logistica e intralogistica: da {eur(am[0])} € — {BASE}catalogo-amr.html",
+              f"- AMR per logistica e intralogistica: da {eur(am[0])} € — {BASE}amr.html",
               f"- Progetti di automazione, assessment e POC: {BASE}assessment.html · {BASE}manifattura-logistica.html", ""]
     righe += ["## Certificazioni e conformità",
               "- Marcatura CE di celle robotizzate e macchine integrate con TÜV Rheinland (https://www.tuv.com/italy/it/).",

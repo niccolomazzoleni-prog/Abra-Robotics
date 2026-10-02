@@ -224,7 +224,7 @@ def product_schema(
   {{"@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
     {{"@type": "ListItem", "position": 1, "name": "Home", "item": "{SITE}/"}},
-    {{"@type": "ListItem", "position": 2, "name": "Catalogo AMR", "item": "{SITE}/catalogo-amr.html"}},
+    {{"@type": "ListItem", "position": 2, "name": "AMR", "item": "{SITE}/amr.html"}},
     {{"@type": "ListItem", "position": 3, "name": "{nm}", "item": "{canon}"}}
   ]}}
   </script>"""
