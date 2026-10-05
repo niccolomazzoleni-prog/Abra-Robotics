@@ -36,6 +36,7 @@ EXCLUDE_FILES = {
 }
 
 EXCLUDE_DIRS = {
+    ".claude",
     "admin",
     "editor",
     "node_modules",
@@ -84,6 +85,16 @@ CHANGEFREQ = {
     "catalogo-unitree.html": "weekly",
     "listino-unitree.html": "weekly",
 }
+
+
+def canonical_elsewhere(text: str, path: Path) -> bool:
+    """Pagine il cui canonical punta a un'altra pagina (duplicati): fuori dalla sitemap."""
+    m = re.search(r'<link[^>]*rel="canonical"[^>]*href="([^"]+)"', text) or re.search(r'<link[^>]*href="([^"]+)"[^>]*rel="canonical"', text)
+    if not m:
+        return False
+    rel = path.relative_to(ROOT).as_posix()
+    own = {SITE.rstrip("/") + "/" + rel, SITE.rstrip("/") + "/" + rel.replace("index.html", "")}
+    return m.group(1).rstrip("/") not in {u.rstrip("/") for u in own}
 
 
 def is_noindex(text: str) -> bool:
@@ -136,6 +147,8 @@ def collect_urls() -> list[tuple[str, str, str]]:
         if any(rel.name.endswith(suf) for suf in EXCLUDE_NAME_SUFFIXES):
             continue
         text = html.read_text(encoding="utf-8", errors="replace")
+        if canonical_elsewhere(text, html):
+            continue
         if is_noindex(text):
             continue
         # skip meta-refresh redirect stubs

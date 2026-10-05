@@ -4,7 +4,6 @@
 
   var inProduct = /\/prodotti\//.test(location.pathname);
   var BASE = inProduct ? '../' : '';
-  var BUST = '?v=' + Date.now();
 
   function entryImages(entry) {
     if (!entry) return [];
@@ -20,11 +19,22 @@
     return BASE + path;
   }
 
+  // Niente cache-busting: l'HTML e' gia' rigenerato con le immagini giuste
+  // (workflow "Rigenera catalogo"); qui si corregge solo se diverso.
   function withBust(src) {
-    if (!src || src.indexOf('http') !== 0 && src.indexOf('data:') !== 0) {
-      return src + (src.indexOf('?') >= 0 ? '&' : '?') + 'v=' + Date.now();
-    }
     return src;
+  }
+
+  // Cambia src solo se l'immagine e' davvero diversa: evita di riscaricare
+  // l'immagine principale (LCP) quando l'HTML e' gia' aggiornato.
+  function setSrc(img, src) {
+    if (!img || !src) return;
+    var cur = (img.getAttribute('src') || '').split('?')[0];
+    var a = document.createElement('a');
+    a.href = cur;
+    var b = document.createElement('a');
+    b.href = src.split('?')[0];
+    if (a.href !== b.href) img.src = src;
   }
 
   function applyCatalog(overrides) {
@@ -34,7 +44,7 @@
       if (!paths.length) return;
       var img = card.querySelector('.cat-media img');
       if (img) {
-        img.src = withBust(resolveSrc(paths[0]));
+        setSrc(img, withBust(resolveSrc(paths[0])));
         img.style.display = '';
         card.querySelector('.cat-media').classList.remove('no-img');
       }
@@ -52,7 +62,7 @@
       if (!paths.length) return;
       var img = card.querySelector('.robot-media img, img');
       if (img) {
-        img.src = withBust(resolveSrc(paths[0]));
+        setSrc(img, withBust(resolveSrc(paths[0])));
         img.style.display = '';
         var media = card.querySelector('.robot-media');
         if (media) media.classList.remove('no-img');
@@ -92,7 +102,7 @@
     if (!main || !gallery) return;
 
     var alt = main.getAttribute('alt') || sku;
-    main.src = withBust(resolveSrc(paths[0]));
+    setSrc(main, withBust(resolveSrc(paths[0])));
     main.style.display = '';
     buildThumbs(gallery, paths, alt);
 
@@ -101,8 +111,8 @@
   }
 
   Promise.all([
-    fetch(BASE + 'data/product-images.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : {}; }),
-    fetch(BASE + 'listini/pubblico/catalogo-manifest.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : {}; })
+    fetch(BASE + 'data/product-images.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : {}; }),
+    fetch(BASE + 'listini/pubblico/catalogo-manifest.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : {}; })
   ]).then(function (res) {
     var overrides = res[0];
     var manifest = res[1];
