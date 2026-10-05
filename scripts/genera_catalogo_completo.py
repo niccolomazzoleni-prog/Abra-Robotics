@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from layout_pubblico import PUBLIC_NOTICE, SITE_FOOTER, SITE_NAV  # noqa: E402
 from site_nav import render_site_nav  # noqa: E402
+from seo_title_desc import seo_desc, seo_title  # noqa: E402
 
 CSV_PATH = ROOT / "listini" / "interno" / "listino-master.csv"
 MANIFEST_PATH = ROOT / "listini" / "pubblico" / "catalogo-manifest.json"
@@ -364,8 +365,8 @@ def generate_page(row: dict, manifest: dict) -> str | None:
 
     html = TEMPLATE
     repl = {
-        "%%LANG_TITLE%%": f"{title} | Abra Robotics",
-        "%%METADESC%%": metadesc[:160],
+        "%%LANG_TITLE%%": seo_title(title),
+        "%%METADESC%%": seo_desc(metadesc, "Prezzo, specifiche e disponibilità in Italia con Abra Robotics."),
         "%%FILENAME%%": filename,
         "%%COLLECTION_FILE%%": coll_file,
         "%%COLLECTION_NAME%%": coll_name,
@@ -510,7 +511,6 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
   <meta property="og:description" content="{len(pub)} prodotti Unitree con prezzi End-User pubblici in Italia.">
   <meta property="og:url" content="{SITE}/catalogo-unitree.html">
   <meta property="og:image" content="{SITE}/images/g1-hero.png">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .cat-hero {{ padding: calc(40px + 72px + 48px) 48px 40px; border-bottom: 1px solid var(--gray-200); }}
@@ -599,7 +599,6 @@ def regenerate_listino_html() -> None:
   <meta property="og:type" content="website">
   <meta property="og:title" content="Listino End-User Unitree — Abra Robotics">
   <meta property="og:url" content="{SITE}/listino-unitree.html">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .listino-hero {{ padding: calc(40px + 72px + 60px) 48px 48px; border-bottom: 1px solid var(--gray-200); }}

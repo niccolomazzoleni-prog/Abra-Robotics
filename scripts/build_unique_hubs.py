@@ -133,7 +133,6 @@ def page_shell(
 <meta content="{canonical}" property="og:url"/>
 <meta content="https://abrarobotics.com/images/logo-icon.png" property="og:image"/>
 <link href="favicon.ico" rel="icon" sizes="any"/>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&amp;display=swap" rel="stylesheet"/>
 <link href="style.css" rel="stylesheet"/>
 <style>{HUB_CSS}</style>
 {collection_schema(collection_name, canonical, items)}
