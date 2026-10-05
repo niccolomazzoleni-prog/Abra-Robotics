@@ -2,6 +2,10 @@
 
 <html lang="it">
 <head>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="consent.js"></script>
 <meta content="G6A_4xRUkEdTQnXeAm_M37_ovtX1XVe5bjkGzvsCHzk" name="google-site-verification"/>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -52,10 +56,9 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
-  fbq("init","1478056171004711");
+  fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
   </script>
-<noscript><img height="1" src="https://www.facebook.com/tr?id=1478056171004711&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
@@ -132,7 +135,7 @@
 <div class="container">
 <p class="eyebrow">Cookie</p>
 <h1>Cookie Policy</h1>
-<p class="legal-updated">Ai sensi del Provvedimento del Garante Privacy del 10 giugno 2021 e della Direttiva 2002/58/CE · Ultimo aggiornamento: 31 maggio 2026</p>
+<p class="legal-updated">Ai sensi del Provvedimento del Garante Privacy del 10 giugno 2021 e della Direttiva 2002/58/CE · Ultimo aggiornamento: 5 ottobre 2026</p>
 </div>
 </section>
 <main class="legal">
@@ -140,20 +143,24 @@
 <h2>1. Cosa sono i cookie</h2>
 <p>I cookie sono piccoli file di testo che i siti visitati inviano al dispositivo dell'utente, dove vengono memorizzati per essere ritrasmessi agli stessi siti alla visita successiva. Esistono cookie <strong>tecnici</strong> (necessari al funzionamento del sito o a fornire un servizio richiesto dall'utente) e cookie di <strong>profilazione</strong> (volti a creare profili dell'utente per finalità pubblicitarie). Solo questi ultimi richiedono il consenso preventivo dell'utente.</p>
 <h2>2. Cookie e strumenti utilizzati da questo sito</h2>
-<p>Questo sito utilizza <strong>esclusivamente strumenti tecnici</strong> e <strong>non installa cookie di profilazione né strumenti di analisi statistica o pubblicità di terze parti</strong>.</p>
+<p>Il sito usa <strong>strumenti tecnici</strong>, sempre attivi, e, <strong>solo con il tuo consenso</strong>, strumenti di <strong>statistica</strong> e di <strong>marketing</strong>. Alla prima visita un banner ti permette di accettare, rifiutare o scegliere per categoria; chiudendo il banner con la X rifiuti tutto ciò che non è tecnico. Puoi cambiare idea in qualsiasi momento dal link <a href="#" onclick="window.abraConsentOpen&amp;&amp;abraConsentOpen();return false;">Preferenze cookie</a> presente in fondo a ogni pagina. La scelta viene conservata per 6 mesi.</p>
 <div class="table-wrap"><table>
 <thead>
-<tr><th>Strumento</th><th>Tipo</th><th>Finalità</th><th>Consenso</th></tr>
+<tr><th>Strumento</th><th>Categoria</th><th>Finalità</th><th>Consenso</th></tr>
 </thead>
 <tbody>
-<tr><td>Memorizzazione locale (localStorage) della preferenza sul banner informativo</td><td>Tecnico</td><td>Evitare di mostrare nuovamente l'avviso dopo la presa visione</td><td>Non richiesto</td></tr>
-<tr><td>Fontshare (font tipografici)</td><td>Tecnico di terza parte</td><td>Caricamento dei caratteri del sito; può comportare la trasmissione dell'IP al fornitore</td><td>Non richiesto</td></tr>
+<tr><td>Memorizzazione locale (localStorage) della scelta sui cookie</td><td>Tecnico</td><td>Ricordare le tue preferenze ed evitare di riproporre il banner</td><td>Non richiesto</td></tr>
 <tr><td>GitHub Pages (hosting)</td><td>Tecnico di terza parte</td><td>Erogazione delle pagine; log tecnici di sicurezza</td><td>Non richiesto</td></tr>
-<tr><td>Google Apps Script / Sheets (modulo di contatto)</td><td>Tecnico di terza parte</td><td>Invio e archiviazione dei dati del modulo, solo all'invio volontario</td><td>Non richiesto</td></tr>
+<tr><td>Google Apps Script / Sheets (moduli di contatto)</td><td>Tecnico di terza parte</td><td>Invio e archiviazione dei dati del modulo, solo all'invio volontario</td><td>Non richiesto</td></tr>
+<tr><td>Google reCAPTCHA (Google Ireland Ltd.)</td><td>Tecnico di terza parte</td><td>Protezione dei moduli dallo spam; caricato solo quando inizi a compilare un modulo</td><td>Non richiesto</td></tr>
+<tr><td>Google Tag Manager (Google Ireland Ltd.)</td><td>Tecnico di terza parte</td><td>Gestione dei tag del sito; non installa cookie propri e attiva gli altri strumenti solo secondo il consenso espresso</td><td>Non richiesto</td></tr>
+<tr><td>Google Analytics 4 (Google Ireland Ltd.)</td><td>Statistica</td><td>Statistiche aggregate su visite e utilizzo del sito. Senza consenso vengono inviati solo segnali privi di cookie e identificativi (Google Consent Mode)</td><td>Richiesto</td></tr>
+<tr><td>Google Ads (Google Ireland Ltd.)</td><td>Marketing</td><td>Misurazione delle conversioni delle campagne pubblicitarie e remarketing</td><td>Richiesto</td></tr>
+<tr><td>Meta Pixel (Meta Platforms Ireland Ltd.)</td><td>Marketing</td><td>Misurazione delle campagne su Facebook e Instagram e pubblico personalizzato</td><td>Richiesto</td></tr>
 </tbody>
 </table></div>
 <div class="legal-note">
-<p><strong>Nota.</strong> Poiché il sito utilizza solo strumenti tecnici, mostriamo un breve avviso informativo (non un banner di consenso) in conformità alle Linee guida del Garante. Qualora in futuro vengano introdotti cookie analitici o di profilazione, verrà implementato un sistema di raccolta del consenso preventivo con la possibilità di accettare o rifiutare.</p>
+<p><strong>Trasferimenti extra UE.</strong> Google e Meta possono trattare dati negli Stati Uniti, sulla base del Data Privacy Framework UE-USA e delle clausole contrattuali standard. Per i dettagli consulta le informative di <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a> e <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">Meta</a>.</p>
 </div>
 <h2>3. Come gestire o disabilitare i cookie</h2>
 <p>Puoi gestire, limitare o bloccare i cookie e svuotare la memoria locale del browser tramite le impostazioni dello stesso. Di seguito le guide ufficiali:</p>
@@ -163,7 +170,7 @@
 <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" rel="noopener" target="_blank">Apple Safari</a></li>
 <li><a href="https://support.microsoft.com/it-it/microsoft-edge" rel="noopener" target="_blank">Microsoft Edge</a></li>
 </ul>
-<p>La disabilitazione degli strumenti tecnici può compromettere alcune funzionalità del sito.</p>
+<p>La disabilitazione degli strumenti tecnici può compromettere alcune funzionalità del sito. Per statistica e marketing basta usare le Preferenze cookie del sito.</p>
 <h2>4. Titolare e contatti</h2>
 <p>Il Titolare del trattamento è Abra Robotics. Per qualsiasi richiesta relativa ai cookie e al trattamento dei dati scrivi a <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>. Per il dettaglio completo sui dati trattati consulta la <a href="privacy-policy.html">Privacy Policy</a>.</p>
 <h2>5. Aggiornamenti</h2>

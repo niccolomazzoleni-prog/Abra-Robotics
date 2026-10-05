@@ -2,6 +2,10 @@
 
 <html lang="it">
 <head>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="consent.js"></script>
 <meta content="G6A_4xRUkEdTQnXeAm_M37_ovtX1XVe5bjkGzvsCHzk" name="google-site-verification"/>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -52,10 +56,9 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
-  fbq("init","1478056171004711");
+  fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
   </script>
-<noscript><img height="1" src="https://www.facebook.com/tr?id=1478056171004711&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
@@ -132,7 +135,7 @@
 <div class="container">
 <p class="eyebrow">Privacy</p>
 <h1>Privacy Policy</h1>
-<p class="legal-updated">Informativa ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679 · Ultimo aggiornamento: 31 maggio 2026</p>
+<p class="legal-updated">Informativa ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679 · Ultimo aggiornamento: 5 ottobre 2026</p>
 </div>
 </section>
 <main class="legal">
@@ -177,6 +180,8 @@
 <tr><td>Rispondere alle richieste di informazioni, preventivi e prenotazioni di chiamata</td><td>Misure precontrattuali su richiesta dell'interessato (art. 6.1.b)</td></tr>
 <tr><td>Gestione del rapporto contrattuale e adempimenti connessi</td><td>Esecuzione del contratto (art. 6.1.b) e obblighi di legge (art. 6.1.c)</td></tr>
 <tr><td>Garantire la sicurezza e il corretto funzionamento del sito</td><td>Legittimo interesse del Titolare (art. 6.1.f)</td></tr>
+<tr><td>Statistiche aggregate sull'uso del sito (Google Analytics 4)</td><td>Consenso dell'interessato (art. 6.1.a), espresso tramite il banner cookie e revocabile in ogni momento</td></tr>
+<tr><td>Misurazione e ottimizzazione delle campagne pubblicitarie (Google Ads, Meta Pixel)</td><td>Consenso dell'interessato (art. 6.1.a), espresso tramite il banner cookie e revocabile in ogni momento</td></tr>
 <tr><td>Invio di comunicazioni commerciali o newsletter (se attivate)</td><td>Consenso dell'interessato (art. 6.1.a), revocabile in ogni momento</td></tr>
 </tbody>
 </table></div>
@@ -186,14 +191,16 @@
 <ul>
 <li>il <strong>sito è ospitato</strong> su GitHub Pages (GitHub, Inc.), che tratta i log tecnici di accesso;</li>
 <li>i <strong>dati inviati tramite il modulo di contatto</strong> sono trasmessi e archiviati tramite servizi Google (Google Apps Script / Google Sheets, forniti da Google Ireland Ltd.);</li>
-<li>i <strong>font tipografici</strong> sono caricati dal servizio Fontshare (Indian Type Foundry), che può ricevere l'indirizzo IP del visitatore per consegnare i caratteri.</li>
+<li>i <strong>font tipografici</strong> sono ospitati direttamente sul sito, senza servizi esterni;</li>
+<li>solo con il tuo consenso, <strong>statistiche e misurazione delle campagne</strong> sono gestite tramite Google Tag Manager, Google Analytics 4, Google Ads e Meta Pixel.</li>
 </ul>
 <h2 id="destinatari">5. Destinatari e responsabili del trattamento</h2>
 <p>I dati non sono diffusi né ceduti a terzi per finalità di marketing. Possono essere trattati, in qualità di Responsabili del trattamento (art. 28 GDPR) o autonomi titolari per i log tecnici, dai seguenti fornitori:</p>
 <ul>
 <li><strong>GitHub, Inc.</strong> - hosting del sito;</li>
 <li><strong>Google Ireland Ltd. / Google LLC</strong> - raccolta e archiviazione dei dati del modulo di contatto;</li>
-<li><strong>Indian Type Foundry (Fontshare)</strong> - distribuzione dei font.</li>
+<li><strong>Google Ireland Ltd. / Google LLC</strong> - statistiche (Google Analytics 4) e misurazione campagne (Google Ads), solo con consenso;</li>
+<li><strong>Meta Platforms Ireland Ltd.</strong> - misurazione campagne (Meta Pixel), solo con consenso.</li>
 </ul>
 <p>I dati possono inoltre essere comunicati ad autorità pubbliche, consulenti e professionisti quando necessario per adempiere a obblighi di legge.</p>
 <h2 id="trasferimenti">6. Trasferimenti di dati extra-UE</h2>
@@ -216,7 +223,7 @@
 </ul>
 <p>Per esercitare i tuoi diritti scrivi a <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>. Hai inoltre il diritto di proporre reclamo all'Autorità Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" rel="noopener" target="_blank">www.garanteprivacy.it</a>).</p>
 <h2 id="cookie">9. Cookie</h2>
-<p>Questo sito utilizza esclusivamente cookie e strumenti tecnici. Per i dettagli consulta la <a href="cookie-policy.html">Cookie Policy</a>.</p>
+<p>Questo sito utilizza cookie tecnici e, solo previo consenso, cookie di statistica e di marketing. Puoi modificare la scelta in qualsiasi momento dal link "Preferenze cookie" in fondo a ogni pagina. Per i dettagli consulta la <a href="cookie-policy.html">Cookie Policy</a>.</p>
 <h2 id="modifiche">10. Modifiche all'informativa</h2>
 <p>Il Titolare si riserva di modificare o aggiornare questa informativa per adeguarla a sopravvenute novità normative o per ragioni organizzative. La versione aggiornata sarà pubblicata su questa pagina con l'indicazione della data di revisione.</p>
 </main>
