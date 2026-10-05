@@ -47,12 +47,24 @@ const RECAPTCHA_SITE_KEY = '6LeozTQtAAAAAJ8MLsZiT7a5mdol2TSR043VP0-2';
 
 window._formLoadTime = Date.now();
 
+// reCAPTCHA (~360 KB) solo quando qualcuno inizia a compilare un modulo:
+// non rallenta pagine e Core Web Vitals di chi non scrive nulla.
 (function loadRecaptcha() {
   if (!RECAPTCHA_SITE_KEY) return;
-  const s = document.createElement('script');
-  s.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
-  s.async = true;
-  document.head.appendChild(s);
+  let loaded = false;
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    const s = document.createElement('script');
+    s.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
+    s.async = true;
+    document.head.appendChild(s);
+  }
+  ['focusin', 'pointerdown', 'touchstart'].forEach((ev) => {
+    document.addEventListener(ev, (e) => {
+      if (e.target && e.target.closest && e.target.closest('form')) load();
+    }, { passive: true });
+  });
 })();
 
 (function initHeroVideo() {
@@ -487,7 +499,7 @@ document.addEventListener('click', (e) => {
   } catch (e) { /* localStorage non disponibile: mostra comunque l'avviso */ }
 
   // Risolvi il percorso della cookie policy (le pagine in /prodotti/ sono in sottocartella)
-  const prefix = window.location.pathname.includes('/prodotti/') ? '../' : '';
+  const prefix = (window.location.pathname.includes('/prodotti/') || window.location.pathname.includes('/blog/')) ? '../' : '';
 
   const banner = document.createElement('div');
   banner.className = 'cookie-banner';
