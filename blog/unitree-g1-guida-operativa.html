@@ -93,7 +93,7 @@
 <p>Legenda comandi stampata sul telecomando R3:</p>
 <ul>
 <li><strong>★</strong> = pressione breve singola</li>
-<li><strong>▲</strong> = pressione lunga ~2 secondi (per alcuni comandi di sicurezza, es. <strong>damping</strong>, tenere premuto <strong>≥3 secondi</strong>)</li>
+<li><strong>▲</strong> = pressione lunga ~2 secondi (in motion control, tenendo premuto il <strong>damping</strong> L2 + B per <strong>5 secondi</strong> si entra nella protezione damping, come indicato sull'adesivo)</li>
 </ul>
 
 <figure class="article-cover" style="max-width:100%;margin:28px 0">
@@ -106,18 +106,19 @@
 <table class="kbd-table">
 <thead><tr><th>Comando</th><th>Tasti</th><th>Tipo</th></tr></thead>
 <tbody>
-<tr><td><strong>Damping</strong></td><td>L2 + Y</td><td>★ — smorza i motori</td></tr>
-<tr><td><strong>Locked standing</strong></td><td>L2 + B</td><td>★ — <strong>sicurezza: molla/rilascia i giunti</strong>. Usala come impostazione di emergenza</td></tr>
+<tr><td><strong>Zero moment</strong></td><td>L2 + Y</td><td>★ — coppia zero, giunti liberi: <strong>se il robot non è appeso cade</strong></td></tr>
+<tr><td><strong>Damping</strong></td><td>L2 + B</td><td>★ — smorza i motori: <strong>è il comando per fermare il robot</strong></td></tr>
+<tr><td><strong>Locked standing</strong></td><td>L2 + ↑</td><td>★ — in piedi con giunti bloccati</td></tr>
 <tr><td><strong>Alzata da sdraiato</strong></td><td>L2 + X</td><td>★ — Lie → Stand (solo pavimento duro, vedi protezione)</td></tr>
-<tr><td><strong>Seduto</strong></td><td>L2 + A</td><td>★ — attesa transizione</td></tr>
-<tr><td><strong>Squat ↔ stand</strong></td><td>L2 + ↑ / ↓</td><td>★</td></tr>
-<tr><td><strong>Adapt rise</strong></td><td>R1 + R2 + X</td><td>▲ 2 s</td></tr>
+<tr><td><strong>Seduto</strong></td><td>L2 + ←</td><td>▲ — attesa transizione</td></tr>
+<tr><td><strong>Squat ↔ stand</strong></td><td>L2 + A</td><td>▲</td></tr>
+<tr><td><strong>Adapt rise</strong></td><td>R1 + R2 + X</td><td>★</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="callout callout-danger">
-<strong>Sicurezza:</strong> <strong>L2 + B</strong> è il comando da usare quando qualcosa va storto — rilascia i giunti. Per il <strong>damping</strong> usa <strong>L2 + Y</strong> (pressione lunga ≥3 s se non entra subito). Non confondere i due.
+<strong>Sicurezza:</strong> per fermare il robot usa il <strong>damping, L2 + B</strong> (in motion control tienilo premuto 5 secondi per la protezione damping). <strong>Non confonderlo con L2 + Y</strong> (zero moment): azzera la coppia dei motori e, se il robot non è appeso all'imbracatura o al telaio, cade.
 </div>
 
 <h3>Motion control</h3>
@@ -137,7 +138,7 @@
 </div>
 
 <div class="callout callout-tip">
-<strong>Saluti e gesture (handshake, wave, kiss, clap):</strong> usali in <strong>Regular mode</strong> — <strong>R1 + Y</strong> se hai vita 3 DoF (U2+) oppure <strong>R1 + X</strong> se vita 1 DoF (U1). In <strong>Running mode (R2+A)</strong> il robot è meno stabile: handshake o saluto possono sbilanciarlo. Comandi interattivi: SELECT + A/B/Y, doppio click Y/X/A (vedi sticker).
+<strong>Saluti e gesture (handshake, wave, kiss, clap):</strong> usali in <strong>Regular mode</strong> — <strong>R1 + Y</strong> se hai vita 3 DoF (U2+) oppure <strong>R1 + X</strong> se vita 1 DoF (U1). In <strong>Running mode (R2+A)</strong> il robot è meno stabile: handshake o saluto possono sbilanciarlo. Comandi interattivi: SELECT + A (stretta di mano), SELECT + Y (saluto), doppio click Y/X/A (vedi sticker).
 </div>
 
 <h3>Debug mode (solo sviluppo SDK)</h3>
@@ -155,7 +156,7 @@
 <li>Inserisci batteria fino al click (interruttore verso il retro).</li>
 <li>Pressione breve sul pulsante → tieni ≥2 s.</li>
 <li>Attendi ~1 min: tutti i giunti in <strong>zero torque</strong>.</li>
-<li>Segui sequenza telecomando sopra — prima <strong>L2+Y damping</strong>, poi procedi.</li>
+<li>Segui la sequenza del telecomando sopra: prima il <strong>damping (L2 + B)</strong>, poi procedi.</li>
 </ol>
 
 <h3>Metodo sospeso al telaio (lab)</h3>
