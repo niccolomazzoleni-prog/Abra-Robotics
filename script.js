@@ -563,7 +563,14 @@ document.addEventListener('click', (e) => {
   s.setAttribute('data-base', prefix + 'offerte-ai/');
   s.setAttribute('data-abra-chat-widget', '1');
   s.defer = true;
-  document.body.appendChild(s);
+  // Dopo il load + idle: widget, CSS e immagini della chat non competono con il primo rendering (LCP mobile).
+  function inject() { document.body.appendChild(s); }
+  function schedule() {
+    if ('requestIdleCallback' in window) requestIdleCallback(inject, { timeout: 3000 });
+    else setTimeout(inject, 1);
+  }
+  if (document.readyState === 'complete') schedule();
+  else window.addEventListener('load', schedule, { once: true });
 })();
 
 // reCAPTCHA v3: il badge è nascosto via CSS, quindi la nota va mostrata sotto ogni modulo con email
