@@ -202,7 +202,7 @@ MANIFEST["R1-D"] = _entry(
     "Robot umanoide dual-arm ad alta DoF — deploy rapido e sviluppo secondario full-stack.",
     "Dual-Arm Humanoid Robot (serie R1-D) è la piattaforma Unitree per manipolazione bimanuale: bracci 5 o 7 DoF, base fissa o mobile con LiDAR, modulo visivo binoculare e framework di sviluppo maturo per ricerca e applicazioni industriali leggere. Specifiche da unitree.com/mobile/R1-D.",
     [
-        ("DoF totali", "15–31"),
+        ("DoF (con pinza)", "15–22"),
         ("DoF braccio", "5×2 / 7×2"),
         ("Payload braccio", "2–4 kg"),
         ("Coppia spalla", "60 N·m"),
@@ -276,13 +276,17 @@ MANIFEST["GO2-EDU-ULT"] = _entry("Unitree Go2 EDU Ultimate", "Go2 EDU con LiDAR 
     _go2_common + [("LiDAR", "Hesai XT16"), ("Computing", "Orin NX 100 TOPS")])
 
 # --- AS2 ---
-_as2 = [("Peso", "~18 kg"), ("DoF", "12"), ("Velocità", "fino a ~5 m/s"), ("Payload marcia", "~15 kg"), ("IP", "IP54 (core)")]
+# Fonte: unitree.com/As2 (tabella parametri). X/EDU: ~15 kg in marcia, IP54, 3,7 m/s (fino a ~5 m/s);
+# Pro: ~13 kg, IP54, 3,7 m/s; Air: ~10 kg, nessun grado IP dichiarato, 3,0 m/s. Peso ~20 kg per tutte.
+_as2 = [("Peso (con batteria)", "~20 kg"), ("DoF", "12"), ("Velocità", "0–3,7 m/s (fino a ~5 m/s)"), ("Carico in marcia continua", "~15 kg"), ("Grado IP", "IP54")]
+_as2_pro = [("Peso (con batteria)", "~20 kg"), ("DoF", "12"), ("Velocità", "0–3,7 m/s"), ("Carico in marcia continua", "~13 kg"), ("Grado IP", "IP54")]
+_as2_air = [("Peso (con batteria)", "~20 kg"), ("DoF", "12"), ("Velocità", "0–3,0 m/s"), ("Carico in marcia continua", "~10 kg"), ("Grado IP", "non dichiarato da Unitree")]
 MANIFEST["AS2-AIR"] = _entry("Unitree AS2 Air", "Quadrupede AS2 entry — compatto e dinamico.",
     "AS2 Air è la configurazione entry della piattaforma AS2 per demo, POC e ispezione leggera.",
-    _as2 + [("Autonomia", ">2,5–4 h")], "unitree.com/As2")
+    _as2_air + [("Autonomia", "~2 h a vuoto (>1,5 h con 10 kg)")], "unitree.com/As2")
 MANIFEST["AS2-PRO"] = _entry("Unitree AS2 Pro", "AS2 industriale compatto — dual camera, LiDAR wide-angle.",
     "AS2 Pro con suite di percezione avanzata per ispezione e sorveglianza professionale.",
-    _as2 + [("Percezione", "LiDAR wide-angle + dual camera"), ("Coppia giunto", "~90 N·m")], "unitree.com/As2")
+    _as2_pro + [("Percezione", "LiDAR wide-angle + dual camera"), ("Coppia giunto", "~90 N·m")], "unitree.com/As2")
 MANIFEST["AS2-EDU"] = _entry("Unitree AS2 EDU Standard (U1)", "AS2 education — SDK aperto (equivalente Go2 EDU Std).",
     "AS2 EDU Standard (U1): piattaforma education con SDK ROS 2 / Python / C++, payload e IP superiori a Go2 EDU.",
     _as2 + [("Variante", "EDU Standard · U1"), ("SDK", "ROS 2 · Python · C++")], "unitree.com/As2")
