@@ -286,30 +286,8 @@ def main() -> None:
         lang="en",
     )
 
-    optimize_file(
-        ROOT / "quadrupedi.html",
-        title="Robot quadrupede Unitree Go2, A2, B2 | Abra Robotics",
-        desc="Robot quadrupede Unitree in Italia: Go2, A2 e B2 per ispezione e industria. Specifiche, prezzi e supporto Abra Robotics.",
-        h1="Robot quadrupede Unitree — Go2, A2 e B2",
-        lead="Dal Unitree Go2 per education e ispezione leggera al B2 industriale IP67: la gamma completa di robot quadrupedi (robot cane) Unitree, con scheda tecnica dedicata per ogni modello.",
-        faqs=FAQ_IT_QUAD,
-        lang="it",
-        collection=(
-            "Robot quadrupedi Unitree",
-            "https://abrarobotics.com/quadrupedi.html",
-            quad_items,
-        ),
-    )
-
-    optimize_file(
-        ROOT / "en" / "quadrupedi-en.html",
-        title="Quadruped robot Unitree Go2, A2, B2 | Abra Robotics",
-        desc="Unitree quadruped robots in Italy: Go2, A2 and B2 for inspection and industry. Specs, pricing and Abra Robotics support.",
-        h1="Unitree quadruped robots — Go2, A2 and B2",
-        lead="From the agile Unitree Go2 for education and light inspection to the industrial B2 IP67: the full Unitree robot dog range with a dedicated product page for each model.",
-        faqs=FAQ_EN_QUAD,
-        lang="en",
-    )
+    # quadrupedi.html / en/quadrupedi-en.html: contenuti SEO gestiti da scripts/seo_quadrupedi.py
+    # (non riscriverli qui: annullerebbe tabella prezzi, FAQ e JSON-LD).
 
     # G1 product page — strengthen Unitree G1 keyword
     g1 = ROOT / "prodotti" / "unitree-g1.html"
