@@ -65,7 +65,28 @@ window._formLoadTime = Date.now();
       if (e.target && e.target.closest && e.target.closest('form')) load();
     }, { passive: true });
   });
+  // Carica anche quando un modulo entra in vista: il token è pronto prima del clic su "Invia".
+  const forms = document.querySelectorAll('.contact-form, .quote-form-top');
+  if (forms.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((en) => en.isIntersecting)) { load(); io.disconnect(); }
+    }, { rootMargin: '400px' });
+    forms.forEach((f) => io.observe(f));
+  }
 })();
+
+// Token reCAPTCHA con tempo massimo: se Google è lento o bloccato, il lead parte comunque.
+function getRecaptchaToken(action, ms) {
+  if (!RECAPTCHA_SITE_KEY || !window.grecaptcha) return Promise.resolve('');
+  const token = new Promise((resolve) => {
+    try {
+      window.grecaptcha.ready(() => {
+        window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action }).then(resolve, () => resolve(''));
+      });
+    } catch (_) { resolve(''); }
+  });
+  return Promise.race([token, new Promise((resolve) => setTimeout(() => resolve(''), ms))]);
+}
 
 (function initHeroVideo() {
   const video = document.querySelector('.hero-video');
@@ -219,11 +240,8 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
 
     const payload = buildContactPayload(form);
 
-    if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
-      try {
-        payload.recaptcha_token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' });
-      } catch (_) {}
-    }
+    const token = await getRecaptchaToken('contact', 4000);
+    if (token) payload.recaptcha_token = token;
 
     try {
       await postLeadToGoogleScripts(payload);

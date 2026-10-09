@@ -75,7 +75,7 @@
       const payload = buildContactPayload(form);
       payload.origine = 'Listino completo Unitree';
       if (typeof RECAPTCHA_SITE_KEY !== 'undefined' && RECAPTCHA_SITE_KEY && window.grecaptcha) {
-        try { payload.recaptcha_token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' }); } catch (_) {}
+        payload.recaptcha_token = (typeof getRecaptchaToken === 'function') ? await getRecaptchaToken('contact', 4000) : '';
       }
       await postLeadToGoogleScripts(payload);
       if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
