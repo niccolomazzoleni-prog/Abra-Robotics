@@ -22,7 +22,7 @@
   "headline": "Palletizzazione con cobot: costi, tempi e quando conviene",
   "description": "Cosa contiene una cella di palletizzazione con cobot, come dimensionare payload e sbraccio, prezzi Fairino a listino e quando serve un robot industriale.",
   "datePublished": "2026-10-01",
-  "dateModified": "2026-10-06",
+  "dateModified": "2026-10-09",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -83,7 +83,15 @@
       "name": "È finanziabile?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Spesso sì, in base alla struttura del progetto e ai requisiti dell'agevolazione. Lo verifichiamo gratuitamente prima del preventivo."
+        "text": "Può rientrare nelle agevolazioni per beni strumentali, in base alla struttura del progetto e ai requisiti. Facciamo una verifica gratuita di ammissibilità prima del preventivo, senza garanzia sull'esito."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Fino a che altezza si può impilare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dipende dallo sbraccio del cobot e dalla colonna. Nel kit Fairino la versione con colonna di sollevamento arriva a 1.800 mm di altezza di impilaggio."
       }
     }
   ]
@@ -109,7 +117,7 @@
 
 <header class="article-header"><p class="label">Manifattura e logistica</p>
 <h1>Palletizzazione con cobot: costi, tempi e quando conviene</h1>
-<div class="article-meta"><time datetime="2026-10-01">1 ottobre 2026</time><span>Abra Robotics</span></div>
+<div class="article-meta"><time datetime="2026-10-01">1 ottobre 2026</time><span>Aggiornato 9 ottobre 2026</span><span>Abra Robotics</span></div>
 </header>
 
 <div class="article-content">
@@ -121,8 +129,8 @@
 <ul>
 <li><strong>Cobot.</strong> Il braccio a 6 assi che prende la scatola e la posa sul pallet.</li>
 <li><strong>Gripper.</strong> Ventose per scatole chiuse e superfici piane, pinze o forche per sacchi e casse aperte. Il suo peso conta nel payload.</li>
-<li><strong>Struttura o workstation.</strong> Telaio con interfaccia robot e postazioni pallet. Quella Fairino è compatibile con i cobot da FR10 a FR30.</li>
-<li><strong>Colonna di sollevamento.</strong> Serve quando il pallet è più alto di quanto il braccio raggiunge da fermo.</li>
+<li><strong>Struttura o workstation.</strong> Telaio con interfaccia robot e postazioni pallet. Secondo il catalogo Fairino la versione fissa con FR20 pesa circa 330 kg e la workstation si può spostare sul pavimento. Il cobot da abbinare si sceglie su payload e sbraccio.</li>
+<li><strong>Colonna di sollevamento.</strong> Serve quando il pallet è più alto di quanto il braccio raggiunge da fermo. Nel kit Fairino la versione con colonna arriva a 1.800 mm di altezza di impilaggio.</li>
 <li><strong>Sicurezza.</strong> Scanner laser o barriere che rallentano o fermano il robot quando un operatore entra nell'area.</li>
 <li><strong>Software di pattern.</strong> Definisce strati, orientamento delle scatole e falde interfalda senza riscrivere il programma a ogni formato.</li>
 <li><strong>Ingresso scatole.</strong> Rulliera o nastro con un punto di presa fisso e ripetibile.</li>
@@ -132,7 +140,7 @@
 <video controls preload="metadata" playsinline poster="../images/manifattura/fairino-fr20.png" src="../videos/fairino-palletizing.mp4" title="Ciclo di palletizzazione con cobot Fairino" style="width:100%;height:auto;"></video>
 
 <h2>Payload: si somma tutto quello che il robot porta</h2>
-<p>L'errore più comune è scegliere il cobot sul peso della scatola. Il robot porta scatola, gripper ed eventuale falda. Fairino Europe porta questo esempio: una scatola da 14 kg con un gripper da 5 kg fa 19 kg, prima di qualsiasi margine. Su un cobot da 20 kg resta pochissimo.</p>
+<p>L'errore più comune è scegliere il cobot sul peso della scatola. Il robot porta scatola, gripper ed eventuale falda. <a href="https://www.fairino.info/se/mdl/info/when-does-20-kg-cobot-palletising-pay-off" rel="noopener noreferrer" target="_blank">Fairino Europe</a> porta questo esempio: una scatola da 14 kg con un gripper da 5 kg fa 19 kg, prima di qualsiasi margine. Su un cobot da 20 kg resta pochissimo.</p>
 <p>Conta anche la distanza. Lo stesso carico tenuto lontano dalla base crea più coppia sui giunti. Gli angoli del pallet più lontani dal robot sono il punto critico.</p>
 
 <h3>I modelli Fairino a listino per la palletizzazione</h3>
@@ -145,6 +153,7 @@
 <tr><td><a href="../prodotti/cobot-fairino-fr30.html">Fairino FR30</a></td><td>30 kg</td><td>1.403 mm</td><td>33.852 €</td></tr>
 </tbody>
 </table>
+<p>Payload e sbraccio dal <a href="https://fairino-doc-de.readthedocs.io/3.9.3/_downloads/bd8a0e09a044448752c2d1bc3273832e/FAIRINO%20Product%20Catalogue.pdf" rel="noopener noreferrer" target="_blank">catalogo prodotti Fairino</a>; prezzi dal listino pubblico Abra. Il catalogo indica anche un picco di carico superiore al nominale (per esempio 25 kg per l'FR20), ma per dimensionare una cella si parte dal valore nominale.</p>
 <p>Per un pallet EUR intero lo sbraccio pesa quanto il payload. L'FR16 porta di più dell'FR10 ma arriva meno lontano. L'FR20 è il compromesso più usato per scatole medie su pallet completi. L'FR30 serve per carichi pesanti vicini alla base.</p>
 
 <h2>Quanto costa in totale</h2>
@@ -158,11 +167,11 @@
 
 <h2>Tempi: si parte dalla cadenza della linea</h2>
 <p>La velocità massima del robot dice poco. Si parte dalla linea. Con 10 scatole al minuto ci sono in teoria 6 secondi per scatola. Da quel tempo vanno tolti il cambio pallet e le falde. Se il cambio pallet dura due minuti e nessuno accumula le scatole in arrivo, la linea si ferma.</p>
-<p>Il modo corretto per saperlo è provare il ciclo con le scatole vere, o simularlo con i pesi e le misure reali, prima di comprare la workstation. Lo raccomanda anche Fairino Europe.</p>
+<p>Il modo corretto per saperlo è provare il ciclo con le scatole vere prima di comprare la workstation: Fairino Europe scrive che una prova con gli imballi reali vale più di qualsiasi stima fatta sulle sole dimensioni. Una simulazione con pesi e misure reali aiuta a scartare le ipotesi sbagliate, ma non sostituisce la prova.</p>
 
 <h2>Sicurezza: cobot non vuol dire cella senza rischi</h2>
-<p>I cobot Fairino a listino sono dichiarati conformi a ISO 10218 e ISO/TS 15066. Sono norme sul robot. La cella però include un gripper che porta scatole da molti chili all'altezza delle persone, e quel rischio si valuta sull'applicazione completa.</p>
-<p>La valutazione dei rischi decide se servono scanner, zone a velocità ridotta o una protezione fisica. La marcatura CE riguarda la cella intera. Dal 20 gennaio 2027 il riferimento diventa il Regolamento macchine (UE) 2023/1230, che sostituisce la Direttiva 2006/42/CE.</p>
+<p>Il <a href="https://fairino-doc-de.readthedocs.io/3.9.3/_downloads/bd8a0e09a044448752c2d1bc3273832e/FAIRINO%20Product%20Catalogue.pdf" rel="noopener noreferrer" target="_blank">catalogo Fairino</a> dichiara per i cobot la certificazione di sicurezza funzionale secondo ISO 10218, ISO 13849 e ISO 15066. Sono norme sul robot e sui suoi sistemi di comando. La cella però include un gripper che porta scatole da molti chili all'altezza delle persone, e quel rischio si valuta sull'applicazione completa.</p>
+<p>La valutazione dei rischi decide se servono scanner, zone a velocità ridotta o una protezione fisica. La marcatura CE riguarda la cella intera. Dal 20 gennaio 2027 il riferimento diventa il <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Regolamento macchine (UE) 2023/1230</a>, che sostituisce la Direttiva 2006/42/CE: chi assembla cobot, workstation, rulliere e protezioni crea un insieme di macchine con un suo fabbricante. I dettagli sono nella guida al <a href="unitree-regolamento-macchine-2027.html">Regolamento macchine 2027</a>.</p>
 
 <h2>Quando conviene e quando no</h2>
 <p><strong>Conviene</strong> su linee a bassa o media cadenza, con più formati di prodotto, dove lo spazio è poco o gli operatori devono avvicinarsi spesso al pallet.</p>
@@ -184,7 +193,7 @@
 <li>Tipo di pallet, altezza finale e uso di falde.</li>
 <li>Pianta o foto dell'area di fine linea.</li>
 </ul>
-<p>Con questi dati facciamo l'<a href="../assessment.html">assessment applicativo</a>. Le altre soluzioni per il fine linea sono nella pagina <a href="../manifattura-logistica.html">Manifattura e logistica</a>, nel <a href="../cobot.html">catalogo cobot</a> e nella panoramica dei <a href="../lp-cobot.html">cobot industriali in Italia</a>.</p>
+<p>Con questi dati facciamo l'<a href="../assessment.html">assessment applicativo</a>. Le altre soluzioni per il fine linea sono nella pagina <a href="../manifattura-logistica.html">Manifattura e logistica</a>, nel <a href="../catalogo-cobot.html">catalogo completo dei cobot</a>, tra gli <a href="../amr.html">AMR</a> per portare i pallet a magazzino, nel <a href="../cobot.html">catalogo cobot</a> e nella panoramica dei <a href="../lp-cobot.html">cobot industriali in Italia</a>.</p>
 
 <section class="article-faq">
 <h2>Domande frequenti</h2>
@@ -197,15 +206,18 @@
 <h3>Quante scatole al minuto può palletizzare?</h3>
 <p>Dipende da peso, distanze, pattern e cambio pallet. Con 10 scatole al minuto ci sono in teoria 6 secondi per scatola. Il tempo reale si verifica con prove o simulazione sui vostri prodotti.</p>
 <h3>È finanziabile?</h3>
-<p>Spesso sì, in base alla struttura del progetto e ai requisiti dell'agevolazione. Lo verifichiamo gratuitamente prima del preventivo.</p>
+<p>Può rientrare nelle agevolazioni per beni strumentali, in base alla struttura del progetto e ai requisiti. Facciamo una verifica gratuita di ammissibilità prima del preventivo, senza garanzia sull'esito.</p>
+<h3>Fino a che altezza si può impilare?</h3>
+<p>Dipende dallo sbraccio del cobot e dalla colonna. Nel kit Fairino la versione con colonna di sollevamento arriva a 1.800 mm di altezza di impilaggio.</p>
 </section>
 
 <section class="article-references" id="riferimenti">
-<h2>Riferimenti</h2>
+<h2>Fonti</h2>
 <ol>
-<li>Fairino Europe, <em>When does 20 kg cobot palletising pay off</em>: <a href="https://www.fairino.info/se/mdl/info/when-does-20-kg-cobot-palletising-pay-off" rel="noopener noreferrer" target="_blank">link</a></li>
-<li>Listino pubblico Abra Robotics, prezzi IVA esclusa: <a href="../cobot.html">catalogo cobot</a></li>
-<li>Regolamento (UE) 2023/1230 relativo alle macchine, EUR-Lex: <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Fairino, catalogo prodotti (payload, sbraccio, certificazioni, workstation di palletizzazione): <a href="https://fairino-doc-de.readthedocs.io/3.9.3/_downloads/bd8a0e09a044448752c2d1bc3273832e/FAIRINO%20Product%20Catalogue.pdf" rel="noopener noreferrer" target="_blank">FAIRINO Product Catalogue (PDF)</a></li>
+<li>Fairino Europe, <em>When does 20 kg cobot palletising pay off</em>: <a href="https://www.fairino.info/se/mdl/info/when-does-20-kg-cobot-palletising-pay-off" rel="noopener noreferrer" target="_blank">fairino.info</a></li>
+<li>Regolamento (UE) 2023/1230 relativo alle macchine: <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">EUR-Lex</a></li>
+<li>Prezzi: listino pubblico Abra Robotics, IVA esclusa, nel <a href="../cobot.html">catalogo cobot</a>.</li>
 </ol>
 </section>
 </div>
