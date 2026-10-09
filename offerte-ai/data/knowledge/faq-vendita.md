@@ -6,7 +6,7 @@
 - AMR e cobot: circa 4–6 settimane
 
 ## Finanziamenti
-La maggior parte dei progetti è finanziabile con incentivi Industria 4.0, Transizione 5.0 o bandi PNRR regionali. Offriamo verifica gratuita della finanziabilità.
+Molti progetti possono rientrare nell'iperammortamento 2026 (L. 199/2025, comunicazioni al GSE), nella Nuova Sabatini o in bandi regionali. L'ammissibilità non è garantita: la confermano perizia tecnica e consulente fiscale. Offriamo una verifica preliminare gratuita (finanziamenti.html).
 
 ## ROS 2 e programmabilità
 I modelli EDU (Go2 EDU, A2, B2, R1, G1, H2) supportano ROS 2, Python e C++ tramite SDK Unitree ufficiale.

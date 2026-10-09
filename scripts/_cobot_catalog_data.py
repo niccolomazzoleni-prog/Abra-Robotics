@@ -17,10 +17,10 @@ CATALOG: tuple[tuple, ...] = (
         "Compatto · Precisione",
         "Fairino FR3",
         "Cobot 6 assi · 3 kg",
-        "Cobot compatto 3 kg e sbraccio 922 mm per pick & place di precisione, ispezione e assemblaggio leggero in spazi ridotti.",
+        "Cobot compatto 3 kg e sbraccio 622 mm per pick & place di precisione, ispezione e assemblaggio leggero in spazi ridotti.",
         [
             ("Payload", "3 kg"),
-            ("Sbraccio", "922 mm"),
+            ("Sbraccio", "622 mm"),
             ("Ripetibilità", "±0,02 mm"),
             ("Velocità TCP", "1 m/s"),
         ],
@@ -221,7 +221,7 @@ IMAGE_FILE: dict[str, str] = {
 }
 
 CHIPS_BY_SLUG: dict[str, tuple[str, ...]] = {
-    "fairino-fr3": ("3 kg", "922 mm", "±0,02 mm", "6 assi"),
+    "fairino-fr3": ("3 kg", "622 mm", "±0,02 mm", "6 assi"),
     "fairino-fr5": ("5 kg", "922 mm", "±0,02 mm", "6 assi"),
     "fairino-fr10": ("10 kg", "1.400 mm", "±0,05 mm", "6 assi"),
     "fairino-fr16": ("16 kg", "1.034 mm", "±0,05 mm", "6 assi"),

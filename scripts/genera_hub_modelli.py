@@ -144,7 +144,7 @@ FAMILIES = {
         "specs": [("", "Weight", "|approx. 20 kg with battery"),
                   ("", "Max speed", "|0–3.0 m/s (Air), 0–3.7 m/s (Pro), 0–3.7 m/s up to ~5 m/s (X, EDU)"),
                   ("", "Walking payload", "|approx. 10 kg (Air), 13 kg (Pro), 15 kg (X, EDU)"),
-                  ("", "Endurance", "|~2 h (Air), ~4 h (Pro, X, EDU) unloaded"), ("", "Protection", "|IP54 (Pro, X, EDU)"),
+                  ("", "Endurance", "|~2 h (Air), ~4 h (Pro, X, EDU) unloaded"), ("", "Protection", "|IP54 (Pro, X, EDU); no IP rating declared for Air"),
                   ("", "LiDAR", "|Unitree L2 (Pro, X), industrial 64–128-line LiDAR (EDU)")],
         "choose_en": [("AS2 Air", "entry version with HD camera, for demos and getting started."),
                       ("AS2 Pro / X", "Unitree L2 LiDAR, IP54 and about 4 h endurance."),

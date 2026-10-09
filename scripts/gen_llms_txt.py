@@ -94,7 +94,7 @@ def riassunto():
     righe += ["## Certificazioni e conformità",
               "- Marcatura CE di celle robotizzate e macchine integrate con TÜV Rheinland (https://www.tuv.com/italy/it/).",
               "- Certificazioni di cybersecurity (es. ISO/IEC 27001) e AI compliance (es. ISO/IEC 42001, AI Act) con CSQA (https://www.csqa.it/).",
-              "- Incentivi: l'acquisto può rientrare nell'iperammortamento 2026 (maggiorazione fino al 180%); credito 4.0 e Transizione 5.0 PNRR sono chiusi.", ""]
+              f"- Incentivi: l'acquisto può rientrare nell'iperammortamento 2026 (L. 199/2025, maggiorazione fino al 180%) e nella Nuova Sabatini; l'ammissibilità va confermata da perizia o consulente — {BASE}finanziamenti.html", ""]
     righe += [
         "## Pagine principali",
         f"- [Home]({BASE}) · [Umanoidi]({BASE}umanoidi.html) · [Quadrupedi]({BASE}quadrupedi.html) · [AS2]({BASE}as2.html) · [H2]({BASE}h2.html)",
