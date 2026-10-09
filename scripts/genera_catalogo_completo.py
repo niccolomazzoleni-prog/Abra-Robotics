@@ -110,7 +110,8 @@ FILENAME_MAP: dict[str, str] = {
     # unitree-go2-edu-laser.html resta come redirect verso unitree-go2-edu-plus.html.
     "GO2-EDU-SMART": "unitree-go2-edu-smart.html",
     "GO2-EDU-LASER": "unitree-go2-edu-plus.html",
-    "GO2-EDU-ULT": "unitree-go2-enterprise-u2.html",
+    # GO2-EDU-ULT ha una scheda propria: unitree-go2-enterprise-u2.html e' la Go2 Enterprise+ U2 (altro prodotto)
+    "GO2-EDU-ULT": "unitree-go2-edu-ultimate.html",
     "AS2-AIR": "unitree-as2-air.html",
     "AS2-PRO": "unitree-as2-pro.html",
     "AS2-EDU": "unitree-as2-edu.html",
@@ -505,7 +506,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo Unitree Italia: tutti i prodotti e prezzi | Abra</title>
-  <meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Filiera di distribuzione di Unitree Italia Italia.">
+  <meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Filiera Unitree Italia.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{SITE}/catalogo-unitree.html">
   <meta property="og:type" content="website">

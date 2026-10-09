@@ -146,7 +146,7 @@
       industry: 'Alimentare',
       question:
         'Cooperativa alimentare: robot per campionamento e ispezione visiva area lavaggio (umido, IP importante). ' +
-        'Quadrupede o umanoide? Finanziamenti 4.0?',
+        'Quadrupede o umanoide? Iperammortamento 2026?',
     },
     {
       id: 'seed-assistenza',
