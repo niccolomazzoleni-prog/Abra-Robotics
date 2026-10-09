@@ -23,7 +23,7 @@
   "headline": "Unitree H2 in Italia: Air, H2-D, Plus e ricerca",
   "description": "Guida H2 full-size con prezzi End-User e riferimenti arXiv / NVIDIA GR00T.",
   "datePublished": "2026-07-29",
-  "dateModified": "2026-10-06",
+  "dateModified": "2026-10-09",
   "author": {"@type": "Organization", "name": "Abra Robotics", "url": "https://abrarobotics.com"},
   "publisher": {"@type": "Organization", "name": "Abra Robotics", "logo": {"@type": "ImageObject", "url": "https://abrarobotics.com/images/logo-icon.png"}},
   "mainEntityOfPage": "https://abrarobotics.com/blog/unitree-h2-italia.html",
@@ -35,6 +35,54 @@
     "https://arxiv.org/abs/2512.01358",
     "https://arxiv.org/abs/2607.19903",
     "https://arxiv.org/abs/2605.01477"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto costa l'Unitree H2 in Italia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A listino H2 Air 45.000 € e H2 EDU 63.700 €, IVA esclusa. H2-D parte da 79.900 € e H2 Plus da 149.900 €, con prezzo finale in base alla configurazione."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto è alto e quanto pesa l'H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Secondo Unitree 1820 mm in piedi e circa 70 kg con batteria, con 31 gradi di libertà."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto dura la batteria dell'H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Circa 3 ore secondo Unitree, con batteria da 15 Ah (0,972 kWh)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Che differenza c'è tra H2 e H2 EDU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo sviluppo secondario è previsto solo sull'H2 EDU, che aggiunge un PC di sviluppo Intel Core i7. La garanzia Unitree è di 8 mesi per H2 e 12 mesi per H2 EDU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cos'è l'H2 Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "È la versione di riferimento per NVIDIA Isaac GR00T, con Jetson AGX Thor T5000 e mani tattili Sharpa Wave. NVIDIA ne indica la vendita tramite Unitree dalla fine del 2026."
+      }
+    }
   ]
 }
 </script>
@@ -54,27 +102,43 @@
 </figure>
 
 <header class="article-header">
-<p class="label">Guida · Umanoidi · Aggiornato 30 lug 2026</p>
+<p class="label">Guida · Umanoidi · Aggiornato 9 ott 2026</p>
 <h1>Unitree H2 in Italia: Air, H2, H2-D, H2 Plus — e cosa dicono i paper sul G1</h1>
 <div class="article-meta"><time datetime="2026-07-30">30 luglio 2026</time><span>Abra Robotics · Portogruaro (VE)</span></div>
-<div class="article-tldr"><strong>In sintesi:</strong> H2 è l’umanoide Unitree a scala umana (~182 cm, 31 DoF). Abra pubblica prezzi Air/H2 e schede H2-D / H2 Plus. La ricerca open (teleop, power modeling, GR00T, motion tracking) è ancora concentrata sul <em>G1</em>: la usiamo come base per dimensionare stack e rischi di un POC H2 full-size.</div>
+<div class="article-tldr"><strong>In breve:</strong> H2 è l’umanoide Unitree a scala umana (1820 mm, circa 70 kg, 31 gradi di libertà secondo Unitree). A listino ci sono H2 Air, H2 EDU, H2-D e H2 Plus. La ricerca open (teleop, power modeling, GR00T, motion tracking) è ancora concentrata sul <em>G1</em>: la usiamo come base per dimensionare stack e rischi di un POC H2 full-size.</div>
 </header>
 
 <div class="article-content">
 
-<p><strong>Unitree H2</strong> non è “un G1 più alto”. Cambia il contratto con l’ambiente: presenza human-scale, coppia elevata alle gambe (fino a ~360 N·m tipici di piattaforma), HRI e scenari dove un robot da ~130 cm non basta. In Italia pochi cataloghi espongono Air, H2, H2-D e H2 Plus insieme a prezzi End-User — è il motivo per cui abbiamo un <a href="../h2.html">hub dedicato</a>.</p>
+<p><strong>Unitree H2</strong> non è “un G1 più alto”. Cambia il rapporto con l’ambiente: altezza umana, coppia fino a 360 N·m ai giunti delle gambe, interazione uomo-robot (HRI) e scenari dove un robot da 132 cm non basta. Tutte le versioni, con schede e prezzi, sono nella <a href="../h2.html">pagina della gamma H2</a>.</p>
+
+<h2 id="specifiche">Specifiche H2 (dati Unitree)</h2>
+<div class="spec-table-wrap"><table>
+<thead><tr><th>Voce</th><th>Valore</th></tr></thead>
+<tbody>
+<tr><td>Dimensioni in piedi</td><td>1820 × 456 × 218 mm</td></tr>
+<tr><td>Peso con batteria</td><td>circa 70 kg</td></tr>
+<tr><td>Gradi di libertà</td><td>31: 6 per gamba, 7 per braccio, 3 in vita, 2 alla testa</td></tr>
+<tr><td>Coppia massima</td><td>360 N·m gambe, 120 N·m braccia</td></tr>
+<tr><td>Carico al braccio</td><td>circa 7 kg nominali, circa 15 kg di picco</td></tr>
+<tr><td>Batteria</td><td>15 Ah (0,972 kWh), circa 3 ore</td></tr>
+<tr><td>Calcolo</td><td>PC1 Intel Core i5 (controllo); PC2 Intel Core i7 per sviluppo sulla versione EDU</td></tr>
+<tr><td>Sviluppo secondario</td><td>Solo H2 EDU</td></tr>
+<tr><td>Garanzia</td><td>8 mesi H2, 12 mesi H2 EDU</td></tr>
+</tbody></table></div>
+<p>Fonte: <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">scheda H2 su unitree.com</a>. I valori sono di laboratorio e possono variare con la configurazione.</p>
 
 <h2>Linee prodotto e prezzi (IVA esclusa)</h2>
 <table>
 <thead><tr><th>Linea</th><th>Profilo</th><th>Prezzo</th></tr></thead>
 <tbody>
 <tr><td><a href="../prodotti/unitree-h2-air.html">H2 Air</a></td><td>Entry full-size</td><td>45.000 €</td></tr>
-<tr><td><a href="../prodotti/unitree-h2.html">H2</a></td><td>Ricerca / EDU, computing espandibile</td><td>63.700 €</td></tr>
+<tr><td><a href="../prodotti/unitree-h2.html">H2 EDU</a></td><td>Ricerca, sviluppo secondario, calcolo espandibile</td><td>63.700 €</td></tr>
 <tr><td><a href="../prodotti/unitree-h2-d.html">H2-D</a></td><td>Dual-arm / deployment cella</td><td>da 79.900 €</td></tr>
 <tr><td><a href="../prodotti/unitree-h2-plus.html">H2 Plus</a></td><td>Jetson Thor + mani SharpaWave + Isaac GR00T</td><td>da 149.900 €</td></tr>
 </tbody>
 </table>
-<p>I prezzi di H2-D e H2 Plus possono subire variazioni; conferma sempre su preventivo.</p>
+<p>Prezzi del <a href="../listino-unitree.html">listino pubblico</a>, IVA esclusa. Quelli di H2-D e H2 Plus dipendono dalla configurazione (mani, calcolo, base): si confermano in preventivo. Accessori come le schede di calcolo Jetson AGX Orin e AGX Thor e le mani Dex3, Dex5, Inspire e Revo sono nel <a href="../catalogo-unitree.html">catalogo Unitree</a>.</p>
 
 <h2>Cosa impara un buyer dalla letteratura sul G1</h2>
 <p>I preprint 2025–2026 su umanoidi Unitree parlano soprattutto di <strong>G1</strong>. Non è un limite: le lezioni su energia, teleoperazione e foundation model si trasferiscono al modo in cui progetti un POC H2.</p>
@@ -87,28 +151,30 @@
 
 <h3>3. Foundation model e cross-embodiment</h3>
 <p><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Park et al. (arXiv:2512.01358)</a> fine-tunano policy foundation su GR1 e G1 con modalità contatto/depth, portando success rate da ~48% a ~94% su un task pick. È il contesto in cui ha senso la roadmap <strong>H2 Plus + Isaac GR00T</strong>: non magia out-of-the-box, ma piattaforma per post-training su dati tuoi.</p>
-<p>Documentazione NVIDIA: <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">Isaac GR00T</a> e benchmark loco-manipulation su G1.</p>
+<p>Documentazione NVIDIA: <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">Isaac GR00T</a>. Secondo l'<a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-NVIDIA-Isaac-GR00T-Reference-Humanoid-Robot-for-Academic-Research/default.aspx" rel="noopener noreferrer" target="_blank">annuncio NVIDIA del 1° giugno 2026</a>, la piattaforma GR00T supporterà anche il G1.</p>
 
 <h3>4. Motion tracking generalista</h3>
 <p><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">Amadio &amp; Hoffman (arXiv:2607.19903)</a> studiano empiricamente cosa conta nel whole-body motion tracking su G1 (YAHMP). Utile per chi valuta H2 in ricerca HRI/entertainment: molti fallimenti non sono “hardware”, sono scelte di rappresentazione comando/azione.</p>
 
 <h3>5. Navigazione language-guided</h3>
-<p><a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">Action Agent (arXiv:2605.01477)</a> combina generazione video e comandi velocità su G1 reale (~65% task completion indoor). Segnale: i POC “segui istruzioni in linguaggio naturale” richiedono stack pesante e acceptance criteria chiari.</p>
+<p><a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">Action Agent (arXiv:2605.01477)</a> combina generazione video e comandi di velocità: sul G1 reale, in ambienti interni mai visti, arriva al 64,7% di compiti completati. Segnale: i POC “segui istruzioni in linguaggio naturale” richiedono stack pesante e acceptance criteria chiari.</p>
 
 <h2>H2 o G1?</h2>
 <table>
 <thead><tr><th></th><th>G1</th><th>H2</th></tr></thead>
 <tbody>
-<tr><td>Scala</td><td>~132 cm</td><td>~182 cm</td></tr>
+<tr><td>Altezza</td><td>1320 mm</td><td>1820 mm</td></tr>
+<tr><td>Peso</td><td>circa 35 kg</td><td>circa 70 kg</td></tr>
+<tr><td>Autonomia dichiarata</td><td>circa 2 ore</td><td>circa 3 ore</td></tr>
 <tr><td>Ecosistema paper / policy</td><td>Molto ricco</td><td>In crescita; Plus → GR00T</td></tr>
-<tr><td>Budget tipico</td><td>Da ~23–24k € (Air)</td><td>Da 45k € (Air)</td></tr>
+<tr><td>Budget di partenza (listino)</td><td>23.997,41 € (G1 Air)</td><td>45.000 € (H2 Air)</td></tr>
 <tr><td>Quando sceglierlo</td><td>Demo, molti lab, loco-manipulation paper-driven</td><td>HRI human-scale, presenza, roadmap full-size</td></tr>
 </tbody>
 </table>
 <p>Albero decisionale più ampio: <a href="confronto-umanoidi-2026.html">quale umanoide nel 2026</a>. Assessment: <a href="../assessment.html">assessment.html</a>.</p>
 
 <h2>H2 Plus e Isaac GR00T: aspettative realistiche</h2>
-<p>H2 Plus (Jetson AGX Thor, mani Sharpa Wave, stack Isaac GR00T) è su preventivo: disponibilità e tempi di consegna si confermano in offerta. I risultati GR00T pubblicati oggi sono tipicamente su <strong>G1 / altre embodiment</strong> dopo fine-tuning. In preventivo Abra distinguiamo sempre: (a) piattaforma hardware; (b) dataset e post-training; (c) safety e cella — tre voci di costo diverse.</p>
+<p>H2 Plus è la versione di riferimento per Isaac GR00T annunciata da Unitree e NVIDIA il 1° giugno 2026: corpo H2, calcolo NVIDIA Jetson AGX Thor T5000, due mani tattili Sharpa Wave a cinque dita. NVIDIA indica la vendita tramite Unitree dalla fine del 2026 (<a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-NVIDIA-Isaac-GR00T-Reference-Humanoid-Robot-for-Academic-Research/default.aspx" rel="noopener noreferrer" target="_blank">comunicato NVIDIA</a>). Da noi è su preventivo: disponibilità e tempi di consegna si confermano in offerta. I risultati GR00T pubblicati oggi sono tipicamente su <strong>G1 / altre embodiment</strong> dopo fine-tuning. In preventivo Abra distinguiamo sempre: (a) piattaforma hardware; (b) dataset e post-training; (c) safety e cella — tre voci di costo diverse.</p>
 
 <h2>Come avviare un POC H2 con Abra</h2>
 <ol>
@@ -117,16 +183,31 @@
 <li>Fissa metriche ispirate ai paper: success rate task, potenza media, latenza teleop, recovery da push</li>
 <li>Richiedi preventivo su <a href="../h2.html">hub H2</a></li>
 </ol>
+
+<h2 id="sicurezza">Sicurezza e norme</h2>
+<p>Con circa 70 kg e 360 N·m alle gambe, una caduta dell'H2 è un rischio serio. Prima dell'uso servono valutazione del rischio, telaio o imbracatura nelle prime prove e un'area dedicata. Dal 20 gennaio 2027 il riferimento per le macchine è il Regolamento (UE) 2023/1230: ne parliamo nella guida <a href="unitree-regolamento-macchine-2027.html">robot Unitree e Regolamento macchine</a>.</p>
+
+<section class="article-faq" id="faq">
+<h2>Domande frequenti</h2>
+<div class="faq-item"><h3>Quanto costa l'Unitree H2 in Italia?</h3><p>A listino H2 Air 45.000 € e H2 EDU 63.700 €, IVA esclusa. H2-D parte da 79.900 € e H2 Plus da 149.900 €, con prezzo finale in base alla configurazione.</p></div>
+<div class="faq-item"><h3>Quanto è alto e quanto pesa l'H2?</h3><p>Secondo Unitree 1820 mm in piedi e circa 70 kg con batteria, con 31 gradi di libertà.</p></div>
+<div class="faq-item"><h3>Quanto dura la batteria dell'H2?</h3><p>Circa 3 ore secondo Unitree, con batteria da 15 Ah (0,972 kWh).</p></div>
+<div class="faq-item"><h3>Che differenza c'è tra H2 e H2 EDU?</h3><p>Lo sviluppo secondario è previsto solo sull'H2 EDU, che aggiunge un PC di sviluppo Intel Core i7. La garanzia Unitree è di 8 mesi per H2 e 12 mesi per H2 EDU.</p></div>
+<div class="faq-item"><h3>Cos'è l'H2 Plus?</h3><p>È la versione di riferimento per NVIDIA Isaac GR00T, con Jetson AGX Thor T5000 e mani tattili Sharpa Wave. NVIDIA ne indica la vendita tramite Unitree dalla fine del 2026.</p></div>
+</section>
 </div>
 
 <section class="article-references" id="riferimenti">
-<h2>Riferimenti</h2>
+<h2>Fonti</h2>
 <ol>
-<li>Deniz et al., <em>Power consumption model for Unitree G1 arm</em>, arXiv:2606.15915 — <a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">link</a></li>
-<li>Durrani &amp; Khan, <em>Whole-body teleoperation Unitree G1</em>, arXiv:2605.12347 — <a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">link</a></li>
-<li>Park et al., <em>Modality-Augmented Fine-Tuning … GR1 and G1</em>, arXiv:2512.01358 — <a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Unitree, scheda tecnica H2 e H2 EDU: <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">unitree.com/H2</a></li>
+<li>Unitree, scheda tecnica G1: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>NVIDIA, annuncio Isaac GR00T Reference Humanoid (H2 Plus), 1° giugno 2026: <a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-NVIDIA-Isaac-GR00T-Reference-Humanoid-Robot-for-Academic-Research/default.aspx" rel="noopener noreferrer" target="_blank">investor.nvidia.com</a></li>
+<li>Deniz et al., <em>Identification of a Physics-Based Electrical Power Consumption Model for the Unitree G1 Humanoid Arm</em>, arXiv:2606.15915 — <a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Durrani &amp; Khan, <em>Real-Time Whole-Body Teleoperation of a Humanoid Robot Using IMU-Based Motion Capture</em>, arXiv:2605.12347 — <a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Park et al., <em>Modality-Augmented Fine-Tuning of Foundation Robot Policies for Cross-Embodiment Manipulation on GR1 and G1</em>, arXiv:2512.01358 — <a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">link</a></li>
 <li>Amadio &amp; Hoffman, <em>What Matters in Humanoid General Motion Tracking?</em>, arXiv:2607.19903 — <a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">link</a></li>
-<li>Sam et al., <em>Action Agent</em>, arXiv:2605.01477 — <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">link</a></li>
+<li>Sam et al., <em>Action Agent: Agentic Video Generation Meets Flow-Constrained Diffusion</em>, arXiv:2605.01477 — <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">link</a></li>
 <li>NVIDIA, <em>Isaac GR00T</em> — <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">developer.nvidia.com/isaac/gr00t</a></li>
 </ol>
 </section>
