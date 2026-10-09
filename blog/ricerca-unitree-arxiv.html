@@ -23,13 +23,45 @@
   "headline": "Paper arXiv su Unitree (Go2, G1): lettura curata per lab",
   "description": "Selezione preprint arXiv 2025–2026 su locomozione, navigazione, teleop e foundation model Unitree.",
   "datePublished": "2026-07-30",
-  "dateModified": "2026-10-06",
+  "dateModified": "2026-10-09",
   "author": {"@type": "Organization", "name": "Abra Robotics", "url": "https://abrarobotics.com"},
   "publisher": {"@type": "Organization", "name": "Abra Robotics", "logo": {"@type": "ImageObject", "url": "https://abrarobotics.com/images/logo-icon.png"}},
   "mainEntityOfPage": "https://abrarobotics.com/blog/ricerca-unitree-arxiv.html",
   "image": "https://abrarobotics.com/prodotti/assets/variants/g1-u2/img-01.png",
   "inLanguage": "it",
   "about": ["Unitree Go2", "Unitree G1", "reinforcement learning", "humanoid robotics"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "I risultati dei paper valgono anche per AS2 e H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No in modo diretto. Quasi tutti i lavori usano Go2 e G1: metodi e metriche si possono riusare, ma i numeri vanno rimisurati sul vostro robot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Serve una versione EDU per riprodurre questi paper?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Di solito sì. Gli autori usano Go2 EDU o G1 EDU perché lo sviluppo secondario è previsto solo sulle versioni EDU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I preprint arXiv sono affidabili?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sono lavori non ancora sottoposti a revisione, o non nella versione finale. Verificate numeri e condizioni sperimentali nel PDF prima di usarli in un progetto."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -44,32 +76,32 @@
 <nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Ricerca arXiv Unitree</nav>
 
 <header class="article-header">
-<p class="label">Ricerca · arXiv · 30 lug 2026</p>
+<p class="label">Ricerca · arXiv · Aggiornato 9 ott 2026</p>
 <h1>Unitree nella letteratura open: 12 paper arXiv da leggere prima del POC</h1>
 <div class="article-meta"><time datetime="2026-07-30">30 luglio 2026</time><span>Abra Robotics — selezione per lab e R&amp;D</span></div>
-<div class="article-tldr"><strong>In sintesi:</strong> Non è una review peer-reviewed. È una lista operativa di preprint che usiamo per allineare aspettative di clienti e atenei su Go2/G1 (e, per estensione, su <a href="../as2.html">AS2</a> / <a href="../h2.html">H2</a>). Ogni voce ha: perché conta, link arXiv, e implicazione commerciale.</div>
+<div class="article-tldr"><strong>In breve:</strong> non è una review peer-reviewed. È una lista operativa di preprint che usiamo per allineare aspettative di clienti e atenei su Go2/G1 (e, per estensione, su <a href="../as2.html">AS2</a> / <a href="../h2.html">H2</a>). Ogni voce ha: cosa fa il paper, link arXiv e perché conta per chi compra. Abbiamo ricontrollato titoli, autori e numeri sugli abstract arXiv il 9 ottobre 2026.</div>
 </header>
 
 <div class="article-content">
 
-<p>Su arXiv, a luglio 2026, una query <code>Unitree AND (Go2 OR G1 OR quadruped)</code> restituisce <strong>centinaia</strong> di risultati. Qui filtriamo solo lavori che (a) usano hardware Unitree reale o sim fedele, (b) hanno un takeaway per chi compra o integra in Italia, (c) sono citabili in un documento di progetto.</p>
-<p>Supply chain e formazione: <a href="../universita-ricerca.html">Università e Ricerca</a>. Guide prodotto: <a href="unitree-as2-italia.html">AS2</a>, <a href="unitree-h2-italia.html">H2</a>, <a href="ros2-unitree-guida-rapida.html">ROS 2</a>.</p>
+<p>Su arXiv i preprint che usano robot Unitree sono molti e crescono ogni mese. Qui filtriamo solo lavori che (a) usano hardware Unitree reale o sim fedele, (b) hanno un takeaway per chi compra o integra in Italia, (c) sono citabili in un documento di progetto.</p>
+<p>Per laboratori e atenei: <a href="../universita-ricerca.html">Università e Ricerca</a>. Gamme citate: <a href="../go2.html">Go2</a>, <a href="../as2.html">AS2</a>, <a href="../g1.html">G1</a>, <a href="../h2.html">H2</a>. Guide prodotto: <a href="unitree-as2-italia.html">AS2</a>, <a href="unitree-h2-italia.html">H2</a>, <a href="ros2-unitree-guida-rapida.html">ROS 2</a>.</p>
 
 <h2>Quadrupedi (Go2 → implicazioni AS2)</h2>
 
 <h3>Locomozione e sim-to-real</h3>
 <ol>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">AcL: Fault-Tolerant Quadruped Locomotion</a></strong> (2503.21401) — Teacher-student RL; gait limping con fino a 4 joint fault; validato su Go2 fisico. <em>Perché conta:</em> definisce acceptance test di robustezza per ispezione.</p>
+<p><strong><a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">AcL: Fault-Tolerant Quadruped Locomotion</a></strong> (2503.21401) — RL teacher-student; andature zoppicanti con fino a 4 giunti guasti in addestramento, validate su Go2 reale con guasti a uno e due giunti. <em>Perché conta:</em> definisce acceptance test di robustezza per ispezione.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">MoE + RoboGauge</a></strong> (2602.00678) — Mixture-of-Experts e metriche predittive sim-to-real; Go2 su terreni estremi fino a 4 m/s. <em>Perché conta:</em> framework per scegliere policy prima dei trial fisici rischiosi.</p>
+<p><strong><a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">MoE + RoboGauge</a></strong> (2602.00678) — Mixture-of-Experts e metriche predittive sim-to-real; Go2 su neve, sabbia, scale e ostacoli da 30 cm, fino a 4 m/s nei test di velocità. <em>Perché conta:</em> framework per scegliere policy prima dei trial fisici rischiosi.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2505.19054" rel="noopener noreferrer" target="_blank">RANDPOL</a></strong> (2505.19054) — Policy parameter-efficient su Go2 con transfer zero-shot. <em>Perché conta:</em> utile se il lab ha GPU limitate ma vuole end-to-end RL.</p>
+<p><strong><a href="https://arxiv.org/abs/2505.19054" rel="noopener noreferrer" target="_blank">RANDPOL</a></strong> (2505.19054) — Policy con pochi parametri addestrabili su Go2, trasferita zero-shot sul robot reale. <em>Perché conta:</em> utile se il lab ha GPU limitate ma vuole end-to-end RL.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2510.13488" rel="noopener noreferrer" target="_blank">Bridge the Gap</a></strong> (2510.13488) — Training su ponte oscillante; robustezza a perturbazioni verticali. <em>Perché conta:</em> passerelle e pavimenti vibranti in plant.</p>
+<p><strong><a href="https://arxiv.org/abs/2510.13488" rel="noopener noreferrer" target="_blank">Bridge the Gap</a></strong> (2510.13488) — Go2 addestrato in MuJoCo su un ponte oscillante di 13,24 m e provato sul ponte reale; più stabile con perturbazioni verticali. <em>Perché conta:</em> passerelle e pavimenti vibranti in plant.</p>
 </li>
 </ol>
 
@@ -79,61 +111,70 @@
 <p><strong><a href="https://arxiv.org/abs/2606.14433" rel="noopener noreferrer" target="_blank">Kine2Go</a></strong> (2606.14433) — 800 traiettorie cinematiche Go2 da 40 policy. <em>Perché conta:</em> accelera imitation learning senza raccogliere tutto da zero.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">Library navigation Go2 EDU</a></strong> (2606.03340) — ROS 2 + RTAB-Map + Nav2 in libreria reale. <em>Perché conta:</em> blueprint indoor per AS2 EDU/Pro.</p>
+<p><strong><a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">Library navigation Go2 EDU</a></strong> (2606.03340) — ROS 2 + RTAB-Map + Nav2 in una biblioteca reale: successo 100% in scena statica, 88% con molte persone, errore medio della mappa 3,7 cm. <em>Perché conta:</em> blueprint indoor per AS2 EDU/Pro.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">ForEnt</a></strong> (2606.19675) — Dataset entrapment forestale su Go2. <em>Perché conta:</em> se il caso è outdoor vegetato, cambia SKU e safety case.</p>
+<p><strong><a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">ForEnt</a></strong> (2606.19675) — Dataset su Go2 in otto boschi del Regno Unito: circa 1,7 km percorsi e 69 casi di robot bloccato dalla vegetazione. <em>Perché conta:</em> se il caso è outdoor vegetato, cambia SKU e safety case.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2607.15036" rel="noopener noreferrer" target="_blank">VOP-Nav crowded navigation</a></strong> (2607.15036) — Navigazione in folla su Go2. <em>Perché conta:</em> magazzini e fiere con persone.</p>
+<p><strong><a href="https://arxiv.org/abs/2607.15036" rel="noopener noreferrer" target="_blank">VOP-Nav crowded navigation</a></strong> (2607.15036) — Navigazione tra la folla con LiDAR e velocity obstacles, provata su Go2 reale al chiuso e all'aperto. <em>Perché conta:</em> magazzini e fiere con persone.</p>
 </li>
 </ol>
 
 <h2>Umanoidi (G1 → implicazioni H2 / H2 Plus)</h2>
 <ol start="9">
 <li>
-<p><strong><a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">Power model G1 arm</a></strong> (2606.15915) — Identificazione potenza braccio 7-DoF. <em>Perché conta:</em> energy-aware planning su manipolazione lunga.</p>
+<p><strong><a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">Power model G1 arm</a></strong> (2606.15915) — Modello di potenza elettrica del braccio sinistro a 7 gradi di libertà: R² 0,933 in identificazione, 0,965 a velocità mai viste. <em>Perché conta:</em> energy-aware planning su manipolazione lunga.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">Whole-body teleop G1</a></strong> (2605.12347) — Motion capture IMU → G1. <em>Perché conta:</em> checklist latenza/safety per demo HRI H2.</p>
+<p><strong><a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">Whole-body teleop G1</a></strong> (2605.12347) — Tuta di motion capture IMU che guida un G1 in tempo reale, validata in MuJoCo e poi sul robot. <em>Perché conta:</em> checklist latenza/safety per demo HRI H2.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Foundation policy fine-tuning G1</a></strong> (2512.01358) — Modality augmentation; success rate fino a 94% su task pick. <em>Perché conta:</em> contesto realistico per H2 Plus / GR00T.</p>
+<p><strong><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Foundation policy fine-tuning G1</a></strong> (2512.01358) — Fine-tuning con segnali di contatto e profondità: sul G1 il task "Pick Apple to Bowl" passa dal 48% al 94% di successo. <em>Perché conta:</em> contesto realistico per H2 Plus / GR00T.</p>
 </li>
 <li>
-<p><strong><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">What Matters in Humanoid Motion Tracking</a></strong> (2607.19903) — Studio empirico YAHMP su G1. <em>Perché conta:</em> evita overfit a un solo setup di training.</p>
+<p><strong><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">What Matters in Humanoid Motion Tracking</a></strong> (2607.19903) — Studio empirico con il framework open source YAHMP su G1. <em>Perché conta:</em> evita overfit a un solo setup di training.</p>
 </li>
 </ol>
-<p>Extra consigliato: <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">Action Agent</a> (2605.01477) per navigazione language-guided; docs <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">NVIDIA Isaac GR00T</a>.</p>
+<p>Extra consigliato: <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">Action Agent</a> (2605.01477) per la navigazione guidata dal linguaggio (64,7% di compiti completati su G1 reale); documentazione <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">NVIDIA Isaac GR00T</a>, la piattaforma su cui si basa l'H2 Plus.</p>
 
-<h2>Come usiamo questa lista in Abra</h2>
+<h2>Come usare questa lista</h2>
 <ul>
-<li>In fase discovery: chiediamo quale paper il lab vuole riprodurre → scegliamo SKU (Go2 EDU vs AS2 EDU vs G1 vs H2).</li>
-<li>In fase offerta: alleghiamo 2–3 riferimenti come appendice tecnica (non come garanzia di performance).</li>
-<li>In fase POC: trasformiamo metriche paper (success rate, R² potenza, fall rate) in KPI contrattuali.</li>
+<li>Prima della scelta: decidete quale paper volete riprodurre. Il robot usato dagli autori (Go2 EDU, G1 EDU) indica la configurazione minima.</li>
+<li>Nel capitolato: citate 2–3 riferimenti come base tecnica, non come garanzia di prestazioni.</li>
+<li>Nel POC: usate le metriche dei paper (tasso di successo, R² della potenza, cadute) come indicatori da misurare sul vostro setup.</li>
 </ul>
 
+<section class="article-faq" id="faq">
+<h2>Domande frequenti</h2>
+<div class="faq-item"><h3>I risultati dei paper valgono anche per AS2 e H2?</h3><p>No in modo diretto. Quasi tutti i lavori usano Go2 e G1: metodi e metriche si possono riusare, ma i numeri vanno rimisurati sul vostro robot.</p></div>
+<div class="faq-item"><h3>Serve una versione EDU per riprodurre questi paper?</h3><p>Di solito sì. Gli autori usano Go2 EDU o G1 EDU perché lo sviluppo secondario è previsto solo sulle versioni EDU.</p></div>
+<div class="faq-item"><h3>I preprint arXiv sono affidabili?</h3><p>Sono lavori non ancora sottoposti a revisione, o non nella versione finale. Verificate numeri e condizioni sperimentali nel PDF prima di usarli in un progetto.</p></div>
+</section>
+
 <h2>Disclaimer</h2>
-<p>I preprint non sono peer-reviewed finali; numeri e claim vanno verificati sul PDF e sul tuo setup. Abra Robotics è parte della filiera di distribuzione di Unitree Italia: vendiamo hardware e servizi di integrazione; non siamo gli autori dei paper citati.</p>
+<p>I preprint non sono peer-reviewed finali; numeri e claim vanno verificati sul PDF e sul tuo setup. Abra Robotics fa parte della filiera Unitree Italia: vendiamo hardware e servizi di integrazione; non siamo gli autori dei paper citati.</p>
 
 <p>Vuoi allestire un lab che riproduca uno di questi lavori? <a href="../universita-ricerca.html">Contattaci</a> o <a href="../assessment.html">avvia l’assessment</a>.</p>
 </div>
 
-<section class="article-references">
-<h2>Indice link arXiv</h2>
+<section class="article-references" id="fonti">
+<h2>Fonti</h2>
 <ol>
-<li><a href="https://arxiv.org/abs/2503.21401">2503.21401</a> AcL</li>
-<li><a href="https://arxiv.org/abs/2602.00678">2602.00678</a> MoE RoboGauge</li>
-<li><a href="https://arxiv.org/abs/2505.19054">2505.19054</a> RANDPOL</li>
-<li><a href="https://arxiv.org/abs/2510.13488">2510.13488</a> Bridge perturbations</li>
-<li><a href="https://arxiv.org/abs/2606.14433">2606.14433</a> Kine2Go</li>
-<li><a href="https://arxiv.org/abs/2606.03340">2606.03340</a> Library Nav2</li>
-<li><a href="https://arxiv.org/abs/2606.19675">2606.19675</a> ForEnt</li>
-<li><a href="https://arxiv.org/abs/2607.15036">2607.15036</a> VOP-Nav</li>
-<li><a href="https://arxiv.org/abs/2606.15915">2606.15915</a> G1 power</li>
-<li><a href="https://arxiv.org/abs/2605.12347">2605.12347</a> Teleop G1</li>
-<li><a href="https://arxiv.org/abs/2512.01358">2512.01358</a> GR00T-style FT</li>
-<li><a href="https://arxiv.org/abs/2607.19903">2607.19903</a> Motion tracking</li>
+<li>Xu et al., <em>AcL: Action Learner for Fault-Tolerant Quadruped Locomotion Control</em>, arXiv:2503.21401: <a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2503.21401</a></li>
+<li>Wu et al., <em>Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion</em>, arXiv:2602.00678: <a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2602.00678</a></li>
+<li>Liu, Jain, Nguyen, <em>RANDPOL: Parameter-Efficient End-to-End Quadruped Locomotion via Randomized Policy Learning</em>, arXiv:2505.19054: <a href="https://arxiv.org/abs/2505.19054" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2505.19054</a></li>
+<li>Stasica et al., <em>Bridge the Gap: Enhancing Quadruped Locomotion with Vertical Ground Perturbations</em>, arXiv:2510.13488: <a href="https://arxiv.org/abs/2510.13488" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2510.13488</a></li>
+<li>Pałucki et al., <em>Kine2Go: Kinematic dataset for the Unitree Go2 robot with diverse gaits and motions</em>, arXiv:2606.14433: <a href="https://arxiv.org/abs/2606.14433" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2606.14433</a></li>
+<li>Li et al., <em>Autonomous Navigation System for Library Service Robot Based on Unitree Go2 Edu</em>, arXiv:2606.03340: <a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2606.03340</a></li>
+<li>Kirdwichai, Tarapore, <em>ForEnt: A Multi-Modal Dataset for Characterizing Quadruped Robot Entrapments in Forest Environments</em>, arXiv:2606.19675: <a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2606.19675</a></li>
+<li>Wu et al., <em>Learning Agile Navigation in Crowded Environments for Quadruped Robots</em>, arXiv:2607.15036: <a href="https://arxiv.org/abs/2607.15036" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2607.15036</a></li>
+<li>Deniz et al., <em>Identification of a Physics-Based Electrical Power Consumption Model for the Unitree G1 Humanoid Arm</em>, arXiv:2606.15915: <a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2606.15915</a></li>
+<li>Durrani, Khan, <em>Real-Time Whole-Body Teleoperation of a Humanoid Robot Using IMU-Based Motion Capture with Sim2Sim and Sim2Real Validation</em>, arXiv:2605.12347: <a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2605.12347</a></li>
+<li>Park, Kee, Oh, <em>Modality-Augmented Fine-Tuning of Foundation Robot Policies for Cross-Embodiment Manipulation on GR1 and G1</em>, arXiv:2512.01358: <a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2512.01358</a></li>
+<li>Amadio, Mingo Hoffman, <em>What Matters in Humanoid General Motion Tracking? An Empirical Study</em>, arXiv:2607.19903: <a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2607.19903</a></li>
+<li>Sam et al., <em>Action Agent: Agentic Video Generation Meets Flow-Constrained Diffusion</em>, arXiv:2605.01477: <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2605.01477</a></li>
+<li>NVIDIA, Isaac GR00T: <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">developer.nvidia.com/isaac/gr00t</a></li>
 </ol>
 </section>
 </div></article>

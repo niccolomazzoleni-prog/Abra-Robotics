@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Unitree G1: accensione, telecomando e rete | Abra</title>
-<meta content="Guida Unitree G1 EDU in italiano: varianti U1–U10, accensione telecomando R3, comandi ufficiali, rete 192.168.123.x, SSH, debug mode e protezione neoprene.…" name="description"/>
+<meta content="Guida Unitree G1 EDU in italiano: varianti U1–U10, accensione, comandi del telecomando R3, rete 192.168.123.x, SSH, debug mode, batteria e protezioni." name="description"/>
 <meta name="keywords" content="Unitree G1 guida, accendere G1, G1-U1 U2 U3, telecomando G1 comandi, SSH 192.168.123.164, damping G1, Abra Robotics"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/blog/unitree-g1-guida-operativa.html"/>
@@ -18,12 +18,68 @@
 <link href="../style.css" rel="stylesheet"/>
 <link href="blog.css" rel="stylesheet"/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Unitree G1: guida completa accensione, telecomando e rete","datePublished":"2026-07-13","dateModified":"2026-07-13","author":{"@type":"Organization","name":"Abra Robotics"},"publisher":{"@type":"Organization","name":"Abra Robotics","logo":{"@type":"ImageObject","url":"https://abrarobotics.com/images/logo-full.png"}},"inLanguage":"it"}
+{"@context":"https://schema.org","@type":"Article","headline":"Unitree G1: guida completa accensione, telecomando e rete","datePublished":"2026-07-13","dateModified":"2026-10-09","author":{"@type":"Organization","name":"Abra Robotics"},"publisher":{"@type":"Organization","name":"Abra Robotics","logo":{"@type":"ImageObject","url":"https://abrarobotics.com/images/logo-full.png"}},"inLanguage":"it"}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "G1-U1 o G1-U2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "U1 = 23 DoF, vita 1 DoF. U2 = 29 DoF, vita 3 DoF e braccia 7 DoF — base per manipolazione."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quale walk mode per i saluti?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R1+Y (vita 3 DoF, U2+) o R1+X (vita 1 DoF, U1) — Regular mode, non R2+A Running mode."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Password SSH?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Predefinite unitree / 123 su 192.168.123.164 (PC2). Su alcune unità possono essere diverse: Unitree le fornisce tramite supporto. Cambiatele dopo il primo accesso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come si ferma il G1 in sicurezza?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con il damping, L2 + B. Non usate L2 + Y (zero moment): azzera la coppia e il robot cade se non è appeso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto dura la batteria del G1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Circa 2 ore secondo Unitree, con la batteria da 9000 mAh. Per una giornata di prove servono almeno due batterie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il G1 Air si collega via SSH come l'EDU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Lo sviluppo secondario è previsto solo sul G1 EDU, che ha il PC2 per il codice utente."
+      }
+    }
+  ]
+}
 </script>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1: accensione, telecomando e rete | Abra"/>
-<meta property="og:description" content="Guida Unitree G1 EDU in italiano: varianti U1–U10, accensione telecomando R3, comandi ufficiali, rete 192.168.123.x, SSH, debug mode e protezione neoprene.…"/>
+<meta property="og:description" content="Guida Unitree G1 EDU in italiano: varianti U1–U10, accensione, comandi del telecomando R3, rete 192.168.123.x, SSH, debug mode, batteria e protezioni."/>
 <meta property="og:url" content="https://abrarobotics.com/blog/unitree-g1-guida-operativa.html"/>
 <meta property="og:image" content="https://abrarobotics.com/prodotti/assets/variants/g1-u1/img-01-abra.png"/>
 <meta property="og:locale" content="it_IT"/>
@@ -47,17 +103,17 @@
 <header class="article-header">
 <p class="label">Unitree G1 · Guida operativa</p>
 <h1>Unitree G1: come accendere, usare il telecomando e collegare il PC</h1>
-<div class="article-meta"><time datetime="2026-07-13">Aggiornato 13 luglio 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
+<div class="article-meta"><time datetime="2026-10-09">Aggiornato 9 ottobre 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
 </header>
 
 <div class="article-layout">
 <div class="article-main">
-<p class="article-lead">Guida operativa per il G1 EDU che consegniamo in Italia: varianti SKU, accensione, comandi telecomando R3 (aggiornati al firmware corrente), rete e SSH. Per programmazione SDK → <a href="unitree-g1-programmazione.html">articolo dedicato</a>.</p>
+<p class="article-lead">Guida operativa per il <a href="../g1.html">Unitree G1</a> EDU: varianti, accensione, comandi del telecomando R3, batteria, rete e SSH. I comandi seguono l'adesivo ufficiale sul telecomando e la <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">documentazione sviluppatori Unitree</a>. Per la programmazione con SDK e ROS 2 c'è l'<a href="unitree-g1-programmazione.html">articolo dedicato</a>.</p>
 
 <div class="article-content">
 
 <h2 id="varianti">Varianti G1 EDU (U1–U10)</h2>
-<p>Codici listino Unitree — la differenza tra modelli è la base meccanica (23 o 29 DoF) e il <strong>manipolatore</strong> montato.</p>
+<p>Codici del listino Unitree. La differenza tra i modelli è la base meccanica (23 o 29 DoF) e il <strong>manipolatore</strong> montato. Il G1 Air non prevede sviluppo secondario: nella <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">tabella ufficiale Unitree</a> la voce è presente solo per il G1 EDU.</p>
 <div class="spec-table-wrap">
 <table>
 <thead><tr><th>SKU</th><th>DoF</th><th>Manipolatore</th><th>Scheda</th></tr></thead>
@@ -70,16 +126,17 @@
 <tr><td><strong>G1-U5</strong></td><td>—</td><td>Inspire RH56DFQ, senza tattile</td><td><a href="../prodotti/unitree-g1-edu-ultimate-c.html">U5</a></td></tr>
 <tr><td><strong>G1-U6</strong></td><td>—</td><td>Inspire RH56DFTP, con tattile</td><td><a href="../prodotti/unitree-g1-edu-ultimate-d.html">U6</a></td></tr>
 <tr><td><strong>G1-U7</strong></td><td>37</td><td>Revo2 Basic (5 dita)</td><td><a href="../prodotti/unitree-g1-edu-ultimate-e.html">U7</a></td></tr>
+<tr><td><strong>G1-U8</strong></td><td>—</td><td>Revo2 Touch (5 dita, con tattile)</td><td><a href="../prodotti/unitree-g1-edu-ultimate-f.html">U8</a></td></tr>
 <tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 senza tattile (config. compatta)</td><td><a href="../prodotti/unitree-g1-u9.html">U9</a></td></tr>
 <tr><td><strong>G1-U10</strong></td><td>35</td><td>Revo2 Basic (5 dita)</td><td><a href="../prodotti/unitree-g1-u10.html">U10</a></td></tr>
 </tbody>
 </table>
 </div>
-<p>Listino: <a href="../listino-unitree.html">prezzi Abra</a>.</p>
+<p>Prezzi nel <a href="../listino-unitree.html">listino pubblico</a>. Per scegliere tra le versioni c'è la guida <a href="unitree-g1-quale-versione-scegliere.html">quale G1 scegliere</a>; se il lavoro è da banco, guardate anche il <a href="../g1-d.html">G1-D</a>.</p>
 
 <h2 id="protezione">Protezione fisica del robot</h2>
 <div class="callout callout-warning">
-<strong>Coperture consigliate:</strong> su pavimentazione dura il G1 si segna in pochi minuti — dopo due demo “balletto” sembrerà già usato. Operativamente consigliamo <strong>coperture in neoprene su braccia e gambe</strong>, oppure kit di protezione completo che Abra può fornire in consegna. Il metodo “da terra” (L2+X) aumenta il rischio di segni su gomiti e ginocchia.
+<strong>Coperture consigliate:</strong> su pavimentazione dura il G1 si segna in fretta, soprattutto nelle demo con molti movimenti a terra. Consigliamo <strong>coperture morbide (per esempio in neoprene) su braccia e gambe</strong> e, al primo avvio, il <a href="../prodotti/unitree-g1-frame.html">telaio di protezione</a> a listino. Il metodo “da terra” (L2+X) aumenta il rischio di segni su gomiti e ginocchia.
 </div>
 
 <h2 id="telecomando">Telecomando R3</h2>
@@ -90,6 +147,7 @@
 <p>Telecomando incluso o acquistabile: <a href="../prodotti/unitree-g1-remote.html">G1 Remote Controller</a>.</p>
 
 <h2 id="comandi">Comandi telecomando (firmware corrente)</h2>
+<p>Le combinazioni possono cambiare con la versione del firmware: controllate sempre l'adesivo sul vostro telecomando prima di usare il robot.</p>
 <p>Legenda comandi stampata sul telecomando R3:</p>
 <ul>
 <li><strong>★</strong> = pressione breve singola</li>
@@ -142,7 +200,7 @@
 </div>
 
 <h3>Debug mode (solo sviluppo SDK)</h3>
-<p><strong>L2 + R2</strong> — ferma il motion controller per evitare conflitti con il SDK. Serve <em>solo</em> in lab quando programmi motori a basso livello. Per uso normale con telecomando <strong>non</strong> entrare in debug: riavvia il G1 per uscire.</p>
+<p><strong>L2 + R2</strong> — ferma il motion controller per evitare conflitti con il SDK; con <strong>L2 + A</strong> si verifica di essere in debug mode (fonte: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitree, remote control</a>). Serve <em>solo</em> in lab quando programmi motori a basso livello. Per uso normale con telecomando <strong>non</strong> entrare in debug: riavvia il G1 per uscire.</p>
 
 <h3>Sequenze di accensione consigliate (da sticker)</h3>
 <ul>
@@ -168,26 +226,37 @@ Solo su superficie <strong>piana e dura</strong>. Il robot si alza da solo — t
 </div>
 
 <h2 id="carico">Payload e braccia</h2>
-<p>Payload nominale braccio ~3 kg, ma operativamente con braccio esteso anche <strong>1 kg</strong> può sbilanciare il robot in avanti e destabilizzare la policy di walking. Per saluti e gesture non caricare le braccia.</p>
+<p>Unitree dichiara un carico massimo per braccio di circa <strong>3 kg sul G1 EDU</strong> (circa 2 kg sul G1 base) e precisa che varia molto con la postura del braccio (<a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">scheda G1</a>). In pratica, con il braccio esteso anche <strong>1 kg</strong> può sbilanciare il robot in avanti e disturbare la camminata. Per saluti e gesture non caricate le braccia.</p>
+
+<h2 id="batteria">Batteria e autonomia</h2>
+<p>Secondo Unitree il G1 monta una batteria intelligente a sgancio rapido da <strong>9000 mAh</strong> per <strong>circa 2 ore</strong> di autonomia. Il valore reale scende con camminata continua e carichi sulle braccia.</p>
+<ul>
+<li>Per una giornata di prove servono almeno due batterie: la <a href="../prodotti/unitree-g1-battery.html">batteria aggiuntiva G1</a> è a listino a 925,83 €, il <a href="../prodotti/unitree-g1-charger.html">caricabatterie</a> a 188,87 € (IVA esclusa).</li>
+<li>Spegnete il robot prima di sostituire la batteria e rimettetelo in damping prima di farlo alzare.</li>
+<li>Tenete carico anche il telecomando R3: senza telecomando non avete un modo rapido per fermare il robot.</li>
+</ul>
 
 <h2 id="rete">Rete e SSH</h2>
-<p>Porta il PC su subnet <code>192.168.123.0/24</code> (IP libero, es. <code>.51</code> — <strong>non</strong> usare .161, .164, .120).</p>
+<p>Porta il PC su subnet <code>192.168.123.0/24</code> con un IP statico libero (es. <code>.51</code>; <strong>non</strong> usare .161, .164, .120). Il PC1 (.161) esegue il controllo di movimento Unitree e non è aperto agli sviluppatori; lo sviluppo si fa sul PC2 (.164).</p>
 <ul>
 <li><strong>Ethernet diretto</strong> al porto LAN del G1</li>
-<li><strong>Modulo router Wi‑Fi</strong> a bordo — ti connetti via Wi‑Fi o Ethernet al router; utile anche con <strong>SIM</strong> se vuoi internet mantenendo la subnet robot isolata dal resto del lab</li>
+<li><strong>Wi‑Fi</strong>: secondo la <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">documentazione LeRobot</a> sul PC2 il Wi‑Fi è disattivato di default e va abilitato a mano; per installare pacchetti si può condividere la connessione del PC via Ethernet.</li>
 </ul>
 
 <div class="ip-grid">
 <div class="ip-card"><code>192.168.123.161</code><span>MCU / motion controller Unitree</span></div>
 <div class="ip-card"><code>192.168.123.164</code><span>Jetson Orin (PC2) — SSH <code>unitree</code> / <code>123</code></span></div>
-<div class="ip-card"><code>192.168.123.120</code><span>LiDAR Livox MID-360</span></div>
+<div class="ip-card"><code>192.168.123.120</code><span>LiDAR Livox MID-360 (testa)</span></div>
 </div>
 
 <pre><code>ping 192.168.123.164
 ssh unitree@192.168.123.164
 # Password predefinita: 123</code></pre>
+<div class="callout callout-warning">
+<strong>Credenziali:</strong> <code>unitree</code> / <code>123</code> sono le credenziali predefinite riportate anche nella documentazione LeRobot. Unitree indica di chiedere le credenziali iniziali al supporto, quindi su alcune unità possono essere diverse. Dopo il primo accesso cambiate la password, soprattutto se il robot entra nella rete aziendale.
+</div>
 
-<p><strong>H2:</strong> stessa subnet; tipicamente .161 modulo Unitree, .162 PC Intel, .163 espansione, .164 Jetson — credenziali in scheda consegna.</p>
+<p><strong><a href="../h2.html">H2</a>:</strong> usa la stessa subnet 192.168.123.x, con un PC1 per il controllo (Intel Core i5) e un PC2 per lo sviluppo (Intel Core i7 sulla versione EDU, secondo la <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">scheda Unitree</a>). Gli indirizzi esatti dipendono dalla configurazione: verificateli sulla documentazione di consegna.</p>
 
 <h2 id="errori">Problemi frequenti</h2>
 <ul>
@@ -200,7 +269,9 @@ ssh unitree@192.168.123.164
 <ul>
 <li><a href="unitree-g1-programmazione.html">SDK2 e ROS2</a></li>
 <li><a href="../accessori.html">Accessori e coperture</a></li>
-<li><a href="../index.html#cta-finale">Supporto consegna Abra</a></li>
+<li><a href="ros2-unitree-guida-rapida.html">ROS 2 su Unitree, guida rapida</a></li>
+<li><a href="unitree-regolamento-macchine-2027.html">Sicurezza e Regolamento macchine 2027</a></li>
+<li><a href="../index.html#cta-finale">Contatta Abra per l'assistenza</a></li>
 </ul>
 
 </div>
@@ -209,13 +280,29 @@ ssh unitree@192.168.123.164
 <h2>FAQ</h2>
 <div class="faq-item"><h3>G1-U1 o G1-U2?</h3><p>U1 = 23 DoF, vita 1 DoF. U2 = 29 DoF, vita 3 DoF e braccia 7 DoF — base per manipolazione.</p></div>
 <div class="faq-item"><h3>Quale walk mode per i saluti?</h3><p>R1+Y (vita 3 DoF, U2+) o R1+X (vita 1 DoF, U1) — Regular mode, non R2+A Running mode.</p></div>
-<div class="faq-item"><h3>Password SSH?</h3><p><code>unitree</code> / <code>123</code> su 192.168.123.164.</p></div>
+<div class="faq-item"><h3>Password SSH?</h3><p>Predefinite unitree / 123 su 192.168.123.164 (PC2). Su alcune unità possono essere diverse: Unitree le fornisce tramite supporto. Cambiatele dopo il primo accesso.</p></div>
+<div class="faq-item"><h3>Come si ferma il G1 in sicurezza?</h3><p>Con il damping, L2 + B. Non usate L2 + Y (zero moment): azzera la coppia e il robot cade se non è appeso.</p></div>
+<div class="faq-item"><h3>Quanto dura la batteria del G1?</h3><p>Circa 2 ore secondo Unitree, con la batteria da 9000 mAh. Per una giornata di prove servono almeno due batterie.</p></div>
+<div class="faq-item"><h3>Il G1 Air si collega via SSH come l'EDU?</h3><p>No. Lo sviluppo secondario è previsto solo sul G1 EDU, che ha il PC2 per il codice utente.</p></div>
+</section>
+
+<section class="article-references" id="fonti">
+<h2>Fonti</h2>
+<ol>
+<li>Unitree, scheda tecnica G1 e G1 EDU (dimensioni, batteria, carico braccio, garanzia): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree Document Center, G1 developer: telecomando e debug mode: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree Document Center, G1 developer: architettura e unità di calcolo: <a href="https://support.unitree.com/home/en/G1_developer/about_G1" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree Document Center, G1 developer: LiDAR Livox MID-360 (IP 192.168.123.120): <a href="https://support.unitree.com/home/en/G1_developer/lidar_Instructions" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Hugging Face, documentazione LeRobot per Unitree G1 (rete, SSH, Wi‑Fi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
+<li>Unitree, scheda tecnica H2: <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">unitree.com/H2</a></li>
+<li>Unitree, SDK Python ufficiale: <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a></li>
+</ol>
 </section>
 
 <div class="article-cta">
 <h2>Hai appena ricevuto un G1?</h2>
-<p>Sessione di avvio, coperture neoprene e verifica rete — inclusi nel supporto Abra.</p>
-<a class="btn btn-primary" href="../index.html#cta-finale">Prenota supporto</a>
+<p>Per dubbi su avvio, rete o comandi il primo contatto è Abra Robotics.</p>
+<a class="btn btn-primary" href="../index.html#cta-finale">Contattaci</a>
 <a class="btn btn-outline-light" href="../g1.html">Gamma G1</a>
 </div>
 
@@ -225,14 +312,16 @@ ssh unitree@192.168.123.164
 <p class="article-toc-title">Indice</p>
 <ol>
 <li><a href="#varianti">Varianti U1–U10</a></li>
-<li><a href="#protezione">Protezione neoprene</a></li>
+<li><a href="#protezione">Protezione</a></li>
 <li><a href="#telecomando">Telecomando</a></li>
 <li><a href="#comandi">Comandi (sticker)</a></li>
 <li><a href="#accensione">Accensione</a></li>
 <li><a href="#carico">Payload braccia</a></li>
+<li><a href="#batteria">Batteria</a></li>
 <li><a href="#rete">Rete e SSH</a></li>
 <li><a href="#errori">Problemi</a></li>
 <li><a href="#faq">FAQ</a></li>
+<li><a href="#fonti">Fonti</a></li>
 </ol>
 </aside>
 
