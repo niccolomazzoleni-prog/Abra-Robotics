@@ -6,7 +6,7 @@ Fonte specs: [unitree.com/As2](https://www.unitree.com/As2) · prezzi listino Ab
 
 | SKU | Nome | Prezzo indicativo (IVA escl.) |
 |-----|------|--------------------------------|
-| AS2-AIR | As2 Air | € 17.900 |
+| AS2-AIR | As2 Air | € 5.400 |
 | AS2-X | As2-X | € 13.240 |
 | AS2-PRO | As2 Pro | € 29.900 |
 | AS2-EDU | As2 EDU Standard (U1) | € 15.600 |

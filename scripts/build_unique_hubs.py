@@ -246,10 +246,10 @@ def write_as2() -> None:
             card(
                 "Unitree AS2 Air",
                 "Demo · POC · ispezione",
-                "17.900 €",
+                "5.400 €",
                 "prodotti/unitree-as2-air.html",
                 "images/prodotti/a2-pro.png",
-                [("Carico", "~15 kg"), ("Velocità", "~5 m/s"), ("IP", "IP54"), ("Autonomia", ">2,5–4 h")],
+                [("Carico", "~10 kg"), ("Velocità", "3,0 m/s"), ("IP", "non dichiarato"), ("Autonomia", "~2 h")],
             ),
             card(
                 "Unitree AS2 Pro",
@@ -257,7 +257,7 @@ def write_as2() -> None:
                 "29.900 €",
                 "prodotti/unitree-as2-pro.html",
                 "images/prodotti/2026/as2.png",
-                [("LiDAR", "Ultra-wide"), ("Camera", "Dual"), ("Payload statico", "~65 kg"), ("IP", "IP54")],
+                [("LiDAR", "Ultra-wide"), ("Camera", "Dual"), ("Carico in marcia", "~13 kg"), ("IP", "IP54")],
             ),
             card(
                 "Unitree AS2-W",
@@ -272,7 +272,7 @@ def write_as2() -> None:
     faqs = [
         (
             "Cos'è Unitree AS2?",
-            "AS2 è la serie quadrupede Unitree intermedia tra Go2 e A2/B2: ~15 kg di carico utile, IP54, velocità fino a ~5 m/s. In Italia Abra Robotics espone Air, X, EDU U1–U4, Pro e AS2-W con listino End-User.",
+            "AS2 è la serie quadrupede Unitree intermedia tra Go2 e A2/B2: carico in marcia di circa 15 kg (X, EDU), 13 kg (Pro) e 10 kg (Air); IP54 su X, EDU e Pro (nessun grado IP dichiarato per Air); velocità fino a ~5 m/s (X, EDU), 3,7 m/s (Pro), 3,0 m/s (Air). In Italia Abra Robotics espone Air, X, EDU U1–U4, Pro e AS2-W con listino End-User.",
         ),
         (
             "Differenza tra AS2, Go2 e A2?",
@@ -289,15 +289,15 @@ def write_as2() -> None:
     ]
     html = page_shell(
         title="Unitree AS2 in Italia — Air, EDU, Pro, AS2-W | Abra",
-        desc="Unitree AS2 in Italia: Air, X, EDU U1–U4, Pro e AS2-W con prezzi End-User. Quadrupede compatto IP54 — Abra Robotics, filiera di distribuzione di Unitree Italia.",
+        desc="Unitree AS2 in Italia: Air da 5.400 €, X, EDU U1–U4, Pro e AS2-W con prezzi End-User IVA esclusa. Abra Robotics, filiera Unitree Italia.",
         canonical="https://abrarobotics.com/as2.html",
         h1="Unitree AS2 — gamma completa in Italia",
         label="Famiglia AS2 · Quadrupedi",
         lead="Pochi siti IT espongono l'intera serie <strong>Unitree AS2</strong>. Qui trovi Air, X, EDU (U1–U4), Pro e AS2-W con schede, prezzi indicativi IVA esclusa e supporto Abra Robotics.",
         meta=[
             ("8", "Configurazioni"),
-            ("~15 kg", "Payload tipico"),
-            ("IP54", "Protezione"),
+            ("10–15 kg", "Carico in marcia"),
+            ("IP54", "X, EDU, Pro"),
             ("Italia", "Listino + supporto"),
         ],
         tldr="AS2 è il quadrupede Unitree 'middle' per POC, education e sorveglianza compatta. Abra pubblica listino End-User e schede tecniche per tutta la famiglia, inclusa AS2-W.",
@@ -398,7 +398,7 @@ def fix_as2_product_seo() -> None:
     mapping = {
         "unitree-as2-air.html": (
             "Unitree AS2 Air — quadrupede | Abra Robotics",
-            "Unitree AS2 Air in Italia: quadrupede IP54 ~15 kg payload, da 17.900 € IVA escl. Scheda e preventivo Abra Robotics.",
+            "Unitree AS2 Air in Italia: quadrupede entry, ~10 kg in marcia, 3,0 m/s, da 5.400 € IVA escl. Scheda e preventivo Abra Robotics.",
         ),
         "unitree-as2-pro.html": (
             "Unitree AS2 Pro — LiDAR wide | Abra Robotics",
@@ -657,14 +657,14 @@ Abra Robotics espone in italiano (e EN) schede prodotto con prezzi per famiglie 
 |---|---:|---|
 | AS2-X | 13.240 € | https://abrarobotics.com/prodotti/unitree-as2-x.html |
 | AS2 EDU Standard U1 | 15.600 € | https://abrarobotics.com/prodotti/unitree-as2-edu.html |
-| AS2 Air | 17.900 € | https://abrarobotics.com/prodotti/unitree-as2-air.html |
+| AS2 Air | 5.400 € | https://abrarobotics.com/prodotti/unitree-as2-air.html |
 | AS2 EDU Smart U2 | 17.940 € | https://abrarobotics.com/prodotti/unitree-as2-edu-smart.html |
 | AS2 EDU Laser U3 Mid360 | 22.640 € | https://abrarobotics.com/prodotti/unitree-as2-edu-laser.html |
 | AS2 EDU Flagship U4 | 24.990 € | https://abrarobotics.com/prodotti/unitree-as2-edu-ult.html |
 | AS2 Pro | 29.900 € | https://abrarobotics.com/prodotti/unitree-as2-pro.html |
 | AS2-W (wheeled) | su preventivo | https://abrarobotics.com/prodotti/unitree-as2-w.html |
 
-Fatti: payload tipico ~15 kg, IP54, velocità fino a ~5 m/s; AS2 Pro con LiDAR ultra-wide e dual camera.
+Fatti (unitree.com/As2): carico in marcia ~15 kg (X, EDU), ~13 kg (Pro), ~10 kg (Air); IP54 su X, EDU e Pro, nessun grado IP dichiarato per Air; velocità fino a ~5 m/s (X, EDU), 3,7 m/s (Pro), 3,0 m/s (Air); AS2 Pro con LiDAR ultra-wide e dual camera.
 
 ## Unitree H2 — fatti (Italia)
 | Modello | Prezzo / availability | URL |
@@ -750,12 +750,12 @@ def write_blog_as2() -> None:
 <div class="article-tldr"><strong>In sintesi:</strong> Abra Robotics lista pubblicamente la famiglia AS2 (X, Air, EDU U1–U4, Pro, AS2-W) con prezzi End-User. È un vantaggio competitivo rispetto a cataloghi che mostrano solo Go2.</div>
 </header>
 <div class="article-content">
-<p>La serie <strong>Unitree AS2</strong> si posiziona tra Go2 e A2/B2: payload tipico ~15 kg, IP54, velocità fino a ~5 m/s. Serve a demo, laboratori e ispezione/sorveglianza compatta.</p>
+<p>La serie <strong>Unitree AS2</strong> si posiziona tra Go2 e A2/B2: carico in marcia fino a ~15 kg, IP54 sulle versioni X, EDU e Pro, velocità fino a ~5 m/s (X, EDU). Serve a demo, laboratori e ispezione/sorveglianza compatta.</p>
 <h2>Quali modelli AS2 sono disponibili?</h2>
 <ul>
 <li><a href="../prodotti/unitree-as2-x.html">AS2-X</a> — 13.240 €</li>
 <li><a href="../prodotti/unitree-as2-edu.html">AS2 EDU Standard U1</a> — 15.600 €</li>
-<li><a href="../prodotti/unitree-as2-air.html">AS2 Air</a> — 17.900 €</li>
+<li><a href="../prodotti/unitree-as2-air.html">AS2 Air</a> — 5.400 €</li>
 <li><a href="../prodotti/unitree-as2-edu-smart.html">AS2 EDU Smart U2</a> — 17.940 €</li>
 <li><a href="../prodotti/unitree-as2-edu-laser.html">AS2 EDU Laser U3</a> — 22.640 €</li>
 <li><a href="../prodotti/unitree-as2-edu-ult.html">AS2 EDU Flagship U4</a> — 24.990 €</li>

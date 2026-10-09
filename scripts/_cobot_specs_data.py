@@ -6,7 +6,7 @@ ACCORDION_BY_SLUG: dict[str, list[tuple[str, list[tuple[str, str]]]]] = {
     "fairino-fr3": [
         ("Meccanica", [
             ("Payload nominale", "3 kg"),
-            ("Sbraccio", "922 mm"),
+            ("Sbraccio", "622 mm"),
             ("Ripetibilità", "±0,02 mm"),
             ("Gradi di libertà", "6"),
         ]),

@@ -17,7 +17,7 @@
 | **G1** | G1-AIR, G1-U1 … G1-U10, G1-COMP | Bipede ricerca · 23–43+ DoF |
 | **G1-D** | G1D-U1 … G1D-U10 | Dual-arm su colonna · Standard fissa (U1–U5) o Flagship mobile (U6–U10) |
 | **R1** | R1-AIR, R1-U1 … R1-U6 | Bipede entry · compatto · ROS2 EDU |
-| **R1-D** | R1-D | Dual-arm tavolo/mobile · 15–31 DoF |
+| **R1-D** | R1-D | Dual-arm tavolo/mobile · 15–22 DoF (con pinza) |
 | **H2** | H2-AIR, H2-EDU | Full-size ~180 cm · 31 DoF |
 | **H2 Plus** | H2-PLUS | Reference NVIDIA Isaac GR00T · preordine fine 2026 |
 
