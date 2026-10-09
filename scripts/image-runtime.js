@@ -3,7 +3,9 @@
   'use strict';
 
   var inProduct = /\/prodotti\//.test(location.pathname);
-  var BASE = inProduct ? '../' : '';
+  // radice del sito: /prodotti/ -> ../ , /en/prodotti/ -> ../../ , /en/ -> ../
+  var depth = location.pathname.replace(/^\//, '').split('/').length - 1;
+  var BASE = depth > 0 ? new Array(depth + 1).join('../') : '';
 
   function entryImages(entry) {
     if (!entry) return [];
@@ -15,7 +17,6 @@
 
   function resolveSrc(path) {
     if (!path || path.indexOf('http') === 0) return path || '';
-    if (path.indexOf('prodotti/') === 0) return path.slice('prodotti/'.length);
     return BASE + path;
   }
 
