@@ -89,6 +89,8 @@ def main() -> None:
     subprocess.run([sys.executable, str(ROOT / "scripts" / "add_hreflang.py")], check=False)
     # link statici "Altri prodotti" tra schede (scoperta da parte di Google)
     subprocess.run([sys.executable, str(ROOT / "scripts" / "genera_correlati.py")], check=False)
+    # title/description "prezzo", breadcrumb con la famiglia, politica resi nel Product JSON-LD
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "seo_schede_prezzo.py")], check=False)
     print(f"Rigenerate {created} schede · catalogo-unitree.html aggiornato")
 
 
