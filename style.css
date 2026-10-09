@@ -2115,6 +2115,20 @@ select:focus-visible,
   animation-delay: 0.4s;
 }
 
+/* Mobile: il testo hero e' l'elemento LCP. Partire da opacity:0 ritarda l'LCP fino a fine animazione,
+   quindi su mobile resta solo lo scorrimento verso l'alto (testo visibile dal primo frame). */
+@keyframes hero-rise {
+  from { transform: translateY(24px); }
+  to { transform: translateY(0); }
+}
+@media (max-width: 768px) {
+  .hero h1,
+  .hero-sub,
+  .hero-ctas {
+    animation-name: hero-rise;
+  }
+}
+
 /* === Staggered Card Reveal === */
 .card:nth-child(1),
 .use-case:nth-child(1),
