@@ -2,12 +2,10 @@
 """Catalogo cobot Fairino — prezzi vendita EUR (calcolo interno, non esposto sul sito)."""
 from __future__ import annotations
 
-USD_EUR = 0.93
-MARKUP = 2.0  # margine interno
 
 IMG = "images/manifattura"
 
-# tuple: slug, group, tag, title, subtitle, blurb, specs, rows, use_case, alibaba_usd
+# tuple: slug, group, tag, title, subtitle, blurb, specs, rows, use_case, prezzo_eur (listino, IVA esclusa)
 # group: robot | palletizing
 
 CATALOG: tuple[tuple, ...] = (
@@ -31,7 +29,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Montaggio", "Qualsiasi orientamento"),
         ],
         "Pick & place precisione, ispezione, assemblaggio leggero in celle compatte.",
-        3100.0,
+        5766,
     ),
     (
         "fairino-fr5",
@@ -54,7 +52,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Alimentazione tipica", "276 W"),
         ],
         "Pick & place, avvitatura, machine tending su CNC, assemblaggio leggero elettronica.",
-        3400.0,
+        6324,
     ),
     (
         "fairino-fr10",
@@ -77,7 +75,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Certificazioni", "CE · ISO 10218 · ISO/TS 15066"),
         ],
         "Machine tending presse e CNC, palletizzazione fine linea, dispensing.",
-        6500.0,
+        12090,
     ),
     (
         "fairino-fr16",
@@ -99,7 +97,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Certificazioni", "CE · ISO 10218 · ISO/TS 15066"),
         ],
         "Machine tending, carico/scarico macchine, handling casse e fine linea.",
-        8200.0,
+        15252,
     ),
     (
         "fairino-fr20",
@@ -122,7 +120,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Velocità TCP", "1,5 m/s"),
         ],
         "Palletizzazione, depalletizzazione, handling di semilavorati pesanti.",
-        7750.0,
+        14415,
     ),
     (
         "fairino-fr30",
@@ -144,7 +142,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Certificazioni", "CE · ISO 10218 · ISO/TS 15066"),
         ],
         "Palletizzazione EUR, depalletizzazione, carico macchine con payload elevato.",
-        18200.0,
+        33852,
     ),
     (
         "fairino-palletizing-station",
@@ -165,7 +163,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Lead time indicativo", "~25 giorni lavorativi"),
         ],
         "Base meccanica per celle palletizzazione — abbina il cobot Fairino giusto al tuo ciclo.",
-        5500.0,
+        10230,
     ),
     (
         "fairino-palletizing-fr10",
@@ -186,7 +184,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Certificazioni", "CE · valutazione rischio su progetto"),
         ],
         "Palletizzazione fine linea per PMI — installazione rapida senza recinto.",
-        16500.0,
+        30690,
     ),
     (
         "fairino-palletizing-fr20",
@@ -207,7 +205,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Lead time", "4–6 settimane tipiche"),
         ],
         "Automazione pallet fine linea con payload elevato e ROI 12–24 mesi.",
-        19800.0,
+        36828,
     ),
 )
 
@@ -233,12 +231,12 @@ CHIPS_BY_SLUG: dict[str, tuple[str, ...]] = {
 }
 
 
-def sell_price_eur(alibaba_usd: float) -> int:
-    return int(round(alibaba_usd * MARKUP * USD_EUR))
+def sell_price_eur(prezzo_eur: float) -> int:
+    return int(round(prezzo_eur))
 
 
-def price_display(alibaba_usd: float) -> str:
-    eur = sell_price_eur(alibaba_usd)
+def price_display(prezzo_eur: float) -> str:
+    eur = sell_price_eur(prezzo_eur)
     return f"da {f'{eur:,}'.replace(',', '.')},00 €"
 
 

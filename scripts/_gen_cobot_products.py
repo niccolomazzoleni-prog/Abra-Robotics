@@ -146,8 +146,8 @@ def media_main(slug: str, title: str, group: str) -> str:
     return f'<img id="gallery-main-img" src="{img_rel}" alt="{title}" style="{style}">'
 
 
-def buy_area(alibaba_usd: float) -> str:
-    vis = price_display(alibaba_usd)
+def buy_area(prezzo_eur: float) -> str:
+    vis = price_display(prezzo_eur)
     return f"""          <div class="buy-box">
             <div class="buy-box-head">
               <div class="buy-box-price">
@@ -202,12 +202,12 @@ def product_schema(name: str, desc: str, img: str, price: float, filename: str, 
 
 
 def generate_one(row: tuple) -> dict:
-    slug, group, tag, title, subtitle, blurb, specs, rows, use_case, alibaba_usd = row
+    slug, group, tag, title, subtitle, blurb, specs, rows, use_case, prezzo_eur = row
     filename = filename_for(slug)
     sku = sku_for(slug)
-    price = float(sell_price_eur(alibaba_usd))
+    price = float(sell_price_eur(prezzo_eur))
     og_image = image_for(slug)
-    meta = trim_desc(f"{title}: {subtitle}. {price_display(alibaba_usd)} IVA esclusa. Cobot Fairino in Italia con Abra Robotics.")
+    meta = trim_desc(f"{title}: {subtitle}. {price_display(prezzo_eur)} IVA esclusa. Cobot Fairino in Italia con Abra Robotics.")
     lang_title = f"{title} — Cobot Fairino | Abra Robotics"
 
     html = TEMPLATE
@@ -231,7 +231,7 @@ def generate_one(row: tuple) -> dict:
         "%%PROCESS%%": PROCESS_HTML,
         "%%WA_BAR%%": WA_BAR_HTML,
         "%%MEDIA_MAIN%%": media_main(slug, title, group),
-        "%%BUY_AREA%%": buy_area(alibaba_usd),
+        "%%BUY_AREA%%": buy_area(prezzo_eur),
         "%%PRODUCT_SCHEMA%%": product_schema(title, meta, og_image, price, filename, sku),
         "%%SITE_NAV%%": render_site_nav("../"),
     }
@@ -248,9 +248,8 @@ def generate_one(row: tuple) -> dict:
         "subtitle": subtitle,
         "tag": tag,
         "blurb": blurb,
-        "alibaba_usd": alibaba_usd,
         "price_eur": price,
-        "price_display": price_display(alibaba_usd),
+        "price_display": price_display(prezzo_eur),
         "url": f"{SITE}/prodotti/{filename}",
         "image": f"{SITE}/{og_image}",
     }
