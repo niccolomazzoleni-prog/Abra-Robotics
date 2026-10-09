@@ -28,8 +28,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   </script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Quadruped robot Unitree Go2, A2, B2 | Abra Robotics</title>
-<meta content="Unitree quadruped robots in Italy: Go2, A2 and B2 for inspection and industry. Specs, pricing and Abra Robotics support." name="description"/>
+<title>Quadruped robot price: Unitree Go2, AS2, A2, B2 | Abra</title>
+<meta content="Unitree quadruped robot prices in Italy from €2,990 excl. VAT: compare Go2, AS2, A2 and B2 specs and pick the right robot dog for research or inspection." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="../favicon.ico" rel="icon" sizes="any"/>
 <link href="../images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
@@ -329,6 +329,30 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
     .coll-filters button { font-family:var(--font); font-size:0.82rem; font-weight:700; padding:9px 18px; border-radius:999px; border:1px solid var(--gray-200); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all .2s; }
     .coll-filters button:hover { border-color:var(--gray-400); color:var(--black); }
     .coll-filters button.active { background:var(--black); color:var(--white); border-color:var(--black); }
+
+    /* QUAD:CSS — tabella prezzi, quale scegliere, guide (scripts/seo_quadrupedi.py) */
+    .q-table { min-width: 980px; }
+    .q-table thead th { background: var(--black); color:#fff; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; padding:14px 16px; text-align:center; }
+    .q-table thead th:first-child, .q-table tbody th { text-align:left; }
+    .q-table tbody th { padding:12px 16px; font-size:0.9rem; border-bottom:1px solid var(--gray-100); white-space:nowrap; }
+    .q-table tbody th a { color:var(--black); font-weight:700; text-decoration:none; }
+    .q-table tbody th a:hover { text-decoration:underline; }
+    .q-table tr.q-fam td { text-align:left; background:var(--gray-50, #fafafa); font-weight:800; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; }
+    .q-table tr.q-fam a { color:var(--black); }
+    .q-table tbody td:nth-child(2), .q-table tbody td:nth-child(3) { white-space:nowrap; }
+    .q-caption { caption-side: top; text-align:left; padding:12px 16px; font-size:0.85rem; color:var(--gray-600); }
+    .q-note { font-size:0.82rem; color:var(--gray-600); margin-top:12px; }
+    .q-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+    .q-card { border:1px solid var(--gray-200); border-radius:var(--radius); padding:24px; background:var(--white); }
+    .q-card h3 { margin:0 0 8px; font-size:1.1rem; }
+    .q-card p { margin:0 0 10px; color:var(--gray-700); font-size:0.95rem; }
+    .q-card a { color:var(--black); font-weight:700; }
+    .q-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:0; list-style:none; }
+    .q-links a { display:block; padding:14px 18px; border:1px solid var(--gray-200); border-radius:var(--radius); color:var(--black); text-decoration:none; font-weight:700; }
+    .q-links a span { display:block; font-weight:400; font-size:0.85rem; color:var(--gray-600); margin-top:4px; }
+    .q-links a:hover { border-color:var(--gray-400); }
+    @media (max-width: 900px) { .q-grid, .q-links { grid-template-columns:1fr; } }
+    /* /QUAD:CSS */
   </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -353,15 +377,55 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "What is a quadruped robot?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A quadruped robot (robot dog) is a four-legged mobile platform for inspection, security and rough-terrain logistics. Abra supplies Unitree Go2, A2 and B2 in Italy."
+        "text": "A quadruped robot, also called a robot dog, is a four-legged mobile robot that handles stairs, rough ground and obstacles where wheeled or tracked robots struggle. It is used for inspection, surveillance, research, education and carrying small payloads."
       }
     },
     {
       "@type": "Question",
-      "name": "Which Unitree Go2 should I buy?",
+      "name": "How much does a Unitree quadruped robot cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Go2 Pro for general use; Go2 EDU / EDU+ for labs; Enterprise for professional deployments. A2/B2 cover heavier industrial payloads."
+        "text": "List prices in Italy, excluding VAT, shipping and duty included: Go2 Air €2,990, AS2 Air €5,400, Go2 EDU from €10,990, A2 from €30,848.48, B2 from €76,076.94; the most complete configuration (B2-W with LiDAR) is €100,771. Every order is confirmed with an updated quote."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Unitree Go2 and AS2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AS2 is Unitree's new-generation quadruped, larger than the Go2 (about 20 kg vs 15 kg): it carries up to about 15 kg while walking, reaches about 4 hours of endurance and the Pro, X and EDU versions are IP54. The Go2 remains the most compact and affordable option."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which quadruped robot is best for industrial inspection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For indoor inspection, AS2 Pro or AS2-X (IP54, about 4 hours) are often enough. Larger plants or harsh environments call for an A2 (IP56, 5+ hours, about 25 kg payload) or an A2 Pro with IP67 core components. The B2 suits outdoor work and payloads above 40 kg."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a quadruped robot climb stairs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, within Unitree's stated limits: the AS2 climbs steps up to 25 cm (20 cm for the Air), the A2 handles steps up to 30 cm and the B2 climbs continuous 20–25 cm stairs and steps up to 40 cm forward. Lab data: real performance depends on the terrain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a robot arm be mounted on a Unitree quadruped?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes: the 6-axis Unitree Z1 arm is also designed for mounting on a quadruped, to open doors, operate valves or handle small objects. Prices and versions on the Z1 and D1 arms page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you ship Unitree quadrupeds outside Italy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We work mainly in Italy, Switzerland and the Balkans; other EU countries on a project basis. Contact us for lead times and a quote."
       }
     }
   ]
@@ -369,8 +433,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </script>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Abra Robotics"/>
-<meta property="og:title" content="Quadruped robot Unitree Go2, A2, B2 | Abra Robotics"/>
-<meta property="og:description" content="Unitree quadruped robots in Italy: Go2, A2 and B2 for inspection and industry. Specs, pricing and Abra Robotics support."/>
+<meta property="og:title" content="Quadruped robot price: Unitree Go2, AS2, A2, B2 | Abra"/>
+<meta property="og:description" content="Unitree quadruped robot prices in Italy from €2,990 excl. VAT: compare Go2, AS2, A2 and B2 specs and pick the right robot dog for research or inspection."/>
 <meta property="og:url" content="https://abrarobotics.com/en/quadrupedi-en.html"/>
 <meta property="og:image" content="https://abrarobotics.com/prodotti/assets/variants/go2-pro/img-01.png"/>
 <meta property="og:locale" content="en_GB"/>
@@ -446,12 +510,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 <section class="collection-hero">
 <div class="container">
-<p class="label">Quadruped Robots</p>
-<h1>Unitree quadruped robots — Go2, A2 and B2</h1>
-<p class="lead">From the agile Unitree Go2 for education and light inspection to the industrial B2 IP67: the full Unitree robot dog range with a dedicated product page for each model.</p>
+<p class="label">Quadruped robots · robot dogs</p>
+<h1>Unitree quadruped robots: models, prices and how to choose</h1>
+<p class="lead">A <strong>quadruped robot</strong> (or <strong>robot dog</strong>) is a four-legged mobile robot that walks where wheels and tracks stop: stairs, gratings, rough ground. In Italy, Unitree quadrupeds range from <strong>€2,990</strong> (Go2 Air) to over <strong>€100,000</strong> (B2-W with LiDAR), excluding VAT, with shipping and duty to Italy included. Abra Robotics is part of the Unitree Italy distribution chain: here are the public prices of <a href="go2-en.html">Go2</a>, <a href="as2-en.html">AS2</a>, <a href="a2-en.html">A2</a> and <a href="b2-en.html">B2</a>, official specs and the right model for research, inspection, security and outdoor work.</p>
 <div class="hero-meta">
-<div><strong>8</strong><span>Models</span></div>
-<div><strong>10–120 kg</strong><span>Payload</span></div>
+<div><strong>4</strong><span>Families: Go2, AS2, A2, B2</span></div>
+<div><strong>from €2,990</strong><span>Excl. VAT</span></div>
 <div><strong>IP67</strong><span>Up to (A2 Pro / B2)</span></div>
 <div><strong>Italy</strong><span>Unitree Italy distribution chain</span></div>
 </div>
@@ -460,6 +524,70 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <!-- HUB:MODELLI -->
 <section class="section" style="padding:8px 0 0"><div class="container"><p class="label">Unitree families: prices and versions</p><div class="hm-fam" style="display:flex;flex-wrap:wrap;gap:8px"><a style="padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem" href="go2-en.html">Unitree Go2</a><a style="padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem" href="as2-en.html">Unitree AS2</a><a style="padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem" href="a2-en.html">Unitree A2</a><a style="padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem" href="b2-en.html">Unitree B2</a></div></div></section>
 <!-- /HUB:MODELLI -->
+<!-- QUAD:CONTENUTI -->
+<section class="section" id="prices" style="padding-top:40px;">
+<div class="container">
+<div class="section-header" style="text-align:left;max-width:100%;">
+<p class="label">Comparison</p>
+<h2>Unitree quadruped robot prices and specs compared</h2>
+<p class="section-sub" style="margin-left:0;">End-user list prices, excluding VAT, shipping and duty to Italy included; every order is confirmed with an updated quote. Specs from official Unitree data (<a href="https://www.unitree.com/go2/" rel="noopener" target="_blank">Go2</a>, <a href="https://www.unitree.com/As2/" rel="noopener" target="_blank">AS2</a>, <a href="https://www.unitree.com/A2/" rel="noopener" target="_blank">A2</a>, <a href="https://www.unitree.com/b2/" rel="noopener" target="_blank">B2</a>), measured in lab conditions. On mobile, scroll the table horizontally.</p>
+</div>
+<div class="matrix-wrap"><table class="matrix q-table">
+<caption class="q-caption">Unitree quadruped robots: list prices and official specs</caption>
+<thead><tr><th scope="col">Model</th><th scope="col">Price from (excl. VAT)</th><th scope="col">Weight</th><th scope="col">Max speed</th><th scope="col">Walking payload</th><th scope="col">Endurance (unloaded)</th><th scope="col">Protection</th><th scope="col">Best for</th></tr></thead><tbody>
+<tr class="q-fam"><td colspan="8"><a href="go2-en.html">Unitree Go2</a> — all versions and prices →</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-go2-air-en.html">Unitree Go2 Air</a></th><td><strong>€2,990</strong></td><td>~15 kg</td><td>2.5 m/s</td><td>≈7 kg</td><td>1–2 h</td><td>—</td><td>Getting started, events</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-go2-pro-en.html">Unitree Go2 Pro</a></th><td><strong>€4,290</strong></td><td>~15 kg</td><td>3.5 m/s</td><td>≈8 kg</td><td>1–2 h</td><td>—</td><td>Advanced demos, marketing</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-go2-edu-en.html">Unitree Go2 EDU (Standard → Ultimate)</a></th><td><strong>from €10,990</strong></td><td>~15 kg</td><td>3.7 m/s (max ~5)</td><td>≈8 kg (max ~12)</td><td>2–4 h</td><td>—</td><td>Research, education, SDK</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-go2w-u2-en.html">Unitree Go2-W (wheeled)</a></th><td><strong>from €24,784.30</strong></td><td>~18 kg</td><td>2.5 m/s</td><td>≈8 kg (max ~12)</td><td>1.5–3 h</td><td>—</td><td>Long routes on flat ground</td></tr>
+<tr class="q-fam"><td colspan="8"><a href="as2-en.html">Unitree AS2</a> — all versions and prices →</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-as2-air.html">Unitree AS2 Air</a></th><td><strong>€5,400</strong></td><td>~20 kg</td><td>3.0 m/s</td><td>~10 kg</td><td>~2 h</td><td>not declared</td><td>Demos, low-cost POC</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-as2-x.html">Unitree AS2-X</a></th><td><strong>€13,240</strong></td><td>~20 kg</td><td>3.7 m/s (up to ~5)</td><td>~15 kg</td><td>~4 h</td><td>IP54</td><td>Light inspection, development</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-as2-edu.html">Unitree AS2 EDU (U1–U4)</a></th><td><strong>from €15,600</strong></td><td>~20 kg</td><td>3.7 m/s (up to ~5)</td><td>~15 kg</td><td>~4 h</td><td>IP54</td><td>Universities, labs, ROS 2</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-as2-pro.html">Unitree AS2 Pro</a></th><td><strong>€29,900</strong></td><td>~20 kg</td><td>3.7 m/s</td><td>~13 kg</td><td>~4 h</td><td>IP54</td><td>Surveillance, indoor inspection</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-as2-w.html">Unitree AS2-W (wheeled)</a></th><td><strong>from €12,488.14</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Wheeled AS2 version</td></tr>
+<tr class="q-fam"><td colspan="8"><a href="a2-en.html">Unitree A2</a> — all versions and prices →</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-a2-en.html">Unitree A2</a></th><td><strong>€30,848.48</strong></td><td>~42 kg</td><td>3.7 m/s (up to ~5)</td><td>~25 kg</td><td>&gt;5 h (~20 km)</td><td>IP56</td><td>Plant inspection, transport</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-a2-pro-en.html">Unitree A2 Pro</a></th><td><strong>€41,673.16</strong></td><td>~42 kg</td><td>3.7 m/s (up to ~5)</td><td>~25 kg</td><td>&gt;5 h (~20 km)</td><td>IP56–IP67</td><td>Harsh sites, 2 LiDARs</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-a2w-std-en.html">Unitree A2-W (wheeled)</a></th><td><strong>from €38,247.63</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Long distances on site</td></tr>
+<tr class="q-fam"><td colspan="8"><a href="b2-en.html">Unitree B2</a> — all versions and prices →</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-b2-en.html">Unitree B2</a></th><td><strong>from €76,076.94</strong></td><td>~60 kg</td><td>&gt;6 m/s*</td><td>&gt;40 kg</td><td>&gt;5 h (&gt;20 km)</td><td>IP67</td><td>Outdoor, heavy payloads</td></tr>
+<tr><th scope="row"><a href="../prodotti/unitree-b2w-en.html">Unitree B2-W (wheeled)</a></th><td><strong>from €89,497</strong></td><td>~85 kg</td><td>15 km/h*</td><td>&gt;40 kg</td><td>~30 km</td><td>IP67</td><td>Patrols over large areas</td></tr>
+</tbody></table></div>
+<p class="q-note">* Top speed only in special configurations; production units have a safety speed limit. "—" = not published by Unitree for that version: see the product page. Full price list with accessories: <a href="listino-unitree-en.html">Unitree price list</a>.</p>
+</div>
+</section>
+<section class="section" id="which-to-choose" style="padding-top:24px;">
+<div class="container">
+<div class="section-header" style="text-align:left;max-width:100%;">
+<p class="label">Buying guide</p>
+<h2>Which quadruped robot should you choose?</h2>
+<p class="section-sub" style="margin-left:0;">It depends on environment, payload, endurance and how much you need to program the robot. Four typical cases:</p>
+</div>
+<div class="q-grid">
+<div class="q-card"><h3>Research and education</h3><p>Universities and labs need an open SDK and ROS 2: <a href="go2-en.html">Go2 EDU</a> (from €10,990) is the most widespread platform; <a href="as2-en.html">AS2 EDU</a> (from €15,600) adds ~15 kg payload, ~4 h endurance and IP54. On a tight budget: AS2 Air (€5,400).</p><p>See also: <a href="universita-ricerca-en.html">Universities and research</a></p></div>
+<div class="q-card"><h3>Industrial inspection</h3><p>Inspection rounds in plants, substations and warehouses: <a href="as2-en.html">AS2 Pro / AS2-X</a> indoors (IP54, ~4 h); <a href="a2-en.html">A2</a> (from €30,848.48) when you need more payload (~25 kg), 5+ hours and IP56; A2 Pro with two LiDARs and IP67 core components for harsh sites.</p><p>Guide (Italian): <a href="../blog/robot-quadrupede-ispezione-industriale.html" hreflang="it">quadruped for industrial inspection</a></p></div>
+<div class="q-card"><h3>Security and surveillance</h3><p>Scheduled patrols and alarm checks: AS2 Pro for covered areas; <a href="a2-en.html">A2</a> and A2-W for long perimeters; <a href="b2-en.html">B2-W</a> (wheeled, ~30 km unloaded) for large outdoor areas. A quadruped supports security staff rather than replacing them.</p></div>
+<div class="q-card"><h3>Outdoor and heavy payloads</h3><p>Construction sites, rough terrain, rain and dust: <a href="b2-en.html">B2</a> (from €76,076.94) carries over 40 kg while walking, is IP67 and climbs steps up to 40 cm forward. For lighter outdoor tasks an A2 is often enough. Need an arm? The <a href="z1-en.html">Unitree Z1 arm</a> can also be mounted on a quadruped.</p></div>
+</div>
+<p class="q-note">Beyond Unitree, industrial quadrupeds include Boston Dynamics Spot (<a href="https://bostondynamics.com/products/spot/" rel="noopener" target="_blank">bostondynamics.com</a>) and ANYbotics ANYmal (<a href="https://www.anybotics.com/" rel="noopener" target="_blank">anybotics.com</a>), with different positioning and pricing: compare them on their official sources. Abra supplies the Unitree range.</p>
+</div>
+</section>
+<section class="section" id="guides" style="padding-top:24px;">
+<div class="container">
+<div class="section-header" style="text-align:left;max-width:100%;">
+<p class="label">Further reading</p>
+<h2>Robot dog guides (in Italian)</h2>
+</div>
+<ul class="q-links">
+<li><a href="../blog/cane-robot-prezzo.html" hreflang="it">Robot dog prices and models<span>How much a robot dog costs in Italy, version by version</span></a></li>
+<li><a href="../blog/robot-quadrupede-ispezione-industriale.html" hreflang="it">Quadruped for industrial inspection<span>AS2, A2, B2 and Go2 compared in the field</span></a></li>
+<li><a href="../blog/unitree-go2-vs-go2-pro.html" hreflang="it">Unitree Go2 vs Go2 Pro and EDU<span>Differences and how to choose</span></a></li>
+<li><a href="../blog/unitree-as2-italia.html" hreflang="it">Unitree AS2 in Italy<span>Models, prices and research use</span></a></li>
+</ul>
+</div>
+</section>
+<!-- /QUAD:CONTENUTI -->
 <section class="section" style="padding-top:24px;">
 <div class="container">
 <div aria-label="Filter by family" class="coll-filters">
@@ -469,6 +597,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <button data-filter="a2">A2</button>
 <button data-filter="b2">B2</button>
 </div>
+<!-- QUAD:CATALOGO --><h2 style="margin-bottom:20px;">All Unitree quadruped versions</h2>
 <div class="robot-grid">
 <article class="robot-card" data-family="go2">
 <div class="robot-media">
@@ -486,18 +615,18 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 <div class="key-specs">
 <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">10 kg</span></div>
-<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">1.7 m/s</span></div>
+<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">3.5 m/s</span></div>
 <div class="key-spec"><span class="key-spec-label">Max slope</span><span class="key-spec-value">40°</span></div>
 <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core CPU</span></div>
 </div>
 <ul class="spec-rows">
-<li><span>LiDAR</span><span>3D L1</span></li>
+<li><span>LiDAR</span><span>4D L1</span></li>
 <li><span>Protection</span><span>—</span></li>
 <li><span>Battery life</span><span>1–2 h</span></li>
 <li><span>Warranty</span><span>12 months</span></li>
 </ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">3.841,57 €</span>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;"><s style="font-size:0.72em;font-weight:600;color:#a3a3a3;margin-right:6px;" title="List price">€4,370.85</s>€4,290</span>
 <a class="btn btn-primary btn-sm" href="../prodotti/unitree-go2-pro-en.html">View datasheet →</a>
 </div>
 </div>
@@ -518,18 +647,18 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 <div class="key-specs">
 <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">12 kg</span></div>
-<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">2 m/s</span></div>
+<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">3.7 m/s</span></div>
 <div class="key-spec"><span class="key-spec-label">Max slope</span><span class="key-spec-value">40°</span></div>
 <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin Nano 40 TOPS</span></div>
 </div>
 <ul class="spec-rows">
-<li><span>LiDAR</span><span>4D L2</span></li>
+<li><span>LiDAR</span><span>4D L1</span></li>
 <li><span>Protection</span><span>—</span></li>
 <li><span>Battery life</span><span>2–4 h</span></li>
 <li><span>Warranty</span><span>12 months</span></li>
 </ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">12.159,51 €</span>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">€10,990</span>
 <a class="btn btn-primary btn-sm" href="../prodotti/unitree-go2-edu-en.html">View datasheet →</a>
 </div>
 </div>
@@ -550,18 +679,18 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 <div class="key-specs">
 <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">12 kg</span></div>
-<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">2 m/s</span></div>
+<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">3.7 m/s</span></div>
 <div class="key-spec"><span class="key-spec-label">Max slope</span><span class="key-spec-value">40°</span></div>
 <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Orin NX 100 TOPS</span></div>
 </div>
 <ul class="spec-rows">
-<li><span>LiDAR</span><span>4D L2</span></li>
+<li><span>LiDAR</span><span>4D L1</span></li>
 <li><span>Protection</span><span>—</span></li>
 <li><span>Battery life</span><span>2–4 h</span></li>
 <li><span>Warranty</span><span>12 months</span></li>
 </ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">14.677,56 €</span>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;"><s style="font-size:0.72em;font-weight:600;color:#a3a3a3;margin-right:6px;" title="List price">€17,951.71</s>€17,490</span>
 <a class="btn btn-primary btn-sm" href="../prodotti/unitree-go2-edu-plus-en.html">View datasheet →</a>
 </div>
 </div>
@@ -582,7 +711,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 <div class="key-specs">
 <div class="key-spec"><span class="key-spec-label">Payload</span><span class="key-spec-value">10 kg</span></div>
-<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">1.7 m/s</span></div>
+<div class="key-spec"><span class="key-spec-label">Max speed</span><span class="key-spec-value">3.5 m/s</span></div>
 <div class="key-spec"><span class="key-spec-label">Max slope</span><span class="key-spec-value">40°</span></div>
 <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">8-core CPU</span></div>
 </div>
@@ -625,7 +754,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li><span>Warranty</span><span>12 months</span></li>
 </ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">€29,900.00</span>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">€29,900</span>
 <a class="btn btn-primary btn-sm" href="../prodotti/unitree-as2-pro.html">View datasheet →</a>
 </div>
 </div>
@@ -657,7 +786,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li><span>Warranty</span><span>12 months</span></li>
 </ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">29.116,06 €</span>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;"><s style="font-size:0.72em;font-weight:600;color:#a3a3a3;margin-right:6px;" title="List price">€32,781.37</s>€30,848.48</span>
 <a class="btn btn-primary btn-sm" href="../prodotti/unitree-a2-en.html">View datasheet →</a>
 </div>
 </div>
@@ -689,7 +818,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li><span>Warranty</span><span>12 months</span></li>
 </ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">39.589,50 €</span>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;"><s style="font-size:0.72em;font-weight:600;color:#a3a3a3;margin-right:6px;" title="List price">€45,113.42</s>€41,673.16</span>
 <a class="btn btn-primary btn-sm" href="../prodotti/unitree-a2-pro-en.html">View datasheet →</a>
 </div>
 </div>
@@ -715,115 +844,17 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="key-spec"><span class="key-spec-label">Computing</span><span class="key-spec-value">Intel i5 + i7</span></div>
 </div>
 <ul class="spec-rows">
-<li><span>LiDAR</span><span>32 channels</span></li>
+<li><span>LiDAR</span><span>3D</span></li>
 <li><span>Protection</span><span>IP67</span></li>
 <li><span>Battery life</span><span>4–6 h</span></li>
 <li><span>Warranty</span><span>12 months</span></li>
 </ul>
 <div class="robot-card-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">74.056,52 €</span>
+<span style="font-size:1.05rem;font-weight:900;letter-spacing:-0.02em;">€76,076.94</span>
 <a class="btn btn-primary btn-sm" href="../prodotti/unitree-b2-en.html">View datasheet →</a>
 </div>
 </div>
 </article>
-</div>
-</div>
-</section>
-<section class="section section-dark">
-<div class="container">
-<div class="section-header" style="text-align:left;max-width:100%;">
-<p class="label label-light">Comparison</p>
-<h2>Full quadruped range comparison</h2>
-<p class="section-sub" style="margin-left:0;">Payload, speed, computing, LiDAR and protection across all eight models. Scroll horizontally on mobile.</p>
-</div>
-<div class="matrix-wrap">
-<table class="matrix">
-<thead>
-<tr><td>Model</td><td>Payload</td><td>Speed</td><td>Computing</td><td>LiDAR</td><td>IP</td><td>Warranty</td><td></td></tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-go2-pro-en.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 Pro</a></td>
-<td>10 kg</td>
-<td>1.7 m/s</td>
-<td>8-core CPU</td>
-<td>3D L1</td>
-<td>—</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-go2-pro-en.html">Open</a></td>
-</tr>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-go2-edu-en.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 EDU</a></td>
-<td>12 kg</td>
-<td>2 m/s</td>
-<td>Orin Nano 40 TOPS</td>
-<td>4D L2</td>
-<td>—</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-go2-edu-en.html">Open</a></td>
-</tr>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-go2-edu-plus-en.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 EDU+</a></td>
-<td>12 kg</td>
-<td>2 m/s</td>
-<td>Orin NX 100 TOPS</td>
-<td>4D L2</td>
-<td>—</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-go2-edu-plus-en.html">Open</a></td>
-</tr>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-go2-enterprise-u2-en.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree Go2 Enterprise+ U2</a></td>
-<td>10 kg</td>
-<td>1.7 m/s</td>
-<td>8-core CPU</td>
-<td>L1</td>
-<td>—</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-go2-enterprise-u2-en.html">Open</a></td>
-</tr>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-as2-pro.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree AS2 Pro</a></td>
-<td>~15 kg</td>
-<td>~2 m/s</td>
-<td>Industrial</td>
-<td>Ultra-wide</td>
-<td>IP54</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-as2-pro.html">Open</a></td>
-</tr>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-a2-en.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree A2</a></td>
-<td>25 kg</td>
-<td>~5 m/s</td>
-<td>8-core + Intel i7</td>
-<td>Industrial</td>
-<td>IP56</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-a2-en.html">Open</a></td>
-</tr>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-a2-pro-en.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree A2 Pro</a></td>
-<td>25 kg</td>
-<td>~5 m/s</td>
-<td>Triple-processor i7</td>
-<td>Dual ind.</td>
-<td>IP67</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-a2-pro-en.html">Open</a></td>
-</tr>
-<tr>
-<td style="text-align:left;"><a href="../prodotti/unitree-b2-en.html" style="color:var(--black);font-weight:700;text-decoration:none;">Unitree B2</a></td>
-<td>40 kg</td>
-<td>&gt;6 m/s</td>
-<td>Intel i5 + i7</td>
-<td>32 channels</td>
-<td>IP67</td>
-<td>12 months</td>
-<td style="padding:10px 14px;"><a class="btn btn-secondary btn-card" href="../prodotti/unitree-b2-en.html">Open</a></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </section>
@@ -840,7 +871,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </section>
 
-<section class="section seo-faq" id="faq" aria-label="Frequently asked questions"><div class="container"><h2>Frequently asked questions</h2><details class="seo-faq-item"><summary>What is a quadruped robot?</summary><p>A quadruped robot (robot dog) is a four-legged mobile platform for inspection, security and rough-terrain logistics. Abra supplies Unitree Go2, A2 and B2 in Italy.</p></details><details class="seo-faq-item"><summary>Which Unitree Go2 should I buy?</summary><p>Go2 Pro for general use; Go2 EDU / EDU+ for labs; Enterprise for professional deployments. A2/B2 cover heavier industrial payloads.</p></details></div></section>
+<section class="section seo-faq" id="faq" aria-label="Frequently asked questions"><div class="container"><h2>Quadruped robot FAQ</h2><details class="seo-faq-item"><summary>What is a quadruped robot?</summary><p>A quadruped robot, also called a robot dog, is a four-legged mobile robot that handles stairs, rough ground and obstacles where wheeled or tracked robots struggle. It is used for inspection, surveillance, research, education and carrying small payloads.</p></details><details class="seo-faq-item"><summary>How much does a Unitree quadruped robot cost?</summary><p>List prices in Italy, excluding VAT, shipping and duty included: Go2 Air €2,990, AS2 Air €5,400, Go2 EDU from €10,990, A2 from €30,848.48, B2 from €76,076.94; the most complete configuration (B2-W with LiDAR) is €100,771. Every order is confirmed with an updated quote.</p></details><details class="seo-faq-item"><summary>What is the difference between Unitree Go2 and AS2?</summary><p>The AS2 is Unitree's new-generation quadruped, larger than the Go2 (about 20 kg vs 15 kg): it carries up to about 15 kg while walking, reaches about 4 hours of endurance and the Pro, X and EDU versions are IP54. The Go2 remains the most compact and affordable option.</p></details><details class="seo-faq-item"><summary>Which quadruped robot is best for industrial inspection?</summary><p>For indoor inspection, AS2 Pro or AS2-X (IP54, about 4 hours) are often enough. Larger plants or harsh environments call for an A2 (IP56, 5+ hours, about 25 kg payload) or an A2 Pro with IP67 core components. The B2 suits outdoor work and payloads above 40 kg.</p></details><details class="seo-faq-item"><summary>Can a quadruped robot climb stairs?</summary><p>Yes, within Unitree's stated limits: the AS2 climbs steps up to 25 cm (20 cm for the Air), the A2 handles steps up to 30 cm and the B2 climbs continuous 20–25 cm stairs and steps up to 40 cm forward. Lab data: real performance depends on the terrain.</p></details><details class="seo-faq-item"><summary>Can a robot arm be mounted on a Unitree quadruped?</summary><p>Yes: the 6-axis Unitree Z1 arm is also designed for mounting on a quadruped, to open doors, operate valves or handle small objects. Prices and versions on the <a href="z1-en.html">Z1 and D1 arms page</a>.</p></details><details class="seo-faq-item"><summary>Do you ship Unitree quadrupeds outside Italy?</summary><p>We work mainly in Italy, Switzerland and the Balkans; other EU countries on a project basis. Contact us for lead times and a quote.</p></details></div></section>
 <footer class="footer">
 <div class="container footer-grid">
 <div class="footer-brand">
@@ -888,26 +919,141 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   </script>
 <!-- itemlist-schema -->
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Unitree Quadruped Robots",
-    "url": "https://abrarobotics.com/quadrupedi.html",
-    "mainEntity": {
-      "@type": "ItemList",
-      "numberOfItems": 7,
-      "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Unitree Go2 Pro", "url": "https://abrarobotics.com/prodotti/unitree-go2-pro.html"},
-    {"@type": "ListItem", "position": 2, "name": "Unitree Go2 Pro", "url": "https://abrarobotics.com/prodotti/unitree-go2-edu.html"},
-    {"@type": "ListItem", "position": 3, "name": "Unitree Go2 Pro", "url": "https://abrarobotics.com/prodotti/unitree-go2-edu-smart.html"},
-    {"@type": "ListItem", "position": 4, "name": "Unitree Go2 Pro", "url": "https://abrarobotics.com/prodotti/unitree-go2-enterprise-u2.html"},
-    {"@type": "ListItem", "position": 5, "name": "Unitree Go2 Pro", "url": "https://abrarobotics.com/prodotti/unitree-a2.html"},
-    {"@type": "ListItem", "position": 6, "name": "Unitree Go2 Pro", "url": "https://abrarobotics.com/prodotti/unitree-a2-pro.html"},
-    {"@type": "ListItem", "position": 7, "name": "Unitree Go2 Pro", "url": "https://abrarobotics.com/prodotti/unitree-b2.html"}
-      ]
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Unitree quadruped robots: prices and models",
+  "url": "https://abrarobotics.com/en/quadrupedi-en.html",
+  "inLanguage": "en",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": 4,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Unitree Go2",
+          "url": "https://abrarobotics.com/en/go2-en.html",
+          "brand": {
+            "@type": "Brand",
+            "name": "Unitree"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "lowPrice": "2990.00",
+            "highPrice": "36899.53",
+            "offerCount": 11,
+            "seller": {
+              "@type": "Organization",
+              "name": "Abra Robotics",
+              "url": "https://abrarobotics.com"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Unitree AS2",
+          "url": "https://abrarobotics.com/en/as2-en.html",
+          "brand": {
+            "@type": "Brand",
+            "name": "Unitree"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "lowPrice": "5400.00",
+            "highPrice": "29900.00",
+            "offerCount": 12,
+            "seller": {
+              "@type": "Organization",
+              "name": "Abra Robotics",
+              "url": "https://abrarobotics.com"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "Unitree A2",
+          "url": "https://abrarobotics.com/en/a2-en.html",
+          "brand": {
+            "@type": "Brand",
+            "name": "Unitree"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "lowPrice": "30848.48",
+            "highPrice": "48524.23",
+            "offerCount": 4,
+            "seller": {
+              "@type": "Organization",
+              "name": "Abra Robotics",
+              "url": "https://abrarobotics.com"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Product",
+          "name": "Unitree B2",
+          "url": "https://abrarobotics.com/en/b2-en.html",
+          "brand": {
+            "@type": "Brand",
+            "name": "Unitree"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "lowPrice": "76076.94",
+            "highPrice": "100771.00",
+            "offerCount": 4,
+            "seller": {
+              "@type": "Organization",
+              "name": "Abra Robotics",
+              "url": "https://abrarobotics.com"
+            }
+          }
+        }
+      }
+    ]
   }
-  </script>
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://abrarobotics.com/en/index-en.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Quadruped robots",
+      "item": "https://abrarobotics.com/en/quadrupedi-en.html"
+    }
+  ]
+}
+</script>
+
 <!-- WhatsApp sticky bar -->
 <div class="wa-bar" id="wa-bar">
 <p><svg fill="#fff" height="20" style="flex-shrink:0" viewbox="0 0 24 24" width="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg> Want to receive more information?</p>
