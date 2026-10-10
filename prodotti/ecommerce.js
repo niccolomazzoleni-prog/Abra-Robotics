@@ -31,6 +31,10 @@
     var url = links[currentSlug()] || "";
     var buyBtns = document.querySelectorAll(".buy-btn");
     buyBtns.forEach(function (btn) {
+      // GA4: click su Acquista (conversione misurata dal Company Brain)
+      btn.addEventListener("click", function () {
+        if (window.gtag) window.gtag("event", "begin_checkout", { item_id: currentSlug(), checkout_ready: url ? "si" : "no" });
+      });
       if (url) {
         // Payment Link configurato: checkout reale (apre Stripe in nuova scheda)
         btn.setAttribute("href", url);

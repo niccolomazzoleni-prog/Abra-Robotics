@@ -47,46 +47,13 @@ const RECAPTCHA_SITE_KEY = '6LeozTQtAAAAAJ8MLsZiT7a5mdol2TSR043VP0-2';
 
 window._formLoadTime = Date.now();
 
-// reCAPTCHA (~360 KB) solo quando qualcuno inizia a compilare un modulo:
-// non rallenta pagine e Core Web Vitals di chi non scrive nulla.
 (function loadRecaptcha() {
   if (!RECAPTCHA_SITE_KEY) return;
-  let loaded = false;
-  function load() {
-    if (loaded) return;
-    loaded = true;
-    const s = document.createElement('script');
-    s.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
-    s.async = true;
-    document.head.appendChild(s);
-  }
-  ['focusin', 'pointerdown', 'touchstart'].forEach((ev) => {
-    document.addEventListener(ev, (e) => {
-      if (e.target && e.target.closest && e.target.closest('form')) load();
-    }, { passive: true });
-  });
-  // Carica anche quando un modulo entra in vista: il token è pronto prima del clic su "Invia".
-  const forms = document.querySelectorAll('.contact-form, .quote-form-top');
-  if (forms.length && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      if (entries.some((en) => en.isIntersecting)) { load(); io.disconnect(); }
-    }, { rootMargin: '400px' });
-    forms.forEach((f) => io.observe(f));
-  }
+  const s = document.createElement('script');
+  s.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
+  s.async = true;
+  document.head.appendChild(s);
 })();
-
-// Token reCAPTCHA con tempo massimo: se Google è lento o bloccato, il lead parte comunque.
-function getRecaptchaToken(action, ms) {
-  if (!RECAPTCHA_SITE_KEY || !window.grecaptcha) return Promise.resolve('');
-  const token = new Promise((resolve) => {
-    try {
-      window.grecaptcha.ready(() => {
-        window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action }).then(resolve, () => resolve(''));
-      });
-    } catch (_) { resolve(''); }
-  });
-  return Promise.race([token, new Promise((resolve) => setTimeout(() => resolve(''), ms))]);
-}
 
 (function initHeroVideo() {
   const video = document.querySelector('.hero-video');
@@ -240,12 +207,16 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
 
     const payload = buildContactPayload(form);
 
-    const token = await getRecaptchaToken('contact', 4000);
-    if (token) payload.recaptcha_token = token;
+    if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+      try {
+        payload.recaptcha_token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' });
+      } catch (_) {}
+    }
 
     try {
       await postLeadToGoogleScripts(payload);
       if (window.AbraAds && window.AbraAds.trackLead) window.AbraAds.trackLead();
+      if (window.gtag) gtag('event', 'generate_lead', { form_id: form.id || form.className.split(' ')[0] || 'form', page_path: location.pathname });
       if (window.fbq) fbq('track', 'Lead');
       if (showInlineFormSuccess(form, feedback)) return;
       form.reset();
@@ -287,43 +258,20 @@ if (menuToggle && mobileMenu) {
   menuToggle.setAttribute('aria-expanded', 'false');
   menuToggle.setAttribute('aria-haspopup', 'true');
 
-  const isMenuOpen = () => mobileMenu.style.display === 'flex';
-  const setMenu = (open) => {
-    mobileMenu.style.display = open ? 'flex' : 'none';
-    menuToggle.classList.toggle('active', open);
-    menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Menu');
-    document.body.classList.toggle('menu-open', open);
-  };
-
-  // Pulsante "Chiudi" in cima al menu (aggiunto qui: vale per tutte le pagine)
-  const closeBtn = document.createElement('button');
-  closeBtn.type = 'button';
-  closeBtn.className = 'mobile-menu-close';
-  closeBtn.setAttribute('aria-label', 'Chiudi menu');
-  closeBtn.innerHTML = '<span aria-hidden="true">✕</span> Chiudi';
-  closeBtn.addEventListener('click', () => setMenu(false));
-  mobileMenu.prepend(closeBtn);
-
-  menuToggle.addEventListener('click', () => setMenu(!isMenuOpen()));
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = isOpen ? 'none' : 'flex';
+    menuToggle.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+  });
 
   // Close mobile menu on link click
   mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => setMenu(false));
-  });
-
-  // Chiudi toccando fuori dal menu (senza attivare quello che c'e' sotto), con Esc o allargando la finestra
-  document.addEventListener('click', (e) => {
-    if (!isMenuOpen() || mobileMenu.contains(e.target) || menuToggle.contains(e.target)) return;
-    e.preventDefault();
-    e.stopPropagation();
-    setMenu(false);
-  }, true);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isMenuOpen()) { setMenu(false); menuToggle.focus(); }
-  });
-  window.addEventListener('resize', () => {
-    if (isMenuOpen() && window.innerWidth > 1024) setMenu(false);
+    link.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
   });
 
   // Mobile dropdown accordion (con stato ARIA)
@@ -510,7 +458,32 @@ document.addEventListener('click', (e) => {
 })();
 
 // Cookie / privacy informational notice (technical cookies only)
-// Avviso cookie sostituito dal banner di consenso (consent.js).
+(function () {
+  const KEY = 'abra_cookie_notice';
+  try {
+    if (localStorage.getItem(KEY) === 'ok') return;
+  } catch (e) { /* localStorage non disponibile: mostra comunque l'avviso */ }
+
+  // Risolvi il percorso della cookie policy (le pagine in /prodotti/ sono in sottocartella)
+  const prefix = window.location.pathname.includes('/prodotti/') ? '../' : '';
+
+  const banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-label', 'Avviso cookie');
+  banner.innerHTML = `
+    <p>Questo sito utilizza solo cookie e strumenti tecnici necessari al suo funzionamento. Non usiamo cookie di profilazione. Maggiori informazioni nella <a href="${prefix}cookie-policy.html">Cookie Policy</a>.</p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-accept">Ho capito</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  banner.querySelector('.cookie-accept').addEventListener('click', () => {
+    try { localStorage.setItem(KEY, 'ok'); } catch (e) { /* ignora */ }
+    banner.remove();
+  });
+})();
 
 // Pageview beacon (first-party stats → Apps Script; una volta per sessione/pagina)
 (function () {
@@ -553,92 +526,15 @@ document.addEventListener('click', (e) => {
   if (document.querySelector('script[data-abra-chat-widget]')) return;
 
   var depth = 0;
-  if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/')) depth = 1;
+  if (location.pathname.includes('/prodotti/')) depth = 1;
   if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
-  if (location.pathname.includes('/en/prodotti/') || location.pathname.includes('/en/blog/')) depth = 2;
+  if (location.pathname.includes('/en/prodotti/')) depth = 2;
   var prefix = depth ? '../'.repeat(depth) : '';
 
   var s = document.createElement('script');
-  s.src = prefix + 'offerte-ai/js/widget.js?v=20260930';
+  s.src = prefix + 'offerte-ai/js/widget.js?v=20260715g1';
   s.setAttribute('data-base', prefix + 'offerte-ai/');
   s.setAttribute('data-abra-chat-widget', '1');
   s.defer = true;
-  // Dopo il load + idle: widget, CSS e immagini della chat non competono con il primo rendering (LCP mobile).
-  function inject() { document.body.appendChild(s); }
-  function schedule() {
-    if ('requestIdleCallback' in window) requestIdleCallback(inject, { timeout: 3000 });
-    else setTimeout(inject, 1);
-  }
-  if (document.readyState === 'complete') schedule();
-  else window.addEventListener('load', schedule, { once: true });
-})();
-
-// reCAPTCHA v3: il badge è nascosto via CSS, quindi la nota va mostrata sotto ogni modulo con email
-(function addRecaptchaNote() {
-  if (!RECAPTCHA_SITE_KEY) return;
-  const en = window.location.pathname.includes('/en/');
-  const text = en
-    ? 'Protected by reCAPTCHA: Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms</a> apply.'
-    : 'Protetto da reCAPTCHA: si applicano la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> e i <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Termini</a> di Google.';
-  function run() {
-    document.querySelectorAll('form').forEach(f => {
-      if (!f.querySelector('input[type="email"]') || f.querySelector('.recaptcha-note')) return;
-      const p = document.createElement('p');
-      p.className = 'recaptcha-note';
-      p.innerHTML = text;
-      f.appendChild(p);
-    });
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
-  else run();
-})();
-
-// Articoli del blog: barra di avanzamento in cima con i minuti che mancano alla fine.
-// Se il browser ha fatto l'accesso all'editor (/editor/), compare anche "Modifica".
-(function articleReadingProgress() {
-  function run() {
-    const content = document.querySelector('.article-content');
-    if (!content) return;
-    const words = (content.innerText || '').trim().split(/\s+/).length;
-    const totalMin = Math.max(1, Math.round(words / 200));
-    const bar = document.createElement('div');
-    bar.className = 'read-progress';
-    bar.setAttribute('role', 'progressbar');
-    bar.setAttribute('aria-label', 'Avanzamento lettura');
-    bar.setAttribute('aria-valuemin', '0');
-    bar.setAttribute('aria-valuemax', '100');
-    bar.innerHTML = '<div class="read-progress-fill"></div><span class="read-progress-label"></span>';
-    document.body.appendChild(bar);
-    const fill = bar.firstChild;
-    const label = bar.lastChild;
-    let ticking = false;
-    function update() {
-      ticking = false;
-      const rect = content.getBoundingClientRect();
-      const start = rect.top + window.scrollY - window.innerHeight * 0.25;
-      const end = rect.bottom + window.scrollY - window.innerHeight;
-      const p = Math.min(1, Math.max(0, (window.scrollY - start) / Math.max(1, end - start)));
-      fill.style.transform = 'scaleX(' + p + ')';
-      bar.setAttribute('aria-valuenow', String(Math.round(p * 100)));
-      const left = Math.ceil(totalMin * (1 - p));
-      label.textContent = p >= 0.99 ? 'Finito' : (left <= 1 ? 'Meno di 1 min alla fine' : left + ' min alla fine');
-      bar.classList.toggle('is-visible', window.scrollY > 120);
-    }
-    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-
-    let editorOn = false;
-    try { editorOn = localStorage.getItem('abra-editor') === '1'; } catch (e) {}
-    const m = location.pathname.match(/\/blog\/([a-z0-9-]+)\.html$/);
-    if (editorOn && m) {
-      const a = document.createElement('a');
-      a.className = 'article-edit-btn';
-      a.href = '/editor/?file=' + encodeURIComponent('blog/' + m[1] + '.html');
-      a.textContent = 'Modifica articolo';
-      document.body.appendChild(a);
-    }
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
-  else run();
+  document.body.appendChild(s);
 })();
