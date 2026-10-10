@@ -26,6 +26,9 @@ jobs:
       - name: Applica override immagini e rigenera HTML
         run: python scripts/regenerate_from_public.py
 
+      - name: Garantisci GA4 su tutte le pagine
+        run: python scripts/ensure_tracking.py
+
       - name: Commit aggiornamenti sito
         run: |
           git config user.name "github-actions[bot]"
