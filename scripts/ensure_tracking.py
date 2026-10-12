@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Garantisce Consent Mode v2 + GTM + GA4 (G-T4ZC7CM8RX) nel <head> di ogni pagina pubblica.
+"""Garantisce Consent Mode v2 + GTM + GA4 (G-T4ZC7CM8RX) nel <head> di ogni pagina pubblica,
+piu' il contatore visite senza cookie (visite.js) subito dopo consent.js.
 
 Usa lo stesso schema della home: consent default inline per primo, poi i comandi
 in dataLayer subito e gli script esterni (gtm.js, gtag.js) solo dopo il load
@@ -19,7 +20,10 @@ SKIP = re.compile(r"backup|preview|zenixa|^scripts/")
 CONSENT = """<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
-<script defer src="{prefix}consent.js"></script>"""
+<script defer src="{prefix}consent.js"></script>
+<script defer src="{prefix}visite.js"></script>"""
+
+CONSENT_JS = re.compile(r"\n?([ \t]*)<script defer src=\"((?:\.\./)*)consent\.js\"></script>")
 
 LOADER = """<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
      gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
@@ -35,9 +39,20 @@ LOADER = """<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano su
 <!-- End Google Tag Manager -->"""
 
 
+def ensure_counter(html: str) -> str | None:
+    """Contatore visite (visite.js) dopo consent.js, nelle pagine che non lo hanno ancora."""
+    if "visite.js" in html:
+        return None
+    m = CONSENT_JS.search(html)
+    if not m:
+        return None
+    tag = f'\n{m.group(1)}<script defer src="{m.group(2)}visite.js"></script>'
+    return html[:m.end()] + tag + html[m.end():]
+
+
 def patch(rel: str, html: str) -> str | None:
     if GA4_ID in html:
-        return None
+        return ensure_counter(html)
     head = re.search(r"<head[^>]*>", html, re.I)
     if not head:
         return None
@@ -49,9 +64,10 @@ def patch(rel: str, html: str) -> str | None:
     # il loader va subito dopo il consent default (e dopo consent.js se c'e')
     start = html.index("abra-consent-default")
     end = html.index("</script>", start) + len("</script>")
-    cjs = re.compile(r"\s*<script defer src=\"[^\"]*consent\.js\"></script>").match(html, end)
+    cjs = re.compile(r"(\s*<script defer src=\"[^\"]*(consent|visite)\.js\"></script>)+").match(html, end)
     at = cjs.end() if cjs else end
-    return html[:at] + "\n" + LOADER + html[at:]
+    html = html[:at] + "\n" + LOADER + html[at:]
+    return ensure_counter(html) or html
 
 
 def main() -> None:
