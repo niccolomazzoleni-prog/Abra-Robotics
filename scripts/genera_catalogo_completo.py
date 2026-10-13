@@ -586,6 +586,9 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
 </body>
 </html>"""
     (ROOT / "catalogo-unitree.html").write_text(html, encoding="utf-8")
+    # riga di link alle pagine modello (stessa di scripts/genera_hub_modelli.py)
+    from genera_hub_modelli import link_row
+    link_row("catalogo-unitree.html", False, ["go2", "as2", "a2", "b2", "g1", "g1-d", "h2", "r1", "r1-d", "z1"])
 
 
 def regenerate_listino_html() -> None:
