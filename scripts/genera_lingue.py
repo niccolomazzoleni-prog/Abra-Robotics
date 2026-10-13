@@ -23,9 +23,9 @@ from genera_hub_modelli import CAL, FAMILIES, HUB_CSS, SITE, load, template  # n
 from nomi_en import nome_en  # noqa: E402
 
 DATA = ROOT / "data" / "lingue"
-ORDER = ["de", "fr", "nl", "da", "sv", "no", "fi"]
+ORDER = ["de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs", "uk"]
 FAMILY_KEYS = ["go2", "as2", "a2", "b2", "g1", "g1-d", "h2", "r1", "r1-d", "z1"]
-HREFLANG = {"no": "nb"}  # norvegese bokmal
+HREFLANG = {"no": "nb", "uk": "en-GB"}  # norvegese bokmal; uk = pagina paese inglese per il Regno Unito
 
 UI_KEYS = ["home", "versions_prices", "table_version", "table_price", "table_link", "from", "excl_vat", "choose", "specs",
            "accessories", "delivery_short", "delivery_link", "quote_title", "quote_text", "btn_assess", "btn_call", "faq", "sources",
@@ -47,7 +47,7 @@ def langs() -> list[dict]:
 
 def check(d: dict) -> list[str]:
     err = [f"ui.{k}" for k in UI_KEYS if k not in d.get("ui", {})]
-    for k in FAMILY_KEYS:
+    for k in ([] if d.get("landing_only") else FAMILY_KEYS):
         f = d.get("families", {}).get(k)
         if not f:
             err.append(f"families.{k}")
@@ -77,7 +77,7 @@ def alternates(key: str | None, all_langs: list[dict]) -> str:
         if not f.get("en_only") and (ROOT / f["it_page"]).is_file():
             rows.append(("it", f"{SITE}/{f['it_page']}"))
         rows.append(("en", f"{SITE}/{f['en_page']}"))
-        rows += [(HREFLANG.get(L["code"], L["code"]), fam_url(L["code"], key)) for L in all_langs]
+        rows += [(HREFLANG.get(L["code"], L["code"]), fam_url(L["code"], key)) for L in all_langs if not L.get("landing_only")]
         rows.append(("x-default", f"{SITE}/{f['it_page']}" if rows[0][0] == "it" else f"{SITE}/{f['en_page']}"))  # come le hub IT/EN
     else:
         # pagine paese: gruppo tra loro (home IT/EN hanno contenuti diversi, non sono traduzioni)
@@ -121,7 +121,7 @@ def lang_bar(d: dict, key: str | None, all_langs: list[dict]) -> str:
             items.append(f'<a href="../{f["it_page"]}" hreflang="it">Italiano</a>')
         items.append(f'<a href="../{f["en_page"]}" hreflang="en">English</a>')
         items += [f'<a href="../{L["code"]}/unitree-{key}.html" hreflang="{HREFLANG.get(L["code"], L["code"])}"'
-                  f'{" aria-current=\"page\"" if L["code"] == d["code"] else ""}>{esc(L["name"])}</a>' for L in all_langs]
+                  f'{" aria-current=\"page\"" if L["code"] == d["code"] else ""}>{esc(L["name"])}</a>' for L in all_langs if not L.get("landing_only")]
     else:
         items.append('<a href="../" hreflang="it">Italiano</a>')
         items.append('<a href="../en/index-en.html" hreflang="en">English</a>')
@@ -267,6 +267,28 @@ def family_page(d: dict, key: str, data: dict, all_langs: list[dict]) -> str:
             + body + main + footer + '\n<script defer src="../script.js"></script>\n</body>\n</html>\n')
 
 
+GUIDES_H2 = {"de": "Ratgeber und Artikel", "fr": "Guides et articles", "nl": "Gidsen en artikelen", "da": "Guides og artikler",
+             "sv": "Guider och artiklar", "no": "Guider og artikler", "fi": "Oppaat ja artikkelit", "es": "Guías y artículos",
+             "pl": "Poradniki i artykuły", "cs": "Průvodce a články", "uk": "Guides and articles"}
+
+
+def guides(d: dict) -> str:
+    """Articoli del blog tradotti in questa lingua (scripts/blog_lingue.py): elenco con link."""
+    folder = ROOT / ("en" if d["code"] == "uk" else d["code"]) / "blog"
+    if not folder.is_dir():
+        return ""
+    items = []
+    for f in sorted(folder.glob("*.html")):
+        s = f.read_text(encoding="utf-8", errors="ignore")
+        t = re.search(r"<title>([^<]*)</title>", s)
+        if t:
+            rel = f"../{folder.relative_to(ROOT).as_posix()}/{f.name}"
+            items.append(f'<li><a href="{rel}">{esc(html.unescape(t.group(1)))}</a></li>')
+    if not items:
+        return ""
+    return section(d["ui"].get("guides_h2") or GUIDES_H2.get(d["code"], "Guides and articles"), "<ul>" + "".join(items) + "</ul>", "guides")
+
+
 def landing_page(d: dict, data: dict, all_langs: list[dict]) -> str:
     u, L = d["ui"], d["landing"]
     code = d["code"]
@@ -277,7 +299,9 @@ def landing_page(d: dict, data: dict, all_langs: list[dict]) -> str:
         prices = [r["price"] for r in rows if r["price"]]
         low = min(prices) if prices else None
         price = esc(u["from"].replace("{p}", money(low, d))) + " " + esc(u["excl_vat"]) if low else ""
-        cards.append(f'<a href="unitree-{k}.html"><strong>Unitree {esc(d["families"][k]["name"])}</strong><span>{esc(d["families"][k]["type"])}</span><span>{price}</span></a>')
+        href = f'../{FAMILIES[k]["en_page"]}' if d.get("landing_only") else f"unitree-{k}.html"
+        F = d.get("families", {}).get(k) or {"name": FAMILIES[k].get("name_en", FAMILIES[k]["name"]), "type": FAMILIES[k]["type_en"]}
+        cards.append(f'<a href="{href}"><strong>Unitree {esc(F["name"])}</strong><span>{esc(F["type"])}</span><span>{price}</span></a>')
     grid = section(u["models_h2"], '<div class="hm-grid">' + "".join(cards) + "</div>", "models")
     sections = "".join(section(s["h2"], "".join(f"<p>{para(p)}</p>" for p in s["paragraphs"])) for s in L["sections"])
     S = d["service"]
@@ -310,7 +334,7 @@ def landing_page(d: dict, data: dict, all_langs: list[dict]) -> str:
 <span class="hm-badge">{esc(u['support_badge'])}</span>
 </div>
 </section>
-{grid}{sections}{service}{delivery}{incentives}{cta(d)}
+{grid}{guides(d)}{sections}{service}{delivery}{incentives}{cta(d)}
 {faq_html}
 """
     lds = [ld_org] + ([faq_ld(faq)] if faq else [])
@@ -335,6 +359,9 @@ def main() -> None:
         out = ROOT / d["code"]
         out.mkdir(exist_ok=True)
         (out / "index.html").write_text(landing_page(d, data, all_langs), encoding="utf-8")
+        if d.get("landing_only"):
+            print(f"{d['code']}: 1 pagina paese (modelli: hub inglesi)")
+            continue
         for k in FAMILY_KEYS:
             (out / f"unitree-{k}.html").write_text(family_page(d, k, data[k], all_langs), encoding="utf-8")
         print(f"{d['code']}: 1 pagina paese + {len(FAMILY_KEYS)} pagine modello")
