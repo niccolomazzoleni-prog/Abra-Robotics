@@ -43,7 +43,7 @@
   function close() { if (banner) { banner.remove(); banner = null; } }
 
   // Pagine nelle lingue europee (/de/, /fr/, ...): banner in inglese, policy inglese in /en/
-  var LANGDIR = /^\/(de|fr|nl|da|sv|no|fi)\//.test(location.pathname);
+  var LANGDIR = /^\/(de|fr|nl|da|sv|no|fi|es|pl|cs|uk)\//.test(location.pathname);
 
   function prefix() {
     var p = location.pathname;

@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://abrarobotics.com"
-CODES = ["de", "fr", "nl", "da", "sv", "no", "fi"]
+CODES = ["de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs", "uk"]
 COMPETITORS = re.compile(r"meko|reichelt|quadruped\.de|eagle ?robots|mybotshop|generation ?robots|botland|funduino|robotshop", re.I)
 OFFICIAL = re.compile(r"(offiziell|officiel|offici[eë]l|officiell|offisiell|virallinen|official|autoris\w*|autoriz\w*|auktoriser\w*|autorisert)\w*\s+(\w+\s+)?(händler|vertrieb|vertriebs\w*|partner|distribut\w*|revendeur|dealer|forhandler|återförsälj\w*|jälleenmyy\w*|wederverkop\w*|importeur|importør|reseller|verdeler)", re.I)
 
@@ -66,7 +66,7 @@ def main() -> None:
         if not d or not (70 <= len(d.group(1)) <= 160):
             e(f"description {len(d.group(1)) if d else 'mancante'}")
         lang = p.parent.name
-        want = "nb" if lang == "no" else lang
+        want = {"no": "nb", "uk": "en-GB"}.get(lang, lang)
         if f'<html lang="{want}"' not in s:
             e("lang della pagina")
         c = re.search(r'<link href="([^"]+)" rel="canonical"', s)
