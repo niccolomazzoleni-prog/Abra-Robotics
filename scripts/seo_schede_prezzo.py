@@ -82,9 +82,17 @@ def fmt_en(p: float) -> str:
     return s[:-3] if s.endswith(".00") else s
 
 
-def price_title(name: str, en: bool) -> str:
+LISTINO_SLUGS = {v.get("slug", "").split("/")[-1] for v in json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8")).values() if isinstance(v, dict)}
+
+
+def price_title(name: str, en: bool, price: float | None = None) -> str:
     word = "price" if en else "prezzo"
-    for cand in (f"{name} {word} | Abra Robotics", f"{name} {word} | Abra"):
+    cands = []
+    if price:  # prezzo della scheda nel title: chi cerca "<modello> prezzo" lo vede gia' nel risultato
+        n = f"{price:,.0f}"
+        cands = ([f"{name} price: €{n} excl. VAT", f"{name} price: €{n}"] if en
+                 else [f"{name} prezzo: {n.replace(',', '.')} € + IVA", f"{name} prezzo: {n.replace(',', '.')} €"])
+    for cand in (*cands, f"{name} {word} | Abra Robotics", f"{name} {word} | Abra"):
         if len(cand) <= MAX_TITLE:
             return cand
     return f"{name} {word}"
@@ -247,7 +255,9 @@ def main() -> None:
         canon = re.search(r'<link[^>]*rel="canonical"[^>]*href="([^"]+)"', s) or re.search(r'<link[^>]*href="([^"]+)"[^>]*rel="canonical"', s)
         if canon and not canon.group(1).endswith("/" + f.name):
             continue  # duplicato con canonical verso un'altra scheda: resta com'e'
-        plan[f] = (en, name, price_title(name, en))
+        # prezzo nel title solo per le schede presenti nel listino pubblico (prezzo verificato)
+        price = page_price(s, product_of(s), en) if f.name.startswith("unitree-") and f.name.replace("-en.html", ".html") in LISTINO_SLUGS else None
+        plan[f] = (en, name, price_title(name, en, price))
     # mai title duplicati: chi collide mantiene il title attuale
     seen = {}
     for f, (en, name, t) in plan.items():
