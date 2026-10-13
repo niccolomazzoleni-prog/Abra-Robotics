@@ -272,6 +272,27 @@ GUIDE_IT = {
  ("Comprare un Unitree R1 in Italia", [
   "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi, fattura italiana e supporto in italiano. Per scuole, università ed enti pubblici prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>."]),
 ],
+"b2": [
+ ("Unitree B2: il quadrupede industriale per carichi e ambienti difficili", [
+  "Il B2 pesa circa 60 kg, regge almeno 120 kg da fermo e oltre 40 kg in camminata, supera i 6 m/s e lavora oltre 5 ore senza carico grazie alla batteria da 2250 Wh. La protezione IP67 gli permette di lavorare sotto pioggia, polvere e fango.",
+  "È pensato per ispezioni industriali lunghe, trasporto di strumenti pesanti, soccorso e ricerca su locomozione ad alte prestazioni, dove un quadrupede compatto come il <a href=\"go2.html\">Go2</a> non basta."]),
+ ("B2 o B2-W?", [
+  "Il B2 cammina su zampe ed è il più versatile su terreni accidentati, scale e macerie. Il B2-W ha ruote all'estremità delle zampe: su strade, piazzali e capannoni copre distanze lunghe più velocemente e con meno consumo, senza perdere la capacità di superare ostacoli. Esiste anche il kit di conversione a quattro ruote per trasformare un B2 in B2-W.",
+  "Entrambi si ordinano anche con il kit LiDAR SLAM per la mappatura e la navigazione autonoma, e con moduli di calcolo dedicati (Intel Core i7 o NVIDIA Jetson AGX fino a 550 TOPS) per far girare a bordo visione e AI."]),
+ ("B2, A2 o AS2?", [
+  "L'<a href=\"a2.html\">A2</a> è il quadrupede industriale più leggero (circa 42 kg) con lunga autonomia, adatto a ronde e ispezioni ripetute. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia. Il B2 è la scelta quando servono carico, velocità e robustezza massimi. Confronto completo nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+ ("Comprare un Unitree B2 in Italia", [
+  "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi, fattura italiana e supporto in italiano. Per i progetti industriali partiamo dal compito da svolgere (percorso, carico, ambiente) e definiamo versione, batterie di ricambio (standard, basse temperature, alta capacità) e calcolo; verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a> disponibili."]),
+],
+"z1": [
+ ("Z1 Air, Z1 Pro e D1: quale braccio scegliere", [
+  "Lo Z1 è un braccio a 6 assi da circa 4,5 kg con 740 mm di sbraccio e ripetibilità di circa 0,1 mm. Lo Z1 Air porta 2 kg, lo Z1 Pro almeno 3 kg. Si ordina con pinza standard o con pinza e telecamera RealSense D405 o D435i per la presa guidata dalla visione.",
+  "Il D1 è più leggero (500 g di carico, 550 mm di sbraccio, 670 mm con pinza) ed è pensato per didattica, ricerca e raccolta dati. Il D1-T è il kit di teleoperazione in stile Mobile ALOHA con due o quattro bracci D1, usato per registrare dimostrazioni e addestrare politiche di manipolazione."]),
+ ("Montare il braccio su un quadrupede", [
+  "Lo Z1 è pensato anche per il montaggio su robot mobili, per esempio su un quadrupede come il <a href=\"b2.html\">B2</a>: si ottiene un manipolatore mobile per aprire porte, premere pulsanti, prelevare campioni o ispezionare da vicino. Si programma con l'SDK Unitree e con ROS."]),
+ ("Comprare Z1 e D1 in Italia", [
+  "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi, fattura italiana e supporto in italiano. Per laboratori e università prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>."]),
+],
 }
 
 
