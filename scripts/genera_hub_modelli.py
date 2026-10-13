@@ -586,8 +586,12 @@ def link_row(page_path: str, en: bool, keys: list[str]) -> None:
     if "<!-- HUB:MODELLI -->" in s:
         s = re.sub(r"<!-- HUB:MODELLI -->[\s\S]*?<!-- /HUB:MODELLI -->", lambda m: block, s)
     else:
-        i = s.index('<section class="collection-hero">')
-        j = s.index("</section>", i) + len("</section>")
+        if '<section class="collection-hero">' in s:
+            i = s.index('<section class="collection-hero">')
+            j = s.index("</section>", i) + len("</section>")
+        else:  # catalogo: hero in <header class="cat-hero">
+            i = s.index('<header class="cat-hero">')
+            j = s.index("</header>", i) + len("</header>")
         s = s[:j] + "\n" + block + s[j:]
     p.write_text(s, encoding="utf-8")
 
@@ -606,8 +610,10 @@ def main() -> None:
     link_row("umanoidi.html", False, ["g1", "g1-d", "h2", "r1", "r1-d"])
     link_row("quadrupedi.html", False, ["go2", "as2", "a2", "b2"])
     link_row("accessori.html", False, ["z1"])
+    link_row("catalogo-unitree.html", False, ["go2", "as2", "a2", "b2", "g1", "g1-d", "h2", "r1", "r1-d", "z1"])
     link_row("en/umanoidi-en.html", True, ["g1", "g1-d", "h2", "r1", "r1-d"])
     link_row("en/quadrupedi-en.html", True, ["go2", "as2", "a2", "b2"])
+    link_row("en/catalogo-unitree-en.html", True, ["go2", "as2", "a2", "b2", "g1", "g1-d", "h2", "r1", "r1-d", "z1"])
     for k, f in FAMILIES.items():
         print(f"{k:5s} robot {len(data[k]['robots']):3d} accessori {len(data[k]['acc']):3d}")
     print("scritte:", " ".join(written))

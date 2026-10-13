@@ -42,6 +42,9 @@ def nice_fam(fam: str) -> str:
     return UPPER.get(fam.lower(), fam)
 
 
+VARIANT_WORDS = {"standard", "ultimate", "professional", "smart", "flagship", "plus", "basic"}
+
+
 def label(name: str) -> str:
     out = []
     for i, raw in enumerate(name.split()):
@@ -53,6 +56,10 @@ def label(name: str) -> str:
             w = w.upper()
         elif re.fullmatch(r"\d+[a-z]+", lw):
             w = lw.upper().replace("TFLOPS", " TFLOPS").replace("TOPS", " TOPS")
+        elif len(w) == 1 and w.isupper() and i and re.sub(r"\W", "", name.split()[i - 1]).lower() in VARIANT_WORDS:
+            pass  # lettera di versione Unitree: "Standard A", "Ultimate E"
+        elif lw in VARIANT_WORDS and i + 1 < len(name.split()) and re.fullmatch(r"[A-Z][),]*", name.split()[i + 1]):
+            w = w[:1].upper() + w[1:].lower()
         elif i and lw in SMALL:
             w = lw
         else:
