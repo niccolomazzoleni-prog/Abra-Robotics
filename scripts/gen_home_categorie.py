@@ -92,7 +92,21 @@ def blocco():
             '<p class="label">Prodotti e prezzi</p><h2>Sfoglia per categoria</h2>'
             f'<p class="section-sub" style="margin-left:0;">Prezzi pubblici IVA esclusa per oltre {tot // 10 * 10} prodotti. '
             'Scegli una categoria per confrontare modelli e configurazioni.</p></div>'
-            '<div class="cat-grid">' + "".join(card(*c) for c in CATEGORIE) + listino + "</div></div></section>")
+            '<div class="cat-grid">' + "".join(card(*c) for c in CATEGORIE) + listino + "</div>" + modelli() + "</div></section>")
+
+
+# pagine hub per modello (scripts/genera_hub_modelli.py): link diretti dalla home, cosi' Google le scopre e le pesa
+MODELLI = [("g1.html", "G1"), ("h2.html", "H2"), ("r1.html", "R1"), ("r1-d.html", "R1-D / R1-A"),
+           ("g1-d.html", "G1-D"), ("go2.html", "Go2"), ("as2.html", "AS2"), ("a2.html", "A2"),
+           ("b2.html", "B2"), ("z1.html", "Z1 e D1")]
+
+
+def modelli():
+    pill = ('padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);'
+            'text-decoration:none;font-size:.9rem')
+    return ('<p class="label" style="margin-top:32px">Prezzi per modello Unitree</p>'
+            '<div class="hm-fam" style="display:flex;flex-wrap:wrap;gap:8px">'
+            + "".join(f'<a style="{pill}" href="{h}">Unitree {n}</a>' for h, n in MODELLI) + "</div>")
 
 
 def main():
