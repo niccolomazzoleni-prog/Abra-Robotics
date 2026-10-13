@@ -159,7 +159,8 @@ def build(code: str, slug: str, frag_path: str) -> Path:
     head = src[: src.index("<body>")]
     head = re.sub(r'<html lang="[^"]*"', f'<html lang="{L["html_lang"]}"', src[: src.index("<head>")]) + head[head.index("<head>"):]
     head = re.sub(r"<title>[\s\S]*?</title>", f"<title>{H.escape(title, quote=False)}</title>", head, count=1)
-    head = re.sub(r'<meta name="description" content="[^"]*"/>', f'<meta name="description" content="{H.escape(desc)}"/>', head, count=1)
+    # description in entrambi gli ordini degli attributi
+    head = re.sub(r'<meta (?:name="description" content="[^"]*"|content="[^"]*" name="description")\s*/?>', lambda m: f'<meta name="description" content="{H.escape(desc)}"/>', head, count=1)
     head = re.sub(r'<link rel="canonical" href="[^"]*"/>', f'<link rel="canonical" href="{own}"/>', head, count=1)
     head = re.sub(r'<meta property="og:locale" content="[^"]*"/>', f'<meta property="og:locale" content="{L["og_locale"]}"/>', head)
     head = re.sub(r'(<meta property="og:title" content=")[^"]*"', lambda m: m.group(1) + H.escape(title) + '"', head)
@@ -246,7 +247,7 @@ def check(code: str, slug: str) -> list[str]:
     t = re.search(r"<title>([\s\S]*?)</title>", s)
     if not t or not (20 <= len(H.unescape(t.group(1))) <= 65):
         err.append(f"title {len(t.group(1)) if t else 0}")
-    d = re.search(r'<meta name="description" content="([^"]*)"', s)
+    d = re.search(r'<meta name="description" content="([^"]*)"', s) or re.search(r'<meta content="([^"]*)" name="description"', s)
     if not d or not (70 <= len(H.unescape(d.group(1))) <= 165):
         err.append(f"description {len(d.group(1)) if d else 0}")
     for h in re.findall(r'(?:href|src)="(/[^"#?]*)', s):
