@@ -174,7 +174,12 @@ def collect_urls() -> list[tuple[str, str, str]]:
             loc = loc.rstrip("/") or SITE + "/"
         if rel.name == "index.html" and len(rel.parts) == 1:
             loc = SITE + "/"
-        urls.append((loc, changefreq_for(html), priority_for(html)))
+        elif rel.name == "index.html":  # pagine paese /de/ ecc.: URL con la barra, come il canonical
+            loc = SITE + "/" + rel.parent.as_posix() + "/"
+        pr = priority_for(html)
+        if rel.name == "index.html" and len(rel.parts) > 1:
+            pr = "0.8"
+        urls.append((loc, changefreq_for(html), pr))
 
     # dedupe preserving order
     seen: set[str] = set()
