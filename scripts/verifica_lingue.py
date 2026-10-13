@@ -83,9 +83,9 @@ def main() -> None:
             if not q or not q.is_file():
                 e(f"hreflang {h} verso pagina inesistente {u}")
         for href in re.findall(r'(?:href|src)="([^"#?]+)', s):
-            if href.startswith(("http", "mailto:", "tel:", "data:", "//")):
+            if href.startswith(("http", "mailto:", "tel:", "data:", "//")) or href == "/":
                 continue
-            target = (p.parent / href).resolve()
+            target = (ROOT / href.lstrip("/")) if href.startswith("/") else (p.parent / href).resolve()
             if href.endswith("/"):
                 target = target / "index.html"
             if not target.exists():
