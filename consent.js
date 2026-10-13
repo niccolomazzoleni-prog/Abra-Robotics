@@ -42,8 +42,12 @@
   var banner;
   function close() { if (banner) { banner.remove(); banner = null; } }
 
+  // Pagine nelle lingue europee (/de/, /fr/, ...): banner in inglese, policy inglese in /en/
+  var LANGDIR = /^\/(de|fr|nl|da|sv|no|fi)\//.test(location.pathname);
+
   function prefix() {
     var p = location.pathname;
+    if (LANGDIR) return '../';
     if (/\/en\/(prodotti|blog)\//.test(p)) return '../../';
     if (/\/(prodotti|blog|en|editor)\//.test(p)) return '../';
     return '';
@@ -67,13 +71,13 @@
       document.head.appendChild(st);
     }
     close();
-    var en = document.documentElement.lang === 'en' || location.pathname.indexOf('/en/') >= 0;
+    var en = document.documentElement.lang === 'en' || location.pathname.indexOf('/en/') >= 0 || LANGDIR;
     var c = read() || { analytics: false, marketing: false };
     var T = en ? {
       text: 'We use technical cookies and, with your consent, statistics (Google Analytics) and marketing cookies (Google Ads, Meta) to measure visits and campaigns.',
       policy: 'Cookie Policy', reject: 'Reject', accept: 'Accept all', prefs: 'Customise', save: 'Save choices',
       tech: 'Technical (always on)', stats: 'Statistics: Google Analytics', mkt: 'Marketing: Google Ads, Meta Pixel', close: 'Close and reject',
-      policyHref: (/\/en\/(prodotti|blog)\//.test(location.pathname) ? '../' : '') + 'cookie-policy-en.html',
+      policyHref: LANGDIR ? '../en/cookie-policy-en.html' : (/\/en\/(prodotti|blog)\//.test(location.pathname) ? '../' : '') + 'cookie-policy-en.html',
     } : {
       text: 'Usiamo cookie tecnici e, con il tuo consenso, cookie di statistica (Google Analytics) e di marketing (Google Ads, Meta) per misurare visite e campagne.',
       policy: 'Cookie Policy', reject: 'Rifiuta', accept: 'Accetta tutti', prefs: 'Personalizza', save: 'Salva le scelte',
@@ -119,7 +123,7 @@
     var a = document.createElement('a');
     a.href = '#';
     a.className = 'consent-open';
-    a.textContent = document.documentElement.lang === 'en' ? 'Cookie preferences' : 'Preferenze cookie';
+    a.textContent = document.documentElement.lang === 'en' || LANGDIR ? 'Cookie preferences' : 'Preferenze cookie';
     a.addEventListener('click', function (e) { e.preventDefault(); open(true); });
     legal.appendChild(a);
   }
