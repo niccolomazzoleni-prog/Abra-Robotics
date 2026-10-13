@@ -510,6 +510,8 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
 <link href="{pre}favicon.ico" rel="icon" sizes="any"/>
 <link href="{pre}images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
 <link href="{pre}images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin/>
 <link href="{pre}style.css" rel="stylesheet"/>
 {style}
 {HUB_CSS}
