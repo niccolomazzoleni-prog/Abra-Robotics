@@ -92,7 +92,13 @@ def price_title(name: str, en: bool, price: float | None = None) -> str:
         n = f"{price:,.0f}"
         cands = ([f"{name} price: €{n} excl. VAT", f"{name} price: €{n}"] if en
                  else [f"{name} prezzo: {n.replace(',', '.')} € + IVA", f"{name} prezzo: {n.replace(',', '.')} €"])
-    for cand in (*cands, f"{name} {word} | Abra Robotics", f"{name} {word} | Abra"):
+    # nome lungo: la parte tra parentesi (specifiche) e' la prima a sparire, il prezzo resta visibile
+    short = re.sub(r"\s*\([^)]*\)", "", name).strip()
+    if short != name and price:
+        n2 = f"{price:,.0f}"
+        cands += ([f"{short} price: €{n2} excl. VAT", f"{short} price: €{n2}"] if en
+                  else [f"{short} prezzo: {n2.replace(',', '.')} € + IVA", f"{short} prezzo: {n2.replace(',', '.')} €"])
+    for cand in (*cands, f"{name} {word} | Abra Robotics", f"{name} {word} | Abra", f"{short} {word}"):
         if len(cand) <= MAX_TITLE:
             return cand
     return f"{name} {word}"

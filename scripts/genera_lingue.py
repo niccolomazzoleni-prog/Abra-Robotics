@@ -74,7 +74,7 @@ def alternates(key: str | None, all_langs: list[dict]) -> str:
     rows = []
     if key:
         f = FAMILIES[key]
-        if not f.get("en_only") and (ROOT / f["it_page"]).is_file():
+        if (ROOT / f["it_page"]).is_file():
             rows.append(("it", f"{SITE}/{f['it_page']}"))
         rows.append(("en", f"{SITE}/{f['en_page']}"))
         rows += [(HREFLANG.get(L["code"], L["code"]), fam_url(L["code"], key)) for L in all_langs if not L.get("landing_only")]
