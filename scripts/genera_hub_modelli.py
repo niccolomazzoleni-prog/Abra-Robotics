@@ -212,6 +212,69 @@ FAMILIES = {
 }
 
 
+# Testi guida delle pagine hub (solo IT). Fatti: specifiche ufficiali Unitree gia' nel generatore,
+# listino pubblico, servizio Abra. Niente nomi di concorrenti, niente prezzi scritti a mano (sono in tabella).
+GUIDE_IT = {
+"go2": [
+ ("Go2 Air, Pro, EDU, Go2-X e Go2-W: le differenze in pratica", [
+  "Tutte le versioni del Go2 condividono lo stesso corpo da circa 15 kg, la batteria da 8000 mAh e il LiDAR 4D super grandangolare di serie. Cambiano tre cose: la potenza dei motori (quindi velocità e carico), la possibilità di programmare il robot e i sensori aggiuntivi.",
+  "Il Go2 Air è la versione d'ingresso: si comanda da app, segue la persona ed è pensato per eventi, comunicazione e primo contatto con i quadrupedi. Il Go2 Pro aggiunge prestazioni più alte (fino a 3,5 m/s e circa 8 kg di carico) e funzioni vocali e di interazione più complete.",
+  "Le versioni Go2 EDU sono le uniche aperte allo sviluppo secondario: SDK ufficiale Unitree, accesso ai sensori e al controllo di basso livello, calcolo NVIDIA Jetson a bordo. Si distinguono per i sensori: Standard, Smart, Plus con LiDAR Livox Mid-360 e Ultimate con LiDAR Hesai XT16 per la mappatura 3D di precisione.",
+  "Il Go2-W monta ruote all'estremità delle zampe: cammina come un Go2 ma su superfici piane si sposta rotolando, con meno consumo e più velocità. È disponibile nelle configurazioni U1–U5, dalla Standard alla Inspection con gimbal."]),
+ ("A cosa serve un Unitree Go2", [
+  "Ricerca e università: è la piattaforma quadrupede più diffusa nei laboratori di locomozione e reinforcement learning, grazie al prezzo contenuto e all'ecosistema software (unitree_sdk2, ROS 2, simulazione in Isaac Sim e MuJoCo).",
+  "Didattica e scuole: con l'app e la programmazione grafica si usa per corsi di robotica, STEM e laboratori; le versioni EDU permettono di passare poi a Python e C++.",
+  "Ispezione leggera e sicurezza: le versioni con LiDAR e telecamere servono per sopralluoghi, mappatura di ambienti e controlli ripetitivi in spazi dove un robot su ruote non passa. Per carichi o ambienti industriali gravosi conviene guardare l'<a href=\"a2.html\">Unitree A2</a> o il <a href=\"b2.html\">B2</a>.",
+  "Eventi e comunicazione: il Go2 Air e il Pro sono i modelli più usati per fiere, showroom e attività marketing."]),
+ ("Go2 o un altro quadrupede Unitree?", [
+  "Il Go2 è il quadrupede compatto: leggero, facile da trasportare, ideale per sviluppo e ambienti interni. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia, più robusta e con più autonomia. L'<a href=\"a2.html\">A2</a> e il <a href=\"b2.html\">B2</a> sono quadrupedi industriali con protezione IP, carichi molto più alti e diverse ore di autonomia. Il confronto completo è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+ ("Comprare un Unitree Go2 in Italia con Abra Robotics", [
+  "I prezzi in tabella sono End-User IVA esclusa, con spedizione e dazio in Italia già inclusi: nessun costo doganale a sorpresa. Prima dell'ordine ti aiutiamo a scegliere versione e accessori in base all'uso reale e verifichiamo gratuitamente se l'acquisto rientra in <a href=\"finanziamenti.html\">iperammortamento, Nuova Sabatini o bandi regionali</a>.",
+  "Fattura italiana, consegna in Italia, Svizzera e Balcani, supporto in italiano per messa in servizio e primi passi con l'SDK."]),
+],
+"a2": [
+ ("Unitree A2: un quadrupede pensato per l'industria", [
+  "L'A2 nasce per lavorare in impianti, cantieri e aree esterne: pesa circa 42 kg, porta circa 25 kg in camminata continua (circa 100 kg da fermo) e cammina oltre 5 ore senza carico, coprendo circa 20 km con una carica. La protezione IP56, IP67 sui componenti principali della versione Pro, gli permette di lavorare con polvere e pioggia.",
+  "A differenza dei quadrupedi compatti come il <a href=\"go2.html\">Go2</a>, l'A2 è progettato per missioni ripetute e lunghe: giri di ispezione programmati, sorveglianza perimetrale, trasporto di strumenti e sensori."]),
+ ("A2 Standard, A2 Pro o A2-W?", [
+  "L'A2 Standard ha un LiDAR e una telecamera HD: è la scelta per ispezioni e trasporto leggero in ambienti già mappati. L'A2 Pro aggiunge un secondo LiDAR e protezione IP67 dei componenti principali, per ambienti più gravosi e percezione più completa intorno al robot.",
+  "Le versioni A2-W hanno ruote all'estremità delle zampe: su strade, piazzali e corridoi lunghi si muovono rotolando, più veloci e con meno consumo, mantenendo la capacità di salire scale e ostacoli."]),
+ ("Applicazioni tipiche dell'A2", [
+  "Ispezione di impianti (energia, oil & gas, chimico, acque): letture di strumenti, termografia e rilevamento di anomalie lungo percorsi ripetuti.",
+  "Sicurezza e sorveglianza: ronde notturne e controllo perimetrale con telecamere e LiDAR.",
+  "Logistica leggera in esterno: trasporto di attrezzature e campioni dove non arrivano carrelli o AMR su ruote.",
+  "Per carichi ancora maggiori e velocità oltre 6 m/s c'è il <a href=\"b2.html\">Unitree B2</a>; per un quadrupede di fascia intermedia l'<a href=\"as2.html\">AS2</a>. Il confronto è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+ ("Comprare un Unitree A2 in Italia", [
+  "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi. Per un progetto industriale partiamo da una call sul percorso di ispezione o sul compito da svolgere, poi definiamo versione, accessori (batterie di ricambio, telecomando G20, modulo UWB) e verifichiamo gli incentivi disponibili nella pagina <a href=\"finanziamenti.html\">Finanziamenti</a>."]),
+],
+"g1": [
+ ("G1 Air, G1 Pro, G1 EDU, G1-Comp: come orientarsi", [
+  "Il G1 è l'umanoide bipede di Unitree alto circa 1,32 m e pesante circa 35 kg. Le versioni si distinguono per gradi di libertà, coppia ai motori, calcolo a bordo e mani.",
+  "Il G1 Air (Basic) ha 23 gradi di libertà, mani fisse e nessuno sviluppo secondario: è pensato per dimostrazioni ed eventi. Il G1 Pro aggiunge funzioni di intrattenimento e interazione. Il G1-Comp è la versione atletica per competizioni.",
+  "Le versioni G1 EDU (codici Unitree G1-U1 … U10) sono quelle per ricerca e sviluppo: SDK di alto e basso livello, NVIDIA Jetson Orin a bordo, coppia al ginocchio di 120 N·m e carico al braccio di circa 3 kg. Salendo di codice si aggiungono vita e polsi articolati e mani dexterous: Dex3-1 a tre dita (anche tattile), Inspire e BrainCo a cinque dita."]),
+ ("Quale G1 EDU per il tuo laboratorio", [
+  "Locomozione e controllo del corpo intero: G1 EDU Standard (U1) o Plus (U2, vita e polsi articolati).",
+  "Manipolazione e apprendimento per imitazione: le Ultimate con mani Dex3-1 (U3, U4 tattile) o a cinque dita (Inspire, BrainCo) per afferrare oggetti reali.",
+  "Raccolta dati per AI fisica e teleoperazione: valuta anche il <a href=\"g1-d.html\">G1-D</a>, il busto dual-arm su piantana o base mobile pensato proprio per la manipolazione."]),
+ ("Programmare il G1", [
+  "Unitree pubblica su GitHub l'SDK ufficiale (unitree_sdk2), il pacchetto ROS 2 e i modelli per la simulazione in Isaac Sim e MuJoCo: si sviluppa la politica in simulazione e la si porta sul robot reale. Approfondimenti nella <a href=\"blog/unitree-g1-programmazione.html\">guida alla programmazione del G1</a> e nel confronto <a href=\"blog/unitree-g1-quale-versione-scegliere.html\">quale versione del G1 scegliere</a>."]),
+ ("Comprare un Unitree G1 in Italia", [
+  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size)."]),
+],
+"r1": [
+ ("Unitree R1: l'umanoide compatto per iniziare", [
+  "L'R1 è alto circa 1,23 m e pesa circa 29 kg: è l'umanoide bipede più accessibile di Unitree. Cammina, corre, esegue movimenti dinamici e acrobatici, e nella versione EDU è completamente programmabile.",
+  "Le versioni: R1 Air (20 gradi di libertà, senza vita e testa motorizzate), R1 Basic (26 gradi di libertà, telecamera binoculare), R1 EDU Standard (R1-U1) con sviluppo secondario e modulo AI da 40 TOPS, R1 EDU Smart (R1-U2) con base da 100 TOPS, e le R1 EDU Professional (R1-U3 … U6 e oltre) con mani Dex3-1, BrainCo Revo 2 o Linker Hand."]),
+ ("R1 o G1?", [
+  "L'R1 costa molto meno del <a href=\"g1.html\">G1</a> ed è più piccolo e leggero: è la scelta giusta per didattica, laboratori universitari, corsi su locomozione e reinforcement learning, dimostrazioni. Il G1 ha motori più potenti, più gradi di libertà nelle versioni alte e più opzioni di mani: è la piattaforma per la ricerca su manipolazione e AI fisica."]),
+ ("Programmare l'R1 EDU", [
+  "Le versioni EDU danno accesso allo sviluppo di alto e basso livello con l'SDK Unitree e all'interfaccia per la simulazione in Isaac Sim: si addestra in simulazione e si trasferisce sul robot. Per il busto a doppio braccio su base fissa o mobile c'è la famiglia <a href=\"r1-d.html\">R1-D / R1-A</a>."]),
+ ("Comprare un Unitree R1 in Italia", [
+  "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi, fattura italiana e supporto in italiano. Per scuole, università ed enti pubblici prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>."]),
+],
+}
+
+
 def family_of(name: str) -> str | None:
     first = name.upper().replace("UNITREE ", "").split()[0].rstrip("/") if name.strip() else ""
     best = None
@@ -335,10 +398,10 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
                 f"which to choose. Sold in Italy by Abra Robotics.") if low else f"Unitree {name}: versions, official specs and quote from Abra Robotics."
         lead = f"{f['what_en']} Below: every {name} version we sell with its end-user price (excl. VAT), the official specifications and how to choose."
     else:
-        title = f.get("seo_it") or f"Unitree {name} prezzo: versioni e specifiche | Abra"
+        title = f.get("seo_it") or (f"Unitree {name} prezzo Italia: da {eur(low, False)} €, tutte le versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
         h1 = f"Unitree {name}: prezzi e versioni in Italia"
         desc = (f"Prezzo Unitree {name} in Italia: tutte le versioni da {eur(low, False)} € IVA esclusa, specifiche ufficiali "
-                f"e quale scegliere. Filiera di distribuzione di Unitree Italia.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
+                f"e quale scegliere. Spedizione e dazio inclusi, supporto in italiano.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
         lead = f"{f['what_it']} Qui trovi tutte le versioni {name} a listino con prezzo End-User (IVA esclusa), le specifiche ufficiali e come scegliere."
     if len(title) > 60:
         title = title.replace(" | Abra", "")[:60].rsplit(" ", 1)[0]
@@ -357,6 +420,10 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
     specs = "".join(f'<div><span>{html.escape(s[1] if en else s[0])}</span><strong>{html.escape(split(s[2], en))}</strong></div>'
                     for s in f["specs"] if (s[1] if en else s[0]))
     choose = "".join(f"<p><strong>{html.escape(a)}</strong>: {html.escape(b)}</p>" for a, b in f["choose_en" if en else "choose_it"])
+    # Testi guida (HTML fidato, scritto qui sopra): solo pagine IT.
+    guide = "" if en else "".join(
+        f'<section class="section hm-guide" style="padding-top:0"><div class="container"><h2>{html.escape(h)}</h2>'
+        + "".join(f"<p>{p}</p>" for p in ps) + "</div></section>\n" for h, ps in GUIDE_IT.get(key, []))
     acc_html = ""
     if robots and acc:
         acc_html = (f'<section class="section" style="padding-top:0"><div class="container"><h2>{"Accessories for" if en else "Accessori per"} Unitree {html.escape(name)}</h2>'
@@ -459,7 +526,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
 <h2>{T(f'Unitree {name} official specifications', f'Specifiche ufficiali Unitree {name}')}</h2>
 <div class="hm-specs">{specs}</div>
 </div></section>
-{acc_html}
+{guide}{acc_html}
 <section class="section section-cta"><div class="container" style="text-align:center">
 <h2>{T(f'Get a quote for the Unitree {name}', f"Preventivo per l'Unitree {name}")}</h2>
 <p>{T('Tell us what you need it for: we suggest the right version, accessories and financing options.', 'Raccontaci a cosa ti serve: ti indichiamo versione, accessori e possibilità di finanziamento.')}</p>
