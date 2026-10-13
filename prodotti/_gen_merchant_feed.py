@@ -162,7 +162,9 @@ def load_items(avail_map: dict[str, str]) -> tuple[list[dict], list[str]]:
                 "mpn": mpn,
                 "product_type": product_type,
                 "category": category_for(pid, cat_html),
-                "availability": resolve_availability(pid, avail_map),
+                # ricambi su ordinazione: la scheda dichiara BackOrder nel JSON-LD
+                "availability": "backorder" if '"availability": "https://schema.org/BackOrder"' in text
+                else resolve_availability(pid, avail_map),
             })
     return items, skipped
 
