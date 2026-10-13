@@ -27,6 +27,7 @@ CAL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPd
 FAMILIES = {
     "g1": {
         "name": "G1", "prefixes": ["G1", "G1-E"], "it_page": "g1.html", "en_page": "en/g1-en.html",
+        "seo_it": "Unitree G1 prezzo: Basic, Pro, EDU U1-U10, Ultimate", "seo_en": "Unitree G1 price: Basic, Pro, EDU U1-U10, Ultimate",
         "image": "images/prodotti/2026/famiglia-g1.png", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
         "type_it": "Robot umanoide", "type_en": "Humanoid robot",
         "source": "https://www.unitree.com/g1/",
@@ -241,7 +242,11 @@ def load() -> dict[str, dict]:
         if not fam:
             continue
         # R1 / R1-D: nomi di listino così come sono (label() abbassa le lettere di variante "A", "E")
-        row = {"sku": sku, "name": v["nome"] if fam in ("r1", "r1-d") else label(v["nome"]), "price": v.get("prezzo_eur"), "slug": slug}
+        name = v["nome"] if fam in ("r1", "r1-d") else label(v["nome"])
+        # label() abbassa le lettere di variante ("Ultimate a", "G1 e"): le rimette maiuscole
+        name = re.sub(r"\b(Ultimate|Professional|Smart|Standard|Plus|G1|H2|R1|Go2-W|AS2-W)\s([a-z])\b", lambda m: f"{m.group(1)} {m.group(2).upper()}", name)
+        name = re.sub(r"\b(standard|smart|plus|ultimate|professional)\b", lambda m: m.group(1).capitalize(), name)
+        row = {"sku": sku, "name": name, "price": v.get("prezzo_eur"), "slug": slug}
         is_robot = v.get("categoria") == "UMANOIDI"
         if fam == "z1":  # bracci: i "robot" sono i bracci, non pinze/telecamere/motori
             n = v["nome"].upper()
