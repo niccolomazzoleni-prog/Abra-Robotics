@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from genera_correlati import label  # noqa: E402
+from nomi_en import nome_en  # noqa: E402
 
 SITE = "https://abrarobotics.com"
 CAL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF"
@@ -432,7 +433,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
     rows = robots or acc
     th = ("Version", "Price (excl. VAT)", "") if en else ("Versione", "Prezzo (IVA esclusa)", "")
     tr = "\n".join(
-        f'<tr><td><a href="{link(r["slug"])}">{html.escape(r["name"])}</a></td>'
+        f'<tr><td><a href="{link(r["slug"])}">{html.escape(nome_en(r["name"]) if en else r["name"])}</a></td>'
         f'<td class="p">{("from € " + eur(r["price"], True)) if en else ("da " + eur(r["price"], False) + " €")}</td>'
         f'<td><a href="{link(r["slug"])}">{"Details" if en else "Scheda"} →</a></td></tr>'
         for r in rows if r["price"])
@@ -449,7 +450,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
     if robots and acc:
         acc_html = (f'<section class="section" style="padding-top:0"><div class="container"><h2>{"Accessories for" if en else "Accessori per"} Unitree {html.escape(name)}</h2>'
                     '<ul class="hm-acc">' + "".join(
-                        f'<li><a href="{link(a["slug"])}">{html.escape(a["name"])}<span>{("from € " + eur(a["price"], True)) if en else ("da " + eur(a["price"], False) + " €")}</span></a></li>'
+                        f'<li><a href="{link(a["slug"])}">{html.escape(nome_en(a["name"]) if en else a["name"])}<span>{("from € " + eur(a["price"], True)) if en else ("da " + eur(a["price"], False) + " €")}</span></a></li>'
                         for a in acc[:24] if a["price"]) + "</ul></div></section>")
 
     srcs = [f["source"]] + ([f["source2"]] if f.get("source2") else [])
@@ -490,8 +491,11 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
     lds = "\n".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld_product, ld_bc, ld_faq))
 
+    # altre lingue (scripts/genera_lingue.py): solo se la pagina esiste gia'
+    others = "".join(f'<link rel="alternate" hreflang="{ {"no": "nb"}.get(c, c)}" href="{SITE}/{c}/unitree-{key}.html"/>\n'
+                     for c in ("de", "fr", "nl", "da", "sv", "no", "fi") if (ROOT / c / f"unitree-{key}.html").is_file())
     hreflang = (f'<link rel="alternate" hreflang="it" href="{url_it}"/>\n<link rel="alternate" hreflang="en" href="{url_en}"/>\n'
-                f'<link rel="alternate" hreflang="x-default" href="{url_it}"/>')
+                f'{others}<link rel="alternate" hreflang="x-default" href="{url_it}"/>')
     lang_label = ("Italiano", url_it) if en else ("English", url_en)
     sources = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{u}</a></li>' for u in srcs)
     parent_rel = parent.split("/", 1)[1] if en else parent
@@ -565,9 +569,12 @@ def add_hreflang(it_page: str, en_page: str) -> None:
     p = ROOT / it_page
     s = p.read_text(encoding="utf-8")
     url_it, url_en = f"{SITE}/{it_page}", f"{SITE}/{en_page}"
-    s = re.sub(r'\s*<link[^>]*hreflang="(it|en|x-default)"[^>]*>', "", s)
+    s = re.sub(r'\s*<link[^>]*hreflang="(it|en|de|fr|nl|da|sv|nb|fi|x-default)"[^>]*>', "", s)
+    key = next(k for k, f in FAMILIES.items() if f["it_page"] == it_page)
+    others = "".join(f'<link rel="alternate" hreflang="{ {"no": "nb"}.get(c, c)}" href="{SITE}/{c}/unitree-{key}.html"/>\n'
+                     for c in ("de", "fr", "nl", "da", "sv", "no", "fi") if (ROOT / c / f"unitree-{key}.html").is_file())
     links = (f'\n<link rel="alternate" hreflang="it" href="{url_it}"/>\n<link rel="alternate" hreflang="en" href="{url_en}"/>\n'
-             f'<link rel="alternate" hreflang="x-default" href="{url_it}"/>')
+             f'{others}<link rel="alternate" hreflang="x-default" href="{url_it}"/>')
     s = re.sub(r"(</title>)", r"\1" + links.replace("\\", "\\\\"), s, count=1)
     p.write_text(s, encoding="utf-8")
 
