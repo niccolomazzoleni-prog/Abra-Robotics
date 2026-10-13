@@ -72,14 +72,45 @@ FAMILIES = {
         "specs": [("Dimensioni", "Dimensions", "1230 × 357 × 190 mm"), ("Peso", "Weight", "circa 27 kg (Air), circa 29 kg (R1, EDU)|about 27 kg (Air), about 29 kg (R1, EDU)"),
                   ("Gradi di libertà", "Degrees of freedom", "20 (Air), 26 (R1, EDU)"), ("Autonomia", "Battery life", "circa 1 ora|about 1 hour"),
                   ("Calcolo", "Computing", "processore 8 core|8-core processor"), ("Telecamere", "Cameras", "monoculare (Air), binoculare (R1, EDU)|monocular (Air), binocular (R1, EDU)")],
-        "choose_it": [("R1 Air", "la versione più semplice: 20 gradi di libertà, senza vita e testa motorizzate."),
-                      ("R1 / R1 Basic", "26 gradi di libertà con vita e testa mobili, telecamera binoculare."),
-                      ("R1 EDU", "per sviluppo e didattica, con configurazioni di mani e calcolo aggiuntivo.")],
-        "choose_en": [("R1 Air", "the simplest version: 20 degrees of freedom, no motorised waist or head."),
-                      ("R1 / R1 Basic", "26 degrees of freedom with movable waist and head, binocular camera."),
-                      ("R1 EDU", "for development and education, with hand and extra computing configurations.")],
+        "seo_it": "Unitree R1 prezzo: Air, Basic, EDU e Professional | Abra",
+        "seo_en": "Unitree R1 price: Air, Basic, EDU and Professional | Abra",
+        "choose_it": [("R1 Air", "la versione più semplice: 20 gradi di libertà, senza vita e testa motorizzate, nessuno sviluppo secondario."),
+                      ("R1 Basic", "26 gradi di libertà con vita e testa mobili, telecamera binoculare; nessuno sviluppo secondario."),
+                      ("R1 Edu Standard (ex R1-U1)", "sviluppo secondario di alto e basso livello, modulo AI 40 TOPS incluso, interfaccia Isaac Sim, garanzia 12 mesi."),
+                      ("R1 Edu Smart", "come la Edu Standard ma con base di espansione da 100 TOPS."),
+                      ("R1 Edu Professional A–H", "Edu Smart con mani: A/B Dex3-1 (B tattile), C/D BrainCo Revo 2 (D tattile), E/F Linker Hand O6 (F tattile), G pinze Dex1-1, H mani Dex2/5.")],
+        "choose_en": [("R1 Air", "the simplest version: 20 degrees of freedom, no motorised waist or head, no secondary development."),
+                      ("R1 Basic", "26 degrees of freedom with movable waist and head, binocular camera; no secondary development."),
+                      ("R1 Edu Standard (formerly R1-U1)", "high- and low-level secondary development, 40 TOPS AI module included, Isaac Sim interface, 12-month warranty."),
+                      ("R1 Edu Smart", "like the Edu Standard but with a 100 TOPS expansion dock."),
+                      ("R1 Edu Professional A–H", "Edu Smart with hands: A/B Dex3-1 (B tactile), C/D BrainCo Revo 2 (D tactile), E/F Linker Hand O6 (F tactile), G Dex1-1 grippers, H Dex2/5 hands.")],
         "what_it": "L'R1 è l'umanoide bipede più compatto e accessibile di Unitree: adatto a didattica, laboratori, dimostrazioni e sviluppo di base.",
         "what_en": "The R1 is Unitree's most compact and affordable biped humanoid: suited to education, labs, demos and entry-level development.",
+    },
+    "r1-d": {
+        "name": "R1-D", "prefixes": ["R1-A5", "R1-A7", "R1-A", "R1A-D"], "it_page": "r1-d.html", "en_page": "en/r1-d-en.html",
+        "image": "images/prodotti/2026/famiglia-r1-a.png", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
+        "type_it": "Umanoide a doppio braccio", "type_en": "Dual-arm humanoid",
+        "source": "https://www.unitree.com/mobile/R1-D/",
+        "seo_it": "Unitree R1-D e R1-A prezzo: A5, A7, Smart, Ultimate | Abra",
+        "seo_en": "Unitree R1-D and R1-A price: A5, A7, Smart, Ultimate | Abra",
+        "specs": [("Struttura", "Layout", "busto a doppio braccio su base fissa (R1-A5, R1-A7) o su chassis mobile con colonna (versioni -D)|dual-arm torso on a fixed base (R1-A5, R1-A7) or on a mobile chassis with lifting column (-D versions)"),
+                  ("Bracci", "Arms", "5 DoF per braccio (A5), 7 DoF per braccio (A7); carico circa 2 kg per braccio|5 DoF per arm (A5), 7 DoF per arm (A7); about 2 kg payload per arm"),
+                  ("Gradi di libertà", "Degrees of freedom", "13 (A5) / 17 (A7) di serie; 16 / 20 nelle versioni -D (colonna + chassis), più le dita delle mani|13 (A5) / 17 (A7) standard; 16 / 20 on -D versions (column + chassis), plus hand DoF"),
+                  ("Peso", "Weight", "circa 11 kg (A5), 13 kg (A7), circa 30 kg le versioni -D|about 11 kg (A5), 13 kg (A7), about 30 kg for -D versions"),
+                  ("Calcolo", "Computing", "CPU 8 core + 10 TOPS nella testa; Smart con base 40 TOPS, Ultimate con base 100 TOPS|8-core CPU + 10 TOPS in the head; Smart adds a 40 TOPS dock, Ultimate a 100 TOPS dock"),
+                  ("Autonomia", "Battery life", "circa 1,5 ore (batteria busto o batteria chassis per le -D)|about 1.5 hours (upper-body battery, or chassis battery on -D)"),
+                  ("Garanzia", "Warranty", "12 mesi|12 months")],
+        "choose_it": [("R1-A5 / R1-A7 Standard", "solo busto con bracci da 5 o 7 DoF, senza pinze né calcolo aggiuntivo: la base per integrare i propri end effector."),
+                      ("R1-A5 / R1-A7 Smart A–H", "con base di calcolo 40 TOPS e telecamere da polso; A = pinze Dex1-1 Plus, B/C mani Dex3-1, D/E BrainCo Revo 2, F/G Linker Hand O6, H mani Dex2/5 (C, E, G tattili)."),
+                      ("Versioni -D (R1-A5-D, R1-A7-D)", "lo stesso busto su chassis mobile con colonna e LiDAR: per manipolazione in movimento."),
+                      ("R1-A5-D / R1-A7-D Ultimate A–H", "le versioni mobili con base di calcolo 100 TOPS, con le stesse opzioni di mani delle Smart.")],
+        "choose_en": [("R1-A5 / R1-A7 Standard", "torso only with 5- or 7-DoF arms, no grippers or extra computing: the base for your own end effectors."),
+                      ("R1-A5 / R1-A7 Smart A–H", "with a 40 TOPS dock and wrist cameras; A = Dex1-1 Plus grippers, B/C Dex3-1 hands, D/E BrainCo Revo 2, F/G Linker Hand O6, H Dex2/5 hands (C, E, G tactile)."),
+                      ("-D versions (R1-A5-D, R1-A7-D)", "the same torso on a mobile chassis with lifting column and LiDAR, for mobile manipulation."),
+                      ("R1-A5-D / R1-A7-D Ultimate A–H", "the mobile versions with a 100 TOPS dock and the same hand options as Smart.")],
+        "what_it": "L'R1-D (configurazioni R1-A a listino) è il busto umanoide a doppio braccio di Unitree, su base fissa o su chassis mobile: pensato per manipolazione bimanuale, ricerca su embodied AI e dimostrazioni industriali leggere.",
+        "what_en": "The R1-D (R1-A configurations in the price list) is Unitree's dual-arm humanoid torso, on a fixed base or a mobile chassis: built for bimanual manipulation, embodied-AI research and light industrial demos.",
     },
     "a2": {
         "name": "A2", "prefixes": ["A2", "A2-W"], "it_page": "a2.html", "en_page": "en/a2-en.html",
@@ -209,7 +240,8 @@ def load() -> dict[str, dict]:
         fam = family_of(v.get("nome", ""))
         if not fam:
             continue
-        row = {"sku": sku, "name": label(v["nome"]), "price": v.get("prezzo_eur"), "slug": slug}
+        # R1 / R1-D: nomi di listino così come sono (label() abbassa le lettere di variante "A", "E")
+        row = {"sku": sku, "name": v["nome"] if fam in ("r1", "r1-d") else label(v["nome"]), "price": v.get("prezzo_eur"), "slug": slug}
         is_robot = v.get("categoria") == "UMANOIDI"
         if fam == "z1":  # bracci: i "robot" sono i bracci, non pinze/telecamere/motori
             n = v["nome"].upper()
@@ -218,6 +250,12 @@ def load() -> dict[str, dict]:
     for f in out.values():
         f["robots"].sort(key=lambda r: r["price"] or 0)
         f["acc"].sort(key=lambda r: r["price"] or 0)
+    # R1-D: 52 configurazioni, ordinate per modello (A5, A7, A5-D, A7-D), livello e lettera invece che per prezzo
+    base = {"R1-A5": 0, "R1-A7": 1, "R1-A5-D": 2, "R1-A7-D": 3}
+    tier = {"Standard": 0, "Smart": 1, "Ultimate": 2}
+    # R1: Air, Basic, Edu Standard e Smart per prezzo, poi Edu Professional A–H in ordine di lettera
+    out["r1"]["robots"].sort(key=lambda r: ("Professional" in r["name"], r["name"] if "Professional" in r["name"] else "", r["price"] or 0))
+    out["r1-d"]["robots"].sort(key=lambda r: (base.get(r["name"].split()[0], 9), tier.get(r["name"].split()[1], 9) if len(r["name"].split()) > 1 else 9, r["name"]))
     return out
 
 
@@ -472,10 +510,10 @@ def main() -> None:
         written.append(f["en_page"])
         if f.get("en_only"):
             add_hreflang(f["it_page"], f["en_page"])
-    link_row("umanoidi.html", False, ["g1", "g1-d", "h2", "r1"])
+    link_row("umanoidi.html", False, ["g1", "g1-d", "h2", "r1", "r1-d"])
     link_row("quadrupedi.html", False, ["go2", "as2", "a2", "b2"])
     link_row("accessori.html", False, ["z1"])
-    link_row("en/umanoidi-en.html", True, ["g1", "g1-d", "h2", "r1"])
+    link_row("en/umanoidi-en.html", True, ["g1", "g1-d", "h2", "r1", "r1-d"])
     link_row("en/quadrupedi-en.html", True, ["go2", "as2", "a2", "b2"])
     for k, f in FAMILIES.items():
         print(f"{k:5s} robot {len(data[k]['robots']):3d} accessori {len(data[k]['acc']):3d}")
