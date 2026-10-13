@@ -267,6 +267,28 @@ def family_page(d: dict, key: str, data: dict, all_langs: list[dict]) -> str:
             + body + main + footer + '\n<script defer src="../script.js"></script>\n</body>\n</html>\n')
 
 
+GUIDES_H2 = {"de": "Ratgeber und Artikel", "fr": "Guides et articles", "nl": "Gidsen en artikelen", "da": "Guides og artikler",
+             "sv": "Guider och artiklar", "no": "Guider og artikler", "fi": "Oppaat ja artikkelit", "es": "Guías y artículos",
+             "pl": "Poradniki i artykuły", "cs": "Průvodce a články", "uk": "Guides and articles"}
+
+
+def guides(d: dict) -> str:
+    """Articoli del blog tradotti in questa lingua (scripts/blog_lingue.py): elenco con link."""
+    folder = ROOT / ("en" if d["code"] == "uk" else d["code"]) / "blog"
+    if not folder.is_dir():
+        return ""
+    items = []
+    for f in sorted(folder.glob("*.html")):
+        s = f.read_text(encoding="utf-8", errors="ignore")
+        t = re.search(r"<title>([^<]*)</title>", s)
+        if t:
+            rel = f"../{folder.relative_to(ROOT).as_posix()}/{f.name}"
+            items.append(f'<li><a href="{rel}">{esc(html.unescape(t.group(1)))}</a></li>')
+    if not items:
+        return ""
+    return section(d["ui"].get("guides_h2") or GUIDES_H2.get(d["code"], "Guides and articles"), "<ul>" + "".join(items) + "</ul>", "guides")
+
+
 def landing_page(d: dict, data: dict, all_langs: list[dict]) -> str:
     u, L = d["ui"], d["landing"]
     code = d["code"]
@@ -312,7 +334,7 @@ def landing_page(d: dict, data: dict, all_langs: list[dict]) -> str:
 <span class="hm-badge">{esc(u['support_badge'])}</span>
 </div>
 </section>
-{grid}{sections}{service}{delivery}{incentives}{cta(d)}
+{grid}{guides(d)}{sections}{service}{delivery}{incentives}{cta(d)}
 {faq_html}
 """
     lds = [ld_org] + ([faq_ld(faq)] if faq else [])
