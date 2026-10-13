@@ -834,4 +834,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # Bloccato 2026-10-13: contiene prezzi vecchi scritti a mano e sovrascriverebbe h2.html / as2.html,
+    # ora mantenute a mano con dati unitree.com. Usare --forza solo dopo aver aggiornato i prezzi dal listino.
+    if "--forza" not in sys.argv:
+        sys.exit("build_unique_hubs.py e' bloccato: prezzi vecchi scritti a mano (vedi commento). Usa --forza solo se sai cosa fai.")
     main()
