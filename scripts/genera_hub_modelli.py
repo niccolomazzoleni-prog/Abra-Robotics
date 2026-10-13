@@ -493,7 +493,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
 
     # altre lingue (scripts/genera_lingue.py): solo se la pagina esiste gia'
     others = "".join(f'<link rel="alternate" hreflang="{ {"no": "nb"}.get(c, c)}" href="{SITE}/{c}/unitree-{key}.html"/>\n'
-                     for c in ("de", "fr", "nl", "da", "sv", "no", "fi") if (ROOT / c / f"unitree-{key}.html").is_file())
+                     for c in ("de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs") if (ROOT / c / f"unitree-{key}.html").is_file())
     hreflang = (f'<link rel="alternate" hreflang="it" href="{url_it}"/>\n<link rel="alternate" hreflang="en" href="{url_en}"/>\n'
                 f'{others}<link rel="alternate" hreflang="x-default" href="{url_it}"/>')
     lang_label = ("Italiano", url_it) if en else ("English", url_en)
@@ -572,7 +572,7 @@ def add_hreflang(it_page: str, en_page: str) -> None:
     s = re.sub(r'\s*<link[^>]*hreflang="(it|en|de|fr|nl|da|sv|nb|fi|x-default)"[^>]*>', "", s)
     key = next(k for k, f in FAMILIES.items() if f["it_page"] == it_page)
     others = "".join(f'<link rel="alternate" hreflang="{ {"no": "nb"}.get(c, c)}" href="{SITE}/{c}/unitree-{key}.html"/>\n'
-                     for c in ("de", "fr", "nl", "da", "sv", "no", "fi") if (ROOT / c / f"unitree-{key}.html").is_file())
+                     for c in ("de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs") if (ROOT / c / f"unitree-{key}.html").is_file())
     links = (f'\n<link rel="alternate" hreflang="it" href="{url_it}"/>\n<link rel="alternate" hreflang="en" href="{url_en}"/>\n'
              f'{others}<link rel="alternate" hreflang="x-default" href="{url_it}"/>')
     s = re.sub(r"(</title>)", r"\1" + links.replace("\\", "\\\\"), s, count=1)
