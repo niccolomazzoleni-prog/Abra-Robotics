@@ -89,6 +89,13 @@ def product_family(sku: str, nome: str) -> str:
 
 PRICE_FROM_SKUS = {"R1-D"}
 
+# Ricambi su ordinazione: niente "Disponibile" ne' tempi di consegna fissi, JSON-LD BackOrder
+ON_ORDER_SKUS = {
+    "GO2-AIR-MAIN-BOARD", "G1-FOOT-SOLE", "G1-MAIN-BOARD", "B2W-SINGLE-WHEEL", "GO2-UWB-MODULE",
+    "G1-HIP-IMU-COVER", "G1-FRONT-WEARING-PLATE", "G1-BACK-NECK-RUBBER-COVER",
+}
+ON_ORDER_TEXT = "Ricambio su ordinazione: tempi di consegna confermati nel preventivo"
+
 FILENAME_MAP: dict[str, str] = {
     "H2-EDU": "unitree-h2.html",
     "H2-AIR": "unitree-h2-air.html",
@@ -224,12 +231,17 @@ def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float
               <li><span class="bp-ico">✓</span> Parte della filiera di distribuzione di Unitree Italia</li>
               <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
             </ul>"""
+    on_order = sku in ON_ORDER_SKUS
+    if on_order:
+        perks = perks.replace("Consegna stimata 4–6 settimane", ON_ORDER_TEXT)
     pay = """            <div class="buy-box-pay">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               Pagamento sicuro · Stripe
               <span class="buy-box-cards"><span>VISA</span><span>MC</span><span>AMEX</span></span>
             </div>"""
     note = '<p class="buy-box-note">Prezzo indicativo — preventivo aggiornato su richiesta.</p>'
+    if on_order:
+        note = '<p class="buy-box-note">Prezzo indicativo, preventivo aggiornato su richiesta.</p>'
     if not has_price or price is None:
         return f"""          <div class="buy-box">
             <div class="buy-box-head">
@@ -242,14 +254,14 @@ def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float
     was, badge = discount_parts(price, listino)
     amount = f"A partire da {vis} €" if sku in PRICE_FROM_SKUS else f"{vis} €"
     sub = "Prezzo indicativo · IVA esclusa" if sku in PRICE_FROM_SKUS else "Prezzo chiavi in mano · IVA esclusa"
+    stock = "" if on_order else '              <span class="buy-box-stock"><span class="dot"></span> Disponibile</span>\n'
     return f"""          <div class="buy-box">
             <div class="buy-box-head">
               <div class="buy-box-price">
 {was}                <span class="buy-box-amount">{amount}</span>
                 <span class="buy-box-sub">{sub}</span>
 {badge}              </div>
-              <span class="buy-box-stock"><span class="dot"></span> Disponibile</span>
-            </div>
+{stock}            </div>
 {perks}
             <div class="buy-box-cta">
               <a href="#form" class="btn btn-primary buy-btn" data-buy-pending="1">Acquista ora</a>
@@ -268,6 +280,7 @@ def product_schema(
     filename: str,
     coll_file: str = "catalogo-unitree.html",
     coll_name: str = "Catalogo",
+    availability: str = "https://schema.org/InStock",
 ) -> str:
     img_url = img if img.startswith("http") else f"{SITE}/{img}"
     nm, ds = name.replace('"', '\\"'), desc.replace('"', '\\"')
@@ -279,7 +292,7 @@ def product_schema(
   "offers": {{"@type": "Offer", "priceCurrency": "EUR", "price": "{price:.2f}",
     "priceValidUntil": "2026-12-31",
     "itemCondition": "https://schema.org/NewCondition",
-    "availability": "https://schema.org/InStock",
+    "availability": "{availability}",
     "url": "{canon}",
     "seller": {{"@type": "Organization", "name": "Abra Robotics", "url": "{SITE}"}}}}'''
     breadcrumb = f"""  <script type="application/ld+json">
@@ -393,7 +406,8 @@ def generate_page(row: dict, manifest: dict) -> str | None:
             price if pub else None, pub and price is not None, sku, parse_price(row.get("prezzo_listino_eur", ""))
         ),
         "%%PRODUCT_SCHEMA%%": product_schema(
-            title, desc[:200], og_image, price if pub else None, filename, coll_file, coll_name
+            title, desc[:200], og_image, price if pub else None, filename, coll_file, coll_name,
+            "https://schema.org/BackOrder" if sku in ON_ORDER_SKUS else "https://schema.org/InStock",
         ),
         "%%SITE_NAV%%": render_site_nav("../"),
     }
