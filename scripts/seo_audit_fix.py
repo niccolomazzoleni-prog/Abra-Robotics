@@ -291,7 +291,6 @@ def stub_redirect_html(target_rel: str) -> str:
 <title>Redirect — Abra Robotics</title>
 <link rel="canonical" href="{target}"/>
 <meta http-equiv="refresh" content="0;url={target}"/>
-<meta name="robots" content="noindex, follow"/>
 <script>location.replace({target!r});</script>
 </head>
 <body>

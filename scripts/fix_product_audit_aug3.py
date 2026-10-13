@@ -105,7 +105,6 @@ REDIRECT_HTML = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirect — {title} | Abra Robotics</title>
-  <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="{canonical}">
   <meta http-equiv="refresh" content="0; url={canonical}">
   <script>location.replace({canonical_js});</script>
