@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Generatore schede prodotto Unitree G1 (Abra Robotics).
-Dati specifiche/immagini da RoboStore. Produce le pagine U1-U8 + Comp
+Specifiche da fonti Unitree; immagini ufficiali Unitree (images/official). Produce le pagine U1-U8 + Comp
 replicando la struttura di unitree-g1.html, con CSS/JS condivisi."""
 import os
 import sys
@@ -349,8 +349,8 @@ def parallax(d, imgs):
           </div>'''
 
 def features(d):
-    th = ["assets/thumbs/thumb-01.jpg","assets/thumbs/thumb-02.jpg","assets/thumbs/thumb-03.jpg"]
-    vd = ["assets/videos/vid-01.mp4","assets/videos/vid-02.mp4","assets/videos/vid-03.mp4"]
+    th = ["../images/official/unitree-g1-ufficio.webp","../images/official/unitree-g1-boxe.webp","../images/official/unitree-g1-strada.webp"]
+    vd = ["../videos/official/unitree-g1-movimenti.mp4","../videos/official/unitree-g1-boxe.mp4","../videos/official/unitree-g1-strada.mp4"]
     out = []
     for i,(h,p) in enumerate(d["features"]):
         out.append(f'''        <div class="feature-card">
@@ -458,15 +458,76 @@ def spec_mini(d):
 # ── Page template ──
 TEMPLATE = open(os.path.join(BASE, "_template.html"), encoding="utf-8").read()
 
+# Immagini ufficiali (unitree.com / shop.unitree.com), vedi data/immagini-ufficiali.json
+OFFICIAL_IMGS = {
+    "g1-u1": [
+        "../images/official/unitree-g1-01.webp",
+        "../images/official/unitree-g1-info-coppia.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-u2": [
+        "../images/official/unitree-g1-01.webp",
+        "../images/official/unitree-g1-info-coppia.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-u3": [
+        "../images/official/unitree-g1-02.webp",
+        "../images/official/unitree-g1-info-dex3.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-u4": [
+        "../images/official/unitree-g1-02.webp",
+        "../images/official/unitree-g1-info-dex3.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-u5": [
+        "../images/official/unitree-g1-02.webp",
+        "../images/official/unitree-g1-info-dex3.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-u6": [
+        "../images/official/unitree-g1-02.webp",
+        "../images/official/unitree-g1-info-dex3.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-u7": [
+        "../images/official/unitree-g1-02.webp",
+        "../images/official/unitree-g1-info-coppia.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-u8": [
+        "../images/official/unitree-g1-02.webp",
+        "../images/official/unitree-g1-info-coppia.webp",
+        "../images/official/unitree-g1-info-dof.webp",
+        "../images/official/unitree-g1-info-batteria.webp",
+        "../images/official/unitree-g1-info-dimensioni.webp",
+    ],
+    "g1-comp": [
+        "../images/official/unitree-g1-calcio.webp",
+        "../images/official/unitree-g1-salto-1.webp",
+        "../images/official/unitree-g1-salto-2.webp",
+        "../images/official/unitree-g1-salto-3.webp",
+        "../images/official/unitree-g1-dettaglio.webp",
+    ],
+}
+
+
 def variant_imgs(imgdir: str, n: int = 5) -> list[str]:
-    out = []
-    for i in range(1, n + 1):
-        base = f'assets/variants/{imgdir}/img-0{i}'
-        if i == 1:
-            out.append(f'{base}.png')
-        else:
-            out.append(f'{base}.jpg')
-    return out
+    return OFFICIAL_IMGS[imgdir][:n]
 
 
 def render(code):

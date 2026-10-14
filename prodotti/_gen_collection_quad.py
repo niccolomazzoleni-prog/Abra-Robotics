@@ -14,9 +14,14 @@ NAMES = {
  "go2-pro":"Unitree Go2 Pro","go2-edu":"Unitree Go2 EDU","go2-edu-plus":"Unitree Go2 EDU+",
  "go2-ent-u2":"Unitree Go2 Enterprise+ U2","a2":"Unitree A2","a2-pro":"Unitree A2 Pro","b2":"Unitree B2",
 }
-IMG = {
- "go2-pro":"go2-pro/img-01.jpg","go2-edu":"go2-edu/img-01.jpg","go2-edu-plus":"go2-edu/img-02.jpg",
- "go2-ent-u2":"go2-ent-u2/img-01.jpg","a2":"a2/img-01.jpg","a2-pro":"a2-pro/img-01.jpg","b2":"b2/img-01.jpg",
+IMG = {  # immagini ufficiali Unitree (images/official)
+ "go2-pro":"unitree-go2-01.webp",
+ "go2-edu":"unitree-go2-02.webp",
+ "go2-edu-plus":"unitree-go2-roccia.webp",
+ "go2-ent-u2":"unitree-go2-03.webp",
+ "a2":"unitree-a2-01.webp",
+ "a2-pro":"unitree-a2-02.webp",
+ "b2":"unitree-b2-01.webp",
 }
 CLIMB = {"go2-pro":"40°","go2-edu":"40°","go2-edu-plus":"40°","go2-ent-u2":"40°","a2":"45°","a2-pro":"45°","b2":">45°"}
 RUN = {"go2-pro":"1–2 h","go2-edu":"2–4 h","go2-edu-plus":"2–4 h","go2-ent-u2":"1–2 h","a2":">5 h","a2-pro":">5 h","b2":"4–6 h"}
@@ -30,7 +35,7 @@ def card(code):
     return f'''        <article class="robot-card" data-family="{FAM[code]}">
           <div class="robot-media">
             <span class="robot-media-tag">{c['tag']}</span>
-            <img src="prodotti/assets/variants/{IMG[code]}" alt="{name}, quadrupede Unitree" loading="lazy"
+            <img src="images/official/{IMG[code]}" alt="{name}, quadrupede Unitree" loading="lazy"
                  onerror="this.parentElement.classList.add('no-img');">
             <div class="robot-media-placeholder">
               <strong>{name}</strong>

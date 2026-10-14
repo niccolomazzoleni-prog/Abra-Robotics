@@ -438,8 +438,8 @@ def fix_blog_index() -> None:
     """Fix broken og:image on blog.html; ensure ricerca card stays; leave seo-report unlisted (internal)."""
     path = ROOT / "blog.html"
     t = path.read_text(encoding="utf-8")
-    bad = "https://abrarobotics.com/prodotti/assets/images/g1-01.jpg"
-    good = "https://abrarobotics.com/images/g1-hero.png"
+    bad = "https://abrarobotics.com/images/official/unitree-g1-01.webp"
+    good = "https://abrarobotics.com/images/official/unitree-g1-03.webp"
     if bad in t:
         path.write_text(t.replace(bad, good), encoding="utf-8")
         print("  blog.html og:image fixed")

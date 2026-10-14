@@ -28,11 +28,11 @@ def main() -> None:
 
     # Immagini locali reali già corrette
     as2w = load("images/prodotti/as2-w.png")       # quadrupede a ruote (già ok)
-    go2 = load("prodotti/assets/variants/go2-pro/img-01.png")  # Go2 studio
+    go2 = load("images/official/unitree-go2-01.webp")  # Go2 studio
     h2 = load("images/prodotti/h2-edu.png")        # H2 umanoide (per H2-D)
-    d1 = load("images/accessori/d1.jpg")           # braccio D1
-    lidar = load("images/accessori/hesai-xt16.png")  # sensore LiDAR
-    rc = load("images/accessori/rc-g1.jpg")        # telecomando G1 (R3)
+    d1 = load("images/official/unitree-d1-braccio.webp")           # braccio D1
+    lidar = load("images/official/hesai-xt16.webp")  # sensore LiDAR
+    rc = load("images/official/unitree-telecomando.webp")        # telecomando G1 (R3)
 
     mapping = {
         "g1-d-standard.png": g1d_standard,
