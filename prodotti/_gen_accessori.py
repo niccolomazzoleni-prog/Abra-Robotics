@@ -133,7 +133,7 @@ HTML = f'''<!DOCTYPE html>
     <div class="container">
       <p class="label">Accessori Unitree</p>
       <h1>Accessori e moduli Unitree</h1>
-      <p class="lead">Mani dexterous, batterie, sensori LiDAR, telecomandi, bracci robotici e moduli di calcolo per estendere i robot Unitree. Tutti gli accessori sono disponibili tramite Abra Robotics, distributore ufficiale in Italia.</p>
+      <p class="lead">Mani dexterous, batterie, sensori LiDAR, telecomandi, bracci robotici e moduli di calcolo per estendere i robot Unitree. Tutti gli accessori sono disponibili tramite Abra Robotics, parte della filiera di distribuzione di Unitree Italia.</p>
     </div>
   </section>
 

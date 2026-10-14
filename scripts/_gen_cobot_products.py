@@ -52,7 +52,7 @@ PROCESS_HTML = """      <div class="process-steps-product">
         <div class="step">
           <span class="step-number">03</span>
           <h3>Go-live</h3>
-          <p>Installazione e commissioning — tipicamente 2–3 settimane per cobot standalone.</p>
+          <p>Installazione e commissioning — tempi definiti nell'offerta, in base al progetto.</p>
         </div>
       </div>"""
 
@@ -156,9 +156,9 @@ def buy_area(prezzo_eur: float) -> str:
               </div>
             </div>
             <ul class="buy-box-perks">
-              <li><span class="bp-ico">✓</span> Assessment applicativo incluso</li>
+              <li><span class="bp-ico">✓</span> Assessment applicativo su preventivo</li>
               <li><span class="bp-ico">✓</span> Configurazione base e supporto Abra</li>
-              <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
+              <li><span class="bp-ico">✓</span> Disponibilità e consegna da verificare con il produttore</li>
             </ul>
             <div class="buy-box-cta"><a href="#form" class="btn btn-primary">Richiedi preventivo</a></div>
             <p class="buy-box-note">Prezzo indicativo — gripper e safety su preventivo dedicato.</p>
@@ -193,8 +193,7 @@ def product_schema(name: str, desc: str, img: str, price: float, filename: str, 
     "price": "{price:.2f}",
     "priceValidUntil": "2026-12-31",
     "itemCondition": "https://schema.org/NewCondition",
-    "availability": "https://schema.org/InStock",
-    "url": "{canon}",
+        "url": "{canon}",
     "seller": {{"@type": "Organization", "name": "Abra Robotics", "url": "{SITE}"}}
   }}}}
   </script>"""

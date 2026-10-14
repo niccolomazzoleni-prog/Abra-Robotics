@@ -37,7 +37,7 @@ CATALOG: tuple[tuple, ...] = (
         "Pick & Place · Machine Tending",
         "Fairino FR5",
         "Cobot 6 assi · 5 kg",
-        "Cobot collaborativo a 6 assi con 5 kg di payload e sbraccio 922 mm. Ideale per pick & place, avvitatura, machine tending CNC e assemblaggio leggero. Certificato CE, ISO 10218 e ISO/TS 15066.",
+        "Cobot collaborativo a 6 assi con 5 kg di payload e sbraccio 922 mm. Ideale per pick & place, avvitatura, machine tending CNC e assemblaggio leggero. Marcatura CE e conformità ISO 10218 / ISO/TS 15066 dichiarate dal produttore.",
         [
             ("Payload", "5 kg"),
             ("Sbraccio", "922 mm"),
@@ -202,7 +202,7 @@ CATALOG: tuple[tuple, ...] = (
         [
             ("Incluso Abra", "Assessment · layout cella · go-live"),
             ("Applicazioni", "Palletizzazione · depalletizzazione"),
-            ("Lead time", "4–6 settimane tipiche"),
+            ("Lead time", "da verificare con il produttore"),
         ],
         "Automazione pallet fine linea con payload elevato e ROI 12–24 mesi.",
         36828,

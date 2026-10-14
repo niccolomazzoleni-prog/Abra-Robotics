@@ -26,6 +26,20 @@
     }
   }
 
+  // L'acquisto online e' riservato ai clienti con Partita IVA (Condizioni di vendita, art. 2.3):
+  // l'avviso compare sotto ogni bottone "Acquista" attivo.
+  function addB2bNote(btn) {
+    if (btn.nextElementSibling && btn.nextElementSibling.classList.contains("buy-b2b-note")) return;
+    var en = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
+    var note = document.createElement("p");
+    note.className = "buy-b2b-note";
+    note.style.cssText = "margin:8px 0 0;font-size:.8rem;line-height:1.4;color:var(--gray-600,#666)";
+    note.innerHTML = en
+      ? 'Online purchase reserved for customers with a VAT number. <a href="/en/condizioni-di-vendita-en.html">Terms of sale</a> · Private buyer? <a href="#form">Request a quote</a>.'
+      : 'Acquisto online riservato a clienti con Partita IVA. <a href="/condizioni-di-vendita.html">Condizioni di vendita</a> · Sei un privato? <a href="#form">Chiedi un preventivo</a>.';
+    btn.insertAdjacentElement("afterend", note);
+  }
+
   function wireBuyButtons() {
     var links = (window.STRIPE_PAYMENT_LINKS || {});
     var url = links[currentSlug()] || "";
@@ -42,6 +56,7 @@
         btn.setAttribute("rel", "noopener");
         btn.removeAttribute("data-buy-pending");
         btn.removeAttribute("title");
+        addB2bNote(btn);
         // Stato loading sul click (il checkout apre in una nuova scheda)
         btn.addEventListener("click", function () {
           var label = btn.textContent;
