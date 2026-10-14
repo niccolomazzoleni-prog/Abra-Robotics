@@ -7,7 +7,7 @@ def render_top_bar(prefix: str = "", message: str | None = None) -> str:
     p = prefix
     if message is None:
         message = (
-            f'La maggior parte dei progetti è finanziabile. '
+            f'Verifica gratuita di ammissibilità agli incentivi. '
             f'<a href="{p}finanziamenti.html">Scopri come →</a>'
         )
     return f"""  <div class="top-bar">

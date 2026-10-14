@@ -58,7 +58,7 @@ CATALOG = [
      "Va sotto carrelli e scaffali, solleva e trasporta in autonomia. Laser SLAM ±5 mm, YOUIFLEET, CE.",
      [("Payload", "300 kg"), ("Lift", "60 mm · 360°"), ("Autonomia", "8 h"), ("Precisione", "±5 mm")],
      [("Dimensioni", "800 × 619 × 330 mm"), ("Peso", "180 kg"), ("Velocità max", "1,5 m/s"), ("Navigazione", "Laser SLAM")],
-     "Logistica interna in corridoi stretti, rifornimento bordo linea.", 24990),
+     "Logistica interna in corridoi stretti, rifornimento bordo linea.", 24117),
     ("mir250-base", "mir", "MiR · Leggero-medio",
      "MiR250 Base", "Mobile Industrial Robots · 250 kg · IP52",
      "Piattaforma base senza top module. Massima flessibilità per integrazioni custom e moduli UR+.",
@@ -105,7 +105,7 @@ CATALOG = [
      "Pallet jack completamente autonomo per EUR pallet con flotta centralizzata MiR Fleet.",
      [("Payload", "1.200 kg"), ("Tipo", "Pallet jack"), ("Pallet", "EUR standard"), ("Flotta", "MiR Fleet")],
      [("Navigazione", "SLAM laser"), ("Integrazione", "WMS / ERP API"), ("Sicurezza", "ISO 3691-4"), ("Brand", "Teradyne / MiR")],
-     "Cross-docking e stoccaggio pallet in hub logistici.", 137025),
+     "Cross-docking e stoccaggio pallet in hub logistici.", 164430),
     ("l1000", "latent", "Latent · Medio",
      "Youibot L1000-R", "Latent AMR · 1.000 kg",
      "Sollevamento sottoscocca 1 ton, laser SLAM ±5 mm. Deploy con Michelin, DHL, TSMC.",
@@ -117,19 +117,19 @@ CATALOG = [
      "Progettato in Germania: SLAM dinamico, lift 55 mm, ROS2 / OPC UA / VDA 5050.",
      [("Payload", "1.500 kg"), ("Lift", "0–55 mm"), ("Autonomia", "10 h"), ("Safety", "PLd Cat.3")],
      [("Dimensioni", "1.530 × 910 × 294 mm"), ("Peso", "400 kg"), ("Velocità max", "1,5 m/s"), ("IP", "IP44 (IP54 opt.)")],
-     "Movimentazione carichi pesanti in automotive e metalmeccanica.", 44900),
+     "Movimentazione carichi pesanti in automotive e metalmeccanica.", 53880),
     ("xp15", "muletti", "Muletto · AMR",
      "EP Equipment XP15", "Transpallet AMR · 1.500 kg",
      "Muletto elettrico autonomo con forche. LiDAR + camera, anche in modalità manuale.",
      [("Payload", "1.500 kg"), ("Forche", "1.150–1.500 mm"), ("Precisione", "±20 mm"), ("Batteria", "24V / 60Ah")],
      [("Dimensioni", "1.695 × 842 mm"), ("Peso", "335 kg"), ("Velocità max", "1,25 m/s"), ("Navigazione", "LiDAR 2D")],
-     "Movimentazione pallet tra dock, magazzino e linea.", 25000),
+     "Movimentazione pallet tra dock, magazzino e linea.", 25081),
     ("mav-lara", "mobile-cobot", "Mobile cobot",
      "Neura MAV-1500 + LARA 5", "Mobile manipulator · base 1.500 kg + cobot 5 kg",
      "Base MAV con cobot LARA 5: navigazione autonoma + manipolazione sul posto.",
      [("Base payload", "1.500 kg"), ("Cobot", "LARA 5 · 5 kg"), ("Reach cobot", "800 mm"), ("Ripetibilità", "±0,02 mm")],
      [("Navigazione", "SLAM + mapping dinamico"), ("Protocolli", "ROS2 · VDA 5050"), ("Safety", "PLd Cat.3"), ("Config.", "MAV + LARA 5")],
-     "Machine tending mobile e kitting distribuito su più CNC.", 63800),
+     "Machine tending mobile e kitting distribuito su più CNC.", 76560),
 ]
 
 FEATURED_SLUGS = ("l300", "mir250-shelf", "mir600-pallet", "l1000", "xp15", "mav-1500")
@@ -162,7 +162,8 @@ AMR_MEDIA_CSS = """
 
 
 def p(eur_net: float) -> str:
-    abra = int(round(eur_net * 1.2))
+    # prezzo finale = massimo trovato su altri shop (2026-10-14), nessun ricarico
+    abra = int(round(eur_net))
     return f"da {f'{abra:,}'.replace(',', '.')},00 €"
 
 

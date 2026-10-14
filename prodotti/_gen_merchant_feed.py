@@ -135,7 +135,9 @@ def category_for(product_id: str, from_html: str) -> str:
 def load_items(avail_map: dict[str, str]) -> tuple[list[dict], list[str]]:
     items: list[dict] = []
     skipped: list[str] = []
-    patterns = ["unitree-*.html", "amr-*.html", "cobot-*.html"]
+    # Solo Unitree: per AMR e cobot non ci sono accordi con i produttori, quindi niente
+    # prezzo e disponibilita' pubblicati su Google Shopping finche' non sono confermati.
+    patterns = ["unitree-*.html"]
     for pattern in patterns:
         for path in sorted(glob.glob(pattern)):
             text = open(path, encoding="utf-8").read()

@@ -39,7 +39,7 @@ co = (min(m["price_eur"] for m in _cobot), len(_cobot))
 am = da_catalogo("amr.html")
 
 CATEGORIE = [
-    ("Umanoidi", "Unitree G1, H2, R1 e versioni dual-arm", um, "umanoidi.html", "images/prodotti/2026/famiglia-g1.png"),
+    ("Umanoidi", "Unitree G1, H2, R1 e versioni dual-arm", um, "umanoidi.html", "images/official/unitree-g1-02.webp"),
     ("Quadrupedi", "Unitree Go2, AS2, A2 e B2", qu, "quadrupedi.html", "images/prodotti/2026/as2.png"),
     ("Cobot", "Bracci collaborativi Fairino, con celle chiavi in mano", co, "cobot.html", "images/manifattura/fairino-fr5.png"),
     ("AMR", "Robot mobili per logistica e intralogistica", am, "amr.html", "images/manifattura/amr/juno-plus.webp"),
