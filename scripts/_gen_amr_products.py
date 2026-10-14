@@ -194,7 +194,7 @@ def buy_area(net: float) -> str:
             <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Sopralluogo e integrazione su preventivo</li>
               <li><span class="bp-ico">✓</span> Progettazione percorsi e integrazione</li>
-              <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
+              <li><span class="bp-ico">✓</span> Disponibilità e consegna da verificare con il produttore</li>
             </ul>
             <div class="buy-box-cta"><a href="#form" class="btn btn-primary">Richiedi preventivo</a></div>
             <p class="buy-box-note">Prezzo indicativo — quotazione aggiornata su richiesta.</p>
@@ -244,8 +244,7 @@ def product_schema(
     "price": "{price:.2f}",
     "priceValidUntil": "2026-12-31",
     "itemCondition": "https://schema.org/NewCondition",
-    "availability": "https://schema.org/InStock",
-    "url": "{canon}",
+        "url": "{canon}",
     "seller": {{"@type": "Organization", "name": "Abra Robotics", "url": "{SITE}"}}
   }}}}
   </script>"""

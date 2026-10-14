@@ -3,7 +3,7 @@
 ## Tempi di consegna
 - Umanoidi: 4–6 settimane dalla firma
 - Quadrupedi: 4–6 settimane
-- AMR e cobot: circa 4–6 settimane
+- AMR e cobot: da verificare con il produttore, tempi confermati nell'offerta
 
 ## Finanziamenti
 Molti progetti possono rientrare nell'iperammortamento 2026 (L. 199/2025, comunicazioni al GSE), nella Nuova Sabatini o in bandi regionali. L'ammissibilità non è garantita: la confermano perizia tecnica e consulente fiscale. Offriamo una verifica preliminare gratuita (finanziamenti.html).

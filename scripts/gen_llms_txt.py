@@ -92,8 +92,8 @@ def riassunto():
               f"- AMR per logistica e intralogistica: da {eur(am[0])} € — {BASE}amr.html",
               f"- Progetti di automazione, assessment e POC: {BASE}assessment.html · {BASE}manifattura-logistica.html", ""]
     righe += ["## Certificazioni e conformità",
-              "- Marcatura CE di celle robotizzate e macchine integrate con TÜV Rheinland (https://www.tuv.com/italy/it/).",
-              "- Certificazioni di cybersecurity (es. ISO/IEC 27001) e AI compliance (es. ISO/IEC 42001, AI Act) con CSQA (https://www.csqa.it/).",
+              "- Supporto alla marcatura CE di celle robotizzate e macchine integrate, con organismi di certificazione accreditati.",
+              "- Preparazione a certificazioni di cybersecurity (es. ISO/IEC 27001) e AI compliance (es. ISO/IEC 42001, AI Act), rilasciate da organismi accreditati.",
               f"- Incentivi: l'acquisto può rientrare nell'iperammortamento 2026 (L. 199/2025, maggiorazione fino al 180%) e nella Nuova Sabatini; l'ammissibilità va confermata da perizia o consulente — {BASE}finanziamenti.html", ""]
     righe += [
         "## Pagine principali",

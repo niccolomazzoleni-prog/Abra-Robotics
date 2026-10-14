@@ -156,9 +156,9 @@
         return '**Tempi di consegna quadrupedi:** in genere **4–6 settimane** dalla conferma ordine.';
       }
       if (/\bmir\b|\bamr\b|cobot/.test(lower)) {
-        return '**Tempi di consegna AMR/cobot:** in genere **circa 4–6 settimane** dalla conferma ordine.';
+        return '**Tempi di consegna AMR/cobot:** da verificare con il produttore; li confermiamo per iscritto in offerta.';
       }
-      return '**Tempi indicativi Abra:** quadrupedi 4–6 settimane · umanoidi 4–6 settimane · AMR/cobot 4–6 settimane (dalla conferma ordine).';
+      return '**Tempi indicativi Abra:** quadrupedi e umanoidi Unitree 4–6 settimane dalla conferma ordine · AMR/cobot da verificare con il produttore.';
     }
 
     tryAutoQuote(userText) {
