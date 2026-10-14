@@ -15,7 +15,6 @@ import re
 import sys
 from pathlib import Path
 
-from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SKIP = {".claude", ".git", "node_modules", "admin", "editor", "offerte-ai", "listini", "stripe", "apps-script"}
@@ -45,6 +44,7 @@ def webp_for(p: Path, cache: dict, prova: bool) -> Path | None:
         if prova:
             cache[p] = w
             return w
+        from PIL import Image  # solo quando serve convertire (in CI le .webp esistenti bastano)
         im = Image.open(p)
         im.load()
         alpha = im.mode in ("RGBA", "LA") or (im.mode == "P" and "transparency" in im.info)
