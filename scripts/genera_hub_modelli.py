@@ -29,7 +29,7 @@ FAMILIES = {
     "g1": {
         "name": "G1", "prefixes": ["G1", "G1-E"], "it_page": "g1.html", "en_page": "en/g1-en.html",
         "seo_it": "Unitree G1 prezzo: Basic, Pro, EDU U1-U10, Ultimate", "seo_en": "Unitree G1 price: Basic, Pro, EDU U1-U10, Ultimate",
-        "image": "images/prodotti/2026/famiglia-g1.png", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
+        "image": "images/official/unitree-g1-02.webp", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
         "type_it": "Robot umanoide", "type_en": "Humanoid robot",
         "source": "https://www.unitree.com/g1/",
         "specs": [("Dimensioni in piedi", "Standing dimensions", "1320 × 450 × 200 mm"), ("Peso", "Weight", "circa 35 kg|about 35 kg"),
@@ -68,7 +68,7 @@ FAMILIES = {
     },
     "r1": {
         "name": "R1", "prefixes": ["R1"], "exclude": ["R1-A", "R1-D"], "it_page": "r1.html", "en_page": "en/r1-en.html",
-        "image": "images/prodotti/2026/famiglia-r1.jpg", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
+        "image": "images/official/unitree-r1-01.webp", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
         "type_it": "Robot umanoide", "type_en": "Humanoid robot",
         "source": "https://www.unitree.com/R1/",
         "specs": [("Dimensioni", "Dimensions", "1230 × 357 × 190 mm"), ("Peso", "Weight", "circa 27 kg (Air), circa 29 kg (R1, EDU)|about 27 kg (Air), about 29 kg (R1, EDU)"),
@@ -116,7 +116,7 @@ FAMILIES = {
     },
     "a2": {
         "name": "A2", "prefixes": ["A2", "A2-W"], "it_page": "a2.html", "en_page": "en/a2-en.html",
-        "image": "images/prodotti/a2-pro.png", "parent_it": "quadrupedi.html", "parent_en": "en/quadrupedi-en.html",
+        "image": "images/official/unitree-a2-02.webp", "parent_it": "quadrupedi.html", "parent_en": "en/quadrupedi-en.html",
         "type_it": "Quadrupede industriale", "type_en": "Industrial quadruped",
         "source": "https://www.unitree.com/A2/",
         "specs": [("Peso", "Weight", "circa 42 kg con batteria|about 42 kg with battery"),
@@ -136,7 +136,7 @@ FAMILIES = {
     },
     "b2": {
         "name": "B2", "prefixes": ["B2", "B2-W", "B2W"], "it_page": "b2.html", "en_page": "en/b2-en.html",
-        "image": "prodotti/assets/variants/b2/img-02.jpg", "parent_it": "quadrupedi.html", "parent_en": "en/quadrupedi-en.html",
+        "image": "images/official/unitree-b2-montagna.webp", "parent_it": "quadrupedi.html", "parent_en": "en/quadrupedi-en.html",
         "type_it": "Quadrupede industriale pesante", "type_en": "Heavy industrial quadruped",
         "source": "https://www.unitree.com/b2/",
         "specs": [("Peso", "Weight", "≈60 kg con batteria|≈60 kg with battery"),
@@ -153,7 +153,7 @@ FAMILIES = {
     },
     "z1": {
         "name": "Z1 e D1", "name_en": "Z1 and D1", "prefixes": ["Z1", "D1", "D1-T"], "it_page": "z1.html", "en_page": "en/z1-en.html",
-        "image": "images/accessori/z1.jpg", "parent_it": "accessori.html", "parent_en": "en/accessori-en.html",
+        "image": "images/official/unitree-z1-01.webp", "parent_it": "accessori.html", "parent_en": "en/accessori-en.html",
         "type_it": "Braccio robotico", "type_en": "Robot arm", "seo_it": "Unitree Z1 prezzo: bracci robotici Z1 e D1", "seo_en": "Unitree Z1 price: Z1 and D1 robot arms",
         "source": "https://www.unitree.com/z1/", "source2": "https://www.unitree.com/D1-T/",
         "specs": [("Z1: assi", "Z1: axes", "6"), ("Z1: peso", "Z1: weight", "4,3 kg (Air), 4,5 kg (Pro)|4.3 kg (Air), 4.5 kg (Pro)"),
@@ -187,7 +187,7 @@ FAMILIES = {
     },
     "h2": {
         "name": "H2", "prefixes": ["H2", "H2-D", "H2-A"], "it_page": "h2.html", "en_page": "en/h2-en.html", "en_only": True,
-        "image": "images/prodotti/2026/famiglia-h2.png", "parent_en": "en/umanoidi-en.html",
+        "image": "images/official/unitree-h2-01.webp", "parent_en": "en/umanoidi-en.html",
         "type_en": "Full-size humanoid robot", "source": "https://www.unitree.com/H2/",
         "specs": [("", "Dimensions", "|1820 × 456 × 218 mm"), ("", "Weight", "|about 70 kg"), ("", "Degrees of freedom", "|31"),
                   ("", "Battery life", "|about 3 hours"), ("", "Max joint torque", "|360 N·m (leg), 120 N·m (arm)"),
@@ -199,7 +199,7 @@ FAMILIES = {
     },
     "g1-d": {
         "name": "G1-D", "prefixes": ["G1-D", "G1D"], "it_page": "g1-d.html", "en_page": "en/g1-d-en.html", "en_only": True,
-        "image": "images/prodotti/2026/famiglia-g1-d.jpg", "parent_en": "en/umanoidi-en.html",
+        "image": "images/official/unitree-g1-d-mobile.webp", "parent_en": "en/umanoidi-en.html",
         "type_en": "Wheeled dual-arm humanoid", "source": "https://www.unitree.com/G1-D/",
         "specs": [("", "Type", "|wheeled dual-arm humanoid, differential drive, 360° in-place rotation"),
                   ("", "Degrees of freedom", "|17 (Standard), 19 (Ultimate), excl. end effector; 7 per arm"),

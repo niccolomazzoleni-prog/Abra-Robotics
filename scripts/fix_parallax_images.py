@@ -24,12 +24,12 @@ def pick_images(variant: str) -> list[str]:
         return None
 
     slots = [
-        first("img-01-abra.png", "img-01.png"),
+        first("img-01.png"),
         first("img-02.jpg", "img-03.jpg"),
         first("img-04.jpg", "img-03.jpg"),
         first("img-05.jpg", "img-04.jpg"),
     ]
-    fallback = first("img-01-abra.png", "img-01.png") or f"assets/variants/{variant}/img-01.png"
+    fallback = first("img-01.png") or f"assets/variants/{variant}/img-01.png"
     return [s or fallback for s in slots]
 
 
