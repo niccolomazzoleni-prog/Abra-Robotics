@@ -41,7 +41,7 @@ def brand_for(slug: str, title: str) -> str:
 
 
 def price_eur(net: float) -> float:
-    return float(int(round(net * 1.2)))
+    return float(int(round(net)))  # prezzo finale, nessun ricarico
 
 
 def price_display(net: float) -> str:
