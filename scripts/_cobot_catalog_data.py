@@ -29,7 +29,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Montaggio", "Qualsiasi orientamento"),
         ],
         "Pick & place precisione, ispezione, assemblaggio leggero in celle compatte.",
-        5766,
+        5448,
     ),
     (
         "fairino-fr5",
@@ -37,7 +37,7 @@ CATALOG: tuple[tuple, ...] = (
         "Pick & Place · Machine Tending",
         "Fairino FR5",
         "Cobot 6 assi · 5 kg",
-        "Cobot collaborativo a 6 assi con 5 kg di payload e sbraccio 922 mm. Ideale per pick & place, avvitatura, machine tending CNC e assemblaggio leggero. Certificato CE, ISO 10218 e ISO/TS 15066.",
+        "Cobot collaborativo a 6 assi con 5 kg di payload e sbraccio 922 mm. Ideale per pick & place, avvitatura, machine tending CNC e assemblaggio leggero. Marcatura CE e conformità ISO 10218 / ISO/TS 15066 dichiarate dal produttore.",
         [
             ("Payload", "5 kg"),
             ("Sbraccio", "922 mm"),
@@ -52,7 +52,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Alimentazione tipica", "276 W"),
         ],
         "Pick & place, avvitatura, machine tending su CNC, assemblaggio leggero elettronica.",
-        6324,
+        6252,
     ),
     (
         "fairino-fr10",
@@ -75,7 +75,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Certificazioni", "CE · ISO 10218 · ISO/TS 15066"),
         ],
         "Machine tending presse e CNC, palletizzazione fine linea, dispensing.",
-        12090,
+        10387,
     ),
     (
         "fairino-fr16",
@@ -97,7 +97,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Certificazioni", "CE · ISO 10218 · ISO/TS 15066"),
         ],
         "Machine tending, carico/scarico macchine, handling casse e fine linea.",
-        15252,
+        10450,
     ),
     (
         "fairino-fr20",
@@ -120,7 +120,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Velocità TCP", "1,5 m/s"),
         ],
         "Palletizzazione, depalletizzazione, handling di semilavorati pesanti.",
-        14415,
+        14677,
     ),
     (
         "fairino-fr30",
@@ -142,7 +142,7 @@ CATALOG: tuple[tuple, ...] = (
             ("Certificazioni", "CE · ISO 10218 · ISO/TS 15066"),
         ],
         "Palletizzazione EUR, depalletizzazione, carico macchine con payload elevato.",
-        33852,
+        16256,
     ),
     (
         "fairino-palletizing-station",
@@ -202,7 +202,7 @@ CATALOG: tuple[tuple, ...] = (
         [
             ("Incluso Abra", "Assessment · layout cella · go-live"),
             ("Applicazioni", "Palletizzazione · depalletizzazione"),
-            ("Lead time", "4–6 settimane tipiche"),
+            ("Lead time", "da verificare con il produttore"),
         ],
         "Automazione pallet fine linea con payload elevato e ROI 12–24 mesi.",
         36828,

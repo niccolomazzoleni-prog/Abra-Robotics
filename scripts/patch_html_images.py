@@ -51,7 +51,7 @@ def abs_url(path: str) -> str:
 def old_paths_for_sku(sku: str, new_path: str) -> set[str]:
     olds = {IMAGE.get(sku, "")}
     if sku == "B2":
-        olds.update({"images/prodotti/unitree-b2-hero.png", "images/prodotti/unitree-b2.png"})
+        olds.update({"images/prodotti/unitree-b2-hero.png", "images/official/unitree-b2-01.webp"})
     return {p for p in olds if p and p != new_path}
 
 

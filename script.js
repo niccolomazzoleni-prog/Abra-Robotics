@@ -216,7 +216,7 @@ function showInlineFormSuccess(form, feedback) {
   const isEn = document.documentElement.lang === 'en' || location.pathname.includes('/en/');
   const msg = form.classList.contains('quote-form-top')
     ? (isEn ? 'Request sent! We will get back to you within 12 hours.' : 'Richiesta inviata! Ti ricontattiamo entro 12 ore.')
-    : (isEn ? 'Message sent! We will contact you within 2 business hours.' : 'Messaggio inviato! Ti contattiamo entro 2 ore lavorative.');
+    : (isEn ? 'Message sent! We will usually get back to you within 12 business hours.' : 'Messaggio inviato! Ti contattiamo di norma entro 12 ore lavorative.');
   const base = feedback.className.split(' ').filter(c => c && c !== 'success' && c !== 'error')[0] || 'form-feedback';
   feedback.className = base + ' success';
   feedback.textContent = msg;
@@ -264,8 +264,8 @@ document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
 (function () {
   const isEn = document.documentElement.lang === 'en' || window.location.pathname.includes('/en/');
   const msg = isEn
-    ? 'We will get back to you within 2 business hours.'
-    : 'Ti ricontattiamo entro 2 ore lavorative.';
+    ? 'We will usually get back to you within 12 business hours.'
+    : 'Ti ricontattiamo di norma entro 12 ore lavorative.';
   document.querySelectorAll('.contact-form, .quote-form-top').forEach(form => {
     const btn = form.querySelector('.form-submit, [type="submit"]');
     if (!btn) return;

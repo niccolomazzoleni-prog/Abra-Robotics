@@ -208,7 +208,7 @@ def write_as2() -> None:
                 "Entry / ponte verso EDU",
                 "13.240 €",
                 "prodotti/unitree-as2-x.html",
-                "images/prodotti/a2-pro.png",
+                "images/official/unitree-a2-02.webp",
                 [("Carico", "~15 kg"), ("Velocità", "~5 m/s"), ("IP", "IP54"), ("DoF", "12")],
             ),
             card(
@@ -216,7 +216,7 @@ def write_as2() -> None:
                 "Education · ROS 2 / SDK",
                 "15.600 €",
                 "prodotti/unitree-as2-edu.html",
-                "images/prodotti/a2-pro.png",
+                "images/official/unitree-a2-02.webp",
                 [("Carico", "~15 kg"), ("SDK", "ROS 2"), ("IP", "IP54"), ("Tier", "U1")],
             ),
             card(
@@ -224,7 +224,7 @@ def write_as2() -> None:
                 "Education + computing",
                 "17.940 €",
                 "prodotti/unitree-as2-edu-smart.html",
-                "images/prodotti/a2-pro.png",
+                "images/official/unitree-a2-02.webp",
                 [("Carico", "~15 kg"), ("Tier", "U2"), ("IP", "IP54"), ("Uso", "Lab")],
             ),
             card(
@@ -232,7 +232,7 @@ def write_as2() -> None:
                 "Mid360 · mapping",
                 "22.640 €",
                 "prodotti/unitree-as2-edu-laser.html",
-                "images/prodotti/a2-pro.png",
+                "images/official/unitree-a2-02.webp",
                 [("LiDAR", "Mid360"), ("Tier", "U3"), ("IP", "IP54"), ("Uso", "SLAM")],
             ),
             card(
@@ -240,7 +240,7 @@ def write_as2() -> None:
                 "Configurazione top EDU",
                 "24.990 €",
                 "prodotti/unitree-as2-edu-ult.html",
-                "images/prodotti/a2-pro.png",
+                "images/official/unitree-a2-02.webp",
                 [("Tier", "U4"), ("Carico", "~15 kg"), ("IP", "IP54"), ("Uso", "R&D")],
             ),
             card(
@@ -248,7 +248,7 @@ def write_as2() -> None:
                 "Demo · POC · ispezione",
                 "5.400 €",
                 "prodotti/unitree-as2-air.html",
-                "images/prodotti/a2-pro.png",
+                "images/official/unitree-a2-02.webp",
                 [("Carico", "~10 kg"), ("Velocità", "3,0 m/s"), ("IP", "non dichiarato"), ("Autonomia", "~2 h")],
             ),
             card(

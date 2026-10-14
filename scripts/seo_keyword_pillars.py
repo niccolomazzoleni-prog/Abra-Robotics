@@ -264,7 +264,7 @@ def main() -> None:
     optimize_file(
         ROOT / "umanoidi.html",
         title="Robot umanoide Unitree G1 in Italia | Abra Robotics",
-        desc="Robot umanoide Unitree G1: gamma completa in Italia (Air, EDU, Comp). Prezzi, specifiche e supporto Abra Robotics — distributore ufficiale.",
+        desc="Robot umanoide Unitree G1: gamma completa in Italia (Air, EDU, Comp). Prezzi, specifiche e supporto Abra Robotics, filiera di distribuzione di Unitree Italia.",
         h1="Robot umanoide Unitree G1 — gamma completa",
         lead="Cerchi un robot umanoide per azienda, università o demo? Qui trovi tutta la famiglia Unitree G1 disponibile in Italia tramite Abra Robotics: dal G1 Air alle configurazioni EDU e Comp, con scheda tecnica e prezzi per ciascun modello.",
         faqs=FAQ_IT_UMANOIDI,
