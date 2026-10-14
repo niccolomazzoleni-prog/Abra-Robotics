@@ -30,7 +30,7 @@ MANIFEST = ROOT / "listini" / "pubblico" / "catalogo-manifest.json"
 IMAGE_URLS: dict[str, str] = {
     "g1-d-standard": "https://www.unitree.com/images/563d33a0fe6146f9919f82e0e2799244_800x800.png",
     "g1-d-flagship": "https://www.unitree.com/images/e9607f806eb4483f93b5a5553446c2bc_800x800.png",
-    "g1-d": "images/manifattura/unitree-g1-d-nobg.png",
+    "g1-d": "images/official/unitree-g1-d-mobile.webp",
     "as2-w": "https://www.unitree.com/images/2e06005b29aa4a629c131f0a6448b4f0_800x800.png",
     "go2-x": "https://www.unitree.com/images/f951770ea2e74197a6b0c089d13efc5a_800x800.png",
     "h2-plus": "https://www.unitree.com/images/8745aebc0c9c43a2a954ec08eed18805_800x800.png",
@@ -231,7 +231,7 @@ def download_image(key: str, url: str) -> str:
             print(f"  Scaricata {dest.name}")
         except Exception as e:
             print(f"  WARN download {key}: {e}")
-            return "images/manifattura/unitree-g1-d-nobg.png"
+            return "images/official/unitree-g1-d-mobile.webp"
     return f"images/prodotti/{dest.name}"
 
 
@@ -293,7 +293,7 @@ def update_manifest(products: list[dict], img_paths: dict[str, str]) -> None:
             "sottotitolo": p["sottotitolo"],
             "descrizione": p["descrizione"],
             "specs": p["specs"],
-            "immagine": img_paths.get(p["img_key"], "images/manifattura/unitree-g1-d-nobg.png"),
+            "immagine": img_paths.get(p["img_key"], "images/official/unitree-g1-d-mobile.webp"),
             "categoria": p["categoria"],
             "slug": p["filename"],
             "prezzo_su_richiesta": True,
@@ -309,7 +309,7 @@ def catalog_cards(products: list[dict], img_paths: dict[str, str]) -> str:
         titolo = p["titolo"]
         family = product_family(sku, p["titolo"])
         cat_label = CAT_LABEL.get(p["categoria"], p["categoria"])
-        img = img_paths.get(p["img_key"], "images/manifattura/unitree-g1-d-nobg.png")
+        img = img_paths.get(p["img_key"], "images/official/unitree-g1-d-mobile.webp")
         cards.append(
             f"""        <article class="cat-card" data-cat="{cat_label}" data-family="{family}" data-sku="{sku}" data-name="{titolo.lower()}">
           <a href="prodotti/{fn}" class="cat-media"><img src="{img}" alt="{titolo}" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-img');"></a>
@@ -354,7 +354,7 @@ def write_g1_d_hub() -> None:
     html = r1
     html = html.replace("R1-D", "G1-D").replace("R1-D", "G1-D")
     html = html.replace("r1-d.html", "g1-d.html")
-    html = html.replace("unitree-r1-d-hero.png", "manifattura/unitree-g1-d-nobg.png")
+    html = html.replace("unitree-r1-d-hero.png", "official/unitree-g1-d-mobile.webp")
     html = html.replace("Dual-Arm Humanoid", "G1-D Dual-Arm Platform")
     html = html.replace(
         "Unitree Dual-Arm Humanoid Robot",
@@ -411,7 +411,7 @@ def main() -> None:
 
     for p in PRODUCTS:
         path = PRODOTTI / p["filename"]
-        img = img_paths.get(p["img_key"], "images/manifattura/unitree-g1-d-nobg.png")
+        img = img_paths.get(p["img_key"], "images/official/unitree-g1-d-mobile.webp")
         path.write_text(build_page(p, img), encoding="utf-8")
         print(f"Pagina: {path.name}")
 

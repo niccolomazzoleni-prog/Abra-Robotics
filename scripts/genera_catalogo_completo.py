@@ -159,7 +159,7 @@ def manifest_entry(sku: str, manifest: dict, row: dict) -> dict:
         "sottotitolo": nome,
         "descrizione": f"{nome}: prodotto Unitree disponibile in Italia tramite Abra Robotics.",
         "specs": [["Prodotto", nome]],
-        "immagine": "images/g1-hero.png",
+        "immagine": "images/official/unitree-g1-03.webp",
         "categoria": row.get("categoria", ""),
         "slug": slug_file(sku),
     }
@@ -349,7 +349,7 @@ def spec_rows(entry: dict) -> str:
 
 
 def gallery_path(img: str) -> tuple[str, str]:
-    rel = img or "images/g1-hero.png"
+    rel = img or "images/official/unitree-g1-03.webp"
     if rel.startswith("prodotti/"):
         inner = rel[len("prodotti/"):]
         return inner, rel
@@ -496,7 +496,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
         listino = parse_price(r.get("prezzo_listino_eur", ""))
         was = (f'<s class="cat-price-was">{fmt_eur(listino)} €</s> '
                if listino and price and listino > price else "")
-        img = entry.get("immagine", "images/g1-hero.png")
+        img = entry.get("immagine", "images/official/unitree-g1-03.webp")
         titolo = entry.get("titolo", r["nome_prodotto"])
         cat_key = r["categoria"]
         cat_label = CAT_LABEL.get(cat_key, cat_key)
@@ -527,7 +527,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
   <meta property="og:title" content="Catalogo Unitree — Abra Robotics">
   <meta property="og:description" content="{len(pub)} prodotti Unitree con prezzi End-User pubblici in Italia.">
   <meta property="og:url" content="{SITE}/catalogo-unitree.html">
-  <meta property="og:image" content="{SITE}/images/g1-hero.png">
+  <meta property="og:image" content="{SITE}/images/official/unitree-g1-03.webp">
   <link rel="stylesheet" href="style.css">
   <style>
     .cat-hero {{ padding: calc(40px + 72px + 48px) 48px 40px; border-bottom: 1px solid var(--gray-200); }}

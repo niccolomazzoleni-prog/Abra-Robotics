@@ -341,7 +341,7 @@ def landing_page(d: dict, data: dict, all_langs: list[dict]) -> str:
 """
     lds = [ld_org] + ([faq_ld(faq)] if faq else [])
     return ("<!-- generato da scripts/genera_lingue.py -->\n"
-            + head(d, L["title"], L["description"], own, alternates(None, all_langs), "images/prodotti/2026/famiglia-g1.png", lds)
+            + head(d, L["title"], L["description"], own, alternates(None, all_langs), "images/official/unitree-g1-02.webp", lds)
             + body + main + footer + '\n<script defer src="../script.js"></script>\n</body>\n</html>\n')
 
 
