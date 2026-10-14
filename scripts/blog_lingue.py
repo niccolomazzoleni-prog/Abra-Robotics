@@ -219,6 +219,10 @@ def sync(slug: str) -> list[Path]:
     for f in files:
         s = f.read_text(encoding="utf-8")
         n = set_alternates(s, slug)
+        if f.parent.parent != ROOT:  # traduzione: link agli altri articoli verso la migliore lingua esistente oggi
+            code = f.parent.parent.name
+            n = re.sub(r'href="/(?:[a-z]{2}/)?blog/([a-z0-9-]+)\.html(#[^"]*)?"',
+                       lambda m: f'href="{localize(f"/blog/{m.group(1)}.html", code)}{m.group(2) or ""}"', n)
         if n != s:
             f.write_text(n, encoding="utf-8")
     return files
