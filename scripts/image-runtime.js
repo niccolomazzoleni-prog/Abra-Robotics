@@ -35,7 +35,9 @@
     a.href = cur;
     var b = document.createElement('a');
     b.href = src.split('?')[0];
-    if (a.href !== b.href) img.src = src;
+    // stessa immagine in un altro formato (.webp leggera al posto di .png/.jpg): non riscaricare
+    var strip = function (h) { return h.replace(/\.(png|jpe?g|webp)$/i, ''); };
+    if (a.href !== b.href && strip(a.href) !== strip(b.href)) img.src = src;
   }
 
   function applyCatalog(overrides) {
