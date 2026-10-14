@@ -71,19 +71,19 @@ def fix_quadrupedi() -> None:
     # Fix wrong AS2 card images (were a2-pro.png)
     replacements = [
         (
-            'alt="Unitree AS2 Air, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/a2-pro.png"',
+            'alt="Unitree AS2 Air, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/official/unitree-a2-02.webp"',
             'alt="Unitree AS2 Air, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/2026/as2.png"',
         ),
         (
-            'alt="Unitree AS2-X, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/a2-pro.png"',
+            'alt="Unitree AS2-X, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/official/unitree-a2-02.webp"',
             'alt="Unitree AS2-X, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/2026/as2.png"',
         ),
         (
-            'alt="Unitree AS2 EDU, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/a2-pro.png"',
+            'alt="Unitree AS2 EDU, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/official/unitree-a2-02.webp"',
             'alt="Unitree AS2 EDU, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/2026/as2.png"',
         ),
         (
-            'alt="Unitree AS2 Pro, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/a2-pro.png"',
+            'alt="Unitree AS2 Pro, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/official/unitree-a2-02.webp"',
             'alt="Unitree AS2 Pro, quadrupede Unitree" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\');" src="images/prodotti/2026/as2.png"',
         ),
     ]

@@ -183,7 +183,7 @@
     const ui = new window.AbraChatWidgetUI({
       title: 'Assistente Abra',
       subtitle: 'Online · prezzi dal listino pubblico',
-      logoUrl: siteRoot + 'images/chat-g1-face.png',
+      logoUrl: siteRoot + 'images/official/unitree-g1-volto.webp',
       linkBase: siteRoot,
       chips: [
         { label: 'Prezzi umanoidi', q: 'Prezzi umanoidi' },

@@ -20,10 +20,13 @@ NAMES = {
 UNUM = {"g1":"Air","g1-comp":"Comp","g1-u1":"U1","g1-u2":"U2","g1-u3":"U3","g1-u4":"U4","g1-u5":"U5","g1-u6":"U6","g1-u7":"U7","g1-u8":"U8"}
 TIER = {"g1":"air","g1-comp":"comp","g1-u1":"edu","g1-u2":"edu","g1-u3":"edu","g1-u4":"edu","g1-u5":"edu","g1-u6":"edu","g1-u7":"edu","g1-u8":"edu"}
 
+# Immagine principale ufficiale Unitree per variante (vedi data/immagini-ufficiali.json)
+OFFICIAL_MAIN = {'g1-u1': 'unitree-g1-01', 'g1-u2': 'unitree-g1-01', 'g1-u3': 'unitree-g1-02', 'g1-u4': 'unitree-g1-02', 'g1-u5': 'unitree-g1-02', 'g1-u6': 'unitree-g1-02', 'g1-u7': 'unitree-g1-02', 'g1-u8': 'unitree-g1-02', 'g1-comp': 'unitree-g1-calcio'}
+
 def img(code):
     if code == "g1":
-        return "prodotti/assets/images/g1-01.jpg"
-    return f"prodotti/assets/variants/{code}/img-01.png"
+        return "images/official/unitree-g1-01.webp"
+    return f"images/official/{OFFICIAL_MAIN[code]}.webp"
 
 def speed(code):
     return ">2 m/s" if code == "g1-comp" else "2 m/s"

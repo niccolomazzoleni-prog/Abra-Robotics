@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Generatore schede prodotto quadrupedi Unitree (Abra Robotics).
-Dati da RoboStore. Riusa _template.html + product.css/js."""
+Immagini ufficiali Unitree (images/official). Riusa _template.html + product.css/js."""
 import os
 import sys
 from _buy import buy_area, schema
@@ -376,9 +376,56 @@ def spec_mini(d):
         </div>''')
     return "\n".join(out)
 
+# Immagini ufficiali (unitree.com / shop.unitree.com), vedi data/immagini-ufficiali.json
+OFFICIAL_IMGS = {
+    "go2-pro": [
+        "../images/official/unitree-go2-01.webp",
+        "../images/official/unitree-go2-corsa.webp",
+        "../images/official/unitree-go2-lidar.webp",
+        "../images/official/unitree-go2-terrazza.webp",
+        "../images/official/unitree-go2-esterno.webp",
+    ],
+    "go2-edu": [
+        "../images/official/unitree-go2-02.webp",
+        "../images/official/unitree-go2-roccia.webp",
+        "../images/official/unitree-go2-corsa.webp",
+        "../images/official/unitree-go2-lidar.webp",
+        "../images/official/unitree-go2-esterno.webp",
+    ],
+    "go2-ent-u2": [
+        "../images/official/unitree-go2-03.webp",
+        "../images/official/unitree-go2-roccia.webp",
+        "../images/official/unitree-go2-corsa.webp",
+        "../images/official/unitree-go2-lidar.webp",
+        "../images/official/unitree-go2-terrazza.webp",
+    ],
+    "a2": [
+        "../images/official/unitree-a2-01.webp",
+        "../images/official/unitree-a2-buio.webp",
+        "../images/official/unitree-a2-escursione.webp",
+        "../images/official/unitree-a2-roccia.webp",
+        "../images/official/unitree-a2-carico.webp",
+    ],
+    "a2-pro": [
+        "../images/official/unitree-a2-02.webp",
+        "../images/official/unitree-a2-buio.webp",
+        "../images/official/unitree-a2-escursione.webp",
+        "../images/official/unitree-a2-roccia.webp",
+        "../images/official/unitree-a2-carico.webp",
+    ],
+    "b2": [
+        "../images/official/unitree-b2-01.webp",
+        "../images/official/unitree-b2-montagna.webp",
+        "../images/official/unitree-b2-dettaglio.webp",
+        "../images/official/unitree-b2-pista.webp",
+        "../images/official/unitree-b2-traino.webp",
+    ],
+}
+
+
 def render(code):
     d = V[code]
-    imgs = [f'assets/variants/{d["imgdir"]}/img-0{i}.jpg' for i in range(1, 6)]
+    imgs = OFFICIAL_IMGS[d["imgdir"]]
     cards, trio = comp_cards(code)
     repl = {
       "%%LANG_TITLE%%": f'{d["title"]} — Robot Quadrupede | Abra Robotics',
