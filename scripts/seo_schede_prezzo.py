@@ -25,6 +25,7 @@ from seo_title_desc import seo_desc  # noqa: E402
 
 SITE = "https://abrarobotics.com/"
 MAX_TITLE = 60
+MAX_TITLE_FALLBACK = 65  # oltre, Google taglia: si accorcia il nome (solo nomi lunghi, senza prezzo)
 
 # famiglia -> (etichetta, hub IT, hub EN, categoria del robot: "umanoidi"/"quadrupedi"/None)
 FAMILIES = {
@@ -101,7 +102,20 @@ def price_title(name: str, en: bool, price: float | None = None) -> str:
     for cand in (*cands, f"{name} {word} | Abra Robotics", f"{name} {word} | Abra", f"{short} {word}"):
         if len(cand) <= MAX_TITLE:
             return cand
-    return f"{name} {word}"
+    if len(f"{name} {word}") <= MAX_TITLE_FALLBACK:
+        return f"{name} {word}"
+    # ancora troppo lungo: prima tolgo la variante dopo "/" e la parola NVIDIA, poi parole dalla fine (mai a meta')
+    for cut in (r"\s*/\s*\S+", r"\bNVIDIA\s+"):
+        short = re.sub(cut, " " if "/" in cut else "", short, count=1).strip()
+        short = re.sub(r"\s+", " ", short)
+        if len(f"{short} {word}") <= MAX_TITLE:
+            return f"{short} {word}"
+    words = short.split()
+    while len(words) > 2 and len(" ".join(words) + f" {word}") > MAX_TITLE:
+        words.pop()
+    while words and words[-1].lower() in {"/", "-", "con", "e", "di", "per", "with", "and", "for"}:
+        words.pop()
+    return f"{' '.join(words)} {word}" if words else f"{name} {word}"
 
 
 def ld_blocks(s: str):
