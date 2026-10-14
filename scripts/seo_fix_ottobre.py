@@ -10,14 +10,14 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://abrarobotics.com/"
 SKIP = {".claude", "node_modules", "admin", "editor", "offerte-ai", "stripe", "apps-script", "scripts", "docs"}
 TITLES = {  # pagine principali oltre 60 caratteri
-    "index.html": "Robot Unitree in Italia: prezzi G1, H2, AS2, Go2 | Abra",
+    "index.html": "Robot Unitree in Italia: prezzi G1, H2, AS2, Go2 | Abra Robotics",
     "lp-amr.html": "Robot AMR in Italia: movimentazione interna | Abra",
     "lp-unitree.html": "Robot Unitree in Italia: umanoidi e quadrupedi | Abra",
     "software.html": "Software custom per robot Unitree | Abra Robotics",
     "lp-quadrupedi.html": "Robot quadrupedi in Italia: modelli e prezzi | Abra",
     "blog/unitree-g1-guida-operativa.html": "Unitree G1: accensione, telecomando e rete | Abra",
     "blog/unitree-italia-guida-completa.html": "Unitree in Italia: guida 2026 a modelli e prezzi | Abra",
-    "en/index-en.html": "Unitree robots in Italy: G1, H2, AS2, Go2 prices | Abra",
+    "en/index-en.html": "Unitree robots in Italy: G1, H2, AS2, Go2 prices | Abra Robotics",
 }
 CANONICAL = {  # duplicati -> pagina di riferimento
     "prodotti/unitree-g1d-standard.html": "prodotti/unitree-g1-d-standard.html",

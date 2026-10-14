@@ -1,61 +1,46 @@
 #!/usr/bin/env python3
-"""Notify IndexNow (Bing et al.) about key updated URLs."""
+"""Notify IndexNow (Bing, Yandex, Seznam, ...) about updated URLs.
+
+Without arguments sends every URL in sitemap.xml (IndexNow accepts up to 10,000 per call);
+with arguments sends only those URLs. Bing also feeds ChatGPT and Copilot web search.
+Usage: python scripts/ping_indexnow.py [URL ...]"""
 from __future__ import annotations
 
 import json
-import ssl
+import re
+import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KEY = (ROOT / "abrarobotics2026indexnowkey.txt").read_text(encoding="utf-8").strip()
+KEY_FILE = "abrarobotics2026indexnowkey.txt"
+KEY = (ROOT / KEY_FILE).read_text(encoding="utf-8").strip()
 HOST = "abrarobotics.com"
-URLS = [
-    f"https://{HOST}/",
-    f"https://{HOST}/as2.html",
-    f"https://{HOST}/h2.html",
-    f"https://{HOST}/umanoidi.html",
-    f"https://{HOST}/quadrupedi.html",
-    f"https://{HOST}/llms.txt",
-    f"https://{HOST}/sitemap.xml",
-    f"https://{HOST}/blog/unitree-as2-italia.html",
-    f"https://{HOST}/blog/unitree-h2-italia.html",
-    f"https://{HOST}/blog/ricerca-unitree-arxiv.html",
-    f"https://{HOST}/blog.html",
-    f"https://{HOST}/universita-ricerca.html",
-    f"https://{HOST}/prodotti/unitree-as2-pro.html",
-    f"https://{HOST}/prodotti/unitree-as2-w.html",
-    f"https://{HOST}/prodotti/unitree-h2.html",
-    f"https://{HOST}/prodotti/unitree-h2-d.html",
-    f"https://{HOST}/prodotti/unitree-h2-plus.html",
-]
 
 
-def main() -> None:
-    payload = {
-        "host": HOST,
-        "key": KEY,
-        "keyLocation": f"https://{HOST}/{KEY}.txt"
-        if not KEY.endswith(".txt")
-        else f"https://{HOST}/abrarobotics2026indexnowkey.txt",
-        "urlList": URLS,
-    }
-    # key file on site is abrarobotics2026indexnowkey.txt
-    payload["keyLocation"] = f"https://{HOST}/abrarobotics2026indexnowkey.txt"
-    data = json.dumps(payload).encode("utf-8")
+def sitemap_urls() -> list[str]:
+    xml = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    return re.findall(r"<loc>(https://abrarobotics\.com/[^<]*)</loc>", xml)
+
+
+def main(urls: list[str]) -> None:
+    urls = urls or sitemap_urls()
+    payload = {"host": HOST, "key": KEY, "keyLocation": f"https://{HOST}/{KEY_FILE}", "urlList": urls[:10000]}
     req = urllib.request.Request(
         "https://api.indexnow.org/indexnow",
-        data=data,
+        data=json.dumps(payload).encode("utf-8"),
         headers={"Content-Type": "application/json; charset=utf-8"},
         method="POST",
     )
-    ctx = ssl._create_unverified_context()
     try:
-        with urllib.request.urlopen(req, context=ctx, timeout=30) as resp:
-            print("IndexNow status", resp.status, resp.read()[:200])
-    except Exception as e:
-        print("IndexNow error", e)
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            # 200 = ricevuto, 202 = ricevuto, chiave in verifica
+            print(f"IndexNow: {resp.status} per {len(payload['urlList'])} URL")
+    except urllib.error.HTTPError as e:
+        print(f"IndexNow: errore {e.code} {e.read()[:200]!r}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])

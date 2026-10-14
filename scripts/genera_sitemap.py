@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Genera sitemap.xml con tutte le pagine indicizzabili."""
+"""Genera sitemap.xml con le pagine indicizzabili che vale la pena far scansionare.
+
+Accessori/ricambi, mani e pinze, varianti quasi duplicate (configurazioni a lettera, bundle,
+schede doppie, moduli top AMR) e pagine legali restano online e indicizzabili ma fuori dalla
+sitemap: le regole (pattern sui dati prodotto) sono in scripts/schede_regole.py."""
 from __future__ import annotations
 
 import re
@@ -12,6 +16,8 @@ from xml.dom import minidom
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "prodotti"))
+sys.path.insert(0, str(ROOT / "scripts"))
+from schede_regole import motivo_esclusione  # noqa: E402
 try:
     from _site import SITE  # noqa: E402
 except ImportError:
@@ -147,8 +153,10 @@ def changefreq_for(path: Path) -> str:
     return CHANGEFREQ.get(path.name, "monthly")
 
 
+ESCLUSE: dict[str, int] = {}
+
+
 def collect_urls() -> list[tuple[str, str, str]]:
-    today = date.today().isoformat()
     urls: list[tuple[str, str, str]] = []
 
     for html in sorted(ROOT.rglob("*.html")):
@@ -169,7 +177,11 @@ def collect_urls() -> list[tuple[str, str, str]]:
         # skip meta-refresh redirect stubs
         if re.search(r'http-equiv=["\']refresh["\']', text, re.I):
             continue
-        loc = SITE + "/" + rel.as_posix().replace("index.html", "").rstrip("/")
+        motivo = motivo_esclusione(rel.as_posix())
+        if motivo:  # resta online e indicizzabile, solo fuori dalla sitemap
+            ESCLUSE[motivo] = ESCLUSE.get(motivo, 0) + 1
+            continue
+        loc =SITE + "/" + rel.as_posix().replace("index.html", "").rstrip("/")
         if loc.endswith("/") and not loc.endswith("://"):
             loc = loc.rstrip("/") or SITE + "/"
         if rel.name == "index.html" and len(rel.parts) == 1:
@@ -211,6 +223,8 @@ def main() -> None:
     out = ROOT / "sitemap.xml"
     out.write_text(xml, encoding="utf-8")
     print(f"Scritto {out} — {len(urls)} URL")
+    for motivo, n in sorted(ESCLUSE.items(), key=lambda kv: -kv[1]):
+        print(f"  fuori dalla sitemap: {n:4d}  {motivo}")
 
 
 if __name__ == "__main__":
