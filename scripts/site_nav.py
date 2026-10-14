@@ -18,7 +18,7 @@ def render_top_bar(prefix: str = "", message: str | None = None) -> str:
 def render_site_nav(prefix: str = "") -> str:
     """Restituisce <nav> + <div class="mobile-menu"> con href relativi al prefisso."""
     p = prefix
-    img = f"{p}images/logo.png"
+    img = f"{p}images/logo.webp"
     home = f"{p}index.html"
     return f"""  <!-- Navbar -->
   <nav class="navbar">
@@ -100,7 +100,7 @@ def render_site_footer(prefix: str = "") -> str:
     return f"""<footer class="footer">
 <div class="container footer-grid">
 <div class="footer-brand">
-<a class="logo" href="{p}index.html"><img alt="Abra Robotics" class="logo-img" src="{p}images/logo.png" width="180" height="72" decoding="async"/></a>
+<a class="logo" href="{p}index.html"><img alt="Abra Robotics" class="logo-img" src="{p}images/logo.webp" width="180" height="72" decoding="async"/></a>
 <p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
 </div>
 <div class="footer-nav">
