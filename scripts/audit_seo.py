@@ -5,6 +5,8 @@ from __future__ import annotations
 import collections, html as H, re, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+from schede_regole import motivo_esclusione  # pagine tenute fuori dalla sitemap di proposito  # noqa: E402
 SITE = "https://abrarobotics.com"
 SKIP_DIRS = {".claude", ".git", "node_modules", "admin", "editor", "offerte-ai", "fonts", "listini", "stripe", "apps-script", "lp-thank-you", "lp-thank-you-en", "__pycache__"}
 
@@ -95,7 +97,7 @@ sm = set(re.findall(r"<loc>([^<]+)</loc>", (ROOT / "sitemap.xml").read_text(enco
 idx_urls = {url_of(Path(p)): r for p, r in indexable.items()}
 for u in sorted(sm - set(idx_urls)): issues["in sitemap ma non indicizzabile/inesistente"].append(u)
 for u, r in sorted(idx_urls.items()):
-    if u not in sm and not r.startswith(("lp-", "en/lp-")) and "-lc" not in r and "grazie" not in r: issues["indicizzabile ma non in sitemap"].append(r)
+    if u not in sm and not r.startswith(("lp-", "en/lp-")) and "-lc" not in r and "grazie" not in r and not motivo_esclusione(r): issues["indicizzabile ma non in sitemap"].append(r)
 for p, r in indexable.items():
     if p not in linked and r not in ("index.html",): issues["pagina orfana (nessun link interno)"].append(r)
 print(f"pagine indicizzabili: {len(indexable)}")

@@ -3,8 +3,12 @@
 
 Per ogni scheda Unitree italiana (prodotti/unitree-*.html) e inglese
 (en/prodotti/unitree-*-en.html), redirect esclusi:
-- title "<Nome> prezzo | Abra Robotics" / "<Name> price | Abra Robotics" (entro 60
-  caratteri se possibile, mai duplicati: in caso di collisione resta il title attuale);
+- title con la categoria del prodotto (dai dati prodotto, scripts/schede_regole.py) e, per le
+  schede del listino pubblico, il prezzo: "Unitree Go2 Pro robot quadrupede, prezzo: 3.981 € + IVA";
+  senza prezzo "Unitree Go2 Pro: robot quadrupede, prezzo | Abra Robotics" /
+  "Unitree Go2 Pro quadruped robot: price | Abra Robotics"; entro 60 caratteri se possibile
+  (poi 65): prima si toglie la parte tra parentesi del nome, poi "Abra Robotics" diventa "Abra".
+  Mai duplicati: chi collide passa alla forma successiva, altrimenti resta il title attuale;
 - meta description (e og) con il prezzo mostrato in pagina: "da X € IVA esclusa" /
   "from €X excl. VAT", 120-158 caratteri;
 - breadcrumb visibile e BreadcrumbList: Home > categoria > Unitree <famiglia> > prodotto;
@@ -22,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from seo_title_desc import seo_desc  # noqa: E402
+from schede_regole import categoria_title  # noqa: E402
 
 SITE = "https://abrarobotics.com/"
 MAX_TITLE = 60
@@ -83,39 +88,89 @@ def fmt_en(p: float) -> str:
     return s[:-3] if s.endswith(".00") else s
 
 
-LISTINO_SLUGS = {v.get("slug", "").split("/")[-1] for v in json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8")).values() if isinstance(v, dict)}
-
-
-def price_title(name: str, en: bool, price: float | None = None) -> str:
+def price_title(name: str, en: bool) -> str:
+    """Title delle schede cobot e AMR: "<Nome> prezzo | Abra Robotics" / "<Name> price | Abra Robotics"."""
     word = "price" if en else "prezzo"
-    cands = []
-    if price:  # prezzo della scheda nel title: chi cerca "<modello> prezzo" lo vede gia' nel risultato
-        n = f"{price:,.0f}"
-        cands = ([f"{name} price: €{n} excl. VAT", f"{name} price: €{n}"] if en
-                 else [f"{name} prezzo: {n.replace(',', '.')} € + IVA", f"{name} prezzo: {n.replace(',', '.')} €"])
-    # nome lungo: la parte tra parentesi (specifiche) e' la prima a sparire, il prezzo resta visibile
     short = re.sub(r"\s*\([^)]*\)", "", name).strip()
-    if short != name and price:
-        n2 = f"{price:,.0f}"
-        cands += ([f"{short} price: €{n2} excl. VAT", f"{short} price: €{n2}"] if en
-                  else [f"{short} prezzo: {n2.replace(',', '.')} € + IVA", f"{short} prezzo: {n2.replace(',', '.')} €"])
-    for cand in (*cands, f"{name} {word} | Abra Robotics", f"{name} {word} | Abra", f"{short} {word}"):
+    for cand in (f"{name} {word} | Abra Robotics", f"{name} {word} | Abra", f"{short} {word}"):
         if len(cand) <= MAX_TITLE:
             return cand
     if len(f"{name} {word}") <= MAX_TITLE_FALLBACK:
         return f"{name} {word}"
-    # ancora troppo lungo: prima tolgo la variante dopo "/" e la parola NVIDIA, poi parole dalla fine (mai a meta')
+    return _cut(short, lambda n: f"{n} {word}")
+
+
+def _cut(short: str, fmt) -> str:
+    """Nome ancora troppo lungo: tolgo la variante dopo "/" e la parola NVIDIA, poi parole dalla fine (mai a meta')."""
     for cut in (r"\s*/\s*\S+", r"\bNVIDIA\s+"):
         short = re.sub(cut, " " if "/" in cut else "", short, count=1).strip()
         short = re.sub(r"\s+", " ", short)
-        if len(f"{short} {word}") <= MAX_TITLE:
-            return f"{short} {word}"
+        if len(fmt(short)) <= MAX_TITLE:
+            return fmt(short)
     words = short.split()
-    while len(words) > 2 and len(" ".join(words) + f" {word}") > MAX_TITLE:
+    while len(words) > 2 and len(fmt(" ".join(words))) > MAX_TITLE:
         words.pop()
     while words and words[-1].lower() in {"/", "-", "con", "e", "di", "per", "with", "and", "for"}:
         words.pop()
-    return f"{' '.join(words)} {word}" if words else f"{name} {word}"
+    return fmt(" ".join(words) or short)
+
+
+GENERIC_CAT_WORDS = {"robot", "robotic", "robotico", "robotica", "sensore", "sensor"}
+LISTINO_SLUGS = {v.get("slug", "").split("/")[-1] for v in json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8")).values() if isinstance(v, dict)}
+
+
+def unitree_titles(name: str, slug: str, en: bool, price: float | None = None) -> list[str]:
+    """Forme del title di una scheda Unitree, dalla migliore: nome, categoria, prezzo/price, marchio.
+    Con prezzo (solo schede del listino pubblico, prezzo verificato in pagina):
+    IT "Unitree Go2 Pro robot quadrupede, prezzo: 3.981 € + IVA",
+    EN "Unitree Go2 Pro quadruped robot price: €3,981 excl. VAT": chi cerca "<modello> prezzo"
+    vede gia' il prezzo nel risultato. Senza prezzo:
+    IT "Unitree Go2 Pro: robot quadrupede, prezzo | Abra Robotics",
+    EN "Unitree Go2 Pro quadruped robot: price | Abra Robotics"."""
+    cat = categoria_title(slug.replace("-en.html", ".html"), en)
+    if cat and any(w.lower() in name.lower() for w in cat.split() if w.lower() not in GENERIC_CAT_WORDS):
+        cat = None  # categoria gia' nel nome (es. "D1 Robotic Arm", "Pinza Dex1-1", "Helios 5515 Lidar")
+    short = re.sub(r"\s*\([^)]*\)", "", name).strip()
+    names = [name] + ([short] if short != name else [])
+    priced: list[str] = []
+    if price:
+        n_it, n_en = f"{price:,.0f}".replace(",", "."), f"{price:,.0f}"
+
+        def core_p(n: str, c: str | None, vat: bool) -> str:
+            if en:
+                return f"{n}{' ' + c if c else ''} price: €{n_en}{' excl. VAT' if vat else ''}"
+            return f"{n}{' ' + c + ',' if c else ''} prezzo: {n_it} €{' + IVA' if vat else ''}"
+
+        # prima sparisce la parte tra parentesi, poi si accettano 65 caratteri, poi sparisce la
+        # categoria, infine "+ IVA"; il prezzo resta sempre visibile
+        for vat in (True, False):
+            for c in ([cat, None] if cat else [None]):
+                for limit in (MAX_TITLE, MAX_TITLE_FALLBACK):
+                    for n in names:
+                        t = core_p(n, c, vat)
+                        if len(t) <= limit and t not in priced:
+                            priced.append(t)
+
+    def core(n: str, c: str | None = cat) -> str:
+        if en:
+            return f"{n} {c}: price" if c else f"{n}: price"
+        return f"{n}: {c}, prezzo" if c else f"{n}: prezzo"
+
+    # nome lungo: sparisce prima la parte tra parentesi, poi "Abra Robotics" diventa "Abra", poi il marchio,
+    # infine la categoria (le varianti con nomi lunghi restano distinte invece di collidere)
+    steps = []
+    for c in ([cat, None] if cat else [None]):
+        steps += [(n, c, "Abra Robotics", MAX_TITLE) for n in names] + [(n, c, "Abra Robotics", MAX_TITLE_FALLBACK) for n in names]
+        steps += [(n, c, "Abra", MAX_TITLE_FALLBACK) for n in names] + [(n, c, "", MAX_TITLE_FALLBACK) for n in names]
+    cands: list[str] = list(priced)
+    for n, c, brand, limit in steps:
+        t = f"{core(n, c)} | {brand}" if brand else core(n, c)
+        if len(t) <= limit and t not in cands:
+            cands.append(t)
+    for t in (_cut(short, core), _cut(short, lambda n: core(n, None))):
+        if t not in cands:
+            cands.append(t)
+    return cands
 
 
 def ld_blocks(s: str):
@@ -277,19 +332,28 @@ def main() -> None:
             continue  # duplicato con canonical verso un'altra scheda: resta com'e'
         # prezzo nel title solo per le schede presenti nel listino pubblico (prezzo verificato)
         price = page_price(s, product_of(s), en) if f.name.startswith("unitree-") and f.name.replace("-en.html", ".html") in LISTINO_SLUGS else None
-        plan[f] = (en, name, price_title(name, en, price))
-    # mai title duplicati: chi collide mantiene il title attuale
-    seen = {}
-    for f, (en, name, t) in plan.items():
-        seen.setdefault(t, []).append(f)
+        cands = unitree_titles(name, f.name, en, price) if f.name.startswith("unitree-") else [price_title(name, en)]
+        plan[f] = (en, name, cands)
+    # mai title duplicati: si parte dai title delle schede che non si toccano; chi collide passa
+    # alla forma successiva, e se le ha finite tutte mantiene il title attuale
+    def cur_title(s: str) -> str:
+        m = re.search(r"<title>([\s\S]*?)</title>", s)
+        return H.unescape(m.group(1)).strip() if m else ""
+    used = {cur_title(s) for f, s in pages if f not in plan}
+    chosen = {}
+    for f, (en, name, cands) in plan.items():
+        t = next((c for c in cands if c not in used), None)
+        chosen[f] = t
+        used.add(t if t else cur_title(dict(pages)[f]))
     stats = {"title": 0, "desc": 0, "breadcrumb": 0, "ld": 0, "collisioni": 0}
     for f, s in pages:
         if f not in plan:
             continue
         o = s
-        en, name, t = plan[f]
+        en, name, _cands = plan[f]
+        t = chosen[f]
         rel = f.relative_to(ROOT).as_posix()
-        if len(seen[t]) == 1:
+        if t:
             m = re.search(r"<title>([\s\S]*?)</title>", s)
             if m and H.unescape(m.group(1)).strip() != t:
                 s = s.replace(m.group(0), f"<title>{H.escape(t, quote=False)}</title>", 1)

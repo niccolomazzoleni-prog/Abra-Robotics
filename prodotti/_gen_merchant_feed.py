@@ -144,7 +144,10 @@ def load_items(avail_map: dict[str, str]) -> tuple[list[dict], list[str]]:
                 skipped.append(f"{path} (nessun prezzo)")
                 continue
             pid = path.replace(".html", "")
+            # titolo prodotto = title della pagina senza marchio del sito e senza la parte prezzo:
+            # Google Merchant non accetta il prezzo nel titolo ("Unitree Go2 Pro robot quadrupede")
             title = html.unescape(grab(r"<title>(.*?)</title>", text)).split("|")[0].strip()
+            title = re.sub(r"[,:]?\s*\b(prezzo|price)\b.*$", "", title, flags=re.I).strip(" ,:") or title
             desc = grab_meta_desc(text)
             link = grab(r'<link\s+rel="canonical"\s+href="(.*?)"', text, SITE_SLASH + "prodotti/" + path)
             brand = parse_brand(text)
