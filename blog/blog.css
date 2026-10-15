@@ -772,3 +772,22 @@
 .article-cta .btn,
 .article-cta .btn-outline-light { margin: 6px 12px 6px 0; }
 .article-cta .btn-outline-light { margin-left: 0; }
+
+/* === Link della barra in alto nei post (senza menu completo) === */
+.navbar .nav-post-links {
+  display: flex;
+  gap: 28px;
+  flex-shrink: 0;
+  align-items: center;
+}
+.navbar .nav-post-links a {
+  text-decoration: none;
+  color: var(--gray-600);
+  font-size: 0.98rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.navbar .nav-post-links a:hover { color: var(--black); }
+@media (max-width: 1200px) { .navbar .nav-post-links { display: flex; gap: 18px; } }
+@media (max-width: 480px) { .navbar .nav-post-links a { font-size: 0.9rem; } }
