@@ -484,7 +484,8 @@ def regenerate_stripe_config(filenames: list[str]) -> None:
 
 def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
     """Pagina catalogo pubblico con immagini, filtri e navbar completa."""
-    pub = [r for r in rows if r["pubblicabile"] == "true" and parse_price(r.get("prezzo_enduser_eur", ""))]
+    # prezzo pubblico, oppure voce "su richiesta" (prezzo_su_richiesta in end-user.json, es. G1-PLUS)
+    pub = [r for r in rows if r["pubblicabile"] == "true" and (parse_price(r.get("prezzo_enduser_eur", "")) or r.get("su_richiesta") == "true")]
 
     cards = []
     families: set[str] = set()
@@ -507,7 +508,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
           <div class="cat-body">
             <p class="cat-family">{family}</p>
             <h3><a href="prodotti/{fn}">{titolo}</a></h3>
-            <p class="cat-price">{was}{"A partire da " if sku in PRICE_FROM_SKUS else ""}{fmt_eur(price)} €</p>
+            <p class="cat-price">{(was + ("A partire da " if sku in PRICE_FROM_SKUS else "") + fmt_eur(price) + " €") if price else "Prezzo su richiesta"}</p>
             <a href="prodotti/{fn}" class="btn btn-secondary btn-sm">Scheda prodotto</a>
           </div>
         </article>""")
@@ -700,7 +701,7 @@ def regenerate_listino_html() -> None:
             <td class="thumb-col">${{i.img ? `<img class="listino-thumb" src="${{i.img}}" alt="" loading="lazy">` : ''}}</td>
             <td><a class="prod-link" href="prodotti/${{i.slug}}">${{i.nome}}</a></td>
             <td>${{i.catLabel}}</td>
-            <td class="price-col">${{i.listino > i.prezzo ? `<s class="price-was">€ ${{fmt(i.listino)}}</s>` : ''}}${{i.prezzoDa ? 'da ' : ''}}€ ${{fmt(i.prezzo)}}</td>
+            <td class="price-col">${{Number.isFinite(i.prezzo) ? `${{i.listino > i.prezzo ? `<s class="price-was">€ ${{fmt(i.listino)}}</s>` : ''}}${{i.prezzoDa ? 'da ' : ''}}€ ${{fmt(i.prezzo)}}` : 'Prezzo su richiesta'}}</td>
           </tr>`).join('')
         : '<tr><td colspan="4">Nessun risultato</td></tr>';
       if (window.listinoGate) window.listinoGate.after(filtered.length, shown.length);
