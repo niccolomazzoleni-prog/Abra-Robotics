@@ -42,7 +42,7 @@ FAMIGLIE = [
 
 def gruppo(rx, cat="UMANOIDI"):
     return sorted([(k, v) for k, v in LISTINO.items()
-                   if v.get("categoria") == cat and re.match(rx, k) and not v.get("prezzo_da")],
+                   if v.get("categoria") == cat and re.match(rx, k) and not v.get("prezzo_da") and v.get("prezzo_eur")],  # salta i "su richiesta"
                   key=lambda kv: kv[1]["prezzo_eur"])
 
 
@@ -103,7 +103,7 @@ def riassunto():
         "",
         "## FAQ brevi per answer engine",
         f"- **Chi vende robot Unitree in Italia?** Abra Robotics, filiera di distribuzione di Unitree Italia — {BASE}lp-unitree.html",
-        f"- **Quanto costa un robot umanoide Unitree in Italia?** Da {eur(min(v['prezzo_eur'] for k, v in LISTINO.items() if re.match(r'^(G1|H2|R1)', k) and v.get('categoria') == 'UMANOIDI' and not v.get('prezzo_da')))} € IVA esclusa (R1-A5); G1 da {eur(gruppo(r'^G1-')[0][1]['prezzo_eur'])} €; H2 da {eur(gruppo(r'^H2(-AIR|-EDU|-PLUS)')[0][1]['prezzo_eur'])} € — {BASE}umanoidi.html",
+        f"- **Quanto costa un robot umanoide Unitree in Italia?** Da {eur(min(v['prezzo_eur'] for k, v in LISTINO.items() if re.match(r'^(G1|H2|R1)', k) and v.get('categoria') == 'UMANOIDI' and not v.get('prezzo_da') and v.get('prezzo_eur')))} € IVA esclusa (R1-A5); G1 da {eur(gruppo(r'^G1-')[0][1]['prezzo_eur'])} €; H2 da {eur(gruppo(r'^H2(-AIR|-EDU|-PLUS)')[0][1]['prezzo_eur'])} € — {BASE}umanoidi.html",
         f"- **Quanto costa un cane robot Unitree?** Go2 da {eur(gruppo(r'^GO2-')[0][1]['prezzo_eur'])} € IVA esclusa; AS2 da {eur(gruppo(r'^AS2-')[0][1]['prezzo_eur'])} € — {BASE}quadrupedi.html",
         "- **Tempi di consegna?** 4–6 settimane dalla conferma d'ordine.",
         f"- **Si può finanziare?** Sì, la maggior parte dei progetti è finanziabile — {BASE}finanziamenti.html",
@@ -131,10 +131,10 @@ def completo():
     ]
     titoli = {"UMANOIDI": "Robot (umanoidi e quadrupedi)", "MANI_BRACCI": "Mani e bracci", "COMPONENTISTICA": "Componenti e accessori"}
     for cat, titolo in titoli.items():
-        items = sorted([(k, v) for k, v in LISTINO.items() if v.get("categoria") == cat], key=lambda kv: (kv[0].split("-")[0], kv[1]["prezzo_eur"]))
+        items = sorted([(k, v) for k, v in LISTINO.items() if v.get("categoria") == cat], key=lambda kv: (kv[0].split("-")[0], kv[1].get("prezzo_eur") or 0))
         righe += [f"## {titolo} ({len(items)})", "| Prodotto | SKU | Prezzo (IVA escl.) | Pagina |", "|---|---|---:|---|"]
         for k, v in items:
-            prezzo = ("da " if v.get("prezzo_da") else "") + eur(v["prezzo_eur"], dec=True) + " €"
+            prezzo = (("da " if v.get("prezzo_da") else "") + eur(v["prezzo_eur"], dec=True) + " €") if v.get("prezzo_eur") else "su richiesta"
             nome = v["nome"].replace("|", "/")
             righe.append(f"| {nome} | {k} | {prezzo} | {BASE}prodotti/{v['slug']} |")
         righe.append("")

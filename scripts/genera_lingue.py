@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from genera_hub_modelli import CAL, FAMILIES, HUB_CSS, SITE, load, template  # noqa: E402
 from nomi_en import nome_en  # noqa: E402
+from g1_plus_testi import T as G1P  # noqa: E402
 
 DATA = ROOT / "data" / "lingue"
 ORDER = ["de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs", "uk"]
@@ -97,7 +98,9 @@ def chrome(d: dict) -> tuple[str, str, str, str]:
     return fix(head_prefix), style, fix(body), fix(footer)
 
 
-def link_product(slug: str) -> str:
+def link_product(slug: str, code: str = "") -> str:
+    if code and slug == "unitree-g1-plus.html" and (ROOT / code / slug).is_file():
+        return slug  # G1+: scheda nella lingua della pagina (scripts/genera_g1_plus.py)
     en_slug = slug.replace(".html", "-en.html")
     if (ROOT / "en/prodotti" / en_slug).is_file():
         return f"../en/prodotti/{en_slug}"
@@ -203,10 +206,10 @@ def family_page(d: dict, key: str, data: dict, all_langs: list[dict]) -> str:
     title, desc = fill(F["seo_title"]), fill(F["description"])
 
     tr = "\n".join(
-        f'<tr><td><a href="{link_product(r["slug"])}">{esc(nome_en(r["name"]))}</a></td>'
-        f'<td class="p">{esc(u["from"].replace("{p}", money(r["price"], d)))}</td>'
-        f'<td><a href="{link_product(r["slug"])}">{esc(u["table_link"])} →</a></td></tr>'
-        for r in rows if r["price"])
+        f'<tr><td><a href="{link_product(r["slug"], code)}">{esc(nome_en(r["name"]))}</a></td>'
+        f'<td class="p">{esc(u["from"].replace("{p}", money(r["price"], d)) if r["price"] else (u.get("on_request") or G1P[code]["on_request"]))}</td>'
+        f'<td><a href="{link_product(r["slug"], code)}">{esc(u["table_link"])} →</a></td></tr>'
+        for r in rows if r["price"] or r.get("on_request"))
     table = (f'<div class="hm-wrap"><table class="hm-table"><thead><tr><th>{esc(u["table_version"])}</th><th>{esc(u["table_price"])}</th><th></th></tr></thead>'
              f'<tbody>\n{tr}\n</tbody></table></div>')
     choose = "".join(f"<p><strong>{esc(a)}</strong>: {para(b)}</p>" for a, b in F["choose"])
