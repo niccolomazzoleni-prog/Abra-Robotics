@@ -42,7 +42,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "Humanoid Robot Proof of Concept (PoC): Phases, KPIs, Risks",
   "description": "How to run a Unitree humanoid PoC in your company: phases, indicative timelines, KPIs to set first, choosing between G1, G1-D and R1, safety and rules.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-09",
+  "dateModified": "2026-10-15",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -157,21 +157,21 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <header class="article-header"><p class="label">PoC · Humanoids</p>
 <h1>Humanoid robot proof of concept in your company: phases, KPIs and risks</h1>
-<div class="article-meta"><time datetime="2026-07-13">13 July 2026</time><span>Updated on 9 October 2026</span><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>In short:</strong> a humanoid PoC answers one precise question (does this robot do this task, at this pace, with this much human intervention?) before you invest in more units. It works when KPIs, scope and success criteria are written down before the robot is switched on. The timelines here are indicative and depend on the case.</div>
+<div class="article-meta"><time datetime="2026-07-13">13 July 2026</time><span>Updated 9 October 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In brief:</strong> a humanoid PoC answers one precise question (does this robot do this task, at this pace, with this much human intervention?) before you invest in more units. It works when KPIs, scope and success criteria are written down before the robot is switched on. The timelines given here are indicative and depend on the case.</div>
 </header>
 
 <div class="article-content">
 <p>A <strong>humanoid robot PoC</strong> is not buying the robot and seeing what happens. It is an experiment with a defined scope, metrics written down in black and white, and a final decision: go ahead, change approach or stop. This guide describes a method a company can follow, the KPIs to set, how to choose the Unitree platform and which safety rules to keep in mind.</p>
 
 <h2>What a PoC must demonstrate</h2>
-<p>A PoC answers a single question, framed in a verifiable way. Examples of well-framed questions:</p>
+<p>A PoC answers a single question, framed so that it can be verified. Examples of well-framed questions:</p>
 <ul>
 <li>Does the robot pick boxes from a pallet and place them on the conveyor with an acceptable success rate?</li>
-<li>Does the robot collect teleoperation data usable to train a manipulation policy?</li>
-<li>Does the robot carry out a visual inspection round in an area without operator intervention?</li>
+<li>Does the robot collect teleoperation data that can be used to train a manipulation policy?</li>
+<li>Does the robot complete a visual inspection round of an area without operator intervention?</li>
 </ul>
-<p>Questions like "let's see what it can do" or "let's do a demo" produce videos, not decisions. If the question is not clear, the first step is process analysis, not a purchase.</p>
+<p>Questions like "let's see what it can do" or "let's do a demo" produce videos, not decisions. If the question is not clear, the first step is a process analysis, not a purchase.</p>
 
 <h2>The phases of a PoC, with indicative timelines</h2>
 <p>The sequence below is the one we describe on the <a href="/en/assessment-en.html">Assessment and PoC</a> page: the first four phases add up to an indicative 5–9 weeks for a single use case. The later phases depend on the scope and are fixed in the PoC plan.</p>
@@ -182,51 +182,83 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <tr><td>2. Comparing solutions</td><td>Humanoid, cobot, AMR or no robot</td><td>A reasoned shortlist</td><td>~1 week</td></tr>
 <tr><td>3. Simulation</td><td>3D model of the workstation and the robot</td><td>Feasibility and critical points</td><td>2–4 weeks</td></tr>
 <tr><td>4. PoC plan</td><td>Objectives, hardware, test scope, preliminary risk assessment</td><td>PoC plan and success criteria</td><td>1–2 weeks</td></tr>
-<tr><td>5. Execution</td><td>Setup, testing in a delimited area, data collection</td><td>KPI data</td><td>To be defined in the plan</td></tr>
+<tr><td>5. Execution</td><td>Setup, testing in a cordoned-off area, data collection</td><td>KPI data</td><td>To be defined in the plan</td></tr>
 <tr><td>6. Decision</td><td>Comparing measured and expected KPIs</td><td>Go, no-go or revision</td><td>To be defined in the plan</td></tr>
 </tbody>
 </table>
 <p>If the PoC requires a new robot, delivery time also has to be considered: for humanoids we indicate 4–6 weeks from signing (see the <a href="/en/index-en.html">home page</a>).</p>
 
 <h2>The KPIs to write down before you start</h2>
-<p>A KPI set after the tests always adapts to the result. That is why they must be written in the plan, with a threshold value. The most used:</p>
+<p>A KPI set after the tests always adapts to the result. That is why they must be written in the plan, with a threshold value. The most common:</p>
 <ul>
 <li><strong>Success rate</strong>: tasks completed over tasks attempted, across a minimum number of trials.</li>
-<li><strong>Cycle time</strong>: seconds per task, compared with the current ones.</li>
+<li><strong>Cycle time</strong>: seconds per task, compared with the current figures.</li>
 <li><strong>Human interventions</strong>: how many times per working hour the operator has to correct, reposition or stop the robot.</li>
-<li><strong>Real autonomy</strong>: actual working hours per battery, to be compared with the manufacturer's figure (about 2 hours for the G1, about 6 hours for the G1-D with mobile base, about 1 hour for the R1).</li>
-<li><strong>Setup time</strong>: how long it takes to bring the robot back into operation after a task change or a fall.</li>
+<li><strong>Real battery life</strong>: actual working hours per battery, compared with the manufacturer's figure (about 2 hours for the G1, about 6 hours for the G1-D with mobile base, about 1 hour for the R1).</li>
+<li><strong>Setup time</strong>: how long it takes to get the robot back into operation after a task change or a fall.</li>
 </ul>
-<p><em>Example with hypothetical numbers:</em> a success threshold of 90% over 200 picks, a maximum cycle time of 20 seconds, no more than 2 interventions per hour. If the PoC closes at 80% with 6 interventions per hour, the report must say why (grasping, perception, positioning) and whether there is a plausible correction.</p>
+<p><em>Example with hypothetical numbers:</em> a success threshold of 90% over 200 picks, a maximum cycle time of 20 seconds, no more than 2 interventions per hour. If the PoC closes at 80% with 6 interventions per hour, the report must say why (grasping, perception, positioning) and whether there is a plausible fix.</p>
 
 <h2>Which humanoid to use for the PoC</h2>
 <table>
 <thead><tr><th>Task</th><th>Platform</th><th>End-user price (excl. VAT)</th></tr></thead>
 <tbody>
 <tr><td>Pick and place on a bench, teleoperation data collection</td><td><a href="/en/g1-d-en.html">G1-D</a> Standard (fixed stand)</td><td>from €38,005</td></tr>
-<tr><td>Manipulation across multiple stations</td><td><a href="/prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (mobile base)</td><td>from €51,944</td></tr>
-<tr><td>Compact manipulation on a reduced budget</td><td><a href="/en/r1-d-en.html">R1-D</a></td><td>from €12,000 (indicative)</td></tr>
+<tr><td>Manipulation across several stations</td><td><a href="/prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (mobile base)</td><td>from €51,944</td></tr>
+<tr><td>Compact manipulation on a tight budget</td><td><a href="/en/r1-d-en.html">R1-D</a></td><td>on request</td></tr>
 <tr><td>Locomotion, software, embodied AI</td><td><a href="/en/g1-en.html">G1</a> EDU</td><td>from €38,005 (G1-U1)</td></tr>
-<tr><td>Teaching and low-cost trials</td><td><a href="/en/r1-en.html">R1</a> EDU</td><td>from €16,461 (R1-U1)</td></tr>
+<tr><td>Teaching and low-cost trials</td><td><a href="/en/r1-en.html">R1</a> EDU</td><td>from €14,930 (R1-U1)</td></tr>
 <tr><td>Human-scale interaction</td><td><a href="/en/h2-en.html">H2</a></td><td>from €43,874 (H2 Air)</td></tr>
 </tbody>
 </table>
-<p>For a PoC where the robot has to be programmed, you need the versions with secondary development (EDU), which Unitree lists in the specs for <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1</a> and <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">R1</a>. If the task is manipulation only, a torso without legs like the G1-D (specs at <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a>) removes the risk of falling and simplifies the cell. Full comparison: <a href="/en/blog/confronto-umanoidi-2026.html">which Unitree humanoid to choose</a>.</p>
+<p>For a PoC where the robot has to be programmed, you need the versions with secondary development (EDU), which Unitree lists in the specifications of the <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1</a> and <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">R1</a>. If the task is manipulation only, a legless torso like the G1-D (specifications at <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a>) removes the risk of falling and simplifies the cell. Full comparison: <a href="/en/blog/confronto-umanoidi-2026.html">which Unitree humanoid to choose</a>.</p>
 
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Products in this article</span><a href="/en/umanoidi-en.html">All humanoids</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/prodotti/unitree-g1-d-standard.html"><img alt="Unitree G1-D Standard" loading="lazy" src="/images/prodotti/g1-d-standard.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/prodotti/unitree-g1-d-standard.html">Unitree G1-D Standard</a></h3>
+<p>Dual-arm torso on a fixed stand</p>
+<div class="product-card-price">from €38,005 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/prodotti/unitree-g1-d-standard.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Secondary development, 23 DoF, computing dock</p>
+<div class="product-card-price">€38,005 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-r1-edu-en.html"><img alt="Unitree R1 EDU (U1)" loading="lazy" src="/images/official/unitree-r1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-r1-edu-en.html">Unitree R1 EDU (U1)</a></h3>
+<p>Secondary development, 23 degrees of freedom</p>
+<div class="product-card-price">€14,930 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-r1-edu-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+</div>
+</div>
 <h2>Safety and rules to consider</h2>
 <p><em>General information, not legal advice.</em></p>
-<p>Today machines placed on the EU market follow the <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">Machinery Directive 2006/42/EC</a>. From 20 January 2027 the <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Regulation (EU) 2023/1230</a> applies, which repeals the directive from that same date. For industrial robots the technical reference is the <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a> series, revised in 2025. For dynamically stable mobile robots (legged or on balancing wheels) ISO is developing <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, not yet published as a final standard at the time of writing.</p>
+<p>Today machines placed on the EU market follow the <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">Machinery Directive 2006/42/EC</a>. From 20 January 2027 <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Regulation (EU) 2023/1230</a> applies, repealing the directive from that same date. For industrial robots the technical reference is the <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a> series, revised in 2025. For dynamically stable mobile robots (legged or on balancing wheels) ISO is developing <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, not yet published as a final standard at the time of writing.</p>
 <p>In practice, for the PoC:</p>
 <ul>
-<li>A delimited test area, with controlled access during testing.</li>
-<li>A biped in an emergency stop can fall, because its stability depends on active control. For the first tests on a biped you need a support or a harness and free space around it.</li>
-<li>A written preliminary risk assessment, shared with the company safety officer.</li>
+<li>A cordoned-off test area, with controlled access during testing.</li>
+<li>A biped in an emergency stop can fall, because its stability depends on active control. For the first tests on a biped you need a support or a harness and clear space around it.</li>
+<li>A written preliminary risk assessment, shared with the company's health and safety officer.</li>
 <li>Operators trained on the emergency stop and on recovery procedures.</li>
 </ul>
 <p>Further reading: <a href="/en/blog/unitree-regolamento-macchine-2027.html">Unitree robots and the Machinery Regulation 2027</a>.</p>
 
 <h2>Buy, rent or simulate</h2>
-<p>A PoC does not always require buying the robot right away. In some cases a first check is done in simulation; in others you can consider renting or a short-term pilot, as explained on the <a href="/en/assessment-en.html">Assessment and PoC</a> page. If buying is the chosen route, it is worth checking first whether the project can access UK support such as capital allowances, R&D tax relief or regional adoption programmes for manufacturers: requirements and official sources are on the <a href="/uk/#incentives">UK incentives page</a>, and the eligibility of a specific asset should be confirmed by your accountant.</p>
+<p>A PoC does not always mean buying the robot straight away. In some cases a first check is done in simulation; in others you can consider renting or a short-term pilot, as explained on the <a href="/en/assessment-en.html">Assessment and PoC</a> page. If buying is the chosen route, it is worth checking first whether the project can use UK reliefs such as capital allowances, R&amp;D tax relief or regional adoption programmes for manufacturers: requirements and official sources are on the <a href="/en/finanziamenti-en.html">Financing</a> page. We can provide the quote and technical documentation for your claim but do not give tax advice: the eligibility of the specific asset should be confirmed by your accountant.</p>
 
 <h2>What the final report must contain</h2>
 <ol>
@@ -240,11 +272,11 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <section class="article-faq" id="faq">
 <h2>Frequently asked questions</h2>
-<div class="faq-item"><h3>How long does a PoC with a humanoid robot take?</h3><p>It depends on the case. Mapping, comparing solutions, simulation and the PoC plan take roughly 5–9 weeks for a single use case; execution and decision are fixed in the plan. If a new robot is needed, delivery of humanoids is indicated in 4–6 weeks.</p></div>
-<div class="faq-item"><h3>Which Unitree humanoid is best for a pick-and-place PoC?</h3><p>For picking and placing on a bench, the G1-D Standard on a fixed stand (from €38,005 excl. VAT) avoids the risk of falling. On a reduced budget you can consider the R1-D, from an indicative €12,000.</p></div>
-<div class="faq-item"><h3>Which KPIs should I measure in a humanoid PoC?</h3><p>Success rate, cycle time, human interventions per hour, real autonomy per battery and setup time. They must be written in the plan with a threshold value before testing starts.</p></div>
+<div class="faq-item"><h3>How long does a PoC with a humanoid robot take?</h3><p>It depends on the case. Mapping, comparing solutions, simulation and the PoC plan take roughly 5–9 weeks for a single use case; execution and decision are fixed in the plan. If a new robot is needed, delivery of humanoids is indicated at 4–6 weeks.</p></div>
+<div class="faq-item"><h3>Which Unitree humanoid is best for a pick-and-place PoC?</h3><p>For picking and placing on a bench, the G1-D Standard on a fixed stand (from €38,005 excluding VAT) avoids the risk of falling. On a tight budget you can consider the R1-D, priced on request.</p></div>
+<div class="faq-item"><h3>Which KPIs should I measure in a humanoid PoC?</h3><p>Success rate, cycle time, human interventions per hour, real battery life per charge and setup time. They must be written in the plan with a threshold value before testing starts.</p></div>
 <div class="faq-item"><h3>Do I have to buy the robot to run a PoC?</h3><p>Not always. In some cases the first check is done in simulation, in others you can consider renting or a short-term pilot. The choice depends on the case and on the maturity of the process.</p></div>
-<div class="faq-item"><h3>Which safety rules apply to a humanoid PoC?</h3><p>Today the Machinery Directive 2006/42/EC; from 20 January 2027 the Regulation (EU) 2023/1230. For industrial robots the reference is the ISO 10218 series. A risk assessment shared with the safety officer is required.</p></div>
+<div class="faq-item"><h3>Which safety rules apply to a humanoid PoC?</h3><p>Today the Machinery Directive 2006/42/EC; from 20 January 2027 Regulation (EU) 2023/1230. For industrial robots the reference is the ISO 10218 series. A risk assessment shared with the health and safety officer is required.</p></div>
 </section>
 
 <section class="article-references" id="fonti">
@@ -254,12 +286,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li>Machinery Regulation (EU) 2023/1230, EUR-Lex: <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">eur-lex.europa.eu/eli/reg/2023/1230/oj</a></li>
 <li>ISO 10218-1:2025, Robotics, Safety requirements, Part 1: <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">iso.org/standard/73933</a></li>
 <li>ISO 25785-1, Safety requirements for dynamically stable industrial mobile robots (in development): <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">iso.org/standard/91469</a></li>
-<li>Unitree, G1, R1 and G1-D specs: <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a>, <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">unitree.com/R1</a>, <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a></li>
-<li>Abra Robotics, <a href="/en/assessment-en.html">Assessment and PoC</a> (phases and indicative timelines) and the <a href="/en/listino-unitree-en.html">End-user price list</a></li>
+<li>Unitree, G1, R1 and G1-D specifications: <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a>, <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">unitree.com/R1</a>, <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a></li>
+<li>Abra Robotics, <a href="/en/assessment-en.html">Assessment and PoC</a> (phases and indicative timelines) and the <a href="/en/listino-unitree-en.html">end-user price list</a></li>
 </ol>
 </section>
 </div>
-<div class="article-cta"><a class="btn btn-primary" href="/en/index-en.html#cta-finale">Start a PoC</a></div>
+<div class="article-cta"><h2>Want to set up a PoC with a humanoid?</h2><p>We start from the process mapping and the KPIs, then choose the platform together. The first four phases take 5-9 weeks.</p><a class="btn btn-primary" href="/en/assessment-en.html">Start a PoC</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">See the humanoids</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
