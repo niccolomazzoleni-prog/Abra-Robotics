@@ -22,7 +22,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Unitree G1 firmware update: how to do it safely</title>
-<meta name="description" content="How to update the Unitree G1 firmware with the official app: pre-update checks (battery, version, network), mistakes to avoid and downgrade."/>
+<meta name="description" content="How to update the Unitree G1 firmware with the official app: checks before you start (battery, version, network), mistakes to avoid and downgrade."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/en/blog/unitree-g1-aggiornare-firmware.html"/>
 <link href="https://abrarobotics.com/blog/unitree-g1-aggiornare-firmware.html" hreflang="it" rel="alternate"/>
@@ -39,9 +39,9 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Unitree G1 firmware update: how to do it safely",
-  "description": "How to update the Unitree G1 firmware with the official app: pre-update checks (battery, version, network), mistakes to avoid and downgrade.",
+  "description": "How to update the Unitree G1 firmware with the official app: checks before you start (battery, version, network), mistakes to avoid and downgrade.",
   "datePublished": "2026-10-09",
-  "dateModified": "2026-10-09",
+  "dateModified": "2026-10-15",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -68,7 +68,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1 firmware update: how to do it safely"/>
-<meta property="og:description" content="How to update the Unitree G1 firmware with the official app: pre-update checks (battery, version, network), mistakes to avoid and downgrade."/>
+<meta property="og:description" content="How to update the Unitree G1 firmware with the official app: checks before you start (battery, version, network), mistakes to avoid and downgrade."/>
 <meta property="og:url" content="https://abrarobotics.com/en/blog/unitree-g1-aggiornare-firmware.html"/>
 <meta property="og:image" content="https://abrarobotics.com/images/prodotti/2026/g1.jpg"/>
 <meta property="og:locale" content="en_GB"/>
@@ -86,7 +86,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <!-- Navbar -->
 <nav class="navbar">
 <div class="container navbar-inner">
-<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.png"/></a>
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
 <div class="nav-links">
 <div class="nav-item-dropdown">
 <button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
@@ -151,7 +151,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <nav class="breadcrumb"><a href="/en/index-en.html">Home</a> / <a href="/en/index-en.html">Blog</a> / G1 firmware</nav>
 
 <figure class="article-cover">
-<img src="/images/prodotti/2026/g1.jpg" alt="Unitree G1 humanoid robot standing, front view" width="800" height="800" loading="eager"/>
+<img src="/images/prodotti/2026/g1.webp" alt="Unitree G1 humanoid robot standing, front view" width="800" height="800" loading="eager"/>
 </figure>
 
 <header class="article-header"><p class="label">Guides</p>
@@ -162,57 +162,89 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="article-content">
 <div class="callout callout-tip"><p><strong>In short.</strong> The G1 receives software updates over the network (OTA). The starting point is the official <strong>Unitree Explore</strong> app connected to the robot. Before you start, check the battery, the current version and the connection; do not switch the robot off during the update. Unitree does not document a way back to the previous version.</p></div>
 
-<p>This guide explains how to approach the Unitree G1 firmware update while staying within what Unitree documents: the <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">official G1 page</a>, the user manual, the Unitree Explore app and the support.unitree.com help centre. No packages taken from forums and no improvised commands: an update done wrong can leave the robot in a state that requires service.</p>
+<p>This guide explains how to approach the Unitree G1 firmware update while staying within what Unitree documents: the <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">official G1 page</a>, the user manual, the Unitree Explore app and the support.unitree.com help centre. No packages taken from forums and no improvised commands: an update done wrong can leave the robot in a state that needs service.</p>
 
 <h2>What Unitree says about updating the G1 firmware</h2>
-<p>In the specifications table the G1 and the G1 EDU both list <em>Upgraded Intelligent OTA</em>: the robot's software updates over the network, with no changes to the hardware. The user manual, among the checks to do before switching the robot on, asks you to make sure the firmware is at the latest version: "Ensure that the firmware has been updated to the latest version".</p>
-<p>The connection between phone and robot runs through the <strong>Unitree Explore</strong> app, available for iOS and Android from the <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a> page. The app shows the robot's status in real time (temperature, alarms and other data), useful for checking that the machine is in normal conditions before you proceed. Check the Unitree help centre for news and release notes for your version.</p>
+<p>In the specifications table the G1 and the G1 EDU both list <em>Upgraded Intelligent OTA</em>: the robot's software updates over the network, with no work on the hardware. The user manual, among the checks to do before switching on, asks you to make sure the firmware is at the latest version: "Ensure that the firmware has been updated to the latest version".</p>
+<p>The connection between phone and robot runs through the <strong>Unitree Explore</strong> app, available for iOS and Android from the <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a> page. The app shows the robot's status in real time (temperature, alarms and other data), which is useful for checking that the machine is in normal condition before you proceed. Check the Unitree help centre for news and the release notes for your version.</p>
 
 <h2>The steps, in order</h2>
 <ol>
 <li><strong>Install the app and connect the robot.</strong> On first connection the manual asks you to register an account, turn on the phone's Bluetooth and keep it close to the G1, then add the robot with "Add Robot".</li>
-<li><strong>Choose the connection mode.</strong> The manual offers two modes: AP (the phone connects to the robot's hotspot) or Wi-Fi through a router. The procedure is also in the "Adding G1 &amp; Network setting" video on the app page.</li>
+<li><strong>Choose the connection mode.</strong> The manual offers two modes: AP (the phone connects to the robot's hotspot) or Wi-Fi through a router. The procedure is also shown in the "Adding G1 &amp; Network setting" video on the app page.</li>
 <li><strong>Check status and version.</strong> Before updating, check in the app that there are no active alarms and note the current firmware version.</li>
 <li><strong>Start the update and wait.</strong> Follow the instructions the app shows for your robot and do not interrupt the power or the connection until the operation is complete.</li>
 </ol>
 
 <h2>Before updating: battery, version, network</h2>
 <ul>
-<li><strong>Battery.</strong> The manual does not state a minimum charge for the update. As a precaution start with a charged battery: the G1 battery lasts about 2 hours according to Unitree, and an interrupted update is worse than a postponed one.</li>
+<li><strong>Battery.</strong> The manual does not state a minimum charge level for the update. As a precaution, start with a charged battery: the G1 battery lasts about 2 hours according to Unitree, and an interrupted update is worse than a postponed one.</li>
 <li><strong>Version.</strong> Note the current firmware version. It tells you whether the update is really needed and, if there are problems, gives support precise information.</li>
-<li><strong>Network.</strong> The manual advises against environments with Wi-Fi interference and, in AP mode, asks that the hotspot name contain no special symbols or spaces. Keep phone and robot close. If you work on the G1 EDU with the internal 192.168.123.x network, the <a href="/blog/unitree-g1-guida-operativa.html">G1 power-on and network guide</a> explains how it is organised.</li>
+<li><strong>Network.</strong> The manual advises against environments with Wi-Fi interference and, in AP mode, asks that the hotspot name contain no special symbols or spaces. Keep phone and robot close together. If you work on the G1 EDU with the internal 192.168.123.x network, the <a href="/en/blog/unitree-g1-guida-operativa.html">G1 power-on and network guide</a> explains how it is organised.</li>
 </ul>
 
 <h2>After the update: alarms and calibration</h2>
-<p>In the <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">G1 Developer FAQ</a> section of the Unitree help centre a specific case is described: after updating to firmware 1.3.0 or later the robot can report <em>Joint limit abnormal</em> and <em>Transient Over Voltage</em>. According to Unitree the new firmware makes joint calibration more precise, so the previous calibration no longer meets the requirements and has to be redone.</p>
-<p>Calibration is done from the app: the assisted calibration function recalibrates the motor joints and the IMU. In the manual the path is [Settings] → [Data] → [Robot] → [Calibration]; in newer versions of the app the menu may change.</p>
+<p>The <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">G1 Developer FAQ</a> section of the Unitree help centre describes a specific case: after updating to firmware 1.3.0 or later the robot can report <em>Joint limit abnormal</em> and <em>Transient Over Voltage</em>. According to Unitree the new firmware makes joint calibration more precise, so the previous calibration no longer meets the requirements and has to be redone.</p>
+<p>Calibration is done from the app: the assisted calibration function recalibrates the motor joints and the IMU. In the manual the path is [Settings] → [Data] → [Robot] → [Calibration]; in newer versions of the app the menu may differ.</p>
 <div class="callout callout-warning"><p><strong>Warning.</strong> The manual reminds you that the G1 leaves the factory already calibrated and must not be recalibrated during normal use. If an alarm appears after an update, ask technical support for confirmation before recalibrating.</p></div>
 
 <h2>What not to do</h2>
 <ul>
 <li><strong>Do not switch the robot off</strong> or close the connection during the update.</li>
 <li><strong>Do not update</strong> with a nearly empty battery or an unstable network.</li>
-<li><strong>Do not use unofficial firmware packages</strong>: updates come only from the Unitree channels.</li>
+<li><strong>Do not use unofficial firmware packages</strong>: updates come only through Unitree channels.</li>
 <li><strong>Do not recalibrate "just in case"</strong>: calibration is redone only when needed, as with firmware 1.3.0, and after talking to support.</li>
 <li><strong>Do not start</strong> without knowing the current firmware version.</li>
 </ul>
 
 <h2>Can you go back to a previous version?</h2>
-<p>For the G1 firmware Unitree does not publish a downgrade procedure in the documents consulted (user manual, app page, developer FAQ). It is not an operation to attempt on your own. If an update causes problems, the first point of contact is Abra Robotics, which also provides the Unitree range in the United Kingdom, Ireland and internationally, with support in English; the manual also lists Unitree technical support (support@unitree.cc) and the <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree customer service portal</a>.</p>
+<p>For the G1 firmware, Unitree does not publish a downgrade procedure in the documents consulted (user manual, app page, developer FAQ). It is not an operation to attempt on your own. If an update causes problems, the first point of contact is Abra Robotics, which supplies the Unitree range in the UK, Ireland and internationally, with support in English; the manual also lists Unitree technical support (support@unitree.cc) and the <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree customer service portal</a>.</p>
 
+<div class="product-strip" aria-label="Products in this article">
+<div class="product-strip-head"><span>Products in this article</span><a href="/en/g1-en.html">G1 range</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Secondary development, 23 DoF, compute dock</p>
+<div class="product-card-price">€36,826 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="G1 battery" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">G1 battery</a></h3>
+<p>9000 mAh, quick release</p>
+<div class="product-card-price">€880 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="G1 remote control (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-remote-en.html">G1 remote control (R3)</a></h3>
+<p>A spare, always charged</p>
+<div class="product-card-price">€367 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+</div>
+</div>
 <h2>Frequently asked questions</h2>
 <h3>How do I update the Unitree G1 firmware?</h3>
 <p>The G1 supports OTA updates over the network. You start from the official Unitree Explore app connected to the robot, after checking the battery, the current version and the network, and without switching the robot off until the update is complete.</p>
-<h3>Where do I find the firmware news and release notes?</h3>
+<h3>Where do I find firmware news and release notes?</h3>
 <p>Check the Unitree help centre (support.unitree.com) for news and release notes.</p>
 <h3>Can I go back to a previous firmware version?</h3>
-<p>It is not documented by Unitree. If an update causes problems, contact support instead of trying a downgrade on your own.</p>
+<p>It is not documented by Unitree. If an update causes problems, contact support instead of attempting a downgrade on your own.</p>
 <h3>After the update the G1 reports "Joint limit abnormal" or "Transient Over Voltage": what should I do?</h3>
 <p>According to Unitree's developer FAQ, with firmware 1.3.0 or later the joint calibration changed and the previous one must be redone from the app. Before recalibrating, ask technical support for confirmation.</p>
 <h3>Can I switch the robot off during the update?</h3>
 <p>No. Do not interrupt the power or the connection until the update is complete.</p>
 
-<p>For day-to-day use of the robot, the <a href="/blog/unitree-g1-guida-operativa.html">G1 operational guide</a> covers power-on, remote control and safety commands. Those developing on the G1 EDU will find the SDK and ROS 2 in the <a href="/en/blog/unitree-g1-programmazione.html">programming guide</a>; the differences between versions are in <a href="/en/blog/unitree-g1-quale-versione-scegliere.html">which G1 to choose</a>. Configurations and prices are on the <a href="/en/g1-en.html">Unitree G1</a> page and on the <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU U1</a> sheet; if you need a second battery to avoid running dry during testing, there is the <a href="/en/prodotti/unitree-g1-battery-en.html">G1 battery</a>. The whole range is on the <a href="/en/umanoidi-en.html">humanoids</a> page.</p>
+<p>For day-to-day use of the robot, the <a href="/en/blog/unitree-g1-guida-operativa.html">G1 operating guide</a> covers power-on, the remote control and safety commands. If you develop on the G1 EDU, the SDK and ROS 2 are covered in the <a href="/en/blog/unitree-g1-programmazione.html">programming guide</a>; the differences between versions are in <a href="/en/blog/unitree-g1-quale-versione-scegliere.html">which G1 to choose</a>. Configurations and prices are on the <a href="/en/g1-en.html">Unitree G1</a> page and the <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU U1</a> product page; if you need a second battery so you do not run dry during testing, there is the <a href="/en/prodotti/unitree-g1-battery-en.html">G1 battery</a>. The whole range is on the <a href="/en/umanoidi-en.html">humanoids</a> page.</p>
 
 <div class="figure-grid">
 <figure class="figure-card"><img src="/images/official/unitree-g1-info-batteria.webp" alt="Quick-release battery of the Unitree G1" width="800" height="800" loading="lazy"/><figcaption>G1 battery: start with a full charge before updating.</figcaption></figure>
@@ -228,12 +260,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li><a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree, customer service portal</a></li>
 </ul>
 </div>
-<div class="article-cta"><a class="btn btn-primary" href="/en/g1-en.html">G1 configurations and prices</a></div>
+<div class="article-cta"><h2>Still choosing your G1?</h2><p>We help you find the right configuration and, after delivery, we are your first point of contact for set-up, network and updates.</p><a class="btn btn-primary" href="/en/assessment-en.html">Find the right configuration</a><a class="btn btn-outline-light" href="/en/g1-en.html">G1 configurations and prices</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
 <div class="footer-brand">
-<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.png"/></a>
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
 <p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
 </div>
 <div class="footer-nav">
