@@ -120,13 +120,15 @@ def lang_bar(d: dict, key: str | None, all_langs: list[dict]) -> str:
         if (ROOT / f["it_page"]).is_file():
             items.append(f'<a href="../{f["it_page"]}" hreflang="it">Italiano</a>')
         items.append(f'<a href="../{f["en_page"]}" hreflang="en">English</a>')
+        cur = lambda L: ' aria-current="page"' if L["code"] == d["code"] else ''  # noqa: E731
         items += [f'<a href="../{L["code"]}/unitree-{key}.html" hreflang="{HREFLANG.get(L["code"], L["code"])}"'
-                  f'{" aria-current=\"page\"" if L["code"] == d["code"] else ""}>{esc(L["name"])}</a>' for L in all_langs if not L.get("landing_only")]
+                  f'{cur(L)}>{esc(L["name"])}</a>' for L in all_langs if not L.get("landing_only")]
     else:
         items.append('<a href="../" hreflang="it">Italiano</a>')
         items.append('<a href="../en/index-en.html" hreflang="en">English</a>')
+        cur = lambda L: ' aria-current="page"' if L["code"] == d["code"] else ''  # noqa: E731
         items += [f'<a href="../{L["code"]}/" hreflang="{HREFLANG.get(L["code"], L["code"])}"'
-                  f'{" aria-current=\"page\"" if L["code"] == d["code"] else ""}>{esc(L["name"])}</a>' for L in all_langs]
+                  f'{cur(L)}>{esc(L["name"])}</a>' for L in all_langs]
     return f'<nav class="hm-langs" aria-label="{esc(d["ui"]["languages"])}">{" · ".join(items)}</nav>'
 
 
