@@ -117,6 +117,8 @@ def _cut(short: str, fmt) -> str:
 
 GENERIC_CAT_WORDS = {"robot", "robotic", "robotico", "robotica", "sensore", "sensor"}
 LISTINO_SLUGS = {v.get("slug", "").split("/")[-1] for v in json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8")).values() if isinstance(v, dict)}
+# schede "prezzo su richiesta" (es. G1-PLUS, scripts/genera_g1_plus.py): title e meta restano quelli del loro generatore
+SU_RICHIESTA_SLUGS = {v.get("slug", "").split("/")[-1] for v in json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8")).values() if isinstance(v, dict) and v.get("prezzo_su_richiesta")}
 
 
 def unitree_titles(name: str, slug: str, en: bool, price: float | None = None) -> list[str]:
@@ -330,6 +332,8 @@ def main() -> None:
         canon = re.search(r'<link[^>]*rel="canonical"[^>]*href="([^"]+)"', s) or re.search(r'<link[^>]*href="([^"]+)"[^>]*rel="canonical"', s)
         if canon and not canon.group(1).endswith("/" + f.name):
             continue  # duplicato con canonical verso un'altra scheda: resta com'e'
+        if f.name.replace("-en.html", ".html") in SU_RICHIESTA_SLUGS:
+            continue
         # prezzo nel title solo per le schede presenti nel listino pubblico (prezzo verificato)
         price = page_price(s, product_of(s), en) if f.name.startswith("unitree-") and f.name.replace("-en.html", ".html") in LISTINO_SLUGS else None
         cands = unitree_titles(name, f.name, en, price) if f.name.startswith("unitree-") else [price_title(name, en)]
