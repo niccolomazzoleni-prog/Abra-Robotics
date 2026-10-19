@@ -21,13 +21,15 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 })(window,document);</script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PoC humanoider Roboter: Phasen, KPIs, Risiken</title>
-<meta name="description" content="PoC mit humanoidem Roboter planen: Phasen, Dauer, KPIs vor dem Test, Wahl zwischen G1, G1-D und R1, Sicherheit und Normen. Preise in Euro zzgl. MwSt."/>
+<title>PoC mit humanoidem Roboter: Phasen, KPIs, Risiken</title>
+<meta name="description" content="So planen Sie einen PoC mit einem humanoiden Unitree Roboter: Phasen, Richtdauern, KPIs vorab, Wahl zwischen G1, G1-D und R1, Sicherheit und Normen."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/de/blog/poc-robot-umanoide-azienda.html"/>
 <link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="it" rel="alternate"/>
 <link href="https://abrarobotics.com/en/blog/poc-robot-umanoide-azienda.html" hreflang="en" rel="alternate"/>
 <link href="https://abrarobotics.com/de/blog/poc-robot-umanoide-azienda.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/poc-robot-umanoide-azienda.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/poc-robot-umanoide-azienda.html" hreflang="pl" rel="alternate"/>
 <link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="x-default" rel="alternate"/>
 <meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
 <link href="/favicon.ico" rel="icon" sizes="any"/>
@@ -40,10 +42,10 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "PoC humanoider Roboter: Phasen, KPIs, Risiken",
-  "description": "PoC mit humanoidem Roboter planen: Phasen, Dauer, KPIs vor dem Test, Wahl zwischen G1, G1-D und R1, Sicherheit und Normen. Preise in Euro zzgl. MwSt.",
+  "headline": "PoC mit humanoidem Roboter: Phasen, KPIs, Risiken",
+  "description": "So planen Sie einen PoC mit einem humanoiden Unitree Roboter: Phasen, Richtdauern, KPIs vorab, Wahl zwischen G1, G1-D und R1, Sicherheit und Normen.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-09",
+  "dateModified": "2026-10-15",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -69,8 +71,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
-<meta property="og:title" content="PoC humanoider Roboter: Phasen, KPIs, Risiken"/>
-<meta property="og:description" content="PoC mit humanoidem Roboter planen: Phasen, Dauer, KPIs vor dem Test, Wahl zwischen G1, G1-D und R1, Sicherheit und Normen. Preise in Euro zzgl. MwSt."/>
+<meta property="og:title" content="PoC mit humanoidem Roboter: Phasen, KPIs, Risiken"/>
+<meta property="og:description" content="So planen Sie einen PoC mit einem humanoiden Unitree Roboter: Phasen, Richtdauern, KPIs vorab, Wahl zwischen G1, G1-D und R1, Sicherheit und Normen."/>
 <meta property="og:url" content="https://abrarobotics.com/de/blog/poc-robot-umanoide-azienda.html"/>
 <meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
 <meta property="og:locale" content="de_DE"/>
@@ -150,102 +152,134 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 
 <article class="article-wrap"><div class="container">
-<nav class="breadcrumb"><a href="/de/">Home</a> / <a href="/de/">Blog</a> / PoC humanoider Roboter</nav>
+<nav class="breadcrumb"><a href="/de/">Startseite</a> / <a href="/de/">Blog</a> / PoC mit Humanoiden</nav>
 
 <figure class="article-cover">
-<img src="/images/official/unitree-g1-d-standard.webp" alt="Unitree G1-D Dual-Arm auf fester Säule, Plattform für Manipulations-PoC" loading="eager"/>
+<img src="/images/official/unitree-g1-d-standard.webp" alt="Unitree G1-D mit zwei Armen auf Ständer, Plattform für Handhabungs-PoCs" loading="eager"/>
 </figure>
 
 <header class="article-header"><p class="label">PoC · Humanoide</p>
-<h1>PoC mit humanoidem Roboter im Unternehmen: Phasen, KPIs und Risiken</h1>
-<div class="article-meta"><time datetime="2026-07-13">13. Juli 2026</time><span>Aktualisiert am 9. Oktober 2026</span><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>In Kürze:</strong> Ein PoC mit einem humanoiden Roboter soll eine präzise Frage beantworten (schafft dieser Roboter diese Aufgabe, in diesem Takt, mit diesen menschlichen Eingriffen?), bevor in mehrere Einheiten investiert wird. Er funktioniert, wenn KPIs, Umfang und Erfolgskriterien festgelegt sind, bevor der Roboter eingeschaltet wird. Die hier genannten Dauern sind Richtwerte und hängen vom Einzelfall ab.</div>
+<h1>PoC mit einem humanoiden Roboter im Unternehmen: Phasen, KPIs und Risiken</h1>
+<div class="article-meta"><time datetime="2026-07-13">13. Juli 2026</time><span>Aktualisiert am 9. Okt. 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Kurz gesagt:</strong> Ein PoC mit einem humanoiden Roboter beantwortet eine präzise Frage (erledigt dieser Roboter diese Aufgabe, in diesem Takt, mit diesen menschlichen Eingriffen?), bevor Sie in mehrere Einheiten investieren. Er funktioniert, wenn KPIs, Rahmen und Erfolgskriterien schriftlich feststehen, bevor der Roboter eingeschaltet wird. Die genannten Dauern sind Richtwerte und hängen vom Einzelfall ab.</div>
 </header>
 
 <div class="article-content">
-<p>Ein <strong>PoC mit einem humanoiden Roboter</strong> bedeutet nicht, den Roboter zu kaufen und zu schauen, was passiert. Es ist ein Experiment mit definiertem Umfang, schriftlich festgelegten Kennzahlen und einer abschließenden Entscheidung: weitermachen, den Ansatz ändern oder stoppen. Dieser Leitfaden beschreibt eine Methode, die ein Unternehmen anwenden kann, die zu definierenden KPIs, die Wahl der Unitree-Plattform und die zu beachtenden Sicherheitsnormen.</p>
+<p>Ein <strong>PoC mit einem humanoiden Roboter</strong> bedeutet nicht, den Roboter zu kaufen und abzuwarten, was passiert. Es ist ein Experiment mit festgelegtem Rahmen, schriftlich fixierten Kennzahlen und einer abschließenden Entscheidung: weitermachen, den Ansatz ändern oder aufhören. Dieser Leitfaden beschreibt eine Methode, der ein Unternehmen folgen kann, die KPIs, die Sie festlegen sollten, die Wahl der Unitree Plattform und die Sicherheitsnormen, die Sie kennen sollten.</p>
 
-<h2>Was ein PoC nachweisen muss</h2>
-<p>Ein PoC beantwortet eine einzige Frage, die überprüfbar formuliert ist. Beispiele für gut gestellte Fragen:</p>
+<h2>Was ein PoC beweisen muss</h2>
+<p>Ein PoC beantwortet eine einzige Frage, und zwar so formuliert, dass sie überprüfbar ist. Beispiele für gut gestellte Fragen:</p>
 <ul>
-<li>Entnimmt der Roboter die Kartons von einer Palette und legt sie mit akzeptabler Erfolgsquote auf das Förderband?</li>
-<li>Sammelt der Roboter Teleoperationsdaten, die sich zum Trainieren einer Manipulations-Policy nutzen lassen?</li>
-<li>Führt der Roboter eine visuelle Inspektionsrunde in einem Bereich ohne Eingriffe des Bedieners durch?</li>
+<li>Nimmt der Roboter Kartons von einer Palette und legt sie mit einer akzeptablen Erfolgsquote auf das Förderband?</li>
+<li>Erfasst der Roboter Teleoperationsdaten, mit denen sich eine Manipulations-Policy trainieren lässt?</li>
+<li>Absolviert der Roboter einen Rundgang zur Sichtprüfung in einem Bereich ohne Eingriffe des Bedieners?</li>
 </ul>
-<p>Fragen wie „Schauen wir, was er kann" oder „Machen wir eine Demo" erzeugen Videos, keine Entscheidungen. Ist die Frage unklar, ist der erste Schritt eine Prozessanalyse, nicht der Kauf.</p>
+<p>Fragen wie "Mal sehen, was er kann" oder "Machen wir eine Demo" liefern Videos, keine Entscheidungen. Ist die Frage nicht klar, ist der erste Schritt eine Prozessanalyse, nicht der Kauf.</p>
 
-<h2>Die Phasen eines PoC, mit Richtwerten zur Dauer</h2>
-<p>Die folgende Abfolge beschreiben wir auf der Seite <a href="/en/assessment-en.html">Assessment und PoC</a>: Die ersten vier Phasen gelten als Orientierungswert von 5–9 Wochen für einen einzelnen Anwendungsfall. Die weiteren Phasen hängen vom Umfang ab und werden im PoC-Plan festgelegt.</p>
+<h2>Die Phasen eines PoC, mit Richtdauern</h2>
+<p>Die folgende Abfolge beschreiben wir auf der Seite <a href="/en/assessment-en.html">Assessment und PoC</a>: Für die ersten vier Phasen gelten als Richtwert 5 bis 9 Wochen für einen einzelnen Anwendungsfall. Die weiteren Phasen hängen vom Rahmen ab und werden im PoC-Plan festgelegt.</p>
 <table>
-<thead><tr><th>Phase</th><th>Was passiert</th><th>Ergebnis</th><th>Richtwert Dauer</th></tr></thead>
+<thead><tr><th>Phase</th><th>Was gemacht wird</th><th>Ergebnis</th><th>Richtdauer</th></tr></thead>
 <tbody>
-<tr><td>1. Prozessaufnahme</td><td>Aufgabe, Räume, Abläufe, Sicherheitsauflagen, aktueller Ausgangswert</td><td>Aufgabenbeschreibung und Ausgangs-KPIs</td><td>1–2 Wochen</td></tr>
-<tr><td>2. Lösungsvergleich</td><td>Humanoider Roboter, Cobot, AMR oder gar kein Roboter</td><td>Begründete Auswahlliste</td><td>~1 Woche</td></tr>
-<tr><td>3. Simulation</td><td>3D-Modell der Station und des Roboters</td><td>Machbarkeit und kritische Punkte</td><td>2–4 Wochen</td></tr>
-<tr><td>4. PoC-Plan</td><td>Ziele, Hardware, Testumfang, vorläufige Risikobeurteilung</td><td>PoC-Plan und Erfolgskriterien</td><td>1–2 Wochen</td></tr>
-<tr><td>5. Durchführung</td><td>Setup, Tests im abgegrenzten Bereich, Datenerfassung</td><td>KPI-Daten</td><td>Im Plan festzulegen</td></tr>
+<tr><td>1. Prozessaufnahme</td><td>Aufgabe, Räume, Abläufe, Sicherheitsvorgaben, aktuelle Baseline</td><td>Aufgabenbeschreibung und Ausgangs-KPIs</td><td>1 bis 2 Wochen</td></tr>
+<tr><td>2. Lösungsvergleich</td><td>Humanoide, Cobot, AMR oder kein Roboter</td><td>Begründete Shortlist</td><td>etwa 1 Woche</td></tr>
+<tr><td>3. Simulation</td><td>3D-Modell des Arbeitsplatzes und des Roboters</td><td>Machbarkeit und kritische Punkte</td><td>2 bis 4 Wochen</td></tr>
+<tr><td>4. PoC-Plan</td><td>Ziele, Hardware, Testrahmen, vorläufige Risikobeurteilung</td><td>PoC-Plan und Erfolgskriterien</td><td>1 bis 2 Wochen</td></tr>
+<tr><td>5. Durchführung</td><td>Aufbau, Tests im abgegrenzten Bereich, Datenerfassung</td><td>Daten zu den KPIs</td><td>Im Plan festzulegen</td></tr>
 <tr><td>6. Entscheidung</td><td>Vergleich gemessener und erwarteter KPIs</td><td>Go, No-Go oder Überarbeitung</td><td>Im Plan festzulegen</td></tr>
 </tbody>
 </table>
-<p>Benötigt der PoC einen neuen Roboter, ist auch die Lieferzeit zu berücksichtigen: Für humanoide Roboter geben wir 4–6 Wochen ab Unterschrift an (siehe <a href="/de/">Startseite</a>).</p>
+<p>Braucht der PoC einen neuen Roboter, ist auch die Lieferzeit einzuplanen: Für humanoide Roboter nennen wir 4 bis 6 Wochen ab Unterschrift (siehe <a href="/de/">Startseite</a>).</p>
 
-<h2>Die KPIs, die vor dem Start festzulegen sind</h2>
-<p>Ein KPI, der erst nach den Tests festgelegt wird, passt sich immer dem Ergebnis an. Deshalb gehören sie mit einem Schwellenwert in den Plan. Die am häufigsten verwendeten:</p>
+<h2>Die KPIs, die vor dem Start schriftlich stehen müssen</h2>
+<p>Ein KPI, der erst nach den Tests festgelegt wird, passt sich immer dem Ergebnis an. Deshalb gehören die KPIs mit einem Schwellenwert in den Plan. Die gängigsten:</p>
 <ul>
-<li><strong>Erfolgsquote</strong>: abgeschlossene Aufgaben im Verhältnis zu versuchten Aufgaben, über eine Mindestanzahl an Versuchen.</li>
-<li><strong>Zykluszeit</strong>: Sekunden pro Aufgabe, verglichen mit den aktuellen Werten.</li>
-<li><strong>Menschliche Eingriffe</strong>: wie oft der Bediener den Roboter pro Arbeitsstunde korrigieren, neu positionieren oder stoppen muss.</li>
-<li><strong>Reale Autonomie</strong>: effektive Arbeitsstunden pro Akkuladung, zu vergleichen mit der Herstellerangabe (rund 2 Stunden beim G1, rund 6 Stunden beim G1-D mit mobiler Basis, rund 1 Stunde beim R1).</li>
-<li><strong>Setup-Zeit</strong>: wie lange es dauert, den Roboter nach einem Aufgabenwechsel oder einem Sturz wieder betriebsbereit zu machen.</li>
+<li><strong>Erfolgsquote</strong>: erledigte Aufgaben im Verhältnis zu versuchten Aufgaben, über eine Mindestzahl von Versuchen.</li>
+<li><strong>Taktzeit</strong>: Sekunden pro Aufgabe, verglichen mit den heutigen Werten.</li>
+<li><strong>Menschliche Eingriffe</strong>: wie oft der Bediener den Roboter pro Arbeitsstunde korrigieren, neu positionieren oder anhalten muss.</li>
+<li><strong>Reale Laufzeit</strong>: tatsächliche Arbeitsstunden pro Akku, verglichen mit der Herstellerangabe (etwa 2 Stunden beim G1, etwa 6 Stunden beim G1-D mit mobiler Basis, etwa 1 Stunde beim R1).</li>
+<li><strong>Rüstzeit</strong>: wie lange es dauert, den Roboter nach einem Aufgabenwechsel oder einem Sturz wieder betriebsbereit zu machen.</li>
 </ul>
-<p><em>Beispiel mit hypothetischen Zahlen:</em> Erfolgsschwelle 90 % bei 200 Entnahmen, maximale Zykluszeit 20 Sekunden, höchstens 2 Eingriffe pro Stunde. Schließt der PoC mit 80 % bei 6 Eingriffen pro Stunde ab, muss der Bericht erklären, warum (Greifen, Wahrnehmung, Positionierung) und ob eine plausible Korrektur existiert.</p>
+<p><em>Beispiel mit hypothetischen Zahlen:</em> Erfolgsschwelle 90 % bei 200 Entnahmen, maximale Taktzeit 20 Sekunden, nicht mehr als 2 Eingriffe pro Stunde. Endet der PoC bei 80 % mit 6 Eingriffen pro Stunde, muss der Bericht erklären, warum (Greifen, Wahrnehmung, Positionierung) und ob es eine plausible Korrektur gibt.</p>
 
-<h2>Welchen humanoiden Roboter für den PoC verwenden</h2>
+<h2>Welcher humanoide Roboter für den PoC</h2>
 <table>
 <thead><tr><th>Aufgabe</th><th>Plattform</th><th>End-User-Preis (zzgl. MwSt.)</th></tr></thead>
 <tbody>
-<tr><td>Entnahme und Ablage am Tisch, Erfassung von Teleoperationsdaten</td><td><a href="/de/unitree-g1-d.html">G1-D</a> Standard (feste Säule)</td><td>ab 38.005 €</td></tr>
-<tr><td>Manipulation an mehreren Stationen</td><td><a href="/prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (mobile Basis)</td><td>ab 51.944 €</td></tr>
-<tr><td>Kompakte Manipulation bei reduziertem Budget</td><td><a href="/de/unitree-r1-d.html">R1-D</a></td><td>ab 12.000 € (Richtwert)</td></tr>
+<tr><td>Entnehmen und Ablegen am Tisch, Erfassung von Teleoperationsdaten</td><td><a href="/de/unitree-g1-d.html">G1-D</a> Standard (fester Ständer)</td><td>ab 38.005 €</td></tr>
+<tr><td>Handhabung an mehreren Arbeitsplätzen</td><td><a href="/prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (mobile Basis)</td><td>ab 51.944 €</td></tr>
+<tr><td>Kompakte Handhabung mit kleinem Budget</td><td><a href="/de/unitree-r1-d.html">R1-D</a></td><td>Preis auf Anfrage</td></tr>
 <tr><td>Fortbewegung, Software, Embodied AI</td><td><a href="/de/unitree-g1.html">G1</a> EDU</td><td>ab 38.005 € (G1-U1)</td></tr>
-<tr><td>Lehre und kostengünstige Versuche</td><td><a href="/de/unitree-r1.html">R1</a> EDU</td><td>ab 16.461 € (R1-U1)</td></tr>
-<tr><td>Interaktion auf menschlicher Ebene</td><td><a href="/de/unitree-h2.html">H2</a></td><td>ab 43.874 € (H2 Air)</td></tr>
+<tr><td>Lehre und kostengünstige Versuche</td><td><a href="/de/unitree-r1.html">R1</a> EDU</td><td>ab 14.930 € (R1-U1)</td></tr>
+<tr><td>Interaktion in Menschengröße</td><td><a href="/de/unitree-h2.html">H2</a></td><td>ab 43.874 € (H2 Air)</td></tr>
 </tbody>
 </table>
-<p>Für einen PoC, bei dem der Roboter programmiert werden muss, braucht es die Versionen mit Sekundärentwicklung (EDU), die Unitree in den Spezifikationen von <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1</a> und <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">R1</a> ausweist. Geht es nur um Manipulation, eliminiert ein Torso ohne Beine wie der G1-D (Spezifikationen auf <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a>) das Sturzrisiko und vereinfacht die Zelle. Vollständiger Vergleich: <a href="/de/blog/confronto-umanoidi-2026.html">welchen Unitree-Humanoiden wählen</a>.</p>
+<p>Für einen PoC, bei dem der Roboter programmiert werden muss, brauchen Sie die Versionen mit Sekundärentwicklung (EDU), die Unitree in den technischen Daten von <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1</a> und <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">R1</a> ausweist. Geht es nur um Handhabung, beseitigt ein Torso ohne Beine wie der G1-D (technische Daten auf <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a>) das Sturzrisiko und vereinfacht die Zelle. Vollständiger Vergleich: <a href="/de/blog/confronto-umanoidi-2026.html">welcher humanoide Roboter von Unitree passt</a>.</p>
 
-<h2>Zu beachtende Sicherheit und Normen</h2>
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Im Artikel erwähnte Produkte</span><a href="/en/umanoidi-en.html">Alle humanoiden Roboter</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/prodotti/unitree-g1-d-standard.html"><img alt="Unitree G1-D Standard" loading="lazy" src="/images/prodotti/g1-d-standard.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/prodotti/unitree-g1-d-standard.html">Unitree G1-D Standard</a></h3>
+<p>Zweiarmiger Torso auf festem Ständer</p>
+<div class="product-card-price">ab 38.005 € <small>zzgl. MwSt.</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/prodotti/unitree-g1-d-standard.html">Zum Produkt</a><a class="product-card-link" href="/en/assessment-en.html">Angebot anfragen</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Sekundärentwicklung, 23 DoF, Rechen-Dock</p>
+<div class="product-card-price">38.005 € <small>zzgl. MwSt.</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Zum Produkt</a><a class="product-card-link" href="/en/assessment-en.html">Angebot anfragen</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-r1-edu-en.html"><img alt="Unitree R1 EDU (U1)" loading="lazy" src="/images/official/unitree-r1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-r1-edu-en.html">Unitree R1 EDU (U1)</a></h3>
+<p>Sekundärentwicklung, 26-40 Freiheitsgrade</p>
+<div class="product-card-price">14.930 € <small>zzgl. MwSt.</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-r1-edu-en.html">Zum Produkt</a><a class="product-card-link" href="/en/assessment-en.html">Angebot anfragen</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Sicherheit und Normen, die Sie beachten sollten</h2>
 <p><em>Allgemeine Informationen, keine Rechtsberatung.</em></p>
-<p>Heute folgen auf dem EU-Markt in Verkehr gebrachte Maschinen der <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">Maschinenrichtlinie 2006/42/EG</a>. Ab dem 20. Januar 2027 gilt die <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Verordnung (EU) 2023/1230</a>, die die Richtlinie zu diesem Datum aufhebt. Für Industrieroboter ist die technische Referenz die Reihe <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a>, überarbeitet 2025. Für mobile Roboter mit aktiver Stabilität (mit Beinen oder auf balancierenden Rädern) entwickelt ISO die <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, die zum Zeitpunkt der Abfrage noch nicht als endgültige Norm veröffentlicht ist.</p>
-<p>In der Praxis gilt für den PoC:</p>
+<p>Heute unterliegen Maschinen, die in der EU in Verkehr gebracht werden, der <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">Maschinenrichtlinie 2006/42/EG</a>. Ab dem 20. Januar 2027 gilt die <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Maschinenverordnung (EU) 2023/1230</a>, die die Richtlinie zum selben Datum aufhebt. Für Industrieroboter ist die technische Referenz die Normenreihe <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a>, überarbeitet im Jahr 2025. Für mobile Roboter mit aktiver Stabilität (mit Beinen oder auf Rädern balancierend) entwickelt die ISO die <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, die zum Zeitpunkt der Recherche noch nicht als endgültige Norm veröffentlicht war.</p>
+<p>Für den PoC bedeutet das in der Praxis:</p>
 <ul>
 <li>Abgegrenzter Testbereich mit kontrolliertem Zugang während der Tests.</li>
-<li>Ein Zweibeiner kann bei Not-Aus stürzen, da seine Stabilität von der aktiven Regelung abhängt. Für erste Tests an einem Zweibeiner braucht es eine Abstützung oder ein Auffanggurt sowie Freiraum in der Umgebung.</li>
-<li>Schriftliche vorläufige Risikobeurteilung, abgestimmt mit der zuständigen Sicherheitsfachkraft im Unternehmen.</li>
-<li>Bediener, die in Not-Aus und Bergungsverfahren geschult sind.</li>
+<li>Ein Zweibeiner kann beim Not-Halt umfallen, weil seine Stabilität von der aktiven Regelung abhängt. Für die ersten Tests mit einem Zweibeiner brauchen Sie eine Stütze oder einen Gurt und freien Raum rundherum.</li>
+<li>Eine schriftliche vorläufige Risikobeurteilung, abgestimmt mit der Fachkraft für Arbeitssicherheit des Unternehmens.</li>
+<li>Bedienpersonal, das in Not-Halt und Wiederanlaufverfahren geschult ist.</li>
 </ul>
-<p>Weiterführend: <a href="/en/blog/unitree-regolamento-macchine-2027.html">Unitree-Roboter und die Maschinenverordnung 2027</a>.</p>
+<p>Vertiefung: <a href="/de/blog/unitree-regolamento-macchine-2027.html">Unitree Roboter und die Maschinenverordnung 2027</a>.</p>
 
 <h2>Kaufen, mieten oder simulieren</h2>
-<p>Nicht immer erfordert der PoC, den Roboter sofort zu kaufen. In manchen Fällen erfolgt eine erste Prüfung per Simulation, in anderen werden Miete oder ein kurzfristiger Pilot erwogen, wie auf der Seite <a href="/en/assessment-en.html">Assessment und PoC</a> beschrieben. Fällt die Wahl auf den Kauf, lohnt es sich vorher zu prüfen, ob das Projekt öffentliche Förderprogramme nutzen kann: Einen Überblick über die in Deutschland, Österreich und der Schweiz geltenden Programme finden Sie unter <a href="/de/#incentives">Förderung</a>.</p>
+<p>Nicht jeder PoC erfordert, den Roboter sofort zu kaufen. In manchen Fällen erfolgt eine erste Prüfung in der Simulation; in anderen kommen Miete oder ein kurzer Pilotbetrieb in Frage, wie auf der Seite <a href="/en/assessment-en.html">Assessment und PoC</a> beschrieben. Fällt die Wahl auf den Kauf, lohnt sich vorher ein Blick auf öffentliche Programme: In Deutschland, Österreich und der Schweiz gibt es für Robotik-Projekte steuerliche Förderung von Forschung und Entwicklung, Abschreibungs- und Investitionsanreize sowie Förderkredite und Innovationsförderung, die im Jahr 2026 gelten. Eine Übersicht mit offiziellen Quellen finden Sie auf der Seite <a href="/en/finanziamenti-en.html">Förderung</a>. Abra Robotics stellt Ihnen für den Antrag das Angebot und die technischen Unterlagen zur Verfügung; ob ein bestimmtes Gerät förderfähig ist, klären Sie mit Ihrem Steuerberater.</p>
 
 <h2>Was der Abschlussbericht enthalten muss</h2>
 <ol>
 <li>Gemessene KPIs im Vergleich zu den Schwellenwerten des Plans, mit der Anzahl der Versuche.</li>
-<li>Ursachen der Fehlschläge, gegliedert nach Kategorie (Wahrnehmung, Greifen, Navigation, Software, Hardware).</li>
-<li>Geschätzte Gesamtkosten für den Übergang in die nächste Phase: Hardware, Software, Sicherheit, Schulung.</li>
-<li>Empfehlung: Go, No-Go oder Überarbeitung des Umfangs.</li>
+<li>Fehlerursachen, nach Kategorie getrennt (Wahrnehmung, Greifen, Navigation, Software, Hardware).</li>
+<li>Geschätzte Gesamtkosten für die nächste Phase: Hardware, Software, Sicherheit, Schulung.</li>
+<li>Empfehlung: Go, No-Go oder Überarbeitung des Rahmens.</li>
 </ol>
-<p>Ein PoC, der die KPIs nicht erreicht, ist keine verlorene Zeit: Es ist eine Information, die eine falsche Bestellung verhindert. Halten die Zahlen nicht stand, sollte man das besser wissen, bevor zehn Einheiten gekauft werden.</p>
+<p>Ein PoC, der die KPIs nicht erreicht, ist keine verlorene Zeit: Er liefert eine Information, die eine falsche Bestellung verhindert. Wenn die Zahlen nicht halten, ist es besser, das vor dem Kauf von zehn Einheiten zu wissen.</p>
 </div>
 
 <section class="article-faq" id="faq">
 <h2>Häufige Fragen</h2>
-<div class="faq-item"><h3>Wie lange dauert ein PoC mit einem humanoiden Roboter?</h3><p>Das hängt vom Einzelfall ab. Prozessaufnahme, Lösungsvergleich, Simulation und PoC-Plan erfordern als Orientierung 5–9 Wochen für einen einzelnen Anwendungsfall; Durchführung und Entscheidung werden im Plan festgelegt. Wird ein neuer Roboter benötigt, ist die Lieferung humanoider Roboter mit 4–6 Wochen angegeben.</p></div>
-<div class="faq-item"><h3>Welcher Unitree-Humanoide eignet sich für einen Pick-and-Place-PoC?</h3><p>Für Entnahme und Ablage am Tisch vermeidet der G1-D Standard auf fester Säule (ab 38.005 € zzgl. MwSt.) das Sturzrisiko. Bei reduziertem Budget kann der R1-D mit Richtwert ab 12.000 € in Betracht gezogen werden.</p></div>
-<div class="faq-item"><h3>Welche KPIs misst man in einem PoC mit einem humanoiden Roboter?</h3><p>Erfolgsquote, Zykluszeit, menschliche Eingriffe pro Stunde, reale Autonomie pro Akkuladung und Setup-Zeit. Sie gehören vor Testbeginn mit einem Schwellenwert in den Plan.</p></div>
-<div class="faq-item"><h3>Muss man für einen PoC den Roboter kaufen?</h3><p>Nicht immer. In manchen Fällen erfolgt die erste Prüfung per Simulation, in anderen werden Miete oder ein kurzfristiger Pilot erwogen. Die Wahl hängt vom Einzelfall und vom Reifegrad des Prozesses ab.</p></div>
-<div class="faq-item"><h3>Welche Sicherheitsnormen gelten für einen PoC mit einem humanoiden Roboter?</h3><p>Heute die Maschinenrichtlinie 2006/42/EG, ab dem 20. Januar 2027 die Verordnung (EU) 2023/1230. Für Industrieroboter wird auf die Reihe ISO 10218 verwiesen. Erforderlich ist eine mit der Sicherheitsfachkraft abgestimmte Risikobeurteilung.</p></div>
+<div class="faq-item"><h3>Wie lange dauert ein PoC mit einem humanoiden Roboter?</h3><p>Das hängt vom Fall ab. Prozessaufnahme, Lösungsvergleich, Simulation und PoC-Plan brauchen als Richtwert 5 bis 9 Wochen für einen einzelnen Anwendungsfall; Durchführung und Entscheidung werden im Plan festgelegt. Wird ein neuer Roboter benötigt, liegt die Lieferzeit für humanoide Roboter bei 4 bis 6 Wochen.</p></div>
+<div class="faq-item"><h3>Welcher humanoide Unitree Roboter eignet sich für einen Pick-and-Place-PoC?</h3><p>Für Entnehmen und Ablegen am Tisch vermeidet der G1-D Standard auf festem Ständer (ab 38.005 € zzgl. MwSt.) das Sturzrisiko. Bei kleinerem Budget kommt der R1-D in Frage, Preis auf Anfrage.</p></div>
+<div class="faq-item"><h3>Welche KPIs sollte man in einem PoC mit einem humanoiden Roboter messen?</h3><p>Erfolgsquote, Taktzeit, menschliche Eingriffe pro Stunde, reale Laufzeit pro Akku und Rüstzeit. Sie gehören mit einem Schwellenwert in den Plan, bevor die Tests beginnen.</p></div>
+<div class="faq-item"><h3>Muss man den Roboter für einen PoC kaufen?</h3><p>Nicht immer. In manchen Fällen erfolgt die erste Prüfung in der Simulation, in anderen kommen Miete oder ein kurzer Pilotbetrieb in Frage. Die Wahl hängt vom Fall und vom Reifegrad des Prozesses ab.</p></div>
+<div class="faq-item"><h3>Welche Sicherheitsnormen gelten für einen PoC mit einem humanoiden Roboter?</h3><p>Heute die Maschinenrichtlinie 2006/42/EG; ab dem 20. Januar 2027 die Maschinenverordnung (EU) 2023/1230. Für Industrieroboter ist die Normenreihe ISO 10218 die Referenz. Nötig ist eine Risikobeurteilung, die mit der Fachkraft für Arbeitssicherheit abgestimmt ist.</p></div>
 </section>
 
 <section class="article-references" id="fonti">
@@ -255,12 +289,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li>Verordnung (EU) 2023/1230 über Maschinen, EUR-Lex: <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">eur-lex.europa.eu/eli/reg/2023/1230/oj</a></li>
 <li>ISO 10218-1:2025, Robotics, Safety requirements, Part 1: <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">iso.org/standard/73933</a></li>
 <li>ISO 25785-1, Safety requirements for dynamically stable industrial mobile robots (in Entwicklung): <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">iso.org/standard/91469</a></li>
-<li>Unitree, Spezifikationen G1, R1 und G1-D: <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a>, <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">unitree.com/R1</a>, <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a></li>
-<li>Abra Robotics, <a href="/en/assessment-en.html">Assessment und PoC</a> (Phasen und Richtwerte zur Dauer) und <a href="/en/listino-unitree-en.html">End-User-Preisliste</a></li>
+<li>Unitree, technische Daten G1, R1 und G1-D: <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a>, <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">unitree.com/R1</a>, <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a></li>
+<li>Abra Robotics, <a href="/en/assessment-en.html">Assessment und PoC</a> (Phasen und Richtdauern) und <a href="/en/listino-unitree-en.html">End-User-Preisliste</a></li>
 </ol>
 </section>
 </div>
-<div class="article-cta"><a class="btn btn-primary" href="/de/#cta-finale">PoC starten</a></div>
+<div class="article-cta"><h2>Sie möchten einen PoC mit einem humanoiden Roboter aufsetzen?</h2><p>Wir beginnen mit der Prozessaufnahme und den KPIs und wählen dann gemeinsam mit Ihnen die Plattform. Die ersten vier Phasen dauern 5 bis 9 Wochen.</p><a class="btn btn-primary" href="/en/assessment-en.html">PoC starten</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Humanoide Roboter ansehen</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
