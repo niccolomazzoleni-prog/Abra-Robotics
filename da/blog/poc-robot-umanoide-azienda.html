@@ -1,0 +1,336 @@
+<!-- generato da scripts/blog_lingue.py da blog/poc-robot-umanoide-azienda.html -->
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PoC med humanoid robot i virksomheden: faser, KPI'er, risici</title>
+<meta name="description" content="Sådan sætter du et PoC op med en humanoid Unitree-robot i virksomheden: faser, vejledende varighed, KPI&#x27;er, valg mellem G1, G1-D og R1, sikkerhed og regler."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/da/blog/poc-robot-umanoide-azienda.html"/>
+<link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/poc-robot-umanoide-azienda.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/poc-robot-umanoide-azienda.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/poc-robot-umanoide-azienda.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/poc-robot-umanoide-azienda.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/poc-robot-umanoide-azienda.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/poc-robot-umanoide-azienda.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/sv/blog/poc-robot-umanoide-azienda.html" hreflang="sv" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/poc-robot-umanoide-azienda.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/poc-robot-umanoide-azienda.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="x-default" rel="alternate"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "PoC med humanoid robot i virksomheden: faser, KPI'er, risici",
+  "description": "Sådan sætter du et PoC op med en humanoid Unitree-robot i virksomheden: faser, vejledende varighed, KPI'er, valg mellem G1, G1-D og R1, sikkerhed og regler.",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-10-15",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/da/blog/poc-robot-umanoide-azienda.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-d-standard.webp",
+  "inLanguage": "da",
+  "url": "https://abrarobotics.com/da/blog/poc-robot-umanoide-azienda.html"
+}
+  </script>
+  
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="PoC med humanoid robot i virksomheden: faser, KPI&#x27;er, risici"/>
+<meta property="og:description" content="Sådan sætter du et PoC op med en humanoid Unitree-robot i virksomheden: faser, vejledende varighed, KPI&#x27;er, valg mellem G1, G1-D og R1, sikkerhed og regler."/>
+<meta property="og:url" content="https://abrarobotics.com/da/blog/poc-robot-umanoide-azienda.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
+<meta property="og:locale" content="da_DK"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/da/">Forside</a> / <a href="/da/">Blog</a> / PoC med humanoid robot</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-d-standard.webp" alt="Unitree G1-D med to arme på stander, platform til PoC med manipulation" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">PoC · Humanoider</p>
+<h1>PoC med en humanoid robot i virksomheden: faser, KPI'er og risici</h1>
+<div class="article-meta"><time datetime="2026-07-13">13. juli 2026</time><span>Opdateret 9. oktober 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Kort fortalt:</strong> et PoC med en humanoid robot skal besvare ét præcist spørgsmål (klarer denne robot denne opgave, i dette tempo, med så mange menneskelige indgreb?), før man investerer i flere enheder. Det virker, hvis KPI'er, afgrænsning og succeskriterier er skrevet ned, før robotten tændes. Varighederne her er vejledende og afhænger af den konkrete opgave.</div>
+</header>
+
+<div class="article-content">
+<p>Et <strong>PoC med en humanoid robot</strong> er ikke at købe robotten og se, hvad der sker. Det er et forsøg med en klar afgrænsning, målepunkter skrevet sort på hvidt og en endelig beslutning: gå videre, ændre tilgang eller stoppe. Denne guide beskriver en metode, som en virksomhed kan følge, de KPI'er, der skal fastlægges, hvordan man vælger Unitree-platformen, og hvilke sikkerhedsstandarder man skal have for øje.</p>
+
+<h2>Hvad et PoC skal bevise</h2>
+<p>Et PoC besvarer ét spørgsmål, formuleret så det kan efterprøves. Eksempler på velformulerede spørgsmål:</p>
+<ul>
+<li>Tager robotten kasserne fra en palle og stiller dem på transportbåndet med en acceptabel succesrate?</li>
+<li>Indsamler robotten teleoperationsdata, der kan bruges til at træne en manipulationspolicy?</li>
+<li>Gennemfører robotten en visuel inspektionsrunde i et område uden indgreb fra operatøren?</li>
+</ul>
+<p>Spørgsmål som "lad os se, hvad den kan" eller "lad os lave en demo" giver videoer, ikke beslutninger. Hvis spørgsmålet ikke er klart, er første skridt en analyse af processen, ikke et køb.</p>
+
+<h2>Faserne i et PoC med vejledende varighed</h2>
+<p>Rækkefølgen herunder er den, vi beskriver på siden <a href="/en/assessment-en.html">Assessment og PoC</a>: de første fire faser tager vejledende 5-9 uger for en enkelt use case. De næste faser afhænger af afgrænsningen og fastlægges i PoC-planen.</p>
+<table>
+<thead><tr><th>Fase</th><th>Hvad der sker</th><th>Resultat</th><th>Vejledende varighed</th></tr></thead>
+<tbody>
+<tr><td>1. Kortlægning af processen</td><td>Opgave, rum, flow, sikkerhedskrav, nuværende baseline</td><td>Beskrivelse af opgaven og KPI'er ved start</td><td>1-2 uger</td></tr>
+<tr><td>2. Sammenligning af løsninger</td><td>Humanoid, cobot, AMR eller ingen robot</td><td>Begrundet shortlist</td><td>ca. 1 uge</td></tr>
+<tr><td>3. Simulering</td><td>3D-model af arbejdspladsen og robotten</td><td>Gennemførlighed og kritiske punkter</td><td>2-4 uger</td></tr>
+<tr><td>4. PoC-plan</td><td>Mål, hardware, testområde, foreløbig risikovurdering</td><td>PoC-plan og succeskriterier</td><td>1-2 uger</td></tr>
+<tr><td>5. Gennemførelse</td><td>Opstilling, test i afgrænset område, dataindsamling</td><td>Data om KPI'erne</td><td>Fastlægges i planen</td></tr>
+<tr><td>6. Beslutning</td><td>Sammenligning af målte og forventede KPI'er</td><td>Go, no-go eller revision</td><td>Fastlægges i planen</td></tr>
+</tbody>
+</table>
+<p>Kræver PoC'et en ny robot, skal leveringstiden også med i regnestykket: for humanoide robotter angiver vi 4-6 uger fra underskrift (se <a href="/da/">forsiden</a>).</p>
+
+<h2>De KPI'er, der skal skrives ned før start</h2>
+<p>En KPI, der fastlægges efter testene, tilpasser sig altid resultatet. Derfor skal de stå i planen med en tærskelværdi. De mest brugte:</p>
+<ul>
+<li><strong>Succesrate</strong>: gennemførte opgaver ud af forsøgte opgaver, over et minimum af forsøg.</li>
+<li><strong>Cyklustid</strong>: sekunder pr. opgave sammenlignet med i dag.</li>
+<li><strong>Menneskelige indgreb</strong>: hvor mange gange operatøren skal rette, flytte eller stoppe robotten pr. arbejdstime.</li>
+<li><strong>Reel driftstid</strong>: faktiske arbejdstimer pr. batteri sammenlignet med producentens tal (ca. 2 timer for G1, ca. 6 timer for G1-D med mobil base, ca. 1 time for R1).</li>
+<li><strong>Opstillingstid</strong>: hvor lang tid det tager at få robotten i drift igen efter et opgaveskift eller et fald.</li>
+</ul>
+<p><em>Eksempel med hypotetiske tal:</em> succesgrænse på 90 % over 200 løft, maks. cyklustid på 20 sekunder, højst 2 indgreb i timen. Hvis PoC'et ender på 80 % med 6 indgreb i timen, skal rapporten forklare hvorfor (greb, perception, positionering), og om der findes en sandsynlig løsning.</p>
+
+<h2>Hvilken humanoid robot du skal bruge til PoC'et</h2>
+<table>
+<thead><tr><th>Opgave</th><th>Platform</th><th>Slutbrugerpris (ekskl. moms)</th></tr></thead>
+<tbody>
+<tr><td>Pluk og placer ved et bord, indsamling af teleoperationsdata</td><td><a href="/da/unitree-g1-d.html">G1-D</a> Standard (fast stander)</td><td>fra 38.005 €</td></tr>
+<tr><td>Manipulation ved flere arbejdspladser</td><td><a href="/prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (mobil base)</td><td>fra 51.944 €</td></tr>
+<tr><td>Kompakt manipulation med et mindre budget</td><td><a href="/da/unitree-r1-d.html">R1-D</a></td><td>pris på forespørgsel</td></tr>
+<tr><td>Locomotion, software, embodied AI</td><td><a href="/da/unitree-g1.html">G1</a> EDU</td><td>fra 38.005 € (G1-U1)</td></tr>
+<tr><td>Undervisning og billige forsøg</td><td><a href="/da/unitree-r1.html">R1</a> EDU</td><td>fra 14.930 € (R1-U1)</td></tr>
+<tr><td>Interaktion i menneskelig skala</td><td><a href="/da/unitree-h2.html">H2</a></td><td>fra 43.874 € (H2 Air)</td></tr>
+</tbody>
+</table>
+<p>Til et PoC, hvor robotten skal programmeres, skal du bruge versionerne med sekundær udvikling (EDU), som Unitree angiver i specifikationerne for <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1</a> og <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">R1</a>. Er opgaven kun manipulation, fjerner en torso uden ben som G1-D (specifikationer på <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a>) risikoen for fald og gør cellen enklere. Den fulde sammenligning: <a href="/da/blog/confronto-umanoidi-2026.html">hvilken humanoid robot fra Unitree skal du vælge</a>.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Produkter nævnt i artiklen</span><a href="/en/umanoidi-en.html">Alle humanoide robotter</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/prodotti/unitree-g1-d-standard.html"><img alt="Unitree G1-D Standard" loading="lazy" src="/images/prodotti/g1-d-standard.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/prodotti/unitree-g1-d-standard.html">Unitree G1-D Standard</a></h3>
+<p>Torso med to arme på fast stander</p>
+<div class="product-card-price">fra 38.005 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/prodotti/unitree-g1-d-standard.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Sekundær udvikling, 23 DoF, computerdock</p>
+<div class="product-card-price">38.005 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-r1-edu-en.html"><img alt="Unitree R1 EDU (U1)" loading="lazy" src="/images/official/unitree-r1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-r1-edu-en.html">Unitree R1 EDU (U1)</a></h3>
+<p>Sekundær udvikling, 26-40 frihedsgrader</p>
+<div class="product-card-price">14.930 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-r1-edu-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Sikkerhed og standarder, du skal tage højde for</h2>
+<p><em>Generel information, ikke juridisk rådgivning.</em></p>
+<p>I dag følger maskiner, der bringes i omsætning i EU, <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">maskindirektivet 2006/42/EF</a>. Fra 20. januar 2027 gælder <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">forordning (EU) 2023/1230</a>, som ophæver direktivet fra samme dato. For industrirobotter er den tekniske reference <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a>-serien, der blev revideret i 2025. Til mobile robotter med aktiv stabilitet (på ben eller på hjul i balance) er ISO ved at udarbejde <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, som endnu ikke var udgivet som endelig standard, da vi tjekkede.</p>
+<p>I praksis betyder det for PoC'et:</p>
+<ul>
+<li>Et afgrænset testområde med kontrolleret adgang under testene.</li>
+<li>En tobenet robot kan falde ved et nødstop, fordi dens stabilitet afhænger af den aktive styring. Til de første test med en tobenet robot skal der bruges en støtte eller en sele og fri plads omkring den.</li>
+<li>En skriftlig foreløbig risikovurdering, som deles med virksomhedens sikkerhedsansvarlige i arbejdsmiljøorganisationen.</li>
+<li>Operatører, der er uddannet i nødstop og procedurer for at genoptage driften.</li>
+</ul>
+<p>Læs mere: <a href="/en/blog/unitree-regolamento-macchine-2027.html">Unitree-robotter og maskinforordningen 2027</a>.</p>
+
+<h2>Købe, leje eller simulere</h2>
+<p>Et PoC kræver ikke altid, at man køber robotten med det samme. I nogle tilfælde laves en første kontrol i simulering; i andre kan man overveje leje eller en kortvarig pilot, som forklaret på siden <a href="/en/assessment-en.html">Assessment og PoC</a>. Hvis køb er den valgte vej, er det værd først at undersøge, om projektet kan bruge danske ordninger, fx det forhøjede fradrag for forsknings- og udviklingsudgifter (ligningslovens § 8 B) eller Innobooster fra Danmarks Innovationsfond: krav og officielle kilder står på siden <a href="/en/finanziamenti-en.html">Finansiering</a>. Abra Robotics leverer tilbud og teknisk dokumentation, men giver ikke skatterådgivning: om det konkrete udstyr er omfattet, afklarer du med din revisor.</p>
+
+<h2>Hvad den endelige rapport skal indeholde</h2>
+<ol>
+<li>Målte KPI'er over for tærsklerne i planen, med antallet af forsøg.</li>
+<li>Årsagerne til fejl, opdelt i kategorier (perception, greb, navigation, software, hardware).</li>
+<li>Anslåede samlede omkostninger for at gå videre til næste fase: hardware, software, sikkerhed, uddannelse.</li>
+<li>Anbefaling: go, no-go eller revision af afgrænsningen.</li>
+</ol>
+<p>Et PoC, der ikke når sine KPI'er, er ikke spildt tid: det er viden, der forhindrer en forkert ordre. Holder tallene ikke, er det bedre at vide det, før man køber ti enheder.</p>
+</div>
+
+<section class="article-faq" id="faq">
+<h2>Ofte stillede spørgsmål</h2>
+<div class="faq-item"><h3>Hvor lang tid tager et PoC med en humanoid robot?</h3><p>Det afhænger af opgaven. Kortlægning, sammenligning af løsninger, simulering og PoC-plan tager vejledende 5-9 uger for en enkelt use case; gennemførelse og beslutning fastlægges i planen. Skal der bruges en ny robot, er leveringstiden for humanoide robotter angivet til 4-6 uger.</p></div>
+<div class="faq-item"><h3>Hvilken humanoid robot fra Unitree er bedst til et PoC med pluk og placer?</h3><p>Til pluk og placer ved et bord undgår G1-D Standard på fast stander (fra 38.005 € ekskl. moms) risikoen for fald. Med et mindre budget kan man overveje R1-D, pris på forespørgsel.</p></div>
+<div class="faq-item"><h3>Hvilke KPI'er skal man måle i et PoC med en humanoid robot?</h3><p>Succesrate, cyklustid, menneskelige indgreb pr. time, reel driftstid pr. batteri og opstillingstid. De skal skrives ind i planen med en tærskelværdi, før testene begynder.</p></div>
+<div class="faq-item"><h3>Skal man købe robotten for at lave et PoC?</h3><p>Ikke altid. I nogle tilfælde laves den første kontrol i simulering, i andre kan man overveje leje eller en kortvarig pilot. Valget afhænger af opgaven og af, hvor moden processen er.</p></div>
+<div class="faq-item"><h3>Hvilke sikkerhedsregler gælder for et PoC med en humanoid robot?</h3><p>I dag maskindirektivet 2006/42/EF; fra 20. januar 2027 forordning (EU) 2023/1230. For industrirobotter er referencen ISO 10218-serien. Der skal være en risikovurdering, som er delt med den sikkerhedsansvarlige.</p></div>
+</section>
+
+<section class="article-references" id="fonti">
+<h2>Kilder</h2>
+<ol>
+<li>Direktiv 2006/42/EF om maskiner, EUR-Lex: <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">CELEX 32006L0042</a></li>
+<li>Forordning (EU) 2023/1230 om maskiner, EUR-Lex: <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">eur-lex.europa.eu/eli/reg/2023/1230/oj</a></li>
+<li>ISO 10218-1:2025, Robotics, Safety requirements, Part 1: <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">iso.org/standard/73933</a></li>
+<li>ISO 25785-1, Safety requirements for dynamically stable industrial mobile robots (under udarbejdelse): <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">iso.org/standard/91469</a></li>
+<li>Unitree, specifikationer for G1, R1 og G1-D: <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a>, <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">unitree.com/R1</a>, <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a></li>
+<li>Abra Robotics, <a href="/en/assessment-en.html">Assessment og PoC</a> (faser og vejledende varighed) og <a href="/en/listino-unitree-en.html">slutbrugerprislisten</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Vil du sætte et PoC op med en humanoid robot?</h2><p>Vi starter med at kortlægge processen og KPI'erne og vælger derefter platformen sammen med dig. De første fire faser tager 5-9 uger.</p><a class="btn btn-primary" href="/en/assessment-en.html">Start et PoC</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Se de humanoide robotter</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>

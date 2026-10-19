@@ -1,0 +1,373 @@
+<!-- generato da scripts/blog_lingue.py da blog/cobot-cosa-sono.html -->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cobots: wat zijn het, hoe werken ze en wat kosten ze</title>
+<meta name="description" content="Wat zijn cobots, hoe werken ze (ISO 10218 en ISO/TS 15066), het verschil met industriële robots en de Fairino-prijzen vanaf € 5.448 excl. btw."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/nl/blog/cobot-cosa-sono.html"/>
+<link href="https://abrarobotics.com/blog/cobot-cosa-sono.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/cobot-cosa-sono.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/cobot-cosa-sono.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/cobot-cosa-sono.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/cobot-cosa-sono.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/blog/cobot-cosa-sono.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/cobot-cosa-sono.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/sv/blog/cobot-cosa-sono.html" hreflang="sv" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/cobot-cosa-sono.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/no/blog/cobot-cosa-sono.html" hreflang="nb" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/cobot-cosa-sono.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cobots: wat zijn het, hoe werken ze en wat kosten ze",
+  "description": "Wat zijn cobots, hoe werken ze (ISO 10218 en ISO/TS 15066), het verschil met industriële robots en de Fairino-prijzen vanaf € 5.448 excl. btw.",
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/nl/blog/cobot-cosa-sono.html"
+  },
+  "image": "https://abrarobotics.com/images/manifattura/fairino-cobot.png",
+  "inLanguage": "nl",
+  "url": "https://abrarobotics.com/nl/blog/cobot-cosa-sono.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat betekent cobot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cobot is de afkorting van collaborative robot: een robotarm die is ontworpen om naast een operator in dezelfde werkruimte te werken. De technische definitie komt uit ISO/TS 15066, die collaboratief bedrijf beschrijft als de toestand waarin een robotsysteem en een operator binnen een gedeelde werkruimte werken."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is het verschil tussen een cobot en een industriële robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Een industriële robot werkt doorgaans achter vaste afschermingen, op hoge snelheid en met een hoog laadvermogen. Een cobot is ontworpen om de ruimte met mensen te delen: begrensde kracht en snelheid, herprogrammeren met de hand (hand guiding) en vaak geen kooi. Bij gelijke last is de industriële robot sneller, maar hij vraagt om afschermingen en een zwaardere integratie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat kost een Fairino-cobot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Volgens de prijslijst kosten Fairino-cobots van € 5.448 (FR3, 3 kg) tot € 36.828 (palletiseercel FR20), excl. btw. Alleen de arm FR5 kost vanaf € 6.252, de FR10 vanaf € 10.387 en de FR20 vanaf € 14.677. De grijper wordt apart geoffreerd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan een cobot lassen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, lassen is een van de typische toepassingen, naast machinebelading en palletiseren. Er is wel een cel nodig met een eigen stroombron, toorts en lastafel: de cobot is alleen de arm. De risicobeoordeling bepaalt of de grenzen van de cobot volstaan of dat er een afscherming nodig is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Werkt een cobot altijd zonder afscherming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. Over samenwerking beslist de risicobeoordeling van de hele toepassing: robot, grijper, werkstuk, snelheid en lay-out. Waar het risico hoog blijft, komen er laserscanners, lichtschermen of een fysieke afscherming bij."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Cobots: wat zijn het, hoe werken ze en wat kosten ze"/>
+<meta property="og:description" content="Wat zijn cobots, hoe werken ze (ISO 10218 en ISO/TS 15066), het verschil met industriële robots en de Fairino-prijzen vanaf € 5.448 excl. btw."/>
+<meta property="og:url" content="https://abrarobotics.com/nl/blog/cobot-cosa-sono.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/manifattura/fairino-cobot.png"/>
+<meta property="og:locale" content="nl_NL"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/nl/">Home</a> / <a href="/nl/">Blog</a> / Cobots en AMR's</nav>
+
+<figure class="article-cover">
+<img src="/images/manifattura/fairino-cobot.webp" alt="Fairino-cobot: collaboratieve arm met 6 assen" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Cobots en AMR's</p>
+<h1>Cobots: wat zijn het, hoe werken ze en wat kosten ze</h1>
+<div class="article-meta"><time datetime="2026-10-13">13 oktober 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In het kort:</strong> een cobot (collaborative robot) is een robotarm die is ontworpen om naast een operator te werken, in dezelfde ruimte, zonder vaste kooi. De referentienormen zijn ISO 10218 en ISO/TS 15066. De Fairino-cobots in de prijslijst beginnen bij € 5.448 excl. btw (FR3). De keuze tussen een cobot en een industriële robot hangt af van last, snelheid en de risicobeoordeling.</div>
+</header>
+
+<div class="article-content">
+<p>Een cobot, kort voor collaborative robot, is een robotarm die is ontworpen om naast een mens in dezelfde ruimte te werken, zonder vaste kooi. Voordat u naar modellen en prijzen kijkt, is het goed om helder te hebben wat cobots zijn en wat ze niet zijn: een "lichte" arm maakt nog geen collaboratieve toepassing, en niet elke werkplek met een cobot kan zonder afscherming.</p>
+
+<h2>Wat zijn cobots: definitie en normen</h2>
+<p><a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218-1:2025</a> definieert de industriële robot als een automatisch bestuurde, herprogrammeerbare multifunctionele manipulator die in drie of meer assen programmeerbaar is. De cobot is geen aparte normatieve categorie: het is een robot die is ontworpen met grenzen aan kracht, vermogen en snelheid, zodat hij de ruimte met mensen kan delen.</p>
+<p>De technische specificatie <a href="https://www.iso.org/standard/62996.html" rel="noopener noreferrer" target="_blank">ISO/TS 15066:2016</a> beschrijft collaboratief bedrijf als de toestand waarin een daarvoor ontworpen robotsysteem en een operator binnen een gedeelde werkruimte werken. Dat is een belangrijk punt: "collaboratief" slaat op de toepassing als geheel (robot, grijper, werkstuk, omgeving), niet op de arm alleen. Bij de herziening van 2025 heeft ISO 10218 een groot deel van de inhoud van ISO/TS 15066 overgenomen, en de norm zegt het expliciet: de term "collaborative robot" wordt in de norm niet gebruikt, omdat alleen de toepassing als collaboratief kan worden ontwikkeld, geverifieerd en gevalideerd.</p>
+
+<h2>Cobot betekenis: het verschil met een industriële robot</h2>
+<p>Een industriële robot en een cobot hebben dezelfde technische basis: een arm met 6 assen en een controller. Wat verschilt, is hoe ze worden ingezet.</p>
+<table>
+<thead><tr><th>Parameter</th><th>Industriële robot</th><th>Cobot</th></tr></thead>
+<tbody>
+<tr><td>Afscherming</td><td>Bijna altijd vast</td><td>Vaak geen, als de risicobeoordeling dat toelaat</td></tr>
+<tr><td>Snelheid</td><td>Hoog, met sterke versnellingen</td><td>Begrensd door kracht, vermogen en moment</td></tr>
+<tr><td>Laadvermogen</td><td>Tientallen tot honderden kg</td><td>Doorgaans 3 tot 30 kg</td></tr>
+<tr><td>Programmeren</td><td>Offline of met teach pendant</td><td>Ook door de arm met de hand te geleiden (hand guiding)</td></tr>
+<tr><td>Instapkosten</td><td>Hoger, met cel en afschermingen</td><td>Lager, met eenvoudigere installatie</td></tr>
+</tbody>
+</table>
+<p>In de praktijk loont een industriële robot bij hoge cadans, zware lasten en altijd dezelfde cycli. Een cobot loont bij lichte lasten, wisselende formaten, weinig ruimte en werkplekken waar een persoon vaak dicht bij de arm komt.</p>
+
+<h2>Hoe werkt een cobot: de vier manieren van samenwerken</h2>
+<p><a href="https://www.iso.org/news/2016/03/Ref2057.html" rel="noopener noreferrer" target="_blank">ISO/TS 15066</a> noemt vier technieken voor collaboratief bedrijf, los of gecombineerd te gebruiken:</p>
+<ul>
+<li><strong>Safety-rated monitored stop:</strong> de robot stopt zodra de operator het gebied betreedt; mens en robot bewegen nooit tegelijk.</li>
+<li><strong>Hand guiding:</strong> de operator beweegt de arm met de hand om de punten van de cyclus vast te leggen.</li>
+<li><strong>Speed and separation monitoring:</strong> scanners of camera's meten de afstand en vertragen de robot wanneer de operator dichterbij komt.</li>
+<li><strong>Power and force limiting:</strong> de robot begrenst kracht, vermogen en snelheid, zodat een onbedoeld contact geen letsel veroorzaakt. Dit is de typische werkwijze van cobots, met pijngrenzen voor de verschillende lichaamsdelen in bijlage A van de norm.</li>
+</ul>
+<p>Een Fairino-cobot werkt vooral met power and force limiting: de gewrichten hebben koppelterugkoppeling in een gesloten regelkring, zoals in het Fairino-datasheet staat. De juiste werkwijze kiest u echter op basis van de toepassing, niet van het model.</p>
+
+<h2>Waarvoor dient een cobot: machinebelading, palletiseren, lassen</h2>
+<p>De meest voorkomende toepassingen, op volgorde van verspreiding:</p>
+<ul>
+<li><strong>Machinebelading (machine tending):</strong> werkstukken laden en lossen bij draaibanken, freesmachines en persen. Dit is het meest repetitieve werk dat u bij een operator kunt weghalen.</li>
+<li><strong>Palletiseren aan het einde van de lijn:</strong> dozen op europallets stapelen. We schreven er een aparte gids over: <a href="/nl/blog/palletizzazione-cobot-costi.html">palletiseren met een cobot, kosten en doorlooptijden</a>.</li>
+<li><strong>Lassen:</strong> de cobot voert de toorts langs herhaalde lasnaden. Daarvoor is een cel nodig met stroombron, toorts en een eigen lastafel; de arm is maar een onderdeel.</li>
+<li><strong>Pick &amp; place en lichte assemblage:</strong> onderdelen pakken en plaatsen, met een elektrische of pneumatische grijper.</li>
+</ul>
+<p>In het magazijn wordt de cobot vaak gecombineerd met een <a href="/amr.html">AMR</a>: de arm pakt, de mobiele robot rijdt. Voor het einde van de lijn en handling vindt u het overzicht op de pagina <a href="/en/manifattura-logistica-en.html">Productie en logistiek</a>.</p>
+
+<h2>Wat kost een cobot: de Fairino-prijzen uit de prijslijst</h2>
+<p>De Fairino-cobots in de prijslijst van Abra lopen van <strong>€ 5.448</strong> (FR3) tot <strong>€ 36.828</strong> (palletiseercel FR20), excl. btw. Dit zijn openbare lijstprijzen: de grijper, de montagekits en de integratie worden apart geoffreerd.</p>
+<table>
+<thead><tr><th>Model</th><th>Laadvermogen</th><th>Reikwijdte</th><th>Prijs vanaf (excl. btw)</th></tr></thead>
+<tbody>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr3-en.html">Fairino FR3</a></td><td>3 kg</td><td>622 mm</td><td>€ 5.448</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr5-en.html">Fairino FR5</a></td><td>5 kg</td><td>922 mm</td><td>€ 6.252</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr10-en.html">Fairino FR10</a></td><td>10 kg</td><td>1.400 mm</td><td>€ 10.387</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr16-en.html">Fairino FR16</a></td><td>16 kg</td><td>1.034 mm</td><td>€ 10.450</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr20-en.html">Fairino FR20</a></td><td>20 kg</td><td>1.854 mm</td><td>€ 14.677</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr30-en.html">Fairino FR30</a></td><td>30 kg</td><td>1.403 mm</td><td>€ 16.256</td></tr>
+</tbody>
+</table>
+<p>Laadvermogen en reikwijdte komen uit de officiële datasheets van <a href="https://www.fairino.com/FR/5.html" rel="noopener noreferrer" target="_blank">Fairino</a>; de prijzen uit de <a href="/cobot.html">cobotcatalogus</a> van Abra. Kant-en-klare cellen kosten meer, omdat de workstation erbij zit: <a href="/en/prodotti/cobot-fairino-palletizing-fr10-en.html">cel FR10</a> vanaf € 30.690 en <a href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html">cel FR20</a> vanaf € 36.828. De workstation zonder robot begint bij € 10.230.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Producten in dit artikel</span><a href="/cobot.html">Alle cobots</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/cobot-fairino-fr3-en.html"><img alt="Fairino FR3" loading="lazy" src="/images/manifattura/fairino-fr5.png"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/cobot-fairino-fr3-en.html">Fairino FR3</a></h3>
+<p>Cobot met 6 assen, 3 kg, reikwijdte 622 mm</p>
+<div class="product-card-price">€ 5.448 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/cobot-fairino-fr3-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/cobot-fairino-fr20-en.html"><img alt="Fairino FR20" loading="lazy" src="/images/manifattura/fairino-fr20.png"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/cobot-fairino-fr20-en.html">Fairino FR20</a></h3>
+<p>Cobot van 20 kg, reikwijdte 1.854 mm</p>
+<div class="product-card-price">€ 14.677 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/cobot-fairino-fr20-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html"><img alt="Palletiseercel FR20" loading="lazy" src="/images/manifattura/fairino-fr20.png"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html">Palletiseercel FR20</a></h3>
+<p>Cobot FR20 met workstation</p>
+<div class="product-card-price">vanaf € 36.828 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Veiligheid en risicobeoordeling</h2>
+<p class="article-note"><em>Algemene informatie, geen juridisch advies. De classificatie van een robot en de verplichtingen die daaruit volgen, hangen af van de concrete toepassing.</em></p>
+<p>Samenwerking wordt niet "ingeschakeld" omdat het model cobot heet. Daarover beslist een risicobeoordeling van de hele toepassing: robot, grijper, werkstuk, snelheid, baan en toegang van personen. <a href="https://www.iso.org/standard/73934.html" rel="noopener noreferrer" target="_blank">ISO 10218-2:2025</a> verlangt van de integrator dat hij contacten tussen bewegende delen en operators beoordeelt en maatregelen voor risicoreductie voorziet.</p>
+<p>Dat heeft twee praktische gevolgen. Ten eerste: een cobot met een grijper die een heet, scherp of zwaar werkstuk vasthoudt, kan scanners, zones met lagere snelheid of een fysieke afscherming nodig hebben. Ten tweede: de CE-markering geldt voor de hele cel, niet voor de arm alleen. Vanaf 20 januari 2027 wordt de Machineverordening (EU) 2023/1230 het Europese referentiekader: de details voor wie een cel samenstelt, staan in de gids over de <a href="/nl/blog/unitree-regolamento-macchine-2027.html">Machineverordening 2027</a>.</p>
+
+<h2>Cobot of industriële robot: hoe kiest u</h2>
+<p>U begint met drie getallen: het gewicht van werkstuk plus grijper, de cadans van de lijn en de beschikbare ruimte. Blijft de last onder 30 kg, is de cadans laag tot gemiddeld en moet een persoon bij de werkplek kunnen komen, dan is een cobot vaak de juiste keuze. Is de last zwaar, de cadans hoog en de cyclus altijd dezelfde, dan houdt een industriële robot de productie beter bij. Om laadvermogen en reikwijdte te dimensioneren, gebruikt u dezelfde methode als bij palletiseren, uitgelegd in <a href="/nl/blog/palletizzazione-cobot-costi.html">deze gids</a>.</p>
+
+<h2>Subsidies</h2>
+<p>Een cobot is een bedrijfsmiddel en kan in 2026 in aanmerking komen voor bepaalde regelingen, afhankelijk van hoe het project is opgezet. In Nederland en Vlaanderen bestaan publieke regelingen voor de aankoop van robots en voor R&amp;D-projecten, zoals de WBSO, de KIA en het Innovatiekrediet in Nederland en de VLAIO-steun in Vlaanderen. Het volledige overzicht staat in het artikel <a href="/nl/blog/finanziamento-robot-industria-40.html">Een robot financieren: subsidies en fiscale regelingen 2026</a>. Abra Robotics helpt u met de technische documentatie voor uw aanvraag (offerte, specificaties, configuratie), maar geeft geen fiscaal advies: de beoordeling ligt bij de uitvoerende instantie en uw belastingadviseur.</p>
+
+<section class="article-faq">
+<h2>Veelgestelde vragen</h2>
+<div class="faq-item"><h3>Wat betekent cobot?</h3><p>Cobot is de afkorting van collaborative robot: een robotarm die is ontworpen om naast een operator in dezelfde werkruimte te werken. De technische definitie komt uit ISO/TS 15066, die collaboratief bedrijf beschrijft als de toestand waarin een robotsysteem en een operator binnen een gedeelde werkruimte werken.</p></div>
+<div class="faq-item"><h3>Wat is het verschil tussen een cobot en een industriële robot?</h3><p>Een industriële robot werkt doorgaans achter vaste afschermingen, op hoge snelheid en met een hoog laadvermogen. Een cobot is ontworpen om de ruimte met mensen te delen: begrensde kracht en snelheid, herprogrammeren met de hand (hand guiding) en vaak geen kooi. Bij gelijke last is de industriële robot sneller, maar hij vraagt om afschermingen en een zwaardere integratie.</p></div>
+<div class="faq-item"><h3>Wat kost een Fairino-cobot?</h3><p>Volgens de prijslijst kosten Fairino-cobots van € 5.448 (FR3, 3 kg) tot € 36.828 (palletiseercel FR20), excl. btw. Alleen de arm FR5 kost vanaf € 6.252, de FR10 vanaf € 10.387 en de FR20 vanaf € 14.677. De grijper wordt apart geoffreerd.</p></div>
+<div class="faq-item"><h3>Kan een cobot lassen?</h3><p>Ja, lassen is een van de typische toepassingen, naast machinebelading en palletiseren. Er is wel een cel nodig met een eigen stroombron, toorts en lastafel: de cobot is alleen de arm. De risicobeoordeling bepaalt of de grenzen van de cobot volstaan of dat er een afscherming nodig is.</p></div>
+<div class="faq-item"><h3>Werkt een cobot altijd zonder afscherming?</h3><p>Nee. Over samenwerking beslist de risicobeoordeling van de hele toepassing: robot, grijper, werkstuk, snelheid en lay-out. Waar het risico hoog blijft, komen er laserscanners, lichtschermen of een fysieke afscherming bij.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Bronnen</h2>
+<ol>
+<li>ISO 10218-1:2025, Robotics, Safety requirements, Part 1: Industrial robots (definitie van de industriële robot): <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>ISO 10218-2:2025, Robotics, Safety requirements, Part 2: Industrial robot applications and robot cells: <a href="https://www.iso.org/standard/73934.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>ISO/TS 15066:2016, Robots and robotic devices, Collaborative robots: <a href="https://www.iso.org/standard/62996.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>ISO, "Robots and humans can work together with new ISO guidance" (de vier technieken voor collaboratief bedrijf): <a href="https://www.iso.org/news/2016/03/Ref2057.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>Fairino, datasheet FR3 (laadvermogen 3 kg, reikwijdte 622 mm, herhaalbaarheid ±0,02 mm): <a href="https://www.fairino.com/FR/5.html" rel="noopener noreferrer" target="_blank">fairino.com</a></li>
+<li>Fairino, datasheets FR5, FR10, FR16, FR20 en FR30 (laadvermogen en reikwijdte): productpagina's van Abra in de <a href="/cobot.html">cobotcatalogus</a>.</li>
+<li>Prijzen: openbare prijslijst van Abra Robotics, excl. btw, in de <a href="/cobot.html">cobotcatalogus</a>.</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Welke cobot past bij uw toepassing?</h2><p>Vertel ons welk werkstuk, welke cyclus en welke lay-out: we doen een assessment van de toepassing en maken een offerte met cobot, grijper en veiligheid.</p><a class="btn btn-primary" href="/en/assessment-en.html">Vraag een assessment aan</a><a class="btn btn-outline-light" href="/cobot.html">Bekijk de Fairino-cobots</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>

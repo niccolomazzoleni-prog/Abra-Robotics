@@ -1,0 +1,303 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-g1-aggiornare-firmware.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aktualizace firmwaru Unitree G1 bez rizika</title>
+<meta name="description" content="Jak aktualizovat firmware Unitree G1 v oficiální aplikaci: kontroly před začátkem (baterie, verze, síť), chyby, kterým se vyhnout, a downgrade."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/cs/blog/unitree-g1-aggiornare-firmware.html"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-aggiornare-firmware.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-g1-aggiornare-firmware.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/unitree-g1-aggiornare-firmware.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/unitree-g1-aggiornare-firmware.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/unitree-g1-aggiornare-firmware.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-g1-aggiornare-firmware.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/unitree-g1-aggiornare-firmware.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/no/blog/unitree-g1-aggiornare-firmware.html" hreflang="nb" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-aggiornare-firmware.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Aktualizace firmwaru Unitree G1 bez rizika",
+  "description": "Jak aktualizovat firmware Unitree G1 v oficiální aplikaci: kontroly před začátkem (baterie, verze, síť), chyby, kterým se vyhnout, a downgrade.",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-15",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/cs/blog/unitree-g1-aggiornare-firmware.html"
+  },
+  "image": "https://abrarobotics.com/images/prodotti/2026/g1.jpg",
+  "inLanguage": "cs",
+  "url": "https://abrarobotics.com/cs/blog/unitree-g1-aggiornare-firmware.html"
+}
+  </script>
+  
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Aktualizace firmwaru Unitree G1 bez rizika"/>
+<meta property="og:description" content="Jak aktualizovat firmware Unitree G1 v oficiální aplikaci: kontroly před začátkem (baterie, verze, síť), chyby, kterým se vyhnout, a downgrade."/>
+<meta property="og:url" content="https://abrarobotics.com/cs/blog/unitree-g1-aggiornare-firmware.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/prodotti/2026/g1.jpg"/>
+<meta property="og:locale" content="cs_CZ"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/cs/">Domů</a> / <a href="/cs/">Blog</a> / Firmware G1</nav>
+
+<figure class="article-cover">
+<img src="/images/prodotti/2026/g1.webp" alt="Humanoidní robot Unitree G1 ve stoji, pohled zepředu" width="800" height="800" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Návody</p>
+<h1>Unitree G1: jak bezpečně aktualizovat firmware</h1>
+<div class="article-meta"><time datetime="2026-10-09">9. října 2026</time><span>Abra Robotics</span></div>
+</header>
+
+<div class="article-content">
+<div class="callout callout-tip"><p><strong>Stručně.</strong> G1 dostává softwarové aktualizace přes síť (OTA). Výchozím bodem je oficiální aplikace <strong>Unitree Explore</strong> připojená k robotu. Před začátkem zkontrolujte baterii, aktuální verzi a připojení; během aktualizace robota nevypínejte. Návrat k předchozí verzi Unitree nedokumentuje.</p></div>
+
+<p>Tento návod popisuje aktualizaci firmwaru Unitree G1 v mezích toho, co Unitree dokumentuje: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">oficiální produktová stránka G1</a>, uživatelská příručka, aplikace Unitree Explore a centrum podpory support.unitree.com. Žádné balíčky z fór ani improvizované příkazy: špatně provedená aktualizace může robota dostat do stavu, který vyžaduje servisní zásah.</p>
+
+<h2>Co říká Unitree o aktualizaci firmwaru G1</h2>
+<p>V tabulce parametrů uvádějí G1 i G1 EDU položku <em>Upgraded Intelligent OTA</em>: software robota se aktualizuje přes síť, bez zásahu do hardwaru. Uživatelská příručka mezi kontrolami před zapnutím žádá ověřit, že firmware je v nejnovější verzi: „Ensure that the firmware has been updated to the latest version“.</p>
+<p>Telefon se s robotem propojuje přes aplikaci <strong>Unitree Explore</strong> pro iOS a Android, ke stažení na stránce <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a>. Aplikace zobrazuje stav robota v reálném čase (teplotu, alarmy a další údaje), takže před aktualizací snadno ověříte, že je stroj v normálním stavu. Novinky a poznámky k vydání vaší verze najdete v centru podpory Unitree.</p>
+
+<h2>Postup krok za krokem</h2>
+<ol>
+<li><strong>Nainstalujte aplikaci a připojte robota.</strong> Při prvním připojení příručka žádá založit účet, zapnout na telefonu Bluetooth a držet telefon u G1, pak přidat robota volbou „Add Robot“.</li>
+<li><strong>Zvolte způsob připojení.</strong> Příručka uvádí dva režimy: AP (telefon se připojí k hotspotu robota) nebo Wi-Fi přes router. Postup ukazuje i video „Adding G1 &amp; Network setting“ na stránce aplikace.</li>
+<li><strong>Zkontrolujte stav a verzi.</strong> Před aktualizací ověřte v aplikaci, že nejsou aktivní žádné alarmy, a poznamenejte si aktuální verzi firmwaru.</li>
+<li><strong>Spusťte aktualizaci a počkejte.</strong> Řiďte se pokyny, které aplikace pro váš robot zobrazí, a nepřerušujte napájení ani připojení, dokud operace neskončí.</li>
+</ol>
+
+<h2>Před aktualizací: baterie, verze, síť</h2>
+<ul>
+<li><strong>Baterie.</strong> Příručka neuvádí minimální úroveň nabití pro aktualizaci. Z opatrnosti začínejte s nabitou baterií: baterie G1 vydrží podle Unitree přibližně 2 hodiny a přerušená aktualizace je horší než odložená.</li>
+<li><strong>Verze.</strong> Poznamenejte si aktuální verzi firmwaru. Pomůže vám posoudit, zda je aktualizace opravdu potřeba, a při problémech podpoře poskytne přesnou informaci.</li>
+<li><strong>Síť.</strong> Příručka nedoporučuje prostředí s rušením Wi-Fi a v režimu AP žádá, aby název hotspotu neobsahoval speciální znaky ani mezery. Držte telefon a robota blízko sebe. Pokud na G1 EDU pracujete s vnitřní sítí 192.168.123.x, její uspořádání vysvětluje <a href="/cs/blog/unitree-g1-guida-operativa.html">návod k zapnutí a síti G1</a>.</li>
+</ul>
+
+<h2>Po aktualizaci: alarmy a kalibrace</h2>
+<p>V sekci <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">G1 Developer FAQ</a> centra podpory Unitree je popsán konkrétní případ: po aktualizaci na firmware 1.3.0 nebo novější může robot hlásit <em>Joint limit abnormal</em> a <em>Transient Over Voltage</em>. Podle Unitree nový firmware zpřesňuje kalibraci kloubů, takže předchozí kalibrace už nesplňuje požadavky a je nutné ji provést znovu.</p>
+<p>Kalibrace se provádí v aplikaci: funkce asistované kalibrace znovu zkalibruje motory kloubů a IMU. V příručce je cesta [Settings] &gt; [Data] &gt; [Robot] &gt; [Calibration]; v novějších verzích aplikace se menu může lišit.</p>
+<div class="callout callout-warning"><p><strong>Pozor.</strong> Příručka připomíná, že G1 opouští výrobu už zkalibrovaný a při běžném používání se znovu kalibrovat nemá. Pokud se po aktualizaci objeví alarm, před novou kalibrací si vyžádejte potvrzení od technické podpory.</p></div>
+
+<h2>Co nedělat</h2>
+<ul>
+<li><strong>Nevypínejte robota</strong> a nepřerušujte připojení během aktualizace.</li>
+<li><strong>Neaktualizujte</strong> s téměř vybitou baterií ani na nestabilní síti.</li>
+<li><strong>Nepoužívejte neoficiální balíčky firmwaru</strong>: aktualizace přicházejí jen z kanálů Unitree.</li>
+<li><strong>Nekalibrujte „pro jistotu“</strong>: kalibrace se opakuje jen v případě potřeby, jako u firmwaru 1.3.0, a po konzultaci s podporou.</li>
+<li><strong>Nezačínejte</strong>, dokud neznáte aktuální verzi firmwaru.</li>
+</ul>
+
+<h2>Lze se vrátit k předchozí verzi?</h2>
+<p>Pro firmware G1 Unitree v prostudovaných dokumentech (uživatelská příručka, stránka aplikace, FAQ pro vývojáře) postup pro downgrade nezveřejňuje. Nezkoušejte ho proto sami. Pokud aktualizace způsobí problémy, obraťte se nejdřív na Abra Robotics, která dodává řadu Unitree do Česka a na Slovensko, s podporou v angličtině; příručka uvádí také technickou podporu Unitree (support@unitree.cc) a <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">zákaznický portál Unitree</a>.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Produkty zmíněné v článku</span><a href="/cs/unitree-g1.html">Celá řada G1</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Sekundární vývoj, 23 DoF, výpočetní dok</p>
+<div class="product-card-price">38&nbsp;005&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Baterie G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">Baterie G1</a></h3>
+<p>9000 mAh, rychlá výměna</p>
+<div class="product-card-price">880&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="Dálkový ovladač G1 (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-remote-en.html">Dálkový ovladač G1 (R3)</a></h3>
+<p>Náhradní, vždy nabitý</p>
+<div class="product-card-price">367&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Časté dotazy</h2>
+<h3>Jak se aktualizuje firmware Unitree G1?</h3>
+<p>G1 podporuje aktualizaci OTA přes síť. Začíná se v oficiální aplikaci Unitree Explore připojené k robotu, po kontrole baterie, aktuální verze a sítě, a robot se nevypíná, dokud aktualizace neskončí.</p>
+<h3>Kde najdu novinky a poznámky k vydání firmwaru?</h3>
+<p>Novinky a poznámky k vydání najdete v centru podpory Unitree (support.unitree.com).</p>
+<h3>Mohu se vrátit k předchozí verzi firmwaru?</h3>
+<p>Unitree to nedokumentuje. Pokud aktualizace způsobí problémy, kontaktujte podporu a downgrade nezkoušejte sami.</p>
+<h3>Po aktualizaci G1 hlásí „Joint limit abnormal“ nebo „Transient Over Voltage“: co dělat?</h3>
+<p>Podle FAQ Unitree pro vývojáře se u firmwaru 1.3.0 nebo novějšího změnila kalibrace kloubů a předchozí kalibraci je třeba v aplikaci provést znovu. Před novou kalibrací si vyžádejte potvrzení od technické podpory.</p>
+<h3>Mohu robota během aktualizace vypnout?</h3>
+<p>Ne. Nepřerušujte napájení ani připojení, dokud aktualizace neskončí.</p>
+
+<p>Pro každodenní provoz robota slouží <a href="/cs/blog/unitree-g1-guida-operativa.html">provozní návod k G1</a>, který popisuje zapnutí, dálkový ovladač a bezpečnostní příkazy. Pokud na G1 EDU vyvíjíte, SDK a ROS 2 popisuje <a href="/cs/blog/unitree-g1-programmazione.html">návod k programování</a>; rozdíly mezi verzemi shrnuje článek <a href="/cs/blog/unitree-g1-quale-versione-scegliere.html">který G1 zvolit</a>. Konfigurace s cenami najdete na stránce <a href="/cs/unitree-g1.html">Unitree G1</a> a v detailu <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU U1</a>; pokud potřebujete druhou baterii, abyste během zkoušek nezůstali bez energie, je tu <a href="/en/prodotti/unitree-g1-battery-en.html">baterie G1</a>. Celou řadu najdete na stránce <a href="/en/umanoidi-en.html">humanoidi</a>.</p>
+
+<div class="figure-grid">
+<figure class="figure-card"><img src="/images/official/unitree-g1-info-batteria.webp" alt="Rychlovýměnná baterie Unitree G1" width="800" height="800" loading="lazy"/><figcaption>Baterie G1: před aktualizací začínejte s plným nabitím.</figcaption></figure>
+<figure class="figure-card"><img src="/images/official/unitree-telecomando.webp" alt="Přenosný dálkový ovladač Unitree G1" width="800" height="800" loading="lazy"/><figcaption>Dálkový ovladač G1: při zkouškách po aktualizaci ho mějte po ruce.</figcaption></figure>
+</div>
+
+<h2>Zdroje</h2>
+<ul>
+<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, oficiální produktová stránka (položka „Upgraded Intelligent OTA“, výdrž, záruka)</a></li>
+<li><a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download: oficiální aplikace, funkce a videonávody k G1</a></li>
+<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual (kontroly před zapnutím, připojení k aplikaci, kalibrace)</a></li>
+<li><a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">Unitree Document Center, G1 Developer FAQ</a></li>
+<li><a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree, zákaznický portál</a></li>
+</ul>
+</div>
+<div class="article-cta"><h2>Ještě vybíráte G1?</h2><p>Pomůžeme vám najít správnou konfiguraci a po dodání jsme vaším prvním kontaktem pro spuštění, síť a aktualizace, s podporou v angličtině.</p><a class="btn btn-primary" href="/en/assessment-en.html">Najít správnou konfiguraci</a><a class="btn btn-outline-light" href="/cs/unitree-g1.html">Konfigurace a ceny G1</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
