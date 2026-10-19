@@ -1,0 +1,392 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-g1-programmazione.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Programar el Unitree G1: SDK2, Python y ROS 2</title>
+<meta name="description" content="Programar el Unitree G1 EDU: red 192.168.123.x, unitree_sdk2 en C++ y Python, debug mode, primera prueba de bajo nivel, ROS 2 Humble y simulación MuJoCo."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/es/blog/unitree-g1-programmazione.html"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-programmazione.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-g1-programmazione.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-programmazione.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Programar el Unitree G1: SDK2, Python y ROS 2",
+  "description": "Programar el Unitree G1 EDU: red 192.168.123.x, unitree_sdk2 en C++ y Python, debug mode, primera prueba de bajo nivel, ROS 2 Humble y simulación MuJoCo.",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-10-15",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/es/blog/unitree-g1-programmazione.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-01.webp",
+  "inLanguage": "es",
+  "url": "https://abrarobotics.com/es/blog/unitree-g1-programmazione.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Se puede programar el G1 básico (no EDU)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. En la ficha oficial de Unitree, el desarrollo secundario figura solo para el G1 EDU; el G1 básico no tiene ni el módulo de cómputo para desarrollo ni acceso al SDK."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué sistema operativo necesita el PC de desarrollo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El README de unitree_sdk2 indica Ubuntu 20.04 con gcc 9.4.0 como entorno de referencia, en CPU x86_64 o aarch64. Para ROS 2, Unitree ha probado Ubuntu 20.04 con Foxy y Ubuntu 22.04 con Humble, y recomienda Humble."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la dirección del ordenador de desarrollo del G1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El ordenador de desarrollo (PC2) del G1 EDU responde en 192.168.123.164, usuario unitree. Su PC debe estar en la misma subred 192.168.123.x con una dirección libre; Unitree sugiere 192.168.123.99."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué vibra el robot cuando lanzo un ejemplo de bajo nivel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Casi siempre se debe a que el control de movimiento integrado sigue activo y envía comandos en paralelo a los suyos. Entre en debug mode (L2+R2 con el robot suspendido y en amortiguación) antes de enviar comandos a rt/lowcmd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es mejor empezar por la simulación o por el hardware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Por la simulación. unitree_mujoco usa los mismos mensajes DDS que el robot, así que el mismo programa se ejecuta primero en MuJoCo y después en el G1 cambiando solo la interfaz de red."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Programar el Unitree G1: SDK2, Python y ROS 2"/>
+<meta property="og:description" content="Programar el Unitree G1 EDU: red 192.168.123.x, unitree_sdk2 en C++ y Python, debug mode, primera prueba de bajo nivel, ROS 2 Humble y simulación MuJoCo."/>
+<meta property="og:url" content="https://abrarobotics.com/es/blog/unitree-g1-programmazione.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
+<meta property="og:locale" content="es_ES"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap">
+<div class="container">
+<nav class="breadcrumb"><a href="/es/">Inicio</a> / <a href="/es/">Blog</a> / Programación G1</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-01.webp" alt="Unitree G1 EDU, plataforma de desarrollo humanoide" width="800" height="800" loading="eager"/>
+</figure>
+
+<header class="article-header">
+<p class="label">Unitree G1 · Software</p>
+<h1>Programar el Unitree G1: red, SDK2 y ROS 2 paso a paso</h1>
+<div class="article-meta"><time datetime="2026-10-09">Actualizado el 9 de octubre de 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>En resumen:</strong> solo se programa el G1 EDU. Conecte el PC por Ethernet a la subred 192.168.123.x, compile <code>unitree_sdk2</code> (C++) o instale <code>unitree_sdk2_python</code>, pruebe los ejemplos en simulación con <code>unitree_mujoco</code> y después en el robot suspendido, en debug mode (L2+R2). ROS 2 Humble se añade con <code>unitree_ros2</code> cuando necesite Nav2, MoveIt o rosbag.</div>
+</header>
+
+<div class="article-content">
+
+<p>Para programar el <strong>Unitree G1</strong> hacen falta tres cosas: la versión EDU, un PC con Ubuntu conectado a la red interna del robot y el SDK oficial <code>unitree_sdk2</code>. Esta guía sigue la documentación pública de Unitree (repositorios de GitHub y Document Center) e indica en cada paso el archivo o la página de origen. Si el robot acaba de llegar, empiece por <a href="/en/blog/unitree-g1-guida-operativa.html">encendido, mando a distancia y primera puesta en pie</a>.</p>
+
+<h2>Qué G1 se puede programar</h2>
+<p>En la <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">ficha oficial del G1</a>, el desarrollo secundario figura solo para el <strong>G1 EDU</strong>; el G1 básico tiene 23 grados de libertad y no lleva módulo de cómputo para desarrollo. Las versiones EDU van de 23 a 43 DoF, con módulo de cómputo opcional (Unitree menciona placas Orin) y manos Dex3-1 opcionales. En la <a href="/en/listino-unitree-en.html">tarifa de Abra</a>, el G1 Air parte de 19.809 € y el G1-U1 EDU (23 DoF, dock de cómputo de 100 TOPS) de 38.005 €, sin IVA. Todas las versiones están en el <a href="/es/unitree-g1.html">hub del G1</a>; para elegir entre U1, U2 y las versiones con manos tiene la guía <a href="/en/blog/unitree-g1-quale-versione-scegliere.html">qué versión del G1 elegir</a>.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Productos citados en el artículo</span><a href="/es/unitree-g1.html">Gama G1</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Desarrollo secundario, 23 DoF, dock de cómputo</p>
+<div class="product-card-price">38.005 € <small>sin IVA</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Ver ficha</a><a class="product-card-link" href="/en/assessment-en.html">Presupuesto</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-plus-en.html"><img alt="Unitree G1 EDU U2" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU U2</a></h3>
+<p>29 DoF: cintura de 3 ejes, brazos de 7 ejes</p>
+<div class="product-card-price">46.809 € <small>sin IVA</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Ver ficha</a><a class="product-card-link" href="/en/assessment-en.html">Presupuesto</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Batería G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">Batería G1</a></h3>
+<p>9000 mAh, de cambio rápido</p>
+<div class="product-card-price">880 € <small>sin IVA</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Ver ficha</a><a class="product-card-link" href="/en/assessment-en.html">Presupuesto</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Arquitectura: dónde se ejecuta su código</h2>
+<p>El G1 EDU tiene un ordenador de control de movimiento, gestionado por Unitree, y un ordenador de desarrollo (PC2) para el código del usuario. Los repositorios de Unitree, por ejemplo <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">xr_teleoperate</a>, sitúan el PC2 en la dirección <code>192.168.123.164</code> con el usuario <code>unitree</code>. La contraseña inicial la facilita Unitree; la FAQ para desarrolladores y la <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">guía de LeRobot para el G1</a> indican <code>123</code>. Cámbiela en cuanto el robot entre en una red compartida.</p>
+<p>Tiene dos opciones:</p>
+<ul>
+<li><strong>Código en el portátil</strong>: el PC habla con el robot por DDS a través del cable Ethernet. Es la opción más cómoda para desarrollar y depurar.</li>
+<li><strong>Código en el PC2</strong>: lanza el programa por SSH en el robot. Sirve para trabajar de forma autónoma, sin cable, y para reducir la latencia.</li>
+</ul>
+<pre><code>ssh unitree@192.168.123.164</code></pre>
+
+<h2>Configurar la red del PC</h2>
+<ol>
+<li>Conecte el PC al robot con un cable Ethernet.</li>
+<li>Configure la interfaz con IPv4 manual: dirección <code>192.168.123.99</code> (la que sugiere Unitree), máscara <code>255.255.255.0</code>. No use direcciones que ya existan en el robot, como <code>.164</code>.</li>
+<li>Con <code>ip a</code> o <code>ifconfig</code> anote el nombre de la interfaz (<code>enp3s0</code>, <code>eth0</code>...): todos los ejemplos del SDK lo piden como argumento.</li>
+<li>Compruebe la conexión con <code>ping 192.168.123.164</code>. Si no responde, el problema es de red: no tiene sentido abrir el IDE.</li>
+</ol>
+<p>Un puerto Ethernet dedicado (también vale un adaptador USB) evita conflictos con la red del laboratorio.</p>
+
+<h2>Instalar unitree_sdk2 (C++)</h2>
+<p>El <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">README de unitree_sdk2</a> indica como entorno de referencia <strong>Ubuntu 20.04, gcc 9.4.0, CPU x86_64 o aarch64</strong> y CMake 3.10 o superior. En otras versiones de Ubuntu suele compilar, pero el entorno probado es ese. Windows no es un entorno contemplado en el README.</p>
+<pre><code>sudo apt-get update
+sudo apt-get install -y cmake g++ build-essential libyaml-cpp-dev \
+  libeigen3-dev libboost-all-dev libfmt-dev
+git clone https://github.com/unitreerobotics/unitree_sdk2.git
+cd unitree_sdk2 &amp;&amp; mkdir build &amp;&amp; cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/opt/unitree_robotics
+make
+sudo make install</code></pre>
+<p>El <code>make</code> compila también los ejemplos, que quedan en <code>build/bin/</code>. La instalación en <code>/opt/unitree_robotics</code> es también la que recomienda el simulador <code>unitree_mujoco</code>.</p>
+
+<h2>O bien Python: unitree_sdk2_python</h2>
+<p>El <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">wrapper de Python</a> requiere Python 3.8 o superior y <code>cyclonedds</code> 0.10.2:</p>
+<pre><code>git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+cd unitree_sdk2_python
+pip3 install -e .</code></pre>
+<p>Si la instalación se detiene con "Could not locate cyclonedds", el README explica cómo compilar CycloneDDS desde la rama <code>releases/0.10.x</code> y definir <code>CYCLONEDDS_HOME</code>. Los ejemplos para el G1 están en <code>example/g1/</code>. Un dato útil del README de los ejemplos: G1 y H1-2 usan los mensajes <code>unitree_hg</code>, mientras que Go2, B2 y H1 usan <code>unitree_go</code>.</p>
+
+<h2>Debug mode: antes de cada prueba de bajo nivel</h2>
+<p>Al encenderse, el G1 arranca su propio control de movimiento, que sigue enviando comandos a los motores. Si en paralelo usted publica en <code>rt/lowcmd</code>, los comandos chocan y el robot vibra. El procedimiento documentado en la <a href="https://github.com/unitreerobotics/unitree_rl_gym/blob/main/deploy/deploy_real/README.md" rel="noopener noreferrer" target="_blank">guía de despliegue de unitree_rl_gym</a> es:</p>
+<ol>
+<li>encienda el robot colgado del arnés y espere al modo de par cero;</li>
+<li>pulse <strong>L2+R2</strong> en el mando: el robot entra en debug mode con las articulaciones en amortiguación;</li>
+<li>solo entonces lance el programa de bajo nivel.</li>
+</ol>
+<p>En debug mode el robot no mantiene el equilibrio por sí solo: debe seguir suspendido hasta que su controlador lo sostenga.</p>
+
+<h2>Primera prueba: mover los tobillos</h2>
+<p>El ejemplo <code>g1_ankle_swing_example</code> (código fuente en <code>example/g1/low_level/</code>) lee <code>rt/lowstate</code>, escribe en <code>rt/lowcmd</code> y hace oscilar los tobillos. Desde la carpeta <code>build</code>:</p>
+<pre><code>./bin/g1_ankle_swing_example enp3s0</code></pre>
+<p>Sustituya <code>enp3s0</code> por su interfaz. Si el terminal muestra "CRC Error", el mensaje recibido está corrupto o no corresponde al tipo esperado: revise el cable, la interfaz y la versión del SDK.</p>
+<p>Para comandos de alto nivel (ponerse de pie, caminar a velocidades fijadas) está <code>g1_loco_client</code>, que usa el control de movimiento integrado y por tanto debe lanzarse <em>fuera</em> del debug mode:</p>
+<pre><code>./bin/g1_loco_client --network_interface=enp3s0 --get_fsm_id</code></pre>
+
+<h2>Topics principales</h2>
+<table>
+<thead><tr><th>Topic DDS</th><th>Contenido</th><th>Fuente</th></tr></thead>
+<tbody>
+<tr><td><code>rt/lowstate</code></td><td>Estado de motores, IMU, batería</td><td>ejemplo ankle swing</td></tr>
+<tr><td><code>rt/lowcmd</code></td><td>Comandos de posición, velocidad, par y ganancias kp/kd</td><td>ejemplo ankle swing</td></tr>
+<tr><td><code>rt/secondary_imu</code></td><td>IMU del torso</td><td>ejemplo ankle swing, unitree_mujoco</td></tr>
+<tr><td><code>rt/dex3/left/cmd</code>, <code>rt/dex3/right/cmd</code></td><td>Comandos de la mano Dex3-1</td><td>ejemplo g1_dex3_example</td></tr>
+<tr><td><code>rt/lf/dex3/left/state</code>, <code>rt/lf/dex3/right/state</code></td><td>Estado de la mano Dex3-1</td><td>ejemplo g1_dex3_example</td></tr>
+</tbody>
+</table>
+<p>Las manos tienen topics separados de la locomoción: conviene llevar el bucle de control de las piernas en un proceso y el agarre en otro, a frecuencias distintas.</p>
+
+<h2>Simular primero: unitree_mujoco</h2>
+<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> es un simulador basado en MuJoCo que expone los mismos mensajes (<code>LowCmd</code>, <code>LowState</code>, <code>SportModeState</code>, IMU del torso para el G1). Un programa escrito con <code>unitree_sdk2</code>, <code>unitree_sdk2_python</code> o <code>unitree_ros2</code> se ejecuta primero en simulación y después en el robot. El simulador solo admite desarrollo de bajo nivel. Para aprendizaje por refuerzo, <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> cubre el ciclo train, play, sim2sim (MuJoCo) y sim2real para G1, H1, H1-2 y Go2.</p>
+
+<h2>Cuándo añadir ROS 2</h2>
+<p>El SDK directo es el camino más corto para motores y pruebas aisladas. ROS 2 tiene sentido cuando necesita integrar Nav2, MoveIt, pipelines de visión estándar, grabación con rosbag o varios robots en el mismo laboratorio. El paquete <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> contiene los mensajes <code>unitree_hg</code> y un ejemplo de bajo nivel para el G1 (<code>g1/lowlevel/g1_low_level_example</code>); Unitree lo ha probado en Ubuntu 22.04 con Humble (recomendado) y en Ubuntu 20.04 con Foxy. La instalación, la red y el primer topic están en la guía <a href="/es/blog/ros2-unitree-guida-rapida.html">ROS 2 en robots Unitree</a>.</p>
+
+<h2>Lista de comprobación de seguridad para el laboratorio</h2>
+<ul>
+<li>Primeras pruebas siempre con el robot suspendido y el área despejada a su alrededor.</li>
+<li>Ganancias kp/kd bajas y límites de par conservadores en el primer bucle de control.</li>
+<li>Una persona al mando, lista para poner el robot en amortiguación.</li>
+<li>La misma versión del SDK en el PC y en el robot; después de una actualización OTA, vuelva a comprobar los ejemplos.</li>
+</ul>
+<p>Abra Robotics suministra la gama Unitree en España, con soporte en inglés, y ofrece formación y desarrollo de software sobre el SDK como servicios independientes del hardware: detalles en <a href="/en/index-en.html">Software</a> y <a href="/en/universita-ricerca-en.html">Universidad e Investigación</a>.</p>
+
+<section class="article-faq">
+<h2>Preguntas frecuentes</h2>
+<div class="faq-item"><h3>¿Se puede programar el G1 básico (no EDU)?</h3><p>No. En la ficha oficial de Unitree, el desarrollo secundario figura solo para el G1 EDU; el G1 básico no tiene ni el módulo de cómputo para desarrollo ni acceso al SDK.</p></div>
+<div class="faq-item"><h3>¿Qué sistema operativo necesita el PC de desarrollo?</h3><p>El README de unitree_sdk2 indica Ubuntu 20.04 con gcc 9.4.0 como entorno de referencia, en CPU x86_64 o aarch64. Para ROS 2, Unitree ha probado Ubuntu 20.04 con Foxy y Ubuntu 22.04 con Humble, y recomienda Humble.</p></div>
+<div class="faq-item"><h3>¿Cuál es la dirección del ordenador de desarrollo del G1?</h3><p>El ordenador de desarrollo (PC2) del G1 EDU responde en 192.168.123.164, usuario unitree. Su PC debe estar en la misma subred 192.168.123.x con una dirección libre; Unitree sugiere 192.168.123.99.</p></div>
+<div class="faq-item"><h3>¿Por qué vibra el robot cuando lanzo un ejemplo de bajo nivel?</h3><p>Casi siempre se debe a que el control de movimiento integrado sigue activo y envía comandos en paralelo a los suyos. Entre en debug mode (L2+R2 con el robot suspendido y en amortiguación) antes de enviar comandos a rt/lowcmd.</p></div>
+<div class="faq-item"><h3>¿Es mejor empezar por la simulación o por el hardware?</h3><p>Por la simulación. unitree_mujoco usa los mismos mensajes DDS que el robot, así que el mismo programa se ejecuta primero en MuJoCo y después en el G1 cambiando solo la interfaz de red.</p></div>
+</section>
+
+<section class="article-references" id="fonti">
+<h2>Fuentes</h2>
+<ol>
+<li>Unitree, ficha de producto G1 (versiones, DoF, desarrollo secundario): <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, <em>unitree_sdk2</em>, README y ejemplos del G1: <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2</a> · <a href="https://github.com/unitreerobotics/unitree_sdk2/tree/main/example/g1" rel="noopener noreferrer" target="_blank">example/g1</a></li>
+<li>Unitree, <em>unitree_sdk2_python</em>: <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2_python</a></li>
+<li>Unitree, <em>unitree_ros2</em>: <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_ros2</a></li>
+<li>Unitree, <em>unitree_mujoco</em>: <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_mujoco</a></li>
+<li>Unitree, <em>unitree_rl_gym</em>, guía de despliegue en el robot real (debug mode L2+R2): <a href="https://github.com/unitreerobotics/unitree_rl_gym/blob/main/deploy/deploy_real/README.md" rel="noopener noreferrer" target="_blank">deploy_real/README.md</a></li>
+<li>Unitree, <em>xr_teleoperate</em> (PC2 en 192.168.123.164): <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/xr_teleoperate</a></li>
+<li>Unitree Document Center, sección para desarrolladores del G1: <a href="https://support.unitree.com/home/en/G1_developer" rel="noopener noreferrer" target="_blank">support.unitree.com/home/en/G1_developer</a></li>
+<li>Hugging Face, documentación de LeRobot para Unitree G1: <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co/docs/lerobot/en/unitree_g1</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Formación y desarrollo sobre el SDK de Unitree</h2><p>Suministramos los G1 EDU configurados y, como servicio aparte, formación y desarrollo sobre unitree_sdk2 y ROS 2.</p><a class="btn btn-primary" href="/en/index-en.html">Servicios de software</a><a class="btn btn-outline-light" href="/es/unitree-g1.html">Configuraciones G1 EDU</a></div>
+</div>
+</article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body>
+</html>

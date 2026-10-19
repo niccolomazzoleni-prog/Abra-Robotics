@@ -21,15 +21,15 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 })(window,document);</script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Unitree arXiv papers: 12 reads for Go2 and G1 labs</title>
-<meta name="description" content="Curated 2025-2026 arXiv papers on Unitree Go2 and G1 for labs and companies: locomotion, navigation, teleoperation and what they mean for buyers."/>
+<title>arXiv papers on Unitree Go2 and G1: what they mean for buyers</title>
+<meta name="description" content="Twelve 2025-2026 arXiv preprints on the Unitree Go2 and G1, chosen for labs and companies: what each paper does and what it changes for robot choice and PoC tests."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/en/blog/ricerca-unitree-arxiv.html"/>
 <link href="https://abrarobotics.com/blog/ricerca-unitree-arxiv.html" hreflang="it" rel="alternate"/>
 <link href="https://abrarobotics.com/en/blog/ricerca-unitree-arxiv.html" hreflang="en" rel="alternate"/>
 <link href="https://abrarobotics.com/blog/ricerca-unitree-arxiv.html" hreflang="x-default" rel="alternate"/>
 <meta property="og:type" content="article"/>
-<meta property="og:title" content="Unitree arXiv papers: 12 reads for Go2 and G1 labs"/>
+<meta property="og:title" content="arXiv papers on Unitree Go2 and G1: what they mean for buyers"/>
 <meta property="og:url" content="https://abrarobotics.com/en/blog/ricerca-unitree-arxiv.html"/>
 <meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
 <link href="/favicon.ico" rel="icon" sizes="any"/>
@@ -39,10 +39,10 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Unitree arXiv papers: 12 reads for Go2 and G1 labs",
-  "description": "Curated 2025-2026 arXiv papers on Unitree Go2 and G1 for labs and companies: locomotion, navigation, teleoperation and what they mean for buyers.",
+  "headline": "arXiv papers on Unitree Go2 and G1: what they mean for buyers",
+  "description": "Twelve 2025-2026 arXiv preprints on the Unitree Go2 and G1, chosen for labs and companies: what each paper does and what it changes for robot choice and PoC tests.",
   "datePublished": "2026-07-30",
-  "dateModified": "2026-10-09",
+  "dateModified": "2026-10-15",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -147,89 +147,129 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 
 <article class="article-wrap"><div class="container">
-<nav class="breadcrumb"><a href="/en/index-en.html">Home</a> / <a href="/en/index-en.html">Blog</a> / Unitree arXiv research</nav>
+<nav class="breadcrumb"><a href="/en/index-en.html">Home</a> / <a href="/en/index-en.html">Blog</a> / arXiv papers on Unitree</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-01.webp" alt="Unitree G1 EDU, the humanoid platform most used in arXiv papers" loading="eager"/>
+</figure>
 
 <header class="article-header">
-<p class="label">Research · arXiv · Updated 9 Oct 2026</p>
-<h1>Unitree in open research: 12 arXiv papers to read before your PoC</h1>
-<div class="article-meta"><time datetime="2026-07-30">30 July 2026</time><span>Abra Robotics, a selection for labs and R&amp;D</span></div>
-<div class="article-tldr"><strong>In short:</strong> this is not a peer-reviewed review. It is a practical list of preprints we use to align the expectations of customers and universities on the Go2/G1 (and, by extension, on the <a href="/en/as2-en.html">AS2</a> / <a href="/en/h2-en.html">H2</a>). Each entry shows what the paper does, the arXiv link and why it matters for buyers. We re-checked titles, authors and figures against the arXiv abstracts on 9 October 2026.</div>
+<p class="label">Research · Updated 15 Oct 2026</p>
+<h1>arXiv papers on Unitree Go2 and G1: what they say and what changes for buyers</h1>
+<div class="article-meta"><time datetime="2026-07-30">30 July 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In brief:</strong> twelve preprints from 2025-2026 that use a real Go2 or G1, chosen because they say something useful to anyone who has to buy or integrate a Unitree robot: which version you need, which tests to run before putting it into production, which numbers to expect. They are not peer-reviewed: read them as indications, not as guarantees.</div>
 </header>
 
 <div class="article-content">
 
-<p>On arXiv, preprints that use Unitree robots are numerous and growing every month. Here we filter only papers that (a) use real Unitree hardware or a faithful sim, (b) have a takeaway for those buying or integrating in the United Kingdom and Ireland, (c) can be cited in a project document.</p>
-<p>For labs and universities: <a href="/en/universita-ricerca-en.html">Universities and Research</a>. Ranges cited: <a href="/en/go2-en.html">Go2</a>, <a href="/en/as2-en.html">AS2</a>, <a href="/en/g1-en.html">G1</a>, <a href="/en/h2-en.html">H2</a>. Product guides: <a href="/blog/unitree-as2-italia.html">AS2</a>, <a href="/en/blog/unitree-h2-italia.html">H2</a>, <a href="/blog/ros2-unitree-guida-rapida.html">ROS 2</a>.</p>
+<p>Every month dozens of papers that use Unitree robots appear on arXiv. Most of them matter only to researchers. Here we have kept the ones that meet three conditions: they use a real robot or a faithful simulation, they say something to anyone deciding on a purchase or a project in the UK or Ireland, and they can be cited in a tender specification. For each paper we give one line on what it does and another on what it means in practice.</p>
 
-<h2>Quadrupeds (Go2 → implications for AS2)</h2>
+<p>Almost all of them use a <a href="/en/go2-en.html">Go2</a> or a <a href="/en/g1-en.html">G1</a> in the EDU version, the only ones with secondary development. The results can be read by extension for the <a href="/en/as2-en.html">AS2</a> and <a href="/en/h2-en.html">H2</a> too, but the numbers must be measured again on the robot you buy.</p>
 
-<h3>Locomotion and sim-to-real</h3>
-<ol>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">AcL: Fault-Tolerant Quadruped Locomotion</a></strong> (2503.21401): RL teacher-student; limping gaits with up to 4 joints failed in training, validated on a real Go2 with one and two joints failed. <em>Why it matters:</em> it defines robustness acceptance tests for inspection.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">MoE + RoboGauge</a></strong> (2602.00678): Mixture-of-Experts and predictive sim-to-real metrics; Go2 on snow, sand, stairs and 30 cm obstacles, up to 4 m/s in speed tests. <em>Why it matters:</em> a framework for choosing policies before risky physical trials.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2505.19054" rel="noopener noreferrer" target="_blank">RANDPOL</a></strong> (2505.19054): Policy with few trainable parameters on Go2, transferred zero-shot to the real robot. <em>Why it matters:</em> useful if your lab has limited GPUs but wants end-to-end RL.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2510.13488" rel="noopener noreferrer" target="_blank">Bridge the Gap</a></strong> (2510.13488): Go2 trained in MuJoCo on a 13.24 m oscillating bridge and tested on the real bridge; more stable with vertical perturbations. <em>Why it matters:</em> walkways and vibrating floors in plants.</p>
-</li>
-</ol>
+<h2>Quadrupeds: locomotion and transfer from simulation</h2>
 
-<h3>Datasets and navigation</h3>
-<ol start="5">
-<li>
-<p><strong><a href="https://arxiv.org/abs/2606.14433" rel="noopener noreferrer" target="_blank">Kine2Go</a></strong> (2606.14433): 800 Go2 kinematic trajectories from 40 policies. <em>Why it matters:</em> it accelerates imitation learning without collecting everything from scratch.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">Library navigation Go2 EDU</a></strong> (2606.03340): ROS 2 + RTAB-Map + Nav2 in a real library: 100% success in a static scene, 88% with many people, mean map error 3.7 cm. <em>Why it matters:</em> an indoor blueprint for the AS2 EDU/Pro.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">ForEnt</a></strong> (2606.19675): Dataset on Go2 in eight forests in the United Kingdom: around 1.7 km covered and 69 cases of the robot getting stuck in vegetation. <em>Why it matters:</em> if your use case is vegetated outdoor, it changes the SKU and safety case.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2607.15036" rel="noopener noreferrer" target="_blank">VOP-Nav crowded navigation</a></strong> (2607.15036): Crowded navigation with LiDAR and velocity obstacles, tested on a real Go2 indoors and outdoors. <em>Why it matters:</em> warehouses and trade shows with people.</p>
-</li>
-</ol>
+<h3>Gaits that cope with a failed joint</h3>
+<p><a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">AcL</a> (arXiv:2503.21401) uses reinforcement learning to train gaits that still work with up to four locked joints, and tests them on a real Go2 with one and two failed joints.</p>
+<p>In practice: for an inspection robot, the question "what does it do if a motor locks up mid-route?" has a measurable answer. It is worth adding to the acceptance tests.</p>
 
-<h2>Humanoids (G1 → implications for H2 / H2 Plus)</h2>
-<ol start="9">
-<li>
-<p><strong><a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">Power model G1 arm</a></strong> (2606.15915): Electrical power model of the 7-degrees-of-freedom left arm: R² 0.933 in identification, 0.965 at unseen speeds. <em>Why it matters:</em> energy-aware planning on long manipulation.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">Whole-body teleop G1</a></strong> (2605.12347): IMU motion capture suit that drives a G1 in real time, validated in MuJoCo and then on the robot. <em>Why it matters:</em> a latency/safety checklist for HRI demos on the H2.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Foundation policy fine-tuning G1</a></strong> (2512.01358): Fine-tuning with contact and depth signals: on the G1 the "Pick Apple to Bowl" task goes from 48% to 94% success. <em>Why it matters:</em> a realistic context for H2 Plus / GR00T.</p>
-</li>
-<li>
-<p><strong><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">What Matters in Humanoid Motion Tracking</a></strong> (2607.19903): Empirical study with the open-source YAHMP framework on G1. <em>Why it matters:</em> it avoids overfitting to a single training setup.</p>
-</li>
-</ol>
-<p>Recommended extra: <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">Action Agent</a> (2605.01477) for language-guided navigation (64.7% of tasks completed on a real G1); the <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">NVIDIA Isaac GR00T</a> documentation, the platform the H2 Plus is based on.</p>
+<h3>Predicting real behaviour before the trial</h3>
+<p><a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">MoE + RoboGauge</a> (arXiv:2602.00678) combines several specialised controllers and proposes metrics that predict how well a policy trained in simulation will hold up on the robot. The Go2 is tested on snow, sand, stairs and 30 cm obstacles, at up to 4 m/s.</p>
+<p>In practice: before a risky physical trial there is a way to discard weak policies. Useful for anyone developing in-house on the EDU version.</p>
+
+<h3>Lightweight policies for those with few GPUs</h3>
+<p><a href="https://arxiv.org/abs/2505.19054" rel="noopener noreferrer" target="_blank">RANDPOL</a> (arXiv:2505.19054) trains a policy with few parameters and transfers it to the real Go2 without further tuning.</p>
+<p>In practice: a lab with limited computing resources can still do end-to-end control on the Go2 EDU.</p>
+
+<h3>Floors that vibrate</h3>
+<p><a href="https://arxiv.org/abs/2510.13488" rel="noopener noreferrer" target="_blank">Bridge the Gap</a> (arXiv:2510.13488) trains the Go2 in MuJoCo on a 13.24 m oscillating bridge and tests it on the real bridge: vertical perturbations during training make the gait more stable.</p>
+<p>In practice: walkways and vibrating floors in a plant are not normal terrain. If the route includes them, say so before choosing the robot.</p>
+
+<h2>Quadrupeds: navigation and datasets</h2>
+
+<h3>Ready-made trajectories for imitation learning</h3>
+<p><a href="https://arxiv.org/abs/2606.14433" rel="noopener noreferrer" target="_blank">Kine2Go</a> (arXiv:2606.14433) publishes 800 kinematic trajectories of the Go2 generated by 40 different policies.</p>
+<p>In practice: anyone starting imitation learning from scratch has a reference dataset without having to record everything on their own robot.</p>
+
+<h3>Autonomous navigation in a library</h3>
+<p><a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">Li et al.</a> (arXiv:2606.03340) put ROS 2, RTAB-Map and Nav2 on a Go2 EDU and run it in a real library: 100% of routes completed with a static scene, 88% with many people around, mean map error 3.7 cm.</p>
+<p>In practice: it is the closest reference to an indoor patrol in a warehouse or a corridor. The drop with people moving about is the number to keep in mind.</p>
+
+<h3>When the robot gets stuck in vegetation</h3>
+<p><a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">ForEnt</a> (arXiv:2606.19675) is a dataset collected with a Go2 in eight forests in the United Kingdom: about 1.7 km covered and 69 cases in which the robot got stuck in vegetation.</p>
+<p>In practice: outdoors in undergrowth the Go2 gets stuck. That kind of route needs a different size of robot and a dedicated risk assessment.</p>
+
+<h3>Moving among people</h3>
+<p><a href="https://arxiv.org/abs/2607.15036" rel="noopener noreferrer" target="_blank">Wu et al.</a> (arXiv:2607.15036) navigate a real Go2 through crowds, indoors and outdoors, with LiDAR and a method based on moving obstacles.</p>
+<p>In practice: trade shows, warehouses and areas with operators are a separate case from an empty route. It has to be tested with real people.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Products in this article</span><a href="/en/universita-ricerca-en.html">EDU robots for research</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-go2-edu-en.html"><img alt="Unitree Go2 EDU" loading="lazy" src="/images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-go2-edu-en.html">Unitree Go2 EDU</a></h3>
+<p>SDK and ROS 2, 15000 mAh battery</p>
+<div class="product-card-price">€8,804 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Secondary development, 23 DoF, computing dock</p>
+<div class="product-card-price">€38,005 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/prodotti/unitree-as2-edu.html"><img alt="Unitree AS2 EDU" loading="lazy" src="/images/prodotti/2026/as2.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/prodotti/unitree-as2-edu.html">Unitree AS2 EDU</a></h3>
+<p>SDK and ROS 2, IP54, 15 kg payload</p>
+<div class="product-card-price">€12,473 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/prodotti/unitree-as2-edu.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+</div>
+</div>
+
+
+<h2>Humanoids: energy, teleoperation and foundation models</h2>
+
+<h3>How much power a G1 arm draws</h3>
+<p><a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">Deniz et al.</a> (arXiv:2606.15915) build a physics-based model of the electrical power consumption of the G1's 7-degree-of-freedom left arm. The model explains 93% of the variance in the identification data and 96% at speeds it has never seen.</p>
+<p>In practice: for prolonged manipulation the declared runtime is not enough. With a power model you can plan motion around energy as well.</p>
+
+<h3>Whole-body teleoperation with a sensor suit</h3>
+<p><a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">Durrani and Khan</a> (arXiv:2605.12347) drive a G1 in real time with an IMU-based motion capture suit, first in MuJoCo and then on the robot.</p>
+<p>In practice: every teleoperation demo, on an H2 too, goes through the same three points: retargeting the movements to the robot, latency and a safety harness.</p>
+
+<h3>Fine-tuning a foundation model</h3>
+<p><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Park, Kee and Oh</a> (arXiv:2512.01358) refine a foundation policy by adding contact and depth signals: on the G1 the task "pick up the apple and put it in the bowl" goes from 48% to 94% success.</p>
+<p>In practice: a foundation model works after fine-tuning on your own data, not straight out of the box. That is the right context in which to read the claims about the H2 Plus and Isaac GR00T.</p>
+
+<h3>What really counts in motion tracking</h3>
+<p><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">Amadio and Mingo Hoffman</a> (arXiv:2607.19903) compare, on the G1 and with the open-source YAHMP framework, the choices that affect the tracking of human movements.</p>
+<p>In practice: many failures in imitation demos come down to how commands and actions are represented, not to the hardware. It helps you avoid optimising for a single setup.</p>
 
 <h2>How to use this list</h2>
 <ul>
-<li>Before choosing: decide which paper you want to reproduce. The robot the authors used (Go2 EDU, G1 EDU) indicates the minimum configuration.</li>
-<li>In the tender: cite 2–3 references as a technical basis, not as a performance guarantee.</li>
-<li>In the PoC: use the paper metrics (success rate, power R², falls) as indicators to measure on your setup.</li>
+<li><strong>Before buying.</strong> Choose the paper you want to reproduce: the robot the authors used sets the minimum configuration, almost always a Go2 EDU or G1 EDU.</li>
+<li><strong>In the tender specification.</strong> Cite two or three papers as a technical basis, not as a performance guarantee.</li>
+<li><strong>In the PoC.</strong> Use the metrics from the papers (success rate, operator interventions, power consumption) as indicators to measure on your own setup. The method is in the guide to a <a href="/blog/poc-robot-umanoide-azienda.html">PoC with a humanoid</a>.</li>
 </ul>
+<p>To set up a lab that reproduces one of these papers: <a href="/en/universita-ricerca-en.html">Universities and Research</a>. For your first steps with the software: <a href="/en/blog/ros2-unitree-guida-rapida.html">ROS 2 on Unitree</a> and <a href="/en/blog/unitree-g1-programmazione.html">programming the G1</a>.</p>
 
 <section class="article-faq" id="faq">
 <h2>Frequently asked questions</h2>
-<div class="faq-item"><h3>Do the paper results also apply to the AS2 and H2?</h3><p>Not directly. Almost all the papers use the Go2 and G1: the methods and metrics can be reused, but the numbers must be re-measured on your robot.</p></div>
+<div class="faq-item"><h3>Do the paper results also apply to the AS2 and H2?</h3><p>Not directly. Almost all the papers use the Go2 and G1: the methods and metrics can be reused, but the numbers must be measured again on your robot.</p></div>
 <div class="faq-item"><h3>Do you need an EDU version to reproduce these papers?</h3><p>Usually yes. The authors use the Go2 EDU or G1 EDU because secondary development is only available on the EDU versions.</p></div>
-<div class="faq-item"><h3>Are arXiv preprints reliable?</h3><p>They are papers not yet peer-reviewed, or not in their final version. Check the figures and experimental conditions in the PDF before using them in a project.</p></div>
+<div class="faq-item"><h3>Are arXiv preprints reliable?</h3><p>They are papers that have not yet been peer-reviewed, or are not in their final version. Check the figures and experimental conditions in the PDF before using them in a project.</p></div>
 </section>
 
-<h2>Disclaimer</h2>
-<p>Preprints are not final peer-reviewed papers; figures and claims should be checked on the PDF and on your setup. Abra Robotics supplies the Unitree range in the United Kingdom and Ireland, with support in English: we sell hardware and integration services; we are not the authors of the cited papers.</p>
-
-<p>Want to set up a lab that reproduces one of these papers? <a href="/en/universita-ricerca-en.html">Contact us</a> or <a href="/en/assessment-en.html">start the assessment</a>.</p>
+<p>Abra Robotics supplies the Unitree range in the UK, Ireland and internationally, with support in English: we sell hardware and integration services and are not the authors of the papers cited.</p>
 </div>
 
 <section class="article-references" id="fonti">
@@ -247,10 +287,10 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li>Durrani, Khan, <em>Real-Time Whole-Body Teleoperation of a Humanoid Robot Using IMU-Based Motion Capture with Sim2Sim and Sim2Real Validation</em>, arXiv:2605.12347: <a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2605.12347</a></li>
 <li>Park, Kee, Oh, <em>Modality-Augmented Fine-Tuning of Foundation Robot Policies for Cross-Embodiment Manipulation on GR1 and G1</em>, arXiv:2512.01358: <a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2512.01358</a></li>
 <li>Amadio, Mingo Hoffman, <em>What Matters in Humanoid General Motion Tracking? An Empirical Study</em>, arXiv:2607.19903: <a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2607.19903</a></li>
-<li>Sam et al., <em>Action Agent: Agentic Video Generation Meets Flow-Constrained Diffusion</em>, arXiv:2605.01477: <a href="https://arxiv.org/abs/2605.01477" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2605.01477</a></li>
-<li>NVIDIA, Isaac GR00T: <a href="https://developer.nvidia.com/isaac/gr00t" rel="noopener noreferrer" target="_blank">developer.nvidia.com/isaac/gr00t</a></li>
 </ol>
 </section>
+
+<div class="article-cta"><h2>Want to reproduce one of these papers?</h2><p>We supply the Go2 EDU and G1 EDU configured for research, with SDK and ROS 2 training as a separate service.</p><a class="btn btn-primary" href="/en/universita-ricerca-en.html">EDU robots for universities and research</a><a class="btn btn-outline-light" href="/en/assessment-en.html">Request a quote</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">

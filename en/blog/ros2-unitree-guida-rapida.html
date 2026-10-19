@@ -22,7 +22,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ROS 2 on Unitree robots: quick start guide</title>
-<meta name="description" content="ROS 2 on Unitree Go2 EDU, B2, G1 and H2: supported versions, installing unitree_ros2, CycloneDDS, the 192.168.123.x network and your first topic."/>
+<meta name="description" content="ROS 2 on Unitree Go2 EDU, B2, G1 and H2: supported versions, installing unitree_ros2, CycloneDDS, the 192.168.123.x network and your first topic in the lab."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/en/blog/ros2-unitree-guida-rapida.html"/>
 <link href="https://abrarobotics.com/blog/ros2-unitree-guida-rapida.html" hreflang="it" rel="alternate"/>
@@ -39,9 +39,9 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "ROS 2 on Unitree robots: quick start guide",
-  "description": "ROS 2 on Unitree Go2 EDU, B2, G1 and H2: supported versions, installing unitree_ros2, CycloneDDS, the 192.168.123.x network and your first topic.",
+  "description": "ROS 2 on Unitree Go2 EDU, B2, G1 and H2: supported versions, installing unitree_ros2, CycloneDDS, the 192.168.123.x network and your first topic in the lab.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-09",
+  "dateModified": "2026-10-15",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -98,7 +98,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Why doesn't ros2 topic list show the robot's topics?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The most common causes are three: RMW_IMPLEMENTATION not set to rmw_cyclonedds_cpp, wrong network interface name in setup.sh, or the PC not configured on 192.168.123.x. Check setup.sh again and ping the robot."
+        "text": "There are three common causes: RMW_IMPLEMENTATION not set to rmw_cyclonedds_cpp, wrong network interface name in setup.sh, or the PC not configured on 192.168.123.x. Check setup.sh again and ping the robot."
       }
     },
     {
@@ -115,7 +115,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="ROS 2 on Unitree robots: quick start guide"/>
-<meta property="og:description" content="ROS 2 on Unitree Go2 EDU, B2, G1 and H2: supported versions, installing unitree_ros2, CycloneDDS, the 192.168.123.x network and your first topic."/>
+<meta property="og:description" content="ROS 2 on Unitree Go2 EDU, B2, G1 and H2: supported versions, installing unitree_ros2, CycloneDDS, the 192.168.123.x network and your first topic in the lab."/>
 <meta property="og:url" content="https://abrarobotics.com/en/blog/ros2-unitree-guida-rapida.html"/>
 <meta property="og:image" content="https://abrarobotics.com/images/official/unitree-go2-02.webp"/>
 <meta property="og:locale" content="en_GB"/>
@@ -211,7 +211,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p><strong>ROS 2 on Unitree robots</strong> works without reverse engineering and without translation nodes: the robot publishes its data over DDS (CycloneDDS), and ROS 2 uses DDS as its communication layer. The official <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> package provides the message definitions and the environment scripts. This guide summarises the procedure from the official README, including the points where people usually get stuck.</p>
 
 <h2>Which Unitree robots support ROS 2</h2>
-<p>Software development is only available on the developer versions. For the Go2, the <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">official page</a> indicates secondary development on the EDU version, not on Air and Pro; for the G1 the same applies with the <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1 EDU</a>.</p>
+<p>Software development is only available on the developer versions. For the Go2, the <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">official page</a> lists secondary development on the EDU version, not on Air and Pro; for the G1 the same applies with the <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1 EDU</a>.</p>
 <table>
 <thead><tr><th>Robot</th><th>Messages in unitree_ros2</th><th>ROS 2 examples in the repository</th></tr></thead>
 <tbody>
@@ -222,8 +222,40 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <tr><td>H1 / H1-2</td><td><code>unitree_go</code> / <code>unitree_hg</code></td><td>low-level H1-2</td></tr>
 </tbody>
 </table>
-<p>For <a href="/en/r1-en.html">R1</a> and <a href="/en/a2-en.html">A2</a>, as of October 2026 <code>unitree_sdk2</code> contains dedicated C++ examples, but <code>unitree_ros2</code> still has no specific examples. Before buying one of these models for a ROS 2-only project, check the state of the repository.</p>
+<p>For the <a href="/en/r1-en.html">R1</a> and <a href="/en/a2-en.html">A2</a>, as of October 2026 <code>unitree_sdk2</code> contains dedicated C++ examples, but <code>unitree_ros2</code> still has no specific examples. Before buying one of these models for a ROS 2-only project, check the state of the repository.</p>
 
+<div class="product-strip" aria-label="Products in this article">
+<div class="product-strip-head"><span>Products in this article</span><a href="/en/universita-ricerca-en.html">EDU robots for research</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-go2-edu-en.html"><img alt="Unitree Go2 EDU" loading="lazy" src="/images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-go2-edu-en.html">Unitree Go2 EDU</a></h3>
+<p>SDK and ROS 2, 15,000 mAh battery</p>
+<div class="product-card-price">€8,804 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Secondary development, 23 DoF, compute dock</p>
+<div class="product-card-price">€38,005 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-b2-en.html"><img alt="Unitree B2" loading="lazy" src="/images/official/unitree-b2-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-b2-en.html">Unitree B2</a></h3>
+<p>Heavy industrial: over 40 kg payload, IP67</p>
+<div class="product-card-price">€66,828 <small>excl. VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-b2-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
+</div>
+</article>
+</div>
+</div>
 <h2>Requirements: Ubuntu and the ROS 2 version</h2>
 <p>The unitree_ros2 README lists two tested combinations:</p>
 <ul>
@@ -233,7 +265,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p>According to the <a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">ROS 2 releases table</a>, Foxy reached end of support on 20 June 2023, while Humble is supported until May 2027 and Jazzy until May 2029. For a project starting today the practical choice is Humble; Jazzy is not among the combinations tested by Unitree. ROS 2 Humble installs from Debian packages following the <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">official guide</a>.</p>
 
 <h2>Installing unitree_ros2 step by step</h2>
-<p>1. Clone the repository and install the dependencies (with Humble replace <code>foxy</code> with <code>humble</code>):</p>
+<p>1. Clone the repository and install the dependencies (with Humble, replace <code>foxy</code> with <code>humble</code>):</p>
 <pre><code>git clone https://github.com/unitreerobotics/unitree_ros2
 sudo apt install ros-humble-rmw-cyclonedds-cpp
 sudo apt install ros-humble-rosidl-generator-dds-idl
@@ -259,7 +291,7 @@ export CYCLONEDDS_URI='&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interf
 <pre><code>source ~/unitree_ros2/setup.sh
 ros2 topic list
 ros2 topic echo /sportmodestate</code></pre>
-<p>On Go2 and B2 <code>/sportmodestate</code> reports position, velocity and gait; <code>/lowstate</code> reports motors, IMU and battery. To build and run the examples:</p>
+<p>On the Go2 and B2, <code>/sportmodestate</code> reports position, velocity and gait; <code>/lowstate</code> reports motors, IMU and battery. To build and run the examples:</p>
 <pre><code>cd ~/unitree_ros2/example
 colcon build
 ./install/unitree_ros2_example/bin/read_motion_state</code></pre>
@@ -268,7 +300,7 @@ colcon build
 <h2>Control: high level and low level</h2>
 <ul>
 <li><strong>High level</strong> (Go2, B2): requests on <code>/api/sport/request</code> with <code>unitree_api</code> messages, generated by the <code>SportClient</code> class in the examples. The robot uses its own motion control.</li>
-<li><strong>Low level</strong>: position, velocity, torque and gain commands on <code>/lowcmd</code>. The built-in motion service must first be disabled, otherwise the commands overlap. On humanoids you enter debug mode with L2+R2, with the robot suspended: the full procedure is in the <a href="/en/blog/unitree-g1-programmazione.html">programming the G1</a> guide.</li>
+<li><strong>Low level</strong>: position, velocity, torque and gain commands on <code>/lowcmd</code>. The built-in motion service must be disabled first, otherwise the commands overlap. On humanoids you enter debug mode with L2+R2, with the robot suspended: the full procedure is in the <a href="/en/blog/unitree-g1-programmazione.html">programming the G1</a> guide.</li>
 </ul>
 
 <h2>Simulate before touching hardware</h2>
@@ -278,16 +310,16 @@ colcon build
 <ul>
 <li><strong>No topics</strong>: RMW not set, wrong interface in <code>setup.sh</code> or the PC outside the subnet. The README also recommends rebooting the PC after the first configuration.</li>
 <li><strong>CycloneDDS build failed on Foxy</strong>: the terminal had already sourced <code>/opt/ros/foxy/setup.bash</code>; comment out the line in <code>~/.bashrc</code> and reopen the terminal.</li>
-<li><strong>Multiple ROS installs on the same PC</strong>: avoid putting <code>setup.sh</code> in <code>~/.bashrc</code> and source it by hand when needed.</li>
+<li><strong>Several ROS installs on the same PC</strong>: avoid putting <code>setup.sh</code> in <code>~/.bashrc</code> and source it by hand when needed.</li>
 </ul>
-<p>For university labs, Abra Robotics supplies the Unitree range in the UK and offers SDK training and development as separate services, with support in English: see <a href="/en/universita-ricerca-en.html">Universities and Research</a> and <a href="/en/index-en.html">Software</a>. The developer version pages are <a href="/en/prodotti/unitree-go2-edu-en.html">Go2 EDU</a> and <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU</a>.</p>
+<p>For university labs, Abra Robotics supplies the Unitree EDU models in the UK, Ireland and internationally, with support in English, and offers SDK training and development as separate services: see <a href="/en/universita-ricerca-en.html">Universities and Research</a> and <a href="/en/index-en.html">Software</a>. The developer version pages are <a href="/en/prodotti/unitree-go2-edu-en.html">Go2 EDU</a> and <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU</a>.</p>
 
 <section class="article-faq">
 <h2>Frequently asked questions</h2>
 <div class="faq-item"><h3>Which ROS 2 version should I use with Unitree robots?</h3><p>Humble on Ubuntu 22.04: this is the combination Unitree recommends in the unitree_ros2 README. Foxy on Ubuntu 20.04 is tested but reached end of support on 20 June 2023. Humble is supported until May 2027.</p></div>
 <div class="faq-item"><h3>Can the Go2 Air or Pro be used with ROS 2?</h3><p>No. In the official Go2 table, secondary development is only available on the EDU version; Air and Pro do not include it. For ROS 2 you need a Go2 EDU.</p></div>
 <div class="faq-item"><h3>Do I need to install a bridge between the SDK and ROS 2?</h3><p>No. The robot and ROS 2 both use DDS, so with unitree_ros2 and the CycloneDDS middleware the robot's messages appear directly as ROS 2 topics, with no translation nodes.</p></div>
-<div class="faq-item"><h3>Why doesn't ros2 topic list show the robot's topics?</h3><p>The most common causes are three: RMW_IMPLEMENTATION not set to rmw_cyclonedds_cpp, wrong network interface name in setup.sh, or the PC not configured on 192.168.123.x. Check setup.sh again and ping the robot.</p></div>
+<div class="faq-item"><h3>Why doesn't ros2 topic list show the robot's topics?</h3><p>There are three common causes: RMW_IMPLEMENTATION not set to rmw_cyclonedds_cpp, wrong network interface name in setup.sh, or the PC not configured on 192.168.123.x. Check setup.sh again and ping the robot.</p></div>
 <div class="faq-item"><h3>Can I use ROS 2 without the robot connected?</h3><p>Yes. unitree_ros2 includes setup_local.sh, which uses the loopback interface, and unitree_mujoco simulates the robot with the same messages: you can develop and test in simulation before touching the hardware.</p></div>
 </section>
 
@@ -306,7 +338,7 @@ colcon build
 </ol>
 </section>
 </div>
-<div class="article-cta"><a class="btn btn-primary" href="/en/universita-ricerca-en.html">EDU robots for universities and research</a></div>
+<div class="article-cta"><h2>Need an EDU robot for your lab?</h2><p>We supply the Go2 EDU, G1 EDU and B2 configured and ready, with SDK and ROS 2 training as a separate service.</p><a class="btn btn-primary" href="/en/universita-ricerca-en.html">EDU robots for universities and research</a><a class="btn btn-outline-light" href="/en/assessment-en.html">Request a quote</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
