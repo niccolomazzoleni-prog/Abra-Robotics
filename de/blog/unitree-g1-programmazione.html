@@ -22,12 +22,15 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Unitree G1 programmieren: SDK2, Python und ROS 2</title>
-<meta name="description" content="Unitree G1 EDU programmieren: Netzwerk 192.168.123.x, unitree_sdk2 in C++ und Python, Debug Mode, Low-Level-Test, ROS 2 Humble, MuJoCo-Simulation."/>
+<meta name="description" content="Unitree G1 EDU programmieren: Netzwerk 192.168.123.x, unitree_sdk2 in C++ und Python, Debug Mode, erster Low-Level-Test, ROS 2 Humble und MuJoCo-Simulation."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/de/blog/unitree-g1-programmazione.html"/>
 <link href="https://abrarobotics.com/blog/unitree-g1-programmazione.html" hreflang="it" rel="alternate"/>
 <link href="https://abrarobotics.com/en/blog/unitree-g1-programmazione.html" hreflang="en" rel="alternate"/>
 <link href="https://abrarobotics.com/de/blog/unitree-g1-programmazione.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/unitree-g1-programmazione.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/unitree-g1-programmazione.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/unitree-g1-programmazione.html" hreflang="pl" rel="alternate"/>
 <link href="https://abrarobotics.com/blog/unitree-g1-programmazione.html" hreflang="x-default" rel="alternate"/>
 <link href="/favicon.ico" rel="icon" sizes="any"/>
 <link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
@@ -40,9 +43,9 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Unitree G1 programmieren: SDK2, Python und ROS 2",
-  "description": "Unitree G1 EDU programmieren: Netzwerk 192.168.123.x, unitree_sdk2 in C++ und Python, Debug Mode, Low-Level-Test, ROS 2 Humble, MuJoCo-Simulation.",
+  "description": "Unitree G1 EDU programmieren: Netzwerk 192.168.123.x, unitree_sdk2 in C++ und Python, Debug Mode, erster Low-Level-Test, ROS 2 Humble und MuJoCo-Simulation.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-09",
+  "dateModified": "2026-10-15",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -72,10 +75,10 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Lässt sich der G1 base (nicht EDU) programmieren?",
+      "name": "Lässt sich der G1 in der Basisversion (nicht EDU) programmieren?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nein. Im offiziellen Unitree-Datenblatt ist die Sekundärentwicklung nur für den G1 EDU vorgesehen; der G1 base hat weder das Rechenmodul für die Entwicklung noch SDK-Zugriff."
+        "text": "Nein. Im offiziellen Datenblatt von Unitree ist die Sekundärentwicklung nur für den G1 EDU angegeben; der Basis-G1 hat weder das Rechenmodul für die Entwicklung noch SDK-Zugang."
       }
     },
     {
@@ -83,15 +86,15 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Welches Betriebssystem braucht der Entwicklungs-PC?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Das README von unitree_sdk2 nennt Ubuntu 20.04 mit gcc 9.4.0 als Referenzumgebung, auf x86_64- oder aarch64-CPU. Für ROS 2 hat Unitree Ubuntu 20.04 mit Foxy und Ubuntu 22.04 mit Humble getestet und empfiehlt Humble."
+        "text": "Das README von unitree_sdk2 nennt Ubuntu 20.04 mit gcc 9.4.0 als Referenzumgebung, auf CPU x86_64 oder aarch64. Für ROS 2 hat Unitree Ubuntu 20.04 mit Foxy und Ubuntu 22.04 mit Humble getestet und empfiehlt Humble."
       }
     },
     {
       "@type": "Question",
-      "name": "Welche Adresse hat der Entwicklungscomputer des G1?",
+      "name": "Welche Adresse hat der Entwicklungsrechner des G1?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Der Entwicklungscomputer (PC2) des G1 EDU antwortet unter 192.168.123.164, Benutzer unitree. Ihr PC kommt in dasselbe Subnetz 192.168.123.x mit einer freien Adresse; Unitree schlägt 192.168.123.99 vor."
+        "text": "Der Entwicklungsrechner (PC2) des G1 EDU ist unter 192.168.123.164 erreichbar, Benutzer unitree. Ihr PC kommt mit einer freien Adresse in dasselbe Subnetz 192.168.123.x; Unitree schlägt 192.168.123.99 vor."
       }
     },
     {
@@ -99,15 +102,15 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Warum vibriert der Roboter, wenn ich ein Low-Level-Beispiel starte?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Fast immer ist die integrierte Motion Control noch aktiv und sendet parallel zu Ihren Befehlen. Wechseln Sie in den Debug Mode (L2+R2 bei hängendem Roboter mit Dämpfung), bevor Sie Befehle auf rt/lowcmd senden."
+        "text": "Fast immer ist die integrierte Bewegungssteuerung noch aktiv und sendet parallel zu Ihren Befehlen eigene. Wechseln Sie in den Debug Mode (L2+R2, Roboter hängend und gedämpft), bevor Sie Befehle auf rt/lowcmd senden."
       }
     },
     {
       "@type": "Question",
-      "name": "Besser mit Simulation oder Hardware starten?",
+      "name": "Besser mit der Simulation oder mit der Hardware beginnen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Mit der Simulation. unitree_mujoco verwendet dieselben DDS-Nachrichten wie der Roboter, daher läuft dasselbe Programm zuerst in MuJoCo und dann auf dem G1, wobei nur die Netzwerkschnittstelle geändert wird."
+        "text": "Mit der Simulation. unitree_mujoco verwendet dieselben DDS-Nachrichten wie der Roboter. Dasselbe Programm läuft also erst in MuJoCo und dann auf dem G1, nur die Netzwerkschnittstelle ändert sich."
       }
     }
   ]
@@ -116,7 +119,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1 programmieren: SDK2, Python und ROS 2"/>
-<meta property="og:description" content="Unitree G1 EDU programmieren: Netzwerk 192.168.123.x, unitree_sdk2 in C++ und Python, Debug Mode, Low-Level-Test, ROS 2 Humble, MuJoCo-Simulation."/>
+<meta property="og:description" content="Unitree G1 EDU programmieren: Netzwerk 192.168.123.x, unitree_sdk2 in C++ und Python, Debug Mode, erster Low-Level-Test, ROS 2 Humble und MuJoCo-Simulation."/>
 <meta property="og:url" content="https://abrarobotics.com/de/blog/unitree-g1-programmazione.html"/>
 <meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
 <meta property="og:locale" content="de_DE"/>
@@ -197,7 +200,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <article class="article-wrap">
 <div class="container">
-<nav class="breadcrumb"><a href="/de/">Start</a> / <a href="/de/">Blog</a> / G1 programmieren</nav>
+<nav class="breadcrumb"><a href="/de/">Startseite</a> / <a href="/de/">Blog</a> / G1 programmieren</nav>
 
 <figure class="article-cover">
 <img src="/images/official/unitree-g1-01.webp" alt="Unitree G1 EDU, humanoide Entwicklungsplattform" width="800" height="800" loading="eager"/>
@@ -207,36 +210,68 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p class="label">Unitree G1 · Software</p>
 <h1>Unitree G1 programmieren: Netzwerk, SDK2 und ROS 2 Schritt für Schritt</h1>
 <div class="article-meta"><time datetime="2026-10-09">Aktualisiert am 9. Oktober 2026</time><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>In Kürze:</strong> Programmierbar ist nur der G1 EDU. Sie verbinden den PC per Ethernet mit dem Subnetz 192.168.123.x, kompilieren <code>unitree_sdk2</code> (C++) oder installieren <code>unitree_sdk2_python</code>, testen die Beispiele zuerst in der Simulation mit <code>unitree_mujoco</code> und dann am hängenden Roboter im Debug Mode (L2+R2). ROS 2 Humble ergänzen Sie mit <code>unitree_ros2</code>, wenn Nav2, MoveIt oder rosbag benötigt werden.</div>
+<div class="article-tldr"><strong>Kurz gesagt:</strong> Programmieren lässt sich nur der G1 EDU. Sie verbinden den PC per Ethernet mit dem Subnetz 192.168.123.x, kompilieren <code>unitree_sdk2</code> (C++) oder installieren <code>unitree_sdk2_python</code>, testen die Beispiele zuerst in der Simulation mit <code>unitree_mujoco</code> und danach am hängenden Roboter im Debug Mode (L2+R2). ROS 2 Humble kommt mit <code>unitree_ros2</code> dazu, sobald Sie Nav2, MoveIt oder rosbag brauchen.</div>
 </header>
 
 <div class="article-content">
 
-<p>Zum Programmieren des <strong>Unitree G1</strong> brauchen Sie drei Dinge: die EDU-Version, einen Ubuntu-PC im internen Netzwerk des Roboters und das offizielle SDK <code>unitree_sdk2</code>. Diese Anleitung folgt der öffentlichen Unitree-Dokumentation (GitHub-Repositories und Document Center) und nennt zu jedem Schritt die Datei oder Seite, aus der er stammt. Wenn der Roboter gerade angekommen ist, starten Sie mit <a href="/en/blog/unitree-g1-guida-operativa.html">Einschalten, Fernsteuerung und erstem Aufstehen</a>.</p>
+<p>Um den <strong>Unitree G1</strong> zu programmieren, brauchen Sie drei Dinge: die EDU-Version, einen Ubuntu-PC im internen Netzwerk des Roboters und das offizielle SDK <code>unitree_sdk2</code>. Diese Anleitung folgt der öffentlichen Dokumentation von Unitree (GitHub-Repositorys und Document Center) und nennt bei jedem Schritt die Datei oder Seite, aus der er stammt. Ist der Roboter gerade erst angekommen, beginnen Sie mit <a href="/de/blog/unitree-g1-guida-operativa.html">Einschalten, Fernbedienung und erstem Aufstehen</a>.</p>
 
-<h2>Welcher G1 lässt sich programmieren</h2>
-<p>Im <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">offiziellen G1-Datenblatt</a> ist die Sekundärentwicklung nur für den <strong>G1 EDU</strong> vorgesehen; der G1 base hat 23 Freiheitsgrade und kein Rechenmodul für die Entwicklung. Die EDU-Versionen reichen von 23 bis 43 DoF, mit optionalem Rechenmodul (Unitree nennt Orin-Boards) und optionalen Dex3-1-Händen. In der <a href="/en/listino-unitree-en.html">Preisliste von Abra</a> startet der G1 Air bei 19.809 € und der G1-U1 EDU (23 DoF, 100-TOPS-Rechenmodul) bei 38.005 €, zzgl. MwSt. Alle Versionen finden Sie im <a href="/de/unitree-g1.html">G1-Hub</a>; zur Wahl zwischen U1, U2 und den Versionen mit Händen gibt es die Anleitung <a href="/en/blog/unitree-g1-quale-versione-scegliere.html">Welche G1-Version wählen</a>.</p>
+<h2>Welcher G1 sich programmieren lässt</h2>
+<p>Im <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">offiziellen Datenblatt des G1</a> ist die Sekundärentwicklung nur für den <strong>G1 EDU</strong> angegeben; der G1 in der Basisversion hat 23 Freiheitsgrade und kein Rechenmodul für die Entwicklung. Die EDU-Versionen reichen von 23 bis 43 DoF, mit optionalem Rechenmodul (Unitree nennt Orin-Module) und optionalen Dex3-1 Händen. In der <a href="/en/listino-unitree-en.html">Preisliste von Abra</a> kostet der G1 Air ab 19.809 € und der G1-U1 EDU (23 DoF, Rechendock mit 100 TOPS) ab 38.005 €, jeweils zzgl. MwSt. Alle Versionen finden Sie auf der <a href="/de/unitree-g1.html">G1 Übersichtsseite</a>; bei der Wahl zwischen U1, U2 und den Versionen mit Händen hilft der Leitfaden <a href="/de/blog/unitree-g1-quale-versione-scegliere.html">Welche G1 Version passt</a>.</p>
 
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Im Artikel erwähnte Produkte</span><a href="/de/unitree-g1.html">Alle G1 Versionen</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Sekundärentwicklung, 23 DoF, Rechendock</p>
+<div class="product-card-price">38.005 € <small>zzgl. MwSt.</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Zum Produkt</a><a class="product-card-link" href="/en/assessment-en.html">Angebot anfragen</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-plus-en.html"><img alt="Unitree G1 EDU U2" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU U2</a></h3>
+<p>29 DoF: Taille mit 3 Achsen, Arme mit 7 Achsen</p>
+<div class="product-card-price">46.809 € <small>zzgl. MwSt.</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Zum Produkt</a><a class="product-card-link" href="/en/assessment-en.html">Angebot anfragen</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Akku G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">Akku G1</a></h3>
+<p>9000 mAh, schnell wechselbar</p>
+<div class="product-card-price">880 € <small>zzgl. MwSt.</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Zum Produkt</a><a class="product-card-link" href="/en/assessment-en.html">Angebot anfragen</a></div>
+</div>
+</article>
+</div>
+</div>
 <h2>Architektur: wo Ihr Code läuft</h2>
-<p>Der G1 EDU hat einen von Unitree verwalteten Motion-Control-Computer und einen Entwicklungscomputer (PC2) für den Nutzercode. Die Unitree-Repositories, zum Beispiel <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">xr_teleoperate</a>, geben PC2 mit der Adresse <code>192.168.123.164</code> und dem Benutzer <code>unitree</code> an. Das anfängliche Passwort stellt Unitree bereit; die Entwickler-FAQ und die <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">LeRobot-Anleitung für den G1</a> nennen <code>123</code>. Ändern Sie es, sobald der Roboter in ein gemeinsam genutztes Netzwerk kommt.</p>
-<p>Sie haben zwei Optionen:</p>
+<p>Der G1 EDU hat einen Rechner für die Bewegungssteuerung, den Unitree verwaltet, und einen Entwicklungsrechner (PC2) für den Code der Anwender. Die Repositorys von Unitree, zum Beispiel <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">xr_teleoperate</a>, geben für PC2 die Adresse <code>192.168.123.164</code> mit dem Benutzer <code>unitree</code> an. Das Startpasswort stellt Unitree bereit; die Entwickler-FAQ und die <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">LeRobot-Anleitung für den G1</a> nennen <code>123</code>. Ändern Sie es, sobald der Roboter in ein gemeinsam genutztes Netzwerk kommt.</p>
+<p>Sie haben zwei Möglichkeiten:</p>
 <ul>
-<li><strong>Code auf dem Laptop</strong>: Der PC spricht über DDS auf dem Ethernet-Kabel mit dem Roboter. Das ist die bequemste Wahl zum Entwickeln und Debuggen.</li>
-<li><strong>Code auf PC2</strong>: Sie starten das Programm per SSH auf dem Roboter. Nötig für den Betrieb ohne Kabel und um die Latenz zu reduzieren.</li>
+<li><strong>Code auf dem Laptop</strong>: Der PC spricht über DDS auf dem Ethernet-Kabel mit dem Roboter. Das ist der bequemste Weg für Entwicklung und Debugging.</li>
+<li><strong>Code auf PC2</strong>: Sie starten das Programm per SSH auf dem Roboter. Das brauchen Sie für autonomen Betrieb ohne Kabel und für geringere Latenz.</li>
 </ul>
 <pre><code>ssh unitree@192.168.123.164</code></pre>
 
-<h2>PC-Netzwerk einrichten</h2>
+<h2>Netzwerk am PC einrichten</h2>
 <ol>
-<li>Verbinden Sie den PC per Ethernet-Kabel mit dem Roboter.</li>
-<li>Stellen Sie die Schnittstelle manuell auf IPv4: Adresse <code>192.168.123.99</code> (der von Unitree vorgeschlagene Wert), Maske <code>255.255.255.0</code>. Verwenden Sie keine Adressen, die der Roboter bereits belegt, wie <code>.164</code>.</li>
-<li>Notieren Sie mit <code>ip a</code> oder <code>ifconfig</code> den Schnittstellennamen (<code>enp3s0</code>, <code>eth0</code> ...): alle SDK-Beispiele erwarten ihn als Argument.</li>
-<li>Prüfen Sie mit <code>ping 192.168.123.164</code>. Antwortet er nicht, liegt es am Netzwerk: Es bringt nichts, die IDE zu öffnen.</li>
+<li>Verbinden Sie den PC mit einem Ethernet-Kabel mit dem Roboter.</li>
+<li>Stellen Sie die Schnittstelle auf manuelles IPv4: Adresse <code>192.168.123.99</code> (von Unitree vorgeschlagen), Netzmaske <code>255.255.255.0</code>. Verwenden Sie keine Adressen, die der Roboter bereits belegt, etwa <code>.164</code>.</li>
+<li>Notieren Sie mit <code>ip a</code> oder <code>ifconfig</code> den Namen der Schnittstelle (<code>enp3s0</code>, <code>eth0</code>...): Alle SDK-Beispiele erwarten ihn als Argument.</li>
+<li>Prüfen Sie die Verbindung mit <code>ping 192.168.123.164</code>. Kommt keine Antwort, liegt das Problem im Netzwerk, und die IDE zu öffnen bringt nichts.</li>
 </ol>
-<p>Ein dedizierter Ethernet-Port (auch ein USB-Adapter) vermeidet Konflikte mit dem Labornetzwerk.</p>
+<p>Ein eigener Ethernet-Port (auch ein USB-Adapter) vermeidet Konflikte mit dem Netzwerk des Labors.</p>
 
 <h2>unitree_sdk2 installieren (C++)</h2>
-<p>Das <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">README von unitree_sdk2</a> nennt als Referenzumgebung <strong>Ubuntu 20.04, gcc 9.4.0, CPU x86_64 oder aarch64</strong> und CMake 3.10 oder neuer. Auf anderen Ubuntu-Versionen lässt es sich meist kompilieren, aber getestet ist diese Umgebung. Windows ist im README nicht als Umgebung vorgesehen.</p>
+<p>Das <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">README von unitree_sdk2</a> nennt als Referenzumgebung <strong>Ubuntu 20.04, gcc 9.4.0, CPU x86_64 oder aarch64</strong> und CMake 3.10 oder neuer. Auf anderen Ubuntu-Versionen lässt sich das SDK meist kompilieren, getestet ist aber diese Umgebung. Windows ist im README nicht vorgesehen.</p>
 <pre><code>sudo apt-get update
 sudo apt-get install -y cmake g++ build-essential libyaml-cpp-dev \
   libeigen3-dev libboost-all-dev libfmt-dev
@@ -245,84 +280,84 @@ cd unitree_sdk2 &amp;&amp; mkdir build &amp;&amp; cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=/opt/unitree_robotics
 make
 sudo make install</code></pre>
-<p>Der <code>make</code>-Schritt kompiliert auch die Beispiele, die in <code>build/bin/</code> landen. Die Installation nach <code>/opt/unitree_robotics</code> wird auch vom Simulator <code>unitree_mujoco</code> empfohlen.</p>
+<p><code>make</code> kompiliert auch die Beispiele, die in <code>build/bin/</code> landen. Die Installation in <code>/opt/unitree_robotics</code> empfiehlt auch der Simulator <code>unitree_mujoco</code>.</p>
 
 <h2>Oder Python: unitree_sdk2_python</h2>
-<p>Der <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">Python-Wrapper</a> benötigt Python 3.8 oder neuer und <code>cyclonedds</code> 0.10.2:</p>
+<p>Der <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">Python-Wrapper</a> setzt Python 3.8 oder neuer und <code>cyclonedds</code> 0.10.2 voraus:</p>
 <pre><code>git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
 cd unitree_sdk2_python
 pip3 install -e .</code></pre>
-<p>Wenn die Installation mit "Could not locate cyclonedds" stoppt, erklärt das README, wie Sie CycloneDDS aus dem Zweig <code>releases/0.10.x</code> kompilieren und <code>CYCLONEDDS_HOME</code> setzen. Die G1-Beispiele liegen in <code>example/g1/</code>. Ein nützlicher Hinweis aus dem Beispiel-README: G1 und H1-2 verwenden die <code>unitree_hg</code>-Nachrichten, während Go2, B2 und H1 <code>unitree_go</code> verwenden.</p>
+<p>Bricht die Installation mit "Could not locate cyclonedds" ab, erklärt das README, wie Sie CycloneDDS aus dem Branch <code>releases/0.10.x</code> kompilieren und <code>CYCLONEDDS_HOME</code> setzen. Die Beispiele für den G1 liegen in <code>example/g1/</code>. Ein nützlicher Hinweis aus dem README der Beispiele: G1 und H1-2 verwenden die Nachrichten <code>unitree_hg</code>, Go2, B2 und H1 dagegen <code>unitree_go</code>.</p>
 
 <h2>Debug Mode: vor jedem Low-Level-Test</h2>
-<p>Beim Einschalten startet der G1 seine eigene Motion Control, die weiterhin Befehle an die Motoren sendet. Wenn Sie parallel auf <code>rt/lowcmd</code> publizieren, kollidieren die Befehle und der Roboter vibriert. Das in der <a href="https://github.com/unitreerobotics/unitree_rl_gym/blob/main/deploy/deploy_real/README.md" rel="noopener noreferrer" target="_blank">Deploy-Anleitung von unitree_rl_gym</a> dokumentierte Vorgehen lautet:</p>
+<p>Nach dem Einschalten startet der G1 seine eigene Bewegungssteuerung, die laufend Befehle an die Motoren sendet. Veröffentlichen Sie gleichzeitig auf <code>rt/lowcmd</code>, kollidieren die Befehle und der Roboter vibriert. Das Vorgehen aus der <a href="https://github.com/unitreerobotics/unitree_rl_gym/blob/main/deploy/deploy_real/README.md" rel="noopener noreferrer" target="_blank">Deploy-Anleitung von unitree_rl_gym</a>:</p>
 <ol>
-<li>Schalten Sie den Roboter im Hebegeschirr hängend ein und warten Sie auf den Zero-Torque-Modus;</li>
-<li>Drücken Sie <strong>L2+R2</strong> auf der Fernsteuerung: Der Roboter wechselt in den Debug Mode mit gedämpften Gelenken;</li>
-<li>Erst jetzt starten Sie das Low-Level-Programm.</li>
+<li>Schalten Sie den Roboter ein, während er im Gurtgeschirr hängt, und warten Sie auf den Nullmoment-Modus;</li>
+<li>drücken Sie <strong>L2+R2</strong> auf der Fernbedienung: Der Roboter wechselt in den Debug Mode, die Gelenke sind gedämpft;</li>
+<li>erst jetzt starten Sie das Low-Level-Programm.</li>
 </ol>
-<p>Im Debug Mode hält der Roboter sein Gleichgewicht nicht selbst: Lassen Sie ihn hängen, bis Ihr Controller ihn trägt.</p>
+<p>Im Debug Mode hält der Roboter das Gleichgewicht nicht selbst: Er bleibt hängen, bis Ihr Regler ihn trägt.</p>
 
 <h2>Erster Test: die Knöchel bewegen</h2>
-<p>Das Beispiel <code>g1_ankle_swing_example</code> (Quellcode in <code>example/g1/low_level/</code>) liest <code>rt/lowstate</code>, schreibt <code>rt/lowcmd</code> und lässt die Knöchel schwingen. Aus dem Ordner <code>build</code>:</p>
+<p>Das Beispiel <code>g1_ankle_swing_example</code> (Quellcode in <code>example/g1/low_level/</code>) liest <code>rt/lowstate</code>, schreibt <code>rt/lowcmd</code> und lässt die Knöchel pendeln. Aus dem Ordner <code>build</code>:</p>
 <pre><code>./bin/g1_ankle_swing_example enp3s0</code></pre>
-<p>Ersetzen Sie <code>enp3s0</code> durch Ihre Schnittstelle. Zeigt das Terminal "CRC Error", ist die empfangene Nachricht beschädigt oder entspricht nicht dem erwarteten Typ: Prüfen Sie Kabel, Schnittstelle und SDK-Version.</p>
-<p>Für High-Level-Befehle (Stehen, Gehen mit vorgegebenen Geschwindigkeiten) gibt es <code>g1_loco_client</code>, das die integrierte Motion Control nutzt und daher <em>außerhalb</em> des Debug Mode gestartet wird:</p>
+<p>Ersetzen Sie <code>enp3s0</code> durch Ihre Schnittstelle. Gibt das Terminal "CRC Error" aus, ist die empfangene Nachricht beschädigt oder entspricht nicht dem erwarteten Typ: Prüfen Sie Kabel, Schnittstelle und SDK-Version.</p>
+<p>Für High-Level-Befehle (Stehen, Gehen mit vorgegebener Geschwindigkeit) gibt es <code>g1_loco_client</code>. Er nutzt die integrierte Bewegungssteuerung und wird deshalb <em>außerhalb</em> des Debug Mode gestartet:</p>
 <pre><code>./bin/g1_loco_client --network_interface=enp3s0 --get_fsm_id</code></pre>
 
-<h2>Wichtigste Topics</h2>
+<h2>Wichtige Topics</h2>
 <table>
-<thead><tr><th>DDS-Topic</th><th>Inhalt</th><th>Quelle</th></tr></thead>
+<thead><tr><th>DDS Topic</th><th>Inhalt</th><th>Quelle</th></tr></thead>
 <tbody>
 <tr><td><code>rt/lowstate</code></td><td>Motorstatus, IMU, Akku</td><td>Beispiel ankle swing</td></tr>
-<tr><td><code>rt/lowcmd</code></td><td>Befehle für Position, Geschwindigkeit, Drehmoment und kp/kd-Gains</td><td>Beispiel ankle swing</td></tr>
-<tr><td><code>rt/secondary_imu</code></td><td>IMU des Oberkörpers</td><td>Beispiel ankle swing, unitree_mujoco</td></tr>
-<tr><td><code>rt/dex3/left/cmd</code>, <code>rt/dex3/right/cmd</code></td><td>Befehle Dex3-1-Hand</td><td>Beispiel g1_dex3_example</td></tr>
-<tr><td><code>rt/lf/dex3/left/state</code>, <code>rt/lf/dex3/right/state</code></td><td>Status Dex3-1-Hand</td><td>Beispiel g1_dex3_example</td></tr>
+<tr><td><code>rt/lowcmd</code></td><td>Befehle für Position, Geschwindigkeit, Drehmoment und Verstärkungen kp/kd</td><td>Beispiel ankle swing</td></tr>
+<tr><td><code>rt/secondary_imu</code></td><td>IMU im Torso</td><td>Beispiel ankle swing, unitree_mujoco</td></tr>
+<tr><td><code>rt/dex3/left/cmd</code>, <code>rt/dex3/right/cmd</code></td><td>Befehle Hand Dex3-1</td><td>Beispiel g1_dex3_example</td></tr>
+<tr><td><code>rt/lf/dex3/left/state</code>, <code>rt/lf/dex3/right/state</code></td><td>Status Hand Dex3-1</td><td>Beispiel g1_dex3_example</td></tr>
 </tbody>
 </table>
-<p>Die Hände haben von der Lokomotion getrennte Topics: Es empfiehlt sich, den Regelkreis der Beine in einem Prozess und das Greifen in einem anderen zu halten, mit unterschiedlichen Frequenzen.</p>
+<p>Die Hände haben eigene Topics, getrennt von der Fortbewegung: Am besten läuft die Regelschleife der Beine in einem Prozess und das Greifen in einem anderen, mit unterschiedlichen Frequenzen.</p>
 
-<h2>Zuerst simulieren: unitree_mujoco</h2>
-<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> ist ein auf MuJoCo basierender Simulator, der dieselben Nachrichten bereitstellt (<code>LowCmd</code>, <code>LowState</code>, <code>SportModeState</code>, IMU des Oberkörpers beim G1). Ein mit <code>unitree_sdk2</code>, <code>unitree_sdk2_python</code> oder <code>unitree_ros2</code> geschriebenes Programm läuft zuerst in der Simulation und danach auf dem Roboter. Der Simulator unterstützt nur die Low-Level-Entwicklung. Für Reinforcement Learning deckt <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> den Zyklus Train, Play, Sim2Sim (MuJoCo) und Sim2Real für G1, H1, H1-2 und Go2 ab.</p>
+<h2>Erst simulieren: unitree_mujoco</h2>
+<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> ist ein Simulator auf Basis von MuJoCo, der dieselben Nachrichten bereitstellt (<code>LowCmd</code>, <code>LowState</code>, <code>SportModeState</code>, beim G1 die IMU im Torso). Ein Programm, das mit <code>unitree_sdk2</code>, <code>unitree_sdk2_python</code> oder <code>unitree_ros2</code> geschrieben ist, läuft zuerst in der Simulation und danach auf dem Roboter. Der Simulator unterstützt nur die Low-Level-Entwicklung. Für Reinforcement Learning deckt <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> den Ablauf Train, Play, Sim2Sim (MuJoCo) und Sim2Real für G1, H1, H1-2 und Go2 ab.</p>
 
 <h2>Wann ROS 2 dazukommt</h2>
-<p>Das direkte SDK ist der kürzeste Weg zu den Motoren und für isolierte Tests. ROS 2 brauchen Sie, wenn Sie Nav2, MoveIt, Standard-Vision-Pipelines, Aufzeichnung mit rosbag oder mehrere Roboter im selben Labor integrieren müssen. Das Paket <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> enthält die <code>unitree_hg</code>-Nachrichten und ein Low-Level-Beispiel für den G1 (<code>g1/lowlevel/g1_low_level_example</code>); Unitree hat es auf Ubuntu 22.04 mit Humble (empfohlen) und auf Ubuntu 20.04 mit Foxy getestet. Installation, Netzwerk und erstes Topic finden Sie in der Anleitung <a href="/en/blog/ros2-unitree-guida-rapida.html">ROS 2 auf Unitree-Robotern</a>.</p>
+<p>Das SDK direkt zu nutzen ist der kürzeste Weg für Motoren und isolierte Tests. ROS 2 brauchen Sie, wenn Sie Nav2, MoveIt, Standard-Pipelines für die Bildverarbeitung, Aufzeichnung mit rosbag oder mehrere Roboter im selben Labor integrieren. Das Paket <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> enthält die Nachrichten <code>unitree_hg</code> und ein Low-Level-Beispiel für den G1 (<code>g1/lowlevel/g1_low_level_example</code>); Unitree hat es unter Ubuntu 22.04 mit Humble (empfohlen) und unter Ubuntu 20.04 mit Foxy getestet. Installation, Netzwerk und erstes Topic beschreibt die Anleitung <a href="/de/blog/ros2-unitree-guida-rapida.html">ROS 2 auf Unitree Robotern</a>.</p>
 
 <h2>Sicherheits-Checkliste für das Labor</h2>
 <ul>
-<li>Erste Tests immer mit hängendem Roboter und freiem Umfeld.</li>
-<li>Niedrige kp/kd-Gains und konservative Drehmomentgrenzen im ersten Regelkreis.</li>
-<li>Eine Person an der Fernsteuerung, bereit, den Roboter in die Dämpfung zu bringen.</li>
-<li>Dieselbe SDK-Version auf PC und Roboter; nach einem OTA-Update die Beispiele erneut prüfen.</li>
+<li>Erste Tests immer mit hängendem Roboter und freiem Bereich ringsum.</li>
+<li>Niedrige Verstärkungen kp/kd und vorsichtige Drehmomentgrenzen in der ersten Regelschleife.</li>
+<li>Eine Person an der Fernbedienung, bereit, den Roboter in die Dämpfung zu schalten.</li>
+<li>Dieselbe SDK-Version auf PC und Roboter; nach einem OTA-Update prüfen Sie die Beispiele erneut.</li>
 </ul>
-<p>Abra Robotics liefert die Unitree Produktpalette auch nach Deutschland, Österreich und in die Schweiz und bietet Training und Softwareentwicklung auf Basis des SDK als vom Hardwarekauf getrennte Dienstleistungen an, mit Support auf Englisch: Details unter <a href="/en/index-en.html">Software</a> und <a href="/en/universita-ricerca-en.html">Universitäten &amp; Forschung</a>.</p>
+<p>Abra Robotics liefert die Unitree Produktpalette nach Deutschland, Österreich und in die Schweiz, mit Support auf Englisch, und bietet Schulung und Softwareentwicklung auf Basis des SDK als eigene Leistungen getrennt von der Hardware an: mehr dazu unter <a href="/en/index-en.html">Software</a> und <a href="/en/universita-ricerca-en.html">Hochschulen und Forschung</a>.</p>
 
 <section class="article-faq">
 <h2>Häufige Fragen</h2>
-<div class="faq-item"><h3>Lässt sich der G1 base (nicht EDU) programmieren?</h3><p>Nein. Im offiziellen Unitree-Datenblatt ist die Sekundärentwicklung nur für den G1 EDU vorgesehen; der G1 base hat weder das Rechenmodul für die Entwicklung noch SDK-Zugriff.</p></div>
-<div class="faq-item"><h3>Welches Betriebssystem braucht der Entwicklungs-PC?</h3><p>Das README von unitree_sdk2 nennt Ubuntu 20.04 mit gcc 9.4.0 als Referenzumgebung, auf x86_64- oder aarch64-CPU. Für ROS 2 hat Unitree Ubuntu 20.04 mit Foxy und Ubuntu 22.04 mit Humble getestet und empfiehlt Humble.</p></div>
-<div class="faq-item"><h3>Welche Adresse hat der Entwicklungscomputer des G1?</h3><p>Der Entwicklungscomputer (PC2) des G1 EDU antwortet unter 192.168.123.164, Benutzer unitree. Ihr PC kommt in dasselbe Subnetz 192.168.123.x mit einer freien Adresse; Unitree schlägt 192.168.123.99 vor.</p></div>
-<div class="faq-item"><h3>Warum vibriert der Roboter, wenn ich ein Low-Level-Beispiel starte?</h3><p>Fast immer ist die integrierte Motion Control noch aktiv und sendet parallel zu Ihren Befehlen. Wechseln Sie in den Debug Mode (L2+R2 bei hängendem Roboter mit Dämpfung), bevor Sie Befehle auf rt/lowcmd senden.</p></div>
-<div class="faq-item"><h3>Besser mit Simulation oder Hardware starten?</h3><p>Mit der Simulation. unitree_mujoco verwendet dieselben DDS-Nachrichten wie der Roboter, daher läuft dasselbe Programm zuerst in MuJoCo und dann auf dem G1, wobei nur die Netzwerkschnittstelle geändert wird.</p></div>
+<div class="faq-item"><h3>Lässt sich der G1 in der Basisversion (nicht EDU) programmieren?</h3><p>Nein. Im offiziellen Datenblatt von Unitree ist die Sekundärentwicklung nur für den G1 EDU angegeben; der Basis-G1 hat weder das Rechenmodul für die Entwicklung noch SDK-Zugang.</p></div>
+<div class="faq-item"><h3>Welches Betriebssystem braucht der Entwicklungs-PC?</h3><p>Das README von unitree_sdk2 nennt Ubuntu 20.04 mit gcc 9.4.0 als Referenzumgebung, auf CPU x86_64 oder aarch64. Für ROS 2 hat Unitree Ubuntu 20.04 mit Foxy und Ubuntu 22.04 mit Humble getestet und empfiehlt Humble.</p></div>
+<div class="faq-item"><h3>Welche Adresse hat der Entwicklungsrechner des G1?</h3><p>Der Entwicklungsrechner (PC2) des G1 EDU ist unter 192.168.123.164 erreichbar, Benutzer unitree. Ihr PC kommt mit einer freien Adresse in dasselbe Subnetz 192.168.123.x; Unitree schlägt 192.168.123.99 vor.</p></div>
+<div class="faq-item"><h3>Warum vibriert der Roboter, wenn ich ein Low-Level-Beispiel starte?</h3><p>Fast immer ist die integrierte Bewegungssteuerung noch aktiv und sendet parallel zu Ihren Befehlen eigene. Wechseln Sie in den Debug Mode (L2+R2, Roboter hängend und gedämpft), bevor Sie Befehle auf rt/lowcmd senden.</p></div>
+<div class="faq-item"><h3>Besser mit der Simulation oder mit der Hardware beginnen?</h3><p>Mit der Simulation. unitree_mujoco verwendet dieselben DDS-Nachrichten wie der Roboter. Dasselbe Programm läuft also erst in MuJoCo und dann auf dem G1, nur die Netzwerkschnittstelle ändert sich.</p></div>
 </section>
 
 <section class="article-references" id="fonti">
 <h2>Quellen</h2>
 <ol>
-<li>Unitree, G1-Produktdatenblatt (Versionen, DoF, Sekundärentwicklung): <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
-<li>Unitree, <em>unitree_sdk2</em>, README und G1-Beispiele: <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2</a> · <a href="https://github.com/unitreerobotics/unitree_sdk2/tree/main/example/g1" rel="noopener noreferrer" target="_blank">example/g1</a></li>
+<li>Unitree, Produktseite G1 (Versionen, DoF, Sekundärentwicklung): <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, <em>unitree_sdk2</em>, README und Beispiele G1: <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2</a> · <a href="https://github.com/unitreerobotics/unitree_sdk2/tree/main/example/g1" rel="noopener noreferrer" target="_blank">example/g1</a></li>
 <li>Unitree, <em>unitree_sdk2_python</em>: <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2_python</a></li>
 <li>Unitree, <em>unitree_ros2</em>: <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_ros2</a></li>
 <li>Unitree, <em>unitree_mujoco</em>: <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_mujoco</a></li>
 <li>Unitree, <em>unitree_rl_gym</em>, Anleitung zum Deploy auf dem echten Roboter (Debug Mode L2+R2): <a href="https://github.com/unitreerobotics/unitree_rl_gym/blob/main/deploy/deploy_real/README.md" rel="noopener noreferrer" target="_blank">deploy_real/README.md</a></li>
 <li>Unitree, <em>xr_teleoperate</em> (PC2 unter 192.168.123.164): <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/xr_teleoperate</a></li>
-<li>Unitree Document Center, G1-Entwicklerbereich: <a href="https://support.unitree.com/home/en/G1_developer" rel="noopener noreferrer" target="_blank">support.unitree.com/home/en/G1_developer</a></li>
+<li>Unitree Document Center, Bereich für G1 Entwickler: <a href="https://support.unitree.com/home/en/G1_developer" rel="noopener noreferrer" target="_blank">support.unitree.com/home/en/G1_developer</a></li>
 <li>Hugging Face, LeRobot-Dokumentation für Unitree G1: <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co/docs/lerobot/en/unitree_g1</a></li>
 </ol>
 </section>
 </div>
-<div class="article-cta"><a class="btn btn-primary" href="/en/index-en.html">Training und Entwicklung auf dem Unitree SDK</a></div>
+<div class="article-cta"><h2>Schulung und Entwicklung mit dem Unitree SDK</h2><p>Wir liefern den G1 EDU konfiguriert und bieten als separate Leistung Schulung und Entwicklung auf Basis von unitree_sdk2 und ROS 2 an.</p><a class="btn btn-primary" href="/en/index-en.html">Software-Leistungen</a><a class="btn btn-outline-light" href="/de/unitree-g1.html">G1 EDU Konfigurationen</a></div>
 </div>
 </article>
 <footer class="footer">
