@@ -23,6 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from genera_hub_modelli import FAMILIES, template  # noqa: E402
+from lingue_chrome import localize_chrome  # noqa: E402
 
 SITE = "https://abrarobotics.com"
 LANGS = ["en", "de", "fr", "es", "pl", "nl", "cs", "sv", "da", "no", "fi"]
@@ -97,6 +98,9 @@ def localize(href: str, code: str) -> str:
         return p + frag
     if name == "blog.html":
         return lang_info(code)["home"]
+    # listino e finanziamenti: nelle lingue c'e' la sezione della home con prezzi e incentivi del paese
+    if code != "en" and name in ("listino-unitree.html", "finanziamenti.html"):
+        return lang_info(code)["home"] + ("#models" if name.startswith("listino") else "#incentives")
     m = re.match(r"prodotti/([a-z0-9-]+)\.html$", name)
     if m:
         en = ROOT / "en/prodotti" / f"{m.group(1)}-en.html"
@@ -198,7 +202,7 @@ def build(code: str, slug: str, frag_path: str) -> Path:
     head = fix_links(head, code)
     head = set_alternates(head, slug)
 
-    # menu e footer: versione inglese del sito (il supporto per le altre lingue e' in inglese)
+    # menu e footer: struttura del sito inglese, etichette tradotte da lingue_chrome
     _, _, en_body, en_footer = template(True)
     to_root = lambda s: re.sub(r'((?:href|src)=")(?!https?:|mailto:|tel:|/|#|data:)([^"]+)"', lambda m: m.group(1) + root_path(m.group(2), "/en/") + '"', s)  # noqa: E731
     body_top = to_root(en_body.replace("<body>", "", 1))
@@ -208,6 +212,7 @@ def build(code: str, slug: str, frag_path: str) -> Path:
     tail = re.sub(r'((?:href|src)=")(?!https?:|mailto:|tel:|/|#|data:)([^"]+)"', lambda m: m.group(1) + root_path(m.group(2)) + '"', tail)
     page = ("<!-- generato da scripts/blog_lingue.py da blog/" + slug + ".html -->\n" + head + "<body>\n" + body_top
             + "\n" + art + "\n" + footer + tail)
+    page = localize_chrome(page, code)
     out = path_of(code, slug)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
