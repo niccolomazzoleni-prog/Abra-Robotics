@@ -1,0 +1,452 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-g1-guida-operativa.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree G1 : démarrage, télécommande et réseau | Abra</title>
+<meta name="description" content="Guide Unitree G1 EDU : variantes U1 à U10, mise en marche, commandes de la télécommande R3, réseau 192.168.123.x, SSH, debug mode, batterie et protections."/>
+<meta name="keywords" content="Unitree G1 guida, accendere G1, G1-U1 U2 U3, telecomando G1 comandi, SSH 192.168.123.164, damping G1, Abra Robotics"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/fr/blog/unitree-g1-guida-operativa.html"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-guida-operativa.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-g1-guida-operativa.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/unitree-g1-guida-operativa.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-guida-operativa.html" hreflang="x-default" rel="alternate"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree G1 : démarrage, télécommande et réseau | Abra",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-10-15",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-full.png"
+    }
+  },
+  "inLanguage": "fr",
+  "description": "Guide Unitree G1 EDU : variantes U1 à U10, mise en marche, commandes de la télécommande R3, réseau 192.168.123.x, SSH, debug mode, batterie et protections.",
+  "url": "https://abrarobotics.com/fr/blog/unitree-g1-guida-operativa.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/fr/blog/unitree-g1-guida-operativa.html"
+  }
+}
+</script>
+
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree G1 : démarrage, télécommande et réseau | Abra"/>
+<meta property="og:description" content="Guide Unitree G1 EDU : variantes U1 à U10, mise en marche, commandes de la télécommande R3, réseau 192.168.123.x, SSH, debug mode, batterie et protections."/>
+<meta property="og:url" content="https://abrarobotics.com/fr/blog/unitree-g1-guida-operativa.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap">
+<div class="container">
+<nav class="breadcrumb"><a href="/fr/">Accueil</a> / <a href="/fr/">Blog</a> / Guide G1</nav>
+
+<figure class="article-cover hero-wide">
+<img src="/images/official/unitree-g1-01.webp" alt="Unitree G1 EDU U1, robot humanoïde Abra Robotics" width="1200" height="800" loading="eager"/>
+</figure>
+
+<header class="article-header">
+<p class="label">Unitree G1 · Guide d'utilisation</p>
+<h1>Unitree G1 : mettre en marche, utiliser la télécommande et connecter le PC</h1>
+<div class="article-meta"><time datetime="2026-10-15">Mis à jour le 15 octobre 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
+</header>
+
+<div class="article-layout">
+<div class="article-main">
+<p class="article-lead">Guide d'utilisation de l'<a href="/fr/unitree-g1.html">Unitree G1</a> EDU : variantes, mise en marche, commandes de la télécommande R3, batterie, réseau et SSH. Les commandes suivent l'autocollant officiel de la télécommande et la <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">documentation développeurs Unitree</a>. Pour la programmation avec le SDK et ROS 2, voir l'<a href="/en/blog/unitree-g1-programmazione.html">article dédié</a>.</p>
+
+<div class="article-content">
+
+<h2 id="varianti">Variantes du G1 EDU (U1 à U10)</h2>
+<p>Codes de la liste de prix Unitree. Les modèles diffèrent par la base mécanique (23 ou 29 DoF) et par le <strong>manipulateur</strong> monté. Le G1 Air ne permet pas le développement secondaire : dans le <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">tableau officiel Unitree</a>, cette ligne n'apparaît que pour le G1 EDU.</p>
+<div class="spec-table-wrap">
+<table>
+<thead><tr><th>SKU</th><th>DoF</th><th>Manipulateur</th><th>Fiche</th></tr></thead>
+<tbody>
+<tr><td><strong>G1 Air</strong></td><td>23</td><td>Dummy (non EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
+<tr><td><strong>G1-U1</strong></td><td>23</td><td>Mains dummy, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
+<tr><td><strong>G1-U2</strong></td><td>29</td><td>Dummy + taille 3 DoF + bras 7 DoF</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
+<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1 à trois doigts, sans capteurs tactiles</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
+<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1 à trois doigts, avec capteurs tactiles</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
+<tr><td><strong>G1-U5</strong></td><td>—</td><td>Inspire RH56DFQ, sans capteurs tactiles</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
+<tr><td><strong>G1-U6</strong></td><td>—</td><td>Inspire RH56DFTP, avec capteurs tactiles</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
+<tr><td><strong>G1-U7</strong></td><td>37</td><td>Revo2 Basic (5 doigts)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
+<tr><td><strong>G1-U8</strong></td><td>—</td><td>Revo2 Touch (5 doigts, avec capteurs tactiles)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
+<tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 sans capteurs tactiles (config. compacte)</td><td><a href="/en/prodotti/unitree-g1-u9-en.html">U9</a></td></tr>
+<tr><td><strong>G1-U10</strong></td><td>35</td><td>Revo2 Basic (5 doigts)</td><td><a href="/en/prodotti/unitree-g1-u10-en.html">U10</a></td></tr>
+</tbody>
+</table>
+</div>
+<p>Les prix figurent dans la <a href="/en/listino-unitree-en.html">liste de prix publique</a>. Pour choisir entre les versions, consultez le guide <a href="/en/blog/unitree-g1-quale-versione-scegliere.html">quel G1 choisir</a> ; si le travail se fait sur établi, regardez aussi le <a href="/fr/unitree-g1-d.html">G1-D</a>.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Produits cités dans l'article</span><a href="/fr/unitree-g1.html">Gamme G1</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Développement secondaire, 23 DoF, dock de calcul</p>
+<div class="product-card-price">38 005 € <small>HT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Voir la fiche</a><a class="product-card-link" href="/en/assessment-en.html">Devis</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-plus-en.html"><img alt="Unitree G1 EDU U2" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU U2</a></h3>
+<p>29 DoF : taille à 3 axes, bras à 7 axes</p>
+<div class="product-card-price">46 809 € <small>HT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Voir la fiche</a><a class="product-card-link" href="/en/assessment-en.html">Devis</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Batterie G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">Batterie G1</a></h3>
+<p>9000 mAh, remplacement rapide</p>
+<div class="product-card-price">880 € <small>HT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Voir la fiche</a><a class="product-card-link" href="/en/assessment-en.html">Devis</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2 id="protezione">Protection physique du robot</h2>
+<div class="callout callout-warning">
+<strong>Protections conseillées :</strong> sur un sol dur, le G1 se marque vite, surtout lors de démos avec beaucoup de mouvements au sol. Nous conseillons des <strong>protections souples (par exemple en néoprène) sur les bras et les jambes</strong> et, au premier démarrage, le <a href="/en/prodotti/unitree-g1-frame-en.html">cadre de protection</a> proposé au tarif. La méthode « depuis le sol » (L2+X) augmente le risque de marques sur les coudes et les genoux.
+</div>
+
+<h2 id="telecomando">Télécommande R3</h2>
+<p>Mise en marche : <strong>pression courte</strong> sur le bouton power, puis <strong>maintenir ≥2 s</strong> (deux bips). Arrêt : pression courte puis longue ≥2 s (trois bips).</p>
+<div class="callout callout-tip">
+<strong>Batterie de la télécommande :</strong> elle peut se décharger <em>avant</em> les batteries du G1. Gardez la télécommande chargée : sans la R3, vous ne contrôlez pas le robot en sécurité.
+</div>
+<p>Télécommande incluse ou disponible séparément : <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>.</p>
+
+<h2 id="comandi">Commandes de la télécommande (firmware actuel)</h2>
+<p>Les combinaisons peuvent changer avec la version du firmware : vérifiez toujours l'autocollant de votre télécommande avant d'utiliser le robot.</p>
+<p>Légende des commandes imprimée sur la télécommande R3 :</p>
+<ul>
+<li><strong>★</strong> = pression courte unique</li>
+<li><strong>▲</strong> = pression longue d'environ 2 secondes (en motion control, maintenir le <strong>damping</strong> L2 + B pendant <strong>5 secondes</strong> active la protection damping, comme l'indique l'autocollant)</li>
+</ul>
+
+<figure class="article-cover" style="max-width:100%;margin:28px 0">
+<img src="/images/blog/g1-telecomando-comandi.webp" alt="Tableau des commandes de la télécommande Unitree G1 R3" loading="lazy" style="padding:0;max-height:none;object-fit:contain"/>
+<figcaption style="padding:12px 16px;font-size:0.85rem;color:var(--gray-600);border-top:1px solid var(--gray-200);background:var(--gray-50)">Référence officielle Unitree des commandes de la télécommande R3.</figcaption>
+</figure>
+
+<h3>Zero moment / posture</h3>
+<div class="spec-table-wrap">
+<table class="kbd-table">
+<thead><tr><th>Commande</th><th>Touches</th><th>Type</th></tr></thead>
+<tbody>
+<tr><td><strong>Zero moment</strong></td><td>L2 + Y</td><td>★ couple nul, articulations libres : <strong>si le robot n'est pas suspendu, il tombe</strong></td></tr>
+<tr><td><strong>Damping</strong></td><td>L2 + B</td><td>★ amortit les moteurs : <strong>c'est la commande pour arrêter le robot</strong></td></tr>
+<tr><td><strong>Locked standing</strong></td><td>L2 + ↑</td><td>★ debout, articulations bloquées</td></tr>
+<tr><td><strong>Relevé depuis la position allongée</strong></td><td>L2 + X</td><td>★ Lie to Stand (sol dur uniquement, voir protection)</td></tr>
+<tr><td><strong>Assis</strong></td><td>L2 + ←</td><td>▲ attendre la fin de la transition</td></tr>
+<tr><td><strong>Squat / stand</strong></td><td>L2 + A</td><td>▲</td></tr>
+<tr><td><strong>Adapt rise</strong></td><td>R1 + R2 + X</td><td>★</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout callout-danger">
+<strong>Sécurité :</strong> pour arrêter le robot, utilisez le <strong>damping, L2 + B</strong> (en motion control, maintenez-le 5 secondes pour la protection damping). <strong>Ne le confondez pas avec L2 + Y</strong> (zero moment) : cette commande annule le couple des moteurs et, si le robot n'est pas suspendu au harnais ou au cadre, il tombe.
+</div>
+
+<h3>Motion control</h3>
+<div class="spec-table-wrap">
+<table class="kbd-table">
+<thead><tr><th>Mode</th><th>Touches</th><th>Remarques</th></tr></thead>
+<tbody>
+<tr><td><strong>Running mode</strong></td><td>R2 + A</td><td>▲ 2 s : course, mouvements plus dynamiques</td></tr>
+<tr><td>Vitesse basse/haute (run)</td><td>R2 + ↑ / ↓</td><td>▲</td></tr>
+<tr><td><strong>Regular mode (taille 1 DoF)</strong></td><td>R1 + X</td><td>▲ 2 s : <strong>marche stable</strong> (G1-U1 / taille 1 DoF)</td></tr>
+<tr><td><strong>Regular mode (taille 3 DoF)</strong></td><td>R1 + Y</td><td>▲ 2 s : <strong>marche stable</strong> (G1-U2+ / taille 3 DoF)</td></tr>
+<tr><td>Vitesse basse/haute (regular)</td><td>Double clic L2 / L1</td><td>▲</td></tr>
+<tr><td>Stepping / standing</td><td>Double clic START</td><td>▲</td></tr>
+<tr><td>Climb mode</td><td>R2 + B</td><td>▲</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout callout-tip">
+<strong>Salutations et gestes (handshake, wave, kiss, clap) :</strong> utilisez-les en <strong>Regular mode</strong>, avec <strong>R1 + Y</strong> si la taille a 3 DoF (U2+) ou <strong>R1 + X</strong> si elle a 1 DoF (U1). En <strong>Running mode (R2+A)</strong>, le robot est moins stable : une poignée de main ou un salut peut le déséquilibrer. Commandes interactives : SELECT + A (poignée de main), SELECT + Y (salut), double clic Y/X/A (voir l'autocollant).
+</div>
+
+<h3>Debug mode (développement SDK uniquement)</h3>
+<p><strong>L2 + R2</strong> arrête le motion controller pour éviter les conflits avec le SDK ; <strong>L2 + A</strong> permet de vérifier que le robot est bien en debug mode (source : <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitree, remote control</a>). Ce mode ne sert <em>qu'</em>en laboratoire, quand vous programmez les moteurs à bas niveau. Pour un usage normal à la télécommande, <strong>n'entrez pas</strong> en debug : redémarrez le G1 pour en sortir.</p>
+
+<h3>Séquences de mise en marche conseillées (selon l'autocollant)</h3>
+<ul>
+<li><strong>Depuis la position assise (conseillée) :</strong> mise en marche, puis (1) Damping, (2) Locked standing, (3) Running/Regular, démo, (4) Assis, arrêt. Étapes (2) et (3) avec une personne qui soutient le robot aux épaules.</li>
+<li><strong>Depuis la position allongée :</strong> mise en marche, puis (1), (10), démo, (6), arrêt.</li>
+<li><strong>Depuis le squat :</strong> mise en marche, puis (1), (6), démo, (6), arrêt.</li>
+</ul>
+
+<h2 id="accensione">Mise en marche de la batterie du G1</h2>
+<ol>
+<li>Insérez la batterie jusqu'au clic (interrupteur tourné vers l'arrière).</li>
+<li>Pression courte sur le bouton, puis maintenez ≥2 s.</li>
+<li>Attendez environ 1 min : toutes les articulations sont en <strong>zero torque</strong>.</li>
+<li>Suivez la séquence de la télécommande ci-dessus : d'abord le <strong>damping (L2 + B)</strong>, puis continuez.</li>
+</ol>
+
+<h3>Méthode suspendue au cadre (laboratoire)</h3>
+<p>Conseillée au premier démarrage : <a href="/en/prodotti/unitree-g1-frame-en.html">cadre de protection</a>. Suspendez le robot et ne posez les pieds au sol qu'après stabilisation en Regular mode. Bras et jambes libres, aucun câble tendu.</p>
+
+<h3>Méthode depuis le sol (L2+X)</h3>
+<div class="callout callout-danger">
+Uniquement sur une surface <strong>plane et dure</strong>. Le robot se relève seul : restez à distance. Avec des manipulateurs (U3 à U10), évitez cette méthode. Utilisez des protections en néoprène : sur le béton, le mouvement marque tout de suite le plastique et l'aluminium.
+</div>
+
+<h2 id="carico">Charge utile et bras</h2>
+<p>Unitree annonce une charge maximale par bras d'environ <strong>3 kg sur le G1 EDU</strong> (environ 2 kg sur le G1 de base) et précise qu'elle varie beaucoup selon la posture du bras (<a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">fiche G1</a>). En pratique, bras tendu, même <strong>1 kg</strong> peut déséquilibrer le robot vers l'avant et perturber la marche. Pour les salutations et les gestes, ne chargez pas les bras.</p>
+
+<h2 id="batteria">Batterie et autonomie</h2>
+<p>Selon Unitree, le G1 est équipé d'une batterie intelligente à remplacement rapide de <strong>9000 mAh</strong>, pour <strong>environ 2 heures</strong> d'autonomie. La valeur réelle baisse en cas de marche continue et de charges sur les bras.</p>
+<ul>
+<li>Pour une journée d'essais, il faut au moins deux batteries : la <a href="/en/prodotti/unitree-g1-battery-en.html">batterie supplémentaire G1</a> est au tarif à 880 €, le <a href="/en/prodotti/unitree-g1-charger-en.html">chargeur</a> à 147 € (HT).</li>
+<li>Éteignez le robot avant de changer la batterie et remettez-le en damping avant de le faire se relever.</li>
+<li>Gardez aussi la télécommande R3 chargée : sans elle, vous n'avez pas de moyen rapide d'arrêter le robot.</li>
+</ul>
+
+<h2 id="rete">Réseau et SSH</h2>
+<p>Placez le PC sur le sous-réseau <code>192.168.123.0/24</code> avec une IP statique libre (par ex. <code>.51</code> ; <strong>n'utilisez pas</strong> .161, .164, .120). Le PC1 (.161) exécute le contrôle de mouvement Unitree et n'est pas ouvert aux développeurs ; le développement se fait sur le PC2 (.164).</p>
+<ul>
+<li><strong>Ethernet direct</strong> sur le port LAN du G1</li>
+<li><strong>Wi‑Fi</strong> : d'après la <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">documentation LeRobot</a>, le Wi‑Fi du PC2 est désactivé par défaut et doit être activé à la main ; pour installer des paquets, vous pouvez partager la connexion du PC via Ethernet.</li>
+</ul>
+
+<div class="ip-grid">
+<div class="ip-card"><code>192.168.123.161</code><span>MCU / motion controller Unitree</span></div>
+<div class="ip-card"><code>192.168.123.164</code><span>Jetson Orin (PC2), SSH <code>unitree</code> / <code>123</code></span></div>
+<div class="ip-card"><code>192.168.123.120</code><span>LiDAR Livox MID-360 (tête)</span></div>
+</div>
+
+<pre><code>ping 192.168.123.164
+ssh unitree@192.168.123.164
+# Mot de passe par défaut : 123</code></pre>
+<div class="callout callout-warning">
+<strong>Identifiants :</strong> <code>unitree</code> / <code>123</code> sont les identifiants par défaut, également indiqués dans la documentation LeRobot. Unitree demande de s'adresser au support pour obtenir les identifiants initiaux : ils peuvent donc différer sur certaines unités. Après la première connexion, changez le mot de passe, surtout si le robot rejoint le réseau de l'entreprise.
+</div>
+
+<p><strong><a href="/fr/unitree-h2.html">H2</a> :</strong> il utilise le même sous-réseau 192.168.123.x, avec un PC1 pour le contrôle (Intel Core i5) et un PC2 pour le développement (Intel Core i7 sur la version EDU, selon la <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">fiche Unitree</a>). Les adresses exactes dépendent de la configuration : vérifiez-les dans la documentation de livraison.</p>
+
+<h2 id="errori">Problèmes fréquents</h2>
+<ul>
+<li><strong>Le ping ne répond pas</strong> : vérifiez le câble Ethernet et l'IP du PC, puis <strong>redémarrez le robot</strong>.</li>
+<li><strong>SSH ne se connecte pas ou est lent</strong> : trop de sessions SSH ouvertes ou Jetson saturé ; redémarrez le G1.</li>
+<li><strong>Le SDK fait trembler les articulations</strong> : motion controller actif en parallèle, ou <strong>double commande</strong> (télécommande et SDK en même temps). Entrez en debug mode uniquement pour le développement, ou arrêtez les commandes SDK.</li>
+</ul>
+
+<h2 id="prossimi">Étapes suivantes</h2>
+<ul>
+<li><a href="/en/blog/unitree-g1-programmazione.html">SDK2 et ROS2</a></li>
+<li><a href="/en/accessori-en.html">Accessoires et protections</a></li>
+<li><a href="/fr/blog/ros2-unitree-guida-rapida.html">ROS 2 sur Unitree, guide rapide</a></li>
+<li><a href="/en/blog/unitree-regolamento-macchine-2027.html">Sécurité et règlement Machines 2027</a></li>
+<li><a href="/fr/#cta-finale">Contacter Abra pour l'assistance</a></li>
+</ul>
+
+</div>
+
+<section class="article-faq" id="faq">
+<h2>Questions fréquentes</h2>
+<div class="faq-item"><h3>G1-U1 ou G1-U2 ?</h3><p>U1 = 23 DoF, taille 1 DoF. U2 = 29 DoF, taille 3 DoF et bras 7 DoF : c'est la base pour la manipulation.</p></div>
+<div class="faq-item"><h3>Quel mode de marche pour les salutations ?</h3><p>R1+Y (taille 3 DoF, U2+) ou R1+X (taille 1 DoF, U1) en Regular mode, pas R2+A en Running mode.</p></div>
+<div class="faq-item"><h3>Quel est le mot de passe SSH ?</h3><p>Par défaut unitree / 123 sur 192.168.123.164 (PC2). Sur certaines unités, ils peuvent être différents : Unitree les fournit via son support. Changez-les après la première connexion.</p></div>
+<div class="faq-item"><h3>Comment arrêter le G1 en sécurité ?</h3><p>Avec le damping, L2 + B. N'utilisez pas L2 + Y (zero moment) : cette commande annule le couple et le robot tombe s'il n'est pas suspendu.</p></div>
+<div class="faq-item"><h3>Quelle est l'autonomie de la batterie du G1 ?</h3><p>Environ 2 heures selon Unitree, avec la batterie de 9000 mAh. Pour une journée d'essais, il faut au moins deux batteries.</p></div>
+<div class="faq-item"><h3>Le G1 Air se connecte-t-il en SSH comme l'EDU ?</h3><p>Non. Le développement secondaire n'est prévu que sur le G1 EDU, qui dispose du PC2 pour le code utilisateur.</p></div>
+</section>
+
+<section class="article-references" id="fonti">
+<h2>Sources</h2>
+<ol>
+<li>Unitree, fiche technique G1 et G1 EDU (dimensions, batterie, charge par bras, garantie) : <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree Document Center, G1 developer : télécommande et debug mode : <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree Document Center, G1 developer : architecture et unités de calcul : <a href="https://support.unitree.com/home/en/G1_developer/about_G1" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree Document Center, G1 developer : LiDAR Livox MID-360 (IP 192.168.123.120) : <a href="https://support.unitree.com/home/en/G1_developer/lidar_Instructions" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Hugging Face, documentation LeRobot pour l'Unitree G1 (réseau, SSH, Wi‑Fi) : <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
+<li>Unitree, fiche technique H2 : <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">unitree.com/H2</a></li>
+<li>Unitree, SDK Python officiel : <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a></li>
+</ol>
+</section>
+
+<div class="article-cta">
+<h2>Vous venez de recevoir un G1 ?</h2>
+<p>Pour toute question sur la mise en route, le réseau ou les commandes, votre premier contact est Abra Robotics (support en anglais).</p>
+<a class="btn btn-primary" href="/fr/#cta-finale">Nous contacter</a>
+<a class="btn btn-outline-light" href="/fr/unitree-g1.html">Gamme G1</a>
+</div>
+
+</div>
+
+<aside class="article-toc">
+<p class="article-toc-title">Sommaire</p>
+<ol>
+<li><a href="#varianti">Variantes U1 à U10</a></li>
+<li><a href="#protezione">Protection</a></li>
+<li><a href="#telecomando">Télécommande</a></li>
+<li><a href="#comandi">Commandes (autocollant)</a></li>
+<li><a href="#accensione">Mise en marche</a></li>
+<li><a href="#carico">Charge utile des bras</a></li>
+<li><a href="#batteria">Batterie</a></li>
+<li><a href="#rete">Réseau et SSH</a></li>
+<li><a href="#errori">Problèmes</a></li>
+<li><a href="#faq">Questions fréquentes</a></li>
+<li><a href="#fonti">Sources</a></li>
+</ol>
+</aside>
+
+</div>
+</div>
+</article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body>
+</html>
