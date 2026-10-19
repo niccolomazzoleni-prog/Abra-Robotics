@@ -24,4 +24,34 @@
   // Pagine prerenderizzate dal browser: si contano solo se l'utente le apre davvero.
   if (document.prerendering) document.addEventListener('prerenderingchange', send, { once: true });
   else send();
+
+  // Azioni (clic e invio moduli): stessi principi, si manda solo tipo di azione, pagina
+  // e, per i link interni, il percorso di destinazione. Nessun testo digitato, nessun identificativo.
+  function action(type, target) {
+    try {
+      navigator.sendBeacon(ENDPOINT, JSON.stringify({ p: location.pathname, e: type, t: target || '' }));
+    } catch (e) {}
+  }
+  function classify(a) {
+    var href = a.getAttribute('href') || '';
+    var url;
+    try { url = new URL(href, location.href); } catch (e) { return null; }
+    var internal = url.hostname === location.hostname;
+    var path = internal ? url.pathname : '';
+    if (/(^|\.)wa\.me$|whatsapp/i.test(url.hostname + url.pathname)) return ['whatsapp', ''];
+    if (/calendar\.google\.com|calendly\.com/i.test(url.hostname)) return ['chiamata', ''];
+    if (url.protocol === 'tel:') return ['telefono', ''];
+    if (url.protocol === 'mailto:') return ['email', ''];
+    if (a.closest('.product-card')) return a.classList.contains('product-card-link') ? ['preventivo', path] : ['card', path];
+    if (a.closest('.article-cta')) return ['cta', path];
+    if (internal && (/\/assessment(-en)?\.html$/.test(url.pathname) || /^#(cta-finale|form|contatti)$/.test(url.hash))) return ['preventivo', path];
+    return null;
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var c = classify(a);
+    if (c) action(c[0], c[1]);
+  }, true);
+  document.addEventListener('submit', function () { action('modulo', ''); }, true);
 })();
