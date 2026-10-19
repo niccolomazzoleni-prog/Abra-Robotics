@@ -129,11 +129,19 @@ def fix_links(s: str, code: str, base: str = "/blog/") -> str:
 
 
 def faq_of(article: str) -> list[tuple[str, str]]:
-    sec = re.search(r'<section class="article-faq">([\s\S]*?)</section>', article)
-    if not sec:
-        return []
+    # tre forme nei post: <section class="article-faq" ...>, <div class="faq-item">, oppure h3+p dopo l'ultimo h2 prima delle fonti
+    sec = re.search(r'<section class="article-faq"[^>]*>([\s\S]*?)</section>', article)
+    if sec:
+        body = sec.group(1)
+    elif 'class="faq-item"' in article:
+        body = "".join(re.findall(r'<div class="faq-item">([\s\S]*?)</div>', article))
+    else:
+        blocks = re.findall(r"<h2[^>]*>[^<]*</h2>\s*((?:<h3[^>]*>[\s\S]*?</h3>\s*<p>[\s\S]*?</p>\s*){2,})(?=<h2|</div>|<div|<p|<section|</article)", article)
+        if not blocks:
+            return []
+        body = blocks[-1]
     out = []
-    for q, a in re.findall(r"<h3>([\s\S]*?)</h3>\s*<p>([\s\S]*?)</p>", sec.group(1)):
+    for q, a in re.findall(r"<h3[^>]*>([\s\S]*?)</h3>\s*<p>([\s\S]*?)</p>", body):
         strip = lambda x: H.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", x))).strip()  # noqa: E731
         out.append((strip(q), strip(a)))
     return out
