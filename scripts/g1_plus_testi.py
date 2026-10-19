@@ -37,7 +37,7 @@ T = {
         ("Microfoni e altoparlanti", "Array di 6 microfoni (4 davanti e 2 dietro) con localizzazione della sorgente sonora (DOA), riduzione del rumore e cancellazione dell'eco; supporta microfoni wireless esterni (custodia di ricarica con portata 50 m e rapporto segnale/rumore 80 dB). Due altoparlanti da 10 W in vita."),
     ],
     "specs_h2": "Specifiche ufficiali G1+ e G1+ EDU",
-    "specs_intro": "Dati della pagina ufficiale Unitree, così come pubblicati. La versione EDU aggiunge lo sviluppo secondario, più gradi di libertà opzionali e moduli di calcolo.",
+    "specs_intro": "Dati della pagina ufficiale Unitree, così come pubblicati. La versione EDU aggiunge lo sviluppo software con SDK, più gradi di libertà opzionali e moduli di calcolo.",
     "col": "Specifica",
     "s": {
         "sec_mech": "Meccanica", "sec_elec": "Elettronica", "sec_acc": "Accessori", "sec_other": "Altro",
@@ -50,7 +50,7 @@ T = {
         "power": "Alimentazione", "cpu": "Calcolo di base", "sensors": "Sensori", "mics": "Array di 6 microfoni",
         "speakers": "Altoparlanti 10 W", "wifi": "Wi-Fi 6, Bluetooth 5.2", "compute_module": "Modulo di calcolo ad alte prestazioni",
         "battery": "Batteria smart (sgancio rapido)", "charger": "Caricabatterie", "remote": "Telecomando", "battery_life": "Autonomia",
-        "ota": "Aggiornamenti OTA", "sdk": "Sviluppo secondario", "warranty": "Garanzia ²", "price": "Prezzo",
+        "ota": "Aggiornamenti OTA", "sdk": "Sviluppo software con SDK", "warranty": "Garanzia ²", "price": "Prezzo",
     },
     "v": {
         "approx": "circa {x}", "yes": "Sì", "waist_opt": "1, oppure vita a 3 gradi di libertà opzionale",
@@ -67,7 +67,7 @@ T = {
     "faq": [
         ("Quanto costa l'Unitree G1+?", "Il G1+ è su richiesta: non ha ancora un prezzo a listino Abra. Ti mandiamo un preventivo scritto per la versione che ti serve (G1+ o G1+ EDU)."),
         ("Che differenza c'è tra G1+ e G1?", "Secondo Unitree il G1+ aggiunge 2 gradi di libertà alla testa, motori di spalle, vita e braccia più potenti e meno caldi, una doppia visione binoculare più grandangolare, sensori tattili sulla testa, l'alimentazione esterna e un array di 6 microfoni con due altoparlanti da 10 W."),
-        ("Che differenza c'è tra G1+ e G1+ EDU?", "Il G1+ EDU aggiunge lo sviluppo secondario, fino a 45 gradi di libertà con mani destre e polsi opzionali, vita a 3 gradi di libertà opzionale, moduli di calcolo come Orin, carico al braccio di circa 4 kg (contro circa 3 kg) e garanzia di 18 mesi (contro 8)."),
+        ("Che differenza c'è tra G1+ e G1+ EDU?", "Il G1+ EDU aggiunge lo sviluppo software con SDK, fino a 45 gradi di libertà con mani destre e polsi opzionali, vita a 3 gradi di libertà opzionale, moduli di calcolo come Orin, carico al braccio di circa 4 kg (contro circa 3 kg) e garanzia di 18 mesi (contro 8)."),
         ("Il G1+ è lo stesso robot del G1 EDU Plus?", "No. Il G1 EDU Plus (U2) è una versione EDU del G1 attuale. Il G1+ è il nuovo modello aggiornato descritto in questa pagina."),
     ],
     "family_h2": "Gli altri modelli G1",
@@ -105,7 +105,7 @@ T = {
         ("Microphones and speakers", "6-microphone array (4 front, 2 rear) with DOA sound-source localisation, noise reduction and echo cancellation; supports external wireless microphones (charging case with 50 m range and 80 dB signal-to-noise ratio). Dual 10 W waist speakers."),
     ],
     "specs_h2": "Official G1+ and G1+ EDU specifications",
-    "specs_intro": "Data from Unitree's official product page, as published. The EDU version adds secondary development, optional extra degrees of freedom and computing modules.",
+    "specs_intro": "Data from Unitree's official product page, as published. The EDU version adds custom software development, optional extra degrees of freedom and computing modules.",
     "col": "Specification",
     "s": {
         "sec_mech": "Mechanical", "sec_elec": "Electrical", "sec_acc": "Accessories", "sec_other": "Other",
@@ -118,7 +118,7 @@ T = {
         "power": "Power supply", "cpu": "Basic computing", "sensors": "Sensors", "mics": "6-microphone array",
         "speakers": "10 W speakers", "wifi": "Wi-Fi 6, Bluetooth 5.2", "compute_module": "High computing power module",
         "battery": "Smart battery (quick release)", "charger": "Charger", "remote": "Remote controller", "battery_life": "Battery life",
-        "ota": "Smart OTA upgrades", "sdk": "Secondary development", "warranty": "Warranty ²", "price": "Price",
+        "ota": "Smart OTA upgrades", "sdk": "Custom software development", "warranty": "Warranty ²", "price": "Price",
     },
     "v": {
         "approx": "approx. {x}", "yes": "Yes", "waist_opt": "1, or optional 3-DoF waist",
@@ -135,7 +135,7 @@ T = {
     "faq": [
         ("How much does the Unitree G1+ cost?", "The G1+ is priced on request: it does not have an Abra list price yet. We send a written quote for the version you need (G1+ or G1+ EDU)."),
         ("What is the difference between the G1+ and the G1?", "According to Unitree, the G1+ adds 2 head degrees of freedom, stronger and cooler-running shoulder, waist and arm motors, a wider binocular dual vision system, head touch sensors, external power supply and a 6-microphone array with dual 10 W speakers."),
-        ("What is the difference between the G1+ and the G1+ EDU?", "The G1+ EDU adds secondary development, up to 45 degrees of freedom with optional dexterous hands and wrists, an optional 3-DoF waist, computing modules such as Orin, an arm load of approx. 4 kg (vs approx. 3 kg) and an 18-month warranty (vs 8)."),
+        ("What is the difference between the G1+ and the G1+ EDU?", "The G1+ EDU adds custom software development, up to 45 degrees of freedom with optional dexterous hands and wrists, an optional 3-DoF waist, computing modules such as Orin, an arm load of approx. 4 kg (vs approx. 3 kg) and an 18-month warranty (vs 8)."),
         ("Is the G1+ the same robot as the G1 EDU Plus?", "No. The G1 EDU Plus (U2) is an EDU version of the current G1. The G1+ is the new upgraded model described on this page."),
     ],
     "family_h2": "Other G1 models",
@@ -169,7 +169,7 @@ T = {
         ("Mikrofone und Lautsprecher", "Array aus 6 Mikrofonen (4 vorne, 2 hinten) mit DOA-Schallquellenortung, Rauschunterdrückung und Echounterdrückung; unterstützt externe Funkmikrofone (Ladeetui mit 50 m Reichweite und 80 dB Signal-Rausch-Abstand). Zwei 10-W-Lautsprecher an der Hüfte."),
     ],
     "specs_h2": "Technische Daten G1+ und G1+ EDU (Herstellerangaben)",
-    "specs_intro": "Daten von der offiziellen Unitree-Produktseite, wie veröffentlicht. Die EDU-Version ergänzt Sekundärentwicklung, optionale zusätzliche Freiheitsgrade und Rechenmodule.",
+    "specs_intro": "Daten von der offiziellen Unitree-Produktseite, wie veröffentlicht. Die EDU-Version ergänzt SDK-Programmierung, optionale zusätzliche Freiheitsgrade und Rechenmodule.",
     "col": "Merkmal",
     "s": {
         "sec_mech": "Mechanik", "sec_elec": "Elektrik", "sec_acc": "Zubehör", "sec_other": "Sonstiges",
@@ -182,7 +182,7 @@ T = {
         "power": "Stromversorgung", "cpu": "Basis-Rechenleistung", "sensors": "Sensoren", "mics": "Array aus 6 Mikrofonen",
         "speakers": "10-W-Lautsprecher", "wifi": "Wi-Fi 6, Bluetooth 5.2", "compute_module": "Hochleistungs-Rechenmodul",
         "battery": "Smart-Akku (Schnellwechsel)", "charger": "Ladegerät", "remote": "Fernbedienung", "battery_life": "Akkulaufzeit",
-        "ota": "OTA-Updates", "sdk": "Sekundärentwicklung", "warranty": "Garantie ²", "price": "Preis",
+        "ota": "OTA-Updates", "sdk": "SDK-Programmierung", "warranty": "Garantie ²", "price": "Preis",
     },
     "v": {
         "approx": "ca. {x}", "yes": "Ja", "waist_opt": "1, optional Hüfte mit 3 Freiheitsgraden",
@@ -198,7 +198,7 @@ T = {
     "faq": [
         ("Was kostet der Unitree G1+?", "Der G1+ ist auf Anfrage erhältlich: Es gibt noch keinen Listenpreis von Abra. Wir senden Ihnen ein schriftliches Angebot für die gewünschte Version (G1+ oder G1+ EDU)."),
         ("Was ist der Unterschied zwischen G1+ und G1?", "Laut Unitree bringt der G1+ 2 Freiheitsgrade am Kopf, stärkere und kühlere Motoren an Schulter, Hüfte und Armen, ein breiteres Stereo-Kamerasystem, Berührungssensoren am Kopf, externe Stromversorgung sowie 6 Mikrofone mit zwei 10-W-Lautsprechern."),
-        ("Was ist der Unterschied zwischen G1+ und G1+ EDU?", "Der G1+ EDU ergänzt Sekundärentwicklung, bis zu 45 Freiheitsgrade mit optionalen Händen und Handgelenken, optional eine Hüfte mit 3 Freiheitsgraden, Rechenmodule wie Orin, ca. 4 kg Armlast (statt ca. 3 kg) und 18 Monate Garantie (statt 8)."),
+        ("Was ist der Unterschied zwischen G1+ und G1+ EDU?", "Der G1+ EDU ergänzt SDK-Programmierung, bis zu 45 Freiheitsgrade mit optionalen Händen und Handgelenken, optional eine Hüfte mit 3 Freiheitsgraden, Rechenmodule wie Orin, ca. 4 kg Armlast (statt ca. 3 kg) und 18 Monate Garantie (statt 8)."),
         ("Ist der G1+ derselbe Roboter wie der G1 EDU Plus?", "Nein. Der G1 EDU Plus (U2) ist eine EDU-Version des aktuellen G1. Der G1+ ist das neue, verbesserte Modell auf dieser Seite."),
     ],
     "family_h2": "Weitere G1-Modelle",
