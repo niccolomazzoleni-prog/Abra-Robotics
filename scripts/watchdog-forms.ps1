@@ -45,7 +45,8 @@ function Test-LiveScriptConfig {
     $txt = $r.Content
     $o.has_primary = $txt.Contains($ExpectedPrimaryToken)
     # secondary enabled only if URL assigned to a non-empty string literal (not '')
-    $o.secondary_enabled = ($txt -match "GOOGLE_SCRIPT_URL_SECONDARY\s*=\s*'https://script\.google\.com")
+    # solo righe attive: la riga commentata con l'URL di riserva non conta
+    $o.secondary_enabled = ($txt -match "(?m)^\s*window\.GOOGLE_SCRIPT_URL_SECONDARY\s*=\s*'https://script\.google\.com")
     $o.ok = $o.has_primary
   } catch {
     $o.error = $_.Exception.Message
