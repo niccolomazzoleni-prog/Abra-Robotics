@@ -1,0 +1,328 @@
+<!-- generato da scripts/blog_lingue.py da blog/poc-robot-umanoide-azienda.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PoC robot humanoïde en entreprise : étapes, KPI, risques</title>
+<meta name="description" content="Mener un PoC avec un humanoïde Unitree en entreprise : étapes, durées indicatives, KPI à fixer avant, choix entre G1, G1-D et R1, sécurité et normes."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/fr/blog/poc-robot-umanoide-azienda.html"/>
+<link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/poc-robot-umanoide-azienda.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="x-default" rel="alternate"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "PoC robot humanoïde en entreprise : étapes, KPI, risques",
+  "description": "Mener un PoC avec un humanoïde Unitree en entreprise : étapes, durées indicatives, KPI à fixer avant, choix entre G1, G1-D et R1, sécurité et normes.",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-10-15",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/fr/blog/poc-robot-umanoide-azienda.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-d-standard.webp",
+  "inLanguage": "fr",
+  "url": "https://abrarobotics.com/fr/blog/poc-robot-umanoide-azienda.html"
+}
+  </script>
+  
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="PoC robot humanoïde en entreprise : étapes, KPI, risques"/>
+<meta property="og:description" content="Mener un PoC avec un humanoïde Unitree en entreprise : étapes, durées indicatives, KPI à fixer avant, choix entre G1, G1-D et R1, sécurité et normes."/>
+<meta property="og:url" content="https://abrarobotics.com/fr/blog/poc-robot-umanoide-azienda.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/fr/">Accueil</a> / <a href="/fr/">Blog</a> / PoC humanoïde</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-d-standard.webp" alt="Unitree G1-D à deux bras sur pied fixe, plateforme pour un PoC de manipulation" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">PoC · Humanoïdes</p>
+<h1>PoC avec un robot humanoïde en entreprise : étapes, KPI et risques</h1>
+<div class="article-meta"><time datetime="2026-07-13">13 juillet 2026</time><span>Mis à jour le 9 octobre 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>En bref :</strong> un PoC avec un humanoïde sert à répondre à une question précise (ce robot fait-il cette tâche, à cette cadence, avec ces interventions humaines ?) avant d'investir dans plusieurs unités. Il fonctionne si les KPI, le périmètre et les critères de réussite sont écrits avant d'allumer le robot. Les durées indiquées ici sont indicatives et dépendent du cas.</div>
+</header>
+
+<div class="article-content">
+<p>Un <strong>PoC avec un robot humanoïde</strong>, ce n'est pas acheter le robot et voir ce qui se passe. C'est une expérience avec un périmètre défini, des métriques écrites noir sur blanc et une décision finale : continuer, changer d'approche ou arrêter. Ce guide décrit une méthode qu'une entreprise peut suivre, les KPI à fixer, la manière de choisir la plateforme Unitree et les normes de sécurité à garder en tête.</p>
+
+<h2>Ce qu'un PoC doit démontrer</h2>
+<p>Un PoC répond à une seule question, formulée de façon vérifiable. Voici des exemples de questions bien posées :</p>
+<ul>
+<li>Le robot prend-il les cartons sur une palette pour les poser sur le convoyeur avec un taux de réussite acceptable ?</li>
+<li>Le robot collecte-t-il des données de téléopération exploitables pour entraîner une politique de manipulation ?</li>
+<li>Le robot effectue-t-il une ronde d'inspection visuelle dans une zone sans intervention de l'opérateur ?</li>
+</ul>
+<p>Des questions comme « voyons ce qu'il sait faire » ou « faisons une démo » produisent des vidéos, pas des décisions. Si la question n'est pas claire, la première étape est une analyse du processus, pas l'achat.</p>
+
+<h2>Les étapes d'un PoC, avec des durées indicatives</h2>
+<p>La séquence ci-dessous est celle que nous décrivons sur la page <a href="/en/assessment-en.html">Assessment et PoC</a> : les quatre premières étapes représentent une durée indicative de 5 à 9 semaines pour un cas d'usage unique. Les étapes suivantes dépendent du périmètre et sont fixées dans le plan de PoC.</p>
+<table>
+<thead><tr><th>Étape</th><th>Ce que l'on fait</th><th>Livrable</th><th>Durée indicative</th></tr></thead>
+<tbody>
+<tr><td>1. Cartographie du processus</td><td>Tâche, espaces, flux, contraintes de sécurité, situation de référence actuelle</td><td>Description de la tâche et KPI de départ</td><td>1 à 2 semaines</td></tr>
+<tr><td>2. Comparaison des solutions</td><td>Humanoïde, cobot, AMR ou pas de robot</td><td>Liste restreinte argumentée</td><td>~1 semaine</td></tr>
+<tr><td>3. Simulation</td><td>Modèle 3D du poste et du robot</td><td>Faisabilité et points critiques</td><td>2 à 4 semaines</td></tr>
+<tr><td>4. Plan de PoC</td><td>Objectifs, matériel, périmètre de test, évaluation préliminaire des risques</td><td>Plan de PoC et critères de réussite</td><td>1 à 2 semaines</td></tr>
+<tr><td>5. Exécution</td><td>Mise en place, tests en zone délimitée, collecte de données</td><td>Données sur les KPI</td><td>À définir dans le plan</td></tr>
+<tr><td>6. Décision</td><td>Comparaison des KPI mesurés et attendus</td><td>Go, no-go ou révision</td><td>À définir dans le plan</td></tr>
+</tbody>
+</table>
+<p>Si le PoC nécessite un robot neuf, il faut aussi compter le délai de livraison : pour les humanoïdes, nous indiquons 4 à 6 semaines après la signature (voir la <a href="/fr/">page d'accueil</a>).</p>
+
+<h2>Les KPI à écrire avant de commencer</h2>
+<p>Un KPI fixé après les tests s'adapte toujours au résultat. C'est pourquoi il faut les écrire dans le plan, avec une valeur seuil. Les plus utilisés :</p>
+<ul>
+<li><strong>Taux de réussite</strong> : tâches réalisées sur tâches tentées, sur un nombre minimal d'essais.</li>
+<li><strong>Temps de cycle</strong> : secondes par tâche, comparées au temps actuel.</li>
+<li><strong>Interventions humaines</strong> : combien de fois l'opérateur doit corriger, repositionner ou arrêter le robot par heure de travail.</li>
+<li><strong>Autonomie réelle</strong> : heures de travail effectives par batterie, à comparer à la donnée du fabricant (environ 2 heures pour le G1, environ 6 heures pour le G1-D avec base mobile, environ 1 heure pour le R1).</li>
+<li><strong>Temps de remise en route</strong> : le temps nécessaire pour rendre le robot opérationnel après un changement de tâche ou une chute.</li>
+</ul>
+<p><em>Exemple avec des chiffres hypothétiques :</em> seuil de réussite à 90 % sur 200 prises, temps de cycle maximal de 20 secondes, pas plus de 2 interventions par heure. Si le PoC se termine à 80 % avec 6 interventions par heure, le rapport doit dire pourquoi (préhension, perception, positionnement) et s'il existe une correction plausible.</p>
+
+<h2>Quel humanoïde utiliser pour le PoC</h2>
+<table>
+<thead><tr><th>Tâche</th><th>Plateforme</th><th>Prix utilisateur final (HT)</th></tr></thead>
+<tbody>
+<tr><td>Prise et dépose sur établi, collecte de données de téléopération</td><td><a href="/fr/unitree-g1-d.html">G1-D</a> Standard (pied fixe)</td><td>dès 38 005 €</td></tr>
+<tr><td>Manipulation sur plusieurs postes</td><td><a href="/prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (base mobile)</td><td>dès 51 944 €</td></tr>
+<tr><td>Manipulation compacte à budget réduit</td><td><a href="/fr/unitree-r1-d.html">R1-D</a></td><td>prix sur demande</td></tr>
+<tr><td>Locomotion, logiciel, IA incarnée</td><td><a href="/fr/unitree-g1.html">G1</a> EDU</td><td>dès 38 005 € (G1-U1)</td></tr>
+<tr><td>Enseignement et essais à faible coût</td><td><a href="/fr/unitree-r1.html">R1</a> EDU</td><td>dès 14 930 € (R1-U1)</td></tr>
+<tr><td>Interaction à échelle humaine</td><td><a href="/fr/unitree-h2.html">H2</a></td><td>dès 43 874 € (H2 Air)</td></tr>
+</tbody>
+</table>
+<p>Pour un PoC où le robot doit être programmé, il faut les versions avec développement secondaire (EDU), qu'Unitree indique dans les caractéristiques du <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1</a> et du <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">R1</a>. Si la tâche se limite à la manipulation, un torse sans jambes comme le G1-D (caractéristiques sur <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a>) élimine le risque de chute et simplifie la cellule. Comparaison complète : <a href="/en/blog/confronto-umanoidi-2026.html">quel humanoïde Unitree choisir</a>.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Produits cités dans l'article</span><a href="/en/umanoidi-en.html">Tous les humanoïdes</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/prodotti/unitree-g1-d-standard.html"><img alt="Unitree G1-D Standard" loading="lazy" src="/images/prodotti/g1-d-standard.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/prodotti/unitree-g1-d-standard.html">Unitree G1-D Standard</a></h3>
+<p>Torse à deux bras sur pied fixe</p>
+<div class="product-card-price">dès 38 005 € <small>HT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/prodotti/unitree-g1-d-standard.html">Voir la fiche</a><a class="product-card-link" href="/en/assessment-en.html">Devis</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Développement secondaire, 23 DoF, dock de calcul</p>
+<div class="product-card-price">38 005 € <small>HT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Voir la fiche</a><a class="product-card-link" href="/en/assessment-en.html">Devis</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-r1-edu-en.html"><img alt="Unitree R1 EDU (U1)" loading="lazy" src="/images/official/unitree-r1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-r1-edu-en.html">Unitree R1 EDU (U1)</a></h3>
+<p>Développement secondaire, 26-40 degrés de liberté</p>
+<div class="product-card-price">14 930 € <small>HT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-r1-edu-en.html">Voir la fiche</a><a class="product-card-link" href="/en/assessment-en.html">Devis</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Sécurité et normes à prendre en compte</h2>
+<p><em>Informations générales, pas un conseil juridique.</em></p>
+<p>Aujourd'hui, les machines mises sur le marché de l'UE relèvent de la <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">directive Machines 2006/42/CE</a>. À partir du 20 janvier 2027 s'applique le <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">règlement (UE) 2023/1230</a>, qui abroge la directive à la même date. Pour les robots industriels, la référence technique est la série <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a>, révisée en 2025. Pour les robots mobiles à stabilité active (à jambes ou sur roues en équilibre), l'ISO développe la norme <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, pas encore publiée sous sa forme définitive au moment de notre consultation.</p>
+<p>Concrètement, pour le PoC :</p>
+<ul>
+<li>Une zone d'essai délimitée, avec un accès contrôlé pendant les tests.</li>
+<li>Un bipède en arrêt d'urgence peut tomber, car sa stabilité dépend du contrôle actif. Pour les premiers tests sur un bipède, il faut un support ou un harnais et de l'espace libre autour.</li>
+<li>Une évaluation préliminaire des risques écrite, partagée avec le responsable sécurité de l'entreprise (responsable HSE).</li>
+<li>Des opérateurs formés à l'arrêt d'urgence et aux procédures de récupération.</li>
+</ul>
+<p>Pour aller plus loin : <a href="/en/blog/unitree-regolamento-macchine-2027.html">robots Unitree et règlement Machines 2027</a>.</p>
+
+<h2>Acheter, louer ou simuler</h2>
+<p>Un PoC ne demande pas toujours d'acheter le robot tout de suite. Dans certains cas, une première vérification se fait en simulation ; dans d'autres, on étudie la location ou un pilote de courte durée, comme expliqué sur la page <a href="/en/assessment-en.html">Assessment et PoC</a>. Si l'achat est la voie retenue, vérifiez d'abord si le projet peut entrer dans un dispositif public : selon le pays, la taille de l'entreprise et la nature du projet (recherche, innovation, investissement), l'achat d'un robot ou un projet de R&amp;D qui l'utilise peut être éligible, par exemple au CIR, au CII ou à un prêt Bpifrance en France. Les principaux programmes en vigueur en 2026 et leurs sources officielles sont sur la page <a href="/en/finanziamenti-en.html">Financements</a>. Nous préparons le devis et la documentation technique utile au dossier, sans faire de conseil fiscal : l'éligibilité du bien est à confirmer avec votre expert-comptable.</p>
+
+<h2>Ce que doit contenir le rapport final</h2>
+<ol>
+<li>Les KPI mesurés par rapport aux seuils du plan, avec le nombre d'essais.</li>
+<li>Les causes des échecs, classées par catégorie (perception, préhension, navigation, logiciel, matériel).</li>
+<li>Le coût total estimé pour passer à l'étape suivante : matériel, logiciel, sécurité, formation.</li>
+<li>La recommandation : go, no-go ou révision du périmètre.</li>
+</ol>
+<p>Un PoC qui n'atteint pas ses KPI n'est pas du temps perdu : c'est une information qui évite une mauvaise commande. Si les chiffres ne tiennent pas, mieux vaut le savoir avant d'acheter dix unités.</p>
+</div>
+
+<section class="article-faq" id="faq">
+<h2>Questions fréquentes</h2>
+<div class="faq-item"><h3>Combien de temps dure un PoC avec un robot humanoïde ?</h3><p>Cela dépend du cas. La cartographie, la comparaison des solutions, la simulation et le plan de PoC demandent environ 5 à 9 semaines pour un cas d'usage unique ; l'exécution et la décision sont fixées dans le plan. Si un robot neuf est nécessaire, la livraison des humanoïdes est indiquée à 4 à 6 semaines.</p></div>
+<div class="faq-item"><h3>Quel humanoïde Unitree choisir pour un PoC de pick and place ?</h3><p>Pour la prise et la dépose sur établi, le G1-D Standard sur pied fixe (dès 38 005 € HT) évite le risque de chute. Avec un budget réduit, on peut envisager le R1-D, prix sur demande.</p></div>
+<div class="faq-item"><h3>Quels KPI mesurer dans un PoC avec un humanoïde ?</h3><p>Le taux de réussite, le temps de cycle, les interventions humaines par heure, l'autonomie réelle par batterie et le temps de remise en route. Il faut les écrire dans le plan avec une valeur seuil avant de commencer les tests.</p></div>
+<div class="faq-item"><h3>Faut-il acheter le robot pour faire un PoC ?</h3><p>Pas toujours. Dans certains cas, la première vérification se fait en simulation ; dans d'autres, on étudie la location ou un pilote de courte durée. Le choix dépend du cas et de la maturité du processus.</p></div>
+<div class="faq-item"><h3>Quelles normes de sécurité s'appliquent à un PoC avec un humanoïde ?</h3><p>Aujourd'hui la directive Machines 2006/42/CE ; à partir du 20 janvier 2027 le règlement (UE) 2023/1230. Pour les robots industriels, la référence est la série ISO 10218. Il faut une évaluation des risques partagée avec le responsable sécurité.</p></div>
+</section>
+
+<section class="article-references" id="fonti">
+<h2>Sources</h2>
+<ol>
+<li>Directive 2006/42/CE relative aux machines, EUR-Lex : <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">CELEX 32006L0042</a></li>
+<li>Règlement (UE) 2023/1230 sur les machines, EUR-Lex : <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">eur-lex.europa.eu/eli/reg/2023/1230/oj</a></li>
+<li>ISO 10218-1:2025, Robotics, Safety requirements, Part 1 : <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">iso.org/standard/73933</a></li>
+<li>ISO 25785-1, Safety requirements for dynamically stable industrial mobile robots (en cours d'élaboration) : <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">iso.org/standard/91469</a></li>
+<li>Unitree, caractéristiques G1, R1 et G1-D : <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a>, <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">unitree.com/R1</a>, <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a></li>
+<li>Abra Robotics, <a href="/en/assessment-en.html">Assessment et PoC</a> (étapes et durées indicatives) et <a href="/en/listino-unitree-en.html">liste de prix utilisateur final</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Vous voulez lancer un PoC avec un humanoïde ?</h2><p>Nous partons de la cartographie du processus et des KPI, puis nous choisissons ensemble la plateforme. Les quatre premières étapes demandent 5 à 9 semaines.</p><a class="btn btn-primary" href="/en/assessment-en.html">Lancer un PoC</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Voir les humanoïdes</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
