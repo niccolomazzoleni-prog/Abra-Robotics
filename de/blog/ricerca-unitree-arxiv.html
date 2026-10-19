@@ -50,7 +50,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "arXiv-Paper zu Unitree Go2 und G1: was sie Käufern sagen",
   "description": "Zwölf arXiv-Preprints 2025-2026 zu Unitree Go2 und G1, ausgewählt für Labore und Unternehmen: was jede Arbeit zeigt und was sie für Roboterwahl und PoC bedeutet.",
   "datePublished": "2026-07-30",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-10-19",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -79,7 +79,38 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "url": "https://abrarobotics.com/de/blog/ricerca-unitree-arxiv.html"
 }
 </script>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Gelten die Ergebnisse der Paper auch für AS2 und H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nicht direkt. Fast alle Arbeiten nutzen Go2 und G1: Methoden und Metriken lassen sich übernehmen, die Werte müssen Sie aber an Ihrem Roboter neu messen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Brauche ich eine EDU-Version, um diese Paper nachzubauen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In der Regel ja: Um eigenen Code auf den Roboter aufzuspielen, brauchen Sie das SDK und die Rechenleistung der EDU-Versionen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sind arXiv-Preprints verlässlich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es sind Arbeiten, die noch nicht begutachtet sind oder nicht in der endgültigen Fassung vorliegen. Prüfen Sie Werte und Versuchsbedingungen im PDF, bevor Sie sie in einem Projekt verwenden."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -137,12 +168,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a href="/en/umanoidi-en.html">Humanoids</a>
 <a href="/en/accessori-en.html">Accessories</a>
 <a href="/en/catalogo-unitree-en.html">Full catalog</a>
-<a href="/de/#models">Price list</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
 </div>
 </div>
-<a href="/de/#models">Prices</a>
+<a href="/en/listino-unitree-en.html">Prices</a>
 <a href="/en/assessment-en.html">Find the right robot</a>
-<a href="/de/#incentives">Financing</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
 <div class="mobile-dropdown">
 <button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
 <div class="mobile-dropdown-panel">
@@ -162,7 +193,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </figure>
 
 <header class="article-header">
-<p class="label">Forschung · Aktualisiert am 15. Okt. 2026</p>
+<p class="label">Forschung · Aktualisiert am 19. Okt. 2026</p>
 <h1>arXiv-Paper zu Unitree Go2 und G1: was sie zeigen und was das für Käufer bedeutet</h1>
 <div class="article-meta"><time datetime="2026-07-30">30. Juli 2026</time><span>Abra Robotics</span></div>
 <div class="article-tldr"><strong>Kurz gesagt:</strong> Zwölf Preprints aus 2025-2026, die einen echten Go2 oder G1 verwenden. Wir haben sie ausgewählt, weil sie für den Kauf oder die Integration eines Unitree Roboters etwas Nützliches sagen: welche Version Sie brauchen, welche Tests vor dem Produktiveinsatz sinnvoll sind und mit welchen Werten Sie rechnen können. Die Arbeiten sind nicht begutachtet: Lesen Sie sie als Hinweise, nicht als Garantien.</div>
@@ -170,22 +201,22 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <div class="article-content">
 
-<p>Jeden Monat erscheinen auf arXiv Dutzende Arbeiten mit Unitree Robotern. Die meisten sind nur für die Forschung interessant. Wir haben die behalten, die drei Bedingungen erfüllen: Sie nutzen einen echten Roboter oder eine realitätsnahe Simulation, sie helfen bei einer Kauf- oder Projektentscheidung, und man kann sie in einem Lastenheft zitieren. Zu jeder Arbeit steht in einer Zeile, was sie macht, und in einer zweiten, was das in der Praxis heißt.</p>
+<p>Jeden Monat erscheinen auf arXiv Dutzende Arbeiten mit Unitree Robotern. Die meisten sind nur für die Forschung interessant. Wir haben zwölf ausgewählt, die drei Bedingungen erfüllen: Sie nutzen einen echten Roboter oder eine realitätsnahe Simulation, sie helfen bei einer Kauf- oder Projektentscheidung, und man kann sie in einem Lastenheft zitieren.</p>
 
-<p>Fast alle verwenden einen <a href="/de/unitree-go2.html">Go2</a> oder einen <a href="/de/unitree-g1.html">G1</a> in der EDU-Version, der einzigen mit Sekundärentwicklung. Die Ergebnisse lassen sich sinngemäß auf <a href="/de/unitree-as2.html">AS2</a> und <a href="/de/unitree-h2.html">H2</a> übertragen, die Werte müssen aber am gekauften Roboter neu gemessen werden.</p>
+<p>Fast alle verwenden einen <a href="/de/unitree-go2.html">Go2</a> oder einen <a href="/de/unitree-g1.html">G1</a>, und um eigenen Code aufzuspielen, braucht es die EDU-Versionen mit SDK. Die Methoden gelten auch für AS2 und H2, die Werte müssen aber am gekauften Roboter neu gemessen werden.</p>
 
 <h2>Vierbeiner: Fortbewegung und Transfer aus der Simulation</h2>
 
 <h3>Gangarten, die ein defektes Gelenk verkraften</h3>
-<p><a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">AcL</a> (arXiv:2503.21401) trainiert per Reinforcement Learning Gangarten, die auch mit bis zu vier blockierten Gelenken funktionieren, und testet sie an einem echten Go2 mit einem und mit zwei defekten Gelenken.</p>
-<p>In der Praxis: Für einen Inspektionsroboter hat die Frage "Was passiert, wenn mitten auf der Runde ein Motor blockiert?" eine messbare Antwort. Es lohnt sich, sie in die Abnahmetests aufzunehmen.</p>
+<p><a href="https://arxiv.org/abs/2503.21401" rel="noopener noreferrer" target="_blank">AcL</a> (arXiv:2503.21401) trainiert per Reinforcement Learning Gangarten, die bis zu vier Gelenke ohne Stromversorgung an einem oder zwei Beinen verkraften, und testet sie an einem echten Go2 mit einem und mit zwei defekten Gelenken.</p>
+<p>In der Praxis: Bei einem Inspektionsroboter lässt sich messen, wie er sich verhält, wenn mitten auf der Runde ein Motor ausfällt, und das gehört in die Abnahmetests.</p>
 
 <h3>Das reale Verhalten vor dem Test vorhersagen</h3>
-<p><a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">MoE + RoboGauge</a> (arXiv:2602.00678) kombiniert mehrere spezialisierte Regler und schlägt Metriken vor, die vorhersagen, wie gut eine in der Simulation trainierte Policy auf dem Roboter funktioniert. Der Go2 wird auf Schnee, Sand, Treppen und 30 cm hohen Hindernissen getestet, bei bis zu 4 m/s.</p>
-<p>In der Praxis: Vor einem riskanten Test am echten Roboter lassen sich schwache Policies aussortieren. Nützlich für alle, die selbst auf der EDU-Version entwickeln.</p>
+<p><a href="https://arxiv.org/abs/2602.00678" rel="noopener noreferrer" target="_blank">MoE + RoboGauge</a> (arXiv:2602.00678) kombiniert mehrere spezialisierte Regler und schlägt Metriken vor, die vorhersagen, wie gut eine in der Simulation trainierte Policy auf dem Roboter funktioniert. Der Go2 wird auf Schnee, Sand, Treppen, Steigungen und 30 cm hohen Hindernissen getestet und erreicht in den Geschwindigkeitstests 4 m/s.</p>
+<p>In der Praxis: Schwache Policies werden in der Simulation aussortiert, vor einem riskanten Test am echten Roboter. Das hilft allen, die selbst auf der EDU-Version entwickeln.</p>
 
 <h3>Schlanke Policies für wenig GPU-Rechenleistung</h3>
-<p><a href="https://arxiv.org/abs/2505.19054" rel="noopener noreferrer" target="_blank">RANDPOL</a> (arXiv:2505.19054) trainiert eine Policy mit wenigen Parametern und überträgt sie ohne weitere Feinabstimmung auf den echten Go2.</p>
+<p><a href="https://arxiv.org/abs/2505.19054" rel="noopener noreferrer" target="_blank">RANDPOL</a> (arXiv:2505.19054) trainiert nur die letzte Schicht einer Policy mit zufälligen, festen verborgenen Schichten und überträgt sie ohne weitere Feinabstimmung auf den echten Go2.</p>
 <p>In der Praxis: Auch ein Labor mit begrenzter Rechenleistung kann End-to-End-Steuerung auf dem Go2 EDU umsetzen.</p>
 
 <h3>Vibrierende Böden</h3>
@@ -199,15 +230,15 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p>In der Praxis: Wer bei Imitation Learning bei null anfängt, hat einen Referenzdatensatz, ohne alles am eigenen Roboter aufzeichnen zu müssen.</p>
 
 <h3>Autonome Navigation in einer Bibliothek</h3>
-<p><a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">Li et al.</a> (arXiv:2606.03340) installieren ROS 2, RTAB-Map und Nav2 auf einem Go2 EDU und lassen ihn in einer echten Bibliothek fahren: 100 % abgeschlossene Routen bei ruhiger Umgebung, 88 % bei vielen Personen, mittlerer Kartenfehler 3,7 cm.</p>
+<p><a href="https://arxiv.org/abs/2606.03340" rel="noopener noreferrer" target="_blank">Li et al.</a> (arXiv:2606.03340) installieren ROS 2, RTAB-Map und Nav2 auf einem Go2 EDU und lassen ihn in einer echten Bibliothek fahren: 100 % abgeschlossene Routen bei ruhiger Umgebung, 96 % mit wenigen Personen in Bewegung, 88 % mit vielen, mittlerer Kartenfehler 3,7 cm.</p>
 <p>In der Praxis: Das ist der beste Anhaltspunkt für eine Patrouille in einer Halle oder einem Flur. Der Rückgang bei Personen in Bewegung ist der Wert, den Sie im Blick behalten sollten.</p>
 
 <h3>Wenn der Roboter im Bewuchs hängen bleibt</h3>
-<p><a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">ForEnt</a> (arXiv:2606.19675) ist ein Datensatz, aufgenommen mit einem Go2 in acht Wäldern in Großbritannien: rund 1,7 km Strecke und 69 Fälle, in denen der Roboter im Bewuchs stecken blieb.</p>
-<p>In der Praxis: Im Gelände mit Unterholz bleibt der Go2 hängen. Für solche Strecken braucht es eine andere Größenklasse und eine eigene Risikobeurteilung.</p>
+<p><a href="https://arxiv.org/abs/2606.19675" rel="noopener noreferrer" target="_blank">ForEnt</a> (arXiv:2606.19675) ist ein Datensatz, aufgenommen mit einem Go2 in acht Waldgebieten bei Southampton in Großbritannien: rund 1,7 km Strecke und 69 Fälle, in denen sich die Beine des Roboters im Bewuchs verfangen haben.</p>
+<p>In der Praxis: Im Unterholz verfängt sich der Go2 und kann umkippen. Für solche Strecken braucht es Tests im Gelände und eine eigene Risikobeurteilung.</p>
 
 <h3>Bewegung zwischen Menschen</h3>
-<p><a href="https://arxiv.org/abs/2607.15036" rel="noopener noreferrer" target="_blank">Wu et al.</a> (arXiv:2607.15036) lassen einen echten Go2 drinnen und draußen durch Menschenmengen navigieren, mit LiDAR und einer Methode, die bewegte Hindernisse berücksichtigt.</p>
+<p><a href="https://arxiv.org/abs/2607.15036" rel="noopener noreferrer" target="_blank">Wu et al.</a> (arXiv:2607.15036) lassen einen echten Go2 drinnen und draußen durch Menschenmengen navigieren, nur mit dem eingebauten LiDAR und einer Methode, die sichere Geschwindigkeiten gegenüber bewegten Hindernissen schätzt.</p>
 <p>In der Praxis: Messen, Lager und Bereiche mit Bedienpersonal sind ein eigener Fall, verglichen mit einer leeren Strecke. Das muss mit echten Menschen getestet werden.</p>
 
 <div class="product-strip" aria-label="Prodotti citati">
@@ -226,7 +257,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>Sekundärentwicklung, 23 DoF, Rechen-Dock</p>
+<p>SDK, 23 DoF, Rechenmodul</p>
 <div class="product-card-price">38.005 € <small>zzgl. MwSt.</small></div>
 <div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Zum Produkt</a><a class="product-card-link" href="/en/assessment-en.html">Angebot anfragen</a></div>
 </div>
@@ -247,20 +278,20 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <h2>Humanoide: Energie, Teleoperation und Basismodelle</h2>
 
 <h3>Wie viel Energie ein Arm des G1 verbraucht</h3>
-<p><a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">Deniz et al.</a> (arXiv:2606.15915) erstellen ein physikalisches Modell des Stromverbrauchs für den linken Arm des G1 mit 7 Freiheitsgraden. Das Modell erklärt 93 % der Varianz in den Identifikationsdaten und 96 % bei Geschwindigkeiten, die es vorher nicht gesehen hat.</p>
+<p><a href="https://arxiv.org/abs/2606.15915" rel="noopener noreferrer" target="_blank">Deniz et al.</a> (arXiv:2606.15915) erstellen ein physikalisches Modell des Stromverbrauchs für den linken Arm des G1 mit 7 Freiheitsgraden. Das Modell erklärt 93 % der Varianz in den Identifikationsdaten und über 96 % bei Geschwindigkeiten, die nicht in seine Erstellung eingeflossen sind.</p>
 <p>In der Praxis: Für längere Manipulationsaufgaben reicht die angegebene Laufzeit nicht aus. Mit einem Verbrauchsmodell lässt sich die Bewegung auch nach dem Energiebedarf planen.</p>
 
 <h3>Ganzkörper-Teleoperation mit einem Sensoranzug</h3>
-<p><a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">Durrani und Khan</a> (arXiv:2605.12347) steuern einen G1 in Echtzeit mit einem Motion-Capture-Anzug auf IMU-Basis, erst in MuJoCo und dann am Roboter.</p>
-<p>In der Praxis: Jede Teleoperations-Demo, auch auf einem H2, hängt an denselben drei Punkten: Übertragung der Bewegungen auf den Roboter, Latenz und Sicherungsgeschirr.</p>
+<p><a href="https://arxiv.org/abs/2605.12347" rel="noopener noreferrer" target="_blank">Durrani und Khan</a> (arXiv:2605.12347) steuern einen G1 in Echtzeit mit einem Motion-Capture-Anzug auf IMU-Basis, erst in MuJoCo und dann ohne Änderungen am Roboter.</p>
+<p>In der Praxis: Jede Teleoperations-Demo, auch auf einem H2, muss dieselben Probleme lösen: Übertragung der Bewegungen auf den Roboter, Latenz, Sensordrift und den Unterschied zwischen Simulation und Realität.</p>
 
 <h3>Feinabstimmung eines Basismodells</h3>
-<p><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Park, Kee und Oh</a> (arXiv:2512.01358) verfeinern eine Basis-Policy mit zusätzlichen Kontakt- und Tiefensignalen: Auf dem G1 steigt die Erfolgsquote bei der Aufgabe "Apfel nehmen und in die Schüssel legen" von 48 % auf 94 %.</p>
+<p><a href="https://arxiv.org/abs/2512.01358" rel="noopener noreferrer" target="_blank">Park, Kee und Oh</a> (arXiv:2512.01358) verfeinern eine Basis-Policy mit zusätzlichen Kontaktsignalen: Auf dem G1 liegt die Erfolgsquote bei der Aufgabe "Apfel nehmen und in die Schüssel legen" ohne Feinabstimmung bei 0 %, mit einer üblichen Feinabstimmung bei 48 % und mit den Daten zur Kontaktkraft bei 94 %.</p>
 <p>In der Praxis: Ein Basismodell funktioniert nach der Feinabstimmung mit eigenen Daten, nicht direkt nach dem Einschalten. In diesem Licht sollten Sie die Versprechen zu H2 Plus und Isaac GR00T lesen.</p>
 
 <h3>Was beim Motion Tracking wirklich zählt</h3>
-<p><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">Amadio und Mingo Hoffman</a> (arXiv:2607.19903) vergleichen auf dem G1 mit dem Open-Source-Framework YAHMP die Entwurfsentscheidungen, die das Nachverfolgen menschlicher Bewegungen beeinflussen.</p>
-<p>In der Praxis: Viele Fehlschläge bei Imitations-Demos liegen daran, wie Befehle und Aktionen dargestellt werden, nicht an der Hardware. Das hilft, nicht nur auf ein einziges Setup hin zu optimieren.</p>
+<p><a href="https://arxiv.org/abs/2607.19903" rel="noopener noreferrer" target="_blank">Amadio und Mingo Hoffman</a> (arXiv:2607.19903) vergleichen auf dem G1 mit dem Open-Source-Framework YAHMP sechs Entwurfsentscheidungen beim Nachverfolgen menschlicher Bewegungen, darunter die Darstellung von Befehlen und Aktionen und die Beobachtungshistorie.</p>
+<p>In der Praxis: Manche Entscheidungen verändern die Qualität der Bewegungsverfolgung, andere nur die Belastung der Aktoren oder den Aufwand im Training. Bevor Sie eine misslungene Demo der Hardware zuschreiben, sollten Sie diese Punkte prüfen.</p>
 
 <h2>So nutzen Sie diese Liste</h2>
 <ul>
@@ -268,16 +299,16 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li><strong>Im Lastenheft.</strong> Zitieren Sie zwei oder drei Arbeiten als technische Grundlage, nicht als Leistungsgarantie.</li>
 <li><strong>Im PoC.</strong> Nutzen Sie die Metriken der Paper (Erfolgsquote, Eingriffe des Bedieners, Verbrauch) als Kennzahlen, die Sie an Ihrem Setup messen. Die Methode steht im Leitfaden zum <a href="/de/blog/poc-robot-umanoide-azienda.html">PoC mit einem humanoiden Roboter</a>.</li>
 </ul>
-<p>Für den Aufbau eines Labors, das eine dieser Arbeiten nachbaut: <a href="/en/universita-ricerca-en.html">Hochschulen und Forschung</a>. Für die ersten Schritte mit der Software: <a href="/de/blog/ros2-unitree-guida-rapida.html">ROS 2 auf Unitree-Robotern</a> und <a href="/de/blog/unitree-g1-programmazione.html">den G1 programmieren</a>.</p>
+<p>Für die ersten Schritte mit der Software gibt es den Leitfaden <a href="/de/blog/ros2-unitree-guida-rapida.html">ROS 2 auf Unitree-Robotern</a>.</p>
 
 <section class="article-faq" id="faq">
 <h2>Häufige Fragen</h2>
 <div class="faq-item"><h3>Gelten die Ergebnisse der Paper auch für AS2 und H2?</h3><p>Nicht direkt. Fast alle Arbeiten nutzen Go2 und G1: Methoden und Metriken lassen sich übernehmen, die Werte müssen Sie aber an Ihrem Roboter neu messen.</p></div>
-<div class="faq-item"><h3>Brauche ich eine EDU-Version, um diese Paper nachzubauen?</h3><p>In der Regel ja. Die Autoren verwenden Go2 EDU oder G1 EDU, weil Sekundärentwicklung nur bei den EDU-Versionen vorgesehen ist.</p></div>
+<div class="faq-item"><h3>Brauche ich eine EDU-Version, um diese Paper nachzubauen?</h3><p>In der Regel ja: Um eigenen Code auf den Roboter aufzuspielen, brauchen Sie das SDK und die Rechenleistung der EDU-Versionen.</p></div>
 <div class="faq-item"><h3>Sind arXiv-Preprints verlässlich?</h3><p>Es sind Arbeiten, die noch nicht begutachtet sind oder nicht in der endgültigen Fassung vorliegen. Prüfen Sie Werte und Versuchsbedingungen im PDF, bevor Sie sie in einem Projekt verwenden.</p></div>
 </section>
 
-<p>Abra Robotics liefert die Unitree Produktpalette nach Deutschland, Österreich und in die Schweiz, mit Support auf Englisch. Wir verkaufen Hardware und Integrationsleistungen und sind nicht Autoren der zitierten Arbeiten.</p>
+<p>Abra Robotics verkauft Unitree Hardware und Integrationsleistungen und ist nicht Autor der zitierten Arbeiten.</p>
 </div>
 
 <section class="article-references" id="fonti">
