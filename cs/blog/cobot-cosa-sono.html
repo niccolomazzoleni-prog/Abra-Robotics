@@ -1,0 +1,373 @@
+<!-- generato da scripts/blog_lingue.py da blog/cobot-cosa-sono.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cobot: co to je, jak funguje a kolik stojí</title>
+<meta name="description" content="Co jsou kolaborativní roboti (coboty), jak fungují (ISO 10218 a ISO/TS 15066), čím se liší od průmyslových robotů a ceny Fairino od 5 448 € bez DPH."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/cs/blog/cobot-cosa-sono.html"/>
+<link href="https://abrarobotics.com/blog/cobot-cosa-sono.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/cobot-cosa-sono.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/cobot-cosa-sono.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/cobot-cosa-sono.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/cobot-cosa-sono.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/blog/cobot-cosa-sono.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/cobot-cosa-sono.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/sv/blog/cobot-cosa-sono.html" hreflang="sv" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/cobot-cosa-sono.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/no/blog/cobot-cosa-sono.html" hreflang="nb" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/cobot-cosa-sono.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cobot: co to je, jak funguje a kolik stojí",
+  "description": "Co jsou kolaborativní roboti (coboty), jak fungují (ISO 10218 a ISO/TS 15066), čím se liší od průmyslových robotů a ceny Fairino od 5 448 € bez DPH.",
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/cs/blog/cobot-cosa-sono.html"
+  },
+  "image": "https://abrarobotics.com/images/manifattura/fairino-cobot.png",
+  "inLanguage": "cs",
+  "url": "https://abrarobotics.com/cs/blog/cobot-cosa-sono.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Co znamená cobot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cobot je zkratka anglického collaborative robot: robotické rameno navržené pro práci vedle obsluhy ve stejném pracovním prostoru. Technická definice pochází z ISO/TS 15066, která popisuje kolaborativní provoz jako stav, kdy robotický systém a obsluha pracují ve sdíleném pracovním prostoru."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jaký je rozdíl mezi cobotem a průmyslovým robotem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Průmyslový robot obvykle pracuje za pevným oplocením, vysokou rychlostí a s vysokou nosností. Cobot je navržen ke sdílení prostoru s lidmi: omezená síla a rychlost, ruční přeprogramování (hand guiding) a často žádná klec. Při stejné nosnosti je průmyslový robot rychlejší, ale vyžaduje oplocení a náročnější integraci."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kolik stojí cobot Fairino?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coboty Fairino stojí podle ceníku od 5 448 € (FR3, 3 kg) do 36 828 € (paletizační buňka FR20), bez DPH. Samotné rameno FR5 stojí od 6 252 €, FR10 od 10 387 €, FR20 od 14 677 €. Chapadlo nabízíme zvlášť."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Může cobot svařovat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ano, svařování je spolu s obsluhou strojů a paletizací jednou z typických aplikací. Potřebujete ale buňku s vlastním zdrojem, hořákem a stolem: cobot je jen rameno. Posouzení rizik rozhodne, zda stačí limity cobotu, nebo je potřeba ochrana."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pracuje cobot vždy bez oplocení?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ne. O spolupráci rozhoduje posouzení rizik celé aplikace: robot, chapadlo, díl, rychlost a layout. Kde riziko zůstává vysoké, přidávají se laserové skenery, bariéry nebo fyzická ochrana."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Cobot: co to je, jak funguje a kolik stojí"/>
+<meta property="og:description" content="Co jsou kolaborativní roboti (coboty), jak fungují (ISO 10218 a ISO/TS 15066), čím se liší od průmyslových robotů a ceny Fairino od 5 448 € bez DPH."/>
+<meta property="og:url" content="https://abrarobotics.com/cs/blog/cobot-cosa-sono.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/manifattura/fairino-cobot.png"/>
+<meta property="og:locale" content="cs_CZ"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/cs/">Home</a> / <a href="/cs/">Blog</a> / Coboty a AMR</nav>
+
+<figure class="article-cover">
+<img src="/images/manifattura/fairino-cobot.webp" alt="Cobot Fairino: kolaborativní rameno se 6 osami" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Coboty a AMR</p>
+<h1>Cobot: co to je, jak funguje a kolik stojí</h1>
+<div class="article-meta"><time datetime="2026-10-13">13. října 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Ve zkratce:</strong> kolaborativní robot (cobot) je robotické rameno navržené pro práci vedle obsluhy, ve stejném prostoru, bez pevné klece. Referenčními normami jsou ISO 10218 a ISO/TS 15066. Coboty Fairino začínají v ceníku na 5&nbsp;448&nbsp;€ bez DPH (FR3). Volba mezi cobotem a průmyslovým robotem závisí na nosnosti, rychlosti a posouzení rizik.</div>
+</header>
+
+<div class="article-content">
+<p>Cobot, zkratka anglického collaborative robot, je robotické rameno určené k práci vedle člověka ve stejném prostoru, bez pevné klece. Než se podíváme na modely a ceny, vyplatí se ujasnit si, co coboty jsou a co nejsou: k tomu, aby aplikace byla kolaborativní, nestačí „lehké“ rameno, a ne každé pracoviště s cobotem se obejde bez oplocení.</p>
+
+<h2>Co je cobot: definice a referenční normy</h2>
+<p><a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218-1:2025</a> definuje průmyslový robot jako automaticky řízený, přeprogramovatelný víceúčelový manipulátor, programovatelný ve třech nebo více osách. Cobot není samostatná normativní kategorie: je to robot navržený s omezením síly, výkonu a rychlosti, díky kterému může sdílet prostor s lidmi.</p>
+<p>Technická specifikace <a href="https://www.iso.org/standard/62996.html" rel="noopener noreferrer" target="_blank">ISO/TS 15066:2016</a> popisuje kolaborativní provoz jako stav, kdy k tomu speciálně navržený robotický systém a obsluha pracují ve sdíleném pracovním prostoru. To je důležitý bod: „kolaborativní“ je aplikace jako celek (robot, chapadlo, díl, prostředí), ne samotné rameno. V revizi z roku 2025 převzala norma ISO 10218 velkou část obsahu ISO/TS 15066 a výslovně uvádí, že termín „collaborative robot“ nepoužívá, protože jako kolaborativní lze vyvinout, ověřit a validovat jen aplikaci.</p>
+
+<h2>Cobot a průmyslový robot: v čem je rozdíl</h2>
+<p>Průmyslový robot i cobot mají stejný technický základ: rameno se 6 osami a řídicí jednotku. Liší se tím, jak se nasazují do práce.</p>
+<table>
+<thead><tr><th>Parametr</th><th>Průmyslový robot</th><th>Cobot</th></tr></thead>
+<tbody>
+<tr><td>Oplocení</td><td>Téměř vždy pevné</td><td>Často žádné, pokud to posouzení rizik dovolí</td></tr>
+<tr><td>Rychlost</td><td>Vysoká, se silným zrychlením</td><td>Omezená silou, výkonem a momentem</td></tr>
+<tr><td>Nosnost</td><td>Desítky až stovky kg</td><td>Obvykle 3–30 kg</td></tr>
+<tr><td>Programování</td><td>Offline nebo přes teach pendant</td><td>Také ručním vedením (hand guiding)</td></tr>
+<tr><td>Vstupní náklady</td><td>Vyšší, s buňkou a ochrannými kryty</td><td>Nižší, s jednodušší instalací</td></tr>
+</tbody>
+</table>
+<p>V praxi se průmyslový robot vyplatí při vysokém taktu, těžkých břemenech a stále stejném cyklu. Cobot se vyplatí při lehkých břemenech, měnících se formátech, nedostatku místa a na pracovištích, kam se člověk k rameni často přibližuje.</p>
+
+<h2>Jak cobot funguje: čtyři způsoby spolupráce</h2>
+<p><a href="https://www.iso.org/news/2016/03/Ref2057.html" rel="noopener noreferrer" target="_blank">ISO/TS 15066</a> uvádí čtyři techniky kolaborativního provozu, které lze použít samostatně nebo v kombinaci:</p>
+<ul>
+<li><strong>Safety-rated monitored stop:</strong> robot se zastaví, když obsluha vstoupí do prostoru; člověk a robot se nikdy nepohybují současně.</li>
+<li><strong>Hand guiding:</strong> obsluha vede rameno rukou a zaznamenává body cyklu.</li>
+<li><strong>Speed and separation monitoring:</strong> skener nebo kamerový systém měří vzdálenost a zpomalí robota, když se obsluha přiblíží.</li>
+<li><strong>Power and force limiting:</strong> robot omezuje sílu, výkon a rychlost tak, aby náhodný kontakt nebolel. Je to typický režim cobotů; prahové hodnoty bolesti pro jednotlivé části těla uvádí příloha A normy.</li>
+</ul>
+<p>Cobot Fairino využívá hlavně power and force limiting: klouby mají zpětnou vazbu točivého momentu v uzavřené smyčce, jak uvádí produktový list Fairino. Správný režim se ale volí podle aplikace, ne podle modelu.</p>
+
+<h2>K čemu slouží cobot: obsluha strojů, paletizace, svařování</h2>
+<p>Nejčastější aplikace, seřazené podle rozšíření:</p>
+<ul>
+<li><strong>Obsluha strojů (machine tending):</strong> zakládá a vyjímá díly ze soustruhů, fréz a lisů. Je to nejvíce repetitivní práce, kterou lze obsluze ubrat.</li>
+<li><strong>Paletizace na konci linky:</strong> skládá krabice na palety EUR. Napsali jsme k tomu samostatného průvodce <a href="/blog/palletizzazione-cobot-costi.html">paletizace s cobotem: náklady a lhůty</a>.</li>
+<li><strong>Svařování:</strong> cobot vede hořák po opakovaných svarech. Je potřeba buňka se zdrojem, hořákem a vlastním stolem; rameno je jen jedna její část.</li>
+<li><strong>Pick &amp; place a lehká montáž:</strong> uchopení a umístění součástí elektrickým nebo pneumatickým chapadlem.</li>
+</ul>
+<p>Ve skladu se cobot často kombinuje s <a href="/amr.html">AMR</a>: rameno bere, mobilní robot veze. Přehled pro konec linky a manipulaci najdete na stránce <a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>.</p>
+
+<h2>Kolik stojí cobot: ceníkové ceny Fairino</h2>
+<p>Řada cobotů Fairino v ceníku Abra začíná na <strong>5&nbsp;448&nbsp;€</strong> (FR3) a končí na <strong>36&nbsp;828&nbsp;€</strong> (paletizační buňka FR20), bez DPH. Jde o ceny z veřejného ceníku: chapadlo, montážní sady a integraci nabízíme zvlášť.</p>
+<table>
+<thead><tr><th>Model</th><th>Nosnost</th><th>Dosah</th><th>Cena od (bez DPH)</th></tr></thead>
+<tbody>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr3-en.html">Fairino FR3</a></td><td>3 kg</td><td>622 mm</td><td>5&nbsp;448&nbsp;€</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr5-en.html">Fairino FR5</a></td><td>5 kg</td><td>922 mm</td><td>6&nbsp;252&nbsp;€</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr10-en.html">Fairino FR10</a></td><td>10 kg</td><td>1&nbsp;400 mm</td><td>10&nbsp;387&nbsp;€</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr16-en.html">Fairino FR16</a></td><td>16 kg</td><td>1&nbsp;034 mm</td><td>10&nbsp;450&nbsp;€</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr20-en.html">Fairino FR20</a></td><td>20 kg</td><td>1&nbsp;854 mm</td><td>14&nbsp;677&nbsp;€</td></tr>
+<tr><td><a href="/en/prodotti/cobot-fairino-fr30-en.html">Fairino FR30</a></td><td>30 kg</td><td>1&nbsp;403 mm</td><td>16&nbsp;256&nbsp;€</td></tr>
+</tbody>
+</table>
+<p>Nosnost a dosah pocházejí z oficiálních produktových listů <a href="https://www.fairino.com/FR/5.html" rel="noopener noreferrer" target="_blank">Fairino</a>; ceny z <a href="/cobot.html">katalogu cobotů</a> Abra. Buňky na klíč stojí víc, protože zahrnují pracovní stanici: <a href="/en/prodotti/cobot-fairino-palletizing-fr10-en.html">buňka FR10</a> od 30&nbsp;690&nbsp;€ a <a href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html">buňka FR20</a> od 36&nbsp;828&nbsp;€. Samotná pracovní stanice bez robota začíná na 10&nbsp;230&nbsp;€.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Produkty zmíněné v článku</span><a href="/cobot.html">Katalog cobotů</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/cobot-fairino-fr3-en.html"><img alt="Fairino FR3" loading="lazy" src="/images/manifattura/fairino-fr5.png"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/cobot-fairino-fr3-en.html">Fairino FR3</a></h3>
+<p>Cobot se 6 osami, 3 kg, dosah 622 mm</p>
+<div class="product-card-price">5&nbsp;448&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/cobot-fairino-fr3-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/cobot-fairino-fr20-en.html"><img alt="Fairino FR20" loading="lazy" src="/images/manifattura/fairino-fr20.png"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/cobot-fairino-fr20-en.html">Fairino FR20</a></h3>
+<p>Cobot 20 kg, dosah 1&nbsp;854 mm</p>
+<div class="product-card-price">14&nbsp;677&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/cobot-fairino-fr20-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html"><img alt="Paletizační buňka FR20" loading="lazy" src="/images/manifattura/fairino-fr20.png"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html">Paletizační buňka FR20</a></h3>
+<p>Cobot FR20 a pracovní stanice</p>
+<div class="product-card-price">od 36&nbsp;828&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/cobot-fairino-palletizing-fr20-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Bezpečnost a posouzení rizik</h2>
+<p class="article-note"><em>Obecné informace, nikoli právní poradenství. Klasifikace robotu a povinnosti z ní plynoucí závisí na konkrétní aplikaci.</em></p>
+<p>Spolupráce se „nezapne“ jen proto, že se model jmenuje cobot. Rozhoduje o ní posouzení rizik celé aplikace: robot, chapadlo, díl, rychlost, dráha a přístup osob. <a href="https://www.iso.org/standard/73934.html" rel="noopener noreferrer" target="_blank">ISO 10218-2:2025</a> požaduje po integrátorovi, aby posoudil kontakty mezi pohyblivými částmi a obsluhou a navrhl opatření ke snížení rizika.</p>
+<p>V praxi to má dva důsledky. Za prvé: cobot s chapadlem, které drží horký, ostrý nebo těžký díl, může vyžadovat skener, zóny se sníženou rychlostí nebo fyzickou ochranu. Za druhé: označení CE se týká celé buňky, ne jen ramene. Od 20. ledna 2027 je evropským referenčním předpisem nařízení o strojních zařízeních (EU) 2023/1230: podrobnosti pro ty, kdo sestavují buňku, najdete v průvodci <a href="/cs/blog/unitree-regolamento-macchine-2027.html">nařízení o strojních zařízeních 2027</a>.</p>
+
+<h2>Cobot, nebo průmyslový robot: jak vybrat</h2>
+<p>Vychází se ze tří čísel: hmotnost dílu včetně chapadla, takt linky a dostupný prostor. Pokud je břemeno pod 30 kg, takt nízký nebo střední a k pracovišti musí chodit člověk, je cobot často správnou volbou. Pokud je břemeno těžké, takt vysoký a cyklus stále stejný, zvládne výrobu lépe průmyslový robot. Nosnost a dosah se dimenzují stejně jako u paletizace, viz <a href="/blog/palletizzazione-cobot-costi.html">tento průvodce</a>.</p>
+
+<h2>Dotace a pobídky</h2>
+<p>Pro robotické projekty existují v Česku i na Slovensku veřejné programy platné v roce 2026: daňové odpočty na výzkum a vývoj, dotace na technologie a digitalizaci malých a středních podniků a financování aplikovaného výzkumu. Zda se vztahují na váš cobot, záleží na tom, jak je projekt postavený. Více v článku <a href="/blog/finanziamento-robot-industria-40.html">Financování robotů: dotace a pobídky 2026</a>. Pro žádost vám dodáme nabídku a technickou dokumentaci; daňové ani dotační poradenství neposkytujeme.</p>
+
+<section class="article-faq">
+<h2>Časté dotazy</h2>
+<div class="faq-item"><h3>Co znamená cobot?</h3><p>Cobot je zkratka anglického collaborative robot: robotické rameno navržené pro práci vedle obsluhy ve stejném pracovním prostoru. Technická definice pochází z ISO/TS 15066, která popisuje kolaborativní provoz jako stav, kdy robotický systém a obsluha pracují ve sdíleném pracovním prostoru.</p></div>
+<div class="faq-item"><h3>Jaký je rozdíl mezi cobotem a průmyslovým robotem?</h3><p>Průmyslový robot obvykle pracuje za pevným oplocením, vysokou rychlostí a s vysokou nosností. Cobot je navržen ke sdílení prostoru s lidmi: omezená síla a rychlost, ruční přeprogramování (hand guiding) a často žádná klec. Při stejné nosnosti je průmyslový robot rychlejší, ale vyžaduje oplocení a náročnější integraci.</p></div>
+<div class="faq-item"><h3>Kolik stojí cobot Fairino?</h3><p>Coboty Fairino stojí podle ceníku od 5&nbsp;448&nbsp;€ (FR3, 3 kg) do 36&nbsp;828&nbsp;€ (paletizační buňka FR20), bez DPH. Samotné rameno FR5 stojí od 6&nbsp;252&nbsp;€, FR10 od 10&nbsp;387&nbsp;€, FR20 od 14&nbsp;677&nbsp;€. Chapadlo nabízíme zvlášť.</p></div>
+<div class="faq-item"><h3>Může cobot svařovat?</h3><p>Ano, svařování je spolu s obsluhou strojů a paletizací jednou z typických aplikací. Potřebujete ale buňku s vlastním zdrojem, hořákem a stolem: cobot je jen rameno. Posouzení rizik rozhodne, zda stačí limity cobotu, nebo je potřeba ochrana.</p></div>
+<div class="faq-item"><h3>Pracuje cobot vždy bez oplocení?</h3><p>Ne. O spolupráci rozhoduje posouzení rizik celé aplikace: robot, chapadlo, díl, rychlost a layout. Kde riziko zůstává vysoké, přidávají se laserové skenery, bariéry nebo fyzická ochrana.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Zdroje</h2>
+<ol>
+<li>ISO 10218-1:2025, Robotics, Safety requirements, Part 1: Industrial robots (definice průmyslového robotu): <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>ISO 10218-2:2025, Robotics, Safety requirements, Part 2: Industrial robot applications and robot cells: <a href="https://www.iso.org/standard/73934.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>ISO/TS 15066:2016, Robots and robotic devices, Collaborative robots: <a href="https://www.iso.org/standard/62996.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>ISO, "Robots and humans can work together with new ISO guidance" (čtyři techniky kolaborativního provozu): <a href="https://www.iso.org/news/2016/03/Ref2057.html" rel="noopener noreferrer" target="_blank">iso.org</a></li>
+<li>Fairino, produktový list FR3 (nosnost 3 kg, dosah 622 mm, opakovatelnost ±0,02 mm): <a href="https://www.fairino.com/FR/5.html" rel="noopener noreferrer" target="_blank">fairino.com</a></li>
+<li>Fairino, produktové listy FR5, FR10, FR16, FR20 a FR30 (nosnost a dosah): produktové stránky Abra v <a href="/cobot.html">katalogu cobotů</a>.</li>
+<li>Ceny: veřejný ceník Abra Robotics, bez DPH, v <a href="/cobot.html">katalogu cobotů</a>.</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Jaký cobot pro vaši aplikaci?</h2><p>Popište nám díl, cyklus a layout: provedeme assessment aplikace a připravíme nabídku s cobotem, chapadlem a bezpečnostním řešením.</p><a class="btn btn-primary" href="/en/assessment-en.html">Požádat o assessment</a><a class="btn btn-outline-light" href="/cobot.html">Coboty Fairino</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
