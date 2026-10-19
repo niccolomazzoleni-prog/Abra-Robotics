@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from genera_hub_modelli import CAL, FAMILIES, HUB_CSS, SITE, load, template  # noqa: E402
 from nomi_en import nome_en  # noqa: E402
 from g1_plus_testi import T as G1P  # noqa: E402
+from lingue_chrome import localize_chrome  # noqa: E402
 
 DATA = ROOT / "data" / "lingue"
 ORDER = ["de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs", "uk"]
@@ -365,12 +366,12 @@ def main() -> None:
             continue
         out = ROOT / d["code"]
         out.mkdir(exist_ok=True)
-        (out / "index.html").write_text(landing_page(d, data, all_langs), encoding="utf-8")
+        (out / "index.html").write_text(localize_chrome(landing_page(d, data, all_langs), d["code"]), encoding="utf-8")
         if d.get("landing_only"):
             print(f"{d['code']}: 1 pagina paese (modelli: hub inglesi)")
             continue
         for k in FAMILY_KEYS:
-            (out / f"unitree-{k}.html").write_text(family_page(d, k, data[k], all_langs), encoding="utf-8")
+            (out / f"unitree-{k}.html").write_text(localize_chrome(family_page(d, k, data[k], all_langs), d["code"]), encoding="utf-8")
         print(f"{d['code']}: 1 pagina paese + {len(FAMILY_KEYS)} pagine modello")
     if bad:
         sys.exit(1)

@@ -10,8 +10,9 @@ Il testo è l'unica cosa da produrre: `scripts/blog_lingue.py` costruisce la pag
 - **Il post italiano in `blog/<slug>.html` è la fonte.** Specifiche, numeri, prezzi, date, citazioni
   e fonti vanno riportati identici. Niente fatti aggiunti, niente arrotondamenti diversi, niente
   specifiche "ricordate": se un dato non è nel post italiano, non va nella traduzione.
-- `en/blog/<slug>.html` serve solo come riferimento di terminologia (nomi prodotto, "secondary
-  development", "payload") e per vedere come si adatta un passaggio solo-Italia a un altro paese.
+- `en/blog/<slug>.html` serve solo come riferimento di terminologia (nomi prodotto, "payload").
+  Per i termini tecnici vale il glossario in fondo a `docs/revisione-blog.md`: mai "secondary
+  development" / "Sekundärentwicklung" e simili, che sono calchi del cinese e per vedere come si adatta un passaggio solo-Italia a un altro paese.
 - `data/lingue/<codice>.json` è la fonte per il paese: `price_format` (separatore migliaia e
   simbolo), `markets` (paesi coperti), `delivery` (spedizione, IVA, dogana), `incentives`
   (incentivi del paese), `service`, `ui` (etichette). Le pagine modello `<codice>/unitree-g1.html`
