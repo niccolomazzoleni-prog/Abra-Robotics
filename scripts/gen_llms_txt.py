@@ -114,12 +114,37 @@ def riassunto():
         "- Email: info@abrarobotics.com",
         "- Role: filiera di distribuzione di Unitree Italia + integrazione robotica (cobot Fairino, AMR)",
         "",
-        "## English",
-        f"- {BASE}en/index-en.html",
-        f"- {BASE}en/catalogo-unitree-en.html",
-        "",
     ]
+    righe += guide()
     return "\n".join(righe)
+
+
+LINGUE = ["en", "de", "fr", "es", "pl", "nl", "cs", "sv", "da", "no", "fi"]
+
+
+def meta(path):
+    s = path.read_text(encoding="utf-8", errors="ignore")
+    t = re.search(r"<title>(.*?)</title>", s, re.S)
+    d = re.search(r'<meta (?:name="description" content="([^"]*)"|content="([^"]*)" name="description")', s)
+    pulisci = lambda x: re.sub(r"\s+", " ", x.replace("&amp;", "&").replace("&#x27;", "'").replace("&quot;", '"')).strip()  # noqa: E731
+    return pulisci(t.group(1)) if t else path.stem, pulisci((d.group(1) or d.group(2)) if d else "")
+
+
+def guide():
+    """Guide del blog (fonte italiana) con le lingue disponibili, e indice per lingua."""
+    post = sorted(p for p in (ROOT / "blog").glob("*.html") if not p.name.startswith(".") and 'http-equiv="refresh"' not in p.read_text(encoding="utf-8", errors="ignore")[:5000])
+    righe = ["## Guide e confronti (blog)", "Articoli con specifiche ufficiali Unitree, prezzi di listino e fonti citate. Lingue disponibili tra parentesi.", ""]
+    for p in post:
+        titolo, desc = meta(p)
+        lingue = [c for c in LINGUE if (ROOT / c / "blog" / p.name).is_file()]
+        righe.append(f"- [{titolo}]({BASE}blog/{p.name}): {desc}" + (f" (anche {', '.join(lingue)})" if lingue else ""))
+    righe += ["", "## Versioni nelle altre lingue", "Stesso contenuto e stessi prezzi in euro, adattati al paese. Schema degli indirizzi: https://abrarobotics.com/<lingua>/blog/<articolo>.html", ""]
+    righe.append(f"- English: {BASE}en/index-en.html · {BASE}en/catalogo-unitree-en.html")
+    for c in LINGUE[1:]:
+        if (ROOT / c / "index.html").is_file():
+            n = len(list((ROOT / c / "blog").glob("*.html"))) if (ROOT / c / "blog").is_dir() else 0
+            righe.append(f"- {c}: {BASE}{c}/ ({n} articoli in {BASE}{c}/blog/)")
+    return righe + [""]
 
 
 def completo():
