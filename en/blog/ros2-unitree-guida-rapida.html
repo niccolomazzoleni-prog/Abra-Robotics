@@ -51,7 +51,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "ROS 2 on Unitree robots: quick start guide",
   "description": "ROS 2 on Unitree Go2 EDU, B2, G1 and H2: supported versions, installing unitree_ros2, CycloneDDS, the 192.168.123.x network and your first topic in the lab.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-10-19",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -84,7 +84,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Which ROS 2 version should I use with Unitree robots?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Humble on Ubuntu 22.04: this is the combination Unitree recommends in the unitree_ros2 README. Foxy on Ubuntu 20.04 is tested but reached end of support on 20 June 2023. Humble is supported until May 2027."
+        "text": "Humble on Ubuntu 22.04, the combination Unitree recommends, supported until May 2027. Foxy is tested but has been out of support since June 2023."
       }
     },
     {
@@ -92,7 +92,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Can the Go2 Air or Pro be used with ROS 2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. In the official Go2 table, secondary development is only available on the EDU version; Air and Pro do not include it. For ROS 2 you need a Go2 EDU."
+        "text": "No. The SDK, and therefore ROS 2, is only available on the Go2 EDU."
       }
     },
     {
@@ -100,7 +100,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Do I need to install a bridge between the SDK and ROS 2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The robot and ROS 2 both use DDS, so with unitree_ros2 and the CycloneDDS middleware the robot's messages appear directly as ROS 2 topics, with no translation nodes."
+        "text": "No. The robot and ROS 2 both speak DDS: with unitree_ros2 and CycloneDDS the robot's messages are already ROS 2 topics."
       }
     },
     {
@@ -108,7 +108,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Why doesn't ros2 topic list show the robot's topics?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "There are three common causes: RMW_IMPLEMENTATION not set to rmw_cyclonedds_cpp, wrong network interface name in setup.sh, or the PC not configured on 192.168.123.x. Check setup.sh again and ping the robot."
+        "text": "Usually RMW_IMPLEMENTATION=rmw_cyclonedds_cpp is missing, the interface in setup.sh is wrong or the PC is not on the 192.168.123.x subnet. A ping to the robot settles the third case."
       }
     },
     {
@@ -116,7 +116,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Can I use ROS 2 without the robot connected?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. unitree_ros2 includes setup_local.sh, which uses the loopback interface, and unitree_mujoco simulates the robot with the same messages: you can develop and test in simulation before touching the hardware."
+        "text": "Yes, with setup_local.sh on the loopback interface and with the unitree_mujoco simulator, which uses the same messages as the robot."
       }
     }
   ]
@@ -213,23 +213,23 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <header class="article-header"><p class="label">ROS 2 · Development</p>
 <h1>ROS 2 on Unitree robots: from zero to your first topic</h1>
-<div class="article-meta"><time datetime="2026-10-09">Updated 9 October 2026</time><span>Abra Robotics</span></div>
+<div class="article-meta"><time datetime="2026-07-13">13 July 2026</time><span>Updated 19 October 2026</span><span>Abra Robotics</span></div>
 <div class="article-tldr"><strong>In short:</strong> Unitree robots communicate over DDS, the same middleware as ROS 2. With the official <code>unitree_ros2</code> package, ROS 2 Humble on Ubuntu 22.04 and CycloneDDS, the robot's messages become ROS 2 topics with no bridge. You need an EDU version of the robot, an Ethernet cable and a PC on the 192.168.123.x subnet.</div>
 </header>
 
 <div class="article-content">
-<p><strong>ROS 2 on Unitree robots</strong> works without reverse engineering and without translation nodes: the robot publishes its data over DDS (CycloneDDS), and ROS 2 uses DDS as its communication layer. The official <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> package provides the message definitions and the environment scripts. This guide summarises the procedure from the official README, including the points where people usually get stuck.</p>
+<p><strong>ROS 2 on Unitree robots</strong> works without reverse engineering and without translation nodes: the robot publishes its data over DDS (CycloneDDS), and ROS 2 uses DDS as its communication layer. The official <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> package provides the message definitions and the setup scripts. The steps below follow the official README.</p>
 
 <h2>Which Unitree robots support ROS 2</h2>
-<p>Software development is only available on the developer versions. For the Go2, the <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">official page</a> lists secondary development on the EDU version, not on Air and Pro; for the G1 the same applies with the <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1 EDU</a>.</p>
+<p>Software development is only available on the developer versions. For the Go2, the <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">official page</a> gives SDK access for custom software development on the EDU version, not on Air and Pro; for the G1 the same applies with the <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1 EDU</a>.</p>
 <table>
 <thead><tr><th>Robot</th><th>Messages in unitree_ros2</th><th>ROS 2 examples in the repository</th></tr></thead>
 <tbody>
-<tr><td><a href="/en/go2-en.html">Go2 EDU</a></td><td><code>unitree_go</code></td><td>sport client, stand, robot state, low-level</td></tr>
-<tr><td><a href="/en/b2-en.html">B2 / B2W</a></td><td><code>unitree_go</code></td><td>low-level, reading state</td></tr>
+<tr><td><a href="/en/go2-en.html">Go2 EDU</a></td><td><code>unitree_go</code></td><td>sport client, stand, robot state, low level</td></tr>
+<tr><td><a href="/en/b2-en.html">B2 / B2W</a></td><td><code>unitree_go</code></td><td>sport client, stand</td></tr>
 <tr><td><a href="/en/g1-en.html">G1 EDU</a></td><td><code>unitree_hg</code></td><td><code>g1_low_level_example</code></td></tr>
-<tr><td><a href="/en/h2-en.html">H2</a></td><td><code>h2</code> examples folder</td><td>included in the repository</td></tr>
-<tr><td>H1 / H1-2</td><td><code>unitree_go</code> / <code>unitree_hg</code></td><td>low-level H1-2</td></tr>
+<tr><td><a href="/en/h2-en.html">H2</a></td><td><code>unitree_hg</code></td><td><code>h2_loco_client</code> (high level), <code>h2_ankle_swing_example</code> (low level)</td></tr>
+<tr><td>H1 / H1-2</td><td><code>unitree_go</code> / <code>unitree_hg</code></td><td>H1-2 low level</td></tr>
 </tbody>
 </table>
 <p>For the <a href="/en/r1-en.html">R1</a> and <a href="/en/a2-en.html">A2</a>, as of October 2026 <code>unitree_sdk2</code> contains dedicated C++ examples, but <code>unitree_ros2</code> still has no specific examples. Before buying one of these models for a ROS 2-only project, check the state of the repository.</p>
@@ -250,7 +250,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>Secondary development, 23 DoF, compute dock</p>
+<p>SDK, 23 DoF, compute dock</p>
 <div class="product-card-price">€38,005 <small>excl. VAT</small></div>
 <div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">View product</a><a class="product-card-link" href="/en/assessment-en.html">Get a quote</a></div>
 </div>
@@ -275,7 +275,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p>According to the <a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">ROS 2 releases table</a>, Foxy reached end of support on 20 June 2023, while Humble is supported until May 2027 and Jazzy until May 2029. For a project starting today the practical choice is Humble; Jazzy is not among the combinations tested by Unitree. ROS 2 Humble installs from Debian packages following the <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">official guide</a>.</p>
 
 <h2>Installing unitree_ros2 step by step</h2>
-<p>1. Clone the repository and install the dependencies (with Humble, replace <code>foxy</code> with <code>humble</code>):</p>
+<p>1. Clone the repository and install the dependencies. The commands are for Humble; with Foxy, replace <code>humble</code> with <code>foxy</code>:</p>
 <pre><code>git clone https://github.com/unitreerobotics/unitree_ros2
 sudo apt install ros-humble-rmw-cyclonedds-cpp
 sudo apt install ros-humble-rosidl-generator-dds-idl
@@ -314,7 +314,7 @@ colcon build
 </ul>
 
 <h2>Simulate before touching hardware</h2>
-<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> is the official MuJoCo-based simulator: it accepts programs written with <code>unitree_sdk2</code>, <code>unitree_sdk2_python</code> and <code>unitree_ros2</code>, with the same low-level messages as the real robot. The recommended flow is to develop in simulation on loopback, then run the same code on the robot by changing the network interface. For locomotion policies there is <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Go2, G1, H1, H1-2).</p>
+<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> is the official MuJoCo-based simulator: it accepts programs written with <code>unitree_sdk2</code>, <code>unitree_sdk2_python</code> and <code>unitree_ros2</code>, with the same low-level messages as the real robot. You develop in simulation on the loopback interface, then the same code runs on the robot with only the network interface changed. For locomotion policies there is <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Go2, G1, H1, H1-2).</p>
 
 <h2>Common errors</h2>
 <ul>
@@ -322,15 +322,15 @@ colcon build
 <li><strong>CycloneDDS build failed on Foxy</strong>: the terminal had already sourced <code>/opt/ros/foxy/setup.bash</code>; comment out the line in <code>~/.bashrc</code> and reopen the terminal.</li>
 <li><strong>Several ROS installs on the same PC</strong>: avoid putting <code>setup.sh</code> in <code>~/.bashrc</code> and source it by hand when needed.</li>
 </ul>
-<p>For university labs, Abra Robotics supplies the Unitree EDU models in the UK, Ireland and internationally, with support in English, and offers SDK training and development as separate services: see <a href="/en/universita-ricerca-en.html">Universities and Research</a> and <a href="/en/index-en.html">Software</a>. The developer version pages are <a href="/en/prodotti/unitree-go2-edu-en.html">Go2 EDU</a> and <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU</a>.</p>
+<p>For university labs, Abra Robotics supplies the EDU models in the UK, Ireland and internationally, with support in English, and offers SDK training and development as separate services: see <a href="/en/universita-ricerca-en.html">Universities and Research</a> and <a href="/en/index-en.html">Software</a>.</p>
 
 <section class="article-faq">
 <h2>Frequently asked questions</h2>
-<div class="faq-item"><h3>Which ROS 2 version should I use with Unitree robots?</h3><p>Humble on Ubuntu 22.04: this is the combination Unitree recommends in the unitree_ros2 README. Foxy on Ubuntu 20.04 is tested but reached end of support on 20 June 2023. Humble is supported until May 2027.</p></div>
-<div class="faq-item"><h3>Can the Go2 Air or Pro be used with ROS 2?</h3><p>No. In the official Go2 table, secondary development is only available on the EDU version; Air and Pro do not include it. For ROS 2 you need a Go2 EDU.</p></div>
-<div class="faq-item"><h3>Do I need to install a bridge between the SDK and ROS 2?</h3><p>No. The robot and ROS 2 both use DDS, so with unitree_ros2 and the CycloneDDS middleware the robot's messages appear directly as ROS 2 topics, with no translation nodes.</p></div>
-<div class="faq-item"><h3>Why doesn't ros2 topic list show the robot's topics?</h3><p>There are three common causes: RMW_IMPLEMENTATION not set to rmw_cyclonedds_cpp, wrong network interface name in setup.sh, or the PC not configured on 192.168.123.x. Check setup.sh again and ping the robot.</p></div>
-<div class="faq-item"><h3>Can I use ROS 2 without the robot connected?</h3><p>Yes. unitree_ros2 includes setup_local.sh, which uses the loopback interface, and unitree_mujoco simulates the robot with the same messages: you can develop and test in simulation before touching the hardware.</p></div>
+<div class="faq-item"><h3>Which ROS 2 version should I use with Unitree robots?</h3><p>Humble on Ubuntu 22.04, the combination Unitree recommends, supported until May 2027. Foxy is tested but has been out of support since June 2023.</p></div>
+<div class="faq-item"><h3>Can the Go2 Air or Pro be used with ROS 2?</h3><p>No. The SDK, and therefore ROS 2, is only available on the Go2 EDU.</p></div>
+<div class="faq-item"><h3>Do I need to install a bridge between the SDK and ROS 2?</h3><p>No. The robot and ROS 2 both speak DDS: with unitree_ros2 and CycloneDDS the robot's messages are already ROS 2 topics.</p></div>
+<div class="faq-item"><h3>Why doesn't ros2 topic list show the robot's topics?</h3><p>Usually RMW_IMPLEMENTATION=rmw_cyclonedds_cpp is missing, the interface in setup.sh is wrong or the PC is not on the 192.168.123.x subnet. A ping to the robot settles the third case.</p></div>
+<div class="faq-item"><h3>Can I use ROS 2 without the robot connected?</h3><p>Yes, with setup_local.sh on the loopback interface and with the unitree_mujoco simulator, which uses the same messages as the robot.</p></div>
 </section>
 
 <section class="article-references" id="fonti">
@@ -340,7 +340,7 @@ colcon build
 <li>Unitree, <em>unitree_sdk2</em>: <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2</a></li>
 <li>Unitree, <em>unitree_mujoco</em>: <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_mujoco</a></li>
 <li>Unitree, <em>unitree_rl_gym</em>: <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_rl_gym</a></li>
-<li>Unitree, Go2 and G1 product pages (secondary development on EDU only): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a> · <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, Go2 and G1 product pages (SDK on EDU versions only): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a> · <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
 <li>Unitree Document Center, developer section: <a href="https://support.unitree.com/home/en/developer" rel="noopener noreferrer" target="_blank">support.unitree.com/home/en/developer</a></li>
 <li>ROS 2 Documentation, distributions and end-of-support dates: <a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">docs.ros.org/en/humble/Releases.html</a></li>
 <li>ROS 2 Documentation, Humble installation from Debian packages: <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">docs.ros.org</a></li>
