@@ -45,6 +45,7 @@ def rows_from_end_user() -> list[dict]:
             # prezzo di listino (MAP) se il prezzo pubblicato e' scontato
             "prezzo_listino_eur": str(v.get("prezzo_listino_eur", "")).replace(".", ","),
             "pubblicabile": "true",
+            "su_richiesta": "true" if v.get("prezzo_su_richiesta") else "",
             "categoria": v.get("categoria", ""),
             "pagina_sito": f"prodotti/{v.get('slug', slug_file(sku))}",
             "stato_sito": "pubblicato",

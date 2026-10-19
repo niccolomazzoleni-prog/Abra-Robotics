@@ -244,6 +244,11 @@ def main() -> None:
     print(f"Letti {len(rows)} prodotti da CSV")
 
     data = generate_json(rows)
+    # Le voci "su richiesta" (prezzo_su_richiesta, senza prezzo_eur, es. G1-PLUS) non sono nel CSV: si conservano.
+    if JSON_PATH.exists():
+        for sku, v in json.loads(JSON_PATH.read_text(encoding="utf-8")).items():
+            if v.get("prezzo_su_richiesta") and sku not in data:
+                data[sku] = v
     JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
     JSON_PATH.write_text(
         json.dumps(data, ensure_ascii=False, indent=2) + "\n",

@@ -5,10 +5,12 @@
   "type": "object",
   "additionalProperties": {
     "type": "object",
-    "required": ["nome", "prezzo_eur", "note"],
+    "required": ["nome", "note"],
+    "anyOf": [{ "required": ["prezzo_eur"] }, { "required": ["prezzo_su_richiesta"] }],
     "properties": {
       "nome": { "type": "string" },
       "prezzo_eur": { "type": "number", "minimum": 0 },
+      "prezzo_su_richiesta": { "const": true, "description": "Prodotto senza prezzo pubblico (es. G1-PLUS): nessun prezzo_eur" },
       "note": { "type": "string" }
     }
   }

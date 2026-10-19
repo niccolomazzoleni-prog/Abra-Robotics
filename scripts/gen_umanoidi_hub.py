@@ -54,11 +54,16 @@ def eur(v, dec=True):
 
 def prodotti(fam):
     out = [(k, v) for k, v in LISTINO.items()
-           if v.get("categoria") == "UMANOIDI" and re.match(fam["match"], k) and not v.get("prezzo_da")]
-    return sorted(out, key=lambda kv: kv[1]["prezzo_eur"])
+           if v.get("categoria") == "UMANOIDI" and re.match(fam["match"], k) and not v.get("prezzo_da") and (v.get("prezzo_eur") or v.get("prezzo_su_richiesta"))]
+    # voci "su richiesta" (prezzo_su_richiesta, es. G1-PLUS) in fondo: il "da" della famiglia resta il prezzo piu' basso
+    return sorted(out, key=lambda kv: (not kv[1].get("prezzo_eur"), kv[1].get("prezzo_eur") or 0))
 
 
 def voce(k, v):
+    if not v.get("prezzo_eur"):
+        return (f'<a class="fam-item" href="prodotti/{v["slug"]}">'
+                f'<span class="fam-item-name">{html.escape(v["nome"])}</span>'
+                f'<span class="fam-item-price"><strong>Prezzo su richiesta</strong></span></a>')
     listino = v.get("prezzo_listino_eur")
     barrato = (f'<s class="fam-map" title="Prezzo di listino">{eur(listino)} €</s>'
                if listino and listino > v["prezzo_eur"] else "")
@@ -162,7 +167,7 @@ def sostituisci(t, nome, contenuto, ancora_prima=None, ancora_dopo=None):
 def main():
     t = PAGE.read_text(encoding="utf-8")
     tot = sum(len(prodotti(f)) for f in FAMIGLIE)
-    minimo = min(prodotti(f)[0][1]["prezzo_eur"] for f in FAMIGLIE)
+    minimo = min(v["prezzo_eur"] for f in FAMIGLIE for _, v in prodotti(f) if v.get("prezzo_eur"))
 
     # stile della pagina
     t = sostituisci(t, "STILE", STYLE, ancora_prima="</head>")
@@ -173,8 +178,8 @@ def main():
              "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"https://abrarobotics.com/prodotti/{v['slug']}",
                                   "item": {"@type": "Product", "name": v["nome"], "brand": {"@type": "Brand", "name": "Unitree"},
                                            "url": f"https://abrarobotics.com/prodotti/{v['slug']}",
-                                           "offers": {"@type": "Offer", "price": f"{v['prezzo_eur']:.2f}", "priceCurrency": "EUR",
-                                                      "availability": "https://schema.org/InStock"}}}
+                                           **({"offers": {"@type": "Offer", "price": f"{v['prezzo_eur']:.2f}", "priceCurrency": "EUR",
+                                                         "availability": "https://schema.org/InStock"}} if v.get("prezzo_eur") else {})}}
                                  for i, (k, v) in enumerate(voci)]}
     t = sostituisci(t, "JSONLD", '<script type="application/ld+json">' + json.dumps(lista, ensure_ascii=False) + "</script>",
                     ancora_prima="</head>")

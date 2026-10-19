@@ -245,7 +245,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
             <td class="thumb-col">${i.img ? `<img class="listino-thumb" src="${i.img}" alt="" loading="lazy">` : ''}</td>
             <td><a class="prod-link" href="prodotti/${i.slug}">${i.nome}</a></td>
             <td>${i.catLabel}</td>
-            <td class="price-col">${i.listino > i.prezzo ? `<s class="price-was" title="Prezzo di listino">€ ${fmt(i.listino)}</s>` : ''}${i.prezzoDa ? 'da ' : ''}€ ${fmt(i.prezzo)}</td>
+            <td class="price-col">${Number.isFinite(i.prezzo) ? `${i.listino > i.prezzo ? `<s class="price-was" title="Prezzo di listino">€ ${fmt(i.listino)}</s>` : ''}${i.prezzoDa ? 'da ' : ''}€ ${fmt(i.prezzo)}` : 'Prezzo su richiesta'}</td>
           </tr>`).join('')
         : '<tr><td colspan="4">Nessun risultato</td></tr>';
       if (window.listinoGate) window.listinoGate.after(filtered.length, shown.length);

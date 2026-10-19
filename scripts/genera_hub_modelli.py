@@ -331,15 +331,16 @@ def load() -> dict[str, dict]:
         # label() abbassa le lettere di variante ("Ultimate a", "G1 e"): le rimette maiuscole
         name = re.sub(r"\b(Ultimate|Professional|Smart|Standard|Plus|G1|H2|R1|Go2-W|AS2-W)\s([a-z])\b", lambda m: f"{m.group(1)} {m.group(2).upper()}", name)
         name = re.sub(r"\b(standard|smart|plus|ultimate|professional)\b", lambda m: m.group(1).capitalize(), name)
-        row = {"sku": sku, "name": name, "price": v.get("prezzo_eur"), "slug": slug}
+        # prezzo_su_richiesta (es. G1-PLUS): nessun prezzo, riga "su richiesta" in tabella
+        row = {"sku": sku, "name": name, "price": v.get("prezzo_eur"), "slug": slug, "on_request": bool(v.get("prezzo_su_richiesta"))}
         is_robot = v.get("categoria") == "UMANOIDI"
         if fam == "z1":  # bracci: i "robot" sono i bracci, non pinze/telecamere/motori
             n = v["nome"].upper()
             is_robot = bool(re.match(r"Z1 (AIR|PRO)\b|D1 ROBOTIC ARM|D1-T", n))
         out[fam]["robots" if is_robot else "acc"].append(row)
     for f in out.values():
-        f["robots"].sort(key=lambda r: r["price"] or 0)
-        f["acc"].sort(key=lambda r: r["price"] or 0)
+        f["robots"].sort(key=lambda r: (r["price"] is None, r["price"] or 0))  # "su richiesta" in fondo
+        f["acc"].sort(key=lambda r: (r["price"] is None, r["price"] or 0))
     # R1-D: 52 configurazioni, ordinate per modello (A5, A7, A5-D, A7-D), livello e lettera invece che per prezzo
     base = {"R1-A5": 0, "R1-A7": 1, "R1-A5-D": 2, "R1-A7-D": 3}
     tier = {"Standard": 0, "Smart": 1, "Ultimate": 2}
@@ -434,9 +435,9 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
     th = ("Version", "Price (excl. VAT)", "") if en else ("Versione", "Prezzo (IVA esclusa)", "")
     tr = "\n".join(
         f'<tr><td><a href="{link(r["slug"])}">{html.escape(nome_en(r["name"]) if en else r["name"])}</a></td>'
-        f'<td class="p">{("from € " + eur(r["price"], True)) if en else ("da " + eur(r["price"], False) + " €")}</td>'
+        f'<td class="p">{(("on request" if en else "su richiesta") if not r["price"] else ("from € " + eur(r["price"], True)) if en else ("da " + eur(r["price"], False) + " €"))}</td>'
         f'<td><a href="{link(r["slug"])}">{"Details" if en else "Scheda"} →</a></td></tr>'
-        for r in rows if r["price"])
+        for r in rows if r["price"] or r["on_request"])
     table = f'<div class="hm-wrap"><table class="hm-table"><thead><tr><th>{th[0]}</th><th>{th[1]}</th><th>{th[2]}</th></tr></thead><tbody>\n{tr}\n</tbody></table></div>'
 
     specs = "".join(f'<div><span>{html.escape(s[1] if en else s[0])}</span><strong>{html.escape(split(s[2], en))}</strong></div>'
@@ -571,7 +572,7 @@ def add_hreflang(it_page: str, en_page: str) -> None:
     p = ROOT / it_page
     s = p.read_text(encoding="utf-8")
     url_it, url_en = f"{SITE}/{it_page}", f"{SITE}/{en_page}"
-    s = re.sub(r'\s*<link[^>]*hreflang="(it|en|de|fr|nl|da|sv|nb|fi|x-default)"[^>]*>', "", s)
+    s = re.sub(r'\s*<link[^>]*hreflang="(it|en|de|fr|nl|da|sv|nb|fi|es|pl|cs|x-default)"[^>]*>', "", s)
     key = next(k for k, f in FAMILIES.items() if f["it_page"] == it_page)
     others = "".join(f'<link rel="alternate" hreflang="{ {"no": "nb"}.get(c, c)}" href="{SITE}/{c}/unitree-{key}.html"/>\n'
                      for c in ("de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs") if (ROOT / c / f"unitree-{key}.html").is_file())
