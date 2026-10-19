@@ -49,7 +49,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "PoC con robot umanoide in azienda: fasi, KPI e rischi",
   "description": "Come impostare un PoC con un umanoide Unitree in azienda: fasi, durate indicative, KPI da fissare prima, scelta tra G1, G1-D e R1, sicurezza e norme.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-10-19",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -78,7 +78,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Quanto dura un PoC con un robot umanoide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Dipende dal caso. Mappatura, confronto soluzioni, simulazione e piano di PoC richiedono orientativamente 5–9 settimane per un caso d'uso singolo; esecuzione e decisione si fissano nel piano. Se serve un robot nuovo, la consegna degli umanoidi è indicata in 4–6 settimane."
+        "text": "Le quattro fasi di preparazione richiedono di solito 5–9 settimane per un caso d'uso singolo; la durata dei test si fissa nel piano. Se serve un robot nuovo, si aggiungono 4–6 settimane di consegna."
       }
     },
     {
@@ -86,7 +86,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Quale umanoide Unitree conviene per un PoC di pick and place?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Per prelievo e deposito su banco il G1-D Standard su piantana fissa (da 38.005 € IVA esclusa) evita il rischio di caduta. Con budget ridotto si può valutare l'R1-D, su preventivo indicativi."
+        "text": "Per prelievo e deposito su banco, il G1-D Standard su piantana fissa (da 38.005 € IVA esclusa): senza gambe, non rischia cadute. Con budget ridotto c'è l'R1-D, da 6.295 €."
       }
     },
     {
@@ -94,7 +94,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Quali KPI misurare in un PoC con un umanoide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tasso di successo, tempo ciclo, interventi umani per ora, autonomia reale per batteria e tempo di setup. Vanno scritti nel piano con un valore soglia prima di iniziare i test."
+        "text": "I cinque di base sono tasso di successo, tempo ciclo, interventi umani per ora, autonomia reale e tempo di setup, ciascuno con una soglia scritta prima dei test."
       }
     },
     {
@@ -102,7 +102,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Serve comprare il robot per fare un PoC?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Non sempre. In alcuni casi la prima verifica si fa in simulazione, in altri si valutano noleggio o pilot a breve termine. La scelta dipende dal caso e dalla maturità del processo."
+        "text": "Non sempre: la prima verifica può essere una simulazione o un pilot a breve termine. Dipende da quanto è maturo il processo."
       }
     },
     {
@@ -110,7 +110,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Quali norme di sicurezza valgono per un PoC con un umanoide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oggi la Direttiva macchine 2006/42/CE; dal 20 gennaio 2027 il Regolamento (UE) 2023/1230. Per i robot industriali si fa riferimento alla serie ISO 10218. Serve una valutazione del rischio condivisa con l'RSPP."
+        "text": "Fino al 19 gennaio 2027 la Direttiva macchine 2006/42/CE, poi il Regolamento (UE) 2023/1230. In pratica serve una valutazione del rischio scritta, condivisa con l'RSPP, e un'area di prova delimitata."
       }
     }
   ]
@@ -139,12 +139,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <header class="article-header"><p class="label">PoC · Umanoidi</p>
 <h1>PoC con un robot umanoide in azienda: fasi, KPI e rischi</h1>
-<div class="article-meta"><time datetime="2026-07-13">13 luglio 2026</time><span>Aggiornato il 9 ottobre 2026</span><span>Abra Robotics</span></div>
+<div class="article-meta"><time datetime="2026-07-13">13 luglio 2026</time><span>Aggiornato il 19 ottobre 2026</span><span>Abra Robotics</span></div>
 <div class="article-tldr"><strong>In breve:</strong> un PoC con un umanoide serve a rispondere a una domanda precisa (questo robot fa questo compito, a questo ritmo, con questi interventi umani?) prima di investire su più unità. Funziona se KPI, perimetro e criteri di successo sono scritti prima di accendere il robot. Le durate qui riportate sono indicative e dipendono dal caso.</div>
 </header>
 
 <div class="article-content">
-<p>Un <strong>PoC con un robot umanoide</strong> non è comprare il robot e vedere cosa succede. È un esperimento con un perimetro definito, metriche scritte nero su bianco e una decisione finale: andare avanti, cambiare approccio o fermarsi. Questa guida descrive un metodo che un'azienda può seguire, i KPI da fissare, come scegliere la piattaforma Unitree e quali norme di sicurezza tenere presenti.</p>
+<p>Un <strong>PoC con un robot umanoide</strong> non è comprare il robot e vedere cosa succede. È un esperimento con un perimetro definito, metriche scritte nero su bianco e una decisione finale: andare avanti, cambiare approccio o fermarsi.</p>
 
 <h2>Cosa deve dimostrare un PoC</h2>
 <p>Un PoC risponde a una sola domanda, formulata in modo verificabile. Esempi di domande ben poste:</p>
@@ -187,13 +187,13 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <tbody>
 <tr><td>Prelievo e deposito su banco, raccolta dati di teleoperazione</td><td><a href="../g1-d.html">G1-D</a> Standard (piantana fissa)</td><td>da 38.005 €</td></tr>
 <tr><td>Manipolazione su più postazioni</td><td><a href="../prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (base mobile)</td><td>da 51.944 €</td></tr>
-<tr><td>Manipolazione compatta a budget ridotto</td><td><a href="../r1-d.html">R1-D</a></td><td>su preventivo</td></tr>
+<tr><td>Manipolazione compatta a budget ridotto</td><td><a href="../r1-d.html">R1-D</a></td><td>da 6.295 € (R1-A5 Standard)</td></tr>
 <tr><td>Locomozione, software, AI embodied</td><td><a href="../g1.html">G1</a> EDU</td><td>da 38.005 € (G1-U1)</td></tr>
 <tr><td>Didattica e prove a basso costo</td><td><a href="../r1.html">R1</a> EDU</td><td>da 14.930 € (R1-U1)</td></tr>
 <tr><td>Interazione a scala umana</td><td><a href="../h2.html">H2</a></td><td>da 43.874 € (H2 Air)</td></tr>
 </tbody>
 </table>
-<p>Per un PoC in cui il robot va programmato servono le versioni con sviluppo secondario (EDU), che Unitree indica nelle specifiche di <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1</a> e <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">R1</a>. Se il compito è solo manipolazione, un torso senza gambe come il G1-D (specifiche su <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a>) elimina il rischio di caduta e semplifica la cella. Confronto completo: <a href="confronto-umanoidi-2026.html">quale umanoide Unitree scegliere</a>.</p>
+<p>Per un PoC in cui il robot va programmato servono le versioni EDU: secondo le schede Unitree di G1 e R1, solo queste si programmano con l'SDK. Se il compito è solo manipolazione, un torso senza gambe come il G1-D elimina il rischio di caduta e semplifica la cella. Confronto completo: <a href="confronto-umanoidi-2026.html">quale umanoide Unitree scegliere</a>.</p>
 
 <div class="product-strip" aria-label="Prodotti citati">
 <div class="product-strip-head"><span>Prodotti citati nell'articolo</span><a href="../umanoidi.html">Tutti gli umanoidi</a></div>
@@ -211,7 +211,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a class="product-card-media" href="../prodotti/unitree-g1-edu-standard.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="../prodotti/unitree-g1-edu-standard.html">Unitree G1 EDU U1</a></h3>
-<p>Sviluppo secondario, 23 DoF, dock di calcolo</p>
+<p>SDK, 23 DoF, dock di calcolo</p>
 <div class="product-card-price">38.005 € <small>IVA esclusa</small></div>
 <div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-edu-standard.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
 </div>
@@ -220,7 +220,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a class="product-card-media" href="../prodotti/unitree-r1-edu.html"><img alt="Unitree R1 EDU (U1)" loading="lazy" src="../images/official/unitree-r1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="../prodotti/unitree-r1-edu.html">Unitree R1 EDU (U1)</a></h3>
-<p>Sviluppo secondario, 26-40 gradi di libertà</p>
+<p>SDK, 26-40 gradi di libertà</p>
 <div class="product-card-price">14.930 € <small>IVA esclusa</small></div>
 <div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-r1-edu.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
 </div>
@@ -229,7 +229,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 <h2>Sicurezza e norme da considerare</h2>
 <p><em>Informazioni generali, non consulenza legale.</em></p>
-<p>Oggi le macchine immesse sul mercato UE seguono la <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">Direttiva macchine 2006/42/CE</a>. Dal 20 gennaio 2027 si applica il <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Regolamento (UE) 2023/1230</a>, che abroga la direttiva dalla stessa data. Per i robot industriali il riferimento tecnico è la serie <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a>, rivista nel 2025. Per i robot mobili a stabilità attiva (a gambe o su ruote in equilibrio) ISO sta sviluppando la <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, non ancora pubblicata come norma definitiva al momento della consultazione.</p>
+<p>Oggi le macchine immesse sul mercato UE seguono la <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">Direttiva macchine 2006/42/CE</a>. Dal 20 gennaio 2027 si applica il <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Regolamento (UE) 2023/1230</a>, che abroga la direttiva dalla stessa data. Per i robot industriali il riferimento tecnico è la serie <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a>, rivista nel 2025. Per i robot mobili a stabilità attiva (a gambe o su ruote in equilibrio) ISO sta sviluppando la <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>: a ottobre 2026 è ancora una bozza di comitato (Committee Draft).</p>
 <p>In pratica, per il PoC:</p>
 <ul>
 <li>Area di prova delimitata, con accesso controllato durante i test.</li>
@@ -240,7 +240,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p>Approfondimento: <a href="unitree-regolamento-macchine-2027.html">robot Unitree e Regolamento Macchine 2027</a>.</p>
 
 <h2>Comprare, noleggiare o simulare</h2>
-<p>Non sempre il PoC richiede di comprare subito il robot. In alcuni casi una prima verifica si fa in simulazione; in altri si valutano noleggio o pilot a breve termine, come spiegato nella pagina <a href="../assessment.html">Assessment e POC</a>. Se l'acquisto è la strada scelta, conviene verificare prima se il progetto può accedere a strumenti come iperammortamento 2026, Nuova Sabatini o bandi regionali: requisiti e fonti ufficiali sono nella pagina <a href="../finanziamenti.html">Finanziamenti</a>, e l'ammissibilità del singolo bene la conferma il commercialista.</p>
+<p>Non sempre il PoC richiede di comprare subito il robot. In alcuni casi una prima verifica si fa in simulazione; in altri si valutano noleggio o pilot a breve termine. Se l'acquisto è la strada scelta, conviene verificare prima se il progetto può accedere a strumenti come iperammortamento 2026, Nuova Sabatini o bandi regionali: requisiti e fonti ufficiali sono nella pagina <a href="../finanziamenti.html">Finanziamenti</a>, e l'ammissibilità del singolo bene la conferma il commercialista.</p>
 
 <h2>Cosa deve contenere il report finale</h2>
 <ol>
@@ -254,11 +254,11 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <section class="article-faq" id="faq">
 <h2>Domande frequenti</h2>
-<div class="faq-item"><h3>Quanto dura un PoC con un robot umanoide?</h3><p>Dipende dal caso. Mappatura, confronto soluzioni, simulazione e piano di PoC richiedono orientativamente 5–9 settimane per un caso d'uso singolo; esecuzione e decisione si fissano nel piano. Se serve un robot nuovo, la consegna degli umanoidi è indicata in 4–6 settimane.</p></div>
-<div class="faq-item"><h3>Quale umanoide Unitree conviene per un PoC di pick and place?</h3><p>Per prelievo e deposito su banco il G1-D Standard su piantana fissa (da 38.005 € IVA esclusa) evita il rischio di caduta. Con budget ridotto si può valutare l'R1-D, su preventivo indicativi.</p></div>
-<div class="faq-item"><h3>Quali KPI misurare in un PoC con un umanoide?</h3><p>Tasso di successo, tempo ciclo, interventi umani per ora, autonomia reale per batteria e tempo di setup. Vanno scritti nel piano con un valore soglia prima di iniziare i test.</p></div>
-<div class="faq-item"><h3>Serve comprare il robot per fare un PoC?</h3><p>Non sempre. In alcuni casi la prima verifica si fa in simulazione, in altri si valutano noleggio o pilot a breve termine. La scelta dipende dal caso e dalla maturità del processo.</p></div>
-<div class="faq-item"><h3>Quali norme di sicurezza valgono per un PoC con un umanoide?</h3><p>Oggi la Direttiva macchine 2006/42/CE; dal 20 gennaio 2027 il Regolamento (UE) 2023/1230. Per i robot industriali si fa riferimento alla serie ISO 10218. Serve una valutazione del rischio condivisa con l'RSPP.</p></div>
+<div class="faq-item"><h3>Quanto dura un PoC con un robot umanoide?</h3><p>Le quattro fasi di preparazione richiedono di solito 5–9 settimane per un caso d'uso singolo; la durata dei test si fissa nel piano. Se serve un robot nuovo, si aggiungono 4–6 settimane di consegna.</p></div>
+<div class="faq-item"><h3>Quale umanoide Unitree conviene per un PoC di pick and place?</h3><p>Per prelievo e deposito su banco, il G1-D Standard su piantana fissa (da 38.005 € IVA esclusa): senza gambe, non rischia cadute. Con budget ridotto c'è l'R1-D, da 6.295 €.</p></div>
+<div class="faq-item"><h3>Quali KPI misurare in un PoC con un umanoide?</h3><p>I cinque di base sono tasso di successo, tempo ciclo, interventi umani per ora, autonomia reale e tempo di setup, ciascuno con una soglia scritta prima dei test.</p></div>
+<div class="faq-item"><h3>Serve comprare il robot per fare un PoC?</h3><p>Non sempre: la prima verifica può essere una simulazione o un pilot a breve termine. Dipende da quanto è maturo il processo.</p></div>
+<div class="faq-item"><h3>Quali norme di sicurezza valgono per un PoC con un umanoide?</h3><p>Fino al 19 gennaio 2027 la Direttiva macchine 2006/42/CE, poi il Regolamento (UE) 2023/1230. In pratica serve una valutazione del rischio scritta, condivisa con l'RSPP, e un'area di prova delimitata.</p></div>
 </section>
 
 <section class="article-references" id="fonti">

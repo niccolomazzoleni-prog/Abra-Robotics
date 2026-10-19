@@ -50,7 +50,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "Umanoidi vs robotica tradizionale: quando conviene un umanoide e quando un cobot o un AMR",
   "description": "Umanoide G1 o H2, cobot o AMR? Confronto con specifiche ufficiali, prezzi di listino, norme di sicurezza e criteri pratici per PMI e laboratori.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-10-19",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -79,7 +79,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Posso sostituire un cobot in linea con un umanoide G1?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Quasi mai conviene. Un cobot come il Fairino FR3 dichiara una ripetibilità di ±0,02 mm e lavora alimentato da rete; il G1 ha un'autonomia dichiarata di circa 2 ore e un carico per braccio di circa 2-3 kg, mentre Unitree non dichiara un valore di ripetibilità. L'umanoide ha senso su task diversi, non come sostituto di una cella già efficiente."
+        "text": "Quasi mai conviene. Il cobot lavora alimentato da rete con una ripetibilità dichiarata (±0,02 mm per il Fairino FR3); il G1 lavora circa 2 ore per batteria e Unitree non dichiara una ripetibilità."
       }
     },
     {
@@ -87,7 +87,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Quanto costa un umanoide rispetto a un cobot?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A listino Abra Robotics, IVA esclusa: cobot Fairino FR3 da 5.448 €, AMR AutoXing Juno Plus da 16.999 €, Unitree G1 Air da 19.809 €, G1 EDU (U1) da 38.005 €, H2 Air da 43.874 €. Al prezzo dell'umanoide vanno aggiunti sviluppo software, area di prova e formazione."
+        "text": "A listino, IVA esclusa, un cobot Fairino FR3 parte da 5.448 € e un Unitree G1 Air da 19.809 €. Per programmare l'umanoide serve il G1 EDU (U1), da 38.005 €, più sviluppo software e area di prova."
       }
     },
     {
@@ -95,7 +95,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Esiste una norma di sicurezza specifica per gli umanoidi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Non ancora pubblicata. Le ISO 10218-1 e 10218-2 del 2025 coprono robot industriali e celle, comprese le applicazioni collaborative. Per i robot mobili che restano in equilibrio con un controllo attivo, come bipedi e quadrupedi, l'ISO sta sviluppando la ISO 25785-1. Dal 20 gennaio 2027 si applica il Regolamento macchine UE 2023/1230."
+        "text": "Non ancora: la ISO 25785-1, per i robot mobili che restano in equilibrio con un controllo attivo, a ottobre 2026 è in fase di bozza. Oggi il riferimento resta la serie ISO 10218 del 2025."
       }
     },
     {
@@ -103,7 +103,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Quando ha senso un umanoide in azienda?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Quando il valore è nella flessibilità o nella ricerca: task ancora non formalizzati, raccolta dati per addestrare modelli, ambienti pensati per persone difficili da adattare, progetti di R&S con budget dedicato. Se il task è ripetitivo e ad alto volume, un cobot o un AMR resta la scelta più prevedibile."
+        "text": "Quando il valore è nella flessibilità o nella ricerca, non nel volume: R&S, raccolta dati, task che cambiano spesso in spazi pensati per persone."
       }
     },
     {
@@ -111,7 +111,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Esiste una via di mezzo tra cobot e umanoide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sì: il G1-D è un torso dual-arm Unitree senza gambe, su piantana fissa (Standard, da 38.005 €) o su base mobile (Flagship, da 51.944 €). Elimina il rischio di caduta del bipede e resta più vicino a una cella di manipolazione."
+        "text": "Sì, il G1-D: due bracci da 7 assi su un torso senza gambe, fisso o su base mobile, da 38.005 € IVA esclusa."
       }
     }
   ]
@@ -143,19 +143,19 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <header class="article-header">
 <p class="label">Confronto · Industria</p>
 <h1>Umanoidi vs robotica tradizionale: quando conviene un umanoide e quando un cobot o un AMR</h1>
-<div class="article-meta"><time datetime="2026-10-09">Aggiornato il 9 ottobre 2026</time><span>Abra Robotics</span></div>
+<div class="article-meta"><time datetime="2026-10-19">Aggiornato il 19 ottobre 2026</time><span>Abra Robotics</span></div>
 <div class="article-tldr"><strong>In breve:</strong> per task ripetitivi, ad alto volume e già definiti, cobot e AMR restano la scelta più prevedibile: precisione dichiarata, alimentazione continua, norme consolidate. Un umanoide come l'Unitree G1 (circa 2 ore di autonomia, 2-3 kg per braccio) ha senso per ricerca, raccolta dati e task variabili in spazi pensati per persone. Spesso la via più sensata è automatizzare prima il collo di bottiglia e poi fare un PoC umanoide su un task complementare.</div>
 </header>
 
 <div class="article-content">
 
-<p>"Posso sostituire il cobot in linea con un G1?" Quasi sempre la risposta è no. L'umanoide funziona, ma risolve un problema diverso. Questa guida mette a confronto le due famiglie con le specifiche dichiarate dai produttori, i prezzi del listino pubblico e lo stato delle norme di sicurezza, per decidere da dove partire.</p>
+<p>"Posso sostituire il cobot in linea con un G1?" Quasi sempre la risposta è no. L'umanoide funziona, ma risolve un problema diverso. Il confronto qui sotto usa le specifiche dichiarate dai produttori, i prezzi del listino pubblico e lo stato delle norme di sicurezza.</p>
 
 <h2>Cosa intendiamo per robotica tradizionale</h2>
 <ul>
 <li><strong>Cobot</strong>: bracci collaborativi per avvitatura, pick and place, asservimento macchine, palletizzazione. Esempio: il <a href="../prodotti/cobot-fairino-fr3.html">Fairino FR3</a>, 6 assi, carico nominale 3 kg, sbraccio 622 mm, ripetibilità ±0,02 mm secondo ISO 9283 (scheda del produttore). Gamma completa nella pagina <a href="../cobot.html">cobot</a>.</li>
-<li><strong>AMR</strong>: robot mobili autonomi per trasporto di carrelli, scaffali e pallet su percorsi interni. Si parte, a listino, dall'<a href="../prodotti/amr-juno-plus.html">AutoXing Juno Plus</a>. Panoramica nella pagina <a href="../amr.html">AMR</a>.</li>
-<li><strong>Quadrupedi</strong>: ispezione, sorveglianza, trasporto di sensori in ambienti non strutturati, con modelli come <a href="../go2.html">Go2</a>, <a href="../as2.html">AS2</a> e <a href="../b2.html">B2</a>.</li>
+<li><strong>AMR</strong>: robot mobili autonomi per trasporto di carrelli, scaffali e pallet su percorsi interni. A listino si parte dall'<a href="../prodotti/amr-juno-plus.html">AutoXing Juno Plus</a>.</li>
+<li><strong>Quadrupedi</strong>: ispezione, sorveglianza, trasporto di sensori in ambienti non strutturati, con modelli come Go2, AS2 e B2 (pagina <a href="../quadrupedi.html">quadrupedi</a>).</li>
 </ul>
 <p>Hanno in comune cicli definiti, norme di riferimento consolidate e KPI facili da misurare: pezzi all'ora, OEE, tempo ciclo.</p>
 
@@ -183,7 +183,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li>PoC in area delimitata: kitting leggero, raccolta dati, teleoperazione;</li>
 <li>dimostratori tecnologici e formazione interna.</li>
 </ul>
-<p>Più raramente ha senso sostituire con un umanoide una cella già efficiente.</p>
+<p>Non è un sostituto di una cella già efficiente: non ha una ripetibilità dichiarata e lavora a batteria.</p>
 
 <h2>Confronto diretto (valori indicativi)</h2>
 <table>
@@ -197,7 +197,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <tr><td>KPI tipico</td><td>Tempo ciclo, OEE, pezzi all'ora</td><td>Success rate del task, dati raccolti, flessibilità</td></tr>
 </tbody>
 </table>
-<p>Prezzi aggiornati sul <a href="../listino-unitree.html">listino Unitree</a> e nelle pagine prodotto. Al prezzo dell'umanoide vanno aggiunti sviluppo software, area di prova attrezzata e formazione: spesso pesano quanto l'hardware.</p>
+<p>Prezzi aggiornati sul <a href="../listino-unitree.html">listino Unitree</a> e nelle pagine prodotto. Al prezzo dell'umanoide vanno aggiunti sviluppo software, area di prova attrezzata e formazione.</p>
 
 <div class="product-strip" aria-label="Prodotti citati">
 <div class="product-strip-head"><span>Prodotti citati nell'articolo</span><a href="../catalogo.html">Catalogo completo</a></div>
@@ -215,7 +215,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a class="product-card-media" href="../prodotti/unitree-g1-edu-standard.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="../prodotti/unitree-g1-edu-standard.html">Unitree G1 EDU U1</a></h3>
-<p>Sviluppo secondario, 23 DoF, dock di calcolo</p>
+<p>SDK, 23 DoF, dock di calcolo</p>
 <div class="product-card-price">38.005 € <small>IVA esclusa</small></div>
 <div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-edu-standard.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
 </div>
@@ -234,7 +234,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <h2>Sicurezza e norme</h2>
 <p><em>Informazioni generali, non consulenza legale.</em></p>
 <p>Le <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218-1:2025</a> e <a href="https://www.iso.org/standard/73934.html" rel="noopener noreferrer" target="_blank">ISO 10218-2:2025</a>, pubblicate a febbraio 2025, sostituiscono le edizioni 2011 e coprono robot industriali, applicazioni e celle. La parte 1 ora incorpora i requisiti per le applicazioni collaborative che prima erano nella specifica tecnica ISO/TS 15066.</p>
-<p>Un bipede pone un problema in più: resta in piedi solo grazie al controllo attivo dell'equilibrio. Se perde alimentazione o va in arresto può cadere, mentre un AMR o un cobot si fermano dove sono. Per questa categoria (robot mobili industriali a stabilità controllata attivamente, bipedi e quadrupedi) l'ISO sta lavorando alla <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>, non ancora pubblicata.</p>
+<p>Un bipede pone un problema in più: resta in piedi solo grazie al controllo attivo dell'equilibrio. Se perde alimentazione o va in arresto può cadere, mentre un AMR o un cobot si fermano dove sono. Per questa categoria (robot mobili industriali a stabilità controllata attivamente, bipedi e quadrupedi) l'ISO sta lavorando alla <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>: a ottobre 2026 la scheda ISO la indica come progetto di comitato (Committee Draft), non ancora pubblicata.</p>
 <p>Dal 20 gennaio 2027 si applica il <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Regolamento (UE) 2023/1230</a>, che sostituisce la direttiva macchine 2006/42/CE. Cosa significa per i robot Unitree: <a href="unitree-regolamento-macchine-2027.html">Regolamento macchine 2027</a>. In pratica i primi test con un umanoide si fanno in un'area delimitata, con sistema anticaduta (imbracatura o carroponte) e operatori formati sulle procedure di arresto.</p>
 
 <h2>Quando restare sul tradizionale</h2>
@@ -252,7 +252,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li>Ambiente pensato per persone, difficile da adattare con nastri o AMR.</li>
 <li>Budget dedicato all'innovazione e alla raccolta dati, non alla sostituzione diretta di manodopera.</li>
 </ul>
-<p>C'è anche una via di mezzo: il <a href="../g1-d.html">G1-D</a> è un torso dual-arm senza gambe, su piantana fissa (<a href="../prodotti/unitree-g1-d-standard.html">G1-D Standard</a>, da 38.005 €) o su base mobile (G1-D Flagship, da 51.944 €). Toglie il rischio di caduta e resta vicino a una cella di manipolazione. Per scegliere tra i modelli: <a href="confronto-umanoidi-2026.html">quale umanoide Unitree scegliere</a>.</p>
+<p>C'è anche una via di mezzo: il <a href="../g1-d.html">G1-D</a> è un torso dual-arm senza gambe, su piantana fissa (G1-D Standard, da 38.005 €) o su base mobile (G1-D Flagship, da 51.944 €). Non ha il rischio di caduta del bipede e si comporta come una cella di manipolazione con due bracci da 7 assi. Per scegliere tra i modelli: <a href="confronto-umanoidi-2026.html">quale umanoide Unitree scegliere</a>.</p>
 
 <h2>Il percorso che consigliamo di solito</h2>
 <ol>
@@ -260,15 +260,15 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li><strong>Poi</strong>: PoC umanoide su un task complementare (ispezione, rifornimento, raccolta dati), con KPI scritti prima di iniziare.</li>
 <li><strong>Scale-up</strong>: solo se i KPI del PoC reggono (success rate, tempo ciclo, costo totale).</li>
 </ol>
-<p>Per l'acquisto da parte di un'impresa, sia cobot sia umanoidi possono rientrare nell'iperammortamento 2026 se rispettano i requisiti, a partire dall'interconnessione: i dettagli in <a href="finanziamento-robot-industria-40.html">come finanziare un robot nel 2026</a>. Se non sai da che parte partire, l'<a href="../assessment.html">assessment gratuito</a> serve a questo: Abra Robotics fa parte della filiera Unitree Italia ma vende anche cobot e AMR, quindi non c'è motivo di proporti un umanoide dove non serve.</p>
+<p>Per l'acquisto da parte di un'impresa, sia cobot sia umanoidi possono rientrare nell'iperammortamento 2026 se rispettano i requisiti, a partire dall'interconnessione: i dettagli in <a href="finanziamento-robot-industria-40.html">come finanziare un robot nel 2026</a>. Se non sai da che parte partire, l'<a href="../assessment.html">assessment gratuito</a> serve a questo: Abra Robotics vende anche cobot e AMR, quindi non ha motivo di proporti un umanoide dove non serve.</p>
 
 <section class="article-faq">
 <h2>Domande frequenti</h2>
-<div class="faq-item"><h3>Posso sostituire un cobot in linea con un umanoide G1?</h3><p>Quasi mai conviene. Un cobot come il Fairino FR3 dichiara una ripetibilità di ±0,02 mm e lavora alimentato da rete; il G1 ha un'autonomia dichiarata di circa 2 ore e un carico per braccio di circa 2-3 kg, mentre Unitree non dichiara un valore di ripetibilità. L'umanoide ha senso su task diversi, non come sostituto di una cella già efficiente.</p></div>
-<div class="faq-item"><h3>Quanto costa un umanoide rispetto a un cobot?</h3><p>A listino Abra Robotics, IVA esclusa: cobot Fairino FR3 da 5.448 €, AMR AutoXing Juno Plus da 16.999 €, Unitree G1 Air da 19.809 €, G1 EDU (U1) da 38.005 €, H2 Air da 43.874 €. Al prezzo dell'umanoide vanno aggiunti sviluppo software, area di prova e formazione.</p></div>
-<div class="faq-item"><h3>Esiste una norma di sicurezza specifica per gli umanoidi?</h3><p>Non ancora pubblicata. Le ISO 10218-1 e 10218-2 del 2025 coprono robot industriali e celle, comprese le applicazioni collaborative. Per i robot mobili che restano in equilibrio con un controllo attivo, come bipedi e quadrupedi, l'ISO sta sviluppando la ISO 25785-1. Dal 20 gennaio 2027 si applica il Regolamento macchine UE 2023/1230.</p></div>
-<div class="faq-item"><h3>Quando ha senso un umanoide in azienda?</h3><p>Quando il valore è nella flessibilità o nella ricerca: task ancora non formalizzati, raccolta dati per addestrare modelli, ambienti pensati per persone difficili da adattare, progetti di R&amp;S con budget dedicato. Se il task è ripetitivo e ad alto volume, un cobot o un AMR resta la scelta più prevedibile.</p></div>
-<div class="faq-item"><h3>Esiste una via di mezzo tra cobot e umanoide?</h3><p>Sì: il G1-D è un torso dual-arm Unitree senza gambe, su piantana fissa (Standard, da 38.005 €) o su base mobile (Flagship, da 51.944 €). Elimina il rischio di caduta del bipede e resta più vicino a una cella di manipolazione.</p></div>
+<div class="faq-item"><h3>Posso sostituire un cobot in linea con un umanoide G1?</h3><p>Quasi mai conviene. Il cobot lavora alimentato da rete con una ripetibilità dichiarata (±0,02 mm per il Fairino FR3); il G1 lavora circa 2 ore per batteria e Unitree non dichiara una ripetibilità.</p></div>
+<div class="faq-item"><h3>Quanto costa un umanoide rispetto a un cobot?</h3><p>A listino, IVA esclusa, un cobot Fairino FR3 parte da 5.448 € e un Unitree G1 Air da 19.809 €. Per programmare l'umanoide serve il G1 EDU (U1), da 38.005 €, più sviluppo software e area di prova.</p></div>
+<div class="faq-item"><h3>Esiste una norma di sicurezza specifica per gli umanoidi?</h3><p>Non ancora: la ISO 25785-1, per i robot mobili che restano in equilibrio con un controllo attivo, a ottobre 2026 è in fase di bozza. Oggi il riferimento resta la serie ISO 10218 del 2025.</p></div>
+<div class="faq-item"><h3>Quando ha senso un umanoide in azienda?</h3><p>Quando il valore è nella flessibilità o nella ricerca, non nel volume: R&amp;S, raccolta dati, task che cambiano spesso in spazi pensati per persone.</p></div>
+<div class="faq-item"><h3>Esiste una via di mezzo tra cobot e umanoide?</h3><p>Sì, il G1-D: due bracci da 7 assi su un torso senza gambe, fisso o su base mobile, da 38.005 € IVA esclusa.</p></div>
 </section>
 
 <section class="article-references">
