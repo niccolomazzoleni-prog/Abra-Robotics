@@ -38,7 +38,7 @@
     try { url = new URL(href, location.href); } catch (e) { return null; }
     var internal = url.hostname === location.hostname;
     var path = internal ? url.pathname : '';
-    if (/(^|\.)wa\.me$|whatsapp/i.test(url.hostname + url.pathname)) return ['whatsapp', ''];
+    if (/(^|\.)wa\.me$|whatsapp\./i.test(url.hostname)) return ['whatsapp', ''];
     if (/calendar\.google\.com|calendly\.com/i.test(url.hostname)) return ['chiamata', ''];
     if (url.protocol === 'tel:') return ['telefono', ''];
     if (url.protocol === 'mailto:') return ['email', ''];
