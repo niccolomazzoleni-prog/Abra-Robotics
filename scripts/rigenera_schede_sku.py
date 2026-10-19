@@ -27,7 +27,7 @@ def main(skus: list[str]) -> None:
             continue
         out = generate_page(rows[sku], manifest)
         print(f"{sku}: {out or 'saltata (pagina ricca, SKIP_OVERWRITE)'}")
-    for script in ("genera_correlati.py", "seo_schede_prezzo.py"):
+    for script in ("genera_correlati.py", "seo_schede_prezzo.py", "schema_spedizione.py"):
         subprocess.run([sys.executable, str(ROOT / "scripts" / script)], check=False)
     subprocess.run([sys.executable, str(ROOT / "prodotti" / "_gen_merchant_feed.py")], cwd=ROOT / "prodotti", check=False)
 
