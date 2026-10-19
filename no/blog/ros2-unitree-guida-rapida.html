@@ -1,0 +1,385 @@
+<!-- generato da scripts/blog_lingue.py da blog/ros2-unitree-guida-rapida.html -->
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ROS 2 på Unitree-roboter: hurtigguide med unitree_ros2</title>
+<meta name="description" content="ROS 2 på Unitree Go2 EDU, B2, G1 og H2: støttede versjoner, installasjon av unitree_ros2, CycloneDDS, nettverket 192.168.123.x og første topic i laben."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/no/blog/ros2-unitree-guida-rapida.html"/>
+<link href="https://abrarobotics.com/blog/ros2-unitree-guida-rapida.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/ros2-unitree-guida-rapida.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/ros2-unitree-guida-rapida.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/ros2-unitree-guida-rapida.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/ros2-unitree-guida-rapida.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/ros2-unitree-guida-rapida.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/blog/ros2-unitree-guida-rapida.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/ros2-unitree-guida-rapida.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/sv/blog/ros2-unitree-guida-rapida.html" hreflang="sv" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/ros2-unitree-guida-rapida.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/no/blog/ros2-unitree-guida-rapida.html" hreflang="nb" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/ros2-unitree-guida-rapida.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/ros2-unitree-guida-rapida.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ROS 2 på Unitree-roboter: hurtigguide med unitree_ros2",
+  "description": "ROS 2 på Unitree Go2 EDU, B2, G1 og H2: støttede versjoner, installasjon av unitree_ros2, CycloneDDS, nettverket 192.168.123.x og første topic i laben.",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-10-15",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/no/blog/ros2-unitree-guida-rapida.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-go2-02.webp",
+  "inLanguage": "nb",
+  "url": "https://abrarobotics.com/no/blog/ros2-unitree-guida-rapida.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvilken ROS 2-versjon bør jeg bruke med Unitree-roboter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Humble på Ubuntu 22.04: det er kombinasjonen Unitree anbefaler i README-filen til unitree_ros2. Foxy på Ubuntu 20.04 er testet, men nådde slutten av støtteperioden 20. juni 2023. Humble støttes til mai 2027."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan Go2 Air eller Pro brukes med ROS 2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nei. I den offisielle tabellen for Go2 er sekundærutvikling forbeholdt EDU-versjonen. Air og Pro har det ikke. For ROS 2 trenger du en Go2 EDU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Må jeg installere en bro mellom SDK og ROS 2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nei. Både roboten og ROS 2 bruker DDS. Med unitree_ros2 og CycloneDDS som mellomvare dukker meldingene fra roboten opp direkte som ROS 2-topics, uten oversettelsesnoder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvorfor viser ikke ros2 topic list topicene fra roboten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Det er tre vanlige årsaker: RMW_IMPLEMENTATION er ikke satt til rmw_cyclonedds_cpp, navnet på nettverksgrensesnittet i setup.sh er feil, eller PC-en er ikke satt opp på 192.168.123.x. Sjekk setup.sh på nytt og ping roboten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg bruke ROS 2 uten at roboten er tilkoblet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. unitree_ros2 inneholder setup_local.sh, som bruker loopback-grensesnittet, og unitree_mujoco simulerer roboten med de samme meldingene. Du kan utvikle og teste i simulering før du rører maskinvaren."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="ROS 2 på Unitree-roboter: hurtigguide med unitree_ros2"/>
+<meta property="og:description" content="ROS 2 på Unitree Go2 EDU, B2, G1 og H2: støttede versjoner, installasjon av unitree_ros2, CycloneDDS, nettverket 192.168.123.x og første topic i laben."/>
+<meta property="og:url" content="https://abrarobotics.com/no/blog/ros2-unitree-guida-rapida.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-go2-02.webp"/>
+<meta property="og:locale" content="nb_NO"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/no/">Hjem</a> / <a href="/no/">Blogg</a> / ROS 2 Unitree</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-go2-02.webp" alt="Unitree Go2 EDU, plattform for utvikling med ROS 2" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">ROS 2 · Utvikling</p>
+<h1>ROS 2 på Unitree-roboter: fra null til første topic</h1>
+<div class="article-meta"><time datetime="2026-10-09">Oppdatert 9. oktober 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Kort fortalt:</strong> Unitree-robotene kommuniserer via DDS, samme mellomvare som ROS 2. Med den offisielle pakken <code>unitree_ros2</code>, ROS 2 Humble på Ubuntu 22.04 og CycloneDDS blir meldingene fra roboten til ROS 2-topics uten bro. Du trenger en EDU-versjon av roboten, en Ethernet-kabel og en PC på subnettet 192.168.123.x.</div>
+</header>
+
+<div class="article-content">
+<p><strong>ROS 2 på Unitree-roboter</strong> fungerer uten reverse engineering og uten oversettelsesnoder: roboten publiserer dataene sine over DDS (CycloneDDS), og ROS 2 bruker DDS som kommunikasjonslag. Den offisielle pakken <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> inneholder meldingsdefinisjonene og miljøskriptene. Denne guiden oppsummerer fremgangsmåten i den offisielle README-filen, med stedene der folk vanligvis står fast.</p>
+
+<h2>Hvilke Unitree-roboter som støtter ROS 2</h2>
+<p>Programvareutvikling er bare mulig på utviklerversjonene. For Go2 oppgir det <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">offisielle produktarket</a> sekundærutvikling på EDU-versjonen, ikke på Air og Pro. For G1 gjelder det samme med <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1 EDU</a>.</p>
+<table>
+<thead><tr><th>Robot</th><th>Meldinger i unitree_ros2</th><th>ROS 2-eksempler i repositoriet</th></tr></thead>
+<tbody>
+<tr><td><a href="/no/unitree-go2.html">Go2 EDU</a></td><td><code>unitree_go</code></td><td>sport client, stå opp, robotstatus, lavnivå</td></tr>
+<tr><td><a href="/no/unitree-b2.html">B2 / B2W</a></td><td><code>unitree_go</code></td><td>lavnivå, lesing av status</td></tr>
+<tr><td><a href="/no/unitree-g1.html">G1 EDU</a></td><td><code>unitree_hg</code></td><td><code>g1_low_level_example</code></td></tr>
+<tr><td><a href="/no/unitree-h2.html">H2</a></td><td>eksempelmappen <code>h2</code></td><td>finnes i repositoriet</td></tr>
+<tr><td>H1 / H1-2</td><td><code>unitree_go</code> / <code>unitree_hg</code></td><td>lavnivå H1-2</td></tr>
+</tbody>
+</table>
+<p>For <a href="/no/unitree-r1.html">R1</a> og <a href="/no/unitree-a2.html">A2</a> har <code>unitree_sdk2</code> egne C++-eksempler per oktober 2026, men <code>unitree_ros2</code> har ennå ingen egne eksempler. Skal du kjøpe til et rent ROS 2-prosjekt på disse modellene, bør du sjekke status i repositoriet først.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Produkter nevnt i artikkelen</span><a href="/en/universita-ricerca-en.html">EDU-roboter for forskning</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-go2-edu-en.html"><img alt="Unitree Go2 EDU" loading="lazy" src="/images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-go2-edu-en.html">Unitree Go2 EDU</a></h3>
+<p>SDK og ROS 2, batteri på 15000 mAh</p>
+<div class="product-card-price">8 804 € <small>eks. mva</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Be om tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>Sekundærutvikling, 23 DoF, beregningsdokk</p>
+<div class="product-card-price">38 005 € <small>eks. mva</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Be om tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-b2-en.html"><img alt="Unitree B2" loading="lazy" src="/images/official/unitree-b2-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-b2-en.html">Unitree B2</a></h3>
+<p>Tung industrirobot: over 40 kg, IP67</p>
+<div class="product-card-price">66 828 € <small>eks. mva</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-b2-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Be om tilbud</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Krav: Ubuntu og ROS 2-versjon</h2>
+<p>README-filen til unitree_ros2 oppgir to testede kombinasjoner:</p>
+<ul>
+<li><strong>Ubuntu 22.04 + ROS 2 Humble</strong>, oppgitt som anbefalt;</li>
+<li><strong>Ubuntu 20.04 + ROS 2 Foxy</strong>.</li>
+</ul>
+<p>Ifølge <a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">oversikten over ROS 2-utgivelser</a> nådde Foxy slutten av støtteperioden 20. juni 2023, mens Humble støttes til mai 2027 og Jazzy til mai 2029. For et prosjekt som starter i dag, er Humble det praktiske valget. Jazzy er ikke blant kombinasjonene Unitree har testet. ROS 2 Humble installeres fra Debian-pakker etter den <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">offisielle veiledningen</a>.</p>
+
+<h2>Installere unitree_ros2 trinn for trinn</h2>
+<p>1. Klon repositoriet og installer avhengighetene (med Humble bytter du <code>foxy</code> med <code>humble</code>):</p>
+<pre><code>git clone https://github.com/unitreerobotics/unitree_ros2
+sudo apt install ros-humble-rmw-cyclonedds-cpp
+sudo apt install ros-humble-rosidl-generator-dds-idl
+sudo apt install libyaml-cpp-dev</code></pre>
+<p>2. Bare med Foxy: kompiler CycloneDDS 0.10.x i arbeidsområdet <code>cyclonedds_ws</code>, i en terminal der ROS 2 <em>ikke</em> er lastet. Roboten bruker CycloneDDS 0.10.2. Med Humble trengs ikke dette trinnet.</p>
+<p>3. Kompiler meldingspakkene (<code>unitree_go</code>, <code>unitree_hg</code>, <code>unitree_api</code>):</p>
+<pre><code>cd ~/unitree_ros2/cyclonedds_ws
+source /opt/ros/humble/setup.bash
+colcon build</code></pre>
+
+<h2>Nettverk og CycloneDDS</h2>
+<p>Koble PC-en til roboten med en Ethernet-kabel. I innstillingene for grensesnittet setter du manuell IPv4, adresse <code>192.168.123.99</code> og nettmaske <code>255.255.255.0</code>, slik README-filen sier. Finn navnet på grensesnittet med <code>ifconfig</code> eller <code>ip a</code> (for eksempel <code>enp3s0</code>) og legg det inn i <code>~/unitree_ros2/setup.sh</code>:</p>
+<pre><code>#!/bin/bash
+source /opt/ros/humble/setup.bash
+source $HOME/unitree_ros2/cyclonedds_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI='&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;
+  &lt;NetworkInterface name="enp3s0" priority="default" multicast="default" /&gt;
+&lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;'</code></pre>
+<p>Den avgjørende linjen er <code>RMW_IMPLEMENTATION=rmw_cyclonedds_cpp</code>: Humble har en annen standard mellomvare, og uten denne variabelen ser ikke PC-en roboten. ROS 2-dokumentasjonen forklarer hvordan du <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html" rel="noopener noreferrer" target="_blank">velger DDS-mellomvare</a>. Uten tilkoblet robot kan du bruke <code>setup_local.sh</code>, som går over loopback-grensesnittet.</p>
+
+<h2>Første topic</h2>
+<pre><code>source ~/unitree_ros2/setup.sh
+ros2 topic list
+ros2 topic echo /sportmodestate</code></pre>
+<p>På Go2 og B2 gir <code>/sportmodestate</code> posisjon, hastighet og gangart, mens <code>/lowstate</code> gir motorer, IMU og batteri. Slik kompilerer og kjører du eksemplene:</p>
+<pre><code>cd ~/unitree_ros2/example
+colcon build
+./install/unitree_ros2_example/bin/read_motion_state</code></pre>
+<p>README-filen viser også hvordan du ser punktskyen fra LiDAR-en på Go2 i RViz2, på topicen <code>utlidar/cloud</code> med rammen <code>utlidar_lidar</code>.</p>
+
+<h2>Styring: høyt nivå og lavt nivå</h2>
+<ul>
+<li><strong>Høyt nivå</strong> (Go2, B2): forespørsler på <code>/api/sport/request</code> med <code>unitree_api</code>-meldinger, laget av klassen <code>SportClient</code> i eksemplene. Roboten bruker sin egen bevegelseskontroll.</li>
+<li><strong>Lavt nivå</strong>: kommandoer for posisjon, hastighet, moment og forsterkning på <code>/lowcmd</code>. Først må den innebygde bevegelsestjenesten slås av, ellers kolliderer kommandoene. På humanoidene går du i debug mode med L2+R2 mens roboten henger: hele fremgangsmåten står i guiden <a href="/no/blog/unitree-g1-programmazione.html">programmere G1</a>.</li>
+</ul>
+
+<h2>Simuler før du bruker maskinvaren</h2>
+<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> er den offisielle simulatoren basert på MuJoCo. Den tar imot programmer skrevet med <code>unitree_sdk2</code>, <code>unitree_sdk2_python</code> og <code>unitree_ros2</code>, med de samme lavnivåmeldingene som den virkelige roboten. Anbefalt arbeidsflyt er å utvikle i simulering over loopback og deretter kjøre samme kode på roboten ved å bytte nettverksgrensesnitt. For gangpolicyer finnes <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Go2, G1, H1, H1-2).</p>
+
+<h2>Vanlige feil</h2>
+<ul>
+<li><strong>Ingen topics</strong>: RMW er ikke satt, feil grensesnitt i <code>setup.sh</code>, eller PC-en er utenfor subnettet. README-filen anbefaler også å starte PC-en på nytt etter første oppsett.</li>
+<li><strong>Kompilering av CycloneDDS feiler på Foxy</strong>: terminalen hadde allerede lastet <code>/opt/ros/foxy/setup.bash</code>. Kommenter ut linjen i <code>~/.bashrc</code> og åpne terminalen på nytt.</li>
+<li><strong>Flere ROS-installasjoner på samme PC</strong>: ikke legg <code>setup.sh</code> i <code>~/.bashrc</code>, men last den manuelt når du trenger den.</li>
+</ul>
+<p>For universitetslaboratorier leverer Abra Robotics EDU-modellene i Unitree-sortimentet i Norge, med support på engelsk, og tilbyr opplæring og SDK-utvikling som egne tjenester: se <a href="/en/universita-ricerca-en.html">Universiteter og forskning</a> og <a href="/en/index-en.html">Programvare</a>. Produktsidene for utviklerversjonene er <a href="/en/prodotti/unitree-go2-edu-en.html">Go2 EDU</a> og <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU</a>.</p>
+
+<section class="article-faq">
+<h2>Ofte stilte spørsmål</h2>
+<div class="faq-item"><h3>Hvilken ROS 2-versjon bør jeg bruke med Unitree-roboter?</h3><p>Humble på Ubuntu 22.04: det er kombinasjonen Unitree anbefaler i README-filen til unitree_ros2. Foxy på Ubuntu 20.04 er testet, men nådde slutten av støtteperioden 20. juni 2023. Humble støttes til mai 2027.</p></div>
+<div class="faq-item"><h3>Kan Go2 Air eller Pro brukes med ROS 2?</h3><p>Nei. I den offisielle tabellen for Go2 er sekundærutvikling forbeholdt EDU-versjonen. Air og Pro har det ikke. For ROS 2 trenger du en Go2 EDU.</p></div>
+<div class="faq-item"><h3>Må jeg installere en bro mellom SDK og ROS 2?</h3><p>Nei. Både roboten og ROS 2 bruker DDS. Med unitree_ros2 og CycloneDDS som mellomvare dukker meldingene fra roboten opp direkte som ROS 2-topics, uten oversettelsesnoder.</p></div>
+<div class="faq-item"><h3>Hvorfor viser ikke ros2 topic list topicene fra roboten?</h3><p>Det er tre vanlige årsaker: RMW_IMPLEMENTATION er ikke satt til rmw_cyclonedds_cpp, navnet på nettverksgrensesnittet i setup.sh er feil, eller PC-en er ikke satt opp på 192.168.123.x. Sjekk setup.sh på nytt og ping roboten.</p></div>
+<div class="faq-item"><h3>Kan jeg bruke ROS 2 uten at roboten er tilkoblet?</h3><p>Ja. unitree_ros2 inneholder setup_local.sh, som bruker loopback-grensesnittet, og unitree_mujoco simulerer roboten med de samme meldingene. Du kan utvikle og teste i simulering før du rører maskinvaren.</p></div>
+</section>
+
+<section class="article-references" id="fonti">
+<h2>Kilder</h2>
+<ol>
+<li>Unitree, <em>unitree_ros2</em>, README og eksempler: <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_ros2</a></li>
+<li>Unitree, <em>unitree_sdk2</em>: <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2</a></li>
+<li>Unitree, <em>unitree_mujoco</em>: <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_mujoco</a></li>
+<li>Unitree, <em>unitree_rl_gym</em>: <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_rl_gym</a></li>
+<li>Unitree, produktark for Go2 og G1 (sekundærutvikling bare på EDU): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a> · <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree Document Center, utviklerseksjonen: <a href="https://support.unitree.com/home/en/developer" rel="noopener noreferrer" target="_blank">support.unitree.com/home/en/developer</a></li>
+<li>ROS 2 Documentation, distribusjoner og datoer for slutt på støtte: <a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">docs.ros.org/en/humble/Releases.html</a></li>
+<li>ROS 2 Documentation, installasjon av Humble fra Debian-pakker: <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">docs.ros.org</a></li>
+<li>ROS 2 Documentation, DDS-mellomvare og RMW: <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html" rel="noopener noreferrer" target="_blank">docs.ros.org</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Trenger laboratoriet en EDU-robot?</h2><p>Vi leverer Go2 EDU, G1 EDU og B2 ferdig konfigurert, med opplæring i SDK og ROS 2 som egen tjeneste.</p><a class="btn btn-primary" href="/en/universita-ricerca-en.html">EDU-roboter for universiteter og forskning</a><a class="btn btn-outline-light" href="/en/assessment-en.html">Be om tilbud</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
