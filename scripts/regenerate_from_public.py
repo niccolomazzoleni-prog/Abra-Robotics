@@ -92,6 +92,7 @@ def main() -> None:
     subprocess.run([sys.executable, str(ROOT / "scripts" / "genera_correlati.py")], check=False)
     # title/description "prezzo", breadcrumb con la famiglia, politica resi nel Product JSON-LD
     subprocess.run([sys.executable, str(ROOT / "scripts" / "seo_schede_prezzo.py")], check=False)
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "schema_spedizione.py")], check=False)
     print(f"Rigenerate {created} schede · catalogo-unitree.html aggiornato")
 
 
