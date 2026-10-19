@@ -32,7 +32,8 @@
 
     getPrice(sku) {
       const item = this.prices[sku];
-      if (!item) return null;
+      // voci "su richiesta" (es. G1-PLUS): nessun prezzo_eur, quindi niente riga a € NaN
+      if (!item || !Number.isFinite(item.prezzo_eur)) return null;
       return { sku, nome: item.nome, prezzo_eur: item.prezzo_eur, note: item.note || '' };
     }
 

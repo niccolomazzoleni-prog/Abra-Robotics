@@ -20,7 +20,7 @@ def eur(v):
 
 
 def unitree(pred):
-    xs = [v["prezzo_eur"] for k, v in LISTINO.items() if pred(k, v) and not v.get("prezzo_da")]
+    xs = [v["prezzo_eur"] for k, v in LISTINO.items() if pred(k, v) and not v.get("prezzo_da") and v.get("prezzo_eur")]  # salta i "su richiesta"
     return min(xs), len(xs)
 
 

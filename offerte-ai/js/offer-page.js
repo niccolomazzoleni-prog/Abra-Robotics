@@ -243,7 +243,7 @@
       if (q.length < 2) { searchRes.innerHTML = ''; return; }
       searchRes.innerHTML = builder.searchCatalog(q).map(h => `
         <button type="button" class="hit" data-sku="${esc(h.sku)}">
-          ${esc(h.nome)} <small>${esc(h.sku)} · € ${fmt(h.prezzo_eur || 0)}</small>
+          ${esc(h.nome)} <small>${esc(h.sku)} · ${Number.isFinite(h.prezzo_eur) ? '€ ' + fmt(h.prezzo_eur) : 'su richiesta'}</small>
         </button>`).join('') || '<p class="no-hit">Nessun risultato</p>';
       searchRes.querySelectorAll('.hit').forEach(btn => btn.addEventListener('click', () => {
         offer.margin_key = document.getElementById('c-margin').value;
