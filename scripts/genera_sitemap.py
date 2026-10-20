@@ -8,6 +8,7 @@ sitemap: le regole (pattern sui dati prodotto) sono in scripts/schede_regole.py.
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
@@ -156,8 +157,8 @@ def changefreq_for(path: Path) -> str:
 ESCLUSE: dict[str, int] = {}
 
 
-def collect_urls() -> list[tuple[str, str, str]]:
-    urls: list[tuple[str, str, str]] = []
+def collect_urls() -> list[tuple[str, str, str, str]]:
+    urls: list[tuple[str, str, str, str]] = []
 
     for html in sorted(ROOT.rglob("*.html")):
         rel = html.relative_to(ROOT)
@@ -191,26 +192,53 @@ def collect_urls() -> list[tuple[str, str, str]]:
         pr = priority_for(html)
         if rel.name == "index.html" and len(rel.parts) > 1:
             pr = "0.8"
-        urls.append((loc, changefreq_for(html), pr))
+        urls.append((loc, changefreq_for(html), pr, rel.as_posix()))
 
     # dedupe preserving order
     seen: set[str] = set()
-    out: list[tuple[str, str, str]] = []
-    for loc, cf, pr in urls:
+    out: list[tuple[str, str, str, str]] = []
+    for loc, cf, pr, rel in urls:
         if loc in seen:
             continue
         seen.add(loc)
-        out.append((loc, cf, pr))
+        out.append((loc, cf, pr, rel))
     return out
 
 
-def build_xml(urls: list[tuple[str, str, str]]) -> str:
+def git_lastmod() -> dict[str, str]:
+    """Data dell'ultimo commit di ogni file (AAAA-MM-GG). Un lastmod uguale per tutte le URL a ogni
+    rigenerazione viene ignorato da Google: cosi' cambia solo per le pagine davvero modificate."""
+    try:
+        out = subprocess.run(["git", "-C", str(ROOT), "log", "--format=@%cs", "--name-only", "--", "*.html"],
+                             capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    dates: dict[str, str] = {}
+    current = ""
+    for line in out.splitlines():
+        if line.startswith("@"):
+            current = line[1:]
+        elif line and line not in dates:
+            dates[line] = current
+    return dates
+
+
+def modified_locally() -> set[str]:
+    try:
+        out = subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain"], capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return set()
+    return {line[3:].strip() for line in out.splitlines()}
+
+
+def build_xml(urls: list[tuple[str, str, str, str]]) -> str:
     today = date.today().isoformat()
+    dates, dirty = git_lastmod(), modified_locally()
     urlset = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-    for loc, cf, pr in urls:
+    for loc, cf, pr, rel in urls:
         url = SubElement(urlset, "url")
         SubElement(url, "loc").text = loc
-        SubElement(url, "lastmod").text = today
+        SubElement(url, "lastmod").text = today if rel in dirty else dates.get(rel, today)
         SubElement(url, "changefreq").text = cf
         SubElement(url, "priority").text = pr
     raw = tostring(urlset, encoding="unicode")
