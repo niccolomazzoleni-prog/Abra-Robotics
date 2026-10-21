@@ -28,7 +28,7 @@ CAL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPd
 FAMILIES = {
     "g1": {
         "name": "G1", "prefixes": ["G1", "G1-E"], "it_page": "g1.html", "en_page": "en/g1-en.html",
-        "seo_it": "Unitree G1 prezzo: Basic, Pro, EDU U1-U10, Ultimate", "seo_en": "Unitree G1 price: Basic, Pro, EDU U1-U10, Ultimate",
+        "seo_it": "Unitree G1 prezzo: da {low} €, Basic, Pro, EDU, Ultimate", "seo_en": "Unitree G1 price: Basic, Pro, EDU U1-U10, Ultimate",
         "image": "images/official/unitree-g1-02.webp", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
         "type_it": "Robot umanoide", "type_en": "Humanoid robot",
         "source": "https://www.unitree.com/g1/",
@@ -135,7 +135,7 @@ FAMILIES = {
         "what_en": "The A2 is an industrial quadruped for inspection, surveillance and transport in plants, with long endurance and environmental protection.",
     },
     "b2": {
-        "name": "B2", "prefixes": ["B2", "B2-W", "B2W"], "it_page": "b2.html", "en_page": "en/b2-en.html",
+        "name": "B2", "prefixes": ["B2", "B2-W", "B2W"], "seo_it": "Unitree B2 e B2-W prezzo Italia: da {low} €", "it_page": "b2.html", "en_page": "en/b2-en.html",
         "image": "images/official/unitree-b2-montagna.webp", "parent_it": "quadrupedi.html", "parent_en": "en/quadrupedi-en.html",
         "type_it": "Quadrupede industriale pesante", "type_en": "Heavy industrial quadruped",
         "source": "https://www.unitree.com/b2/",
@@ -421,15 +421,15 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
                 f"which to choose. Sold in Italy by Abra Robotics.") if low else f"Unitree {name}: versions, official specs and quote from Abra Robotics."
         lead = f"{f['what_en']} Below: every {name} version we sell with its end-user price (excl. VAT), the official specifications and how to choose."
     else:
-        title = f.get("seo_it") or (f"Unitree {name} prezzo Italia: da {eur(low, False)} €, tutte le versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
+        title = (f.get("seo_it") or "").replace("{low}", eur(low, False) if low else "") or (f"Unitree {name} prezzo Italia: da {eur(low, False)} €, tutte le versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
         h1 = f"Unitree {name}: prezzi e versioni in Italia"
         desc = (f"Prezzo Unitree {name} in Italia: tutte le versioni da {eur(low, False)} € IVA esclusa, specifiche ufficiali "
                 f"e quale scegliere. Spedizione e dazio inclusi, supporto in italiano.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
         lead = f"{f['what_it']} Qui trovi tutte le versioni {name} a listino con prezzo End-User (IVA esclusa), le specifiche ufficiali e come scegliere."
     if len(title) > 60:
         title = title.replace(" | Abra", "")[:60].rsplit(" ", 1)[0]
-    if len(desc) > 158:
-        desc = desc[:157].rsplit(" ", 1)[0].rstrip(",.") + "."
+    if len(desc) > 158:  # toglie l'ultima frase intera invece di troncare a metà ("supporto in.")
+        desc = desc.rsplit(". ", 1)[0].rstrip(",.") + "."
 
     rows = robots or acc
     th = ("Version", "Price (excl. VAT)", "") if en else ("Versione", "Prezzo (IVA esclusa)", "")
@@ -606,6 +606,34 @@ def link_row(page_path: str, en: bool, keys: list[str]) -> None:
     p.write_text(s, encoding="utf-8")
 
 
+def seo_schede(data: dict) -> None:
+    """Una sola pagina per modello su Google: le schede rimandano all'hub, gli accessori non iniziano col nome del robot."""
+    for key, f in FAMILIES.items():
+        if f.get("en_only"):
+            continue
+        hub = f["it_page"]
+        for r in data[key]["robots"]:
+            p = ROOT / "prodotti" / r["slug"]
+            s = p.read_text(encoding="utf-8")
+            if 'class="hub-link"' in s:
+                continue
+            a = (f'<p class="hub-link" style="margin:.4rem 0 1rem"><a href="../{hub}">'
+                 f'Tutte le versioni Unitree {f["name"]} a confronto, con prezzi →</a></p>')
+            s2 = re.sub(r'(<h1 class="product-title">.*?</h1>)', lambda m: m.group(1) + "\n" + a, s, count=1, flags=re.S)
+            if s2 != s:
+                p.write_text(s2, encoding="utf-8")
+        for r in data[key]["acc"]:
+            p = ROOT / "prodotti" / r["slug"]
+            s = p.read_text(encoding="utf-8")
+            m = re.search(r"<title>(Unitree ([A-Z0-9][\w-]*(?: / [A-Z0-9][\w-]*)?) (.+?))(( prezzo|: accessorio|, prezzo).*)?</title>", s)
+            if not m or m.group(3).startswith("per "):
+                continue
+            rest = m.group(3)[0].upper() + m.group(3)[1:]
+            new = f"{rest} per Unitree {m.group(2)}{(m.group(4) or '').replace(' prezzo', ', prezzo', 1)}"
+            s = s.replace(f">{m.group(0)[7:-8]}<", f">{new}<").replace(f'"{m.group(0)[7:-8]}"', f'"{html.escape(new)}"')
+            p.write_text(s, encoding="utf-8")
+
+
 def main() -> None:
     data = load()
     written = []
@@ -624,6 +652,7 @@ def main() -> None:
     link_row("en/umanoidi-en.html", True, ["g1", "g1-d", "h2", "r1", "r1-d"])
     link_row("en/quadrupedi-en.html", True, ["go2", "as2", "a2", "b2"])
     link_row("en/catalogo-unitree-en.html", True, ["go2", "as2", "a2", "b2", "g1", "g1-d", "h2", "r1", "r1-d", "z1"])
+    seo_schede(data)
     for k, f in FAMILIES.items():
         print(f"{k:5s} robot {len(data[k]['robots']):3d} accessori {len(data[k]['acc']):3d}")
     print("scritte:", " ".join(written))
