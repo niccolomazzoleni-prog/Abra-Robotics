@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Inietta image-runtime.js nelle schede prodotto (prima di product.js / ecommerce.js)."""
+"""Inietta image-runtime.js nelle schede prodotto (prima di product.js)."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -16,7 +16,6 @@ def inject_file(path: Path) -> bool:
         return False
     for anchor in (
         '  <script src="product.js"></script>\n',
-        '  <script src="ecommerce.js"></script>\n',
     ):
         if anchor in text:
             path.write_text(text.replace(anchor, TAG + anchor, 1), encoding="utf-8")

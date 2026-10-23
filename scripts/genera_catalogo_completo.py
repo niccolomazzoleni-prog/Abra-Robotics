@@ -234,11 +234,6 @@ def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float
     on_order = sku in ON_ORDER_SKUS
     if on_order:
         perks = perks.replace("Consegna stimata 4–6 settimane", ON_ORDER_TEXT)
-    pay = """            <div class="buy-box-pay">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Pagamento sicuro · Stripe
-              <span class="buy-box-cards"><span>VISA</span><span>MC</span><span>AMEX</span></span>
-            </div>"""
     note = '<p class="buy-box-note">Prezzo indicativo — preventivo aggiornato su richiesta.</p>'
     if on_order:
         note = '<p class="buy-box-note">Prezzo indicativo, preventivo aggiornato su richiesta.</p>'
@@ -264,10 +259,8 @@ def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float
 {stock}            </div>
 {perks}
             <div class="buy-box-cta">
-              <a href="#form" class="btn btn-primary buy-btn" data-buy-pending="1">Acquista ora</a>
-              <a href="#form" class="btn btn-secondary">Richiedi preventivo</a>
+              <a href="#form" class="btn btn-primary">Richiedi preventivo</a>
             </div>
-{pay}
 {note}
           </div>"""
 
@@ -439,47 +432,6 @@ def update_csv_pages(rows: list[dict]) -> None:
         w = csv.DictWriter(f, fieldnames=fields, delimiter=";")
         w.writeheader()
         w.writerows(rows)
-
-
-def _stripe_pub_key() -> str:
-    """Legge pk da .env o da stripe-config.js esistente (non sovrascrive live con test)."""
-    import os
-    import re
-    from pathlib import Path
-
-    env_pk = (os.environ.get("STRIPE_PUBLISHABLE_KEY") or "").strip()
-    if env_pk:
-        return env_pk
-    cfg = PRODOTTI / "stripe-config.js"
-    if cfg.is_file():
-        m = re.search(r'STRIPE_PUBLISHABLE_KEY\s*=\s*"([^"]+)"', cfg.read_text(encoding="utf-8"))
-        if m:
-            return m.group(1)
-    return (
-        "pk_test_51TfGsx4sActfFZskv4KaRe70MlFYfSXz7pziwpQdY832en8IfMIqALSs1efCtwiGntjHG0Xr1CLemyDZQUW7lgyP003xdWD4si"
-    )
-
-
-def regenerate_stripe_config(filenames: list[str]) -> None:
-    cfg_path = PRODOTTI / "stripe-config.js"
-    existing_links: dict[str, str] = {}
-    if cfg_path.is_file():
-        import re
-
-        for m in re.finditer(r'"([^"]+\.html)":\s*"([^"]*)"', cfg_path.read_text(encoding="utf-8")):
-            existing_links[m.group(1)] = m.group(2)
-    lines = [
-        "/* Stripe — Payment Link per ogni scheda prodotto.",
-        "   Valore vuoto = bottone Acquista rimanda a richiesta preventivo finche non configuri Stripe. */",
-        f'window.STRIPE_PUBLISHABLE_KEY = "{_stripe_pub_key()}";',
-        "window.STRIPE_PAYMENT_LINKS = {",
-    ]
-    for fn in sorted(set(filenames)):
-        if fn.endswith(".html") and not fn.startswith("_"):
-            url = existing_links.get(fn, "")
-            lines.append(f'  "{fn}": "{url}",')
-    lines.append("};")
-    (PRODOTTI / "stripe-config.js").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
@@ -784,7 +736,6 @@ def main() -> None:
 
     patch_b2_price(rows)
     update_csv_pages(rows)
-    regenerate_stripe_config(all_files)
     regenerate_catalogo_html(rows, manifest)
     regenerate_listino_html()
 
@@ -793,7 +744,6 @@ def main() -> None:
     print(f"\nRigenerate {len(created)} schede compatte")
     print("Catalogo: catalogo-unitree.html")
     print("Listino: listino-unitree.html")
-    print(f"Stripe: prodotti/stripe-config.js ({len(set(all_files))} slug)")
 
 
 if __name__ == "__main__":
