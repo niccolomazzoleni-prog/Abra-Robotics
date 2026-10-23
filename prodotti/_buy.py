@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Costruisce il blocco prezzo+checkout e lo schema JSON-LD per le schede.
+"""Costruisce il blocco prezzo+preventivo e lo schema JSON-LD per le schede.
 Usa _prezzi.PREZZI come fonte unica."""
 from _prezzi import PREZZI, euro, schema_price
 
 SITE = "https://niccolomazzoleni-prog.github.io/Abra-Robotics"
 
-_PAY_ROW = '''            <div class="buy-box-pay">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Pagamento sicuro · Stripe
-              <span class="buy-box-cards"><span>VISA</span><span>MC</span><span>AMEX</span></span>
-            </div>'''
 _PERKS = '''            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
               <li><span class="bp-ico">✓</span> Parte della filiera di distribuzione di Unitree Italia · garanzia inclusa</li>
@@ -49,8 +44,6 @@ def buy_area(file):
             </div>
           </div>'''
     # stato == "acquista"
-    link = p["link"] or "#form"
-    pending = "" if p["link"] else ' data-buy-pending="1"'
     return f'''          <div class="buy-box">
             <div class="buy-box-head">
               <div class="buy-box-price">
@@ -61,10 +54,8 @@ def buy_area(file):
             </div>
 {_PERKS}
             <div class="buy-box-cta">
-              <a href="{link}" class="btn btn-primary buy-btn"{pending}>Acquista ora</a>
-              <a href="#form" class="btn btn-secondary">Richiedi preventivo</a>
+              <a href="#form" class="btn btn-primary">Richiedi preventivo</a>
             </div>
-{_PAY_ROW}
             {_NOTE}
           </div>'''
 
