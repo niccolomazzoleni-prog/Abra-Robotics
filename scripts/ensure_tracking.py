@@ -15,7 +15,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 GA4_ID = "G-T4ZC7CM8RX"
-SKIP = re.compile(r"backup|preview|zenixa|^scripts/")
+# editor/: pagina col token GitHub, niente tag di terzi (vedi la CSP in editor/index.html).
+SKIP = re.compile(r"backup|preview|zenixa|^scripts/|^editor/")
 
 CONSENT = """<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}

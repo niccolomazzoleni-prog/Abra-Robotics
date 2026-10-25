@@ -69,12 +69,14 @@
 
   // ---------- accesso ----------
   function loadToken() {
-    try { return sessionStorage.getItem(KEY) || localStorage.getItem(KEY) || ''; } catch (e) { return ''; }
+    // Token solo per la sessione della scheda: mai in localStorage, leggibile da ogni pagina del dominio
+    // (dove girano GTM e script di terzi). Si toglie anche quello salvato dalle versioni precedenti.
+    try { localStorage.removeItem(KEY); return sessionStorage.getItem(KEY) || ''; } catch (e) { return ''; }
   }
-  function saveToken(t, remember) {
+  function saveToken(t) {
     try {
       sessionStorage.setItem(KEY, t);
-      if (remember) localStorage.setItem(KEY, t); else localStorage.removeItem(KEY);
+      localStorage.removeItem(KEY);
       localStorage.setItem('abra-editor', '1'); // mostra "Modifica articolo" sugli articoli
     } catch (e) {}
   }
@@ -85,12 +87,12 @@
     $('ed-logout').hidden = true;
     show('ed-login');
   }
-  async function login(t, remember) {
+  async function login(t) {
     token = t.trim();
     const [user, repo] = await Promise.all([gh('/user'), gh('/repos/' + REPO)]);
     if (!repo.permissions || !repo.permissions.push)
       throw new Error('Questo account GitHub non ha i permessi di scrittura sul sito.');
-    saveToken(token, remember);
+    saveToken(token);
     $('ed-user').textContent = user.login;
     $('ed-logout').hidden = false;
   }
@@ -325,7 +327,7 @@
   $('ed-login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     try {
-      await login($('ed-token').value, $('ed-remember').checked);
+      await login($('ed-token').value);
       $('ed-token').value = '';
       await start();
     } catch (err) {
