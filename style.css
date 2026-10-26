@@ -655,6 +655,58 @@ select:focus-visible,
   box-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 4px 20px rgba(0,0,0,0.12);
 }
 
+/* Link rapidi ai prezzi per modello sotto i CTA della hero (pillole in vetro, come le card) */
+.hero-models {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.hero-models-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-right: 6px;
+}
+
+.hero-models a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.hero-models a:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-models a.hero-models-guide {
+  border-color: transparent;
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  padding-left: 6px;
+}
+
+.hero-models a.hero-models-guide:hover {
+  color: var(--white);
+  background: none;
+}
+
 .hero-ctas .btn:hover {
   box-shadow: 0 6px 24px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.14);
 }
