@@ -1,0 +1,384 @@
+<!-- generato da scripts/blog_lingue.py da blog/poc-robot-umanoide-azienda.html -->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proof of concept met humanoïde robot: fasen en KPI's</title>
+<meta name="description" content="Hoe u een proof of concept met een Unitree-humanoïde opzet: fasen, doorlooptijden, KPI&#x27;s vóór de start, keuze tussen G1, G1-D en R1, veiligheid en normen."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/nl/blog/poc-robot-umanoide-azienda.html"/>
+<link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/poc-robot-umanoide-azienda.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/poc-robot-umanoide-azienda.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/poc-robot-umanoide-azienda.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/poc-robot-umanoide-azienda.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/poc-robot-umanoide-azienda.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/blog/poc-robot-umanoide-azienda.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/poc-robot-umanoide-azienda.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/sv/blog/poc-robot-umanoide-azienda.html" hreflang="sv" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/poc-robot-umanoide-azienda.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/poc-robot-umanoide-azienda.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/poc-robot-umanoide-azienda.html" hreflang="x-default" rel="alternate"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Proof of concept met humanoïde robot: fasen en KPI's",
+  "description": "Hoe u een proof of concept met een Unitree-humanoïde opzet: fasen, doorlooptijden, KPI's vóór de start, keuze tussen G1, G1-D en R1, veiligheid en normen.",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-10-19",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/nl/blog/poc-robot-umanoide-azienda.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-d-standard.webp",
+  "inLanguage": "nl",
+  "url": "https://abrarobotics.com/nl/blog/poc-robot-umanoide-azienda.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hoe lang duurt een PoC met een humanoïde robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De vier voorbereidende fasen kosten meestal 5-9 weken voor één toepassing; de duur van de tests wordt in het plan vastgelegd. Is een nieuwe robot nodig, dan komen er 4-6 weken levertijd bij."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke Unitree-humanoïde is geschikt voor een pick-and-place-PoC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Voor pakken en neerzetten op een werkbank is de G1-D Standard op een vaste standaard (vanaf € 38.005 excl. btw) de logische keuze: zonder benen is er geen valrisico. Met een kleiner budget is er de R1-D, vanaf € 6.295."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke KPI's meet u in een PoC met een humanoïde?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De vijf basis-KPI's zijn succespercentage, cyclustijd, menselijke ingrepen per uur, reële autonomie en opsteltijd, elk met een drempel die vóór de tests is vastgelegd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Moet u de robot kopen om een PoC te doen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Niet altijd: de eerste verificatie kan een simulatie of een kortlopende pilot zijn. Het hangt af van hoe volwassen het proces is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke veiligheidsnormen gelden voor een PoC met een humanoïde?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tot 19 januari 2027 de Machinerichtlijn 2006/42/EG, daarna de Verordening (EU) 2023/1230. In de praktijk zijn een schriftelijke risicobeoordeling, gedeeld met de verantwoordelijke voor veiligheid, en een afgebakend testgebied nodig."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Proof of concept met humanoïde robot: fasen en KPI&#x27;s"/>
+<meta property="og:description" content="Hoe u een proof of concept met een Unitree-humanoïde opzet: fasen, doorlooptijden, KPI&#x27;s vóór de start, keuze tussen G1, G1-D en R1, veiligheid en normen."/>
+<meta property="og:url" content="https://abrarobotics.com/nl/blog/poc-robot-umanoide-azienda.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-d-standard.webp"/>
+<meta property="og:locale" content="nl_NL"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree-robots geleverd vanuit Italië · ondersteuning in het Engels</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/nl/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Producten <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Vierpotige robots</a>
+<a href="/en/umanoidi-en.html">Humanoïden</a>
+<a href="/en/accessori-en.html">Accessoires</a>
+<a href="/en/catalogo-unitree-en.html">Volledige catalogus</a>
+<a href="/nl/#models">Prijslijst</a>
+</div>
+</div>
+<a href="/nl/#models">Prijzen</a>
+<a href="/en/assessment-en.html">Vind de juiste robot</a>
+<a href="/nl/#incentives">Financiering</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Sectoren <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Productie &amp; logistiek</a>
+<a href="/en/universita-ricerca-en.html">Universiteiten &amp; onderzoek</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Over ons</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Plan een gesprek</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/nl/">Home</a> / <a href="/nl/">Blog</a> / PoC humanoïde</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-d-standard.webp" alt="Unitree G1-D met twee armen op een vaste standaard, platform voor PoC's met manipulatie" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">PoC · Humanoïden</p>
+<h1>Proof of concept met een humanoïde robot in uw bedrijf: fasen, KPI's en risico's</h1>
+<div class="article-meta"><time datetime="2026-07-13">13 juli 2026</time><span>Bijgewerkt op 19 oktober 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In het kort:</strong> een PoC met een humanoïde robot beantwoordt één precieze vraag (doet deze robot deze taak, in dit tempo, met deze menselijke ingrepen?) voordat u in meerdere units investeert. Het werkt alleen als KPI's, scope en succescriteria zijn vastgelegd voordat de robot wordt aangezet. De doorlooptijden hier zijn indicatief en hangen af van de toepassing.</div>
+</header>
+
+<div class="article-content">
+<p>Een <strong>proof of concept (PoC) met een humanoïde robot</strong> is niet de robot kopen en kijken wat er gebeurt. Het is een experiment met een afgebakende scope, meetgegevens die vooraf op papier staan en een eindbeslissing: doorgaan, de aanpak wijzigen of stoppen.</p>
+
+<h2>Wat een PoC moet aantonen</h2>
+<p>Een PoC beantwoordt één vraag, geformuleerd zodat u het antwoord kunt verifiëren. Voorbeelden van goede vragen:</p>
+<ul>
+<li>Haalt de robot de dozen van een pallet en zet hij ze met een acceptabel succespercentage op de band?</li>
+<li>Verzamelt de robot teleoperatiegegevens die bruikbaar zijn om een manipulatiepolicy te trainen?</li>
+<li>Voert de robot een ronde visuele inspectie uit in een gebied zonder ingrepen van de operator?</li>
+</ul>
+<p>Vragen als "eens kijken wat hij kan" of "laten we een demo doen" leveren video's op, geen beslissingen. Is de vraag niet helder, dan is de eerste stap een procesanalyse, niet de aankoop.</p>
+
+<h2>De fasen van een PoC, met indicatieve doorlooptijden</h2>
+<p>De volgorde hieronder is dezelfde als op de pagina <a href="/en/assessment-en.html">Assessment en POC</a>: de eerste vier fasen gelden als richtduur van 5-9 weken voor één toepassing. De volgende fasen hangen af van de scope en worden in het PoC-plan vastgelegd.</p>
+<table>
+<thead><tr><th>Fase</th><th>Wat u doet</th><th>Output</th><th>Indicatieve doorlooptijd</th></tr></thead>
+<tbody>
+<tr><td>1. Proces in kaart brengen</td><td>Taak, ruimte, stromen, veiligheidsbeperkingen, huidige baseline</td><td>Beschrijving van de taak en start-KPI's</td><td>1-2 weken</td></tr>
+<tr><td>2. Oplossingen vergelijken</td><td>Humanoïde, cobot, AMR of geen robot</td><td>Gemotiveerde shortlist</td><td>~1 week</td></tr>
+<tr><td>3. Simulatie</td><td>3D-model van de werkplek en de robot</td><td>Haalbaarheid en knelpunten</td><td>2-4 weken</td></tr>
+<tr><td>4. PoC-plan</td><td>Doelen, hardware, testscope, voorlopige risicobeoordeling</td><td>PoC-plan en succescriteria</td><td>1-2 weken</td></tr>
+<tr><td>5. Uitvoering</td><td>Opstelling, tests in afgebakend gebied, gegevensverzameling</td><td>KPI-gegevens</td><td>Te bepalen in het plan</td></tr>
+<tr><td>6. Beslissing</td><td>Gemeten KPI's vergelijken met verwachte waarden</td><td>Go, no-go of herziening</td><td>Te bepalen in het plan</td></tr>
+</tbody>
+</table>
+<p>Vraagt de PoC een nieuwe robot, dan telt ook de levertijd mee: voor humanoïden rekenen we 4-6 weken vanaf ondertekening (zie de <a href="/nl/">homepage</a>).</p>
+
+<h2>De KPI's die u vóór de start vastlegt</h2>
+<p>Een KPI die u na de tests vastlegt, past zich altijd aan het resultaat aan. Daarom horen ze in het plan, met een drempelwaarde. De meest gebruikte:</p>
+<ul>
+<li><strong>Succespercentage</strong>: voltooide taken gedeeld door geprobeerde taken, over een minimumaantal pogingen.</li>
+<li><strong>Cyclustijd</strong>: seconden per taak, vergeleken met de huidige.</li>
+<li><strong>Menselijke ingrepen</strong>: hoe vaak de operator moet corrigeren, herpositioneren of de robot moet stoppen per gewerkt uur.</li>
+<li><strong>Reële autonomie</strong>: effectieve werkuren per accu, te vergelijken met de fabrieksopgave (circa 2 uur voor de G1, circa 6 uur voor de G1-D met mobiele basis, circa 1 uur voor de R1).</li>
+<li><strong>Opsteltijd</strong>: hoeveel tijd nodig is om de robot weer operationeel te maken na een taakwissel of een val.</li>
+</ul>
+<p><em>Rekenvoorbeeld met hypothetische cijfers:</em> succesdrempel 90% bij 200 pickacties, cyclustijd maximaal 20 seconden, niet meer dan 2 ingrepen per uur. Sluit de PoC af op 80% met 6 ingrepen per uur, dan moet het rapport uitleggen waarom (grip, perceptie, positionering) en of er een plausibele correctie bestaat.</p>
+
+<h2>Welke humanoïde voor de PoC</h2>
+<table>
+<thead><tr><th>Taak</th><th>Platform</th><th>End-User-prijs (excl. btw)</th></tr></thead>
+<tbody>
+<tr><td>Pakken en neerzetten op een werkbank, teleoperatiegegevens verzamelen</td><td><a href="/nl/unitree-g1-d.html">G1-D</a> Standard (vaste standaard)</td><td>vanaf € 38.005</td></tr>
+<tr><td>Manipulatie op meerdere werkplekken</td><td><a href="/prodotti/unitree-g1-d-flagship.html">G1-D Flagship</a> (mobiele basis)</td><td>vanaf € 51.944</td></tr>
+<tr><td>Compacte manipulatie met klein budget</td><td><a href="/nl/unitree-r1-d.html">R1-D</a></td><td>vanaf € 6.295 (R1-A5 Standard)</td></tr>
+<tr><td>Voortbeweging, software, embodied AI</td><td><a href="/nl/unitree-g1.html">G1</a> EDU</td><td>vanaf € 38.005 (G1-U1)</td></tr>
+<tr><td>Onderwijs en goedkope tests</td><td><a href="/nl/unitree-r1.html">R1</a> EDU</td><td>vanaf € 14.930 (R1-U1)</td></tr>
+<tr><td>Interactie op menselijke schaal</td><td><a href="/nl/unitree-h2.html">H2</a></td><td>vanaf € 43.874 (H2 Air)</td></tr>
+</tbody>
+</table>
+<p>Voor een PoC waarin de robot geprogrammeerd moet worden, zijn de EDU-versies nodig: volgens de Unitree-specificaties van de G1 en R1 kunt u alleen die met de SDK programmeren. Gaat het alleen om manipulatie, dan sluit een torso zonder benen zoals de G1-D het valrisico uit en houdt u de cel eenvoudig. Volledige vergelijking: <a href="/nl/blog/confronto-umanoidi-2026.html">welke Unitree-humanoïde kiezen</a>.</p>
+
+<div class="product-strip" aria-label="Producten in dit artikel">
+<div class="product-strip-head"><span>Producten in dit artikel</span><a href="/en/umanoidi-en.html">Alle humanoïden</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/prodotti/unitree-g1-d-standard.html"><img alt="Unitree G1-D Standard" loading="lazy" src="/images/prodotti/g1-d-standard.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/prodotti/unitree-g1-d-standard.html">Unitree G1-D Standard</a></h3>
+<p>Torso met twee armen op een vaste standaard</p>
+<div class="product-card-price">vanaf € 38.005 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/prodotti/unitree-g1-d-standard.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>SDK, 23 DoF, rekenmodule</p>
+<div class="product-card-price">€ 38.005 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-r1-edu-en.html"><img alt="Unitree R1 EDU (U1)" loading="lazy" src="/images/official/unitree-r1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-r1-edu-en.html">Unitree R1 EDU (U1)</a></h3>
+<p>SDK, 26-40 vrijheidsgraden</p>
+<div class="product-card-price">€ 14.930 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-r1-edu-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Veiligheid en normen</h2>
+<p><em>Algemene informatie, geen juridisch advies.</em></p>
+<p>Machines die vandaag in de EU op de markt worden gebracht, vallen onder de <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">Machinerichtlijn 2006/42/EG</a>. Vanaf 20 januari 2027 geldt de <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Verordening (EU) 2023/1230</a>, die de richtlijn vanaf die datum intrekt. Voor industriële robots is de technische referentie de <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">ISO 10218</a>-reeks, herzien in 2025. Voor mobiele robots met actieve stabiliteit (op poten of op wielen met balansregeling) ontwikkelt ISO de <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">ISO 25785-1</a>: in oktober 2026 is dat nog een Committee Draft.</p>
+<p>In de praktijk, voor de PoC:</p>
+<ul>
+<li>Afgebakend testgebied met gecontroleerde toegang tijdens de tests.</li>
+<li>Een tweevoeter kan bij een noodstop vallen, omdat de stabiliteit van actieve regeling afhangt. Voor de eerste tests op een tweevoeter zijn een steun of een harnas en vrije ruimte eromheen nodig.</li>
+<li>Een schriftelijke voorlopige risicobeoordeling, gedeeld met de verantwoordelijke voor veiligheid en gezondheid op het werk.</li>
+<li>Operators opgeleid in de noodstop en de herstelprocedures.</li>
+</ul>
+<p>Meer daarover: <a href="/nl/blog/unitree-regolamento-macchine-2027.html">Unitree-robots en de Machineverordening 2027</a>.</p>
+
+<h2>Kopen, huren of simuleren</h2>
+<p>Niet elke PoC vraagt meteen om de aankoop van de robot. Soms gebeurt een eerste verificatie in simulatie; in andere gevallen zijn huur of een kortlopende pilot een optie. Is aankoop de gekozen weg, controleer dan vooraf of het project in aanmerking komt voor regelingen zoals de WBSO, de KIA of VLAIO-steun: voorwaarden en officiële bronnen staan bij de <a href="/nl/#incentives">subsidies en fiscale regelingen</a>, en of de specifieke investering in aanmerking komt, bevestigt uw accountant of belastingadviseur.</p>
+
+<h2>Wat het eindrapport moet bevatten</h2>
+<ol>
+<li>Gemeten KPI's tegen de drempels uit het plan, met het aantal pogingen.</li>
+<li>Oorzaken van fouten, per categorie (perceptie, grip, navigatie, software, hardware).</li>
+<li>Geschatte totale kosten voor de volgende fase: hardware, software, veiligheid, training.</li>
+<li>Aanbeveling: go, no-go of herziening van de scope.</li>
+</ol>
+<p>Een PoC die de KPI's niet haalt, is geen verloren tijd: het is informatie die een verkeerde bestelling voorkomt. Houden de cijfers geen stand, dan weet u dat liever voordat u tien units koopt.</p>
+</div>
+
+<section class="article-faq" id="faq">
+<h2>Veelgestelde vragen</h2>
+<div class="faq-item"><h3>Hoe lang duurt een PoC met een humanoïde robot?</h3><p>De vier voorbereidende fasen kosten meestal 5-9 weken voor één toepassing; de duur van de tests wordt in het plan vastgelegd. Is een nieuwe robot nodig, dan komen er 4-6 weken levertijd bij.</p></div>
+<div class="faq-item"><h3>Welke Unitree-humanoïde is geschikt voor een pick-and-place-PoC?</h3><p>Voor pakken en neerzetten op een werkbank is de G1-D Standard op een vaste standaard (vanaf € 38.005 excl. btw) de logische keuze: zonder benen is er geen valrisico. Met een kleiner budget is er de R1-D, vanaf € 6.295.</p></div>
+<div class="faq-item"><h3>Welke KPI's meet u in een PoC met een humanoïde?</h3><p>De vijf basis-KPI's zijn succespercentage, cyclustijd, menselijke ingrepen per uur, reële autonomie en opsteltijd, elk met een drempel die vóór de tests is vastgelegd.</p></div>
+<div class="faq-item"><h3>Moet u de robot kopen om een PoC te doen?</h3><p>Niet altijd: de eerste verificatie kan een simulatie of een kortlopende pilot zijn. Het hangt af van hoe volwassen het proces is.</p></div>
+<div class="faq-item"><h3>Welke veiligheidsnormen gelden voor een PoC met een humanoïde?</h3><p>Tot 19 januari 2027 de Machinerichtlijn 2006/42/EG, daarna de Verordening (EU) 2023/1230. In de praktijk zijn een schriftelijke risicobeoordeling, gedeeld met de verantwoordelijke voor veiligheid, en een afgebakend testgebied nodig.</p></div>
+</section>
+
+<section class="article-references" id="fonti">
+<h2>Bronnen</h2>
+<ol>
+<li>Richtlijn 2006/42/EG betreffende machines, EUR-Lex: <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0042" rel="noopener noreferrer" target="_blank">CELEX 32006L0042</a></li>
+<li>Verordening (EU) 2023/1230 betreffende machines, EUR-Lex: <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">eur-lex.europa.eu/eli/reg/2023/1230/oj</a></li>
+<li>ISO 10218-1:2025, Robotics, Safety requirements, Part 1: <a href="https://www.iso.org/standard/73933.html" rel="noopener noreferrer" target="_blank">iso.org/standard/73933</a></li>
+<li>ISO 25785-1, Safety requirements for dynamically stable industrial mobile robots (in ontwikkeling): <a href="https://www.iso.org/standard/91469.html" rel="noopener noreferrer" target="_blank">iso.org/standard/91469</a></li>
+<li>Unitree, specificaties G1, R1 en G1-D: <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a>, <a href="https://www.unitree.com/R1" rel="noopener noreferrer" target="_blank">unitree.com/R1</a>, <a href="https://www.unitree.com/G1-D" rel="noopener noreferrer" target="_blank">unitree.com/G1-D</a></li>
+<li>Abra Robotics, <a href="/en/assessment-en.html">Assessment en POC</a> (fasen en indicatieve doorlooptijden) en <a href="/nl/#models">End-User-prijslijst</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Wilt u een PoC met een humanoïde opzetten?</h2><p>We beginnen met de procesanalyse en de KPI's en kiezen daarna samen het platform. De eerste vier fasen kosten 5-9 weken.</p><a class="btn btn-primary" href="/en/assessment-en.html">Start een PoC</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Bekijk de humanoïden</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/nl/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Toegepaste robotica voor bedrijven, universiteiten en onderzoeksinstellingen. Hardware, software op maat, training en technische ondersteuning.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigatie</span>
+<a href="/en/manifattura-logistica-en.html">Productie &amp; logistiek</a>
+<a href="/en/universita-ricerca-en.html">Universiteiten &amp; onderzoek</a>
+<a href="/en/assessment-en.html">Vind de juiste robot</a>
+<a href="/nl/#incentives">Financiering</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Producten</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Vierpotige robots</a>
+<a href="/en/umanoidi-en.html">Humanoïden</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italië</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Plan een gesprek</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Alle rechten voorbehouden.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
