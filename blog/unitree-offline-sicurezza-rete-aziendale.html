@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sicurezza rete aziendale con robot Unitree: guida IT</title>
+<meta name="description" content="Sicurezza rete aziendale con robot Unitree: VLAN, servizi da limitare, aggiornamenti OTA, dati e cosa chiedere per il Cyber Resilience Act."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="x-default" rel="alternate"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="../images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="../images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Sicurezza rete aziendale con robot Unitree: isolare, aggiornare, proteggere i dati",
+  "description": "Sicurezza rete aziendale con robot Unitree: VLAN, servizi da limitare, aggiornamenti OTA, dati e cosa chiedere per il Cyber Resilience Act.",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": "https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html",
+  "image": "https://abrarobotics.com/images/official/unitree-g1-ufficio.webp",
+  "inLanguage": "it"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Un robot Unitree può stare sulla stessa VLAN dei PC aziendali?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Va su una VLAN dedicata, senza routing verso la rete utenti; l'accesso amministrativo passa da un jump host. Così un problema al robot non espone il resto della rete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quali porte devo aprire per un Unitree?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non aprire porte in ingresso. Il robot avvia connessioni in uscita verso i servizi cloud per OTA, app e teleoperazione; consenti solo quelle destinazioni e solo quando servono. Per l'uso locale basta la rete del robot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso usare un Unitree senza collegarlo al cloud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì per il controllo locale via Ethernet e DDS, sulle versioni EDU. Perdi OTA e teleoperazione da app; la procedura di aggiornamento offline va chiesta al fornitore."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come aggiorno il firmware in una rete isolata?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con una VLAN di aggiornamento che abbia accesso in uscita solo durante la finestra, un robot alla volta e registro delle versioni. Se l'isolamento è totale, serve una procedura del fornitore."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il Cyber Resilience Act riguarda anche l'azienda che usa il robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gli obblighi principali sono del fabbricante. Chi compra deve chiedere periodo di supporto, canale per le vulnerabilità e aggiornamenti. Chi rivende con il proprio marchio può assumere obblighi da fabbricante."
+      }
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Sicurezza rete aziendale con robot Unitree: guida IT"/>
+<meta property="og:description" content="Sicurezza rete aziendale con robot Unitree: VLAN, servizi da limitare, aggiornamenti OTA, dati e cosa chiedere per il Cyber Resilience Act."/>
+<meta property="og:url" content="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-ufficio.webp"/>
+<meta property="og:locale" content="it_IT"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp"/></a>
+<div class="nav-links nav-post-links"><a href="../blog.html">Blog</a></div>
+</div></nav>
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Sicurezza di rete</nav>
+
+<figure class="article-cover">
+<img src="../images/official/unitree-g1-ufficio.webp" alt="Unitree G1 in un ufficio, robot connesso alla rete aziendale" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Normativa · Sicurezza · Rete</p>
+<h1>Sicurezza rete aziendale con robot Unitree: isolare, aggiornare, proteggere i dati</h1>
+<div class="article-meta"><time datetime="2026-10-24">24 ottobre 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In breve:</strong> un robot Unitree in azienda è un endpoint con Wi-Fi, Bluetooth, a volte 4G e un computer di controllo a bordo. Va messo su una VLAN dedicata, con accesso in uscita solo verso i servizi necessari, credenziali cambiate e aggiornamenti in una finestra controllata. OTA e binding dell'app passano dal cloud del produttore: se li blocchi perdi teleoperazione e aggiornamenti remoti, non il controllo locale via Ethernet e DDS.</div>
+</header>
+
+<div class="article-content">
+<p>Quando si parla di <strong>sicurezza rete aziendale con robot Unitree</strong>, il punto di partenza è l'architettura documentata dal produttore, non il reparto in cui il robot camminerà. Un G1 o un Go2 non è un elettrodomestico isolato: ha un sistema operativo, un account, un canale di aggiornamento e, sul G1 EDU, un accesso SSH per lo sviluppo. Il lavoro del responsabile IT è decidere quali di questi canali tenere aperti, su quale segmento e con quali credenziali.</p>
+<p class="article-note"><em>Informazioni generali, non consulenza legale o di cybersicurezza. Le configurazioni vanno adattate a rete, contratto e versione del robot; per un caso specifico servono fornitore e, dove serve, un consulente.</em></p>
+
+<h2>Sicurezza rete aziendale: i tre livelli da separare</h2>
+<p>Il primo livello è la <strong>rete</strong>: chi può parlare con il robot e verso quali destinazioni. Il secondo è l'<strong>endpoint</strong>: credenziali, servizi esposti, Bluetooth, porte USB e account. Il terzo sono i <strong>dati</strong>: video, audio, mappe, telemetria e backup. Se si interviene solo su uno dei tre, gli altri due restano scoperti.</p>
+<p>La domanda utile è quali canali servono davvero. Un Go2 usato con telecomando non richiede teleoperazione da remoto; un G1 EDU per ROS 2 richiede accesso alla rete del robot e SSH, non per forza l'app su Internet.</p>
+
+<h2>Quali app e servizi cloud usa un robot Unitree</h2>
+<p>La documentazione per sviluppatori descrive un'architettura comune a Go2 e G1. Il robot si collega ai servizi cloud <strong>solo dopo autorizzazione dell'utente</strong>. Il cloud serve a tre cose: telemetria e diagnostica, aggiornamenti di sistema e teleoperazione tramite WebRTC. I canali dichiarati sono MQTT per la comunicazione IoT e gli aggiornamenti, HTTP per l'account e il binding, TURN/STUN per instradare il video quando la connessione diretta non funziona. Bluetooth LE serve alla configurazione della rete e alla verifica di sicurezza; all'interno del robot la comunicazione tra moduli passa da DDS.</p>
+<table>
+<thead><tr><th>Canale</th><th>A cosa serve</th><th>Indicazione per l'IT</th></tr></thead>
+<tbody>
+<tr><td>Ethernet e DDS</td><td>Controllo e sviluppo locale, topic ROS 2</td><td>Rete del robot separata, senza routing verso gli utenti</td></tr>
+<tr><td>Wi-Fi in modalità infrastruttura</td><td>App, telemetria e servizi cloud</td><td>SSID dedicato e VLAN robot</td></tr>
+<tr><td>Wi-Fi in modalità AP</td><td>Configurazione iniziale: il robot crea un hotspot</td><td>Solo in onboarding, in area controllata</td></tr>
+<tr><td>Bluetooth LE</td><td>Configurazione di rete e verifica di sicurezza</td><td>Accesso fisico limitato, onboarding tracciato</td></tr>
+<tr><td>MQTT e HTTP verso il cloud</td><td>OTA, diagnostica, account e binding</td><td>Uscita consentita solo se serve, con log</td></tr>
+<tr><td>WebRTC, TURN e STUN</td><td>Video e comandi da remoto</td><td>Blocca se non usi la teleoperazione</td></tr>
+</tbody>
+</table>
+<h3>La rete locale: Ethernet, DDS e 192.168.123.x</h3>
+<p>Due dettagli cambiano il progetto. Il primo: la rete interna del robot usa la subnet <code>192.168.123.x</code>; il computer di sviluppo del G1 risponde su <code>192.168.123.164</code>, quello di bordo del Go2 su <code>192.168.123.161</code>. Non va esposta alla rete aziendale. Il secondo: sulle versioni <a href="../go2.html">Go2</a> Air e Pro le interfacce Ethernet e SBUS non sono disponibili; sono riservate alla EDU. Se il progetto richiede un cavo, la versione va scelta prima dell'ordine, non dopo.</p>
+<h2>Configurare una VLAN isolata, passo per passo</h2>
+<p>Non esiste una configurazione valida per ogni sito, ma l'ordine dei passaggi è sempre lo stesso. Esempio con numeri ipotetici: VLAN 210 per i robot, subnet <code>192.168.210.0/24</code>, gateway <code>192.168.210.1</code>, indirizzi riservati da <code>.10</code> a <code>.30</code>; VLAN 200 per l'amministrazione, con un jump host.</p>
+<ol>
+<li><strong>Separa il traffico.</strong> Crea una VLAN e un SSID dedicati. Non riusare la VLAN dei PC o quella di gestione.</li>
+<li><strong>Blocca il routing laterale.</strong> La VLAN robot non deve raggiungere la rete utenti. L'unico accesso amministrativo passa da un jump host sulla VLAN 200, con regole nominative e log.</li>
+<li><strong>Assegna indirizzi stabili.</strong> Prenotazioni DHCP o IP statici per ogni robot, con MAC e numero di serie nell'inventario.</li>
+<li><strong>Parti da default deny in uscita.</strong> Apri solo le destinazioni necessarie per OTA, app e teleoperazione, e solo nelle finestre in cui servono.</li>
+<li><strong>Mantieni DDS dentro la VLAN.</strong> La comunicazione locale tra PC di sviluppo e robot usa DDS; il multicast di scoperta non va attraversato da router o firewall senza una configurazione dedicata. Per i primi test segui la guida <a href="ros2-unitree-guida-rapida.html">ROS 2 su robot Unitree</a>.</li>
+<li><strong>Non esporre la subnet 192.168.123.x.</strong> Se un fornitore chiede accesso remoto, prevedi una sessione temporanea e tracciata.</li>
+<li><strong>Misura prima di chiudere.</strong> Lascia passare il traffico per qualche giorno, registra destinazioni e volumi, poi costruisci la regola. Senza baseline, l'allowlist diventa un elenco di eccezioni.</li>
+</ol>
+
+<h2>Cosa disattivare o limitare se non serve</h2>
+<table>
+<thead><tr><th>Elemento</th><th>Quando serve</th><th>Cosa fare se non serve</th></tr></thead>
+<tbody>
+<tr><td>Hotspot Wi-Fi del robot</td><td>Configurazione iniziale o ambienti senza Wi-Fi</td><td>Usa Ethernet o Wi-Fi infrastrutturale; evita l'AP in produzione</td></tr>
+<tr><td>App e account cloud</td><td>Binding, OTA, teleoperazione</td><td>Blocca l'uscita; restano controllo locale e DDS</td></tr>
+<tr><td>Modulo 4G con eSIM (SIM integrata)</td><td>Uso fuori sede o mobilità</td><td>Scegli una versione senza modulo o limita la connettività con l'operatore</td></tr>
+<tr><td>Bluetooth LE</td><td>Configurazione e verifica iniziale</td><td>Non è un canale di esercizio: concentra l'onboarding in un'area controllata</td></tr>
+<tr><td>SSH sulle versioni EDU</td><td>Sviluppo e manutenzione</td><td>Password cambiata, chiavi, accesso solo dal jump host</td></tr>
+<tr><td>WebRTC e TURN</td><td>Teleoperazione da remoto</td><td>Blocca in uscita se il robot lavora solo in sede</td></tr>
+<tr><td>Porte USB e docking station</td><td>Aggiornamenti e sviluppo</td><td>Accesso fisico controllato e registro degli interventi</td></tr>
+</tbody>
+</table>
+<p>La documentazione sviluppatori indica per il G1 EDU l'utente <code>unitree</code> e una password iniziale nota; lo stesso vale per la docking station del Go2. Sono credenziali di laboratorio: vanno cambiate prima di collegare il robot alla rete, insieme alle credenziali dell'hotspot. Con un account condiviso non si attribuisce un accesso a una persona.</p>
+<p>L'app usa il Bluetooth per configurare la rete e verificare la sicurezza del collegamento. La misura utile è fisica: configurazione in area riservata, telefono aziendale e operazione registrata. Dopo, l'accesso all'area e alle porte resta limitato.</p>
+
+<h2>Aggiornamenti: come gestirli senza aprire tutto</h2>
+<p>Unitree dichiara l'OTA via cloud per il <a href="../g1.html">G1</a> e per il Go2; la pagina Go2 precisa che il robot si collega solo con autorizzazione dell'utente e l'architettura indica MQTT per gli aggiornamenti. Una VLAN senza Internet non riceve l'OTA: va messo nel progetto prima dell'installazione.</p>
+<p>Una procedura sostenibile in azienda ha sei passi:</p>
+<ol>
+<li><strong>Inventario delle versioni.</strong> Annota firmware del robot, versione dell'app e, se presente, versione del dock o del modulo di calcolo.</li>
+<li><strong>Finestra di aggiornamento.</strong> Apri l'uscita verso i servizi del produttore solo nella finestra concordata, con un robot alla volta.</li>
+<li><strong>Test su un esemplare.</strong> Aggiorna prima un robot di laboratorio, verifica movimento, sensori, rete e la vostra applicazione.</li>
+<li><strong>Verifica dopo l'aggiornamento.</strong> Controlla la versione installata e rifai il test di rete. Se l'aggiornamento cambia il comportamento, fermati e apri un ticket.</li>
+<li><strong>Registro.</strong> Conserva versione, data, esito e operatore.</li>
+<li><strong>Piano B per l'isolamento totale.</strong> Se la rete non ha uscita, chiedi al fornitore la procedura offline e i pacchetti ufficiali. Niente firmware di terzi.</li>
+</ol>
+<p>Per il G1 la procedura lato app, i controlli prima di iniziare e gli errori da evitare sono nella guida all'<a href="unitree-g1-aggiornare-firmware.html">aggiornamento firmware del G1</a>. In generale: batteria carica, rete stabile, nessuna interruzione e una procedura di rollback concordata con il fornitore.</p>
+
+<h2>Dati: video, audio e telemetria</h2>
+<p>Un G1 ha telecamera di profondità, LiDAR, quattro microfoni e altoparlante; un Go2 ha telecamera, LiDAR e, su alcune versioni, voce e interfono. Sono sensori utili per l'applicazione, ma raccolgono anche ciò che sta intorno al robot. Se il robot riprende o registra persone identificabili, il trattamento entra nel perimetro del GDPR e delle indicazioni del <a href="https://www.garanteprivacy.it/faq/videosorveglianza" rel="noopener noreferrer" target="_blank">Garante privacy sulla videosorveglianza</a>: finalità, minimizzazione, informativa, tempi di conservazione e, dove ricorrono i presupposti, valutazione d'impatto.</p>
+<p>Unitree dichiara che i dati operativi raccolti dal cloud non riguardano la privacy e che il traffico WebRTC non viene raccolto né analizzato dal server. Sono dichiarazioni utili per il contratto, ma non sostituiscono la valutazione del titolare. Prima della teleoperazione, decidi dove finiscono le registrazioni e chi può vederle.</p>
+<p>Sul robot, chiedi se il disco è cifrato e come si cancellano i dati prima di permuta o riparazione. Se non è documentato, trattalo come un portatile.</p>
+
+<h2>Cyber Resilience Act: i fatti da conoscere</h2>
+<p>Il <a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" rel="noopener noreferrer" target="_blank">Regolamento (UE) 2024/2847</a>, il Cyber Resilience Act, è in vigore dal 10 dicembre 2024. Gli obblighi di segnalazione si applicano dall'11 settembre 2026; gli obblighi principali dall'11 dicembre 2027. Riguarda i prodotti con elementi digitali immessi sul mercato UE, quindi anche un robot connesso.</p>
+<p>Secondo la <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">scheda della Commissione europea</a>, il fabbricante deve garantire sicurezza predefinita, gestire le vulnerabilità per il periodo di supporto, dichiararne la fine, fornire istruzioni per l'uso e apporre la marcatura CE. Non è un obbligo automatico per chi compra.</p>
+<p>Per chi acquista, il CRA è una lista di domande prima dell'ordine: fine del supporto, canale per le vulnerabilità, aggiornamenti, istruzioni per l'installazione sicura. Sono informazioni che il fabbricante fornisce e il distributore verifica. Chi rivende con il proprio marchio può assumere obblighi da fabbricante.</p>
+<p>Il CRA non sostituisce il <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">Regolamento macchine (UE) 2023/1230</a>: la sicurezza macchina resta disciplinata da quel regolamento. La <a href="unitree-regolamento-macchine-2027.html">guida al Regolamento macchine 2027</a> spiega la parte macchine.</p>
+
+<h2>Checklist prima di portare il robot in reparto</h2>
+<ol>
+<li>VLAN e SSID dedicati, senza routing verso la rete utenti.</li>
+<li>Indirizzi stabili e inventario con MAC, numero di serie e versione firmware.</li>
+<li>Password di robot, hotspot e account cambiate; nessun account personale.</li>
+<li>Uscita Internet chiusa di default, aperta solo per OTA e teleoperazione.</li>
+<li>Procedura di aggiornamento scritta, con test su un esemplare e registro.</li>
+<li>Valutazione privacy se il robot riprende o registra persone.</li>
+<li>Contratto con periodo di supporto e canale di segnalazione vulnerabilità.</li>
+<li>Piano di dismissione: cancellazione dati, revoca account, rimozione dalla VLAN.</li>
+</ol>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Prodotti citati nell'articolo</span><a href="../catalogo-unitree.html">Catalogo Unitree</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-g1-edu-standard.html"><img alt="Unitree G1 Edu Standard (G1-U1)" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-g1-edu-standard.html">Unitree G1 Edu Standard (G1-U1)</a></h3>
+<p>SDK, 23 DoF, Ethernet per lo sviluppo</p>
+<div class="product-card-price">38.004,54 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-edu-standard.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-go2-edu.html"><img alt="Unitree Go2 Edu Standard" loading="lazy" src="../images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-go2-edu.html">Unitree Go2 Edu Standard</a></h3>
+<p>SDK e ROS 2, Ethernet RJ45</p>
+<div class="product-card-price">8.804,14 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-go2-edu.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-b2.html"><img alt="Unitree B2" loading="lazy" src="../images/official/unitree-b2-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-b2.html">Unitree B2</a></h3>
+<p>Quadrupede industriale, circa 60 kg</p>
+<div class="product-card-price">66.827,62 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-b2.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<section class="article-faq">
+<h2>Domande frequenti</h2>
+<div class="faq-item"><h3>Un robot Unitree può stare sulla stessa VLAN dei PC aziendali?</h3><p>No. Va su una VLAN dedicata, senza routing verso la rete utenti; l'accesso amministrativo passa da un jump host. Così un problema al robot non espone il resto della rete.</p></div>
+<div class="faq-item"><h3>Quali porte devo aprire per un Unitree?</h3><p>Non aprire porte in ingresso. Il robot avvia connessioni in uscita verso i servizi cloud per OTA, app e teleoperazione; consenti solo quelle destinazioni e solo quando servono. Per l'uso locale basta la rete del robot.</p></div>
+<div class="faq-item"><h3>Posso usare un Unitree senza collegarlo al cloud?</h3><p>Sì per il controllo locale via Ethernet e DDS, sulle versioni EDU. Perdi OTA e teleoperazione da app; la procedura di aggiornamento offline va chiesta al fornitore.</p></div>
+<div class="faq-item"><h3>Come aggiorno il firmware in una rete isolata?</h3><p>Con una VLAN di aggiornamento che abbia accesso in uscita solo durante la finestra, un robot alla volta e registro delle versioni. Se l'isolamento è totale, serve una procedura del fornitore.</p></div>
+<div class="faq-item"><h3>Il Cyber Resilience Act riguarda anche l'azienda che usa il robot?</h3><p>Gli obblighi principali sono del fabbricante. Chi compra deve chiedere periodo di supporto, canale per le vulnerabilità e aggiornamenti. Chi rivende con il proprio marchio può assumere obblighi da fabbricante.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Fonti</h2>
+<ol>
+<li>Unitree, architettura di sistema Go2 (cloud dopo autorizzazione, MQTT, HTTP, WebRTC, BLE): <a href="https://support.unitree.com/home/en/developer/Architecture%20Description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, architettura di sistema G1 (cloud dopo autorizzazione, MQTT, HTTP, TURN/STUN, BLE, DDS): <a href="https://support.unitree.com/home/en/G1_developer/architecture_description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, pagina ufficiale Go2 (Wi-Fi 6, Bluetooth, modulo 4G, OTA via cloud con autorizzazione): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a></li>
+<li>Unitree, pagina ufficiale G1 (Wi-Fi 6, Bluetooth 5.2, OTA): <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, interfacce elettriche e versioni Go2 (Ethernet e SBUS solo su EDU): <a href="https://support.unitree.com/home/en/developer/about_Go2" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, FAQ per sviluppatori G1 (utente e password iniziali, IP di PC1 e PC2): <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, guida rapida Go2 (rete 192.168.123.x e IP del computer di bordo): <a href="https://support.unitree.com/home/en/developer/Quick_start" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, docking station del Go2 (utente e password iniziali): <a href="https://support.unitree.com/home/en/developer/module_update" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Commissione europea, sintesi del Cyber Resilience Act: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-summary" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Commissione europea, obblighi dei fabbricanti secondo il CRA: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Regolamento (UE) 2024/2847 (Cyber Resilience Act), testo ufficiale: <a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" rel="noopener noreferrer" target="_blank">EUR-Lex</a></li>
+<li>Garante per la protezione dei dati personali, FAQ sulla videosorveglianza: <a href="https://www.garanteprivacy.it/faq/videosorveglianza" rel="noopener noreferrer" target="_blank">garanteprivacy.it</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Prima di collegare il robot alla rete</h2><p>Partiamo dalla versione e dall'uso previsto: Ethernet, Wi-Fi, cloud e aggiornamenti cambiano il progetto di rete. Possiamo aiutarvi a definirli prima dell'ordine.</p><a class="btn btn-primary" href="../assessment.html">Richiedi un assessment</a><a class="btn btn-outline-light" href="../umanoidi.html">Umanoidi Unitree</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp" width="180" height="72" decoding="async"/></a>
+<p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Prodotti</span>
+<a href="../cobot.html">Cobot</a>
+<a href="../amr.html">AMR</a>
+<a href="../quadrupedi.html">Quadrupedi</a>
+<a href="../umanoidi.html">Umanoidi</a>
+<a href="../accessori.html">Accessori</a>
+<a href="../catalogo.html">Catalogo completo</a>
+<a href="../listino-unitree.html">Listino prezzi</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Servizi e risorse</span>
+<a href="../assessment.html">Trova il robot giusto</a>
+<a href="../software.html">Software</a>
+<a href="../finanziamenti.html">Finanziamenti</a>
+<a href="../manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="../universita-ricerca.html">Università e Ricerca</a>
+<a href="../blog.html">Blog</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contatti</span>
+<a href="../chi-siamo.html">Chi siamo</a>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Viale Trieste 105<br/>30026 Portogruaro (VE)</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<nav aria-label="Note legali" class="footer-legal">
+<a href="../privacy-policy.html">Privacy Policy</a>
+<a href="../cookie-policy.html">Cookie Policy</a>
+<a href="../condizioni-di-vendita.html">Condizioni di vendita</a>
+<a href="../politica-resi.html">Politica resi</a>
+<a href="../note-legali.html">Note legali</a>
+</nav>
+</div>
+</footer>
+<script defer src="../script.js"></script>
+</body></html>
