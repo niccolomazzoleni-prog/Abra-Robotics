@@ -24,6 +24,14 @@ from nomi_en import nome_en  # noqa: E402
 from g1_plus_testi import T as G1P  # noqa: E402
 from lingue_chrome import localize_chrome  # noqa: E402
 
+UK_REDIRECT = """<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>Redirect — Abra Robotics</title>
+<link rel="canonical" href="https://abrarobotics.com/en/index-en.html"/>
+<meta name="robots" content="noindex, follow"/>
+<meta http-equiv="refresh" content="0; url=https://abrarobotics.com/en/index-en.html"/></head>
+<body><a href="https://abrarobotics.com/en/index-en.html">Abra Robotics</a></body></html>
+"""
+
 DATA = ROOT / "data" / "lingue"
 ORDER = ["de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs", "uk"]
 FAMILY_KEYS = ["go2", "as2", "a2", "b2", "g1", "g1-d", "h2", "r1", "r1-d", "z1"]
@@ -352,7 +360,7 @@ def landing_page(d: dict, data: dict, all_langs: list[dict]) -> str:
 
 
 def main() -> None:
-    all_langs = langs()
+    all_langs = [L for L in langs() if L["code"] != "uk"]  # uk ora e' un redirect
     only = set(sys.argv[1:])
     data = load()
     bad = False
@@ -366,6 +374,10 @@ def main() -> None:
             continue
         out = ROOT / d["code"]
         out.mkdir(exist_ok=True)
+        if d["code"] == "uk":  # doppione del sito inglese con 0 clic: rimanda alla home inglese
+            (out / "index.html").write_text(UK_REDIRECT, encoding="utf-8")
+            print("uk: redirect a /en/index-en.html")
+            continue
         (out / "index.html").write_text(localize_chrome(landing_page(d, data, all_langs), d["code"]), encoding="utf-8")
         if d.get("landing_only"):
             print(f"{d['code']}: 1 pagina paese (modelli: hub inglesi)")
