@@ -1,0 +1,342 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-g1-aggiornare-firmware.html -->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="/consent.js"></script>
+<script defer src="/visite.js"></script>
+<!-- Google Tag Manager + Google tag (gtag.js): i comandi entrano subito in dataLayer, DOPO il consent default qui sopra;
+     gli script esterni (~350 KB) si scaricano solo dopo il load (idle) o alla prima interazione, per non rubare banda a CSS/font/hero su mobile. -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  gtag('js',new Date());gtag('config','G-T4ZC7CM8RX');
+  var ev=['pointerdown','keydown','touchstart','scroll'],done=0;
+  function load(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,load,true);});
+    ['https://www.googletagmanager.com/gtm.js?id=GTM-MNLWZSN7','https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX'].forEach(function(u){var j=d.createElement('script');j.async=true;j.src=u;d.head.appendChild(j);});}
+  ev.forEach(function(e){w.addEventListener(e,load,{capture:true,passive:true});});
+  function idle(){w.requestIdleCallback?requestIdleCallback(load,{timeout:3000}):setTimeout(load,1500);}
+  if(d.readyState==='complete')idle();else w.addEventListener('load',idle);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree G1: firmware updaten zonder risico's</title>
+<meta name="description" content="Hoe u de firmware van de Unitree G1 bijwerkt met de officiële app: controles vooraf (accu, versie, netwerk), fouten om te vermijden en downgrade."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/nl/blog/unitree-g1-aggiornare-firmware.html"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-aggiornare-firmware.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-g1-aggiornare-firmware.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/unitree-g1-aggiornare-firmware.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/unitree-g1-aggiornare-firmware.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/unitree-g1-aggiornare-firmware.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/unitree-g1-aggiornare-firmware.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/blog/unitree-g1-aggiornare-firmware.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-g1-aggiornare-firmware.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/unitree-g1-aggiornare-firmware.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/no/blog/unitree-g1-aggiornare-firmware.html" hreflang="nb" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-g1-aggiornare-firmware.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-aggiornare-firmware.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree G1: firmware updaten zonder risico's",
+  "description": "Hoe u de firmware van de Unitree G1 bijwerkt met de officiële app: controles vooraf (accu, versie, netwerk), fouten om te vermijden en downgrade.",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-19",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/nl/blog/unitree-g1-aggiornare-firmware.html"
+  },
+  "image": "https://abrarobotics.com/images/prodotti/2026/g1.jpg",
+  "inLanguage": "nl",
+  "url": "https://abrarobotics.com/nl/blog/unitree-g1-aggiornare-firmware.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hoe update u de firmware van de Unitree G1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Via het netwerk (OTA), met de robot verbonden met de Unitree Explore-app. Noteer vooraf de huidige versie en controleer accu en netwerk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik terug naar een eerdere firmwareversie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dat is door Unitree niet gedocumenteerd. Zorgt een update voor problemen, neem dan contact op met de support in plaats van zelf een downgrade te proberen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Na de update meldt de G1 alarmen op de gewrichten: wat te doen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kalibreer niet zelf. De handleiding van Unitree vraagt om eerst de technische support te raadplegen voor u beslist of u de gewrichten via de app kalibreert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik de robot tijdens de update uitschakelen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. Onderbreek de voeding en de verbinding niet tot de update klaar is."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree G1: firmware updaten zonder risico&#x27;s"/>
+<meta property="og:description" content="Hoe u de firmware van de Unitree G1 bijwerkt met de officiële app: controles vooraf (accu, versie, netwerk), fouten om te vermijden en downgrade."/>
+<meta property="og:url" content="https://abrarobotics.com/nl/blog/unitree-g1-aggiornare-firmware.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/prodotti/2026/g1.jpg"/>
+<meta property="og:locale" content="nl_NL"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree-robots geleverd vanuit Italië · ondersteuning in het Engels</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/nl/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Producten <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Vierpotige robots</a>
+<a href="/en/umanoidi-en.html">Humanoïden</a>
+<a href="/en/accessori-en.html">Accessoires</a>
+<a href="/en/catalogo-unitree-en.html">Volledige catalogus</a>
+<a href="/nl/#models">Prijslijst</a>
+</div>
+</div>
+<a href="/nl/#models">Prijzen</a>
+<a href="/en/assessment-en.html">Vind de juiste robot</a>
+<a href="/nl/#incentives">Financiering</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Sectoren <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Productie &amp; logistiek</a>
+<a href="/en/universita-ricerca-en.html">Universiteiten &amp; onderzoek</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Over ons</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Plan een gesprek</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/nl/">Home</a> / <a href="/nl/">Blog</a> / G1-firmware</nav>
+
+<figure class="article-cover">
+<img src="/images/prodotti/2026/g1.webp" alt="Humanoïde robot Unitree G1 rechtop, vooraanzicht" width="800" height="800" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Gidsen</p>
+<h1>Unitree G1: zo update u de firmware zonder risico's</h1>
+<div class="article-meta"><time datetime="2026-10-09">9 oktober 2026</time><span>Bijgewerkt 19 oktober 2026</span><span>Abra Robotics</span></div>
+</header>
+
+<div class="article-content">
+<div class="callout callout-tip"><p><strong>In het kort.</strong> De G1 krijgt software-updates via het netwerk (OTA). De verbinding met de robot loopt via de officiële app <strong>Unitree Explore</strong>. Controleer voor u begint de accu, de huidige versie en de verbinding; schakel de robot tijdens de update niet uit. Een terugkeer naar de vorige versie is door Unitree niet gedocumenteerd.</p></div>
+
+<p>De richtlijnen hieronder komen uitsluitend uit documenten van Unitree: de <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">officiële specificaties van de G1</a>, de gebruikershandleiding (versie 1.6 van augustus 2026), de pagina van de Unitree Explore-app en het supportcentrum support.unitree.com. Unitree publiceert geen stap-voor-stap updateprocedure: waar de documenten zwijgen, zeggen we dat.</p>
+
+<h2>Wat Unitree zegt over de firmware-update van de G1</h2>
+<p>In de specificatietabel van de handleiding staat bij zowel de G1 als de G1 EDU de vermelding <em>Intelligent OTA Upgrade</em>: de software van de robot wordt via het netwerk bijgewerkt, zonder ingrepen in de hardware. De gebruikershandleiding vraagt bij de controles voor het inschakelen om te verifiëren dat de firmware de nieuwste versie is: «Ensure that the firmware has been updated to the latest version».</p>
+<p>De verbinding tussen telefoon en robot loopt via de app <strong>Unitree Explore</strong>, te downloaden voor iOS en Android op de pagina <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a>. De app toont de status van de robot in realtime (temperatuur, alarmen en andere gegevens), nuttig om te controleren of de machine in normale staat is voor u verdergaat.</p>
+
+<h2>De stappen, in volgorde</h2>
+<ol>
+<li><strong>Installeer de app en verbind de robot.</strong> Bij de eerste verbinding vraagt de handleiding om een account te registreren, de bluetooth van de telefoon in te schakelen en de telefoon dicht bij de G1 te houden, en daarna om de robot toe te voegen met «Add Robot».</li>
+<li><strong>Kies de verbindingsmodus.</strong> De handleiding voorziet twee modi: AP (de telefoon verbindt met de hotspot van de robot) of Wi-Fi via een router. De procedure staat ook in de video «Adding G1 &amp; Network setting» op de pagina van de app.</li>
+<li><strong>Controleer status en versie.</strong> Kijk voor de update in de app of er geen actieve alarmen zijn en noteer de huidige firmwareversie.</li>
+<li><strong>Start de update en wacht.</strong> Volg de aanwijzingen die de app voor uw robot toont en onderbreek de voeding of de verbinding niet tot de bewerking klaar is.</li>
+</ol>
+
+<h2>Voor de update: accu, versie, netwerk</h2>
+<ul>
+<li><strong>Accu.</strong> De handleiding geeft geen laadniveau voor de update, maar vraagt bij de controles voor het inschakelen om accu en afstandsbediening volledig opgeladen te hebben. De accu van de G1 gaat volgens Unitree circa 2 uur mee.</li>
+<li><strong>Versie.</strong> Noteer de huidige firmwareversie. Dat helpt om te bepalen of de update echt nodig is en om bij problemen de support precieze informatie te geven.</li>
+<li><strong>Netwerk.</strong> De handleiding raadt omgevingen met wifi-interferentie af en vraagt in AP-modus dat de naam van de hotspot geen speciale tekens of spaties bevat. Houd telefoon en robot dicht bij elkaar. Werkt u op de G1 EDU met het interne netwerk 192.168.123.x, dan legt de operationele gids voor de G1 onderaan uit hoe dat is opgebouwd.</li>
+</ul>
+
+<h2>Na de update: alarmen en kalibratie</h2>
+<p>In de sectie over afwijkingen voorziet de handleiding dat een robot die vaak valt of na de herstart niet rechtop kan blijven staan, een nieuwe kalibratie van de gewrichten nodig kan hebben, uit te voeren met de stappen in de Unitree Explore-app.</p>
+<p>De kalibratie gebeurt in de app: de functie voor begeleide kalibratie kalibreert de motorgewrichten en de IMU. In de handleiding is het pad [Settings] → [Data] → [Robot] → [Calibration]; in recentere versies van de app kan het menu anders zijn.</p>
+<div class="callout callout-warning"><p><strong>Let op.</strong> De handleiding herinnert eraan dat de G1 de fabriek al gekalibreerd verlaat en dat hij tijdens normaal gebruik niet opnieuw gekalibreerd mag worden. Verschijnt na een update een alarm, vraag dan eerst bevestiging aan de technische support voor u kalibreert.</p></div>
+
+<h2>Wat u niet moet doen</h2>
+<ul>
+<li><strong>Schakel de robot niet uit</strong> en sluit de verbinding niet tijdens de update.</li>
+<li><strong>Werk niet bij</strong> met een bijna lege accu of een onstabiel netwerk.</li>
+<li><strong>Gebruik geen niet-officiële firmwarepakketten</strong>: updates komen alleen via de kanalen van Unitree.</li>
+<li><strong>Kalibreer niet "voor de zekerheid"</strong>: de kalibratie gebeurt alleen wanneer nodig en na overleg met de support.</li>
+<li><strong>Begin niet</strong> zonder de huidige firmwareversie te kennen.</li>
+</ul>
+
+<h2>Kunt u terug naar een eerdere versie?</h2>
+<p>Voor de firmware van de G1 publiceert Unitree geen downgradeprocedure in de geraadpleegde documenten (gebruikershandleiding, pagina van de app, FAQ voor ontwikkelaars). Het is dus geen bewerking om alleen uit te voeren. Zorgt een update voor problemen, dan is Abra Robotics het eerste aanspreekpunt; de handleiding vermeldt ook de technische support van Unitree (support@unitree.cc) en het <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">klantenserviceportaal van Unitree</a>.</p>
+
+<div class="product-strip" aria-label="Producten in dit artikel">
+<div class="product-strip-head"><span>Producten in dit artikel</span><a href="/nl/unitree-g1.html">Alle G1-versies</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
+<p>SDK, 23 vrijheidsgraden, rekenmodule</p>
+<div class="product-card-price">€ 38.005 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Accu G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">Accu G1</a></h3>
+<p>9000 mAh, snel te verwisselen</p>
+<div class="product-card-price">€ 880 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="Afstandsbediening G1 (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-remote-en.html">Afstandsbediening G1 (R3)</a></h3>
+<p>Als reserve, altijd opgeladen</p>
+<div class="product-card-price">€ 367 <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+</div>
+</article>
+</div>
+</div>
+<h2>Veelgestelde vragen</h2>
+<h3>Hoe update u de firmware van de Unitree G1?</h3>
+<p>Via het netwerk (OTA), met de robot verbonden met de Unitree Explore-app. Noteer vooraf de huidige versie en controleer accu en netwerk.</p>
+<h3>Kan ik terug naar een eerdere firmwareversie?</h3>
+<p>Dat is door Unitree niet gedocumenteerd. Zorgt een update voor problemen, neem dan contact op met de support in plaats van zelf een downgrade te proberen.</p>
+<h3>Na de update meldt de G1 alarmen op de gewrichten: wat te doen?</h3>
+<p>Kalibreer niet zelf. De handleiding van Unitree vraagt om eerst de technische support te raadplegen voor u beslist of u de gewrichten via de app kalibreert.</p>
+<h3>Kan ik de robot tijdens de update uitschakelen?</h3>
+<p>Nee. Onderbreek de voeding en de verbinding niet tot de update klaar is.</p>
+
+<p>Voor het dagelijkse gebruik van de robot behandelt de <a href="/en/blog/unitree-g1-guida-operativa.html">operationele gids voor de G1</a> het inschakelen, de afstandsbediening en de veiligheidscommando's. Wie op de G1 EDU ontwikkelt, vindt SDK en ROS 2 in de <a href="/en/blog/unitree-g1-programmazione.html">programmeergids</a>.</p>
+
+<div class="figure-grid">
+<figure class="figure-card"><img src="/images/official/unitree-g1-info-batteria.webp" alt="Snel te verwisselen accu van de Unitree G1" width="800" height="800" loading="lazy"/><figcaption>Accu van de G1: vertrek met volle lading voor u updatet.</figcaption></figure>
+<figure class="figure-card"><img src="/images/official/unitree-telecomando.webp" alt="Draagbare afstandsbediening van de Unitree G1" width="800" height="800" loading="lazy"/><figcaption>Afstandsbediening van de G1, binnen handbereik tijdens de tests na de update.</figcaption></figure>
+</div>
+
+<h2>Bronnen</h2>
+<ul>
+<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, officiële specificaties (autonomie, garantie)</a></li>
+<li><a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download: officiële app, functies en videotutorials van de G1</a></li>
+<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual V1.6 (vermelding «Intelligent OTA Upgrade», controles voor het inschakelen, verbinding met de app, kalibratie)</a></li>
+<li><a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree, klantenserviceportaal</a></li>
+</ul>
+</div>
+<div class="article-cta"><h2>Moet u nog een G1 kiezen?</h2><p>We helpen u de juiste configuratie te vinden en zijn na levering het eerste aanspreekpunt voor ingebruikname, netwerk en updates. Support in het Engels.</p><a class="btn btn-primary" href="/en/assessment-en.html">Vind de juiste configuratie</a><a class="btn btn-outline-light" href="/nl/unitree-g1.html">G1-configuraties en prijzen</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/nl/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Toegepaste robotica voor bedrijven, universiteiten en onderzoeksinstellingen. Hardware, software op maat, training en technische ondersteuning.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigatie</span>
+<a href="/en/manifattura-logistica-en.html">Productie &amp; logistiek</a>
+<a href="/en/universita-ricerca-en.html">Universiteiten &amp; onderzoek</a>
+<a href="/en/assessment-en.html">Vind de juiste robot</a>
+<a href="/nl/#incentives">Financiering</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Producten</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Vierpotige robots</a>
+<a href="/en/umanoidi-en.html">Humanoïden</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italië</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Plan een gesprek</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Alle rechten voorbehouden.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
