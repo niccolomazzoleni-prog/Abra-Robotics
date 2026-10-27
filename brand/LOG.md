@@ -119,7 +119,7 @@ Branch `feat/niccolo-brand-identity`, worktree `~/Abra-Robotics-brand` (il check
 **Fatto**: reviewer-finale in `03-reviews/finale.md`. Matrice di distanza: A e C sono la coppia più distante (2,0); A ed E sono troppo vicine (3,2). Voti "pronta per il cliente": A 7,5, C 7,5, E 5,5.
 **Decisioni**: E scartata come direzione (il logotipo si legge "dbra"; correggerlo la avvicinerebbe ad A). La sua copertina del preventivo a timeline ("Quando arrivano i numeri") resta come ibrido da innestare. In presentazione vanno C e poi A; il revisore preferisce C con la timeline di E.
 - A v3.1: correzioni bloccanti fatte (reel, totem, verde allineato a Pantone 348 C, favicon, regola dei titoli allentata).
-- C v3.1: correzioni bloccanti in corso al momento dello stop per limite di utilizzo.
+- C v3.1: correzioni bloccanti fatte (totem sul noleggio con quota 132 cm, filo del logo raddoppiato tra 24 e 48 px, Pantone 395 C, titoli).
 - `04-final/prossimi-passi.md` scritto.
 
-**Da fare**: chiudere C v3.1, ibrido "C con copertina a timeline", `04-final/index.html` di confronto, raccomandazione finale.
+**Da fare**: ibrido "C con copertina a timeline", `04-final/index.html` di confronto, raccomandazione finale.
