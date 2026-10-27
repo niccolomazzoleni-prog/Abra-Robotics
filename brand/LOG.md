@@ -101,3 +101,15 @@ Branch `feat/niccolo-brand-identity`, worktree `~/Abra-Robotics-brand` (il check
 **Nota sul criterio marchio**: "Abra" prende 4/10 in tutte le direzioni per le anteriorità nelle classi 9 e 42 (ABRA Software, abra.com, e "abrdn" per i logotipi minuscoli). È un vincolo del cliente, quindi riporto anche la media senza quel criterio.
 
 **Crediti**: 0 spesi.
+
+## Fase 3: v3 e round 3 (27/10/2026)
+
+| Dir. | Strat. | AD | Prod. | Buyer | Marchio (senza nome) | Media |
+|-|-|-|-|-|-|-|
+| A In squadra | 8,2 | 7,4 | 8,6 | 7,8 | 6,2 (6,8) | 7,6 |
+| C Nota a margine | 7,7 | 7,6 | 8,7 | 8,2 | 6,2 (6,8) | 7,7 |
+| E Cartamodello | 7,3 | 6,6 | 8,6 | 7,6 | 6,2 (6,8) | 7,3 |
+
+**Esito**: raggiunto il limite di 3 round. Nessuna direzione supera la soglia piena; il blocco comune è il revisore marchio (rischio del nome "Abra" e segni basati su lettere). Strategia giudica A "pronta per il cliente", il buyer panel giudica C "pronta". E è peggiorata all'art director per la legatura che si legge "dbra". Dettagli in `03-reviews/round3-sintesi.md`.
+
+**Prossimo passo**: reviewer-finale su A, C, E insieme, poi correzioni bloccanti e Fase 4.

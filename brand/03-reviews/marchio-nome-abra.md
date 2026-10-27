@@ -57,3 +57,18 @@ Nota sulla classe 9: le edizioni recenti di Nizza collocano alcuni robot (umanoi
 - **Quattro direzioni su cinque (A, C, D, E) hanno come simbolo una "A" maiuscola**. La singola lettera A stilizzata è uno dei campi più affollati nei registri figurativi (Vienna 27.05). La distintività dipende interamente dal dettaglio grafico, e i dettagli piccoli (triangolo, punto, trapezio, tratteggio) spariscono a 16 px proprio dove il marchio si vede di più.
 - **A e D usano lo stesso schema**: una A con una figura piena sotto la traversa (triangolo in A, trapezio in D). Se si sceglie una delle due, l'altra va scartata del tutto per non creare confusione interna.
 - **Il simbolo a "A" di abra.com** (piattaforma crypto con lo stesso nome) rende più delicata qualunque A isolata: due marchi "Abra" con una A come icona, in classe 9, sono il caso tipico di opposizione. Prima di scegliere, confrontare il simbolo con il logo attuale di abra.com.
+
+## Aggiornamento dopo il round 2 (28/10/2026)
+
+Due anteriorità emerse nel round 2, da aggiungere alle ricerche prima del deposito, qualunque direzione venga scelta.
+
+| Anteriorità | Cosa è | Classi da controllare | Perché conta per Abra |
+|-|-|-|-|
+| **abrdn** (Standard Life Aberdeen, oggi Aberdeen Group plc) | Gestore finanziario britannico. Dal 2021 al 2025 ha usato il nome "abrdn" con un wordmark minuscolo e una "a" fatta di punti (identità di Wolff Olins). Dal marzo 2025 la società usa di nuovo il nome "aberdeen"; ticker e nomi dei fondi sono rimasti invariati. | 36 in primo luogo; da verificare 9, 35, 42 | Le prime tre lettere coincidono ("abr") e il marchio è stato molto esposto nel Regno Unito e nell'UE. I depositi "ABRDN" possono restare in vigore anche dopo il cambio di nome. Rischio basso nelle classi 7 e 42, più alto per qualunque logotipo minuscolo geometrico che inizi con "abr". |
+| **Deutsche Telekom, colore magenta** (RAL 4010 Telemagenta) | Marchio di colore tedesco n. 395 52 630, riconosciuto dalla Corte federale tedesca nel 2003 (I ZR 44/01), più registrazioni UE per telecomunicazioni e progettazione tecnica (classi 38 e 42). Telekom invia diffide e ha ottenuto un'ingiunzione anche contro aziende fuori dalle telecomunicazioni (Lemonade, 2019; Datajar nel Regno Unito; Compello nei Paesi Bassi). Il marchio Benelux è stato dichiarato nullo nel 2024. | 9, 38, 42 | Vale per qualunque colore firma vicino al magenta. Era il rischio principale della direzione D (scartata); resta come regola per le palette future: niente magenta o rosa acceso come campo pieno, soprattutto in Germania. |
+
+Ricerche aggiunte:
+1. UKIPO ed EUIPO: titolare Aberdeen Group plc / Standard Life Aberdeen plc, marchi "ABRDN" denominativi e figurativi, stato attuale e classi.
+2. DPMA ed EUIPO: marchi di colore di Deutsche Telekom AG (magenta), per verificare la portata attuale prima di introdurre qualunque rosa o magenta nel sistema.
+
+Nota sul round 3: le tre direzioni rimaste hanno abbandonato la A isolata (A e E) o l'hanno resa più distintiva (C). Il rischio trasversale "quattro A su cinque" segnalato sopra è ridotto; resta il confronto con l'icona "A" di abra.com per la direzione C.
