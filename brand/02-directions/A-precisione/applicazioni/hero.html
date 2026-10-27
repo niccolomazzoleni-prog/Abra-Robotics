@@ -2,115 +2,96 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Abra Robotics · Robotica applicata, prima la prova</title>
+<title>Abra Robotics · Robotica applicata</title>
 <link rel="icon" href="../logo/favicon.svg">
 <link rel="stylesheet" href="../assets/a.css">
 <style>
   body{width:1440px;height:900px;overflow:hidden;position:relative}
   .wrap{padding:0 64px}
   .util{height:34px;display:flex;align-items:center;justify-content:space-between;color:var(--quota);border-bottom:1px solid var(--linea)}
-  .util .et{font-size:11px}
-  nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+  .util .et{font-size:12px}
+  nav{height:78px;display:flex;align-items:center;justify-content:space-between}
   nav .links{display:flex;gap:34px;font:500 15px var(--f-testo)}
-  nav .links a{color:var(--grafite);text-decoration:none}
-  .btn{display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 22px;background:var(--grafite);color:var(--bianco);font:600 15px var(--f-testo);text-decoration:none;letter-spacing:.01em}
+  .btn{display:inline-flex;align-items:center;gap:12px;height:50px;padding:0 22px;background:var(--grafite);color:#fff;font:600 15px var(--f-testo);text-decoration:none}
+  .btn.v{background:var(--verde)}
   .btn.sec{background:transparent;color:var(--grafite);border:1.5px solid var(--grafite)}
-  .btn .fr{font-family:var(--f-etichetta);font-weight:500}
   .grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
-  .hero{margin-top:40px}
-  .left{grid-column:1/8;padding-top:14px}
-  h1{font:600 74px/1 var(--f-titolo);letter-spacing:-.012em;margin:26px 0 24px;max-width:none}
-  .lead{font:400 19px/1.5 var(--f-testo);max-width:50ch;color:var(--grafite)}
-  .cta{display:flex;gap:14px;margin-top:28px}
-  .resta{display:flex;gap:28px;margin-top:40px;padding-top:18px;border-top:1px solid var(--linea);max-width:640px}
-  .resta div{display:flex;gap:10px;align-items:center;font:500 14px/1.25 var(--f-testo)}
-  .resta img{width:24px;height:24px}
-  .right{grid-column:8/13;position:relative}
-  .tavola{background:var(--bianco);height:604px;position:relative;border:1px solid var(--linea)}
-  .tavola .g1{position:absolute;left:112px;top:58px;height:420px}
-  .qv{position:absolute;left:62px;top:58px;height:420px;width:13px;color:var(--quota)}
+  .hero{margin-top:64px}
+  .left{grid-column:1/8}
+  h1{font:700 62px/1.04 var(--f-titolo);letter-spacing:-.025em;margin:22px 0 22px}
+  .lead{font:400 19px/1.5 var(--f-testo);max-width:52ch}
+  .cta{display:flex;gap:14px;margin-top:26px}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);margin-top:34px;border-top:1.5px solid var(--grafite)}
+  .seg div{padding:14px 18px 0 0;font:400 14.5px/1.4 var(--f-testo)}
+  .seg div+div{padding-left:18px;border-left:1px solid var(--linea)}
+  .seg b{display:block;font:500 12px var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;color:var(--quota);margin-bottom:6px}
+  .right{grid-column:8/13}
+  .tavola{background:var(--bianco);height:650px;position:relative;border:1px solid var(--linea);overflow:hidden}
+  .tav-h{height:46px;background:var(--verde);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 16px}
+  .tav-h .et{font-size:12px}
+  .g1{position:absolute;left:58px;top:86px;height:476px}
+  .qv{position:absolute;left:34px;top:86px;height:476px;width:13px;color:var(--quota)}
   .qv i{position:absolute;left:6px;top:0;bottom:0;width:1px;background:currentColor}
   .qv i::before,.qv i::after{content:"";position:absolute;left:-6px;width:13px;height:1px;background:currentColor}
   .qv i::before{top:0}.qv i::after{bottom:0}
-  .qv b{position:absolute;left:-30px;top:50%;transform:translate(-50%,-50%) rotate(-90deg);font:500 12px var(--f-etichetta);letter-spacing:.06em;white-space:nowrap;color:var(--quota)}
-  .rif-base{position:absolute;left:28px;right:28px;top:478px;height:1px;background:var(--grafite)}
-  .rif-base .tri{position:absolute;left:150px;top:-1px;color:var(--grafite);font-size:16px}
-  .rif-base span.et{position:absolute;left:170px;top:6px;font-size:10px;color:var(--quota)}
-  .head{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:14px 16px;color:var(--quota)}
-  .targa{position:absolute;right:20px;top:120px;width:214px;border:1.5px solid var(--grafite);background:var(--bianco)}
+  .qv b{position:absolute;left:-14px;top:50%;transform:translate(-50%,-50%) rotate(-90deg);font:500 12px var(--f-etichetta);letter-spacing:.06em;white-space:nowrap;color:var(--quota)}
+  .base{position:absolute;left:28px;right:28px;top:562px;height:1.5px;background:var(--grafite)}
+  .base .tri{position:absolute;left:158px;top:3px;color:var(--verde);font-size:18px}
+  .base-lab{position:absolute;left:208px;top:570px;font-size:11px;color:var(--quota)}
+  .targa{position:absolute;right:18px;top:120px;width:212px;border:1.5px solid var(--grafite);background:var(--bianco)}
   .targa .t{padding:9px 12px;border-bottom:1.5px solid var(--grafite);display:flex;justify-content:space-between;align-items:center}
   .targa .r{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 12px;border-bottom:1px solid var(--linea);font:500 13px/1.25 var(--f-testo)}
   .targa .r:last-child{border-bottom:0}
-  .targa .r small{display:block;font:500 10px/1.2 var(--f-etichetta);letter-spacing:.09em;text-transform:uppercase;color:var(--quota);margin-bottom:3px}
-  .sq{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
-  .sq.v{background:var(--verde)}.sq.g{background:var(--giallo);outline:1px solid #C9B520}
+  .targa .r small{display:block;font:500 11px/1.2 var(--f-etichetta);letter-spacing:.09em;text-transform:uppercase;color:var(--quota);margin-bottom:3px}
   .cap{position:absolute;left:16px;bottom:14px;right:16px;display:flex;justify-content:space-between;color:var(--quota)}
-  .fasi{position:absolute;left:64px;right:64px;bottom:26px}
-  .fasi .righello{height:12px;color:var(--grafite)}
-  .fasi .lab{display:grid;grid-template-columns:repeat(6,1fr);margin-top:10px}
-  .fasi .lab div{font:500 14px/1.25 var(--f-testo);padding-right:20px}
-  .fasi .lab b{display:block;font:600 12px var(--f-etichetta);letter-spacing:.1em;color:var(--quota);margin-bottom:3px}
-  .fasi .lab b .tri{color:var(--grafite);margin-right:6px;font-size:11px}
+  .cap .segnaposto{font-size:11px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="util">
     <span class="et">Robotica applicata per aziende, laboratori ed eventi</span>
-    <span class="et">Prezzi pubblici · Listino 2026 · IT / EN</span>
+    <span class="et">Listino pubblico 2026 · IT / EN</span>
   </div>
   <nav>
-    <img src="../logo/orizzontale.svg" alt="Abra Robotics" style="height:46px;margin-left:-11px">
-    <div class="links"><a>Metodo</a><a>Aziende</a><a>Laboratori e università</a><a>Eventi</a><a>Listino</a><a>Contatti</a></div>
-    <a class="btn">Prenota una chiamata</a>
+    <img src="../logo/orizzontale.svg" alt="Abra Robotics" style="height:46px;margin-left:-8px">
+    <div class="links"><span>Metodo</span><span>Aziende</span><span>Laboratori e università</span><span>Eventi</span><span>Listino</span><span>Contatti</span></div>
+    <a class="btn v">Prenota una chiamata</a>
   </nav>
 
   <section class="grid hero">
     <div class="left">
-      <span class="rq et"><span><i class="tri"></i></span><span>Prima la prova</span><span class="rif">A</span></span>
-      <h1>Misura nel tuo reparto<br>cosa farà il robot,<br>prima di investire.</h1>
-      <p class="lead">Simuliamo il compito nel digital twin del tuo stabilimento e lo proviamo su un robot vero nel Laboratorio Abra. Ogni fase ha un costo e un criterio di accettazione scritti; alla fine ti restano il codice e la documentazione.</p>
+      <span class="rq et"><span><i class="tri" style="color:var(--verde)"></i></span><span>Prima la prova</span><span class="rif">P0</span></span>
+      <h1>Decidi sul robot<br>con un numero misurato<br>in mano.</h1>
+      <p class="lead">Simuliamo il compito nel digital twin e lo proviamo su un robot vero nel Laboratorio Abra, per fasi con un costo e un criterio di accettazione scritti. Alla consegna codice, simulatore e manuale restano a te.</p>
       <div class="cta">
-        <a class="btn">Richiedi l'assessment di 3 settimane <span class="fr">P1</span></a>
+        <a class="btn">Richiedi l'assessment di 3 settimane</a>
         <a class="btn sec">Guarda un preventivo di esempio</a>
       </div>
-      <div class="resta">
-        <div><img src="../icone/codice.svg" alt="">Codice nel tuo<br>repository</div>
-        <div><img src="../icone/simulazione.svg" alt="">Simulatore e<br>digital twin</div>
-        <div><img src="../icone/manuale.svg" alt="">Manuale tecnico<br>per il tuo caso</div>
-        <div><img src="../icone/assistenza.svg" alt="">Assistenza<br>in italiano</div>
+      <div class="seg">
+        <div><b>Aziende</b>Tempo ciclo misurato nel digital twin e su robot vero prima dell'ordine.</div>
+        <div><b>Laboratori</b>Robot con SDK, ROS 2, simulatore e manuale per i tesisti, data di consegna scritta in offerta.</div>
+        <div><b>Eventi</b>Umanoide a giornata con copione approvato da te e tecnico presente.</div>
       </div>
     </div>
 
     <div class="right">
       <div class="tavola">
-        <div class="head"><span class="et">Scheda di prova · Umanoide G1</span><span class="et num">Rev 0.3</span></div>
+        <div class="tav-h"><span class="et">Scheda di prova · Umanoide G1</span><span class="et">Rev 0.3</span></div>
         <div class="qv"><i></i><b class="num">1320 mm</b></div>
-        <img class="g1" src="../assets/img/g1-segnaposto.png" alt="Umanoide, immagine segnaposto">
-        <div class="rif-base"><i class="tri"></i><span class="et">Piano di riferimento A</span></div>
+        <img class="g1" src="../assets/img/g1-in-piedi-segnaposto.png" alt="Umanoide, immagine segnaposto">
+        <div class="base"><i class="tri"></i></div><span class="et base-lab">Piano di riferimento</span>
         <div class="targa">
           <div class="t"><span class="et">Valori di prova</span><span class="esempio">Esempio</span></div>
           <div class="r"><div><small>Compito</small>Prelievo pezzi da nastro</div></div>
-          <div class="r"><div><small>Tempo ciclo</small>Da misurare in P2 e P3</div><span class="sq v"></span></div>
-          <div class="r"><div><small>Carico continuativo</small><span class="num">Sotto 2 kg per braccio</span></div><span class="sq g"></span></div>
-          <div class="r"><div><small>Autonomia</small><span class="num">Circa 2 h, batteria sostituibile</span></div><span class="sq g"></span></div>
+          <div class="r"><div><small>Tempo ciclo</small>Da misurare in P2 e P3</div><span class="mis-q"></span></div>
+          <div class="r"><div><small>Carico continuativo</small><span class="num">Sotto 2 kg per braccio</span></div><span class="lim-q"></span></div>
+          <div class="r"><div><small>Autonomia</small><span class="num">Circa 2 h, batteria sostituibile</span></div><span class="lim-q"></span></div>
         </div>
-        <div class="cap"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree</span><span class="segnaposto"><span class="sq v"></span>Da misurare <span class="sq g" style="margin-left:12px"></span>Limite dichiarato</span></div>
+        <div class="cap"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree</span><span class="segnaposto"><span class="mis-q"></span> Da misurare &nbsp; <span class="lim-q"></span> Limite dichiarato</span></div>
       </div>
     </div>
   </section>
-</div>
-
-<div class="fasi">
-  <div class="righello scala-x"></div>
-  <div class="lab">
-    <div><b><i class="tri"></i>P0</b>Chiamata e sopralluogo</div>
-    <div><b>P1 · 3 settimane</b>Assessment del processo</div>
-    <div><b>P2</b>Simulazione e digital twin</div>
-    <div><b>P3</b>Prove nel Laboratorio Abra</div>
-    <div><b>P4</b>Prove nel tuo reparto</div>
-    <div><b>P5</b>Validazione e consegna</div>
-  </div>
 </div>
 </body>
 </html>

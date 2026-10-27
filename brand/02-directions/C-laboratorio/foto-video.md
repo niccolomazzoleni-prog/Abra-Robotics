@@ -53,4 +53,4 @@ Inquadrature fisse o carrelli lenti, suono ambientale vero, didascalie in sovrim
 5. "Trade fair booth with warm white light, humanoid robot answering a visitor, photographed from behind the audience shoulders, real people out of focus, small printed sign with a QR code, documentary, no stage lights."
 6. "Close up of a robot foot and a chalk mark on a cement floor with a hand written distance label, shallow depth of field, laboratory test, neutral tones."
 
-Nelle applicazioni di questa consegna i robot sono foto ufficiali Unitree usate come segnaposto dichiarato (`img/segnaposto-unitree-g1.png`, `img/segnaposto-unitree-go2.png`).
+Nelle applicazioni di questa consegna i robot sono foto ufficiali Unitree usate come segnaposto dichiarato: il G1 in piedi a figura intera, in tavola fotografica con il suo fondo da studio (`img/segnaposto-unitree-g1-in-piedi.jpg`, da `images/official/unitree-g1-03.webp`, diverso dal ritaglio accovacciato usato nel round 1) e il Go2 ritagliato (`img/segnaposto-unitree-go2.png`). Il pubblico degli eventi è disegnato come sagome grafiche, mai con foto di persone prese online.

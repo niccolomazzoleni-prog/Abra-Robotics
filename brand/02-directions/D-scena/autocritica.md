@@ -1,42 +1,42 @@
-# Autocritica
+# Autocritica v2
 
-Tre punti deboli della direzione Prova generale, con quello che ho già fatto per contenerli e quello che resta da verificare.
+Tre punti deboli della direzione dopo la revisione, con quello che ho fatto e quello che resta da verificare.
 
-## 1. Il marrone e il giallo possono sembrare caldi in senso sbagliato
+## 1. Il magenta è un colore rischioso per la manifattura
 
-Velluto e Luce, accostati in grandi campiture, rischiano due letture lontane dal brief: il cartello di cantiere (giallo e scuro) oppure un locale caldo e un po' rétro. Per un direttore acquisti abituato a blu e grigio il primo impatto può sembrare poco tecnologico.
-
-Cosa ho fatto:
-- Il Velluto è tirato verso il rosso bruno (`#3A1915`) e la Luce verso l'ambra del tungsteno (`#E9AE45`), lontano dal giallo segnaletico e dall'arancio da startup del vecchio logo.
-- La Luce ha un solo posto, il pavimento del palco in basso, e un solo disegno, il trapezio con l'angolo della A: non diventa mai un fondo pieno su formati grandi.
-- I documenti per l'industria restano su Carta e Stucco con testo Velluto (contrasto 14,9 : 1), e la scena occupa solo la metà inferiore della copertina.
-
-Da verificare: il test dei 5 secondi sulla copertina del preventivo con 5 direttori operations, chiedendo esplicitamente se il documento sembra "serio" quanto un'offerta di un integratore.
-
-## 2. La metafora teatrale può spingere verso l'intrattenimento
-
-È il rischio indicato anche nelle personas: il segmento eventi è il più visibile e può trascinare Abra verso il robot come numero da palco, che il pubblico B2B guarda con sospetto.
+Il magenta non appartiene alla robotica industriale: un direttore operations può leggerlo come colore di moda, di telefonia o di intrattenimento. Su fondo Grafite, in grandi campiture, può anche avvicinarsi all'estetica di un locale notturno.
 
 Cosa ho fatto:
-- Dal teatro ho preso solo il lessico del lavoro (prova, scaletta, segno a terra, copione, tecnico in sala). Sipari, riflettori puntati sul pubblico, applausi e acrobazie sono esclusi.
-- Nei documenti industriali le parole teatrali spariscono quasi del tutto: si parla di fasi, criteri e verbali; "foglio di regia" resta solo come titolo di capitolo.
-- Lo stesso palco porta contenuti verificabili: la scaletta P0 a P5, ciò che resta al cliente, i limiti in didascalia.
+- Due registri netti. Nei documenti (preventivo, post aziendali, biglietto, scheda laboratorio) il magenta copre il 2 a 4% della pagina: punti della pianta delle fasi, un filo, poche etichette. Il resto è Carta e Grafite.
+- Nella scena il magenta è sempre una campitura piena dentro un arco con i bordi netti, senza aloni né sfumature, e con il pubblico disegnato davanti: legge come una scena illuminata.
+- È un primario di stampa con un Pantone di riferimento (226 C), quindi costa poco e resta uguale su supporti diversi.
 
-Da verificare: se "Prova generale" piace ai fondatori come nome interno ma suona troppo teatrale ai clienti industriali, il sistema regge senza nominarlo mai in pubblico: il marchio e il palco funzionano da soli.
+Da verificare: test dei 5 secondi sulla copertina del preventivo con 5 direttori operations, chiedendo se il documento sembra serio quanto l'offerta di un integratore.
 
-## 3. Tutte le immagini sono ancora segnaposto Unitree
+## 2. Il logotipo va imparato, e gli archi possono ricordare porte o lapidi
 
-Hero, post, reel e totem usano cutout ufficiali Unitree a bassa risoluzione (il G1 è alto 747 px), con una posa piegata che non è quella ideale per un umanoide che parla. Il trattamento tungsteno li porta nella palette e spegne il visore blu, ma la marca resta visibile sul torso e la qualità cala sui formati grandi.
+Gli occhielli ad arco rendono il logotipo proprietario, ma a 14 a 16 px le lettere sembrano piccole porte, e il simbolo "ab" da solo non si legge subito come iniziale di Abra. Il tetto tondo con base piana, fuori contesto, può evocare una porta o una lapide.
 
 Cosa ho fatto:
-- Ogni segnaposto è dichiarato in didascalia corsiva, nello stile delle didascalie del sistema.
-- Il sistema regge senza robot: la copertina del preventivo mostra il palco vuoto con il segno a terra, e il marchio stesso contiene il palco.
-- Ho preparato la shot list di 8 scatti e il segno a terra in nastro, così le prime foto proprie (la consegna SACMI del 29 ottobre) entrano subito nel sistema con la firma di Abra sul pavimento.
+- Il primo contatto usa sempre il logotipo intero; "ab" compare da solo solo dove il marchio è già noto (avatar, favicon, adesivo, targa).
+- La favicon è disegnata a pixel per mantenere archi e controforme a 16 px.
+- Le aste squadrate, l'ascendente della "b" e il magenta tengono il logotipo lontano dall'immagine funeraria; nei test a 32 px la parola si legge.
 
-Da fare: fotografare la consegna del 29/10 seguendo la shot list e sostituire i segnaposto di hero e post prima di qualsiasi pubblicazione.
+Da verificare: ricerca di anteriorità per immagine (EUIPO, codici Vienna 27.05 e 26.01) e un test di lettura di "abra" a 24 px con 5 persone esterne.
 
-## Altri limiti minori
+## 3. Le immagini sono ancora segnaposto
 
-- Il logotipo usa Archivo convertito in tracciati per "bra" e "Robotics": è pulito ma meno proprietario della A. Una seconda fase può ridisegnare a mano la "b" e la "r" con le stesse terminazioni tagliate della A.
-- Il QR del totem è un segnaposto grafico, non un codice funzionante.
-- Prezzi, durate e percentuali del preventivo sono di esempio e vanno confermati dai fondatori.
+Hero, post, reel e totem usano immagini ufficiali Unitree. Il G1 su colonna del reel e del totem è un modello diverso dal G1 che Abra noleggia per gli eventi, e il marchio Unitree resta visibile sul Go2.
+
+Cosa ho fatto:
+- Ogni segnaposto è dichiarato in didascalia; le foto restano a colori naturali con ombra di contatto, senza il viraggio del round 1.
+- Il sistema regge senza robot: arco vuoto, pianta da a a b, dischi a terra.
+- Shot list di 8 scatti pronta per la consegna SACMI del 29/10 e per la prima demo del G1.
+
+Da fare: sostituire i segnaposto con foto proprie prima di qualsiasi pubblicazione.
+
+## Altri limiti
+
+- La "r" del logotipo ha l'orecchio ad arco: è il carattere meno risolto e va controllato in stampa a 14 mm.
+- Prezzi, durate, criteri e battute del copione sono di esempio e vanno confermati dai fondatori.
+- I Pantone sono indicativi: servono prove colore su forex e vinile.

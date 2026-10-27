@@ -1,50 +1,40 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8">
-<title>Post LinkedIn, consegna Go2 per una tesi in azienda (versione nominativa)</title>
+<title>Post LinkedIn, consegna Go2 (versione nominativa, da pubblicare solo con consenso scritto)</title>
 <link rel="stylesheet" href="../sistema.css">
 <style>
 body{margin:0;font-family:var(--f)}
-.post{position:relative;width:1200px;height:1500px;background:var(--velluto);color:var(--stucco);overflow:hidden}
-.fondale{position:absolute;left:560px;top:0;width:620px;height:900px;background:var(--quinta);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%)}
-.testa{position:absolute;left:72px;top:64px;right:72px;display:flex;justify-content:space-between;align-items:center}
-.testa img{height:34px}
-.testa .lbl{color:var(--luce);font-size:15px}
-h1{position:absolute;left:72px;top:190px;width:720px;margin:0;font-size:108px;color:var(--stucco)}
-h1 em{font-style:normal;color:var(--luce)}
-.sotto{position:absolute;left:72px;top:560px;width:540px;margin:0;font-size:25px;line-height:1.4}
-.robot{position:absolute;left:690px;top:532px;width:440px;z-index:2}
-.dida-r{position:absolute;left:740px;top:470px;width:380px;font-size:15px;color:var(--fumo-chiaro);line-height:1.4}
-.palco{left:0;width:1200px;top:900px;height:600px;--p-top-l:7%;--p-top-r:7%}
-.consegna{position:absolute;left:120px;right:120px;top:1010px;color:var(--velluto);z-index:3}
-.consegna .lbl{font-size:15px;margin:0 0 18px;display:flex;gap:14px;align-items:center}
-.consegna ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
-.consegna li{display:grid;grid-template-columns:62px 1fr;align-items:baseline;border-top:2px solid rgba(58,25,21,.35);padding:16px 0 16px;font-size:25px;font-weight:600;line-height:1.2}
-.consegna li b{font-stretch:var(--stretto);font-weight:800;font-size:30px}
-.nota{position:absolute;left:120px;right:120px;bottom:54px;font-size:17px;color:var(--velluto);z-index:3;line-height:1.4}
-.segno{color:var(--velluto)}
+.post{position:relative;width:1200px;height:1500px;background:var(--carta);color:var(--grafite);overflow:hidden;padding:72px}
+.testa{display:flex;justify-content:space-between;align-items:center}
+.testa img{height:52px}
+.testa .lbl{font-size:15px;color:var(--fumo)}
+h1{margin:96px 0 0;font-size:76px;max-width:900px}
+.sotto{margin:28px 0 0;font-size:26px;line-height:1.45;max-width:880px}
+.finestra{position:absolute;left:72px;top:640px;width:500px;height:680px;background:var(--cemento)}
+.finestra .pav{position:absolute;left:0;right:0;bottom:0;height:320px;background:#D9D8D2}
+.finestra img{position:absolute;left:60px;bottom:96px;width:380px;z-index:2}
+.finestra .ombra{position:absolute;left:96px;bottom:82px;width:320px;height:34px;border-radius:50%;background:rgba(32,33,36,.24);filter:blur(7px)}
+.dida-r{position:absolute;left:72px;top:1336px;width:500px;font-size:15px;color:var(--fumo);line-height:1.4}
+.resta{position:absolute;left:630px;right:72px;top:660px}
+.resta .lbl{font-size:15px;color:var(--magenta);margin:0 0 12px}
+.resta ol{list-style:none;margin:0;padding:0}
+.resta li{display:grid;grid-template-columns:56px 1fr;border-top:1.5px solid var(--grafite);padding:16px 0;font-size:25px;font-weight:600;line-height:1.25}
+.resta li b{font-size:18px;color:var(--magenta);padding-top:5px}
+.nota{position:absolute;left:630px;right:72px;bottom:72px;font-size:16px;color:var(--fumo);line-height:1.45}
+.bozza{position:absolute;right:72px;top:150px;color:var(--magenta)}
 </style></head>
 <body>
 <div class="post">
-  <div class="fondale"></div>
-  <div class="testa"><img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics"><span class="lbl">Consegna · 29 ottobre 2026</span></div>
-  <h1 class="disp">Fai lavorare il tesista sul robot <em>dal primo giorno.</em></h1>
-  <p class="sotto txt">Il 29 ottobre consegniamo a SACMI un quadrupede Go2 per una tesi in azienda. Il robot arriva con lo stabilimento già mappato e il codice già nel repository dei tecnici.</p>
+  <div class="testa"><img src="../logo/orizzontale.svg" alt="abra Robotics"><span class="lbl">Consegna · 29 ottobre 2026</span></div>
+  <span class="esempio bozza">Bozza: da pubblicare solo con consenso scritto</span>
+  <h1 class="titolo">Fai lavorare il tesista sul robot dal primo giorno.</h1>
+  <p class="sotto txt">Il 29 ottobre consegniamo a SACMI un quadrupede Go2 per una tesi in azienda. Lo stabilimento è già mappato e il codice è già nel repository dei tecnici: il tesista parte dal simulatore la prima settimana.</p>
+  <div class="finestra arco"><div class="pav"></div><div class="ombra"></div><img src="img/segnaposto-unitree-go2.png" alt="Quadrupede (segnaposto)"></div>
   <p class="dida dida-r">(Segnaposto: immagine ufficiale Unitree Go2. Qui andrà la foto della consegna.)</p>
-  <img class="robot" src="img/segnaposto-unitree-go2-tungsteno.png" alt="Quadrupede su un palco illuminato (segnaposto)">
-  <div class="palco"></div>
-  <div class="consegna">
-    <p class="lbl"><span class="segno"></span>Cosa resta a SACMI</p>
-    <ol>
-      <li><b>01</b>Go2 EDU con LiDAR</li>
-      <li><b>05</b>Simulatore MuJoCo</li>
-      <li><b>02</b>Mappatura LiDAR dello stabilimento</li>
-      <li><b>06</b>Manuale tecnico, revisione 1.1</li>
-      <li><b>03</b>Digital twin dello stabilimento</li>
-      <li><b>07</b>Repository di codice condiviso</li>
-      <li><b>04</b>SLAM e navigazione già configurati</li>
-      <li><b>08</b>85 ore di assistenza</li>
-    </ol>
+  <div class="resta">
+    <p class="lbl">Cosa resta a SACMI</p>
+    <ol><li><b>01</b><span>Go2 EDU con LiDAR</span></li><li><b>02</b><span>Mappatura LiDAR e digital twin dello stabilimento</span></li><li><b>03</b><span>SLAM e navigazione già configurati</span></li><li><b>04</b><span>Simulatore MuJoCo della stessa area</span></li><li><b>05</b><span>Manuale tecnico, revisione 1.1</span></li><li><b>06</b><span>Repository di codice condiviso con i tecnici</span></li><li><b>07</b><span>85 ore di assistenza</span></li></ol>
   </div>
-  <p class="nota dida">(Versione nominativa: si pubblica solo con il consenso scritto di SACMI, senza il suo logo.)</p>
+  <p class="nota dida">(File da pubblicare solo con il consenso scritto di SACMI. Nessun logo del cliente.)</p>
 </div>
 </body></html>

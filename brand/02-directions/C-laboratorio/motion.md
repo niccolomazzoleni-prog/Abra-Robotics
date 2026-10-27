@@ -11,17 +11,18 @@ Il movimento imita il gesto di chi annota una figura: prima la cosa, poi il punt
 5. **Nessun effetto luminoso.** Niente bagliori, scie, particelle, parallasse profondo. Il movimento serve a leggere nell'ordine giusto.
 6. **Rispetto per chi riduce il movimento**: con `prefers-reduced-motion` tutto compare già fermo.
 
-## Il logo animato (`logo/animazione.html`)
+## Il logo animato (`logo/animazione.html`, v2)
 
 | Tempo | Cosa succede |
 |-|-|
-| 0 a 0,9 s | La A senza traversa sale dal basso: per un istante è la vecchia "Λ" di Abra |
-| 0,9 s | Compare il punto, dentro la lettera |
-| 1,25 a 1,8 s | Il filo si traccia verso destra e completa la A |
-| 1,75 a 2,75 s | "bra Robotics" si scrive da sinistra a destra |
-| 2,9 s | Sotto compare la nota "Robotica applicata · Laboratorio Abra · rev 1.0" con il punto giallo |
+| 0,25 s | L'asta della a cresce dal basso, poi compare il suo punto |
+| 0,57 s | L'asta della b sale fino all'ascendente, poi il punto |
+| 0,89 s | L'asta della r, il collo, il punto piccolo |
+| 1,21 s | L'ultima a, asta e punto |
+| 1,9 s | Compare "ROBOTICS" |
+| 2,4 s | Sotto, la nota "Ogni lettera è un richiamo: prima il filo, poi il punto" |
 
-Durata totale circa 3,4 secondi. Versione breve per le sigle dei video: solo simbolo, 1,8 secondi.
+Durata totale circa 2,9 secondi. Versione breve per le sigle: solo la a, 0,8 secondi. La vecchia "Λ" non compare più in nessuna fase.
 
 ## Applicazioni
 

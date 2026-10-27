@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Abra Robotics, direzione E: Cartamodello</title>
+<title>Abra Robotics, direzione E: Cartamodello (v2)</title>
 <link rel="icon" href="logo/favicon-16.svg">
 <link rel="stylesheet" href="assets/sistema.css">
 <style>
@@ -13,8 +13,8 @@
   section.w{padding:120px 64px}
   section.scuro{padding:120px 0;background:var(--flanella);color:var(--gesso);border-top:none}
   .sez{display:flex;gap:18px;align-items:center;font-size:13px;color:var(--grafite);margin-bottom:28px}
-  .scuro .sez{color:var(--carta)}
-  .sez i{display:block;width:44px;height:3px;background:currentColor;-webkit-mask:repeating-linear-gradient(90deg,#000 0 12px,transparent 12px 18px);mask:repeating-linear-gradient(90deg,#000 0 12px,transparent 12px 18px)}
+  .scuro .sez{color:var(--gessoblu)}
+  .sez i{display:block;width:34px;height:3px;background:var(--gessoblu)}
   h2{font-size:64px;max-width:1000px}
   h3{font-size:28px;margin:0 0 10px}
   .lead{font-size:22px;max-width:820px;margin-top:26px}
@@ -30,14 +30,14 @@
   figure{margin:0}
   figure img{display:block;width:100%;height:auto;background:#fff;outline:1px solid rgba(47,51,55,.18)}
   figcaption{font-size:12px;color:var(--grafite);margin-top:10px}
-  .scuro figcaption{color:var(--carta)}
+  .scuro figcaption{color:var(--gessoblu)}
   /* copertina */
   .cop{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;border-top:none}
   section.cop{padding:56px 64px 64px}
   .cop .alto{display:flex;justify-content:space-between;font-size:13px;color:var(--grafite)}
   .cop h1{font-size:150px;margin-top:40px}
   .cop .lead{font-size:26px;max-width:900px}
-  .cop .metro-wrap{overflow:hidden;margin-top:56px}
+  .cop .metro-wrap{margin-top:56px;overflow-x:auto}
   /* marchio */
   .tavola{background:var(--gesso);padding:64px;margin-top:56px}
   .costr{width:100%;max-width:820px;height:auto;display:block;margin:0 auto}
@@ -67,8 +67,8 @@
   .app figure{grid-column:span 6}
   .app figure.l{grid-column:span 12}
   .app figure.s{grid-column:span 4}
-  .voce li{font-size:30px;font-weight:660;font-stretch:86%;line-height:1.15;list-style:none;padding:18px 0;border-top:1.5px dashed rgba(250,248,243,.4)}
-  .voce li small{display:block;font-size:12px;font-weight:600;font-stretch:75%;letter-spacing:.08em;text-transform:uppercase;color:var(--giallo);margin-bottom:6px}
+  .voce li{font-size:30px;font-weight:640;font-stretch:94%;line-height:1.15;list-style:none;padding:18px 0;border-top:1px solid rgba(250,248,243,.3)}
+  .voce li small{display:block;font-size:12px;font-weight:600;font-stretch:75%;letter-spacing:.08em;text-transform:uppercase;color:var(--gessoblu);margin-bottom:6px}
   .fine{display:flex;justify-content:space-between;align-items:flex-end;padding:80px 0 64px}
   @media (max-width:900px){.g2,.g3,.g4,.vers,.spec2,.ic,.sw2{grid-template-columns:1fr}.app figure,.app figure.s{grid-column:span 12}.cop h1{font-size:72px}h2{font-size:40px}.spec{font-size:110px}}
 </style>
@@ -76,86 +76,86 @@
 <body>
 
 <section class="cop w">
-  <div class="alto"><img src="logo/orizzontale.svg" alt="Abra Robotics" style="height:30px"><span class="t-etichetta">Direzione E, territorio wildcard · 27 ottobre 2026</span></div>
+  <div class="alto"><img src="logo/orizzontale.svg" alt="Abra Robotics" style="height:30px"><span class="t-etichetta">Direzione E, territorio wildcard · v2 · 27 ottobre 2026</span></div>
   <div>
     <div class="sez"><i></i><span class="t-etichetta">Proposta di identità</span></div>
     <h1 class="t-display">Cartamodello</h1>
-    <p class="lead t-sotto">Abra lavora come un modellista: prende le misure nel tuo reparto, imbastisce il caso d'uso in simulazione, lo prova sul robot vero e ti consegna il modello per rifarlo da solo.</p>
-    <div class="metro-wrap"><div data-metro data-from="0" data-to="150" data-step="8.4" data-w="40" data-label="10"></div></div>
+    <p class="lead t-sotto">Abra lavora come un modellista: prende le misure nel tuo reparto, prova il caso d'uso in simulazione e sul robot vero, e ti consegna il modello per rifarlo da solo.</p>
+    
   </div>
 </section>
 
 <section class="w">
   <div class="sez"><i></i><span class="t-etichetta">01 · Da dove nasce</span></div>
-  <h2 class="t-titolo">Il metodo di Abra ha già un nome in un mestiere italiano.</h2>
-  <p class="lead t-sotto">Il posizionamento raccomandato è "Prima la prova". In sartoria la prova è il momento in cui il capo imbastito si prova addosso, prima di tagliare la stoffa buona. Ogni fase del metodo Abra trova la sua parola.</p>
+  <h2 class="t-titolo">Il metodo di Abra è il metodo di un modellista.</h2>
+  <p class="lead t-sotto">Il posizionamento raccomandato è "Prima la prova". In sartoria la prova è il momento in cui il capo si prova addosso, prima di tagliare la stoffa buona. La corrispondenza guida il sistema grafico; nei testi per i clienti le fasi si chiamano con le parole del settore.</p>
   <table>
-    <thead><tr><th>Metodo Abra</th><th>Nel mestiere</th><th>Cosa vede il cliente</th></tr></thead>
+    <thead><tr><th>Fase nei testi</th><th>Logica interna</th><th>Cosa vede il cliente</th></tr></thead>
     <tbody>
-      <tr><td>P0 e P1, sopralluogo e assessment</td><td><b>Le misure</b></td><td>Tempi, pesi e ingombri misurati nel suo reparto</td></tr>
-      <tr><td>P2, digital twin e simulazione</td><td><b>L'imbastitura</b></td><td>Il caso d'uso a punti lunghi, ancora modificabile</td></tr>
-      <tr><td>P3 e P4, POC e pilota</td><td><b>La prova</b></td><td>Il robot vero sul suo pezzo, con criteri scritti prima</td></tr>
-      <tr><td>P5, consegna e formazione</td><td><b>Il modello</b></td><td>Codice, simulatore e manuale che restano in azienda</td></tr>
+      <tr><td><b>Sopralluogo e assessment</b> · P0 e P1</td><td>Le misure</td><td>Tempi, pesi e spazi misurati nel suo reparto</td></tr>
+      <tr><td><b>Simulazione</b> · P2</td><td>La prova provvisoria</td><td>Il caso d'uso nel modello digitale della sua postazione</td></tr>
+      <tr><td><b>Prova sul robot e pilota</b> · P3 e P4</td><td>La prova</td><td>Il robot vero sul suo pezzo, con criteri scritti prima</td></tr>
+      <tr><td><b>Consegna e formazione</b> · P5</td><td>Il modello</td><td>Codice, simulatore e manuale che restano in azienda</td></tr>
     </tbody>
   </table>
   <div class="g2">
-    <div><h3 class="t-titolo">Quattro territori valutati</h3><p class="t-testo">Lo sportello aperto dell'automa da salone, il campo segnato con il nastro sul pavimento, l'amuleto ABRACADABRA a triangolo e il cartamodello. Il primo racconta bene il "prima" ma richiama il Turco meccanico, che era una truffa; il secondo scivola nella segnaletica di sicurezza; il terzo lega la misura a una formula magica. Il cartamodello copre tutta la promessa, dal prima al dopo.</p></div>
-    <div><h3 class="t-titolo">La regola che ne esce</h3><p class="t-testo">Tratteggio vuol dire in prova, ancora da misurare. Linea continua vuol dire misurato e firmato. La stessa regola vale nel marchio, nel preventivo, nei grafici, sulla cassa del robot, ed è abbastanza semplice perché il team di due persone la applichi da solo.</p></div>
+    <div><h3 class="t-titolo">Quattro territori valutati</h3><p class="t-testo">Lo sportello aperto dell'automa da salone, il campo segnato con il nastro sul pavimento, l'amuleto ABRACADABRA a triangolo e il cartamodello. Il primo richiama il Turco meccanico, che era una truffa; il secondo scivola nella segnaletica di sicurezza; il terzo lega la misura a una formula magica. Il cartamodello copre tutta la promessa, dal prima al dopo.</p></div>
+    <div><h3 class="t-titolo">La regola: gesso e cucitura</h3><p class="t-testo">Ciò che è disegnato in gesso, con un bordo sottile blu, è da approvare e si può cancellare. Ciò che è cucito, in flanella piena, è misurato e firmato. Vale per le fasi del preventivo, per i grafici e per il marchio, dove la traversa è cucita e il filo in gesso esce dalla A.</p></div>
   </div>
 </section>
 
 <section class="w">
   <div class="sez"><i></i><span class="t-etichetta">02 · Il marchio</span></div>
-  <h2 class="t-titolo">Una A con il filo d'imbastitura.</h2>
-  <p class="lead t-sotto">Il traverso è un punto lungo: entra da sinistra, passa sotto le gambe della lettera e si vede solo dove la stoffa lo lascia vedere. È un segno disegnato da zero, con una regola di costruzione semplice.</p>
+  <h2 class="t-titolo">Una A con la traversa cucita e il filo che esce.</h2>
+  <p class="lead t-sotto">La traversa è piena e inclinata, sempre visibile, anche a 16 px. Attraversa la gamba destra ed esce come un filo in gesso blu: il punto in cui la misura diventa cucitura. Le lettere b, r, a sono disegnate a mano; b e a sono lo stesso pezzo specchiato, come un cartamodello tagliato due volte.</p>
   <div class="tavola">{{COSTR}}</div>
   <div class="vers">
-    <div><img src="logo/orizzontale.svg" alt="Logotipo orizzontale"><figcaption>Orizzontale. "Abra" porta il filo solo nel controforma; "Robotics" segue a peso più leggero.</figcaption></div>
-    <div><img src="logo/verticale.svg" alt="Logotipo verticale" style="width:80%"><figcaption>Verticale, con "Robotics" composto sulla larghezza esatta di "Abra".</figcaption></div>
-    <div class="sc"><img src="logo/simbolo-negativo.svg" alt="Simbolo in negativo" style="width:80%;margin:auto"><figcaption style="color:var(--carta)">Simbolo bicolore su flanella.</figcaption></div>
+    <div><img src="logo/orizzontale.svg" alt="Logotipo orizzontale"><figcaption>Orizzontale. A, b, r, a disegnate; "Robotics" composto con spaziatura normale.</figcaption></div>
+    <div><img src="logo/verticale.svg" alt="Logotipo verticale" style="width:80%"><figcaption>Verticale, allineato a sinistra.</figcaption></div>
+    <div class="sc"><img src="logo/simbolo-negativo.svg" alt="Simbolo in negativo" style="width:70%;margin:auto"><figcaption style="color:var(--gessoblu)">Simbolo su flanella, filo in gesso blu.</figcaption></div>
   </div>
-  <figure style="margin-top:24px"><img src="logo/test.png" alt="Test del marchio da 16 px al grande formato"><figcaption>Test: favicon disegnato sulla griglia di 16 pixel, 32 px, avatar tondo e quadrato, grande formato, positivo e negativo.</figcaption></figure>
+  <figure style="margin-top:24px"><img src="logo/test.png" alt="Test del marchio da 16 px al grande formato"><figcaption>Test: favicon disegnato pixel per pixel su 16 px (a colori e monocromo, ingrandito otto volte), monogramma a 24 e 32 px, avatar, grande formato, positivo e negativo.</figcaption></figure>
 </section>
 
 <section class="w">
   <div class="sez"><i></i><span class="t-etichetta">03 · Colore</span></div>
-  <h2 class="t-titolo">Tela, flanella e il giallo del metro.</h2>
-  <p class="lead t-sotto">I colori del tavolo del modellista, lontani dal blu elettrico, dal viola e dall'arancio del settore. Il giallo non è mai testo: è il metro, il filo e il passo successivo.</p>
+  <h2 class="t-titolo">Tela, flanella e il gesso da sarto.</h2>
+  <p class="lead t-sotto">Il gesso blu è il segno che il sarto fa sulla stoffa prima di tagliare: si vede bene e si cancella. È il colore firma di questa direzione e non è usato dalle altre quattro. Il giallo della v1 è eliminato.</p>
   <div class="sw">
-    <div style="background:#ECE6D8;outline:1px solid #D9CBAA"><b>Tela</b>#ECE6D8 · 55%<br>Flanella sopra: 10,23:1 AAA</div>
-    <div style="background:#2F3337;color:#FAF8F3"><b>Flanella</b>#2F3337 · 25%<br>Gesso sopra: 11,99:1 AAA</div>
-    <div style="background:#F2BF2C"><b>Giallo metro</b>#F2BF2C · 7%<br>Flanella sopra: 7,43:1</div>
+    <div style="background:#ECE6D8;outline:1px solid #D9CBAA"><b>Tela</b>#ECE6D8 · 52%<br>Flanella sopra: 10,23:1 AAA</div>
+    <div style="background:#2F3337;color:#FAF8F3"><b>Flanella</b>#2F3337 · 28%<br>Gesso sopra: 11,99:1 AAA</div>
+    <div style="background:#8FB0E0"><b>Gesso blu</b>#8FB0E0 · 7%<br>Flanella sopra: 5,73:1 AA</div>
   </div>
   <div class="sw2">
-    <div style="background:#D9CBAA"><b>Carta modello</b>#D9CBAA · 8%</div>
+    <div style="background:#2F5D9E;color:#FAF8F3"><b>Blu segno</b>#2F5D9E · linee e Esempio</div>
+    <div style="background:#D9CBAA"><b>Carta modello</b>#D9CBAA · 6%</div>
     <div style="background:#FAF8F3"><b>Gesso</b>#FAF8F3 · 3%</div>
-    <div style="background:#62666A;color:#FAF8F3"><b>Grafite</b>#62666A · testo secondario</div>
-    <div style="background:#48667F;color:#FAF8F3"><b>Blu gesso</b>#48667F · solo grafici</div>
+    <div style="background:#62666A;color:#FAF8F3"><b>Grafite</b>#62666A · solo su chiaro</div>
   </div>
 </section>
 
 <section class="w">
   <div class="sez"><i></i><span class="t-etichetta">04 · Tipografia</span></div>
   <h2 class="t-titolo">Una famiglia, larghezze su misura.</h2>
-  <p class="lead t-sotto">Bricolage Grotesque, licenza OFL, variabile in peso, larghezza e dimensione ottica. Il titolo si stringe per stare nella colonna; le etichette usano la larghezza più stretta, come le scritte sui pezzi di carta.</p>
+  <p class="lead t-sotto">Bricolage Grotesque, licenza OFL, in sei tagli statici ricavati dal file variabile: font veri nei PDF dei preventivi e nessuna dipendenza da CDN. Il titolo sta a peso 640 e larghezza 94, più calmo che nella v1.</p>
   <div class="spec t-display">Aa 0123</div>
   <div class="spec2">
-    <div><span class="t-etichetta" style="font-size:11px;color:var(--grafite)">Display 700, larghezza 86</span><p class="t-display" style="font-size:44px;margin-top:10px">Prova il robot prima di investire.</p></div>
+    <div><span class="t-etichetta" style="font-size:11px;color:var(--grafite)">Titolo 640, larghezza 94</span><p class="t-display" style="font-size:44px;margin-top:10px">Misura cosa farà il robot.</p></div>
     <div><span class="t-etichetta" style="font-size:11px;color:var(--grafite)">Testo 400, larghezza 100</span><p class="t-testo" style="margin-top:10px">Ogni fase ha un criterio di accettazione scritto prima di cominciare. Paghi solo le fasi che approvi.</p></div>
-    <div><span class="t-etichetta" style="font-size:11px;color:var(--grafite)">Etichetta 600, larghezza 75</span><p class="t-etichetta" style="font-size:18px;margin-top:10px">P2 · L'imbastitura · 4 settimane</p><p class="t-misura" style="font-size:56px;margin-top:10px">sotto 2 kg</p></div>
+    <div><span class="t-etichetta" style="font-size:11px;color:var(--grafite)">Etichetta 600, larghezza 75</span><p class="t-etichetta" style="font-size:18px;margin-top:10px">P2 · Simulazione · 4 settimane</p><p class="t-misura" style="font-size:56px;margin-top:10px">sotto 2 kg</p></div>
   </div>
 </section>
 
 <section class="w">
   <div class="sez"><i></i><span class="t-etichetta">05 · Sistema</span></div>
-  <h2 class="t-titolo">Sei strumenti del modellista, ognuno con un significato.</h2>
+  <h2 class="t-titolo">Gli strumenti del modellista, ognuno con un significato.</h2>
   <div class="g3">
-    <div class="el"><svg viewBox="0 0 300 110"><path d="M10 55 H290" stroke="#2F3337" stroke-width="6" stroke-linecap="round" stroke-dasharray="26 16"/></svg><div><span class="t-etichetta">Imbastitura</span><p>In prova: fase da accettare, dato di esempio.</p></div></div>
-    <div class="el"><svg viewBox="0 0 300 110"><path d="M10 55 H290" stroke="#2F3337" stroke-width="6" stroke-linecap="round"/></svg><div><span class="t-etichetta">Cucitura</span><p>Misurato e firmato.</p></div></div>
-    <div class="el"><div data-metro data-from="0" data-to="34" data-step="8.4" data-w="40" data-label="10" style="margin-top:30px;overflow:hidden"></div><div><span class="t-etichetta">Metro</span><p>Una misura vera: centimetri, settimane, millimetri.</p></div></div>
-    <div class="el"><svg viewBox="0 0 300 110"><path d="M40 8 H230 L262 36 V104 H40 Z" fill="#D9CBAA"/><path d="M50 18 H226 L252 40 V94 H50 Z" fill="none" stroke="#2F3337" stroke-width="1.5" stroke-dasharray="6 4" opacity=".6"/><path d="M140 8 l7 10 l7 -10Z" fill="#FAF8F3"/></svg><div><span class="t-etichetta">Pezzo di carta</span><p>Un oggetto definito: una fase, una scheda, un limite.</p></div></div>
-    <div class="el"><svg viewBox="0 0 300 110"><path d="M135 40 l30 30 M165 40 l-30 30" stroke="#2F3337" stroke-width="7" stroke-linecap="round"/></svg><div><span class="t-etichetta">Segno a gesso</span><p>Un punto preciso nello spazio.</p></div></div>
-    <div class="el"><svg viewBox="0 0 300 110"><path d="M90 30 L110 14 H220 V96 H110 L90 80 Z" fill="#2F3337"/><circle cx="112" cy="55" r="7" fill="#FAF8F3"/><path d="M130 45 H200 M130 66 H180" stroke="#FAF8F3" stroke-width="5" stroke-linecap="round"/></svg><div><span class="t-etichetta">Cartellino</span><p>Un'informazione attaccata a un oggetto.</p></div></div>
+    <div class="el"><svg viewBox="0 0 300 110"><rect x="40" y="30" width="220" height="50" fill="#FAF8F3" stroke="#2F5D9E" stroke-width="3"/></svg><div><span class="t-etichetta">In gesso</span><p>Bordo sottile blu: da approvare, dato di esempio.</p></div></div>
+    <div class="el"><svg viewBox="0 0 300 110"><rect x="40" y="30" width="220" height="50" fill="#2F3337"/></svg><div><span class="t-etichetta">Cucito</span><p>Flanella piena: misurato e firmato.</p></div></div>
+    <div class="el"><div data-metro data-from="0" data-to="30" data-step="8.4" data-w="40" data-label="10" style="margin-top:30px"></div><div><span class="t-etichetta">Metro</span><p>Solo dove misura qualcosa di vero, allineato all'oggetto.</p></div></div>
+    <div class="el"><svg viewBox="0 0 300 110"><path d="M40 8 H230 L262 40 V104 H40 Z" fill="#D9CBAA"/><path d="M140 8 l7 10 l7 -10Z" fill="#FAF8F3"/></svg><div><span class="t-etichetta">Scheda</span><p>Carta modello con angolo tagliato e tacca: un oggetto definito.</p></div></div>
+    <div class="el"><svg viewBox="0 0 300 110"><path d="M135 40 l30 30 M165 40 l-30 30" stroke="#2F5D9E" stroke-width="7" stroke-linecap="round"/></svg><div><span class="t-etichetta">Segno a gesso</span><p>Un punto preciso nello spazio.</p></div></div>
+    <div class="el"><svg viewBox="0 0 300 110"><path d="M20 55 H280" stroke="#8FB0E0" stroke-width="16"/><rect x="140" y="45" width="20" height="20" transform="rotate(45 150 55)" fill="#2F3337"/></svg><div><span class="t-etichetta">Rombo di decisione</span><p>Alla fine di ogni fase: qui decidi se proseguire.</p></div></div>
   </div>
   <div class="ic">
     <div><img src="icone/misure.svg" alt="">Misure</div>
@@ -172,15 +172,15 @@
   <h2 class="t-titolo">Lo stesso tavolo, dal preventivo industriale al totem in fiera.</h2>
   <p class="lead t-sotto">I robot sono foto ufficiali Unitree usate come segnaposto dichiarato, in scala di grigi sulla carta. Numeri, criteri e importi inventati portano l'etichetta "Esempio".</p>
   <div class="app">
-    <figure class="l"><img src="applicazioni/hero.png" alt="Hero della home"><figcaption>Hero del sito, 1440 x 900: la scheda misure del G1 con i limiti scritti accanto alle prestazioni, le quattro fasi sotto.</figcaption></figure>
-    <figure><img src="applicazioni/preventivo-cover.png" alt="Copertina del preventivo"><figcaption>Preventivo, copertina A4: il progetto come cartamodello in sei pezzi; il filo passa sotto i pezzi.</figcaption></figure>
-    <figure><img src="applicazioni/preventivo-interna.png" alt="Pagina delle fasi del preventivo"><figcaption>Preventivo, pagina delle fasi: il metro diventa calendario, i criteri sono evidenziati, il margine dichiarato chiude la pagina.</figcaption></figure>
-    <figure><img src="applicazioni/linkedin-sacmi.png" alt="Post LinkedIn nominativo"><figcaption>Post LinkedIn sulla consegna del Go2, versione nominativa (richiede consenso scritto).</figcaption></figure>
-    <figure><img src="applicazioni/linkedin-anonimo.png" alt="Post LinkedIn anonimo"><figcaption>Versione anonima, pubblicabile finché manca il consenso.</figcaption></figure>
-    <figure class="s"><img src="applicazioni/reel-g1.png" alt="Copertina reel"><figcaption>Copertina del reel: il copione approvato è il protagonista.</figcaption></figure>
-    <figure style="grid-column:span 8"><img src="applicazioni/totem.png" alt="Totem noleggio G1"><figcaption>Totem 80 x 200 cm per il noleggio a giornata, con la pianta dello stand segnata a nastro.</figcaption></figure>
-    <figure><img src="applicazioni/biglietto.png" alt="Biglietto da visita"><figcaption>Biglietto 85 x 55 mm: il bordo del retro è un righello in millimetri.</figcaption></figure>
-    <figure><img src="applicazioni/livrea.png" alt="Livrea"><figcaption>Adesivo, targa misure e flight case.</figcaption></figure>
+    <figure class="l"><img src="applicazioni/hero.png" alt="Hero della home"><figcaption>Hero del sito, 1440 x 900: headline propria, riga per i laboratori, G1 in piedi con il metro allineato da 0 a 130 cm, limiti accanto alle prestazioni.</figcaption></figure>
+    <figure><img src="applicazioni/preventivo-cover.png" alt="Copertina del preventivo"><figcaption>Preventivo, copertina A4: le fasi in scala sul metro delle settimane, un rombo dove si decide, cosa resta alla fine.</figcaption></figure>
+    <figure><img src="applicazioni/preventivo-interna.png" alt="Pagina delle fasi del preventivo"><figcaption>Preventivo, pagina delle fasi: calendario a settimane coerente con la tabella, criteri evidenziati, limiti dichiarati in fondo.</figcaption></figure>
+    <figure><img src="applicazioni/linkedin-sacmi.png" alt="Post LinkedIn nominativo"><figcaption>Post LinkedIn sulla consegna del Go2, versione nominativa: da pubblicare solo con consenso scritto di SACMI.</figcaption></figure>
+    <figure><img src="applicazioni/linkedin-anonimo.png" alt="Post LinkedIn anonimo"><figcaption>Versione anonima: senza data, revisione del manuale, ore di assistenza e modello del robot.</figcaption></figure>
+    <figure class="s"><img src="applicazioni/reel-g1.png" alt="Copertina reel"><figcaption>Copertina del reel: G1 in piedi, pubblico a sagome, copione approvato dal cliente.</figcaption></figure>
+    <figure style="grid-column:span 8"><img src="applicazioni/totem.png" alt="Totem noleggio G1"><figcaption>Totem 80 x 200 cm per il noleggio a giornata, con la pianta dello stand in scala (un quadro = 50 cm).</figcaption></figure>
+    <figure><img src="applicazioni/biglietto.png" alt="Biglietto da visita"><figcaption>Biglietto 85 x 55 mm: testo minimo 6 pt, il bordo del retro è un righello in millimetri reali.</figcaption></figure>
+    <figure><img src="applicazioni/livrea.png" alt="Livrea"><figcaption>Adesivo, targa misure e flight case senza bande da cantiere.</figcaption></figure>
   </div>
 </section>
 
@@ -189,13 +189,13 @@
     <div class="sez"><i></i><span class="t-etichetta">07 · Voce</span></div>
     <h2 class="t-titolo">Il modellista in prova: prende le misure ad alta voce e ti dice cosa porti a casa.</h2>
     <ul class="voce" style="margin-top:48px;padding:0">
-      <li><small>Hero</small>Prova il robot sul tuo caso prima di investire.</li>
+      <li><small>Hero</small>Misura cosa farà il robot nel tuo reparto prima di comprarlo.</li>
       <li><small>Preventivo</small>Misura in sei fasi cosa farà il robot nel tuo reparto.</li>
       <li><small>Laboratori</small>Fai lavorare i tuoi tesisti sul robot in poche settimane.</li>
       <li><small>Eventi</small>Fai parlare un umanoide del tuo marchio, con parole che approvi tu.</li>
-      <li><small>English</small>Test the robot on your own process before you invest.</li>
+      <li><small>English</small>Measure what the robot will do on your shop floor before you buy it.</li>
     </ul>
-    <p class="t-testo" style="color:var(--carta);margin-top:32px">Le parole del mestiere restano etichette delle fasi. "Sartoriale" è vietata.</p>
+    <p class="t-testo" style="color:var(--gessoblu);margin-top:32px">Nei testi per i clienti le fasi hanno nomi del settore; le parole della sartoria restano nella logica del sistema. "Sartoriale" è vietata.</p>
   </div>
 </section>
 

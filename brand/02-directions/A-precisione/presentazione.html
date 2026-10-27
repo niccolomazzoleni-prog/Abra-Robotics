@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abra Robotics · Direzione A · Riferimento A</title>
+<title>Abra Robotics · Direzione A · In squadra</title>
 <link rel="icon" href="logo/favicon.svg">
 <link rel="stylesheet" href="assets/a.css">
 <style>
@@ -16,9 +16,9 @@
   .testa{display:flex;justify-content:space-between;color:var(--quota);margin-bottom:56px}
   .scuro .testa{color:var(--acciaio)}
   .g{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:24px}
-  h1{font:600 clamp(56px,7vw,112px)/.98 var(--f-titolo);letter-spacing:-.015em}
-  h2{font:600 clamp(36px,3.6vw,56px)/1.02 var(--f-titolo);letter-spacing:-.01em}
-  h3{font:600 21px/1.15 var(--f-titolo);margin-bottom:8px}
+  h1{font:700 clamp(56px,7vw,112px)/.98 var(--f-titolo);letter-spacing:-.03em}
+  h2{font:700 clamp(34px,3.4vw,52px)/1.06 var(--f-titolo);letter-spacing:-.025em}
+  h3{font:700 20px/1.15 var(--f-titolo);letter-spacing:-.01em;margin-bottom:8px}
   p{font:400 18px/1.55 var(--f-testo);max-width:58ch}
   p+p{margin-top:12px}
   .sm{font-size:15px}
@@ -27,7 +27,9 @@
   figure{margin:0}
   figcaption{margin-top:10px;color:var(--quota)}
   .tav{background:var(--bianco);border:1px solid var(--linea);padding:28px;position:relative}
-  .scuro .tav{background:var(--grafite-80);border-color:#3A454B}
+  .s.verde{background:var(--verde);color:#fff;max-width:none}
+  .s.verde .in{max-width:1472px;margin:0 auto}
+  .s.verde .testa{color:#fff}
   img.full{width:100%;height:auto;border:1px solid var(--linea);background:var(--bianco)}
   .num-s{font:600 15px var(--f-etichetta);letter-spacing:.1em;color:var(--quota)}
   /* copertina */
@@ -35,7 +37,7 @@
   .cover .sym{width:100%;max-width:520px;justify-self:end}
   /* colore */
   .sw{height:150px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;font:500 12px/1.4 var(--f-etichetta);letter-spacing:.06em}
-  .sw b{font:600 18px var(--f-titolo);letter-spacing:0}
+  .sw b{font:700 18px var(--f-titolo);letter-spacing:-.01em}
   .barra{display:flex;height:40px;margin-top:24px;border:1px solid var(--linea)}
   .barra div{height:100%}
   /* tipografia */
@@ -48,8 +50,8 @@
   .ic div{background:var(--bianco);border:1px solid var(--linea);padding:22px;display:flex;flex-direction:column;gap:14px}
   .ic img{width:48px;height:48px}
   /* voce */
-  .hl{border-top:1px solid #3A454B;padding:18px 0;font:600 32px/1.12 var(--f-titolo);display:grid;grid-template-columns:56px 1fr;gap:12px}
-  .hl span{font:500 13px var(--f-etichetta);letter-spacing:.1em;color:var(--acciaio);padding-top:10px}
+  .hl{border-top:1px solid rgba(255,255,255,.5);padding:18px 0;font:700 30px/1.14 var(--f-titolo);letter-spacing:-.015em;display:grid;grid-template-columns:56px 1fr;gap:12px}
+  .hl span{font:500 13px var(--f-etichetta);letter-spacing:.1em;color:#fff;padding-top:10px}
   iframe{width:100%;height:420px;border:1px solid var(--linea);background:var(--alluminio)}
   .nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:5}
   .nav a{width:10px;height:10px;border:1.5px solid var(--grafite);display:block;background:var(--alluminio)}
@@ -62,15 +64,17 @@
   <a href="#idea" title="Idea"></a><a href="#marchio" title="Marchio"></a><a href="#colore" title="Colore"></a><a href="#tipo" title="Tipografia"></a><a href="#sistema" title="Sistema"></a><a href="#app" title="Applicazioni"></a><a href="#foto" title="Fotografia"></a><a href="#voce" title="Voce"></a><a href="#motion" title="Motion"></a>
 </nav>
 
-<section class="s">
-  <div class="testa"><span class="et">Abra Robotics · identità di marca · proposta</span><span class="et num">Direzione A · Rev 1.0 · 27.10.2026</span></div>
-  <div class="cover">
-    <div>
-      <div class="rq et" style="margin-bottom:28px"><span><i class="tri"></i></span><span>Precisione industriale</span><span class="rif">A</span></div>
-      <h1>Riferimento A</h1>
-      <p style="margin-top:28px;font-size:21px">Abra è il riferimento da cui il cliente misura il robot prima di investire. Il marchio lo dice con il segno che nel disegno tecnico indica il riferimento: il triangolo pieno sotto la lettera A.</p>
+<section class="s verde">
+  <div class="in">
+    <div class="testa"><span class="et">Abra Robotics · identità di marca · proposta</span><span class="et num">Direzione A · v2 · Rev 2.0 · 28.10.2026</span></div>
+    <div class="cover">
+      <div>
+        <div class="rq et" style="margin-bottom:28px"><span>Precisione industriale</span><span class="rif">v2</span></div>
+        <h1>In squadra</h1>
+        <p style="margin-top:28px;font-size:21px">In officina "mettere in squadra" vuol dire verificare un angolo retto con la squadra. Abra fa lo stesso con il robot: lo verifica sul caso del cliente prima dell'investimento. Il marchio nasce dalla squadra da disegno.</p>
+      </div>
+      <img class="sym" src="logo/simbolo-bianco.svg" alt="Simbolo Abra: la legatura Ab costruita sulla squadra">
     </div>
-    <img class="sym" src="logo/simbolo-netto.svg" alt="Simbolo Abra: la A con il triangolo di riferimento">
   </div>
 </section>
 
@@ -79,86 +83,61 @@
     <div class="testa"><span class="et">01 · L'idea</span><span class="et">Prima la prova</span></div>
     <div class="g">
       <div style="grid-column:1/7">
-        <h2>Ogni misura parte da un riferimento. Nel disegno tecnico si chiama A.</h2>
-        <p style="margin-top:28px">Nelle tavole di ogni ufficio tecnico il riferimento principale si indica con una lettera in un riquadro e con un triangolo pieno appoggiato sulla superficie da cui si misura (ISO 5459). Abra fa questo lavoro per chi deve portare un robot in azienda, in laboratorio o in fiera: fissa il punto da cui misurare cosa farà il robot, prima dell'investimento.</p>
-        <p>Il direttore R&amp;D che apre il preventivo riconosce il segno in un istante, perché lo vede ogni giorno sui suoi disegni. Per tutti gli altri è una A solida, costruita, leggibile a 16 pixel e sul dorso di un quadrupede.</p>
+        <h2>La A disegnata sulla squadra, unita alla b nell'angolo retto.</h2>
+        <p style="margin-top:28px">La squadra è lo strumento con cui si controlla che una cosa sia diritta prima di montarla. È un triangolo rettangolo con un vuoto triangolare al centro: la stessa figura di una A con l'asta destra verticale. Quell'asta prosegue e diventa l'asta della b, così il segno di Abra è la legatura Ab e non una A isolata.</p>
+        <p>Il direttore R&amp;D riconosce lo strumento; tutti gli altri leggono "Ab", l'inizio del nome, in una sagoma che nessun'altra A del settore ha. Il verde di misura (RAL 6024) è il colore firma: segna ciò che è stato misurato e diventa il fondo dei formati che devono farsi ricordare.</p>
       </div>
       <div style="grid-column:8/13">
-        <div class="tav" style="padding:40px">
-          <svg viewBox="0 0 300 260" width="100%" aria-label="Simbolo di riferimento nel disegno tecnico">
-            <g fill="none" stroke="#1A2125" stroke-width="1.6">
-              <rect x="110" y="20" width="80" height="80"/>
-              <line x1="150" y1="100" x2="150" y2="170"/>
-            </g>
-            <text x="150" y="76" text-anchor="middle" font-family="Barlow SC" font-weight="600" font-size="46" fill="#1A2125">A</text>
-            <path d="M150 170l-22 38h44z" fill="#1A2125"/>
-            <line x1="20" y1="208" x2="280" y2="208" stroke="#1A2125" stroke-width="2.5"/>
-            <g stroke="#B4BDC2" stroke-width="1">
-              <line x1="20" y1="216" x2="32" y2="228"/><line x1="44" y1="216" x2="56" y2="228"/><line x1="68" y1="216" x2="80" y2="228"/><line x1="92" y1="216" x2="104" y2="228"/><line x1="116" y1="216" x2="128" y2="228"/><line x1="140" y1="216" x2="152" y2="228"/><line x1="164" y1="216" x2="176" y2="228"/><line x1="188" y1="216" x2="200" y2="228"/><line x1="212" y1="216" x2="224" y2="228"/><line x1="236" y1="216" x2="248" y2="228"/><line x1="260" y1="216" x2="272" y2="228"/>
-            </g>
-            <text x="20" y="252" font-family="Barlow SC" font-weight="500" font-size="11" letter-spacing="1" fill="#5C676D">SIMBOLO DI RIFERIMENTO · ISO 5459</text>
-          </svg>
-        </div>
-        <p class="sm muted" style="margin-top:14px">Il segno tecnico originale. Il marchio Abra non lo copia: ne prende il triangolo e lo porta dentro la lettera.</p>
+        <div class="tav" style="padding:36px"><img src="logo/simbolo.svg" alt="" style="width:100%"></div>
+        <p class="sm muted" style="margin-top:14px">Diagonale con pendenza 2 a 1, asta comune verticale, angolo retto sulla linea di base.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="s" id="marchio">
-  <div class="testa"><span class="et">02 · Il marchio</span><span class="et">Logotipo disegnato a mano, nessun font</span></div>
+  <div class="testa"><span class="et">02 · Il marchio</span><span class="et">Logotipo disegnato su asse e tratto costante</span></div>
   <div class="g">
-    <div style="grid-column:1/13" class="tav"><img src="logo/orizzontale.svg" alt="Abra Robotics" style="width:100%;max-width:1100px;display:block;margin:24px auto"></div>
-    <div style="grid-column:1/5">
-      <h3>Il vuoto e il pieno hanno la stessa misura</h3>
-      <p class="sm">Il triangolo vuoto sopra la traversa è ripetuto in pieno sulla linea di base. Quello che il cliente sa prima e quello che gli resta in mano hanno la stessa forma. Le aste salgono con pendenza 2 a 1; tra la punta del triangolo e la traversa resta una luce pari a 0,45 volte il tratto.</p>
-    </div>
-    <div style="grid-column:5/9">
-      <h3>Lettere da targa dati</h3>
-      <p class="sm">Il logotipo è costruito su asse e tratto costante, come le lettere incise sulle targhe delle macchine: terminali tagliati in piano, forme tonde a stadio, la a a un piano che ribalta la b. Ogni lettera è generata da una geometria scritta (nel file _src/glyphs.py), quindi si può ridisegnare con precisione.</p>
-    </div>
-    <div style="grid-column:9/13">
-      <h3>Monocromatico, sempre</h3>
-      <p class="sm">Grafite su chiaro, bianco disegno su grafite. Il triangolo non si colora: il colore del sistema è riservato ai segnali di misura.</p>
-    </div>
-    <figure style="grid-column:1/13"><img class="full" src="logo/test.png" alt="Prova del marchio dalla favicon al grande formato"><figcaption class="et">Prova del marchio: favicon 16 px, 32 px, avatar, negativo, verticale, monogramma</figcaption></figure>
+    <figure style="grid-column:1/13"><img class="full" src="logo/test.png" alt="Prova del marchio dalla favicon al grande formato"><figcaption class="et">Favicon 16 px disegnata pixel per pixel, avatar, costruzione, versioni</figcaption></figure>
+    <div style="grid-column:1/5"><h3>Un segno, non una lettera</h3><p class="sm">Quattro direzioni su cinque usavano una A isolata, il campo più affollato nei registri. La legatura Ab cambia la sagoma: a 16 px, in nero pieno, resta un triangolo rettangolo con la pancia della b.</p></div>
+    <div style="grid-column:5/9"><h3>Le regole tornano nelle lettere</h3><p class="sm">Il terminale della r è tagliato con la stessa pendenza 2 a 1 della diagonale, la gamba della R scende con la stessa inclinazione. Il logotipo si distingue da un carattere composto.</p></div>
+    <div style="grid-column:9/13"><h3>Monocromatico, su piastra verde</h3><p class="sm">Grafite su chiaro, bianco su verde o su grafite. Il monogramma è il segno Ab su piastra verde: avatar, favicon, adesivo sul robot, timbro di verifica.</p></div>
   </div>
 </section>
 
 <section class="s" id="colore">
-  <div class="testa"><span class="et">03 · Colore</span><span class="et">Alluminio, grafite e due segnali IEC 60204-1</span></div>
+  <div class="testa"><span class="et">03 · Colore</span><span class="et">Verde di misura RAL 6024 con grigio alluminio</span></div>
   <div class="g">
     <div style="grid-column:1/6">
-      <h2>Il colore compare solo dove c'è una misura.</h2>
-      <p style="margin-top:24px">La base è quella di uno strumento: alluminio, grafite delle scale incise, bianco della carta da disegno. Il verde (RAL 6024) compare solo dove una misura è stata fatta e superata; il giallo (RAL 1016) solo accanto a un limite dichiarato. Così il lettore impara il codice dopo una pagina.</p>
+      <h2>Il verde segna ciò che è stato misurato.</h2>
+      <p style="margin-top:24px">Il verde RAL 6024 è il colore che la norma sulle macchine usa per lo stato normale. In Abra ha due ruoli: nelle schede segna il criterio superato, nei formati di comunicazione è il campo pieno che si riconosce da lontano. Il limite dichiarato non ha colore: è un tratteggio, come una sezione nel disegno tecnico.</p>
     </div>
     <div style="grid-column:6/13">
       <div class="g" style="grid-template-columns:repeat(4,1fr);row-gap:12px;column-gap:12px">
-        <div class="sw" style="background:#1A2125;color:#F6F8F8"><b>Grafite</b><span>#1A2125<br>RGB 26 33 37</span></div>
-        <div class="sw" style="background:#E3E7E9;border:1px solid #B4BDC2"><b>Alluminio</b><span>#E3E7E9<br>RGB 227 231 233</span></div>
-        <div class="sw" style="background:#F6F8F8;border:1px solid #B4BDC2"><b>Bianco disegno</b><span>#F6F8F8<br>RGB 246 248 248</span></div>
-        <div class="sw" style="background:#5C676D;color:#F6F8F8"><b>Grigio quota</b><span>#5C676D<br>4,67 : 1 su alluminio</span></div>
-        <div class="sw" style="background:#008351;color:#fff"><b>Verde segnale</b><span>#008351 · RAL 6024<br>misurato</span></div>
-        <div class="sw" style="background:#F1DD38"><b>Giallo limite</b><span>#F1DD38 · RAL 1016<br>limite dichiarato</span></div>
-        <div class="sw" style="background:#8A959B;color:#1A2125"><b>Acciaio</b><span>#8A959B<br>grafica</span></div>
-        <div class="sw" style="background:#B4BDC2"><b>Linea</b><span>#B4BDC2<br>filetti</span></div>
+        <div class="sw" style="background:#008351;color:#fff;grid-column:span 2"><b>Verde di misura</b><span>#008351 · RAL 6024<br>colore firma</span></div>
+        <div class="sw" style="background:#E3E7E9;border:1px solid #B4BDC2"><b>Alluminio</b><span>#E3E7E9</span></div>
+        <div class="sw" style="background:#1A2125;color:#F6F8F8"><b>Grafite</b><span>#1A2125</span></div>
+        <div class="sw" style="background:#0F3A2C;color:#fff"><b>Verde profondo</b><span>#0F3A2C</span></div>
+        <div class="sw" style="background:#F6F8F8;border:1px solid #B4BDC2"><b>Bianco disegno</b><span>#F6F8F8</span></div>
+        <div class="sw" style="background:#5C676D;color:#fff"><b>Grigio quota</b><span>#5C676D · solo su chiaro</span></div>
+        <div class="sw lim-campo" style="border:1.5px solid #1A2125;background-color:#F6F8F8"><b style="background:#F6F8F8;padding:2px 4px">Limite</b><span style="background:#F6F8F8;padding:2px 4px">tratteggio grafite</span></div>
       </div>
       <div class="barra" aria-label="Rapporti d'uso">
-        <div style="width:60%;background:#E3E7E9"></div><div style="width:28%;background:#1A2125"></div><div style="width:9%;background:#8A959B"></div><div style="width:2%;background:#008351"></div><div style="width:1%;background:#F1DD38"></div>
+        <div style="width:50%;background:#E3E7E9"></div><div style="width:22%;background:#008351"></div><div style="width:20%;background:#1A2125"></div><div style="width:8%;background:#8A959B"></div>
       </div>
-      <div style="display:flex;justify-content:space-between;margin-top:8px" class="et muted"><span>Fondi 60 %</span><span>Grafite 28 %</span><span>Neutri 9 % · Verde 2 % · Giallo 1 %</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px" class="et muted"><span>Alluminio e bianco 50 %</span><span>Verde 22 %</span><span>Grafite 20 % · neutri 8 %</span></div>
     </div>
   </div>
 </section>
 
 <section class="s carta" id="tipo">
   <div class="in">
-    <div class="testa"><span class="et">04 · Tipografia</span><span class="et">Barlow · SIL Open Font License · gratuito</span></div>
-    <div class="spec"><span class="et">Titolo · Semi Condensed 600</span><span style="font:600 76px/1 var(--f-titolo);letter-spacing:-.012em">Prova il robot sul tuo caso.</span></div>
-    <div class="spec"><span class="et">Sezione · Semi Condensed 600</span><span style="font:600 38px/1.08 var(--f-titolo)">Decidi fase per fase, con un criterio scritto.</span></div>
+    <div class="testa"><span class="et">04 · Tipografia</span><span class="et">B612 e Barlow · SIL Open Font License · gratuiti</span></div>
+    <div class="spec"><span class="et">Titolo · B612 Bold</span><span style="font:700 72px/1.02 var(--f-titolo);letter-spacing:-.03em">Decidi sul robot con un numero misurato.</span></div>
+    <div class="spec"><span class="et">Origine</span><span style="font:400 18px/1.55 var(--f-testo);max-width:66ch">B612 è il carattere disegnato da Intactile Design con Airbus per gli schermi della cabina di pilotaggio: leggibilità sugli strumenti, forme aperte, un timbro tecnico che nessun concorrente usa.</span></div>
     <div class="spec"><span class="et">Testo · Barlow 400</span><span style="font:400 18px/1.55 var(--f-testo);max-width:66ch">Simuliamo il compito nel digital twin del tuo stabilimento e lo proviamo su un robot vero nel Laboratorio Abra. Ogni fase ha un costo e un criterio di accettazione scritti.</span></div>
     <div class="spec"><span class="et">Dati · Barlow 500 tabellare</span><span class="num" style="font:500 30px/1.2 var(--f-testo)">1320 mm · 35 kg · 2 h · 3.500 € · ≥ 98 %</span></div>
-    <div class="spec"><span class="et">Etichetta · Semi Condensed 500</span><span class="et" style="font-size:15px">Scheda di prova · Umanoide G1 · Rev 0.3</span></div>
+    <div class="spec"><span class="et">Etichetta · Barlow Semi Condensed</span><span class="et" style="font-size:15px">Scheda di prova · Umanoide G1 · Rev 0.3</span></div>
   </div>
 </section>
 
@@ -166,18 +145,10 @@
   <div class="testa"><span class="et">05 · Sistema grafico</span><span class="et">Elementi presi dal disegno tecnico</span></div>
   <div class="g">
     <div class="el tav" style="grid-column:span 4"><span class="et muted">Riquadro di controllo</span><div class="demo"><span class="rq et" style="font-size:14px"><span>Tempo ciclo</span><span class="num">≤ 18 s</span><span class="ok">P2</span></span></div><p class="sm">Contiene un fatto verificabile. La cella verde dice che il criterio è stato misurato.</p></div>
-    <div class="el tav" style="grid-column:span 4"><span class="et muted">Quota</span><div class="demo" style="padding:0 20px"><div class="quota" style="width:100%;color:var(--grafite);background:var(--grafite)"><b style="background:var(--bianco)">1320 mm</b></div></div><p class="sm">Dà la dimensione reale di robot, oggetti e durate.</p></div>
-    <div class="el tav" style="grid-column:span 4"><span class="et muted">Triangolo di riferimento</span><div class="demo" style="gap:16px;font-size:28px"><i class="tri"></i><span class="et" style="font-size:14px">P0 · da qui si misura</span></div><p class="sm">Segna il punto di partenza: P0, il piano d'appoggio, le decisioni.</p></div>
-    <div class="el tav" style="grid-column:span 6"><span class="et muted">Scala millimetrata</span><div class="demo"><div class="scala-x" style="width:100%;color:var(--grafite)"></div></div><p class="sm">Firma di un solo bordo per superficie: testa dei documenti, base delle fasi, fronte del biglietto.</p></div>
+    <div class="el tav" style="grid-column:span 4"><span class="et muted">Limite dichiarato</span><div class="demo"><span class="rq et" style="font-size:14px"><span>Carico continuativo</span><span class="num">sotto 2 kg</span><span class="lim" style="width:34px"></span></span></div><p class="sm">Il tratteggio grafite marca i limiti, nella stessa pagina delle prestazioni.</p></div>
+    <div class="el tav" style="grid-column:span 4"><span class="et muted">Triangolo a terra</span><div class="demo" style="gap:16px;font-size:28px"><i class="tri" style="color:var(--verde)"></i><span class="et" style="font-size:14px">Punto di riferimento, P0, punto d'incontro</span></div><p class="sm">Segna il punto da cui si misura: il piano del robot, la prima fase, il pavimento dello stand.</p></div>
+    <div class="el tav" style="grid-column:span 6"><span class="et muted">Quota</span><div class="demo" style="padding:0 20px"><div class="quota" style="width:100%;color:var(--grafite);background:var(--grafite)"><b style="background:var(--bianco)">1320 mm</b></div></div><p class="sm">La dimensione reale di robot, persone e oggetti, sempre in scala tra loro.</p></div>
     <div class="el tav" style="grid-column:span 6"><span class="et muted">Cartiglio</span><div class="demo"><div class="cartiglio" style="grid-template-columns:2fr 1fr 1fr 1fr;width:100%;font:500 13px var(--f-testo)"><div style="border-left:0;border-top:0"><small>Documento</small>Offerta tecnica</div><div style="border-top:0"><small>Rev</small>1.0</div><div style="border-top:0"><small>Data</small>27.10.2026</div><div style="border-top:0"><small>Foglio</small>6 di 14</div></div></div><p class="sm">Documento, revisione, data e foglio su ogni pagina di preventivo e manuale.</p></div>
-    <div class="ic" style="grid-column:1/13">
-      <div><img src="icone/misura.svg" alt=""><span class="et">Misura</span></div>
-      <div><img src="icone/simulazione.svg" alt=""><span class="et">Digital twin</span></div>
-      <div><img src="icone/codice.svg" alt=""><span class="et">Codice</span></div>
-      <div><img src="icone/manuale.svg" alt=""><span class="et">Manuale</span></div>
-      <div><img src="icone/assistenza.svg" alt=""><span class="et">Assistenza</span></div>
-      <div><img src="icone/copione.svg" alt=""><span class="et">Copione</span></div>
-    </div>
   </div>
 </section>
 
@@ -185,14 +156,14 @@
   <div class="testa"><span class="et">06 · Applicazioni</span><span class="et">Immagini Unitree solo come segnaposto dichiarato</span></div>
   <div class="g">
     <figure style="grid-column:1/13"><img class="full" src="applicazioni/hero.png" alt="Hero della home"><figcaption class="et">Hero della home · 1440 × 900</figcaption></figure>
-    <figure style="grid-column:1/7"><img class="full" src="applicazioni/preventivo-cover.png" alt="Copertina del preventivo"><figcaption class="et">Preventivo premium · copertina A4</figcaption></figure>
-    <figure style="grid-column:7/13"><img class="full" src="applicazioni/preventivo-interna.png" alt="Pagina delle fasi del preventivo"><figcaption class="et">Preventivo premium · fasi e criteri di accettazione</figcaption></figure>
-    <figure style="grid-column:1/5"><img class="full" src="applicazioni/linkedin-sacmi.png" alt="Post LinkedIn consegna Go2"><figcaption class="et">LinkedIn · versione nominativa</figcaption></figure>
+    <figure style="grid-column:1/7"><img class="full" src="applicazioni/preventivo-cover.png" alt="Copertina del preventivo"><figcaption class="et">Preventivo · copertina con la pianta della postazione</figcaption></figure>
+    <figure style="grid-column:7/13"><img class="full" src="applicazioni/preventivo-interna.png" alt="Pagina delle fasi del preventivo"><figcaption class="et">Preventivo · fasi e criteri di accettazione</figcaption></figure>
+    <figure style="grid-column:1/5"><img class="full" src="applicazioni/linkedin-sacmi.png" alt="Post LinkedIn consegna Go2"><figcaption class="et">LinkedIn · nominativo, solo con consenso scritto</figcaption></figure>
     <figure style="grid-column:5/9"><img class="full" src="applicazioni/linkedin-sacmi-anonimo.png" alt="Post LinkedIn versione anonima"><figcaption class="et">LinkedIn · versione anonima</figcaption></figure>
     <figure style="grid-column:9/13"><img class="full" src="applicazioni/reel-g1.png" alt="Copertina del reel"><figcaption class="et">Copertina reel · 1080 × 1920</figcaption></figure>
-    <figure style="grid-column:1/13"><img class="full" src="applicazioni/biglietto.png" alt="Biglietto da visita"><figcaption class="et">Biglietto da visita · il fronte è un righello di 80 mm</figcaption></figure>
     <figure style="grid-column:1/13"><img class="full" src="applicazioni/totem.png" alt="Totem per il noleggio del G1"><figcaption class="et">Totem per il noleggio dell'umanoide · 800 × 2000 mm</figcaption></figure>
-    <figure style="grid-column:1/13"><img class="full" src="applicazioni/livrea.png" alt="Livrea robot e flight case"><figcaption class="et">Livrea · targa adesiva, targa di trasparenza, flight case</figcaption></figure>
+    <figure style="grid-column:1/7"><img class="full" src="applicazioni/biglietto.png" alt="Biglietto da visita"><figcaption class="et">Biglietto da visita · 85 × 55 mm</figcaption></figure>
+    <figure style="grid-column:7/13"><img class="full" src="applicazioni/livrea.png" alt="Livrea robot e flight case"><figcaption class="et">Livrea · targa adesiva, targa di trasparenza, flight case</figcaption></figure>
   </div>
 </section>
 
@@ -200,28 +171,25 @@
   <div class="in">
     <div class="testa"><span class="et">07 · Fotografia</span><span class="et">Il robot come strumento in collaudo</span></div>
     <div class="g">
-      <div style="grid-column:1/6">
-        <h2>Fotografa il robot nel posto dove lavorerà, con un riferimento di misura in campo.</h2>
-      </div>
+      <div style="grid-column:1/6"><h2>Fotografa il robot nel posto dove lavorerà, con un riferimento di misura in campo.</h2></div>
       <div style="grid-column:7/13">
-        <p>Vista frontale e laterale con obiettivo lungo, macchina all'altezza del baricentro del robot, luce diffusa del luogo, un riferimento di misura sempre in campo: metro a nastro, segni a pavimento ogni 100 mm, banco quadrettato. Le persone lavorano accanto al robot. I LED della visiera restano spenti.</p>
-        <p>In post-produzione: bilanciamento neutro e freddo, saturazione ridotta, nessun bagliore. Le quote si aggiungono come livello grafico del sistema.</p>
+        <p>Vista frontale e laterale con obiettivo lungo, macchina all'altezza del baricentro del robot, luce diffusa del luogo, un riferimento di misura sempre in campo: metro, segni a pavimento, il triangolo verde dello stand. Le persone lavorano accanto al robot. I LED della visiera restano spenti.</p>
         <p class="sm muted">Shot list di 8 scatti e prompt di mood nel file foto-video.md.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="s scuro" id="voce">
+<section class="s verde" id="voce">
   <div class="in">
     <div class="testa"><span class="et">08 · Voce</span><span class="et">Asciutta come una targa dati</span></div>
     <div class="g">
       <div style="grid-column:1/5"><p>Un numero con l'unità per ogni promessa, la fonte del numero accanto, i limiti nella stessa pagina delle prestazioni. Titoli all'imperativo con il risultato dentro la frase.</p></div>
       <div style="grid-column:6/13">
-        <div class="hl"><span>IT</span>Misura nel tuo reparto cosa farà il robot, prima di investire.</div>
-        <div class="hl"><span>IT</span>Fai lavorare i tuoi tesisti sul robot in poche settimane, con simulatore e manuale già pronti.</div>
-        <div class="hl"><span>IT</span>Fai raccontare il tuo marchio da un umanoide, con parole approvate da te.</div>
-        <div class="hl"><span>EN</span>Measure what the robot will do on your line before you invest.</div>
+        <div class="hl"><span>IT</span>Decidi sul robot con un numero misurato in mano.</div>
+        <div class="hl"><span>IT</span>Ricevi il robot con SDK, simulatore e manuale, e fai partire i tesisti alla consegna.</div>
+        <div class="hl"><span>IT</span>Noleggia un umanoide che parla del tuo marchio, con il copione firmato da te.</div>
+        <div class="hl"><span>EN</span>Decide on the robot with a measured number in your hands.</div>
       </div>
     </div>
   </div>
@@ -231,8 +199,8 @@
   <div class="testa"><span class="et">09 · Motion</span><span class="et">Passo di 120 ms · una curva sola</span></div>
   <div class="g">
     <div style="grid-column:1/5">
-      <h2>Ogni animazione mostra una misura che cambia.</h2>
-      <p style="margin-top:20px">Prima si traccia il piano di riferimento, poi il logotipo si scopre come da un plotter, infine il vuoto della A scende sulla linea di base e diventa il triangolo pieno.</p>
+      <h2>Prima l'angolo retto, poi la parola.</h2>
+      <p style="margin-top:20px">Si traccia la linea di base, sale l'asta comune, la diagonale si appoggia con la pendenza 2 a 1 e compare il segno dei 90 gradi. Poi il logotipo si scopre come da un plotter.</p>
     </div>
     <div style="grid-column:5/13"><iframe src="logo/animazione.html" title="Logo animato"></iframe></div>
   </div>
@@ -242,9 +210,9 @@
   <div class="in">
     <div class="testa"><span class="et">10 · Cosa sacrifica</span><span class="et">Autocritica completa nel file autocritica.md</span></div>
     <div class="g">
-      <div style="grid-column:1/7"><h2>Una direzione fredda per scelta, costruita per il cliente che firma il primo progetto.</h2></div>
+      <div style="grid-column:1/7"><h2>Una direzione rigorosa, con un colore che si ricorda.</h2></div>
       <div style="grid-column:8/13">
-        <p>Rinuncia al calore e allo spettacolo: negli eventi convince con il copione approvato e il tecnico presente più che con la sorpresa. Rinuncia alla magia del nome. In cambio ogni documento Abra, dal biglietto al preventivo da 54.500 euro di servizi, sembra uscito dallo stesso ufficio tecnico.</p>
+        <p>Rinuncia alla magia del nome e al calore pittorico. In cambio il verde di misura tiene insieme il preventivo da comitato investimenti (54.500 euro di servizi nell'esempio) e il totem dello stand, e la legatura Ab firma ogni robot che esce dal Laboratorio Abra.</p>
         <img src="logo/orizzontale-bianco.svg" alt="Abra Robotics" style="width:320px;margin-top:48px;margin-left:-10px">
       </div>
     </div>

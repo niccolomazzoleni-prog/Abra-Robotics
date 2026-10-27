@@ -11,11 +11,12 @@
   .col-t { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--grafite); position: absolute; }
 
   /* 1. etichetta di inventario 90 x 40 mm, scala 6 px/mm */
-  .tag { position: absolute; left: 72px; top: 220px; width: 540px; height: 240px; background: var(--evidenziatore); border-radius: 12px; box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 14px 30px -18px rgba(40,35,25,.5); }
-  .tag img { position: absolute; left: 30px; top: 40px; height: 108px; }
+  .tag { position: absolute; left: 72px; top: 220px; width: 540px; height: 240px; background: #FBFAF6; border: 2px solid var(--inchiostro); border-radius: 12px; box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 14px 30px -18px rgba(40,35,25,.5); }
+  .tag img { position: absolute; left: 30px; top: 46px; height: 96px; }
+  .tag .pt { position: absolute; left: 30px; bottom: 60px; width: 22px; height: 22px; border-radius: 50%; background: var(--evidenziatore); box-shadow: inset 0 0 0 2.5px var(--inchiostro); }
   .tag .righe { position: absolute; left: 236px; top: 30px; right: 26px; font-family: var(--mono); font-size: 15px; line-height: 1.55; }
   .tag .righe b { font-family: var(--serif); font-weight: 600; font-size: 25px; display: block; margin-bottom: 6px; letter-spacing: -0.005em; }
-  .tag .scr { position: absolute; left: 30px; bottom: 26px; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  .tag .scr { position: absolute; left: 62px; bottom: 26px; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
   .tag .foro { position: absolute; right: 22px; bottom: 22px; width: 14px; height: 14px; border-radius: 50%; background: var(--carta); box-shadow: inset 0 0 0 1.5px var(--inchiostro); }
 
   /* 2. punti di richiamo adesivi */
@@ -29,15 +30,15 @@
   /* 3. robot */
   .robot { position: absolute; left: 640px; top: 230px; width: 560px; height: 560px; }
   .robot img.go2 { width: 560px; filter: grayscale(1) contrast(1.05); mix-blend-mode: multiply; }
-  .robot .st { position: absolute; left: 318px; top: 137px; width: 50px; transform: rotate(-14deg) skewX(-12deg); }
-  .robot .st2 { position: absolute; left: 182px; top: 236px; width: 74px; height: 34px; transform: rotate(-12deg) skewY(8deg); background: var(--evidenziatore); border-radius: 3px; font: 600 7px/1.2 var(--mono); padding: 5px 6px; box-shadow: 0 0 0 .5px rgba(0,0,0,.3); }
+  .robot .st { position: absolute; left: 318px; top: 137px; width: 46px; height: 46px; transform: rotate(-14deg) skewX(-12deg); background: #FBFAF6; border-radius: 4px; padding: 7px; box-shadow: 0 0 0 .5px rgba(0,0,0,.35); }
+  .robot .st2 { position: absolute; left: 182px; top: 236px; width: 74px; height: 34px; transform: rotate(-12deg) skewY(8deg); background: #FBFAF6; border: 1px solid #1F1D1A; border-radius: 3px; font: 600 7px/1.2 var(--mono); padding: 5px 6px; box-shadow: 0 0 0 .5px rgba(0,0,0,.3); }
 
   /* 4. flight case */
   .case { position: absolute; left: 1250px; top: 220px; width: 480px; height: 640px; background: #34332F; border-radius: 10px; box-shadow: inset 0 0 0 10px #8C8A84, inset 0 0 0 12px #5E5C57; }
   .case .ang { position: absolute; width: 40px; height: 40px; background: #A9A7A0; border-radius: 4px; }
   .case .man { position: absolute; left: 180px; top: 34px; width: 120px; height: 22px; border-radius: 11px; background: #1A1917; box-shadow: inset 0 0 0 3px #8C8A84; }
   .case .chiusura { position: absolute; top: 300px; width: 30px; height: 50px; background: #A9A7A0; border-radius: 4px; }
-  .case .scheda { position: absolute; left: 60px; top: 110px; width: 360px; height: 250px; background: var(--evidenziatore); padding: 22px; }
+  .case .scheda { position: absolute; left: 60px; top: 110px; width: 360px; height: 250px; background: #FBFAF6; padding: 22px; }
   .case .scheda img { width: 250px; height: auto; display: block; }
   .case .scheda .t { font-family: var(--mono); font-size: 14px; line-height: 1.6; margin-top: 14px; }
   .case .scheda .t b { font-family: var(--serif); font-size: 24px; font-weight: 600; display: block; margin-bottom: 4px; }
@@ -56,11 +57,11 @@
 <span class="col-t" style="left:72px;top:186px">1 · Etichetta di inventario, 90 × 40 mm</span>
 <div class="tag">
   <img src="../logo/simbolo.svg" alt="">
-  <div class="righe"><b>Unità G1-002</b>Laboratorio Abra<br>Verificata il 29.10.2026<br>da G. Pitton, firmware 1.4<br>assistenza@abrarobotics.com</div>
+  <div class="righe"><b>Unità Go2-001</b>Laboratorio Abra<br>Verificata il 29.10.2026<br>da G. Pitton, firmware 1.4<br>assistenza@abrarobotics.com</div>
   <span class="scr">Abra Robotics · Robotica applicata</span>
   <span class="foro"></span>
 </div>
-<p class="dida" style="left:72px;top:474px;width:540px"><span class="mc">Fig. a</span>&ensp;Vinile opaco giallo, stampa a un colore. La data di verifica si riscrive a ogni intervento: l'etichetta è un registro.</p>
+<p class="dida" style="left:72px;top:474px;width:540px"><span class="mc">Fig. a</span>&ensp;Vinile opaco bianco carta, stampa a un colore. Niente campiture gialle sulle attrezzature: restano libere per la segnaletica di sicurezza del cliente.</p>
 
 <span class="col-t" style="left:72px;top:566px">2 · Richiami adesivi sui componenti</span>
 <div class="dots">
@@ -73,22 +74,22 @@
 <span class="col-t" style="left:640px;top:186px">3 · Sul robot</span>
 <div class="robot">
   <img class="go2" src="../img/segnaposto-unitree-go2.png" alt="Quadrupede con etichette Abra (segnaposto Unitree Go2)">
-  <img class="st" src="../logo/monogramma.svg" alt="">
-  <div class="st2">G1-002<br>29.10.26</div>
+  <img class="st" src="../logo/simbolo.svg" alt="">
+  <div class="st2">Go2-001<br>29.10.26</div>
 </div>
-<p class="dida" style="left:640px;top:800px;width:540px"><span class="mc">Fig. c</span>&ensp;Monogramma 40 × 40 mm sul dorso, etichetta di inventario sul fianco. Il marchio del costruttore resta visibile; Abra firma il lavoro fatto sul robot. Segnaposto: foto ufficiale Unitree Go2.</p>
+<p class="dida" style="left:640px;top:800px;width:540px"><span class="mc">Fig. c</span>&ensp;Simbolo 40 × 40 mm su etichetta bianca sul dorso, etichetta di inventario sul fianco. Il marchio del costruttore resta visibile; Abra firma il lavoro fatto sul robot. Segnaposto: foto ufficiale Unitree Go2.</p>
 
 <span class="col-t" style="left:1250px;top:186px">4 · Flight case</span>
 <div class="case">
   <span class="ang" style="left:0;top:0"></span><span class="ang" style="right:0;top:0"></span><span class="ang" style="left:0;bottom:0"></span><span class="ang" style="right:0;bottom:0"></span>
   <span class="man"></span>
   <span class="chiusura" style="left:-6px"></span><span class="chiusura" style="right:-6px"></span>
-  <div class="scheda"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><div class="t"><b>Cassa 1 di 2 · G1-002</b>Da: Laboratorio Abra<br>A: stand cliente, padiglione 9<br>Data: 14.11.2026 · peso 68 kg</div></div>
+  <div class="scheda"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><div class="t"><b>Cassa 1 di 2 · G1-003</b>Da: Laboratorio Abra<br>A: stand cliente, padiglione 9<br>Data: 14.11.2026 · peso 68 kg</div></div>
   <div class="sten"><span class="fr">↑</span> Questo lato in alto<br>Robot umanoide · fragile</div>
   <div class="tasca">Tasca trasparente: manuale rev 1.1, verbale di consegna, check list di montaggio</div>
 </div>
-<p class="dida" style="left:1250px;top:880px;width:480px"><span class="mc">Fig. d</span>&ensp;La scheda di viaggio gialla in formato A5 si sostituisce a ogni spedizione. Dati di esempio.</p>
+<p class="dida" style="left:1250px;top:880px;width:480px"><span class="mc">Fig. d</span>&ensp;La scheda di viaggio bianca in formato A5 si sostituisce a ogni spedizione. Dati di esempio.</p>
 
-<div style="position:absolute;left:72px;right:72px;bottom:56px;border-top:1px solid var(--inchiostro);padding-top:14px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--grafite)"><span>Tav. 8 · Livrea e attrezzature</span><span>rev 1.0 · 27.10.2026</span></div>
+<div style="position:absolute;left:72px;right:72px;bottom:56px;border-top:1px solid var(--inchiostro);padding-top:14px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--grafite)"><span>Tav. 8 · Livrea e attrezzature</span><span>rev 2.0 · 28.10.2026</span></div>
 </body>
 </html>

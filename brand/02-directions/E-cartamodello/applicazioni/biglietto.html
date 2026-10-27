@@ -2,34 +2,32 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Abra Robotics, biglietto da visita 85 x 55 mm (direzione Cartamodello)</title>
+<title>Abra Robotics, biglietto da visita 85 x 55 mm (direzione Cartamodello, v2)</title>
+<link rel="icon" href="../logo/favicon-16.svg">
 <link rel="stylesheet" href="../assets/sistema.css">
 <style>
-  /* scala di lavoro: 12 px = 1 mm. Biglietto 85 x 55 mm = 1020 x 660 px */
+  /* scala di lavoro: 12 px = 1 mm. Biglietto 85 x 55 mm = 1020 x 660 px. Testo minimo 26 px = 6,1 pt */
   body{width:1440px;height:900px;overflow:hidden;position:relative;background:#E2DACA}
-  .lato{position:absolute;width:1020px;height:660px;box-shadow:0 2px 0 rgba(47,51,55,.08),0 30px 60px -30px rgba(47,51,55,.45);overflow:hidden}
-  .f{left:60px;top:240px;transform:scale(.62);transform-origin:0 0}
-  .r{left:752px;top:240px;background:var(--tela);transform:scale(.62);transform-origin:0 0}
-  .fronte{position:absolute;inset:0;width:100%;height:100%}
-  .nome{position:absolute;left:72px;top:70px}
-  .nome h2{font-size:58px;font-weight:700;font-stretch:86%;letter-spacing:-0.01em;font-variation-settings:"opsz" 60}
-  .nome p{font-size:24px;margin-top:8px;color:var(--grafite)}
-  .contatti{position:absolute;left:72px;top:300px;font-size:24px;line-height:1.55}
-  .contatti span{display:inline-block;width:52px;font-weight:600;font-stretch:75%;letter-spacing:.08em;font-size:15px;color:var(--grafite);text-transform:uppercase}
-  .r img.logo{position:absolute;right:72px;top:438px;height:46px}
+  .lato{position:absolute;width:1020px;height:660px;box-shadow:0 2px 0 rgba(47,51,55,.08),0 30px 60px -30px rgba(47,51,55,.45);overflow:hidden;transform:scale(.62);transform-origin:0 0}
+  .f{left:60px;top:240px;background:var(--flanella)}
+  .r{left:752px;top:240px;background:var(--tela)}
+  .f svg{position:absolute;left:330px;top:150px;width:360px;height:360px}
+  .nome{position:absolute;left:72px;top:66px}
+  .nome h2{font-size:60px;font-weight:640;font-stretch:94%;letter-spacing:-0.01em}
+  .nome p{font-size:28px;margin-top:6px;color:var(--grafite)}
+  .contatti{position:absolute;left:72px;top:262px;font-size:30px;line-height:1.5}
+  .contatti span{display:inline-block;width:92px;font-weight:600;font-stretch:75%;letter-spacing:.06em;font-size:26px;color:var(--grafite);text-transform:uppercase}
+  .r img.logo{position:absolute;right:72px;top:440px;height:46px}
   .r .metro-b{position:absolute;left:0;bottom:0}
-  .nota{position:absolute;left:60px;top:700px;width:900px;line-height:1.5;font-size:12px;color:var(--grafite)}
+  .tl{position:absolute;top:190px;font-size:13px;color:var(--grafite)}
+  .nota{position:absolute;left:60px;top:700px;width:1000px;line-height:1.5;font-size:12px;color:var(--grafite)}
 </style>
 </head>
 <body>
-<div class="t-etichetta" style="position:absolute;left:60px;top:190px;font-size:13px;color:var(--grafite)">Fronte</div><div class="t-etichetta" style="position:absolute;left:752px;top:190px;font-size:13px;color:var(--grafite)">Retro</div>
-<div class="lato f"><svg class="fronte" viewBox="-1106 -478 2900 1876" preserveAspectRatio="xMidYMid slice" aria-label="Fronte: simbolo Abra con il filo che attraversa il biglietto">
-  <rect x="-1106" y="-478" width="2900" height="1876" fill="#2F3337"/>
-  <path d="M-257.0 558.5 L-3000 993.0" stroke="#F2BF2C" stroke-width="62" stroke-linecap="round" stroke-dasharray="150 160"/>
-  <path d="M945.0 368.1 L4000 -115.7" stroke="#F2BF2C" stroke-width="62" stroke-linecap="round" stroke-dasharray="150 160"/>
-  <path fill="#FAF8F3" d="M0 660 L328 0 L402 0 L730 660 L532 660 L365 140 L198 660 Z"/>
-  <path fill="#F2BF2C" d="M316.57 499.06 L412.64 483.84 A31 31 0 0 0 402.95 422.6 L306.87 437.82 A31 31 0 0 0 316.57 499.06 Z M-123.45 568.75 L26.55 544.99 A31 31 0 0 0 16.85 483.75 L-133.15 507.51 A31 31 0 0 0 -123.45 568.75 Z M671.07 442.91 L821.07 419.15 A31 31 0 0 0 811.38 357.91 L661.38 381.67 A31 31 0 0 0 671.07 442.91 Z"/>
-</svg></div>
+<div class="tl t-etichetta" style="left:60px">Fronte</div><div class="tl t-etichetta" style="left:752px">Retro</div>
+<div class="lato f">
+  <svg viewBox="-40 -86.0 832.0 832.0" aria-label="Simbolo Abra"><path fill="#FAF8F3" d="M0 660 L328 0 L402 0 L730 660 L532 660 L365 130 L198 660 Z M288.7 368.9 L434.1 346.2 L459.9 428.1 L260.2 459.4 Z"/><path fill="#8FB0E0" d="M593.4 320.8 L733.3 298.1 A43 43 0 0 1 746.8 383.1 L633 400.5 Z"/></svg>
+</div>
 <div class="lato r">
   <img class="logo" src="../logo/orizzontale.svg" alt="Abra Robotics">
   <div class="nome"><h2>Niccolò Mazzoleni</h2><p>Cofondatore, commerciale e strategia</p></div>
@@ -38,9 +36,9 @@
     <div><span>Tel</span>+39 000 000 0000</div>
     <div><span>Web</span>abrarobotics.com</div>
   </div>
-  <div class="metro-b" data-metro data-from="0" data-to="84" data-step="12" data-w="58" data-label="10"></div>
+  <div class="metro-b" data-metro data-from="0" data-to="84" data-step="12" data-w="80" data-label="10" data-sw="1.4"></div>
 </div>
-<div class="nota t-etichetta">Biglietto 85 x 55 mm, stampa a due colori più bianco. Il bordo del retro è un righello in millimetri, in scala reale. Numero di telefono segnaposto.</div>
+<div class="nota t-etichetta">Biglietto 85 x 55 mm. Fronte flanella con simbolo in bianco gesso e filo in gesso blu; retro tela. Il bordo del retro è un righello in millimetri in scala reale, cifre a 6,4 pt e tacche da 0,36 pt. Telefono segnaposto.</div>
 <script src="../assets/metro.js"></script>
 </body>
 </html>

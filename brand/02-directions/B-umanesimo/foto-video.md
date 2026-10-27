@@ -1,10 +1,10 @@
-# Foto e video. Territorio B, Misura d'uomo
+# Foto e video v2. Territorio B, Montato a vista
 
 ## Il punto di vista
 
-Si fotografa il lavoro delle persone con il robot accanto. La persona sta al centro dell'inquadratura o a fuoco; il robot è uno strumento in scena, spesso a metà campo, a volte tagliato dal bordo. La macchina è all'altezza degli occhi di chi la usa: mai dal basso per farla sembrare imponente, mai isolata su un fondo neutro.
+Si fotografa il lavoro delle persone con il robot accanto. La persona sta al centro dell'inquadratura o a fuoco; il robot è uno strumento in scena, spesso a metà campo, a volte tagliato dal bordo. La macchina è all'altezza degli occhi di chi la usa: mai dal basso per farla sembrare imponente, mai isolata in uno studio fotografico.
 
-È fotografia documentaria a colori, calda, con la luce del posto: le finestre a shed di un reparto di Imola, il neon di un laboratorio universitario, la luce di servizio di un padiglione fieristico prima dell'apertura.
+È fotografia documentaria a colori naturali, con la luce del posto: le finestre a shed di un reparto di Imola, il neon di un laboratorio universitario, la luce di servizio di un padiglione fieristico prima dell'apertura.
 
 ## Inquadrature
 
@@ -30,10 +30,10 @@ Reparti produttivi (ceramica, packaging, meccanica), laboratori universitari, il
 
 ## Post produzione
 
-- Colore naturale con una curva leggermente calda e neri sollevati (il nero più profondo vicino all'inchiostro `#24211E`), saturazione moderata.
-- Grana fine da pellicola ammessa; niente filtri, vignettature, glow.
-- **Robot dei produttori in bicromia calda**: le foto ufficiali (Unitree o altri) entrano nel sistema solo scontornate e convertite in bicromia inchiostro su avorio (mappa in `assets/`), su una campitura del marchio. Così il robot di qualunque marca diventa materiale Abra e perde il bagliore blu dei visori.
-- Le mappe LiDAR si stampano in inchiostro su carta, come tavole di rilievo.
+- **Foto proprie di Abra: sempre a colori naturali.** Bilanciamento neutro, leggera curva a S, neri al grafite `#232527`, nessuna dominante seppia o calda aggiunta. Grana fine ammessa; niente filtri, vignettature, glow.
+- **Foto dei produttori (segnaposto)**: solo finché mancano le foto proprie, scontornate e convertite in **grigio neutro**, appoggiate su un pannello Grigio Lettera con la fascia del pavimento e il cartellino dati. Il grigio toglie il bagliore dei visori e rende omogenee marche diverse; ogni uso porta la dicitura "Segnaposto". La bicromia seppia della v1 è abbandonata.
+- **Persone negli eventi**: finché non ci sono foto con liberatoria, sagome piatte in grigi (vedi `sistema-grafico.md`).
+- Le mappe LiDAR si stampano in grafite su bianco, come tavole di rilievo.
 
 ## Video
 
@@ -41,7 +41,7 @@ Camera a spalla o su treppiede, inquadrature lunghe almeno 4 secondi, suono d'am
 
 ## Cosa evitare
 
-Robot su fondo nero o blu, luci al neon colorate, visori luminosi in primo piano, fumo, controluce drammatici, inquadrature dal basso, acrobazie (balli, capriole, combattimenti), mani robotiche che sfiorano mani umane, robot soli in uno studio grigio, interni domestici beige, foto ufficiali usate a colori senza trattamento.
+Robot su fondo nero o blu, luci al neon colorate, visori luminosi in primo piano, fumo, controluce drammatici, inquadrature dal basso, acrobazie (balli, capriole, combattimenti), mani robotiche che sfiorano mani umane, robot soli in uno studio grigio, interni domestici beige, foto ufficiali usate senza dicitura di segnaposto, robot scontornati e appoggiati su forme decorative.
 
 ## Shot list: otto scatti per partire
 
@@ -61,8 +61,8 @@ Robot su fondo nero o blu, luci al neon colorate, visori luminosi in primo piano
 Da usare solo con istruzione esplicita dei fondatori (oggi i crediti sono esauriti). Sono riferimenti di atmosfera per il fotografo, non immagini da pubblicare.
 
 1. *Documentary color photograph, Italian ceramics factory with sawtooth roof windows, a young female engineer in a work jacket kneeling next to a grey quadruped robot, she adjusts a bracket with a screwdriver, robot partly out of frame, warm natural daylight, soft shadows, 35 mm lens at eye level, fine film grain, muted warm palette, no logos.*
-2. *Editorial photograph of a university robotics lab, two students at a wooden workbench with a laptop showing a 2D map, a humanoid robot standing still in the background slightly out of focus, fluorescent and window light mixed, ivory walls, calm atmosphere, 50 mm, natural colors.*
+2. *Editorial photograph of a university robotics lab, two students at a wooden workbench with a laptop showing a 2D map, a humanoid robot standing still in the background slightly out of focus, fluorescent and window light mixed, light grey walls, calm atmosphere, 50 mm, natural colors.*
 3. *Close up of hands placing a folding ruler on the back of a grey quadruped robot on a test bench, chalk marks on the floor, small weights nearby, warm afternoon light from the side, shallow depth of field, documentary style.*
-4. *Trade fair pavilion before opening, a humanoid robot standing on an ivory square carpet next to a tall arch-shaped red panel, a technician checking a tablet, empty aisles, work lights, wide shot at human eye height, realistic, no neon, no smoke.*
-5. *Still life on a wooden table by a window: a printed technical manual with an ivory cover and a red circle, a USB drive, a closed aluminium flight case, morning light, soft shadows, editorial product photography, warm tones.*
+4. *Trade fair pavilion before opening, a humanoid robot standing on a light square carpet next to a tall rectangular red and white panel, a technician checking a tablet, empty aisles, work lights, wide shot at human eye height, realistic, no neon, no smoke.*
+5. *Still life on a wooden table by a window: a printed technical manual with a white cover and a red band, a USB drive, a closed aluminium flight case, morning light, soft shadows, editorial product photography, neutral natural colors.*
 6. *Portrait of a production manager in an Italian packaging plant, standing at an empty workstation with tape marks on the floor, looking at a clipboard, background machines in soft focus, natural light, 85 mm, documentary.*

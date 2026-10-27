@@ -2,7 +2,8 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Abra Robotics, preventivo: pagina delle fasi (direzione Cartamodello)</title>
+<title>Abra Robotics, preventivo: pagina delle fasi (direzione Cartamodello, v2)</title>
+<link rel="icon" href="../logo/favicon-16.svg">
 <link rel="stylesheet" href="../assets/sistema.css">
 <style>
   @page{size:A4;margin:0}
@@ -17,8 +18,8 @@
   /* metro come linea del tempo: 1 settimana = 24 px */
   .tempo{position:absolute;left:56px;top:262px;width:682px}
   .tempo .barre{position:relative;height:96px;margin-top:10px}
-  .barra{position:absolute;height:22px;font-size:10.5px;font-weight:600;font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;padding:0 7px;white-space:nowrap}
-  .barra.prova{outline:1.6px dashed var(--flanella);outline-offset:-1.6px}
+  .barra{position:absolute;height:22px;font-size:10.5px;font-weight:600;font-stretch:75%;background:var(--gesso);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;padding:0 7px;white-space:nowrap}
+  .barra.prova{box-shadow:inset 0 0 0 2px var(--segno)}
   .barra.decisione{background:var(--flanella);color:var(--gesso)}
   .tempo .leg{display:flex;gap:22px;font-size:10.5px;color:var(--grafite);margin-top:8px;align-items:center}
   .tempo .leg i{display:inline-block;width:26px;height:12px;vertical-align:-2px;margin-right:6px}
@@ -26,7 +27,7 @@
   table{position:absolute;left:56px;top:448px;width:682px;border-collapse:collapse;font-size:11px;line-height:1.38}
   th{text-align:left;font-weight:600;font-stretch:75%;text-transform:uppercase;letter-spacing:.08em;font-size:9.5px;color:var(--grafite);padding:0 8px 8px 0;border-bottom:1.6px solid var(--flanella)}
   td{vertical-align:top;padding:9px 10px 9px 0;border-bottom:1px solid #D9CBAA}
-  td.f{font-weight:700;font-stretch:80%;font-size:19px;line-height:1;width:44px}
+  td.f{font-weight:680;font-stretch:80%;font-size:19px;line-height:1;width:44px}
   td.f small{display:block;font-size:9px;font-weight:600;font-stretch:75%;letter-spacing:.07em;text-transform:uppercase;color:var(--grafite);margin-top:4px}
   td.c{background:#F3EDDF}
   td.n{text-align:right;font-weight:620;font-stretch:80%;font-feature-settings:"tnum" 1;white-space:nowrap;padding-right:0}
@@ -36,12 +37,12 @@
   .chiusura .t-etichetta{font-size:10.5px;padding-bottom:8px;border-bottom:1.6px solid var(--flanella)}
   .chiusura p{font-size:11.5px;margin-top:9px}
   .righe{display:grid;grid-template-columns:.6fr 1fr 1.2fr;gap:14px;margin-top:34px}
-  .righe span{font-size:9.5px;color:var(--grafite);padding-top:6px;border-top:1.4px dashed var(--flanella)}
+  .righe span{font-size:9.5px;color:var(--grafite);padding-top:6px;border-top:1.4px solid var(--flanella)}
   .limiti{position:absolute;left:56px;right:56px;bottom:62px;height:96px;padding:16px 20px;background:var(--carta)}
-  .limiti:after{content:"";position:absolute;inset:7px;border:1.3px dashed rgba(47,51,55,.6);pointer-events:none}
+  .limiti{box-shadow:inset 0 0 0 2px var(--flanella)}
   .limiti .t-etichetta{font-size:10.5px}
   .limiti p{font-size:11.5px;margin-top:6px;max-width:560px}
-  .limiti .esempio{position:absolute;right:20px;top:16px;font-size:9.5px}
+  .limiti .esempio{position:absolute;right:20px;top:16px;font-size:9.5px;color:var(--flanella);border-color:var(--flanella)}
   .piede{position:absolute;left:56px;right:56px;bottom:26px;display:flex;justify-content:space-between;font-size:9.5px;color:var(--grafite)}
 </style>
 </head>
@@ -57,14 +58,14 @@
 <div class="tempo">
   <div class="t-etichetta" style="font-size:10.5px;color:var(--grafite)">Calendario in settimane dall'ordine</div>
   <div class="barre">
-    <div data-metro data-from="0" data-to="27" data-step="24" data-w="26" data-label="2" style="position:absolute;left:-12px;top:0;width:682px;overflow:hidden"></div>
-    <div class="barra prova" style="left:0;top:36px;width:72px">P1 Misure</div>
+    <div data-metro data-from="0" data-to="28" data-step="24" data-w="26" data-label="4" style="position:absolute;left:-2px;top:0"></div>
+    <div class="barra prova" style="left:0;top:36px;width:72px">P1 Analisi</div>
     <div class="barra prova" style="left:72px;top:36px;width:96px">P2 Simulazione</div>
-    <div class="barra prova" style="left:168px;top:62px;width:192px">P3 POC in laboratorio Abra</div>
+    <div class="barra prova" style="left:168px;top:62px;width:192px">P3 Prova in laboratorio Abra</div>
     <div class="barra prova" style="left:360px;top:36px;width:216px">P4 Pilota sulla tua postazione</div>
-    <div class="barra prova" style="left:576px;top:62px;width:106px">P5 Consegna</div>
+    <div class="barra prova" style="left:576px;top:62px;width:96px">P5 Consegna</div>
   </div>
-  <div class="leg"><span><i style="outline:1.6px dashed #2F3337;outline-offset:-1.6px"></i>Fase in prova, criterio da verificare</span><span><i style="background:#2F3337"></i>Fase accettata e firmata</span><span>Ogni tacca del metro è una settimana</span></div>
+  <div class="leg"><span><i style="box-shadow:inset 0 0 0 2px #2F5D9E;background:#FAF8F3"></i>Bordo blu: fase da approvare</span><span><i style="background:#2F3337"></i>Fase accettata e firmata</span><span>Una tacca del metro è una settimana; 28 settimane in tutto</span></div>
 </div>
 
 <table>
@@ -72,7 +73,7 @@
   <tbody>
     <tr><td class="f">P1<small>3 sett.</small></td><td>Sopralluogo, rilievo della postazione, video del ciclo attuale</td><td>Report con tempi, pesi e ingombri misurati; scelta motivata della piattaforma</td><td class="c">Report firmato dal tuo responsabile R&amp;D</td><td class="n">3.500 €</td></tr>
     <tr><td class="f">P2<small>4 sett.</small></td><td>Digital twin della postazione e simulazione in MuJoCo</td><td>Simulatore, video della simulazione, stima del tempo ciclo</td><td class="c">Tempo ciclo simulato entro 18 s per pezzo</td><td class="n">9.800 €</td></tr>
-    <tr><td class="f">P3<small>8 sett.</small></td><td>POC sul robot vero nel laboratorio Abra, con i tuoi pezzi</td><td>Prove registrate, codice nel tuo repository</td><td class="c">200 prese consecutive con meno del 2% di errori</td><td class="n">34.000 €</td></tr>
+    <tr><td class="f">P3<small>8 sett.</small></td><td>Prova sul robot vero nel laboratorio Abra, con i tuoi pezzi</td><td>Prove registrate, codice nel tuo repository</td><td class="c">200 prese consecutive con meno del 2% di errori</td><td class="n">34.000 €</td></tr>
     <tr><td class="f">P4<small>9 sett.</small></td><td>Pilota sulla tua linea, su un turno, con il tuo personale</td><td>Verbale di prova, valutazione dei rischi aggiornata</td><td class="c">Tempo ciclo medio misurato su 5 turni entro 20 s</td><td class="n">21.500 €</td></tr>
     <tr><td class="f">P5<small>4 sett.</small></td><td>Consegna, formazione di due tecnici, manuale</td><td>Repository, simulatore, manuale rev. 1.0, 40 ore di assistenza</td><td class="c">Due tecnici avviano e fermano il ciclo da soli</td><td class="n">6.400 €</td></tr>
     <tr class="tot"><td></td><td colspan="3">Totale delle sei fasi, IVA esclusa. P0, la prima chiamata con un tecnico, non ha costo.</td><td class="n">75.200 €</td></tr>
@@ -91,7 +92,7 @@
 </div>
 <div class="limiti">
   <span class="esempio">Esempio</span>
-  <div class="t-etichetta">Margine dichiarato: cosa il robot non farà</div>
+  <div class="t-etichetta">Limiti dichiarati: cosa il robot non farà</div>
   <p class="t-testo">Il carico continuativo per braccio resta sotto i 2 kg: pezzi più pesanti richiedono una pinza su braccio collaborativo, che valutiamo in P1. L'autonomia è di circa 2 ore per batteria: la fase P4 prevede il cambio batteria a metà turno.</p>
 </div>
 <div class="piede"><span>Abra Robotics · Valori, criteri e importi di questa pagina sono un esempio</span><span>Esempio</span></div>

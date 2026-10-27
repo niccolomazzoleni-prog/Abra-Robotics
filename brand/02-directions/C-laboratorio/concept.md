@@ -1,16 +1,18 @@
 # C. Nota a margine
 
-Territorio C, Laboratorio aperto. Direzione creativa per Abra Robotics, rev 1.0 del 27/10/2026.
+Territorio C, Laboratorio aperto. Direzione creativa per Abra Robotics, rev 2.0 del 28/10/2026 (modifiche in `changelog.md`).
 
 ## L'idea in una frase
 
 Abra annota ogni robot come si annota una figura in un articolo scientifico: un punto sulla cosa misurata, un filo, una nota con il numero, il limite e la data.
 
-## Il marchio
+## Il marchio (v2)
 
-Il simbolo è la A di Abra disegnata sul carattere della letteratura scientifica (STIX Two, il carattere nato per gli editori di riviste tecniche), con la traversa trasformata in un **richiamo**: un punto dentro la lettera e un filo che esce verso destra, dove nelle figure scientifiche si scrive la nota. La vecchia "Λ" senza traversa diventa così una A completa, e quello che la completa è un'annotazione.
+Il logotipo "abra" è scritto con il gesto del richiamo: ogni lettera è un punto pieno e il suo filo. La a e la b sono un cerchio con un'asta, la r è un'asta con un punto piccolo. Letto da lontano, il nome è un piccolo grafico a punti; letto da vicino, è una serie di annotazioni. Il disegno è proprio, costruito da zero con cerchi e aste, senza partire da un carattere esistente.
 
-Il gesto del richiamo è anche il primo elemento del sistema: lo stesso punto e lo stesso filo indicano i componenti dei robot nelle foto, i valori nei grafici, le istruzioni sugli adesivi, il testo sul retro del biglietto da visita.
+La a da sola è il simbolo. A 16 px è disegnata a pixel: un punto, una strozzatura, un'asta. Il gesto del richiamo resta così riconoscibile anche nella scheda del browser e sull'adesivo da 40 mm sul robot.
+
+Lo stesso punto e lo stesso filo indicano nel sistema i componenti dei robot nelle foto, i valori nei grafici, le istruzioni sugli adesivi. Il giallo evidenziatore segna solo numeri e criteri misurati.
 
 ## Razionale strategico
 
@@ -31,8 +33,8 @@ Il gesto del richiamo è anche il primo elemento del sistema: lo stesso punto e 
 - **Spettacolo.** Non c'è luce di palco, non c'è il robot eroico a tutta pagina. Sugli eventi il sistema convince con la chiarezza e con il giallo, e rinuncia a stupire.
 - **Calore immediato.** Il tono da quaderno è preciso e cortese ma accademico: alcune persone degli acquisti o del marketing lo troveranno distante.
 - **Velocità di lettura dei social.** Le note, le didascalie e i numeri di riga chiedono un secondo sguardo. Funzionano su LinkedIn, meno nello scorrimento rapido di Instagram.
-- **La semplicità del logotipo puro.** Il dettaglio del richiamo dentro la A sotto i 20 px si legge come una A con la traversa lunga: la storia si racconta nelle misure medie e grandi.
+- **La neutralità del logotipo.** Un nome scritto con cerchi pieni è più grafico e meno "istituzionale" di un serif: chiede coerenza nel resto del sistema (STIX, note, documenti) per non scivolare verso un registro giocoso.
 
 ## File consegnati
 
-`logo/` (orizzontale, verticale, simbolo, monogramma, favicon, mono positivo e negativo, test.html e test.png, animazione.html), `palette.md`, `tipografia.md`, `sistema-grafico.md`, `icone/` (6 icone), `foto-video.md`, `motion.md`, `voce.md`, `applicazioni/` (hero, preventivo copertina e interna, post LinkedIn nominativo e anonimo, reel, biglietto, totem, livrea, con PNG), `presentazione.html`, `autocritica.md`. Font OFL in `fonts/`, segnaposto Unitree dichiarati in `img/`, foglio di stile condiviso `abra-c.css`.
+`logo/` (logotipo, orizzontale, verticale, simbolo, monogramma, favicon vettoriale e favicon-16 a pixel, mono positivo e negativo, test.html e test.png, animazione.html), `palette.md`, `tipografia.md`, `sistema-grafico.md`, `icone/` (6 icone), `foto-video.md`, `motion.md`, `voce.md`, `applicazioni/` (hero, preventivo copertina e interna, post LinkedIn nominativo e anonimo, reel, biglietto, totem, livrea, con PNG), `presentazione.html`, `autocritica.md`. Font OFL statici in `fonts/`, segnaposto Unitree dichiarati in `img/`, `changelog.md`, foglio di stile condiviso `abra-c.css`.

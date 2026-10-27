@@ -1,8 +1,16 @@
 /* Abra Robotics, direzione C "Nota a margine". Token e componenti condivisi. */
-@font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-VF.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: block; }
-@font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Italic-VF.woff2") format("woff2"); font-weight: 400 700; font-style: italic; font-display: block; }
-@font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Regular.woff2") format("woff2"); font-weight: 400; font-display: block; }
-@font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Medium.woff2") format("woff2"); font-weight: 500; font-display: block; }
+/* Versioni statiche ufficiali (stixfonts v2.13): il PDF le incorpora come TrueType */
+@font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Regular.woff2") format("woff2"), url("fonts/STIXTwoText-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-SemiBold.woff2") format("woff2"), url("fonts/STIXTwoText-SemiBold.ttf") format("truetype"); font-weight: 500 600; font-style: normal; font-display: block; }
+@font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Bold.woff2") format("woff2"), url("fonts/STIXTwoText-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Italic.woff2") format("woff2"), url("fonts/STIXTwoText-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: block; }
+@media print {
+  @font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-SemiBold.ttf") format("truetype"); font-weight: 500 600; font-style: normal; }
+  @font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+}
+@font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Regular.woff2") format("woff2"), url("fonts/DMMono-Regular.ttf") format("truetype"); font-weight: 400; font-display: block; }
+@font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Medium.woff2") format("woff2"), url("fonts/DMMono-Medium.ttf") format("truetype"); font-weight: 500; font-display: block; }
 
 :root {
   --carta: #F5F2EA;
@@ -10,7 +18,7 @@
   --grafite: #625E57;
   --grafite-chiara: #A9A397;
   --rigatura: #DCD6C8;
-  --evidenziatore: #E9EC55;
+  --evidenziatore: #EEE842; /* CMYK 8 0 90 0, in gamut; tinta piatta indicativa in palette.md */
   --verde-registro: #3E6A4E;
   --serif: "STIX Two Text", "STIX Two", Georgia, serif;
   --mono: "DM Mono", ui-monospace, Menlo, monospace;
@@ -22,14 +30,14 @@ html, body { margin: 0; }
 body { background: var(--carta); color: var(--inchiostro); font-family: var(--serif); font-feature-settings: "kern", "liga"; -webkit-font-smoothing: antialiased; }
 
 /* Testo */
-.display { font-weight: 600; letter-spacing: -0.012em; line-height: 1.02; font-variation-settings: "wght" 600; }
+.display { font-weight: 600; letter-spacing: -0.012em; line-height: 1.02; }
 .mono { font-family: var(--mono); font-weight: 400; letter-spacing: 0.01em; }
 .etichetta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grafite); }
 .nota { font-style: italic; color: var(--grafite); }
 .mc { font-feature-settings: "smcp", "c2sc"; letter-spacing: 0.04em; }
 sup.rif { font-family: var(--mono); font-size: 0.42em; vertical-align: super; letter-spacing: 0; margin-left: 0.08em; color: var(--inchiostro); font-weight: 500; }
 
-/* Evidenziatore: la misura che conta */
+/* Evidenziatore: solo su un numero o un criterio misurato, mai su un titolo */
 .evid { background: linear-gradient(100deg, transparent 0.15em, var(--evidenziatore) 0.15em, var(--evidenziatore) calc(100% - 0.15em), transparent calc(100% - 0.15em)) 0 62% / 100% 0.62em no-repeat; box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 0.12em; margin: 0 -0.12em; }
 .evid-pieno { background: var(--evidenziatore); padding: 0.05em 0.25em; }
 
@@ -57,3 +65,9 @@ sup.rif { font-family: var(--mono); font-size: 0.42em; vertical-align: super; le
 
 /* Esempio: dicitura obbligatoria sui dati inventati */
 .esempio { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid currentColor; padding: 2px 6px 1px; border-radius: 2px; display: inline-block; }
+
+/* Numeri di riga: informativi, quindi in grafite (5,76:1 su carta) */
+.ln, .numriga { color: var(--grafite) !important; }
+
+/* Punto di richiamo su foto: giallo con anello d'inchiostro */
+.punto-foto { fill: var(--evidenziatore); stroke: var(--inchiostro); stroke-width: 2; }

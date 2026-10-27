@@ -1,27 +1,29 @@
-# Autocritica
+# Autocritica (v2)
 
-Tre punti deboli della direzione C, Nota a margine, e cosa ho fatto per mitigarli.
+Tre punti deboli della direzione C, Nota a margine, dopo la revisione v2, e cosa ho fatto per mitigarli. In fondo, i punti della v1 risolti.
 
-## 1. Il richiamo dentro la A si legge solo dalle misure medie in su
+## 1. Un logotipo di cerchi pieni può scivolare verso il giocoso
 
-Sotto i 20 px il punto e il filo si fondono in una traversa lunga; a 16 px il favicon è una A con la traversa che sporge. Chi vede il marchio solo come icona non coglie la storia dell'annotazione, e la A rischia di sembrare una lettera di un serif qualunque.
+"abra" scritto con cerchi pieni e aste è proprietario e si legge a 16 px, ma è un segno grafico forte e geometrico: accanto a un serif scientifico rischia di sembrare il marchio di un prodotto di consumo, o di ricordare note musicali o un grafico a lecca lecca.
 
-Mitigazione: il favicon e il monogramma usano il simbolo grande dentro l'etichetta gialla, che a 16 px diventa riconoscibile per colore e forma prima che per dettaglio. La sporgenza del filo resta visibile anche a 16 px ed è la firma minima del segno. Il richiamo vive poi fuori dal marchio (foto, grafici, adesivi, retro del biglietto), così il significato si impara dal sistema e torna nel segno. Prossimo passo: una versione a 16 px disegnata pixel per pixel, da provare su schermi reali prima della consegna.
+Mitigazione: il logotipo usa solo due elementi con regole fisse (strozzatura al 12% dello spessore, aste diritte senza arrotondamenti, nessun colore dentro le lettere) e lavora sempre con "ROBOTICS" in mono e con il resto del sistema documentale. Nei preventivi compare in testata a dimensione contenuta. Da verificare con le interviste ai direttori R&D: se il segno risulta poco serio, si riduce il peso dei punti (diametro 92) mantenendo la costruzione.
 
-## 2. Registro accademico per eventi e brand manager
+## 2. Registrabilità ancora da verificare
 
-Il quaderno, le note e le figure parlano subito a laboratori e direttori R&D; un event manager può trovarli freddi o difficili da leggere in pochi secondi. Il sistema rinuncia per scelta allo spettacolo.
+Il segno è nuovo, ma lettere costruite con cerchi e aste esistono nei caratteri geometrici e in alcuni marchi. Nessuna ricerca di anteriorità per immagine è stata fatta.
 
-Mitigazione: per gli eventi il sistema passa al fondo inchiostro, al giallo pieno e a titoli molto grandi (reel, totem); il registro della conversazione con le fonti citate trasforma la promessa "parole approvate da te" in un oggetto che si capisce a colpo d'occhio. Sul totem la richiesta di data sta in un blocco giallo all'altezza della mano, separato dai dettagli. Va validato con le 3 a 5 interviste previste dal brief: se il test dei 5 secondi sul totem scende sotto 4 su 5, si riduce il testo e si ingrandisce la foto propria del G1 allo stand.
+Mitigazione: costruzione documentata in `sistema-grafico.md` e codici Vienna indicati (27.05, 26.01, 26.11). La forma della a con la strozzatura e la r con il punto separato sono i dettagli da difendere; il deposito consigliato è il logotipo in bianco e nero più il simbolo a. Il richiamo da solo resta un elemento di sistema e non si deposita.
 
 ## 3. La direzione vive di note vere, che oggi mancano
 
-Il sistema promette misure, protocolli, revisioni e limiti dichiarati. Oggi nessun progetto misurato prima dell'acquisto è concluso, la scheda limiti non esiste, le foto sono tutte Unitree. Usato con dati vaghi, il linguaggio del paper diventerebbe una messa in scena della scienza, e il pubblico dei laboratori se ne accorgerebbe per primo.
+Il sistema promette misure, protocolli, revisioni e limiti dichiarati. Nessun progetto misurato prima dell'acquisto è concluso, la scheda limiti non esiste, le foto sono Unitree. Con l'evidenziatore ridotto ai soli dati, le pagine senza numeri veri restano senza giallo.
 
-Mitigazione: tutti i mockup marcano "Esempio" su dati, importi e criteri; le foto sono dichiarate come segnaposto nelle didascalie, che il sistema rende obbligatorie. Il materiale vero più vicino (consegna SACMI del 29/10, manuale rev 1.1, simulatore, repository) è al centro del post e della shot list, e la regola di voce chiede di scrivere in nota ciò che non è ancora misurato. La prima produzione consigliata è la scheda limiti del G1 con il protocollo di misura: è insieme prova di marca e contenuto per sito, preventivi e totem.
+Mitigazione: tutti i dati inventati portano "Esempio" o "valutazione interna"; i richiami sulle foto cadono solo su componenti reali; le voci immateriali sono note a margine. La prima produzione consigliata resta la scheda limiti del G1 con il protocollo di misura, che fornisce numeri veri a sito, preventivi e totem.
 
-## Altri rischi minori
+## Punti della v1 risolti in v2
 
-- Il giallo evidenziatore su un robot può ricordare un'etichetta di sicurezza: le etichette Abra usano sempre il simbolo e un testo in mono, mai pittogrammi di pericolo, e restano piccole.
-- STIX Two è un carattere libero e quindi disponibile a chiunque: la proprietà del sistema sta nella A modificata, nel richiamo e nelle regole di composizione, che vanno protette con il manuale d'uso.
-- Il punto giallo con anello va verificato in stampa su vinile e su tessuto prima di produrre adesivi e abbigliamento.
+- Richiamo che a 16 px diventava una traversa lunga: ora c'è un favicon disegnato a pixel con punto, strozzatura e asta distinti.
+- Logotipo in STIX composto: sostituito da un disegno proprio.
+- Giallo fuori gamut e acido: nuovo HEX in gamut CMYK con tinta piatta indicativa.
+- Evidenziatore e richiami decorativi: regole d'uso riscritte e applicate a tutti i file.
+- Eventi senza scena: reel e totem hanno il G1 in piedi e il pubblico in sagome.

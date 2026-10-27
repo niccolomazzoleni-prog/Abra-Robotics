@@ -2,111 +2,110 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Riferimento A · prova del marchio</title>
+<title>In squadra · prova del marchio</title>
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="../assets/a.css">
 <style>
   body{width:1440px;padding:56px 64px 64px;background:var(--alluminio)}
-  header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:14px;margin-bottom:36px}
-  h1{font:600 30px/1 var(--f-titolo);letter-spacing:-.005em}
+  header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:14px;margin-bottom:32px}
+  h1{font:700 28px/1 var(--f-titolo);letter-spacing:-.015em}
   .riga{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-bottom:24px}
   .cella{background:var(--bianco);padding:20px;position:relative;min-height:220px}
-  .cella .et{color:var(--quota);margin-bottom:18px}
+  .cella>.et{color:var(--quota);margin-bottom:18px;display:block}
   .tab{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--linea);border-bottom:0;width:250px;padding:9px 12px;font:13px var(--f-testo)}
   .barra{height:34px;background:#fff;border:1px solid var(--linea);border-top:0;display:flex;align-items:center;padding:0 12px;font:12px var(--f-testo);color:var(--quota)}
   .scuro{background:var(--grafite);color:var(--alluminio)}
-  .scuro .et{color:var(--acciaio)}
-  .avatar{display:flex;gap:28px;align-items:center}
-  .tondo{width:110px;height:110px;border-radius:50%;background:var(--grafite);display:grid;place-items:center;overflow:hidden}
-  .tondo img{width:72px}
-  .quadro{width:110px;height:110px;background:var(--grafite);display:grid;place-items:center}
-  .quadro img{width:74px}
-  .tondo.chiaro,.quadro.chiaro{background:var(--alluminio);outline:1px solid var(--linea)}
+  .scuro>.et{color:var(--acciaio)}
+  .verde{background:var(--verde);color:#fff}
+  .verde>.et{color:#fff}
+  .avatar{display:flex;gap:24px;align-items:center}
+  .tondo{width:110px;height:110px;border-radius:50%;overflow:hidden}
+  .tondo img,.quadro img{width:100%;height:100%;display:block}
+  .quadro{width:110px;height:110px}
   .feed{display:flex;gap:10px;align-items:center;margin-top:22px;font:600 14px var(--f-testo)}
-  .feed .t{width:40px;height:40px;border-radius:50%;background:var(--grafite);display:grid;place-items:center}
-  .feed .t img{width:26px}
+  .feed .t{width:40px;height:40px;border-radius:50%;overflow:hidden}
+  .feed .t img{width:100%}
   .feed small{display:block;font:400 12px var(--f-testo);color:var(--quota)}
-  .grande{grid-column:span 12;min-height:420px;display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:center;padding:48px}
-  .misure{position:relative}
-  .misure img{width:100%}
-  .q{position:absolute;color:var(--quota);font:500 11px/1 var(--f-etichetta);letter-spacing:.08em}
-  .px{display:flex;align-items:flex-end;gap:26px}
+  .px{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
   .px figure{display:flex;flex-direction:column;align-items:center;gap:10px}
-  .px figcaption{font:500 11px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
+  .px figcaption{font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
   .pix{image-rendering:pixelated}
+  .grande{grid-column:span 12;min-height:400px;display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:center;padding:44px}
+  .costr text{font-family:"Barlow SC";font-weight:500}
 </style>
 </head>
 <body>
 <header>
   <div>
-    <div class="et" style="color:var(--quota);margin-bottom:10px">Direzione A · Riferimento A · Prova del marchio</div>
-    <h1>Il marchio dalla favicon al grande formato</h1>
+    <div class="et" style="color:var(--quota);margin-bottom:10px">Direzione A v2 · In squadra · Prova del marchio</div>
+    <h1>Il segno Ab dalla favicon al grande formato</h1>
   </div>
-  <div class="et num" style="color:var(--quota)">Rev 1.0 · 27.10.2026</div>
+  <div class="et num" style="color:var(--quota)">Rev 2.0 · 28.10.2026</div>
 </header>
 
 <div class="riga">
-  <div class="cella" style="grid-column:span 4">
-    <div class="et">Favicon 16 px, scheda del browser</div>
-    <div class="tab"><img src="favicon.svg" width="16" height="16" alt=""> Abra Robotics · Prima la prova</div>
+  <div class="cella" style="grid-column:span 5">
+    <span class="et">Favicon 16 px disegnata pixel per pixel</span>
+    <div class="tab"><img src="favicon-16.svg" width="16" height="16" alt=""> Abra Robotics · Robotica applicata</div>
     <div class="barra">abrarobotics.com</div>
-    <div class="px" style="margin-top:26px">
-      <figure><img src="favicon.svg" width="16" height="16" alt=""><figcaption>16</figcaption></figure>
+    <div class="px" style="margin-top:22px">
+      <figure><img src="favicon-16.svg" width="16" height="16" alt=""><figcaption>16</figcaption></figure>
       <figure><img src="favicon.svg" width="32" height="32" alt=""><figcaption>32</figcaption></figure>
       <figure><img src="favicon.svg" width="48" height="48" alt=""><figcaption>48</figcaption></figure>
-      <figure><img class="pix" src="favicon.svg" width="16" height="16" style="width:64px;height:64px" alt=""><figcaption>16 ingrandito 4x</figcaption></figure>
+      <figure><img class="pix" src="favicon-16.svg" style="width:128px;height:128px" alt=""><figcaption>16 px ingrandita 8 volte</figcaption></figure>
     </div>
   </div>
-  <div class="cella" style="grid-column:span 4">
-    <div class="et">32 px e 24 px, simbolo e logotipo</div>
+  <div class="cella" style="grid-column:span 3">
+    <span class="et">Monocromia, piccole misure</span>
     <div class="px">
-      <figure><img src="simbolo-netto.svg" style="height:32px" alt=""><figcaption>Simbolo 32</figcaption></figure>
-      <figure><img src="simbolo-netto.svg" style="height:16px" alt=""><figcaption>Simbolo 16</figcaption></figure>
-      <figure><img src="monogramma.svg" style="height:32px" alt=""><figcaption>Monogramma 32</figcaption></figure>
-      <figure><img src="monogramma.svg" style="height:16px" alt=""><figcaption>16</figcaption></figure>
+      <figure><img src="simbolo-netto.svg" style="height:32px" alt=""><figcaption>32</figcaption></figure>
+      <figure><img src="simbolo-netto.svg" style="height:16px" alt=""><figcaption>16</figcaption></figure>
+      <figure><img src="mono-positivo.svg" style="height:26px" alt=""><figcaption>Logotipo 26</figcaption></figure>
     </div>
-    <div style="margin-top:30px"><img src="orizzontale.svg" style="height:32px" alt="Abra Robotics"></div>
-    <div style="margin-top:12px"><img src="orizzontale.svg" style="height:22px" alt="Abra Robotics"></div>
+    <p class="sm" style="font:400 13px/1.45 var(--f-testo);margin-top:20px;color:var(--grafite)">Anche nero pieno a 16 px la sagoma resta propria: un triangolo rettangolo con la pancia della b, nessuna A isolata.</p>
   </div>
   <div class="cella" style="grid-column:span 4">
-    <div class="et">Avatar social, tondo e quadrato</div>
+    <span class="et">Avatar social, tondo e quadrato</span>
     <div class="avatar">
-      <div class="tondo"><img src="simbolo-bianco.svg" alt=""></div>
-      <div class="quadro"><img src="simbolo-bianco.svg" alt=""></div>
-      <div class="tondo chiaro"><img src="simbolo.svg" alt=""></div>
+      <div class="tondo"><img src="monogramma.svg" alt=""></div>
+      <div class="quadro"><img src="monogramma.svg" alt=""></div>
+      <div class="tondo"><img src="monogramma-grafite.svg" alt=""></div>
     </div>
-    <div class="feed"><div class="t"><img src="simbolo-bianco.svg" alt=""></div><div>Abra Robotics<small>Robotica applicata · 2 h</small></div></div>
+    <div class="feed"><div class="t"><img src="monogramma.svg" alt=""></div><div>Abra Robotics<small>Robotica applicata · 2 h</small></div></div>
   </div>
 </div>
 
 <div class="riga">
   <div class="cella grande">
-    <div class="misure">
-      <img src="orizzontale.svg" alt="Abra Robotics">
+    <div>
+      <img src="orizzontale.svg" alt="Abra Robotics" style="width:100%">
     </div>
     <div>
-      <div class="et" style="color:var(--quota)">Costruzione</div>
-      <p style="font:400 17px/1.5 var(--f-testo);max-width:44ch;margin-top:12px">Il triangolo pieno sulla linea di base è il segno che nel disegno tecnico indica il riferimento da cui partono tutte le misure (ISO 5459). Il vuoto sopra la traversa e il triangolo pieno hanno la stessa forma e la stessa misura: quello che si misura prima e quello che resta al cliente. Le aste salgono con pendenza 2 a 1.</p>
-      <div style="display:flex;gap:16px;margin-top:26px;align-items:center">
-        <span class="rq et"><span>Pendenza</span><span class="num">2 : 1</span><span class="rif">A</span></span>
-        <span class="rq et"><span>Tratto</span><span class="num">16 / 100</span><span class="rif">A</span></span>
-      </div>
+      <span class="et" style="color:var(--quota)">Costruzione</span>
+      <svg class="costr" viewBox="-20 -14 190 136" width="100%" style="margin-top:10px" aria-label="Costruzione della legatura Ab">
+        <path d="M86.79 101.58L85.28 101.48L84.39 101.38L82.31 101.04L80.84 100.7L79.97 100.45L78.72 100.05L78.72 100L78.59 100L78.22 99.87L78.22 100L60.22 100L60.22 73.88L33.19 73.88L20.12 100L0 100L50 0L78.22 0L78.22 30.13L79.69 29.63L80.84 29.3L82.31 28.96L83.49 28.75L84.99 28.55L86.19 28.45L87.7 28.4L89.36 28.41L90.56 28.47L92.06 28.62L93.25 28.79L94.73 29.09L95.9 29.38L97.34 29.82L98.47 30.22L99.87 30.8L100.95 31.31L102.29 32.03L103.31 32.64L104.57 33.48L105.53 34.2L106.7 35.16L107.59 35.96L108.66 37.03L109.86 38.38L110.61 39.32L111.49 40.55L112.14 41.56L112.89 42.87L113.44 43.94L114.06 45.31L114.51 46.43L115.08 48.14L115.32 49.01L115.66 50.49L115.97 52.27L116.17 54.36L116.22 56.02L116.21 74.74L116.1 76.54L115.97 77.73L115.72 79.22L115.32 80.99L114.81 82.72L114.4 83.85L113.82 85.24L113.31 86.33L112.6 87.66L112.14 88.44L111.14 89.95L109.86 91.62L108.66 92.97L107.38 94.24L106.24 95.24L105.53 95.8L103.83 97.03L102.29 97.97L100.69 98.82L99.87 99.2L98.47 99.78L96.76 100.37L94.73 100.91L92.96 101.25L91.17 101.48L89.36 101.59ZM60.22 56.02L60.22 19.8L40.75 58.76L60.22 58.76ZM89.86 83.52L90.48 83.41L91.4 83.18L91.99 82.98L92.57 82.74L93.14 82.46L93.68 82.15L94.46 81.61L94.95 81.21L95.41 80.78L95.84 80.32L96.42 79.58L96.77 79.06L97.09 78.51L97.37 77.95L97.61 77.37L97.81 76.77L97.97 76.16L98.09 75.55L98.18 74.92L98.22 74.29L98.22 56.09L98.2 55.39L98.09 54.45L97.9 53.53L97.61 52.63L97.23 51.77L96.77 50.94L96.42 50.42L96.04 49.92L95.41 49.22L94.71 48.58L93.95 48.02L93.14 47.54L92.29 47.13L91.4 46.82L90.48 46.59L89.55 46.45L88.53 46.4L87.22 46.42L86.59 46.48L85.97 46.59L85.05 46.82L84.46 47.02L83.59 47.39L83.04 47.69L82.5 48.02L81.74 48.58L81.27 49L80.82 49.44L80.41 49.92L79.85 50.68L79.51 51.21L79.08 52.05L78.84 52.63L78.64 53.23L78.48 53.84L78.35 54.45L78.27 55.08L78.23 55.71L78.22 73.91L78.25 74.61L78.35 75.55L78.55 76.47L78.84 77.37L79.08 77.95L79.36 78.51L79.68 79.06L80.03 79.58L80.61 80.32L81.27 81L81.99 81.61L82.77 82.15L83.59 82.61L84.16 82.87L84.75 83.09L85.66 83.35L86.59 83.52L87.53 83.59L88.92 83.59Z" fill="none" stroke="#1A2125" stroke-width=".6"/>
+        <g stroke="#008351" stroke-width=".8" fill="none"><path d="M52.22 100v-8h8"/><path d="M12 100A12 12 0 0 0 5.37 89.27"/></g>
+        <g stroke="#5C676D" stroke-width=".45"><line x1="-16" y1="100" x2="140" y2="100"/><line x1="69.22" y1="-10" x2="69.22" y2="112" stroke-dasharray="6 1.5 1 1.5"/></g>
+        <g font-size="6" fill="#008351" letter-spacing=".3"><text x="40" y="90">90°</text><text x="14" y="96">2 : 1</text></g>
+        <g font-size="5.5" fill="#5C676D" letter-spacing=".4"><text x="82" y="-6">ASTA COMUNE</text><text x="-16" y="112">LINEA DI BASE</text></g>
+      </svg>
+      <p style="font:400 15px/1.5 var(--f-testo);max-width:46ch;margin-top:8px">La A è disegnata sulla squadra da disegno: l'asta destra è verticale, ad angolo retto con la linea di base, e diventa l'asta della b. La diagonale sale con pendenza 2 a 1. Le stesse regole tagliano il terminale della r e la gamba della R.</p>
     </div>
   </div>
 </div>
 
 <div class="riga">
-  <div class="cella scuro" style="grid-column:span 6;min-height:260px;display:flex;flex-direction:column;justify-content:space-between">
-    <div class="et">Negativo su grafite</div>
-    <img src="orizzontale-bianco.svg" style="width:78%" alt="">
+  <div class="cella verde" style="grid-column:span 5;min-height:240px;display:flex;flex-direction:column;justify-content:space-between">
+    <span class="et">Bianco su verde di misura</span>
+    <img src="orizzontale-bianco.svg" style="width:86%" alt="">
   </div>
-  <div class="cella" style="grid-column:span 3;min-height:260px;display:flex;flex-direction:column;justify-content:space-between">
-    <div class="et">Verticale</div>
-    <img src="verticale.svg" style="width:82%" alt="">
+  <div class="cella scuro" style="grid-column:span 4;min-height:240px;display:flex;flex-direction:column;justify-content:space-between">
+    <span class="et">Negativo su grafite</span>
+    <img src="mono-negativo.svg" style="width:92%" alt="">
   </div>
-  <div class="cella" style="grid-column:span 3;min-height:260px;display:flex;flex-direction:column;justify-content:space-between">
-    <div class="et">Monogramma, timbro di revisione</div>
-    <img src="monogramma.svg" style="width:52%" alt="">
+  <div class="cella" style="grid-column:span 3;min-height:240px;display:flex;flex-direction:column;justify-content:space-between">
+    <span class="et">Verticale</span>
+    <img src="verticale.svg" style="width:90%" alt="">
   </div>
 </div>
 </body>

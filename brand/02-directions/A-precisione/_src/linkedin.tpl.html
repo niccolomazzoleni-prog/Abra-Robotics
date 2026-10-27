@@ -7,38 +7,40 @@
 <link rel="stylesheet" href="../assets/a.css">
 <style>
   body{width:1200px;height:1500px;overflow:hidden;background:var(--alluminio);position:relative}
+  .fascia{position:absolute;left:0;right:0;top:0;height:420px;background:var(--verde)}
   .pad{position:absolute;inset:64px 72px}
-  .testa{display:flex;justify-content:space-between;align-items:center;color:var(--quota)}
+  .testa{display:flex;justify-content:space-between;align-items:center;color:#fff}
   .testa .et{font-size:15px}
-  h1{font:600 70px/1.02 var(--f-titolo);letter-spacing:-.012em;margin-top:44px;max-width:none}
-  .tavola{position:absolute;left:72px;right:72px;top:404px;height:604px;background:var(--bianco);border:1px solid var(--linea)}
+  h1{font:700 64px/1.06 var(--f-titolo);letter-spacing:-.025em;margin-top:40px;max-width:none;color:#fff}
+  .tavola{position:absolute;left:72px;right:72px;top:380px;height:620px;background:var(--bianco);border:1px solid var(--linea)}
   .tavola img{position:absolute;left:50%;transform:translateX(-50%);top:80px;height:420px}
   .q{position:absolute;color:var(--quota)}
   .qh{left:318px;width:418px;top:520px;height:1px;background:var(--quota)}
   .qh::before,.qh::after{content:"";position:absolute;top:-7px;width:1px;height:15px;background:var(--quota)}
   .qh::before{left:0}.qh::after{right:0}
-  .qh b{position:absolute;left:50%;top:10px;transform:translateX(-50%);font:500 15px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
+  .qh b{position:absolute;left:50%;top:10px;background:var(--bianco);padding:0 6px;transform:translateX(-50%);font:500 15px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
   .tav-h{position:absolute;left:24px;right:24px;top:20px;display:flex;justify-content:space-between;color:var(--quota)}
   .tav-h .et{font-size:14px}
   .tav-f{position:absolute;left:24px;right:24px;bottom:18px;display:flex;justify-content:space-between;color:var(--quota)}
   .tav-f .segnaposto{font-size:12px}
-  .targa{position:absolute;left:72px;right:72px;top:1048px;border:2px solid var(--grafite);background:var(--bianco)}
+  .targa{position:absolute;left:72px;right:72px;top:1040px;border:2px solid var(--grafite);background:var(--bianco)}
   .targa .r{display:grid;grid-template-columns:270px 1fr 40px;align-items:center;border-top:1px solid var(--linea);padding:15px 22px;font:500 24px/1.25 var(--f-testo)}
   .targa .r:first-child{border-top:0}
   .targa .r small{font:500 14px var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;color:var(--quota)}
   .sq{width:16px;height:16px;background:var(--verde);justify-self:end}
+  .targa .r small,.tav-h .et,.tav-f .segnaposto{font-size:15px}
   .piede{position:absolute;left:72px;right:72px;bottom:56px;display:flex;justify-content:space-between;align-items:center}
   .piede img{height:46px;margin-left:-10px}
   .piede .et{color:var(--quota);font-size:14px}
 </style>
 </head>
 <body>
-<div class="pad">
-  <div class="testa"><span class="et">Verbale di consegna · {{LUOGO}}</span><span class="et num">29.10.2026</span></div>
-  <h1>Fai lavorare il tesista sul robot<br>dal primo giorno, con mappa<br>e simulatore già pronti.</h1>
-</div>
+<div class="fascia"><div class="pad">
+  <div class="testa"><span class="et">{{LUOGO}}</span><span class="et num">{{DATA}}</span></div>
+  <h1>Fai lavorare {{SOGGETTO}} sul robot<br>dal primo giorno, con mappa<br>e simulatore già pronti.</h1>
+</div></div>
 <div class="tavola">
-  <div class="tav-h"><span class="et">Quadrupede Go2 EDU con LiDAR · {{CLIENTE}}</span><span class="et">Tesi in azienda</span></div>
+  <div class="tav-h"><span class="et">Quadrupede Go2 EDU con LiDAR · {{CLIENTE}}</span><span class="et">{{PROGETTO}}</span></div>
   <img src="../assets/img/go2-lato-segnaposto.png" alt="Quadrupede, immagine segnaposto">
   <div class="q qh"><b class="num">700 mm</b></div>
   <div class="tav-f"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree. Nel post finale va la foto della consegna</span><span class="segnaposto">{{NOTA}}</span></div>
@@ -47,7 +49,7 @@
   <div class="r"><small>Mappa</small><span>SLAM e localizzazione impostati nel Laboratorio Abra</span><i class="sq"></i></div>
   <div class="r"><small>Digital twin</small><span>Stabilimento rilevato con il LiDAR</span><i class="sq"></i></div>
   <div class="r"><small>Simulatore</small><span>MuJoCo, per provare il codice prima del robot</span><i class="sq"></i></div>
-  <div class="r"><small>Documentazione</small><span>Manuale tecnico rev 1.1 e repository condiviso</span><i class="sq"></i></div>
+  <div class="r"><small>Documentazione</small><span>{{MANUALE}} e repository condiviso</span><i class="sq"></i></div>
 </div>
 <div class="piede"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span class="et">Robotica applicata · abrarobotics.com</span></div>
 </body>

@@ -1,67 +1,58 @@
-# Palette. Territorio B, Misura d'uomo
+# Palette v2. Territorio B, Montato a vista
 
-Cinque colori portanti e quattro di servizio. Il fondo è sempre chiaro (avorio o carta); i tre colori pieni lavorano come campiture da pittura, mai come sfumature. Nessun gradiente, nessuna trasparenza decorativa: quando due forme si sovrappongono, il punto d'incontro diventa una finestra del colore di fondo, come nel simbolo.
+Colore firma esclusivo della direzione: **Rosso Abra con ocra**, nella tradizione delle macchine da ufficio italiane del Novecento. Il resto della palette è neutro e freddo come il grigio delle stesse macchine, così il rosso resta un segnale e non diventa decorazione. In v2 sono stati tolti verderame, avorio caldo e inchiostro bruno (vedi `changelog.md`).
 
-## Colori portanti
+## Colori
 
-| Nome | HEX | RGB | CMYK indicativo (patinata) | Ruolo |
+| Nome | HEX | RGB | CMYK da profilo | Ruolo |
 |-|-|-|-|-|
-| **Avorio** | `#F3EEE3` | 243, 238, 227 | 3 / 5 / 12 / 0 | Fondo di sito, social, totem. La "carta" del marchio |
-| **Inchiostro** | `#24211E` | 36, 33, 30 | 60 / 60 / 65 / 80 | Testo, asta del simbolo, linee. Mai come fondo dominante |
-| **Rosso Abra** | `#BB3B26` | 187, 59, 38 | 10 / 85 / 95 / 10 | Colore della marca: pancia del simbolo, enfasi, pulsanti, serie eventi |
-| **Ocra** | `#E2A93B` | 226, 169, 59 | 10 / 35 / 85 / 0 | Spalla del simbolo, archi, accenti caldi. Solo come campitura, mai per il testo su chiaro |
-| **Verderame** | `#2B6F67` | 43, 111, 103 | 80 / 30 / 55 / 20 | Serie dei documenti di progetto, contrappunto freddo. Mai accostato al rosso su bianco in tre bande (eviterebbe il tricolore) |
+| **Rosso Abra** | `#B83A2B` | 184, 58, 43 | 7 / 86 / 89 / 13 | Marchio, un solo pannello pieno per pagina, filetti di serie |
+| **Ocra** | `#E2A93B` | 226, 169, 59 | 2 / 30 / 91 / 5 | Bollino "Esempio", fascia dei contatti sul totem, segno della serie laboratori |
+| Ocra chiara | `#F2E0B0` | 242, 224, 176 | 5 / 9 / 32 / 0 | Riquadro dei limiti dichiarati |
+| **Grafite** | `#232527` | 35, 37, 39 | 80 / 74 / 66 / 55 | Testo, pulsanti, filetti. Neutra, senza dominante bruna |
+| Grigio | `#5E6264` | 94, 98, 100 | 67 / 56 / 51 / 9 | Testo secondario, etichette di tabella |
+| **Grigio Lettera** | `#DADCD6` | 218, 220, 214 | 12 / 8 / 10 / 0 | Pannelli, sfondo delle foto dei robot |
+| Carta | `#F6F4EF` | 246, 244, 239 | 3 / 3 / 4 / 0 | Fondo e giunti tra i pannelli |
+| Bianco | `#FFFFFF` | 255, 255, 255 | 0 / 0 / 0 / 0 | Pannelli di testo, documenti |
 
-## Colori di servizio
+I CMYK sono calcolati con il profilo `Generic CMYK Profile` di macOS, intento colorimetrico relativo; il ritorno a sRGB resta entro dE 2,3 per tutti i colori tranne il Rosso Abra (dE 5,1), che esce dal gamut della quadricromia.
 
-| Nome | HEX | RGB | CMYK indicativo | Ruolo |
-|-|-|-|-|-|
-| Carta | `#FBF8F2` | 251, 248, 242 | 1 / 2 / 5 / 0 | Fondo dei documenti stampati e dei cartellini |
-| Grafite | `#5C554D` | 92, 85, 77 | 50 / 50 / 55 / 45 | Testo secondario, didascalie, etichette |
-| Pietra | `#D9D1C3` | 217, 209, 195 | 15 / 15 / 22 / 0 | Filetti, bordi, fondi di tabella |
-| Ocra chiara | `#F3DDA9` | 243, 221, 169 | 4 / 12 / 38 / 0 | Riquadri dei limiti dichiarati, enfasi su rosso, serie ocra |
-| Rosso scuro | `#8E2B1B` | 142, 43, 27 | 20 / 90 / 100 / 30 | Rosso per testo piccolo quando serve un contrasto AAA |
-
-I valori CMYK sono una conversione indicativa per carta patinata: prima della prima tiratura vanno verificati con una prova colore e, se serve una tinta piatta, scelti su una mazzetta Pantone reale. Rosso e ocra su carta avorio non patinata tendono a scurirsi: chiedere la prova su quella carta.
+**Stampa del Rosso Abra.** Per biglietti, retro dei biglietti, flight case e totem si usa una tinta piatta. Riferimento Pantone indicativo nella famiglia dei rossi aranciati (per esempio PANTONE 7621 C o 1795 C), da scegliere sulla mazzetta reale confrontata con una prova colore; in quadricromia si accetta il 7 / 86 / 89 / 13, leggermente più spento. **Ocra**: in gamut, riferimento indicativo PANTONE 7409 C, da verificare. Il rosso scuro della v1 è stato eliminato perché fuori gamut (dE 7,8).
 
 ## Rapporti d'uso
 
-| Colore | Quota indicativa sulla superficie | Note |
+| Colore | Quota indicativa | Regola |
 |-|-|-|
-| Avorio e carta | 55% | Il respiro del sistema |
-| Inchiostro | 15% | Soprattutto testo; come superficie solo nell'asta |
-| Rosso Abra | 13% | Un solo grande elemento rosso per composizione |
-| Ocra e ocra chiara | 9% | Archi e riquadri |
-| Verderame | 5% | Copertine della serie progetti, etichette |
-| Grafite e pietra | 3% | Servizio |
+| Bianco e carta | 55% | Fondo e pannelli di testo |
+| Grigio Lettera | 18% | Pannelli di dati e di immagine |
+| Grafite e grigio | 14% | Testo e strumenti |
+| Rosso Abra | 10% | Massimo un pannello pieno per pagina; nei documenti contrattuali solo marchio e filetti |
+| Ocra e ocra chiara | 3% | Solo per esempi, limiti e contatti |
 
-**Serie per tipo di materiale** (come le collane di un editore): rosso per eventi e noleggio, verderame per proposte e preventivi, ocra per consegne, manuali e casi studio. La copertina dice di che documento si tratta prima del titolo.
+**Pagina industriale** (preventivo interno, verbali, manuali): il rosso compare solo nel marchio, nell'etichetta e nel filetto della fase in corso. Esempio in `applicazioni/preventivo-interna.png`.
 
-**Su fondo rosso** il logotipo si usa nella versione mono negativa (la pancia rossa sparirebbe) e l'enfasi del titolo passa da ocra a ocra chiara.
+**Serie dei materiali**: proposte e preventivi con pannello rosso in copertina; eventi con fascia rossa e fascia ocra; manuali e consegne con copertina Grigio Lettera e filetto ocra.
 
 ## Contrasti WCAG 2.1 calcolati
 
-Rapporto di contrasto da luminanza relativa, formula WCAG 2.1. Soglie: 4,5 per il testo normale (AA), 3 per il testo grande da 24 px o 19 px grassetto (AA grande), 7 per AAA.
+Soglie: 4,5 testo normale (AA), 3 testo grande da 24 px o 19 px grassetto, 7 AAA.
 
-| Testo | Fondo | Rapporto | Esito | Uso ammesso |
+| Testo | Fondo | Rapporto | Esito | Uso |
 |-|-|-|-|-|
-| Inchiostro | Avorio | 13,84 | AAA | Tutto il testo |
-| Inchiostro | Carta | 15,11 | AAA | Testo dei documenti |
-| Grafite | Avorio | 6,34 | AA | Didascalie, testo secondario |
-| Grafite | Carta | 6,92 | AA | Didascalie nei documenti |
-| Grafite | Pietra | 4,84 | AA | Intestazioni di tabella |
-| Rosso Abra | Avorio | 4,82 | AA | Titoli in corsivo, link, etichette |
-| Rosso Abra | Carta | 5,26 | AA | Enfasi nei documenti |
-| Rosso scuro | Avorio | 7,23 | AAA | Testo piccolo in rosso |
-| Avorio | Rosso Abra | 4,82 | AA | Testo su campitura rossa, pulsanti |
-| Carta | Rosso Abra | 5,26 | AA | Pulsanti, titoli su rosso |
-| Ocra chiara | Rosso Abra | 4,18 | AA grande | Solo parole in corsivo dei titoli su rosso |
-| Avorio | Verderame | 5,08 | AA | Testo su copertine verdi |
-| Carta | Verderame | 5,55 | AA | Testo su copertine verdi |
-| Ocra chiara | Verderame | 4,40 | AA grande | Titoli su verde |
-| Inchiostro | Ocra | 7,60 | AAA | Testo su campitura ocra |
-| Inchiostro | Ocra chiara | 11,99 | AAA | Riquadri dei limiti |
-| Avorio | Inchiostro | 13,84 | AAA | Testo su asta o fondi scuri piccoli |
-| Ocra | Inchiostro | 7,60 | AAA | Numeri e accenti su scuro |
+| Grafite | Bianco | 15,38 | AAA | Tutto il testo |
+| Grafite | Carta | 13,99 | AAA | Tutto il testo |
+| Grafite | Grigio Lettera | 11,12 | AAA | Testo sui pannelli grigi |
+| Grafite | Ocra | 7,30 | AAA | Bollino "Esempio", fascia contatti |
+| Grafite | Ocra chiara | 11,77 | AAA | Riquadro dei limiti |
+| Grigio | Bianco | 6,16 | AA | Didascalie, etichette |
+| Grigio | Carta | 5,61 | AA | Didascalie |
+| Grigio | Ocra chiara | 4,72 | AA | Note nei limiti |
+| Rosso Abra | Bianco | 5,71 | AA | Marchio, etichette rosse |
+| Rosso Abra | Carta | 5,19 | AA | Marchio |
+| Bianco | Rosso Abra | 5,71 | AA | Testo sul pannello rosso |
+| Carta | Rosso Abra | 5,19 | AA | Titoli sul pannello rosso |
+| Carta | Grafite | 13,99 | AAA | Pulsanti |
+| Ocra chiara | Rosso Abra | 4,37 | AA grande | Solo testo da 24 px in su |
+| Rosso Abra | Grigio Lettera | 4,13 | AA grande | Solo testo da 24 px in su |
 
-**Coppie vietate per il testo**: ocra su avorio (1,82), inchiostro su rosso (2,87), ocra su rosso (2,65), ocra su verderame (2,79). Restano ammesse come forme accostate, mai come testo.
+**Coppie vietate per il testo**: Grigio su Grigio Lettera (4,46), ocra su carta (1,92), grafite su rosso (2,69), ocra su rosso (2,71). Nelle applicazioni v2 nessun testo usa queste coppie.

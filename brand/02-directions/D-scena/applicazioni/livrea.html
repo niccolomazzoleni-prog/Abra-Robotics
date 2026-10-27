@@ -1,84 +1,73 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8">
-<title>Livrea: flight case, adesivo e targa del robot</title>
+<title>Livrea: flight case, adesivo, targa e segni a terra</title>
 <link rel="stylesheet" href="../sistema.css">
 <style>
-body{margin:0;font-family:var(--f);background:var(--stucco);color:var(--velluto)}
+body{margin:0;font-family:var(--f);background:var(--cemento);color:var(--grafite)}
 .tav{position:relative;width:1600px;height:1100px;overflow:hidden;padding:56px 64px}
 .tit{display:flex;justify-content:space-between;align-items:baseline}
-.tit h1{margin:0;font-size:56px}
-.tit .lbl{font-size:12px;color:var(--fumo)}
+.tit h1{margin:0;font-size:44px}
+.tit .lbl{color:var(--fumo)}
 .grid{display:grid;grid-template-columns:860px 1fr;gap:56px;margin-top:36px}
-.cap{font-size:12px;margin:14px 0 0;color:var(--fumo)}
-/* flight case */
-.case{position:relative;width:860px;height:560px;background:var(--buio);border-radius:10px;overflow:hidden;box-shadow:0 22px 40px rgba(33,20,18,.25)}
-.case .bordo{position:absolute;inset:0;border:16px solid #9C948A;border-radius:10px}
-.case .ang{position:absolute;width:62px;height:62px;background:#B9B1A6;border-radius:6px}
-.case .maniglia{position:absolute;left:340px;top:40px;width:180px;height:30px;border:7px solid #9C948A;border-radius:6px}
-.case .palco{left:16px;right:16px;bottom:16px;height:190px;--p-top-l:7%;--p-top-r:7%;width:auto}
-.case .nome{position:absolute;left:64px;top:110px;color:var(--stucco);font-size:150px}
-.case .nome small{display:block;font-stretch:var(--largo);font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--luce);margin-bottom:12px}
-.case .logo{position:absolute;right:64px;top:118px;height:30px}
-.case .riga{position:absolute;left:110px;right:110px;bottom:60px;display:flex;justify-content:space-between;color:var(--velluto);font-size:12px}
-.case .alto{position:absolute;right:64px;top:180px;color:var(--fumo-chiaro);font-size:12px;text-align:right}
-.case .alto svg{width:30px;height:30px;display:block;margin:0 0 6px auto}
-/* robot */
-.robot{position:relative;width:100%;height:560px;background:var(--velluto);overflow:hidden}
-.robot .palco{left:0;right:0;width:auto;bottom:0;height:120px;--p-top-l:6%;--p-top-r:6%}
-.robot img.r{position:absolute;left:90px;top:70px;width:400px}
-.robot .adesivo{position:absolute;left:250px;top:92px;width:46px;transform:rotate(-22deg) skewX(-18deg)}
-.robot .linea{position:absolute;left:285px;top:100px;width:120px;height:1.5px;background:var(--stucco);transform-origin:left;transform:rotate(-30deg)}
-.robot .etichetta{position:absolute;left:400px;top:40px;color:var(--stucco);font-size:12px}
-.robot .dida{position:absolute;left:24px;top:18px;width:330px;margin:0;font-size:12px;color:var(--fumo-chiaro)}
-.sotto{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}
-.adesivo-g{background:var(--carta);height:230px;display:grid;place-items:center;position:relative}
-.adesivo-g img{height:150px;filter:drop-shadow(0 0 0 var(--stucco))}
-.targa{background:var(--carta);height:230px;display:grid;place-items:center}
-.plate{width:300px;height:120px;background:var(--velluto);color:var(--stucco);border-radius:6px;padding:14px 16px;position:relative;overflow:hidden}
-.plate .palco{left:0;right:0;width:auto;bottom:0;height:30px;--p-top-l:5%;--p-top-r:5%}
-.plate b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:34px;line-height:.9}
-.plate span{font-size:10px;display:block;margin-top:6px;color:var(--fumo-chiaro)}
-.plate img{position:absolute;right:16px;top:14px;height:30px}
-.plate .lbl{position:absolute;left:16px;bottom:8px;font-size:8px;color:var(--velluto);z-index:2}
-.nastro{display:grid;grid-template-columns:240px 1fr;gap:24px;margin-top:30px;align-items:center}
-.nastro svg{width:240px;display:block}
-.nastro .lbl{font-size:11px;margin:0 0 8px}
-.nastro p.txt{margin:0;font-size:14px;line-height:1.5}
+.cap{font-size:13px;margin:12px 0 0;color:var(--fumo);line-height:1.45}
+.case{position:relative;width:860px;height:540px;background:var(--grafite);border-radius:10px;overflow:hidden;box-shadow:0 22px 40px rgba(32,33,36,.25)}
+.case .bordo{position:absolute;inset:0;border:16px solid #A7A6A1;border-radius:10px}
+.case .ang{position:absolute;width:62px;height:62px;background:#C4C3BE;border-radius:6px}
+.case .maniglia{position:absolute;left:340px;top:40px;width:180px;height:30px;border:7px solid #A7A6A1;border-radius:6px}
+.case .finestra{position:absolute;left:530px;top:110px;width:270px;height:330px;background:var(--magenta)}
+.case .finestra img{position:absolute;left:50%;top:60%;width:170px;transform:translate(-50%,-50%)}
+.case .nome{position:absolute;left:64px;top:120px;color:var(--carta);font-size:132px;margin:0}
+.case .nome small{display:block;font-family:var(--f-segno);font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--fumo-chiaro);margin-bottom:14px}
+.case .logo{position:absolute;left:64px;bottom:60px;height:44px}
+.case .alto{position:absolute;left:64px;top:356px;color:var(--fumo-chiaro);font-size:14px;line-height:1.5}
+.robot{position:relative;height:540px;background:var(--carta);overflow:hidden}
+.robot img{position:absolute;left:90px;top:70px;width:400px}
+.robot .call{position:absolute;left:24px;top:24px;font-size:12px;margin:0}
+.robot svg{position:absolute;inset:0;width:100%;height:100%}
+.robot .dida{position:absolute;left:24px;right:24px;bottom:18px;font-size:12.5px;color:var(--fumo);margin:0}
+.sotto{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}
+.sotto>div{background:var(--carta);height:250px;position:relative;display:grid;place-items:center}
+.sotto .lbl{position:absolute;left:18px;bottom:14px;font-size:10px;color:var(--fumo)}
+.plate{width:330px;height:132px;background:var(--grafite);color:var(--carta);border-radius:6px;padding:16px 18px;position:relative}
+.plate b{display:block;font-family:var(--f-scena);font-weight:800;font-size:40px;line-height:.9}
+.plate span{font-size:13px;display:block;margin-top:8px;color:var(--fumo-chiaro)}
+.plate img{position:absolute;right:18px;top:16px;height:34px}
+.plate .bar{position:absolute;left:0;right:0;bottom:0;height:12px;background:var(--magenta)}
+.terra{display:grid;grid-template-columns:300px 1fr;gap:24px;margin-top:28px;align-items:center}
+.terra svg{width:300px;display:block}
+.terra p{margin:0;font-size:14px;line-height:1.5}
+.terra .lbl{font-size:11px;margin:0 0 8px;color:var(--grafite)}
 </style></head>
 <body>
 <div class="tav">
-  <div class="tit"><h1 class="disp">Livrea dei robot e dei flight case</h1><span class="lbl">Ogni robot che esce dal laboratorio porta il segno Abra</span></div>
+  <div class="tit"><h1 class="titolo">Livrea dei robot e dei flight case</h1><span class="lbl">Ogni robot che esce dal laboratorio porta il segno Abra</span></div>
   <div class="grid">
     <div>
       <div class="case">
         <div class="bordo"></div>
         <div class="ang" style="left:0;top:0"></div><div class="ang" style="right:0;top:0"></div><div class="ang" style="left:0;bottom:0"></div><div class="ang" style="right:0;bottom:0"></div>
         <div class="maniglia"></div>
-        <div class="disp nome"><small>Umanoide · unità</small>G1 · 01</div>
-        <img class="logo" src="../logo/orizzontale-negativo.svg" alt="Abra Robotics">
-        <div class="alto"><svg viewBox="0 0 30 30"><path d="M15 3 6 14h6v13h6V14h6Z" fill="#B5A99C"/></svg>Questo lato in alto<br>Peso con robot 68 kg (esempio)</div>
-        <div class="palco"></div>
-        <div class="riga lbl"><span>Contiene: robot, 2 batterie, caricatore</span><span>Tecnico di turno: vedi targa</span></div>
+        <p class="scena nome"><small>Umanoide · unità</small>G1 · 01</p>
+        <p class="alto">Questo lato in alto<br>Contiene robot, 2 batterie, caricatore</p>
+        <div class="finestra arco"><img src="../logo/simbolo-negativo.svg" alt=""></div>
+        <img class="logo" src="../logo/orizzontale-negativo.svg" alt="abra Robotics">
       </div>
-      <p class="cap">Flight case in alluminio e compensato, fronte. Pannello stampato su vinile opaco: il palco color luce copre il terzo inferiore, il nome dell'unità è leggibile a 10 metri.</p>
+      <p class="cap">Flight case, fronte. Pannello in vinile opaco: il nome dell'unità si legge a 10 metri; l'arco magenta con il simbolo è l'unico colore, e si riconosce nei corridoi di servizio di una fiera.</p>
       <div class="sotto">
-        <div class="adesivo-g"><img src="../logo/simbolo.svg" alt="Adesivo del simbolo"><span class="lbl" style="position:absolute;left:16px;bottom:12px;font-size:10px;color:var(--fumo)">Adesivo sagomato 60 mm, vinile opaco</span></div>
-        <div class="targa"><div class="plate"><b>G1 · 01</b><span>Laboratorio Abra · revisione software 2026.10</span><img src="../logo/simbolo-negativo.svg" alt=""><div class="palco"></div><span class="lbl">Assistenza: abrarobotics.com/aiuto</span></div></div>
+        <div><img src="../logo/monogramma.svg" width="150" height="150" alt="Adesivo"><span class="lbl">Adesivo quadrato 60 mm, vinile opaco</span></div>
+        <div><div class="plate"><b>G1 · 01</b><span>Laboratorio Abra · software 2026.10</span><img src="../logo/simbolo-negativo.svg" alt=""><div class="bar"></div></div><span class="lbl">Targa 75 x 30 mm sul fianco del busto</span></div>
       </div>
     </div>
     <div>
       <div class="robot">
-        <img class="r" src="img/segnaposto-unitree-go2-tungsteno.png" alt="Quadrupede (segnaposto)">
-        <img class="adesivo" src="../logo/simbolo.svg" alt="">
-        <div class="linea"></div>
-        <p class="lbl etichetta">Adesivo sul dorso</p>
-        <div class="palco"></div>
-        <p class="dida">(Segnaposto: immagine ufficiale Unitree Go2. Nella foto propria l'adesivo copre il retro del dorso, lontano dai sensori.)</p>
+        <img src="img/segnaposto-unitree-go2.png" alt="Quadrupede (segnaposto)">
+        <svg viewBox="0 0 572 540" aria-hidden="true"><path d="M180 44 L300 44 L300 150" fill="none" stroke="#D6006F" stroke-width="2"/><circle cx="300" cy="152" r="6" fill="#D6006F"/></svg>
+        <p class="lbl call">Adesivo sul dorso, piano</p>
+        <p class="dida">(Segnaposto: immagine ufficiale Unitree Go2. L'adesivo va sulla piastra posteriore del dorso, lontano dai sensori e parallelo all'asse del robot.)</p>
       </div>
-      <p class="cap">Sul Go2 il simbolo da 60 mm va sul dorso, in posizione visibile dall'alto e dalle riprese a tre quarti. Sul G1 la targa da 75 x 30 mm va sul fianco del busto: dice quale unità è e dove chiedere assistenza.</p>
-      <div class="nastro">
-        <svg viewBox="0 0 300 170" aria-hidden="true"><rect x="0" y="0" width="300" height="170" fill="#C4BAAB"/><path d="M70 60 L230 60 L222 76 L158 76 L150 130 L134 130 L142 76 L78 76 Z" fill="#E9AE45" transform="skewX(-20) translate(30 0)"/></svg>
-        <div><p class="lbl">Segno a terra</p><p class="txt">Nastro da pavimento color luce, 50 mm. Una T da 60 x 30 cm segna il posto del robot sul palco, allo stand e nel reparto, durante la prova e il giorno dell'evento.</p></div>
+      <div class="terra">
+        <svg viewBox="0 0 300 170" aria-hidden="true"><rect width="300" height="170" fill="#D6D5CF"/><path d="M50 130 C 120 130, 150 70, 250 46" fill="none" stroke="#D6006F" stroke-width="8"/><circle cx="50" cy="130" r="18" fill="#D6006F"/><circle cx="250" cy="46" r="18" fill="#D6006F"/><text x="44" y="136" font-family="Archivo" font-weight="700" font-size="17" fill="#FAFAF7">a</text><text x="244" y="52" font-family="Archivo" font-weight="700" font-size="17" fill="#FAFAF7">b</text></svg>
+        <div><p class="lbl">Segni a terra</p><p>Due dischi in vinile magenta da 20 cm segnano il punto di partenza "a" e il punto di arrivo "b" del robot, sul palco come nel reparto. Tra i due, nastro da pavimento da 50 mm lungo il percorso provato.</p></div>
       </div>
     </div>
   </div>

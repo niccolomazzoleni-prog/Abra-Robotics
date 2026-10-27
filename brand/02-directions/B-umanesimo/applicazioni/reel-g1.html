@@ -1,38 +1,44 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8">
-<title>Copertina reel Instagram: il G1 parla con il pubblico</title>
+<title>Copertina reel Instagram: il G1 risponde al pubblico</title>
 <link rel="stylesheet" href="../assets/b.css">
 <style>
-body{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--rosso)}
-svg.s{position:absolute;inset:0}
-.g1{position:absolute;left:236px;top:640px;height:1150px;z-index:2}
-.testa{position:absolute;left:80px;right:80px;top:110px;display:flex;justify-content:space-between;align-items:center;color:var(--avorio)}
-.testa img{height:50px}
-.testa span{font:600 22px var(--sans)}
-.titolo-r{position:absolute;left:80px;right:80px;top:250px;color:var(--carta)}
-.titolo-r .etichetta{font-size:24px;color:var(--carta)}
-.titolo-r .etichetta::before{background:var(--ocra)}
-h1{font-weight:400;font-size:86px;line-height:1;letter-spacing:-.025em;margin-top:26px;font-variation-settings:"opsz" 72}
-h1 em{font-style:italic;color:var(--ocra-chiara)}
-.cartellino{position:absolute;left:600px;top:1290px;width:420px;background:var(--carta);border-radius:6px;padding:26px 28px 28px;z-index:3;color:var(--inchiostro)}
-.cartellino .esempio{font-size:15px;margin-bottom:16px}
-.cartellino p{font:italic 400 27px/1.25 var(--serif)}
-.cartellino p+p{font-style:normal;margin-top:14px}
-.cartellino b{font:600 16px var(--sans);display:block;margin-bottom:4px;font-style:normal;color:var(--grafite)}
-.seg{position:absolute;left:830px;bottom:110px;width:200px;font:italic 400 17px/1.35 var(--serif);color:var(--pietra)}
+body{width:1080px;height:1920px;overflow:hidden;padding:14px;display:grid;grid-template-rows:118px 372px 900px 1fr;gap:14px}
+.testa{background:var(--bianco);display:flex;align-items:center;justify-content:space-between;padding:0 44px}
+.testa img{height:44px}
+.testa span{font:700 20px var(--sans);color:var(--grigio)}
+.titolo{background:var(--rosso);color:var(--carta);padding:40px 44px;display:flex;flex-direction:column;justify-content:space-between}
+.titolo .etichetta{color:var(--carta);font-size:18px}.titolo .etichetta::before{background:var(--carta);width:26px;height:4px}
+h1{font:400 72px/1.02 var(--sans);letter-spacing:-.03em}
+.scena{background:var(--lettera);position:relative;overflow:hidden}
+.scena svg{position:absolute;inset:0}
+.scena img{position:absolute;left:452px;top:250px;height:430px}
+.scena .segnaposto{position:absolute;left:36px;top:30px;width:520px;font-size:17px}
+.dialogo{background:var(--bianco);padding:30px 44px;display:grid;grid-template-columns:1fr;gap:14px;align-content:start}
+.dialogo .riga{display:grid;grid-template-columns:200px 1fr;gap:20px;border-top:1px solid var(--lettera);padding-top:16px}
+.dialogo b{font:700 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);padding-top:6px}
+.dialogo p{font:400 29px/1.22 var(--serif)}
+.dialogo{position:relative}
+.dialogo .piede{position:absolute;left:44px;right:44px;bottom:30px;display:flex;justify-content:space-between;font:400 20px var(--sans);color:var(--grigio);border-top:1.5px solid var(--grafite);padding-top:16px}
+.dialogo .piede span{font-weight:700;color:var(--grafite)}
+.dialogo .fonte p{font:400 21px/1.35 var(--sans)}
 </style></head>
 <body>
-<svg class="s" viewBox="0 0 1080 1920" width="1080" height="1920" aria-hidden="true"><path fill="#F3EEE3" d="M70 1180A400 400 0 1 1 870 1180A400 400 0 1 1 70 1180Z"/><path fill="#24211E" d="M800 760H1080V1920H800Z"/><path fill="#BB3B26" d="M800 953.95A400 400 0 0 1 870 1180A400 400 0 0 1 800 1406.05Z"/><path fill="#E2A93B" d="M553.56 635.41A130 130 0 0 1 553.56 834.59L529.14 805.48A92 92 0 0 0 529.14 664.52Z"/><path fill="#E2A93B" d="M615.27 561.87A226 226 0 0 1 615.27 908.13L590.84 879.02A188 188 0 0 0 590.84 590.98Z"/></svg>
-<img class="g1" src="../assets/g1-segnaposto-unitree.png" alt="Segnaposto: Unitree G1">
-<div class="testa"><img src="../logo/mono-negativo.svg" alt="Abra Robotics"><span>Reel, 0:48</span></div>
-<div class="titolo-r">
+<div class="testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span>Reel, 0:48</span></div>
+<section class="titolo">
   <span class="etichetta">Demo dal vivo: il G1 risponde al pubblico</span>
-  <h1>Fai parlare un umanoide del tuo marchio, <em>con parole approvate da te.</em></h1>
-</div>
-<div class="cartellino">
-  <span class="esempio">Esempio di dialogo</span>
-  <p><b>Dal pubblico</b>Chi ti ha insegnato cosa dire?</p>
-  <p><b>G1</b>Il vostro team. Rispondo solo con i testi che avete approvato prima dell'evento.</p>
-</div>
-<p class="seg">Segnaposto: Unitree G1 da foto ufficiale. In copertina va un fotogramma della demo.</p>
+  <h1>Fai parlare il G1 del tuo marchio, con le frasi che approvi tu.</h1>
+</section>
+<section class="scena" aria-label="Scena: il pubblico davanti al G1 e al tecnico Abra">
+  <svg viewBox="0 0 1052 900" width="1052" height="900" aria-hidden="true"><rect x="0" y="672" width="1052" height="228" fill="#C9CBC5"/><rect x="370" y="666" width="320" height="24" fill="#B83A2B"/><path fill="#8C9092" d="M770.1 295.3A19.9 25.3 0 1 1 809.9 295.3A19.9 25.3 0 1 1 770.1 295.3ZM780.3 313.4H799.7V336.9H780.3ZM745.9 347.7Q745.9 330.4 765.3 330.4H814.7Q834.1 330.4 834.1 347.7L837.3 489.4H818L823.3 459.3H756.7L762 489.4H742.7ZM760.4 458.3H787.3L785.2 640H763.6ZM792.7 458.3H819.6L816.4 640H794.8Z"/></svg>
+  <img src="../assets/g1-in-piedi-segnaposto-unitree.png" alt="Segnaposto: umanoide Unitree G1">
+  <svg viewBox="0 0 1052 900" width="1052" height="900" aria-hidden="true"><path fill="#3E4245" d="M42.4 477.9A37.6 47.9 0 1 1 117.6 477.9A37.6 47.9 0 1 1 42.4 477.9ZM61.7 512H98.3V556.6H61.7ZM-3.4 576.9Q-3.4 544.4 33.2 544.4H126.8Q163.4 544.4 163.4 576.9L169.5 845.1H132.9L143.1 788.1H16.9L27.1 845.1H-9.5ZM24 787.1H74.9L70.8 1130H30.1ZM85.1 787.1H136L129.9 1130H89.2Z"/><path fill="#4A4E51" d="M210.2 440.6A39.8 50.6 0 1 1 289.8 440.6A39.8 50.6 0 1 1 210.2 440.6ZM230.6 476.7H269.4V523.8H230.6ZM155.3 545.3Q155.3 510.9 194.1 510.9H305.9Q344.7 510.9 344.7 545.3L351.1 828.8H312.4L357.6 828.8H142.4L187.6 828.8H148.9ZM190.8 767.6H244.6L240.3 1130H197.3ZM255.4 767.6H309.2L302.7 1130H259.7Z"/><path fill="#3E4245" d="M851.3 459.2A38.7 49.2 0 1 1 928.7 459.2A38.7 49.2 0 1 1 851.3 459.2ZM871.2 494.4H908.8V540.2H871.2ZM804.2 561.1Q804.2 527.6 841.9 527.6H938.1Q975.8 527.6 975.8 561.1L982.1 837H944.4L954.9 778.4H825.1L835.6 837H797.9ZM832.4 777.4H884.8L880.6 1130H838.7ZM895.2 777.4H947.6L941.3 1130H899.4ZM967.4 703h54.4v79.5h-54.4Z"/><path fill="#4A4E51" d="M1002.9 487.2A37.1 47.2 0 1 1 1077.1 487.2A37.1 47.2 0 1 1 1002.9 487.2ZM1021.9 520.9H1058.1V564.8H1021.9ZM957.8 584.8Q957.8 552.7 993.9 552.7H1086.1Q1122.2 552.7 1122.2 584.8L1128.3 849.2H1092.2L1102.2 793H977.8L987.8 849.2H951.7ZM984.8 792H1035L1031 1130H990.9ZM1045 792H1095.2L1089.1 1130H1049Z"/></svg>
+  <p class="segnaposto">Segnaposto: Unitree G1 da foto ufficiale; pubblico e tecnico in sagoma. In copertina va un fotogramma della demo.</p>
+</section>
+<section class="dialogo">
+  <div class="riga"><b>Dal pubblico</b><p>Chi ti ha detto cosa rispondere?</p></div>
+  <div class="riga"><b>Il G1</b><p>Il team del marchio: rispondo con i testi approvati durante la prova generale di ieri.</p></div>
+  <div class="riga fonte"><b>Fonte</b><p>Scheda prodotto approvata dal cliente, versione 3. <span class="esempio">Esempio di dialogo</span></p></div>
+  <p class="piede">Noleggio del G1 a giornata, con un tecnico Abra in presenza<span>abrarobotics.com/eventi</span></p>
+</section>
 </body></html>

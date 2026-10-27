@@ -1,220 +1,191 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Abra Robotics, territorio B: Misura d'uomo</title>
+<title>Abra Robotics, territorio B v2: Montato a vista</title>
 <link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/b.css">
 <style>
-body{background:var(--avorio)}
-.w{max-width:1280px;margin:0 auto;padding:0 64px}
-section{padding:120px 0;border-top:1px solid var(--pietra)}
-.num{font:600 13px var(--sans);color:var(--grafite);display:block;margin-bottom:22px}
-h2{font:400 64px/1.02 var(--serif);letter-spacing:-.025em;max-width:980px}
-h2 em,h1 em{font-style:italic;color:var(--rosso)}
-h3{font:400 30px/1.15 var(--serif);letter-spacing:-.01em;margin-bottom:12px}
-p.l{font:400 22px/1.5 var(--serif);max-width:760px;margin-top:28px}
-p.t{font:400 17px/1.55 var(--serif);max-width:640px;margin-top:14px}
-.cap{font:500 13px/1.45 var(--sans);color:var(--grafite);margin-top:12px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
-.card{background:var(--carta);border-radius:6px;padding:28px}
-/* copertina */
-.cover{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;padding:0 64px;max-width:1440px;margin:0 auto;position:relative}
-.cover h1{font:400 120px/.92 var(--serif);letter-spacing:-.035em;margin-top:26px}
-.cover .meta{font:500 14px/1.6 var(--sans);color:var(--grafite);margin-top:40px}
-.cover img.m{width:100%;max-width:520px;justify-self:end}
-.cover .logo{position:absolute;top:44px;left:64px;height:36px}
-/* idea */
-.frase{font:400 46px/1.15 var(--serif);letter-spacing:-.02em;max-width:1050px}
-.frase em{font-style:italic;color:var(--rosso)}
-/* segno */
-.esploso{width:100%;height:auto;margin-top:40px}
-/* versioni */
-.vers{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
-.vers div{background:var(--carta);border-radius:6px;aspect-ratio:1.2;display:flex;align-items:center;justify-content:center;padding:28px;position:relative}
-.vers div.d{background:var(--inchiostro)}
-.vers div.r{background:var(--rosso)}
+body{padding:12px}
+.w{max-width:1416px;margin:0 auto;display:grid;gap:12px}
+.p{background:var(--bianco);padding:56px 64px}
+.g{background:var(--lettera)}
+.r{background:var(--rosso);color:var(--carta)}
+.r .etichetta{color:var(--carta)}.r .etichetta::before{background:var(--carta)}
+.num{font:700 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);display:block;margin-bottom:18px}
+.r .num{color:var(--carta)}
+h1{font:400 92px/1 var(--sans);letter-spacing:-.035em;margin-top:22px}
+h2{font:400 52px/1.05 var(--sans);letter-spacing:-.03em;max-width:1000px}
+h3{font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+p.l{font:400 22px/1.45 var(--serif);max-width:780px;margin-top:22px}
+p.t{font:400 17px/1.5 var(--serif);max-width:620px}
+.cap{font:400 13px/1.45 var(--sans);color:var(--grigio);margin-top:12px}
+.g .cap{color:var(--grafite)}
+.cols{display:grid;gap:12px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+.cover{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;min-height:760px}
+.cover .p:first-child{display:flex;flex-direction:column;justify-content:space-between}
+.cover img.logo{height:46px;align-self:flex-start}
+.cover .m{display:flex;align-items:center;justify-content:center}
+.cover .m img{width:62%}
+.meta{font:400 14px/1.6 var(--sans);color:var(--grigio)}
+.vers>div{background:var(--bianco);aspect-ratio:1.35;display:flex;align-items:center;justify-content:center;padding:28px;position:relative}
+.vers>div.d{background:var(--grafite)}.vers>div.rr{background:var(--rosso)}
 .vers img{max-width:100%;max-height:100%}
-.vers span{position:absolute;left:14px;bottom:10px;font:500 12px var(--sans);color:var(--grafite)}
-.vers .d span,.vers .r span{color:var(--pietra)}
-.big{background:var(--carta);border-radius:6px;padding:90px 80px;margin-top:56px}
-.big img{width:100%}
-/* colore */
-.tinte{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr;gap:0;margin-top:56px;border-radius:6px;overflow:hidden}
-.tinte div{height:300px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;font:500 13px/1.5 var(--sans)}
-.tinte b{font:400 26px var(--serif);display:block}
-.quote{display:flex;height:22px;margin-top:20px;border-radius:12px;overflow:hidden}
-/* caratteri */
-.spec{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;margin-top:56px}
-.spec .aa{font:400 180px/1 var(--serif);letter-spacing:-.03em}
-.spec .aa i{color:var(--rosso)}
-.spec .hk{font:500 110px/1 var(--sans);letter-spacing:-.02em}
-.pattern{width:100%;height:auto;border-radius:6px;margin-top:56px;display:block}
-.icone{display:flex;gap:44px;margin-top:40px;flex-wrap:wrap}
-.icone figure{display:flex;flex-direction:column;align-items:center;gap:12px;font:500 12px var(--sans);color:var(--grafite)}
-.icone img{width:72px;height:72px}
-.duo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:40px}
-.duo div{border-radius:6px;height:340px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
-.duo img{max-height:92%;max-width:90%}
-.app{display:grid;grid-template-columns:repeat(12,1fr);gap:28px;margin-top:56px}
-.app figure{margin:0}
-.app img{width:100%;display:block;border-radius:4px;box-shadow:0 12px 30px -16px rgba(36,33,30,.35)}
-.app figcaption{font:500 13px/1.45 var(--sans);color:var(--grafite);margin-top:12px}
-.s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}.s3{grid-column:span 3}.s8{grid-column:span 8}
-.titoli li{list-style:none;font:400 38px/1.18 var(--serif);letter-spacing:-.015em;padding:20px 0;border-bottom:1px solid var(--pietra)}
-.titoli li em{font-style:italic;color:var(--rosso)}
-.titoli li small{display:block;font:500 12px var(--sans);color:var(--grafite);margin-bottom:6px}
-footer{padding:80px 0 100px;border-top:1px solid var(--pietra)}
-footer img{height:44px}
+.vers span{position:absolute;left:14px;bottom:10px;font:400 12px var(--sans);color:var(--grigio)}
+.vers .d span,.vers .rr span{color:var(--carta)}
+.tinte>div{height:230px;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;font:400 13px/1.5 var(--sans)}
+.tinte b{font:400 24px var(--sans);display:block}
+.spec{font:400 150px/1 var(--sans);letter-spacing:-.04em}
+.spec.s{font-family:var(--serif);letter-spacing:-.02em}
+.icone{display:flex;gap:44px;flex-wrap:wrap;margin-top:24px}
+.icone figure{display:flex;flex-direction:column;align-items:center;gap:10px;font:400 12px var(--sans);color:var(--grigio)}
+.icone img{width:64px;height:64px}
+.app figure{margin:0;background:var(--bianco);padding:20px}
+.app img{width:100%;display:block}
+.app figcaption{font:400 13px/1.45 var(--sans);color:var(--grigio);margin-top:10px}
+.titoli li{list-style:none;font:400 32px/1.2 var(--sans);letter-spacing:-.02em;padding:16px 0;border-top:1px solid var(--lettera)}
+.titoli small{display:block;font:700 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);margin-bottom:6px}
 a{color:var(--rosso)}
+code{font-size:.92em}
 </style></head>
 <body>
+<div class="w">
 
 <header class="cover">
-  <img class="logo" src="logo/orizzontale.svg" alt="Abra Robotics">
-  <div>
-    <span class="etichetta r">Direzione di marca, territorio B</span>
-    <h1>Misura <em>d'uomo.</em></h1>
-    <p class="l">Abra misura ogni robot sulle persone che lo useranno, e lo fa vedere. Il marchio è una lettera montata a vista, con il giunto lasciato aperto.</p>
+  <div class="p">
+    <img class="logo" src="logo/orizzontale.svg" alt="Abra Robotics">
+    <div><span class="etichetta">Direzione di marca, territorio B, versione 2</span>
+    <h1>Montato a vista.</h1>
+    <p class="l">Abra mostra come è fatto il lavoro prima che il cliente firmi. Il marchio lascia aperto il giunto tra la pancia e l'asta della a; le pagine sono montate con pannelli separati da una fessura.</p></div>
     <p class="meta">Proposta per Abra Robotics · 27 ottobre 2026 · Umanesimo tecnologico italiano</p>
   </div>
-  <img class="m" src="logo/simbolo.svg" alt="Il simbolo di Abra: la a montata">
+  <div class="p r m"><img src="logo/simbolo-negativo.svg" alt="Il simbolo di Abra"></div>
 </header>
 
-<section><div class="w">
+<section class="p">
   <span class="num">01 · L'idea</span>
-  <p class="frase">Chi valuta un robot teme di scoprire tardi cosa farà nel suo reparto. Abra glielo fa vedere prima, <em>e gli lascia in mano un'edizione da tenere</em> con il codice e il manuale del suo caso.</p>
-  <div class="grid3">
-    <div><h3>La misura in termini umani</h3><p class="t">Le prestazioni e i limiti si scrivono con l'unità di misura e con una frase che li porta nella vita di chi legge: 130 cm, all'altezza del petto di un adulto.</p></div>
-    <div><h3>Il documento come edizione</h3><p class="t">Preventivi e manuali hanno copertine a colore pieno per serie, carta avorio e titoli da libro. Sono gli oggetti che restano sulla scrivania del direttore R&amp;D.</p></div>
-    <div><h3>Qualunque robot, stesso sistema</h3><p class="t">I robot dei produttori entrano scontornati e in bicromia calda dentro la composizione delle tre forme. Cambiando marca, l'identità resta.</p></div>
+  <h2>Chi valuta un robot vuole vedere di che cosa è fatta la proposta prima di firmarla.</h2>
+  <div class="cols c3" style="margin-top:36px">
+    <div><h3>Il documento prima di tutto</h3><p class="t">La copertina del preventivo dice nella metà alta cosa il cliente sa prima di investire e cosa gli resta in mano. La pagina delle fasi ha criteri, costi, limiti e la riga per chiudere ogni fase.</p></div>
+    <div><h3>I pezzi in vista</h3><p class="t">Pannelli rettangolari separati da un giunto costante: si vede la struttura prima di leggere. È la stessa regola della a del marchio, con la pancia staccata dall'asta.</p></div>
+    <div><h3>Qualunque robot</h3><p class="t">I robot entrano su un pannello grigio con il cartellino dei dati. Cambiando marca o togliendo il robot, il sistema resta.</p></div>
   </div>
-</div></section>
+</section>
 
-<section><div class="w">
-  <span class="num">02 · Il segno</span>
-  <h2>Tre pezzi montati, <em>con il giunto in vista.</em></h2>
-  <p class="l">La a nella forma a doppia pancia è la lettera umanista per eccellenza. Qui è costruita come una piccola macchina: un disco, un arco, un'asta. Dove il disco incontra l'asta resta una finestra. Il segno mostra come è fatto, come il metodo Abra mostra cosa farà il robot.</p>
-  <svg viewBox="-150 90 760 420" class="esploso" role="img" aria-label="Il simbolo scomposto nei suoi tre pezzi">
-<g transform="translate(-110,-55)"><path fill="#E2A93B" d="M0.86 208A96 96 0 0 1 180 256L128 256A44 44 0 0 0 45.89 234Z"/></g>
-<g transform="translate(-130,40)"><path fill="#BB3B26" d="M0 327A77 77 0 1 1 154 327A77 77 0 1 1 0 327Z"/></g>
-<g transform="translate(-30,40)"><path fill="#24211E" d="M128 256H180V400H128Z"/></g>
-<g font-family="Newsreader" font-style="italic" font-size="17" fill="#5C554D">
-<text x="-20" y="118">l'arco, la spalla</text><text x="-140" y="490">il disco, la pancia</text><text x="88" y="490">l'asta</text></g>
-<g transform="translate(330,0)"><path fill="#E2A93B" d="M0.86 208A96 96 0 0 1 180 256L128 256A44 44 0 0 0 45.89 234Z"/><path fill="#BB3B26" fill-rule="evenodd" d="M0 327A77 77 0 1 1 154 327A77 77 0 1 1 0 327ZM128 269.31A77 77 0 0 1 154 327A77 77 0 0 1 128 384.69Z"/><path fill="#24211E" fill-rule="evenodd" d="M128 256H180V400H128ZM128 269.31A77 77 0 0 1 154 327A77 77 0 0 1 128 384.69Z"/>
+<section class="cols c2">
+  <div class="p">
+    <span class="num">02 · Il segno</span>
+    <h2>La a con il giunto aperto.</h2>
+    <p class="l">"abra" è disegnato a mano. La b e la r sono chiuse; le due a hanno la pancia staccata dall'asta di 16 unità su 240 di altezza x, il 6,7%. Il giunto è il tratto proprietario e resta in monocromia e a 16 px.</p>
+    <p class="cap">File in <code>logo/</code>, SVG scritti a mano senza testo; rigenerabili con <code>_strumenti/build2.js</code>.</p>
+  </div>
+  <div class="p g" style="display:flex;align-items:center;justify-content:center">
+    <svg viewBox="-60 110 420 380" width="560" role="img" aria-label="Costruzione del simbolo: la pancia è staccata dall'asta di 16 unità">
+<path fill="#B83A2B" d="M0 321.5A81.5 81.5 0 1 1 163 321.5A81.5 81.5 0 1 1 0 321.5ZM45 321.5A36.5 36.5 0 1 0 118 321.5A36.5 36.5 0 1 0 45 321.5ZM179 260H225V400H179ZM48.4 195.72A100 100 0 0 1 225 260L177 260A52 52 0 0 0 85.17 226.58Z"/>
+
+<g stroke="#232527" stroke-width="1.5" fill="none">
+<path d="M163 410V440M179 410V440M150 432H192"/><path d="M163 432l-6-3v6zM179 432l6-3v6z" fill="#232527"/>
+<path d="M245 160H262M245 400H262M255 160V400"/>
+<path d="M0 404H225" stroke-dasharray="4 4"/>
 </g>
-<path d="M300 330H318" stroke="#24211E" stroke-width="2"/><path d="M310 322L320 330L310 338" fill="none" stroke="#24211E" stroke-width="2"/>
-<g font-family="Newsreader" font-style="italic" font-size="17" fill="#5C554D"><text x="420" y="490">montati, con il giunto aperto</text></g>
-<circle cx="471" cy="327" r="44" fill="none" stroke="#24211E" stroke-width="1.5" stroke-dasharray="4 5"/>
+<g font-family="Instrument Sans" font-size="15" fill="#232527">
+<text x="120" y="466">giunto 16</text>
+<text x="268" y="285">altezza x 240</text>
+<text x="-56" y="140" fill="#5E6264">pancia</text><text x="200" y="140" fill="#5E6264">spalla e asta</text>
+</g>
 </svg>
-  <p class="cap">Geometria: x-height 240 unità, asta 52, pancia di raggio 77 con 4 unità di compensazione sotto la linea di base, spalla di raggio 96 tagliata a 150 gradi. File in <code>logo/</code>, scritti a mano, senza testo.</p>
-</div></section>
+  </div>
+</section>
 
-<section><div class="w">
+<section class="p">
   <span class="num">03 · Il marchio</span>
-  <h2>La prima a è il simbolo, <em>il resto la segue.</em></h2>
-  <p class="l">Il logotipo "abra" è disegnato con le stesse misure: la b e la r usano l'asta e l'arco, la seconda a ripete il giunto. "Robotics" è in Newsreader corsivo, la voce editoriale del sistema.</p>
-  <div class="big"><img src="logo/orizzontale.svg" alt="Abra Robotics, marchio orizzontale"></div>
-  <div class="vers">
+  <div style="background:var(--carta);padding:70px 80px;margin-top:6px"><img src="logo/orizzontale.svg" alt="Abra Robotics" style="width:100%"></div>
+  <div class="cols c4 vers" style="margin-top:12px">
     <div><img src="logo/verticale.svg" alt=""><span>Verticale</span></div>
-    <div><img src="logo/simbolo.svg" alt="" style="height:70%"><span>Simbolo</span></div>
-    <div><img src="logo/monogramma.svg" alt="" style="height:80%"><span>Monogramma per avatar e adesivi</span></div>
-    <div><img src="logo/favicon.svg" alt="" style="width:64px;height:64px"><span>Favicon, versione ottica 16 e 32 px</span></div>
+    <div><img src="logo/logotipo.svg" alt=""><span>Logotipo, sotto i 160 px</span></div>
+    <div><img src="logo/monogramma.svg" alt="" style="height:80%"><span>Monogramma</span></div>
+    <div><span style="position:static;display:flex;gap:24px;align-items:center"><img src="logo/favicon.svg" width="16" height="16" alt=""><img src="logo/favicon-32.svg" width="32" height="32" alt=""><img src="logo/favicon.svg" width="96" height="96" alt="" style="image-rendering:pixelated"></span><span>Favicon a pixel, 16 e 32 px</span></div>
     <div><img src="logo/mono-positivo.svg" alt=""><span>Mono positivo</span></div>
     <div class="d"><img src="logo/mono-negativo.svg" alt=""><span>Mono negativo</span></div>
-    <div class="d"><img src="logo/orizzontale-negativo.svg" alt=""><span>A colori su inchiostro</span></div>
-    <div class="r"><img src="logo/mono-negativo.svg" alt=""><span>Su rosso: sempre mono</span></div>
+    <div class="d"><img src="logo/orizzontale-negativo.svg" alt=""><span>Negativo su grafite</span></div>
+    <div class="rr"><img src="logo/orizzontale-negativo.svg" alt=""><span>Negativo su rosso</span></div>
   </div>
-  <p class="cap">Prova alle dimensioni reali: <a href="logo/test.html">logo/test.html</a>. Logo animato: <a href="logo/animazione.html">logo/animazione.html</a>.</p>
-</div></section>
+  <p class="cap">Prova alle dimensioni reali con il confronto tra v1 e v2: <a href="logo/test.html">logo/test.html</a>. Montaggio animato: <a href="logo/animazione.html">logo/animazione.html</a>.</p>
+</section>
 
-<section><div class="w">
+<section class="p">
   <span class="num">04 · Colore</span>
-  <h2>Colori pieni da pittura <em>su carta avorio.</em></h2>
-  <p class="l">Il fondo è sempre chiaro. Il rosso Abra è il colore della marca; ocra e verderame lo accompagnano. Il nero non domina mai: l'inchiostro scrive e regge l'asta.</p>
-  <div class="tinte">
-    <div style="background:var(--avorio);box-shadow:inset 0 0 0 1px var(--pietra)"><b>Avorio</b>#F3EEE3 · fondo</div>
-    <div style="background:var(--rosso);color:var(--carta)"><b>Rosso Abra</b>#BB3B26</div>
+  <h2>Rosso Abra con ocra, su grigi da macchina per ufficio.</h2>
+  <div class="cols tinte" style="grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;margin-top:30px;gap:6px">
+    <div style="background:var(--rosso);color:var(--carta)"><b>Rosso Abra</b>#B83A2B · tinta piatta in stampa</div>
     <div style="background:var(--ocra)"><b>Ocra</b>#E2A93B</div>
-    <div style="background:var(--verderame);color:var(--carta)"><b>Verderame</b>#2B6F67</div>
-    <div style="background:var(--inchiostro);color:var(--avorio)"><b>Inchiostro</b>#24211E</div>
+    <div style="background:var(--grafite);color:var(--carta)"><b>Grafite</b>#232527</div>
+    <div style="background:var(--lettera)"><b>Grigio Lettera</b>#DADCD6</div>
+    <div style="background:var(--carta);box-shadow:inset 0 0 0 1px var(--lettera)"><b>Carta</b>#F6F4EF</div>
+    <div style="background:var(--bianco);box-shadow:inset 0 0 0 1px var(--lettera)"><b>Bianco</b>#FFFFFF</div>
   </div>
-  <div class="quote" aria-label="Rapporti d'uso"><span style="flex:55;background:var(--avorio);box-shadow:inset 0 0 0 1px var(--pietra)"></span><span style="flex:15;background:var(--inchiostro)"></span><span style="flex:13;background:var(--rosso)"></span><span style="flex:9;background:var(--ocra)"></span><span style="flex:5;background:var(--verderame)"></span><span style="flex:3;background:var(--pietra)"></span></div>
-  <p class="cap">Rapporti d'uso: avorio 55%, inchiostro 15%, rosso 13%, ocra 9%, verderame 5%, servizio 3%. Serie dei materiali: rosso per eventi, verderame per proposte, ocra per consegne e manuali. Contrasti calcolati in <code>palette.md</code>.</p>
-</div></section>
+  <p class="cap">Un solo pannello rosso per superficie; l'ocra solo per esempi, limiti e contatti. CMYK da profilo, Pantone indicativi e contrasti calcolati in <code>palette.md</code>.</p>
+</section>
 
-<section><div class="w">
-  <span class="num">05 · Caratteri</span>
-  <h2>Un serif da edizione <em>e un grotesk per i numeri.</em></h2>
-  <div class="spec">
-    <div><div class="aa">Aa <i>Aa</i></div><h3 style="margin-top:20px">Newsreader</h3><p class="t">Production Type, SIL OFL, Google Fonts. Titoli, testo corrente, didascalie in corsivo. Dimensioni ottiche da 6 a 72 punti.</p></div>
-    <div><div class="hk">Aa 2 kg</div><h3 style="margin-top:20px">Hanken Grotesk</h3><p class="t">Hanken Design Co., SIL OFL, Google Fonts. Interfaccia, etichette, tabelle, cifre tabellari con le unità di misura.</p></div>
-  </div>
-</div></section>
+<section class="cols c2">
+  <div class="p"><span class="num">05 · Caratteri</span><div class="spec">Aa 2 kg</div><h3 style="margin-top:18px">Instrument Sans</h3><p class="t">Titoli, interfaccia, dati. OFL, file statici in <code>fonts/</code>.</p></div>
+  <div class="p"><span class="num">&nbsp;</span><div class="spec s">Aa <i>Aa</i></div><h3 style="margin-top:18px">Crimson Pro</h3><p class="t">Testo da leggere e didascalie. OFL, file statici in <code>fonts/</code>. Il PDF del preventivo esportato senza rete incorpora solo questi due caratteri.</p></div>
+</section>
 
-<section><div class="w">
+<section class="p g">
   <span class="num">06 · Sistema</span>
-  <h2>Le tre forme diventano <em>la scena di ogni pagina.</em></h2>
-  <p class="l">Ogni composizione scala il simbolo: un solo grande disco rosso, l'arco ocra, l'asta che fa da pavimento o da bordo. Il robot poggia sulla linea di base. Il giunto resta aperto anche a dieci metri.</p>
-  <svg viewBox="0 0 1200 450" class="pattern" role="img" aria-label="Pattern a tessere"><defs><g id="sim"><path fill="#E2A93B" d="M0.86 208A96 96 0 0 1 180 256L128 256A44 44 0 0 0 45.89 234Z"/><path fill="#BB3B26" fill-rule="evenodd" d="M0 327A77 77 0 1 1 154 327A77 77 0 1 1 0 327ZM128 269.31A77 77 0 0 1 154 327A77 77 0 0 1 128 384.69Z"/><path fill="#24211E" fill-rule="evenodd" d="M128 256H180V400H128ZM128 269.31A77 77 0 0 1 154 327A77 77 0 0 1 128 384.69Z"/>
-</g><g id="simm"><path fill="#F3EEE3" d="M0.86 208A96 96 0 0 1 180 256L128 256A44 44 0 0 0 45.89 234Z"/><path fill="#F3EEE3" fill-rule="evenodd" d="M0 327A77 77 0 1 1 154 327A77 77 0 1 1 0 327ZM128 256H180V400H128Z"/></g></defs><rect x="0" y="0" width="150" height="150" fill="#F3EEE3"/><g transform="translate(75,75) rotate(0) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="150" y="0" width="150" height="150" fill="#BB3B26"/><g transform="translate(225,75) rotate(90) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="300" y="0" width="150" height="150" fill="#F3EEE3"/><g transform="translate(375,75) rotate(180) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="450" y="0" width="150" height="150" fill="#2B6F67"/><g transform="translate(525,75) rotate(270) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="600" y="0" width="150" height="150" fill="#F3EEE3"/><g transform="translate(675,75) rotate(0) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="750" y="0" width="150" height="150" fill="#E2A93B"/><g transform="translate(825,75) rotate(90) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="900" y="0" width="150" height="150" fill="#F3EEE3"/><g transform="translate(975,75) rotate(180) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="1050" y="0" width="150" height="150" fill="#BB3B26"/><g transform="translate(1125,75) rotate(270) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="0" y="150" width="150" height="150" fill="#2B6F67"/><g transform="translate(75,225) rotate(90) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="150" y="150" width="150" height="150" fill="#F3EEE3"/><g transform="translate(225,225) rotate(180) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="300" y="150" width="150" height="150" fill="#E2A93B"/><g transform="translate(375,225) rotate(270) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="450" y="150" width="150" height="150" fill="#F3EEE3"/><g transform="translate(525,225) rotate(0) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="600" y="150" width="150" height="150" fill="#BB3B26"/><g transform="translate(675,225) rotate(90) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="750" y="150" width="150" height="150" fill="#F3EEE3"/><g transform="translate(825,225) rotate(180) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="900" y="150" width="150" height="150" fill="#BB3B26"/><g transform="translate(975,225) rotate(270) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="1050" y="150" width="150" height="150" fill="#F3EEE3"/><g transform="translate(1125,225) rotate(0) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="0" y="300" width="150" height="150" fill="#F3EEE3"/><g transform="translate(75,375) rotate(180) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="150" y="300" width="150" height="150" fill="#BB3B26"/><g transform="translate(225,375) rotate(270) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="300" y="300" width="150" height="150" fill="#F3EEE3"/><g transform="translate(375,375) rotate(0) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="450" y="300" width="150" height="150" fill="#BB3B26"/><g transform="translate(525,375) rotate(90) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="600" y="300" width="150" height="150" fill="#F3EEE3"/><g transform="translate(675,375) rotate(180) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="750" y="300" width="150" height="150" fill="#2B6F67"/><g transform="translate(825,375) rotate(270) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g><rect x="900" y="300" width="150" height="150" fill="#F3EEE3"/><g transform="translate(975,375) rotate(0) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#sim"/></g><rect x="1050" y="300" width="150" height="150" fill="#E2A93B"/><g transform="translate(1125,375) rotate(90) translate(-41.4,-56.1) scale(0.46) translate(0,-160)"><use href="#simm"/></g></svg>
-  <p class="cap">Pattern a tessere per interni di flight case, carta da pacchi e storie di servizio. Mai dietro al testo.</p>
+  <h2>Pannelli, giunto, cartellino, fasi.</h2>
+  <div class="cols c3" style="margin-top:30px">
+    <dl class="cartellino"><dt>Robot in prova</dt><dd>Umanoide G1</dd><dt>Altezza</dt><dd>130 cm</dd><dt>Batteria</dt><dd>circa 2 ore, sostituibile</dd></dl>
+    <div style="background:var(--bianco);padding:16px 18px"><h3>Fasi</h3><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px"><div style="border-top:3px solid #232527;padding-top:6px;font:700 15px var(--sans)">P0</div><div style="border-top:3px solid #B83A2B;padding-top:6px;font:700 15px var(--sans)">P1</div><div style="border-top:3px solid #232527;padding-top:6px;font:700 15px var(--sans)">P2</div><div style="border-top:3px solid #232527;padding-top:6px;font:700 15px var(--sans)">P3</div><div style="border-top:3px solid #232527;padding-top:6px;font:700 15px var(--sans)">P4</div><div style="border-top:3px solid #232527;padding-top:6px;font:700 15px var(--sans)">P5</div></div></div>
+    <div style="background:var(--ocra-chiara);padding:16px 18px;font:400 15px/1.45 var(--serif)"><h3>Limiti dichiarati</h3>Carico continuo sotto i 2 kg per braccio. <span class="esempio">Esempio</span></div>
+  </div>
   <div class="icone">
     <figure><img src="icone/prova.svg" alt=""><figcaption>Prova sul banco</figcaption></figure>
     <figure><img src="icone/simulazione.svg" alt=""><figcaption>Simulazione</figcaption></figure>
     <figure><img src="icone/fasi.svg" alt=""><figcaption>POC a fasi</figcaption></figure>
-    <figure><img src="icone/consegna.svg" alt=""><figcaption>Documentazione</figcaption></figure>
+    <figure><img src="icone/consegna.svg" alt=""><figcaption>Codice e manuale</figcaption></figure>
     <figure><img src="icone/formazione.svg" alt=""><figcaption>Formazione</figcaption></figure>
-    <figure><img src="icone/voce.svg" alt=""><figcaption>Voce agli eventi</figcaption></figure>
+    <figure><img src="icone/voce.svg" alt=""><figcaption>Copione approvato</figcaption></figure>
   </div>
-</div></section>
+</section>
 
-<section><div class="w">
-  <span class="num">07 · Immagini</span>
-  <h2>Persone al lavoro, <em>il robot accanto.</em></h2>
-  <p class="l">Fotografia documentaria a colori nei reparti e nei laboratori italiani, con la luce del posto. Finché non ci sono foto Abra, i robot dei produttori entrano scontornati e in bicromia calda, sulle campiture del marchio.</p>
-  <div class="duo">
-    <div style="background:var(--rosso)"><img src="assets/g1-segnaposto-unitree.png" alt="Segnaposto: Unitree G1 in bicromia"></div>
-    <div style="background:var(--ocra)"><img src="assets/go2-segnaposto-unitree.png" alt="Segnaposto: Unitree Go2 in bicromia"></div>
-    <div style="background:var(--verderame)"><img src="assets/go2-fronte-segnaposto-unitree.png" alt="Segnaposto: Unitree Go2 di fronte in bicromia"></div>
-  </div>
-  <p class="cap">Segnaposto dichiarati: immagini ufficiali Unitree, scontornate e trattate. Shot list di otto scatti e prompt di mood in <code>foto-video.md</code>.</p>
-</div></section>
+<section class="cols c2">
+  <div class="p"><span class="num">07 · Immagini</span><h2>Persone al lavoro, robot su fondo neutro.</h2><p class="l">Le foto Abra sono documentarie e a colori naturali. Finché mancano, i robot dei produttori sono segnaposto dichiarati in grigio neutro, su un pannello con il cartellino dei dati; le persone degli eventi sono sagome.</p></div>
+  <div class="p g" style="position:relative;min-height:520px;overflow:hidden"><img src="assets/g1-in-piedi-segnaposto-unitree.png" alt="Segnaposto: Unitree G1 in grigio" style="position:absolute;left:18%;bottom:0;height:470px"><dl class="cartellino" style="position:absolute;right:40px;top:40px;width:220px"><dt>Segnaposto</dt><dd>Unitree G1, foto ufficiale</dd><dt>Trattamento</dt><dd>grigio neutro, scontornato</dd></dl></div>
+</section>
 
-<section><div class="w">
+<section class="p">
   <span class="num">08 · Applicazioni</span>
-  <h2>Lo stesso sistema, <em>dal preventivo al palco.</em></h2>
-  <div class="app">
-    <figure class="s12"><img src="applicazioni/hero.png" alt="Hero del sito"><figcaption>Hero della home, 1440 x 900. La composizione della a regge il G1; il cartellino porta la misura in termini umani.</figcaption></figure>
-    <figure class="s6"><img src="applicazioni/preventivo-cover.png" alt="Copertina del preventivo"><figcaption>Preventivo, copertina della serie verde.</figcaption></figure>
-    <figure class="s6"><img src="applicazioni/preventivo-interna.png" alt="Pagina delle fasi"><figcaption>Pagina delle fasi con criteri, costi, limiti dichiarati (esempio).</figcaption></figure>
-    <figure class="s6"><img src="applicazioni/linkedin-sacmi.png" alt="Post LinkedIn SACMI"><figcaption>Post LinkedIn sulla consegna a SACMI, versione nominativa da usare solo con consenso scritto.</figcaption></figure>
-    <figure class="s6"><img src="applicazioni/linkedin-sacmi-anonimo.png" alt="Post LinkedIn anonimo"><figcaption>Versione anonima, pronta da pubblicare.</figcaption></figure>
-    <figure class="s4"><img src="applicazioni/reel-g1.png" alt="Copertina reel"><figcaption>Copertina del reel: il G1 parla con il pubblico.</figcaption></figure>
-    <figure class="s8"><img src="applicazioni/totem.png" alt="Totem"><figcaption>Totem ad arco per il noleggio del G1: il totem è la a montata in grande.</figcaption><img src="applicazioni/biglietto.png" alt="Biglietto da visita" style="margin-top:28px"><figcaption>Biglietto da visita, fronte e retro.</figcaption></figure>
-    <figure class="s12"><img src="applicazioni/livrea.png" alt="Livrea"><figcaption>Livrea: flight case, adesivo sul dorso del Go2, targhetta ad arco.</figcaption></figure>
+  <h2>Lo stesso montaggio, dal preventivo al totem.</h2>
+  <div class="cols app" style="grid-template-columns:repeat(12,1fr);margin-top:30px;background:var(--carta);padding:12px">
+    <figure style="grid-column:span 12"><img src="applicazioni/hero.png" alt="Hero"><figcaption>Hero 1440 x 900: titolo proprio della direzione, cartellino tecnico del robot, pannello rosso per la manifattura.</figcaption></figure>
+    <figure style="grid-column:span 6"><img src="applicazioni/preventivo-cover.png" alt="Copertina preventivo"><figcaption>Preventivo, copertina: cosa sapete prima, cosa vi resta, dati e fasi.</figcaption></figure>
+    <figure style="grid-column:span 6"><img src="applicazioni/preventivo-interna.png" alt="Pagina delle fasi"><figcaption>Pagina delle fasi: criteri, costi, limiti, firme di chiusura (esempio).</figcaption></figure>
+    <figure style="grid-column:span 6"><img src="applicazioni/linkedin-sacmi.png" alt="Post SACMI"><figcaption>Post SACMI nominativo: da pubblicare solo con consenso scritto.</figcaption></figure>
+    <figure style="grid-column:span 6"><img src="applicazioni/linkedin-sacmi-anonimo.png" alt="Post anonimo"><figcaption>Versione anonima, senza data, revisione del manuale e dettagli riconoscibili.</figcaption></figure>
+    <figure style="grid-column:span 4"><img src="applicazioni/reel-g1.png" alt="Reel"><figcaption>Reel: scena con pubblico e tecnico, dialogo con la fonte approvata.</figcaption></figure>
+    <figure style="grid-column:span 8"><img src="applicazioni/totem.png" alt="Totem"><figcaption>Totem 90 x 220 cm nella scena dell'evento, in scala.</figcaption><img src="applicazioni/biglietto.png" alt="Biglietto" style="margin-top:20px"><figcaption>Biglietto, corpo minimo 6 pt.</figcaption></figure>
+    <figure style="grid-column:span 12"><img src="applicazioni/livrea.png" alt="Livrea"><figcaption>Livrea: flight case, posizione quotata dell'adesivo sul Go2, targhetta.</figcaption></figure>
   </div>
-</div></section>
+</section>
 
-<section><div class="w">
+<section class="p">
   <span class="num">09 · Voce</span>
-  <h2>Scrive come un'edizione d'impresa: <em>frasi intere, numeri esatti.</em></h2>
-  <ul class="titoli" style="margin-top:40px">
-    <li><small>Home</small>Prova il robot sul tuo caso <em>prima di investire.</em></li>
-    <li><small>Aziende</small>Misura nel tuo reparto cosa farà il robot, <em>poi decidi la fase successiva.</em></li>
-    <li><small>Laboratori</small>Fai lavorare i tuoi tesisti sul robot <em>in poche settimane.</em></li>
-    <li><small>Eventi</small>Fai parlare un umanoide del tuo marchio, <em>con parole approvate da te.</em></li>
-    <li><small>English</small>Test the robot on your own use case <em>before you invest.</em></li>
+  <h2>Frasi intere, numeri con le unità, limiti nella stessa pagina.</h2>
+  <ul class="titoli" style="margin-top:30px">
+    <li><small>Home</small>Guarda il robot lavorare nel tuo reparto prima di firmare l'ordine.</li>
+    <li><small>Preventivo</small>Decidi sul robot con il tempo ciclo misurato alla postazione 3.</li>
+    <li><small>Laboratori</small>Dai ai tuoi tesisti un robot già pronto da programmare.</li>
+    <li><small>Eventi</small>Fai parlare il G1 del tuo marchio, con le frasi che approvi tu.</li>
+    <li><small>English</small>Watch the robot work in your own plant before you sign the order.</li>
   </ul>
-</div></section>
+</section>
 
-<section><div class="w">
-  <span class="num">10 · Cosa chiede e cosa sacrifica</span>
-  <div class="grid2">
-    <div class="card"><h3>Cosa sacrifica</h3><p class="t">L'aria da tecnologia d'avanguardia: è un'identità quasi editoriale, scelta per chi decide con un numero e diffida dello spettacolo. E una parte di neutralità: tre colori pieni chiedono proporzioni rispettate.</p></div>
-    <div class="card"><h3>Cosa serve per farla vivere</h3><p class="t">Le prime foto Abra al lavoro (la consegna del 29 ottobre è l'occasione), il modello HTML del preventivo nel Company Brain con i font incorporati, la scheda limiti del G1 con il protocollo di misura.</p></div>
-  </div>
-</div></section>
+<section class="cols c2">
+  <div class="p"><span class="num">10 · Cosa sacrifica</span><p class="t">Il colpo d'occhio da manifesto della v1 e il calore pittorico. La memorabilità passa dal logotipo e dalla struttura a pannelli, il rosso compare in un pannello per pagina.</p></div>
+  <div class="p r"><span class="num">Cosa serve per farla vivere</span><p class="t">Le prime foto Abra al lavoro (la consegna SACMI del 29 ottobre è l'occasione, con consenso), il modello HTML del preventivo nel Company Brain con i font di <code>fonts/</code>, la scheda limiti del G1 con il protocollo di misura.</p></div>
+</section>
 
-<footer><div class="w"><img src="logo/orizzontale.svg" alt="Abra Robotics"><p class="cap">Territorio B, Misura d'uomo. Documenti: concept, palette, tipografia, sistema grafico, foto e video, motion, voce, autocritica.</p></div></footer>
+</div>
 </body></html>

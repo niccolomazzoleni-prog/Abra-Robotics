@@ -4,51 +4,51 @@
 <link rel="stylesheet" href="../sistema.css">
 <style>
 @page{size:A4;margin:0}
-body{margin:0;background:#d8d2c6;font-family:var(--f);color:var(--velluto)}
+body{margin:0;background:#d8d2c6;font-family:var(--f);color:var(--grafite)}
 .pagina{position:relative;width:794px;height:1123px;background:var(--carta);overflow:hidden;padding:44px 52px 0}
-.testa{display:flex;justify-content:space-between;align-items:center;border-bottom:1.2px solid var(--velluto);padding-bottom:12px}
-.testa img{height:16px;display:block}
+.testa{display:flex;justify-content:space-between;align-items:center;border-bottom:1.2px solid var(--grafite);padding-bottom:12px}
+.testa img{height:24px;display:block}
 .testa .lbl{font-size:8.5px;color:var(--fumo)}
 .capo{display:flex;justify-content:space-between;align-items:flex-end;margin-top:30px}
 .capo .lbl{font-size:9.5px;color:var(--fumo);margin:0 0 10px}
-h2{margin:0;font-size:46px}
-.capo .esempio{color:var(--rame)}
+h2{margin:0;font-size:38px}
+.capo .esempio{color:var(--magenta)}
 .intro{font-size:12.5px;line-height:1.55;max-width:600px;margin:14px 0 0}
 /* linea dei tempi: la scaletta come un palco visto dall'alto */
 .tempi{margin-top:24px;position:relative;height:74px}
 .tempi .righello{position:absolute;left:0;right:0;top:52px;height:22px;display:grid;grid-template-columns:repeat(19,1fr);font-size:8px;color:var(--fumo)}
 .tempi .righello span{border-left:1px solid #CFC5B6;padding:3px 0 0 3px}
 .blocchi{position:absolute;left:0;right:0;top:0;height:46px;display:grid;grid-template-columns:repeat(19,1fr)}
-.blk{background:var(--velluto);color:var(--stucco);font-size:9.5px;font-weight:600;padding:6px 7px;line-height:1.15;position:relative;margin-right:4px}
-.blk b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:17px;line-height:1}
-.blk.luce{background:var(--luce);color:var(--velluto)}
-.blk.vuoto{background:transparent;color:var(--velluto);outline:1.2px dashed var(--velluto);outline-offset:-1.2px}
+.blk{background:var(--grafite);color:var(--carta);font-size:9.5px;font-weight:600;padding:6px 7px;line-height:1.15;position:relative;margin-right:4px}
+.blk b{display:block;font-weight:700;font-size:15px;line-height:1.1}
+.blk.luce{background:var(--magenta);color:var(--carta)}
+.blk.vuoto{background:transparent;color:var(--grafite);outline:1.2px dashed var(--grafite);outline-offset:-1.2px}
 table{width:100%;border-collapse:collapse;margin-top:22px;font-size:10.5px;line-height:1.38}
-th{font-stretch:var(--largo);font-weight:600;font-size:7.8px;letter-spacing:.14em;text-transform:uppercase;text-align:left;color:var(--fumo);padding:0 8px 7px 0;border-bottom:1.2px solid var(--velluto);vertical-align:bottom}
+th{font-family:var(--f-segno);font-weight:600;font-size:7.8px;letter-spacing:.14em;text-transform:uppercase;text-align:left;color:var(--fumo);padding:0 8px 7px 0;border-bottom:1.2px solid var(--grafite);vertical-align:bottom}
 td{padding:9px 8px 9px 0;border-bottom:1px solid #DCD3C5;vertical-align:top}
 td.f{width:58px}
-td.f b{font-stretch:var(--stretto);font-weight:800;font-size:26px;line-height:.9;display:block}
+td.f b{font-weight:700;font-size:20px;line-height:1;display:block}
 td.f span{font-size:9px;color:var(--fumo)}
 td.cosa b{font-weight:700;display:block;margin-bottom:2px}
-td.crit{background:rgba(244,215,158,.42);padding-left:8px}
+td.crit{background:var(--rosa);padding-left:8px}
 td.imp{text-align:right;white-space:nowrap;font-feature-settings:"tnum" 1;font-weight:600}
 td.imp small{display:block;font-weight:400;color:var(--fumo);font-size:8.5px;white-space:normal}
-.limiti{margin-top:18px;display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start;border-top:1.2px solid var(--velluto);padding-top:12px}
+.limiti{margin-top:18px;display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start;border-top:1.2px solid var(--grafite);padding-top:12px}
 .limiti .lbl{font-size:8.5px;margin:2px 0 0}
 .limiti p{margin:0 0 5px;font-size:11px;line-height:1.45}
-.avvio{position:absolute;left:52px;right:52px;bottom:70px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:26px;align-items:end;background:var(--velluto);color:var(--stucco);padding:20px 22px 18px}
-.avvio .lbl{font-size:8.5px;color:var(--luce);margin:0 0 6px}
+.avvio{position:absolute;left:52px;right:52px;bottom:70px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:26px;align-items:end;background:var(--grafite);color:var(--carta);padding:20px 22px 18px}
+.avvio .lbl{font-size:8.5px;color:var(--rosa);margin:0 0 6px}
 .avvio p.txt{margin:0;font-size:11px;line-height:1.45}
 .firma{font-size:9px;color:var(--fumo-chiaro)}
-.firma span{display:block;border-bottom:1.2px solid var(--stucco);height:34px;margin-bottom:6px}
-.piede{position:absolute;left:52px;right:52px;bottom:26px;display:flex;justify-content:space-between;font-size:8px;color:var(--fumo);font-stretch:var(--largo);font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.firma span{display:block;border-bottom:1.2px solid var(--carta);height:34px;margin-bottom:6px}
+.piede{position:absolute;left:52px;right:52px;bottom:26px;display:flex;justify-content:space-between;font-size:8px;color:var(--fumo);font-family:var(--f-segno);font-weight:600;letter-spacing:.12em;text-transform:uppercase}
 </style></head>
 <body>
 <div class="pagina">
-  <div class="testa"><img src="../logo/mono-positivo.svg" alt="Abra Robotics"><span class="lbl">N. AB 2026 0031, rev. 1 · Cliente di esempio S.p.A. · pagina 4 di 12</span></div>
+  <div class="testa"><img src="../logo/mono-positivo.svg" alt="abra Robotics"><span class="lbl">N. AB 2026 0031, rev. 1 · Cliente di esempio S.p.A. · pagina 4 di 12</span></div>
 
   <div class="capo">
-    <div><p class="lbl">Capitolo 3 · Il foglio di regia</p><h2 class="disp">Le fasi, i criteri e le decisioni</h2></div>
+    <div><p class="lbl">Capitolo 3 · Il foglio di regia</p><h2 class="titolo">Le fasi, i criteri e le decisioni</h2></div>
     <span class="esempio">Esempio</span>
   </div>
   <p class="intro">Ogni fase si chiude con un criterio di accettazione scritto. Se il criterio è raggiunto decidi tu se passare alla fase successiva; se non lo è, ti diciamo per iscritto perché e cosa conviene fare. Paghi solo le fasi che hai deciso di avviare.</p>
@@ -69,7 +69,7 @@ td.imp small{display:block;font-weight:400;color:var(--fumo);font-size:8.5px;whi
     <thead><tr><th>Fase</th><th>Cosa facciamo</th><th>Criterio di accettazione</th><th>Se non è raggiunto</th><th style="text-align:right;padding-right:0">Importo</th></tr></thead>
     <tbody>
       <tr><td class="f"><b>P0</b><span>1 settimana</span></td><td class="cosa"><b>Chiamata tecnica e sopralluogo</b>Rilievo della postazione, video del ciclo attuale, campioni dei vasetti.</td><td class="crit">Scheda del caso firmata da entrambi, con pezzi al giorno e tempo ciclo obiettivo.</td><td>Ci fermiamo qui, senza costi.</td><td class="imp">Incluso</td></tr>
-      <tr><td class="f"><b>P1</b><span>3 settimane</span></td><td class="cosa"><b>Assessment</b>Analisi del ciclo, rischi, confronto tra umanoide, cella cobot e due robot.</td><td class="crit">Report con tempo ciclo atteso per ogni configurazione e piattaforma consigliata.</td><td>Ti consigliamo per iscritto di non proseguire o di cambiare piattaforma.</td><td class="imp">3.500 €<small>esempio</small></td></tr>
+      <tr><td class="f"><b>P1</b><span>3 settimane</span></td><td class="cosa"><b>Assessment</b>Analisi del ciclo e dei rischi; confronto tra umanoide, cella cobot (realizzata da un integratore partner) e due robot.</td><td class="crit">Report con tempo ciclo atteso per ogni configurazione e piattaforma consigliata.</td><td>Ti consigliamo per iscritto di non proseguire o di cambiare piattaforma.</td><td class="imp">3.500 €<small>esempio</small></td></tr>
       <tr><td class="f"><b>P2</b><span>4 settimane</span></td><td class="cosa"><b>Digital twin e simulazione</b>Modello della postazione da rilievo LiDAR, simulazione in MuJoCo del ciclo.</td><td class="crit">Ciclo simulato entro 15 s per pezzo, al netto delle ricariche, su 5.000 pezzi al giorno.</td><td>Si rivede la configurazione prima di acquistare hardware.</td><td class="imp">10.000 €<small>esempio</small></td></tr>
       <tr><td class="f"><b>P3</b><span>3 settimane</span></td><td class="cosa"><b>Prova sul robot</b>Prova nel laboratorio Abra con i tuoi vasetti, video di ogni sessione.</td><td class="crit">Almeno 95 prese riuscite su 100 cicli consecutivi, con verbale firmato.</td><td>Verbale con le cause; si torna a P2 oppure ci si ferma.</td><td class="imp">Dopo P2<small>quotata sui dati di P2</small></td></tr>
       <tr><td class="f"><b>P4</b><span>6 settimane</span></td><td class="cosa"><b>Pilota in reparto</b>Robot in postazione per due turni a settimana con un tecnico Abra.</td><td class="crit">Turno di 4 ore con al massimo 2 interventi dell'operatore.</td><td>Correzioni incluse fino a 2 settimane, poi nuova decisione.</td><td class="imp">Dopo P3</td></tr>

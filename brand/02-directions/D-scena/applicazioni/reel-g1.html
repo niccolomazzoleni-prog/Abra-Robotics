@@ -1,41 +1,36 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8">
-<title>Copertina reel Instagram, demo del G1 che parla con il pubblico</title>
+<title>Copertina reel Instagram, demo del G1 che risponde al pubblico</title>
 <link rel="stylesheet" href="../sistema.css">
 <style>
 body{margin:0;font-family:var(--f)}
-.reel{position:relative;width:1080px;height:1920px;background:var(--velluto);color:var(--stucco);overflow:hidden}
-.fondale{position:absolute;left:420px;top:0;width:640px;height:1330px;background:var(--quinta);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%)}
+.reel{position:relative;width:1080px;height:1920px;background:var(--grafite);color:var(--carta);overflow:hidden}
 .top{position:absolute;left:80px;right:80px;top:150px;display:flex;justify-content:space-between;align-items:center}
-.top img{height:38px}
-.top .lbl{font-size:17px;color:var(--luce)}
-.lbl-demo{position:absolute;left:80px;top:330px;font-size:18px;color:var(--luce);display:flex;gap:14px;align-items:center}
-h1{position:absolute;left:80px;top:390px;width:600px;margin:0;font-size:128px;color:var(--stucco);z-index:3}
-h1 em{font-style:normal;color:var(--luce)}
-.robot{position:absolute;left:640px;top:520px;height:840px;z-index:2}
-.dida-r{position:absolute;left:80px;top:1040px;width:430px;font-size:18px;line-height:1.4;color:var(--fumo-chiaro)}
-.palco{left:0;width:1080px;top:1330px;height:590px;--p-top-l:6%;--p-top-r:6%}
-.copione{position:absolute;left:120px;right:120px;top:1392px;color:var(--velluto);z-index:3}
-.copione .lbl{font-size:16px;margin:0 0 20px;display:flex;justify-content:space-between;align-items:center}
-.battuta{display:grid;grid-template-columns:200px 1fr;gap:20px;font-size:31px;line-height:1.25;margin:0 0 16px}
-.battuta b{font-stretch:var(--largo);font-weight:700;font-size:17px;letter-spacing:.14em;text-transform:uppercase;padding-top:9px}
-.copione .dida{font-size:25px;margin:0 0 16px 220px}
-.esempio{font-size:14px}
+.top img{height:46px}
+.top .lbl{font-size:18px;color:var(--fumo-chiaro)}
+h1{position:absolute;left:80px;top:290px;width:960px;margin:0;font-size:128px;color:var(--carta)}
+.boccascena{position:absolute;left:150px;top:720px;width:780px;height:1080px;background:var(--magenta)}
+.boccascena img{position:absolute;left:50%;bottom:130px;height:640px;transform:translateX(-50%)}
+.boccascena .pedana{position:absolute;left:0;right:0;bottom:0;height:150px;background:#B0005B}
+.battuta{position:absolute;left:220px;top:830px;width:660px;color:var(--carta);z-index:3}
+.battuta .lbl{font-size:16px;margin:0 0 10px;color:var(--carta)}
+.battuta p.t{margin:0;font-size:36px;line-height:1.25;font-weight:600}
+.folla{position:absolute;left:0;right:0;bottom:0;height:560px;z-index:4}
+.folla svg{width:100%;height:100%;display:block}
+.dida-r{position:absolute;left:80px;top:650px;width:900px;font-size:17px;color:var(--fumo-chiaro);margin:0}
+.esempio{position:absolute;right:210px;top:832px;z-index:5;color:var(--carta);font-size:14px}
 </style></head>
 <body>
 <div class="reel">
-  <div class="fondale"></div>
-  <div class="top"><img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics"><span class="lbl">Eventi e fiere</span></div>
-  <p class="lbl lbl-demo"><span class="segno"></span>Demo · l'umanoide risponde al pubblico</p>
-  <h1 class="disp">Fai parlare l'umanoide <em>con le parole del tuo marchio.</em></h1>
-  <p class="dida dida-r">(Segnaposto: immagine ufficiale Unitree G1 con trattamento tungsteno. Qui andrà un fotogramma della demo.)</p>
-  <img class="robot" src="img/segnaposto-unitree-g1-tungsteno.png" alt="Umanoide che si china verso il pubblico (segnaposto)">
-  <div class="palco"></div>
-  <div class="copione">
-    <p class="lbl"><span>Dal copione approvato</span><span class="esempio">Esempio</span></p>
-    <p class="battuta"><b>Visitatrice</b><span>Il vostro tostapane va anche in lavastoviglie?</span></p>
-    <p class="dida">(Il G1 si gira verso lo stand e indica il modello.)</p>
-    <p class="battuta"><b>G1</b><span>La griglia sì, il corpo no. Vuole vedere come si smonta?</span></p>
+  <div class="top"><img src="../logo/orizzontale-negativo.svg" alt="abra Robotics"><span class="lbl">Eventi e fiere</span></div>
+  <h1 class="scena">Fai parlare l'umanoide<br>con il tuo pubblico.</h1>
+  <p class="dida dida-r">(Segnaposto: immagine ufficiale Unitree G1 nella versione su colonna. Qui andrà un fotogramma della demo.)</p>
+  <div class="boccascena arco">
+    <div class="pedana"></div>
+    <img src="img/segnaposto-unitree-g1d.png" alt="Umanoide che parla al pubblico (segnaposto)">
   </div>
+  <div class="battuta"><p class="lbl">G1, dal copione approvato</p><p class="t">«Va in lavastoviglie solo la griglia. Le mostro come si smonta?»</p></div>
+  <span class="esempio">Esempio</span>
+  <div class="folla"><svg viewBox="0 0 1080 560" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="76.0" cy="301.2" rx="28.2" ry="35.3" fill="#34353B"/><rect x="64.3" y="320.6" width="23.5" height="17.6" fill="#34353B"/><path d="M-15.7 470.0V373.5Q-15.7 331.2 33.7 331.2H118.4Q167.8 331.2 167.8 373.5V470.0Z" fill="#34353B"/><ellipse cx="282.0" cy="303.2" rx="27.9" ry="34.9" fill="#34353B"/><rect x="270.3" y="322.3" width="23.3" height="17.4" fill="#34353B"/><path d="M191.3 470.0V374.7Q191.3 332.8 240.1 332.8H323.8Q372.6 332.8 372.6 374.7V470.0Z" fill="#34353B"/><ellipse cx="452.8" cy="295.8" rx="29.1" ry="36.4" fill="#34353B"/><rect x="440.7" y="315.8" width="24.3" height="18.2" fill="#34353B"/><path d="M358.2 470.0V370.5Q358.2 326.7 409.1 326.7H496.5Q547.5 326.7 547.5 370.5V470.0Z" fill="#34353B"/><ellipse cx="595.0" cy="292.2" rx="29.7" ry="37.2" fill="#34353B"/><rect x="582.6" y="312.7" width="24.8" height="18.6" fill="#34353B"/><path d="M498.4 470.0V368.4Q498.4 323.8 550.4 323.8H639.6Q691.6 323.8 691.6 368.4V470.0Z" fill="#34353B"/><ellipse cx="773.4" cy="294.1" rx="29.4" ry="36.8" fill="#34353B"/><rect x="761.1" y="314.3" width="24.5" height="18.4" fill="#34353B"/><path d="M677.8 470.0V369.5Q677.8 325.3 729.2 325.3H817.5Q869.0 325.3 869.0 369.5V470.0Z" fill="#34353B"/><ellipse cx="955.9" cy="302.7" rx="28.0" ry="35.0" fill="#34353B"/><rect x="944.3" y="321.9" width="23.3" height="17.5" fill="#34353B"/><path d="M865.0 470.0V374.4Q865.0 332.4 914.0 332.4H997.9Q1046.9 332.4 1046.9 374.4V470.0Z" fill="#34353B"/><ellipse cx="100.8" cy="314.8" rx="41.0" ry="51.3" fill="#121316"/><rect x="83.7" y="343.0" width="34.2" height="25.6" fill="#121316"/><path d="M-32.5 560.0V419.9Q-32.5 358.3 39.3 358.3H162.4Q234.1 358.3 234.1 419.9V560.0Z" fill="#121316"/><ellipse cx="288.2" cy="334.8" rx="37.7" ry="47.1" fill="#121316"/><rect x="272.6" y="360.7" width="31.4" height="23.5" fill="#121316"/><path d="M165.8 560.0V431.3Q165.8 374.8 231.7 374.8H344.8Q410.7 374.8 410.7 431.3V560.0Z" fill="#121316"/><ellipse cx="552.1" cy="310.8" rx="41.7" ry="52.1" fill="#121316"/><rect x="534.7" y="339.4" width="34.7" height="26.1" fill="#121316"/><path d="M416.6 560.0V417.6Q416.6 355.0 489.6 355.0H614.6Q687.6 355.0 687.6 417.6V560.0Z" fill="#121316"/><ellipse cx="763.3" cy="329.0" rx="38.6" ry="48.3" fill="#121316"/><rect x="747.2" y="355.6" width="32.2" height="24.1" fill="#121316"/><path d="M637.8 560.0V428.0Q637.8 370.1 705.4 370.1H821.3Q888.9 370.1 888.9 428.0V560.0Z" fill="#121316"/><ellipse cx="1017.3" cy="340.6" rx="36.7" ry="45.9" fill="#121316"/><rect x="1002.0" y="365.8" width="30.6" height="22.9" fill="#121316"/><path d="M898.0 560.0V434.6Q898.0 379.6 962.2 379.6H1072.3Q1136.5 379.6 1136.5 434.6V560.0Z" fill="#121316"/></svg></div>
 </div>
 </body></html>

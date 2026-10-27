@@ -1,4 +1,4 @@
-# Voce. Territorio B, Misura d'uomo
+# Voce v2. Territorio B, Montato a vista
 
 ## Nucleo fisso
 
@@ -9,9 +9,13 @@ L'ingegnere di fiducia: dice i limiti nella stessa pagina delle prestazioni, scr
 Abra scrive come scriveva la migliore cultura d'impresa italiana nei suoi libri e nei suoi manuali: frasi intere, parole esatte, la tecnica spiegata a chi deve decidere con la pazienza di chi la conosce bene. Il tono è colto e parla di persone: il tesista, il responsabile di reparto, il pubblico di una fiera. I numeri restano in primo piano.
 
 Tre abitudini lo rendono riconoscibile:
-1. **La misura detta in termini umani.** Dopo il dato tecnico, una frase che lo porta nella vita di chi legge: "130 cm, all'altezza del petto di un adulto"; "circa 2 ore di batteria, cioè una mattina di fiera con un cambio".
+1. **La misura detta in termini d'uso.** Dopo il dato tecnico, una frase che dice cosa significa nel lavoro di chi legge: "batteria circa 2 ore, sostituibile: una mattina di fiera con un cambio".
 2. **Il nome delle persone e dei luoghi.** Il tesista, il secondo tecnico, la postazione 3, il reparto di confezionamento. Mai "l'utente" o "il cliente finale".
-3. **Il corsivo per il beneficio.** Nei titoli la parte che dice cosa ottiene il lettore va in corsivo: è l'unica enfasi del sistema.
+3. **I pezzi in vista.** Ogni promessa dice di che cosa è fatta: fase, criterio, durata, costo, cosa resta.
+
+**Regola di confine.** La misura in termini d'uso serve a capire un dato. Non si scrive mai che il robot "aiuta le persone" o "lavora per le persone": quel territorio verbale è già occupato e il brief lo esclude.
+
+**Enfasi.** Nei titoli nessuna parola in corsivo o a colore: il beneficio si dice per intero nella frase.
 
 ## Lessico
 
@@ -26,20 +30,23 @@ Tre abitudini lo rendono riconoscibile:
 | robotica applicata | Physical AI come promessa, disruptive |
 | con un tecnico in presenza, copione approvato | magia, effetto wow, stupire |
 | circa (per le stime) | il simbolo della tilde e le parole bandite da `REGOLE.md` |
+| misurato nel tuo reparto, con il verbale | al servizio delle persone, a misura d'uomo come slogan |
 
 ## Headline in italiano
 
-1. Prova il robot sul tuo caso *prima di investire.*
-2. Misura nel tuo reparto cosa farà il robot, *poi decidi la fase successiva.*
-3. Fai lavorare i tuoi tesisti sul robot *in poche settimane.*
-4. Fai parlare un umanoide del tuo marchio, *con parole approvate da te.*
-5. Tieni nel tuo repository *tutto il codice che scriviamo per te.*
+Scritte per questa direzione; la frase della brand platform resta come riferimento interno.
+
+1. Guarda il robot lavorare nel tuo reparto prima di firmare l'ordine.
+2. Decidi sul robot con il tempo ciclo misurato alla tua postazione.
+3. Dai ai tuoi tesisti un robot già pronto da programmare.
+4. Fai parlare il G1 del tuo marchio, con le frasi che approvi tu.
+5. Tieni nel tuo repository tutto il codice che scriviamo per te.
 
 ## Headline in inglese
 
-1. Test the robot on your own use case *before you invest.*
-2. Get your students working on a real robot *within weeks.*
-3. Keep every line of code we write, *in your own repository.*
+1. Watch the robot work in your own plant before you sign the order.
+2. Give your students a robot that is ready to program on day one.
+3. Keep every line of code we write, in your own repository.
 
 ## Bio LinkedIn
 

@@ -1,70 +1,60 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><title>Abra, prova del marchio</title>
-<link rel="icon" href="monogramma.svg">
+<html lang="it"><head><meta charset="utf-8"><title>Abra, prova del marchio v2</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="../sistema.css">
 <style>
-@font-face{font-family:Archivo;src:url(../font/Archivo-VF.ttf);font-weight:100 900;font-stretch:62% 125%}
-:root{--velluto:#3A1915;--buio:#211412;--luce:#E9AE45;--stucco:#F3ECDF;--carta:#FBF8F2;--fumo:#6F645B}
-*{box-sizing:border-box}
-body{margin:0;background:var(--stucco);color:var(--velluto);font-family:Archivo;font-stretch:100%}
+body{margin:0;background:var(--cemento);color:var(--grafite);font-family:var(--f)}
 .wrap{padding:48px 56px;display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-.lbl{font-stretch:125%;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
-.box{background:var(--carta);padding:24px;border-radius:2px}
-.dark{background:var(--velluto);color:var(--stucco)}
-h1{grid-column:1/-1;margin:0;font-stretch:75%;font-weight:800;font-size:64px;line-height:.9;text-transform:none}
-.tab{display:flex;align-items:center;gap:8px;background:#E4DCCD;border-radius:8px 8px 0 0;padding:8px 14px;width:260px;font-size:13px;font-weight:500}
-.tab img{width:16px;height:16px}
-.bar{background:#fff;height:10px;width:100%;border-radius:0 0 4px 4px}
-.sizes{display:flex;align-items:flex-end;gap:28px}
-.sizes figure{margin:0;text-align:center;font-size:11px;font-stretch:125%;letter-spacing:.08em}
-.sizes figcaption{margin-top:8px}
+h1{grid-column:1/-1;margin:0;font-size:56px}
+.box{background:var(--carta);padding:24px}
+.box .lbl{margin:0 0 16px;color:var(--fumo)}
+.tab{display:flex;align-items:center;gap:8px;background:#D4D3CE;border-radius:8px 8px 0 0;padding:8px 14px;width:280px;font-size:13px;font-weight:600}
+.tab img{width:16px;height:16px;image-rendering:pixelated}
+.bar{background:#fff;height:10px;border-radius:0 0 4px 4px}
+.row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}
+.row figure{margin:0;text-align:center;font-size:11px;color:var(--fumo)}
+.row figcaption{margin-top:8px}
 .px{image-rendering:pixelated}
-.av{display:flex;gap:28px;align-items:center}
-.circle{width:160px;height:160px;border-radius:50%;overflow:hidden}
-.square{width:160px;height:160px;border-radius:14px;overflow:hidden}
-.circle img,.square img{width:100%;height:100%;display:block}
-.big{grid-column:1/-1;height:520px;display:grid;place-items:center;position:relative;overflow:hidden}
-.big img{height:420px}
-.vers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;grid-column:1/-1}
-.vers .box{height:220px;display:grid;place-items:center}
-.vers img{max-width:85%;max-height:120px}
-.luce{background:var(--luce)}
+.c{border-radius:50%;overflow:hidden;display:block}
+.s{border-radius:14px;overflow:hidden;display:block}
+.vers{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vers div{height:220px;display:grid;place-items:center;background:var(--carta)}
+.vers .g{background:var(--grafite)}.vers .m{background:var(--magenta)}
+.vers img{max-width:78%;max-height:120px}
+.big{grid-column:1/-1;height:480px;background:var(--magenta);display:grid;place-items:center}
+.big img{width:80%}
 </style></head>
 <body><div class="wrap">
-<h1>Prova del marchio</h1>
-
+<h1 class="titolo">Prova del marchio, v2</h1>
 <div class="box" style="grid-column:span 5">
-<p class="lbl">Favicon 16 px nella scheda del browser</p>
-<div class="tab"><img src="monogramma.svg" alt="">Abra Robotics, robotica applicata</div><div class="bar"></div>
-<div class="sizes" style="margin-top:26px">
-<figure><img src="monogramma.svg" width="16" height="16" alt=""><figcaption>16</figcaption></figure>
-<figure><img src="monogramma.svg" width="32" height="32" alt=""><figcaption>32</figcaption></figure>
-<figure><img src="simbolo-piccolo.svg" height="16" alt=""><figcaption>16 su chiaro</figcaption></figure>
-<figure><img src="simbolo-piccolo.svg" height="32" alt=""><figcaption>32 su chiaro</figcaption></figure>
-<figure><img src="simbolo.svg" height="64" alt=""><figcaption>64</figcaption></figure>
+  <p class="lbl">Favicon 16 px nella scheda del browser</p>
+  <div class="tab"><img src="favicon-16.png" alt="">abra Robotics, robotica applicata</div><div class="bar"></div>
+  <p class="lbl" style="margin-top:26px">Favicon disegnata a pixel, 16 e 32 px e ingrandita 6 volte</p>
+  <div class="row">
+    <figure><img class="px" src="favicon-16.png" width="16" height="16" alt=""><figcaption>16</figcaption></figure>
+    <figure><img class="px" src="favicon-32.png" width="32" height="32" alt=""><figcaption>32</figcaption></figure>
+    <figure><img class="px" src="favicon-16-x6.png" width="96" height="96" alt=""><figcaption>16 x 6</figcaption></figure>
+    <figure><img src="simbolo.svg" height="16" alt=""><figcaption>simbolo 16 mono</figcaption></figure>
+    <figure><img src="simbolo.svg" height="32" alt=""><figcaption>32 mono</figcaption></figure>
+  </div>
 </div>
-<p class="lbl" style="margin-top:22px">Ingrandimento 16 px x 6</p>
-<div class="sizes"><img class="px" src="favicon-16.png" width="96" height="96" alt=""><img class="px" src="favicon-32.png" width="96" height="96" alt=""></div>
-</div>
-
 <div class="box" style="grid-column:span 7">
-<p class="lbl">Avatar social, cerchio e quadrato</p>
-<div class="av">
-<div class="circle"><img src="monogramma.svg" alt="Avatar circolare"></div>
-<div class="square"><img src="monogramma.svg" alt="Avatar quadrato"></div>
-<div class="circle" style="width:64px;height:64px"><img src="monogramma.svg" alt=""></div>
-<div class="circle" style="width:40px;height:40px"><img src="monogramma.svg" alt=""></div>
-<div class="circle" style="width:24px;height:24px"><img src="monogramma.svg" alt=""></div>
+  <p class="lbl">Avatar social, cerchio e quadrato</p>
+  <div class="row">
+    <img class="c" src="monogramma.svg" width="160" height="160" alt="Avatar circolare">
+    <img class="s" src="monogramma.svg" width="160" height="160" alt="Avatar quadrato">
+    <img class="c" src="monogramma.svg" width="64" height="64" alt="">
+    <img class="c" src="monogramma.svg" width="40" height="40" alt="">
+    <img class="c" src="monogramma.svg" width="24" height="24" alt="">
+  </div>
 </div>
-</div>
-
 <div class="vers">
-<div class="box"><img src="orizzontale.svg" alt="Orizzontale"></div>
-<div class="box dark"><img src="orizzontale-negativo.svg" alt="Orizzontale in negativo"></div>
-<div class="box luce"><img src="mono-positivo.svg" alt="Monocromo positivo"></div>
-<div class="box"><img src="verticale.svg" alt="Verticale" style="max-height:150px"></div>
-<div class="box dark"><img src="mono-negativo.svg" alt="Monocromo negativo"></div>
-<div class="box"><img src="simbolo.svg" alt="Simbolo" style="max-height:150px"></div>
+  <div><img src="orizzontale.svg" alt="Orizzontale"></div>
+  <div class="g"><img src="orizzontale-negativo.svg" alt="Orizzontale negativo"></div>
+  <div class="m"><img src="mono-negativo.svg" alt="Monocromo su magenta"></div>
+  <div><img src="verticale.svg" alt="Verticale"></div>
+  <div><img src="mono-positivo.svg" alt="Monocromo positivo"></div>
+  <div><img src="simbolo.svg" alt="Simbolo ab"></div>
 </div>
-
-<div class="box big dark"><img src="orizzontale-negativo.svg" alt="Grande formato" style="height:auto;width:86%"></div>
+<div class="big"><img src="logotipo-negativo.svg" alt="Logotipo grande formato"></div>
 </div></body></html>

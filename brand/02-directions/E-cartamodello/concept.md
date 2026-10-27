@@ -1,10 +1,10 @@
-# E. Cartamodello
+# E. Cartamodello (v2)
 
-Territorio wildcard per Abra Robotics. Data: 27/10/2026.
+Territorio wildcard per Abra Robotics. Data: 27/10/2026, revisione v2 dopo il round 1 (vedi `changelog.md`).
 
 ## Idea in una frase
 
-Abra lavora come un modellista: prende le misure nel tuo reparto, imbastisce il caso d'uso in simulazione, lo prova sul robot vero e alla fine ti consegna il cartamodello, cioè il codice, il simulatore e il manuale per rifarlo da solo.
+Abra lavora come un modellista: prende le misure nel tuo reparto, prova il caso d'uso in simulazione e poi sul robot vero, e alla fine ti consegna il modello, cioè il codice, il simulatore e il manuale per rifarlo da solo.
 
 ## Prima di disegnare: quattro territori valutati
 
@@ -17,14 +17,14 @@ Il brief chiede un territorio lontano da A (precisione svizzero tedesca), B (uma
 | 3. **ABRACADABRA a triangolo** | L'amuleto antico in cui la parola perde una lettera per riga fino ad "A": ogni fase P0 a P5 toglie incertezza fino alla risposta. | Media | Alta | Associa la misura a una formula magica: contraddice la promessa e fa sorridere il direttore R&D nel modo sbagliato |
 | 4. **Cartamodello** | Il mestiere del modellista e del sarto: misure, imbastitura, prova, cartamodello consegnato. | Altissima, parola per parola | Alta: nessuno dei quattro territori usa materiali e gesti della sartoria | "Sartoriale" è un luogo comune del marketing italiano; la sartoria può sembrare moda |
 
-**Scelta: Cartamodello.** È l'unica idea in cui ogni passo del metodo Abra ha già un nome nel mestiere, e il nome dice la stessa cosa della promessa:
+**Scelta: Cartamodello.** È l'unica idea in cui ogni passo del metodo Abra ha già un corrispettivo nel mestiere. Nella v2 la corrispondenza guida il sistema grafico; **nei testi per i clienti le fasi si chiamano con le parole del settore** (Sopralluogo e assessment, Simulazione, Prova sul robot, Consegna), perché i revisori e il panel acquirenti hanno trovato "imbastitura" incomprensibile.
 
-| Metodo Abra | Nel mestiere | Cosa vede il cliente |
+| Metodo Abra (nome usato nei testi) | Corrispettivo nel mestiere (solo logica interna) | Cosa vede il cliente |
 |-|-|-|
-| P0 e P1, sopralluogo e assessment | **Le misure** | Un report con tempi, pesi, ingombri misurati nel suo reparto |
-| P2, digital twin e simulazione | **L'imbastitura** | Il caso d'uso cucito a punti lunghi, provvisorio, che si può ancora disfare |
-| P3 e P4, POC e pilota | **La prova** | Il robot vero sul suo pezzo, con criteri scritti prima |
-| P5, consegna e formazione | **Il modello** | Codice, simulatore e manuale che restano in azienda per rifarlo |
+| P0 e P1, Sopralluogo e assessment | Le misure | Un report con tempi, pesi, ingombri misurati nel suo reparto |
+| P2, Simulazione | L'imbastitura | Il caso d'uso nel modello digitale, provvisorio, che si può ancora correggere |
+| P3 e P4, Prova sul robot e pilota | La prova | Il robot vero sul suo pezzo, con criteri scritti prima |
+| P5, Consegna e formazione | Il modello | Codice, simulatore e manuale che restano in azienda per rifarlo |
 
 Il posizionamento raccomandato si chiama "Prima la prova". In sartoria la prova è esattamente questo: il momento in cui il capo imbastito si prova addosso prima di tagliare la stoffa buona. E "su misura" traduce alla lettera il positioning di partenza dei fondatori, "custom-made use cases".
 
@@ -33,17 +33,18 @@ Il nome Abra resta un'eco leggera: la magia non entra nel marchio, entra nel ges
 ## Razionale strategico
 
 1. **Risponde all'insight con un oggetto.** Chi valuta un robot teme di scoprire tardi cosa farà. Il cartamodello è il contrario del "tardi": si misura e si prova prima di tagliare. E risponde anche alla paura di restare senza materiali, perché il modello resta al cliente.
-2. **Regge senza robot e con qualunque produttore.** Gli elementi del sistema sono metro, gesso, punto di imbastitura, pezzi di carta con tacche. Nessuno dipende da Unitree o dalla forma del robot: si misura un umanoide come un quadrupede, una base su ruote o un braccio.
-3. **Spazio libero nel settore.** Nessun competitor rilevato usa carta, metro o imbastitura. Il colore principale è una tela grezza con un grigio flanella e il giallo del metro da sarta: lontano da blu elettrico, viola, arancio da startup, rosso su antracite di ANYbotics.
-4. **Dà al sistema una regola semantica.** Tratteggio vuol dire "in prova, ancora da misurare"; linea continua vuol dire "misurato e firmato". La stessa regola funziona nel logo, nel preventivo, nei diagrammi, sulla cassa del robot. Il team di due persone la applica senza un designer.
-5. **Regge i tre segmenti cambiando registro.** Manifattura: la pagina delle fasi diventa una tavola di modello con criteri di accettazione. Laboratorio: il pacchetto per il tesista è il cartamodello consegnato. Eventi: la prova generale con il copione approvato è letteralmente una prova d'abito.
+2. **Regge senza robot e con qualunque produttore.** Gli elementi del sistema sono metro, segni a gesso, schede di carta con tacche, rombi di decisione. Nessuno dipende da Unitree o dalla forma del robot: si misura un umanoide come un quadrupede, una base su ruote o un braccio.
+3. **Spazio libero nel settore.** Nessun competitor rilevato usa carta, metro o segni di gesso. La palette è una tela grezza con un grigio flanella e il gesso da sarto blu, chiaro e polveroso: lontano dal blu elettrico e dal cobalto del settore, dal viola, dall'arancio da startup, dal rosso su antracite di ANYbotics, e dai colori firma delle altre quattro direzioni.
+4. **Dà al sistema una regola semantica.** Ciò che è in gesso (bordo sottile blu) è da approvare e si può cancellare; ciò che è cucito (flanella piena) è misurato e firmato. La stessa regola funziona nel preventivo, nei diagrammi e nel marchio, dove la traversa è cucita e il filo in gesso esce dalla A. Il team di due persone la applica senza un designer.
+5. **Regge i tre segmenti cambiando registro.** Manifattura: il preventivo mostra le fasi in scala sul metro delle settimane, con un rombo dove si decide. Laboratorio: il pacchetto per il tesista è il modello consegnato. Eventi: la prova generale con il copione approvato è letteralmente una prova d'abito.
 
 ## Il marchio in breve
 
-- **Simbolo**: una A con il filo d'imbastitura. Il traverso è un punto lungo che entra da sinistra, passa sotto le gambe della lettera e si vede solo dove la stoffa lo lascia vedere: fuori, dentro il controforma, fuori. È disegnato a mano in SVG e non deriva da nessun carattere.
-- **Logotipo**: "Abra" con la stessa A, il filo visibile solo nel controforma; "bra" e "Robotics" sono disegnati sulle forme di Bricolage Grotesque (OFL), convertiti in tracciati e spaziati a mano. Nella versione verticale "Robotics" è distribuito sulla larghezza esatta di "Abra": composto su misura.
-- **Colore**: tela, flanella, giallo metro; carta da modello, gesso, grafite e blu gesso come secondari.
-- **Tipografia**: una sola famiglia a larghezza variabile, Bricolage Grotesque, con gli ink trap che ricordano le tacche del cartamodello.
+- **Simbolo**: una A con la **traversa cucita**, piena e inclinata di 9 gradi, che attraversa la gamba destra ed esce come un filo in gesso blu. La traversa è sempre visibile, anche a 16 px: la "Λ" della v1 è eliminata. Il segno è disegnato da zero in SVG.
+- **Logotipo**: "Abra" con la stessa A (senza filo esterno) e le lettere **b, r, a disegnate a mano** con superellissi: b e a sono lo stesso pezzo specchiato, come un cartamodello tagliato due volte. "Robotics" segue con spaziatura normale.
+- **Piccole dimensioni**: favicon disegnato pixel per pixel su 16 px, monogramma ingrossato da 24 a 64 px.
+- **Colore**: tela, flanella, gesso blu (colore firma), blu segno; carta modello, gesso e grafite come secondari. Il giallo della v1 è eliminato.
+- **Tipografia**: Bricolage Grotesque in sei tagli statici, titolo a peso 640 e larghezza 94.
 
 ## Segmento a cui parla meglio
 
@@ -54,4 +55,4 @@ Il nome Abra resta un'eco leggera: la magia non entra nel marchio, entra nel ges
 - **L'effetto tecnologico immediato.** Il robot appare sempre su un pezzo di carta, misurato, senza schermi né render. Chi cerca un fornitore "AI" a colpo d'occhio deve leggere un secondo in più.
 - **Il nero e la drammaticità.** La flanella fa da fondo scuro solo per eventi e social; il resto vive su tela chiara. Rinunciamo al lusso del nero pieno.
 - **Una parte del calore della sartoria.** Per non scivolare nella moda abbiamo escluso tessuti, macro di stoffa, manichini e forbici in foto. Della sartoria restano gli strumenti e i gesti, mai i vestiti.
-- **Il gioco con la magia del nome.** Si sente solo nella A cucita, che "fa apparire" il traverso. Il mago resta fuori.
+- **Il gioco con la magia del nome.** Si sente solo nel filo che esce dalla A. Il mago resta fuori.

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abra Robotics: misura il robot sul tuo caso prima di investire</title>
+<title>Abra Robotics: leggi i numeri del robot sul tuo caso prima di firmare l'ordine</title>
 <meta name="description" content="Abra Robotics sviluppa casi d'uso di robotica avanzata con l'AI, li misura in simulazione e su robot vero prima dell'investimento e lascia al cliente codice e documentazione.">
-<link rel="icon" href="../logo/favicon.svg">
+<link rel="icon" href="../logo/favicon-16.svg" sizes="16x16"><link rel="icon" href="../logo/favicon.svg" sizes="any">
 <link rel="stylesheet" href="../abra-c.css">
 <style>
   body { width: 1440px; height: 900px; overflow: hidden; position: relative; }
   nav.top { position: absolute; left: 56px; right: 56px; top: 0; height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--rigatura); }
-  nav.top .logo { height: 25px; display: block; }
+  nav.top .logo { height: 30px; display: block; }
   nav.top ul { list-style: none; display: flex; gap: 34px; margin: 0 0 0 auto; padding: 0; font-size: 17px; }
   nav.top ul li { position: relative; }
   nav.top .lang { font-family: var(--mono); font-size: 12px; color: var(--grafite); margin-left: 40px; letter-spacing: .06em; }
@@ -24,7 +24,8 @@
   h1 { font-size: 76px; margin: 0; font-weight: 600; letter-spacing: -0.017em; line-height: 1.03; }
   .lead { font-size: 21px; line-height: 1.5; margin: 30px 0 0; max-width: 640px; }
   .cta { display: flex; gap: 30px; align-items: center; margin-top: 34px; }
-  .ln { position: absolute; left: 22px; font-family: var(--mono); font-size: 10px; color: var(--grafite-chiara); }
+  .ln { position: absolute; left: 22px; font-family: var(--mono); font-size: 10px; color: var(--grafite); }
+  .lab { margin: 30px 0 0; font-size: 17px; line-height: 1.5; max-width: 680px; border-left: 1px solid var(--inchiostro); padding-left: 14px; }
 
   .resta { position: absolute; left: 56px; right: 56px; bottom: 44px; display: grid; grid-template-columns: 186px repeat(4, 1fr); border-top: 1px solid var(--inchiostro); padding-top: 14px; }
   .resta div { font-size: 16px; line-height: 1.35; padding-right: 22px; }
@@ -39,6 +40,8 @@
   .lbl { position: absolute; font-size: 14px; line-height: 1.3; }
   .lbl b { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; display: block; margin-bottom: 3px; }
   .lbl i { color: var(--grafite); }
+  .note-fig { position: absolute; left: 22px; top: 122px; width: 210px; list-style: none; margin: 0; padding: 0; font-size: 13.5px; line-height: 1.35; color: var(--grafite); font-style: italic; }
+  .note-fig li { margin-bottom: 10px; } .note-fig span { font-family: var(--mono); font-style: normal; font-size: 11px; color: var(--inchiostro); margin-right: 6px; }
   .didascalia.fig { position: absolute; left: 930px; top: 690px; width: 454px; margin: 0; }
 
   .margine { position: absolute; left: 930px; top: 132px; width: 300px; }
@@ -59,24 +62,24 @@
 
 <section class="main">
   <div class="meta"><span class="etichetta">Robotica applicata · Laboratorio Abra, Italia</span><span class="rev">pagina aggiornata il 27.10.2026</span></div>
-  <h1>Misura nel tuo reparto cosa farà il robot<sup class="rif">1</sup>, <span class="evid">prima di investire.</span></h1>
-  <p class="lead">Sviluppiamo con te il caso d'uso, lo proviamo in simulazione e su robot vero, e scriviamo i numeri con i loro limiti. Il codice resta nel tuo repository.</p>
+  <h1>Leggi i numeri del robot sul tuo caso<sup class="rif">1</sup> prima di firmare l'ordine.</h1>
+  <p class="lead">Sviluppiamo con te il caso d'uso, lo misuriamo in simulazione e su robot vero e ti consegniamo un report con tempi, errori e limiti. Il codice resta nel tuo repository.</p>
   <div class="cta"><a class="btn" href="#"><span class="p"></span>Prenota l'assessment di tre settimane</a><a class="link" href="#">Leggi un'offerta a fasi di esempio</a></div>
+  <p class="lab"><span class="etichetta" style="color:var(--inchiostro)">Università e laboratori</span>&ensp;Il robot arriva con SDK, ROS 2, simulatore e manuale pronti per i tesisti. <a class="link" href="#" style="font-size:16px">Il pacchetto di sviluppo</a></p>
 </section>
 
 <div class="figura">
   <div class="banco quadretti"></div>
   <img src="../img/segnaposto-unitree-go2.png" alt="Quadrupede in prova (segnaposto Unitree Go2)">
   <svg class="leader" width="454" height="560" viewBox="0 0 454 560">
-    <g stroke="#1F1D1A" stroke-width="1.25" fill="none"><path d="M172 296V198"/><path d="M290 286V198"/><path d="M128 366V478"/></g>
-    <g fill="#E9EC55" stroke="#1F1D1A" stroke-width="1.5"><circle cx="172" cy="296" r="5.5"/><circle cx="290" cy="286" r="5.5"/><circle cx="128" cy="366" r="5.5"/></g>
+    <path d="M128 366V478" stroke="#1F1D1A" stroke-width="1.25" fill="none"/>
+    <circle cx="128" cy="366" r="6" fill="#EEE842" stroke="#1F1D1A" stroke-width="2"/>
   </svg>
-  <div class="lbl" style="left:22px;top:140px;width:170px"><b>Stesso codice</b>in simulazione MuJoCo e sul robot</div>
-  <div class="lbl" style="left:282px;top:140px;width:160px"><b>Limiti</b><i>scritti accanto alle prestazioni</i></div>
-  <div class="lbl" style="left:22px;top:484px;width:190px"><b>Sensore LiDAR</b>mappa SLAM del tuo stabilimento</div>
+  <div class="lbl" style="left:22px;top:484px;width:150px"><b>LiDAR 4D</b>da qui parte la mappa SLAM del reparto</div>
+  <ol class="note-fig"><li><span>2</span>Stesso codice in simulazione MuJoCo e sul robot.</li><li><span>3</span>I limiti misurati stanno nel report, accanto alle prestazioni.</li></ol>
   <span class="etichetta" style="position:absolute;left:22px;top:18px">Banco di prova · scheda 01</span>
   <span class="rev" style="position:absolute;right:20px;top:17px">rev 1.1</span>
-  <p class="nota" style="position:absolute;left:22px;top:50px;width:330px;font-size:15px;line-height:1.4;margin:0;color:var(--inchiostro)"><span class="mono" style="font-style:normal;font-size:11px">1</span>&ensp;Fase P1, tre settimane: simulazione, prova sul robot, report con i numeri per decidere.</p>
+  <p class="nota" style="position:absolute;left:22px;top:50px;width:330px;font-size:15px;line-height:1.4;margin:0;color:var(--inchiostro)"><span class="mono" style="font-style:normal;font-size:11px">1</span>&ensp;Fase P1, durata <span class="evid" style="font-style:normal">3 settimane</span>: simulazione, prova sul robot, report con i numeri per decidere.</p>
 </div>
 <p class="didascalia fig"><span class="mc">Fig. 1</span>&ensp;Quadrupede al banco di prova. Segnaposto: foto ufficiale Unitree Go2, da sostituire con uno scatto nel Laboratorio Abra.</p>
 

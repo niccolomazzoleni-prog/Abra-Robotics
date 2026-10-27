@@ -1,81 +1,85 @@
-# Palette · Riferimento A
+# Palette · In squadra (v2)
 
-Una palette da strumento di misura: alluminio anodizzato, grafite delle scale incise, bianco della carta da disegno. Due colori di segnale presi dalla norma sulle macchine (IEC 60204-1: verde per lo stato normale, giallo per la condizione che richiede attenzione) e usati con lo stesso significato: il verde marca ciò che è stato misurato e superato, il giallo marca un limite dichiarato. Nessun blu, nessun viola, nessun rosso, nessun grigio caldo.
+Colore firma esclusivo della direzione: **verde di misura RAL 6024 con grigio alluminio**. Il verde viene dalla norma sulle macchine (IEC 60204-1: verde per lo stato normale) e in Abra ha due ruoli: nelle schede segna il criterio misurato e superato, nei formati di comunicazione è il campo pieno che si riconosce da lontano (copertina del preventivo, testata del post, totem, biglietto, monogramma). Nessun giallo, nessun ocra, nessun blu, nessun rosso. Il limite dichiarato non ha un colore: è un tratteggio grafite.
 
 ## Colori
 
+CMYK ricalcolati con il profilo Generic CMYK di macOS, intento colorimetrico relativo; per la stampa vera vanno rifatti dal tipografo con FOGRA39 (patinata) o FOGRA29 (uso mano). I Pantone sono indicativi, da verificare sulla mazzetta.
+
 ### Primari
 
-| Nome | HEX | RGB | CMYK indicativo | Riferimento | Uso |
+| Nome | HEX | RGB | CMYK (profilo) | Riferimento | Uso |
 |-|-|-|-|-|-|
-| Grafite | `#1A2125` | 26, 33, 37 | 80 65 55 75 | vicino a RAL 7021 | testo, logotipo, fondi scuri, filetti principali |
-| Alluminio | `#E3E7E9` | 227, 231, 233 | 10 5 5 0 | vicino a RAL 9006 in versione chiara | fondo base del sito, dei post e dei pannelli |
-| Bianco disegno | `#F6F8F8` | 246, 248, 248 | 3 1 1 0 | carta naturale bianca | fondo dei documenti, delle tavole e delle targhe |
+| Verde di misura | `#008351` | 0, 131, 81 | 85 13 82 14 | RAL 6024 per vinili e vernici; Pantone 348 C indicativo | colore firma: campi pieni, monogramma, celle "misurato", pulsante principale |
+| Alluminio | `#E3E7E9` | 227, 231, 233 | 9 5 4 0 | Pantone Cool Gray 1 C indicativo | fondo base di sito, post, pannelli |
+| Grafite | `#1A2125` | 26, 33, 37 | 83 71 61 62 | Pantone Black 7 C indicativo | testo, logotipo, flight case |
 
-### Secondari (neutri di servizio)
+### Secondari
 
-| Nome | HEX | RGB | CMYK indicativo | Uso |
+| Nome | HEX | RGB | CMYK (profilo) | Uso |
 |-|-|-|-|-|
-| Grafite 80 | `#2C353A` | 44, 53, 58 | 75 60 50 55 | pannelli su fondo grafite, testate |
-| Grigio quota | `#5C676D` | 92, 103, 109 | 60 45 40 20 | etichette, quote, didascalie |
-| Acciaio | `#8A959B` | 138, 149, 155 | 45 30 30 5 | etichette su fondo scuro, grafica, angolari della cassa |
-| Linea | `#B4BDC2` | 180, 189, 194 | 30 18 18 0 | filetti sottili e separatori, mai testo |
+| Verde profondo | `#0F3A2C` | 15, 58, 44 | 84 37 71 59 | fondo scuro dei formati social ed eventi, al posto del nero |
+| Bianco disegno | `#F6F8F8` | 246, 248, 248 | 3 2 2 0 | fondo dei documenti, delle tavole e delle targhe |
+| Grigio quota | `#5C676D` | 92, 103, 109 | 68 52 45 8 | etichette e quote, **solo su fondi chiari** |
+| Acciaio | `#8A959B` | 138, 149, 155 | 46 32 27 1 | etichette su grafite, sagome grafiche, angolari |
+| Linea | `#B4BDC2` | 180, 189, 194 | 27 17 14 0 | filetti e sagome, mai testo |
 
-### Segnali
+Tutti i colori rientrano nella gamma CMYK con scarto di ritorno dE76 tra 0 e 2. Tolto dalla v1: il verde chiaro `#3DBB82`, fuori gamma (dE 7,8).
 
-| Nome | HEX | RGB | CMYK indicativo | Riferimento | Significato |
-|-|-|-|-|-|-|
-| Verde segnale | `#008351` | 0, 131, 81 | 90 15 80 10 | RAL 6024 verde traffico | misurato, criterio superato, data libera |
-| Verde segnale su scuro | `#3DBB82` | 61, 187, 130 | 70 0 60 0 | variante digitale del RAL 6024 | lo stesso segnale su fondo grafite, solo a schermo |
-| Giallo limite | `#F1DD38` | 241, 221, 56 | 5 8 85 0 | RAL 1016 giallo zolfo | limite dichiarato (carico, autonomia, ambiente) |
+### Il limite dichiarato
 
-I valori CMYK e i riferimenti RAL sono indicativi: vanno confermati con una prova colore in tipografia e, per la livrea, con il campione RAL del fornitore di vinile.
+Tratteggio a 135 gradi, linee grafite da 1 px (0,25 mm in stampa) su passo 4 o 5 px, dentro un riquadro con filetto da 1,5 px. Si usa come quadratino accanto al valore o come cella del riquadro di controllo. In CSS: `repeating-linear-gradient(135deg, #1A2125 0 1px, transparent 1px 5px)`.
 
 ## Rapporti d'uso
 
-| Colore | Quota indicativa | Note |
+| Colore | Quota | Note |
 |-|-|-|
-| Alluminio e Bianco disegno | 60 % | i fondi: alluminio per schermi e post, bianco per carta e tavole |
-| Grafite | 28 % | testo, logotipo, testate, flight case |
-| Neutri di servizio | 9 % | quote, etichette, filetti |
-| Verde segnale | 2 % | solo celle di criterio, spunte, date libere |
-| Giallo limite | 1 % | solo il quadratino o la cella del limite dichiarato |
+| Alluminio e Bianco disegno | 50 % | i fondi |
+| Verde di misura | 22 % | campi pieni nei formati di comunicazione, segnali nei documenti |
+| Grafite e Verde profondo | 20 % | testo, testate scure, eventi |
+| Neutri di servizio | 8 % | quote, etichette, filetti, sagome |
 
 Regole:
-- Il logotipo è sempre monocromatico: grafite su chiaro, bianco disegno su grafite. Il triangolo della A non si colora: un triangolo verde accanto a una A si legge come un abete.
-- Verde e giallo non stanno mai vicini in grandi superfici e non decorano: se non c'è una misura o un limite, non compaiono.
-- Le fotografie e i segnaposto robot vanno in bianco e nero o con colore desaturato; il colore del sistema resta nei segnali.
+- Il logotipo è sempre monocromatico: grafite su chiaro, bianco su verde, grafite o verde profondo.
+- Su verde il testo è bianco puro `#FFFFFF` (4,81 : 1); mai grafite su verde (3,39 : 1).
+- Il verde nelle schede tecniche compare solo dove c'è una misura fatta; nei campi pieni non porta significato di stato.
+- Le fotografie e i segnaposto robot vanno in bianco e nero o desaturati.
 
 ## Contrasti WCAG 2.2
 
-Calcolati con la formula della luminanza relativa (WCAG 2.2, 1.4.3). Soglie: AA 4,5 : 1 per il testo normale e 3 : 1 per il testo grande; AAA 7 : 1.
+Calcolati con la luminanza relativa WCAG 2.2 (1.4.3) e ricontrollati con lo strumento del revisore di produzione. Soglie: AA 4,5 : 1 per il testo normale, 3 : 1 per il testo grande; AAA 7 : 1.
 
 | Testo | Fondo | Rapporto | Esito | Uso |
 |-|-|-|-|-|
-| Grafite `#1A2125` | Alluminio `#E3E7E9` | 13,10 : 1 | AAA | testo e titoli su fondo base |
-| Grafite `#1A2125` | Bianco disegno `#F6F8F8` | 15,29 : 1 | AAA | testo nei documenti |
-| Grigio quota `#5C676D` | Alluminio `#E3E7E9` | 4,67 : 1 | AA | etichette, didascalie |
+| Grafite `#1A2125` | Alluminio `#E3E7E9` | 13,10 : 1 | AAA | testo e titoli |
+| Grafite `#1A2125` | Bianco disegno `#F6F8F8` | 15,29 : 1 | AAA | documenti |
+| Grigio quota `#5C676D` | Alluminio `#E3E7E9` | 4,67 : 1 | AA | etichette |
 | Grigio quota `#5C676D` | Bianco disegno `#F6F8F8` | 5,45 : 1 | AA | etichette nei documenti |
-| Bianco disegno `#F6F8F8` | Grafite `#1A2125` | 15,29 : 1 | AAA | testo su fondo scuro |
-| Alluminio `#E3E7E9` | Grafite `#1A2125` | 13,10 : 1 | AAA | testo secondario su scuro |
-| Acciaio `#8A959B` | Grafite `#1A2125` | 5,32 : 1 | AA | etichette su scuro |
-| Bianco `#FFFFFF` | Verde segnale `#008351` | 4,81 : 1 | AA | testo nelle celle "misurato" |
-| Verde segnale `#008351` | Bianco disegno `#F6F8F8` | 4,51 : 1 | AA | testo verde su documento |
-| Verde segnale `#008351` | Alluminio `#E3E7E9` | 3,87 : 1 | AA solo testo grande | grafica e testo da 24 px in su |
-| Verde segnale su scuro `#3DBB82` | Grafite `#1A2125` | 6,70 : 1 | AA | segnale su fondo scuro |
-| Grafite `#1A2125` | Giallo limite `#F1DD38` | 11,75 : 1 | AAA | testo nelle celle "limite" |
-| Acciaio `#8A959B` | Bianco disegno `#F6F8F8` | 2,87 : 1 | non per testo | solo linee e grafica |
+| Bianco `#FFFFFF` | Verde di misura `#008351` | 4,81 : 1 | AA | testo su campo verde |
+| Verde di misura `#008351` | Bianco disegno `#F6F8F8` | 4,51 : 1 | AA | testo verde nei documenti |
+| Verde di misura `#008351` | Alluminio `#E3E7E9` | 3,87 : 1 | AA solo testo grande | etichette da 18,7 px in grassetto o 24 px in su |
+| Bianco `#FFFFFF` | Verde profondo `#0F3A2C` | 12,64 : 1 | AAA | testo su fondo scuro |
+| Alluminio `#E3E7E9` | Verde profondo `#0F3A2C` | 10,15 : 1 | AAA | testo secondario su scuro |
+| Bianco disegno `#F6F8F8` | Grafite `#1A2125` | 15,29 : 1 | AAA | testo su grafite |
+| Alluminio `#E3E7E9` | Grafite `#1A2125` | 13,10 : 1 | AAA | date prenotate nel calendario |
+| Acciaio `#8A959B` | Grafite `#1A2125` | 5,32 : 1 | AA | etichette su grafite |
+| Grigio quota `#5C676D` | Grafite `#1A2125` | 2,81 : 1 | **vietato** | nessun uso |
+| Grafite `#1A2125` | Verde di misura `#008351` | 3,39 : 1 | **vietato per il testo** | nessun uso |
+| Acciaio `#8A959B` | Bianco disegno `#F6F8F8` | 2,87 : 1 | non per testo | solo grafica |
 | Linea `#B4BDC2` | Bianco disegno `#F6F8F8` | 1,79 : 1 | non per testo | solo filetti |
 
-Il giallo limite non si usa mai come colore di testo su fondo chiaro (1,3 : 1 su bianco disegno): compare come campitura con testo grafite sopra, oppure come quadratino con un filetto di contorno `#C9B520`.
+Tolta dalla v1 la Grafite 80 `#2C353A` (Acciaio su Grafite 80 dava 4,09 : 1, sotto AA).
+
+## Proteggibilità
+
+La combinazione verde e grigio non è registrabile come marchio di colore e non va trattata come asset esclusivo in senso legale. La riconoscibilità poggia sul segno Ab e sul suo uso ricorrente su piastra verde (monogramma, adesivo sui robot, testate), che si può depositare come marchio figurativo secondario se diventa costante.
 
 ## Variabili CSS
 
 ```css
 :root{
-  --grafite:#1A2125; --grafite-80:#2C353A;
-  --alluminio:#E3E7E9; --bianco:#F6F8F8;
+  --verde:#008351; --verde-profondo:#0F3A2C;
+  --grafite:#1A2125; --alluminio:#E3E7E9; --bianco:#F6F8F8;
   --quota:#5C676D; --acciaio:#8A959B; --linea:#B4BDC2;
-  --verde:#008351; --verde-scuro-fondo:#3DBB82; --giallo:#F1DD38;
 }
 ```

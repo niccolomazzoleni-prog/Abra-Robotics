@@ -1,75 +1,64 @@
-# Palette: i colori del teatro all'italiana, in chiave industriale
+# Palette v2: una gelatina magenta e i neutri del palco
 
-Il riferimento è la sala di un teatro all'italiana vista con gli occhi di un tecnico luci: il velluto delle poltrone, la luce di tungsteno sul palcoscenico, lo stucco dei palchi. Tre colori fanno il marchio; gli altri servono il testo e i dati. Nessun colore è una sfumatura: ogni campitura è piena e ha bordi netti, come una luce tagliata dalle lame di un sagomatore.
+Il colore firma è una gelatina teatrale: il magenta che ogni tecnico luci usa per i controluce e le scene di festa. Non è usato dalle altre direzioni (A verde di misura, B rosso con ocra, C giallo evidenziatore, E gesso da sarto) né dai competitor rilevati (blu Unitree e AgiBot, teal Oversonic, azzurro SIR, salmone PAL). È un primario della stampa in quadricromia, quindi si riproduce bene su carta, vinile e forex, e porta il nome di Magenta, in Lombardia.
 
-## Colori primari
+## Colori
 
-| Nome | Ruolo | HEX | RGB | CMYK indicativo (patinata) |
-|-|-|-|-|-|
-| **Velluto** | Fondo di scena, testo su carta, marchio | `#3A1915` | 58, 25, 21 | 35, 85, 80, 60 |
-| **Luce** | Il palco acceso, accento unico, pavimento della A | `#E9AE45` | 233, 174, 69 | 5, 35, 85, 0 |
-| **Stucco** | Fondo dei documenti, testo su velluto | `#F3ECDF` | 243, 236, 223 | 3, 5, 12, 0 |
+CMYK calcolati con Pillow ImageCms dal profilo `Generic CMYK Profile.icc` di macOS, intento colorimetrico relativo. Ritorno = colore che si ottiene riconvertendo il CMYK in sRGB.
 
-## Colori secondari
+| Nome | Ruolo | HEX | RGB | CMYK calcolato | Ritorno | Pantone indicativo |
+|-|-|-|-|-|-|-|
+| **Magenta di scena** | Colore firma: arco scenico negli eventi, punti della pianta, pulsanti | `#D6006F` | 214, 0, 111 | 2, 96, 14, 4 | `#CF2570` | 226 C |
+| **Grafite** | Testo dei documenti, fondo di scena | `#202124` | 32, 33, 36 | 80, 75, 65, 60 (TAC 280%) | `#1F2225` | 426 C |
+| **Carta** | Pagina | `#FAFAF7` | 250, 250, 247 | 2, 1, 2, 0 | `#FAFAF7` | carta bianca naturale |
+| **Cemento** | Fondi neutri, pavimenti, tavole | `#E7E6E1` | 231, 230, 225 | 7, 6, 7, 0 | `#E9E8E3` | Cool Gray 1 C |
+| Rosa | Gelatina diluita: colonna dei criteri nelle tabelle | `#FBE3EE` | 251, 227, 238 | 4, 12, 1, 0 | `#EEDFE5` | 705 C |
+| Quinta | Secondo piano su Grafite | `#3A3B40` | 58, 59, 64 | 79, 73, 61, 31 | `#373A3F` | 425 C |
+| Fumo | Testo secondario su chiaro | `#5F6066` | 95, 96, 102 | 67, 58, 48, 9 | `#5C6067` | Cool Gray 10 C |
+| Fumo chiaro | Testo secondario su Grafite | `#A9AAAF` | 169, 170, 175 | 31, 25, 19, 0 | `#A8ABB0` | Cool Gray 6 C |
 
-| Nome | Ruolo | HEX | RGB | CMYK indicativo |
-|-|-|-|-|-|
-| Carta | Pagina del preventivo e del manuale | `#FBF8F2` | 251, 248, 242 | 1, 2, 5, 0 |
-| Buio | Sala a luci spente: flight case, video, fondi molto grandi | `#211412` | 33, 20, 18 | 50, 75, 70, 80 |
-| Quinta | Taglio di luce sul fondale velluto (solo come campitura) | `#4A221C` | 74, 34, 28 | 35, 85, 80, 50 |
-| Paglia | Luce diffusa: colonna dei criteri, evidenziazioni | `#F4D79E` | 244, 215, 158 | 3, 15, 45, 0 |
-| Fumo | Testo secondario su chiaro | `#6F645B` | 111, 100, 91 | 40, 45, 50, 40 |
-| Fumo chiaro | Testo secondario su velluto, didascalie | `#B5A99C` | 181, 169, 156 | 25, 28, 35, 5 |
-| Rame | Solo stati e avvisi (etichetta "Esempio", errori) | `#A4472B` | 164, 71, 43 | 20, 80, 90, 15 |
-
-I valori CMYK sono indicativi e vanno verificati con una prova colore sulla carta scelta. Velluto in stampa va costruito ricco (mai con il solo nero) per non diventare marrone spento.
+Note di stampa:
+- Il Magenta di scena è appena fuori gamma in quadricromia: il ritorno è un magenta meno saturo (`#CF2570`). Per totem, flight case e biglietti in tiratura si stampa in tinta piatta **Pantone 226 C**; per i preventivi stampati in ufficio la quadricromia basta.
+- La Grafite in grandi campiture (totem su forex, flight case) si stampa con il CMYK sopra (TAC 280%, sotto il limite di 300% delle macchine offset comuni) oppure in Pantone 426 C. Chiedere sempre una prova colore per forex e vinile.
 
 ## Rapporti d'uso
 
-| Contesto | Velluto | Luce | Stucco / Carta | Secondari |
+| Registro | Grafite | Magenta | Carta e Cemento | Secondari |
 |-|-|-|-|-|
-| Scena (social, totem, video, hero) | 55% | 25% | 15% | 5% |
-| Documento (preventivo, manuale, mail) | 20% | 5% | 70% | 5% |
-| Media su tutto il sistema | 40% | 15% | 40% | 5% |
+| Documento (preventivo, post aziendali, scheda laboratorio, biglietto) | 15% (testo) | 2 a 4% | 78% | 4% |
+| Scena (reel, totem, livrea, eventi) | 55% | 30% | 10% | 5% |
+| Sito | 15% | 5% | 75% | 5% |
 
 Regole:
-- **La Luce sta in basso.** È il pavimento del palco: occupa il terzo inferiore delle composizioni, oppure il pavimento della A. Non diventa un fondo pieno a tutta pagina, tranne che sul retro di un formato piccolo.
-- **Un solo colore caldo acceso per composizione.** Rame non convive con grandi campiture Luce.
-- **Campiture piene.** Il passaggio dalla Quinta al Velluto è sempre un bordo netto.
-- **Le foto entrano nella palette** con il trattamento tungsteno (vedi `foto-video.md`).
+- Nei documenti il magenta compare solo in punti (posizioni della pianta, etichette brevi, un filo): mai come fondo.
+- Nella scena il magenta riempie l'arco scenico, una sola campitura per composizione.
+- Nessuna sfumatura e nessun alone: il magenta è sempre pieno e con bordi netti.
+- Le foto restano a colori naturali; il magenta non si applica sopra il robot.
 
 ## Contrasti WCAG (calcolati)
 
-Formula WCAG 2.1 sulla luminanza relativa. Soglie: AA testo normale 4,5; AA testo grande 3; AAA testo normale 7.
+Formula WCAG 2.1. Soglie: AA testo normale 4,5; AA testo grande 3 (da 24 px, o 18,5 px in grassetto); AAA 7.
 
 | Testo | Fondo | Rapporto | Esito |
 |-|-|-|-|
-| Velluto | Stucco | 13,44 : 1 | AAA |
-| Velluto | Carta | 14,90 : 1 | AAA |
-| Velluto | Luce | 7,98 : 1 | AAA |
-| Velluto | Paglia | 11,33 : 1 | AAA |
-| Buio | Luce | 9,04 : 1 | AAA |
-| Stucco | Velluto | 13,44 : 1 | AAA |
-| Luce | Velluto | 7,98 : 1 | AAA |
-| Luce | Buio | 9,04 : 1 | AAA |
-| Paglia | Velluto | 11,33 : 1 | AAA |
-| Fumo chiaro | Velluto | 6,86 : 1 | AA |
-| Fumo | Stucco | 4,90 : 1 | AA |
-| Fumo | Carta | 5,43 : 1 | AA |
-| Rame | Carta | 5,64 : 1 | AA |
-| Rame | Stucco | 5,09 : 1 | AA |
-| Stucco | Rame | 5,09 : 1 | AA |
-| Luce | Stucco | 1,69 : 1 | Vietato per il testo |
-| Luce | Carta | 1,87 : 1 | Vietato per il testo |
+| Grafite | Carta | 15,40 : 1 | AAA |
+| Grafite | Cemento | 12,88 : 1 | AAA |
+| Grafite | Rosa | 13,28 : 1 | AAA |
+| Carta | Grafite | 15,40 : 1 | AAA |
+| Carta | Quinta | 10,68 : 1 | AAA |
+| Carta | Magenta | 4,91 : 1 | AA |
+| Magenta | Carta | 4,91 : 1 | AA |
+| Fumo | Carta | 5,99 : 1 | AA |
+| Fumo | Cemento | 5,01 : 1 | AA |
+| Fumo chiaro | Grafite | 6,94 : 1 | AA |
+| Magenta | Cemento | 4,11 : 1 | Solo testo grande |
+| Magenta | Grafite | 3,13 : 1 | Solo testo grande, mai nelle applicazioni |
 
-La Luce su fondi chiari si usa solo come campitura (il pavimento del palco, il pavimento della A, le barre dei grafici), mai per scrivere.
+Nelle applicazioni nessuna coppia testo e fondo scende sotto AA: il magenta come testo compare solo su Carta.
 
 ## Token CSS
 
-Tutti i mockup leggono i colori da `sistema.css`:
-
 ```css
---velluto:#3A1915; --buio:#211412; --luce:#E9AE45; --paglia:#F4D79E;
---stucco:#F3ECDF; --carta:#FBF8F2; --fumo:#6F645B; --fumo-chiaro:#B5A99C;
---rame:#A4472B; --quinta:#4A221C;
+--magenta:#D6006F; --rosa:#FBE3EE; --grafite:#202124; --quinta:#3A3B40;
+--carta:#FAFAF7; --cemento:#E7E6E1; --fumo:#5F6066; --fumo-chiaro:#A9AAAF;
 ```

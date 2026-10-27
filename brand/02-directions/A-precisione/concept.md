@@ -1,37 +1,46 @@
-# Direzione A · Riferimento A
+# Direzione A · In squadra (v2)
+
+Territorio: precisione industriale. Nome della v1: "Riferimento A".
 
 ## L'idea in una frase
 
-Abra è il riferimento da cui il cliente misura il robot prima di investire, e il marchio lo dice con il segno che nel disegno tecnico indica il riferimento: il triangolo pieno sotto la lettera A.
+Abra verifica il robot sul caso del cliente prima dell'investimento, come in officina si mette un pezzo in squadra prima di montarlo; il marchio è la legatura Ab disegnata sulla squadra da disegno.
 
 ## Il segno
 
-Nel disegno tecnico (ISO 5459, ASME Y14.5) ogni misura parte da un riferimento, chiamato con una lettera e marcato da un triangolo pieno appoggiato sulla superficie. Il riferimento principale si chiama A. Abra comincia con la A, e il suo lavoro è dare al cliente un punto fermo da cui misurare: simulazione, digital twin, prove su robot vero, criteri di accettazione scritti.
+La squadra è un triangolo rettangolo con un vuoto triangolare al centro, lo strumento con cui si controlla che un angolo sia retto. È anche la figura di una A con l'asta destra verticale. Nel marchio Abra quell'asta prosegue e diventa l'asta della b: il segno è la legatura **Ab**, le prime due lettere del nome unite nell'angolo retto.
 
-La A del marchio è disegnata a mano su questa idea. Il vuoto sopra la traversa è un triangolo; lo stesso triangolo, ripetuto in pieno sulla linea di base, diventa il riferimento. Le due figure hanno la stessa forma e la stessa misura: quello che il cliente sa prima e quello che gli resta in mano alla fine. Chi non conosce il disegno tecnico vede una A solida e riconoscibile; l'ingegnere riconosce il triangolo di riferimento in un istante.
+- La diagonale sale con pendenza 2 a 1; l'asta comune è verticale, a 90 gradi con la linea di base.
+- La traversa c'è sempre, con il vuoto triangolare sopra: nessuna "Λ".
+- Le stesse regole tornano nel logotipo: il terminale della r è tagliato a 2 a 1, la gamba della R scende con la stessa pendenza, la a a un piano ribalta la b.
+- Il simbolo da solo è la legatura Ab; il monogramma è la legatura in bianco su piastra verde di misura, che fa da favicon, avatar, adesivo sui robot e timbro di verifica. A 16 px c'è una versione disegnata pixel per pixel.
 
-Il resto del logotipo è costruito con lo stesso metodo delle lettere incise sulle targhe dati: asse, tratto costante, terminali tagliati in piano, forme tonde a stadio (la DIN 1451 come riferimento di metodo, nessuna lettera presa da un font). La a a un piano è la b ribaltata: il sistema si vede anche nelle lettere.
+Perché è cambiato rispetto alla v1: la A isolata con il triangolo sotto la traversa era un segno a distintività minima nel campo più affollato dei registri (lettera A singola), a 16 px perdeva il triangolo e somigliava al simbolo della direzione D. La legatura Ab cambia la sagoma intera, si legge come inizio del nome e resta propria anche in nero pieno a 16 px.
+
+## Il colore firma
+
+Verde di misura RAL 6024 con grigio alluminio. Nelle schede tecniche il verde segna il criterio misurato e superato; nei formati che devono farsi ricordare (copertina del preventivo, testata del post, totem, biglietto, monogramma) è un campo pieno. Il limite dichiarato non ha colore: è un tratteggio, come una sezione nel disegno tecnico.
 
 ## Razionale strategico
 
-- **Il brief chiede un marchio che parli di metodo.** "Prima la prova" è un'affermazione di misura, e il territorio A la porta nel segno, nella griglia e nei documenti. Il preventivo, la scheda limiti e il verbale di consegna diventano l'immagine del marchio: sono gli oggetti che i clienti di Abra apprezzano di più (manuale rev 1.1 di SACMI) e che nessun concorrente usa come linguaggio visivo.
-- **Regge con qualunque robot e anche senza.** Il segno, i riquadri di controllo, le quote e i cartigli funzionano su un preventivo senza immagini, su un totem con un umanoide di un altro produttore, sulla targa adesiva di un quadrupede.
-- **Lontano dai vicini occupati.** Agility usa griglia svizzera, grigio caldo e mono tecnico; ANYbotics antracite e rosso. Riferimento A usa un grigio freddo d'alluminio, nessun monospaziato come voce, nessun rosso, e un verde segnale (RAL 6024) che compare solo dove c'è una misura superata.
-- **Producibile da due persone.** Una famiglia di caratteri gratuita (Barlow, OFL), quattro colori base, cinque elementi grafici, tutti realizzabili in HTML e CSS. Il preventivo del Company Brain può adottare il sistema cambiando un foglio di stile.
+- **Il metodo diventa segno.** "Prima la prova" è un'affermazione di verifica: la squadra è lo strumento della verifica, il verde è lo stato "misurato", il triangolo a terra è il punto da cui si misura.
+- **Regge con qualunque robot e anche senza.** La legatura, la piastra verde, i riquadri di controllo e i cartigli funzionano su un preventivo senza immagini e sulla targa adesiva di un quadrupede di qualsiasi produttore.
+- **Lontano dai vicini.** Agility usa grigio caldo e mono tecnico, ANYbotics antracite e rosso, Roboverse Reply blu notte e verde: In squadra lavora su campo verde pieno e alluminio chiaro, con titoli in B612 (il carattere degli strumenti di bordo Airbus) al posto del grotesk di default.
+- **Producibile da due persone.** Due famiglie gratuite, sei colori, cinque elementi grafici, tutto in HTML e CSS.
 
-## Segmento a cui parla meglio
+## Segmenti
 
-Il direttore R&D o operations di un'azienda manifatturiera, il segmento che definisce la solidità del marchio. Legge disegni tecnici ogni giorno: riconosce il triangolo di riferimento, la quota, il cartiglio, il riquadro di controllo. Il preventivo Abra gli sembrerà un documento della sua stessa officina, con un numero da portare in direzione.
-
-Parla bene anche alla responsabile di laboratorio universitario: documentazione, revisioni, specifiche reali e limiti dichiarati sono il suo pane.
+- **Manifattura**: il preventivo ha in copertina la pianta della sua postazione con il punto di misura, e nelle pagine interne criteri, limiti e responsabilità scritte. Parla la lingua del suo ufficio tecnico.
+- **Laboratori**: l'hero ha un ingresso dedicato (SDK, ROS 2, simulatore, manuale, data di consegna scritta); il post sulla consegna mostra il pacchetto per i tesisti.
+- **Eventi**: il G1 in piedi, in scala con le persone, il triangolo verde a terra come punto d'incontro, una sola battuta approvata. Il verde pieno del totem si legge a quattro metri.
 
 ## Cosa sacrifica
 
-- **Il calore.** La direzione è fredda per scelta. Le persone entrano nelle fotografie (tecnici al lavoro), ma il marchio non sorride.
-- **Lo spettacolo negli eventi.** Il totem e il reel sono chiari e credibili, meno memorabili di una regia teatrale. Per l'event manager la promessa diventa "copione approvato, tecnico presente, date libere", che risponde alla sua paura principale (la figuraccia) più che al desiderio di stupire.
-- **La sorpresa del nome.** Abra evoca la magia; qui la tensione si scioglie del tutto a favore della misura. Nessuna ironia sul nome.
-- **La libertà del colore.** Il verde e il giallo sono segnali con un significato (misurato, limite dichiarato), e per questo non si usano per decorare.
+- **La magia del nome.** Nessuna ironia su "Abra".
+- **Il calore pittorico.** Il verde dà energia, ma la direzione resta rigorosa; le persone compaiono come sagome o in foto documentarie, mai come protagonisti sorridenti.
+- **La libertà del colore.** Un solo colore firma, usato in campi pieni o come segnale; niente palette accessorie.
+- **La dinamicità controllata del segno.** La diagonale 2 a 1 dà al marchio una spinta in avanti: va bilanciata da impaginati fermi, su griglia.
 
 ## Nota sul progetto esistente
 
-Il CLAUDE.md del sito indica ancora Satoshi, nero e viola. Questa direzione li sostituisce interamente: è una proposta di nuova identità, da adottare solo se scelta.
+Il CLAUDE.md del sito indica Satoshi, nero e viola: questa direzione li sostituisce interamente se viene scelta.

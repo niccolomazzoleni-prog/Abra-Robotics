@@ -1,66 +1,65 @@
-# Tipografia · Riferimento A
+# Tipografia · In squadra (v2)
 
 ## Scelta
 
-**Una sola famiglia: Barlow**, in tre larghezze (normale, Semi Condensed, Condensed). Barlow nasce dalla segnaletica stradale pubblica: è un grotesk a basso contrasto con curve leggermente arrotondate, della stessa stirpe dei caratteri da targa e da cartello (DIN 1451, Highway Gothic). Ha cifre tabellari, molti pesi e una versione semicondensata che regge titoli lunghi in italiano senza andare a capo ogni tre parole.
+Due voci, entrambe gratuite con licenza SIL Open Font License 1.1, in file statici locali (`assets/fonts/`), adatti all'incorporamento nei PDF del Company Brain.
 
-Una famiglia sola, perché in questa direzione la gerarchia si fa con larghezza, peso e maiuscolo spaziato, come su una targa dati. Niente serif, niente monospaziato come voce: il dato tecnico si scrive in Barlow con cifre tabellari.
-
-Il logotipo non usa Barlow: è disegnato a mano su asse e tratto costante (vedi `logo/` e `_src/glyphs.py`). Barlow gli sta accanto perché viene dalla stessa logica costruttiva.
-
-| Famiglia | Pesi usati | Licenza | Costo | Dove |
+| Famiglia | Ruolo | Pesi | Licenza | Costo |
 |-|-|-|-|-|
-| Barlow | 400, 500, 600, 700 | SIL Open Font License 1.1 | gratuito | testo, dati, tabelle, interfacce |
-| Barlow Semi Condensed | 400, 500, 600, 700 | SIL OFL 1.1 | gratuito | titoli, etichette, riquadri di controllo |
-| Barlow Condensed | 500, 600 | SIL OFL 1.1 | gratuito | tabelle strette, segnaletica, flight case |
+| **B612** | titoli, nome sul biglietto, voce dei formati di comunicazione | 400, 700 | SIL OFL 1.1 (`OFL-B612.txt`) | gratuito |
+| **Barlow**, Semi Condensed, Condensed | testo, dati con cifre tabellari, tabelle, etichette | 400, 500, 600, 700 | SIL OFL 1.1 (`OFL-Barlow.txt`) | gratuito |
 
-File OFL in `assets/fonts/` con il testo della licenza (`OFL-Barlow.txt`). La licenza OFL consente l'incorporamento nei PDF del Company Brain e l'uso via `@font-face` sul sito. Fonte: Google Fonts, progetto di Jeremy Tribby.
+**B612** è il carattere disegnato da Intactile Design con Airbus (e la scuola ENAC di Tolosa) per gli schermi della cabina di pilotaggio: forme aperte, aperture larghe, distinzione netta tra caratteri simili, pensato per essere letto in fretta su uno strumento. È la voce dello strumento di bordo: tecnica senza essere un grotesk da catalogo, e nessun concorrente rilevato la usa. In grassetto, con spaziatura stretta, dà alle headline un timbro proprio.
+
+**Barlow** resta per testo e dati: discende dalla segnaletica stradale, ha cifre tabellari e larghezze semicondensate che servono a tabelle, cartigli e targhe. Non è più l'unica voce del sistema.
+
+Il logotipo non usa nessuno dei due: è disegnato su asse e tratto costante (`_src/glyphs.py`), con la legatura Ab e i tagli a pendenza 2 a 1.
 
 ### Alternativa commerciale
 
-Se Abra volesse un carattere più rigoroso e più raro: **FF DIN Pro** di Albert Jan Pool (FontFont, oggi Monotype). Licenza desktop per singolo peso indicativamente 60 a 80 euro; famiglia di 5 pesi con licenze desktop, web e incorporamento in PDF nell'ordine di 600 a 1.000 euro (da verificare su monotype.com al momento dell'acquisto). Barlow resta l'alternativa gratuita e la scelta consigliata per un team di due persone.
+Per le headline, al posto di B612: **FF DIN Round** o **FF DIN Pro** (Albert Jan Pool, Monotype), licenza desktop circa 60 a 80 euro per peso, famiglia con licenze web e PDF nell'ordine di 600 a 1.000 euro, da verificare su monotype.com. B612 resta la scelta consigliata: gratuita e più rara.
 
 ## Gerarchia
 
-### Schermo (sito, post, presentazioni)
+### Schermo
 
-| Livello | Famiglia e peso | Dimensione / interlinea | Spaziatura | Esempio |
-|-|-|-|-|-|
-| Titolo display | Semi Condensed 600 | 74 a 92 px / 1,0 | -1,2 % | "Misura nel tuo reparto cosa farà il robot, prima di investire." |
-| Titolo di sezione | Semi Condensed 600 | 30 a 40 px / 1,08 | -0,5 % | "Decidi fase per fase, con un criterio scritto." |
-| Titolo di blocco | Semi Condensed 600 | 19 a 22 px / 1,15 | 0 | "Targa adesiva sul dorso" |
-| Testo introduttivo | Barlow 400 | 19 a 20 px / 1,5 | 0 | paragrafo sotto il titolo |
-| Testo | Barlow 400 | 16 a 17 px / 1,55 | 0 | corpo di pagina |
-| Dato | Barlow 500, cifre tabellari | come il testo | 0 | "1320 mm", "3.500 €" |
-| Etichetta | Semi Condensed 500, maiuscolo | 11 a 13 px / 1,3 | +9 % | "SCHEDA DI PROVA · REV 0.3" |
+| Livello | Famiglia e peso | Dimensione / interlinea | Spaziatura |
+|-|-|-|-|
+| Titolo display | B612 700 | 62 a 76 px / 1,02 a 1,06 | -2,5 % |
+| Titolo di sezione | B612 700 | 26 a 52 px / 1,06 a 1,12 | -2 % |
+| Titolo di blocco | B612 700 | 19 a 21 px / 1,15 | -1 % |
+| Testo introduttivo | Barlow 400 | 19 px / 1,5 | 0 |
+| Testo | Barlow 400 | 16 a 17 px / 1,55 | 0 |
+| Dato | Barlow 500, cifre tabellari | come il testo | 0 |
+| Etichetta | Barlow Semi Condensed 500, maiuscolo | 11 a 13 px / 1,3 | +9 % |
 
-### Carta (preventivo A4, manuale, biglietto)
+### Carta
 
 | Livello | Famiglia e peso | Corpo / interlinea |
 |-|-|-|
-| Titolo di copertina | Semi Condensed 600 | 34 pt / 36 pt |
-| Titolo di sezione | Semi Condensed 600 | 22 pt / 24 pt |
+| Titolo di copertina | B612 700 | 30 pt / 32 pt |
+| Titolo di sezione | B612 700 | 20 pt / 22 pt |
 | Testo | Barlow 400 | 10 pt / 14 pt |
 | Tabelle | Barlow 400 e 600 | 9 pt / 12,5 pt |
-| Etichette e cartiglio | Semi Condensed 500 maiuscolo | 7 pt / 9 pt, +10 % |
+| Etichette e cartiglio | Barlow Semi Condensed 500 maiuscolo | 7 pt / 9 pt, +10 % |
+| Biglietto da visita | minimo assoluto | 6 pt |
 
 ## Regole
 
-- Maiuscolo spaziato solo per le etichette brevi (massimo 6 parole). "Abra" non si scrive mai tutto maiuscolo: nelle etichette il nome compare come logotipo oppure in tondo.
-- Cifre tabellari sempre attive nelle tabelle, nelle quote e nei prezzi (`font-feature-settings:"tnum"`).
-- Unità di misura sempre con lo spazio: "1320 mm", "2 h", "98 %". Separatore delle migliaia con il punto, decimali con la virgola.
-- Un titolo per pagina; nessun titolo in maiuscolo.
-- Allineamento a sinistra, bandiera a destra. Mai giustificato.
-- Misura della riga: da 45 a 70 caratteri per il testo continuo.
+- B612 solo per titoli e frasi brevi; mai per tabelle o testo lungo.
+- Maiuscolo spaziato solo per etichette brevi in Barlow Semi Condensed. "Abra" non si scrive mai tutto maiuscolo: nelle etichette il nome compare come logotipo.
+- Cifre tabellari sempre attive nei dati (`font-feature-settings:"tnum"`). Unità con lo spazio: "1320 mm", "2 h".
+- Allineamento a sinistra, mai giustificato; righe da 45 a 70 caratteri.
+- Nessun testo sotto i 6 pt in stampa.
 
 ## CSS di base
 
 ```css
+@font-face{font-family:"B612";src:url(fonts/B612-Bold.ttf) format("truetype");font-weight:700}
 @font-face{font-family:"Barlow";src:url(fonts/Barlow-Regular.ttf) format("truetype");font-weight:400}
-@font-face{font-family:"Barlow SC";src:url(fonts/BarlowSemiCondensed-SemiBold.ttf) format("truetype");font-weight:600}
-h1{font:600 80px/1 "Barlow SC";letter-spacing:-.012em}
-.et{font:500 12px/1.3 "Barlow SC";letter-spacing:.09em;text-transform:uppercase}
+h1{font:700 70px/1.04 "B612";letter-spacing:-.025em}
 body{font:400 17px/1.55 "Barlow";font-feature-settings:"tnum" 1}
+.et{font:500 12px/1.3 "Barlow SC";letter-spacing:.09em;text-transform:uppercase}
 ```
 
-Il foglio completo è in `assets/a.css`. Per il sito conviene servire i file in WOFF2, scaricabili già convertiti da Google Fonts.
+Il foglio completo è in `assets/a.css`.

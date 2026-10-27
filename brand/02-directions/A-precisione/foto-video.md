@@ -1,4 +1,4 @@
-# Fotografia e video · Riferimento A
+# Fotografia e video · In squadra (v2)
 
 ## Il principio
 
@@ -29,7 +29,7 @@ Un robot Abra si fotografa come uno strumento in collaudo: fermo, intero, misura
 - **Laboratorio Abra**: banco di prova con piano quadrettato, segni a pavimento, carrello con pesi campione, armadio con i flight case grafite. Sempre lo stesso luogo, riconoscibile.
 - **Reparti italiani**: linee di confezionamento, ceramica, magazzini, con la luce e il disordine misurato di un posto vero. Nessun capannone americano da stock.
 - **Laboratori universitari**: tesisti al banco, codice su schermo, robot su supporto.
-- **Padiglioni fieristici**: il G1 accanto al totem, con il pubblico a distanza di sicurezza e il pavimento dello stand visibile.
+- **Padiglioni fieristici**: il G1 in piedi accanto al totem, il triangolo verde adesivo a pavimento come punto d'incontro, il pubblico alla distanza di sicurezza e il pavimento dello stand visibile.
 
 ## Post-produzione
 
@@ -41,7 +41,7 @@ Un robot Abra si fotografa come uno strumento in collaudo: fermo, intero, misura
 
 ## Cosa evitare
 
-Robot su fondo nero con luce blu, glow e riflessi neon, visiere accese, mani robot che toccano mani umane, robot che ballano, saltano o combattono, cervelli e circuiti in sovrimpressione, particelle, griglie prospettiche, nuvole di punti luminose su nero, persone stock che sorridono al robot, foto Unitree presentate come proprie.
+Robot accovacciato o in posa da manichino, robot su fondo nero con luce blu, glow e riflessi neon, visiere accese, mani robot che toccano mani umane, robot che ballano, saltano o combattono, cervelli e circuiti in sovrimpressione, particelle, griglie prospettiche, nuvole di punti luminose su nero, persone stock che sorridono al robot, foto Unitree presentate come proprie.
 
 ## Shot list (8 scatti)
 

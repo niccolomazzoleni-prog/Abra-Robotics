@@ -1,34 +1,41 @@
-/* Abra Robotics, territorio B "Misura d'uomo": token condivisi dai mockup */
-@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap");
+/* Abra Robotics, territorio B v2 "Montato a vista": token condivisi.
+   Font locali e statici in ../fonts (SIL OFL 1.1): nessuna richiesta di rete. */
+@font-face{font-family:"Instrument Sans";src:url("../fonts/InstrumentSans-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Instrument Sans";src:url("../fonts/InstrumentSans-Italic.ttf") format("truetype");font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:"Instrument Sans";src:url("../fonts/InstrumentSans-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:"Crimson Pro";src:url("../fonts/CrimsonPro-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Crimson Pro";src:url("../fonts/CrimsonPro-Italic.ttf") format("truetype");font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:"Crimson Pro";src:url("../fonts/CrimsonPro-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:block}
 
 :root{
-  --avorio:#F3EEE3;
-  --carta:#FBF8F2;
-  --pietra:#D9D1C3;
-  --inchiostro:#24211E;
-  --grafite:#5C554D;
-  --rosso:#BB3B26;
-  --rosso-scuro:#8E2B1B;
+  --carta:#F6F4EF;
+  --lettera:#DADCD6;      /* grigio delle macchine da ufficio */
+  --grafite:#232527;
+  --grigio:#5E6264;
+  --rosso:#B83A2B;
   --ocra:#E2A93B;
-  --ocra-chiara:#F3DDA9;
-  --verderame:#2B6F67;
-  --serif:"Newsreader", Georgia, serif;
-  --sans:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --ocra-chiara:#F2E0B0;
+  --bianco:#FFFFFF;
+  --giunto:12px;          /* la fessura tra i pannelli, come il giunto della a */
+  --sans:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Crimson Pro", Georgia, serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{background:var(--avorio);color:var(--inchiostro);font-family:var(--serif);font-optical-sizing:auto}
-.sans{font-family:var(--sans)}
+body{background:var(--carta);color:var(--grafite);font-family:var(--sans)}
 .serif{font-family:var(--serif)}
-.num{font-family:var(--sans);font-variant-numeric:tabular-nums lining-nums}
-/* etichetta: Hanken 600 con il disco come segno d'inizio */
-.etichetta{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.02em;display:inline-flex;align-items:center;gap:.55em}
-.etichetta::before{content:"";width:.62em;height:.62em;border-radius:50%;background:currentColor;flex:none}
-.etichetta.r::before{background:var(--rosso)}
+.num{font-variant-numeric:tabular-nums lining-nums}
+/* etichetta: Instrument Sans 700, con un trattino rosso orizzontale come segno d'inizio */
+.etichetta{font:700 12px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.7em;color:var(--grafite)}
+.etichetta::before{content:"";width:18px;height:3px;background:var(--rosso);flex:none}
 .etichetta.o::before{background:var(--ocra)}
-.etichetta.v::before{background:var(--verderame)}
-/* titoli editoriali */
-.titolo{font-family:var(--serif);font-weight:400;letter-spacing:-.018em;line-height:1.02}
-.titolo em{font-style:italic;color:var(--rosso)}
-.esempio{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--inchiostro);color:var(--avorio);padding:.35em .7em;border-radius:2em;display:inline-block}
-.segnaposto{font-family:var(--sans);font-size:10.5px;color:var(--grafite);font-style:italic}
+.etichetta.n::before{background:var(--grafite)}
+.esempio{font:700 10.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;background:var(--ocra);color:var(--grafite);padding:.42em .7em;display:inline-block}
+.segnaposto{font:italic 400 13px/1.35 var(--serif);color:var(--grafite)}
+/* cartellino dati: la targa che accompagna ogni robot */
+.cartellino{background:var(--bianco);border-top:3px solid var(--rosso);padding:12px 14px 13px;font:400 13px/1.4 var(--sans)}
+.cartellino dt{font:700 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--grigio)}
+.cartellino dd{font:400 15px/1.3 var(--sans);margin:2px 0 8px}
+.cartellino dd:last-child{margin-bottom:0}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 14px var(--sans);text-decoration:none;padding:15px 22px;background:var(--grafite);color:var(--carta);white-space:nowrap}
+.btn.vuoto{background:none;color:var(--grafite);box-shadow:inset 0 0 0 1.5px var(--grafite)}

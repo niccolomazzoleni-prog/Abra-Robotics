@@ -1,45 +1,45 @@
-/* Abra, direzione D "Prova generale": token e componenti condivisi dai mockup */
-@font-face{font-family:"Archivo";src:url("font/Archivo-VF.ttf") format("truetype");font-weight:100 900;font-stretch:62% 125%;font-style:normal}
-@font-face{font-family:"Archivo";src:url("font/Archivo-Italic-VF.ttf") format("truetype");font-weight:100 900;font-stretch:62% 125%;font-style:italic}
+/* Abra, direzione D v2 "Prova generale": token e componenti condivisi dai mockup */
+/* Font: istanze statiche di Archivo (OFL), incorporabili come TrueType nei PDF */
+@font-face{font-family:"Archivo";src:url("font/Archivo-Regular.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"Archivo";src:url("font/Archivo-Italic.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"Archivo";src:url("font/Archivo-SemiBold.ttf") format("truetype");font-weight:600;font-style:normal}
+@font-face{font-family:"Archivo";src:url("font/Archivo-Bold.ttf") format("truetype");font-weight:700;font-style:normal}
+@font-face{font-family:"Archivo Condensed";src:url("font/ArchivoCondensed-ExtraBold.ttf") format("truetype");font-weight:800;font-style:normal}
+@font-face{font-family:"Archivo Expanded";src:url("font/ArchivoExpanded-SemiBold.ttf") format("truetype");font-weight:600;font-style:normal}
 
 :root{
   /* colori */
-  --velluto:#3A1915;   /* fondo di scena, testo su carta */
-  --buio:#211412;      /* sala a luci spente, ombre */
-  --luce:#E9AE45;      /* luce di tungsteno: il palco acceso */
-  --paglia:#F4D79E;    /* luce diffusa, evidenziazioni */
-  --stucco:#F3ECDF;    /* fondo dei documenti, testo su velluto */
-  --carta:#FBF8F2;     /* pagina del preventivo */
-  --fumo:#6F645B;      /* testo secondario su chiaro */
-  --fumo-chiaro:#B5A99C;/* testo secondario su velluto */
-  --rame:#A4472B;      /* solo stati e avvisi */
-  --quinta:#4A221C;    /* taglio di luce sul fondale velluto */
+  --magenta:#D6006F;     /* gelatina di scena: colore firma */
+  --rosa:#FBE3EE;        /* gelatina diluita: evidenziazioni nei documenti */
+  --grafite:#202124;     /* fondo di scena per eventi e social, testo dei documenti */
+  --quinta:#3A3B40;      /* secondo piano su grafite */
+  --carta:#FAFAF7;       /* pagina */
+  --cemento:#E7E6E1;     /* fondi neutri, pavimenti, tabelle */
+  --fumo:#5F6066;        /* testo secondario su chiaro */
+  --fumo-chiaro:#A9AAAF; /* testo secondario su grafite */
 
   /* tipografia: una famiglia, tre larghezze */
   --f:"Archivo",system-ui,sans-serif;
-  --stretto:68%;   /* titoli di scena */
-  --normale:100%;  /* testo */
-  --largo:125%;    /* segnaletica */
-
-  /* angolo di quinta: inclinazione dei lati del palco e della A (circa 19 gradi) */
-  --quinta-k:.34;
+  --f-scena:"Archivo Condensed","Archivo",sans-serif;   /* solo eventi e social */
+  --f-segno:"Archivo Expanded","Archivo",sans-serif;    /* etichette */
 }
 *{box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
 
-.disp{font-family:var(--f);font-stretch:var(--stretto);font-weight:800;line-height:.9;letter-spacing:-.005em}
-.lbl{font-family:var(--f);font-stretch:var(--largo);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;line-height:1.3}
-.txt{font-family:var(--f);font-stretch:var(--normale);font-weight:400}
-.dida{font-family:var(--f);font-style:italic;font-weight:400;font-stretch:90%}
-.num{font-feature-settings:"tnum" 1}
+.titolo{font-family:var(--f);font-weight:700;line-height:1.02;letter-spacing:-.012em}     /* documenti e B2B */
+.scena{font-family:var(--f-scena);font-weight:800;line-height:.9;letter-spacing:-.005em} /* eventi e social */
+.lbl{font-family:var(--f-segno);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;line-height:1.3}
+.txt{font-family:var(--f);font-weight:400}
+.dida{font-family:var(--f);font-style:italic;font-weight:400}
 
-/* il palco: trapezio in prospettiva, stesso disegno del pavimento nella A */
-.palco{position:absolute;background:var(--luce);clip-path:polygon(var(--p-top-l,18%) 0,calc(100% - var(--p-top-r,18%)) 0,100% 100%,0 100%)}
+/* arco scenico: finestra con tetto tondo e base piana, la stessa forma degli occhielli del logotipo */
+.arco{border-radius:50vw 50vw 0 0;overflow:hidden}
 
-/* il segno: nastro a terra a forma di T */
-.segno{display:inline-block;width:18px;height:14px;position:relative;vertical-align:middle}
-.segno::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:currentColor}
-.segno::after{content:"";position:absolute;left:7px;width:4px;top:0;bottom:0;background:currentColor}
+/* gelatina: campitura magenta piena che si sovrappone alla foto come un filtro su un proiettore */
+.gelatina{background:var(--magenta);mix-blend-mode:multiply}
+
+/* posizione sulla pianta dei movimenti */
+.pos{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--magenta);color:var(--carta);font:600 11px var(--f)}
 
 /* etichetta Esempio per tutti i dati di prova */
-.esempio{display:inline-block;font-family:var(--f);font-stretch:var(--largo);font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:3px 7px 2px;border:1.5px solid currentColor;border-radius:2px}
+.esempio{display:inline-block;font-family:var(--f-segno);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:3px 7px 2px;border:1.5px solid currentColor;border-radius:2px}

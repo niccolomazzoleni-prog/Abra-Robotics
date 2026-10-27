@@ -1,4 +1,4 @@
-# Sistema grafico · Riferimento A
+# Sistema grafico · In squadra (v2)
 
 Il sistema prende i suoi elementi dal disegno tecnico e dalla strumentazione di misura. Ognuno ha una funzione: dove non c'è niente da misurare, da dichiarare o da firmare, l'elemento non compare.
 
@@ -8,15 +8,17 @@ Il sistema prende i suoi elementi dal disegno tecnico e dalla strumentazione di 
 |-|-|
 | `logo/orizzontale.svg` | versione principale: sito, documenti, firme, post |
 | `logo/verticale.svg` | spazi stretti e alti: totem, colonne, copertine strette |
-| `logo/simbolo.svg`, `simbolo-netto.svg` | avatar, adesivi, timbri, dopo che il nome è già stato letto |
-| `logo/monogramma.svg` | timbro di revisione e verifica sui documenti |
-| `logo/favicon.svg` | scheda del browser, icona dell'app, 16 e 32 px |
-| `logo/mono-positivo.svg`, `mono-negativo.svg` | stampa a un colore, incisione, serigrafia |
-| `*-bianco.svg` | su grafite e su fotografie scure |
+| `logo/simbolo.svg`, `simbolo-netto.svg` | legatura Ab da sola, dopo che il nome è già stato letto |
+| `logo/monogramma.svg` | legatura bianca su piastra verde: avatar, adesivi, timbro di verifica |
+| `logo/monogramma-grafite.svg` | stessa piastra in grafite, per fondi verdi |
+| `logo/favicon.svg` | icona da 24 px in su |
+| `logo/favicon-16.svg` | versione ottica disegnata pixel per pixel, sotto i 24 px |
+| `logo/mono-positivo.svg`, `mono-negativo.svg` | stampa a un colore; il negativo è solo la forma bianca, il fondo lo dà il supporto |
+| `*-bianco.svg` | su verde, grafite, verde profondo e fotografie scure |
 
-- **Area di rispetto**: pari all'altezza del triangolo di riferimento della A (circa 0,29 volte l'altezza delle maiuscole) su ogni lato. È già inclusa nei file.
-- **Dimensioni minime**: logotipo orizzontale 90 px o 22 mm di larghezza; simbolo 16 px o 5 mm di altezza.
-- **Non si fa**: colorare il triangolo, separarlo dalla A, cambiare la pendenza, ricomporre il nome con un altro carattere, affiancare il marchio a quello di un produttore di robot in un unico blocco.
+- **Area di rispetto**: un quarto dell'altezza delle maiuscole su ogni lato, già inclusa nei file.
+- **Dimensioni minime**: logotipo orizzontale 90 px o 22 mm di larghezza; simbolo 16 px o 5 mm di altezza. Sotto i 24 px si usa sempre `favicon-16.svg`.
+- **Non si fa**: separare la A dalla b, raddrizzare o cambiare la pendenza della diagonale, togliere la traversa, ricomporre il nome con un carattere, colorare parti del segno, affiancare il marchio a quello di un produttore di robot in un unico blocco.
 
 ## Griglie
 
@@ -26,25 +28,27 @@ Il sistema prende i suoi elementi dal disegno tecnico e dalla strumentazione di 
 - **Post LinkedIn 1200 × 1500** e **reel 1080 × 1920**: margini 72 px; titolo in alto, tavola al centro, targa dati e logotipo in basso. Nel reel i contenuti chiave stanno nella fascia centrale 1080 × 1350 che Instagram mostra nella griglia del profilo.
 
 ### Carta
-- **A4**: margini 15 mm, 12 colonne con canale 4 mm, linea di base 4 mm. Scala millimetrata in testa alla copertina, cartiglio in piede su ogni pagina.
-- **Biglietto 85 × 55 mm**: margine 5 mm; il bordo inferiore del fronte porta 80 mm di righello.
+- **A4**: margini 15 mm, 12 colonne con canale 4 mm, linea di base 4 mm. Copertina con testata verde per il 40 % dell'altezza, cartiglio in piede su ogni pagina.
+- **Biglietto 85 × 55 mm**: margine 4 mm; fronte verde con il segno Ab fuori formato, retro bianco come targa dati; nessun testo sotto i 6 pt.
 
 ## Elementi grafici
 
 | Elemento | Origine | Funzione | Dove |
 |-|-|-|-|
-| **Triangolo di riferimento** ▲ | simbolo di riferimento ISO 5459 | segna il punto da cui si parte: P0, il piano d'appoggio del robot, le decisioni di fase | ovunque, sempre piccolo e pieno |
+| **Triangolo a terra** ▲ | simbolo di riferimento ISO 5459 | segna il punto da cui si misura: P0, il piano d'appoggio del robot, il punto d'incontro con il pubblico sullo stand (adesivo verde a pavimento) | documenti piccolo e grafite; stand e reel grande e verde |
 | **Riquadro di controllo** | cornice a celle delle tolleranze geometriche ISO 1101 | contiene un fatto verificabile: grandezza, valore, fase o riferimento. La cella verde dice che il criterio è misurato | preventivi, hero, post, totem |
 | **Quota** | linea di misura con tacche alle estremità | dà la dimensione reale di un robot, di un oggetto, di una durata | immagini di robot, schemi delle fasi, livree |
-| **Scala millimetrata** | righello, strumenti di misura | firma del bordo: testa dei documenti e dei post, base delle fasi nel sito, fronte del biglietto | un solo bordo per superficie |
+| **Campo verde** | piastra del monogramma | testata dei formati di comunicazione: copertina del preventivo, post, totem, fronte del biglietto | un campo per superficie, sempre a filo di un bordo |
+| **Tratteggio di limite** | sezione nel disegno tecnico | marca i limiti dichiarati accanto al valore | schede, preventivi, hero |
 | **Cartiglio** | blocco del titolo nelle tavole tecniche | documento, revisione, data, foglio, firma | ogni pagina di preventivo e manuale |
-| **Targa dati** | targhe di macchina | elenco etichetta e valore con filetti; quadratino verde (misurato) o giallo (limite) a destra | schede robot, verbali di consegna, flight case |
+| **Targa dati** | targhe di macchina | elenco etichetta e valore con filetti; quadratino verde (misurato) o tratteggiato (limite) a destra | schede robot, verbali di consegna, flight case |
 | **Linea d'asse** | linea mista tratto e punto del disegno tecnico | asse di simmetria nelle costruzioni e negli schemi | tavole di costruzione, livree |
 
 Regole:
 - Filetti da 1 px (separatori) e 1,5 px (cornici). Nessuno spessore intermedio.
 - Angoli vivi. Nessun raggio di raccordo, tranne il favicon e gli schemi dei robot.
-- Nessuna ombra, nessun gradiente, nessuna trasparenza decorativa. Le immagini dei robot stanno su una tavola bianco disegno con quote, come in un catalogo tecnico.
+- Nessuna ombra, nessun gradiente. Unica tinta ammessa: il segno Ab in bianco al 16 % sul campo verde (fronte del biglietto). Le immagini dei robot stanno su una tavola bianco disegno o su alluminio, con quote.
+- Robot e persone sempre in scala tra loro; le persone sono sagome grafiche finché non ci sono foto proprie con liberatoria.
 - La parola "Esempio" in un riquadro accompagna ogni numero, verbale o criterio inventato.
 
 ## Iconografia
@@ -64,15 +68,19 @@ Le icone accompagnano un testo, non lo sostituiscono. A 24 px si usano in grafit
 
 ## Pattern
 
-- **Campo millimetrato**: griglia a 1 mm e 10 mm in Linea su Bianco disegno, per i retri dei documenti, le buste e la carta da lettera. Una sola intensità, mai sotto il testo.
-- **Campo di riferimenti**: triangoli di riferimento da 3 mm su passo 10 mm, grafite su alluminio, per nastri adesivi, carta da imballo e sfondo della cassa di trasporto.
+- **Campo di legature**: il segno Ab da 6 mm su passo 20 mm, bianco su verde di misura, per nastro adesivo, carta da imballo e interno dei flight case.
+- **Campo di riferimenti**: triangoli da 3 mm su passo 10 mm, grafite su alluminio, per i retri dei documenti.
 
 Entrambi i pattern si generano in CSS con `repeating-linear-gradient` o in SVG con `<pattern>`; non servono file grafici.
 
 ## Linguaggio per diagrammi e dati
 
 - **Le fasi sono una barra misurata.** Le larghezze sono proporzionali alla durata; la fase conclusa si campisce in grafite; ogni passaggio di fase è un triangolo di riferimento con la parola "Decidi".
-- **Ogni numero ha un'unità e un'origine.** Accanto al valore si scrive se è misurato (verde), stimato (grafite) o un limite (giallo). Le valutazioni interne si marcano come tali.
-- **Grafici**: barre e linee in grafite, una sola serie in evidenza in verde segnale; assi con tacche come una scala, nessuna griglia di fondo piena, etichette direttamente sui dati. Niente torte, niente 3D.
+- **Ogni numero ha un'unità e un'origine.** Accanto al valore si scrive se è misurato (quadratino verde), stimato (grafite) o un limite (quadratino tratteggiato). Le valutazioni interne si marcano come tali.
+- **Grafici**: barre e linee in grafite, una sola serie in evidenza in verde di misura; assi con tacche come una scala, nessuna griglia di fondo piena, etichette direttamente sui dati. Niente torte, niente 3D.
 - **Mappe LiDAR e nuvole di punti**: in grafite su bianco disegno, come un rilievo stampato, con quote e scala grafica. Mai su fondo nero con punti luminosi.
 - **Tabelle**: filetto da 1,5 px sotto l'intestazione e in chiusura, filetti da 1 px tra le righe, nessuna campitura alternata, numeri allineati a destra con cifre tabellari.
+
+## Favicon a 16 px
+
+A 16 px il segno vettoriale scalato perde la traversa. Per questo `favicon-16.svg` è disegnata pixel per pixel su griglia 16: diagonale a gradini di due righe per colonna (pendenza 2 a 1), asta comune di 2 px, traversa di 1 px, vuoto della A di almeno 1 px, pancia della b con vuoto di 2 × 4 px, piastra verde piena. Si usa per favicon e icone fino a 24 px; da 24 px in su `favicon.svg`.

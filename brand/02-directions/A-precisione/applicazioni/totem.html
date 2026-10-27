@@ -8,67 +8,62 @@
 <style>
   /* scala di presentazione: 1 mm = 0,4 px */
   body{width:1440px;height:1000px;overflow:hidden;background:var(--alluminio);position:relative}
-  .head{position:absolute;left:64px;right:64px;top:44px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:12px}
-  .head h1{font:600 26px/1 var(--f-titolo)}
-  .pav{position:absolute;left:64px;right:64px;top:930px;height:1.5px;background:var(--grafite)}
-  .pav .et{position:absolute;right:0;top:10px;color:var(--quota);font-size:11px}
-  .totem{position:absolute;left:250px;top:130px;width:320px;height:800px;background:var(--bianco);box-shadow:0 0 0 1px var(--linea);overflow:hidden}
-  .t-top{height:108px;background:var(--grafite);display:flex;align-items:center;padding:0 24px}
-  .t-top img{width:230px;margin-left:-8px}
-  .t-body{padding:24px 24px 0}
-  .t-body .et{color:var(--quota);font-size:9px}
-  .t-h{font:600 31px/1.03 var(--f-titolo);letter-spacing:-.008em;margin-top:10px}
-  .t-list{margin-top:18px;border-top:1.5px solid var(--grafite)}
-  .t-list div{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--linea);font:500 12.5px/1.25 var(--f-testo)}
-  .t-list img{width:20px}
-  .cal{margin-top:16px}
+  .head{position:absolute;left:64px;right:64px;top:40px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:12px}
+  .head h1{font:700 24px/1 var(--f-titolo);letter-spacing:-.015em}
+  .pav{position:absolute;left:64px;right:64px;top:930px;height:2px;background:var(--grafite)}
+  .totem{position:absolute;left:150px;top:130px;width:320px;height:800px;background:var(--bianco);box-shadow:0 0 0 1px var(--linea);overflow:hidden}
+  .t-top{height:440px;background:var(--verde);color:#fff;padding:24px 22px}
+  .t-top img{width:200px;margin-left:-6px}
+  .t-top .big{font:700 46px/1 var(--f-titolo);letter-spacing:-.03em;margin-top:62px}
+  .t-top .sub{font:500 15px/1.35 var(--f-testo);margin-top:16px}
+  .t-top .tri{position:absolute;left:22px;top:404px;color:#fff;font-size:20px}
+  .t-body{padding:16px 22px 0}
+  .t-body .et{color:var(--quota);font-size:10px}
   .cal .g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:6px}
-  .cal .g span{height:21px;font:500 9px/21px var(--f-etichetta);text-align:center;border:1px solid var(--linea);color:var(--quota)}
-  .cal .g span.l{border:1.5px solid var(--verde);color:var(--verde);font-weight:600;line-height:18px}
-  .cal .g span.w{border:0;height:14px;line-height:14px}
-  .cal .g span.o{background:var(--grafite);border-color:var(--grafite);color:var(--acciaio)}
-  .cal .g span.x{border:0}
-  .leg{display:flex;gap:12px;margin-top:6px;font:500 8.5px var(--f-etichetta);letter-spacing:.08em;text-transform:uppercase;color:var(--quota)}
-  .leg i{display:inline-block;width:8px;height:8px;margin-right:4px;vertical-align:-1px}
-  .t-cta{position:absolute;left:0;right:0;bottom:0;height:150px;background:var(--grafite);color:var(--bianco);padding:18px 24px;display:grid;grid-template-columns:1fr 84px;gap:16px;align-items:center}
-  .t-cta b{display:block;font:600 21px/1.08 var(--f-titolo)}
-  .t-cta small{display:block;font:500 11px/1.4 var(--f-testo);color:var(--alluminio);margin-top:8px}
-  .qr{width:84px;height:84px;background:var(--bianco);display:grid;place-items:center;font:500 9px var(--f-etichetta);letter-spacing:.08em;color:var(--quota);text-align:center}
-  .g1{position:absolute;left:640px;top:401px;height:528px}
+  .cal .g span{height:19px;font:500 10px/19px var(--f-etichetta);text-align:center;border:1px solid var(--linea);color:var(--quota)}
+  .cal .g span.l{border:1.5px solid var(--verde);color:var(--verde);font-weight:600;line-height:16px}
+  .cal .g span.o{background:var(--grafite);border-color:var(--grafite);color:var(--alluminio)}
+  .cal .g span.x,.cal .g span.w{border:0}
+  .t-cta{position:absolute;left:0;right:0;bottom:0;height:150px;background:var(--grafite);color:#fff;padding:18px 22px;display:grid;grid-template-columns:1fr 84px;gap:14px;align-items:center}
+  .t-cta b{display:block;font:700 21px/1.1 var(--f-titolo);letter-spacing:-.01em}
+  .t-cta small{display:block;font:500 12px/1.4 var(--f-testo);color:var(--alluminio);margin-top:8px}
+  .qr{width:84px;height:84px;background:var(--bianco);display:grid;place-items:center;font:500 10px var(--f-etichetta);letter-spacing:.08em;color:var(--quota);text-align:center}
+  .g1{position:absolute;left:640px;top:402px;height:528px}
+  .sag{position:absolute}
+  .tri-pav{position:absolute;left:737px;top:938px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:22px solid var(--verde)}
   .q{position:absolute;background:var(--quota)}
   .qv{width:1px}
   .qv::before,.qv::after{content:"";position:absolute;left:-6px;width:13px;height:1px;background:var(--quota)}
   .qv::before{top:0}.qv::after{bottom:0}
-  .qv b{position:absolute;left:12px;top:50%;transform:translateY(-50%);font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota);white-space:nowrap}
+  .qv b{position:absolute;background:var(--alluminio);padding:0 4px;left:12px;top:50%;transform:translateY(-50%);font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota);white-space:nowrap}
   .qh{height:1px}
   .qh::before,.qh::after{content:"";position:absolute;top:-6px;width:1px;height:13px;background:var(--quota)}
   .qh::before{left:0}.qh::after{right:0}
-  .qh b{position:absolute;left:50%;top:-20px;transform:translateX(-50%);font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
-  .side{position:absolute;left:930px;right:64px;top:150px}
-  .side h2{font:600 30px/1.08 var(--f-titolo);margin-bottom:14px}
-  .side p{font:400 15px/1.55 var(--f-testo);margin-bottom:12px;max-width:44ch}
+  .qh b{position:absolute;background:var(--alluminio);padding:0 4px;left:50%;top:-20px;transform:translateX(-50%);font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
+  .side{position:absolute;left:1000px;right:64px;top:150px}
+  .side h2{font:700 26px/1.12 var(--f-titolo);letter-spacing:-.015em;margin-bottom:14px}
+  .side p{font:400 15px/1.55 var(--f-testo);margin-bottom:12px}
   .side .rq{margin-top:10px;font-size:12px}
-  .cap{position:absolute;left:640px;top:944px;color:var(--quota)}
+  .cap{position:absolute;left:1000px;top:476px;max-width:360px;color:var(--quota)}
+  .cap .segnaposto{font-size:11px}
 </style>
 </head>
 <body>
-<div class="head"><h1>Totem per il noleggio dell'umanoide</h1><span class="et num" style="color:var(--quota)">800 × 2000 mm · forex 10 mm su base in acciaio · in scala: 1 mm = 0,4 px</span></div>
+<div class="head"><h1>Totem per il noleggio dell'umanoide</h1><span class="et num" style="color:var(--quota)">800 × 2000 mm · forex 10 mm su base in acciaio · 1 mm = 0,4 px</span></div>
 
-<div class="q qh" style="left:250px;width:320px;top:116px"><b class="num">800 mm</b></div>
-<div class="q qv" style="left:222px;top:130px;height:800px"><b class="num" style="left:-12px;transform:translate(-100%,-50%)">2000 mm</b></div>
+<div class="q qh" style="left:150px;width:320px;top:116px"><b class="num">800 mm</b></div>
+<div class="q qv" style="left:122px;top:130px;height:800px"><b class="num" style="left:-12px;transform:translate(-100%,-50%)">2000 mm</b></div>
 
 <div class="totem">
-  <div class="t-top"><img src="../logo/orizzontale-bianco.svg" alt="Abra Robotics"></div>
+  <div class="t-top">
+    <img src="../logo/orizzontale-bianco.svg" alt="Abra Robotics">
+    <div class="big">Umanoide<br>a noleggio,<br>a giornata.</div>
+    <div class="sub">Parla del tuo marchio con il copione approvato da te. Il nostro tecnico resta accanto al robot tutto il giorno.</div>
+    <i class="tri"></i>
+  </div>
   <div class="t-body">
-    <span class="et">Noleggio a giornata · umanoide G1</span>
-    <div class="t-h">Noleggia un umanoide che parla del tuo marchio, con il nostro tecnico accanto tutto il giorno.</div>
-    <div class="t-list">
-      <div><img src="../icone/copione.svg" alt="">Copione e base di conoscenza approvati da te</div>
-      <div><img src="../icone/assistenza.svg" alt="">Tecnico Abra presente per tutta la giornata</div>
-      <div><img src="../icone/misura.svg" alt="">Prova generale il giorno prima, nel tuo spazio</div>
-    </div>
     <div class="cal">
-      <span class="et">Date di novembre 2026 · esempio</span>
+      <span class="et">Date libere a novembre 2026 · esempio</span>
       <div class="g num">
         <span class="w">L</span><span class="w">M</span><span class="w">M</span><span class="w">G</span><span class="w">V</span><span class="w">S</span><span class="w">D</span>
         <span class="x"></span><span class="x"></span><span class="x"></span><span class="x"></span><span class="x"></span><span class="x"></span><span class="l">1</span>
@@ -76,7 +71,6 @@
         <span class="l">9</span><span class="l">10</span><span class="o">11</span><span class="o">12</span><span class="o">13</span><span class="l">14</span><span class="l">15</span>
         <span class="l">16</span><span class="l">17</span><span class="l">18</span><span class="o">19</span><span class="l">20</span><span class="l">21</span><span class="l">22</span>
       </div>
-      <div class="leg"><span><i style="border:1.5px solid var(--verde);width:6px;height:6px"></i>Libera</span><span><i style="background:var(--grafite)"></i>Prenotata</span></div>
     </div>
   </div>
   <div class="t-cta">
@@ -85,17 +79,24 @@
   </div>
 </div>
 
-<img class="g1" src="../assets/img/g1-segnaposto.png" alt="Umanoide, immagine segnaposto">
-<div class="q qv" style="left:866px;top:401px;height:528px"><b class="num">1320 mm</b></div>
-<div class="pav"><span class="et">Piano del padiglione</span></div>
-<div class="cap"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree, in scala</span></div>
+<svg class="sag" style="left:488px;top:230px" width="120" height="700" viewBox="0 0 30 175" aria-label="Sagoma di visitatore, 1750 mm">
+  <g fill="#8A959B"><circle cx="15" cy="11" r="9.5"/><path d="M6 25h18a4 4 0 0 1 4 4v58h-26v-58a4 4 0 0 1 4-4z"/><rect x="6" y="85" width="8.5" height="90" rx="3"/><rect x="15.5" y="85" width="8.5" height="90" rx="3"/></g>
+</svg>
+<img class="g1" src="../assets/img/g1-in-piedi-segnaposto.png" alt="Umanoide, immagine segnaposto">
+<svg class="sag" style="left:880px;top:282px" width="110" height="648" viewBox="0 0 28 162" aria-label="Sagoma di visitatrice, 1620 mm">
+  <g fill="#B4BDC2"><circle cx="14" cy="10" r="9"/><path d="M7 23h14l6 66H1z"/><rect x="7" y="87" width="6.5" height="75" rx="3"/><rect x="14.5" y="87" width="6.5" height="75" rx="3"/></g>
+</svg>
+<div class="q qv" style="left:630px;top:402px;height:528px"><b class="num" style="left:-30px;transform:translateY(-50%) rotate(-90deg)">1320 mm</b></div>
+<div class="pav"></div>
+<div class="tri-pav"></div>
+<div class="cap"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree e sagome grafiche, in scala</span></div>
 
 <div class="side">
   <h2>Come si legge il totem</h2>
-  <p>A quattro metri si leggono il marchio sulla testata grafite e il titolo. A un metro il visitatore trova cosa comprende la giornata, le date libere e come chiedere la sua.</p>
-  <p>Il calendario si stampa su un pannello magnetico sostituibile, così il totem resta aggiornato per tutta la fiera. Le date mostrate sono di esempio, come il prezzo e il trasporto, da definire con i fondatori.</p>
-  <span class="rq et"><span>Altezza totem</span><span class="num">2000 mm</span><span class="rif">A</span></span><br>
-  <span class="rq et"><span>Altezza G1</span><span class="num">1320 mm</span><span class="rif">A</span></span>
+  <p>A quattro metri si legge la testata verde: umanoide, noleggio, giornata. A un metro il visitatore trova le date libere e come chiedere la sua.</p>
+  <p>A terra un triangolo verde segna il punto in cui il pubblico incontra il robot, sempre alla stessa distanza di sicurezza. Il calendario è un pannello magnetico sostituibile. Date, prezzo e trasporto sono di esempio.</p>
+  <span class="rq et"><span>Totem</span><span class="num">2000 mm</span></span><br>
+  <span class="rq et"><span>G1</span><span class="num">1320 mm</span></span>
 </div>
 </body>
 </html>

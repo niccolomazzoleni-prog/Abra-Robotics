@@ -2,64 +2,64 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Abra Robotics, post LinkedIn consegna Go2 (versione nominativa)</title>
+<title>Abra Robotics, post LinkedIn consegna Go2 (versione nominativa, da pubblicare solo con consenso scritto)</title>
+<link rel="icon" href="../logo/favicon-16.svg">
 <link rel="stylesheet" href="../assets/sistema.css">
 <style>
   body{width:1200px;height:1500px;overflow:hidden;position:relative;background:var(--tela)}
   .testa{position:absolute;left:72px;right:72px;top:64px;display:flex;justify-content:space-between;align-items:center}
   .testa img{height:36px}
   .testa .t-etichetta{font-size:16px;color:var(--grafite)}
-  h1{position:absolute;left:72px;top:150px;width:1000px;font-size:88px}
-  .chi{position:absolute;left:72px;top:356px;font-size:25px;width:960px}
+  h1{position:absolute;left:72px;top:150px;width:1000px;font-size:84px}
+  .chi{position:absolute;left:72px;top:352px;font-size:25px;width:980px}
   .tavola{position:absolute;left:0;top:500px;width:1200px;height:640px}
-  .metro-go2{position:absolute;left:372px;top:1066px}
-  .go2{position:absolute;left:352px;top:540px;width:500px;filter:grayscale(1) contrast(1.06);mix-blend-mode:multiply}
-  .dist{position:absolute;left:72px;right:72px;top:1176px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:36px;row-gap:0}
+  .go2{position:absolute;left:352px;top:560px;width:500px;filter:grayscale(1) contrast(1.06);mix-blend-mode:multiply}
+  .dist{position:absolute;left:72px;right:72px;top:1176px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:36px}
   .voce{display:flex;gap:14px;align-items:baseline;padding:17px 0 15px;border-top:2px solid var(--flanella);font-size:22px;line-height:1.25}
-  .voce .n{font-weight:640;font-stretch:75%;font-size:15px;letter-spacing:.06em;color:var(--grafite);min-width:28px}
+  .voce .n{font-weight:600;font-stretch:75%;font-size:15px;letter-spacing:.06em;color:var(--grafite);min-width:28px}
   .piede{position:absolute;left:72px;right:72px;bottom:56px;display:flex;justify-content:space-between;align-items:center;font-size:16px;color:var(--grafite)}
-  .segn{position:absolute;right:112px;top:1084px;font-size:12px;color:var(--grafite)}
+  .piede .esempio{font-size:12px}
+  .segn{position:absolute;right:112px;top:1096px;font-size:12px;color:var(--flanella)}
 </style>
 </head>
 <body>
 <div class="testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span class="t-etichetta">Consegna del 29 ottobre 2026</span></div>
 <h1 class="t-display">Fai partire una tesi sul robot dal primo giorno.</h1>
-<p class="chi t-sotto">Consegniamo a SACMI un Go2 con LiDAR per una tesi in azienda. Nella cassa, oltre al robot, c'è tutto quello che serve al tesista e ai tecnici per lavorare da soli.</p>
+<p class="chi t-sotto">Consegniamo a SACMI un Go2 con LiDAR per una tesi in azienda. Nella cassa, oltre al robot, c'è quello che serve al tesista e ai tecnici per lavorare da soli.</p>
 
 <svg class="tavola" viewBox="0 0 1200 640" aria-hidden="true">
-  <path d="M72 0 H1080 L1128 60 V640 H72 Z" fill="#D9CBAA"/>
-  <path d="M88 16 H1072 L1112 66 V624 H88 Z" fill="none" stroke="#2F3337" stroke-width="1.6" stroke-dasharray="12 8" stroke-linecap="round" opacity=".5"/>
-  <path d="M590 0 l10 14 l10 -14Z M72 300 l14 10 l-14 10Z M1128 300 l-14 10 l14 10Z" fill="#ECE6D8"/>
-  <!-- segni a gesso dove poggiano i piedi -->
-  <g stroke="#FAF8F3" stroke-width="5" stroke-linecap="round">
-    <path d="M352 462 l24 16 M376 462 l-24 16"/><path d="M538 536 l24 16 M562 536 l-24 16"/>
-    <path d="M736 416 l24 16 M760 416 l-24 16"/><path d="M590 350 l20 13 M610 350 l-20 13"/>
+  <path d="M72 0 H1072 L1128 56 V640 H72 Z" fill="#D9CBAA"/>
+  <path d="M590 0 l10 14 l10 -14Z M72 300 l14 10 l-14 10Z" fill="#ECE6D8"/>
+  <!-- segni a gesso sotto i piedi: dove il robot poggia durante la prova -->
+  <g stroke="#2F5D9E" stroke-width="5" stroke-linecap="round">
+    <path d="M354 472 l24 16 M378 472 l-24 16"/><path d="M540 546 l24 16 M564 546 l-24 16"/>
+    <path d="M738 426 l24 16 M762 426 l-24 16"/><path d="M592 362 l20 13 M612 362 l-20 13"/>
   </g>
-  <g font-family="Bricolage Grotesque" fill="#2F3337">
-    <text x="120" y="120" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">INGOMBRO IN PIEDI</text>
-    <text x="120" y="148" font-size="26" font-weight="680" font-stretch="80%">circa 70 × 31 × 40 cm</text>
-    <text x="120" y="232" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">LIDAR</text>
-    <text x="120" y="260" font-size="26" font-weight="680" font-stretch="80%">Mappa del reparto</text>
-    <text x="120" y="286" font-size="17">per SLAM e navigazione</text>
-    <text x="900" y="120" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">PROGETTO</text>
-    <text x="900" y="148" font-size="26" font-weight="680" font-stretch="80%">Tesi in azienda</text>
-    <text x="900" y="174" font-size="17">seguita da un tecnico</text><text x="900" y="196" font-size="17">del cliente</text>
+  <g font-family="Abra Bricolage" fill="#2F3337">
+    <text x="120" y="110" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">INGOMBRO IN PIEDI</text>
+    <text x="120" y="140" font-size="28" font-weight="680" font-stretch="80%">circa 70 x 31 x 40 cm</text>
+    <text x="120" y="230" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">LIDAR</text>
+    <text x="120" y="260" font-size="28" font-weight="680" font-stretch="80%">Mappa del reparto</text>
+    <text x="120" y="288" font-size="18">per localizzazione e</text>
+    <text x="120" y="312" font-size="18">navigazione autonoma</text>
+    <text x="896" y="110" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">PROGETTO</text>
+    <text x="896" y="140" font-size="28" font-weight="680" font-stretch="80%">Tesi in azienda</text>
+    <text x="896" y="168" font-size="18">seguita da un tecnico</text>
+    <text x="896" y="192" font-size="18">del cliente</text>
   </g>
-  <path d="M330 252 H398" stroke="#2F3337" stroke-width="2" stroke-dasharray="5 5"/><circle cx="404" cy="252" r="5" fill="#2F3337"/>
+  <path d="M330 262 H398" stroke="#2F3337" stroke-width="2"/><circle cx="404" cy="262" r="5" fill="#2F3337"/>
 </svg>
 <img class="go2" src="../assets/segnaposto/unitree-go2.png" alt="Segnaposto: quadrupede Unitree Go2, immagine ufficiale del produttore">
-<div class="metro-go2" data-metro data-from="0" data-to="70" data-step="6.4" data-w="38" data-label="10"></div>
 <span class="segn t-etichetta">Segnaposto: foto ufficiale Unitree</span>
 
 <div class="dist">
   <div class="voce"><span class="n">01</span>Go2 EDU con LiDAR</div>
   <div class="voce"><span class="n">02</span>Simulatore MuJoCo</div>
-  <div class="voce"><span class="n">03</span>Digital twin con SLAM</div>
+  <div class="voce"><span class="n">03</span>Modello digitale del reparto</div>
   <div class="voce"><span class="n">04</span>Manuale tecnico rev. 1.1</div>
-  <div class="voce"><span class="n">05</span>Repository di codice condiviso</div>
+  <div class="voce"><span class="n">05</span>Codice in un repository condiviso</div>
   <div class="voce"><span class="n">06</span>85 ore di assistenza</div>
 </div>
-<div class="piede"><span>abrarobotics.com · Robotica applicata</span><span class="esempio" style="font-size:12px;border-color:var(--flanella);color:var(--flanella)">Versione nominativa: richiede consenso scritto SACMI</span></div>
-<script src="../assets/metro.js"></script>
+<div class="piede"><span>abrarobotics.com · Robotica applicata</span><span class="esempio">Da pubblicare solo con consenso scritto di SACMI</span></div>
 </body>
 </html>

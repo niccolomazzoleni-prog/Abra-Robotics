@@ -1,28 +1,28 @@
-# Autocritica · Riferimento A
+# Autocritica · In squadra (v2)
 
-## 1. Il segno chiede una spiegazione per dare il meglio
+## 1. Il segno Ab ha una spinta dinamica che la direzione deve tenere ferma
 
-Il triangolo di riferimento è immediato per chi legge disegni tecnici (direttori R&D, tecnici, tesisti di ingegneria). Per l'event manager e per il pubblico di una fiera resta una A solida con un dettaglio geometrico: riconoscibile, ma senza il racconto. C'è anche un rischio di lettura secondaria, la A con il triangolo sotto la traversa può ricordare una tenda o una strada in prospettiva.
-
-**Mitigazioni**
-- Proporzioni ridisegnate più volte: aste con pendenza 2 a 1 (non più strette, per evitare l'effetto strada), triangolo uguale al vuoto superiore con una luce di 0,45 volte il tratto, punta tagliata in piano larga quanto il tratto. A 16 px il segno si legge come A anche quando il triangolo si perde.
-- Il triangolo non si colora mai: in verde, accanto alla A, diventava un abete. Il marchio è sempre monocromatico.
-- Il racconto del riferimento è affidato agli oggetti che lo rendono evidente senza parole: la copertina del preventivo con la tavola di costruzione, il logo animato in cui il vuoto scende e diventa pieno, la targa sul robot.
-
-## 2. Freddezza e rischio di somiglianza con il catalogo tecnico generico
-
-Grigio, grafite, grotesk da segnaletica e griglia: il territorio è vicino al linguaggio di molti costruttori di macchine e a quello di Agility (griglia svizzera e mono tecnico) e ANYbotics (antracite). Fatta male, questa direzione diventa un catalogo industriale anonimo, poco memorabile negli eventi e sui social.
+La diagonale con pendenza 2 a 1 e l'asta verticale fanno una legatura molto riconoscibile, ma con un'inclinazione in avanti che, isolata, può ricordare un marchio sportivo più di uno strumento. La favicon a 16 px, disegnata a gradini, legge "Ab" come sagoma più che come lettere.
 
 **Mitigazioni**
-- Distanze esplicite dai vicini: grigio d'alluminio freddo al posto del grigio caldo di Agility, nessun monospaziato come voce, nessun rosso, fondo chiaro come base (ANYbotics vive su antracite).
-- Elementi proprietari che un costruttore di macchine non usa nella comunicazione: il triangolo di riferimento come sistema, il riquadro di controllo per ogni fatto verificabile, il cartiglio sui preventivi, il biglietto che è un righello vero, la targa di trasparenza IA sul petto dell'umanoide.
-- Un codice colore con significato (verde misurato, giallo limite) che si impara in una pagina e che rende i documenti Abra riconoscibili anche in bianco e nero.
+- L'angolo retto è il centro del segno: asta comune verticale, linea di base, segno dei 90 gradi nella costruzione e nell'animazione.
+- Gli impaginati restano fermi e in griglia (cartigli, riquadri, quote) e il segno compare quasi sempre su piastra verde quadrata, che lo stabilizza.
+- La favicon ha regole scritte (asta 2 px, traversa 1 px, vuoti minimi) e si usa solo sotto i 24 px; sopra c'è la versione vettoriale.
 
-## 3. Debole sul segmento eventi e dipendente da prove che ancora mancano
+## 2. "Ab" resta legato al nome Abra, che ha un rischio di conflitto alto
 
-Il totem e il reel sono chiari e rispondono alla paura della figuraccia (copione approvato, tecnico presente, date libere), ma non hanno la presenza scenica che un'agenzia cerca. Inoltre la direzione vive di numeri, verbali e criteri: oggi nessun progetto misurato prima dell'acquisto è concluso, mancano la scheda limiti, le foto proprie e il consenso SACMI. Senza contenuti veri, il sistema rischia di mostrare cornici vuote o troppi "Esempio".
+La legatura rende il segno figurativo più distintivo della A isolata della v1. Il nome però resta quello di ABRA Software e di abra.com nelle classi 9 e 42. Il verde e il grigio non sono proteggibili.
 
 **Mitigazioni**
-- Negli eventi la direzione usa il fondo grafite, scale grandi e la targa di trasparenza (AI Act, art. 50) come elemento di scena utile, e lascia lo spettacolo alla luce reale dello stand. Se il segmento eventi crescerà, il sistema può accogliere fotografia più ampia senza cambiare segno, colore o carattere.
-- Ogni dato inventato nei mockup è marcato "Esempio"; il post SACMI esiste anche in versione anonima.
-- Il sistema indica dove andranno le prove da produrre: la scheda limiti ha già la sua forma (targa dati con quadratini gialli), il verbale di consegna ha la sua (post LinkedIn), la shot list in `foto-video.md` parte dal Laboratorio Abra e dalla consegna del 29/10/2026.
+- Il segno è una sagoma intera (triangolo rettangolo più pancia della b), da depositare come marchio figurativo in bianco e nero, insieme al logotipo con la legatura.
+- La riconoscibilità si appoggia su un uso costante e verificabile: piastra verde con Ab su ogni robot, ogni preventivo, ogni avatar. Se diventa ricorrente si deposita anche la piastra come marchio figurativo secondario.
+- Le ricerche di anteriorità indicate dal revisore marchio (EUIPO, TMview, UIBM, WIPO, Vienna 27.05 e 26.03) restano da fare prima della scelta finale.
+
+## 3. Dipende da prove e foto che ancora mancano
+
+Il sistema vive di numeri, criteri e piante di postazione: oggi nessun progetto misurato prima dell'acquisto è concluso, mancano la scheda limiti e le foto proprie. Il G1 è un segnaposto Unitree e le persone sono sagome grafiche.
+
+**Mitigazioni**
+- Ogni dato inventato è marcato "Esempio"; il post SACMI anonimo non contiene date, revisioni né il tipo di progetto.
+- Le sagome sono in scala con il robot e già impaginate dove andranno le foto vere (shot list in `foto-video.md`, a partire dalla consegna del 29/10/2026 e dal Laboratorio Abra).
+- Il formato eventi è progettato per funzionare anche con l'immagine definitiva: testata verde, quota, triangolo a terra e battuta approvata non dipendono dalla foto.

@@ -3,40 +3,30 @@
 <title>Biglietto da visita 85 x 55 mm, fronte e retro</title>
 <link rel="stylesheet" href="../sistema.css">
 <style>
-/* scala: 12 px = 1 mm, biglietto 1020 x 660 px */
-body{margin:0;background:#CFC6B8;font-family:var(--f)}
+/* scala: 12 px = 1 mm, biglietto 1020 x 660 px; corpo minimo 26 px = 6,2 pt */
+body{margin:0;background:#CFCEC8;font-family:var(--f)}
 .tavolo{width:2240px;height:860px;display:flex;gap:80px;align-items:center;justify-content:center}
-.bv{position:relative;width:1020px;height:660px;overflow:hidden;box-shadow:0 2px 0 rgba(33,20,18,.18),0 18px 40px rgba(33,20,18,.22)}
-.fronte{background:var(--velluto)}
-.fronte .fondale{position:absolute;left:360px;top:0;width:520px;height:440px;background:var(--quinta);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%)}
-.fronte img{position:absolute;left:72px;top:72px;height:64px}
-.fronte .palco{left:0;width:1020px;top:440px;height:220px;--p-top-l:8%;--p-top-r:8%}
-.fronte .segno-a{position:absolute;left:475px;top:458px;width:70px;height:11px;background:var(--velluto)}
-.fronte .segno-a::after{content:"";position:absolute;left:29px;top:0;width:12px;height:26px;background:var(--velluto)}
-.fronte .riga{position:absolute;left:0;right:0;text-align:center;bottom:70px;color:var(--velluto);font-size:17px}
-.retro{background:var(--carta);color:var(--velluto);padding:72px}
-.retro .nome{margin:0;font-size:92px}
-.retro .ruolo{margin:14px 0 0;font-size:25px;line-height:1.35}
-.retro .contatti{position:absolute;left:72px;bottom:66px;font-size:24px;line-height:1.55}
-.retro .contatti span{color:var(--fumo)}
-.retro .simbolo{position:absolute;right:72px;bottom:72px;height:120px}
-.retro .lbl{position:absolute;right:72px;top:78px;font-size:15px;color:var(--fumo)}
-.didasc{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:20px;color:var(--velluto)}
+.bv{position:relative;width:1020px;height:660px;overflow:hidden;background:var(--carta);color:var(--grafite);box-shadow:0 2px 0 rgba(32,33,36,.15),0 18px 40px rgba(32,33,36,.2)}
+.fronte img{position:absolute;left:84px;top:250px;width:560px}
+.fronte .riga{position:absolute;left:84px;bottom:72px;font-size:26px;color:var(--fumo)}
+.fronte .filo{position:absolute;left:0;right:0;bottom:0;height:24px;background:var(--magenta)}
+.retro{padding:72px 84px}
+.retro .nome{margin:0;font-size:68px}
+.retro .ruolo{margin:14px 0 0;font-size:28px;line-height:1.35;color:var(--fumo)}
+.retro .contatti{position:absolute;left:84px;bottom:68px;font-size:28px;line-height:1.55;margin:0}
+.retro .simbolo{position:absolute;right:84px;bottom:76px;height:96px}
 </style></head>
 <body>
 <div class="tavolo">
   <div class="bv fronte">
-    <div class="fondale"></div>
-    <img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics">
-    <div class="palco"></div>
-    <div class="segno-a"></div>
-    <p class="lbl riga">Robotica applicata · aziende, laboratori, eventi</p>
+    <img src="../logo/orizzontale.svg" alt="abra Robotics">
+    <p class="txt riga">Robotica applicata per aziende, laboratori ed eventi</p>
+    <div class="filo"></div>
   </div>
   <div class="bv retro">
-    <p class="lbl">abrarobotics.com</p>
-    <h1 class="disp nome">Niccolò<br>Mazzoleni</h1>
+    <h1 class="titolo nome">Niccolò Mazzoleni</h1>
     <p class="ruolo txt">Cofondatore, commerciale e strategia</p>
-    <p class="contatti txt"><span>Mail</span> nico@abrarobotics.com<br><span>Telefono</span> +39 3XX XXX XXXX</p>
+    <p class="contatti txt">nico@abrarobotics.com<br>+39 3XX XXX XXXX<br>abrarobotics.com</p>
     <img class="simbolo" src="../logo/simbolo.svg" alt="">
   </div>
 </div>

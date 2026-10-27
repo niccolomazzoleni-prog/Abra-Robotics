@@ -3,77 +3,56 @@
 <title>Totem 80 x 200 cm, noleggio dell'umanoide per eventi</title>
 <link rel="stylesheet" href="../sistema.css">
 <style>
-/* scala: 10 px = 1 cm */
-body{margin:0;background:#CFC6B8;font-family:var(--f)}
-.sala{position:relative;width:2000px;height:2200px;background:#D9D1C4;overflow:hidden}
-.pavimento{position:absolute;left:0;right:0;bottom:0;height:120px;background:#C4BAAB}
-.totem{position:absolute;left:100px;top:80px;width:800px;height:2000px;background:var(--velluto);color:var(--stucco);overflow:hidden;box-shadow:0 30px 50px rgba(33,20,18,.25)}
-.fondale{position:absolute;left:180px;top:0;width:620px;height:1300px;background:var(--quinta);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%)}
-.totem .logo{position:absolute;left:64px;top:64px;height:44px}
-.totem .lbl-t{position:absolute;left:64px;top:170px;font-size:17px;color:var(--luce);display:flex;gap:14px;align-items:center}
-h1{position:absolute;left:64px;top:220px;width:680px;margin:0;font-size:112px;z-index:3}
-h1 em{font-style:normal;color:var(--luce)}
-.robot{position:absolute;left:400px;top:640px;height:680px;z-index:2}
-.dida-r{position:absolute;left:64px;top:1150px;width:300px;font-size:15px;line-height:1.4;color:var(--fumo-chiaro)}
-.palco{left:0;width:800px;top:1300px;height:700px;--p-top-l:6%;--p-top-r:6%}
-.info{position:absolute;left:84px;right:84px;top:1350px;color:var(--velluto);z-index:3}
+body{margin:0;font-family:var(--f)}
+.tavola{position:relative;width:1400px;height:2200px;background:var(--cemento);overflow:hidden}
+.pavimento{position:absolute;left:0;right:0;bottom:0;height:120px;background:#D6D5CF}
+.totem{position:absolute;left:100px;top:80px;width:800px;height:2000px;background:var(--grafite);color:var(--carta);overflow:hidden;box-shadow:0 30px 50px rgba(32,33,36,.25)}
+.totem .logo{position:absolute;left:64px;top:64px;height:50px}
+.totem .lbl-t{position:absolute;left:64px;top:170px;font-size:17px;color:var(--fumo-chiaro)}
+h1{position:absolute;left:64px;top:214px;width:680px;margin:0;font-size:104px;z-index:3}
+.arco-t{position:absolute;left:64px;top:690px;width:672px;height:640px;background:var(--magenta)}
+.arco-t img{position:absolute;left:50%;bottom:30px;height:520px;transform:translateX(-50%)}
+.arco-t .folla{position:absolute;left:0;right:0;bottom:0;height:200px}
+.arco-t .folla svg{width:100%;height:100%;display:block}
+.dida-r{position:absolute;left:64px;top:1340px;width:672px;font-size:14px;color:var(--fumo-chiaro);margin:0}
+.info{position:absolute;left:64px;right:64px;top:1390px}
 .info ol{list-style:none;margin:0;padding:0}
-.info li{display:grid;grid-template-columns:56px 1fr;border-top:2px solid rgba(58,25,21,.35);padding:13px 0;font-size:25px;font-weight:600;line-height:1.2}
-.info li b{font-stretch:var(--stretto);font-weight:800;font-size:28px}
-.info li small{display:block;font-weight:400;font-size:18px;margin-top:3px}
-.cta{position:absolute;left:84px;right:84px;bottom:70px;display:grid;grid-template-columns:1fr 170px;gap:28px;align-items:end;color:var(--velluto);z-index:3}
-.cta .disp{font-size:58px;margin:0}
+.info li{display:grid;grid-template-columns:52px 1fr;border-top:1.5px solid #4A4B51;padding:12px 0;font-size:24px;font-weight:600;line-height:1.2}
+.info li b{color:var(--carta);font-size:17px;padding-top:5px}
+.info li small{display:block;font-weight:400;font-size:18px;margin-top:3px;color:var(--fumo-chiaro)}
+.cta{position:absolute;left:64px;right:64px;bottom:60px;display:grid;grid-template-columns:1fr 170px;gap:28px;align-items:end}
+.cta .scena{font-size:62px;margin:0}
 .cta p.txt{margin:10px 0 0;font-size:22px;font-weight:600}
-.qr{width:170px;height:170px;background:var(--velluto);padding:14px}
-.qr div{width:100%;height:100%;background:
- linear-gradient(90deg,var(--stucco) 0 30%,transparent 30% 40%,var(--stucco) 40% 50%,transparent 50% 70%,var(--stucco) 70% 100%) top/100% 30% no-repeat,
- repeating-linear-gradient(0deg,var(--stucco) 0 8px,transparent 8px 16px) bottom/100% 60% no-repeat}
-.qr-n{font-size:12px;margin-top:6px;text-align:center}
-.esempio{position:absolute;right:84px;top:1352px;color:var(--velluto);z-index:4}
-/* scala umana */
-.scala{position:absolute;bottom:120px;left:1000px;display:flex;gap:120px;align-items:flex-end}
-.fig{display:flex;flex-direction:column;align-items:center;font-size:16px;color:var(--velluto)}
-.fig i{display:block;border-radius:50%;background:#8D8176}
-.fig u{display:block;border-radius:110px 110px 6px 6px;background:#8D8176;}
-.fig span{position:absolute;bottom:-60px;white-space:nowrap}
-.fig{position:relative}
-.nota{position:absolute;left:1000px;top:120px;width:560px;font-size:20px;line-height:1.45;color:var(--velluto)}
-.nota .lbl{font-size:13px;margin:0 0 10px}
-.quota{position:absolute;left:930px;bottom:120px;width:2px;height:2000px;background:var(--velluto)}
-.quota::before,.quota::after{content:"";position:absolute;left:-9px;width:20px;height:2px;background:var(--velluto)}
+.cta img{width:170px;height:170px;display:block}
+.esempio-t{position:absolute;right:64px;top:1352px;color:var(--fumo-chiaro);font-size:11px}
+.quota{position:absolute;bottom:120px;width:2px;background:var(--grafite)}
+.quota::before,.quota::after{content:"";position:absolute;left:-9px;width:20px;height:2px;background:var(--grafite)}
 .quota::before{top:0}.quota::after{bottom:0}
-.quota span{position:absolute;left:-30px;top:50%;font-size:16px;white-space:nowrap;transform:rotate(-90deg);background:#D9D1C4;padding:0 6px}
+.quota span{position:absolute;left:14px;top:50%;font-size:16px;white-space:nowrap;color:var(--grafite)}
+.nota{position:absolute;left:980px;top:120px;width:360px;font-size:19px;line-height:1.5;color:var(--grafite)}
+.nota .lbl{font-size:12px;margin:0 0 10px;color:var(--fumo)}
 </style></head>
 <body>
-<div class="sala">
+<div class="tavola">
   <div class="pavimento"></div>
   <div class="totem">
-    <div class="fondale"></div>
-    <img class="logo" src="../logo/orizzontale-negativo.svg" alt="Abra Robotics">
-    <p class="lbl lbl-t"><span class="segno"></span>Noleggio per eventi e fiere</p>
-    <h1 class="disp">Noleggia l'umanoide per il tuo evento, <em>con un tecnico Abra in sala.</em></h1>
-    <p class="dida dida-r">(Segnaposto: immagine ufficiale Unitree G1 con trattamento tungsteno.)</p>
-    <img class="robot" src="img/segnaposto-unitree-g1-tungsteno.png" alt="Umanoide (segnaposto)">
-    <div class="palco"></div>
-    <span class="esempio">Esempio</span>
-    <div class="info txt">
-      <ol>
-        <li><b>01</b><span>A giornata, con trasporto<small>Il prezzo si definisce con la data e il luogo</small></span></li>
-        <li><b>02</b><span>Un tecnico Abra per tutta la giornata<small>Accende, sorveglia e cambia la batteria</small></span></li>
-        <li><b>03</b><span>Copione e risposte approvati da te<small>L'umanoide parla del tuo marchio, in italiano e in inglese</small></span></li>
-        <li><b>04</b><span>Prova generale prima della data<small>La vedi dal vivo o in video, poi decidi</small></span></li>
-      </ol>
-    </div>
-    <div class="cta">
-      <div><p class="disp">Chiedi una data</p><p class="txt">abrarobotics.com/eventi</p></div>
-      <div><div class="qr"><div></div></div><p class="qr-n lbl">QR segnaposto</p></div>
-    </div>
+    <img class="logo" src="../logo/orizzontale-negativo.svg" alt="abra Robotics">
+    <p class="lbl lbl-t">Noleggio per eventi e fiere</p>
+    <h1 class="scena">Noleggia l'umanoide per il tuo evento, con un tecnico Abra in sala.</h1>
+    <div class="arco-t arco"><img src="img/segnaposto-unitree-g1d.png" alt="Umanoide (segnaposto)"><div class="folla"><svg viewBox="0 0 800 260" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="63.9" cy="111.2" rx="14.9" ry="18.6" fill="#34353B"/><rect x="57.7" y="121.4" width="12.4" height="9.3" fill="#34353B"/><path d="M15.6 200.0V149.2Q15.6 127.0 41.6 127.0H86.2Q112.2 127.0 112.2 149.2V200.0Z" fill="#34353B"/><ellipse cx="224.9" cy="112.3" rx="14.7" ry="18.3" fill="#34353B"/><rect x="218.8" y="122.4" width="12.2" height="9.2" fill="#34353B"/><path d="M177.2 200.0V149.9Q177.2 127.9 202.9 127.9H246.9Q272.5 127.9 272.5 149.9V200.0Z" fill="#34353B"/><ellipse cx="333.8" cy="110.8" rx="14.9" ry="18.6" fill="#34353B"/><rect x="327.6" y="121.1" width="12.4" height="9.3" fill="#34353B"/><path d="M285.3 200.0V149.0Q285.3 126.7 311.4 126.7H356.2Q382.3 126.7 382.3 149.0V200.0Z" fill="#34353B"/><ellipse cx="448.2" cy="111.8" rx="14.8" ry="18.4" fill="#34353B"/><rect x="442.0" y="121.9" width="12.3" height="9.2" fill="#34353B"/><path d="M400.2 200.0V149.6Q400.2 127.4 426.0 127.4H470.3Q496.1 127.4 496.1 149.6V200.0Z" fill="#34353B"/><ellipse cx="607.6" cy="108.3" rx="15.3" ry="19.2" fill="#34353B"/><rect x="601.2" y="118.8" width="12.8" height="9.6" fill="#34353B"/><path d="M557.8 200.0V147.6Q557.8 124.6 584.6 124.6H630.6Q657.5 124.6 657.5 147.6V200.0Z" fill="#34353B"/><ellipse cx="709.5" cy="114.4" rx="14.3" ry="17.9" fill="#34353B"/><rect x="703.6" y="124.2" width="11.9" height="9.0" fill="#34353B"/><path d="M663.0 200.0V151.1Q663.0 129.6 688.0 129.6H731.0Q756.1 129.6 756.1 151.1V200.0Z" fill="#34353B"/><ellipse cx="51.2" cy="141.4" rx="19.8" ry="24.8" fill="#121316"/><rect x="42.9" y="155.0" width="16.5" height="12.4" fill="#121316"/><path d="M-13.3 260.0V192.2Q-13.3 162.5 21.4 162.5H80.9Q115.7 162.5 115.7 192.2V260.0Z" fill="#121316"/><ellipse cx="253.6" cy="153.7" rx="17.8" ry="22.2" fill="#121316"/><rect x="246.2" y="165.9" width="14.8" height="11.1" fill="#121316"/><path d="M195.8 260.0V199.3Q195.8 172.6 227.0 172.6H280.3Q311.4 172.6 311.4 199.3V260.0Z" fill="#121316"/><ellipse cx="433.9" cy="138.9" rx="20.3" ry="25.3" fill="#121316"/><rect x="425.5" y="152.8" width="16.9" height="12.7" fill="#121316"/><path d="M368.1 260.0V190.8Q368.1 160.4 403.6 160.4H464.3Q499.8 160.4 499.8 190.8V260.0Z" fill="#121316"/><ellipse cx="570.8" cy="144.5" rx="19.3" ry="24.1" fill="#121316"/><rect x="562.8" y="157.8" width="16.1" height="12.1" fill="#121316"/><path d="M508.1 260.0V194.0Q508.1 165.0 541.9 165.0H599.8Q633.6 165.0 633.6 194.0V260.0Z" fill="#121316"/><ellipse cx="695.9" cy="154.1" rx="17.7" ry="22.1" fill="#121316"/><rect x="688.5" y="166.3" width="14.8" height="11.1" fill="#121316"/><path d="M638.3 260.0V199.5Q638.3 173.0 669.3 173.0H722.4Q753.4 173.0 753.4 199.5V260.0Z" fill="#121316"/></svg></div></div>
+    <p class="dida dida-r">(Segnaposto: immagine ufficiale Unitree G1 nella versione su colonna.)</p>
+    <span class="esempio esempio-t">Esempio</span>
+    <div class="info txt"><ol>
+      <li><b>01</b><span>A giornata, trasporto compreso<small>Il prezzo si definisce con la data e il luogo</small></span></li>
+      <li><b>02</b><span>Un tecnico Abra per tutta la giornata<small>Accende, sorveglia e cambia la batteria</small></span></li>
+      <li><b>03</b><span>Copione e risposte approvati da te<small>L'umanoide parla del tuo marchio, in italiano e in inglese</small></span></li>
+      <li><b>04</b><span>Prova generale prima della data<small>La vedi dal vivo o in video, poi decidi</small></span></li>
+    </ol></div>
+    <div class="cta"><div><p class="scena">Chiedi una data</p><p class="txt">abrarobotics.com/eventi</p></div><img src="img/qr-eventi.svg" alt="QR verso abrarobotics.com/eventi"></div>
   </div>
-  <div class="quota"><span>200 cm</span></div>
-  <div class="nota"><p class="lbl">Totem 80 x 200 cm, stampa su forex</p>Accanto al totem sta il G1 vero, sul suo segno a terra in nastro color luce. Le figure grigie danno la scala: persona 175 cm, umanoide 132 cm.</div>
-  <div class="scala">
-    <div class="fig"><i style="width:160px;height:225px;margin-bottom:15px"></i><u style="width:460px;height:1510px"></u><span>Persona, 175 cm</span></div>
-    <div class="fig"><i style="width:170px;height:200px;border-radius:40%;margin-bottom:10px;background:#5E544C"></i><u style="width:400px;height:1110px;background:#5E544C"></u><span>G1, 132 cm</span></div>
-  </div>
+  <div class="quota" style="left:940px;height:2000px"><span>totem 200 cm</span></div>
+  <div class="quota" style="left:1120px;height:1750px"><span>persona 175 cm</span></div>
+  <div class="quota" style="left:1280px;height:1320px"><span>G1 132 cm</span></div>
+  <div class="nota"><p class="lbl">Totem 80 x 200 cm, stampa su forex</p>Accanto al totem sta il G1 vero, sul disco magenta "a". Le quote danno la scala: il titolo si legge a 6 metri, la chiamata all'azione e il QR ad altezza di mano.</div>
 </div>
 </body></html>

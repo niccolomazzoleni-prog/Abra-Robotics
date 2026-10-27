@@ -4,72 +4,60 @@
 <link rel="stylesheet" href="../sistema.css">
 <style>
 @page{size:A4;margin:0}
-body{margin:0;background:#d8d2c6;font-family:var(--f);color:var(--velluto)}
-.pagina{position:relative;width:794px;height:1123px;background:var(--carta);overflow:hidden}
-.testa{position:absolute;left:56px;right:56px;top:48px;display:flex;justify-content:space-between;align-items:flex-start}
-.testa img{height:24px}
-.testa .lbl{font-size:9.5px;text-align:right;color:var(--fumo);line-height:1.6}
-.esempio{position:absolute;right:56px;top:116px;color:var(--rame)}
-.titolo{position:absolute;left:56px;right:56px;top:196px}
-.titolo .lbl{font-size:10px;color:var(--fumo);margin:0 0 18px}
-h1{margin:0;font-size:74px;line-height:.9;color:var(--velluto)}
-.per{margin:26px 0 0;font-size:15px;line-height:1.5;max-width:520px}
-.per b{font-weight:700}
-/* boccascena: la metà inferiore è il palco */
-.scena{position:absolute;left:0;right:0;bottom:0;height:500px;background:var(--velluto);overflow:hidden}
-.scena .fondale{position:absolute;left:250px;top:0;width:300px;height:326px;background:var(--quinta);clip-path:polygon(36% 0,64% 0,100% 100%,0 100%)}
-.scena .palco{left:0;right:0;top:326px;height:174px;--p-top-l:9%;--p-top-r:9%}
-.promessa{position:absolute;left:56px;top:56px;width:420px;color:var(--stucco)}
-.promessa p{margin:0;font-size:30px;line-height:1.02}
-.promessa .lbl{color:var(--luce);font-size:9.5px;margin:0 0 14px}
-.dati{position:absolute;right:56px;top:60px;width:200px;color:var(--stucco);font-size:11.5px;line-height:1.55}
-.dati dt{color:var(--fumo-chiaro);font-stretch:var(--largo);font-weight:600;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:12px}
-.dati dt:first-child{margin-top:0}
-.dati dd{margin:2px 0 0}
-.scaletta{position:absolute;left:84px;right:84px;top:368px;display:grid;grid-template-columns:repeat(6,1fr);color:var(--velluto)}
-.cue{padding:0 10px;border-left:1.2px solid rgba(58,25,21,.35)}
-.cue:first-child{border-left:0;padding-left:0}
-.cue b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:30px;line-height:.9}
-.cue span{display:block;font-size:10.5px;font-weight:600;margin-top:5px;line-height:1.25}
-.segno-vuoto{position:absolute;left:375px;top:338px;width:44px;height:7px;background:var(--velluto)}
-.segno-vuoto::after{content:"";position:absolute;left:18px;top:0;width:8px;height:16px;background:var(--velluto)}
-.piede{position:absolute;left:56px;right:56px;bottom:22px;display:flex;justify-content:space-between;font-size:8.5px;color:var(--velluto);font-stretch:var(--largo);font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+body{margin:0;background:#CFCEC8;font-family:var(--f);color:var(--grafite)}
+.pagina{position:relative;width:794px;height:1123px;background:var(--carta);overflow:hidden;padding:52px 56px}
+.testa{display:flex;justify-content:space-between;align-items:flex-start}
+.testa img{height:30px}
+.testa .meta{font-size:10px;line-height:1.6;text-align:right;color:var(--fumo)}
+.esempio{color:var(--magenta);margin-top:10px}
+.titoli{margin-top:150px}
+.titoli .lbl{font-size:10px;color:var(--fumo);margin:0 0 16px}
+h1{margin:0;font-size:46px;max-width:640px}
+.sottotitolo{margin:20px 0 0;font-size:16px;line-height:1.5;max-width:560px}
+.per{margin:26px 0 0;font-size:13px;line-height:1.6;color:var(--fumo)}
+.per b{color:var(--grafite)}
+.pianta{position:absolute;left:56px;right:56px;top:640px}
+.pianta .lbl{font-size:9.5px;color:var(--fumo);margin:0 0 16px}
+.pianta svg{width:100%;display:block}
+.sapere{position:absolute;left:56px;right:56px;bottom:86px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1.5px solid var(--grafite);padding-top:16px}
+.sapere .lbl{font-size:8.5px;color:var(--magenta);margin:0 0 6px}
+.sapere p{margin:0;font-size:12px;line-height:1.5}
+.piede{position:absolute;left:56px;right:56px;bottom:30px;display:flex;justify-content:space-between;font-family:var(--f-segno);font-weight:600;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fumo)}
+.simbolo{position:absolute;right:56px;top:180px;height:44px;opacity:1}
 </style></head>
 <body>
 <div class="pagina">
   <div class="testa">
-    <img src="../logo/orizzontale.svg" alt="Abra Robotics">
-    <div class="lbl">Proposta tecnica ed economica<br>N. AB 2026 0031, revisione 1<br>27 ottobre 2026, valida 60 giorni</div>
+    <img src="../logo/orizzontale.svg" alt="abra Robotics">
+    <div class="meta">Proposta tecnica ed economica<br>N. AB 2026 0031, revisione 1<br>27 ottobre 2026, valida 60 giorni<br><span class="esempio">Esempio</span></div>
   </div>
-  <span class="esempio">Esempio</span>
-
-  <div class="titolo">
+  <div class="titoli">
     <p class="lbl">POC a fasi con criteri di accettazione</p>
-    <h1 class="disp">Presa e deposito di<br>vasetti in fine linea:<br>umanoide e cella cobot<br>a confronto</h1>
-    <p class="per">Preparata per <b>Cliente di esempio S.p.A.</b>, direzione operations.<br>Referente Abra: Giovanni Pitton, responsabile tecnico.</p>
+    <h1 class="titolo">Misura il tempo ciclo dei vasetti a fine linea prima di investire</h1>
+    <p class="sottotitolo">Presa e deposito in fine linea: umanoide, cella cobot e soluzione a due robot a confronto in simulazione e su robot vero. Se la scelta cade sulla cella cobot, la realizza un integratore partner indicato nella proposta.</p>
+    <p class="per">Preparata per <b>Cliente di esempio S.p.A.</b>, direzione operations<br>Referente Abra: Giovanni Pitton, responsabile tecnico</p>
   </div>
-
-  <div class="scena">
-    <div class="fondale"></div>
-    <div class="promessa">
-      <p class="lbl">Cosa saprai prima di investire</p>
-      <p class="disp">Il tempo ciclo misurato in simulazione e sul robot, con il costo di ogni fase. A fine progetto il codice resta nel tuo repository.</p>
-    </div>
-    <dl class="dati">
-      <dt>Durata indicativa</dt><dd>19 settimane, con una decisione scritta alla fine di ogni fase</dd>
-      <dt>Piattaforme valutate</dt><dd>Umanoide, cella cobot, soluzione a due robot</dd>
-      <dt>Riservatezza</dt><dd>Documento riservato al destinatario</dd>
-    </dl>
-    <div class="palco"></div>
-    <div class="segno-vuoto" title="Il segno a terra: il posto del robot"></div>
-    <div class="scaletta txt">
-      <div class="cue"><b>P0</b><span>Chiamata e sopralluogo</span></div>
-      <div class="cue"><b>P1</b><span>Assessment</span></div>
-      <div class="cue"><b>P2</b><span>Digital twin</span></div>
-      <div class="cue"><b>P3</b><span>Prova sul robot</span></div>
-      <div class="cue"><b>P4</b><span>Pilota in reparto</span></div>
-      <div class="cue"><b>P5</b><span>Consegna e formazione</span></div>
-    </div>
+  <div class="pianta">
+    <p class="lbl">Il percorso: sei fasi, una decisione scritta alla fine di ognuna</p>
+    <svg viewBox="0 0 682 150" aria-label="Fasi del progetto">
+      <g font-family="Archivo" fill="#202124">
+        <path d="M12 30H670" stroke="#202124" stroke-width="1.5"/>
+        <g font-size="11">
+          <circle cx="12" cy="30" r="9" fill="#D6006F"/><text x="0" y="66" font-weight="700" font-size="13">P0</text><text x="0" y="84">Chiamata e</text><text x="0" y="98">sopralluogo</text><text x="0" y="118" fill="#5F6066">1 settimana</text>
+          <circle cx="143" cy="30" r="9" fill="#D6006F"/><text x="131" y="66" font-weight="700" font-size="13">P1</text><text x="131" y="84">Assessment</text><text x="131" y="118" fill="#5F6066">3 settimane</text>
+          <circle cx="274" cy="30" r="9" fill="#D6006F"/><text x="262" y="66" font-weight="700" font-size="13">P2</text><text x="262" y="84">Digital twin e</text><text x="262" y="98">simulazione</text><text x="262" y="118" fill="#5F6066">4 settimane</text>
+          <circle cx="405" cy="30" r="9" fill="#D6006F"/><text x="393" y="66" font-weight="700" font-size="13">P3</text><text x="393" y="84">Prova sul robot</text><text x="393" y="118" fill="#5F6066">3 settimane</text>
+          <circle cx="536" cy="30" r="9" fill="#FAFAF7" stroke="#202124" stroke-width="1.5"/><text x="524" y="66" font-weight="700" font-size="13">P4</text><text x="524" y="84">Pilota in reparto</text><text x="524" y="118" fill="#5F6066">6 settimane</text>
+          <circle cx="667" cy="30" r="9" fill="#FAFAF7" stroke="#202124" stroke-width="1.5"/><text x="610" y="66" font-weight="700" font-size="13">P5</text><text x="610" y="84">Consegna</text><text x="610" y="118" fill="#5F6066">2 settimane</text>
+        </g>
+        <text x="0" y="146" font-size="10" font-style="italic" fill="#5F6066">(Pieni: fasi quotate in questa proposta. Vuoti: fasi da decidere dopo il verbale di P3.)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="sapere">
+    <div><p class="lbl">Cosa saprai prima di investire</p><p>Il tempo ciclo per pezzo di ogni configurazione, misurato in simulazione e sul robot.</p></div>
+    <div><p class="lbl">Cosa decidi tu</p><p>Se passare alla fase successiva, dopo aver letto il verbale con il criterio raggiunto o mancato.</p></div>
+    <div><p class="lbl">Cosa ti resta</p><p>Codice nel tuo repository, simulatore della postazione e manuale per il tuo team.</p></div>
   </div>
   <div class="piede"><span>Abra Robotics, robotica applicata</span><span>Documento dimostrativo, non riferito a un cliente reale</span></div>
 </div>

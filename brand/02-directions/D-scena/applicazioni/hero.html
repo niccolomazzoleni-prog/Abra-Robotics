@@ -1,75 +1,77 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Abra Robotics: prova il robot sul tuo caso prima di investire</title>
-<link rel="icon" href="../logo/monogramma.svg">
+<title>Abra Robotics: guarda il robot lavorare sul tuo caso, prima di investire</title>
+<link rel="icon" href="../logo/favicon.svg">
 <link rel="stylesheet" href="../sistema.css">
 <style>
-body{margin:0;background:var(--velluto);color:var(--stucco);font-family:var(--f)}
-.scena{position:relative;width:1440px;height:900px;overflow:hidden;background:var(--velluto)}
-/* taglio di luce sul fondale: una sola sorgente, bordi netti */
-.fondale{position:absolute;left:820px;top:0;width:560px;height:712px;background:var(--quinta);clip-path:polygon(34% 0,66% 0,100% 100%,0 100%)}
+body{margin:0;background:var(--carta);color:var(--grafite);font-family:var(--f)}
+.pagina{position:relative;width:1440px;height:900px;overflow:hidden;background:var(--carta)}
 nav{position:absolute;left:64px;right:64px;top:34px;display:flex;align-items:center;gap:40px;z-index:5}
-nav img{height:30px;display:block}
-nav ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:30px;font-size:15px;font-weight:500}
-nav a{color:var(--stucco);text-decoration:none}
-nav .cta{border:1.5px solid var(--stucco);padding:10px 16px 9px;font-weight:600}
-.testa{position:absolute;left:64px;top:132px;width:800px;z-index:4}
-.testa .lbl{color:var(--luce);margin:0 0 26px;display:flex;align-items:center;gap:12px}
-h1{margin:0;font-size:106px;color:var(--stucco)}
-h1 em{font-style:normal;color:var(--luce)}
-.sotto{margin:26px 0 0;font-size:20px;line-height:1.45;max-width:600px;color:var(--stucco);font-weight:400}
-.azioni{display:flex;gap:28px;align-items:center;margin-top:30px}
-.btn{background:var(--luce);color:var(--velluto);font-weight:700;font-size:17px;padding:17px 24px 16px;text-decoration:none;display:inline-flex;align-items:center;gap:12px}
-.btn svg{width:18px;height:18px}
-.link{color:var(--stucco);font-weight:600;font-size:17px;text-decoration:none;border-bottom:1.5px solid var(--luce);padding-bottom:3px}
-/* palco */
-.palco{left:0;width:1440px;top:712px;height:188px;--p-top-l:8.5%;--p-top-r:8.5%}
-.robot{position:absolute;left:1000px;top:208px;height:540px;z-index:3}
-.segno-robot{position:absolute;left:1066px;top:730px;width:64px;height:10px;background:var(--velluto);z-index:2}
-.segno-robot::after{content:"";position:absolute;left:28px;top:0;width:10px;height:22px;background:var(--velluto)}
-.dida-robot{position:absolute;left:1196px;top:600px;width:200px;font-size:13px;line-height:1.4;color:var(--fumo-chiaro);z-index:3}
-.scaletta{position:absolute;left:0;right:0;top:760px;display:grid;grid-template-columns:repeat(6,1fr);padding:0 122px 0 122px;gap:0;color:var(--velluto);z-index:4}
-.cue{padding:0 18px;border-left:1.5px solid rgba(58,25,21,.35)}
-.cue:first-child{border-left:0}
-.cue b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:40px;line-height:.9}
-.cue span{display:block;font-size:14px;font-weight:600;margin-top:6px;line-height:1.25}
-.cue i{display:block;font-size:12.5px;margin-top:3px;font-style:italic;line-height:1.3}
-.capo{position:absolute;left:140px;top:726px;font-size:11px;color:var(--velluto);z-index:4}
+nav img{height:42px;display:block}
+nav ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:30px;font-size:15px;font-weight:600}
+nav a{color:var(--grafite);text-decoration:none}
+nav .cta{background:var(--grafite);color:var(--carta);padding:11px 16px 10px}
+.testa{position:absolute;left:64px;top:150px;width:740px}
+.testa .lbl{color:var(--magenta);margin:0 0 24px}
+h1{margin:0;font-size:68px}
+.sotto{margin:24px 0 0;font-size:20px;line-height:1.5;max-width:600px}
+.azioni{display:flex;gap:28px;align-items:center;margin-top:32px}
+.btn{background:var(--magenta);color:var(--carta);font-weight:700;font-size:17px;padding:17px 22px 16px;text-decoration:none}
+.link{color:var(--grafite);font-weight:600;font-size:17px;text-decoration:none;border-bottom:2px solid var(--magenta);padding-bottom:3px}
+/* pianta dei movimenti: le fasi come posizioni lungo un percorso */
+.pianta{position:absolute;left:64px;top:690px;width:720px}
+.pianta .lbl{color:var(--fumo);margin:0 0 14px}
+.pianta svg{display:block;width:720px;height:96px;overflow:visible}
+/* arco scenico */
+.arco-f{position:absolute;left:860px;top:118px;width:516px;height:660px;background:var(--cemento)}
+.arco-f .pav{position:absolute;left:0;right:0;bottom:0;height:200px;background:#D9D8D2}
+.arco-f img{position:absolute;left:96px;bottom:84px;width:330px;z-index:2}
+.arco-f .ombra{position:absolute;left:128px;bottom:72px;width:280px;height:30px;border-radius:50%;background:rgba(32,33,36,.22);filter:blur(6px)}
+.arco-f svg{position:absolute;left:0;bottom:0;width:516px;height:200px;z-index:1}
+.dida-r{position:absolute;left:860px;top:792px;width:516px;font-size:13px;color:var(--fumo);line-height:1.4}
+.ingressi{position:absolute;left:0;right:0;bottom:0;height:0}
 </style></head>
 <body>
-<div class="scena">
-  <div class="fondale"></div>
+<div class="pagina">
   <nav>
-    <img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics">
-    <ul><li><a href="#">Metodo</a></li><li><a href="#">Aziende</a></li><li><a href="#">Laboratori</a></li><li><a href="#">Eventi</a></li><li><a href="#">Listino prezzi</a></li><li><a href="#">Chi siamo</a></li></ul>
+    <img src="../logo/orizzontale.svg" alt="abra Robotics">
+    <ul><li><a href="#">Metodo</a></li><li><a href="#">Aziende</a></li><li><a href="#">Laboratori</a></li><li><a href="#">Eventi</a></li><li><a href="#">Listino prezzi</a></li></ul>
     <a class="cta" href="#">Parla con un tecnico</a>
   </nav>
-
   <div class="testa">
-    <p class="lbl"><span class="segno"></span>Robotica applicata per aziende, laboratori ed eventi</p>
-    <h1 class="disp">Prova il robot<br>sul tuo caso<br><em>prima di investire.</em></h1>
-    <p class="sotto">Simuliamo il tuo processo, misuriamo il robot in laboratorio e nel tuo reparto, con un criterio scritto per ogni fase. A fine progetto ti restano il codice, il simulatore e la documentazione.</p>
+    <p class="lbl">Robotica applicata per aziende, laboratori ed eventi</p>
+    <h1 class="titolo">Guarda il robot lavorare sul tuo caso, prima di investire.</h1>
+    <p class="sotto">Simuliamo il tuo processo e proviamo il robot in laboratorio e nel tuo reparto, con un criterio scritto per ogni fase. Codice, simulatore e manuale restano a te. Per i laboratori il robot arriva con SDK, ROS 2 e simulatore già configurati.</p>
     <div class="azioni">
-      <a class="btn" href="#">Prenota un assessment di 3 settimane
-        <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9h12M9 3.5 14.5 9 9 14.5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></a>
-      <a class="link" href="#">Guarda il metodo fase per fase</a>
+      <a class="btn" href="#">Prenota un assessment di 3 settimane</a>
+      <a class="link" href="#">Robot per tesisti e ricerca</a>
     </div>
   </div>
-
-  <img class="robot" src="img/segnaposto-unitree-g1-tungsteno.png" alt="Umanoide su un palco illuminato (segnaposto)">
-  <p class="dida dida-robot">(Segnaposto: immagine ufficiale Unitree G1 con trattamento tungsteno. Qui andrà una foto Abra in laboratorio.)</p>
-
-  <div class="palco"></div>
-  <div class="segno-robot"></div>
-  <p class="lbl capo">Il metodo, in sei fasi con criteri scritti</p>
-  <div class="scaletta txt">
-    <div class="cue"><b>P0</b><span>Chiamata tecnica</span><i>Esci con il caso descritto</i></div>
-    <div class="cue"><b>P1</b><span>Assessment, 3 settimane</span><i>Esci con i numeri per decidere</i></div>
-    <div class="cue"><b>P2</b><span>Digital twin</span><i>Esci con il ciclo simulato</i></div>
-    <div class="cue"><b>P3</b><span>Prova sul robot</span><i>Esci con le misure reali</i></div>
-    <div class="cue"><b>P4</b><span>Pilota in reparto</span><i>Esci con il verbale di prova</i></div>
-    <div class="cue"><b>P5</b><span>Consegna</span><i>Esci con codice e manuale</i></div>
+  <div class="pianta">
+    <p class="lbl">Il metodo: sei posizioni, un criterio scritto per ognuna</p>
+    <svg viewBox="0 0 720 96" aria-label="Fasi da P0 a P5">
+      <path d="M11 22H709" stroke="#202124" stroke-width="2"/>
+      <g font-family="Archivo" font-size="13" fill="#202124">
+        <circle cx="11" cy="22" r="11" fill="#D6006F"/><text x="0" y="60" font-weight="700">P0</text><text x="0" y="78">Chiamata</text>
+        <circle cx="150" cy="22" r="11" fill="#D6006F"/><text x="139" y="60" font-weight="700">P1</text><text x="139" y="78">Assessment</text>
+        <circle cx="289" cy="22" r="11" fill="#D6006F"/><text x="278" y="60" font-weight="700">P2</text><text x="278" y="78">Digital twin</text>
+        <circle cx="428" cy="22" r="11" fill="#D6006F"/><text x="417" y="60" font-weight="700">P3</text><text x="417" y="78">Prova sul robot</text>
+        <circle cx="567" cy="22" r="11" fill="#FAFAF7" stroke="#202124" stroke-width="2"/><text x="556" y="60" font-weight="700">P4</text><text x="556" y="78">Pilota</text>
+        <circle cx="698" cy="22" r="11" fill="#FAFAF7" stroke="#202124" stroke-width="2"/><text x="660" y="60" font-weight="700">P5</text><text x="660" y="78">Consegna</text>
+      </g>
+    </svg>
   </div>
+  <div class="arco-f arco">
+    <div class="pav"></div>
+    <svg viewBox="0 0 516 200" aria-hidden="true">
+      <path d="M70 168 C 170 168, 200 110, 300 104 S 430 70, 450 40" fill="none" stroke="#D6006F" stroke-width="4"/>
+      <circle cx="70" cy="168" r="13" fill="#D6006F"/><text x="66" y="173" font-family="Archivo" font-weight="700" font-size="14" fill="#FAFAF7">a</text>
+      <circle cx="450" cy="40" r="13" fill="#D6006F"/><text x="445" y="45" font-family="Archivo" font-weight="700" font-size="14" fill="#FAFAF7">b</text>
+    </svg>
+    <div class="ombra"></div>
+    <img src="img/segnaposto-unitree-go2.png" alt="Quadrupede in laboratorio (segnaposto)">
+  </div>
+  <p class="dida dida-r">(Segnaposto: immagine ufficiale Unitree Go2. Qui andrà una foto Abra: il robot nel reparto del cliente con il percorso da a a b tracciato a terra.)</p>
 </div>
 </body></html>

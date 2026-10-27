@@ -4,40 +4,62 @@
 <link rel="stylesheet" href="../assets/b.css">
 <style>
 @page{size:A4;margin:0}
-body{width:794px;height:1123px;position:relative;overflow:hidden;background:var(--carta)}
-.campo{position:absolute;left:0;top:0;width:794px;height:640px;background:var(--verderame)}
-.campo svg{position:absolute;inset:0}
-.testa{position:absolute;left:56px;right:56px;top:48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:2}
-.testa img{height:34px}
-.rif{font:500 12px/1.55 var(--sans);color:var(--avorio);text-align:right}
-.rif b{font-weight:600}
-.serie{position:absolute;left:56px;bottom:52px;font:400 15px/1.4 var(--serif);font-style:italic;color:var(--avorio);width:250px}
-.serie b{font:600 12px var(--sans);font-style:normal;letter-spacing:.02em;display:block;margin-bottom:6px}
-.corpo{position:absolute;left:56px;right:56px;top:690px}
-.corpo .etichetta{color:var(--verderame)}
-h1{font-weight:400;font-size:41px;line-height:1.08;letter-spacing:-.022em;margin:18px 0 0;font-variation-settings:"opsz" 60}
-h1 em{font-style:italic;color:var(--rosso)}
-.dati{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:42px;border-top:1.5px solid var(--inchiostro)}
-.dati div{padding:12px 14px 0 0;font:400 14.5px/1.4 var(--serif)}
-.dati span{display:block;font:600 11px var(--sans);letter-spacing:.03em;color:var(--grafite);margin-bottom:5px}
-.piede{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font:500 11px var(--sans);color:var(--grafite)}
-.piede .esempio{font-size:10px}
+html,body{width:210mm;height:297mm}
+body{position:relative;overflow:hidden;background:var(--carta);padding:10px;display:grid;grid-template-rows:84px 330px 300px 1fr 46px;gap:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.p{background:var(--bianco);padding:22px 32px}
+.testa{display:flex;justify-content:space-between;align-items:center}
+.testa img{height:28px}
+.testa p{font:400 11.5px/1.45 var(--sans);text-align:right;color:var(--grigio)}
+.testa b{color:var(--grafite);font-weight:700}
+.titolo{background:var(--rosso);color:var(--carta);padding:32px 32px;display:flex;flex-direction:column;justify-content:space-between}
+.titolo .etichetta{color:var(--carta)}.titolo .etichetta::before{background:var(--carta)}
+h1{font:400 38px/1.08 var(--sans);letter-spacing:-.025em;max-width:620px}
+.titolo p{font:400 16px/1.4 var(--serif);max-width:560px}
+.due{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.due .p{padding:24px 28px}
+h2{font:700 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:18px;height:3px;background:var(--rosso)}
+.due .o h2::before{background:var(--ocra)}
+ul{list-style:none}
+li{font:400 15px/1.3 var(--serif);padding:8px 0;border-top:1px solid var(--lettera)}
+li b{font:700 13px var(--sans);display:block;margin-bottom:2px}
+.dati{background:var(--lettera);padding:22px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px;align-content:start}
+.dati span{display:block;font:700 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--grafite);margin-bottom:4px}
+.dati div{font:400 15px/1.3 var(--sans)}
+.fasi{grid-column:1/4;align-self:end;list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:18px}
+.fasi li{background:var(--bianco);padding:10px 10px 12px;font:400 12px/1.25 var(--sans);border-top:3px solid var(--grafite)}
+.fasi li.ora{border-top-color:var(--rosso)}
+.fasi b{display:block;font:700 18px var(--sans);margin-bottom:4px}
+.dati{align-content:stretch!important}
+.piede{display:flex;justify-content:space-between;align-items:center;padding:0 4px;font:400 10.5px var(--sans);color:var(--grigio)}
 </style></head>
 <body>
-<div class="campo">
-  <svg viewBox="0 0 794 640" width="794" height="640" aria-hidden="true"><path fill="#E2A93B" d="M373.72 194A192 192 0 0 1 732 290L628 290A88 88 0 0 0 463.79 246Z"/><path fill="#BB3B26" d="M372 432A154 154 0 1 1 680 432A154 154 0 1 1 372 432Z"/><path fill="#24211E" d="M628 290H732V578H628Z"/><path fill="#2B6F67" d="M628 316.62A154 154 0 0 1 680 432A154 154 0 0 1 628 547.38Z"/></svg>
-  <div class="testa"><img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics"><p class="rif"><b>Offerta 2026/031</b><br>Revisione 1, 27 ottobre 2026<br>Validità 60 giorni</p></div>
-  <p class="serie"><b>Serie verde: proposte di progetto</b>Ogni fase ha un costo, una durata e un criterio di accettazione scritto.</p>
-</div>
-<section class="corpo">
+<header class="p testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><p><b>Offerta 2026/031</b>, revisione 1<br>27 ottobre 2026, validità 60 giorni</p></header>
+<section class="titolo">
   <span class="etichetta">Proposta di POC a fasi, da P0 a P5</span>
-  <h1>Misura il tempo ciclo della postazione&nbsp;3<br><em>prima di investire nel robot.</em></h1>
-  <div class="dati">
-    <div><span>Per</span>Azienda manifatturiera, settore confezionamento</div>
-    <div><span>Referente</span>Responsabile R&amp;D di stabilimento</div>
-    <div><span>Preparata da</span>Giovanni Pitton, Niccolò Mazzoleni</div>
-    <div><span>Contenuto</span>Fasi, criteri, costi, limiti dichiarati, cosa resta a voi</div>
-  </div>
+  <h1>Decidi sul robot con il tempo ciclo misurato alla postazione 3.</h1>
+  <p>Ogni fase ha un costo, una durata e un criterio di accettazione scritto. La fase successiva parte solo con il vostro ordine.</p>
+</section>
+<div class="due">
+  <section class="p"><h2>Cosa sapete prima di investire</h2><ul>
+    <li><b>Tempo ciclo</b>stimato per due configurazioni robot, poi misurato in P2 e P3</li>
+    <li><b>Limiti</b>carico, autonomia e casi in cui il robot non serve, nella stessa pagina</li>
+    <li><b>Costi</b>di ogni fase, prima di firmarla</li></ul></section>
+  <section class="p o"><h2>Cosa vi resta in mano</h2><ul>
+    <li><b>Codice</b>nel vostro repository, dalla prima riga</li>
+    <li><b>Simulazione</b>il modello della postazione, per provare modifiche</li>
+    <li><b>Manuale</b>scritto per il vostro caso, con i verbali di prova</li></ul></section>
+</div>
+<section class="dati">
+  <div><span>Per</span>Azienda manifatturiera, confezionamento</div>
+  <div><span>Referente</span>Responsabile R&amp;D di stabilimento</div>
+  <div><span>Postazione</span>3, asservimento della linea</div>
+  <div><span>Obiettivo</span>tempo ciclo massimo 12 s, da verificare</div>
+  <div><span>Decisione su P1</span>entro il 20 novembre 2026</div>
+  <div><span>Preparata da</span>Giovanni Pitton, Niccolò Mazzoleni</div>
+  <ol class="fasi">
+    <li><b>P0</b>Visita e dati</li><li class="ora"><b>P1</b>Assessment</li><li><b>P2</b>Digital twin</li><li><b>P3</b>Prove in laboratorio</li><li><b>P4</b>Prove in sito</li><li><b>P5</b>Validazione</li>
+  </ol>
 </section>
 <footer class="piede"><span>Abra Robotics, robotica applicata · abrarobotics.com</span><span class="esempio">Esempio: cliente e dati di fantasia</span></footer>
 </body></html>

@@ -22,7 +22,7 @@ Nucleo fisso, uguale per tutti i territori: l'ingegnere di fiducia, franco sui l
 
 ## Headline italiane
 
-1. Misura nel tuo reparto cosa farà il robot, prima di investire.
+1. Leggi i numeri del robot sul tuo caso prima di firmare l'ordine. (hero)
 2. Dai al tuo tesista un robot che conosce già il tuo stabilimento.
 3. Leggi i limiti del robot nella stessa pagina delle prestazioni.
 4. Prova il caso d'uso in simulazione e su robot vero in tre settimane.
@@ -30,9 +30,11 @@ Nucleo fisso, uguale per tutti i territori: l'ingegnere di fiducia, franco sui l
 
 ## Headline inglesi
 
-1. Measure what the robot will do on your line before you invest.
+1. Read the robot's numbers on your own task before you sign the order.
 2. Get your thesis students working on a robot in a few weeks.
 3. Read the limits of every robot on the same page as its performance.
+4. Rent the G1 for one day, with an Abra technician at your booth. (eventi)
+5. Let the G1 talk about your brand, using words you approved. (eventi)
 
 ## Bio LinkedIn
 
@@ -50,6 +52,10 @@ Oggetto: Prelievo cartoni a fine linea, proposta di prova in tre settimane
 Buongiorno ingegner Rossi,
 
 grazie per i video della postazione. Da quello che vediamo, il punto da misurare per primo è il tempo ciclo al netto delle ricariche, perché decide se un solo robot basta per il turno. Vi proponiamo di partire dalla fase P1: in tre settimane simuliamo la postazione e proviamo la presa su robot vero nel nostro laboratorio con cinque dei vostri formati. Alla fine ricevete un report con il tempo misurato, gli errori e i limiti che abbiamo trovato, e decidete voi se proseguire. In allegato l'offerta rev 1.0 con i criteri di ogni fase; le note a margine spiegano come misuriamo.
+
+## Registro breve per i social
+
+Massimo 20 parole, una sola nota, nessun numero di riga. Esempio: "Il G1 ha detto che il prezzo non era nel suo copione e ha chiamato Marta. Lo avevamo provato." Nota: "Prova generale del 13.11, esempio."
 
 ## Formule ricorrenti
 

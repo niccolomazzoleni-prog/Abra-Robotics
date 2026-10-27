@@ -7,43 +7,45 @@
 <style>
   body { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: var(--inchiostro); color: var(--carta); }
   .testa { position: absolute; left: 72px; right: 72px; top: 96px; display: flex; justify-content: space-between; align-items: center; }
-  .testa img { height: 36px; }
+  .testa img { height: 46px; }
   .testa .rev { color: var(--grafite-chiara); font-size: 18px; }
-  h1 { position: absolute; left: 72px; top: 250px; width: 940px; margin: 0; font-size: 92px; line-height: 1.02; font-weight: 600; letter-spacing: -0.018em; }
-  h1 .su-scuro { color: var(--evidenziatore); }
-  .tavola { position: absolute; left: 72px; right: 72px; top: 640px; height: 900px; background: var(--carta); color: var(--inchiostro); }
-  .tavola img { position: absolute; left: 44px; top: 112px; height: 750px; filter: grayscale(1) contrast(1.06); mix-blend-mode: multiply; }
-  .tavola .etichetta { position: absolute; left: 30px; top: 26px; font-size: 15px; }
-  .tavola .esempio { position: absolute; right: 30px; top: 22px; font-size: 13px; }
-  .log { position: absolute; left: 372px; top: 128px; width: 530px; }
-  .riga { padding: 22px 0 24px; border-top: 1px solid var(--rigatura); }
-  .riga .ora { font-family: var(--mono); font-size: 16px; color: var(--grafite); letter-spacing: .03em; display: block; margin-bottom: 8px; }
-  .riga .ora b { color: var(--inchiostro); font-weight: 500; }
-  .riga p { margin: 0; font-size: 31px; line-height: 1.3; }
-  .riga p.g1 { font-size: 31px; }
-  .fonte { font-style: italic; color: var(--grafite); font-size: 22px; margin-top: 10px; display: block; line-height: 1.35; }
-  .tavola svg { position: absolute; left: 0; top: 0; }
-  .piede { position: absolute; left: 72px; right: 72px; bottom: 270px; display: flex; justify-content: space-between; align-items: baseline; }
+  h1 { position: absolute; left: 72px; top: 230px; width: 940px; margin: 0; font-size: 88px; line-height: 1.03; font-weight: 600; letter-spacing: -0.018em; }
+  .scena { position: absolute; left: 72px; right: 72px; top: 590px; height: 1000px; background: var(--carta); color: var(--inchiostro); overflow: hidden; }
+  .scena .foto { position: absolute; left: 0; top: 0; width: 520px; height: 1000px; background: url("../img/segnaposto-unitree-g1-in-piedi.jpg") 44% 0 / cover no-repeat; filter: grayscale(1) contrast(1.05); }
+  .scena .pubblico { position: absolute; left: 0; bottom: 0; width: 936px; height: 330px; }
+  .battuta { position: absolute; left: 560px; width: 340px; }
+  .battuta .chi { font-family: var(--mono); font-size: 18px; letter-spacing: .06em; text-transform: uppercase; color: var(--grafite); display: block; margin-bottom: 10px; }
+  .battuta p { margin: 0; font-size: 40px; line-height: 1.18; }
+  .fonte { position: absolute; left: 560px; width: 340px; font-style: italic; color: var(--grafite); font-size: 24px; line-height: 1.35; }
+  .scena svg.r { position: absolute; left: 0; top: 0; }
+  .scena .etichetta { position: absolute; right: 30px; top: 26px; font-size: 14px; }
+  .scena .esempio { position: absolute; right: 30px; top: 54px; font-size: 13px; }
+  .piede { position: absolute; left: 72px; right: 72px; bottom: 250px; display: flex; justify-content: space-between; align-items: baseline; }
   .piede .play { font-size: 34px; display: flex; align-items: center; gap: 18px; }
-  .piede .play::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--evidenziatore); }
-  .piede .mono { color: var(--grafite-chiara); font-size: 18px; }
+  .piede .play::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--carta); }
+  .piede .mono { color: var(--grafite-chiara); font-size: 17px; }
 </style>
 </head>
 <body>
-<div class="testa"><img src="../logo/mono-negativo.svg" alt="Abra Robotics"><span class="rev">Demo in fiera · G1 · 0:42</span></div>
-<h1>Fai parlare il G1 del tuo marchio, <span class="su-scuro">con parole approvate da te.</span></h1>
+<div class="testa"><img src="../logo/mono-negativo.svg" alt="Abra Robotics"><span class="rev">Demo allo stand · G1 · 0:42</span></div>
+<h1>Fai parlare il G1 del tuo marchio, con parole approvate da te.</h1>
 
-<div class="tavola">
-  <span class="etichetta">Registro della conversazione · stand</span>
+<div class="scena">
+  <div class="foto" role="img" aria-label="Umanoide in piedi (segnaposto Unitree G1)"></div>
+  <span class="etichetta">Fig. 1 · stand, ore 14:32</span>
   <span class="esempio">Esempio</span>
-  <img src="../img/segnaposto-unitree-g1.png" alt="Umanoide in fiera (segnaposto Unitree G1)">
-  <svg width="936" height="860" viewBox="0 0 936 860"><path d="M178 190H300V214H352" stroke="#1F1D1A" stroke-width="2" fill="none"/><circle cx="178" cy="190" r="9" fill="#E9EC55" stroke="#1F1D1A" stroke-width="2.2"/></svg>
-  <div class="log">
-    <div class="riga"><span class="ora">14:32:07 · <b>Visitatrice</b></span><p>Di che materiale è la nuova linea?</p></div>
-    <div class="riga"><span class="ora">14:32:09 · <b>G1</b></span><p class="g1">Alluminio riciclato al 70 per cento, lavorato a Brescia.<span class="fonte">Fonte: scheda prodotto approvata dal cliente il 12.10</span></p></div>
-    <div class="riga"><span class="ora">14:32:21 · <b>Visitatrice</b></span><p>E il prezzo?</p></div>
-    <div class="riga"><span class="ora">14:32:23 · <b>G1</b></span><p class="g1">Non è nella mia base di conoscenza. Ti accompagno da Marta, al banco.<span class="fonte">Risposta fuori copione prevista in prova generale</span></p></div>
-  </div>
+  <div class="battuta" style="top:150px"><span class="chi">Visitatrice</span><p>Di che materiale è la nuova linea?</p></div>
+  <div class="battuta" style="top:360px"><span class="chi">G1</span><p>Alluminio riciclato al <span class="evid">70%</span><sup class="rif">1</sup>, lavorato a Brescia.</p></div>
+  <p class="fonte" style="top:600px"><span class="mono" style="font-style:normal;font-size:18px;color:var(--inchiostro)">1</span>&ensp;Fonte: scheda prodotto approvata dal cliente il 12.10.</p>
+  <svg class="pubblico" viewBox="0 0 936 330" aria-hidden="true">
+    <g fill="#625E57">
+      <circle cx="610" cy="150" r="46"/><path d="M520 330c0-80 40-128 90-128s90 48 90 128z"/>
+      <circle cx="770" cy="176" r="40"/><path d="M692 330c0-70 34-110 78-110s78 40 78 110z"/>
+    </g>
+    <g fill="#A9A397">
+      <circle cx="880" cy="196" r="34"/><path d="M816 330c0-60 28-96 64-96s64 36 64 96z"/>
+    </g>
+  </svg>
 </div>
 
 <div class="piede"><span class="play">Guarda la demo</span><span class="mono">Segnaposto: foto ufficiale Unitree G1</span></div>

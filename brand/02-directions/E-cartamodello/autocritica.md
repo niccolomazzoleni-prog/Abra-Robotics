@@ -1,24 +1,33 @@
-# Autocritica: Cartamodello
+# Autocritica: Cartamodello (v2)
 
-## 1. La metafora può sembrare moda o artigianato, lontana dalla fabbrica
+Aggiornata dopo il round 1. Le modifiche sono in `changelog.md`.
 
-**Rischio**: un direttore R&D di una azienda di macchine automatiche vede "sartoria" e pensa a un fornitore di immagine, non a un partner tecnico. In più "sartoriale" è un luogo comune del marketing B2B italiano.
+## 1. Il simbolo resta una A, nel campo più affollato dei registri
 
-**Cosa ho fatto**: della sartoria ho tenuto solo gli strumenti di misura (metro, gesso, tacche, imbastitura), che sono gli stessi dell'officina; nessun tessuto, manichino o forbice nelle immagini. Le parole del mestiere compaiono solo come etichette accanto al nome tecnico della fase (P2 · L'imbastitura, digital twin e simulazione) e "sartoriale" è vietata in `voce.md`. Il preventivo resta un documento tecnico con tabella, criteri e costi: la metafora sta nella forma dei pezzi, non nel testo. Va verificato con il test dei 5 secondi su hero e copertina del preventivo.
+**Rischio**: anche con la traversa inclinata e il filo che esce, il segno è una singola lettera A (codice Vienna 27.05), come in altre tre direzioni e nell'icona di abra.com. In monocromia il filo si legge come una sporgenza della traversa, e lo schema "A con una linea che esce" ricorda Alpine.
 
-## 2. Il giallo può leggersi come segnaletica di sicurezza, e la palette chiara come poco tecnologica
+**Cosa ho fatto**: la traversa è inclinata e il filo esce da un solo lato, staccato dalla gamba di 30 unità; il logotipo lavora sull'intera parola, con b e a disegnate a mano come lo stesso pezzo specchiato, che è il tratto più proprietario del marchio. Per il deposito propongo il logotipo completo "Abra" disegnato prima del simbolo da solo.
 
-**Rischio**: giallo e grigio scuro ricordano il nastro di pericolo; la tela avorio può sembrare un'estetica editoriale più che robotica, e avvicinarsi ai territori caldi (B) o di carta (C).
+**Resta da fare**: ricerca per immagine su EUIPO e WIPO e confronto diretto con Alpine, Lambda, Avalanche e l'icona di abra.com prima di scegliere.
 
-**Cosa ho fatto**: il giallo non si abbina mai al nero e mai a strisce diagonali, resta sotto il 10% della superficie e ha sempre la forma di un metro o di un filo con le tacche. La flanella è grigio blu, non nero. La carta compare solo come "pezzo" con angolo tagliato e tacche, mai come fondo pagina con annotazioni a mano: è questo che la separa dal quaderno di laboratorio. Resta un punto da controllare quando i quattro territori saranno affiancati.
+## 2. La metafora sartoriale si vede meno, e potrebbe sparire del tutto
 
-## 3. La A è semplice e il logotipo nasce da un carattere disponibile a tutti
+**Rischio**: nella v2 le parole del mestiere sono uscite dai testi per i clienti, come chiesto dal panel acquirenti. Il cliente ora vede metro, gesso blu, schede di carta e rombi di decisione: un sistema chiaro, ma la sartoria può diventare un riferimento che conosce solo chi ha letto il concept, come notava già il revisore strategico.
 
-**Rischio**: a 16 px il filo si riduce a tre puntini e la lettera può sembrare una A qualunque; "bra" e "Robotics" derivano da Bricolage Grotesque, che chiunque può scaricare.
+**Cosa ho fatto**: la metafora resta nella logica del sistema, dove lavora: la regola gesso e cucitura (da approvare contro firmato), il filo che esce dalla A, il metro che misura sempre qualcosa di vero, le lettere specchiate come un cartamodello tagliato due volte. Il gesso blu è un colore che chi conosce la sartoria riconosce subito, e per gli altri resta un blu chiaro neutro.
 
-**Cosa ho fatto**: la A è disegnata da zero (apice stretto, gambe da 198 unità, filo a 9 gradi con spazio di 24 unità dalle gambe) e non esiste in nessun font. Per le dimensioni piccole ci sono due versioni dedicate: `monogramma.svg` con filo e gambe ingrossati e `favicon-16.svg` disegnato sulla griglia di 16 pixel, su fondo flanella, dove il filo giallo resta leggibile (verificato ingrandito x8 in `logo/test.png`). Il logotipo è convertito in tracciati e spaziato a mano, quindi resta proprietario anche se il carattere di base è libero; il valore distintivo sta nella A e nella regola tratteggio e linea continua che attraversa tutto il sistema. Da fare in una v2: ridisegnare a mano anche "b", "r", "a" per allinearne i terminali all'apice della A, e una ricerca di anteriorità del segno.
+**Resta da fare**: verificare con il test dei 5 secondi che hero e copertina del preventivo comunichino "prova prima di investire" senza bisogno della spiegazione.
+
+## 3. Il gesso blu è chiaro e ha un gemello scuro vicino ai blu del settore
+
+**Rischio**: il Gesso blu `#8FB0E0` esce dal gamut di quadricromia (scarto dE 7,3) e su tela non regge testo né linee sottili, quindi il sistema ha bisogno del Blu segno `#2F5D9E`, che usato come campo pieno si avvicinerebbe ai blu corporate del settore (Comau, Eagleprojects). Inoltre la direzione D deve ancora scegliere il suo colore di gelatina e potrebbe avvicinarsi.
+
+**Cosa ho fatto**: il Blu segno compare solo come linea sottile e nelle etichette, mai come campo; il Gesso blu ha un Pantone indicativo per le stampe di marca; regole d'uso e contrasti sono scritti in `palette.md`, con tutte le coppie usate nelle applicazioni ad AA o superiore.
+
+**Resta da fare**: confrontare il Gesso blu con il colore scelto da D nel round 2 e confermare i Pantone su mazzetta.
 
 ## Limiti dei mockup
 
-- I robot sono cutout ufficiali Unitree (segnaposto dichiarato), a bassa risoluzione per il G1: nella hero si vede la differenza con una foto propria. Le prime foto da produrre sono gli scatti 1 e 2 della shot list.
-- Codice QR, telefono e numeri dei preventivi sono segnaposto o "Esempio".
+- I robot sono immagini ufficiali Unitree usate come segnaposto dichiarato. Il G1 in piedi è ricavato dall'infografica ufficiale delle dimensioni e ha un braccio tagliato dal bordo dell'immagine originale: la prima foto da produrre è lo scatto 1 della shot list.
+- Il Go2 è fotografato di tre quarti, quindi nei post la lunghezza è scritta e non misurata con il metro.
+- Codice QR, telefono, importi e criteri dei preventivi sono segnaposto o "Esempio".

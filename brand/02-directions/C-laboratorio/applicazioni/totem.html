@@ -9,7 +9,7 @@
   body { width: 1600px; height: 2260px; position: relative; overflow: hidden; background: #E6E2D8; }
   .pavimento { position: absolute; left: 0; right: 0; top: 2120px; height: 1.5px; background: var(--inchiostro); }
   .totem { position: absolute; left: 110px; top: 120px; width: 800px; height: 2000px; background: #FBFAF6; box-shadow: 18px 0 0 #D6D1C5; }
-  .totem .logo { position: absolute; left: 64px; top: 70px; height: 38px; }
+  .totem .logo { position: absolute; left: 64px; top: 66px; height: 52px; }
   .totem .rev { position: absolute; right: 64px; top: 80px; font-size: 18px; }
   .totem h1 { position: absolute; left: 64px; top: 190px; width: 680px; margin: 0; font-size: 98px; font-weight: 600; line-height: 1.02; letter-spacing: -0.018em; }
   .totem .lead { position: absolute; left: 64px; top: 1070px; width: 640px; font-size: 34px; line-height: 1.38; margin: 0; }
@@ -18,7 +18,9 @@
   .incluso ol { list-style: none; margin: 14px 0 0; padding: 0; font-size: 30px; line-height: 1.3; }
   .incluso li { display: grid; grid-template-columns: 70px 1fr; padding: 12px 0; border-bottom: 1px solid var(--rigatura); }
   .incluso li span { font-family: var(--mono); font-size: 20px; padding-top: 8px; color: var(--grafite); }
-  .cal { position: absolute; left: 64px; right: 64px; top: 1790px; }
+  .cal { position: absolute; left: 64px; right: 64px; top: 1830px; }
+  .limite { margin: 18px 0 0; font-size: 24px; line-height: 1.4; font-style: italic; color: var(--grafite); }
+  .limite .mono { font-style: normal; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; color: var(--inchiostro); }
   .cal .etichetta { font-size: 18px; }
   .cal svg { display: block; margin-top: 16px; }
   .data { position: absolute; left: 0; right: 0; top: 720px; height: 290px; background: var(--evidenziatore); padding: 54px 64px; }
@@ -26,10 +28,11 @@
   .data .mono { font-size: 32px; display: block; margin-top: 16px; }
   .data .qr { position: absolute; right: 64px; top: 50px; width: 196px; height: 196px; background: #fff; padding: 14px; }
   .data .qr span { position: absolute; left: 0; right: 0; bottom: -30px; text-align: center; font-family: var(--mono); font-size: 14px; }
-  .g1 { position: absolute; left: 1010px; top: 820px; height: 1300px; filter: grayscale(1) contrast(1.05); mix-blend-mode: multiply; }
+  .g1 { position: absolute; left: 1000px; top: 760px; width: 480px; height: 1360px; background: url("../img/segnaposto-unitree-g1-in-piedi.jpg") 44% 0 / cover no-repeat; filter: grayscale(1) contrast(1.05); }
+  .pubblico { position: absolute; left: 960px; top: 1790px; width: 640px; height: 330px; }
   .nota-tav { position: absolute; left: 1010px; top: 130px; width: 520px; }
   .nota-tav p { font-size: 22px; line-height: 1.45; margin: 12px 0 0; }
-  .quota { position: absolute; left: 960px; top: 820px; width: 1px; height: 1300px; background: var(--grafite); }
+  .quota { position: absolute; left: 960px; top: 800px; width: 1px; height: 1320px; background: var(--grafite); }
   .quota::before, .quota::after { content: ""; position: absolute; left: -6px; width: 13px; height: 1px; background: var(--grafite); }
   .quota::before { top: 0; } .quota::after { bottom: 0; }
   .quota span { position: absolute; left: -46px; top: 620px; transform: rotate(-90deg); font-family: var(--mono); font-size: 18px; color: var(--grafite); white-space: nowrap; }
@@ -39,7 +42,7 @@
 <div class="totem">
   <img class="logo" src="../logo/orizzontale.svg" alt="Abra Robotics">
   <span class="rev">Noleggio per eventi</span>
-  <h1>Noleggia il G1 per una giornata, <span class="evid">con un tecnico Abra</span> al tuo stand.</h1>
+  <h1>Noleggia il G1 per una giornata, con un tecnico Abra al tuo stand.</h1>
   <p class="lead">L'umanoide parla del tuo marchio con una base di conoscenza che approvi tu, e lo proviamo insieme prima dell'evento.</p>
   <div class="incluso">
     <span class="etichetta"><span>Cosa comprende la giornata</span><span class="esempio" style="font-size:14px">Esempio</span></span>
@@ -49,6 +52,7 @@
       <li><span>03</span>Prova generale con il tuo copione il giorno prima</li>
       <li><span>04</span>Video della giornata, consegnato entro una settimana</li>
     </ol>
+    <p class="limite"><span class="mono">Limite</span>&ensp;Autonomia della batteria <span class="evid">circa 2 ore</span>: il tecnico la sostituisce nelle pause. Valutazione interna, in attesa della scheda limiti.</p>
   </div>
   <div class="cal">
     <span class="etichetta">Date di novembre · pieno: prenotata · vuoto: libera</span>
@@ -66,12 +70,13 @@
 <div class="pavimento"></div>
 <div class="nota-tav">
   <span class="etichetta">Tav. 7 · Totem per il noleggio a giornata</span>
-  <p>Totem 80 × 200 cm, stampa su forex 5 mm, base in acciaio. Accanto, il G1 alla stessa scala: 132 cm.</p>
+  <p>Totem 80 × 200 cm, stampa su forex 5 mm, base in acciaio. Accanto, il G1 in scala indicativa (132 cm) e il pubblico dello stand, disegnato come sagome.</p>
   <p class="nota">Il titolo sta sopra i 130 cm, dove arriva lo sguardo di chi passa. Il riquadro giallo con data e codice QR sta fra 100 e 128 cm, all'altezza della mano che inquadra il codice.</p>
   <p class="mono" style="font-size:16px;color:var(--grafite)">Segnaposto: foto ufficiale Unitree G1. Prezzo e contenuti del noleggio da definire con i fondatori.</p>
 </div>
 <div class="quota"><span>G1 · 132 cm</span></div>
-<img class="g1" src="../img/segnaposto-unitree-g1.png" alt="Umanoide G1 in scala (segnaposto)">
+<div class="g1" role="img" aria-label="Umanoide G1 in scala (segnaposto)"></div>
+<svg class="pubblico" viewBox="0 0 640 330" aria-hidden="true"><g fill="#625E57"><circle cx="420" cy="110" r="52"/><path d="M318 330c0-100 46-160 102-160s102 60 102 160z"/></g><g fill="#A9A397"><circle cx="560" cy="150" r="44"/><path d="M474 330c0-84 38-136 86-136s86 52 86 136z"/></g></svg>
 <script>
   // calendario: 30 giorni, alcuni prenotati (esempio)
   const g = document.getElementById('d'); const pren = [3,4,8,12,13,14,19,22,27];

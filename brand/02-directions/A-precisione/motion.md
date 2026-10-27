@@ -1,4 +1,4 @@
-# Motion · Riferimento A
+# Motion · In squadra (v2)
 
 ## Principi
 
@@ -15,14 +15,14 @@ File: `logo/animazione.html` (CSS e SVG, ciclo di 6 secondi).
 
 | Tempo | Cosa succede |
 |-|-|
-| 0 a 0,6 s | si traccia il piano di riferimento, una linea sottile sotto il logotipo |
-| 0,36 a 1,56 s | il logotipo si scopre da sinistra a destra, come uscisse da un plotter |
-| 1,68 a 2,88 s | compare la quota verticale del vuoto della A |
-| 2,04 a 3,12 s | il contorno del vuoto scende sulla linea di base |
-| 3,24 s | il contorno diventa il triangolo pieno: il riferimento è fissato |
-| 3,6 a 5,4 s | il marchio resta fermo con l'etichetta A sotto il triangolo |
+| 0 a 0,6 s | si traccia la linea di base |
+| 0,48 a 1,2 s | sale l'asta comune della legatura, con la pancia della b |
+| 1,2 a 2,16 s | la diagonale con la traversa si scopre da sinistra e si appoggia all'asta |
+| 2,16 a 4,08 s | compare il segno verde dei 90 gradi nell'angolo tra asta e linea di base |
+| 2,4 a 3,72 s | il resto del logotipo si scopre da sinistra, come da un plotter |
+| 3,72 a 5,52 s | il marchio resta fermo, poi si spegne e il ciclo riparte |
 
-Usi: apertura e chiusura dei video, schermata di avvio della presentazione, attesa nella pagina del preventivo online. Durata breve (1,8 s) per i reel: solo scoperta del logotipo e caduta del triangolo.
+Usi: apertura e chiusura dei video, avvio della presentazione, attesa nella pagina del preventivo online. Per i reel una versione breve di 1,8 s: asta, diagonale, logotipo.
 
 ## Micro interazioni sul sito
 
@@ -39,4 +39,4 @@ Usi: apertura e chiusura dei video, schermata di avvio della presentazione, atte
 - Titoli: entrano con la regola del passo, restano almeno 2,4 s, escono senza animazione.
 - Sovrimpressioni: riquadro di controllo con valore e unità, posizionato su un angolo della griglia, mai sul robot.
 - Transizioni: stacco netto. Nessuna dissolvenza incrociata, nessun effetto glitch.
-- Chiusura: logo animato breve su alluminio, con l'indirizzo web in etichetta.
+- Chiusura: logo animato breve su verde di misura, con l'indirizzo web in etichetta.

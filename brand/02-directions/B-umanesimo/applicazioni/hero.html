@@ -1,72 +1,75 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Abra Robotics: prova il robot sul tuo caso prima di investire</title>
+<title>Abra Robotics: guarda il robot lavorare nel tuo reparto prima di firmare l'ordine</title>
 <link rel="icon" href="../logo/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/b.css">
 <style>
-body{width:1440px;height:900px;overflow:hidden;position:relative}
-nav{position:absolute;top:0;left:0;right:0;height:92px;display:flex;align-items:center;padding:0 64px;gap:40px;z-index:5}
-nav .logo{height:38px;display:block}
-nav ul{list-style:none;display:flex;gap:30px;margin-left:auto;font:500 15px var(--sans)}
-nav a{color:var(--inchiostro);text-decoration:none}
-.btn{display:inline-flex;align-items:center;gap:12px;font:600 15px var(--sans);text-decoration:none;border-radius:40px;padding:15px 26px;white-space:nowrap}
-.btn.pieno{background:var(--rosso);color:var(--carta)}
-.btn.pieno::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--ocra)}
-.btn.vuoto{color:var(--inchiostro);box-shadow:inset 0 0 0 1.5px var(--inchiostro)}
-nav .btn{padding:12px 22px;font-size:14px}
-
-.testo{position:absolute;left:64px;top:168px;width:690px}
-.testo .etichetta{color:var(--grafite);margin-bottom:30px}
-h1{font-weight:400;font-size:88px;line-height:.98;letter-spacing:-.028em;font-variation-settings:"opsz" 72}
-h1 em{font-style:italic;color:var(--rosso);letter-spacing:-.02em}
-.lead{font-size:21px;line-height:1.48;margin-top:34px;width:600px;font-variation-settings:"opsz" 16}
-.azioni{display:flex;gap:16px;margin-top:38px;align-items:center}
-.fatto{margin-top:30px;font:500 14px/1.5 var(--sans);color:var(--grafite);display:flex;gap:10px;align-items:baseline}
-.fatto b{color:var(--inchiostro);font-weight:600}
-
-.scena{position:absolute;right:0;top:0;width:640px;height:900px}
-.scena svg{position:absolute;inset:0}
-.robot{position:absolute;left:190px;bottom:104px;height:560px;z-index:2}
-.misura{position:absolute;left:408px;bottom:104px;height:560px;width:100px;z-index:3;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--inchiostro)}
-.misura .linea{position:absolute;left:0;top:0;bottom:0;border-left:1.5px solid var(--inchiostro)}
-.misura .linea::before,.misura .linea::after{content:"";position:absolute;left:-6px;width:12px;border-top:1.5px solid var(--inchiostro)}
-.misura .linea::before{top:0}.misura .linea::after{bottom:0}
-.misura p{position:absolute;left:14px;top:50%;width:132px;line-height:1.25;background:var(--carta);padding:10px 12px 11px;border-radius:3px;box-shadow:0 1px 0 rgba(36,33,30,.12)}
-.misura p b{font-style:normal;font-family:var(--sans);font-weight:600;font-size:20px;display:block;margin-bottom:3px}
-.didascalia{margin-top:22px}
-
-.segmenti{position:absolute;left:0;right:0;bottom:0;height:104px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--pietra);background:var(--avorio);z-index:6}
-.segmenti div{padding:22px 64px 0 64px;border-right:1px solid var(--pietra);font:500 14.5px/1.45 var(--sans);color:var(--grafite)}
-.segmenti div:last-child{border:0}
-.segmenti b{display:block;font:400 21px/1.2 var(--serif);color:var(--inchiostro);margin-bottom:6px}
-.segmenti .etichetta{font-size:12px}
+body{width:1440px;height:900px;overflow:hidden;position:relative;padding:var(--giunto)}
+.griglia{display:grid;grid-template-columns:860px 1fr;grid-template-rows:76px 1fr 150px;gap:var(--giunto);height:100%}
+nav{grid-column:1/3;display:flex;align-items:center;padding:0 40px;gap:36px;background:var(--bianco)}
+nav .logo{height:30px;display:block}
+nav ul{list-style:none;display:flex;gap:28px;margin-left:auto;font:400 15px var(--sans)}
+nav .btn{padding:12px 18px;font-size:14px}
+.testo{background:var(--bianco);padding:48px 56px 0 56px;position:relative}
+h1{font:400 62px/1.03 var(--sans);letter-spacing:-.03em;margin-top:22px}
+.lead{font:400 21px/1.42 var(--serif);margin-top:22px;max-width:640px}
+.azioni{display:flex;gap:12px;margin-top:28px}
+.fatti{position:absolute;left:56px;right:56px;bottom:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--lettera);padding-top:16px}
+.fatti b{display:block;font:700 26px var(--sans);letter-spacing:-.01em}
+.fatti span{font:400 13.5px/1.35 var(--sans);color:var(--grigio)}
+.foto{background:var(--lettera);position:relative;overflow:hidden}
+.foto img{position:absolute;left:96px;bottom:0;height:560px}
+.foto .pav{position:absolute;left:0;right:0;bottom:0;height:22px;background:#C9CBC5}
+.foto .cartellino{position:absolute;right:28px;top:120px;width:220px}
+.foto .segnaposto{position:absolute;left:24px;top:20px;width:300px}
+.foto .esempio{margin-top:8px}
+.segmenti{grid-column:1/3;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--giunto)}
+.segmenti div{background:var(--bianco);padding:22px 32px}
+.segmenti p{font:400 21px/1.25 var(--sans);letter-spacing:-.01em;margin-top:12px}
+.segmenti .rosso{background:var(--rosso);color:var(--carta)}
+.segmenti .rosso .etichetta{color:var(--carta)}
+.segmenti .rosso .etichetta::before{background:var(--carta)}
+.segmenti small{display:block;font:400 14px/1.35 var(--serif);color:var(--grigio);margin-top:6px}
 </style></head>
 <body>
+<div class="griglia">
 <nav>
   <img class="logo" src="../logo/orizzontale.svg" alt="Abra Robotics">
-  <ul><li><a href="#">Metodo</a></li><li><a href="#">Aziende</a></li><li><a href="#">Laboratori</a></li><li><a href="#">Eventi</a></li><li><a href="#">Listino</a></li><li><a href="#">Chi siamo</a></li></ul>
-  <a class="btn pieno" href="#">Prenota un assessment</a>
+  <ul><li>Metodo</li><li>Aziende</li><li>Laboratori</li><li>Eventi</li><li>Listino</li><li>Chi siamo</li></ul>
+  <a class="btn" href="#">Prenota un assessment</a>
 </nav>
 
 <section class="testo">
-  <span class="etichetta r">Robotica applicata per aziende, laboratori ed eventi</span>
-  <h1>Prova il robot sul tuo caso <em>prima di investire.</em></h1>
-  <p class="lead">Sviluppiamo il caso d'uso con l'AI, lo misuriamo in simulazione e su robot vero, per fasi con criteri scritti. Alla fine il codice resta nel repository del tuo team, con il simulatore e il manuale.</p>
-  <div class="azioni"><a class="btn pieno" href="#">Prenota un assessment</a><a class="btn vuoto" href="#">Guarda il metodo a fasi</a></div>
-  <p class="fatto"><b>Assessment P1</b> tre settimane nel tuo reparto, con un report di numeri da portare in direzione.</p>
-  <p class="segnaposto didascalia">Segnaposto: Unitree G1, foto ufficiale in bicromia, da sostituire con una foto Abra.</p>
+  <span class="etichetta">Robotica applicata, Italia</span>
+  <h1>Guarda il robot lavorare nel tuo reparto prima di firmare l'ordine.</h1>
+  <p class="lead">Sviluppiamo il caso d'uso con l'AI e lo proviamo in simulazione e su robot vero, per fasi con criteri di accettazione scritti. Il codice e il manuale restano nel repository del tuo team.</p>
+  <div class="azioni"><a class="btn" href="#">Prenota un assessment</a><a class="btn vuoto" href="#">Leggi un'offerta di esempio</a></div>
+  <div class="fatti">
+    <div><b>P0 a P5</b><span>fasi con criterio di accettazione e costo scritti nell'offerta</span></div>
+    <div><b>3 settimane</b><span>per l'assessment nel tuo reparto, con un report di numeri</span></div>
+    <div><b>Il tuo repository</b><span>con codice, simulatore e manuale a fine progetto</span></div>
+  </div>
 </section>
 
-<div class="scena" aria-hidden="true">
-  <svg viewBox="0 0 640 900" width="640" height="900"><path fill="#E2A93B" d="M176.33 277.6A259.20000000000005 259.20000000000005 0 0 1 660 407.2L519.6 407.2A118.80000000000001 118.80000000000001 0 0 0 297.92 347.8Z"/><path fill="#BB3B26" d="M174 598.9A207.9 207.9 0 1 1 589.8 598.9A207.9 207.9 0 1 1 174 598.9Z"/><path fill="#24211E" d="M519.6 407.2H660V900H519.6Z"/><path fill="#F3EEE3" d="M519.6 443.14A207.9 207.9 0 0 1 589.8 598.9A207.9 207.9 0 0 1 519.6 754.66Z"/></svg>
-  <img class="robot" src="../assets/g1-segnaposto-unitree.png" alt="Segnaposto: Unitree G1">
-  <div class="misura"><div class="linea"></div><p><b>130 cm</b>all'altezza del petto di un adulto</p></div>
-</div>
+<section class="foto" aria-label="Robot in prova">
+  <p class="segnaposto">Segnaposto: Unitree G1, foto ufficiale del produttore in grigio. Va sostituita con una foto nel laboratorio Abra.</p>
+  <div class="pav"></div>
+  <img src="../assets/g1-in-piedi-segnaposto-unitree.png" alt="Segnaposto: umanoide Unitree G1 in piedi">
+  <dl class="cartellino">
+    <dt>Robot in prova</dt><dd>Umanoide G1</dd>
+    <dt>Altezza</dt><dd>130 cm</dd>
+    <dt>Massa</dt><dd>circa 35 kg</dd>
+    <dt>Carico continuo per braccio</dt><dd>sotto i 2 kg</dd>
+    <dt>Batteria</dt><dd>circa 2 ore, sostituibile</dd>
+  </dl>
+  <span class="esempio" style="position:absolute;right:28px;top:430px">Esempio: valutazioni interne</span>
+</section>
 
 <div class="segmenti">
-  <div><span class="etichetta r">Aziende</span><b>Misura nel tuo reparto cosa farà il robot.</b></div>
-  <div><span class="etichetta o">Laboratori</span><b>Ricevi il robot con SDK, ROS 2, simulatore e manuale per i tesisti.</b></div>
-  <div><span class="etichetta v">Eventi</span><b>Noleggia il G1 a giornata, con un tecnico e un copione approvato da te.</b></div>
+  <div class="rosso"><span class="etichetta">Aziende</span><p>Porta in direzione il tempo ciclo misurato alla tua postazione.</p></div>
+  <div><span class="etichetta o">Laboratori</span><p>Dai ai tesisti il robot con SDK, ROS 2, simulatore e manuale.</p></div>
+  <div><span class="etichetta n">Eventi</span><p>Noleggia il G1 per una giornata, con un tecnico Abra accanto.</p></div>
+</div>
 </div>
 </body></html>

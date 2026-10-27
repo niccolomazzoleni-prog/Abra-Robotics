@@ -1,39 +1,38 @@
-# Motion. Territorio B, Misura d'uomo
+# Motion v2. Territorio B, Montato a vista
 
 ## Principio: il montaggio
 
-Le cose Abra si muovono come pezzi che un tecnico monta sul banco: arrivano una alla volta, si appoggiano e si fermano. Nessun rimbalzo da cartone animato, nessuna dissolvenza lunga, nessun effetto luminoso. Il movimento mostra come è fatta una cosa, poi si ferma e lascia leggere.
+Le cose Abra si muovono come pezzi posati sul banco: arrivano una alla volta, si fermano nella loro posizione e lasciano leggere. Il giunto non si chiude mai: la pancia della a si ferma prima dell'asta. Niente rimbalzi, scie, effetti luminosi.
 
 ## Il logo animato (`logo/animazione.html`)
 
-Sequenza di 2,8 secondi, solo CSS e SVG, senza librerie.
+Solo CSS e SVG, 2,8 secondi.
 
 | Tempo | Pezzo | Movimento |
 |-|-|-|
-| 0,15 s | Asta | Cala dall'alto e si appoggia sulla linea di base |
-| 0,55 s | Pancia | Rotola da sinistra e si ferma contro l'asta |
-| 1,05 s | Spalla | Ruota attorno al proprio centro, come una leva, e chiude la a |
-| 1,30 s | Giunto | La finestra si apre di colpo nel punto di contatto (180 ms) |
-| 1,55 s | b, r, a | Salgono dalla linea di base, a 100 ms l'una dall'altra |
-| 2,10 s | Robotics | Compare in 700 ms |
+| 0,15 s | Asta della prima a | Cala dall'alto e si appoggia sulla linea di base |
+| 0,55 s | Pancia | Scorre da sinistra e si ferma a 16 unità dall'asta: il giunto resta aperto |
+| 1,05 s | Spalla | Ruota attorno al proprio centro e chiude la lettera |
+| 1,60 s | b, r, a | Salgono dalla linea di base a 100 ms l'una dall'altra |
+| 2,20 s | Robotics | Compare in 600 ms |
 
-Il pulsante "Rivedi il montaggio" riavvia la sequenza. Con `prefers-reduced-motion` il logo appare già montato.
+Il pulsante "Rivedi il montaggio" riavvia la sequenza; con `prefers-reduced-motion` il logo appare già montato.
 
-**Segnale di attesa**: la spalla ocra si richiude sull'asta in ciclo (1,4 s), con pancia e asta ferme. Sostituisce gli indicatori di caricamento generici sul sito e nel Company Brain.
+**Segnale di attesa**: la pancia della a torna in posizione contro il giunto, in ciclo da 1,2 s. Sostituisce gli indicatori di caricamento generici sul sito e nel Company Brain.
 
 ## Curva e tempi
 
-- Una sola curva per tutto il sistema, chiamata "appoggio": `cubic-bezier(.22,.8,.24,1)`. Parte decisa e rallenta a lungo, come un pezzo posato con cura.
-- Durate: 180 ms per i cambi di stato dell'interfaccia (pulsanti, menu), 400 a 700 ms per gli elementi che entrano in pagina, 2,8 s al massimo per il logo.
+- Curva unica "appoggio": `cubic-bezier(.22,.8,.24,1)`.
+- 180 ms per i cambi di stato dell'interfaccia, da 400 a 600 ms per i pannelli che entrano, 2,8 s al massimo per il logo.
 - Sfasamento tra elementi in sequenza: 100 ms.
 
 ## Applicazioni
 
-- **Sito**: all'apertura della home le forme della composizione entrano con la sequenza del logo (asta, disco, arco), poi il titolo sale dalla linea di base. Allo scorrimento la linea di misura accanto al robot si disegna dall'alto in basso e il cartellino compare quando la linea è completa.
-- **Diagramma delle fasi**: i dischi si posano sull'asta da P0 a P5, a 100 ms l'uno dall'altro; l'ultimo è l'asta che si alza.
-- **Video e reel**: apertura con il montaggio del simbolo in 1,2 s (solo la a), chiusura con il logo esteso fermo per 2 s. Sottotitoli su cartellino carta che entra dal basso in 300 ms.
-- **Totem digitale e schermi in fiera**: ciclo di 20 s con il montaggio del simbolo, il titolo del noleggio e il codice QR fermo per almeno 12 s.
+- **Sito**: i pannelli dell'hero entrano in ordine di lettura (navigazione, testo, foto, segmenti) con un giunto che si apre di 12 px; il cartellino del robot compare per ultimo.
+- **Pagina delle fasi**: i blocchi P0 a P5 si posano da sinistra; la fase in corso prende il filetto rosso.
+- **Video e reel**: apertura con il montaggio della a in 1,2 s; sottotitoli in pannelli bianchi che entrano dal basso in 300 ms; chiusura con il marchio esteso fermo per 2 s.
+- **Schermi in fiera**: ciclo di 20 s con il montaggio del simbolo, il titolo del noleggio e il codice QR fermo per almeno 12 s.
 
 ## Cosa evitare
 
-Rimbalzi elastici, parallasse pesante, particelle, scie luminose, glitch, testo che si scrive lettera per lettera, rotazioni 3D del robot, transizioni più lunghe di 1 s nell'interfaccia.
+Rimbalzi elastici, parallasse pesante, particelle, glitch, testo battuto lettera per lettera, rotazioni 3D del robot, transizioni più lunghe di un secondo nell'interfaccia.

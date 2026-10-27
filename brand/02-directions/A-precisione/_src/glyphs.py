@@ -93,7 +93,12 @@ def g_r(w, s, rw=36.0):
     pts = arc(cx, y_top - ry, r, ry, 180, 90)
     pts.append((rw + 2, y_top))
     sh = LineString(pts).buffer(s / 2, cap_style='flat', join_style='round', quad_segs=24)
-    g = unary_union([stem, sh]).intersection(box(0, 0, rw, X + OV))
+    g = unary_union([stem, sh]).intersection(box(0, 0, rw + 6, X + OV))
+    # terminale tagliato con la pendenza 2 a 1 della A
+    yt = y_top + s / 2
+    yb_ = yt - s - 1.5
+    cutp = Polygon([(rw + 2.5, yt + 1), (rw + 60, yt + 1), (rw + 60, yb_), (rw + 2.5 - (yt + 1 - yb_) / 2, yb_)])
+    g = g.difference(cutp)
     return g, rw
 
 
@@ -108,8 +113,9 @@ def g_R(w, s, rw=62.0, bowl_bottom=46.0):
     pts.append((s / 2, yb))
     bowl = LineString(pts).buffer(s / 2, cap_style='flat', join_style='mitre')
     # gamba: dal punto di attacco dell'occhiello alla base destra
-    attach = (rw - s / 2 - r * 1.05, yb)
-    leg = LineString([attach, (rw - s * 0.05, -30)]).buffer(s / 2, cap_style='flat')
+    attach = (rw - s / 2 - r * 1.25, yb)
+    # gamba con pendenza 2 a 1
+    leg = LineString([attach, (attach[0] + (yb + 30) / 2, -30)]).buffer(s / 2, cap_style='flat')
     g = unary_union([stem, bowl, leg]).intersection(box(0, 0, rw + 2, H))
     return g, rw + 1
 
@@ -197,3 +203,25 @@ def to_path(geom, dx=0.0, dy=0.0, scale=1.0, flip_h=None, prec=2):
         for h in p.interiors:
             out.append(ring(h.coords))
     return ''.join(out)
+
+
+def g_Ab(w, s, bar=None, bw=56.0, head=0.45):
+    """Legatura Ab: la A e costruita sulla squadra. L'asta destra della A e l'asta della b,
+    la diagonale sale con pendenza 2 a 1 dal piede sinistro fino alla testa dell'asta."""
+    k = 1.0 / math.sin(math.atan(2.0))          # larghezza orizzontale della diagonale / tratto
+    dw = s * k
+    Sx = H / 2 + dw - s * (1 - head)            # bordo sinistro dell'asta
+    # diagonale come parallelogramma: bordo sinistro x = y/2, bordo destro x = y/2 + dw
+    diag = Polygon([(0, 0), (dw, 0), (H / 2 + dw, H), (H / 2, H)])
+    stem = box(Sx, 0, Sx + s, H)
+    # vertice interno del vuoto: dove il bordo destro della diagonale incontra l'asta
+    y_in = 2 * (Sx - dw)
+    if bar is None:
+        bar = y_in * 0.42
+    th = s * 0.84
+    cb = Polygon([(0, bar - th / 2), (Sx + 1, bar - th / 2), (Sx + 1, bar + th / 2), (0, bar + th / 2)])
+    hull = Polygon([(0, 0), (Sx + s, 0), (Sx + s, H), (H / 2, H)])
+    A = unary_union([diag, stem, cb.intersection(hull)]).intersection(box(0, 0, Sx + s, H))
+    b, adv = g_b(None, s, bw)
+    b = affinity.translate(b, Sx, 0)
+    return unary_union([A, b]), Sx + bw

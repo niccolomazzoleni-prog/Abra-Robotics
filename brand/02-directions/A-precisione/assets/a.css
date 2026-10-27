@@ -1,4 +1,6 @@
-/* Abra Robotics, direzione A "Riferimento A". Fogli di stile comuni ai mockup. */
+/* Abra Robotics, direzione A v2 "In squadra". Fogli di stile comuni ai mockup. */
+@font-face{font-family:"B612";src:url(fonts/B612-Regular.ttf) format("truetype");font-weight:400;font-display:block}
+@font-face{font-family:"B612";src:url(fonts/B612-Bold.ttf) format("truetype");font-weight:700;font-display:block}
 @font-face{font-family:"Barlow";src:url(fonts/Barlow-Regular.ttf) format("truetype");font-weight:400;font-display:block}
 @font-face{font-family:"Barlow";src:url(fonts/Barlow-Medium.ttf) format("truetype");font-weight:500;font-display:block}
 @font-face{font-family:"Barlow";src:url(fonts/Barlow-SemiBold.ttf) format("truetype");font-weight:600;font-display:block}
@@ -12,17 +14,15 @@
 
 :root{
   --grafite:#1A2125;
-  --grafite-80:#2C353A;
   --alluminio:#E3E7E9;
   --bianco:#F6F8F8;
   --quota:#5C676D;
   --acciaio:#8A959B;
   --linea:#B4BDC2;
   --verde:#008351;
-  --verde-scuro-fondo:#3DBB82;
-  --giallo:#F1DD38;
+  --verde-profondo:#0F3A2C;
   --f-testo:"Barlow",system-ui,sans-serif;
-  --f-titolo:"Barlow SC","Barlow",sans-serif;
+  --f-titolo:"B612","Barlow",sans-serif;
   --f-etichetta:"Barlow SC","Barlow",sans-serif;
   --tratto:1.5px;
 }
@@ -38,9 +38,11 @@ img{display:block}
 .rq{display:inline-flex;align-items:stretch;border:var(--tratto) solid currentColor;line-height:1}
 .rq>span{display:flex;align-items:center;padding:.5em .7em;border-left:var(--tratto) solid currentColor;white-space:nowrap}
 .rq>span:first-child{border-left:0}
-.rq .rif{font-family:var(--f-titolo);font-weight:600}
+.rq .rif{font-family:var(--f-titolo);font-weight:700}
 .rq .ok{background:var(--verde);color:#fff}
-.rq .lim{background:var(--giallo);color:var(--grafite)}
+.rq .lim,.lim-campo{background:repeating-linear-gradient(135deg,var(--grafite) 0 1px,transparent 1px 5px)}
+.lim-q{display:inline-block;width:12px;height:12px;border:1.5px solid var(--grafite);background:repeating-linear-gradient(135deg,var(--grafite) 0 1px,transparent 1px 4px);vertical-align:-1px}
+.mis-q{display:inline-block;width:12px;height:12px;background:var(--verde);vertical-align:-1px}
 
 /* triangolo di riferimento */
 .tri{display:inline-block;width:0;height:0;border-left:.42em solid transparent;border-right:.42em solid transparent;border-bottom:.72em solid currentColor;vertical-align:baseline}
@@ -51,11 +53,6 @@ img{display:block}
 .quota::before{left:0}.quota::after{right:0}
 .quota b{position:absolute;left:50%;top:-1.55em;transform:translateX(-50%);font:500 12px/1 var(--f-etichetta);letter-spacing:.06em;padding:0 .5em;background:inherit}
 
-/* scala millimetrata sui bordi */
-.scala-x{height:12px;background:
-  repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 100%) 0 0/50px 12px no-repeat,
-  repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 10px) 0 100%/100% 5px no-repeat,
-  repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 50px) 0 100%/100% 9px no-repeat}
 
 /* cartiglio: blocco del titolo come in una tavola tecnica */
 .cartiglio{display:grid;border:var(--tratto) solid currentColor}

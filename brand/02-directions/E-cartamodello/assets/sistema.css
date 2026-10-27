@@ -1,59 +1,48 @@
-/* Abra Robotics, direzione E "Cartamodello". Foglio di stile condiviso dai mockup. */
-@font-face{font-family:"Bricolage Grotesque";src:url(../fonts/BricolageGrotesque-VF.ttf) format("truetype");font-weight:200 800;font-stretch:75% 100%;font-display:block}
+/* Abra Robotics, direzione E "Cartamodello", v2. Foglio di stile condiviso dai mockup.
+   Font statici in locale (TrueType), adatti all'export PDF del Company Brain. */
+@font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Testo.ttf) format("truetype");font-weight:400;font-stretch:100%;font-display:block}
+@font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Sottotitolo.ttf) format("truetype");font-weight:400;font-stretch:96%;font-display:block}
+@font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Medio.ttf) format("truetype");font-weight:560;font-stretch:88%;font-display:block}
+@font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Titolo.ttf) format("truetype");font-weight:640;font-stretch:94%;font-display:block}
+@font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Etichetta.ttf) format("truetype");font-weight:600;font-stretch:75%;font-display:block}
+@font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Misura.ttf) format("truetype");font-weight:680;font-stretch:80%;font-display:block}
 
 :root{
   /* colori */
-  --tela:#ECE6D8;      /* tela di prova, fondo principale */
-  --flanella:#2F3337;  /* testo, marchio, fondi scuri */
-  --giallo:#F2BF2C;    /* metro da sarta: solo superfici, mai testo su chiaro */
-  --gesso:#FAF8F3;     /* bianco gesso */
-  --carta:#D9CBAA;     /* carta da modello, pezzi e schede */
-  --grafite:#62666A;   /* testo secondario su tela e gesso */
-  --blu:#48667F;       /* gesso blu: secondo colore dei dati */
+  --tela:#ECE6D8;       /* tela di prova, fondo principale */
+  --flanella:#2F3337;   /* testo, marchio, fondi scuri */
+  --gessoblu:#8FB0E0;   /* colore firma: gesso da sarto. Superfici, metro, segni su flanella. Mai testo su chiaro */
+  --segno:#2F5D9E;      /* il segno di gesso su fondo chiaro: linee "in prova", etichette Esempio, link */
+  --carta:#D9CBAA;      /* carta da modello: pezzi e schede */
+  --gesso:#FAF8F3;      /* bianco gesso */
+  --grafite:#62666A;    /* testo secondario, solo su tela e gesso */
 
-  /* tipografia: una sola famiglia, larghezza variabile */
-  --f:"Bricolage Grotesque",system-ui,sans-serif;
-
-  /* modulo: 8 px */
+  --f:"Abra Bricolage",system-ui,sans-serif;
   --u:8px;
-  --filo:3px;          /* spessore del punto di imbastitura a schermo */
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{font-family:var(--f);color:var(--flanella);background:var(--tela);font-variation-settings:"opsz" 14}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-synthesis:none}
+body{font-family:var(--f);font-weight:400;font-stretch:100%;color:var(--flanella);background:var(--tela)}
 
-/* Titoli: largo 82, peso 720. Il titolo si misura sulla colonna. */
-.t-display{font-weight:700;font-stretch:86%;font-variation-settings:"opsz" 96;letter-spacing:-0.012em;line-height:.95}
-.t-titolo{font-weight:680;font-stretch:86%;font-variation-settings:"opsz" 60;letter-spacing:-0.015em;line-height:1.02}
-.t-sotto{font-weight:420;font-stretch:96%;font-variation-settings:"opsz" 24;line-height:1.32}
-.t-testo{font-weight:400;font-stretch:100%;font-variation-settings:"opsz" 14;line-height:1.5}
-/* Etichetta da cartamodello: maiuscolo stretto e spaziato */
-.t-etichetta{font-weight:600;font-stretch:75%;font-variation-settings:"opsz" 14;text-transform:uppercase;letter-spacing:.09em;line-height:1.2}
-/* Numeri del metro: stretti e tabellari */
-.t-misura{font-weight:640;font-stretch:75%;font-variation-settings:"opsz" 40;font-feature-settings:"tnum" 1;letter-spacing:-0.01em;line-height:1}
+/* Gerarchia: sei stili statici */
+.t-display{font-weight:640;font-stretch:94%;letter-spacing:-0.02em;line-height:.98}
+.t-titolo{font-weight:640;font-stretch:94%;letter-spacing:-0.012em;line-height:1.05}
+.t-sotto{font-weight:400;font-stretch:96%;line-height:1.34}
+.t-testo{font-weight:400;font-stretch:100%;line-height:1.5}
+.t-medio{font-weight:560;font-stretch:88%}
+.t-etichetta{font-weight:600;font-stretch:75%;text-transform:uppercase;letter-spacing:.09em;line-height:1.2}
+.t-misura{font-weight:680;font-stretch:80%;font-feature-settings:"tnum" 1;letter-spacing:-0.01em;line-height:1}
 
-/* Il punto di imbastitura: linea tratteggiata con capi tondi.
-   Tratteggio = in prova, ancora da misurare. Linea continua = misurato e confermato. */
+/* Regola del sistema.
+   In gesso (blu, linea sottile) = in prova, ancora da misurare: si può cancellare.
+   In flanella (linea piena, scura) = misurato e firmato: è cucito. */
+.in-gesso{border:2px solid var(--segno);color:var(--segno)}
+.cucito{border:2px solid var(--flanella)}
 
-.punto-h{display:block;height:6px;background:
-  linear-gradient(90deg,currentColor 0 0) 0 50%/0 0 no-repeat;
-  -webkit-mask:repeating-linear-gradient(90deg,#000 0 18px,transparent 18px 28px);
-          mask:repeating-linear-gradient(90deg,#000 0 18px,transparent 18px 28px);
-  background:currentColor;border-radius:3px}
-.cucito{display:block;height:3px;background:currentColor}
+/* Etichetta "Esempio", obbligatoria su dati, verbali e importi inventati */
+.esempio{display:inline-flex;align-items:center;font-weight:600;font-stretch:75%;text-transform:uppercase;letter-spacing:.09em;font-size:11px;line-height:1;padding:5px 7px 4px;border:1.5px solid var(--segno);color:var(--segno);border-radius:2px}
+.su-scuro .esempio,.esempio.chiaro{border-color:var(--gessoblu);color:var(--gessoblu)}
 
-/* Etichetta "Esempio", obbligatoria su dati e verbali inventati */
-.esempio{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-stretch:75%;text-transform:uppercase;letter-spacing:.09em;font-size:11px;line-height:1;padding:5px 8px 4px;border:1.5px dashed currentColor;border-radius:2px}
-
-/* Pezzo di cartamodello: carta con tacche */
+/* Pezzo di cartamodello */
 .pezzo{position:relative;background:var(--carta)}
-.tacca{position:absolute;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid var(--tela)}
-
-/* Metro da sarta, versione lineare (orizzontale) */
-.metro{position:relative;height:34px;background:var(--giallo);color:var(--flanella);overflow:hidden;
-  background-image:
-   repeating-linear-gradient(90deg,var(--flanella) 0 1.5px,transparent 1.5px 10px),
-   repeating-linear-gradient(90deg,var(--flanella) 0 2px,transparent 2px 50px),
-   repeating-linear-gradient(90deg,var(--flanella) 0 2px,transparent 2px 100px);
-  background-size:100% 7px,100% 12px,100% 18px;background-repeat:no-repeat;background-position:0 0,0 0,0 0}

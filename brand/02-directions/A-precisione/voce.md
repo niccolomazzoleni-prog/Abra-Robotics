@@ -1,4 +1,4 @@
-# Voce · Riferimento A
+# Voce · In squadra (v2)
 
 ## Registro: asciutto come una targa dati
 
@@ -29,17 +29,20 @@ Unità sempre con lo spazio e in forma breve: mm, kg, h, s, %. Numeri con il pun
 
 ## Headline
 
+Scritte per questa direzione, diverse da quelle della brand platform, così il test dei 5 secondi distingue le direzioni.
+
 ### Italiano
-1. Misura nel tuo reparto cosa farà il robot, prima di investire.
-2. Fai lavorare i tuoi tesisti sul robot in poche settimane, con simulatore e manuale già pronti.
-3. Scopri in tre settimane se un robot fa al caso tuo e porta in direzione un numero misurato.
-4. Fai raccontare il tuo marchio da un umanoide, con parole approvate da te.
-5. Tieni il codice del progetto nel tuo repository e prosegui anche senza di noi.
+1. Decidi sul robot con un numero misurato in mano. (hero)
+2. Decidi sull'umanoide della linea 3 con il tempo ciclo misurato. (copertina del preventivo)
+3. Ricevi il robot con SDK, simulatore e manuale, e fai partire i tesisti alla consegna. (laboratori)
+4. Noleggia un umanoide che parla del tuo marchio, con il copione firmato da te. (eventi)
+5. Prenota la giornata del G1: tecnico presente, prova generale il giorno prima. (eventi)
+6. Tieni il codice del progetto nel tuo repository e prosegui con il tuo team. (trasversale)
 
 ### English
-1. Measure what the robot will do on your line before you invest.
-2. Get your students working on a real robot within weeks, with simulator and manual ready.
-3. Keep the project code in your own repository and carry on after delivery.
+1. Decide on the robot with a measured number in your hands.
+2. Get the robot with SDK, simulator and manual, and start your students on delivery day.
+3. Book the G1 for your event, with a script you sign off and our technician on site.
 
 ## Bio LinkedIn (pagina aziendale)
 

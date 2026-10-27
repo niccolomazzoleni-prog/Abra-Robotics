@@ -2,49 +2,55 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Copertina reel · G1 parla con il pubblico</title>
+<title>Copertina reel · il G1 parla con il pubblico</title>
 <link rel="icon" href="../logo/favicon.svg">
 <link rel="stylesheet" href="../assets/a.css">
 <style>
-  body{width:1080px;height:1920px;overflow:hidden;background:var(--grafite);color:var(--alluminio);position:relative}
-  .scala{position:absolute;left:72px;right:72px;top:150px;color:var(--acciaio)}
-  .top{position:absolute;left:72px;right:72px;top:190px;display:flex;justify-content:space-between;color:var(--acciaio)}
+  body{width:1080px;height:1920px;overflow:hidden;background:var(--alluminio);position:relative}
+  .top{position:absolute;left:72px;right:72px;top:150px;display:flex;justify-content:space-between;color:var(--quota)}
   .top .et{font-size:20px}
-  h1{position:absolute;left:72px;right:60px;top:262px;font:600 84px/1.02 var(--f-titolo);letter-spacing:-.012em;color:var(--bianco)}
-  .pann{position:absolute;left:72px;top:640px;width:360px;height:860px;background:var(--bianco)}
-  .g1{position:absolute;left:112px;top:672px;height:720px}
-  .base{position:absolute;left:88px;width:328px;top:1394px;height:2px;background:var(--grafite)}
-  .base .tri{position:absolute;left:150px;top:4px;color:var(--grafite);font-size:22px}
-  .log{position:absolute;left:470px;right:72px;top:640px}
-  .log .r{border:2px solid var(--acciaio);padding:20px 22px 22px;margin-bottom:18px;background:var(--grafite)}
-  .log .r.g{border-color:var(--alluminio);background:var(--grafite-80)}
-  .log .h{display:flex;justify-content:space-between;font:500 17px var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;color:var(--acciaio);margin-bottom:10px}
-  .log .t{font:500 31px/1.25 var(--f-testo);color:var(--bianco)}
-  .log .ok{display:inline-flex;align-items:center;gap:10px;font:500 16px var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;color:var(--verde-scuro-fondo);margin-top:12px}
-  .log .ok i{width:13px;height:13px;background:var(--verde-scuro-fondo)}
-  .piede{position:absolute;left:72px;right:72px;bottom:150px;display:flex;justify-content:space-between;align-items:flex-end}
-  .piede img{height:58px;margin-left:-12px}
-  .piede .et{color:var(--acciaio);font-size:18px;text-align:right;line-height:1.5}
-  .segn{position:absolute;left:92px;top:1436px;color:var(--quota)}
-  .segn .segnaposto{opacity:1}
+  h1{position:absolute;left:72px;right:72px;top:206px;font:700 74px/1.06 var(--f-titolo);letter-spacing:-.025em}
+  .scena{position:absolute;left:0;top:560px;width:1080px;height:1060px}
+  .g1{position:absolute;left:480px;top:400px;height:600px}
+  .pav{position:absolute;left:0;right:0;top:1000px;height:2px;background:var(--grafite)}
+  .tri-pav{position:absolute;left:584px;top:1010px;width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:38px solid var(--verde)}
+  .tri-lab{position:absolute;left:640px;top:1014px;color:var(--grafite);font-size:16px}
+  .qv{position:absolute;left:820px;top:400px;height:600px;width:1.5px;background:var(--grafite)}
+  .qv::before,.qv::after{content:"";position:absolute;left:-10px;width:22px;height:1.5px;background:var(--grafite)}
+  .qv::before{top:0}.qv::after{bottom:0}
+  .qv b{position:absolute;left:22px;top:50%;transform:translateY(-50%);font:700 30px var(--f-titolo);white-space:nowrap;background:var(--alluminio);color:var(--grafite)}
+  .battuta{position:absolute;left:372px;top:30px;width:636px;background:#fff;border:2px solid var(--grafite);padding:26px 28px 24px}
+  .battuta .t{font:700 40px/1.12 var(--f-titolo);letter-spacing:-.015em}
+  .battuta .ok{display:flex;align-items:center;gap:12px;margin-top:16px;font:500 18px var(--f-etichetta);letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+  .battuta .ok i{width:16px;height:16px;background:var(--verde)}
+  .battuta::after{content:"";position:absolute;left:210px;bottom:-26px;width:0;height:0;border-left:26px solid transparent;border-top:26px solid var(--grafite)}
+  .sag{position:absolute}
+  .lab-sag{position:absolute;font:500 16px var(--f-etichetta);letter-spacing:.08em;text-transform:uppercase;color:var(--quota)}
+  .piede{position:absolute;left:0;right:0;bottom:0;height:300px;background:var(--verde);color:#fff;padding:60px 72px 0;display:flex;justify-content:space-between;align-items:flex-start}
+  .piede img{height:62px;margin-left:-10px}
+  .piede .et{font-size:20px;text-align:right;line-height:1.55}
+  .segn{position:absolute;left:72px;bottom:56px;color:#fff;z-index:2}
   .segn .segnaposto{font-size:15px}
 </style>
 </head>
 <body>
-<div class="scala scala-x"></div>
 <div class="top"><span class="et">Demo · Umanoide G1 con LLM e RAG</span><span class="et num">Reel · 0:42</span></div>
-<h1>Fai raccontare il tuo marchio<br>da un umanoide, con parole<br>approvate da te.</h1>
-<div class="pann"></div>
-<img class="g1" src="../assets/img/g1-segnaposto.png" alt="Umanoide, immagine segnaposto">
-<div class="base"><i class="tri"></i></div>
-<div class="log">
-  <div class="r"><div class="h"><span>Visitatore</span><span class="num">00:12</span></div><div class="t">Da quanto tempo esiste questo prodotto?</div></div>
-  <div class="r g"><div class="h"><span>G1</span><span class="num">00:15</span></div><div class="t">Dal 1998. Lo produce lo stabilimento di Bologna, che oggi visita anche lei.</div><div class="ok"><i></i>Risposta dalla base di conoscenza approvata</div></div>
-  <div class="r"><div class="h"><span>Visitatore</span><span class="num">00:27</span></div><div class="t">E tu chi sei?</div></div>
-  <div class="r g"><div class="h"><span>G1</span><span class="num">00:29</span></div><div class="t">Un robot con un'intelligenza artificiale. Il tecnico di Abra è qui accanto.</div></div>
-  <div class="rq" style="margin-top:30px;font:500 19px/1 var(--f-etichetta);letter-spacing:.08em;text-transform:uppercase;color:var(--alluminio)"><span>Copione</span><span>approvato dal cliente</span><span class="num">Rev 3</span></div>
+<h1>Noleggia un umanoide che parla del tuo marchio, con il copione firmato da te.</h1>
+
+<div class="scena">
+  <div class="battuta"><div class="t">«Lo produciamo dal 1998 nello stabilimento di Bologna.»</div><div class="ok"><i></i>Risposta dalla base di conoscenza approvata</div></div>
+  <svg class="sag" style="left:96px;top:205px" width="250" height="795" viewBox="0 0 55 175" aria-label="Sagoma di visitatore">
+    <g fill="#8A959B"><circle cx="27.5" cy="11" r="10"/><path d="M15 26h25a5 5 0 0 1 5 5v58h-35v-58a5 5 0 0 1 5-5z"/><rect x="15" y="86" width="11" height="89" rx="3"/><rect x="29" y="86" width="11" height="89" rx="3"/><rect x="3" y="29" width="7" height="58" rx="3.5"/><rect x="45" y="29" width="7" height="58" rx="3.5"/></g>
+  </svg>
+  <svg class="sag" style="left:286px;top:264px" width="232" height="736" viewBox="0 0 51 162" aria-label="Sagoma di visitatrice">
+    <g fill="#B4BDC2"><circle cx="25.5" cy="10" r="9.5"/><path d="M15 24h21l8 66H7z"/><rect x="15" y="88" width="9" height="74" rx="3"/><rect x="27" y="88" width="9" height="74" rx="3"/><rect x="4" y="27" width="6.5" height="52" rx="3.2"/><rect x="40.5" y="27" width="6.5" height="52" rx="3.2"/></g>
+  </svg>
+  <img class="g1" src="../assets/img/g1-in-piedi-segnaposto.png" alt="Umanoide, immagine segnaposto">
+  <div class="qv"><b class="num">1320 mm</b></div>
+  <div class="pav"></div>
+  <div class="tri-pav"></div>
+  <span class="tri-lab et">Punto d'incontro</span>
 </div>
-<div class="segn"><span class="segnaposto">Segnaposto: immagine Unitree<br>Dialogo di esempio</span></div>
-<div class="piede"><img src="../logo/orizzontale-bianco.svg" alt="Abra Robotics"><span class="et">Noleggio a giornata<br>con tecnico presente</span></div>
+<div class="piede"><img src="../logo/orizzontale-bianco.svg" alt="Abra Robotics"><span class="et">Noleggio a giornata<br>con tecnico presente</span><div class="segn"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree · sagome grafiche · battuta di esempio</span></div></div>
 </body>
 </html>

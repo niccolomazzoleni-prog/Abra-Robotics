@@ -1,39 +1,43 @@
-# Direzione D: Prova generale
+# Direzione D: Prova generale (v2)
 
-Territorio D, "Il futuro in scena" (nome di lavoro). Nome della direzione: **Prova generale**.
+Territorio D, "Il futuro in scena" (nome di lavoro, solo interno). Nome della direzione: **Prova generale**.
 
 ## L'idea in una frase
 
-In teatro nessuno va in scena senza la prova generale: Abra tratta ogni robot allo stesso modo, e il marchio è una A che contiene un palco acceso, il luogo dove il robot si vede all'opera prima che il cliente investa.
+Prima di ogni debutto c'è la prova generale: Abra fa vedere il robot al lavoro sul caso del cliente prima che investa, e lo scrive con un logotipo in cui ogni lettera è un arco scenico.
 
 ## Da dove nasce
 
-In italiano "prova" vuol dire due cose: la verifica tecnica e la prova di uno spettacolo. Il posizionamento "Prima la prova" e il teatro usano la stessa parola per la stessa cosa: si ripete tutto, con il copione scritto e i segni a terra, prima della sera in cui conta. Per il direttore R&D la prova generale è il POC a fasi con criteri di accettazione; per la responsabile di laboratorio è il pacchetto di sviluppo che fa partire i tesisti; per l'event manager è letteralmente la prova generale con copione approvato prima della data.
+In italiano "prova" è la verifica tecnica ed è anche la prova di uno spettacolo. Il posizionamento "Prima la prova" e il teatro usano la stessa parola per la stessa cosa: si ripete tutto, con il copione scritto e i movimenti segnati sulla pianta del palco, prima della sera in cui conta.
 
-Il territorio chiede spettacolo senza perdere credibilità. La risposta è prendere dal teatro la parte che chi lavora in fabbrica riconosce subito: la regia. Scaletta, foglio di regia, segni a terra, copione, didascalie, tecnico in sala. Lo spettacolo arriva da scala, taglio e luce vera; la credibilità arriva dal fatto che ogni cosa in scena è stata provata e messa per iscritto.
+Dalla v2 la direzione prende dal teatro due cose sole:
+1. **L'arco scenico** del teatro all'italiana, con il tetto tondo e la base piana. Diventa la forma degli occhielli del logotipo e la cornice delle immagini nei formati evento.
+2. **La pianta dei movimenti**: in regia il percorso di ogni interprete si segna sulla pianta, da una posizione "a" a una posizione "b". In robotica è lo stesso gesto: la navigazione autonoma porta il robot da a a b, e prima di farlo dal vero lo si prova in simulazione. La pianta diventa il modo di disegnare le fasi P0 a P5, i percorsi e i dati.
 
 ## Il sistema in breve
 
-- **Marchio**: la A di Abra è un boccascena visto dalla platea. Le gambe sono le quinte che convergono, il traverso è l'architrave, il trapezio color luce in basso è il palcoscenico acceso. È disegnata a mano e si legge a 16 px; nel logotipo sostituisce la A di "Abra".
-- **Colore**: i colori del teatro all'italiana tradotti in chiave industriale. Velluto (rosso bruno quasi nero), Luce (tungsteno), Stucco (avorio). Il nero pieno e il blu restano fuori dalla palette.
-- **Tipografia**: una sola famiglia libera, Archivo, usata in tre larghezze come la segnaletica dei grandi eventi culturali: stretta per i titoli di scena, normale per il testo, larga per le etichette.
-- **Elementi grafici**: il palco (trapezio in prospettiva con l'angolo delle gambe della A), il taglio di luce sul fondale, il segno a terra a T, la scaletta delle fasi P0 a P5, le didascalie in corsivo per i limiti.
-- **Voce**: scandita come una regia. Frasi brevi, tempi e luoghi precisi, imperativo con il beneficio, limiti scritti come didascalie tra parentesi.
+- **Logotipo**: "abra" disegnato a mano in minuscolo geometrico. Ogni occhiello è un arco scenico; la "a" e la "b" sono speculari (angolo tondo a sinistra nella a, a destra nella b), così la parola ha un ritmo di quinte. "Robotics" è un descrittore separato, composto in Archivo Expanded.
+- **Simbolo**: "ab", i due portali affiancati. Legge l'iniziale del nome e dice il movimento base del metodo: da a a b. Favicon disegnata a pixel.
+- **Colore firma**: Magenta di scena `#D6006F`, il colore delle gelatine magenta che ogni tecnico luci ha nella valigia. È anche un primario di stampa (Pantone 226 C indicativo) e porta il nome di una città lombarda. Accanto: Grafite, Carta, Cemento. Nessun giallo, ocra, ambra, bruno o rosso.
+- **Due registri**:
+  - *Documento* (preventivo, post aziendali, biglietto, scheda per i laboratori): Carta e Grafite, Archivo Bold per i titoli, il magenta solo nei punti della pianta delle fasi e in qualche etichetta.
+  - *Scena* (reel, totem, livrea, eventi): fondo Grafite, campiture magenta piene dentro l'arco scenico, Archivo Condensed in scala grande, il pubblico disegnato come sagome.
+- **Voce**: scandita come una regia, con imperativi e benefici chiari; i limiti si scrivono come didascalie in corsivo tra parentesi.
 
 ## Razionale strategico
 
-1. **Rende visibile il metodo.** Il problema di marca è che Abra sembra un rivenditore e tace sul metodo. Qui il metodo è l'immagine: la scaletta delle fasi sta fisicamente sul palco nella home, nel preventivo e nella copertina; il palco vuoto con il segno a terra dice "il posto del robot è pronto, entra dopo la prova".
-2. **Unisce i tre segmenti senza cambiare identità.** Il preventivo da POC industriale e il totem per il noleggio usano lo stesso palco, gli stessi colori e la stessa scaletta. Cambia solo il registro: il preventivo resta su carta chiara con il palco in fondo alla copertina, il totem porta il palco a tutta altezza.
-3. **Funziona senza robot e con robot di qualunque produttore.** Il palco acceso è il soggetto; il robot ci sale sopra quando c'è. Le immagini ufficiali Unitree passano per un trattamento tungsteno che le porta nella palette e spegne il blu del visore.
-4. **Occupa uno spazio libero.** Nessun competitor usa i colori caldi del teatro o la grammatica della regia. Unitree ha lo spazio stellato, AgiBot le piste di luce, Generative Bionics il nero pieno con luce radente, Figure la macro di materiale. Prova generale usa campiture piatte dai bordi netti, con luce frontale su fondo velluto.
-5. **Si produce in due.** Una famiglia di font OFL, tre colori principali, un trapezio in CSS (`clip-path`), un nastro da pavimento per il segno a terra. Tutto quello che si vede nei mockup è HTML e CSS.
+1. **Il metodo arriva prima dello spettacolo.** La home, il preventivo e il post SACMI sono su fondo chiaro e mostrano le fasi come posizioni su un percorso. Il direttore R&D legge un documento tecnico; il teatro resta nella forma del logotipo.
+2. **Un marchio proprietario sull'intera parola.** Il logotipo è disegnato da zero e non contiene una A maiuscola. In monocromia la silhouette resta unica: archi a tetto tondo con base piana, la "b" con l'ascendente, la "r" che chiude il ritmo.
+3. **Lo spettacolo dove serve.** Eventi e social hanno scala, colore pieno e pubblico in scena. Il passaggio da un registro all'altro cambia la quantità di magenta e la larghezza del carattere; marchio e griglia restano gli stessi.
+4. **Funziona senza robot e con qualunque produttore.** L'arco scenico vuoto con la pianta da a a b è già un'immagine; il robot entra quando c'è una foto propria.
+5. **Si produce in due.** Una famiglia di font OFL in sei istanze statiche, un colore firma che è un primario di stampa, archi con `border-radius`, percorsi in SVG.
 
 ## Segmento a cui parla meglio
 
-Eventi e fiere per primi: il totem, il reel e la livrea sono la parte più forte del sistema. Subito dopo la manifattura, perché il "foglio di regia" del preventivo traduce in modo naturale le fasi con criteri di accettazione. Il laboratorio universitario è servito bene dal post sulla consegna (cosa resta in mano al tesista) ma è il segmento meno toccato dalla metafora.
+Eventi e fiere restano il segmento più servito dai formati di scena. La manifattura ora ha documenti sobri e un preventivo che parla di tempo ciclo e decisioni scritte. Il laboratorio ha una scheda dedicata, "Fai partire i tesisti sul robot nella prima settimana", con SDK, ROS 2, simulatore e percorso di otto settimane.
 
 ## Cosa sacrifica
 
-- **La neutralità.** Velluto e luce sono colori con carattere: un direttore acquisti abituato a blu e grigio li noterà. È una scelta, e va difesa con la sobrietà dei documenti.
-- **Il registro da laboratorio.** Grafici, versioni e note a margine restano sullo sfondo: la direzione parla di prova e di regia più che di ricerca.
-- **Il rischio intrattenimento.** Il teatro può far pensare al robot come numero da palco. Per questo la metafora usa solo la parte tecnica del teatro: regia, prova, segni a terra, copione. Sipari rossi, riflettori puntati sul pubblico e acrobazie restano fuori dal sistema.
+- **La familiarità del colore.** Il magenta è insolito nella robotica industriale: va dosato e tenuto fuori dalle superfici grandi dei documenti.
+- **La leggibilità immediata del simbolo da solo.** "ab" va imparato; per questo il primo contatto usa sempre il logotipo intero.
+- **Una parte del teatro.** Sipari, riflettori, coni di luce e palco acceso del round 1 sono stati tolti.

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<title>Scheda del pacchetto per i tesisti (esempio)</title>
+<link rel="stylesheet" href="../sistema.css">
+<style>
+@page{size:A4;margin:0}
+body{margin:0;background:#CFCEC8;font-family:var(--f);color:var(--grafite)}
+.pagina{position:relative;width:794px;height:1123px;background:var(--carta);overflow:hidden;padding:52px 56px}
+.testa{display:flex;justify-content:space-between;align-items:center;border-bottom:1.2px solid var(--grafite);padding-bottom:12px}
+.testa img{height:24px}
+.testa .lbl{font-size:8.5px;color:var(--fumo)}
+.capo{display:flex;justify-content:space-between;align-items:flex-end;margin-top:34px}
+.capo .lbl{font-size:9.5px;color:var(--magenta);margin:0 0 10px}
+h1{margin:0;font-size:38px;max-width:560px}
+.esempio{color:var(--magenta)}
+.intro{font-size:13px;line-height:1.55;max-width:620px;margin:16px 0 0}
+.box{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:26px;border-top:1.5px solid var(--grafite);border-bottom:1.5px solid var(--grafite)}
+.box div{padding:14px 12px 14px 0}
+.box b{display:block;font-size:22px;font-weight:700}
+.box span{font-size:11px;color:var(--fumo);line-height:1.4;display:block;margin-top:4px}
+h2{font-size:16px;margin:28px 0 10px}
+.settimane{position:relative;margin-top:6px}
+.settimane svg{width:100%;display:block}
+table{width:100%;border-collapse:collapse;font-size:11px;line-height:1.45;margin-top:18px}
+th{font-family:var(--f-segno);font-weight:600;font-size:7.8px;letter-spacing:.14em;text-transform:uppercase;text-align:left;color:var(--fumo);padding:0 8px 7px 0;border-bottom:1.2px solid var(--grafite)}
+td{padding:8px 8px 8px 0;border-bottom:1px solid #E1E0DA;vertical-align:top}
+td.s{width:74px;font-weight:700}
+td.c{background:var(--rosa);padding-left:8px}
+.limiti{margin-top:16px;font-size:11px;line-height:1.5}
+.piede{position:absolute;left:56px;right:56px;bottom:26px;display:flex;justify-content:space-between;font-family:var(--f-segno);font-weight:600;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fumo)}
+</style></head>
+<body>
+<div class="pagina">
+  <div class="testa"><img src="../logo/mono-positivo.svg" alt="abra Robotics"><span class="lbl">Scheda tecnica · laboratori e università</span></div>
+  <div class="capo">
+    <div><p class="lbl">Pacchetto di sviluppo per tesisti</p><h1 class="titolo">Fai partire i tesisti sul robot nella prima settimana</h1></div>
+    <span class="esempio">Esempio</span>
+  </div>
+  <p class="intro">Il robot arriva configurato con il pacchetto di sviluppo e un percorso di otto settimane: alla fine ogni tesista sa far muovere il robot da a a b in simulazione e su robot vero, con il proprio codice nel repository del laboratorio.</p>
+  <div class="box">
+    <div><b>SDK</b><span>Ufficiale del produttore, con esempi Abra commentati in italiano</span></div>
+    <div><b>ROS 2</b><span>Ambiente già installato sul computer di bordo e su una macchina del laboratorio</span></div>
+    <div><b>MuJoCo</b><span>Modello del robot e di una stanza tipo, pronto per la simulazione</span></div>
+    <div><b>Manuale</b><span>Dalla prima accensione alla navigazione autonoma, con le procedure di sicurezza</span></div>
+  </div>
+  <h2 class="titolo">Il percorso, settimana per settimana</h2>
+  <div class="settimane">
+    <svg viewBox="0 0 682 50" aria-hidden="true"><path d="M10 20H672" stroke="#202124" stroke-width="1.5"/>
+      <g font-family="Archivo" font-size="10" fill="#202124">
+      <circle cx="10" cy="20" r="8" fill="#D6006F"/><text x="4" y="46">S1</text>
+      <circle cx="104" cy="20" r="8" fill="#D6006F"/><text x="98" y="46">S2</text>
+      <circle cx="199" cy="20" r="8" fill="#D6006F"/><text x="193" y="46">S3</text>
+      <circle cx="293" cy="20" r="8" fill="#D6006F"/><text x="287" y="46">S4</text>
+      <circle cx="388" cy="20" r="8" fill="#D6006F"/><text x="382" y="46">S5</text>
+      <circle cx="482" cy="20" r="8" fill="#D6006F"/><text x="476" y="46">S6</text>
+      <circle cx="577" cy="20" r="8" fill="#D6006F"/><text x="571" y="46">S7</text>
+      <circle cx="672" cy="20" r="8" fill="#202124"/><text x="660" y="46">S8 b</text></g></svg>
+  </div>
+  <table>
+    <thead><tr><th>Settimane</th><th>Cosa fa il tesista</th><th>Cosa sa fare alla fine</th></tr></thead>
+    <tbody>
+      <tr><td class="s">1 e 2</td><td>Accende il robot con il tecnico Abra, lancia gli esempi dell'SDK e il modello in MuJoCo.</td><td class="c">Muove il robot con lo stesso comando in simulazione e dal vero.</td></tr>
+      <tr><td class="s">3 e 4</td><td>Legge i sensori in ROS 2, registra una mappa LiDAR della stanza.</td><td class="c">Ha una mappa del laboratorio salvata nel repository.</td></tr>
+      <tr><td class="s">5 e 6</td><td>Configura localizzazione e navigazione, prova i percorsi in simulazione.</td><td class="c">Porta il robot da a a b in simulazione senza collisioni.</td></tr>
+      <tr><td class="s">7 e 8</td><td>Ripete il percorso sul robot vero e misura scarti e tempi.</td><td class="c">Consegna un verbale con le misure: è il primo capitolo della tesi.</td></tr>
+    </tbody>
+  </table>
+  <p class="limiti dida">(Esempio. Il percorso presuppone un tesista con basi di Python e Linux. I tempi di consegna del robot si scrivono nell'offerta, modello per modello.)</p>
+  <div class="piede"><span>Abra Robotics · documento dimostrativo</span><span>Piattaforme Unitree e di altri produttori</span></div>
+</div>
+</body></html>
