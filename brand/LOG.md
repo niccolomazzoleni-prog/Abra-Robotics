@@ -64,3 +64,19 @@ Branch `feat/niccolo-brand-identity`, worktree `~/Abra-Robotics-brand` (il check
 **Dubbi aperti**
 - D ed E condividono un giallo/ambra caldo e il lessico "prova": da verificare nella revisione la distanza reale.
 - Immagini G1 disponibili a bassa risoluzione (749 px): servono foto proprie.
+
+## Fase 3: revisione round 1 (27/10/2026)
+
+**Fatto**: cinque revisori indipendenti (strategia, art director, produzione, buyer panel, marchio) su direzioni anonime. Tabella completa in `03-reviews/round1-sintesi.md`.
+
+| Dir. | Strat. | AD | Prod. | Buyer | Marchio | Media |
+|-|-|-|-|-|-|-|
+| A Riferimento A | 7,5 | 6,7 | 8,0 | 7,2 | 5,2 | 6,9 |
+| B Misura d'uomo | 7,2 | 5,9 | 6,7 | 7,0 | 6,2 | 6,6 |
+| C Nota a margine | 7,7 | 7,0 | 7,4 | 7,8 | 6,2 | 7,2 |
+| D Prova generale | 6,5 | 6,0 | 7,7 | 6,8 | 5,0 | 6,4 |
+| E Cartamodello | 7,0 | 6,1 | 7,6 | 7,0 | 5,4 | 6,6 |
+
+**Decisioni**: tutte alla v2. Assegnato a ogni direzione un colore firma esclusivo (il giallo/ocra era in tutte e cinque, B e D quasi identiche); simbolo da rendere proprietario a 16 px (4 su 5 usavano una A maiuscola isolata); headline proprie; font locali statici per i PDF; biglietti sopra 6 pt; post SACMI anonimo davvero anonimo.
+
+**Dubbi aperti**: il revisore marchio segnala rischio alto sul nome "Abra" nelle classi 9 e 42 (ABRA Software, abra.com). Consiglio: depositare prima il marchio figurativo e fare una ricerca di anteriorità professionale prima di depositare la parola. Dettagli in `03-reviews/marchio-nome-abra.md`.
