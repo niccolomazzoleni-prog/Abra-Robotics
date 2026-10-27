@@ -28,7 +28,7 @@ Regola: "Leggi", il verbo della direzione, apre al massimo l'hero, la copertina 
 2. Prelievo dei cartoni a fine linea: leggi fase per fase tempi, errori e costi misurati (copertina del preventivo)
 3. Leggi i numeri del robot sul tuo caso prima dell'investimento: codice e manuale restano a te. (retro del biglietto)
 4. Dai al tuo tesista un robot con mappa, simulatore e codice già nella cassa. (post LinkedIn nominativo)
-5. Ricevi il robot con la mappa del reparto, il simulatore e il codice già pronti. (post anonimo)
+5. Ricevi il robot con mappa, simulatore e codice già pronti. (post anonimo)
 6. Ascolta il G1 rispondere ai tuoi visitatori, con la fonte di ogni dato. (reel)
 7. Noleggia il G1 per una giornata, con un tecnico Abra al tuo stand. (totem; seconda riga: "Ogni risposta cita la fonte che hai approvato.")
 

@@ -1,5 +1,21 @@
 # Changelog, direzione C "Nota a margine"
 
+## v3.1 · 30/10/2026
+
+Correzioni bloccanti di `03-reviews/finale.md` (sezione C) e nuova regola delle headline.
+
+| Modifica | In risposta a |
+|-|-|
+| Totem: titolo sull'offerta, "Noleggia il G1 per una giornata, con un tecnico Abra al tuo stand."; la fonte delle risposte scende alla seconda riga ("Ogni risposta cita la fonte che hai approvato.") | Finale C1 |
+| Totem: G1 a mezza figura portato alla stessa scala del totem, con quota 132 cm (continua nella parte visibile, tratteggiata in quella non mostrata) | Finale C2 |
+| Nuove versioni `logotipo-24-48.svg` e `orizzontale-24-48.svg` con filo raddoppiato (34 unità), usate nella barra del sito, nelle intestazioni dei preventivi e sul fronte del biglietto | Finale C3 |
+| Simbolo isolato (`simbolo.svg`, monogramma, favicon vettoriale): filo accorciato a 0,6 diametri del punto oltre la gamba destra, quindi dentro la grazia | Finale C3 |
+| `favicon-16.svg`: filo di 2 px per i primi 3 px dopo il punto | Finale C4 |
+| Evidenziatore: un solo Pantone, 395 C (3965 C scartato, più saturo e più verde). HEX `#EEE842` confermato fino alla prova colore; si riallinea se lo scarto supera dE 3. Dimensioni minime del simbolo in mm in `sistema-grafico.md` (6 mm in stampa, 10 mm come adesivo) | Finale C5 |
+| Retro del biglietto: "Leggi i numeri del robot sul tuo caso prima dell'investimento: codice e manuale restano a te." Il filo del richiamo prosegue fino al testo | Finale C6 |
+| Nuova regola delle headline: "Leggi" apre solo hero, copertina del preventivo e retro del biglietto. Post nominativo "Dai al tuo tesista un robot con mappa, simulatore e codice già nella cassa."; post anonimo "Ricevi il robot con mappa, simulatore e codice già pronti."; reel "Ascolta il G1 rispondere ai tuoi visitatori, con la fonte di ogni dato."; totem "Noleggia...". Nessuna coppia della serie apre con lo stesso verbo | Orchestratore, finale §6 |
+| `voce.md`, `sistema-grafico.md`, `palette.md`, `presentazione.html`, `logo/test.html` aggiornati; tutti i PNG rigenerati; controllo copy, glifi, corpi minimi e SVG ripassati senza errori | Orchestratore |
+
 ## v3.0 · 29/10/2026
 
 Risposta al round 2 (media 7,3; marchio 5,6) e alle indicazioni vincolanti di `03-reviews/round2-sintesi.md`.
