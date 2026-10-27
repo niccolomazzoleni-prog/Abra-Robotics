@@ -1,6 +1,6 @@
 # Direzione E: revisione marchio, round 1
 
-Revisore: rischio marchio. Data: 27/10/2026. File esaminati: `logo/test.png`, `logo/simbolo.svg`, `logo/simbolo-bicolore.svg`, `logo/logotipo-abra.svg`, `logo/monogramma.svg`, `logo/orizzontale.svg`, `logo/verticale.svg`, `logo/favicon-16.svg`, `palette.md`, `tipografia.md`, `concept.md`. Segnalazione di rischio, non parere legale. Il rischio sul nome è trattato in `brand/03-reviews/marchio-nome-abra.md`.
+Revisore: rischio marchio. Data: 27/10/2026. File esaminati: `logo/test.png`, `logo/simbolo.svg`, `logo/simbolo-bicolore.svg`, `logo/logotipo-abra.svg`, `logo/monogramma.svg`, `logo/orizzontale.svg`, `logo/verticale.svg`, `logo/favicon-16.svg`, `palette.md`, `tipografia.md`, `concept.md`. Segnalazione di rischio, senza valore di parere legale. Il rischio sul nome è trattato in `brand/03-reviews/marchio-nome-abra.md`.
 
 ## Il segno in breve
 

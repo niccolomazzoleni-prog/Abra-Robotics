@@ -80,3 +80,24 @@ Branch `feat/niccolo-brand-identity`, worktree `~/Abra-Robotics-brand` (il check
 **Decisioni**: tutte alla v2. Assegnato a ogni direzione un colore firma esclusivo (il giallo/ocra era in tutte e cinque, B e D quasi identiche); simbolo da rendere proprietario a 16 px (4 su 5 usavano una A maiuscola isolata); headline proprie; font locali statici per i PDF; biglietti sopra 6 pt; post SACMI anonimo davvero anonimo.
 
 **Dubbi aperti**: il revisore marchio segnala rischio alto sul nome "Abra" nelle classi 9 e 42 (ABRA Software, abra.com). Consiglio: depositare prima il marchio figurativo e fare una ricerca di anteriorità professionale prima di depositare la parola. Dettagli in `03-reviews/marchio-nome-abra.md`.
+
+## Fase 3: v2 e revisione round 2 (27/10/2026)
+
+**Fatto**: v2 delle cinque direzioni (interrotte una volta dal limite di utilizzo, riprese alle 15:24), poi round 2 dei cinque revisori. Dettagli in `03-reviews/round2-sintesi.md`.
+
+| Dir. | Strat. | AD | Prod. | Buyer | Marchio (senza nome) | Media |
+|-|-|-|-|-|-|-|
+| A In squadra | 7,8 | 7,0 | 8,9 | 7,6 | 6,2 (6,8) | 7,5 |
+| B Montato a vista | 7,3 | 5,9 | 8,4 | 7,8 | 6,2 (6,8) | 7,1 |
+| C Nota a margine | 7,8 | 7,1 | 8,0 | 8,0 | 5,6 (6,0) | 7,3 |
+| D Prova generale | 7,0 | 6,1 | 8,6 | 7,8 | 5,2 (5,5) | 6,9 |
+| E Cartamodello | 7,3 | 6,9 | 8,6 | 7,8 | 5,6 (6,0) | 7,2 |
+
+**Decisioni: scartate B e D dopo due round.**
+- B: l'art director le dà 5,9 in entrambi i round. Correggendosi ha perso il riferimento Olivetti ed è diventata un sito SaaS generico; il logotipo converge con C e a 16 px si legge "@".
+- D: ha la media più bassa nei due round, l'idea teatrale si è ridotta a una cornice ad arco, il magenta è vicino a quello di Deutsche Telekom (colore protetto come marchio) e il robot mostrato non è il G1 a noleggio. Il suo logotipo ad archi resta un possibile spunto per un ibrido.
+- A, C ed E vanno al round 3 (ultimo), ciascuna con un verbo proprio per le headline.
+
+**Nota sul criterio marchio**: "Abra" prende 4/10 in tutte le direzioni per le anteriorità nelle classi 9 e 42 (ABRA Software, abra.com, e "abrdn" per i logotipi minuscoli). È un vincolo del cliente, quindi riporto anche la media senza quel criterio.
+
+**Crediti**: 0 spesi.
