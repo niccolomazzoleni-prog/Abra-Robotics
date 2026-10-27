@@ -1,0 +1,375 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-offline-sicurezza-rete-aziendale.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zabezpečení firemní sítě s roboty Unitree: návod pro IT</title>
+<meta name="description" content="Zabezpečení firemní sítě s roboty Unitree: VLAN, služby k omezení, OTA aktualizace, data a co žádat kvůli Cyber Resilience Act."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/cs/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Zabezpečení firemní sítě s roboty Unitree: návod pro IT",
+  "description": "Zabezpečení firemní sítě s roboty Unitree: VLAN, služby k omezení, OTA aktualizace, data a co žádat kvůli Cyber Resilience Act.",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/cs/blog/unitree-offline-sicurezza-rete-aziendale.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-ufficio.webp",
+  "inLanguage": "cs",
+  "url": "https://abrarobotics.com/cs/blog/unitree-offline-sicurezza-rete-aziendale.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Může být robot Unitree ve stejné VLAN jako firemní počítače?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ne. Patří do vyhrazené VLAN bez směrování do uživatelské sítě; administrativní přístup vede přes jump host. Problém s robotem tak neohrozí zbytek sítě."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Které porty mám pro Unitree otevřít?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Neotvírejte vstupní porty. Robot sám navazuje odchozí spojení ke cloudovým službám pro OTA, aplikace a teleoperaci; povolte jen tyto cíle a jen když je potřebujete. Pro lokální použití stačí síť robota."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mohu Unitree používat bez připojení ke cloudu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ano pro lokální řízení přes Ethernet a DDS, u verzí EDU. Přijdete o OTA a teleoperaci z aplikace; offline postup aktualizace je třeba vyžádat od dodavatele."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak aktualizuji firmware v izolované síti?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pomocí aktualizační VLAN s odchozím přístupem jen po dobu okna, jeden robot po druhém a se záznamem verzí. Pokud je izolace úplná, potřebujete postup od dodavatele."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Týká se Cyber Resilience Act i firmy, která robota používá?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hlavní povinnosti má výrobce. Kupující má žádat dobu podpory, kanál pro hlášení zranitelností a aktualizace. Kdo prodává pod vlastní značkou, může převzít povinnosti výrobce."
+      }
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Zabezpečení firemní sítě s roboty Unitree: návod pro IT"/>
+<meta property="og:description" content="Zabezpečení firemní sítě s roboty Unitree: VLAN, služby k omezení, OTA aktualizace, data a co žádat kvůli Cyber Resilience Act."/>
+<meta property="og:url" content="https://abrarobotics.com/cs/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-ufficio.webp"/>
+<meta property="og:locale" content="cs_CZ"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Roboti Unitree s dodáním z Itálie · podpora v angličtině</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Produkty <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+<a href="/en/accessori-en.html">Příslušenství</a>
+<a href="/en/catalogo-unitree-en.html">Kompletní katalog</a>
+<a href="/cs/#models">Ceník</a>
+</div>
+</div>
+<a href="/cs/#models">Ceny</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Obory <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">O nás</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/cs/">Domů</a> / <a href="/cs/">Blog</a> / Zabezpečení sítě</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-ufficio.webp" alt="Unitree G1 v kanceláři, robot připojený k firemní síti" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Legislativa · Bezpečnost · Síť</p>
+<h1>Zabezpečení firemní sítě s roboty Unitree: izolovat, aktualizovat, chránit data</h1>
+<div class="article-meta"><time datetime="2026-10-24">24. října 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Stručně:</strong> robot Unitree ve firmě je koncové zařízení s Wi-Fi, Bluetooth, někdy 4G a palubním řídicím počítačem. Patří do vyhrazené VLAN, s odchozím přístupem jen ke službám, které potřebujete, se změněnými přihlašovacími údaji a aktualizacemi v kontrolovaném okně. OTA a spárování aplikace procházejí cloudem výrobce: když je zablokujete, přijdete o teleoperaci a vzdálené aktualizace, ne o lokální řízení přes Ethernet a DDS.</div>
+</header>
+
+<div class="article-content">
+<p>Když se mluví o <strong>zabezpečení firemní sítě s roboty Unitree</strong>, výchozím bodem je architektura dokumentovaná výrobcem, ne oddělení, ve kterém bude robot chodit. G1 ani Go2 není izolovaný spotřebič: má operační systém, účet, kanál pro aktualizace a u G1 EDU také SSH přístup pro vývoj. Úkolem správce IT je rozhodnout, které z těchto kanálů nechat otevřené, v jakém segmentu a s jakými přihlašovacími údaji.</p>
+<p class="article-note"><em>Obecné informace, nikoli právní poradenství ani poradenství v oblasti kybernetické bezpečnosti. Konfigurace je třeba přizpůsobit síti, smlouvě a verzi robota; pro konkrétní případ je potřeba dodavatel a případně specializovaný konzultant.</em></p>
+
+<h2>Zabezpečení firemní sítě: tři vrstvy, které je třeba oddělit</h2>
+<p>První vrstvou je <strong>síť</strong>: kdo může komunikovat s robotem a se kterými cíli. Druhou je <strong>koncové zařízení</strong>: přihlašovací údaje, vystavené služby, Bluetooth, porty USB a účty. Třetí jsou <strong>data</strong>: video, zvuk, mapy, telemetrie a zálohy. Kdo zasáhne jen do jedné ze tří vrstev, nechá zbylé dvě nechráněné.</p>
+<p>Užitečná otázka zní, které kanály skutečně potřebujete. Go2 ovládaný dálkovým ovladačem nepotřebuje vzdálenou teleoperaci; G1 EDU pro ROS 2 potřebuje přístup k síti robota a SSH, ne nutně aplikaci přes internet.</p>
+
+<h2>Jaké aplikace a cloudové služby robot Unitree používá</h2>
+<p>Dokumentace pro vývojáře popisuje architekturu společnou pro Go2 a G1. Robot se ke cloudovým službám připojuje <strong>pouze po autorizaci uživatelem</strong>. Cloud slouží ke třem věcem: telemetrie a diagnostika, systémové aktualizace a teleoperace přes WebRTC. Uvedené kanály jsou MQTT pro IoT komunikaci a aktualizace, HTTP pro účet a spárování, TURN/STUN pro směrování videa, když přímé spojení nefunguje. Bluetooth LE slouží ke konfiguraci sítě a k bezpečnostnímu ověření; uvnitř robota komunikace mezi moduly probíhá přes DDS.</p>
+<table>
+<thead><tr><th>Kanál</th><th>K čemu slouží</th><th>Doporučení pro IT</th></tr></thead>
+<tbody>
+<tr><td>Ethernet a DDS</td><td>Lokální řízení a vývoj, ROS 2 témata</td><td>Samostatná síť robota bez směrování k uživatelské síti</td></tr>
+<tr><td>Wi-Fi v režimu infrastruktury</td><td>Aplikace, telemetrie a cloudové služby</td><td>Vyhrazené SSID a VLAN pro roboty</td></tr>
+<tr><td>Wi-Fi v režimu AP</td><td>Počáteční konfigurace: robot vytvoří hotspot</td><td>Jen při onboardingu, v kontrolované zóně</td></tr>
+<tr><td>Bluetooth LE</td><td>Konfigurace sítě a bezpečnostní ověření</td><td>Omezený fyzický přístup, zaznamenaný onboarding</td></tr>
+<tr><td>MQTT a HTTP do cloudu</td><td>OTA, diagnostika, účet a spárování</td><td>Odchozí provoz povolit jen když je potřeba, s logy</td></tr>
+<tr><td>WebRTC, TURN a STUN</td><td>Video a příkazy na dálku</td><td>Zablokovat, pokud teleoperaci nepoužíváte</td></tr>
+</tbody>
+</table>
+<h3>Lokální síť: Ethernet, DDS a 192.168.123.x</h3>
+<p>Dva detaily mění návrh. První: vnitřní síť robota používá podsíť <code>192.168.123.x</code>; vývojový počítač G1 odpovídá na <code>192.168.123.164</code>, palubní počítač Go2 na <code>192.168.123.161</code>. Nesmí být vystavena firemní síti. Druhý: u verzí <a href="/cs/unitree-go2.html">Go2</a> Air a Pro nejsou rozhraní Ethernet a SBUS k dispozici; jsou vyhrazena pro EDU. Pokud projekt vyžaduje kabel, je třeba verzi zvolit před objednávkou, ne po ní.</p>
+<h2>Konfigurace izolované VLAN krok za krokem</h2>
+<p>Univerzální konfigurace pro každé pracoviště neexistuje, ale pořadí kroků je vždy stejné. Příklad s hypotetickými čísly: VLAN 210 pro roboty, podsíť <code>192.168.210.0/24</code>, brána <code>192.168.210.1</code>, adresy vyhrazené od <code>.10</code> do <code>.30</code>; VLAN 200 pro správu s jump hostem.</p>
+<ol>
+<li><strong>Oddělte provoz.</strong> Vytvořte vyhrazenou VLAN a SSID. Nepoužívejte znovu VLAN počítačů ani VLAN pro správu.</li>
+<li><strong>Zablokujte laterální směrování.</strong> VLAN robotů nesmí dosáhnout uživatelské sítě. Jediný administrativní přístup vede přes jump host ve VLAN 200, s pojmenovanými pravidly a logy.</li>
+<li><strong>Přidělte stabilní adresy.</strong> DHCP rezervace nebo statické IP pro každého robota, s MAC adresou a sériovým číslem v inventáři.</li>
+<li><strong>Začněte se zamítnutím veškerého odchozího provozu.</strong> Otevřete jen cíle potřebné pro OTA, aplikace a teleoperaci, a jen v oknech, kdy je potřebujete.</li>
+<li><strong>Nechte DDS uvnitř VLAN.</strong> Lokální komunikace mezi vývojovým počítačem a robotem používá DDS; multicast pro objevování nemá procházet routery ani firewally bez vyhrazené konfigurace. Pro první testy postupujte podle návodu <a href="/cs/blog/ros2-unitree-guida-rapida.html">ROS 2 na robotech Unitree</a>.</li>
+<li><strong>Nevystavujte podsíť 192.168.123.x.</strong> Pokud dodavatel žádá vzdálený přístup, naplánujte dočasnou a zaznamenanou relaci.</li>
+<li><strong>Měřte, než zavřete.</strong> Nechte provoz několik dní protékat, zaznamenejte cíle a objemy, potom postavte pravidlo. Bez výchozího měření se seznam povolených cílů změní v seznam výjimek.</li>
+</ol>
+
+<h2>Co vypnout nebo omezit, pokud to nepotřebujete</h2>
+<table>
+<thead><tr><th>Prvek</th><th>Kdy je potřeba</th><th>Co dělat, když není potřeba</th></tr></thead>
+<tbody>
+<tr><td>Wi-Fi hotspot robota</td><td>Počáteční konfigurace nebo prostředí bez Wi-Fi</td><td>Použijte Ethernet nebo infrastrukturní Wi-Fi; v produkci se AP vyhněte</td></tr>
+<tr><td>Aplikace a cloudový účet</td><td>Spárování, OTA, teleoperace</td><td>Zablokujte odchozí provoz; zůstává lokální řízení a DDS</td></tr>
+<tr><td>4G modul s eSIM (integrovaná SIM)</td><td>Použití mimo areál nebo mobilita</td><td>Zvolte verzi bez modulu nebo omezte konektivitu u operátora</td></tr>
+<tr><td>Bluetooth LE</td><td>Konfigurace a počáteční ověření</td><td>Není provozní kanál: onboarding soustřeďte do kontrolované zóny</td></tr>
+<tr><td>SSH u verzí EDU</td><td>Vývoj a údržba</td><td>Změněné heslo, klíče, přístup jen z jump hostu</td></tr>
+<tr><td>WebRTC a TURN</td><td>Vzdálená teleoperace</td><td>Zablokujte na výstupu, pokud robot pracuje jen v areálu</td></tr>
+<tr><td>Porty USB a dokovací stanice</td><td>Aktualizace a vývoj</td><td>Kontrolovaný fyzický přístup a záznam zásahů</td></tr>
+</tbody>
+</table>
+<p>Vývojářská dokumentace uvádí pro G1 EDU uživatele <code>unitree</code> a známé výchozí heslo; totéž platí pro dokovací stanici Go2. Jsou to laboratorní přihlašovací údaje: před připojením robota k síti je změňte, spolu s údaji k hotspotu. Se sdíleným účtem nelze přístup přiřadit konkrétní osobě.</p>
+<p>Aplikace používá Bluetooth ke konfiguraci sítě a k ověření zabezpečení spojení. Užitečné opatření je fyzické: konfigurace ve vyhrazené zóně, firemní telefon a zaznamenaná operace. Poté zůstává přístup do zóny a k portům omezený.</p>
+
+<h2>Aktualizace: jak je zvládnout bez otevírání všeho</h2>
+<p>Unitree uvádí OTA přes cloud pro <a href="/cs/unitree-g1.html">G1</a> a pro Go2; stránka Go2 upřesňuje, že se robot připojuje jen s autorizací uživatele, a architektura uvádí MQTT pro aktualizace. VLAN bez internetu OTA nedostane: je třeba s tím počítat už v návrhu před instalací.</p>
+<p>Udržitelný postup ve firmě má šest kroků:</p>
+<ol>
+<li><strong>Inventář verzí.</strong> Zapište firmware robota, verzi aplikace a případně verzi dokovací stanice nebo výpočetního modulu.</li>
+<li><strong>Aktualizační okno.</strong> Otevřete výstup ke službám výrobce jen ve smluveném okně, jeden robot po druhém.</li>
+<li><strong>Test na jednom kusu.</strong> Nejprve aktualizujte laboratorního robota, ověřte pohyb, senzory, síť a vaši aplikaci.</li>
+<li><strong>Kontrola po aktualizaci.</strong> Zkontrolujte nainstalovanou verzi a zopakujte síťový test. Pokud aktualizace změní chování, zastavte se a otevřete ticket.</li>
+<li><strong>Záznam.</strong> Uchovávejte verzi, datum, výsledek a jméno operátora.</li>
+<li><strong>Plán B pro úplnou izolaci.</strong> Pokud síť nemá výstup, vyžádejte si od dodavatele offline postup a oficiální balíčky. Žádný firmware třetích stran.</li>
+</ol>
+<p>U G1 najdete postup v aplikaci, kontroly před začátkem a chyby, kterým se vyhnout, v návodu k <a href="/cs/blog/unitree-g1-aggiornare-firmware.html">aktualizaci firmwaru G1</a>. Obecně platí: nabitá baterie, stabilní síť, žádné přerušení a postup pro návrat k předchozí verzi dohodnutý s dodavatelem.</p>
+
+<h2>Data: video, zvuk a telemetrie</h2>
+<p>G1 má hloubkovou kameru, LiDAR, čtyři mikrofony a reproduktor; Go2 má kameru, LiDAR a u některých verzí hlas a interkom. Jsou to senzory užitečné pro aplikaci, ale zachycují i to, co je kolem robota. Pokud robot snímá nebo nahrává identifikovatelné osoby, spadá zpracování do působnosti GDPR a pokynů národních dozorových úřadů (v Česku ÚOOÚ, na Slovensku Úrad na ochranu osobných údajov). Konkrétní příklad takových pokynů nabízí <a href="https://www.garanteprivacy.it/faq/videosorveglianza" rel="noopener noreferrer" target="_blank">FAQ italského úřadu Garante k videosurveillance</a>: účel, minimalizace, informování, doba uchování a tam, kde jsou splněny podmínky, posouzení vlivu.</p>
+<p>Unitree uvádí, že provozní data shromažďovaná v cloudu se netýkají soukromí a že provoz WebRTC server neshromažďuje ani neanalyzuje. Pro smlouvu jsou to užitečná prohlášení, nenahrazují však posouzení ze strany správce. Před teleoperací rozhodněte, kde končí nahrávky a kdo je může vidět.</p>
+<p>U robota se zeptejte, zda je disk šifrovaný a jak se data mažou před výměnou nebo opravou. Pokud to není zdokumentované, chovejte se k němu jako k notebooku.</p>
+
+<h2>Cyber Resilience Act: fakta, která je třeba znát</h2>
+<p><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" rel="noopener noreferrer" target="_blank">Nařízení (EU) 2024/2847</a>, Cyber Resilience Act, platí od 10. prosince 2024. Oznamovací povinnosti platí od 11. září 2026; hlavní povinnosti od 11. prosince 2027. Týká se produktů s digitálními prvky uváděných na trh EU, tedy i připojeného robota.</p>
+<p>Podle <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">přehledu Evropské komise</a> musí výrobce zajistit bezpečnost již ve výchozím nastavení, spravovat zranitelnosti po dobu podpory, oznámit její konec, poskytnout návod k použití a umístit označení CE. Není to automatická povinnost kupujícího.</p>
+<p>Pro kupujícího je CRA seznam otázek před objednávkou: konec podpory, kanál pro hlášení zranitelností, aktualizace, návod k bezpečné instalaci. Jsou to informace, které poskytuje výrobce a ověřuje dodavatel. Kdo prodává pod vlastní značkou, může převzít povinnosti výrobce.</p>
+<p>CRA nenahrazuje <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">nařízení o strojích (EU) 2023/1230</a>: bezpečnost strojů zůstává upravena tímto nařízením. <a href="/cs/blog/unitree-regolamento-macchine-2027.html">Návod k nařízení o strojích 2027</a> vysvětluje strojní část.</p>
+
+<h2>Kontrolní seznam před uvedením robota do provozu</h2>
+<ol>
+<li>Vyhrazené VLAN a SSID bez směrování do uživatelské sítě.</li>
+<li>Stabilní adresy a inventář s MAC adresou, sériovým číslem a verzí firmwaru.</li>
+<li>Změněná hesla robota, hotspotu a účtů; žádný osobní účet.</li>
+<li>Internet na výstupu ve výchozím nastavení zavřený, otevřený jen pro OTA a teleoperaci.</li>
+<li>Písemný postup aktualizace s testem na jednom kusu a záznamem.</li>
+<li>Posouzení soukromí, pokud robot snímá nebo nahrává osoby.</li>
+<li>Smlouva s dobou podpory a kanálem pro hlášení zranitelností.</li>
+<li>Plán vyřazení: smazání dat, zrušení účtů, odstranění z VLAN.</li>
+</ol>
+
+<div class="product-strip" aria-label="Produkty zmíněné v článku">
+<div class="product-strip-head"><span>Produkty zmíněné v článku</span><a href="/en/catalogo-unitree-en.html">Katalog Unitree</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 Edu Standard (G1-U1)" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 Edu Standard (G1-U1)</a></h3>
+<p>SDK, 23 DoF, Ethernet pro vývoj</p>
+<div class="product-card-price">38 004,54 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Zobrazit detail</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-go2-edu-en.html"><img alt="Unitree Go2 Edu Standard" loading="lazy" src="/images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-go2-edu-en.html">Unitree Go2 Edu Standard</a></h3>
+<p>SDK a ROS 2, Ethernet RJ45</p>
+<div class="product-card-price">8 804,14 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">Zobrazit detail</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-b2-en.html"><img alt="Unitree B2" loading="lazy" src="/images/official/unitree-b2-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-b2-en.html">Unitree B2</a></h3>
+<p>Průmyslový čtyřnohý robot, přibližně 60 kg</p>
+<div class="product-card-price">66 827,62 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-b2-en.html">Zobrazit detail</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<section class="article-faq">
+<h2>Časté dotazy</h2>
+<div class="faq-item"><h3>Může být robot Unitree ve stejné VLAN jako firemní počítače?</h3><p>Ne. Patří do vyhrazené VLAN bez směrování do uživatelské sítě; administrativní přístup vede přes jump host. Problém s robotem tak neohrozí zbytek sítě.</p></div>
+<div class="faq-item"><h3>Které porty mám pro Unitree otevřít?</h3><p>Neotvírejte vstupní porty. Robot sám navazuje odchozí spojení ke cloudovým službám pro OTA, aplikace a teleoperaci; povolte jen tyto cíle a jen když je potřebujete. Pro lokální použití stačí síť robota.</p></div>
+<div class="faq-item"><h3>Mohu Unitree používat bez připojení ke cloudu?</h3><p>Ano pro lokální řízení přes Ethernet a DDS, u verzí EDU. Přijdete o OTA a teleoperaci z aplikace; offline postup aktualizace je třeba vyžádat od dodavatele.</p></div>
+<div class="faq-item"><h3>Jak aktualizuji firmware v izolované síti?</h3><p>Pomocí aktualizační VLAN s odchozím přístupem jen po dobu okna, jeden robot po druhém a se záznamem verzí. Pokud je izolace úplná, potřebujete postup od dodavatele.</p></div>
+<div class="faq-item"><h3>Týká se Cyber Resilience Act i firmy, která robota používá?</h3><p>Hlavní povinnosti má výrobce. Kupující má žádat dobu podpory, kanál pro hlášení zranitelností a aktualizace. Kdo prodává pod vlastní značkou, může převzít povinnosti výrobce.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Zdroje</h2>
+<ol>
+<li>Unitree, systémová architektura Go2 (cloud po autorizaci, MQTT, HTTP, WebRTC, BLE): <a href="https://support.unitree.com/home/en/developer/Architecture%20Description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, systémová architektura G1 (cloud po autorizaci, MQTT, HTTP, TURN/STUN, BLE, DDS): <a href="https://support.unitree.com/home/en/G1_developer/architecture_description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, oficiální stránka Go2 (Wi-Fi 6, Bluetooth, 4G modul, OTA přes cloud s autorizací): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a></li>
+<li>Unitree, oficiální stránka G1 (Wi-Fi 6, Bluetooth 5.2, OTA): <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, elektrická rozhraní a verze Go2 (Ethernet a SBUS jen u EDU): <a href="https://support.unitree.com/home/en/developer/about_Go2" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, FAQ pro vývojáře G1 (výchozí uživatel a heslo, IP adresy PC1 a PC2): <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, rychlý návod Go2 (síť 192.168.123.x a IP palubního počítače): <a href="https://support.unitree.com/home/en/developer/Quick_start" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, dokovací stanice Go2 (výchozí uživatel a heslo): <a href="https://support.unitree.com/home/en/developer/module_update" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Evropská komise, shrnutí Cyber Resilience Act: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-summary" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Evropská komise, povinnosti výrobců podle CRA: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Nařízení (EU) 2024/2847 (Cyber Resilience Act), oficiální text: <a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" rel="noopener noreferrer" target="_blank">EUR-Lex</a></li>
+<li>Garante per la protezione dei dati personali (italský úřad pro ochranu osobních údajů), FAQ k videosurveillance: <a href="https://www.garanteprivacy.it/faq/videosorveglianza" rel="noopener noreferrer" target="_blank">garanteprivacy.it</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Než robota připojíte k síti</h2><p>Začněme verzí a zamýšleným použitím: Ethernet, Wi-Fi, cloud a aktualizace mění návrh sítě. Můžeme vám pomoci je definovat ještě před objednávkou.</p><a class="btn btn-primary" href="/en/assessment-en.html">Vyžádat assessment</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Humanoidi Unitree</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Aplikovaná robotika pro firmy, univerzity a výzkumné instituce. Hardware, software na míru, školení a technická podpora.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigace</span>
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Produkty</span>
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Kontakt</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Itálie</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Všechna práva vyhrazena.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
