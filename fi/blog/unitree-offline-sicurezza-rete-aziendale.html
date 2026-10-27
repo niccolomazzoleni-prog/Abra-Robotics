@@ -1,0 +1,374 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-offline-sicurezza-rete-aziendale.html -->
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree-robotti yritysverkossa: tietoturvaopas IT:lle</title>
+<meta name="description" content="Unitree-robotin verkkoturvallisuus yrityksessä: VLAN, suljetut palvelut, OTA-päivitykset, data ja Cyber Resilience Act. Käytännön opas IT:lle."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/fi/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree-robotti yritysverkossa: tietoturvaopas IT:lle",
+  "description": "Unitree-robotin verkkoturvallisuus yrityksessä: VLAN, suljetut palvelut, OTA-päivitykset, data ja Cyber Resilience Act. Käytännön opas IT:lle.",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/fi/blog/unitree-offline-sicurezza-rete-aziendale.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-ufficio.webp",
+  "inLanguage": "fi",
+  "url": "https://abrarobotics.com/fi/blog/unitree-offline-sicurezza-rete-aziendale.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Voiko Unitree-robotti olla samassa VLANissa yrityksen PC:iden kanssa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ei. Se kuuluu omaan VLANiin, josta ei ole reititystä käyttäjien verkkoon; hallintayhteys kulkee jump hostin kautta. Näin robotin ongelma ei altista muuta verkkoa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mitkä portit minun on avattava Unitree-robottia varten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Älä avaa saapuvia portteja. Robotti avaa lähteviä yhteyksiä pilvipalveluihin OTA-päivityksiä, sovellusta ja etäteleoperointia varten; salli vain ne kohteet ja vain silloin, kun niitä tarvitaan. Paikalliseen käyttöön riittää robotin verkko."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Voinko käyttää Unitree-robottia liittämättä sitä pilveen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kyllä, paikallinen ohjaus Ethernetin ja DDS:n kautta onnistuu EDU-versioissa. Menetät OTA-päivitykset ja sovelluksen etäteleoperoinnin; offline-päivitysmenettely on pyydettävä toimittajalta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Miten päivitän laiteohjelmiston eristetyssä verkossa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Käytä päivitys-VLANia, jolla on lähtevä yhteys vain päivitysikkunan aikana, päivitä yksi robotti kerrallaan ja pidä versiolokia. Jos eristys on täydellinen, tarvitaan toimittajan menettely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Koskeeko Cyber Resilience Act myös yritystä, joka käyttää robottia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Päävelvoitteet ovat valmistajalla. Ostajan on kysyttävä tukijakso, kanava haavoittuvuuksille ja päivitykset. Se, joka saattaa tuotteen markkinoille omalla merkillään, voi ottaa valmistajan velvoitteet."
+      }
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree-robotti yritysverkossa: tietoturvaopas IT:lle"/>
+<meta property="og:description" content="Unitree-robotin verkkoturvallisuus yrityksessä: VLAN, suljetut palvelut, OTA-päivitykset, data ja Cyber Resilience Act. Käytännön opas IT:lle."/>
+<meta property="og:url" content="https://abrarobotics.com/fi/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-ufficio.webp"/>
+<meta property="og:locale" content="fi_FI"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree-robotit toimitettuna Italiasta · tuki englanniksi</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/fi/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Tuotteet <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobotit</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Nelijalkaiset robotit</a>
+<a href="/en/umanoidi-en.html">Humanoidit</a>
+<a href="/en/accessori-en.html">Lisävarusteet</a>
+<a href="/en/catalogo-unitree-en.html">Koko luettelo</a>
+<a href="/fi/#models">Hinnasto</a>
+</div>
+</div>
+<a href="/fi/#models">Hinnat</a>
+<a href="/en/assessment-en.html">Löydä oikea robotti</a>
+<a href="/fi/#incentives">Rahoitus</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Toimialat <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Valmistus ja logistiikka</a>
+<a href="/en/universita-ricerca-en.html">Yliopistot ja tutkimus</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Tietoa meistä</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Varaa puhelu</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/fi/">Etusivu</a> / <a href="/fi/">Blogi</a> / Verkon tietoturva</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-ufficio.webp" alt="Unitree G1 toimistossa, yritysverkkoon liitetty robotti" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Sääntely · Tietoturva · Verkko</p>
+<h1>Yritysverkon tietoturva Unitree-robotin kanssa: eristä, päivitä ja suojaa data</h1>
+<div class="article-meta"><time datetime="2026-10-24">24. lokakuuta 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Lyhyesti:</strong> Unitree-robotti yrityksessä on päätepiste, jossa on Wi-Fi, Bluetooth, joskus 4G ja ohjaustietokone. Se on sijoitettava omaan VLANiin, lähtevä yhteys vain tarvittaviin palveluihin, tunnukset vaihdettava ja päivitykset tehtävä valvotussa ikkunassa. OTA-päivitykset ja sovelluksen sidonta kulkevat valmistajan pilven kautta: jos estät ne, menetät etäteleoperoinnin ja etäpäivitykset, et paikallista ohjausta Ethernetin ja DDS:n kautta.</div>
+</header>
+
+<div class="article-content">
+<p>Kun puhutaan <strong>yritysverkon tietoturvasta Unitree-robotin kanssa</strong>, lähtökohta on valmistajan dokumentoima arkkitehtuuri, ei se osasto, jolla robotti tulee kävelemään. G1 tai Go2 ei ole eristetty kodinkone: siinä on käyttöjärjestelmä, tili, päivityskanava ja G1 EDU -versiossa SSH-yhteys kehitystyöhön. IT-vastaavan tehtävä on päättää, mitkä näistä kanavista pidetään avoinna, missä segmentissä ja millä tunnuksilla.</p>
+<p class="article-note"><em>Yleistä tietoa, ei oikeudellista tai kyberturvallisuusneuvontaa. Kokoonpanot on sovitettava verkkoon, sopimukseen ja robotin versioon; yksittäistapauksessa tarvitaan toimittaja ja tarvittaessa asiantuntija.</em></p>
+
+<h2>Yritysverkon tietoturva: kolme erotettavaa tasoa</h2>
+<p>Ensimmäinen taso on <strong>verkko</strong>: kuka voi puhua robotille ja mihin kohteisiin. Toinen on <strong>päätepiste</strong>: tunnukset, avoimet palvelut, Bluetooth, USB-portit ja tilit. Kolmas on <strong>data</strong>: video, ääni, kartat, telemetria ja varmuuskopiot. Jos puututaan vain yhteen kolmesta, kaksi muuta jäävät suojaamatta.</p>
+<p>Hyödyllinen kysymys on, mitä kanavia todella tarvitaan. Kaukosäätimellä käytettävä Go2 ei vaadi etäteleoperointia; ROS 2:ta varten käytettävä G1 EDU vaatii yhteyden robotin verkkoon ja SSH:n, ei välttämättä sovellusta internetin kautta.</p>
+
+<h2>Mitä sovelluksia ja pilvipalveluita Unitree-robotti käyttää</h2>
+<p>Kehittäjädokumentaatio kuvaa Go2:lle ja G1:lle yhteisen arkkitehtuurin. Robotti yhdistyy pilvipalveluihin <strong>vasta käyttäjän luvalla</strong>. Pilveä käytetään kolmeen asiaan: telemetria ja diagnostiikka, järjestelmäpäivitykset ja etäteleoperointi WebRTC:n kautta. Ilmoitetut kanavat ovat MQTT IoT-viestintään ja päivityksiin, HTTP tiliin ja sidontaan, TURN/STUN videon reititykseen, kun suora yhteys ei toimi. Bluetooth LE:tä käytetään verkon määritykseen ja turvallisuuden tarkistukseen; robotin sisällä moduulien välinen viestintä kulkee DDS:n kautta.</p>
+<table>
+<thead><tr><th>Kanava</th><th>Mihin käytetään</th><th>Ohje IT:lle</th></tr></thead>
+<tbody>
+<tr><td>Ethernet ja DDS</td><td>Paikallinen ohjaus ja kehitys, ROS 2 -aiheet</td><td>Erillinen robotin verkko, ei reititystä käyttäjien verkkoon</td></tr>
+<tr><td>Wi-Fi infrastruktuuritilassa</td><td>Sovellus, telemetria ja pilvipalvelut</td><td>Oma SSID ja robotin VLAN</td></tr>
+<tr><td>Wi-Fi AP-tilassa</td><td>Alkumääritys: robotti luo hotspotin</td><td>Vain käyttöönotossa, valvotulla alueella</td></tr>
+<tr><td>Bluetooth LE</td><td>Verkon määritys ja turvallisuuden tarkistus</td><td>Rajattu fyysinen pääsy, kirjattu käyttöönotto</td></tr>
+<tr><td>MQTT ja HTTP pilveen</td><td>OTA, diagnostiikka, tili ja sidonta</td><td>Lähtevä yhteys vain tarvittaessa, lokien kanssa</td></tr>
+<tr><td>WebRTC, TURN ja STUN</td><td>Video ja komennot etänä</td><td>Estä, jos et käytä etäteleoperointia</td></tr>
+</tbody>
+</table>
+<h3>Paikallisverkko: Ethernet, DDS ja 192.168.123.x</h3>
+<p>Kaksi yksityiskohtaa muuttavat suunnitelmaa. Ensimmäinen: robotin sisäinen verkko käyttää aliverkkoa <code>192.168.123.x</code>; G1:n kehitystietokone vastaa osoitteessa <code>192.168.123.164</code>, Go2:n sulautettu tietokone osoitteessa <code>192.168.123.161</code>. Tätä aliverkkoa ei pidä altistaa yritysverkolle. Toinen: <a href="/fi/unitree-go2.html">Go2</a> Air- ja Pro-versioissa Ethernet- ja SBUS-liitäntöjä ei ole saatavilla; ne on varattu EDU-versioille. Jos projekti vaatii kaapelin, versio on valittava ennen tilausta, ei sen jälkeen.</p>
+<h2>Eristetyn VLANin määritys vaihe vaiheelta</h2>
+<p>Jokaiselle kohteelle sopivaa kokoonpanoa ei ole, mutta vaiheiden järjestys on aina sama. Esimerkki kuvitteellisilla numeroilla: VLAN 210 robotille, aliverkko <code>192.168.210.0/24</code>, yhdyskäytävä <code>192.168.210.1</code>, varatut osoitteet .10:stä .30:een; VLAN 200 hallinnalle, jossa on jump host.</p>
+<ol>
+<li><strong>Eritä liikenne.</strong> Luo oma VLAN ja SSID. Älä käytä uudelleen PC:iden tai hallintaverkon VLANia.</li>
+<li><strong>Estä sivusuuntainen reititys.</strong> Robotin VLAN ei saa päästä käyttäjien verkkoon. Ainoa hallintayhteys kulkee VLAN 200:n jump hostin kautta, nimetyin säännöin ja lokein.</li>
+<li><strong>Anna vakaa osoite.</strong> DHCP-varaukset tai staattiset IP:t jokaiselle robotille, MAC-osoite ja sarjanumero inventaariossa.</li>
+<li><strong>Aloita lähtevän liikenteen default deny -periaatteella.</strong> Avaa vain OTA:n, sovelluksen ja etäteleoperoinnin tarvitsemat kohteet ja vain ikkunoissa, joissa niitä tarvitaan.</li>
+<li><strong>Pidä DDS VLANin sisällä.</strong> Kehitystietokoneen ja robotin välinen paikallinen viestintä käyttää DDS:ää; löytämiseen tarkoitettua multicastia ei pidä päästää reitittimien tai palomuurien läpi ilman omaa kokoonpanoa. Ensimmäisissä testeissä seuraa opasta <a href="/fi/blog/ros2-unitree-guida-rapida.html">ROS 2 Unitree-roboteissa</a>.</li>
+<li><strong>Älä altista aliverkkoa 192.168.123.x.</strong> Jos toimittaja pyytää etäyhteyttä, varaa väliaikainen ja kirjattu istunto.</li>
+<li><strong>Mittaa ennen sulkemista.</strong> Anna liikenteen kulkea muutama päivä, kirjaa kohteet ja määrät ja rakenna sääntö vasta sitten. Ilman lähtötasoa allowlist muuttuu poikkeusluetteloksi.</li>
+</ol>
+
+<h2>Mitä voi poistaa käytöstä tai rajoittaa, jos ei tarvita</h2>
+<table>
+<thead><tr><th>Elementti</th><th>Milloin tarvitaan</th><th>Mitä tehdä, jos ei tarvita</th></tr></thead>
+<tbody>
+<tr><td>Robotin Wi-Fi-hotspot</td><td>Alkumääritys tai ympäristöt ilman Wi-Fiä</td><td>Käytä Ethernetiä tai infrastruktuuri-Wi-Fiä; vältä AP-tilaa tuotannossa</td></tr>
+<tr><td>Sovellus ja pilvitili</td><td>Sidonta, OTA, etäteleoperointi</td><td>Estä lähtevä yhteys; paikallinen ohjaus ja DDS jäävät</td></tr>
+<tr><td>4G-moduuli eSIMillä (integroitu SIM)</td><td>Käyttö kentällä tai liikkuvuus</td><td>Valitse versio ilman moduulia tai rajoita yhteyttä operaattorin kanssa</td></tr>
+<tr><td>Bluetooth LE</td><td>Määritys ja alkutarkistus</td><td>Ei käyttökanava: keskity käyttöönottoon valvotulla alueella</td></tr>
+<tr><td>SSH EDU-versioissa</td><td>Kehitys ja huolto</td><td>Vaihda salasana, käytä avaimia, pääsy vain jump hostin kautta</td></tr>
+<tr><td>WebRTC ja TURN</td><td>Etäteleoperointi</td><td>Estä lähtevä liikenne, jos robotti työskentelee vain omissa tiloissa</td></tr>
+<tr><td>USB-portit ja telakointiasema</td><td>Päivitykset ja kehitys</td><td>Valvottu fyysinen pääsy ja kirjaus toimenpiteistä</td></tr>
+</tbody>
+</table>
+<p>Kehittäjädokumentaatio ilmoittaa G1 EDUlle käyttäjän <code>unitree</code> ja tunnetun alkusalasanan; sama koskee Go2:n telakointiasemaa. Ne ovat laboratoriotunnuksia: ne on vaihdettava ennen kuin robotti liitetään verkkoon, samoin hotspotin tunnukset. Jaetulla tilillä yhteyttä ei voida kohdistaa henkilöön.</p>
+<p>Sovellus käyttää Bluetoothia verkon määrittämiseen ja yhteyden turvallisuuden tarkistamiseen. Hyödyllinen toimenpide on fyysinen: määritys rajatulla alueella, yrityksen puhelimella ja kirjatusti. Sen jälkeen pääsy alueelle ja portteihin pidetään rajattuna.</p>
+
+<h2>Päivitykset: miten ne hoidetaan avaamatta koko verkkoa</h2>
+<p>Unitree ilmoittaa OTA-päivitykset pilven kautta <a href="/fi/unitree-g1.html">G1</a>- ja Go2-roboteille; Go2-sivu täsmentää, että robotti yhdistyy vain käyttäjän luvalla, ja arkkitehtuuri mainitsee MQTT:n päivityksiä varten. Ilman internetyhteyttä oleva VLAN ei saa OTA-päivityksiä: se on otettava huomioon jo ennen asennusta.</p>
+<p>Kestävässä yrityskäytännössä on kuusi vaihetta:</p>
+<ol>
+<li><strong>Versioiden inventaario.</strong> Kirjaa robotin laiteohjelmisto, sovelluksen versio ja tarvittaessa telakan tai laskentamoduulin versio.</li>
+<li><strong>Päivitysikkuna.</strong> Avaa yhteys valmistajan palveluihin vain sovitussa ikkunassa, yksi robotti kerrallaan.</li>
+<li><strong>Testaa yhdellä yksilöllä.</strong> Päivitä ensin laboratoriorobotti, tarkista liike, anturit, verkko ja oma sovellus.</li>
+<li><strong>Tarkista päivityksen jälkeen.</strong> Tarkista asennettu versio ja tee verkkotesti uudelleen. Jos päivitys muuttaa toimintaa, pysähdy ja avaa tiketti.</li>
+<li><strong>Loki.</strong> Tallenna versio, päivämäärä, tulos ja tekijä.</li>
+<li><strong>Varasuunnitelma täydelliseen eristykseen.</strong> Jos verkossa ei ole lähtöyhteyttä, pyydä toimittajalta offline-menettely ja viralliset paketit. Ei kolmannen osapuolen laiteohjelmistoa.</li>
+</ol>
+<p>G1:n osalta sovelluksen puolen menettely, ennen aloitusta tehtävät tarkistukset ja vältettävät virheet ovat oppaassa <a href="/fi/blog/unitree-g1-aggiornare-firmware.html">G1:n laiteohjelmiston päivitys</a>. Yleisesti: akku täynnä, vakaa verkko, ei keskeytyksiä ja toimittajan kanssa sovittu palautusmenettely.</p>
+
+<h2>Data: video, ääni ja telemetria</h2>
+<p>G1:ssä on syvyyskamera, LiDAR, neljä mikrofonia ja kaiutin; Go2:ssa on kamera, LiDAR ja joissakin versioissa ääni ja interkom. Ne ovat sovellukselle hyödyllisiä antureita, mutta keräävät myös robotin ympäristöä. Jos robotti kuvaa tai tallentaa tunnistettavia henkilöitä, käsittely kuuluu GDPR:n ja tietosuojaviranomaisten ohjeiden piiriin, esimerkiksi Italian tietosuojaviranomaisen <a href="https://www.garanteprivacy.it/faq/videosorveglianza" rel="noopener noreferrer" target="_blank">videovalvontaa koskevan UKK:n</a>: käyttötarkoitus, tietojen minimointi, informointi, säilytysajat ja tarvittaessa vaikutustenarviointi.</p>
+<p>Unitree ilmoittaa, ettei pilven keräämiin käyttötietoihin sisälly yksityisyyteen liittyviä tietoja ja ettei palvelin kerää tai analysoi WebRTC-liikennettä. Ne ovat sopimuksessa hyödyllisiä ilmoituksia, mutta ne eivät korvaa rekisterinpitäjän arviota. Ennen etäteleoperointia päätä, mihin tallenteet päätyvät ja kuka voi nähdä ne.</p>
+<p>Robotin osalta kysy, onko levy salattu ja miten tiedot poistetaan ennen vaihtoa tai korjausta. Jos sitä ei ole dokumentoitu, kohtele sitä kuin kannettavaa tietokonetta.</p>
+
+<h2>Cyber Resilience Act: tärkeimmät faktat</h2>
+<p><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" rel="noopener noreferrer" target="_blank">Asetus (EU) 2024/2847</a>, Cyber Resilience Act, on ollut voimassa 10. joulukuuta 2024 alkaen. Ilmoitusvelvollisuudet tulevat sovellettaviksi 11. syyskuuta 2026; päävelvoitteet 11. joulukuuta 2027. Se koskee EU:n markkinoille saatettavia digitaalisia elementtejä sisältäviä tuotteita, siis myös verkkoon liitettyä robottia.</p>
+<p>Euroopan komission <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">tietosivun</a> mukaan valmistajan on varmistettava sisäänrakennettu turvallisuus, hallittava haavoittuvuuksia tukijakson ajan, ilmoitettava sen päättymisestä, annettava käyttöohjeet ja kiinnitettävä CE-merkintä. Se ei ole automaattinen velvoite ostajalle.</p>
+<p>Ostajalle CRA on kysymyslista ennen tilausta: tuen päättyminen, kanava haavoittuvuuksille, päivitykset, turvallisen asennuksen ohjeet. Ne ovat tietoja, jotka valmistajan on annettava ja jotka ostajan kannattaa tarkistaa. Se, joka saattaa tuotteen markkinoille omalla merkillään, voi ottaa valmistajan velvoitteet.</p>
+<p>CRA ei korvaa <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">koneasetusta (EU) 2023/1230</a>: koneiden turvallisuutta säännellään edelleen kyseisellä asetuksella. <a href="/fi/blog/unitree-regolamento-macchine-2027.html">Opas vuoden 2027 koneasetukseen</a> kertoo koneita koskevasta osasta.</p>
+
+<h2>Tarkistuslista ennen robotin viemistä tuotantoon</h2>
+<ol>
+<li>Oma VLAN ja SSID, ei reititystä käyttäjien verkkoon.</li>
+<li>Vakaat osoitteet ja inventaario, jossa MAC, sarjanumero ja laiteohjelmistoversio.</li>
+<li>Robotin, hotspotin ja tilin salasanat vaihdettu; ei henkilökohtaisia tilejä.</li>
+<li>Internet-yhteys oletuksena suljettu, avataan vain OTA-päivityksiin ja etäteleoperointiin.</li>
+<li>Kirjallinen päivitysmenettely, testaus yhdellä yksilöllä ja loki.</li>
+<li>Tietosuoja-arvio, jos robotti kuvaa tai tallentaa henkilöitä.</li>
+<li>Sopimus, jossa tukijakso ja kanava haavoittuvuuksien ilmoittamiseen.</li>
+<li>Käytöstä poiston suunnitelma: tietojen poisto, tilien peruutus, poisto VLANista.</li>
+</ol>
+
+<div class="product-strip" aria-label="Artikkelissa mainitut tuotteet">
+<div class="product-strip-head"><span>Artikkelissa mainitut tuotteet</span><a href="/en/catalogo-unitree-en.html">Unitree-luettelo</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 Edu Standard (G1-U1)" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 Edu Standard (G1-U1)</a></h3>
+<p>SDK, 23 DoF, Ethernet omaan kehitykseen</p>
+<div class="product-card-price">38 004,54 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjouspyyntö</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-go2-edu-en.html"><img alt="Unitree Go2 Edu Standard" loading="lazy" src="/images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-go2-edu-en.html">Unitree Go2 Edu Standard</a></h3>
+<p>SDK ja ROS 2, Ethernet RJ45</p>
+<div class="product-card-price">8 804,14 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjouspyyntö</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-b2-en.html"><img alt="Unitree B2" loading="lazy" src="/images/official/unitree-b2-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-b2-en.html">Unitree B2</a></h3>
+<p>Teollisuuden nelijalkainen robotti, noin 60 kg</p>
+<div class="product-card-price">66 827,62 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-b2-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjouspyyntö</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<section class="article-faq">
+<h2>Usein kysytyt kysymykset</h2>
+<div class="faq-item"><h3>Voiko Unitree-robotti olla samassa VLANissa yrityksen PC:iden kanssa?</h3><p>Ei. Se kuuluu omaan VLANiin, josta ei ole reititystä käyttäjien verkkoon; hallintayhteys kulkee jump hostin kautta. Näin robotin ongelma ei altista muuta verkkoa.</p></div>
+<div class="faq-item"><h3>Mitkä portit minun on avattava Unitree-robottia varten?</h3><p>Älä avaa saapuvia portteja. Robotti avaa lähteviä yhteyksiä pilvipalveluihin OTA-päivityksiä, sovellusta ja etäteleoperointia varten; salli vain ne kohteet ja vain silloin, kun niitä tarvitaan. Paikalliseen käyttöön riittää robotin verkko.</p></div>
+<div class="faq-item"><h3>Voinko käyttää Unitree-robottia liittämättä sitä pilveen?</h3><p>Kyllä, paikallinen ohjaus Ethernetin ja DDS:n kautta onnistuu EDU-versioissa. Menetät OTA-päivitykset ja sovelluksen etäteleoperoinnin; offline-päivitysmenettely on pyydettävä toimittajalta.</p></div>
+<div class="faq-item"><h3>Miten päivitän laiteohjelmiston eristetyssä verkossa?</h3><p>Käytä päivitys-VLANia, jolla on lähtevä yhteys vain päivitysikkunan aikana, päivitä yksi robotti kerrallaan ja pidä versiolokia. Jos eristys on täydellinen, tarvitaan toimittajan menettely.</p></div>
+<div class="faq-item"><h3>Koskeeko Cyber Resilience Act myös yritystä, joka käyttää robottia?</h3><p>Päävelvoitteet ovat valmistajalla. Ostajan on kysyttävä tukijakso, kanava haavoittuvuuksille ja päivitykset. Se, joka saattaa tuotteen markkinoille omalla merkillään, voi ottaa valmistajan velvoitteet.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Lähteet</h2>
+<ol>
+<li>Unitree, Go2:n järjestelmäarkkitehtuuri (pilvi käyttäjän luvan jälkeen, MQTT, HTTP, WebRTC, BLE): <a href="https://support.unitree.com/home/en/developer/Architecture%20Description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, G1:n järjestelmäarkkitehtuuri (pilvi käyttäjän luvan jälkeen, MQTT, HTTP, TURN/STUN, BLE, DDS): <a href="https://support.unitree.com/home/en/G1_developer/architecture_description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, Go2:n virallinen sivu (Wi-Fi 6, Bluetooth, 4G-moduuli, OTA pilven kautta käyttäjän luvalla): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a></li>
+<li>Unitree, G1:n virallinen sivu (Wi-Fi 6, Bluetooth 5.2, OTA): <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, Go2:n sähköliitännät ja versiot (Ethernet ja SBUS vain EDUssa): <a href="https://support.unitree.com/home/en/developer/about_Go2" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, G1-kehittäjien UKK (alkukäyttäjätunnus ja alkusalasana, PC1:n ja PC2:n IP-osoitteet): <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, Go2-pikaopas (verkko 192.168.123.x ja sulautetun tietokoneen IP): <a href="https://support.unitree.com/home/en/developer/Quick_start" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, Go2:n telakointiasema (alkukäyttäjätunnus ja alkusalasana): <a href="https://support.unitree.com/home/en/developer/module_update" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Euroopan komissio, Cyber Resilience Actin yhteenveto: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-summary" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Euroopan komissio, valmistajien velvoitteet CRA:n mukaan: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Asetus (EU) 2024/2847 (Cyber Resilience Act), virallinen teksti: <a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" rel="noopener noreferrer" target="_blank">EUR-Lex</a></li>
+<li>Italian tietosuojaviranomainen, UKK videovalvonnasta: <a href="https://www.garanteprivacy.it/faq/videosorveglianza" rel="noopener noreferrer" target="_blank">garanteprivacy.it</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Ennen kuin robotti liitetään verkkoon</h2><p>Lähdemme liikkeelle versiosta ja suunnitellusta käytöstä: Ethernet, Wi-Fi, pilvi ja päivitykset muuttavat verkkosuunnitelmaa. Voimme auttaa määrittelemään ne ennen tilausta.</p><a class="btn btn-primary" href="/en/assessment-en.html">Pyydä arviointi</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Unitree-humanoidit</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/fi/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Sovellettua robotiikkaa yrityksille, yliopistoille ja tutkimuslaitoksille. Laitteet, räätälöity ohjelmisto, koulutus ja tekninen tuki.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigointi</span>
+<a href="/en/manifattura-logistica-en.html">Valmistus ja logistiikka</a>
+<a href="/en/universita-ricerca-en.html">Yliopistot ja tutkimus</a>
+<a href="/en/assessment-en.html">Löydä oikea robotti</a>
+<a href="/fi/#incentives">Rahoitus</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Tuotteet</span>
+<a href="/en/lp-cobot-en.html">Cobotit</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Nelijalkaiset robotit</a>
+<a href="/en/umanoidi-en.html">Humanoidit</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Yhteystiedot</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italia</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Varaa puhelu</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Kaikki oikeudet pidätetään.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
