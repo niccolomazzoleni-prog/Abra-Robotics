@@ -1,0 +1,375 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-offline-sicurezza-rete-aziendale.html -->
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Netværkssikkerhed med Unitree-robotter: IT-guide</title>
+<meta name="description" content="Netværkssikkerhed med Unitree: VLAN, tjenester du skal begrænse, OTA, data og hvad du skal kræve omkring Cyber Resilience Act."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/da/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-offline-sicurezza-rete-aziendale.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Netværkssikkerhed med Unitree-robotter: IT-guide",
+  "description": "Netværkssikkerhed med Unitree: VLAN, tjenester du skal begrænse, OTA, data og hvad du skal kræve omkring Cyber Resilience Act.",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/da/blog/unitree-offline-sicurezza-rete-aziendale.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-ufficio.webp",
+  "inLanguage": "da",
+  "url": "https://abrarobotics.com/da/blog/unitree-offline-sicurezza-rete-aziendale.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kan en Unitree-robot være på samme VLAN som virksomhedens pc'er?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. Den skal placeres på et dedikeret VLAN uden routing til brugernetværket; administrativ adgang går via en jump host. På den måde eksponerer et problem med robotten ikke resten af netværket."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvilke porte skal jeg åbne for en Unitree?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Åbn ikke indgående porte. Robotten opretter udgående forbindelser til cloudtjenesterne til OTA, app og teleoperation; tillad kun disse destinationer, og kun når de er nødvendige. Til lokal brug er robottens eget netværk nok."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg bruge en Unitree uden at tilslutte den til cloudløsningen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja til lokal styring via Ethernet og DDS på EDU-versionerne. Du mister OTA og teleoperation fra appen; offlineopdateringsproceduren skal du bede leverandøren om."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan opdaterer jeg firmwaren i et isoleret netværk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Med et opdaterings-VLAN, der kun har udgående adgang i vinduet, én robot ad gangen og en versionslog. Hvis isoleringen er total, kræves en procedure fra leverandøren."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Omfatter Cyber Resilience Act også virksomheden, der bruger robotten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De vigtigste forpligtelser påhviler fabrikanten. Køberen skal spørge om supportperiode, kanal til sårbarheder og opdateringer. Den, der markedsfører produktet under eget mærke, kan få forpligtelser som fabrikant."
+      }
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Netværkssikkerhed med Unitree-robotter: IT-guide"/>
+<meta property="og:description" content="Netværkssikkerhed med Unitree: VLAN, tjenester du skal begrænse, OTA, data og hvad du skal kræve omkring Cyber Resilience Act."/>
+<meta property="og:url" content="https://abrarobotics.com/da/blog/unitree-offline-sicurezza-rete-aziendale.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-ufficio.webp"/>
+<meta property="og:locale" content="da_DK"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree-robotter leveret fra Italien · support på engelsk</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/da/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Produkter <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Firbenede robotter</a>
+<a href="/en/umanoidi-en.html">Humanoider</a>
+<a href="/en/accessori-en.html">Tilbehør</a>
+<a href="/en/catalogo-unitree-en.html">Hele kataloget</a>
+<a href="/da/#models">Prisliste</a>
+</div>
+</div>
+<a href="/da/#models">Priser</a>
+<a href="/en/assessment-en.html">Find den rigtige robot</a>
+<a href="/da/#incentives">Finansiering</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Brancher <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Produktion &amp; logistik</a>
+<a href="/en/universita-ricerca-en.html">Universiteter &amp; forskning</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Om os</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book et opkald</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/da/">Forside</a> / <a href="/da/">Blog</a> / Netværkssikkerhed</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-ufficio.webp" alt="Unitree G1 på et kontor, robot forbundet til virksomhedens netværk" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Lovgivning · Sikkerhed · Netværk</p>
+<h1>Netværkssikkerhed med Unitree-robotter: isolér, opdatér, beskyt data</h1>
+<div class="article-meta"><time datetime="2026-10-24">24. oktober 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Kort fortalt:</strong> en Unitree-robot i virksomheden er et endpoint med Wi-Fi, Bluetooth, til tider 4G og en indbygget kontrolcomputer. Den skal placeres på et dedikeret VLAN, have udgående adgang kun til de nødvendige tjenester, ændrede legitimationsoplysninger og opdateringer i et kontrolleret vindue. OTA og app-binding går via producentens cloud: blokerer du dem, mister du teleoperation og fjernopdateringer, men ikke den lokale styring via Ethernet og DDS.</div>
+</header>
+
+<div class="article-content">
+<p>Når man taler om <strong>netværkssikkerhed i virksomheden med Unitree-robotter</strong>, er udgangspunktet den arkitektur, producenten dokumenterer, ikke den afdeling, robotten skal gå rundt i. En G1 eller Go2 er ikke et isoleret husholdningsapparat: den har et styresystem, en konto, en opdateringskanal og, på G1 EDU, SSH-adgang til udvikling. IT-ansvarliges opgave er at beslutte, hvilke af disse kanaler der skal være åbne, på hvilket segment og med hvilke legitimationsoplysninger.</p>
+<p class="article-note"><em>Generelle oplysninger, ikke juridisk eller cybersikkerhedsmæssig rådgivning. Konfigurationerne skal tilpasses netværk, kontrakt og robotversion; i en konkret sag er der brug for leverandøren og, hvor det er relevant, en konsulent.</em></p>
+
+<h2>Netværkssikkerhed i virksomheden: de tre niveauer, der skal adskilles</h2>
+<p>Det første niveau er <strong>netværket</strong>: hvem der kan tale med robotten, og mod hvilke destinationer. Det andet er <strong>endpointet</strong>: legitimationsoplysninger, eksponerede tjenester, Bluetooth, USB-porte og konti. Det tredje er <strong>data</strong>: video, lyd, kort, telemetri og backup. Hvis man kun håndterer et af de tre, er de to andre stadig ubeskyttede.</p>
+<p>Det nyttige spørgsmål er, hvilke kanaler der reelt er brug for. En Go2, der bruges med fjernbetjening, kræver ikke teleoperation over netværk; en G1 EDU til ROS 2 kræver adgang til robottens netværk og SSH, ikke nødvendigvis appen over internettet.</p>
+
+<h2>Hvilke apps og cloudtjenester bruger en Unitree-robot</h2>
+<p>Udviklerdokumentationen beskriver en arkitektur, der er fælles for Go2 og G1. Robotten opretter først forbindelse til cloudtjenesterne, når brugeren har givet tilladelse. Cloudløsningen bruges til tre ting: telemetri og diagnostik, systemopdateringer og teleoperation via WebRTC. De angivne kanaler er MQTT til IoT-kommunikation og opdateringer, HTTP til konto og binding, TURN/STUN til at sende video, når den direkte forbindelse ikke virker. Bluetooth LE bruges til netværkskonfiguration og sikkerhedskontrol; internt i robotten kommunikerer modulerne via DDS.</p>
+<table>
+<thead><tr><th>Kanal</th><th>Hvad den bruges til</th><th>Anbefaling til IT</th></tr></thead>
+<tbody>
+<tr><td>Ethernet og DDS</td><td>Lokal styring og udvikling, ROS 2-topics</td><td>Separat robotnetværk uden routing til brugerne</td></tr>
+<tr><td>Wi-Fi i infrastrukturtilstand</td><td>App, telemetri og cloudtjenester</td><td>Dedikeret SSID og robot-VLAN</td></tr>
+<tr><td>Wi-Fi i AP-tilstand</td><td>Første opsætning: robotten opretter et hotspot</td><td>Kun ved onboarding i et kontrolleret område</td></tr>
+<tr><td>Bluetooth LE</td><td>Netværkskonfiguration og sikkerhedskontrol</td><td>Begrænset fysisk adgang, sporet onboarding</td></tr>
+<tr><td>MQTT og HTTP mod cloud</td><td>OTA, diagnostik, konto og binding</td><td>Udgående trafik kun når nødvendigt, med log</td></tr>
+<tr><td>WebRTC, TURN og STUN</td><td>Video og kommandoer på afstand</td><td>Blokér, hvis du ikke bruger teleoperation</td></tr>
+</tbody>
+</table>
+<h3>Det lokale netværk: Ethernet, DDS og 192.168.123.x</h3>
+<p>To detaljer ændrer designet. Den første: robottens interne netværk bruger subnet <code>192.168.123.x</code>; G1'ens udviklingscomputer svarer på <code>192.168.123.164</code>, Go2'ens indbyggede computer på <code>192.168.123.161</code>. Det må ikke eksponeres mod virksomhedens netværk. Den anden: på <a href="/da/unitree-go2.html">Go2</a> Air og Pro er Ethernet- og SBUS-grænseflader ikke tilgængelige; de er forbeholdt EDU. Hvis projektet kræver et kabel, skal versionen vælges før bestillingen, ikke efter.</p>
+<h2>Konfigurer et isoleret VLAN, trin for trin</h2>
+<p>Der findes ikke én konfiguration, der passer til alle lokaliteter, men rækkefølgen er altid den samme. Eksempel med hypotetiske tal: VLAN 210 til robotterne, subnet <code>192.168.210.0/24</code>, gateway <code>192.168.210.1</code>, adresser reserveret fra <code>.10</code> til <code>.30</code>; VLAN 200 til administration med en jump host.</p>
+<ol>
+<li><strong>Adskil trafikken.</strong> Opret et dedikeret VLAN og SSID. Genbrug ikke VLAN'et til pc'erne eller administrations-VLAN'et.</li>
+<li><strong>Blokér lateral routing.</strong> Robot-VLAN'et må ikke kunne nå brugernetværket. Den eneste administrative adgang går via en jump host på VLAN 200 med navngivne regler og log.</li>
+<li><strong>Tildel stabile adresser.</strong> DHCP-reservationer eller statiske IP'er pr. robot, med MAC-adresse og serienummer i inventaret.</li>
+<li><strong>Start med default deny på udgående trafik.</strong> Åbn kun de destinationer, der er nødvendige for OTA, app og teleoperation, og kun i de vinduer, hvor de bruges.</li>
+<li><strong>Hold DDS inde i VLAN'et.</strong> Den lokale kommunikation mellem udviklings-pc og robot bruger DDS; discovery-multicast bør ikke passere routere eller firewalls uden en dedikeret konfiguration. Til de første tests kan du følge guiden <a href="/da/blog/ros2-unitree-guida-rapida.html">ROS 2 på Unitree-robotter</a>.</li>
+<li><strong>Eksponér ikke subnet 192.168.123.x.</strong> Hvis en leverandør beder om fjernadgang, så planlæg en midlertidig og sporet session.</li>
+<li><strong>Mål, før du lukker.</strong> Lad trafikken passere i nogle dage, registrér destinationer og mængder, og byg derefter reglen. Uden en baseline bliver allowlisten en liste af undtagelser.</li>
+</ol>
+
+<h2>Hvad du skal deaktivere eller begrænse, hvis det ikke er nødvendigt</h2>
+<table>
+<thead><tr><th>Element</th><th>Hvornår det er nødvendigt</th><th>Hvad du gør, hvis det ikke er nødvendigt</th></tr></thead>
+<tbody>
+<tr><td>Robottens Wi-Fi-hotspot</td><td>Første opsætning eller miljøer uden Wi-Fi</td><td>Brug Ethernet eller infrastruktur-Wi-Fi; undgå AP i drift</td></tr>
+<tr><td>App og cloudkonto</td><td>Binding, OTA, teleoperation</td><td>Blokér udgående trafik; lokal styring og DDS virker stadig</td></tr>
+<tr><td>4G-modul med eSIM (integreret SIM)</td><td>Brug uden for virksomhedens adresse eller mobilitet</td><td>Vælg en version uden modul, eller begræns forbindelsen hos operatøren</td></tr>
+<tr><td>Bluetooth LE</td><td>Konfiguration og første kontrol</td><td>Det er ikke en driftskanal: saml onboarding i et kontrolleret område</td></tr>
+<tr><td>SSH på EDU-versionerne</td><td>Udvikling og vedligeholdelse</td><td>Ændret adgangskode, nøgler, adgang kun fra jump host</td></tr>
+<tr><td>WebRTC og TURN</td><td>Teleoperation på afstand</td><td>Blokér udgående trafik, hvis robotten kun arbejder på virksomhedens adresse</td></tr>
+<tr><td>USB-porte og dockingstation</td><td>Opdateringer og udvikling</td><td>Kontrolleret fysisk adgang og log over indgreb</td></tr>
+</tbody>
+</table>
+<p>Udviklerdokumentationen angiver brugeren <code>unitree</code> og en kendt startadgangskode til G1 EDU; det samme gælder dockingstationen til Go2. Det er legitimationsoplysninger til laboratoriebrug: de skal ændres, før robotten tilsluttes netværket, sammen med hotspottets legitimationsoplysninger. Med en delt konto kan en adgang ikke knyttes til en bestemt person.</p>
+<p>Appen bruger Bluetooth til at konfigurere netværket og kontrollere forbindelsens sikkerhed. Den mest effektive foranstaltning er fysisk: opsætning i et aflåst område, firmatelefon og registreret handling. Derefter er adgangen til området og portene stadig begrænset.</p>
+
+<h2>Opdateringer: sådan håndterer du dem uden at åbne alt</h2>
+<p>Unitree angiver OTA via cloud til <a href="/da/unitree-g1.html">G1</a> og til Go2; Go2-siden præciserer, at robotten kun opretter forbindelse med brugerens tilladelse, og arkitekturen angiver MQTT til opdateringer. Et VLAN uden internet modtager ikke OTA: det skal indgå i designet før installationen.</p>
+<p>En bæredygtig procedure i virksomheden har seks trin:</p>
+<ol>
+<li><strong>Versionsinventar.</strong> Notér robottens firmware, appversion og, hvis relevant, versionen af dock eller beregningsmodul.</li>
+<li><strong>Opdateringsvindue.</strong> Åbn kun udgående trafik til producentens tjenester i det aftalte vindue, med én robot ad gangen.</li>
+<li><strong>Test på en enhed.</strong> Opdatér først en laboratorierobot, og kontrollér bevægelse, sensorer, netværk og jeres applikation.</li>
+<li><strong>Kontrol efter opdateringen.</strong> Tjek den installerede version, og gentag netværkstesten. Hvis opdateringen ændrer adfærden, så stop, og åbn en sag.</li>
+<li><strong>Log.</strong> Gem version, dato, resultat og operatør.</li>
+<li><strong>Plan B ved fuld isolering.</strong> Hvis netværket ikke har udgående adgang, skal du bede leverandøren om offlineproceduren og de officielle pakker. Ingen tredjepartsfirmware.</li>
+</ol>
+<p>For G1 finder du app-proceduren, kontrollerne før start og de fejl, du skal undgå, i guiden til <a href="/da/blog/unitree-g1-aggiornare-firmware.html">firmwareopdatering af G1</a>. Generelt: fuldt batteri, stabilt netværk, ingen afbrydelser og en rollback-procedure, der er aftalt med leverandøren.</p>
+
+<h2>Data: video, lyd og telemetri</h2>
+<p>En G1 har dybdekamera, LiDAR, fire mikrofoner og højttaler; en Go2 har kamera, LiDAR og på visse versioner tale og intercom. Det er sensorer, der er nyttige for applikationen, men de registrerer også det, der er omkring robotten. Hvis robotten filmer eller registrerer identificerbare personer, er behandlingen omfattet af GDPR og datatilsynsmyndighedernes vejledning om videoovervågning: formål, dataminimering, oplysningspligt, opbevaringsperioder og, hvor betingelserne er opfyldt, en konsekvensanalyse.</p>
+<p>Unitree oplyser, at de driftsdata, der indsamles via cloudløsningen, ikke vedrører privatlivet, og at WebRTC-trafikken hverken indsamles eller analyseres af serveren. Det er nyttige erklæringer til kontrakten, men de erstatter ikke den dataansvarliges vurdering. Før teleoperation skal du beslutte, hvor optagelserne ender, og hvem der kan se dem.</p>
+<p>På robotten skal du spørge, om disken er krypteret, og hvordan data slettes før bytte eller reparation. Hvis det ikke er dokumenteret, skal den behandles som en bærbar computer.</p>
+
+<h2>Cyber Resilience Act: de fakta, du skal kende</h2>
+<p>Forordning (EU) 2024/2847, Cyber Resilience Act, har været i kraft siden 10. december 2024. Rapporteringsforpligtelserne gælder fra 11. september 2026; de vigtigste forpligtelser gælder fra 11. december 2027. Den omfatter produkter med digitale elementer, der bringes på EU-markedet, og dermed også en tilsluttet robot.</p>
+<p>Ifølge <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">Europa-Kommissionens faktaark</a> skal fabrikanten sikre sikkerhed som standard, håndtere sårbarheder i supportperioden, oplyse hvornår supporten ophører, levere brugsanvisning og påsætte CE-mærkning. Det er ikke en automatisk forpligtelse for køberen.</p>
+<p>For køberen er CRA en liste af spørgsmål før bestilling: supportens ophør, kanal til sårbarheder, opdateringer og instruktioner til sikker installation. Det er oplysninger, som fabrikanten skal give, og som kan kontrolleres inden køb. Den, der markedsfører produktet under eget mærke, kan få forpligtelser som fabrikant.</p>
+<p>CRA erstatter ikke <a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj" rel="noopener noreferrer" target="_blank">maskinforordningen (EU) 2023/1230</a>: maskinsikkerheden er fortsat reguleret af den forordning. <a href="/da/blog/unitree-regolamento-macchine-2027.html">Guiden til maskinforordningen 2027</a> forklarer maskindelen.</p>
+
+<h2>Tjekliste, før robotten flyttes ud i afdelingen</h2>
+<ol>
+<li>Dedikerede VLAN og SSID uden routing til brugernetværket.</li>
+<li>Stabile adresser og et inventar med MAC-adresse, serienummer og firmwareversion.</li>
+<li>Adgangskoder til robot, hotspot og konto ændret; ingen personlige konti.</li>
+<li>Internetadgang lukket som standard, åbnet kun til OTA og teleoperation.</li>
+<li>Skriftlig opdateringsprocedure med test på en enhed og log.</li>
+<li>Privatlivsvurdering, hvis robotten filmer eller registrerer personer.</li>
+<li>Kontrakt med supportperiode og kanal til at rapportere sårbarheder.</li>
+<li>Udfasningsplan: sletning af data, tilbagekaldelse af konti, fjernelse fra VLAN.</li>
+</ol>
+
+<div class="product-strip" aria-label="Produkter nævnt i artiklen">
+<div class="product-strip-head"><span>Produkter nævnt i artiklen</span><a href="/en/catalogo-unitree-en.html">Unitree-katalog</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 Edu Standard (G1-U1)" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 Edu Standard (G1-U1)</a></h3>
+<p>SDK, 23 DoF, Ethernet til udvikling</p>
+<div class="product-card-price">38.004,54 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-go2-edu-en.html"><img alt="Unitree Go2 Edu Standard" loading="lazy" src="/images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-go2-edu-en.html">Unitree Go2 Edu Standard</a></h3>
+<p>SDK og ROS 2, Ethernet RJ45</p>
+<div class="product-card-price">8.804,14 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-b2-en.html"><img alt="Unitree B2" loading="lazy" src="/images/official/unitree-b2-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-b2-en.html">Unitree B2</a></h3>
+<p>Industriel firbenet robot, ca. 60 kg</p>
+<div class="product-card-price">66.827,62 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-b2-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<section class="article-faq">
+<h2>Ofte stillede spørgsmål</h2>
+<div class="faq-item"><h3>Kan en Unitree-robot være på samme VLAN som virksomhedens pc'er?</h3><p>Nej. Den skal placeres på et dedikeret VLAN uden routing til brugernetværket; administrativ adgang går via en jump host. På den måde eksponerer et problem med robotten ikke resten af netværket.</p></div>
+<div class="faq-item"><h3>Hvilke porte skal jeg åbne for en Unitree?</h3><p>Åbn ikke indgående porte. Robotten opretter udgående forbindelser til cloudtjenesterne til OTA, app og teleoperation; tillad kun disse destinationer, og kun når de er nødvendige. Til lokal brug er robottens eget netværk nok.</p></div>
+<div class="faq-item"><h3>Kan jeg bruge en Unitree uden at tilslutte den til cloudløsningen?</h3><p>Ja til lokal styring via Ethernet og DDS på EDU-versionerne. Du mister OTA og teleoperation fra appen; offlineopdateringsproceduren skal du bede leverandøren om.</p></div>
+<div class="faq-item"><h3>Hvordan opdaterer jeg firmwaren i et isoleret netværk?</h3><p>Med et opdaterings-VLAN, der kun har udgående adgang i vinduet, én robot ad gangen og en versionslog. Hvis isoleringen er total, kræves en procedure fra leverandøren.</p></div>
+<div class="faq-item"><h3>Omfatter Cyber Resilience Act også virksomheden, der bruger robotten?</h3><p>De vigtigste forpligtelser påhviler fabrikanten. Køberen skal spørge om supportperiode, kanal til sårbarheder og opdateringer. Den, der markedsfører produktet under eget mærke, kan få forpligtelser som fabrikant.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Kilder</h2>
+<ol>
+<li>Unitree, systemarkitektur for Go2 (cloud efter tilladelse, MQTT, HTTP, WebRTC, BLE): <a href="https://support.unitree.com/home/en/developer/Architecture%20Description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, systemarkitektur for G1 (cloud efter tilladelse, MQTT, HTTP, TURN/STUN, BLE, DDS): <a href="https://support.unitree.com/home/en/G1_developer/architecture_description" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, officiel Go2-side (Wi-Fi 6, Bluetooth, 4G-modul, OTA via cloud med tilladelse): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a></li>
+<li>Unitree, officiel G1-side (Wi-Fi 6, Bluetooth 5.2, OTA): <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, elektriske interfaces og Go2-versioner (Ethernet og SBUS kun på EDU): <a href="https://support.unitree.com/home/en/developer/about_Go2" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, FAQ for G1-udviklere (startbrugernavn og startadgangskode, IP for PC1 og PC2): <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, hurtigguide til Go2 (netværk 192.168.123.x og IP for den indbyggede computer): <a href="https://support.unitree.com/home/en/developer/Quick_start" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, dockingstation til Go2 (startbrugernavn og startadgangskode): <a href="https://support.unitree.com/home/en/developer/module_update" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Europa-Kommissionen, oversigt over Cyber Resilience Act: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-summary" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Europa-Kommissionen, fabrikanternes forpligtelser i henhold til CRA: <a href="https://digital-strategy.ec.europa.eu/en/policies/cra-manufacturers" rel="noopener noreferrer" target="_blank">digital-strategy.ec.europa.eu</a></li>
+<li>Forordning (EU) 2024/2847 (Cyber Resilience Act), officiel tekst: <a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" rel="noopener noreferrer" target="_blank">EUR-Lex</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Før robotten tilsluttes netværket</h2><p>Vi tager udgangspunkt i versionen og det planlagte brug: Ethernet, Wi-Fi, cloud og opdateringer ændrer netværksdesignet. Vi kan hjælpe jer med at definere det før bestillingen.</p><a class="btn btn-primary" href="/en/assessment-en.html">Få en vurdering</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Unitree-humanoider</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/da/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Anvendt robotteknologi til virksomheder, universiteter og forskningsinstitutioner. Hardware, skræddersyet software, træning og teknisk support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Produktion &amp; logistik</a>
+<a href="/en/universita-ricerca-en.html">Universiteter &amp; forskning</a>
+<a href="/en/assessment-en.html">Find den rigtige robot</a>
+<a href="/da/#incentives">Finansiering</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Produkter</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Firbenede robotter</a>
+<a href="/en/umanoidi-en.html">Humanoider</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Kontakt</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italien</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book et opkald</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Alle rettigheder forbeholdes.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
