@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Abra Robotics, copertina reel Instagram: G1 che parla con il pubblico</title>
+<link rel="stylesheet" href="../assets/sistema.css">
+<style>
+  body{width:1080px;height:1920px;overflow:hidden;position:relative;background:var(--flanella);color:var(--gesso)}
+  .testa{position:absolute;left:72px;right:72px;top:150px;display:flex;justify-content:space-between;align-items:center}
+  .testa img{height:44px}
+  .testa .t-etichetta{font-size:20px;color:var(--carta)}
+  h1{position:absolute;left:72px;top:262px;width:930px;font-size:112px;color:var(--gesso)}
+  .pannello{position:absolute;left:380px;top:740px;width:628px;height:900px}
+  .robot{position:absolute;left:560px;top:792px;height:820px;filter:grayscale(1) contrast(1.08);mix-blend-mode:multiply}
+  .metro-v{position:absolute;left:418px;top:775px}
+  .copione{position:absolute;left:72px;top:900px;width:400px;background:var(--tela);color:var(--flanella);padding:30px 30px 26px}
+  .copione:after{content:"";position:absolute;inset:9px;border:1.6px dashed rgba(47,51,55,.55);pointer-events:none}
+  .copione .t-etichetta{font-size:16px;color:var(--grafite)}
+  .copione q{display:block;font-size:34px;line-height:1.16;font-weight:560;font-stretch:88%;margin:16px 0 18px;quotes:"«" "»"}
+  .copione .riga{display:flex;justify-content:space-between;font-size:15px;color:var(--grafite);padding-top:12px;border-top:1.5px solid var(--flanella)}
+  .foro{position:absolute;right:22px;top:22px;width:16px;height:16px;border-radius:50%;background:var(--flanella)}
+  .filo{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+  .piede{position:absolute;left:72px;right:72px;bottom:150px;display:flex;justify-content:space-between;align-items:flex-end}
+  .piede .t-sotto{font-size:30px;max-width:640px}
+  .piede .t-etichetta{font-size:16px;color:var(--carta);text-align:right;line-height:1.5}
+  .segn{position:absolute;right:96px;top:1600px;font-size:13px;color:var(--grafite)}
+</style>
+</head>
+<body>
+<div class="testa"><img src="../logo/mono-negativo.svg" alt="Abra Robotics"><span class="t-etichetta">Demo dal vivo · G1</span></div>
+<h1 class="t-display">Fai parlare un umanoide del tuo marchio, con parole che approvi tu.</h1>
+
+<svg class="pannello" viewBox="0 0 628 900" aria-hidden="true"><path d="M0 0 H560 L628 70 V900 H0 Z" fill="#D9CBAA"/><path d="M14 14 H554 L614 76 V886 H14 Z" fill="none" stroke="#2F3337" stroke-width="1.6" stroke-dasharray="12 8" opacity=".5"/><path d="M300 0 l10 14 l10 -14Z M628 440 l-14 10 l14 10Z" fill="#2F3337"/></svg>
+<div class="metro-v" data-metro data-from="0" data-to="135" data-step="6.05" data-dir="v" data-w="46" data-label="10"></div>
+<img class="robot" src="../assets/segnaposto/unitree-g1.png" alt="Segnaposto: umanoide Unitree G1, immagine ufficiale del produttore">
+
+<svg class="filo" viewBox="0 0 1080 1920" aria-hidden="true">
+  <path d="M472 990 C 560 980, 640 900, 700 868" fill="none" stroke="#2F3337" stroke-width="5" stroke-linecap="round" stroke-dasharray="20 12"/>
+  <circle cx="706" cy="865" r="9" fill="#2F3337"/>
+</svg>
+
+<div class="copione">
+  <span class="foro"></span>
+  <div class="t-etichetta">Copione approvato, rev. 3</div>
+  <q>Buongiorno. Vi racconto in due minuti come nasce una piastrella in questo stabilimento.</q>
+  <div class="riga"><span>Base di conoscenza: 42 schede del cliente</span><span>Esempio</span></div>
+</div>
+
+<span class="segn t-etichetta">Segnaposto: foto ufficiale Unitree</span>
+<div class="piede">
+  <p class="t-sotto">Guarda come il G1 risponde alle domande del pubblico in fiera.</p>
+  <span class="t-etichetta">Noleggio a giornata<br>con tecnico Abra</span>
+</div>
+<script src="../assets/metro.js"></script>
+</body>
+</html>

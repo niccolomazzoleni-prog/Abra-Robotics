@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<title>Offerta Abra Robotics, fasi e criteri (esempio)</title>
+<link rel="stylesheet" href="../assets/b.css">
+<style>
+@page{size:A4;margin:0}
+body{width:794px;height:1123px;position:relative;overflow:hidden;background:var(--carta);padding:44px 56px 0}
+.testa{display:flex;align-items:center;gap:12px;font:500 11px var(--sans);color:var(--grafite);padding-bottom:12px;border-bottom:1px solid var(--pietra)}
+.testa img{height:20px}
+.testa .pag{margin-left:auto}
+h2{font-weight:400;font-size:33px;line-height:1.1;letter-spacing:-.018em;margin-top:30px;font-variation-settings:"opsz" 48}
+h2 em{font-style:italic;color:var(--rosso)}
+.intro{font-size:14.5px;line-height:1.5;margin-top:10px;width:600px;color:var(--inchiostro)}
+/* diagramma: le fasi come dischi su un'asta */
+.asta{position:relative;height:96px;margin:18px 0 4px}
+.asta svg{position:absolute;inset:0}
+table{width:100%;border-collapse:collapse;margin-top:4px}
+th{font:600 10.5px var(--sans);letter-spacing:.03em;color:var(--grafite);text-align:left;padding:8px 10px 8px 0;border-bottom:1.5px solid var(--inchiostro)}
+td{vertical-align:top;padding:9px 12px 9px 0;border-bottom:1px solid var(--pietra);font:400 12.5px/1.36 var(--serif)}
+table{table-layout:fixed}
+
+td.f b{display:flex;align-items:center;gap:8px;font:600 12.5px var(--sans)}
+td.f b i{width:11px;height:11px;border-radius:50%;flex:none;display:inline-block}
+td.f span{display:block;font:italic 400 13px var(--serif);margin-top:3px;color:var(--inchiostro)}
+td.n{font:500 12px/1.5 var(--sans);font-variant-numeric:tabular-nums}
+td.n .costo{font-weight:600;color:var(--inchiostro)}
+
+td.c em{font-style:normal;font-family:var(--sans);font-weight:600;font-size:12px}
+.riquadri{display:grid;grid-template-columns:1.15fr 1fr;gap:18px;margin-top:20px}
+.limiti{background:var(--ocra-chiara);border-radius:4px;padding:16px 18px;font:400 13px/1.45 var(--serif)}
+.limiti h3,.decisione h3{font:600 12px var(--sans);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.limiti h3::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--rosso)}
+.decisione{border:1.5px solid var(--inchiostro);border-radius:4px;padding:16px 18px;font:400 13px/1.45 var(--serif)}
+.decisione h3::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--verderame)}
+.piede{position:absolute;left:56px;right:56px;bottom:34px;display:flex;justify-content:space-between;font:500 10.5px var(--sans);color:var(--grafite)}
+.piede .esempio{font-size:9.5px}
+</style></head>
+<body>
+<header class="testa"><img src="../logo/simbolo.svg" alt="Abra"><span>Offerta 2026/031, revisione 1</span><span>·</span><span>Fasi e criteri di accettazione</span><span class="pag">Pagina 4 di 12</span></header>
+
+<h2>Decidi a ogni fase <em>con un numero in mano.</em></h2>
+<p class="intro">Il progetto avanza in sei fasi. Ognuna si chiude con un criterio di accettazione scritto qui sotto; se il criterio non è raggiunto ve lo diciamo nel verbale e decidete voi se proseguire, cambiare configurazione o fermarvi.</p>
+
+<div class="asta" aria-hidden="true">
+<svg viewBox="0 0 682 96" width="682" height="96">
+  <rect x="0" y="70" width="682" height="4" fill="#24211E"/>
+  <circle cx="22" cy="62" r="10" fill="#24211E"/>
+  <circle cx="142" cy="58" r="14" fill="#24211E"/>
+  <circle cx="268" cy="54" r="18" fill="#E2A93B"/>
+  <circle cx="400" cy="50" r="22" fill="#E2A93B"/>
+  <circle cx="536" cy="46" r="26" fill="#BB3B26"/>
+  <rect x="650" y="10" width="14" height="64" fill="#24211E"/>
+  <g font-family="Hanken Grotesk" font-weight="600" font-size="11" fill="#24211E">
+    <text x="22" y="92" text-anchor="middle">P0</text><text x="142" y="92" text-anchor="middle">P1</text><text x="268" y="92" text-anchor="middle">P2</text><text x="400" y="92" text-anchor="middle">P3</text><text x="536" y="92" text-anchor="middle">P4</text><text x="657" y="92" text-anchor="middle">P5</text>
+  </g>
+  <g font-family="Newsreader" font-style="italic" font-size="12.5" fill="#5C554D">
+    <text x="82" y="30" text-anchor="middle">in ufficio</text>
+    <text x="334" y="22" text-anchor="middle">in simulazione</text>
+    <text x="536" y="12" text-anchor="middle">su robot vero</text>
+  </g>
+</svg>
+</div>
+
+<table>
+<colgroup><col style="width:104px"><col style="width:196px"><col style="width:178px"><col style="width:120px"><col style="width:84px"></colgroup>
+<thead><tr><th>Fase</th><th>Cosa facciamo</th><th>Criterio di accettazione</th><th>Cosa vi resta</th><th>Durata e costo</th></tr></thead>
+<tbody>
+<tr><td class="f"><b><i style="background:#24211E"></i>P0</b><span>Visita e dati</span></td><td>Visitiamo la postazione 3 e raccogliamo tempi, formati e layout.</td><td class="c">Dati di processo condivisi e firmati da entrambi.</td><td>Verbale di visita</td><td class="n">1 giorno<br><span class="costo">incluso</span></td></tr>
+<tr><td class="f"><b><i style="background:#24211E"></i>P1</b><span>Assessment</span></td><td>Confrontiamo due configurazioni robot e i rischi di ciascuna.</td><td class="c">Scheda di fattibilità con <em>tempo ciclo stimato</em> per configurazione.</td><td>Report con i numeri per la direzione</td><td class="n">3 settimane<br><span class="costo">3.500 €</span></td></tr>
+<tr><td class="f"><b><i style="background:#E2A93B"></i>P2</b><span>Digital twin</span></td><td>Simuliamo la postazione in MuJoCo con il robot scelto.</td><td class="c">Tempo ciclo simulato <em>≤ 12 s</em> su 200 cicli consecutivi.</td><td>Modello di simulazione e video</td><td class="n">4 settimane<br><span class="costo">9.800 €</span></td></tr>
+<tr><td class="f"><b><i style="background:#E2A93B"></i>P3</b><span>Prove in laboratorio</span></td><td>Proviamo presa e deposito con i vostri pezzi nel laboratorio Abra.</td><td class="c"><em>≥ 98%</em> di prese riuscite su 500 tentativi.</td><td>Verbale di prova, codice nel vostro repository</td><td class="n">3 settimane<br><span class="costo">14.500 €</span></td></tr>
+<tr><td class="f"><b><i style="background:#BB3B26"></i>P4</b><span>Prove in sito</span></td><td>Portiamo il robot alla postazione 3 per un turno completo.</td><td class="c">Un turno di <em>8 ore</em> con tempo ciclo misurato e registrato.</td><td>Report di prova firmato</td><td class="n">2 settimane<br><span class="costo">18.000 €</span></td></tr>
+<tr><td class="f"><b><i style="background:#24211E"></i>P5</b><span>Validazione</span></td><td>Formiamo i vostri tecnici e consegniamo il materiale.</td><td class="c"><em>2 tecnici</em> autonomi sulle procedure del manuale.</td><td>Manuale rev 1.0, codice, simulatore</td><td class="n">2 settimane<br><span class="costo">quotato dopo P4</span></td></tr>
+</tbody></table>
+
+<div class="riquadri">
+  <div class="limiti"><h3>Limiti dichiarati</h3>Il payload continuativo dell'umanoide considerato resta sotto i 2 kg per braccio e la batteria dura circa 2 ore, con sostituzione. Sono nostre valutazioni da prove interne: in P3 le misuriamo con un protocollo scritto e le riportiamo nel verbale.</div>
+  <div class="decisione"><h3>Come si decide</h3>Dopo ogni fase ricevete il verbale entro 5 giorni lavorativi. La fase successiva parte solo con il vostro ordine scritto: pagate le fasi che decidete di fare.</div>
+</div>
+
+<footer class="piede"><span>Abra Robotics, robotica applicata · abrarobotics.com</span><span class="esempio esempio">Esempio: criteri, importi e limiti indicativi, non confermati</span></footer>
+</body></html>

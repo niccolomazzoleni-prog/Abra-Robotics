@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Abra Robotics, test del marchio (direzione Cartamodello)</title>
+<link rel="icon" href="favicon-16.svg">
+<link rel="stylesheet" href="../assets/sistema.css">
+<style>
+  body{width:1440px;min-height:1300px;padding:56px 64px;background:var(--tela)}
+  h1{font-size:34px}
+  .t-etichetta{font-size:11px;color:var(--grafite);display:block;margin-top:10px}
+  .riga{display:flex;gap:30px;align-items:flex-end;margin-top:40px;flex-wrap:wrap}
+  .cella{display:flex;flex-direction:column;align-items:flex-start}
+  .tab{display:flex;align-items:center;gap:8px;background:#DAD3C3;border-radius:8px 8px 0 0;padding:9px 14px;font-size:13px;width:240px}
+  .tab img{width:16px;height:16px}
+  .sq{display:grid;place-items:center;background:var(--flanella)}
+  .ci{display:grid;place-items:center;background:var(--flanella);border-radius:50%}
+  .ci.y{background:var(--giallo)}
+  .gr{background:var(--gesso);padding:56px 64px;margin-top:40px}
+  .scuro{background:var(--flanella);padding:48px 64px;margin-top:24px;display:flex;gap:80px;align-items:center}
+  .px{image-rendering:pixelated}
+</style>
+</head>
+<body>
+<h1 class="t-titolo">Test del marchio: dal favicon al grande formato</h1>
+
+<div class="riga">
+  <div class="cella"><div class="tab"><img src="favicon-16.svg" alt="">Abra Robotics</div><span class="t-etichetta">Favicon 16 px nella scheda</span></div>
+  <div class="cella"><img src="monogramma.svg" width="16" height="16" alt=""><span class="t-etichetta">16 px</span></div>
+  <div class="cella"><img src="monogramma.svg" width="32" height="32" alt=""><span class="t-etichetta">32 px</span></div>
+  <div class="cella"><img src="favicon-16.svg" width="16" height="16" alt=""><span class="t-etichetta">Favicon 16 px</span></div>
+  <div class="cella"><canvas id="zoom" width="128" height="128" style="width:128px;height:128px;image-rendering:pixelated"></canvas><span class="t-etichetta">Favicon 16 px ingrandito x8</span></div>
+  <div class="cella"><div class="sq" style="width:32px;height:32px"><img src="simbolo-negativo.svg" width="30" alt=""></div><span class="t-etichetta">32 px negativo</span></div>
+  <div class="cella"><div class="ci" style="width:160px;height:160px"><img src="simbolo-negativo.svg" width="140" alt=""></div><span class="t-etichetta">Avatar tondo</span></div>
+  <div class="cella"><div class="sq" style="width:160px;height:160px"><img src="simbolo-negativo.svg" width="148" alt=""></div><span class="t-etichetta">Avatar quadrato</span></div>
+  <div class="cella"><div class="ci y" style="width:160px;height:160px"><img src="simbolo.svg" width="140" alt=""></div><span class="t-etichetta">Avatar eventi</span></div>
+</div>
+
+<div class="gr">
+  <img src="orizzontale.svg" alt="Abra Robotics" style="width:100%">
+  <span class="t-etichetta">Grande formato: logotipo orizzontale</span>
+  <div style="display:flex;gap:80px;align-items:flex-end;margin-top:48px">
+    <div><img src="verticale.svg" alt="" style="height:300px"><span class="t-etichetta">Verticale</span></div>
+    <div><img src="simbolo.svg" alt="" style="height:300px"><span class="t-etichetta">Simbolo</span></div>
+    <div><img src="mono-positivo.svg" alt="" style="height:44px"><span class="t-etichetta">Mono positivo</span>
+         <img src="orizzontale.svg" alt="" style="height:22px;margin-top:28px"><span class="t-etichetta">Altezza minima stampa 6 mm, schermo 18 px</span></div>
+  </div>
+</div>
+<div class="scuro">
+  <img src="mono-negativo.svg" alt="" style="height:64px">
+  <img src="simbolo-negativo.svg" alt="" style="height:150px">
+  <span class="t-etichetta" style="color:var(--carta)">Mono negativo e simbolo bicolore su flanella</span>
+</div>
+<script>
+const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=16;c.height=16;const x=c.getContext('2d');x.drawImage(im,0,0,16,16);const z=document.getElementById('zoom').getContext('2d');z.imageSmoothingEnabled=false;z.drawImage(c,0,0,128,128)};im.src='favicon-16.svg';
+</script>
+</body>
+</html>

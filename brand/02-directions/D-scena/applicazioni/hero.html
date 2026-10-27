@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abra Robotics: prova il robot sul tuo caso prima di investire</title>
+<link rel="icon" href="../logo/monogramma.svg">
+<link rel="stylesheet" href="../sistema.css">
+<style>
+body{margin:0;background:var(--velluto);color:var(--stucco);font-family:var(--f)}
+.scena{position:relative;width:1440px;height:900px;overflow:hidden;background:var(--velluto)}
+/* taglio di luce sul fondale: una sola sorgente, bordi netti */
+.fondale{position:absolute;left:820px;top:0;width:560px;height:712px;background:var(--quinta);clip-path:polygon(34% 0,66% 0,100% 100%,0 100%)}
+nav{position:absolute;left:64px;right:64px;top:34px;display:flex;align-items:center;gap:40px;z-index:5}
+nav img{height:30px;display:block}
+nav ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:30px;font-size:15px;font-weight:500}
+nav a{color:var(--stucco);text-decoration:none}
+nav .cta{border:1.5px solid var(--stucco);padding:10px 16px 9px;font-weight:600}
+.testa{position:absolute;left:64px;top:132px;width:800px;z-index:4}
+.testa .lbl{color:var(--luce);margin:0 0 26px;display:flex;align-items:center;gap:12px}
+h1{margin:0;font-size:106px;color:var(--stucco)}
+h1 em{font-style:normal;color:var(--luce)}
+.sotto{margin:26px 0 0;font-size:20px;line-height:1.45;max-width:600px;color:var(--stucco);font-weight:400}
+.azioni{display:flex;gap:28px;align-items:center;margin-top:30px}
+.btn{background:var(--luce);color:var(--velluto);font-weight:700;font-size:17px;padding:17px 24px 16px;text-decoration:none;display:inline-flex;align-items:center;gap:12px}
+.btn svg{width:18px;height:18px}
+.link{color:var(--stucco);font-weight:600;font-size:17px;text-decoration:none;border-bottom:1.5px solid var(--luce);padding-bottom:3px}
+/* palco */
+.palco{left:0;width:1440px;top:712px;height:188px;--p-top-l:8.5%;--p-top-r:8.5%}
+.robot{position:absolute;left:1000px;top:208px;height:540px;z-index:3}
+.segno-robot{position:absolute;left:1066px;top:730px;width:64px;height:10px;background:var(--velluto);z-index:2}
+.segno-robot::after{content:"";position:absolute;left:28px;top:0;width:10px;height:22px;background:var(--velluto)}
+.dida-robot{position:absolute;left:1196px;top:600px;width:200px;font-size:13px;line-height:1.4;color:var(--fumo-chiaro);z-index:3}
+.scaletta{position:absolute;left:0;right:0;top:760px;display:grid;grid-template-columns:repeat(6,1fr);padding:0 122px 0 122px;gap:0;color:var(--velluto);z-index:4}
+.cue{padding:0 18px;border-left:1.5px solid rgba(58,25,21,.35)}
+.cue:first-child{border-left:0}
+.cue b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:40px;line-height:.9}
+.cue span{display:block;font-size:14px;font-weight:600;margin-top:6px;line-height:1.25}
+.cue i{display:block;font-size:12.5px;margin-top:3px;font-style:italic;line-height:1.3}
+.capo{position:absolute;left:140px;top:726px;font-size:11px;color:var(--velluto);z-index:4}
+</style></head>
+<body>
+<div class="scena">
+  <div class="fondale"></div>
+  <nav>
+    <img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics">
+    <ul><li><a href="#">Metodo</a></li><li><a href="#">Aziende</a></li><li><a href="#">Laboratori</a></li><li><a href="#">Eventi</a></li><li><a href="#">Listino prezzi</a></li><li><a href="#">Chi siamo</a></li></ul>
+    <a class="cta" href="#">Parla con un tecnico</a>
+  </nav>
+
+  <div class="testa">
+    <p class="lbl"><span class="segno"></span>Robotica applicata per aziende, laboratori ed eventi</p>
+    <h1 class="disp">Prova il robot<br>sul tuo caso<br><em>prima di investire.</em></h1>
+    <p class="sotto">Simuliamo il tuo processo, misuriamo il robot in laboratorio e nel tuo reparto, con un criterio scritto per ogni fase. A fine progetto ti restano il codice, il simulatore e la documentazione.</p>
+    <div class="azioni">
+      <a class="btn" href="#">Prenota un assessment di 3 settimane
+        <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 9h12M9 3.5 14.5 9 9 14.5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></a>
+      <a class="link" href="#">Guarda il metodo fase per fase</a>
+    </div>
+  </div>
+
+  <img class="robot" src="img/segnaposto-unitree-g1-tungsteno.png" alt="Umanoide su un palco illuminato (segnaposto)">
+  <p class="dida dida-robot">(Segnaposto: immagine ufficiale Unitree G1 con trattamento tungsteno. Qui andrà una foto Abra in laboratorio.)</p>
+
+  <div class="palco"></div>
+  <div class="segno-robot"></div>
+  <p class="lbl capo">Il metodo, in sei fasi con criteri scritti</p>
+  <div class="scaletta txt">
+    <div class="cue"><b>P0</b><span>Chiamata tecnica</span><i>Esci con il caso descritto</i></div>
+    <div class="cue"><b>P1</b><span>Assessment, 3 settimane</span><i>Esci con i numeri per decidere</i></div>
+    <div class="cue"><b>P2</b><span>Digital twin</span><i>Esci con il ciclo simulato</i></div>
+    <div class="cue"><b>P3</b><span>Prova sul robot</span><i>Esci con le misure reali</i></div>
+    <div class="cue"><b>P4</b><span>Pilota in reparto</span><i>Esci con il verbale di prova</i></div>
+    <div class="cue"><b>P5</b><span>Consegna</span><i>Esci con codice e manuale</i></div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Abra Robotics, badge per robot e livrea del flight case (direzione Cartamodello)</title>
+<link rel="stylesheet" href="../assets/sistema.css">
+<style>
+  body{width:1440px;height:900px;overflow:hidden;position:relative;background:var(--tela)}
+  .tit{position:absolute;left:64px;top:52px}
+  .tit .t-etichetta{font-size:13px;color:var(--grafite)}
+  .tit h1{font-size:40px;margin-top:8px}
+  /* adesivi in scala 4 px = 1 mm */
+  .adesivi{position:absolute;left:64px;top:170px;width:480px}
+  .ad-tondo{width:240px;height:240px;border-radius:50%;background:var(--flanella);position:relative;display:grid;place-items:center}
+  .ad-tondo img{width:200px}
+  .ad-targa{position:absolute;left:0;top:270px;width:400px;height:200px;background:var(--tela);border:2px solid var(--flanella);padding:20px 22px}
+  .ad-targa:after{content:"";position:absolute;inset:7px;border:1.4px dashed rgba(47,51,55,.55)}
+  .ad-targa img{height:22px}
+  .ad-targa dl{display:grid;grid-template-columns:100px 1fr;padding-right:64px;row-gap:5px;margin-top:16px;font-size:13px}
+  .ad-targa dt{font-weight:600;font-stretch:75%;text-transform:uppercase;letter-spacing:.07em;font-size:10.5px;color:var(--grafite);padding-top:2px}
+  .ad-targa .esempio{position:absolute;right:20px;top:18px;font-size:9.5px;padding:3px 5px 2px}
+  .ad-targa .qr{position:absolute;right:22px;bottom:20px;width:54px;height:54px;background:var(--flanella);color:var(--tela);font-size:8px;font-weight:600;font-stretch:75%;letter-spacing:.06em;display:grid;place-items:center;text-align:center;line-height:1.1}
+  .cap{font-size:11px;color:var(--grafite);margin-top:8px}
+  .robot{position:absolute;left:480px;top:250px;width:310px}
+  .robot img{width:310px;filter:grayscale(1) contrast(1.06);mix-blend-mode:multiply}
+  .robot .sticker{position:absolute;left:84px;top:50px;width:50px;height:50px;border-radius:50%;background:var(--flanella);display:grid;place-items:center;transform:rotate(-17deg) skewX(-14deg) scaleY(.72)}
+  .robot .sticker img{width:42px;filter:none;mix-blend-mode:normal}
+  .case{position:absolute;left:820px;top:170px;width:560px;height:441px}
+  .note{position:absolute;left:820px;top:660px;width:560px;display:grid;grid-template-columns:1fr 1fr;gap:28px;font-size:13.5px;line-height:1.45}
+  .note .t-etichetta{font-size:11px;display:block;margin-bottom:6px;color:var(--grafite)}
+  .seg{position:absolute;left:484px;top:568px;width:300px;line-height:1.4;font-size:10px;color:var(--grafite)}
+</style>
+</head>
+<body>
+<div class="tit"><div class="t-etichetta">Livrea</div><h1 class="t-titolo">Firma ogni robot e ogni cassa che esce dal laboratorio.</h1></div>
+
+<div class="adesivi">
+  <div class="ad-tondo"><img src="../logo/simbolo-negativo.svg" alt="Simbolo Abra in negativo"></div>
+  <div class="cap t-etichetta">Adesivo tondo 60 mm, vinile opaco</div>
+  <div class="ad-targa">
+    <img src="../logo/orizzontale.svg" alt="Abra Robotics">
+    <span class="esempio">Esempio</span>
+    <dl>
+      <dt>Unità</dt><dd>Go2 EDU, n. 03</dd>
+      <dt>Collaudo</dt><dd>24 ottobre 2026, laboratorio Abra</dd>
+      <dt>Scheda limiti</dt><dd>rev. 1.0</dd>
+      <dt>Assistenza</dt><dd>abrarobotics.com/assistenza</dd>
+    </dl>
+    <div class="qr">CODICE<br>QR</div>
+  </div>
+</div>
+<div class="cap t-etichetta" style="position:absolute;left:64px;top:648px">Targa misure 100 x 50 mm, sul fianco o sotto il robot</div>
+
+<div class="robot">
+  <img src="../assets/segnaposto/unitree-go2.png" alt="Segnaposto: quadrupede Unitree Go2, immagine ufficiale del produttore">
+  <div class="sticker"><img src="../logo/simbolo-negativo.svg" alt=""></div>
+</div>
+<span class="seg t-etichetta">Segnaposto: foto ufficiale Unitree, adesivo simulato sul dorso</span>
+
+<svg class="case" viewBox="0 0 660 520" aria-label="Flight case con livrea Abra">
+  <!-- ombra -->
+  <ellipse cx="330" cy="500" rx="300" ry="14" fill="#2F3337" opacity=".12"/>
+  <!-- corpo -->
+  <rect x="30" y="40" width="600" height="450" rx="10" fill="#2F3337"/>
+  <!-- linea di chiusura -->
+  <rect x="30" y="150" width="600" height="14" fill="#1F2225"/>
+  <!-- angolari -->
+  <g fill="#8C9095">
+    <path d="M30 40 h70 v18 h-52 v52 h-18 Z"/><path d="M630 40 h-70 v18 h52 v52 h18 Z"/>
+    <path d="M30 490 h70 v-18 h-52 v-52 h-18 Z"/><path d="M630 490 h-70 v-18 h52 v-52 h18 Z"/>
+  </g>
+  <!-- chiusure -->
+  <g fill="#8C9095"><rect x="140" y="140" width="40" height="34" rx="3"/><rect x="480" y="140" width="40" height="34" rx="3"/></g>
+  <!-- maniglia -->
+  <rect x="270" y="22" width="120" height="24" rx="12" fill="none" stroke="#8C9095" stroke-width="10"/>
+  <!-- filo di imbastitura che gira intorno alla cassa -->
+  <path d="M30 330 L630 290" stroke="#F2BF2C" stroke-width="16" stroke-linecap="round" stroke-dasharray="54 30"/>
+  <!-- scritte a stampino -->
+  <g font-family="Bricolage Grotesque" fill="#ECE6D8">
+    <text x="64" y="232" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="2">CASSA 1 DI 2 · 48 KG · QUESTO LATO IN ALTO</text>
+    <text x="64" y="420" font-size="62" font-weight="720" font-stretch="78%" letter-spacing="-0.5">G1 · NOLEGGIO</text>
+    <text x="64" y="452" font-size="15" font-weight="500">Se trovi questa cassa: eventi@abrarobotics.com</text>
+  </g>
+  <!-- logo in bianco gesso, sopra la linea di chiusura -->
+  <image href="../logo/mono-negativo.svg" x="64" y="72" width="260" height="50"/>
+  <!-- cartellino appeso alla maniglia -->
+  <path d="M330 34 C 350 60, 380 60, 410 70" fill="none" stroke="#2F3337" stroke-width="2"/>
+  <g transform="translate(400 62) rotate(8)">
+    <path d="M0 10 L14 0 H120 V70 H14 L0 60 Z" fill="#ECE6D8"/>
+    <circle cx="16" cy="35" r="5" fill="#2F3337"/>
+    <text x="30" y="26" font-family="Bricolage Grotesque" font-size="10" font-weight="600" font-stretch="75%" letter-spacing="1" fill="#62666A">PROVA GENERALE</text>
+    <text x="30" y="46" font-family="Bricolage Grotesque" font-size="15" font-weight="700" font-stretch="80%" fill="#2F3337">13 novembre</text>
+    <text x="30" y="61" font-family="Bricolage Grotesque" font-size="9.5" fill="#62666A">Esempio</text>
+  </g>
+</svg>
+
+<div class="note">
+  <div><span class="t-etichetta">Robot</span>Il simbolo va sul dorso, dove si vede nelle foto, mai sul logo del produttore. La targa misure collega l'unità alla sua scheda limiti e al collaudo.</div>
+  <div><span class="t-etichetta">Flight case</span>Flanella con il filo giallo che gira su quattro lati: si riconosce da lontano in un magazzino fiera. Le scritte sono a stampino, in un solo colore.</div>
+</div>
+</body>
+</html>

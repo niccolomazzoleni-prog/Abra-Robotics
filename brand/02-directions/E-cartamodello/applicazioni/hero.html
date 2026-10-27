@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abra Robotics, hero della home (direzione Cartamodello)</title>
+<link rel="stylesheet" href="../assets/sistema.css">
+<style>
+  body{width:1440px;height:900px;overflow:hidden;position:relative}
+  nav{position:absolute;left:64px;right:64px;top:34px;display:flex;align-items:center;gap:36px;font-size:15px;font-weight:500}
+  nav img{height:30px;margin-right:auto}
+  nav a{color:inherit;text-decoration:none}
+  nav .cta{background:var(--flanella);color:var(--gesso);padding:12px 18px 11px;border-radius:2px;font-weight:600}
+
+  .col{position:absolute;left:64px;top:150px;width:700px}
+  .col .t-etichetta{font-size:13px;color:var(--grafite);display:flex;gap:14px;align-items:center}
+  .col .t-etichetta i{display:block;width:46px;height:3px;background:var(--flanella);
+     -webkit-mask:repeating-linear-gradient(90deg,#000 0 12px,transparent 12px 18px);mask:repeating-linear-gradient(90deg,#000 0 12px,transparent 12px 18px)}
+  h1{font-size:94px;margin-top:26px}
+  .sub{font-size:22px;margin-top:30px;max-width:600px}
+  .azioni{display:flex;gap:14px;margin-top:38px;align-items:center}
+  .btn{font-size:16px;font-weight:620;padding:16px 22px 15px;border-radius:2px;text-decoration:none}
+  .btn.pieno{background:var(--flanella);color:var(--gesso)}
+  .btn.filo{color:var(--flanella);outline:2px dashed var(--flanella);outline-offset:-2px}
+
+  /* scheda misure */
+  .scheda{position:absolute;left:860px;top:112px;width:516px;height:560px}
+  .scheda svg.carta{position:absolute;inset:0}
+  .robot{position:absolute;left:140px;top:40px;height:482px;filter:grayscale(1) contrast(1.08) brightness(1.02);mix-blend-mode:multiply}
+  .metro-v{position:absolute;left:66px;top:18px}
+  .nota{position:absolute;font-size:14px;line-height:1.3}
+  .nota b{display:block;font-weight:660;font-stretch:80%;font-size:30px;letter-spacing:-0.01em}
+  .nota .t-etichetta{font-size:11px;color:var(--grafite)}
+  .nota .esempio{margin-top:6px;font-size:10px;padding:4px 6px 3px}
+  .cartellino{position:absolute;left:24px;bottom:-30px;background:var(--gesso);padding:12px 16px 11px;font-size:12px;display:flex;gap:14px;align-items:center;box-shadow:0 1px 0 rgba(47,51,55,.15)}
+  .cartellino .foro{width:10px;height:10px;border-radius:50%;background:var(--tela);box-shadow:inset 0 0 0 1.5px var(--flanella)}
+
+  /* fasi */
+  .fasi{position:absolute;left:64px;right:64px;bottom:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .fase{padding:18px 22px 0 0;position:relative}
+  .fase:before{content:"";position:absolute;left:0;right:14px;top:0;height:3px;background:var(--flanella);
+     -webkit-mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 22px);mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 22px)}
+  .fase.chiusa:before{-webkit-mask:none;mask:none}
+  .fase .t-etichetta{font-size:12px;color:var(--grafite)}
+  .fase h3{font-size:24px;margin:8px 0 6px}
+  .fase p{font-size:15px;line-height:1.4;max-width:290px}
+  .segnaposto{position:absolute;right:64px;top:688px;font-size:10px;color:var(--grafite);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<nav>
+  <img src="../logo/orizzontale.svg" alt="Abra Robotics">
+  <a>Metodo</a><a>Aziende</a><a>Laboratori</a><a>Eventi</a><a>Listino</a><a>Chi siamo</a>
+  <a class="cta">Parla con un tecnico</a>
+</nav>
+
+<section class="col">
+  <div class="t-etichetta"><i></i>Robotica applicata, prima la prova</div>
+  <h1 class="t-display">Prova il robot sul tuo caso prima di investire.</h1>
+  <p class="sub t-sotto">Prendiamo le misure del tuo processo, simuliamo il caso d'uso e lo proviamo sul robot vero, per fasi con criteri scritti. Codice, simulatore e manuale restano a te.</p>
+  <div class="azioni">
+    <a class="btn pieno">Prenota un sopralluogo</a>
+    <a class="btn filo">Leggi il metodo a fasi</a>
+  </div>
+</section>
+
+<div class="scheda">
+  <svg class="carta" viewBox="0 0 516 560" aria-hidden="true">
+    <!-- pezzo di cartamodello: margine di cucitura tratteggiato e tacche -->
+    <path d="M30 8 H486 L508 60 V552 H30 Z" fill="#D9CBAA"/>
+    <path d="M44 22 H476 L494 64 V538 H44 Z" fill="none" stroke="#2F3337" stroke-width="1.5" stroke-dasharray="10 7" stroke-linecap="round" opacity=".55"/>
+    <path d="M250 8 l8 12 l8 -12 Z M30 290 l12 8 l-12 8 Z M508 300 l-12 8 l12 8 Z" fill="#ECE6D8"/>
+    <!-- linee di richiamo -->
+    <g stroke="#2F3337" stroke-width="1.5" stroke-dasharray="4 4" fill="none">
+      <path d="M254 58 H332"/>
+      <path d="M232 160 H332"/>
+      <path d="M294 268 H332"/>
+    </g>
+    <g fill="#2F3337"><circle cx="254" cy="58" r="4"/><circle cx="232" cy="160" r="4"/><circle cx="294" cy="268" r="4"/></g>
+  </svg>
+  <div class="metro-v" data-metro data-from="0" data-to="135" data-step="3.7" data-dir="v" data-w="34" data-label="10"></div>
+  <img class="robot" src="../assets/segnaposto/unitree-g1.png" alt="Segnaposto: umanoide Unitree G1, immagine ufficiale del produttore">
+  <div class="nota" style="left:342px;top:40px"><span class="t-etichetta">Altezza</span><b>circa 130 cm</b></div>
+  <div class="nota" style="left:342px;top:142px"><span class="t-etichetta">Autonomia</span><b>circa 2 h</b><span class="esempio">Esempio</span></div>
+  <div class="nota" style="left:342px;top:250px;width:150px"><span class="t-etichetta">Carico continuo per braccio</span><b>sotto 2 kg</b><span class="esempio">Esempio</span></div>
+  <div class="segnaposto t-etichetta" style="position:absolute;left:342px;top:500px;right:auto;width:140px;line-height:1.35">Segnaposto: foto ufficiale Unitree</div>
+  <div class="cartellino"><span class="foro"></span><span class="t-etichetta">Scheda misure G1</span><span>Limiti scritti accanto alle prestazioni</span></div>
+</div>
+
+
+
+<section class="fasi">
+  <div class="fase"><span class="t-etichetta">P0 a P1 · Le misure</span><h3 class="t-titolo">Sopralluogo e assessment</h3><p class="t-testo">Tre settimane nel tuo reparto per capire se il robot serve, e quale.</p></div>
+  <div class="fase"><span class="t-etichetta">P2 · L'imbastitura</span><h3 class="t-titolo">Digital twin e simulazione</h3><p class="t-testo">Il caso d'uso gira prima in MuJoCo, con i tuoi spazi e i tuoi tempi.</p></div>
+  <div class="fase"><span class="t-etichetta">P3 a P4 · La prova</span><h3 class="t-titolo">POC sul robot vero</h3><p class="t-testo">Criteri di accettazione scritti prima di iniziare, numeri misurati alla fine.</p></div>
+  <div class="fase chiusa"><span class="t-etichetta">P5 · Il modello</span><h3 class="t-titolo">Consegna al tuo team</h3><p class="t-testo">Repository, simulatore, manuale e formazione restano in azienda.</p></div>
+</section>
+<script src="../assets/metro.js"></script>
+</body>
+</html>

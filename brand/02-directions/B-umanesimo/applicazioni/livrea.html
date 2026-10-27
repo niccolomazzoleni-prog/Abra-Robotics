@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<title>Livrea: adesivo, targhetta e flight case</title>
+<link rel="stylesheet" href="../assets/b.css">
+<style>
+body{width:1600px;height:1000px;position:relative;overflow:hidden;background:#E9E3D7}
+.tit{position:absolute;left:64px;top:54px;width:760px}
+.tit h1{font:400 40px/1.05 var(--serif);letter-spacing:-.02em;margin-top:14px}
+.tit h1 em{font-style:italic;color:var(--rosso)}
+/* flight case */
+.case{position:absolute;left:64px;top:230px;width:760px;height:500px}
+.cap{position:absolute;font:500 13px/1.45 var(--sans);color:var(--grafite)}
+.cap b{color:var(--inchiostro);font-weight:600}
+/* go2 con adesivo */
+.go2box{position:absolute;left:880px;top:120px;width:660px;height:520px}
+.go2box>img{position:absolute;left:40px;top:40px;width:470px}
+.adesivo{position:absolute;left:262px;top:96px;width:44px;height:44px;transform:rotate(-14deg) skewX(-38deg) scaleY(.55);box-shadow:0 1px 1px rgba(0,0,0,.25)}
+.adesivo img{width:100%;height:100%;display:block}
+.lente{position:absolute;left:470px;top:20px;width:170px;height:170px;border-radius:50%;overflow:hidden;border:3px solid var(--inchiostro);background:#bdb6aa}
+.lente .zoom{position:absolute;left:-354px;top:-55px;width:846px;max-width:none}
+.lente .ad2{position:absolute;left:45px;top:45px;width:79px;height:79px;transform:rotate(-14deg) skewX(-38deg) scaleY(.55)}
+.lente .ad2 img{width:100%;display:block}
+/* targhetta ad arco */
+.targa{position:absolute;left:900px;top:722px;width:300px;height:230px;border-radius:150px 150px 10px 10px;background:var(--carta);box-shadow:0 10px 20px -8px rgba(36,33,30,.35),inset 0 0 0 1px var(--pietra);overflow:hidden}
+.targa .arco{position:absolute;inset:0}
+.targa .in{position:absolute;left:30px;right:30px;top:86px;text-align:center}
+.targa img{height:34px}
+.targa p{font:400 14px/1.35 var(--serif);margin-top:12px}
+.targa small{display:block;font:600 11px/1.5 var(--sans);color:var(--grafite);margin-top:8px}
+.vite{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--pietra);box-shadow:inset 0 0 0 2px #bdb3a2}
+.spec{position:absolute;left:1240px;top:722px;width:300px}
+.spec .tile{display:flex;gap:14px;align-items:flex-end}
+.spec .tile img{display:block}
+</style></head>
+<body>
+<div class="tit">
+  <span class="etichetta r">Livrea per robot e attrezzature</span>
+  <h1>Riconosci a colpo d'occhio cosa esce <em>dal laboratorio Abra.</em></h1>
+</div>
+
+<svg class="case" viewBox="0 0 760 500" width="760" height="500" aria-label="Flight case con livrea Abra">
+  
+  <rect x="20" y="40" width="720" height="440" rx="10" fill="#B9B1A3"/>
+  <rect x="34" y="54" width="692" height="412" rx="4" fill="#F3EEE3"/>
+  
+  <clipPath id="pan"><rect x="34" y="54" width="692" height="412" rx="4"/></clipPath>
+  <g clip-path="url(#pan)">
+    <path fill="#E2A93B" d="M362.6 150.4A240 240 0 0 1 800 270H670A110 110 0 0 0 465.3 214.8Z"/>
+    <path fill="#BB3B26" d="M346 447.5A192.5 192.5 0 1 1 731 447.5A192.5 192.5 0 1 1 346 447.5Z"/>
+    <path fill="#24211E" d="M670 270H800V480H670Z"/>
+    <path fill="#F3EEE3" d="M670 304.5A192.5 192.5 0 0 1 731 447.5A192.5 192.5 0 0 1 670 590.5Z"/>
+  </g>
+  
+  <rect x="20" y="236" width="720" height="16" fill="#9C9486"/>
+  <g fill="#7E776B">
+    <path d="M20 40h56v14H34v42H20z"/><path d="M740 40h-56v14h42v42h14z"/>
+    <path d="M20 480h56v-14H34v-42H20z"/><path d="M740 480h-56v-14h42v-42h14z"/>
+  </g>
+  
+  <rect x="300" y="16" width="160" height="30" rx="15" fill="none" stroke="#7E776B" stroke-width="10"/>
+  <rect x="120" y="226" width="48" height="36" rx="4" fill="#7E776B"/><rect x="592" y="226" width="48" height="36" rx="4" fill="#7E776B"/>
+  
+  <image href="../logo/orizzontale.svg" x="62" y="84" width="230" height="44"/>
+  <rect x="62" y="296" width="250" height="140" rx="3" fill="#FBF8F2" stroke="#24211E" stroke-width="1.5"/>
+  <g font-family="Hanken Grotesk" fill="#24211E">
+    <text x="78" y="322" font-size="11" font-weight="600" fill="#5C554D">CONTENUTO</text>
+    <text x="78" y="342" font-family="Newsreader" font-size="17">Umanoide, cassa 1 di 2</text>
+    <text x="78" y="370" font-size="11" font-weight="600" fill="#5C554D">PESO LORDO</text>
+    <text x="78" y="388" font-size="15" font-weight="500">68 kg, due persone</text>
+    <text x="78" y="414" font-size="11" font-weight="600" fill="#5C554D">RIENTRO</text>
+    <text x="78" y="430" font-size="13" font-weight="500">Laboratorio Abra</text>
+  </g>
+</svg>
+<p class="cap" style="left:64px;top:742px;width:760px"><b>Flight case.</b> Pannello laminato avorio, profili in alluminio naturale. La a montata è stampata sull'angolo e continua sul lato, così la cassa si riconosce da qualunque verso. Il cartellino dati è in carta sostituibile. Peso di esempio.</p>
+
+<div class="go2box">
+  <img src="../assets/go2-segnaposto-unitree.png" alt="Segnaposto: Unitree Go2">
+  <div class="adesivo"><img src="../logo/favicon.svg" alt=""></div>
+  <div class="lente"><img class="zoom" src="../assets/go2-segnaposto-unitree.png" alt=""><div class="ad2"><img src="../logo/favicon.svg" alt=""></div></div>
+</div>
+<p class="cap" style="left:900px;top:634px;width:640px"><b>Adesivo sul dorso del Go2.</b> Monogramma 60 x 60 mm in vinile opaco, sulla piastra superiore davanti al LiDAR. Si legge a 3 m. Segnaposto: Go2 da foto ufficiale Unitree.</p>
+
+<div class="targa">
+  <svg class="arco" viewBox="0 0 300 230" width="300" height="230" aria-hidden="true"><path fill="#E2A93B" d="M0 150A150 150 0 0 1 300 150H272A122 122 0 0 0 28 150Z"/></svg>
+  <span class="vite" style="left:20px;top:205px"></span><span class="vite" style="right:20px;top:205px"></span>
+  <div class="in"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><p>G1 n. 01, configurato e provato nel laboratorio Abra</p><small>Assistenza: assistenza@abrarobotics.com</small></div>
+</div>
+<div class="spec">
+  <p class="cap" style="position:static"><b>Targhetta ad arco</b> 75 x 58 mm in alluminio stampato, sul fianco del robot o sulla base. Riporta numero del robot e contatto di assistenza (esempio).</p>
+  <div class="tile" style="margin-top:22px"><img src="../logo/monogramma.svg" width="96" height="96" alt=""><img src="../logo/favicon.svg" width="48" height="48" alt=""><img src="../logo/simbolo.svg" height="60" alt=""></div>
+  <p class="cap" style="position:static;margin-top:10px">Adesivi in tre misure: 60, 30 e 15 mm. Sotto i 20 mm si usa la versione ottica del favicon.</p>
+</div>
+</body></html>

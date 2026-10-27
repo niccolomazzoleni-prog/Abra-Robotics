@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<title>Proposta tecnica ed economica, copertina (esempio)</title>
+<link rel="stylesheet" href="../sistema.css">
+<style>
+@page{size:A4;margin:0}
+body{margin:0;background:#d8d2c6;font-family:var(--f);color:var(--velluto)}
+.pagina{position:relative;width:794px;height:1123px;background:var(--carta);overflow:hidden}
+.testa{position:absolute;left:56px;right:56px;top:48px;display:flex;justify-content:space-between;align-items:flex-start}
+.testa img{height:24px}
+.testa .lbl{font-size:9.5px;text-align:right;color:var(--fumo);line-height:1.6}
+.esempio{position:absolute;right:56px;top:116px;color:var(--rame)}
+.titolo{position:absolute;left:56px;right:56px;top:196px}
+.titolo .lbl{font-size:10px;color:var(--fumo);margin:0 0 18px}
+h1{margin:0;font-size:74px;line-height:.9;color:var(--velluto)}
+.per{margin:26px 0 0;font-size:15px;line-height:1.5;max-width:520px}
+.per b{font-weight:700}
+/* boccascena: la metà inferiore è il palco */
+.scena{position:absolute;left:0;right:0;bottom:0;height:500px;background:var(--velluto);overflow:hidden}
+.scena .fondale{position:absolute;left:250px;top:0;width:300px;height:326px;background:var(--quinta);clip-path:polygon(36% 0,64% 0,100% 100%,0 100%)}
+.scena .palco{left:0;right:0;top:326px;height:174px;--p-top-l:9%;--p-top-r:9%}
+.promessa{position:absolute;left:56px;top:56px;width:420px;color:var(--stucco)}
+.promessa p{margin:0;font-size:30px;line-height:1.02}
+.promessa .lbl{color:var(--luce);font-size:9.5px;margin:0 0 14px}
+.dati{position:absolute;right:56px;top:60px;width:200px;color:var(--stucco);font-size:11.5px;line-height:1.55}
+.dati dt{color:var(--fumo-chiaro);font-stretch:var(--largo);font-weight:600;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:12px}
+.dati dt:first-child{margin-top:0}
+.dati dd{margin:2px 0 0}
+.scaletta{position:absolute;left:84px;right:84px;top:368px;display:grid;grid-template-columns:repeat(6,1fr);color:var(--velluto)}
+.cue{padding:0 10px;border-left:1.2px solid rgba(58,25,21,.35)}
+.cue:first-child{border-left:0;padding-left:0}
+.cue b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:30px;line-height:.9}
+.cue span{display:block;font-size:10.5px;font-weight:600;margin-top:5px;line-height:1.25}
+.segno-vuoto{position:absolute;left:375px;top:338px;width:44px;height:7px;background:var(--velluto)}
+.segno-vuoto::after{content:"";position:absolute;left:18px;top:0;width:8px;height:16px;background:var(--velluto)}
+.piede{position:absolute;left:56px;right:56px;bottom:22px;display:flex;justify-content:space-between;font-size:8.5px;color:var(--velluto);font-stretch:var(--largo);font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+</style></head>
+<body>
+<div class="pagina">
+  <div class="testa">
+    <img src="../logo/orizzontale.svg" alt="Abra Robotics">
+    <div class="lbl">Proposta tecnica ed economica<br>N. AB 2026 0031, revisione 1<br>27 ottobre 2026, valida 60 giorni</div>
+  </div>
+  <span class="esempio">Esempio</span>
+
+  <div class="titolo">
+    <p class="lbl">POC a fasi con criteri di accettazione</p>
+    <h1 class="disp">Presa e deposito di<br>vasetti in fine linea:<br>umanoide e cella cobot<br>a confronto</h1>
+    <p class="per">Preparata per <b>Cliente di esempio S.p.A.</b>, direzione operations.<br>Referente Abra: Giovanni Pitton, responsabile tecnico.</p>
+  </div>
+
+  <div class="scena">
+    <div class="fondale"></div>
+    <div class="promessa">
+      <p class="lbl">Cosa saprai prima di investire</p>
+      <p class="disp">Il tempo ciclo misurato in simulazione e sul robot, con il costo di ogni fase. A fine progetto il codice resta nel tuo repository.</p>
+    </div>
+    <dl class="dati">
+      <dt>Durata indicativa</dt><dd>19 settimane, con una decisione scritta alla fine di ogni fase</dd>
+      <dt>Piattaforme valutate</dt><dd>Umanoide, cella cobot, soluzione a due robot</dd>
+      <dt>Riservatezza</dt><dd>Documento riservato al destinatario</dd>
+    </dl>
+    <div class="palco"></div>
+    <div class="segno-vuoto" title="Il segno a terra: il posto del robot"></div>
+    <div class="scaletta txt">
+      <div class="cue"><b>P0</b><span>Chiamata e sopralluogo</span></div>
+      <div class="cue"><b>P1</b><span>Assessment</span></div>
+      <div class="cue"><b>P2</b><span>Digital twin</span></div>
+      <div class="cue"><b>P3</b><span>Prova sul robot</span></div>
+      <div class="cue"><b>P4</b><span>Pilota in reparto</span></div>
+      <div class="cue"><b>P5</b><span>Consegna e formazione</span></div>
+    </div>
+  </div>
+  <div class="piede"><span>Abra Robotics, robotica applicata</span><span>Documento dimostrativo, non riferito a un cliente reale</span></div>
+</div>
+</body></html>

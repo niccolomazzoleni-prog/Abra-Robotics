@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Offerta 2026-041, fasi e criteri di accettazione (esempio)</title>
+<link rel="stylesheet" href="../abra-c.css">
+<style>
+  @page { size: A4; margin: 0; }
+  body { width: 210mm; height: 297mm; position: relative; overflow: hidden; background: #FBFAF6; }
+  .pg { position: absolute; inset: 0; padding: 12mm 14mm 12mm 18mm; }
+  .testa { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 7.5pt; color: var(--grafite); letter-spacing: .03em; padding-bottom: 3mm; border-bottom: 0.2mm solid var(--rigatura); }
+  .testa img { height: 3.6mm; }
+  .corpo { display: grid; grid-template-columns: 128mm 44mm; gap: 6mm; margin-top: 9mm; }
+  h2 { font-size: 19pt; font-weight: 600; margin: 0; letter-spacing: -0.01em; line-height: 1.1; }
+  h2 .n { font-family: var(--mono); font-weight: 400; font-size: 10pt; color: var(--grafite); margin-right: 3mm; vertical-align: 3pt; }
+  p { font-size: 9.6pt; line-height: 1.5; margin: 3.5mm 0 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6mm; font-size: 8.4pt; line-height: 1.35; }
+  th { font-family: var(--mono); font-weight: 400; font-size: 6.8pt; letter-spacing: .06em; text-transform: uppercase; color: var(--grafite); text-align: left; padding: 0 2mm 1.6mm 0; border-bottom: 0.3mm solid var(--inchiostro); vertical-align: bottom; }
+  td { padding: 2.2mm 2mm 2.2mm 0; border-bottom: 0.15mm solid var(--rigatura); vertical-align: top; }
+  td.f { font-family: var(--mono); font-size: 8.4pt; font-weight: 500; white-space: nowrap; }
+  td.f .d { display: block; font-weight: 400; font-size: 7pt; color: var(--grafite); margin-top: 1mm; }
+  td.e { font-family: var(--mono); font-size: 8pt; text-align: right; white-space: nowrap; padding-right: 0; }
+  td.c { font-style: italic; }
+  tr.decisione td { border-bottom: 0.3mm solid var(--inchiostro); }
+  .margine { padding-top: 13mm; font-size: 8.2pt; line-height: 1.42; color: var(--grafite); }
+  .margine .nt { margin-bottom: 5mm; position: relative; }
+  .margine .nt .k { font-family: var(--mono); font-size: 7pt; color: var(--inchiostro); font-weight: 500; margin-right: 1.5mm; }
+  .margine .rv { border-left: 0.6mm solid var(--evidenziatore); padding-left: 2.5mm; color: var(--inchiostro); font-style: italic; }
+  .ln { position: absolute; left: 8mm; font-family: var(--mono); font-size: 6pt; color: var(--grafite-chiara); }
+  .fig { margin-top: 7mm; display: grid; grid-template-columns: 1fr; }
+  .fig svg { width: 100%; display: block; }
+  .firme { position: absolute; left: 18mm; width: 128mm; bottom: 24mm; display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; font-size: 8pt; }
+  .firme .riga { border-bottom: 0.2mm solid var(--inchiostro); height: 12mm; margin-bottom: 1.5mm; }
+  .piede { position: absolute; left: 18mm; right: 14mm; bottom: 9mm; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 7pt; color: var(--grafite); letter-spacing: .03em; }
+</style>
+</head>
+<body>
+<div class="pg">
+  <div class="testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span>Offerta n. 2026-041 · 3. Fasi e criteri di accettazione</span><span class="esempio" style="font-size:6.5pt">Esempio</span></div>
+
+  <span class="ln" style="top:31mm">10</span><span class="ln" style="top:48mm">20</span><span class="ln" style="top:80mm">30</span><span class="ln" style="top:120mm">40</span><span class="ln" style="top:160mm">50</span><span class="ln" style="top:200mm">60</span><span class="ln" style="top:240mm">70</span>
+
+  <div class="corpo">
+    <div>
+      <h2><span class="n">3</span>Fasi e criteri di accettazione</h2>
+      <p>Ogni fase si chiude con una misura e una decisione. Il criterio è scritto qui, prima di iniziare; il risultato lo scriviamo nel report di fase, anche quando è sotto le attese.<sup class="rif">1</sup></p>
+
+      <table>
+        <thead><tr><th style="width:15mm">Fase</th><th style="width:31mm">Cosa facciamo</th><th style="width:38mm">Criterio di accettazione</th><th>Cosa vi resta</th><th style="width:15mm;text-align:right">Importo</th></tr></thead>
+        <tbody>
+          <tr><td class="f">P0<span class="d">1 sett.</span></td><td>Visita in reparto, video della postazione, dati di produzione</td><td class="c">Processo descritto e firmato da voi</td><td>Scheda del processo</td><td class="e">incluso</td></tr>
+          <tr><td class="f">P1<span class="d">3 sett.</span></td><td>Assessment: simulazione MuJoCo della postazione, scelta della piattaforma</td><td class="c"><span class="evid">Tempo ciclo simulato ≤ 15 s</span> su 200 prelievi<sup class="rif">2</sup></td><td>Report con numeri e limiti, modello di simulazione</td><td class="e">3.500 €</td></tr>
+          <tr><td class="f">P2<span class="d">4 sett.</span></td><td>Digital twin della cella, sviluppo del software di presa</td><td class="c">Presa riuscita ≥ 95% in simulazione su 5 formati di cartone</td><td>Codice nel vostro repository</td><td class="e">9.800 €</td></tr>
+          <tr><td class="f">P3<span class="d">3 sett.</span></td><td>Prove su robot vero nel Laboratorio Abra con i vostri cartoni</td><td class="c">Scarto fra simulato e misurato ≤ 10%</td><td>Video delle prove, verbale firmato</td><td class="e">8.400 €</td></tr>
+          <tr><td class="f">P4<span class="d">4 sett.</span></td><td>POC nel vostro reparto, su un turno, con il vostro personale</td><td class="c">8 ore senza intervento manuale</td><td>Dati del turno, analisi dei rischi</td><td class="e">14.600 €</td></tr>
+          <tr><td class="f">P5<span class="d">2 sett.</span></td><td>Consegna, formazione di due tecnici, manuale</td><td class="c">I vostri tecnici rilanciano il ciclo da soli</td><td>Manuale rev 1.0, simulatore, team formato</td><td class="e">5.200 €</td></tr>
+        </tbody>
+      </table>
+
+      <div class="fig">
+        <svg viewBox="0 0 480 172" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono" font-size="8">
+          <rect x="40" y="86" width="430" height="56" fill="#E9EC55" opacity=".5"/>
+          <line x1="40" y1="86" x2="470" y2="86" stroke="#1F1D1A" stroke-width=".9" stroke-dasharray="3 3"/>
+          <text x="46" y="81" fill="#1F1D1A">criterio: ≤ 15 s</text><text x="46" y="136" fill="#625E57">zona accettata</text>
+          <g stroke="#DCD6C8" stroke-width=".6"><line x1="40" y1="30" x2="470" y2="30"/><line x1="40" y1="142" x2="470" y2="142"/></g>
+          <line x1="40" y1="22" x2="40" y2="150" stroke="#1F1D1A" stroke-width=".9"/>
+          <g fill="#625E57" text-anchor="end"><text x="34" y="33">18 s</text><text x="34" y="89">15 s</text><text x="34" y="145">12 s</text></g>
+          <g stroke="#1F1D1A" stroke-width=".9">
+            <line x1="110" y1="92" x2="110" y2="118"/><line x1="106" y1="92" x2="114" y2="92"/><line x1="106" y1="118" x2="114" y2="118"/>
+            <line x1="230" y1="72" x2="230" y2="104"/><line x1="226" y1="72" x2="234" y2="72"/><line x1="226" y1="104" x2="234" y2="104"/>
+            <line x1="350" y1="56" x2="350" y2="96"/><line x1="346" y1="56" x2="354" y2="56"/><line x1="346" y1="96" x2="354" y2="96"/>
+          </g>
+          <g fill="#FBFAF6" stroke="#625E57" stroke-width="1.1"><circle cx="96" cy="112" r="4"/><circle cx="216" cy="96" r="4"/><circle cx="336" cy="82" r="4"/></g>
+          <g fill="#1F1D1A"><circle cx="110" cy="105" r="4.2"/><circle cx="230" cy="88" r="4.2"/><circle cx="350" cy="76" r="4.2"/></g>
+          <g fill="#1F1D1A" font-family="STIX Two Text" font-size="10"><text x="103" y="164" text-anchor="middle">cartone A</text><text x="223" y="164" text-anchor="middle">cartone C</text><text x="343" y="164" text-anchor="middle">cartone E</text></g>
+          <g font-family="STIX Two Text" font-style="italic" font-size="10" fill="#625E57"><path d="M354 72H392" stroke="#625E57" stroke-width=".7"/><text x="396" y="68">misurato in P3:</text><text x="396" y="79">media e dispersione</text></g>
+          <g fill="#625E57"><circle cx="58" cy="12" r="3.5" fill="#FBFAF6" stroke="#625E57"/><text x="66" y="15">simulato P1</text><circle cx="150" cy="12" r="3.7" fill="#1F1D1A"/><text x="158" y="15">misurato P3</text></g>
+        </svg>
+        <p class="didascalia" style="margin-top:1mm;font-size:8pt"><span class="mc">Fig. 3</span>&ensp;Tempo ciclo per formato di cartone: simulato in P1, misurato in P3 su 200 prelievi. Il cartone E supera il criterio: lo dichiariamo e proponiamo una presa diversa prima di P4. Valori di esempio.</p>
+      </div>
+    </div>
+
+    <aside class="margine">
+      <div class="nt"><span class="k">1</span>Se un criterio non è superato potete fermarvi alla fase successiva: pagate solo le fasi svolte e il materiale prodotto resta a voi.</div>
+      <div class="nt"><span class="k">2</span>Tempo ciclo al netto delle ricariche della batteria, misurato dall'inizio della presa al rilascio sul pallet.</div>
+      <div class="nt"><span class="k">3</span>La piattaforma si sceglie in P1. Se un cobot o una base su ruote fa lo stesso lavoro con meno rischio, ve lo scriviamo nel report.</div>
+      <div class="nt rv">rev 1.0 → 1.1<br>P3 portata da 2 a 3 settimane dopo la visita del 21.10: servono prove con cartone umido.</div>
+      <div class="nt" style="margin-top:9mm"><span class="etichetta" style="font-size:6.5pt">Totale fasi</span><br><span class="mono" style="font-size:11pt;color:var(--inchiostro)">41.500 €</span><br>IVA esclusa, importi di esempio. Ogni fase si ordina separatamente.</div>
+    </aside>
+  </div>
+
+  <div class="firme">
+    <div><span class="etichetta" style="font-size:6.5pt">Decisione di fine P1 · per Esempio S.p.A.</span><div class="riga"></div><span class="nota">nome, ruolo, data</span></div>
+    <div><span class="etichetta" style="font-size:6.5pt">Report di fase consegnato · per Abra Robotics</span><div class="riga"></div><span class="nota">Giovanni Pitton, responsabile tecnico</span></div>
+  </div>
+  <div class="piede"><span>Abra Robotics · Laboratorio Abra</span><span>rev 1.1 · 27.10.2026 · pagina 4 di 12</span></div>
+</div>
+</body>
+</html>

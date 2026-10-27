@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Offerta 2026-041, copertina (esempio)</title>
+<link rel="stylesheet" href="../abra-c.css">
+<style>
+  @page { size: A4; margin: 0; }
+  body { width: 210mm; height: 297mm; position: relative; overflow: hidden; background: #FBFAF6; }
+  .pg { position: absolute; inset: 0; padding: 16mm 18mm 14mm 18mm; }
+  .testa { display: flex; justify-content: space-between; align-items: center; padding-bottom: 4mm; border-bottom: 0.3mm solid var(--inchiostro); }
+  .testa img { height: 5.4mm; }
+  .testa .rev { font-size: 8.5pt; }
+  .tipo { margin-top: 15mm; display: flex; justify-content: space-between; align-items: baseline; }
+  h1 { font-size: 30pt; line-height: 1.06; letter-spacing: -0.012em; font-weight: 600; margin: 6mm 0 0; max-width: 150mm; }
+  .autori { margin-top: 7mm; font-size: 10.5pt; line-height: 1.5; }
+  .autori .nota { font-size: 10pt; }
+  .sintesi { margin-top: 9mm; display: grid; grid-template-columns: 34mm 1fr; gap: 6mm; border-top: 0.2mm solid var(--rigatura); padding-top: 5mm; }
+  .sintesi p { font-size: 11pt; line-height: 1.5; margin: 0; }
+  .fig0 { margin-top: 10mm; }
+  .fig0 svg { width: 100%; display: block; }
+  .indice { position: absolute; left: 18mm; right: 18mm; bottom: 26mm; display: grid; grid-template-columns: 34mm 1fr 1fr; gap: 6mm; border-top: 0.2mm solid var(--rigatura); padding-top: 5mm; }
+  .indice ol { list-style: none; margin: 0; padding: 0; font-size: 10pt; line-height: 1.75; }
+  .indice li { display: flex; justify-content: space-between; border-bottom: 0.15mm dotted var(--grafite-chiara); }
+  .indice li span { font-family: var(--mono); font-size: 8.5pt; color: var(--grafite); }
+  .piede { position: absolute; left: 18mm; right: 18mm; bottom: 12mm; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 7.5pt; color: var(--grafite); letter-spacing: .03em; }
+</style>
+</head>
+<body>
+<div class="pg">
+  <div class="testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span class="rev">Offerta n. 2026-041 · rev 1.0 · 27.10.2026</span></div>
+
+  <div class="tipo"><span class="etichetta">Proposta tecnica ed economica · POC a fasi</span><span class="esempio">Documento di esempio</span></div>
+  <h1>Prelievo dei cartoni a fine linea: misura in sei fasi cosa farà il robot, prima di investire</h1>
+
+  <div class="autori">
+    Per <b>Esempio S.p.A.</b>, Direzione Operations, stabilimento di prova<br>
+    Niccolò Mazzoleni, Giovanni Pitton · Abra Robotics, Laboratorio Abra<br>
+    <span class="nota">Validità dell'offerta: 60 giorni. Revisioni successive annotate a margine di ogni pagina.</span>
+  </div>
+
+  <div class="sintesi">
+    <span class="etichetta">Sintesi</span>
+    <p>Partiamo da una prova di tre settimane sul vostro processo. Simuliamo la postazione in MuJoCo, proviamo il prelievo su robot vero nel Laboratorio Abra e vi consegniamo un report con <span class="evid">tempo ciclo, errori e limiti misurati</span>. Ogni fase ha un criterio di accettazione scritto: se non è superato, vi fermate e pagate solo le fasi svolte. Codice, simulatore e manuale restano a voi.</p>
+  </div>
+
+  <div class="fig0">
+    <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono" font-size="9.5">
+      <rect x="132" y="58" width="300" height="22" fill="#E9EC55"/>
+      <line x1="20" y1="69" x2="620" y2="69" stroke="#1F1D1A" stroke-width="1.2"/>
+      <g fill="#1F1D1A" stroke="#FBFAF6" stroke-width="2.5">
+        <circle cx="20" cy="69" r="6"/><circle cx="132" cy="69" r="6"/><circle cx="232" cy="69" r="6"/><circle cx="332" cy="69" r="6"/><circle cx="432" cy="69" r="6"/><circle cx="532" cy="69" r="6"/>
+      </g>
+      <circle cx="620" cy="69" r="6" fill="#FBFAF6" stroke="#1F1D1A" stroke-width="1.2"/>
+      <g fill="#1F1D1A" letter-spacing=".5">
+        <text x="20" y="40">P0</text><text x="132" y="40">P1</text><text x="232" y="40">P2</text><text x="332" y="40">P3</text><text x="432" y="40">P4</text><text x="532" y="40">P5</text><text x="604" y="40">fine</text>
+      </g>
+      <g font-family="STIX Two Text" font-size="11" fill="#1F1D1A">
+        <text x="20" y="102">Analisi</text><text x="20" y="116">del processo</text>
+        <text x="132" y="102">Assessment</text><text x="132" y="116">e simulazione</text>
+        <text x="232" y="102">Digital twin</text><text x="232" y="116">e sviluppo</text>
+        <text x="332" y="102">Prove nel</text><text x="332" y="116">Laboratorio Abra</text>
+        <text x="432" y="102">POC nel</text><text x="432" y="116">vostro reparto</text>
+        <text x="532" y="102">Consegna</text><text x="532" y="116">e formazione</text>
+      </g>
+      <g fill="#625E57"><text x="20" y="140">1 sett.</text><text x="132" y="140">3 sett.</text><text x="232" y="140">4 sett.</text><text x="332" y="140">3 sett.</text><text x="432" y="140">4 sett.</text><text x="532" y="140">2 sett.</text></g>
+      <g font-family="STIX Two Text" font-style="italic" font-size="11" fill="#625E57"><text x="282" y="16" text-anchor="middle">la misura prima dell’investimento</text></g>
+      <path d="M282 21V27" stroke="#625E57" stroke-width=".8" fill="none"/><path d="M132 27H432" stroke="#625E57" stroke-width=".8" fill="none"/><path d="M132 27V30M432 27V30" stroke="#625E57" stroke-width=".8"/>
+    </svg>
+    <p class="didascalia" style="margin:2mm 0 0;font-size:9pt"><span class="mc">Fig. 0</span>&ensp;Le sei fasi del progetto. Ogni punto è una decisione vostra, presa sui numeri della fase precedente. Durate di esempio.</p>
+  </div>
+
+  <div class="indice">
+    <span class="etichetta">Contenuto</span>
+    <ol><li>1. Il processo, come l’abbiamo capito <span>2</span></li><li>2. Cosa misuriamo e come <span>3</span></li><li>3. Fasi e criteri di accettazione <span>4</span></li></ol>
+    <ol><li>4. Cosa vi resta in mano <span>6</span></li><li>5. Limiti dichiarati della piattaforma <span>8</span></li><li>6. Importi e condizioni <span>10</span></li></ol>
+  </div>
+  <div class="piede"><span>Abra Robotics · abrarobotics.com</span><span>Riservato a Esempio S.p.A. · pagina 1 di 12</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Biglietto da visita 85 x 55 mm, fronte e retro</title>
+<link rel="stylesheet" href="../abra-c.css">
+<style>
+  /* scala di presentazione: 12 px per mm. In stampa usare le misure in mm indicate. */
+  body { width: 2240px; height: 900px; background: #E4E0D6; position: relative; overflow: hidden; }
+  .card { position: absolute; top: 120px; width: 1020px; height: 660px; box-shadow: 0 2px 0 rgba(0,0,0,.06), 0 24px 50px -20px rgba(40,35,25,.35); overflow: hidden; }
+  .fronte { left: 70px; background: #FBFAF6; }
+  .retro { left: 1150px; background: var(--evidenziatore); }
+  .fronte .logo { position: absolute; left: 66px; top: 62px; height: 46px; }
+  .fronte .rev { position: absolute; right: 66px; top: 74px; font-size: 19px; }
+  .fronte .nome { position: absolute; left: 66px; top: 214px; font-size: 62px; font-weight: 600; letter-spacing: -0.012em; line-height: 1; }
+  .fronte .ruolo { position: absolute; left: 66px; top: 296px; font-size: 30px; font-style: italic; color: var(--grafite); }
+  .fronte .contatti { position: absolute; left: 66px; top: 392px; font-family: var(--mono); font-size: 24px; line-height: 1.6; }
+  .fronte .appunto { position: absolute; left: 600px; right: 66px; top: 392px; }
+  .fronte .appunto .etichetta { font-size: 17px; }
+  .fronte .appunto .r { border-bottom: 2px solid var(--rigatura); height: 46px; }
+  .fronte .piede { position: absolute; left: 66px; right: 66px; bottom: 50px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 17px; color: var(--grafite); letter-spacing: .04em; border-top: 1.5px solid var(--inchiostro); padding-top: 14px; }
+  .retro .sym { position: absolute; left: 70px; top: 160px; height: 330px; }
+  .retro .t { position: absolute; left: 572px; top: 351px; font-size: 28px; line-height: 1.32; }
+  .retro .t .mono { font-size: 22px; display: block; margin-top: 10px; }
+  .retro .filo { position: absolute; left: 437px; top: 370.5px; width: 120px; height: 3px; background: var(--inchiostro); }
+  .misure { position: absolute; top: 810px; font-family: var(--mono); font-size: 16px; color: var(--grafite); }
+</style>
+</head>
+<body>
+<div class="card fronte">
+  <img class="logo" src="../logo/orizzontale.svg" alt="Abra Robotics">
+  <span class="rev">rev 2026</span>
+  <div class="nome">Niccolò Mazzoleni</div>
+  <div class="ruolo">Fondatore, commerciale e strategia</div>
+  <div class="contatti">niccolo@abrarobotics.com<br>+39 000 000 00 00<br>abrarobotics.com</div>
+  <div class="appunto"><span class="etichetta">Appunti dell'incontro</span><div class="r"></div><div class="r"></div></div>
+  <div class="piede"><span>Robotica applicata</span><span>Laboratorio Abra, Italia</span></div>
+</div>
+<div class="card retro">
+  <img class="sym" src="../logo/simbolo.svg" alt="">
+  <div class="filo"></div>
+  <div class="t">Misuriamo il robot sul tuo<br>caso prima dell’investimento.<span class="mono">abrarobotics.com</span></div>
+</div>
+<span class="misure" style="left:70px">Fronte · 85 × 55 mm · carta naturale 400 g, stampa a un colore (inchiostro)</span>
+<span class="misure" style="left:1150px">Retro · fondo evidenziatore pieno, simbolo in inchiostro · il filo del richiamo porta al testo</span>
+</body>
+</html>

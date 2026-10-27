@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Copertina reel: il G1 che parla con il pubblico</title>
+<link rel="stylesheet" href="../abra-c.css">
+<style>
+  body { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: var(--inchiostro); color: var(--carta); }
+  .testa { position: absolute; left: 72px; right: 72px; top: 96px; display: flex; justify-content: space-between; align-items: center; }
+  .testa img { height: 36px; }
+  .testa .rev { color: var(--grafite-chiara); font-size: 18px; }
+  h1 { position: absolute; left: 72px; top: 250px; width: 940px; margin: 0; font-size: 92px; line-height: 1.02; font-weight: 600; letter-spacing: -0.018em; }
+  h1 .su-scuro { color: var(--evidenziatore); }
+  .tavola { position: absolute; left: 72px; right: 72px; top: 640px; height: 900px; background: var(--carta); color: var(--inchiostro); }
+  .tavola img { position: absolute; left: 44px; top: 112px; height: 750px; filter: grayscale(1) contrast(1.06); mix-blend-mode: multiply; }
+  .tavola .etichetta { position: absolute; left: 30px; top: 26px; font-size: 15px; }
+  .tavola .esempio { position: absolute; right: 30px; top: 22px; font-size: 13px; }
+  .log { position: absolute; left: 372px; top: 128px; width: 530px; }
+  .riga { padding: 22px 0 24px; border-top: 1px solid var(--rigatura); }
+  .riga .ora { font-family: var(--mono); font-size: 16px; color: var(--grafite); letter-spacing: .03em; display: block; margin-bottom: 8px; }
+  .riga .ora b { color: var(--inchiostro); font-weight: 500; }
+  .riga p { margin: 0; font-size: 31px; line-height: 1.3; }
+  .riga p.g1 { font-size: 31px; }
+  .fonte { font-style: italic; color: var(--grafite); font-size: 22px; margin-top: 10px; display: block; line-height: 1.35; }
+  .tavola svg { position: absolute; left: 0; top: 0; }
+  .piede { position: absolute; left: 72px; right: 72px; bottom: 270px; display: flex; justify-content: space-between; align-items: baseline; }
+  .piede .play { font-size: 34px; display: flex; align-items: center; gap: 18px; }
+  .piede .play::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--evidenziatore); }
+  .piede .mono { color: var(--grafite-chiara); font-size: 18px; }
+</style>
+</head>
+<body>
+<div class="testa"><img src="../logo/mono-negativo.svg" alt="Abra Robotics"><span class="rev">Demo in fiera · G1 · 0:42</span></div>
+<h1>Fai parlare il G1 del tuo marchio, <span class="su-scuro">con parole approvate da te.</span></h1>
+
+<div class="tavola">
+  <span class="etichetta">Registro della conversazione · stand</span>
+  <span class="esempio">Esempio</span>
+  <img src="../img/segnaposto-unitree-g1.png" alt="Umanoide in fiera (segnaposto Unitree G1)">
+  <svg width="936" height="860" viewBox="0 0 936 860"><path d="M178 190H300V214H352" stroke="#1F1D1A" stroke-width="2" fill="none"/><circle cx="178" cy="190" r="9" fill="#E9EC55" stroke="#1F1D1A" stroke-width="2.2"/></svg>
+  <div class="log">
+    <div class="riga"><span class="ora">14:32:07 · <b>Visitatrice</b></span><p>Di che materiale è la nuova linea?</p></div>
+    <div class="riga"><span class="ora">14:32:09 · <b>G1</b></span><p class="g1">Alluminio riciclato al 70 per cento, lavorato a Brescia.<span class="fonte">Fonte: scheda prodotto approvata dal cliente il 12.10</span></p></div>
+    <div class="riga"><span class="ora">14:32:21 · <b>Visitatrice</b></span><p>E il prezzo?</p></div>
+    <div class="riga"><span class="ora">14:32:23 · <b>G1</b></span><p class="g1">Non è nella mia base di conoscenza. Ti accompagno da Marta, al banco.<span class="fonte">Risposta fuori copione prevista in prova generale</span></p></div>
+  </div>
+</div>
+
+<div class="piede"><span class="play">Guarda la demo</span><span class="mono">Segnaposto: foto ufficiale Unitree G1</span></div>
+</body>
+</html>

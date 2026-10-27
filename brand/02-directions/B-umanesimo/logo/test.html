@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><title>Abra, prova del marchio</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/b.css">
+<style>
+body{padding:56px 64px;width:1440px}
+h1{font-weight:400;font-size:44px;letter-spacing:-.02em;margin-bottom:6px}
+.sub{font-family:var(--sans);color:var(--grafite);font-size:14px;margin-bottom:40px}
+.riga{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:36px}
+.cella{background:var(--carta);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:14px;min-height:230px}
+.cella h3{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--grafite);letter-spacing:.02em}
+.cella .vis{flex:1;display:flex;align-items:center;justify-content:center;gap:22px}
+.px{image-rendering:pixelated}
+.tab{background:#E3DDD1;border-radius:10px 10px 0 0;padding:9px 14px;display:flex;align-items:center;gap:9px;font:500 13px var(--sans);width:250px}
+.tab img{width:16px;height:16px}
+.bar{background:#fff;height:34px;width:250px;border-radius:0 0 6px 6px}
+.avatar-c{width:160px;height:160px;border-radius:50%;overflow:hidden}
+.avatar-q{width:160px;height:160px;overflow:hidden;border-radius:4px}
+.avatar-c img,.avatar-q img{width:100%;height:100%;display:block}
+.grande{grid-column:span 4;min-height:420px;background:var(--avorio);border:1px solid var(--pietra)}
+.neg{background:var(--inchiostro)}
+.neg h3{color:var(--pietra)}
+.nota{font-family:var(--sans);font-size:12px;color:var(--grafite);line-height:1.45}
+</style></head>
+<body>
+<h1>Il marchio alle sue misure</h1>
+<p class="sub">Territorio B, Misura d'uomo. Simbolo, logotipo e monogramma alle dimensioni reali d'uso. File SVG in questa cartella.</p>
+
+<div class="riga">
+  <div class="cella"><h3>Favicon 16 px, dimensione reale e ingrandita 8 volte</h3>
+    <div class="vis"><img src="favicon.svg" width="16" height="16" alt=""><canvas id="c16" class="px" width="16" height="16" style="width:128px;height:128px"></canvas></div></div>
+  <div class="cella"><h3>Favicon 32 px, dimensione reale e ingrandita 4 volte</h3>
+    <div class="vis"><img src="favicon.svg" width="32" height="32" alt=""><canvas id="c32" class="px" width="32" height="32" style="width:128px;height:128px"></canvas></div></div>
+  <div class="cella"><h3>Scheda del browser</h3>
+    <div class="vis" style="flex-direction:column;gap:0"><div class="tab"><img src="favicon.svg" alt="">Abra Robotics, robotica applicata</div><div class="bar"></div></div></div>
+  <div class="cella"><h3>Simbolo a 24, 48 e 96 px</h3>
+    <div class="vis"><img src="simbolo.svg" height="24" alt=""><img src="simbolo.svg" height="48" alt=""><img src="simbolo.svg" height="96" alt=""></div></div>
+</div>
+
+<div class="riga">
+  <div class="cella"><h3>Avatar social circolare (LinkedIn, Instagram)</h3>
+    <div class="vis"><div class="avatar-c"><img src="monogramma.svg" alt=""></div><div class="avatar-c" style="width:40px;height:40px"><img src="monogramma.svg" alt=""></div></div></div>
+  <div class="cella"><h3>Avatar quadrato</h3>
+    <div class="vis"><div class="avatar-q"><img src="monogramma.svg" alt=""></div><div class="avatar-q" style="width:40px;height:40px"><img src="monogramma.svg" alt=""></div></div></div>
+  <div class="cella"><h3>Logotipo nella barra del sito, altezza 28 px</h3>
+    <div class="vis"><img src="logotipo.svg" height="28" alt=""></div>
+    <p class="nota">Sotto i 24 px di altezza si usa il simbolo da solo.</p></div>
+  <div class="cella neg"><h3>Su inchiostro e su rosso</h3>
+    <div class="vis"><img src="orizzontale-negativo.svg" height="46" alt=""></div>
+    <div class="vis" style="background:var(--rosso);border-radius:4px;padding:14px 0"><img src="mono-negativo.svg" height="40" alt=""></div></div>
+</div>
+
+<div class="riga">
+  <div class="cella grande"><h3>Grande formato: marchio esteso orizzontale</h3>
+    <div class="vis"><img src="orizzontale.svg" width="1100" alt="Abra Robotics"></div></div>
+</div>
+
+<div class="riga">
+  <div class="cella" style="grid-column:span 2;min-height:360px"><h3>Verticale</h3><div class="vis"><img src="verticale.svg" height="250" alt=""></div></div>
+  <div class="cella" style="min-height:360px"><h3>Mono positivo</h3><div class="vis"><img src="mono-positivo.svg" width="290" alt=""></div></div>
+  <div class="cella neg" style="min-height:360px"><h3>Mono negativo</h3><div class="vis"><img src="mono-negativo.svg" width="290" alt=""></div></div>
+</div>
+
+<script>
+// rasterizza il favicon a 16 e 32 px e lo mostra ingrandito pixel per pixel
+const img=new Image();img.onload=()=>{for(const s of [16,32]){const c=document.getElementById('c'+s).getContext('2d');c.drawImage(img,0,0,s,s);}};img.src='favicon.svg';
+</script>
+</body></html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Abra Robotics, preventivo: copertina (direzione Cartamodello)</title>
+<link rel="stylesheet" href="../assets/sistema.css">
+<style>
+  @page{size:A4;margin:0}
+  body{width:794px;height:1123px;overflow:hidden;position:relative;background:var(--tela)}
+  .testa{position:absolute;left:56px;right:56px;top:52px;display:flex;justify-content:space-between;align-items:flex-start}
+  .testa img{height:30px}
+  .rif{text-align:right;font-size:11px;line-height:1.55;color:var(--grafite)}
+  .rif b{color:var(--flanella);font-weight:600}
+  .titolo{position:absolute;left:56px;top:150px;width:640px}
+  .titolo .t-etichetta{font-size:12px;color:var(--grafite)}
+  .titolo h1{font-size:62px;margin-top:14px}
+  .titolo p{font-size:16px;margin-top:18px;max-width:520px}
+  .foglio{position:absolute;left:0;right:0;top:470px;height:560px}
+  .piede{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--grafite)}
+  .piede .esempio{color:var(--flanella)}
+</style>
+</head>
+<body>
+<div class="testa">
+  <img src="../logo/orizzontale.svg" alt="Abra Robotics">
+  <div class="rif"><b>Proposta n. 2026/041, rev. 1</b><br>27 ottobre 2026<br>Valida 60 giorni</div>
+</div>
+
+<div class="titolo">
+  <div class="t-etichetta">Proposta tecnica ed economica</div>
+  <h1 class="t-display">Misura in sei fasi cosa farà il robot nel tuo reparto.</h1>
+  <p class="t-sotto">POC di manipolazione su una postazione di fine linea. Per: Responsabile R&amp;D, azienda manifatturiera del packaging. Ogni fase si chiude con un criterio scritto e una tua decisione.</p>
+</div>
+
+<svg class="foglio" viewBox="0 0 794 560" aria-label="Cartamodello del progetto: sei pezzi, uno per fase">
+  <rect x="0" y="0" width="794" height="560" fill="#D9CBAA"/>
+  <!-- griglia del tavolo da taglio, ogni 2 cm -->
+  <g stroke="#2F3337" stroke-opacity=".10" stroke-width="1">
+    <path d="M0 40H794M0 115.6H794M0 191.2H794M0 266.8H794M0 342.4H794M0 418H794M0 493.6H794"/>
+    <path d="M56 0V560M131.6 0V560M207.2 0V560M282.8 0V560M358.4 0V560M434 0V560M509.6 0V560M585.2 0V560M660.8 0V560M736.4 0V560"/>
+  </g>
+  <!-- filo di imbastitura: passa sotto i pezzi, si vede solo negli spazi -->
+  <path d="M-10 548 L804 24" stroke="#F2BF2C" stroke-width="7" stroke-linecap="round" stroke-dasharray="30 16"/>
+  <!-- sei pezzi -->
+  <g fill="#ECE6D8" stroke="#2F3337" stroke-width="1.6">
+    <path d="M56 40 H262 L280 150 L248 206 H56 Z"/>
+    <path d="M300 40 H496 V206 H316 L286 150 Z"/>
+    <path d="M520 40 H738 V140 L700 206 H520 Z"/>
+    <path d="M56 240 H330 L352 330 L330 420 H56 Z"/>
+    <path d="M368 240 H600 L600 420 H392 L370 330 Z"/>
+    <path d="M622 240 H738 V500 H622 Z" fill="#2F3337"/>
+  </g>
+  <!-- margine di cucitura -->
+  <g fill="none" stroke="#2F3337" stroke-width="1.2" stroke-dasharray="7 5" stroke-linecap="round" opacity=".6">
+    <path d="M68 52 H252 L268 150 L240 194 H68 Z"/>
+    <path d="M312 52 H484 V194 H322 L298 150 Z"/>
+    <path d="M532 52 H726 V137 L694 194 H532 Z"/>
+    <path d="M68 252 H320 L340 330 L320 408 H68 Z"/>
+    <path d="M380 252 H588 V408 H400 L382 330 Z"/>
+  </g>
+  <!-- tacche -->
+  <g fill="#D9CBAA"><path d="M150 40l7 10l7-10Z M390 40l7 10l7-10Z M620 40l7 10l7-10Z M190 240l7 10l7-10Z M480 240l7 10l7-10Z"/></g>
+  <!-- drittofilo -->
+  <g stroke="#2F3337" stroke-width="1.4" fill="none">
+    <path d="M76 176H200M86 171l-10 5l10 5M190 171l10 5l-10 5"/>
+    <path d="M320 176H444M330 171l-10 5l10 5M434 171l10 5l-10 5"/>
+    <path d="M540 176H664M550 171l-10 5l10 5M654 171l10 5l-10 5"/>
+    <path d="M76 386H240M86 381l-10 5l10 5M230 381l10 5l-10 5"/>
+    <path d="M410 386H560M420 381l-10 5l10 5M550 381l10 5l-10 5"/>
+  </g>
+  <!-- etichette dei pezzi -->
+  <g font-family="Bricolage Grotesque" fill="#2F3337">
+    <text x="76" y="92" font-size="40" font-weight="700" font-stretch="80%">P0 P1</text>
+    <text x="76" y="122" font-size="10.5" font-weight="600" font-stretch="75%" letter-spacing="1">LE MISURE</text>
+    <text x="76" y="140" font-size="12">Sopralluogo e assessment</text>
+    <text x="320" y="92" font-size="40" font-weight="700" font-stretch="80%">P2</text>
+    <text x="320" y="122" font-size="10.5" font-weight="600" font-stretch="75%" letter-spacing="1">L'IMBASTITURA</text>
+    <text x="320" y="140" font-size="12">Digital twin e simulazione</text>
+    <text x="540" y="92" font-size="40" font-weight="700" font-stretch="80%">P3</text>
+    <text x="540" y="122" font-size="10.5" font-weight="600" font-stretch="75%" letter-spacing="1">LA PROVA</text>
+    <text x="540" y="140" font-size="12">POC nel laboratorio Abra</text>
+    <text x="76" y="292" font-size="40" font-weight="700" font-stretch="80%">P4</text>
+    <text x="76" y="322" font-size="10.5" font-weight="600" font-stretch="75%" letter-spacing="1">LA SECONDA PROVA</text>
+    <text x="76" y="340" font-size="12">Pilota sulla tua postazione</text>
+    <text x="390" y="292" font-size="40" font-weight="700" font-stretch="80%">P5</text>
+    <text x="390" y="322" font-size="10.5" font-weight="600" font-stretch="75%" letter-spacing="1">IL MODELLO</text>
+    <text x="390" y="340" font-size="12">Consegna, manuale, formazione</text>
+    <g fill="#ECE6D8"><text x="638" y="270" font-size="10.5" font-weight="600" font-stretch="75%" letter-spacing="1">RESTA A TE</text>
+    <text x="638" y="292" font-size="12">Codice,</text><text x="638" y="308" font-size="12">simulatore</text><text x="638" y="324" font-size="12">e manuale nel</text><text x="638" y="340" font-size="12">tuo repository</text></g>
+  </g>
+</svg>
+
+<div class="piede"><span>Abra Robotics, robotica applicata. Documento riservato al destinatario.</span><span class="esempio">Esempio</span></div>
+</body>
+</html>

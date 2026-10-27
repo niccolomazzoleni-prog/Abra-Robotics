@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Offerta tecnica ed economica · fasi e criteri · Esempio</title>
+<link rel="icon" href="../logo/favicon.svg">
+<link rel="stylesheet" href="../assets/a.css">
+<style>
+  @page{size:A4;margin:0}
+  body{width:794px;height:1123px;overflow:hidden;background:var(--bianco);position:relative}
+  .pag{position:absolute;inset:0;padding:40px 57px 0}
+  .testa{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1.5px solid var(--grafite)}
+  .testa img{height:24px;margin-left:-5px}
+  .testa .et{color:var(--quota);font-size:10.5px}
+  .sez{display:grid;grid-template-columns:90px 1fr;margin-top:34px}
+  .sez .n{font:600 34px/1 var(--f-titolo);color:var(--quota)}
+  h2{font:600 30px/1.08 var(--f-titolo);letter-spacing:-.005em}
+  .intro{font:400 13.5px/1.5 var(--f-testo);max-width:62ch;margin-top:12px}
+  table{width:100%;border-collapse:collapse;margin-top:26px;font:400 12px/1.38 var(--f-testo)}
+  th{font:500 9.5px/1.2 var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;color:var(--quota);text-align:left;padding:0 8px 7px 0;border-bottom:1.5px solid var(--grafite);vertical-align:bottom}
+  td{padding:10px 8px 11px 0;border-bottom:1px solid var(--linea);vertical-align:top}
+  td.f{font:600 15px/1 var(--f-titolo);width:44px}
+  td.f .tri{font-size:9px;margin-left:3px;vertical-align:1px}
+  td b{font-weight:600}
+  td.c{white-space:nowrap;text-align:right;padding-right:14px;font-weight:500}
+  .rq{font:500 10.5px/1 var(--f-etichetta);letter-spacing:.04em;color:var(--grafite);margin-top:2px}
+  .rq>span{padding:5px 6px}
+  .rq .ok{padding:5px 5px}
+  .tot td{border-bottom:1.5px solid var(--grafite);font-weight:600}
+  .box{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .box>div{border:1.5px solid var(--grafite);padding:12px 14px 13px;font:400 12px/1.45 var(--f-testo)}
+  .box h3{font:500 10px/1.2 var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:8px}
+  .sq{display:inline-block;width:9px;height:9px}
+  .sq.v{background:var(--verde)}.sq.g{background:var(--giallo);outline:1px solid #C9B520}
+  .box ul{list-style:none}
+  .box li{padding-left:14px;position:relative;margin-top:3px}
+  .box li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:1.5px;background:var(--grafite)}
+  .piede{position:absolute;left:57px;right:57px;bottom:34px;display:flex;justify-content:space-between;align-items:flex-end}
+  .piede .cartiglio{grid-template-columns:auto auto auto auto;font:500 11px/1.2 var(--f-testo)}
+  .piede .cartiglio>div{border-top:0;padding:5px 10px}
+  .piede .cartiglio>div:first-child{border-left:0}
+  .timbro{display:flex;align-items:center;gap:10px;color:var(--quota)}
+  .timbro img{width:34px}
+  .firme{margin-top:26px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px}
+  .firme div{border-top:1.5px solid var(--grafite);padding-top:7px;height:74px;font:500 10px/1.2 var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;color:var(--quota)}
+  .firme div b{display:block;font:400 12px/1.4 var(--f-testo);letter-spacing:0;text-transform:none;color:var(--grafite);margin-top:5px}
+</style>
+</head>
+<body>
+<div class="pag">
+  <div class="testa">
+    <img src="../logo/orizzontale.svg" alt="Abra Robotics">
+    <span class="et num">Offerta AR 2026 041 · Rev 1.0 · Cliente di esempio S.p.A.</span>
+    <span class="esempio">Esempio</span>
+  </div>
+
+  <div class="sez">
+    <div class="n num">04</div>
+    <div>
+      <h2>Decidi fase per fase, con un criterio scritto e un costo noto prima di iniziare.</h2>
+      <p class="intro">Ogni fase si chiude con una prova misurata. Se il criterio è rispettato, firmi il passaggio alla fase successiva; se non lo è, ti consegniamo i dati raccolti e il progetto si ferma senza altri costi. Durate e importi sono di esempio.</p>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th>Fase</th><th style="width:31%">Cosa facciamo</th><th>Criterio di accettazione</th><th style="width:21%">Cosa ti resta</th><th style="text-align:right;padding-right:14px">Importo</th></tr></thead>
+    <tbody>
+      <tr><td class="f">P0<i class="tri"></i></td><td><b>Chiamata e sopralluogo.</b> Raccogliamo dati di linea, layout e vincoli di sicurezza.</td><td><span class="rq"><span>Dati di linea</span><span>completi</span><span class="ok">P0</span></span></td><td>Verbale del sopralluogo</td><td class="c num">incluso</td></tr>
+      <tr><td class="f">P1</td><td><b>Assessment, 3 settimane.</b> Scegliamo la piattaforma adatta e confrontiamo tre configurazioni.</td><td><span class="rq"><span>Configurazioni</span><span>3 a confronto</span><span class="ok">P1</span></span></td><td>Report con i numeri per decidere</td><td class="c num">3.500 €</td></tr>
+      <tr><td class="f">P2</td><td><b>Simulazione e digital twin</b> della postazione in MuJoCo, con il tempo ciclo simulato.</td><td><span class="rq"><span>Tempo ciclo</span><span>≤ 18 s</span><span class="ok">P2</span></span></td><td>Digital twin e scenari di prova</td><td class="c num">12.000 €</td></tr>
+      <tr><td class="f">P3</td><td><b>Prove nel Laboratorio Abra</b> su robot vero, con i tuoi pezzi.</td><td><span class="rq"><span>Prese riuscite</span><span>≥ 98 % su 500</span><span class="ok">P3</span></span></td><td>Video non montati e log delle prove</td><td class="c num">18.000 €</td></tr>
+      <tr><td class="f">P4</td><td><b>Prove nel tuo reparto</b> per due turni, con il tuo tecnico.</td><td><span class="rq"><span>Turni senza fermo</span><span>2 su 2</span><span class="ok">P4</span></span></td><td>Codice nel tuo repository</td><td class="c num">15.000 €</td></tr>
+      <tr><td class="f">P5</td><td><b>Validazione e consegna</b> con formazione di due tecnici interni.</td><td><span class="rq"><span>Tecnici formati</span><span>2</span><span class="ok">P5</span></span></td><td>Manuale tecnico rev 1.0, 85 h di assistenza</td><td class="c num">6.000 €</td></tr>
+      <tr class="tot"><td></td><td>Totale servizi, robot escluso</td><td></td><td></td><td class="c num">54.500 €</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <div>
+      <h3><span class="sq g"></span>Limiti dichiarati in questa offerta</h3>
+      <ul>
+        <li>Carico continuativo dell'umanoide sotto 2 kg per braccio (valutazione interna, esempio).</li>
+        <li>Autonomia circa 2 ore; la batteria si sostituisce in pochi minuti.</li>
+        <li>Prove in ambiente asciutto, con pavimento in piano.</li>
+      </ul>
+    </div>
+    <div>
+      <h3><span class="sq v"></span>Responsabilità scritte</h3>
+      <ul>
+        <li>Abra fornisce robot, software, prove e documentazione.</li>
+        <li>La certificazione CE dell'insieme si affronta in industrializzazione, con un ente terzo.</li>
+        <li>Configurazione di rete isolata, da verificare con il vostro IT prima di P4.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="firme">
+    <div>Passaggio di fase<b>P1 a P2 · criterio rispettato</b></div>
+    <div>Firma del cliente</div>
+    <div>Firma Abra Robotics</div>
+  </div>
+</div>
+
+<div class="piede">
+  <div class="cartiglio">
+    <div><small>Documento</small>Offerta tecnica ed economica</div>
+    <div><small>Rev</small>1.0</div>
+    <div><small>Data</small>27.10.2026</div>
+    <div><small>Foglio</small>6 di 14</div>
+  </div>
+  <div class="timbro et"><span>Verificato</span><img src="../logo/monogramma.svg" alt=""></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Biglietto da visita 85 x 55 mm · fronte e retro</title>
+<link rel="icon" href="../logo/favicon.svg">
+<link rel="stylesheet" href="../assets/a.css">
+<style>
+  /* scala di presentazione: 1 mm = 6 px */
+  body{width:1300px;height:820px;overflow:hidden;background:var(--alluminio);position:relative}
+  .card{position:absolute;width:510px;height:330px;box-shadow:0 1px 0 rgba(26,33,37,.08),0 18px 40px -24px rgba(26,33,37,.45)}
+  .fronte{left:96px;top:190px;background:var(--grafite);color:var(--bianco)}
+  .retro{left:694px;top:190px;background:var(--bianco);color:var(--grafite)}
+  .fronte .logo{position:absolute;left:30px;top:30px;height:44px}
+  .fronte .claim{position:absolute;left:38px;top:122px;font:500 18px/1.3 var(--f-testo);color:var(--alluminio);max-width:25ch}
+  .righello{position:absolute;left:24px;bottom:22px;width:482px;height:60px;overflow:visible}
+  .retro .nome{position:absolute;left:36px;top:36px;font:600 26px/1.05 var(--f-titolo)}
+  .retro .ruolo{position:absolute;left:36px;top:72px;color:var(--quota);font-size:12px}
+  .retro .dati{position:absolute;left:36px;top:150px;font:400 15px/1.6 var(--f-testo)}
+  .retro .dati span{display:inline-block;width:46px;font:500 10px var(--f-etichetta);letter-spacing:.1em;text-transform:uppercase;color:var(--quota)}
+  .retro .mono{position:absolute;right:30px;top:30px;width:52px}
+  .retro .rq{position:absolute;right:30px;bottom:30px;font-size:11px}
+  .lab{position:absolute;top:150px;color:var(--quota)}
+  .qx{position:absolute;height:1px;background:var(--quota);top:548px}
+  .qx::before,.qx::after{content:"";position:absolute;top:-6px;width:1px;height:13px;background:var(--quota)}
+  .qx::before{left:0}.qx::after{right:0}
+  .qx b{position:absolute;left:50%;top:9px;transform:translateX(-50%);font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
+  .qy{position:absolute;width:1px;background:var(--quota);top:190px;height:330px}
+  .qy::before,.qy::after{content:"";position:absolute;left:-6px;width:13px;height:1px;background:var(--quota)}
+  .qy::before{top:0}.qy::after{bottom:0}
+  .qy b{position:absolute;top:50%;left:-14px;transform:translate(-100%,-50%);font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota);white-space:nowrap}
+  .head{position:absolute;left:96px;right:96px;top:56px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:12px}
+  .head h1{font:600 26px/1 var(--f-titolo)}
+  .note{position:absolute;left:96px;right:96px;top:640px;display:grid;grid-template-columns:1fr 1fr;gap:88px;font:400 14px/1.5 var(--f-testo);color:var(--grafite)}
+  .note b{font-weight:600}
+</style>
+</head>
+<body>
+<div class="head"><h1>Biglietto da visita</h1><span class="et num" style="color:var(--quota)">85 × 55 mm · carta 400 g/m² · stampa 1:1</span></div>
+<span class="lab et" style="left:96px">Fronte</span><span class="lab et" style="left:694px">Retro</span>
+
+<div class="card fronte">
+  <img class="logo" src="../logo/orizzontale-bianco.svg" alt="Abra Robotics">
+  <div class="claim">Robotica applicata.<br>Prima la prova, poi l'investimento.</div>
+  <svg class="righello" viewBox="0 0 480 60" aria-label="Righello millimetrato di 80 mm">
+    <g stroke="#E3E7E9" stroke-width="1" id="tacche"></g>
+    <g fill="#E3E7E9" font-family="Barlow SC" font-size="11" font-weight="500" id="num"></g>
+  </svg>
+</div>
+<div class="qx" style="left:96px;width:510px"><b class="num">85 mm</b></div>
+<div class="qy" style="left:76px"><b class="num">55 mm</b></div>
+
+<div class="card retro">
+  <div class="nome">Giovanni Pitton</div>
+  <div class="ruolo et">Cofondatore · Tecnica e sviluppo</div>
+  <img class="mono" src="../logo/monogramma.svg" alt="">
+  <div class="dati num">
+    <div><span>Tel</span>+39 000 000 0000</div>
+    <div><span>Mail</span>giovanni@abrarobotics.com</div>
+    <div><span>Web</span>abrarobotics.com</div>
+    <div><span>Lab</span>Laboratorio Abra, Italia</div>
+  </div>
+  <span class="rq et"><span><i class="tri"></i></span><span>Prima la prova</span><span class="rif">A</span></span>
+</div>
+
+<div class="note">
+  <p><b>Il fronte è un righello.</b> Il bordo inferiore porta 80 mm di scala millimetrata in stampa 1:1, con tacche a 1, 5 e 10 mm. Il biglietto si usa davvero per misurare: è il primo oggetto Abra che il cliente tiene in mano.</p>
+  <p><b>Il retro è una targa dati.</b> Nome, ruolo e contatti in Barlow, monogramma come timbro, riquadro di controllo con il posizionamento. Numero di telefono di esempio.</p>
+</div>
+<script>
+  // tacche del righello: 1 mm = 6 px, 0..80 mm
+  const t=document.getElementById('tacche'),n=document.getElementById('num');let s='',m='';
+  for(let i=0;i<=80;i++){const x=i*6;const h=i%10===0?22:(i%5===0?15:9);s+=`<line x1="${x+.5}" y1="60" x2="${x+.5}" y2="${60-h}"/>`;if(i%10===0)m+=`<text x="${x+.5}" y="${60-27}" text-anchor="middle">${i}</text>`}
+  t.innerHTML=s;n.innerHTML=m;
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<title>Copertina reel Instagram, demo del G1 che parla con il pubblico</title>
+<link rel="stylesheet" href="../sistema.css">
+<style>
+body{margin:0;font-family:var(--f)}
+.reel{position:relative;width:1080px;height:1920px;background:var(--velluto);color:var(--stucco);overflow:hidden}
+.fondale{position:absolute;left:420px;top:0;width:640px;height:1330px;background:var(--quinta);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%)}
+.top{position:absolute;left:80px;right:80px;top:150px;display:flex;justify-content:space-between;align-items:center}
+.top img{height:38px}
+.top .lbl{font-size:17px;color:var(--luce)}
+.lbl-demo{position:absolute;left:80px;top:330px;font-size:18px;color:var(--luce);display:flex;gap:14px;align-items:center}
+h1{position:absolute;left:80px;top:390px;width:600px;margin:0;font-size:128px;color:var(--stucco);z-index:3}
+h1 em{font-style:normal;color:var(--luce)}
+.robot{position:absolute;left:640px;top:520px;height:840px;z-index:2}
+.dida-r{position:absolute;left:80px;top:1040px;width:430px;font-size:18px;line-height:1.4;color:var(--fumo-chiaro)}
+.palco{left:0;width:1080px;top:1330px;height:590px;--p-top-l:6%;--p-top-r:6%}
+.copione{position:absolute;left:120px;right:120px;top:1392px;color:var(--velluto);z-index:3}
+.copione .lbl{font-size:16px;margin:0 0 20px;display:flex;justify-content:space-between;align-items:center}
+.battuta{display:grid;grid-template-columns:200px 1fr;gap:20px;font-size:31px;line-height:1.25;margin:0 0 16px}
+.battuta b{font-stretch:var(--largo);font-weight:700;font-size:17px;letter-spacing:.14em;text-transform:uppercase;padding-top:9px}
+.copione .dida{font-size:25px;margin:0 0 16px 220px}
+.esempio{font-size:14px}
+</style></head>
+<body>
+<div class="reel">
+  <div class="fondale"></div>
+  <div class="top"><img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics"><span class="lbl">Eventi e fiere</span></div>
+  <p class="lbl lbl-demo"><span class="segno"></span>Demo · l'umanoide risponde al pubblico</p>
+  <h1 class="disp">Fai parlare l'umanoide <em>con le parole del tuo marchio.</em></h1>
+  <p class="dida dida-r">(Segnaposto: immagine ufficiale Unitree G1 con trattamento tungsteno. Qui andrà un fotogramma della demo.)</p>
+  <img class="robot" src="img/segnaposto-unitree-g1-tungsteno.png" alt="Umanoide che si china verso il pubblico (segnaposto)">
+  <div class="palco"></div>
+  <div class="copione">
+    <p class="lbl"><span>Dal copione approvato</span><span class="esempio">Esempio</span></p>
+    <p class="battuta"><b>Visitatrice</b><span>Il vostro tostapane va anche in lavastoviglie?</span></p>
+    <p class="dida">(Il G1 si gira verso lo stand e indica il modello.)</p>
+    <p class="battuta"><b>G1</b><span>La griglia sì, il corpo no. Vuole vedere come si smonta?</span></p>
+  </div>
+</div>
+</body></html>

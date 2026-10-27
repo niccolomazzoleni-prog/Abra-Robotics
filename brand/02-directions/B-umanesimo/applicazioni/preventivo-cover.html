@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<title>Offerta Abra Robotics, copertina (esempio)</title>
+<link rel="stylesheet" href="../assets/b.css">
+<style>
+@page{size:A4;margin:0}
+body{width:794px;height:1123px;position:relative;overflow:hidden;background:var(--carta)}
+.campo{position:absolute;left:0;top:0;width:794px;height:640px;background:var(--verderame)}
+.campo svg{position:absolute;inset:0}
+.testa{position:absolute;left:56px;right:56px;top:48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:2}
+.testa img{height:34px}
+.rif{font:500 12px/1.55 var(--sans);color:var(--avorio);text-align:right}
+.rif b{font-weight:600}
+.serie{position:absolute;left:56px;bottom:52px;font:400 15px/1.4 var(--serif);font-style:italic;color:var(--avorio);width:250px}
+.serie b{font:600 12px var(--sans);font-style:normal;letter-spacing:.02em;display:block;margin-bottom:6px}
+.corpo{position:absolute;left:56px;right:56px;top:690px}
+.corpo .etichetta{color:var(--verderame)}
+h1{font-weight:400;font-size:41px;line-height:1.08;letter-spacing:-.022em;margin:18px 0 0;font-variation-settings:"opsz" 60}
+h1 em{font-style:italic;color:var(--rosso)}
+.dati{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:42px;border-top:1.5px solid var(--inchiostro)}
+.dati div{padding:12px 14px 0 0;font:400 14.5px/1.4 var(--serif)}
+.dati span{display:block;font:600 11px var(--sans);letter-spacing:.03em;color:var(--grafite);margin-bottom:5px}
+.piede{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font:500 11px var(--sans);color:var(--grafite)}
+.piede .esempio{font-size:10px}
+</style></head>
+<body>
+<div class="campo">
+  <svg viewBox="0 0 794 640" width="794" height="640" aria-hidden="true"><path fill="#E2A93B" d="M373.72 194A192 192 0 0 1 732 290L628 290A88 88 0 0 0 463.79 246Z"/><path fill="#BB3B26" d="M372 432A154 154 0 1 1 680 432A154 154 0 1 1 372 432Z"/><path fill="#24211E" d="M628 290H732V578H628Z"/><path fill="#2B6F67" d="M628 316.62A154 154 0 0 1 680 432A154 154 0 0 1 628 547.38Z"/></svg>
+  <div class="testa"><img src="../logo/orizzontale-negativo.svg" alt="Abra Robotics"><p class="rif"><b>Offerta 2026/031</b><br>Revisione 1, 27 ottobre 2026<br>Validità 60 giorni</p></div>
+  <p class="serie"><b>Serie verde: proposte di progetto</b>Ogni fase ha un costo, una durata e un criterio di accettazione scritto.</p>
+</div>
+<section class="corpo">
+  <span class="etichetta">Proposta di POC a fasi, da P0 a P5</span>
+  <h1>Misura il tempo ciclo della postazione&nbsp;3<br><em>prima di investire nel robot.</em></h1>
+  <div class="dati">
+    <div><span>Per</span>Azienda manifatturiera, settore confezionamento</div>
+    <div><span>Referente</span>Responsabile R&amp;D di stabilimento</div>
+    <div><span>Preparata da</span>Giovanni Pitton, Niccolò Mazzoleni</div>
+    <div><span>Contenuto</span>Fasi, criteri, costi, limiti dichiarati, cosa resta a voi</div>
+  </div>
+</section>
+<footer class="piede"><span>Abra Robotics, robotica applicata · abrarobotics.com</span><span class="esempio">Esempio: cliente e dati di fantasia</span></footer>
+</body></html>

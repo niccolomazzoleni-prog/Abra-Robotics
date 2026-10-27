@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Post LinkedIn, versione anonima: consegna del Go2 per una tesi in azienda</title>
+<link rel="stylesheet" href="../abra-c.css">
+<style>
+  body { width: 1200px; height: 1500px; position: relative; overflow: hidden; }
+  .testa { position: absolute; left: 72px; right: 72px; top: 60px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 22px; border-bottom: 1.5px solid var(--inchiostro); }
+  .testa img { height: 34px; }
+  .testa .rev { font-size: 17px; }
+  h1 { position: absolute; left: 72px; top: 176px; width: 1000px; margin: 0; font-size: 84px; line-height: 1.03; font-weight: 600; letter-spacing: -0.018em; }
+  .lead { position: absolute; left: 72px; top: 470px; width: 760px; font-size: 29px; line-height: 1.42; margin: 0; }
+  .banco { position: absolute; left: 72px; right: 72px; top: 640px; height: 590px; background: #F8F6F0; border: 1px solid var(--rigatura); background-image: linear-gradient(rgba(220,214,200,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(220,214,200,.55) 1px, transparent 1px); background-size: 24px 24px; background-position: -1px -1px; }
+  .banco img { position: absolute; left: 300px; top: 110px; width: 470px; filter: grayscale(1) contrast(1.05); mix-blend-mode: multiply; }
+  .banco svg { position: absolute; left: 0; top: 0; }
+  .lbl { position: absolute; font-size: 22px; line-height: 1.3; }
+  .lbl b { font-family: var(--mono); font-weight: 500; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .lbl i { color: var(--grafite); }
+  .banco .etichetta { position: absolute; left: 22px; top: 18px; font-size: 14px; }
+  .cassa { position: absolute; left: 72px; right: 72px; top: 1262px; display: grid; grid-template-columns: 220px 1fr 1fr; gap: 0 30px; }
+  .cassa .etichetta { font-size: 14px; color: var(--inchiostro); padding-top: 4px; }
+  .cassa ul { list-style: none; margin: 0; padding: 0; font-size: 23px; line-height: 1.55; }
+  .cassa li::before { content: "✓"; font-family: var(--mono); font-size: 18px; margin-right: 14px; color: var(--verde-registro); }
+  .piede { position: absolute; left: 72px; right: 72px; bottom: 44px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 15px; color: var(--grafite); }
+</style>
+</head>
+<body>
+<div class="testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span class="rev">Quaderno di consegna · voce 001 · 29.10.2026</span></div>
+
+<h1>Dai al tuo tesista un robot che <span class="evid">conosce già il tuo stabilimento.</span></h1>
+<p class="lead">Questa settimana consegniamo a un gruppo industriale italiano un Go2 per una tesi in azienda. Il tesista parte con la mappa del reparto, il simulatore e il codice già nel repository dei tecnici.</p>
+
+<div class="banco">
+  <span class="etichetta">Fig. 1 · Go2 al banco prima della spedizione</span>
+  <img src="../img/segnaposto-unitree-go2.png" alt="Quadrupede consegnato (segnaposto Unitree Go2)">
+  <svg width="1056" height="590" viewBox="0 0 1056 590">
+    <g stroke="#1F1D1A" stroke-width="1.6" fill="none">
+      <path d="M378 318H250V498"/>
+      <path d="M470 220V160H260"/>
+      <path d="M620 208V152H760"/>
+      <path d="M690 290H800V370"/>
+    </g>
+    <g fill="#E9EC55" stroke="#1F1D1A" stroke-width="2"><circle cx="378" cy="318" r="7.5"/><circle cx="470" cy="220" r="7.5"/><circle cx="620" cy="208" r="7.5"/><circle cx="690" cy="290" r="7.5"/></g>
+  </svg>
+  <div class="lbl" style="left:28px;top:506px;width:300px"><b>LiDAR e SLAM</b>mappa del reparto fatta nel nostro laboratorio</div>
+  <div class="lbl" style="left:28px;top:122px;width:240px"><b>Simulatore MuJoCo</b>lo stesso codice gira in simulazione e sul robot</div>
+  <div class="lbl" style="left:770px;top:122px;width:260px"><b>Repository</b>condiviso con due tecnici del cliente</div>
+  <div class="lbl" style="left:770px;top:380px;width:260px"><b>Manuale rev 1.1</b><i>scritto per questa tesi, con i limiti del robot</i></div>
+</div>
+
+<div class="cassa">
+  <span class="etichetta">Nella cassa</span>
+  <ul><li>Go2 EDU con LiDAR</li><li>Manuale tecnico rev 1.1</li><li>Simulatore MuJoCo</li></ul>
+  <ul><li>Accesso al repository di codice</li><li>Video del digital twin</li><li>Pacchetto di assistenza</li></ul>
+</div>
+<div class="piede"><span>Versione anonima: il cliente si nomina solo con il suo consenso scritto</span><span>Segnaposto: foto ufficiale Unitree Go2</span></div>
+</body>
+</html>
