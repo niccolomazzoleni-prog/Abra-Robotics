@@ -14,7 +14,13 @@ Base: STIX Two Text SemiBold (OFL), ridisegnato. Unità del font (1000 per em, a
 
 Simbolo: la A annotata. 16 px: `logo/favicon-16.svg`, disegnato a pixel (A di 12 righe, punto 3 × 3, filo di 1 px dalla luce interna fino a 1 px dal bordo). Da 32 px: `favicon.svg`.
 
-Area di rispetto: metà dell'altezza della A su ogni lato. Dimensione minima: logotipo 14 px di altezza; lockup con descrittore 30 px.
+Versioni per dimensione (v3.1):
+- **Da 49 px in su**: `logotipo.svg`, `orizzontale.svg`, filo spesso 17 unità.
+- **Da 24 a 48 px**: `logotipo-24-48.svg`, `orizzontale-24-48.svg`, filo raddoppiato a 34 unità perché resti visibile nella barra del sito e nelle intestazioni.
+- **16 px**: `favicon-16.svg` a pixel; filo di 2 px per i primi 3 px dopo il punto, poi 1 px.
+- **Simbolo isolato** (`simbolo.svg`, monogramma, favicon vettoriale): il filo supera la gamba destra di 0,6 volte il diametro del punto, quindi resta dentro la grazia.
+
+Area di rispetto: metà dell'altezza della A su ogni lato. Dimensioni minime: logotipo 14 px di altezza a schermo e 4 mm in stampa; lockup con descrittore 30 px a schermo e 8 mm in stampa; **simbolo isolato 6 mm di altezza in stampa** (sotto, il punto scende sotto 0,9 mm e si chiude con la gamba), 10 mm come adesivo sul robot.
 
 Differenze dalle A con freccia (Alpine e simili): il punto è il protagonista, il filo è sottile, senza punta, e termina sul bordo della grazia. Prima del deposito: ricerca EUIPO per immagine con codici Vienna 27.05, 26.01, 26.11 e classi 7, 9, 35, 37, 41, 42. Si deposita il logotipo "Abra" in bianco e nero; il simbolo dopo la ricerca.
 

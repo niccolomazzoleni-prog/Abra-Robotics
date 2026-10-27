@@ -8,7 +8,7 @@ I colori sono quelli di un tavolo di laboratorio: la carta del quaderno, l'inchi
 |-|-|-|-|-|
 | Carta | `#F5F2EA` | 245, 242, 234 | 3, 3, 6, 0 (in stampa: carta naturale non patinata, senza inchiostro) | Fondo di sito, post, documenti a schermo |
 | Inchiostro | `#1F1D1A` | 31, 29, 26 | 72, 71, 71, 67 (ritorno a schermo #20201E, dE 1,8) | Testo, marchio, richiami, fondi scuri |
-| Evidenziatore | `#EEE842` | 238, 232, 66 | 8, 0, 90, 0 (in gamut: l'HEX è il ritorno a schermo di questa quadricromia). Tinta piatta indicativa Pantone 395 C o 3965 C, da scegliere su mazzetta coated e uncoated; mai fluorescente | Il numero o il criterio misurato, il retro del biglietto, avatar e favicon |
+| Evidenziatore | `#EEE842` | 238, 232, 66 | 8, 0, 90, 0 (in gamut: l'HEX è il ritorno a schermo di questa quadricromia). Tinta piatta unica: **Pantone 395 C** (3965 C scartato: è più saturo e più verde, lontano dal colore a schermo). L'HEX resta `#EEE842`; dopo la prova colore su 395 C si riallinea solo se lo scarto supera dE 3 | Il numero o il criterio misurato, il retro del biglietto, avatar e favicon |
 
 CMYK ricalcolati in v2 con il profilo Generic CMYK di macOS (intento colorimetrico relativo, Pillow ImageCms); tra parentesi il ritorno a schermo quando lo scarto supera 1,5. Tutti i valori sono indicativi: con lo stampatore si usa il suo profilo (per esempio Fogra 39).
 

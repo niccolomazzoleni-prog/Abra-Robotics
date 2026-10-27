@@ -50,7 +50,7 @@ Regole:
 - Filetti da 1 px (separatori) e 1,5 px (cornici). Nessuno spessore intermedio.
 - Angoli vivi. Nessun raggio di raccordo, tranne il favicon e gli schemi dei robot.
 - Nessuna ombra, nessun gradiente. Unica tinta ammessa: il segno Ab in bianco al 16 % sul campo verde (fronte del biglietto). Le immagini dei robot stanno su una tavola bianco disegno o su alluminio, con quote.
-- Robot e persone sempre in scala tra loro. Senza foto proprie il pubblico si indica con le linee di vista (altezza degli occhi, 1600 mm e 1100 mm) e con figure in pianta dello stand (spalle arrotondate e testa), mai con sagome da cartello. Il G1 segnaposto è disegnato a tratto.
+- Robot e persone sempre in scala tra loro. Senza foto proprie il pubblico si indica con le linee di vista (altezza degli occhi, 1600 mm e 1100 mm) e con figure in pianta dello stand (spalle arrotondate e testa), mai con sagome da cartello. Il G1 segnaposto è l'immagine ufficiale in bianco e nero, dichiarata; il quadrupede dei post è uno schema vettoriale in pianta.
 - La parola "Esempio" in un riquadro accompagna ogni numero, verbale o criterio inventato.
 
 ## Iconografia
@@ -85,4 +85,4 @@ Entrambi i pattern si generano in CSS con `repeating-linear-gradient` o in SVG c
 
 ## Favicon a 16 px
 
-A 16 px il segno vettoriale scalato perde la traversa. Per questo `favicon-16.svg` è disegnata pixel per pixel su griglia 16: A intera con aste di 2 px a gradini, vuoto della A di 2 × 2 px, traversa di 1 px, piede destro sull'asta della b di 2 px, vuoto a squadra tra A e b visibile nella metà alta, pancia della b con vuoto di 2 × 4 px, piastra verde piena. Verificata anche su fondo scuro. Si usa per favicon e icone fino a 24 px; da 24 px in su `favicon.svg`.
+A 16 px il segno vettoriale scalato perde la traversa. Per questo `favicon-16.svg` è disegnata pixel per pixel su griglia 16: A intera con aste di 2 px a gradini, vuoto della A di 2 × 2 px, traversa di 1 px, piede destro sull'asta della b di 2 px, vuoto a squadra tra A e b di almeno 1 px fino alla traversa (3 px in cima), pancia della b con vuoto di 2 × 4 px, piastra verde piena. Verificata anche su fondo scuro. Si usa per favicon e icone fino a 24 px; da 24 px in su `favicon.svg`.

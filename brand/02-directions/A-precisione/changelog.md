@@ -1,5 +1,16 @@
 # Changelog · Direzione A
 
+## v3.1 · 28/10/2026 · correzioni bloccanti della revisione finale (`03-reviews/finale.md`)
+
+- **Reel**: "Decidi cosa dirà l'umanoide al tuo pubblico, parola per parola." sostituito da "Approva i contenuti da cui il G1 risponde al tuo pubblico." (un LLM non garantisce le parole esatte).
+- **Totem**: il titolo è l'offerta, "Prenota il G1 per la tua fiera, con il nostro tecnico per tutta la giornata."; sotto, "Noleggio a giornata" in apertura.
+- **G1**: sospeso il ridisegno a tratto (contorni irregolari da filtro, bassa risoluzione sul totem); hero, reel e totem tornano all'immagine ufficiale in bianco e nero, dichiarata come segnaposto. Annotato in `foto-video.md` che il disegno definitivo nascerà da una foto propria ricalcata a vettore. Il Go2 del post sulla consegna è ora uno schema vettoriale in pianta con quote (700 mm, 310 mm), al posto del ritaglio comune alle altre direzioni.
+- **Verde**: comanda il Pantone 348 C; HEX di schermo riallineato da #008351 a `#00843D` in CSS, SVG del marchio, applicazioni e `palette.md` (CMYK ricalcolato 82 8 94 18). Contrasti invariati sopra AA dove si usa testo.
+- **Favicon 16 px**: asta e pancia della b spostate di un pixel, il vuoto a squadra tra il piede della A e l'asta della b è più largo di un pixel (3 px in cima, 1 px fino alla traversa).
+- **Nuova regola dei titoli**: "Decidi" solo su hero, copertina del preventivo e biglietto; pagina delle fasi "Firma ogni fase solo quando il criterio scritto è rispettato.", post "Parti dal primo giorno con mappa, simulatore e manuale già nella cassa.", reel "Approva...", totem "Prenota...". Nessuna coppia di titoli della serie apre con lo stesso verbo. Aggiornati `voce.md`, `concept.md`, `presentazione.html`.
+- Rischio dichiarato in `autocritica.md`: IBM Plex e il timbro IBM.
+- PNG rigenerati, controllo copy ripassato (nessun trattino lungo, doppio trattino, tilde, contrapposizione).
+
 ## v3 · 28/10/2026 · "In squadra" (round 2: media 7,5; marchio 6,2)
 
 ### Marchio (priorità 1: lettura "Ab" a 16, 24 e 32 px)

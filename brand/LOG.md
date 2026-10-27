@@ -113,3 +113,13 @@ Branch `feat/niccolo-brand-identity`, worktree `~/Abra-Robotics-brand` (il check
 **Esito**: raggiunto il limite di 3 round. Nessuna direzione supera la soglia piena; il blocco comune è il revisore marchio (rischio del nome "Abra" e segni basati su lettere). Strategia giudica A "pronta per il cliente", il buyer panel giudica C "pronta". E è peggiorata all'art director per la legatura che si legge "dbra". Dettagli in `03-reviews/round3-sintesi.md`.
 
 **Prossimo passo**: reviewer-finale su A, C, E insieme, poi correzioni bloccanti e Fase 4.
+
+## Revisione finale e correzioni (27/10/2026)
+
+**Fatto**: reviewer-finale in `03-reviews/finale.md`. Matrice di distanza: A e C sono la coppia più distante (2,0); A ed E sono troppo vicine (3,2). Voti "pronta per il cliente": A 7,5, C 7,5, E 5,5.
+**Decisioni**: E scartata come direzione (il logotipo si legge "dbra"; correggerlo la avvicinerebbe ad A). La sua copertina del preventivo a timeline ("Quando arrivano i numeri") resta come ibrido da innestare. In presentazione vanno C e poi A; il revisore preferisce C con la timeline di E.
+- A v3.1: correzioni bloccanti fatte (reel, totem, verde allineato a Pantone 348 C, favicon, regola dei titoli allentata).
+- C v3.1: correzioni bloccanti in corso al momento dello stop per limite di utilizzo.
+- `04-final/prossimi-passi.md` scritto.
+
+**Da fare**: chiudere C v3.1, ibrido "C con copertina a timeline", `04-final/index.html` di confronto, raccomandazione finale.

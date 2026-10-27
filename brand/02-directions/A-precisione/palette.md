@@ -1,10 +1,10 @@
-# Palette · In squadra (v3)
+# Palette · In squadra (v3.1)
 
 Colore firma esclusivo della direzione: **verde di misura RAL 6024 con grigio alluminio**. Il verde viene dalla norma sulle macchine (IEC 60204-1: verde per lo stato normale) e in Abra ha due ruoli: nelle schede segna il criterio misurato e superato, nei formati di comunicazione è il campo pieno che si riconosce da lontano (copertina del preventivo, testata del post, totem, biglietto, monogramma). Nessun giallo, nessun ocra, nessun blu, nessun rosso. Il limite dichiarato non ha un colore: è un tratteggio grafite.
 
 ## Colori
 
-**Regola vincolante dalla v3: il verde si stampa in tinta piatta Pantone 348 C** su tutti i campi pieni (fronte del biglietto, testata del preventivo stampato, totem, carta intestata, adesivi della comunicazione). La quadricromia è ammessa solo per stampa digitale di piccole tirature, con prova colore approvata contro la mazzetta 348 C. Per vernici e vinili il riferimento è RAL 6024. Il valore HEX `#008351` resta il riferimento a schermo e va riallineato dopo la prima prova colore.
+**Regola vincolante dalla v3: il verde si stampa in tinta piatta Pantone 348 C** su tutti i campi pieni (fronte del biglietto, testata del preventivo stampato, totem, carta intestata, adesivi della comunicazione). La quadricromia è ammessa solo per stampa digitale di piccole tirature, con prova colore approvata contro la mazzetta 348 C. Per vernici e vinili il riferimento è RAL 6024. **Comanda il Pantone 348 C**: dalla v3.1 il valore a schermo è `#00843D`, l'equivalente sRGB pubblicato per il 348 C (prima era #008351, scarto dE 11,7). RAL 6024 è il riferimento più vicino per vinili e vernici e va controllato a campione.
 
 CMYK ricalcolati con il profilo Generic CMYK di macOS, intento colorimetrico relativo; per la stampa in quadricromia il tipografo li rifà con FOGRA39 (patinata) o FOGRA29 (uso mano). Gli altri Pantone sono indicativi.
 
@@ -12,7 +12,7 @@ CMYK ricalcolati con il profilo Generic CMYK di macOS, intento colorimetrico rel
 
 | Nome | HEX | RGB | CMYK (profilo) | Riferimento | Uso |
 |-|-|-|-|-|-|
-| Verde di misura | `#008351` | 0, 131, 81 | 85 13 82 14 (solo digitale con prova) | **Pantone 348 C obbligatorio** in stampa; RAL 6024 per vinili e vernici | colore firma: campi pieni, monogramma, celle "misurato", pulsante principale |
+| Verde di misura | `#00843D` | 0, 132, 61 | 82 8 94 18 (solo digitale con prova; ritorno dE 5,1) | **Pantone 348 C obbligatorio** in stampa; RAL 6024 per vinili e vernici | colore firma: campi pieni, monogramma, celle "misurato", pulsante principale |
 | Alluminio | `#E3E7E9` | 227, 231, 233 | 9 5 4 0 | Pantone Cool Gray 1 C indicativo | fondo base di sito, post, pannelli |
 | Grafite | `#1A2125` | 26, 33, 37 | 83 71 61 62 | Pantone Black 7 C indicativo | testo, logotipo, flight case |
 
@@ -58,16 +58,16 @@ Calcolati con la luminanza relativa WCAG 2.2 (1.4.3) e ricontrollati con lo stru
 | Grafite `#1A2125` | Bianco disegno `#F6F8F8` | 15,29 : 1 | AAA | documenti |
 | Grigio quota `#5C676D` | Alluminio `#E3E7E9` | 4,67 : 1 | AA | etichette |
 | Grigio quota `#5C676D` | Bianco disegno `#F6F8F8` | 5,45 : 1 | AA | etichette nei documenti |
-| Bianco `#FFFFFF` | Verde di misura `#008351` | 4,81 : 1 | AA | testo su campo verde |
-| Verde di misura `#008351` | Bianco disegno `#F6F8F8` | 4,51 : 1 | AA | testo verde nei documenti |
-| Verde di misura `#008351` | Alluminio `#E3E7E9` | 3,87 : 1 | AA solo testo grande | etichette da 18,7 px in grassetto o 24 px in su |
+| Bianco `#FFFFFF` | Verde di misura `#00843D` | 4,81 : 1 | AA | testo su campo verde |
+| Verde di misura `#00843D` | Bianco disegno `#F6F8F8` | 4,51 : 1 | AA | testo verde nei documenti |
+| Verde di misura `#00843D` | Alluminio `#E3E7E9` | 3,86 : 1 | AA solo testo grande | etichette da 18,7 px in grassetto o 24 px in su |
 | Bianco `#FFFFFF` | Verde profondo `#0F3A2C` | 12,64 : 1 | AAA | testo su fondo scuro |
 | Alluminio `#E3E7E9` | Verde profondo `#0F3A2C` | 10,15 : 1 | AAA | testo secondario su scuro |
 | Bianco disegno `#F6F8F8` | Grafite `#1A2125` | 15,29 : 1 | AAA | testo su grafite |
 | Alluminio `#E3E7E9` | Grafite `#1A2125` | 13,10 : 1 | AAA | date prenotate nel calendario |
 | Acciaio `#8A959B` | Grafite `#1A2125` | 5,32 : 1 | AA | etichette su grafite |
 | Grigio quota `#5C676D` | Grafite `#1A2125` | 2,81 : 1 | **vietato** | nessun uso |
-| Grafite `#1A2125` | Verde di misura `#008351` | 3,39 : 1 | **vietato per il testo** | nessun uso |
+| Grafite `#1A2125` | Verde di misura `#00843D` | 3,39 : 1 | **vietato per il testo** | nessun uso |
 | Acciaio `#8A959B` | Bianco disegno `#F6F8F8` | 2,87 : 1 | non per testo | solo grafica |
 | Linea `#B4BDC2` | Bianco disegno `#F6F8F8` | 1,79 : 1 | non per testo | solo filetti |
 
@@ -81,7 +81,7 @@ La combinazione verde e grigio non è registrabile come marchio di colore e non 
 
 ```css
 :root{
-  --verde:#008351; --verde-profondo:#0F3A2C;
+  --verde:#00843D; --verde-profondo:#0F3A2C;
   --grafite:#1A2125; --alluminio:#E3E7E9; --bianco:#F6F8F8;
   --quota:#5C676D; --acciaio:#8A959B; --linea:#B4BDC2;
 }

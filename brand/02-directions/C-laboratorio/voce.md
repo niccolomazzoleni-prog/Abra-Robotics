@@ -20,21 +20,23 @@ Nucleo fisso, uguale per tutti i territori: l'ingegnere di fiducia, franco sui l
 | "la piattaforma adatta al compito" | elenchi di marchi, "3 famiglie di robot" |
 | "Esempio" sui dati non reali | percentuali di successo senza campione |
 
-## Headline italiane (v3: il verbo della direzione è "Leggi")
+## Headline italiane (v3.1)
+
+Regola: "Leggi", il verbo della direzione, apre al massimo l'hero, la copertina del preventivo e il biglietto. Gli altri titoli usano l'imperativo di ciò che il lettore fa davvero in quel formato, e nella stessa serie due titoli non cominciano con lo stesso verbo.
 
 1. Leggi in tre settimane i numeri del robot sul tuo processo. (hero)
-2. Leggi fase per fase tempi, errori e costi misurati. (preventivo)
-3. Leggi cosa trova un tesista nella cassa del suo primo robot. (post LinkedIn)
-4. Leggi la fonte di ogni risposta che il G1 dà ai tuoi visitatori. (reel)
-5. Leggi la fonte di ogni risposta del G1 al tuo stand. (totem, con la riga "Noleggio a giornata, con un tecnico Abra.")
-
-Versione anonima del post: "Leggi cosa c'è nella cassa di un robot pronto dal primo giorno."
+2. Prelievo dei cartoni a fine linea: leggi fase per fase tempi, errori e costi misurati (copertina del preventivo)
+3. Leggi i numeri del robot sul tuo caso prima dell'investimento: codice e manuale restano a te. (retro del biglietto)
+4. Dai al tuo tesista un robot con mappa, simulatore e codice già nella cassa. (post LinkedIn nominativo)
+5. Ricevi il robot con la mappa del reparto, il simulatore e il codice già pronti. (post anonimo)
+6. Ascolta il G1 rispondere ai tuoi visitatori, con la fonte di ogni dato. (reel)
+7. Noleggia il G1 per una giornata, con un tecnico Abra al tuo stand. (totem; seconda riga: "Ogni risposta cita la fonte che hai approvato.")
 
 ## Headline inglesi
 
 1. Read your robot's numbers in three weeks, on your own process.
-2. Read the source of every answer the G1 gives your visitors.
-3. Read what a student finds in the crate of their first robot.
+2. Hear the G1 answer your visitors, with the source of every figure.
+3. Rent the G1 for one day, with an Abra technician at your booth.
 
 ## Bio LinkedIn
 

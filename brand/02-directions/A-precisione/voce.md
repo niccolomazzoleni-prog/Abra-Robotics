@@ -29,21 +29,21 @@ Unità sempre con lo spazio e in forma breve: mm, kg, h, s, %. Numeri con il pun
 
 ## Headline
 
-Il verbo della direzione è **Decidi**: ogni headline principale parte da lì e dice su cosa il lettore decide e con quale prova in mano. Nessuna frase ripresa dalla brand platform o da altre direzioni.
+Regola dalla v3.1: il verbo della direzione, **Decidi**, apre al massimo tre titoli (hero, copertina del preventivo, biglietto), dove il cliente si fa l'idea della marca. Gli altri titoli usano l'imperativo di ciò che il lettore fa davvero in quel formato (firma, parti, approva, prenota) e in una stessa serie due titoli non aprono con lo stesso verbo.
 
 ### Italiano
 1. Decidi sul robot dopo averlo visto lavorare sul tuo compito. (hero)
 2. Decidi alla fine di ogni fase se l'umanoide entra nella linea 3. (copertina del preventivo)
-3. Decidi a ogni passaggio con un criterio firmato e un costo già noto. (pagina delle fasi)
-4. Decidi i prossimi passi con mappa, simulatore e manuale già consegnati al tuo team. (post sulla consegna)
-5. Decidi cosa dirà l'umanoide al tuo pubblico, parola per parola. (reel)
-6. Decidi la data: il G1 arriva in fiera con il nostro tecnico. (totem)
-7. Decidi quale robot comprare per il laboratorio con SDK, simulatore e manuale già provati. (laboratori)
+3. Decidi sul robot dopo averlo visto lavorare. (biglietto)
+4. Firma ogni fase solo quando il criterio scritto è rispettato. (pagina delle fasi)
+5. Parti dal primo giorno con mappa, simulatore e manuale già nella cassa. (post sulla consegna)
+6. Approva i contenuti da cui il G1 risponde al tuo pubblico. (reel)
+7. Prenota il G1 per la tua fiera, con il nostro tecnico per tutta la giornata. (totem)
 
 ### English
 1. Decide on the robot after watching it work on your task.
-2. Decide what the humanoid will tell your audience, word by word.
-3. Decide the date: the G1 comes to your booth with our technician.
+2. Approve the content the G1 draws on when it answers your visitors.
+3. Book the G1 for your trade fair, with our technician on site all day.
 
 ## Bio LinkedIn (pagina aziendale)
 

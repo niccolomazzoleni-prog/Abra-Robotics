@@ -13,7 +13,7 @@
   .testa .et{font-size:15px}
   h1{font:600 64px/1.06 var(--f-titolo);letter-spacing:-.01em;margin-top:40px;max-width:none;color:#fff}
   .tavola{position:absolute;left:72px;right:72px;top:380px;height:620px;background:var(--bianco);border:1px solid var(--linea)}
-  .tavola img{position:absolute;left:50%;transform:translateX(-50%);top:80px;height:420px}
+  .tavola .pianta{position:absolute;left:0;top:60px}
   .q{position:absolute;color:var(--quota)}
   .qh{left:318px;width:418px;top:520px;height:1px;background:var(--quota)}
   .qh::before,.qh::after{content:"";position:absolute;top:-7px;width:1px;height:15px;background:var(--quota)}
@@ -37,13 +37,26 @@
 <body>
 <div class="fascia"><div class="pad">
   <div class="testa"><span class="et">Verbale di consegna · SACMI, Imola</span><span class="et num">29.10.2026</span></div>
-  <h1>Decidi i prossimi passi<br>con mappa, simulatore e manuale<br>già consegnati al tesista.</h1>
+  <h1>Parti dal primo giorno con mappa,<br>simulatore e manuale<br>già nella cassa.</h1>
 </div></div>
 <div class="tavola">
   <div class="tav-h"><span class="et">Quadrupede Go2 EDU con LiDAR · SACMI</span><span class="et">Tesi in azienda</span></div>
-  <img src="../assets/img/go2-lato-segnaposto.png" alt="Quadrupede, immagine segnaposto">
-  <div class="q qh"><b class="num">700 mm</b></div>
-  <div class="tav-f"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree. Nel post finale va la foto della consegna</span><span class="segnaposto">Da pubblicare solo con il consenso scritto di SACMI</span></div>
+  <svg class="pianta" viewBox="0 0 1056 520" width="1056" height="520" aria-label="Quadrupede in pianta con le misure">
+    <line x1="160" y1="259" x2="830" y2="259" stroke="#5C676D" stroke-width="1.2" stroke-dasharray="22 5 3 5"/>
+    <g transform="translate(213 120)" stroke="#1A2125" stroke-width="2.5" stroke-linejoin="round">
+      <g fill="#F6F8F8"><circle cx="128" cy="52" r="24"/><circle cx="492" cy="52" r="24"/><circle cx="128" cy="227" r="24"/><circle cx="492" cy="227" r="24"/></g>
+      <rect x="90" y="62" width="426" height="155" rx="24" fill="#E3E7E9"/>
+      <rect x="18" y="88" width="72" height="104" rx="16" fill="#E3E7E9"/>
+      <circle cx="46" cy="140" r="18" fill="#F6F8F8"/>
+      <rect x="250" y="102" width="120" height="76" rx="6" fill="none"/>
+    </g>
+    <g stroke="#1A2125" stroke-width="1.5"><line x1="231" y1="420" x2="743" y2="420"/><line x1="231" y1="408" x2="231" y2="432"/><line x1="743" y1="408" x2="743" y2="432"/>
+      <line x1="800" y1="148" x2="800" y2="371"/><line x1="788" y1="148" x2="812" y2="148"/><line x1="788" y1="371" x2="812" y2="371"/></g>
+    <g font-family="B612" fill="#1A2125" font-size="20" letter-spacing="1"><text x="487" y="458" text-anchor="middle">700 MM</text><text x="834" y="266" transform="rotate(-90 834 266)" text-anchor="middle">310 MM</text>
+      <text x="463" y="315" font-size="16" fill="#5C676D">VANO CALCOLO</text><text x="190" y="235" font-size="16" fill="#5C676D" text-anchor="end">LIDAR</text></g>
+    <line x1="194" y1="240" x2="252" y2="258" stroke="#5C676D" stroke-width="1"/>
+  </svg>
+  <div class="tav-f"><span class="segnaposto">Quadrupede in pianta, schema con misure nominali. Nel post finale va la foto della consegna</span><span class="segnaposto">Da pubblicare solo con il consenso scritto di SACMI</span></div>
 </div>
 <div class="targa">
   <div class="r"><small>Mappa</small><span>SLAM e localizzazione impostati nel Laboratorio Abra</span><i class="sq"></i></div>

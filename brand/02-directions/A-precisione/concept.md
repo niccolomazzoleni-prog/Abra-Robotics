@@ -1,4 +1,4 @@
-# Direzione A · In squadra (v3)
+# Direzione A · In squadra (v3.1)
 
 Territorio: precisione industriale. Nome della v1: "Riferimento A".
 
@@ -32,7 +32,7 @@ Verde di misura RAL 6024 con grigio alluminio. Nelle schede tecniche il verde se
 
 - **Manifattura**: il preventivo ha in copertina la pianta della sua postazione con il punto di misura, e nelle pagine interne criteri, limiti e responsabilità scritte. Parla la lingua del suo ufficio tecnico.
 - **Laboratori**: l'hero ha un ingresso dedicato (SDK, ROS 2, simulatore, manuale, data di consegna scritta); il post sulla consegna mostra il pacchetto per i tesisti.
-- **Eventi**: il G1 disegnato a tratto come in una tavola, il pubblico indicato dalle altezze degli occhi e in pianta dello stand, il triangolo verde a terra come punto d'incontro, una sola battuta approvata. Il verde pieno del totem si legge a quattro metri.
+- **Eventi**: il totem titola sull'offerta ("Prenota il G1 per la tua fiera, con il nostro tecnico per tutta la giornata."), il pubblico è indicato dalle altezze degli occhi e in pianta dello stand, il triangolo verde a terra segna il punto d'incontro, il reel mostra una sola battuta approvata. Il verde pieno del totem si legge a quattro metri.
 
 ## Cosa sacrifica
 

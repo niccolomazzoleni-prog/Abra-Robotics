@@ -41,7 +41,7 @@ Un robot Abra si fotografa come uno strumento in collaudo: fermo, intero, misura
 
 ## Trattamento dei segnaposto
 
-Finché non ci sono foto proprie, il G1 ufficiale non si usa come ritaglio fotografico: si ridisegna a tratto (contorni grafite su bianco o alluminio, `assets/img/g1-tratto.png`), come in una tavola tecnica. Così il segnaposto non si confonde con quello delle altre direzioni e dichiara da solo di essere uno schema. Il pubblico, finché non ci sono foto con liberatoria, si indica con le altezze degli occhi (1600 mm adulto, 1100 mm bambino) e con figure in pianta dello stand, mai con sagome da cartello.
+Finché non ci sono foto proprie, il G1 compare come immagine ufficiale Unitree in bianco e nero, dichiarata come segnaposto in ogni formato. Il disegno a tratto provato in v3 è sospeso: ricavato con un filtro automatico, aveva contorni irregolari e una risoluzione bassa in grande formato. Il disegno definitivo del G1, se servirà, nascerà da una foto propria scattata nel Laboratorio Abra e sarà ricalcato a mano come vettore a spessore costante (almeno 0,5 pt alla scala del totem). Il quadrupede del post sulla consegna è già uno schema vettoriale in pianta con le misure nominali. Il pubblico, finché non ci sono foto con liberatoria, si indica con le altezze degli occhi (1600 mm adulto, 1100 mm bambino) e con figure in pianta dello stand, mai con sagome da cartello.
 
 ## Cosa evitare
 

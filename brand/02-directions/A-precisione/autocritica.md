@@ -1,4 +1,4 @@
-# Autocritica · In squadra (v3)
+# Autocritica · In squadra (v3.1)
 
 ## 1. La legatura è leggibile, ma il suo dettaglio proprio sta nel vuoto
 
@@ -21,9 +21,10 @@ Il verde RAL 6024 è vicino al verde di sicurezza ISO 7010 e non è proteggibile
 
 ## 3. Mancano ancora prove, foto e persone vere
 
-Nessun progetto misurato prima dell'acquisto è concluso, il G1 è un segnaposto Unitree ridisegnato a tratto e il pubblico è indicato con linee di vista e figure in pianta. È coerente con il disegno tecnico, ma un event manager vuole vedere persone e luce reale.
+Nessun progetto misurato prima dell'acquisto è concluso, il G1 è un segnaposto Unitree dichiarato (il ridisegno a tratto della v3 era irregolare ed è stato sospeso) e il pubblico è indicato con linee di vista e figure in pianta. È coerente con il disegno tecnico, ma un event manager vuole vedere persone e luce reale.
 
 **Mitigazioni**
 - Ogni dato inventato è marcato "Esempio"; il post anonimo non contiene date, revisioni né il tipo di progetto.
-- Il disegno a tratto dichiara da solo di essere uno schema e sarà sostituito dalle foto della shot list (`foto-video.md`), a partire dalla consegna del 29/10/2026 e dal Laboratorio Abra.
-- Reel e totem sono impaginati perché la foto vera entri al posto del tratto senza cambiare titolo, quota, triangolo a terra e pianta dello stand.
+- Il segnaposto è dichiarato in ogni formato e sarà sostituito dalle foto della shot list (`foto-video.md`), a partire dalla consegna del 29/10/2026 e dal Laboratorio Abra; il quadrupede del post è già uno schema vettoriale proprio.
+- Reel e totem sono impaginati perché la foto vera entri al posto del segnaposto senza cambiare titolo, quota, triangolo a terra e pianta dello stand.
+- Rischio dichiarato: IBM Plex porta con sé il timbro IBM. È basso (Plex è open source e diffuso fuori da IBM), ma in presentazione va detto.

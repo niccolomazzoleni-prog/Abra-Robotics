@@ -12,7 +12,8 @@
   h1 { font-size: 30px; font-weight: 600; margin: 0; }
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .cell { background: #fff; border: 1px solid var(--rigatura); padding: 22px; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; }
-  .cell .ill { flex: 1; display: flex; align-items: center; justify-content: center; gap: 24px; }
+  .cell { min-width: 0; } .cell img { max-width: 100%; }
+  .cell .ill { flex: 1; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
   .cell .etichetta { margin-top: 14px; color: var(--grafite); }
   .dark { background: var(--inchiostro); border-color: var(--inchiostro); }
   .dark .etichetta { color: var(--grafite-chiara); }
@@ -26,16 +27,16 @@
 </style>
 </head>
 <body>
-<header><h1>Prova del marchio, v3</h1><span class="rev">rev 3.0 · 29.10.2026 · direzione C, Nota a margine</span></header>
+<header><h1>Prova del marchio, v3.1</h1><span class="rev">rev 3.1 · 30.10.2026 · direzione C, Nota a margine</span></header>
 <div class="grid">
-  <div class="cell"><div class="ill"><img class="px" src="favicon-16.svg" width="16" height="16" alt=""><img class="px" src="favicon-16.svg" width="128" height="128" alt=""></div><span class="etichetta">16 px disegnato a pixel: punto di 3 px, filo di 1 px che esce dalla gamba (ingrandito 8x)</span></div>
+  <div class="cell"><div class="ill"><img class="px" src="favicon-16.svg" width="16" height="16" alt=""><img class="px" src="favicon-16.svg" width="128" height="128" alt=""></div><span class="etichetta">16 px a pixel: punto di 3 px, filo di 2 px per i primi 3 px, poi 1 px (ingrandito 8x)</span></div>
   <div class="cell"><div class="ill"><img src="favicon.svg" width="32" height="32" alt=""><img src="simbolo.svg" style="height:32px" alt=""><img src="simbolo.svg" style="height:16px" alt=""></div><span class="etichetta">32 px, simbolo monocromatico a 32 e 16 px</span></div>
   <div class="cell"><div class="ill"><div class="tab"><img src="favicon-16.svg" width="16" height="16" alt="">Abra Robotics · Prova…</div></div><span class="etichetta">scheda del browser</span></div>
   <div class="cell dark"><div class="ill"><img src="simbolo.svg" style="height:32px;filter:invert(1)" alt=""><img src="favicon-16.svg" width="16" height="16" alt=""><img src="mono-negativo.svg" style="height:22px" alt=""></div><span class="etichetta">su fondo inchiostro, in negativo</span></div>
 
   <div class="cell"><div class="ill"><div class="round"><img src="monogramma.svg" alt=""></div><div class="sq"><img src="monogramma.svg" alt=""></div></div><span class="etichetta">avatar social, tondo e quadrato</span></div>
-  <div class="cell"><div class="ill"><img src="logotipo.svg" style="height:16px" alt=""><img src="logotipo.svg" style="height:24px" alt=""><img src="logotipo.svg" style="height:36px" alt=""></div><span class="etichetta">logotipo a 16, 24 e 36 px (sotto i 30 px senza descrittore)</span></div>
-  <div class="cell w2"><div class="ill"><img src="verticale.svg" style="height:130px" alt=""><img src="orizzontale.svg" style="height:60px" alt=""></div><span class="etichetta">verticale e orizzontale</span></div>
+  <div class="cell"><div class="ill"><img src="logotipo-24-48.svg" style="height:24px" alt=""><img src="logotipo-24-48.svg" style="height:34px" alt=""><img src="logotipo.svg" style="height:44px" alt=""></div><span class="etichetta">versione 24 a 48 px con filo doppio (24 e 34 px), standard da 44 px</span></div>
+  <div class="cell w2"><div class="ill"><img src="verticale.svg" style="height:120px" alt=""><img src="orizzontale.svg" style="height:52px" alt=""></div><span class="etichetta">verticale e orizzontale</span></div>
 
   <div class="cell w4" style="min-height:340px"><div class="ill" style="justify-content:space-between;padding:0 30px"><img src="simbolo.svg" style="height:210px" alt=""><img src="orizzontale.svg" style="height:150px" alt=""></div><span class="etichetta">grande formato: la traversa della A è un richiamo (punto e filo che esce verso la nota); la r ripete lo stesso punto. Il simbolo è la A annotata</span></div>
 </div>
