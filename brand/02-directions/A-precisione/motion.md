@@ -1,4 +1,4 @@
-# Motion · In squadra (v2)
+# Motion · In squadra (v3)
 
 ## Principi
 
@@ -16,9 +16,9 @@ File: `logo/animazione.html` (CSS e SVG, ciclo di 6 secondi).
 | Tempo | Cosa succede |
 |-|-|
 | 0 a 0,6 s | si traccia la linea di base |
-| 0,48 a 1,2 s | sale l'asta comune della legatura, con la pancia della b |
-| 1,2 a 2,16 s | la diagonale con la traversa si scopre da sinistra e si appoggia all'asta |
-| 2,16 a 4,08 s | compare il segno verde dei 90 gradi nell'angolo tra asta e linea di base |
+| 0,48 a 1,2 s | sale l'asta verticale della b, con la pancia |
+| 1,2 a 2,16 s | la A intera si scopre da sinistra e appoggia il piede all'asta della b |
+| 2,16 a 4,08 s | compare il segno verde dei 90 gradi nella squadra vuota tra la A e la b |
 | 2,4 a 3,72 s | il resto del logotipo si scopre da sinistra, come da un plotter |
 | 3,72 a 5,52 s | il marchio resta fermo, poi si spegne e il ciclo riparte |
 

@@ -9,12 +9,12 @@
   /* scala di presentazione: 1 mm = 0,4 px */
   body{width:1440px;height:1000px;overflow:hidden;background:var(--alluminio);position:relative}
   .head{position:absolute;left:64px;right:64px;top:40px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:12px}
-  .head h1{font:700 24px/1 var(--f-titolo);letter-spacing:-.015em}
+  .head h1{font:600 24px/1 var(--f-titolo);letter-spacing:-.01em}
   .pav{position:absolute;left:64px;right:64px;top:930px;height:2px;background:var(--grafite)}
   .totem{position:absolute;left:150px;top:130px;width:320px;height:800px;background:var(--bianco);box-shadow:0 0 0 1px var(--linea);overflow:hidden}
   .t-top{height:440px;background:var(--verde);color:#fff;padding:24px 22px}
   .t-top img{width:200px;margin-left:-6px}
-  .t-top .big{font:700 46px/1 var(--f-titolo);letter-spacing:-.03em;margin-top:62px}
+  .t-top .big{font:600 40px/1.02 var(--f-titolo);letter-spacing:-.01em;margin-top:56px}
   .t-top .sub{font:500 15px/1.35 var(--f-testo);margin-top:16px}
   .t-top .tri{position:absolute;left:22px;top:404px;color:#fff;font-size:20px}
   .t-body{padding:16px 22px 0}
@@ -25,12 +25,13 @@
   .cal .g span.o{background:var(--grafite);border-color:var(--grafite);color:var(--alluminio)}
   .cal .g span.x,.cal .g span.w{border:0}
   .t-cta{position:absolute;left:0;right:0;bottom:0;height:150px;background:var(--grafite);color:#fff;padding:18px 22px;display:grid;grid-template-columns:1fr 84px;gap:14px;align-items:center}
-  .t-cta b{display:block;font:700 21px/1.1 var(--f-titolo);letter-spacing:-.01em}
+  .t-cta b{display:block;font:600 21px/1.1 var(--f-titolo);letter-spacing:-.01em}
   .t-cta small{display:block;font:500 12px/1.4 var(--f-testo);color:var(--alluminio);margin-top:8px}
   .qr{width:84px;height:84px;background:var(--bianco);display:grid;place-items:center;font:500 10px var(--f-etichetta);letter-spacing:.08em;color:var(--quota);text-align:center}
-  .g1{position:absolute;left:640px;top:402px;height:528px}
+  .g1{position:absolute;left:660px;top:402px;height:528px}
+  .vista{position:absolute;left:0;top:0;width:1440px;height:1000px;pointer-events:none}
   .sag{position:absolute}
-  .tri-pav{position:absolute;left:737px;top:938px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:22px solid var(--verde)}
+  .tri-pav{position:absolute;left:762px;top:938px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:22px solid var(--verde)}
   .q{position:absolute;background:var(--quota)}
   .qv{width:1px}
   .qv::before,.qv::after{content:"";position:absolute;left:-6px;width:13px;height:1px;background:var(--quota)}
@@ -41,7 +42,7 @@
   .qh::before{left:0}.qh::after{right:0}
   .qh b{position:absolute;background:var(--alluminio);padding:0 4px;left:50%;top:-20px;transform:translateX(-50%);font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
   .side{position:absolute;left:1000px;right:64px;top:150px}
-  .side h2{font:700 26px/1.12 var(--f-titolo);letter-spacing:-.015em;margin-bottom:14px}
+  .side h2{font:600 26px/1.12 var(--f-titolo);letter-spacing:-.01em;margin-bottom:14px}
   .side p{font:400 15px/1.55 var(--f-testo);margin-bottom:12px}
   .side .rq{margin-top:10px;font-size:12px}
   .cap{position:absolute;left:1000px;top:476px;max-width:360px;color:var(--quota)}
@@ -57,8 +58,8 @@
 <div class="totem">
   <div class="t-top">
     <img src="../logo/orizzontale-bianco.svg" alt="Abra Robotics">
-    <div class="big">Umanoide<br>a noleggio,<br>a giornata.</div>
-    <div class="sub">Parla del tuo marchio con il copione approvato da te. Il nostro tecnico resta accanto al robot tutto il giorno.</div>
+    <div class="big">Decidi la data: il G1 arriva in fiera con il nostro tecnico.</div>
+    <div class="sub">Parla del tuo marchio con il copione che hai approvato. Noleggio a giornata, prova generale il giorno prima.</div>
     <i class="tri"></i>
   </div>
   <div class="t-body">
@@ -79,21 +80,20 @@
   </div>
 </div>
 
-<svg class="sag" style="left:488px;top:230px" width="120" height="700" viewBox="0 0 30 175" aria-label="Sagoma di visitatore, 1750 mm">
-  <g fill="#8A959B"><circle cx="15" cy="11" r="9.5"/><path d="M6 25h18a4 4 0 0 1 4 4v58h-26v-58a4 4 0 0 1 4-4z"/><rect x="6" y="85" width="8.5" height="90" rx="3"/><rect x="15.5" y="85" width="8.5" height="90" rx="3"/></g>
+<img class="g1" src="../assets/img/g1-tratto.png" alt="Umanoide G1 a tratto, da immagine segnaposto">
+<svg class="vista" viewBox="0 0 1440 1000" aria-label="Linee di vista del pubblico">
+  <g stroke="#1A2125" stroke-width="1.2" stroke-dasharray="8 6" fill="none"><line x1="500" y1="290" x2="740" y2="290"/><line x1="560" y1="490" x2="740" y2="490"/></g>
+  <g fill="#F6F8F8" stroke="#1A2125" stroke-width="1.5"><circle cx="500" cy="290" r="6"/><circle cx="560" cy="490" r="6"/></g>
+  <g fill="#1A2125" font-family="B612" font-size="12" letter-spacing=".5"><text x="500" y="276">OCCHI DI UN ADULTO, 1600 MM</text><text x="560" y="476">BAMBINO, 1100 MM</text></g>
 </svg>
-<img class="g1" src="../assets/img/g1-in-piedi-segnaposto.png" alt="Umanoide, immagine segnaposto">
-<svg class="sag" style="left:880px;top:282px" width="110" height="648" viewBox="0 0 28 162" aria-label="Sagoma di visitatrice, 1620 mm">
-  <g fill="#B4BDC2"><circle cx="14" cy="10" r="9"/><path d="M7 23h14l6 66H1z"/><rect x="7" y="87" width="6.5" height="75" rx="3"/><rect x="14.5" y="87" width="6.5" height="75" rx="3"/></g>
-</svg>
-<div class="q qv" style="left:630px;top:402px;height:528px"><b class="num" style="left:-30px;transform:translateY(-50%) rotate(-90deg)">1320 mm</b></div>
+<div class="q qv" style="left:900px;top:402px;height:528px"><b class="num">1320 mm</b></div>
 <div class="pav"></div>
 <div class="tri-pav"></div>
-<div class="cap"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree e sagome grafiche, in scala</span></div>
+<div class="cap"><span class="segnaposto">G1 disegnato a tratto da immagine ufficiale Unitree, in scala. Il pubblico è indicato dalle altezze degli occhi</span></div>
 
 <div class="side">
   <h2>Come si legge il totem</h2>
-  <p>A quattro metri si legge la testata verde: umanoide, noleggio, giornata. A un metro il visitatore trova le date libere e come chiedere la sua.</p>
+  <p>A quattro metri si legge la testata verde con la parola che conta per chi organizza: la data. A un metro il visitatore trova le date libere e come chiedere la sua.</p>
   <p>A terra un triangolo verde segna il punto in cui il pubblico incontra il robot, sempre alla stessa distanza di sicurezza. Il calendario è un pannello magnetico sostituibile. Date, prezzo e trasporto sono di esempio.</p>
   <span class="rq et"><span>Totem</span><span class="num">2000 mm</span></span><br>
   <span class="rq et"><span>G1</span><span class="num">1320 mm</span></span>

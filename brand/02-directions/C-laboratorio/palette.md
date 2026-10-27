@@ -32,7 +32,9 @@ CMYK ricalcolati in v2 con il profilo Generic CMYK di macOS (intento colorimetri
 | Evidenziatore | 3% | Una sola evidenziazione per pagina o per schermata. Fa eccezione il giallo pieno di avatar, adesivi e retro del biglietto |
 | Verde registro | 1% | Solo segni di stato (spunta, "superato") |
 
-Regola dell'evidenziatore (v2): si evidenzia solo un numero o un criterio misurato ("3 settimane", "≤ 15 s", "70%", "circa 2 ore"), mai un titolo, mai un aggettivo, mai una frase di beneficio. Al massimo una evidenziazione per applicazione. Su fondo inchiostro non si evidenzia.
+Regola dell'evidenziatore (v2): si evidenzia solo un numero o un criterio misurato ("3 settimane", "15 s", "70%", "circa 2 ore"), mai un titolo, mai un aggettivo, mai una frase di beneficio. Al massimo una evidenziazione per applicazione. Su fondo inchiostro non si evidenzia.
+
+Regola della segnaletica (v3): il giallo non si usa mai in bande, strisce oblique o triangoli, le forme dei cartelli di pericolo, in particolare su robot e casse.
 
 Regola delle attrezzature (v2): su robot, flight case ed etichette il fondo è carta bianca e il giallo compare solo nel punto del richiamo. Le campiture gialle piene restano a schermo (avatar, favicon) e al retro del biglietto, così il giallo e nero non si confonde con la segnaletica di sicurezza dei reparti.
 

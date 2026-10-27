@@ -1,4 +1,4 @@
-# Voce · In squadra (v2)
+# Voce · In squadra (v3)
 
 ## Registro: asciutto come una targa dati
 
@@ -29,20 +29,21 @@ Unità sempre con lo spazio e in forma breve: mm, kg, h, s, %. Numeri con il pun
 
 ## Headline
 
-Scritte per questa direzione, diverse da quelle della brand platform, così il test dei 5 secondi distingue le direzioni.
+Il verbo della direzione è **Decidi**: ogni headline principale parte da lì e dice su cosa il lettore decide e con quale prova in mano. Nessuna frase ripresa dalla brand platform o da altre direzioni.
 
 ### Italiano
-1. Decidi sul robot con un numero misurato in mano. (hero)
-2. Decidi sull'umanoide della linea 3 con il tempo ciclo misurato. (copertina del preventivo)
-3. Ricevi il robot con SDK, simulatore e manuale, e fai partire i tesisti alla consegna. (laboratori)
-4. Noleggia un umanoide che parla del tuo marchio, con il copione firmato da te. (eventi)
-5. Prenota la giornata del G1: tecnico presente, prova generale il giorno prima. (eventi)
-6. Tieni il codice del progetto nel tuo repository e prosegui con il tuo team. (trasversale)
+1. Decidi sul robot dopo averlo visto lavorare sul tuo compito. (hero)
+2. Decidi alla fine di ogni fase se l'umanoide entra nella linea 3. (copertina del preventivo)
+3. Decidi a ogni passaggio con un criterio firmato e un costo già noto. (pagina delle fasi)
+4. Decidi i prossimi passi con mappa, simulatore e manuale già consegnati al tuo team. (post sulla consegna)
+5. Decidi cosa dirà l'umanoide al tuo pubblico, parola per parola. (reel)
+6. Decidi la data: il G1 arriva in fiera con il nostro tecnico. (totem)
+7. Decidi quale robot comprare per il laboratorio con SDK, simulatore e manuale già provati. (laboratori)
 
 ### English
-1. Decide on the robot with a measured number in your hands.
-2. Get the robot with SDK, simulator and manual, and start your students on delivery day.
-3. Book the G1 for your event, with a script you sign off and our technician on site.
+1. Decide on the robot after watching it work on your task.
+2. Decide what the humanoid will tell your audience, word by word.
+3. Decide the date: the G1 comes to your booth with our technician.
 
 ## Bio LinkedIn (pagina aziendale)
 

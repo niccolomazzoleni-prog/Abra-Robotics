@@ -11,18 +11,18 @@ Il movimento imita il gesto di chi annota una figura: prima la cosa, poi il punt
 5. **Nessun effetto luminoso.** Niente bagliori, scie, particelle, parallasse profondo. Il movimento serve a leggere nell'ordine giusto.
 6. **Rispetto per chi riduce il movimento**: con `prefers-reduced-motion` tutto compare già fermo.
 
-## Il logo animato (`logo/animazione.html`, v2)
+## Il logo animato (`logo/animazione.html`, v3)
 
 | Tempo | Cosa succede |
 |-|-|
-| 0,25 s | L'asta della a cresce dal basso, poi compare il suo punto |
-| 0,57 s | L'asta della b sale fino all'ascendente, poi il punto |
-| 0,89 s | L'asta della r, il collo, il punto piccolo |
-| 1,21 s | L'ultima a, asta e punto |
-| 1,9 s | Compare "ROBOTICS" |
-| 2,4 s | Sotto, la nota "Ogni lettera è un richiamo: prima il filo, poi il punto" |
+| 0 a 1 s | La A sale dal basso tutta intera: piedi, poi il richiamo, poi il vertice. Non compare mai senza traversa |
+| 1,1 s | Compare la b |
+| 1,3 a 1,7 s | L'asta della r, il filo, il punto |
+| 1,8 s | La a |
+| 2,1 s | "ROBOTICS" |
+| 2,5 s | La nota sotto il logo |
 
-Durata totale circa 2,9 secondi. Versione breve per le sigle: solo la a, 0,8 secondi. La vecchia "Λ" non compare più in nessuna fase.
+Durata circa 3 secondi. Versione breve per le sigle: solo la A, 1 secondo.
 
 ## Applicazioni
 

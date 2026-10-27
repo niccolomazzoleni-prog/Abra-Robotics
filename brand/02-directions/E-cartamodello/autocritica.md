@@ -1,33 +1,33 @@
-# Autocritica: Cartamodello (v2)
+# Autocritica: Cartamodello (v3)
 
-Aggiornata dopo il round 1. Le modifiche sono in `changelog.md`.
+Aggiornata dopo il round 2. Le modifiche sono in `changelog.md`.
 
-## 1. Il simbolo resta una A, nel campo più affollato dei registri
+## 1. La legatura "ab" può leggersi "db" o "ad"
 
-**Rischio**: anche con la traversa inclinata e il filo che esce, il segno è una singola lettera A (codice Vienna 27.05), come in altre tre direzioni e nell'icona di abra.com. In monocromia il filo si legge come una sporgenza della traversa, e lo schema "A con una linea che esce" ricorda Alpine.
+**Rischio**: a e b condividono l'asta e l'asta sale come ascendente della b. Se l'arco della a a doppio occhio si perde (stampa piccola, ricamo, incisione laser), la metà sinistra può sembrare una d, e il segno diventa "db". Il logotipo minuscolo "abra" è inoltre più morbido della A maiuscola della v2 e ha meno peso sulle facciate grandi.
 
-**Cosa ho fatto**: la traversa è inclinata e il filo esce da un solo lato, staccato dalla gamba di 30 unità; il logotipo lavora sull'intera parola, con b e a disegnate a mano come lo stesso pezzo specchiato, che è il tratto più proprietario del marchio. Per il deposito propongo il logotipo completo "Abra" disegnato prima del simbolo da solo.
+**Cosa ho fatto**: l'arco della a è largo quanto l'occhio e chiude in alto con un terminale orizzontale netto; il favicon a 16 px è disegnato pixel per pixel, con l'arco su una riga intera staccato dall'occhio da una riga vuota; la tacca di piega in cima all'asta aggiunge un dettaglio che una d non ha. In `logo/test.png` il segno è mostrato accanto a una A generica.
 
-**Resta da fare**: ricerca per immagine su EUIPO e WIPO e confronto diretto con Alpine, Lambda, Avalanche e l'icona di abra.com prima di scegliere.
+**Resta da fare**: un test di lettura a 16, 24 e 32 px con cinque persone del target; una ricerca per immagine sulle legature "ab" in classe 9 e 42.
 
-## 2. La metafora sartoriale si vede meno, e potrebbe sparire del tutto
+## 2. Il cartamodello è tornato visibile, ma è una lettura che va insegnata
 
-**Rischio**: nella v2 le parole del mestiere sono uscite dai testi per i clienti, come chiesto dal panel acquirenti. Il cliente ora vede metro, gesso blu, schede di carta e rombi di decisione: un sistema chiaro, ma la sartoria può diventare un riferimento che conosce solo chi ha letto il concept, come notava già il revisore strategico.
+**Rischio**: tacche, schede numerate e cartellini sono ora presenti in ogni applicazione. Chi non conosce la sartoria li legge come segni tecnici generici (numeri di pagina, etichette), e il racconto "pezzo tagliato in doppio" resta nel concept.
 
-**Cosa ho fatto**: la metafora resta nella logica del sistema, dove lavora: la regola gesso e cucitura (da approvare contro firmato), il filo che esce dalla A, il metro che misura sempre qualcosa di vero, le lettere specchiate come un cartamodello tagliato due volte. Il gesso blu è un colore che chi conosce la sartoria riconosce subito, e per gli altri resta un blu chiaro neutro.
+**Cosa ho fatto**: ogni segno ha un significato pratico che non richiede la metafora: le tacche contano le fasi (tre tacche, fase P3), le schede dicono di quanti pezzi è fatto il progetto, i cartellini legano una data a un oggetto. Funzionano anche per chi non pensa al sarto.
 
-**Resta da fare**: verificare con il test dei 5 secondi che hero e copertina del preventivo comunichino "prova prima di investire" senza bisogno della spiegazione.
+**Resta da fare**: verificare con il test dei 5 secondi che la copertina del preventivo comunichi "il primo numero arriva in tre settimane".
 
-## 3. Il gesso blu è chiaro e ha un gemello scuro vicino ai blu del settore
+## 3. La palette più solida si avvicina a un registro corporate
 
-**Rischio**: il Gesso blu `#8FB0E0` esce dal gamut di quadricromia (scarto dE 7,3) e su tela non regge testo né linee sottili, quindi il sistema ha bisogno del Blu segno `#2F5D9E`, che usato come campo pieno si avvicinerebbe ai blu corporate del settore (Comau, Eagleprojects). Inoltre la direzione D deve ancora scegliere il suo colore di gelatina e potrebbe avvicinarsi.
+**Rischio**: con più flanella e fondi neutri, la direzione guadagna solidità per l'amministratore delegato ma perde parte del calore della v2; il gesso blu chiaro su flanella scura potrebbe ricordare un'interfaccia software. Il Pantone 278 C è vincolante: chi stampa in quadricromia senza tinta piatta ottiene un blu più grigio.
 
-**Cosa ho fatto**: il Blu segno compare solo come linea sottile e nelle etichette, mai come campo; il Gesso blu ha un Pantone indicativo per le stampe di marca; regole d'uso e contrasti sono scritti in `palette.md`, con tutte le coppie usate nelle applicazioni ad AA o superiore.
+**Cosa ho fatto**: il gesso blu compare solo su oggetti con un ruolo (metro, tacche, cartellini, fascia d'azione), mai come decorazione; i robot sono in grigio neutro sul cartoncino; la regola di stampa è scritta in `palette.md`, con la richiesta di prova colore su forex e carta naturale.
 
-**Resta da fare**: confrontare il Gesso blu con il colore scelto da D nel round 2 e confermare i Pantone su mazzetta.
+**Resta da fare**: confermare 278 C e 7684 C sulla mazzetta Pantone in vigore prima della prima produzione.
 
 ## Limiti dei mockup
 
-- I robot sono immagini ufficiali Unitree usate come segnaposto dichiarato. Il G1 in piedi è ricavato dall'infografica ufficiale delle dimensioni e ha un braccio tagliato dal bordo dell'immagine originale: la prima foto da produrre è lo scatto 1 della shot list.
-- Il Go2 è fotografato di tre quarti, quindi nei post la lunghezza è scritta e non misurata con il metro.
-- Codice QR, telefono, importi e criteri dei preventivi sono segnaposto o "Esempio".
+- Il G1 è ricavato dall'infografica ufficiale delle dimensioni e ha un braccio tagliato dal bordo dell'immagine originale: va sostituito con lo scatto 1 della shot list.
+- Il Go2 è fotografato di tre quarti: nei post l'ingombro è scritto e non misurato.
+- QR, telefono, date, importi e criteri sono segnaposto o "Esempio".

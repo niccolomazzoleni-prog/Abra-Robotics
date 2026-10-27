@@ -7,25 +7,22 @@
 <link rel="stylesheet" href="../assets/a.css">
 <style>
   body{width:1080px;height:1920px;overflow:hidden;background:var(--alluminio);position:relative}
-  .top{position:absolute;left:72px;right:72px;top:150px;display:flex;justify-content:space-between;color:var(--quota)}
+  .top{position:absolute;left:72px;right:72px;top:140px;display:flex;justify-content:space-between;color:var(--quota)}
   .top .et{font-size:20px}
-  h1{position:absolute;left:72px;right:72px;top:206px;font:700 74px/1.06 var(--f-titolo);letter-spacing:-.025em}
-  .scena{position:absolute;left:0;top:560px;width:1080px;height:1060px}
-  .g1{position:absolute;left:480px;top:400px;height:600px}
-  .pav{position:absolute;left:0;right:0;top:1000px;height:2px;background:var(--grafite)}
-  .tri-pav{position:absolute;left:584px;top:1010px;width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:38px solid var(--verde)}
-  .tri-lab{position:absolute;left:640px;top:1014px;color:var(--grafite);font-size:16px}
-  .qv{position:absolute;left:820px;top:400px;height:600px;width:1.5px;background:var(--grafite)}
-  .qv::before,.qv::after{content:"";position:absolute;left:-10px;width:22px;height:1.5px;background:var(--grafite)}
-  .qv::before{top:0}.qv::after{bottom:0}
-  .qv b{position:absolute;left:22px;top:50%;transform:translateY(-50%);font:700 30px var(--f-titolo);white-space:nowrap;background:var(--alluminio);color:var(--grafite)}
-  .battuta{position:absolute;left:372px;top:30px;width:636px;background:#fff;border:2px solid var(--grafite);padding:26px 28px 24px}
-  .battuta .t{font:700 40px/1.12 var(--f-titolo);letter-spacing:-.015em}
-  .battuta .ok{display:flex;align-items:center;gap:12px;margin-top:16px;font:500 18px var(--f-etichetta);letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+  h1{position:absolute;left:72px;right:72px;top:192px;font:600 80px/1.02 var(--f-titolo);letter-spacing:-.012em}
+  .battuta{position:absolute;left:72px;top:672px;width:540px;background:#fff;border:2px solid var(--grafite);padding:24px 26px 22px;z-index:2}
+  .battuta .chi{font:400 16px var(--f-etichetta);letter-spacing:.06em;text-transform:uppercase;color:var(--quota);margin-bottom:10px}
+  .battuta .t{font:600 36px/1.12 var(--f-titolo);letter-spacing:-.01em}
+  .battuta .ok{display:flex;align-items:center;gap:12px;margin-top:16px;font:400 16px var(--f-etichetta);letter-spacing:.06em;text-transform:uppercase;color:var(--verde)}
   .battuta .ok i{width:16px;height:16px;background:var(--verde)}
-  .battuta::after{content:"";position:absolute;left:210px;bottom:-26px;width:0;height:0;border-left:26px solid transparent;border-top:26px solid var(--grafite)}
-  .sag{position:absolute}
-  .lab-sag{position:absolute;font:500 16px var(--f-etichetta);letter-spacing:.08em;text-transform:uppercase;color:var(--quota)}
+  .battuta::after{content:"";position:absolute;right:-28px;top:150px;width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:28px solid var(--grafite)}
+  .g1{position:absolute;left:668px;top:800px;height:760px}
+  .pav{position:absolute;left:0;right:0;top:1560px;height:2px;background:var(--grafite)}
+  .tri-pav{position:absolute;left:792px;top:1568px;width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:38px solid var(--verde)}
+  .vista{position:absolute;left:0;top:0;width:1080px;height:1920px}
+  .vista text{font-family:"B612";font-size:17px;letter-spacing:.04em}
+  .pianta{position:absolute;left:72px;top:1000px;width:420px;height:420px;background:var(--bianco);border:1.5px solid var(--grafite)}
+  .pianta text{font-family:"B612";font-size:14px;letter-spacing:.04em}
   .piede{position:absolute;left:0;right:0;bottom:0;height:300px;background:var(--verde);color:#fff;padding:60px 72px 0;display:flex;justify-content:space-between;align-items:flex-start}
   .piede img{height:62px;margin-left:-10px}
   .piede .et{font-size:20px;text-align:right;line-height:1.55}
@@ -35,22 +32,46 @@
 </head>
 <body>
 <div class="top"><span class="et">Demo · Umanoide G1 con LLM e RAG</span><span class="et num">Reel · 0:42</span></div>
-<h1>Noleggia un umanoide che parla del tuo marchio, con il copione firmato da te.</h1>
+<h1>Decidi cosa dirà l'umanoide al tuo pubblico, parola per parola.</h1>
 
-<div class="scena">
-  <div class="battuta"><div class="t">«Lo produciamo dal 1998 nello stabilimento di Bologna.»</div><div class="ok"><i></i>Risposta dalla base di conoscenza approvata</div></div>
-  <svg class="sag" style="left:96px;top:205px" width="250" height="795" viewBox="0 0 55 175" aria-label="Sagoma di visitatore">
-    <g fill="#8A959B"><circle cx="27.5" cy="11" r="10"/><path d="M15 26h25a5 5 0 0 1 5 5v58h-35v-58a5 5 0 0 1 5-5z"/><rect x="15" y="86" width="11" height="89" rx="3"/><rect x="29" y="86" width="11" height="89" rx="3"/><rect x="3" y="29" width="7" height="58" rx="3.5"/><rect x="45" y="29" width="7" height="58" rx="3.5"/></g>
+<div class="battuta"><div class="chi">G1 risponde a un visitatore · 00:15</div><div class="t">«Lo produciamo dal 1998 nello stabilimento di Bologna.»</div><div class="ok"><i></i>Dalla base di conoscenza approvata</div></div>
+
+<svg class="vista" viewBox="0 0 1080 1920" aria-label="Linee di vista del pubblico verso il robot">
+  <g stroke="#1A2125" stroke-width="1.5" stroke-dasharray="10 7" fill="none">
+    <line x1="72" y1="639" x2="800" y2="639"/>
+    <line x1="520" y1="927" x2="800" y2="927"/>
+  </g>
+  <g fill="#F6F8F8" stroke="#1A2125" stroke-width="2"><circle cx="72" cy="639" r="9"/><circle cx="520" cy="927" r="9"/></g>
+  <g fill="#1A2125"><text x="92" y="624">OCCHI DI UN VISITATORE ADULTO, 1600 MM</text><text x="540" y="912">BAMBINO, 1100 MM</text></g>
+  <g stroke="#1A2125" stroke-width="1.5"><line x1="985" y1="800" x2="985" y2="1560"/><line x1="973" y1="800" x2="997" y2="800"/><line x1="973" y1="1560" x2="997" y2="1560"/></g>
+  <text x="1010" y="1180" fill="#1A2125" transform="rotate(-90 1010 1180)" text-anchor="middle" style="font-size:22px">G1 · 1320 MM</text>
+</svg>
+<img class="g1" src="../assets/img/g1-tratto.png" alt="Umanoide G1 disegnato a tratto da un'immagine segnaposto">
+
+<div class="pianta">
+  <svg viewBox="0 0 440 440" width="420" height="420" aria-label="Pianta dello stand con il pubblico">
+    <text x="18" y="30" fill="#5C676D">PIANTA DELLO STAND · SCHEMA</text>
+    <rect x="300" y="56" width="110" height="30" fill="#1A2125"/>
+    <text x="355" y="110" fill="#5C676D" text-anchor="middle">TOTEM</text>
+    <path d="M220 160l-14 24h28z" fill="#008351"/>
+    <circle cx="220" cy="176" r="96" fill="none" stroke="#008351" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <text x="232" y="150" fill="#008351">1,5 M</text>
+    <g fill="#F6F8F8" stroke="#1A2125" stroke-width="1.5">
+      <g transform="translate(120 300) rotate(-30)"><rect x="-24" y="-9" width="48" height="18" rx="9"/><circle cy="-3" r="10" fill="#E3E7E9"/></g>
+      <g transform="translate(176 318) rotate(-12)"><rect x="-24" y="-9" width="48" height="18" rx="9"/><circle cy="-3" r="10" fill="#E3E7E9"/></g>
+      <g transform="translate(240 322) rotate(8)"><rect x="-24" y="-9" width="48" height="18" rx="9"/><circle cy="-3" r="10" fill="#E3E7E9"/></g>
+      <g transform="translate(300 300) rotate(30)"><rect x="-24" y="-9" width="48" height="18" rx="9"/><circle cy="-3" r="10" fill="#E3E7E9"/></g>
+      <g transform="translate(150 372) rotate(-18)"><rect x="-24" y="-9" width="48" height="18" rx="9"/><circle cy="-3" r="10" fill="#E3E7E9"/></g>
+      <g transform="translate(268 380) rotate(14)"><rect x="-18" y="-7" width="36" height="14" rx="7"/><circle cy="-2" r="8" fill="#E3E7E9"/></g>
+    </g>
+    <g transform="translate(330 196) rotate(-60)"><rect x="-24" y="-9" width="48" height="18" rx="9" fill="#008351"/><circle cy="-3" r="10" fill="#F6F8F8" stroke="#1A2125" stroke-width="1.5"/></g>
+    <text x="350" y="232" fill="#1A2125">TECNICO</text>
+    <text x="18" y="424" fill="#5C676D">PUBBLICO OLTRE IL CERCHIO DI SICUREZZA</text>
   </svg>
-  <svg class="sag" style="left:286px;top:264px" width="232" height="736" viewBox="0 0 51 162" aria-label="Sagoma di visitatrice">
-    <g fill="#B4BDC2"><circle cx="25.5" cy="10" r="9.5"/><path d="M15 24h21l8 66H7z"/><rect x="15" y="88" width="9" height="74" rx="3"/><rect x="27" y="88" width="9" height="74" rx="3"/><rect x="4" y="27" width="6.5" height="52" rx="3.2"/><rect x="40.5" y="27" width="6.5" height="52" rx="3.2"/></g>
-  </svg>
-  <img class="g1" src="../assets/img/g1-in-piedi-segnaposto.png" alt="Umanoide, immagine segnaposto">
-  <div class="qv"><b class="num">1320 mm</b></div>
-  <div class="pav"></div>
-  <div class="tri-pav"></div>
-  <span class="tri-lab et">Punto d'incontro</span>
 </div>
-<div class="piede"><img src="../logo/orizzontale-bianco.svg" alt="Abra Robotics"><span class="et">Noleggio a giornata<br>con tecnico presente</span><div class="segn"><span class="segnaposto">Segnaposto: immagine ufficiale Unitree · sagome grafiche · battuta di esempio</span></div></div>
+
+<div class="pav"></div>
+<div class="tri-pav"></div>
+<div class="piede"><img src="../logo/orizzontale-bianco.svg" alt="Abra Robotics"><span class="et">Noleggio a giornata<br>con tecnico presente</span><div class="segn"><span class="segnaposto">Segnaposto: G1 disegnato a tratto da immagine ufficiale Unitree · battuta di esempio</span></div></div>
 </body>
 </html>

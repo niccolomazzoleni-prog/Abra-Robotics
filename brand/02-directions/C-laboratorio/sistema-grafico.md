@@ -1,25 +1,22 @@
 # Sistema grafico
 
-## Costruzione del marchio (v2)
+## Costruzione del marchio (v3)
 
-Il logotipo "abra" è disegnato con due soli elementi, gli stessi del richiamo: **il punto** (cerchio pieno) e **il filo** (asta diritta). Unità: altezza della x = 100.
+Base: STIX Two Text SemiBold (OFL), ridisegnato. Unità del font (1000 per em, altezza delle maiuscole 657, x 473).
 
-| Lettera | Costruzione |
+| Elemento | Costruzione |
 |-|-|
-| a | Punto di diametro 100 (con 3 unità di compensazione ottica), asta di 19 a destra, alta quanto la x. L'asta entra nel punto solo per il 12% del suo spessore: la tangenza crea la strozzatura fra punto e filo |
-| b | Asta di 19 alta 158, punto di diametro 100 a destra con la stessa strozzatura |
-| r | Asta di 19 alta quanto la x, punto piccolo di diametro 34 in alto a destra, collegato da un collo spesso il 42% del suo raggio |
-| spaziatura | a b 20, b r 22, r a 14 |
-| Robotics | DM Mono Medium maiuscolo, spaziatura 90, altezza delle maiuscole pari al 36% della x, sulla linea di base del logotipo (orizzontale) o giustificato sotto (verticale) |
+| A | Tolta la traversa e i vertici dell'innesto, le gambe proseguono diritte fino al vertice interno. Al posto della traversa, all'altezza 238: punto di raggio 54 al 40% della luce interna e filo spesso 17 (rapporto 1 a 6,4) dal centro del punto fino al bordo della grazia destra |
+| b | Disegno STIX invariato, spostata di 34 a destra per lasciare aria al filo |
+| r | Tolto l'orecchio a goccia. Al suo posto lo stesso punto di raggio 54, a 26 dall'asta, collegato da un filo spesso 17 all'altezza 392 |
+| a | Disegno STIX, spaziatura propria (r a +10 sulla nuova larghezza della r) |
+| Robotics | DM Mono Medium maiuscolo convertito in tracciati, spaziatura 90, maiuscole alte il 30% della A, sulla linea di base. È un descrittore: non fa parte del marchio da depositare e sotto i 30 px di altezza si omette |
 
-Il simbolo è la sola a. A 16 px non si scala il vettore: si usa `logo/favicon-16.svg`, disegnato a pixel, dove punto (10 px), strozzatura (1 px di collegamento su 2 righe) e asta (2 px) restano tre cose distinte. Da 32 px in su si usa `favicon.svg`.
+Simbolo: la A annotata. 16 px: `logo/favicon-16.svg`, disegnato a pixel (A di 12 righe, punto 3 × 3, filo di 1 px dalla luce interna fino a 1 px dal bordo). Da 32 px: `favicon.svg`.
 
-Area di rispetto: metà dell'altezza della x su ogni lato. Dimensione minima del logotipo orizzontale: 18 px o 6 mm di altezza totale.
+Area di rispetto: metà dell'altezza della A su ogni lato. Dimensione minima: logotipo 14 px di altezza; lockup con descrittore 30 px.
 
-Rischio di confusione verificato a vista: il segno non contiene più la A attraversata da una linea (vicinanza con Alpine segnalata nel round 1) né una A senza traversa. Prima del deposito: ricerca EUIPO per immagine con codici Vienna 27.05 (lettere), 26.01 (cerchi), 26.11 (linee) e classi 7, 9, 35, 37, 41, 42.
-
-
-Cinque elementi, tutti derivati dalla pagina di un articolo scientifico. Ogni applicazione ne usa almeno tre; nessuna li usa tutti alla stessa intensità.
+Differenze dalle A con freccia (Alpine e simili): il punto è il protagonista, il filo è sottile, senza punta, e termina sul bordo della grazia. Prima del deposito: ricerca EUIPO per immagine con codici Vienna 27.05, 26.01, 26.11 e classi 7, 9, 35, 37, 41, 42. Si deposita il logotipo "Abra" in bianco e nero; il simbolo dopo la ricerca.
 
 ## 1. Il richiamo (punto, filo, nota)
 
@@ -42,7 +39,7 @@ Ogni pagina ha una colonna di testo principale e una colonna a margine (destra s
 
 ## 3. L'evidenziatore
 
-Una fascia gialla dietro al testo, alta il 62% del corpo, posata sulla parte bassa della riga come un vero tratto di pennarello. In v2 si evidenzia **solo un numero o un criterio misurato**: "3 settimane", "≤ 15 s", "70%", "circa 2 ore". Mai titoli, mai frasi di beneficio, mai su fondo inchiostro. Una sola evidenziazione per applicazione.
+Una fascia gialla dietro al testo, alta il 62% del corpo, posata sulla parte bassa della riga come un vero tratto di pennarello. In v2 si evidenzia **solo un numero o un criterio misurato**: "3 settimane", "15 s", "70%", "circa 2 ore". Mai titoli, mai frasi di beneficio, mai su fondo inchiostro. Una sola evidenziazione per applicazione.
 
 ## 4. Revisioni, figure, numeri di riga
 
@@ -78,7 +75,7 @@ L'unico pattern è il quadretto. In alternativa, per superfici grandi (flight ca
 
 - **Misurato**: punto pieno inchiostro con barra d'incertezza verticale (cappelli corti).
 - **Simulato**: cerchio vuoto in grafite, spostato a sinistra del misurato dello stesso caso.
-- **Criterio di accettazione**: linea tratteggiata inchiostro con etichetta "criterio: ≤ 15 s".
+- **Criterio di accettazione**: linea tratteggiata inchiostro con etichetta "criterio: max 15 s" (mai i simboli ≤ e ≥, assenti in STIX Two Text).
 - **Zona accettata**: fascia evidenziatore al 50% di opacità.
 - **Assi**: solo l'asse dei valori, sottile, con tre etichette al massimo. Griglia in rigatura, due linee.
 - **Fasi del progetto**: una linea con un punto per fase; il punto finale è vuoto (ciò che resta da fare). La fascia gialla copre le fasi in cui si misura prima dell'investimento.

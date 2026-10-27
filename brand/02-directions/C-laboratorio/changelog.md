@@ -1,5 +1,49 @@
 # Changelog, direzione C "Nota a margine"
 
+## v3.0 · 29/10/2026
+
+Risposta al round 2 (media 7,3; marchio 5,6) e alle indicazioni vincolanti di `03-reviews/round2-sintesi.md`.
+
+### Marchio
+| Modifica | In risposta a |
+|-|-|
+| Abbandonato il logotipo a dischi e aste della v2. Ritorno all'idea della v1, la lettera completata da un richiamo, dentro il serif scientifico del sistema | Orchestratore (segno "disco più asta" troppo elementare e staccato dal sistema); art director, strategia, marchio r2 |
+| Logotipo "Abra" ridisegnato su STIX Two SemiBold: A senza traversa con punto (raggio 54) e filo sottile (17, rapporto 1 a 6,4) fino al bordo della grazia; r senza orecchio a goccia, con lo stesso punto e lo stesso filo; spaziatura propria (A b +34, b r -10, r a +10) | Orchestratore (logotipo su misura, non STIX composto); marchio r2 (punto della r come regola, stesso diametro) |
+| Simbolo: la A annotata. Il filo è sottile e senza punta, il punto è l'elemento principale: lontano dalle A con freccia | Marchio r1 (Alpine), art director r2 (riportare il richiamo nel segno) |
+| `favicon-16.svg` ridisegnato a pixel: A di 12 righe, punto 3 × 3, filo di 1 px che attraversa la gamba destra. Mostrato ingrandito in `logo/test.png` | Orchestratore (richiamo visibile a 16 px, favicon pixel per pixel) |
+| Il descrittore "ROBOTICS" si omette sotto i 30 px: nell'intestazione del preventivo interno e sul fronte del biglietto si usa `logotipo.svg` | Produzione r2 (descrittore a 2,7 pt) |
+| Animazione: la A sale dal basso tutta intera, con il richiamo; non compare mai senza traversa | Orchestratore r1 (A senza traversa vietata) |
+
+### Produzione
+| Modifica | In risposta a |
+|-|-|
+| `@media print` dichiara anche STIX Two Text Bold: niente grassetto sintetico né Type 3 | Produzione r2, orchestratore |
+| Tolti ≤, ≥ e → (assenti in STIX Two Text): "fino a 15 s", "almeno 95%", "max 15 s", "Da rev 1.0 a rev 1.1". Tolta la freccia del flight case. Il segno di spunta "✓" (assente in entrambi i font) sostituito da una spunta disegnata in CSS. Verificata la copertura di tutti i caratteri visibili con i cmap di STIX e DM Mono | Produzione r2 (Georgia-Italic e Lucida nel PDF) |
+| Richiami in apice a minimo 8 px (6 pt). Controllo automatico del corpo effettivo su preventivo e biglietto: nessun testo sotto 6 pt | Produzione r2, orchestratore |
+
+### Headline con il verbo "Leggi"
+| Applicazione | v3 |
+|-|-|
+| Hero | Leggi in tre settimane i numeri del robot sul tuo processo. |
+| Preventivo | Prelievo dei cartoni a fine linea: leggi fase per fase tempi, errori e costi misurati |
+| LinkedIn nominativo | Leggi cosa trova un tesista nella cassa del suo primo robot. |
+| LinkedIn anonimo | Leggi cosa c'è nella cassa di un robot pronto dal primo giorno. |
+| Reel | Leggi la fonte di ogni risposta che il G1 dà ai tuoi visitatori. |
+| Totem | Leggi la fonte di ogni risposta del G1 al tuo stand. (riga sotto: Noleggio a giornata, con un tecnico Abra.) |
+
+### Applicazioni
+| File | Modifica | In risposta a |
+|-|-|-|
+| `linkedin-sacmi-anonimo` | Tolti "tesi in azienda", "tesista", "4D", "EDU", "Go2" nel testo; "quadrupede"; segnaposto dichiarato come "foto ufficiale del costruttore" | Orchestratore, strategia r2 |
+| `reel-g1` | G1 a mezza figura ritagliato su fondo inchiostro (niente gradiente grigio), registro con la fonte, pubblico come dati nella pianta dello stand (un cerchio per visitatore, n = 9) | Orchestratore (pubblico e G1 diversi dalle altre direzioni); art director r2 |
+| `totem` | Tolti il G1 su fondo grigio e le sagome sovrapposte; pianta dello stand con totem, G1, tecnico e visitatori come cerchi; G1 a mezza figura | Art director r2, orchestratore |
+| `livrea` | Flight case ridisegnato come tavola tecnica a filo, con richiami solo su parti reali (maniglia, chiusura, tasca) | Orchestratore (flight case identico in tutte le direzioni) |
+| `biglietto` | Retro: il filo del richiamo della A prosegue fino al testo; fronte con logotipo senza descrittore | Marchio, produzione |
+| `palette.md` | Regola: giallo mai in bande, strisce oblique o triangoli | Marchio r2 (segnaletica di pericolo) |
+
+### Documenti aggiornati
+`concept.md`, `sistema-grafico.md` (Costruzione del marchio v3), `tipografia.md`, `palette.md`, `voce.md`, `motion.md`, `foto-video.md`, `autocritica.md`, `presentazione.html`. Tutti i PNG rigenerati.
+
 ## v2.0 · 28/10/2026
 
 Risposta al round 1 (media 7,2; marchio 6,2) e alle indicazioni vincolanti di `03-reviews/round1-sintesi.md`.

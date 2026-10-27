@@ -1,16 +1,11 @@
-/* Abra Robotics, direzione A v2 "In squadra". Fogli di stile comuni ai mockup. */
+/* Abra Robotics, direzione A v3 "In squadra". Fogli di stile comuni ai mockup. */
+@font-face{font-family:"Plex";src:url(fonts/IBMPlexSans-Regular.ttf) format("truetype");font-weight:400;font-display:block}
+@font-face{font-family:"Plex";src:url(fonts/IBMPlexSans-Medium.ttf) format("truetype");font-weight:500;font-display:block}
+@font-face{font-family:"Plex";src:url(fonts/IBMPlexSans-SemiBold.ttf) format("truetype");font-weight:600;font-display:block}
+@font-face{font-family:"Plex C";src:url(fonts/IBMPlexSansCondensed-SemiBold.ttf) format("truetype");font-weight:600;font-display:block}
+@font-face{font-family:"Plex C";src:url(fonts/IBMPlexSansCondensed-Bold.ttf) format("truetype");font-weight:700;font-display:block}
 @font-face{font-family:"B612";src:url(fonts/B612-Regular.ttf) format("truetype");font-weight:400;font-display:block}
 @font-face{font-family:"B612";src:url(fonts/B612-Bold.ttf) format("truetype");font-weight:700;font-display:block}
-@font-face{font-family:"Barlow";src:url(fonts/Barlow-Regular.ttf) format("truetype");font-weight:400;font-display:block}
-@font-face{font-family:"Barlow";src:url(fonts/Barlow-Medium.ttf) format("truetype");font-weight:500;font-display:block}
-@font-face{font-family:"Barlow";src:url(fonts/Barlow-SemiBold.ttf) format("truetype");font-weight:600;font-display:block}
-@font-face{font-family:"Barlow";src:url(fonts/Barlow-Bold.ttf) format("truetype");font-weight:700;font-display:block}
-@font-face{font-family:"Barlow SC";src:url(fonts/BarlowSemiCondensed-Regular.ttf) format("truetype");font-weight:400;font-display:block}
-@font-face{font-family:"Barlow SC";src:url(fonts/BarlowSemiCondensed-Medium.ttf) format("truetype");font-weight:500;font-display:block}
-@font-face{font-family:"Barlow SC";src:url(fonts/BarlowSemiCondensed-SemiBold.ttf) format("truetype");font-weight:600;font-display:block}
-@font-face{font-family:"Barlow SC";src:url(fonts/BarlowSemiCondensed-Bold.ttf) format("truetype");font-weight:700;font-display:block}
-@font-face{font-family:"Barlow C";src:url(fonts/BarlowCondensed-Medium.ttf) format("truetype");font-weight:500;font-display:block}
-@font-face{font-family:"Barlow C";src:url(fonts/BarlowCondensed-SemiBold.ttf) format("truetype");font-weight:600;font-display:block}
 
 :root{
   --grafite:#1A2125;
@@ -21,9 +16,9 @@
   --linea:#B4BDC2;
   --verde:#008351;
   --verde-profondo:#0F3A2C;
-  --f-testo:"Barlow",system-ui,sans-serif;
-  --f-titolo:"B612","Barlow",sans-serif;
-  --f-etichetta:"Barlow SC","Barlow",sans-serif;
+  --f-testo:"Plex",system-ui,sans-serif;
+  --f-titolo:"Plex C","Plex",sans-serif;
+  --f-etichetta:"B612","Plex",sans-serif;
   --tratto:1.5px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -31,14 +26,14 @@ html,body{background:var(--alluminio);color:var(--grafite);font-family:var(--f-t
 img{display:block}
 
 /* etichetta: maiuscolo spaziato, la voce delle targhe dati */
-.et{font-family:var(--f-etichetta);font-weight:500;text-transform:uppercase;letter-spacing:.09em;font-size:12px;line-height:1.3}
+.et{font-family:var(--f-etichetta);font-weight:400;text-transform:uppercase;letter-spacing:.06em;font-size:12px;line-height:1.3}
 .num{font-variant-numeric:tabular-nums}
 
 /* riquadro di controllo: la cornice a celle del disegno tecnico (ISO 1101) usata per i fatti verificabili */
 .rq{display:inline-flex;align-items:stretch;border:var(--tratto) solid currentColor;line-height:1}
 .rq>span{display:flex;align-items:center;padding:.5em .7em;border-left:var(--tratto) solid currentColor;white-space:nowrap}
 .rq>span:first-child{border-left:0}
-.rq .rif{font-family:var(--f-titolo);font-weight:700}
+.rq .rif{font-family:var(--f-etichetta);font-weight:700}
 .rq .ok{background:var(--verde);color:#fff}
 .rq .lim,.lim-campo{background:repeating-linear-gradient(135deg,var(--grafite) 0 1px,transparent 1px 5px)}
 .lim-q{display:inline-block;width:12px;height:12px;border:1.5px solid var(--grafite);background:repeating-linear-gradient(135deg,var(--grafite) 0 1px,transparent 1px 4px);vertical-align:-1px}

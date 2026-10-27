@@ -1,13 +1,13 @@
 """Genera ../logo/animazione.html: la legatura Ab si costruisce sulla squadra, poi compare il resto del logotipo."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from build_logo import word, CLEAR, H, to_path, g_Ab, SB
+from build_logo import word, CLEAR, H, to_path, g_Ab2, SB
 from glyphs import affinity, unary_union, box
 
 D = os.path.join(os.path.dirname(__file__), '..', 'logo')
 s = 16.0
 letters, ww = word('Abra Robotics', s)
-Ab, adv = g_Ab(None, s)
+Ab, adv = g_Ab2(None, s, overlap=0.6)
 rest = letters.difference(box(-1, -5, adv + 0.5, H + 5))
 c = CLEAR
 VW, VH = ww + 2 * c, H + 2 * c
@@ -60,8 +60,8 @@ html = f'''<!doctype html>
       <path clip-path="url(#kd)" d="{P(diag_poly)}"/>
       <path clip-path="url(#kr)" d="{P(rest)}"/>
     </g>
-    <path class="ang" d="M{sx-9:.2f} {base:.2f}v-9h9"/>
-    <text class="lab" x="{sx-34:.2f}" y="{base-13:.2f}">90°</text>
+    <path class="ang" d="M{sx-9:.2f} {c:.2f}v9h9"/>
+    <text class="lab" x="{sx-30:.2f}" y="{c+22:.2f}">90°</text>
   </svg>
   <div class="meta et"><span>In squadra · logo animato, CSS e SVG</span><span class="num">ciclo 6,0 s · passo 120 ms</span></div>
 </div>

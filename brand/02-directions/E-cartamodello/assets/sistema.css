@@ -1,4 +1,4 @@
-/* Abra Robotics, direzione E "Cartamodello", v2. Foglio di stile condiviso dai mockup.
+/* Abra Robotics, direzione E "Cartamodello", v3. Foglio di stile condiviso dai mockup.
    Font statici in locale (TrueType), adatti all'export PDF del Company Brain. */
 @font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Testo.ttf) format("truetype");font-weight:400;font-stretch:100%;font-display:block}
 @font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Sottotitolo.ttf) format("truetype");font-weight:400;font-stretch:96%;font-display:block}
@@ -8,14 +8,14 @@
 @font-face{font-family:"Abra Bricolage";src:url(../fonts/BricolageGrotesque-Misura.ttf) format("truetype");font-weight:680;font-stretch:80%;font-display:block}
 
 :root{
-  /* colori */
-  --tela:#ECE6D8;       /* tela di prova, fondo principale */
-  --flanella:#2F3337;   /* testo, marchio, fondi scuri */
-  --gessoblu:#8FB0E0;   /* colore firma: gesso da sarto. Superfici, metro, segni su flanella. Mai testo su chiaro */
-  --segno:#2F5D9E;      /* il segno di gesso su fondo chiaro: linee "in prova", etichette Esempio, link */
-  --carta:#D9CBAA;      /* carta da modello: pezzi e schede */
-  --gesso:#FAF8F3;      /* bianco gesso */
-  --grafite:#62666A;    /* testo secondario, solo su tela e gesso */
+  /* colori v3: più flanella, fondi neutri, gesso blu con Pantone vincolante */
+  --flanella:#2F3337;   /* colore dominante: testo, marchio, fasce e fondi pieni */
+  --gesso:#F7F6F2;      /* pagine e fondi chiari */
+  --tela:#E9E7E1;       /* fondo secondario neutro */
+  --carta:#CFCCC3;      /* cartoncino da modello: schede numerate con tacche */
+  --gessoblu:#8BB8E8;   /* colore firma, Pantone 278 C: metro, tacche, cartellini. Mai testo su chiaro */
+  --segno:#3D5A99;      /* Pantone 7684 C: linee "da approvare", etichette Esempio su chiaro */
+  --grafite:#5E6266;    /* testo secondario, solo su gesso e tela */
 
   --f:"Abra Bricolage",system-ui,sans-serif;
   --u:8px;
@@ -23,7 +23,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-synthesis:none}
-body{font-family:var(--f);font-weight:400;font-stretch:100%;color:var(--flanella);background:var(--tela)}
+body{font-family:var(--f);font-weight:400;font-stretch:100%;color:var(--flanella);background:var(--gesso)}
 
 /* Gerarchia: sei stili statici */
 .t-display{font-weight:640;font-stretch:94%;letter-spacing:-0.02em;line-height:.98}
@@ -46,3 +46,11 @@ body{font-family:var(--f);font-weight:400;font-stretch:100%;color:var(--flanella
 
 /* Pezzo di cartamodello */
 .pezzo{position:relative;background:var(--carta)}
+
+/* Il cartamodello nel sistema (v3).
+   Scheda numerata: cartoncino con il numero del pezzo in alto a sinistra ("1/5").
+   Tacca: triangolo a V intagliato sul bordo alto; una tacca per ogni fase superata.
+   Cartellino: etichetta con foro, in gesso blu, per date, versioni, "Esempio". */
+.num{display:inline-flex;align-items:center;gap:6px;font-weight:680;font-stretch:80%;font-feature-settings:"tnum" 1}
+.cartellino{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--gessoblu);color:var(--flanella);padding:6px 10px 5px 22px;font-weight:600;font-stretch:75%;text-transform:uppercase;letter-spacing:.08em;font-size:11px;clip-path:polygon(9px 0,100% 0,100% 100%,9px 100%,0 50%)}
+.cartellino:before{content:"";position:absolute;left:10px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--flanella)}

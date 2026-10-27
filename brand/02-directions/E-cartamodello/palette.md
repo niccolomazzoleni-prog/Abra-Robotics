@@ -1,62 +1,55 @@
-# Palette: Cartamodello (v2)
+# Palette: Cartamodello (v3)
 
-I colori vengono dal tavolo del modellista: la tela grezza su cui si prova, la flanella grigia, la carta da modello e il **gesso da sarto blu**, che è il colore firma della direzione. Il giallo della v1 è eliminato (sintesi del round 1: il giallo e l'ocra erano in tutte e cinque le direzioni, e su flanella si leggeva come segnaletica stradale).
+Nella v3 la palette diventa più solida per chi deve portare un numero all'amministratore delegato: la **flanella** è il colore dominante, i fondi sono neutri (gesso e tela grigio chiaro, niente sabbia), il cartoncino da modello è grigio, i robot sono in grigio neutro. Il **gesso blu** resta il colore firma e ha ora un **Pantone vincolante**.
 
-## Il colore firma: gesso da sarto
+## Colori
 
-Il gesso da sarto blu è il segno che si fa sulla stoffa prima di tagliare: si vede bene, si cancella con la spazzola, nessuno lo scambia per un segnale di pericolo. Lo usiamo in due tinte, come il sarto usa il gesso chiaro sul panno scuro e quello scuro sulla tela chiara.
+| Nome | Ruolo | HEX | RGB | Pantone | CMYK (Generic CMYK, colorimetrico relativo) | Ritorno, scarto | Uso |
+|-|-|-|-|-|-|-|-|
+| **Flanella** | Dominante: testo, marchio, fasce e fondi pieni | `#2F3337` | 47, 51, 55 | indicativo 432 C | 81, 72, 63, 40 (nero ricco) | `#2C3336`, dE 1,0 | 40% |
+| **Gesso** | Pagine e fondi chiari | `#F7F6F2` | 247, 246, 242 | carta naturale bianca | 2, 2, 3, 0 | `#F7F6F2`, dE 0,0 | 35% |
+| **Tela** | Fondo secondario neutro | `#E9E7E1` | 233, 231, 225 | | 7, 6, 7, 0 | `#EAE8E2`, dE 0,4 | 10% |
+| **Cartoncino** | Schede numerate con tacche | `#CFCCC3` | 207, 204, 195 | indicativo Cool Gray 2 C | 16, 13, 16, 0 | `#CDCCC4`, dE 1,4 | 7% |
+| **Gesso blu** | Colore firma: metro, tacche, cartellini, fascia d'azione | `#8BB8E8` | 139, 184, 232 | **278 C, vincolante** | 41, 18, 1, 0 (solo stampa digitale) | `#8EB1D2`, dE 8,3 | 5% |
+| **Blu segno** | Linee "da approvare", etichette Esempio, segni a gesso su chiaro | `#3D5A99` | 61, 90, 153 | **7684 C** | 83, 64, 4, 2 | `#395A94`, dE 3,6 | 2% |
+| **Grafite** | Testo secondario, solo su gesso e tela | `#5E6266` | 94, 98, 102 | | 67, 56, 49, 9 | `#5C6367`, dE 1,1 | 1% |
 
-| Nome | Ruolo | HEX | RGB | CMYK (Generic CMYK, intento colorimetrico relativo) | Ritorno in RGB, scarto | Uso |
-|-|-|-|-|-|-|-|
-| **Gesso blu** | Colore firma: metro, filo del simbolo, fascia d'azione, segni su flanella | `#8FB0E0` | 143, 176, 224 | 40, 22, 1, 0 | `#8FABCD`, dE 7,3 (fuori gamut) | 7% |
-| **Blu segno** | Il gesso su fondo chiaro: bordi "da approvare", etichette Esempio, segni a gesso, link | `#2F5D9E` | 47, 93, 158 | 86, 61, 3, 2 | `#2E5C96`, dE 4,5 | 3% |
+### Regola di stampa del gesso blu (vincolante)
 
-Il Gesso blu esce dal gamut di quadricromia: per stampe di marchio e casse usare un **Pantone indicativo 2717 C o 658 C**, per la stampa digitale il valore CMYK sopra. Il Blu segno è vicino al **Pantone 7684 C**. I Pantone vanno confermati su mazzetta prima della prima stampa.
-
-## Colori di base
-
-| Nome | Ruolo | HEX | RGB | CMYK (Generic CMYK) | Ritorno, scarto | Uso |
-|-|-|-|-|-|-|-|
-| **Tela** | Fondo principale | `#ECE6D8` | 236, 230, 216 | 6, 6, 11, 0 | `#EBE7D8`, dE 0,4 | 52% |
-| **Flanella** | Testo, marchio, fondi scuri | `#2F3337` | 47, 51, 55 | 81, 72, 63, 40 (nero ricco) | `#2C3336`, dE 1,0 | 28% |
-| **Carta modello** | Schede e pezzi di carta | `#D9CBAA` | 217, 203, 170 | 13, 15, 31, 0 | `#D8CCAB`, dE 1,0 | 6% |
-| **Gesso** | Pagine interne, testo su flanella | `#FAF8F3` | 250, 248, 243 | 2, 2, 4, 0 | `#F9F7F2`, dE 0,4 | 3% |
-| **Grafite** | Testo secondario, solo su fondi chiari | `#62666A` | 98, 102, 106 | 65, 55, 47, 7 | `#60676B`, dE 1,0 | 1% |
-
-Conversioni calcolate con Pillow ImageCms, profilo `Generic CMYK Profile.icc` di macOS, intento colorimetrico relativo; per la tipografia offset chiedere allo stampatore il profilo FOGRA39 e ricalcolare. La Flanella è un nero ricco a quattro colori: nel testo sotto 9 pt usare il solo nero 100% per evitare problemi di registro.
+Il gesso blu è fuori dal gamut di quadricromia: in CMYK torna più grigio (dE 8,3). Su **marchio, totem, flight case, adesivi, cartellini e righello del biglietto** si stampa **solo in Pantone 278 C** (tinta piatta, o la corrispondente pellicola o vernice). La conversione CMYK è ammessa solo per documenti stampati in digitale, come i preventivi in ufficio. Prima della prima produzione serve una prova colore su forex e su carta naturale. Il valore HEX corrisponde al riferimento pubblicato per il 278 C; va confermato sulla mazzetta Pantone Formula Guide in vigore.
 
 ## Rapporti d'uso
 
-- Il Gesso blu non è mai testo su fondo chiaro e non supera il 10% di una superficie. Compare dove c'è qualcosa da misurare (il metro), sul filo del simbolo e nella fascia "passo successivo".
-- Il Blu segno è la linea sottile: il bordo di una fase da approvare, il segno a gesso sul pavimento, l'etichetta Esempio su tela e gesso.
-- Su Carta modello il testo è sempre Flanella (Blu segno e Grafite lì scendono sotto AA per il testo piccolo).
-- Su Flanella il testo è Gesso o Gesso blu; Grafite su Flanella è vietata (2,20:1).
+- I documenti per l'azienda (preventivo, manuale) hanno una fascia di testa in flanella piena e pagine in gesso; le schede sono in cartoncino grigio.
+- Il gesso blu compare solo dove c'è qualcosa da misurare o da segnare: metro, tacche, cartellini, fascia "passo successivo". Mai testo su fondo chiaro.
+- Su cartoncino il testo è sempre flanella.
+- Su flanella il testo è gesso o gesso blu; grafite su flanella è vietata.
+- I robot sono in scala di grigi, in moltiplica sul cartoncino o sulla tela: escono grigio neutro, senza viraggio seppia.
 
-## Contrasti WCAG 2.1 (formula della luminanza relativa)
+## Contrasti WCAG 2.1
 
 | Testo | Fondo | Rapporto | Esito |
 |-|-|-|-|
-| Flanella `#2F3337` | Tela `#ECE6D8` | 10,23:1 | AAA |
-| Flanella `#2F3337` | Gesso `#FAF8F3` | 11,99:1 | AAA |
-| Flanella `#2F3337` | Carta modello `#D9CBAA` | 7,93:1 | AAA |
-| Flanella `#2F3337` | Gesso blu `#8FB0E0` | 5,73:1 | AA |
-| Gesso `#FAF8F3` | Flanella `#2F3337` | 11,99:1 | AAA |
-| Tela `#ECE6D8` | Flanella `#2F3337` | 10,23:1 | AAA |
-| Gesso blu `#8FB0E0` | Flanella `#2F3337` | 5,73:1 | AA |
-| Carta modello `#D9CBAA` | Flanella `#2F3337` | 7,93:1 | AAA |
-| Blu segno `#2F5D9E` | Tela `#ECE6D8` | 5,31:1 | AA |
-| Blu segno `#2F5D9E` | Gesso `#FAF8F3` | 6,22:1 | AA |
-| Gesso `#FAF8F3` | Blu segno `#2F5D9E` | 6,22:1 | AA |
-| Grafite `#62666A` | Tela `#ECE6D8` | 4,65:1 | AA |
-| Grafite `#62666A` | Gesso `#FAF8F3` | 5,45:1 | AA |
-| Blu segno `#2F5D9E` | Carta modello `#D9CBAA` | 4,11:1 | Solo elementi grafici e testo grande |
-| Grafite `#62666A` | Carta modello `#D9CBAA` | 3,60:1 | Solo elementi grafici e testo grande |
-| Grafite `#62666A` | Flanella `#2F3337` | 2,20:1 | Vietato |
-| Gesso blu `#8FB0E0` | Tela `#ECE6D8` | 1,79:1 | Vietato per testo e linee sottili |
+| Flanella `#2F3337` | Gesso `#F7F6F2` | 11,77:1 | AAA |
+| Flanella `#2F3337` | Tela `#E9E7E1` | 10,30:1 | AAA |
+| Flanella `#2F3337` | Cartoncino `#CFCCC3` | 7,93:1 | AAA |
+| Flanella `#2F3337` | Gesso blu `#8BB8E8` | 6,13:1 | AA |
+| Gesso `#F7F6F2` | Flanella `#2F3337` | 11,77:1 | AAA |
+| Gesso blu `#8BB8E8` | Flanella `#2F3337` | 6,13:1 | AA |
+| Cartoncino `#CFCCC3` | Flanella `#2F3337` | 7,93:1 | AAA |
+| Blu segno `#3D5A99` | Gesso `#F7F6F2` | 6,22:1 | AA |
+| Blu segno `#3D5A99` | Tela `#E9E7E1` | 5,44:1 | AA |
+| Gesso `#F7F6F2` | Blu segno `#3D5A99` | 6,22:1 | AA |
+| Grafite `#5E6266` | Gesso `#F7F6F2` | 5,69:1 | AA |
+| Grafite `#5E6266` | Tela `#E9E7E1` | 4,97:1 | AA |
+| Blu segno `#3D5A99` | Cartoncino `#CFCCC3` | 4,19:1 | Solo elementi grafici e testo grande |
+| Grafite `#5E6266` | Cartoncino `#CFCCC3` | 3,83:1 | Solo elementi grafici e testo grande |
+| Grafite `#5E6266` | Flanella `#2F3337` | 2,07:1 | Vietato |
+| Gesso blu `#8BB8E8` | Gesso `#F7F6F2` | 1,92:1 | Vietato per testo e linee sottili |
 
-Nelle applicazioni v2 tutte le coppie testo e fondo usate sono AA o superiori.
+Tutte le coppie testo e fondo usate nelle applicazioni v3 sono AA o superiori, comprese le didascalie delle tavole, ora su tela o gesso.
 
-## Distanza dai vicini
+## Distanza
 
-- Dalle altre direzioni: A verde di misura e grigio alluminio; B rosso e ocra; C giallo evidenziatore e inchiostro; D colore di gelatina teatrale. Nessuna usa un blu polvere.
-- Dal settore: il Gesso blu è chiaro e polveroso, lontano dal blu elettrico di Unitree e AgiBot, dal cobalto di Eagleprojects e dal blu Comau, che sono saturi e scuri. Il Blu segno compare solo come linea sottile, mai come campo pieno, per non avvicinarsi ai blu corporate.
+- Dalle altre direzioni: A verde di misura con alluminio, C giallo evidenziatore con inchiostro. Nessuna usa blu.
+- Dal settore: il 278 C è un blu chiaro e polveroso, lontano dal blu elettrico di Unitree e AgiBot, dal cobalto di Eagleprojects e dal blu Comau. Il 7684 C compare solo come linea sottile.

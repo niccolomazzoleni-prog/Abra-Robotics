@@ -1,12 +1,12 @@
-# Foto e video: Cartamodello (v2)
+# Foto e video: Cartamodello (v3)
 
 ## Il principio
 
-Si fotografa **la prova**, cioè il momento in cui qualcuno prende le misure al robot o al reparto. Il robot è lì per essere provato, misurato, corretto. Le immagini mostrano il gesto di misura e il luogo vero, non il prodotto in vetrina.
+Si fotografa **la prova**, cioè il momento in cui qualcuno prende le misure al robot o al reparto. Il robot è lì per essere provato, misurato, corretto. Le immagini mostrano il gesto di misura e il luogo vero.
 
 ## Inquadrature
 
-1. **La scheda misure**: robot fermo, intero, frontale o di tre quarti a 1,1 m d'altezza, focale 50 mm equivalente, con un metro in campo (nastro blu chiaro, come il gesso da sarto) allineato da terra alla testa. È l'immagine che sostituisce il cutout del produttore.
+1. **La scheda misure**: robot fermo, intero, frontale o di tre quarti a 1,1 m d'altezza, focale 50 mm equivalente, con un metro in campo (nastro in Pantone 278 C, come il gesso da sarto) allineato da terra alla testa. È l'immagine che sostituisce il cutout del produttore.
 2. **Le mani che misurano**: dettaglio di un metro, di un calibro o di un gesso appoggiato al robot o al pezzo da manipolare. Mani vere, maniche da lavoro, nessun guanto da set.
 3. **Il pavimento segnato**: dall'alto, le croci a gesso blu che delimitano l'area di prova nel reparto; il robot entra in campo solo con i piedi.
 4. **Il tavolo**: la scheda misure, il manuale stampato, il portatile con il simulatore aperti sul banco accanto al robot.
@@ -27,7 +27,7 @@ Reparti italiani veri (con il consenso del cliente e senza loghi riconoscibili),
 ## Post-produzione
 
 - Colore naturale, contrasto basso, nessun filtro cinematografico.
-- Per le immagini di sistema (hero, schede, post) il robot si scontorna e si usa in **scala di grigi in moltiplica** sulla carta modello: così robot di produttori diversi hanno lo stesso aspetto e il gesso blu resta l'unico colore forte.
+- Per le immagini di sistema (hero, schede, post) il robot si usa in **scala di grigi neutra, in moltiplica** sul cartoncino grigio o sulla tela, senza viraggio seppia: così robot di produttori diversi hanno lo stesso aspetto e il gesso blu resta l'unico colore forte.
 - Loghi dei produttori sul robot: si lasciano come sono, mai coperti da un adesivo Abra e mai ingranditi.
 
 ## Da evitare

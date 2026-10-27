@@ -1,5 +1,33 @@
 # Changelog · Direzione A
 
+## v3 · 28/10/2026 · "In squadra" (round 2: media 7,5; marchio 6,2)
+
+### Marchio (priorità 1: lettura "Ab" a 16, 24 e 32 px)
+- **Legatura ridisegnata**: la A torna intera, con due aste a pendenza 2 a 1, traversa e vuoto; il suo piede destro poggia sull'asta verticale della b. La squadra diventa il vuoto tra le due lettere (triangolo rettangolo 2 a 1). Risponde a art director, strategia e buyer panel: la mezza A della v2 si leggeva "4b" o "/b".
+- **Favicon 16 px ridisegnata pixel per pixel** con la A intera (vuoto 2 × 2 px, traversa) e la squadra visibile; provata a 16, 24, 32 px e su tema scuro in `logo/test.png`.
+- **Terzo dettaglio nel logotipo** (revisore marchio, feedback 3): cima della t tagliata ad angolo retto rispetto alla diagonale, oltre a r e R a 2 a 1.
+- **Geometria dichiarata non modificabile** in `sistema-grafico.md` come oggetto del deposito.
+- Costruzione in `logo/test.html` e animazione rifatte sulla nuova legatura; tolta l'annotazione a 5,5 px segnalata dalla produzione.
+
+### Tipografia (priorità 2)
+- Titoli in **IBM Plex Sans Condensed 600** (B612 in grande era goffo), testo in **IBM Plex Sans** (fine della coppia Barlow più verde di MYBOTSHOP), **B612** solo per etichette, quote e cartigli, dove è nato. Tutti statici e locali, licenza OFL nei file `OFL-IBMPlex.txt` e `OFL-B612.txt`; Barlow rimosso dalla cartella.
+
+### Colore (priorità 3)
+- **Pantone 348 C obbligatorio** in tinta piatta su tutti i campi pieni stampati; quadricromia solo in digitale con prova colore; RAL 6024 per vinili e vernici.
+- **Verde tolto da robot e casse** (revisore marchio, rischio confusione con ISO 7010): targhe adesive e targa di trasparenza in grafite.
+
+### Pubblico e G1 (priorità 4)
+- Tolte le sagome uomo e donna da cartello. Il pubblico è rappresentato con il linguaggio della direzione: **linee di vista** alle altezze degli occhi (1600 mm adulto, 1100 mm bambino) e **figure in pianta dello stand** attorno al cerchio di sicurezza.
+- **G1 disegnato a tratto** (contorni grafite ricavati dall'immagine ufficiale) in hero, reel e totem, diverso dal ritaglio fotografico usato dalle altre direzioni.
+- Reel: battuta del G1 subito sotto il titolo, pianta dello stand, quota a tutta altezza; il vuoto tra titolo e scena è chiuso.
+
+### Flight case (priorità 5)
+- Ridisegnato come **tavola tecnica in proiezioni ortogonali** (vista frontale e fianco con quote), cassa in alluminio naturale con la legatura incisa in grafite e un **cartiglio** al posto dell'etichetta. Tolto il rettangolo grigio senza funzione.
+
+### Headline (verbo "Decidi")
+- Riscritte tutte: hero "Decidi sul robot dopo averlo visto lavorare sul tuo compito.", preventivo "Decidi alla fine di ogni fase se l'umanoide entra nella linea 3.", fasi "Decidi a ogni passaggio con un criterio firmato e un costo già noto.", post "Decidi i prossimi passi con mappa, simulatore e manuale già consegnati...", reel "Decidi cosa dirà l'umanoide al tuo pubblico, parola per parola.", totem "Decidi la data: il G1 arriva in fiera con il nostro tecnico.", biglietto "Decidi sul robot dopo averlo visto lavorare."
+- Post SACMI anonimo: niente "tesi in azienda" né "tesista"; il beneficio è il materiale consegnato al team.
+
 ## v2 · 28/10/2026 · "In squadra" (round 1: media 6,9; marchio 5,2)
 
 ### Marchio (revisore marchio 5,2, art director, sintesi §2)

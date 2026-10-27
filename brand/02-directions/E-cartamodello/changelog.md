@@ -1,5 +1,51 @@
 # Changelog: Cartamodello
 
+## v3, 28/10/2026
+
+Risposta al round 2 (media 7,2; marchio 5,6). Fonti: `brand/03-reviews/round2-sintesi.md` (indicazioni vincolanti) e le review in `brand/03-reviews/E/*-r2.md`.
+
+### Marchio
+| Modifica | In risposta a |
+|-|-|
+| Nuovo simbolo: la **legatura "ab"**. La a (a doppio occhio) e la b condividono un'unica asta, che è la linea di piega del cartamodello; in cima c'è la **tacca di piega** a V. La A isolata con il filo, che si leggeva "A-", è eliminata | Sintesi E (segno sulla parola o su "ab", diverso da una A generica a 16 px); art director problema 1; marchio rischi 1 e 2; strategia problema 1 |
+| Logotipo **"abra" minuscolo interamente disegnato**, con la stessa legatura: il dettaglio distintivo del simbolo è ora anche nel marchio esteso | Marchio rischio 3 e feedback 2 e 4 |
+| "robotics" a peso 470 con altezza x uguale a "abra", più leggero per gerarchia; verticale allineato a sinistra | Art director problema 3 e feedback 3 |
+| Favicon ridisegnato pixel per pixel come "ab", a colori e monocromo; in `logo/test.png` è accanto a una A generica | Sintesi E; strategia feedback 1; marchio feedback 3 |
+| Tessera bicolore in gesso blu con la tacca allineata alla piega; animazione rifatta (l'asta si taglia, la tacca si incide, a e b si aprono dalla piega) | Coerenza con il nuovo segno |
+
+### Metafora visibile
+| Modifica | In risposta a |
+|-|-|
+| Tre gesti fissi: **tacche** che contano le fasi, **schede numerate** ("1/4", "1/12", "1/6"), **cartellini** in gesso blu. Usati su hero, copertina del preventivo, totem, livrea, reel e post | Sintesi E (tacche, pezzi numerati, cartellini); strategia problema 2 e feedback 2 |
+| Pubblico rappresentato come **posti segnati a gesso** sul pavimento (croci), al posto delle sagome a testa tonda uguali in tutte le direzioni | Sintesi, composizioni comuni |
+| Flight case ridisegnato come **prospetto quotato** con targa numerata, tacca sulla maniglia incassata e cartellino, senza angolari e senza il nome dell'unità in grande | Sintesi, composizioni comuni; art director, somiglianze |
+| Biglietto con **tacca fustellata** allineata alla piega del simbolo | Metafora visibile |
+
+### Colore
+| Modifica | In risposta a |
+|-|-|
+| Flanella dominante, fondi neutri (gesso `#F7F6F2`, tela `#E9E7E1`), cartoncino grigio `#CFCCC3`; robot in grigio neutro senza viraggio seppia | Sintesi E (palette meno morbida); buyer panel esitazione 1 e feedback 1 |
+| Gesso blu portato a `#8BB8E8` = **Pantone 278 C, vincolante** su marchio, totem, casse, adesivi, cartellini e righello; blu segno `#3D5A99` = Pantone 7684 C | Sintesi E; produzione problema 1 |
+| Didascalie delle tavole su tela o gesso (al posto di `#E2DACA`) | Produzione problema 2 |
+| File variabile del font spostato in `_lavoro/` | Produzione problema 3 |
+
+### Copy
+| Modifica | In risposta a |
+|-|-|
+| Tutte le headline con il verbo **"Misura"**, scritte per E: hero, preventivo (copertina e fasi), post, reel, totem, livrea | Sintesi, headline per verbo; strategia, tabella delle headline simili |
+| Post anonimo senza "tesi in azienda" (titolo, cartellino e testo) | Sintesi, post SACMI anonimo; strategia feedback 5 |
+| Peso e altezza del G1 marcati "dato del produttore" | Strategia feedback 6 |
+
+### Applicazioni
+| File | Modifica |
+|-|-|
+| `preventivo-cover` | Mostra **quando arriva il primo numero misurato**: settimana 3 (23 novembre), ciclo simulato alla 7, numero sul robot vero alla 15, con date di esempio; fasi in scala con le tacche |
+| `hero` | Colonna flanella con la scheda numerata del G1, griglia a 10 cm allineata al metro, misure in chiaro; fasi con il primo numero e la settimana |
+| `reel-g1` | G1 a tutta altezza nello stand, senza scheda di carta; cartellino del copione con durata e numero di schede |
+| `totem` | Headline sulla misura dello stand, scheda numerata con tacca, posti del pubblico a gesso nella pianta |
+| `linkedin-*` | Headline nuova, croci sotto le zampe tolte, scheda numerata |
+| `livrea` | Adesivo spostato sul retro del Go2, lontano dalla scritta del produttore; cassa ridisegnata |
+
 ## v2, 27/10/2026
 
 Risposta al round 1 (media 6,6; marchio 5,4). Fonti: `brand/03-reviews/round1-sintesi.md` (indicazioni vincolanti dell'orchestratore) e le cinque review in `brand/03-reviews/E/`.
@@ -52,7 +98,7 @@ Risposta al round 1 (media 6,6; marchio 5,4). Fonti: `brand/03-reviews/round1-si
 | `reel-g1` | G1 in piedi a figura intera, pubblico a sagome, metro allineato, copione con prodotto di fantasia | Sintesi §5; buyer panel feedback 4 |
 | `totem` | Fascia in gesso blu, G1 in piedi con metro allineato, pianta dello stand in scala vera (un quadro = 50 cm, area 300 x 300 cm, pubblico a 100 cm, sagome dall'alto), tecnico dentro l'area | Sintesi §5; righelli coerenti; produzione problema 3 |
 | `biglietto` | Testo minimo 26 px = 6,1 pt, cifre del righello 6,4 pt, tacche 0,36 pt; fronte con il solo simbolo, senza filo che attraversa il biglietto | Sintesi §4; produzione problema 1; strategia feedback 2 |
-| `livrea` | Niente bande sulla cassa: simbolo grande e cartellino in gesso blu | Art director feedback 6; strategia problema 3 |
+| `livrea` | Cassa senza bande: simbolo grande e cartellino in gesso blu | Art director feedback 6; strategia problema 3 |
 | `presentazione.html` | Aggiornata a tutti i punti sopra; tolto il metro decorativo che tagliava il numero 140 | Produzione feedback 7 |
 
 ### Non cambiato, di proposito

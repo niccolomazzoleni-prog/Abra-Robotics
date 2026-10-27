@@ -1,6 +1,6 @@
 # Tipografia: il carattere delle riviste scientifiche e la macchina da scrivere del laboratorio
 
-Due famiglie, entrambe OFL e gratuite, incluse in `fonts/` in versione **statica** (v2): STIX Two Text Regular, SemiBold, Bold e Italic dalla release ufficiale stixfonts v2.13, DM Mono Regular e Medium. Woff2 per il web, ttf per l'incorporamento nei PDF del Company Brain, dove Chrome le incorpora come TrueType (il file variabile della v1 finiva nel PDF come font Type 3). Nessun CDN.
+Due famiglie, entrambe OFL e gratuite, incluse in `fonts/` in versione **statica** (v2): STIX Two Text Regular, SemiBold, Bold e Italic dalla release ufficiale stixfonts v2.13, DM Mono Regular e Medium. Woff2 per il web, ttf per l'incorporamento nei PDF del Company Brain, dove Chrome le incorpora come TrueType (il file variabile della v1 finiva nel PDF come font Type 3). Nessun CDN. In `@media print` sono dichiarati Regular, SemiBold, Bold e Italic.
 
 ## STIX Two Text: la voce
 
@@ -34,12 +34,14 @@ Font di ripiego nel CSS: Georgia per il serif, ui-monospace e Menlo per il mono.
 
 ## Regole di composizione
 
+- **Simboli matematici**: STIX Two Text non contiene ≤, ≥ e frecce. Nel testo si scrive "fino a", "almeno", "max", "da ... a". Corpo minimo nei documenti stampati 6 pt, anche per richiami in apice e intestazioni.
+
 - **Maiuscoletto** (`font-feature-settings: "smcp", "c2sc"`) per "Fig.", "Tab.", "Tav." e per le sigle lunghe in un testo corrente.
 - **Richiami numerici** in apice con DM Mono 500 al 42% del corpo; la nota corrispondente sta nella colonna a margine, alla stessa altezza.
 - **Numeri**: in tabella cifre allineate di STIX o DM Mono; nel testo corrente cifre allineate, con lo spazio fine prima delle unità (15 s, 2 kg, 132 cm).
 - **Allineamento**: a sinistra, bandiera libera, nessuna giustificazione nei paragrafi brevi.
 - **Niente tutto maiuscolo nel serif.** Il maiuscolo è solo delle etichette mono.
-- **Il logotipo non è un font.** In v2 "abra" è disegnato da zero con cerchi e aste (vedi `sistema-grafico.md`, Costruzione del marchio): non deriva da STIX né da altri caratteri e non si ricompone da tastiera. "ROBOTICS" nel lockup è DM Mono Medium convertito in tracciati, con spaziatura 90 unità. Usare sempre i file SVG di `logo/`.
+- **Il logotipo non si compone da tastiera.** In v3 "Abra" è STIX Two SemiBold ridisegnato (A con richiamo al posto della traversa, r con punto e filo al posto dell'orecchio, spaziatura propria; dettagli in `sistema-grafico.md`). Un logo che modifica i contorni di un font OFL è un'opera grafica e non un font derivato, quindi il nome riservato "STIX" non entra in gioco. "ROBOTICS" è DM Mono Medium in tracciati. Usare sempre i file SVG di `logo/`.
 
 ## Alternative valutate
 

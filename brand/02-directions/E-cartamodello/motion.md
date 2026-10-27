@@ -1,4 +1,4 @@
-# Motion: Cartamodello (v2)
+# Motion: Cartamodello (v3)
 
 ## Principi
 
@@ -13,17 +13,17 @@
 
 | Tempo | Gesto | Tecnica |
 |-|-|-|
-| 0,1 a 0,8 s | Le gambe della A si **tagliano** dal basso verso l'alto, come un pezzo di carta | `clip-path: inset()` animato |
-| 0,8 a 1,35 s | La **traversa si cuce** da sinistra a destra: è piena dall'inizio alla fine, mai tratteggiata | `clip-path` da destra |
-| 1,3 a 1,7 s | Il **filo in gesso blu esce** dalla gamba destra | `clip-path` |
-| 2,1 a 2,45 s | Il filo rientra verso destra, dietro alla b che arriva | `clip-path` inverso |
-| 2,2 a 2,9 s | **b, r, a** salgono una alla volta | `transform` con ritardi di 100 ms |
+| 0,1 a 0,7 s | L'**asta comune si taglia** dal basso: è la linea di piega | `clip-path: inset()` |
+| 0,7 a 1 s | In cima compare la **tacca** in gesso blu | opacità |
+| 1 a 1,6 s | La **b e la a si aprono dalla piega**, verso destra e verso sinistra, come un pezzo tagliato in doppio | `clip-path` dai due lati |
+| 1,7 a 2,3 s | **r e a** salgono una alla volta | `transform` con ritardi di 100 ms |
 
-Tutto è CSS e SVG, senza librerie. Con `prefers-reduced-motion` il logotipo appare fermo, senza filo.
+Tutto è CSS e SVG, senza librerie. Con `prefers-reduced-motion` il logotipo appare fermo.
 
 ## Altri movimenti del sistema
 
 - **Il metro che si stende**: nelle timeline del sito il nastro in gesso blu entra da sinistra a 600 ms; le tacche delle settimane appaiono con lo stesso ritmo.
 - **La fase che si firma**: quando una fase viene accettata, il bordo blu si riempie di flanella in 300 ms.
-- **Il segno a gesso**: le croci si disegnano con due tratti da 150 ms ciascuno, il secondo con 80 ms di ritardo.
+- **Il segno a gesso**: le croci dei posti del pubblico si disegnano con due tratti da 150 ms ciascuno.
+- **La tacca**: quando una fase viene accettata, una nuova tacca si intaglia nella fascia in 200 ms.
 - **Nei reel**: titolo fermo per 1,5 s, poi il pezzo di carta con il robot sale dal basso; il copione si legge come sottotitolo, una riga alla volta.

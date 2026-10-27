@@ -1,8 +1,8 @@
 """Genera gli SVG del marchio v2 "In squadra" in ../logo/.
 Uso: python build_logo.py   (richiede shapely)
 
-Il segno e la legatura Ab: la A e costruita sulla squadra da disegno, con l'asta destra
-verticale che diventa l'asta della b e la diagonale con pendenza 2 a 1.
+Il segno e la legatura Ab v3: la A e intera (aste a pendenza 2 a 1 e traversa) e il suo piede destro
+poggia sull'asta verticale della b; il vuoto tra la A e la b e una squadra.
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -24,7 +24,7 @@ def word(text, s=16.0, head=0.45):
     prev = None
     i = 0
     if text.startswith('Ab'):
-        g, adv = g_Ab(None, s, head=head)
+        g, adv = g_Ab2(None, s, overlap=0.6)
         geoms.append(g)
         x = adv + SB['b'][1]
         prev = 'b'
@@ -60,18 +60,18 @@ def write(name, w, h, body, title, extra=''):
 FAV16 = [
     "................",
     "................",
-    ".......###......",
-    ".......###......",
-    "......####......",
-    "......####......",
-    ".....##.#####...",
-    ".....##.######..",
-    "....##..##..##..",
-    "....######..##..",
-    "...##...##..##..",
-    "...##...##..##..",
-    "..##....######..",
-    "..##....#####...",
+    "....##..##......",
+    "....##..##......",
+    "...####.##......",
+    "...####.##......",
+    "...####.#####...",
+    "..##..########..",
+    "..##..####..##..",
+    "..########..##..",
+    ".##....###..##..",
+    ".##....###..##..",
+    ".##....#######..",
+    ".##....######...",
     "................",
     "................",
 ]
@@ -115,7 +115,7 @@ def main():
 
     # simbolo: legatura Ab, tratto 18
     sA = 18.0
-    Ab, adv = g_Ab(None, sA)
+    Ab, adv = g_Ab2(None, sA, overlap=0.6)
     write('simbolo-netto.svg', round(adv, 2), H, P(Ab, GRAFITE, 0, 0, H), 'Abra Robotics, simbolo senza area di rispetto')
     side = round(max(adv, H) + 2 * c, 1)
     ox, oy = (side - adv) / 2, (side - H) / 2
@@ -135,8 +135,8 @@ def main():
     # favicon vettoriale per 32 px e oltre
     g = 32.0
     scF = 20.0 / H
-    AbF = affinity.scale(g_Ab(None, 20.0)[0], scF, scF, origin=(0, 0))
-    advF = g_Ab(None, 20.0)[1] * scF
+    AbF = affinity.scale(g_Ab2(None, 20.0, overlap=0.6)[0], scF, scF, origin=(0, 0))
+    advF = g_Ab2(None, 20.0, overlap=0.6)[1] * scF
     body = f'<rect width="32" height="32" fill="{VERDE}"/>' + P(AbF, BIANCO, (g - advF) / 2, (g - 20) / 2, 20)
     write('favicon.svg', 32, 32, body, 'Abra Robotics')
 

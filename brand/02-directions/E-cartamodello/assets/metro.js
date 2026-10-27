@@ -1,4 +1,4 @@
-/* Metro da sarta (v2: nastro in gesso blu): disegna un nastro millimetrato in SVG dentro gli elementi [data-metro].
+/* Metro da sarta (v3: nastro in gesso blu, Pantone 278 C): disegna un nastro millimetrato in SVG dentro gli elementi [data-metro].
    Attributi: data-from (cm iniziale), data-to (cm finale), data-step (px per cm),
    data-dir ("h" orizzontale, "v" verticale con lo zero in basso), data-w (spessore nastro px),
    data-label (cifre ogni N cm, default 10), data-sw (moltiplicatore spessore tacche).
@@ -9,7 +9,7 @@
     const from=+el.dataset.from||0, to=+el.dataset.to||100, step=+el.dataset.step||8;
     const dir=el.dataset.dir||'h', tw=+el.dataset.w||36, every=+el.dataset.label||10;
     const len=(to-from)*step+4;
-    const ink=el.dataset.ink||'#2F3337', tape=el.dataset.tape||'#8FB0E0', k=+el.dataset.sw||1;
+    const ink=el.dataset.ink||'#2F3337', tape=el.dataset.tape||'#8BB8E8', k=+el.dataset.sw||1;
     const W=dir==='h'?len:tw, H=dir==='h'?tw:len;
     const s=document.createElementNS(NS,'svg');
     s.setAttribute('viewBox',`0 0 ${W} ${H}`);s.setAttribute('width',W);s.setAttribute('height',H);

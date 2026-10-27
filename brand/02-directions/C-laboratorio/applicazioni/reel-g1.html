@@ -2,24 +2,24 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Copertina reel: il G1 che parla con il pubblico</title>
+<title>Copertina reel: il G1 che risponde al pubblico citando le fonti</title>
 <link rel="stylesheet" href="../abra-c.css">
 <style>
   body { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: var(--inchiostro); color: var(--carta); }
   .testa { position: absolute; left: 72px; right: 72px; top: 96px; display: flex; justify-content: space-between; align-items: center; }
-  .testa img { height: 46px; }
+  .testa img { height: 58px; }
   .testa .rev { color: var(--grafite-chiara); font-size: 18px; }
-  h1 { position: absolute; left: 72px; top: 230px; width: 940px; margin: 0; font-size: 88px; line-height: 1.03; font-weight: 600; letter-spacing: -0.018em; }
-  .scena { position: absolute; left: 72px; right: 72px; top: 590px; height: 1000px; background: var(--carta); color: var(--inchiostro); overflow: hidden; }
-  .scena .foto { position: absolute; left: 0; top: 0; width: 520px; height: 1000px; background: url("../img/segnaposto-unitree-g1-in-piedi.jpg") 44% 0 / cover no-repeat; filter: grayscale(1) contrast(1.05); }
-  .scena .pubblico { position: absolute; left: 0; bottom: 0; width: 936px; height: 330px; }
-  .battuta { position: absolute; left: 560px; width: 340px; }
-  .battuta .chi { font-family: var(--mono); font-size: 18px; letter-spacing: .06em; text-transform: uppercase; color: var(--grafite); display: block; margin-bottom: 10px; }
+  h1 { position: absolute; left: 72px; top: 230px; width: 930px; margin: 0; font-size: 86px; line-height: 1.04; font-weight: 600; letter-spacing: -0.018em; }
+  .g1 { position: absolute; left: -40px; top: 640px; width: 760px; filter: grayscale(1) contrast(1.04); }
+  .carta { position: absolute; left: 470px; top: 700px; width: 538px; background: var(--carta); color: var(--inchiostro); padding: 36px 40px 40px; }
+  .carta .etichetta { font-size: 15px; }
+  .carta .esempio { position: absolute; right: 30px; top: 30px; font-size: 13px; }
+  .battuta { margin-top: 34px; }
+  .battuta .chi { font-family: var(--mono); font-size: 17px; letter-spacing: .06em; text-transform: uppercase; color: var(--grafite); display: block; margin-bottom: 8px; }
   .battuta p { margin: 0; font-size: 40px; line-height: 1.18; }
-  .fonte { position: absolute; left: 560px; width: 340px; font-style: italic; color: var(--grafite); font-size: 24px; line-height: 1.35; }
-  .scena svg.r { position: absolute; left: 0; top: 0; }
-  .scena .etichetta { position: absolute; right: 30px; top: 26px; font-size: 14px; }
-  .scena .esempio { position: absolute; right: 30px; top: 54px; font-size: 13px; }
+  .fonte { margin: 30px 0 0; padding-top: 18px; border-top: 1px solid var(--rigatura); font-style: italic; color: var(--grafite); font-size: 24px; line-height: 1.35; }
+  .pianta { position: absolute; left: 470px; top: 1340px; width: 538px; background: var(--carta); color: var(--inchiostro); padding: 26px 40px 30px; }
+  .pianta .etichetta { font-size: 15px; display: block; margin-bottom: 14px; }
   .piede { position: absolute; left: 72px; right: 72px; bottom: 250px; display: flex; justify-content: space-between; align-items: baseline; }
   .piede .play { font-size: 34px; display: flex; align-items: center; gap: 18px; }
   .piede .play::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--carta); }
@@ -28,23 +28,28 @@
 </head>
 <body>
 <div class="testa"><img src="../logo/mono-negativo.svg" alt="Abra Robotics"><span class="rev">Demo allo stand · G1 · 0:42</span></div>
-<h1>Fai parlare il G1 del tuo marchio, con parole approvate da te.</h1>
+<h1>Leggi la fonte di ogni risposta che il G1 dà ai tuoi visitatori.</h1>
 
-<div class="scena">
-  <div class="foto" role="img" aria-label="Umanoide in piedi (segnaposto Unitree G1)"></div>
-  <span class="etichetta">Fig. 1 · stand, ore 14:32</span>
+<img class="g1" src="../img/segnaposto-unitree-g1-mezza-figura.png" alt="Umanoide a mezza figura (segnaposto Unitree G1)">
+
+<div class="carta">
+  <span class="etichetta">Fig. 1 · Registro, ore 14:32</span>
   <span class="esempio">Esempio</span>
-  <div class="battuta" style="top:150px"><span class="chi">Visitatrice</span><p>Di che materiale è la nuova linea?</p></div>
-  <div class="battuta" style="top:360px"><span class="chi">G1</span><p>Alluminio riciclato al <span class="evid">70%</span><sup class="rif">1</sup>, lavorato a Brescia.</p></div>
-  <p class="fonte" style="top:600px"><span class="mono" style="font-style:normal;font-size:18px;color:var(--inchiostro)">1</span>&ensp;Fonte: scheda prodotto approvata dal cliente il 12.10.</p>
-  <svg class="pubblico" viewBox="0 0 936 330" aria-hidden="true">
-    <g fill="#625E57">
-      <circle cx="610" cy="150" r="46"/><path d="M520 330c0-80 40-128 90-128s90 48 90 128z"/>
-      <circle cx="770" cy="176" r="40"/><path d="M692 330c0-70 34-110 78-110s78 40 78 110z"/>
+  <div class="battuta"><span class="chi">Visitatrice</span><p>Di che materiale è la nuova linea?</p></div>
+  <div class="battuta"><span class="chi">G1</span><p>Alluminio riciclato al <span class="evid">70%</span><sup class="rif">1</sup>, lavorato a Brescia.</p></div>
+  <p class="fonte"><span class="mono" style="font-style:normal;font-size:18px;color:var(--inchiostro)">1</span>&ensp;Fonte: scheda prodotto approvata dal cliente il 12.10.</p>
+</div>
+
+<div class="pianta">
+  <span class="etichetta">Fig. 2 · Pianta dello stand, stessa ora</span>
+  <svg viewBox="0 0 458 190" width="458" height="190" font-family="DM Mono" font-size="14" aria-label="Pianta: il G1 al centro, nove visitatori davanti">
+    <rect x="1" y="1" width="456" height="150" fill="none" stroke="#1F1D1A" stroke-width="1.5"/>
+    <line x1="1" y1="151" x2="457" y2="151" stroke="#1F1D1A" stroke-width="4" stroke-dasharray="40 10"/>
+    <circle cx="228" cy="48" r="11" fill="#1F1D1A"/>
+    <g fill="none" stroke="#1F1D1A" stroke-width="2">
+      <circle cx="150" cy="108" r="7"/><circle cx="180" cy="122" r="7"/><circle cx="214" cy="128" r="7"/><circle cx="246" cy="126" r="7"/><circle cx="278" cy="118" r="7"/><circle cx="306" cy="104" r="7"/><circle cx="196" cy="98" r="7"/><circle cx="262" cy="96" r="7"/><circle cx="340" cy="130" r="7"/>
     </g>
-    <g fill="#A9A397">
-      <circle cx="880" cy="196" r="34"/><path d="M816 330c0-60 28-96 64-96s64 36 64 96z"/>
-    </g>
+    <g fill="#625E57"><text x="246" y="44">G1</text><text x="10" y="24">cerchi: visitatori, n = 9</text><text x="8" y="176">corsia</text><text x="360" y="176">4 × 3 m</text></g>
   </svg>
 </div>
 

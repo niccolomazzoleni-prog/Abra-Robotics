@@ -9,9 +9,10 @@
   body { width: 1600px; height: 2260px; position: relative; overflow: hidden; background: #E6E2D8; }
   .pavimento { position: absolute; left: 0; right: 0; top: 2120px; height: 1.5px; background: var(--inchiostro); }
   .totem { position: absolute; left: 110px; top: 120px; width: 800px; height: 2000px; background: #FBFAF6; box-shadow: 18px 0 0 #D6D1C5; }
-  .totem .logo { position: absolute; left: 64px; top: 66px; height: 52px; }
+  .totem .logo { position: absolute; left: 64px; top: 60px; height: 64px; }
   .totem .rev { position: absolute; right: 64px; top: 80px; font-size: 18px; }
-  .totem h1 { position: absolute; left: 64px; top: 190px; width: 680px; margin: 0; font-size: 98px; font-weight: 600; line-height: 1.02; letter-spacing: -0.018em; }
+  .totem h1 { position: absolute; left: 64px; top: 180px; width: 680px; margin: 0; font-size: 86px; font-weight: 600; line-height: 1.02; letter-spacing: -0.018em; }
+  .totem .sub { position: absolute; left: 64px; top: 560px; margin: 0; font-size: 40px; font-weight: 600; line-height: 1.2; }
   .totem .lead { position: absolute; left: 64px; top: 1070px; width: 640px; font-size: 34px; line-height: 1.38; margin: 0; }
   .incluso { position: absolute; left: 64px; right: 64px; top: 1270px; border-top: 2px solid var(--inchiostro); padding-top: 22px; }
   .incluso .etichetta { font-size: 20px; color: var(--inchiostro); display: flex; justify-content: space-between; }
@@ -28,21 +29,20 @@
   .data .mono { font-size: 32px; display: block; margin-top: 16px; }
   .data .qr { position: absolute; right: 64px; top: 50px; width: 196px; height: 196px; background: #fff; padding: 14px; }
   .data .qr span { position: absolute; left: 0; right: 0; bottom: -30px; text-align: center; font-family: var(--mono); font-size: 14px; }
-  .g1 { position: absolute; left: 1000px; top: 760px; width: 480px; height: 1360px; background: url("../img/segnaposto-unitree-g1-in-piedi.jpg") 44% 0 / cover no-repeat; filter: grayscale(1) contrast(1.05); }
-  .pubblico { position: absolute; left: 960px; top: 1790px; width: 640px; height: 330px; }
+  .pianta { position: absolute; left: 1010px; top: 470px; width: 520px; margin: 0; }
+  .pianta figcaption { margin-top: 12px; font-size: 18px; }
+  .mezza { position: absolute; left: 1060px; top: 1080px; width: 420px; filter: grayscale(1); mix-blend-mode: multiply; }
+  .mezza-d { position: absolute; left: 1010px; top: 1540px; width: 520px; font-size: 18px; margin: 0; }
   .nota-tav { position: absolute; left: 1010px; top: 130px; width: 520px; }
   .nota-tav p { font-size: 22px; line-height: 1.45; margin: 12px 0 0; }
-  .quota { position: absolute; left: 960px; top: 800px; width: 1px; height: 1320px; background: var(--grafite); }
-  .quota::before, .quota::after { content: ""; position: absolute; left: -6px; width: 13px; height: 1px; background: var(--grafite); }
-  .quota::before { top: 0; } .quota::after { bottom: 0; }
-  .quota span { position: absolute; left: -46px; top: 620px; transform: rotate(-90deg); font-family: var(--mono); font-size: 18px; color: var(--grafite); white-space: nowrap; }
 </style>
 </head>
 <body>
 <div class="totem">
   <img class="logo" src="../logo/orizzontale.svg" alt="Abra Robotics">
   <span class="rev">Noleggio per eventi</span>
-  <h1>Noleggia il G1 per una giornata, con un tecnico Abra al tuo stand.</h1>
+  <h1>Leggi la fonte di ogni risposta del G1 al tuo stand.</h1>
+  <p class="sub">Noleggio a giornata, con un tecnico Abra.</p>
   <p class="lead">L'umanoide parla del tuo marchio con una base di conoscenza che approvi tu, e lo proviamo insieme prima dell'evento.</p>
   <div class="incluso">
     <span class="etichetta"><span>Cosa comprende la giornata</span><span class="esempio" style="font-size:14px">Esempio</span></span>
@@ -70,13 +70,26 @@
 <div class="pavimento"></div>
 <div class="nota-tav">
   <span class="etichetta">Tav. 7 · Totem per il noleggio a giornata</span>
-  <p>Totem 80 × 200 cm, stampa su forex 5 mm, base in acciaio. Accanto, il G1 in scala indicativa (132 cm) e il pubblico dello stand, disegnato come sagome.</p>
+  <p>Totem 80 × 200 cm, stampa su forex 5 mm, base in acciaio. Accanto, la pianta dello stand: il pubblico è disegnato come dati, un cerchio per visitatore.</p>
   <p class="nota">Il titolo sta sopra i 130 cm, dove arriva lo sguardo di chi passa. Il riquadro giallo con data e codice QR sta fra 100 e 128 cm, all'altezza della mano che inquadra il codice.</p>
   <p class="mono" style="font-size:16px;color:var(--grafite)">Segnaposto: foto ufficiale Unitree G1. Prezzo e contenuti del noleggio da definire con i fondatori.</p>
 </div>
-<div class="quota"><span>G1 · 132 cm</span></div>
-<div class="g1" role="img" aria-label="Umanoide G1 in scala (segnaposto)"></div>
-<svg class="pubblico" viewBox="0 0 640 330" aria-hidden="true"><g fill="#625E57"><circle cx="420" cy="110" r="52"/><path d="M318 330c0-100 46-160 102-160s102 60 102 160z"/></g><g fill="#A9A397"><circle cx="560" cy="150" r="44"/><path d="M474 330c0-84 38-136 86-136s86 52 86 136z"/></g></svg>
+<figure class="pianta">
+  <svg viewBox="0 0 520 420" width="520" height="420" font-family="DM Mono" font-size="15" aria-label="Pianta dello stand con totem, G1, tecnico e visitatori">
+    <rect x="1" y="1" width="518" height="388" fill="#FBFAF6" stroke="#1F1D1A" stroke-width="2"/>
+    <line x1="1" y1="389" x2="519" y2="389" stroke="#1F1D1A" stroke-width="5" stroke-dasharray="46 12"/>
+    <rect x="30" y="300" width="80" height="14" fill="#1F1D1A"/>
+    <circle cx="260" cy="120" r="16" fill="#1F1D1A"/>
+    <rect x="330" y="96" width="22" height="22" fill="none" stroke="#1F1D1A" stroke-width="3"/>
+    <g fill="none" stroke="#1F1D1A" stroke-width="2.5">
+      <circle cx="170" cy="230" r="9"/><circle cx="206" cy="252" r="9"/><circle cx="246" cy="262" r="9"/><circle cx="286" cy="258" r="9"/><circle cx="324" cy="244" r="9"/><circle cx="356" cy="222" r="9"/><circle cx="226" cy="214" r="9"/><circle cx="300" cy="212" r="9"/><circle cx="400" cy="300" r="9"/><circle cx="140" cy="290" r="9"/><circle cx="262" cy="320" r="9"/>
+    </g>
+    <g fill="#625E57"><text x="284" y="126">G1</text><text x="362" y="113">tecnico Abra</text><text x="30" y="290">totem</text><text x="12" y="412">corsia</text><text x="430" y="412">4 × 3 m</text><text x="12" y="30">cerchi: visitatori, n = 11 (esempio)</text></g>
+  </svg>
+  <figcaption class="didascalia"><span class="mc">Fig. 1</span>&ensp;Pianta dello stand in un'ora di punta: il totem sta sulla corsia, il G1 al centro, il tecnico a due metri.</figcaption>
+</figure>
+<img class="mezza" src="../img/segnaposto-unitree-g1-mezza-figura.png" alt="G1 a mezza figura (segnaposto)">
+<p class="didascalia mezza-d"><span class="mc">Fig. 2</span>&ensp;G1 a mezza figura. Segnaposto: foto ufficiale Unitree.</p>
 <script>
   // calendario: 30 giorni, alcuni prenotati (esempio)
   const g = document.getElementById('d'); const pren = [3,4,8,12,13,14,19,22,27];

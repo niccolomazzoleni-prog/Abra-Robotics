@@ -152,6 +152,9 @@ def g_t(w, s, tw=36.0, cross=None):
     st = LineString(pts).buffer(s / 2, cap_style='flat', join_style='round', quad_segs=24)
     cb = box(0, X - s, tw, X)
     g = unary_union([st, cb]).intersection(box(0, -OV - 1, tw, top))
+    # cima dell'asta tagliata ad angolo retto rispetto alla diagonale 2 a 1 della A
+    xl, xr = stem_x - s / 2, stem_x + s / 2
+    g = g.difference(Polygon([(xl - 1, top - s / 2 - 0.5), (xr, top), (xr, top + 5), (xl - 1, top + 5)]))
     return g, tw
 
 
@@ -225,3 +228,30 @@ def g_Ab(w, s, bar=None, bw=56.0, head=0.45):
     b, adv = g_b(None, s, bw)
     b = affinity.translate(b, Sx, 0)
     return unary_union([A, b]), Sx + bw
+
+
+def g_Ab2(w, s, bw=56.0, bar=None, apexk=-0.25, overlap=1.0):
+    """Legatura Ab v3: la A e intera (due aste a pendenza 2 a 1 e traversa); il suo piede destro
+    poggia sull'asta verticale della b, che sale ad angolo retto dalla linea di base."""
+    k = 1.0 / math.sin(math.atan(2.0))
+    top = H + apexk * s
+    hw = top / 2.0                         # meta larghezza sull'asse
+    kk = 20.0 / top
+    legs = LineString([(-hw * kk, -20), (hw, top), (2 * hw + hw * kk, -20)]).buffer(
+        s / 2, cap_style='flat', join_style='mitre', mitre_limit=20)
+    legs = legs.intersection(box(-100, 0, 400, H))
+    minx = legs.bounds[0]
+    legs = affinity.translate(legs, -minx, 0)
+    W = legs.bounds[2]
+    # vertice interno del vuoto
+    y_in = top - s * k * 2 * 0.5 * 2 / 2  # approssimazione, la traversa la fissiamo in proporzione
+    if bar is None:
+        bar = 34.0
+    th = s * 0.84
+    cb = box(-50, bar - th / 2, W + 50, bar + th / 2).intersection(legs.convex_hull)
+    A = unary_union([legs, cb])
+    sx = W - s * overlap                   # bordo sinistro dell'asta della b
+    stem = box(sx, 0, sx + s, H)
+    b, adv = g_b(None, s, bw)
+    b = affinity.translate(b, sx, 0)
+    return unary_union([A, stem, b]), sx + bw

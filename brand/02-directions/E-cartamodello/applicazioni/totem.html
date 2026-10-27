@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Abra Robotics, totem per il noleggio del G1 (direzione Cartamodello, v2)</title>
+<title>Abra Robotics, totem per il noleggio del G1 (direzione Cartamodello, v3)</title>
 <link rel="icon" href="../logo/favicon-16.svg">
 <link rel="stylesheet" href="../assets/sistema.css">
 <style>
-  body{width:1440px;height:1000px;overflow:hidden;position:relative;background:#E2DACA}
+  body{width:1440px;height:1000px;overflow:hidden;position:relative;background:#E9E7E1}
   /* totem 80 x 200 cm, scala 5 px = 1 cm */
   .totem{position:absolute;left:120px;top:0;width:400px;height:1000px;background:var(--flanella);color:var(--gesso);overflow:hidden;box-shadow:0 40px 60px -40px rgba(47,51,55,.6)}
   .totem img.logo{position:absolute;left:30px;top:34px;height:24px}
@@ -37,9 +37,9 @@
 <body>
 <div class="totem">
   <img class="logo" src="../logo/mono-negativo.svg" alt="Abra Robotics">
-  <h1 class="t-display">Noleggia il G1 per una giornata, con un tecnico Abra accanto.</h1>
+  <h1 class="t-display">Misura tre metri per tre: il G1 arriva con un tecnico.</h1>
   <div class="pan">
-    <svg viewBox="0 0 340 470" aria-hidden="true"><path d="M0 0 H300 L340 40 V470 H0 Z" fill="#D9CBAA"/></svg>
+    <svg viewBox="0 0 340 470" aria-hidden="true"><path d="M0 0 H156 L170 18 L184 0 H340 V470 H0 Z" fill="#CFCCC3"/><text x="14" y="30" font-family="Abra Bricolage" font-size="20" font-weight="680" font-stretch="80%" fill="#2F3337">1/3</text></svg>
     <div class="metro-v" data-metro data-from="0" data-to="130" data-step="3.112" data-dir="v" data-w="24" data-label="20"></div>
     <img src="../assets/segnaposto/unitree-g1-in-piedi.png" alt="Segnaposto: umanoide Unitree G1, immagine ufficiale del produttore">
     <span class="seg t-etichetta">Segnaposto: foto ufficiale Unitree</span>
@@ -60,37 +60,37 @@
 <section class="info">
   <div class="t-etichetta">Totem 80 x 200 cm · stampa su forex, base in acciaio</div>
   <h2 class="t-titolo">Rispondi dal totem alla domanda di chi passa: posso averlo al mio evento?</h2>
-  <p class="t-testo">Il totem si legge dall'alto in basso: il titolo dice l'offerta, la scheda mostra il robot misurato, le tre voci dicono cosa comprende la giornata, la fascia blu è il passo successivo. Accanto al totem, sul pavimento, un nastro in gesso blu segna l'area in cui il G1 lavora; il tecnico resta all'interno, il pubblico a un metro.</p>
+  <p class="t-testo">Il titolo dà la misura che serve all'allestitore, tre metri per tre. La scheda numerata mostra il robot misurato, le tre voci dicono cosa comprende la giornata, la fascia in gesso blu è il passo successivo. Sul pavimento dello stand la stessa area è segnata a gesso: il tecnico resta dentro, i posti del pubblico sono croci a un metro dal bordo.</p>
 </section>
 
 <svg class="pianta" viewBox="0 0 760 560" aria-label="Pianta dello stand in scala: area del robot di 3 per 3 metri, totem, tecnico e pubblico">
-  <rect x="0" y="0" width="760" height="560" fill="#ECE6D8"/>
+  <rect x="0" y="0" width="760" height="560" fill="#F7F6F2"/>
   <!-- griglia: un quadro = 50 cm = 48 px -->
   <g stroke="#2F3337" stroke-opacity=".12"><path d="M0 48H760M0 96H760M0 144H760M0 192H760M0 240H760M0 288H760M0 336H760M0 384H760M0 432H760M0 480H760M0 528H760M48 0V560M96 0V560M144 0V560M192 0V560M240 0V560M288 0V560M336 0V560M384 0V560M432 0V560M480 0V560M528 0V560M576 0V560M624 0V560M672 0V560M720 0V560"/></g>
   <!-- area del robot, 3 x 3 m = 288 x 288 px, bordo in gesso blu -->
-  <rect x="96" y="72" width="288" height="288" fill="none" stroke="#8FB0E0" stroke-width="12"/>
-  <g stroke="#2F5D9E" stroke-width="3" stroke-linecap="round"><path d="M228 204l24 24M252 204l-24 24"/></g>
+  <rect x="96" y="72" width="288" height="288" fill="none" stroke="#8BB8E8" stroke-width="12"/>
+  <g stroke="#3D5A99" stroke-width="3" stroke-linecap="round"><path d="M228 204l24 24M252 204l-24 24"/></g>
   <text x="240" y="254" text-anchor="middle" font-family="Abra Bricolage" font-size="13" font-weight="600" font-stretch="75%" letter-spacing="1" fill="#2F3337">G1</text>
   <!-- totem 80 x 40 cm -->
   <rect x="432" y="96" width="77" height="38" fill="#2F3337"/>
   <text x="470" y="156" text-anchor="middle" font-family="Abra Bricolage" font-size="12" font-weight="600" font-stretch="75%" letter-spacing="1" fill="#2F3337">TOTEM</text>
   <!-- tecnico -->
-  <circle cx="150" cy="310" r="14" fill="#2F5D9E"/>
+  <circle cx="150" cy="310" r="14" fill="#3D5A99"/>
   <text x="172" y="315" font-family="Abra Bricolage" font-size="12" font-weight="600" font-stretch="75%" letter-spacing="1" fill="#2F3337">TECNICO ABRA</text>
   <!-- distanza dal pubblico: 1 m = 96 px dal bordo dell'area -->
   <path d="M96 456 H384" stroke="#2F3337" stroke-width="2"/>
   <g stroke="#2F3337" stroke-width="1.6"><path d="M408 360 V456 M400 360 H416 M400 456 H416"/></g>
   <text x="424" y="414" font-family="Abra Bricolage" font-size="13" font-weight="680" font-stretch="80%" fill="#2F3337">100 cm</text>
-  <!-- pubblico visto dall'alto -->
-  <g fill="#2F3337" opacity=".75"><circle cx="120" cy="500" r="13"/><circle cx="168" cy="520" r="13"/><circle cx="214" cy="496" r="13"/><circle cx="262" cy="524" r="13"/><circle cx="310" cy="502" r="13"/><circle cx="356" cy="522" r="13"/><circle cx="410" cy="498" r="13"/></g>
-  <text x="470" y="520" font-family="Abra Bricolage" font-size="12" font-weight="600" font-stretch="75%" letter-spacing="1" fill="#2F3337">PUBBLICO</text>
+  <!-- pubblico: posti segnati a gesso, a 1 m dal bordo dell'area -->
+  <g stroke="#3D5A99" stroke-width="3" stroke-linecap="round"><path d="M112 480l16 16M128 480l-16 16"/><path d="M160 504l16 16M176 504l-16 16"/><path d="M208 480l16 16M224 480l-16 16"/><path d="M256 504l16 16M272 504l-16 16"/><path d="M304 480l16 16M320 480l-16 16"/><path d="M352 504l16 16M368 504l-16 16"/></g>
+  <text x="400" y="506" font-family="Abra Bricolage" font-size="12" font-weight="600" font-stretch="75%" letter-spacing="1" fill="#2F3337">POSTI DEL PUBBLICO</text>
   <!-- quote -->
   <g stroke="#2F3337" stroke-width="1.6"><path d="M96 44 H384 M96 36V52 M384 36V52"/><path d="M66 72 V360 M58 72H74 M58 360H74"/></g>
   <text x="240" y="30" text-anchor="middle" font-family="Abra Bricolage" font-size="13" font-weight="680" font-stretch="80%" fill="#2F3337">300 cm</text>
   <text x="54" y="222" text-anchor="end" font-family="Abra Bricolage" font-size="13" font-weight="680" font-stretch="80%" fill="#2F3337">300 cm</text>
   <text x="560" y="60" font-family="Abra Bricolage" font-size="12" font-weight="600" font-stretch="75%" letter-spacing="1" fill="#2F3337">PIANTA DELLO STAND</text>
-  <text x="560" y="80" font-family="Abra Bricolage" font-size="12" fill="#62666A">Un quadro = 50 cm</text>
-  <text x="560" y="100" font-family="Abra Bricolage" font-size="12" fill="#62666A">Distanze di esempio</text>
+  <text x="560" y="80" font-family="Abra Bricolage" font-size="12" fill="#5E6266">Un quadro = 50 cm</text>
+  <text x="560" y="100" font-family="Abra Bricolage" font-size="12" fill="#5E6266">Distanze di esempio</text>
 </svg>
 <script src="../assets/metro.js"></script>
 </body>

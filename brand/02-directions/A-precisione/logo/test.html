@@ -8,7 +8,7 @@
 <style>
   body{width:1440px;padding:56px 64px 64px;background:var(--alluminio)}
   header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:14px;margin-bottom:32px}
-  h1{font:700 28px/1 var(--f-titolo);letter-spacing:-.015em}
+  h1{font:600 28px/1 var(--f-titolo);letter-spacing:-.01em}
   .riga{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-bottom:24px}
   .cella{background:var(--bianco);padding:20px;position:relative;min-height:220px}
   .cella>.et{color:var(--quota);margin-bottom:18px;display:block}
@@ -31,16 +31,16 @@
   .px figcaption{font:500 12px var(--f-etichetta);letter-spacing:.08em;color:var(--quota)}
   .pix{image-rendering:pixelated}
   .grande{grid-column:span 12;min-height:400px;display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:center;padding:44px}
-  .costr text{font-family:"Barlow SC";font-weight:500}
+  .costr text{font-family:"B612";font-weight:500}
 </style>
 </head>
 <body>
 <header>
   <div>
-    <div class="et" style="color:var(--quota);margin-bottom:10px">Direzione A v2 · In squadra · Prova del marchio</div>
+    <div class="et" style="color:var(--quota);margin-bottom:10px">Direzione A v3 · In squadra · Prova del marchio</div>
     <h1>Il segno Ab dalla favicon al grande formato</h1>
   </div>
-  <div class="et num" style="color:var(--quota)">Rev 2.0 · 28.10.2026</div>
+  <div class="et num" style="color:var(--quota)">Rev 3.0 · 28.10.2026</div>
 </header>
 
 <div class="riga">
@@ -50,19 +50,21 @@
     <div class="barra">abrarobotics.com</div>
     <div class="px" style="margin-top:22px">
       <figure><img src="favicon-16.svg" width="16" height="16" alt=""><figcaption>16</figcaption></figure>
+      <figure><img src="favicon.svg" width="24" height="24" alt=""><figcaption>24</figcaption></figure>
       <figure><img src="favicon.svg" width="32" height="32" alt=""><figcaption>32</figcaption></figure>
-      <figure><img src="favicon.svg" width="48" height="48" alt=""><figcaption>48</figcaption></figure>
+      <figure style="background:#1A2125;padding:6px"><img src="favicon-16.svg" width="16" height="16" alt=""><figcaption style="color:#E3E7E9">16 su tema scuro</figcaption></figure>
       <figure><img class="pix" src="favicon-16.svg" style="width:128px;height:128px" alt=""><figcaption>16 px ingrandita 8 volte</figcaption></figure>
     </div>
   </div>
   <div class="cella" style="grid-column:span 3">
-    <span class="et">Monocromia, piccole misure</span>
+    <span class="et">Monocromia, 16 · 24 · 32 px</span>
     <div class="px">
       <figure><img src="simbolo-netto.svg" style="height:32px" alt=""><figcaption>32</figcaption></figure>
+      <figure><img src="simbolo-netto.svg" style="height:24px" alt=""><figcaption>24</figcaption></figure>
       <figure><img src="simbolo-netto.svg" style="height:16px" alt=""><figcaption>16</figcaption></figure>
       <figure><img src="mono-positivo.svg" style="height:26px" alt=""><figcaption>Logotipo 26</figcaption></figure>
     </div>
-    <p class="sm" style="font:400 13px/1.45 var(--f-testo);margin-top:20px;color:var(--grafite)">Anche nero pieno a 16 px la sagoma resta propria: un triangolo rettangolo con la pancia della b, nessuna A isolata.</p>
+    <p class="sm" style="font:400 13px/1.45 var(--f-testo);margin-top:20px;color:var(--grafite)">A 16, 24 e 32 px la A resta intera, con traversa e vuoto: la legatura si legge "Ab".</p>
   </div>
   <div class="cella" style="grid-column:span 4">
     <span class="et">Avatar social, tondo e quadrato</span>
@@ -82,14 +84,15 @@
     </div>
     <div>
       <span class="et" style="color:var(--quota)">Costruzione</span>
-      <svg class="costr" viewBox="-20 -14 190 136" width="100%" style="margin-top:10px" aria-label="Costruzione della legatura Ab">
-        <path d="M86.79 101.58L85.28 101.48L84.39 101.38L82.31 101.04L80.84 100.7L79.97 100.45L78.72 100.05L78.72 100L78.59 100L78.22 99.87L78.22 100L60.22 100L60.22 73.88L33.19 73.88L20.12 100L0 100L50 0L78.22 0L78.22 30.13L79.69 29.63L80.84 29.3L82.31 28.96L83.49 28.75L84.99 28.55L86.19 28.45L87.7 28.4L89.36 28.41L90.56 28.47L92.06 28.62L93.25 28.79L94.73 29.09L95.9 29.38L97.34 29.82L98.47 30.22L99.87 30.8L100.95 31.31L102.29 32.03L103.31 32.64L104.57 33.48L105.53 34.2L106.7 35.16L107.59 35.96L108.66 37.03L109.86 38.38L110.61 39.32L111.49 40.55L112.14 41.56L112.89 42.87L113.44 43.94L114.06 45.31L114.51 46.43L115.08 48.14L115.32 49.01L115.66 50.49L115.97 52.27L116.17 54.36L116.22 56.02L116.21 74.74L116.1 76.54L115.97 77.73L115.72 79.22L115.32 80.99L114.81 82.72L114.4 83.85L113.82 85.24L113.31 86.33L112.6 87.66L112.14 88.44L111.14 89.95L109.86 91.62L108.66 92.97L107.38 94.24L106.24 95.24L105.53 95.8L103.83 97.03L102.29 97.97L100.69 98.82L99.87 99.2L98.47 99.78L96.76 100.37L94.73 100.91L92.96 101.25L91.17 101.48L89.36 101.59ZM60.22 56.02L60.22 19.8L40.75 58.76L60.22 58.76ZM89.86 83.52L90.48 83.41L91.4 83.18L91.99 82.98L92.57 82.74L93.14 82.46L93.68 82.15L94.46 81.61L94.95 81.21L95.41 80.78L95.84 80.32L96.42 79.58L96.77 79.06L97.09 78.51L97.37 77.95L97.61 77.37L97.81 76.77L97.97 76.16L98.09 75.55L98.18 74.92L98.22 74.29L98.22 56.09L98.2 55.39L98.09 54.45L97.9 53.53L97.61 52.63L97.23 51.77L96.77 50.94L96.42 50.42L96.04 49.92L95.41 49.22L94.71 48.58L93.95 48.02L93.14 47.54L92.29 47.13L91.4 46.82L90.48 46.59L89.55 46.45L88.53 46.4L87.22 46.42L86.59 46.48L85.97 46.59L85.05 46.82L84.46 47.02L83.59 47.39L83.04 47.69L82.5 48.02L81.74 48.58L81.27 49L80.82 49.44L80.41 49.92L79.85 50.68L79.51 51.21L79.08 52.05L78.84 52.63L78.64 53.23L78.48 53.84L78.35 54.45L78.27 55.08L78.23 55.71L78.22 73.91L78.25 74.61L78.35 75.55L78.55 76.47L78.84 77.37L79.08 77.95L79.36 78.51L79.68 79.06L80.03 79.58L80.61 80.32L81.27 81L81.99 81.61L82.77 82.15L83.59 82.61L84.16 82.87L84.75 83.09L85.66 83.35L86.59 83.52L87.53 83.59L88.92 83.59Z" fill="none" stroke="#1A2125" stroke-width=".6"/>
-        <g stroke="#008351" stroke-width=".8" fill="none"><path d="M52.22 100v-8h8"/><path d="M12 100A12 12 0 0 0 5.37 89.27"/></g>
-        <g stroke="#5C676D" stroke-width=".45"><line x1="-16" y1="100" x2="140" y2="100"/><line x1="69.22" y1="-10" x2="69.22" y2="112" stroke-dasharray="6 1.5 1 1.5"/></g>
-        <g font-size="6" fill="#008351" letter-spacing=".3"><text x="40" y="90">90°</text><text x="14" y="96">2 : 1</text></g>
-        <g font-size="5.5" fill="#5C676D" letter-spacing=".4"><text x="82" y="-6">ASTA COMUNE</text><text x="-16" y="112">LINEA DI BASE</text></g>
+      <svg class="costr" viewBox="-20 -18 210 140" width="100%" style="margin-top:10px" aria-label="Costruzione della legatura Ab">
+        <path d="M131.39 101.58L129.88 101.48L128.99 101.38L126.91 101.04L125.44 100.7L124.57 100.45L123.32 100.05L123.32 100L123.19 100L122.82 99.87L122.82 100L95.5 100L82.28 73.56L33.34 73.56L20.12 100L0 100L50 0L65.62 0L104.82 78.4L104.82 0L122.82 0L122.82 30.13L124.29 29.63L126.03 29.16L127.8 28.79L128.99 28.62L130.49 28.47L132.3 28.4L134.26 28.42L135.77 28.52L137.56 28.75L138.74 28.96L140.5 29.38L141.94 29.82L143.07 30.22L144.74 30.92L146.35 31.73L147.66 32.49L149.17 33.48L150.13 34.2L151.3 35.16L152.63 36.39L153.87 37.7L155.03 39.09L156.09 40.55L156.74 41.56L157.49 42.87L158.3 44.49L159 46.15L159.41 47.28L159.92 49.01L160.26 50.49L160.48 51.67L160.7 53.46L160.8 54.97L160.82 56.02L160.82 73.98L160.77 75.64L160.68 76.83L160.43 78.62L160.14 80.11L159.68 81.86L159.31 83L158.78 84.41L158.3 85.51L157.49 87.13L156.74 88.44L155.74 89.95L154.65 91.39L153.46 92.75L152.19 94.04L150.84 95.24L149.41 96.34L147.91 97.36L146.09 98.41L144.47 99.2L142.8 99.88L141.36 100.37L140.5 100.62L138.74 101.04L136.96 101.34L135.16 101.53L133.35 101.6ZM134.46 83.52L135.08 83.41L136 83.18L136.59 82.98L137.17 82.74L138.01 82.31L138.55 81.98L139.06 81.61L139.55 81.21L140.01 80.78L140.44 80.32L140.84 79.84L141.2 79.32L141.53 78.79L141.83 78.23L142.09 77.66L142.41 76.77L142.57 76.16L142.69 75.55L142.78 74.92L142.82 74.29L142.82 56.09L142.8 55.39L142.69 54.45L142.5 53.53L142.21 52.63L141.83 51.77L141.53 51.21L141.2 50.68L140.64 49.92L140.01 49.22L139.31 48.58L138.55 48.02L137.74 47.54L136.89 47.13L136 46.82L135.08 46.59L134.15 46.45L133.13 46.4L131.82 46.42L131.19 46.48L130.57 46.59L129.96 46.73L129.06 47.02L128.47 47.26L127.91 47.54L127.1 48.02L126.59 48.39L125.87 49L125.42 49.44L124.81 50.16L124.45 50.68L123.96 51.49L123.68 52.05L123.44 52.63L123.24 53.23L123.08 53.84L122.95 54.45L122.87 55.08L122.83 55.71L122.82 73.91L122.85 74.61L122.91 75.24L123.01 75.86L123.24 76.77L123.56 77.66L123.96 78.51L124.45 79.32L124.81 79.84L125.21 80.32L125.87 81L126.59 81.61L127.37 82.15L128.19 82.61L128.76 82.87L129.35 83.09L130.26 83.35L131.19 83.52L132.13 83.59L133.52 83.59ZM40.9 58.44L74.72 58.44L57.81 24.62Z" fill="none" stroke="#1A2125" stroke-width=".6"/>
+        <path d="M65.62 0L104.82 0L104.82 78.4Z" fill="rgba(0,131,81,.12)" stroke="#008351" stroke-width=".9"/>
+        <path d="M96.82 0v8h8" fill="none" stroke="#008351" stroke-width=".8"/>
+        <g stroke="#5C676D" stroke-width=".45"><line x1="-16" y1="100" x2="176" y2="100"/><line x1="-16" y1="0" x2="176" y2="0" stroke-dasharray="1.5 1.5"/></g>
+        <g font-size="6.5" fill="#008351" font-family="B612"><text x="70" y="-5">SQUADRA 2 : 1</text><text x="90" y="16">90°</text></g>
+        <g font-size="6.5" fill="#5C676D" font-family="B612"><text x="-16" y="112">LINEA DI BASE</text><text x="108" y="112">ASTA DELLA b</text></g>
       </svg>
-      <p style="font:400 15px/1.5 var(--f-testo);max-width:46ch;margin-top:8px">La A è disegnata sulla squadra da disegno: l'asta destra è verticale, ad angolo retto con la linea di base, e diventa l'asta della b. La diagonale sale con pendenza 2 a 1. Le stesse regole tagliano il terminale della r e la gamba della R.</p>
+      <p style="font:400 15px/1.5 var(--f-testo);max-width:46ch;margin-top:8px">La A è intera, con le due aste a pendenza 2 a 1 e la traversa. Il suo piede destro poggia sull'asta verticale della b: il vuoto che resta tra le due lettere è una squadra da disegno, un triangolo rettangolo con i cateti in rapporto 2 a 1. Lo stesso rapporto taglia il terminale della r, la gamba della R e la cima della t.</p>
     </div>
   </div>
 </div>

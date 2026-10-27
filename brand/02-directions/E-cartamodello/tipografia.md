@@ -1,4 +1,4 @@
-# Tipografia: Cartamodello (v2)
+# Tipografia: Cartamodello (v3)
 
 ## Una famiglia, sei tagli statici
 
@@ -18,11 +18,11 @@ Nella v1 il font era variabile e il titolo stava a peso 700 e larghezza 86, con 
 | `BricolageGrotesque-Etichetta.ttf` | Etichette in maiuscolo, "Esempio" | 600 | 75 | 14 |
 | `BricolageGrotesque-Misura.ttf` | Numeri, quote, prezzi | 680 | 80 | 48 |
 
-Il file variabile resta in `fonts/` solo come sorgente per generare altri tagli. Lo script è in `_lavoro/` (fontTools, `instantiateVariableFont`).
+Il file variabile è stato spostato in `_lavoro/`, insieme agli script di generazione (fontTools, `instantiateVariableFont`): in `fonts/` restano solo le istanze statiche, così nessun PDF può caricare per errore il variabile e tornare a font Type 3.
 
 ## Il marchio non usa il font
 
-Nel logotipo la **A** e le lettere **b, r, a** sono disegnate a mano con costruzioni geometriche (superellissi, aste e traversa calcolate), convertite in tracciati: b e a sono lo stesso pezzo specchiato, come un cartamodello tagliato due volte. Solo il descrittore "Robotics" deriva da Bricolage Grotesque (peso 480, larghezza 96), composto con spaziatura normale.
+Nel logotipo "abra" tutte le lettere sono disegnate a mano con costruzioni geometriche (superellissi, aste calcolate) e convertite in tracciati. La a e la b condividono l'asta nella legatura ab, con la tacca di piega in cima. Solo il descrittore "robotics" deriva da Bricolage Grotesque (peso 470, larghezza 94), con l'altezza x uguale a quella di "abra" e un peso più leggero, così che "abra" resti la parola principale.
 
 ## Gerarchia
 

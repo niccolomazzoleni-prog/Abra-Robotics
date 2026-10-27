@@ -11,10 +11,10 @@
   .card{position:absolute;width:510px;height:330px;overflow:hidden;box-shadow:0 1px 0 rgba(26,33,37,.08),0 18px 40px -24px rgba(26,33,37,.45)}
   .fronte{left:96px;top:190px;background:var(--verde);color:#fff}
   .retro{left:694px;top:190px;background:var(--bianco);color:var(--grafite)}
-  .fronte .sym{position:absolute;left:228px;top:96px;height:300px;opacity:1}
+  .fronte .sym{position:absolute;left:190px;top:110px;height:250px;opacity:1}
   .fronte .logo{position:absolute;left:24px;top:24px;height:44px}
-  .fronte .claim{position:absolute;left:32px;bottom:30px;font:700 19px/1.2 var(--f-titolo);letter-spacing:-.01em;max-width:13ch}
-  .retro .nome{position:absolute;left:36px;top:34px;font:700 27px/1.05 var(--f-titolo);letter-spacing:-.015em}
+  .fronte .claim{position:absolute;left:32px;bottom:30px;font:600 19px/1.2 var(--f-titolo);letter-spacing:-.01em;max-width:13ch}
+  .retro .nome{position:absolute;left:36px;top:34px;font:600 27px/1.05 var(--f-titolo);letter-spacing:-.01em}
   .retro .ruolo{position:absolute;left:36px;top:74px;color:var(--quota);font-size:13px}
   .retro .dati{position:absolute;left:36px;top:144px;font:400 16px/1.62 var(--f-testo)}
   .retro .dati span{display:inline-block;width:52px;font:500 13px var(--f-etichetta);letter-spacing:.08em;text-transform:uppercase;color:var(--quota)}
@@ -29,19 +29,19 @@
   .qy::before{top:0}.qy::after{bottom:0}
   .qy b{position:absolute;background:var(--alluminio);padding:0 4px;top:50%;left:-14px;transform:translate(-100%,-50%);font:500 13px var(--f-etichetta);letter-spacing:.08em;color:var(--quota);white-space:nowrap}
   .head{position:absolute;left:96px;right:96px;top:56px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--grafite);padding-bottom:12px}
-  .head h1{font:700 24px/1 var(--f-titolo);letter-spacing:-.015em}
+  .head h1{font:600 24px/1 var(--f-titolo);letter-spacing:-.01em}
   .note{position:absolute;left:96px;right:96px;top:640px;display:grid;grid-template-columns:1fr 1fr;gap:88px;font:400 14px/1.5 var(--f-testo)}
   .note b{font-weight:600}
 </style>
 </head>
 <body>
-<div class="head"><h1>Biglietto da visita</h1><span class="et num" style="color:var(--quota)">85 × 55 mm · carta 400 g/m² · verde in quadricromia o Pantone indicativo</span></div>
+<div class="head"><h1>Biglietto da visita</h1><span class="et num" style="color:var(--quota)">85 × 55 mm · carta 400 g/m² · fronte in Pantone 348 C a tinta piatta</span></div>
 <span class="lab et" style="left:96px">Fronte</span><span class="lab et" style="left:694px">Retro</span>
 
 <div class="card fronte">
   <img class="logo" src="../logo/orizzontale-bianco.svg" alt="Abra Robotics">
   <img class="sym" src="../logo/simbolo-netto.svg" alt="" style="filter:brightness(0) invert(1);opacity:.16">
-  <div class="claim">Decidi sul robot con un numero misurato.</div>
+  <div class="claim">Decidi sul robot dopo averlo visto lavorare.</div>
 </div>
 <div class="qx" style="left:96px;width:510px"><b class="num">85 mm</b></div>
 <div class="qy" style="left:76px"><b class="num">55 mm</b></div>
@@ -60,7 +60,7 @@
 
 <div class="note">
   <p><b>Il fronte è verde di misura.</b> Il segno Ab, ingrandito fino a uscire dal formato, si legge come un'impronta sul verde; sopra il logotipo e una frase all'imperativo. Corpo minimo del testo: 6,1 pt.</p>
-  <p><b>Il retro è una targa dati.</b> Nome in B612, contatti in Barlow, monogramma su piastra verde come timbro. Etichette a 6,1 pt, numero di telefono di esempio.</p>
+  <p><b>Il retro è una targa dati.</b> Nome in IBM Plex Sans Condensed, contatti in IBM Plex Sans, etichette in B612, monogramma su piastra verde come timbro. Etichette a 6,1 pt, numero di telefono di esempio.</p>
 </div>
 </body>
 </html>

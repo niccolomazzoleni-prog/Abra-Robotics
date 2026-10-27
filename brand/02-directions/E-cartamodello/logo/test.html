@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Abra Robotics, test del marchio (direzione Cartamodello, v2)</title>
+<title>Abra Robotics, test del marchio (direzione Cartamodello, v3)</title>
 <link rel="icon" href="favicon-16.svg">
 <link rel="stylesheet" href="../assets/sistema.css">
 <style>
@@ -19,6 +19,7 @@
   .gr{background:var(--gesso);padding:56px 64px;margin-top:40px}
   .scuro{background:var(--flanella);padding:48px 64px;margin-top:24px;display:flex;gap:80px;align-items:center}
   .px{image-rendering:pixelated}
+  .gen{width:128px;height:128px;background:#2F3337;color:#F7F6F2;font:700 104px/128px Arial,sans-serif;text-align:center;border-radius:16px}
 </style>
 </head>
 <body>
@@ -27,13 +28,13 @@
 <div class="riga">
   <div class="cella"><div class="tab"><img src="favicon-16.svg" alt="">Abra Robotics</div><span class="t-etichetta">Favicon nella scheda</span></div>
   <div class="cella"><img src="favicon-16.svg" width="16" height="16" alt=""><span class="t-etichetta">16 px</span></div>
-  <div class="cella"><canvas id="zoom" width="128" height="128" style="width:128px;height:128px;image-rendering:pixelated"></canvas><span class="t-etichetta">16 px ingrandito x8</span></div>
-  <div class="cella"><canvas id="zoom2" width="128" height="128" style="width:128px;height:128px;image-rendering:pixelated"></canvas><span class="t-etichetta">16 px mono, x8</span></div>
+  <div class="cella"><canvas id="zoom" width="128" height="128" style="width:128px;height:128px;image-rendering:pixelated"></canvas><span class="t-etichetta">16 px x8</span></div>
+  <div class="cella"><canvas id="zoom2" width="128" height="128" style="width:128px;height:128px;image-rendering:pixelated"></canvas><span class="t-etichetta">16 px mono x8</span></div>
+  <div class="cella"><div class="gen">A</div><span class="t-etichetta">A generica, 16 px x8</span></div>
   <div class="cella"><img src="monogramma.svg" width="24" height="24" alt=""><span class="t-etichetta">24 px</span></div>
   <div class="cella"><img src="monogramma.svg" width="32" height="32" alt=""><span class="t-etichetta">32 px</span></div>
-  <div class="cella"><div class="ci" style="width:150px;height:150px"><img src="simbolo-negativo.svg" width="112" alt=""></div><span class="t-etichetta">Avatar tondo</span></div>
-  <div class="cella"><div class="sq" style="width:150px;height:150px"><img src="simbolo-negativo.svg" width="120" alt=""></div><span class="t-etichetta">Avatar quadrato</span></div>
-  <div class="cella"><div class="ci y" style="width:150px;height:150px"><img src="simbolo.svg" width="112" alt=""></div><span class="t-etichetta">Avatar eventi</span></div>
+  <div class="cella"><div class="ci" style="width:140px;height:140px"><img src="simbolo-negativo.svg" width="112" alt=""></div><span class="t-etichetta">Avatar tondo</span></div>
+  <div class="cella"><img src="simbolo-bicolore.svg" width="140" alt=""><span class="t-etichetta">Avatar con tacca</span></div>
 </div>
 
 <div class="gr">
@@ -43,13 +44,13 @@
     <div><img src="verticale.svg" alt="" style="height:240px"><span class="t-etichetta">Verticale</span></div>
     <div><img src="simbolo.svg" alt="" style="height:240px"><span class="t-etichetta">Simbolo</span></div>
     <div><img src="mono-positivo.svg" alt="" style="height:34px"><span class="t-etichetta">Mono positivo</span>
-         <img src="orizzontale.svg" alt="" style="height:22px;margin-top:28px"><span class="t-etichetta">Altezza minima: stampa 6 mm, schermo 18 px. Sotto 24 px solo favicon-16</span></div>
+         <img src="orizzontale.svg" alt="" style="height:22px;margin-top:28px"><span class="t-etichetta">Altezza minima: stampa 5 mm, schermo 16 px. Sotto 24 px solo favicon-16</span></div>
   </div>
 </div>
 <div class="scuro">
   <img src="mono-negativo.svg" alt="" style="height:64px">
   <img src="simbolo-negativo.svg" alt="" style="height:150px">
-  <span class="t-etichetta" style="color:var(--gessoblu)">Mono negativo e simbolo in negativo su flanella</span>
+  <span class="t-etichetta" style="color:var(--gessoblu)">Mono negativo e simbolo ab su flanella</span>
 </div>
 <script>
 function px(src,id){const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=16;c.height=16;c.getContext('2d').drawImage(im,0,0,16,16);

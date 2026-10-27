@@ -7,8 +7,10 @@
 @media print {
   @font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
   @font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-SemiBold.ttf") format("truetype"); font-weight: 500 600; font-style: normal; }
+  @font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; }
   @font-face { font-family: "STIX Two Text"; src: url("fonts/STIXTwoText-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
 }
+/* Nel testo niente simboli matematici (≤ ≥ →): STIX Two Text non li contiene. Si scrive "fino a", "almeno", "da ... a". */
 @font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Regular.woff2") format("woff2"), url("fonts/DMMono-Regular.ttf") format("truetype"); font-weight: 400; font-display: block; }
 @font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Medium.woff2") format("woff2"), url("fonts/DMMono-Medium.ttf") format("truetype"); font-weight: 500; font-display: block; }
 
@@ -35,7 +37,7 @@ body { background: var(--carta); color: var(--inchiostro); font-family: var(--se
 .etichetta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grafite); }
 .nota { font-style: italic; color: var(--grafite); }
 .mc { font-feature-settings: "smcp", "c2sc"; letter-spacing: 0.04em; }
-sup.rif { font-family: var(--mono); font-size: 0.42em; vertical-align: super; letter-spacing: 0; margin-left: 0.08em; color: var(--inchiostro); font-weight: 500; }
+sup.rif { font-family: var(--mono); font-size: max(0.42em, 8px); vertical-align: super; letter-spacing: 0; margin-left: 0.08em; color: var(--inchiostro); font-weight: 500; }
 
 /* Evidenziatore: solo su un numero o un criterio misurato, mai su un titolo */
 .evid { background: linear-gradient(100deg, transparent 0.15em, var(--evidenziatore) 0.15em, var(--evidenziatore) calc(100% - 0.15em), transparent calc(100% - 0.15em)) 0 62% / 100% 0.62em no-repeat; box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 0.12em; margin: 0 -0.12em; }

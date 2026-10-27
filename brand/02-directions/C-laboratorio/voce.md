@@ -20,21 +20,21 @@ Nucleo fisso, uguale per tutti i territori: l'ingegnere di fiducia, franco sui l
 | "la piattaforma adatta al compito" | elenchi di marchi, "3 famiglie di robot" |
 | "Esempio" sui dati non reali | percentuali di successo senza campione |
 
-## Headline italiane
+## Headline italiane (v3: il verbo della direzione è "Leggi")
 
-1. Leggi i numeri del robot sul tuo caso prima di firmare l'ordine. (hero)
-2. Dai al tuo tesista un robot che conosce già il tuo stabilimento.
-3. Leggi i limiti del robot nella stessa pagina delle prestazioni.
-4. Prova il caso d'uso in simulazione e su robot vero in tre settimane.
-5. Fai parlare il G1 del tuo marchio, con parole approvate da te.
+1. Leggi in tre settimane i numeri del robot sul tuo processo. (hero)
+2. Leggi fase per fase tempi, errori e costi misurati. (preventivo)
+3. Leggi cosa trova un tesista nella cassa del suo primo robot. (post LinkedIn)
+4. Leggi la fonte di ogni risposta che il G1 dà ai tuoi visitatori. (reel)
+5. Leggi la fonte di ogni risposta del G1 al tuo stand. (totem, con la riga "Noleggio a giornata, con un tecnico Abra.")
+
+Versione anonima del post: "Leggi cosa c'è nella cassa di un robot pronto dal primo giorno."
 
 ## Headline inglesi
 
-1. Read the robot's numbers on your own task before you sign the order.
-2. Get your thesis students working on a robot in a few weeks.
-3. Read the limits of every robot on the same page as its performance.
-4. Rent the G1 for one day, with an Abra technician at your booth. (eventi)
-5. Let the G1 talk about your brand, using words you approved. (eventi)
+1. Read your robot's numbers in three weeks, on your own process.
+2. Read the source of every answer the G1 gives your visitors.
+3. Read what a student finds in the crate of their first robot.
 
 ## Bio LinkedIn
 

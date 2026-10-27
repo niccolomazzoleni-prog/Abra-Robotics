@@ -7,7 +7,7 @@
 <style>
   body { width: 1200px; height: 1500px; position: relative; overflow: hidden; }
   .testa { position: absolute; left: 72px; right: 72px; top: 60px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 22px; border-bottom: 1.5px solid var(--inchiostro); }
-  .testa img { height: 40px; }
+  .testa img { height: 52px; }
   .testa .rev { font-size: 17px; }
   h1 { position: absolute; left: 72px; top: 176px; width: 1000px; margin: 0; font-size: 84px; line-height: 1.03; font-weight: 600; letter-spacing: -0.018em; }
   .lead { position: absolute; left: 72px; top: 470px; width: 760px; font-size: 29px; line-height: 1.42; margin: 0; }
@@ -23,14 +23,14 @@
   .cassa { position: absolute; left: 72px; right: 72px; top: 1262px; display: grid; grid-template-columns: 220px 1fr 1fr; gap: 0 30px; }
   .cassa .etichetta { font-size: 14px; color: var(--inchiostro); padding-top: 4px; }
   .cassa ul { list-style: none; margin: 0; padding: 0; font-size: 23px; line-height: 1.55; }
-  .cassa li::before { content: "✓"; font-family: var(--mono); font-size: 18px; margin-right: 14px; color: var(--verde-registro); }
+  .cassa li::before { content: ""; display: inline-block; width: 7px; height: 13px; border: solid var(--verde-registro); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); margin: 0 18px 4px 4px; }
   .piede { position: absolute; left: 72px; right: 72px; bottom: 44px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 15px; color: var(--grafite); }
 </style>
 </head>
 <body>
 <div class="testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span class="rev">Quaderno di consegna · voce 001 · 29.10.2026</span></div>
 
-<h1>Dai al tuo tesista un robot che conosce già il tuo stabilimento.</h1>
+<h1>Leggi cosa trova un tesista nella cassa del suo primo robot.</h1>
 <p class="lead">Questa settimana consegniamo a SACMI un Go2 per una tesi in azienda. Il tesista parte con la mappa del reparto, il simulatore e il codice già nel repository dei tecnici.</p>
 
 <div class="banco">

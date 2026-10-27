@@ -2,71 +2,73 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<title>Abra Robotics, preventivo: copertina (direzione Cartamodello, v2)</title>
+<title>Abra Robotics, preventivo: copertina (direzione Cartamodello, v3)</title>
 <link rel="icon" href="../logo/favicon-16.svg">
 <link rel="stylesheet" href="../assets/sistema.css">
 <style>
   @page{size:A4;margin:0}
-  body{width:794px;height:1123px;overflow:hidden;position:relative;background:var(--tela)}
-  .testa{position:absolute;left:56px;right:56px;top:52px;display:flex;justify-content:space-between;align-items:flex-start}
-  .testa img{height:30px}
-  .rif{text-align:right;font-size:11px;line-height:1.55;color:var(--grafite)}
-  .rif b{color:var(--flanella);font-weight:560;font-stretch:88%}
-  .titolo{position:absolute;left:56px;top:150px;width:660px}
-  .titolo .t-etichetta{font-size:12px;color:var(--grafite)}
-  .titolo h1{font-size:54px;margin-top:14px}
-  .titolo p{font-size:16px;margin-top:18px;max-width:560px}
+  body{width:794px;height:1123px;overflow:hidden;position:relative;background:var(--gesso)}
+  .testa{position:absolute;left:0;right:0;top:0;height:318px;background:var(--flanella);color:var(--gesso);padding:46px 56px 0}
+  .testa img{height:24px}
+  .rif{position:absolute;right:56px;top:42px;text-align:right;font-size:11px;line-height:1.55;color:var(--carta)}
+  .rif b{color:var(--gesso);font-weight:560;font-stretch:88%}
+  .testa .t-etichetta{display:block;margin-top:62px;font-size:11px;color:var(--gessoblu)}
+  .testa h1{font-size:48px;margin-top:12px;max-width:640px;color:var(--gesso)}
+  .intro{position:absolute;left:56px;top:346px;width:640px;font-size:15px}
 
-  /* percorso: 1 settimana = 24 px, 28 settimane = 672 px */
-  .percorso{position:absolute;left:32px;right:32px;top:470px;height:470px;background:var(--carta)}
-  .percorso:before{content:"";position:absolute;right:0;top:0;border-style:solid;border-width:0 34px 34px 0;border-color:transparent var(--tela) transparent transparent}
-  .percorso .t-etichetta.cap{position:absolute;left:24px;top:24px;font-size:11px}
-  .percorso h2{position:absolute;left:24px;top:44px;font-size:24px}
-  .metro-p{position:absolute;left:22px;top:104px}
-  .fase{position:absolute;top:168px;height:132px;padding:12px 10px;background:var(--gesso);box-shadow:inset 0 0 0 2px var(--segno)}
-  .fase b{display:block;font-weight:680;font-stretch:80%;font-size:30px;line-height:1}
-  .fase .nome{display:block;font-size:12.5px;line-height:1.3;margin-top:8px;font-weight:560;font-stretch:88%}
-  .fase .dur{display:block;font-size:11px;color:var(--grafite);margin-top:6px}
-  .dec{position:absolute;top:140px;width:2px;height:28px;background:var(--flanella)}
-  .dec:after{content:"";position:absolute;left:-5px;top:-6px;width:12px;height:12px;background:var(--flanella);transform:rotate(45deg)}
-  .p0{position:absolute;left:24px;top:330px;font-size:12px;width:330px;line-height:1.4}
-  .resta{position:absolute;left:24px;right:24px;bottom:22px;display:flex;gap:20px;align-items:baseline;padding-top:12px;border-top:2px solid var(--flanella);font-size:13.5px}
+  /* percorso: 1 settimana = 24 px; origine del metro a x = 24 nella scheda */
+  .percorso{position:absolute;left:32px;right:32px;top:440px;height:556px;background:var(--carta)}
+  .percorso .cap{position:absolute;left:24px;top:22px;font-size:11px}
+  .percorso .num{position:absolute;right:24px;top:18px;font-size:20px}
+  .metro-p{position:absolute;left:22px;top:246px}
+  .fase{position:absolute;top:288px;height:96px;padding:10px 8px;background:var(--gesso);box-shadow:inset 0 0 0 2px var(--segno)}
+  .fase b{display:block;font-weight:680;font-stretch:80%;font-size:22px;line-height:1}
+  .fase .nome{display:block;font-size:11.5px;line-height:1.25;margin-top:6px;font-weight:560;font-stretch:88%}
+  .fase .tc{position:absolute;top:0;right:8px;display:flex;gap:2px}
+  .fase .tc i{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:11px solid var(--carta)}
+  /* numeri misurati: linea dalla settimana al cartellino */
+  .mis{position:absolute;width:190px;font-size:12px;line-height:1.35}
+  .mis b{display:block;font-weight:680;font-stretch:80%;font-size:26px;line-height:1;margin:6px 0 4px}
+  .mis .t-etichetta{font-size:10.5px}
+  .m1{left:96px;top:60px;padding-left:10px;border-left:2px solid var(--flanella);height:186px}
+  .m2{left:192px;top:162px;padding-left:10px;border-left:2px solid var(--flanella);height:84px}
+  .m3{left:384px;width:290px;top:60px;padding-left:10px;border-left:2px solid var(--flanella);height:186px}
+  .p0{position:absolute;left:24px;top:404px;width:330px;font-size:11.5px;line-height:1.4}
+  .leg{position:absolute;right:24px;top:404px;width:300px;font-size:11px;line-height:1.6}
+  .leg i{display:inline-block;width:18px;height:10px;vertical-align:-1px;margin-right:6px}
+  .resta{position:absolute;left:24px;right:24px;bottom:20px;display:flex;gap:18px;align-items:baseline;padding-top:12px;border-top:2px solid var(--flanella);font-size:13px}
   .resta .t-etichetta{font-size:11px;white-space:nowrap}
-  .leg{position:absolute;right:24px;top:330px;width:300px;font-size:11px;line-height:1.5;color:var(--flanella)}
-  .leg i{display:inline-block;width:20px;height:11px;vertical-align:-1px;margin-right:6px}
   .piede{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--grafite)}
 </style>
 </head>
 <body>
 <div class="testa">
-  <img src="../logo/orizzontale.svg" alt="Abra Robotics">
+  <img src="../logo/mono-negativo.svg" alt="Abra Robotics">
   <div class="rif"><b>Proposta n. 2026/041, rev. 1</b><br>27 ottobre 2026<br>Valida 60 giorni</div>
+  <span class="t-etichetta">Proposta tecnica ed economica</span>
+  <h1 class="t-display">Misura in tre settimane il primo numero del tuo reparto.</h1>
 </div>
-
-<div class="titolo">
-  <div class="t-etichetta">Proposta tecnica ed economica</div>
-  <h1 class="t-display">Misura in sei fasi cosa farà il robot nel tuo reparto.</h1>
-  <p class="t-sotto">Prova di presa e posa su una postazione di fine linea, per il responsabile R&amp;D di un'azienda del packaging. Ogni fase si chiude con un criterio scritto e una tua decisione: prosegui, correggi o ti fermi.</p>
-</div>
+<p class="intro t-sotto">Prova di presa e posa su una postazione di fine linea, per il responsabile R&amp;D di un'azienda del packaging. Ogni fase si chiude con un numero misurato, un criterio scritto e una tua decisione.</p>
 
 <div class="percorso">
-  <span class="t-etichetta cap">Il percorso</span>
-  <h2 class="t-titolo">28 settimane dall'ordine, in cinque fasi a pagamento</h2>
+  <span class="t-etichetta cap">Quando arrivano i numeri, con ordine il 2 novembre 2026</span>
+  <span class="num">1/12</span>
+  <div class="mis m1"><span class="t-etichetta">Settimana 3 · 23 novembre</span><b>Primo numero</b>Tempi, pesi e spazi del tuo reparto</div>
+  <div class="mis m2"><span class="t-etichetta">Settimana 7 · 21 dicembre</span><b>Ciclo simulato</b>Sul modello digitale</div>
+  <div class="mis m3"><span class="t-etichetta">Settimana 15 · 15 febbraio 2027</span><b>Numero sul robot vero</b>200 prese in laboratorio, con criterio scritto prima</div>
   <div class="metro-p" data-metro data-from="0" data-to="28" data-step="24" data-w="30" data-label="4"></div>
-  <!-- fasi in scala: inizio e durata in settimane x 24 px, origine 24 px -->
-  <div class="fase" style="left:26px;width:70px"><b>P1</b><span class="nome">Analisi in reparto</span><span class="dur">3 sett.</span></div>
-  <div class="fase" style="left:98px;width:94px"><b>P2</b><span class="nome">Simulazione</span><span class="dur">4 sett.</span></div>
-  <div class="fase" style="left:194px;width:190px"><b>P3</b><span class="nome">Prova sul robot nel laboratorio Abra</span><span class="dur">8 sett.</span></div>
-  <div class="fase" style="left:386px;width:214px"><b>P4</b><span class="nome">Pilota sulla tua postazione</span><span class="dur">9 sett.</span></div>
-  <div class="fase" style="left:602px;width:94px"><b>P5</b><span class="nome">Consegna e formazione</span><span class="dur">4 sett.</span></div>
-  <!-- decisioni a fine fase: settimane 3, 7, 15, 24, 28 -->
-  <span class="dec" style="left:95px"></span><span class="dec" style="left:191px"></span><span class="dec" style="left:383px"></span><span class="dec" style="left:599px"></span><span class="dec" style="left:695px"></span>
-  <p class="p0 t-testo"><b class="t-medio">P0, settimana 0.</b> Prima chiamata con un tecnico e sopralluogo, senza costo.</p>
-  <div class="leg"><div><i style="box-shadow:inset 0 0 0 2px #2F5D9E;background:#FAF8F3"></i>Bordo blu: fase da approvare</div><div><i style="background:#2F3337;width:9px;height:9px;transform:rotate(45deg);margin:0 11px 0 4px"></i>Rombo: qui decidi se proseguire</div></div>
+  <!-- fasi in scala: inizio e durata in settimane x 24 px, origine 24 px; le tacche contano la fase -->
+  <div class="fase" style="left:26px;width:70px"><span class="tc"><i></i></span><b>P1</b><span class="nome">Analisi in reparto</span></div>
+  <div class="fase" style="left:98px;width:94px"><span class="tc"><i></i><i></i></span><b>P2</b><span class="nome">Simulazione</span></div>
+  <div class="fase" style="left:194px;width:190px"><span class="tc"><i></i><i></i><i></i></span><b>P3</b><span class="nome">Prova sul robot nel laboratorio Abra</span></div>
+  <div class="fase" style="left:386px;width:214px"><span class="tc"><i></i><i></i><i></i><i></i></span><b>P4</b><span class="nome">Pilota sulla tua postazione</span></div>
+  <div class="fase" style="left:602px;width:94px"><span class="tc"><i></i><i></i><i></i><i></i><i></i></span><b>P5</b><span class="nome">Consegna</span></div>
+  <p class="p0 t-testo"><b class="t-medio">P0, settimana 0.</b> Prima chiamata con un tecnico e sopralluogo, senza costo. Consegna finale alla settimana 28.</p>
+  <div class="leg"><div><i style="box-shadow:inset 0 0 0 2px #3D5A99;background:#F7F6F2"></i>Bordo blu: fase da approvare</div><div><i style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #2F3337;margin:0 12px 0 3px"></i>Tacche: numero della fase</div></div>
   <div class="resta"><span class="t-etichetta">Alla fine resta a te</span><span>Codice nel tuo repository, simulatore, manuale e due tecnici formati.</span></div>
 </div>
 
-<div class="piede"><span>Abra Robotics, robotica applicata. Documento riservato al destinatario.</span><span class="esempio">Esempio</span></div>
+<div class="piede"><span>Abra Robotics, robotica applicata. Documento riservato al destinatario.</span><span class="esempio">Esempio: date e valori</span></div>
 <script src="../assets/metro.js"></script>
 </body>
 </html>

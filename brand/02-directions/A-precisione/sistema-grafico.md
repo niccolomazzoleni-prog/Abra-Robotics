@@ -1,4 +1,4 @@
-# Sistema grafico · In squadra (v2)
+# Sistema grafico · In squadra (v3)
 
 Il sistema prende i suoi elementi dal disegno tecnico e dalla strumentazione di misura. Ognuno ha una funzione: dove non c'è niente da misurare, da dichiarare o da firmare, l'elemento non compare.
 
@@ -18,7 +18,9 @@ Il sistema prende i suoi elementi dal disegno tecnico e dalla strumentazione di 
 
 - **Area di rispetto**: un quarto dell'altezza delle maiuscole su ogni lato, già inclusa nei file.
 - **Dimensioni minime**: logotipo orizzontale 90 px o 22 mm di larghezza; simbolo 16 px o 5 mm di altezza. Sotto i 24 px si usa sempre `favicon-16.svg`.
-- **Non si fa**: separare la A dalla b, raddrizzare o cambiare la pendenza della diagonale, togliere la traversa, ricomporre il nome con un carattere, colorare parti del segno, affiancare il marchio a quello di un produttore di robot in un unico blocco.
+- **Geometria fissa, non modificabile**: A intera con aste a pendenza 2 a 1 e traversa; piede destro della A sull'asta verticale della b; vuoto tra le due lettere a forma di squadra 2 a 1. È l'oggetto del deposito come marchio figurativo.
+- **Non si fa**: separare la A dalla b, cambiare la pendenza, togliere la traversa, ricomporre il nome con un carattere, colorare parti del segno, affiancare il marchio a quello di un produttore di robot in un unico blocco.
+- **Su robot, casse e attrezzature** il segno va in grafite su alluminio o in bianco su grafite; il verde pieno resta ai formati di comunicazione.
 
 ## Griglie
 
@@ -29,7 +31,7 @@ Il sistema prende i suoi elementi dal disegno tecnico e dalla strumentazione di 
 
 ### Carta
 - **A4**: margini 15 mm, 12 colonne con canale 4 mm, linea di base 4 mm. Copertina con testata verde per il 40 % dell'altezza, cartiglio in piede su ogni pagina.
-- **Biglietto 85 × 55 mm**: margine 4 mm; fronte verde con il segno Ab fuori formato, retro bianco come targa dati; nessun testo sotto i 6 pt.
+- **Biglietto 85 × 55 mm**: margine 4 mm; fronte in Pantone 348 C con il segno Ab fuori formato, retro bianco come targa dati; nessun testo sotto i 6 pt.
 
 ## Elementi grafici
 
@@ -48,7 +50,7 @@ Regole:
 - Filetti da 1 px (separatori) e 1,5 px (cornici). Nessuno spessore intermedio.
 - Angoli vivi. Nessun raggio di raccordo, tranne il favicon e gli schemi dei robot.
 - Nessuna ombra, nessun gradiente. Unica tinta ammessa: il segno Ab in bianco al 16 % sul campo verde (fronte del biglietto). Le immagini dei robot stanno su una tavola bianco disegno o su alluminio, con quote.
-- Robot e persone sempre in scala tra loro; le persone sono sagome grafiche finché non ci sono foto proprie con liberatoria.
+- Robot e persone sempre in scala tra loro. Senza foto proprie il pubblico si indica con le linee di vista (altezza degli occhi, 1600 mm e 1100 mm) e con figure in pianta dello stand (spalle arrotondate e testa), mai con sagome da cartello. Il G1 segnaposto è disegnato a tratto.
 - La parola "Esempio" in un riquadro accompagna ogni numero, verbale o criterio inventato.
 
 ## Iconografia
@@ -83,4 +85,4 @@ Entrambi i pattern si generano in CSS con `repeating-linear-gradient` o in SVG c
 
 ## Favicon a 16 px
 
-A 16 px il segno vettoriale scalato perde la traversa. Per questo `favicon-16.svg` è disegnata pixel per pixel su griglia 16: diagonale a gradini di due righe per colonna (pendenza 2 a 1), asta comune di 2 px, traversa di 1 px, vuoto della A di almeno 1 px, pancia della b con vuoto di 2 × 4 px, piastra verde piena. Si usa per favicon e icone fino a 24 px; da 24 px in su `favicon.svg`.
+A 16 px il segno vettoriale scalato perde la traversa. Per questo `favicon-16.svg` è disegnata pixel per pixel su griglia 16: A intera con aste di 2 px a gradini, vuoto della A di 2 × 2 px, traversa di 1 px, piede destro sull'asta della b di 2 px, vuoto a squadra tra A e b visibile nella metà alta, pancia della b con vuoto di 2 × 4 px, piastra verde piena. Verificata anche su fondo scuro. Si usa per favicon e icone fino a 24 px; da 24 px in su `favicon.svg`.

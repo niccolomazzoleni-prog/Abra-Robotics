@@ -7,7 +7,7 @@ T='''<!doctype html>
 <link rel="icon" href="../logo/favicon-16.svg">
 <link rel="stylesheet" href="../assets/sistema.css">
 <style>
-  body{{width:1200px;height:1500px;overflow:hidden;position:relative;background:var(--tela)}}
+  body{{width:1200px;height:1500px;overflow:hidden;position:relative;background:var(--gesso)}}
   .testa{{position:absolute;left:72px;right:72px;top:64px;display:flex;justify-content:space-between;align-items:center}}
   .testa img{{height:36px}}
   .testa .t-etichetta{{font-size:16px;color:var(--grafite)}}
@@ -25,17 +25,12 @@ T='''<!doctype html>
 </head>
 <body>
 <div class="testa"><img src="../logo/orizzontale.svg" alt="Abra Robotics"><span class="t-etichetta">{DATA}</span></div>
-<h1 class="t-display">Fai partire una tesi sul robot dal primo giorno.</h1>
+<h1 class="t-display">Misura il reparto con il LiDAR prima di scrivere il codice.</h1>
 <p class="chi t-sotto">{CORPO}</p>
 
 <svg class="tavola" viewBox="0 0 1200 640" aria-hidden="true">
-  <path d="M72 0 H1072 L1128 56 V640 H72 Z" fill="#D9CBAA"/>
-  <path d="M590 0 l10 14 l10 -14Z M72 300 l14 10 l-14 10Z" fill="#ECE6D8"/>
-  <!-- segni a gesso sotto i piedi: dove il robot poggia durante la prova -->
-  <g stroke="#2F5D9E" stroke-width="5" stroke-linecap="round">
-    <path d="M354 472 l24 16 M378 472 l-24 16"/><path d="M540 546 l24 16 M564 546 l-24 16"/>
-    <path d="M738 426 l24 16 M762 426 l-24 16"/><path d="M592 362 l20 13 M612 362 l-20 13"/>
-  </g>
+  <path d="M72 0 H586 L600 20 L614 0 H1128 V640 H72 Z" fill="#CFCCC3"/>
+  <text x="104" y="44" font-family="Abra Bricolage" font-size="26" font-weight="680" font-stretch="80%" fill="#2F3337">1/6</text>
   <g font-family="Abra Bricolage" fill="#2F3337">
     <text x="120" y="110" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">INGOMBRO IN PIEDI</text>
     <text x="120" y="140" font-size="28" font-weight="680" font-stretch="80%">circa 70 x 31 x 40 cm</text>
@@ -43,10 +38,7 @@ T='''<!doctype html>
     <text x="120" y="260" font-size="28" font-weight="680" font-stretch="80%">Mappa del reparto</text>
     <text x="120" y="288" font-size="18">per localizzazione e</text>
     <text x="120" y="312" font-size="18">navigazione autonoma</text>
-    <text x="896" y="110" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">PROGETTO</text>
-    <text x="896" y="140" font-size="28" font-weight="680" font-stretch="80%">Tesi in azienda</text>
-    <text x="896" y="168" font-size="18">seguita da un tecnico</text>
-    <text x="896" y="192" font-size="18">del cliente</text>
+{DESTRA}
   </g>
   <path d="M330 262 H398" stroke="#2F3337" stroke-width="2"/><circle cx="404" cy="262" r="5" fill="#2F3337"/>
 </svg>
@@ -61,12 +53,20 @@ T='''<!doctype html>
 </html>
 '''
 def voci(v): return '\n'.join(f'  <div class="voce"><span class="n">0{i+1}</span>{x}</div>' for i,x in enumerate(v))
-nom=dict(VERS='versione nominativa, da pubblicare solo con consenso scritto',DATA='Consegna del 29 ottobre 2026',
- CORPO="Consegniamo a SACMI un Go2 con LiDAR per una tesi in azienda. Nella cassa, oltre al robot, c'è quello che serve al tesista e ai tecnici per lavorare da soli.",
+D_NOM='''    <text x="896" y="110" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">PROGETTO</text>
+    <text x="896" y="140" font-size="28" font-weight="680" font-stretch="80%">Tesi in azienda</text>
+    <text x="896" y="168" font-size="18">seguita da un tecnico</text>
+    <text x="896" y="192" font-size="18">del cliente</text>'''
+D_ANO='''    <text x="896" y="110" font-size="15" font-weight="600" font-stretch="75%" letter-spacing="1.4">CONSEGNA</text>
+    <text x="896" y="140" font-size="28" font-weight="680" font-stretch="80%">Pacchetto completo</text>
+    <text x="896" y="168" font-size="18">i tecnici del cliente</text>
+    <text x="896" y="192" font-size="18">lavorano da soli</text>'''
+nom=dict(DESTRA=D_NOM,VERS='versione nominativa, da pubblicare solo con consenso scritto',DATA='Consegna del 29 ottobre 2026',
+ CORPO="Consegniamo a SACMI un Go2 con LiDAR per una tesi in azienda. Prima il robot mappa il reparto, poi il tesista scrive il codice sul simulatore. Nella cassa c'è anche quello che serve per lavorare da soli.",
  VOCI=voci(['Go2 EDU con LiDAR','Simulatore MuJoCo','Modello digitale del reparto','Manuale tecnico rev. 1.1','Codice in un repository condiviso','85 ore di assistenza']),
  NOTA='Da pubblicare solo con consenso scritto di SACMI')
-ano=dict(VERS='versione anonima',DATA='Tesi in azienda',
- CORPO="Consegniamo a un'azienda manifatturiera italiana un robot quadrupede con LiDAR per una tesi. Nella cassa, oltre al robot, c'è quello che serve al tesista e ai tecnici per lavorare da soli.",
+ano=dict(DESTRA=D_ANO,VERS='versione anonima',DATA='Consegna',
+ CORPO="Consegniamo a un'azienda manifatturiera italiana un robot quadrupede con LiDAR. Prima il robot mappa il reparto, poi i tecnici del cliente scrivono il codice sul simulatore, con il materiale che trovano nella cassa.",
  VOCI=voci(['Robot quadrupede con LiDAR','Simulatore MuJoCo','Modello digitale del reparto','Manuale tecnico in italiano','Codice nel repository del cliente','Assistenza in italiano']),
  NOTA='Versione anonima')
 import os

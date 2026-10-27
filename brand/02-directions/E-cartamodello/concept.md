@@ -1,6 +1,6 @@
-# E. Cartamodello (v2)
+# E. Cartamodello (v3)
 
-Territorio wildcard per Abra Robotics. Data: 27/10/2026, revisione v2 dopo il round 1 (vedi `changelog.md`).
+Territorio wildcard per Abra Robotics. Data: 27/10/2026, revisione v3 dopo il round 2 (vedi `changelog.md`).
 
 ## Idea in una frase
 
@@ -33,18 +33,19 @@ Il nome Abra resta un'eco leggera: la magia non entra nel marchio, entra nel ges
 ## Razionale strategico
 
 1. **Risponde all'insight con un oggetto.** Chi valuta un robot teme di scoprire tardi cosa farà. Il cartamodello è il contrario del "tardi": si misura e si prova prima di tagliare. E risponde anche alla paura di restare senza materiali, perché il modello resta al cliente.
-2. **Regge senza robot e con qualunque produttore.** Gli elementi del sistema sono metro, segni a gesso, schede di carta con tacche, rombi di decisione. Nessuno dipende da Unitree o dalla forma del robot: si misura un umanoide come un quadrupede, una base su ruote o un braccio.
+2. **Regge senza robot e con qualunque produttore.** Gli elementi del sistema sono metro, segni a gesso, schede numerate, tacche e cartellini. Nessuno dipende da Unitree o dalla forma del robot: si misura un umanoide come un quadrupede, una base su ruote o un braccio.
 3. **Spazio libero nel settore.** Nessun competitor rilevato usa carta, metro o segni di gesso. La palette è una tela grezza con un grigio flanella e il gesso da sarto blu, chiaro e polveroso: lontano dal blu elettrico e dal cobalto del settore, dal viola, dall'arancio da startup, dal rosso su antracite di ANYbotics, e dai colori firma delle altre quattro direzioni.
-4. **Dà al sistema una regola semantica.** Ciò che è in gesso (bordo sottile blu) è da approvare e si può cancellare; ciò che è cucito (flanella piena) è misurato e firmato. La stessa regola funziona nel preventivo, nei diagrammi e nel marchio, dove la traversa è cucita e il filo in gesso esce dalla A. Il team di due persone la applica senza un designer.
-5. **Regge i tre segmenti cambiando registro.** Manifattura: il preventivo mostra le fasi in scala sul metro delle settimane, con un rombo dove si decide. Laboratorio: il pacchetto per il tesista è il modello consegnato. Eventi: la prova generale con il copione approvato è letteralmente una prova d'abito.
+4. **Dà al sistema segni che il cliente vede.** Le tacche contano le fasi, le schede sono numerate come pezzi di un insieme, i cartellini legano un'informazione all'oggetto. In più, ciò che è in gesso (bordo sottile blu) è da approvare, ciò che è cucito (flanella piena) è firmato. Il team di due persone applica tutto senza un designer.
+5. **Regge i tre segmenti cambiando registro.** Manifattura: il preventivo mostra in copertina quando arriva il primo numero misurato (settimana 3) e le fasi in scala sul metro delle settimane. Laboratorio: il pacchetto per il tesista è il modello consegnato. Eventi: la prova generale con il copione approvato è letteralmente una prova d'abito.
 
 ## Il marchio in breve
 
-- **Simbolo**: una A con la **traversa cucita**, piena e inclinata di 9 gradi, che attraversa la gamba destra ed esce come un filo in gesso blu. La traversa è sempre visibile, anche a 16 px: la "Λ" della v1 è eliminata. Il segno è disegnato da zero in SVG.
-- **Logotipo**: "Abra" con la stessa A (senza filo esterno) e le lettere **b, r, a disegnate a mano** con superellissi: b e a sono lo stesso pezzo specchiato, come un cartamodello tagliato due volte. "Robotics" segue con spaziatura normale.
-- **Piccole dimensioni**: favicon disegnato pixel per pixel su 16 px, monogramma ingrossato da 24 a 64 px.
-- **Colore**: tela, flanella, gesso blu (colore firma), blu segno; carta modello, gesso e grafite come secondari. Il giallo della v1 è eliminato.
-- **Tipografia**: Bricolage Grotesque in sei tagli statici, titolo a peso 640 e larghezza 94.
+- **Simbolo**: la legatura **"ab"**. La a e la b condividono un'unica asta, che è la **linea di piega** del cartamodello: la pancia della b e l'occhio della a si aprono dai due lati come un pezzo tagliato in doppio. In cima all'asta c'è una **tacca a V**, il segno con cui il modellista indica la piega. A 16 px resta due lettere, lontana da una A isolata.
+- **Logotipo**: "abra" minuscolo, interamente disegnato con superellissi, con la stessa legatura ab; "robotics" in Bricolage Grotesque a peso più leggero, con l'altezza x allineata.
+- **Piccole dimensioni**: favicon disegnato pixel per pixel su 16 px, anche in monocromia.
+- **Colore**: flanella dominante, gesso e tela neutri, cartoncino grigio; gesso blu Pantone 278 C vincolante come colore firma, blu segno 7684 C per le linee.
+- **Sistema**: tacche che contano le fasi, schede numerate, cartellini.
+- **Tipografia**: Bricolage Grotesque in sei tagli statici.
 
 ## Segmento a cui parla meglio
 
@@ -55,4 +56,4 @@ Il nome Abra resta un'eco leggera: la magia non entra nel marchio, entra nel ges
 - **L'effetto tecnologico immediato.** Il robot appare sempre su un pezzo di carta, misurato, senza schermi né render. Chi cerca un fornitore "AI" a colpo d'occhio deve leggere un secondo in più.
 - **Il nero e la drammaticità.** La flanella fa da fondo scuro solo per eventi e social; il resto vive su tela chiara. Rinunciamo al lusso del nero pieno.
 - **Una parte del calore della sartoria.** Per non scivolare nella moda abbiamo escluso tessuti, macro di stoffa, manichini e forbici in foto. Della sartoria restano gli strumenti e i gesti, mai i vestiti.
-- **Il gioco con la magia del nome.** Si sente solo nel filo che esce dalla A. Il mago resta fuori.
+- **Il gioco con la magia del nome.** Resta fuori dal marchio: la legatura ab parla del mestiere.

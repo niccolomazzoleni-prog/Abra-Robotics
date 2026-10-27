@@ -1,4 +1,4 @@
-# Fotografia e video · In squadra (v2)
+# Fotografia e video · In squadra (v3)
 
 ## Il principio
 
@@ -35,9 +35,13 @@ Un robot Abra si fotografa come uno strumento in collaudo: fermo, intero, misura
 
 - Bilanciamento neutro, leggermente freddo (5200 K di riferimento). Saturazione ridotta del 15 a 25 %. Contrasto medio, neri non chiusi.
 - Variante in bianco e nero per documenti e preventivi, con curva morbida.
-- Quote e etichette si aggiungono come livello grafico del sistema (filetto grafite o bianco, Barlow), mai incise o "scansionate" sull'immagine.
+- Quote e etichette si aggiungono come livello grafico del sistema (filetto grafite o bianco, B612), mai incise o "scansionate" sull'immagine.
 - Nessuna vignettatura, nessun bagliore, nessuna grana artificiale, nessun cielo sostituito.
-- Video: inquadrature fisse su cavalletto, movimenti lenti su slider solo laterali, tempo reale (niente accelerazioni sui gesti del robot), audio d'ambiente. Il tempo si mostra con un contatore in Barlow, come in una prova.
+- Video: inquadrature fisse su cavalletto, movimenti lenti su slider solo laterali, tempo reale (niente accelerazioni sui gesti del robot), audio d'ambiente. Il tempo si mostra con un contatore in B612, come in una prova.
+
+## Trattamento dei segnaposto
+
+Finché non ci sono foto proprie, il G1 ufficiale non si usa come ritaglio fotografico: si ridisegna a tratto (contorni grafite su bianco o alluminio, `assets/img/g1-tratto.png`), come in una tavola tecnica. Così il segnaposto non si confonde con quello delle altre direzioni e dichiara da solo di essere uno schema. Il pubblico, finché non ci sono foto con liberatoria, si indica con le altezze degli occhi (1600 mm adulto, 1100 mm bambino) e con figure in pianta dello stand, mai con sagome da cartello.
 
 ## Cosa evitare
 

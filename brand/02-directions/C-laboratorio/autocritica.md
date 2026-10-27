@@ -1,29 +1,28 @@
-# Autocritica (v2)
+# Autocritica (v3)
 
-Tre punti deboli della direzione C, Nota a margine, dopo la revisione v2, e cosa ho fatto per mitigarli. In fondo, i punti della v1 risolti.
+Tre punti deboli della direzione C, Nota a margine, dopo la v3, e cosa ho fatto per mitigarli.
 
-## 1. Un logotipo di cerchi pieni può scivolare verso il giocoso
+## 1. Il marchio parte da un carattere libero
 
-"abra" scritto con cerchi pieni e aste è proprietario e si legge a 16 px, ma è un segno grafico forte e geometrico: accanto a un serif scientifico rischia di sembrare il marchio di un prodotto di consumo, o di ricordare note musicali o un grafico a lecca lecca.
+Il logotipo è STIX Two SemiBold ridisegnato: la A con il richiamo e la r con il punto sono proprie, la b e la a restano vicine al disegno originale. Chiunque può comporre "Abra" in STIX e ottenere una parola simile; la protezione sta nella A annotata e nella r.
 
-Mitigazione: il logotipo usa solo due elementi con regole fisse (strozzatura al 12% dello spessore, aste diritte senza arrotondamenti, nessun colore dentro le lettere) e lavora sempre con "ROBOTICS" in mono e con il resto del sistema documentale. Nei preventivi compare in testata a dimensione contenuta. Da verificare con le interviste ai direttori R&D: se il segno risulta poco serio, si riduce il peso dei punti (diametro 92) mantenendo la costruzione.
+Mitigazione: le modifiche sono quelle che si vedono anche a 24 px (punto grande nella A, punto staccato della r, spaziatura), e sono documentate in `sistema-grafico.md`. Si deposita il logotipo intero in bianco e nero, il simbolo dopo la ricerca per immagine. Se il cliente vuole più proprietà, il passo successivo è ridisegnare anche b e a con lo stesso contrasto, mantenendo le regole del punto.
 
-## 2. Registrabilità ancora da verificare
+## 2. A 16 px il segno è al limite
 
-Il segno è nuovo, ma lettere costruite con cerchi e aste esistono nei caratteri geometrici e in alcuni marchi. Nessuna ricerca di anteriorità per immagine è stata fatta.
+La favicon disegnata a pixel tiene punto e filo distinti, ma in 16 × 16 la A è sottile e il punto occupa tutta la luce interna: su schermi a bassa densità può leggersi come una A con una macchia.
 
-Mitigazione: costruzione documentata in `sistema-grafico.md` e codici Vienna indicati (27.05, 26.01, 26.11). La forma della a con la strozzatura e la r con il punto separato sono i dettagli da difendere; il deposito consigliato è il logotipo in bianco e nero più il simbolo a. Il richiamo da solo resta un elemento di sistema e non si deposita.
+Mitigazione: punto 3 × 3 staccato di 1 px dalla gamba sinistra, filo di 1 px che attraversa la gamba destra ed esce di 2 px, fondo giallo che stacca il segno nella barra delle schede. Da 32 px si usa il vettore. Da provare su Windows a 100% prima del lancio.
 
 ## 3. La direzione vive di note vere, che oggi mancano
 
-Il sistema promette misure, protocolli, revisioni e limiti dichiarati. Nessun progetto misurato prima dell'acquisto è concluso, la scheda limiti non esiste, le foto sono Unitree. Con l'evidenziatore ridotto ai soli dati, le pagine senza numeri veri restano senza giallo.
+Il sistema promette misure, protocolli, revisioni e limiti dichiarati. Nessun progetto misurato prima dell'acquisto è concluso, la scheda limiti non esiste, le foto sono Unitree. Con l'evidenziatore riservato ai dati, le pagine senza numeri veri restano senza giallo.
 
-Mitigazione: tutti i dati inventati portano "Esempio" o "valutazione interna"; i richiami sulle foto cadono solo su componenti reali; le voci immateriali sono note a margine. La prima produzione consigliata resta la scheda limiti del G1 con il protocollo di misura, che fornisce numeri veri a sito, preventivi e totem.
+Mitigazione: tutti i dati inventati portano "Esempio" o "valutazione interna"; i richiami sulle foto cadono solo su componenti reali; il pubblico è disegnato come dati di esempio dichiarati. La prima produzione consigliata resta la scheda limiti del G1 con il protocollo di misura.
 
-## Punti della v1 risolti in v2
+## Risolti in v3
 
-- Richiamo che a 16 px diventava una traversa lunga: ora c'è un favicon disegnato a pixel con punto, strozzatura e asta distinti.
-- Logotipo in STIX composto: sostituito da un disegno proprio.
-- Giallo fuori gamut e acido: nuovo HEX in gamut CMYK con tinta piatta indicativa.
-- Evidenziatore e richiami decorativi: regole d'uso riscritte e applicate a tutti i file.
-- Eventi senza scena: reel e totem hanno il G1 in piedi e il pubblico in sagome.
+- Logotipo staccato dal sistema (v2): il marchio torna nel serif scientifico, con il richiamo dentro la lettera.
+- Grassetto sintetico e glifi mancanti nel PDF: Bold dichiarato in stampa, ≤ ≥ → e ✓ eliminati dal testo.
+- Testi sotto 6 pt: verificati con controllo automatico su preventivo e biglietto.
+- Composizioni comuni alle altre direzioni: flight case come tavola, pubblico come dati, G1 a mezza figura.

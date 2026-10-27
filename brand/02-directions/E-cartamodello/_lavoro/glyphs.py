@@ -4,7 +4,7 @@ from fontTools.varLib.instancer import instantiateVariableFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.recordingPen import RecordingPen
 wght,wdth=float(sys.argv[1]),float(sys.argv[2]); text=sys.argv[3]
-f=TTFont(sys.argv[4] if len(sys.argv)>4 else '/Users/niccolomazzoleni/Abra-Robotics-brand/brand/02-directions/E-cartamodello/fonts/BricolageGrotesque-VF.ttf')
+f=TTFont(sys.argv[4] if len(sys.argv)>4 else '/Users/niccolomazzoleni/Abra-Robotics-brand/brand/02-directions/E-cartamodello/_lavoro/BricolageGrotesque-VF.ttf')
 inst=instantiateVariableFont(f,{'wght':wght,'wdth':wdth,'opsz':96})
 gs=inst.getGlyphSet(); cmap=inst.getBestCmap()
 out=[]

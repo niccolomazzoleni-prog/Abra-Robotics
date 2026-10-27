@@ -1,16 +1,18 @@
-# Palette · In squadra (v2)
+# Palette · In squadra (v3)
 
 Colore firma esclusivo della direzione: **verde di misura RAL 6024 con grigio alluminio**. Il verde viene dalla norma sulle macchine (IEC 60204-1: verde per lo stato normale) e in Abra ha due ruoli: nelle schede segna il criterio misurato e superato, nei formati di comunicazione è il campo pieno che si riconosce da lontano (copertina del preventivo, testata del post, totem, biglietto, monogramma). Nessun giallo, nessun ocra, nessun blu, nessun rosso. Il limite dichiarato non ha un colore: è un tratteggio grafite.
 
 ## Colori
 
-CMYK ricalcolati con il profilo Generic CMYK di macOS, intento colorimetrico relativo; per la stampa vera vanno rifatti dal tipografo con FOGRA39 (patinata) o FOGRA29 (uso mano). I Pantone sono indicativi, da verificare sulla mazzetta.
+**Regola vincolante dalla v3: il verde si stampa in tinta piatta Pantone 348 C** su tutti i campi pieni (fronte del biglietto, testata del preventivo stampato, totem, carta intestata, adesivi della comunicazione). La quadricromia è ammessa solo per stampa digitale di piccole tirature, con prova colore approvata contro la mazzetta 348 C. Per vernici e vinili il riferimento è RAL 6024. Il valore HEX `#008351` resta il riferimento a schermo e va riallineato dopo la prima prova colore.
+
+CMYK ricalcolati con il profilo Generic CMYK di macOS, intento colorimetrico relativo; per la stampa in quadricromia il tipografo li rifà con FOGRA39 (patinata) o FOGRA29 (uso mano). Gli altri Pantone sono indicativi.
 
 ### Primari
 
 | Nome | HEX | RGB | CMYK (profilo) | Riferimento | Uso |
 |-|-|-|-|-|-|
-| Verde di misura | `#008351` | 0, 131, 81 | 85 13 82 14 | RAL 6024 per vinili e vernici; Pantone 348 C indicativo | colore firma: campi pieni, monogramma, celle "misurato", pulsante principale |
+| Verde di misura | `#008351` | 0, 131, 81 | 85 13 82 14 (solo digitale con prova) | **Pantone 348 C obbligatorio** in stampa; RAL 6024 per vinili e vernici | colore firma: campi pieni, monogramma, celle "misurato", pulsante principale |
 | Alluminio | `#E3E7E9` | 227, 231, 233 | 9 5 4 0 | Pantone Cool Gray 1 C indicativo | fondo base di sito, post, pannelli |
 | Grafite | `#1A2125` | 26, 33, 37 | 83 71 61 62 | Pantone Black 7 C indicativo | testo, logotipo, flight case |
 
@@ -41,6 +43,7 @@ Tratteggio a 135 gradi, linee grafite da 1 px (0,25 mm in stampa) su passo 4 o 5
 
 Regole:
 - Il logotipo è sempre monocromatico: grafite su chiaro, bianco su verde, grafite o verde profondo.
+- **Niente verde pieno su robot, casse e attrezzature**: lì il segno va in grafite su alluminio o in bianco su grafite, per non confondersi con la segnaletica di sicurezza di reparto (ISO 7010). Il campo verde vive nei formati di comunicazione.
 - Su verde il testo è bianco puro `#FFFFFF` (4,81 : 1); mai grafite su verde (3,39 : 1).
 - Il verde nelle schede tecniche compare solo dove c'è una misura fatta; nei campi pieni non porta significato di stato.
 - Le fotografie e i segnaposto robot vanno in bianco e nero o desaturati.

@@ -1,75 +1,58 @@
-# Sistema grafico: Cartamodello (v2)
+# Sistema grafico: Cartamodello (v3)
 
-Gli strumenti del modellista diventano il linguaggio di Abra. La metafora sta nella logica del sistema; nei testi per i clienti si usano parole del settore (sopralluogo, simulazione, prova, consegna).
+Il cartamodello torna visibile, con gli oggetti del mestiere che chiunque riconosce senza spiegazione: **schede numerate, tacche, cartellini**. Stoffe e moda restano fuori: sono gli stessi segni che si trovano su una dima d'officina. Nei testi per i clienti le fasi restano con i nomi del settore.
 
-## 1. La regola del gesso e della cucitura
+## 1. I tre gesti fissi
 
-| Stato | Come si disegna | Esempio |
-|-|-|-|
-| **Da approvare, ancora da misurare** | In **gesso**: bordo sottile Blu segno `#2F5D9E` (2 px a schermo, 0,35 mm in stampa) su fondo chiaro, oppure Gesso blu su flanella | Fasi di un preventivo non ancora firmate, etichetta "Esempio" |
-| **Misurato e firmato** | **Cucito**: Flanella piena o linea Flanella da 2 px | Fase accettata, totali, intestazioni di tabella |
+| Gesto | Forma | Significato | Dove compare sempre |
+|-|-|-|-|
+| **La tacca** | Triangolo a V intagliato nel bordo alto di una scheda, di una fascia o di un oggetto | Nei cartamodelli le tacche dicono quale pezzo si cuce con quale. Da noi **contano le fasi**: una tacca per la P1, due per la P2, e così via. Una sola tacca centrale segna la linea di piega del marchio | Copertina del preventivo (fasi), totem (scheda del robot), livrea (maniglia della cassa e tacca fustellata del biglietto), hero (fasce delle fasi), simbolo |
+| **La scheda numerata** | Cartoncino grigio con il numero del pezzo in alto ("1/4", "1/12", "1/6") | Ogni oggetto misurato o documento è un pezzo di un insieme: si sa sempre quanti pezzi compongono il progetto | Scheda del robot (hero, totem), pagina del preventivo, post, targa della cassa |
+| **Il cartellino** | Etichetta in gesso blu con foro a sinistra | Un'informazione legata a un oggetto: copione approvato, data della prova generale, numero di cassa | Reel, flight case, totem |
 
-Il gesso si cancella, la cucitura resta. Nella v1 la distinzione era tratteggio contro linea continua; il tratteggio si leggeva come mezzeria stradale o nastro da cantiere ed è stato eliminato da tutto il sistema, compreso il marchio.
+## 2. La regola del gesso e della cucitura
 
-## 2. Gli elementi
+| Stato | Come si disegna |
+|-|-|
+| Da approvare, ancora da misurare | In gesso: bordo sottile Blu segno (2 px, 0,35 mm in stampa) su fondo chiaro |
+| Misurato e firmato | Cucito: flanella piena o linea flanella |
 
-| Elemento | Forma | Quando si usa |
-|-|-|-|
-| **Il metro** | Nastro Gesso blu con tacche Flanella al centimetro (o alla settimana) e cifre ogni 10 | **Solo dove misura qualcosa di vero**, con la scala allineata all'oggetto: altezza del G1 (0 ai piedi, 130 alla testa), settimane del preventivo, millimetri del biglietto. Mai come cornice |
-| **La scheda** | Pezzo di Carta modello con un angolo tagliato e una tacca sul lato | Il robot misurato, il percorso del preventivo, i limiti |
-| **Il richiamo** | Linea Flanella da 1,5 px con un punto sull'oggetto misurato | Dal punto del robot alla sua misura |
-| **Il segno a gesso** | Croce in Blu segno a due tratti | Dove poggiano i piedi, dove sta il robot nello stand |
-| **Il rombo di decisione** | Rombo Flanella sul metro alla fine di ogni fase | "Qui decidi se proseguire" |
-| **Il cartellino** | Etichetta Gesso blu con foro | Informazioni attaccate a un oggetto: data della prova generale, numero di cassa |
-| **I limiti dichiarati** | Riquadro Carta modello con bordo interno Flanella | "Cosa il robot non farà", nella stessa pagina delle prestazioni |
+Il tratteggio resta escluso.
 
-Il filo del simbolo (la coda in Gesso blu che esce dalla gamba destra della A) non si usa come decorazione: compare solo nel marchio.
+## 3. Il metro
 
-## 3. Marchio a piccole dimensioni
+Nastro in gesso blu (Pantone 278 C) con tacche flanella. Si usa **solo dove misura qualcosa di vero**, con la scala allineata all'oggetto: G1 da 0 ai piedi a 130 cm alla testa (hero, reel, totem), settimane del preventivo (una tacca = una settimana), millimetri del biglietto. Le schede del robot hanno sotto una griglia a 10 cm, la griglia del tavolo da taglio, allineata al metro.
 
-- **Sotto 24 px** solo `logo/favicon-16.svg` (disegnato sulla griglia di 16 pixel) o `favicon-16-mono.svg`.
-- Da 24 a 64 px `logo/monogramma.svg` (aste e traversa più spesse, filo più corto).
-- Sopra i 64 px `logo/simbolo.svg` o le versioni bicolore e negativo.
-- La traversa della A è sempre piena e visibile, a ogni dimensione.
+## 4. Il marchio a piccole dimensioni
 
-## 4. Griglia
+- Sotto 24 px solo `logo/favicon-16.svg`, disegnato pixel per pixel (o `favicon-16-mono.svg`).
+- Da 24 a 64 px `logo/monogramma.svg`; sopra, `simbolo.svg`, `simbolo-negativo.svg` o `simbolo-bicolore.svg` (tessera in gesso blu con la tacca allineata alla piega).
+- Il simbolo è la legatura "ab": a 16 px resta due lettere, diversa da una A isolata (`logo/test.png` la mette accanto a una A generica).
+
+## 5. Il pubblico
+
+Negli eventi il pubblico non si disegna come figure: si segnano **a gesso i posti** dove starà, con croci Blu segno sul pavimento (reel, pianta del totem). È coerente con il mestiere: si segna sul pavimento prima che arrivino le persone.
+
+## 6. Griglia
 
 - Modulo 8 px a schermo, 4 mm in stampa.
-- Sito (1440 px): margini 64 px, 12 colonne, canale 24 px; titolo su 7 colonne, scheda del robot su 5.
-- A4: margini 15 mm, 12 colonne da 10,9 mm, canale 4 mm; il percorso del preventivo usa una settimana = 24 px (6,35 mm).
-- Post 1200 x 1500: margini 72 px, elenchi su 3 colonne. Verticali 1080 x 1920: area sicura di 150 px in alto e 120 in basso.
+- Sito (1440 px): colonna chiara di 820 px con titolo, fasi e azioni; colonna flanella con la scheda del robot e le misure.
+- A4: margini 15 mm; fascia di testa in flanella alta 84 mm; il percorso usa una settimana = 24 px (6,35 mm).
+- Post 1200 x 1500: margini 72 px. Verticali 1080 x 1920: area sicura 150 px in alto e 110 in basso.
 
-## 5. Iconografia
+## 7. Iconografia
 
-Sei icone in `icone/`, griglia 24 px, tratto 1,75 px, capi e giunti tondi, nessun riempimento, nessun tratteggio.
+Sei icone in `icone/`, griglia 24 px, tratto 1,75 px, capi tondi, senza riempimenti né tratteggi: misure (metro avvolgibile), simulazione (cubo e gemello), prova (scheda con tacca e segno a gesso), modello (foglio con angolo piegato), assistenza (cartellino), noleggio (calendario con il giorno segnato).
 
-| File | Concetto |
-|-|-|
-| `misure.svg` | Sopralluogo e assessment: metro avvolgibile |
-| `simulazione.svg` | Simulazione e modello digitale: il cubo e il suo gemello |
-| `prova.svg` | Prova sul robot vero: scheda con tacca e segno a gesso |
-| `modello.svg` | Codice e documentazione consegnati: foglio con angolo piegato |
-| `assistenza.svg` | Assistenza e formazione: cartellino con filo |
-| `noleggio.svg` | Noleggio a giornata: calendario con il giorno segnato |
+## 8. Diagrammi e dati
 
-## 6. Diagrammi e dati
+- Le fasi si disegnano in scala sul metro delle settimane; ogni fase porta tante tacche quante il suo numero.
+- Ogni fase ha accanto il **numero misurato** che produce e la data in cui arriva.
+- Serie: flanella per il valore misurato, Blu segno per il confronto, gesso blu per un solo punto evidenziato.
+- Ogni dato inventato porta "Esempio".
 
-- Le fasi si disegnano in scala sul metro delle settimane; i bordi Blu segno diventano pieni Flanella quando la fase è firmata.
-- Ogni grafico porta il limite dichiarato nello stesso riquadro del valore.
-- Serie: Flanella per il valore misurato, Blu segno per il confronto; il Gesso blu evidenzia un solo punto.
-- Mappe LiDAR e modelli digitali si stampano in Flanella su Carta modello, con le quote; nessun effetto di luce.
-- Ogni dato inventato porta l'etichetta "Esempio".
+## 9. File di sistema
 
-## 7. Regole di composizione
-
-1. Una sola scheda protagonista per pagina.
-2. Le foto dei robot sono in scala di grigi, in moltiplica sulla carta: robot di produttori diversi hanno lo stesso trattamento.
-3. Il Gesso blu compare al massimo in due punti per composizione.
-4. Il logo non sta mai accanto al logo di un produttore.
-5. Negli eventi il pubblico è disegnato a sagome Flanella, mai con foto di persone.
-
-## 8. File di sistema
-
-- `assets/sistema.css`: colori, sei tagli tipografici statici, etichetta "Esempio", regola gesso e cucitura.
-- `assets/metro.js`: disegna il metro da attributi `data-metro`; la tacca dello zero sta a 2 px dall'inizio dell'elemento, quindi il metro si allinea all'oggetto con un calcolo semplice (vedi i commenti in `applicazioni/hero.html`).
-- `logo/`: tutte le versioni del marchio; i sorgenti di generazione sono in `_lavoro/` (`geo2.js`, `build-logo-v2.js`).
+- `assets/sistema.css`: colori v3, sei tagli statici, classi `.cartellino`, `.num`, `.esempio`, `.in-gesso`, `.cucito`.
+- `assets/metro.js`: metro SVG allineabile (tacca dello zero a 2 px dall'inizio).
+- `_lavoro/geo3.js` e `build-logo-v3.js`: costruzione del marchio; `fav.py`: favicon pixel per pixel.

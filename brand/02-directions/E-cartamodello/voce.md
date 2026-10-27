@@ -1,4 +1,4 @@
-# Voce: Cartamodello (v2)
+# Voce: Cartamodello (v3)
 
 ## Personalità verbale
 
@@ -22,17 +22,20 @@ Regola specifica del territorio: la parola **"sartoriale" è vietata**. È il lu
 
 ## Headline
 
-Italiano (la prima è l'headline dell'hero, propria di questa direzione):
-1. Misura cosa farà il robot nel tuo reparto prima di comprarlo.
-2. Misura in sei fasi cosa farà il robot nel tuo reparto.
-3. Fai lavorare i tuoi tesisti sul robot in poche settimane.
-4. Fai parlare un umanoide del tuo marchio, con parole che approvi tu.
-5. Tieni nel tuo repository tutto il codice che scriviamo per te.
+Il verbo di questa direzione è **"Misura"**: tutte le headline delle applicazioni principali partono da lì e sono scritte per E, senza riprendere frasi della brand platform o delle altre direzioni.
+
+Italiano:
+1. Hero: Misura il robot sul tuo processo prima di firmare l'ordine.
+2. Preventivo, copertina: Misura in tre settimane il primo numero del tuo reparto.
+3. Preventivo, pagina delle fasi: Misura fase per fase se conviene proseguire.
+4. Post LinkedIn: Misura il reparto con il LiDAR prima di scrivere il codice.
+5. Reel: Misura in due minuti cosa sa dire il G1 del tuo prodotto.
+6. Totem: Misura tre metri per tre: il G1 arriva con un tecnico.
 
 Inglese:
-1. Measure what the robot will do on your shop floor before you buy it.
-2. Get your students working on the robot within weeks.
-3. Keep every line of code we write for you in your own repository.
+1. Measure the robot on your own process before you sign the order.
+2. Measure your first shop floor number in three weeks.
+3. Measure your floor with LiDAR before writing a line of code.
 
 ## Bio LinkedIn
 
