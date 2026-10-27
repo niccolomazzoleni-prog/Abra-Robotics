@@ -11,7 +11,7 @@ Quattro spazi alternativi, costruiti sugli spazi liberi di `01-competitor.md`, s
 - **Headline di esempio**: "Misura nel tuo reparto cosa farà il robot, prima di investire."
 - **Cosa vedremmo** (spunto libero per i creativi): il banco di prova, i verbali, i grafici delle misure, il digital twin trattato come rilievo tecnico, robot fotografati mentre vengono testati.
 - **Segmento più servito**: aziende manifatturiere (direttore R&D, HSE, direzione). Serve bene anche gli eventi (la prova generale) e i laboratori (specifiche reali).
-- **Pro**: risponde alla paura comune a tutte le personas; nessun competitor lo occupa (cataloghi, spettacolo, consulenza generica); è il motivo per cui i PoC sono fermi oggi (manca un numero da portare in direzione [R10 §8]); dà ai media italiani la voce da dentro che cercano [R08 §3]; la parola "misura" si trasforma in un prodotto d'ingresso (assessment di tre settimane).
+- **Pro**: risponde alla paura comune a tutte le personas; nessun competitor lo occupa (cataloghi, spettacolo, consulenza generica); è il motivo per cui i POC sono fermi oggi (manca un numero da portare in direzione [R10 §8]); dà ai media italiani la voce da dentro che cercano [R08 §3]; la parola "misura" si trasforma in un prodotto d'ingresso (assessment di tre settimane).
 - **Contro**: "misurare" può suonare lento o costoso a chi vuole il robot subito (eventi, PMI); obbliga a pubblicare numeri veri, anche scomodi.
 - **Rischio**: senza scheda limiti, casi e video propri la promessa resta vuota. Va prodotto il materiale di prova entro i primi mesi.
 - **Tenuta oltre Unitree**: totale, il metodo vale per qualunque piattaforma.
@@ -40,7 +40,7 @@ Quattro spazi alternativi, costruiti sugli spazi liberi di `01-competitor.md`, s
 - **Pro**: è il posizionamento più lontano da "rivenditore Unitree"; la prova di indipendenza ("vi abbiamo consigliato una base su ruote") convince i tecnici più di ogni demo [R06 blocco 4 punto 5]; si sposa con i temi di conformità e sicurezza (Regolamento Macchine 2027, rete isolata).
 - **Contro**: oggi Abra ha lavorato solo su Unitree; un consulente agnostico senza seconda piattaforma è poco credibile; sposta la percezione verso la consulenza, in conflitto con la vendita di hardware che oggi genera margine.
 - **Rischio**: competere con Reply sul suo terreno (adozione strutturata nei grandi gruppi) con molta meno storia; essere percepiti come costosi.
-- **Tenuta oltre Unitree**: totale per definizione, ma dipende da un investimento che non c'è ancora.
+- **Tenuta oltre Unitree**: totale per definizione, a condizione di un investimento che oggi manca.
 - **Prova disponibile oggi**: raccomandazioni ad ATS e PM SPA. Manca un progetto su un'altra piattaforma.
 
 ## Spazio D. Robot che parlano per te (AI incarnata su misura)
@@ -54,7 +54,7 @@ Quattro spazi alternativi, costruiti sugli spazi liberi di `01-competitor.md`, s
 - **Contro**: avvicina Abra al robot come spettacolo, che il pubblico B2B guarda con sospetto [R07 §3 e §5]; i media lo raccontano già come intrattenimento [R08 §1.5]; ticket e margini bassi, molto rumore in ingresso (circa un terzo dei lead è fuori target [R10 §8]).
 - **Rischio**: compromettere la credibilità presso direttori R&D e HSE; dipendere dal G1 e quindi da Unitree; esporsi a una figuraccia pubblica (robot che cade o dice una cosa sbagliata) che diventa virale.
 - **Tenuta oltre Unitree**: media, perché la competenza LLM e RAG è trasferibile ma l'immagine resta legata all'umanoide di turno.
-- **Prova disponibile oggi**: nessun caso evento pubblicabile; richieste in CRM (NEXA, QBT, Multimedia Industry, Proptonomy).
+- **Prova disponibile oggi**: l'offerta esiste (noleggio a giornata del G1 con LLM e RAG, voluta dai fondatori) ma non è ancora stata venduta; nessun caso evento pubblicabile; richieste in CRM (NEXA, QBT, Multimedia Industry, Proptonomy).
 
 ## Confronto
 
@@ -66,22 +66,24 @@ Punteggio da 1 a 5, mio giudizio motivato nelle schede sopra.
 | Credibilità con le prove di oggi | 4 | 5 | 2 | 2 |
 | Copertura dei tre segmenti | 4 | 3 | 2 | 2 |
 | Tenuta oltre Unitree | 5 | 4 | 5 | 3 |
-| Valore per i ticket alti (PoC industriali) | 5 | 3 | 4 | 1 |
+| Valore per i ticket alti (POC industriali) | 5 | 3 | 4 | 1 |
 | Coerenza con i vincoli (no rivenditore, no turn key) | 5 | 5 | 4 | 3 |
 | Spazio visivo libero e proprietario | 5 | 4 | 3 | 2 |
 | **Totale** | **33** | **28** | **23** | **16** |
 
 ## Raccomandazione
 
-**Spazio A, "Prima la prova", come posizionamento di marca.** Gli altri tre entrano nella piattaforma con ruoli precisi:
+Stato: raccomandazione dello strategist, in attesa di approvazione dei fondatori.
+
+**Spazio A, "Prima la prova", come posizionamento di marca.** Gerarchia dei segmenti: la manifattura definisce la solidità del marchio, università e laboratori portano volume, gli eventi sono l'applicazione più visibile del metodo. Gli altri tre entrano nella piattaforma con ruoli precisi:
 
 - **B diventa la prova e la seconda metà della promessa** ("e il tuo team impara a portarlo avanti"). È il pilastro 2 e il tono della comunicazione tecnica per università e tesisti.
 - **C diventa un principio di metodo** (pilastro 3), comunicato come modo di scegliere la piattaforma, senza elenchi di marchi, finché non esiste un progetto su una seconda piattaforma.
-- **D diventa un'applicazione** dello spazio A: l'umanoide per eventi si vende con prova generale, copione approvato e tecnico presente. Le immagini degli eventi mostrano il robot che lavora con le persone, con il pubblico in scena accanto a lui.
+- **D diventa un'applicazione** dello spazio A, con un'offerta reale: il noleggio a giornata dell'umanoide per eventi si vende con prova generale, copione approvato e tecnico presente. Sul piano creativo il territorio D ("Il futuro in scena") resta pienamente ammesso: regia, luce reale, scala e presenza scenica sono strumenti legittimi; restano vietate le acrobazie del robot (balli, capriole, combattimenti) e l'effetto sorpresa. Le immagini degli eventi mostrano il robot che lavora con le persone, con il pubblico in scena accanto a lui.
 
 Perché A:
 1. È l'unica idea che parla alle tre personas con la stessa promessa: sapere prima cosa succederà.
-2. Attacca il collo di bottiglia reale della pipeline: i PoC sono fermi perché manca un numero per la direzione [R10 scoperte 2].
+2. Attacca il collo di bottiglia reale della pipeline: i POC sono fermi perché manca un numero per la direzione [R10 scoperte 2].
 3. È difendibile: per occuparla servono misure vere, che cataloghi e produttori non pubblicano.
 4. Regge oltre Unitree senza dover dimostrare oggi una seconda piattaforma.
 5. Apre il territorio visivo più libero del settore (banco di prova, documento tecnico, fotografia documentaria in Italia) [01-competitor §6].

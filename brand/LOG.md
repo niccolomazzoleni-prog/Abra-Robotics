@@ -33,5 +33,13 @@ Branch `feat/niccolo-brand-identity`, worktree `~/Abra-Robotics-brand` (il check
 **Dubbi aperti**
 - Consenso SACMI alla pubblicazione del caso; foto e video propri mancanti.
 - Pilastro 4 (SLA, test di rete, dossier CE, sede unica) da produrre prima di comunicarlo.
-- Peso del segmento eventi e offerta di noleggio (oggi non offerto).
+- Peso del segmento eventi; contenuto e prezzo del noleggio a giornata del G1 da definire.
 - Ricerca di anteriorità sul marchio "Abra" (collisioni note: app finanziaria Abra, ABRA Software).
+
+## Fase 1, brief v2 (27/10/2026)
+- Brief portato a v2 dopo la revisione strategica (6,5/10) e le correzioni dell'orchestratore: noleggio a giornata del G1 come offerta reale, territorio D ammesso senza acrobazie, applicazioni allineate a `direttore-creativo.md`, voce in nucleo fisso e registro per territorio. Aggiornati anche platform, spazi, competitor (SIR su sir-mo.it, Oversonic) e personas. Dettagli in "Revisione r2" in fondo al brief.
+
+### Revisione del brief
+- Round 1 reviewer-strategia: 6,5/10 (brief troppo chiuso sul territorio "documento tecnico", prove deboli, alcune violazioni di copy).
+- Round 2: 8,0/10. Brief approvato dal revisore; correzioni minori applicate dall'orchestratore.
+- **Da confermare da te (non blocca il lavoro):** promessa "Con Abra sai cosa farà il robot nel tuo caso prima di investire" e posizionamento "Prima la prova". Contenuti e prezzo del noleggio G1. Consenso SACMI alla pubblicazione del caso (per questo il post esiste anche in versione anonima). Prezzi assessment 3.500 euro e digital twin circa 10.000 euro.
