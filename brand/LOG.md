@@ -43,3 +43,24 @@ Branch `feat/niccolo-brand-identity`, worktree `~/Abra-Robotics-brand` (il check
 - Round 1 reviewer-strategia: 6,5/10 (brief troppo chiuso sul territorio "documento tecnico", prove deboli, alcune violazioni di copy).
 - Round 2: 8,0/10. Brief approvato dal revisore; correzioni minori applicate dall'orchestratore.
 - **Da confermare da te (non blocca il lavoro):** promessa "Con Abra sai cosa farà il robot nel tuo caso prima di investire" e posizionamento "Prima la prova". Contenuti e prezzo del noleggio G1. Consenso SACMI alla pubblicazione del caso (per questo il post esiste anche in versione anonima). Prezzi assessment 3.500 euro e digital twin circa 10.000 euro.
+
+## Fase 2: direzioni creative v1 (27/10/2026)
+
+**Fatto**
+- Agenti in `.claude/agents/`: brand-strategist, direttore-creativo (uno per territorio), 5 revisori + reviewer-finale, tutti con modello Opus.
+- Cinque direzioni consegnate in parallelo, ciascuna completa (concept, logo SVG in 5+ versioni con test 16/32 px, palette WCAG, tipografia OFL, sistema, foto, motion con logo animato, voce, 9 mockup HTML+PNG, presentazione.html, autocritica):
+  - **A. Riferimento A** (Precisione industriale): triangolo del riferimento di misura ISO dentro la A; alluminio, grafite, verde "misurato" e giallo "limite dichiarato"; Barlow.
+  - **B. Misura d'uomo** (Umanesimo italiano): "a" a doppia pancia montata da tre pezzi con giunto a vista; avorio, rosso `#BB3B26`, ocra, verderame; Newsreader e Hanken Grotesk.
+  - **C. Nota a margine** (Laboratorio aperto): A in serif scientifico con richiamo di annotazione al posto del traverso; carta, inchiostro, evidenziatore giallo; STIX Two e DM Mono.
+  - **D. Prova generale** (Futuro in scena): A come boccascena con palco ambra; velluto rosso bruno, luce tungsteno, stucco; Archivo in tre larghezze.
+  - **E. Cartamodello** (Wildcard): Abra come modellista che prende le misure e consegna il modello; A con traverso a punto d'imbastitura; tela, flanella, giallo metro; Bricolage Grotesque.
+
+**Decisioni**
+- Nessuna immagine generata (saldo 0,5 crediti): fotografia descritta con shot list e prompt pronti; robot nei mockup = foto ufficiali Unitree dichiarate come segnaposto. Dati inventati marcati "Esempio". Post SACMI in versione nominativa e anonima.
+- Font tutti OFL, costo zero.
+
+**Crediti**: 0 spesi. Stima per completare i mood (5 direzioni x 5 immagini) circa 6-7 crediti.
+
+**Dubbi aperti**
+- D ed E condividono un giallo/ambra caldo e il lessico "prova": da verificare nella revisione la distanza reale.
+- Immagini G1 disponibili a bassa risoluzione (749 px): servono foto proprie.
