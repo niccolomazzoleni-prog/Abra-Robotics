@@ -102,10 +102,10 @@ La dashboard admin legge dati da **due fonti**:
 ### Endpoint stats (JSONP)
 
 ```
-GET .../exec?action=stats&key=abra2026stats&callback=abraStatsCb
+GET .../exec?action=stats&key=<ABRA_STATS_KEY>&callback=abraStatsCb
 ```
 
-Chiave di default: `abra2026stats`. Per cambiarla: Script Property `ABRA_STATS_KEY` in Apps Script.
+La chiave sta solo nella Script Property `ABRA_STATS_KEY` di Apps Script: non scriverla nel repo (è pubblico).
 
 ### Cosa vedi nella dashboard
 
