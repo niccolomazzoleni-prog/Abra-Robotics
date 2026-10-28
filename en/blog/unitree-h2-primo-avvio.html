@@ -1,0 +1,339 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-h2-primo-avvio.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree H2 first power-on: setup, harness and network</title>
+<meta name="description" content="Unitree H2 first power-on: space, harness, battery, Ethernet, debug mode and the Unitree manuals. A practical checklist before you start."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/en/blog/unitree-h2-primo-avvio.html"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-primo-avvio.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-h2-primo-avvio.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-primo-avvio.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="icon" type="image/png" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree H2 first power-on: setup, harness and network",
+  "description": "Unitree H2 first power-on: space, harness, battery, Ethernet, debug mode and the Unitree manuals. A practical checklist before you start.",
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/en/blog/unitree-h2-primo-avvio.html"
+  },
+  "image": "https://abrarobotics.com/images/prodotti/h2-edu.webp",
+  "inLanguage": "en",
+  "url": "https://abrarobotics.com/en/blog/unitree-h2-primo-avvio.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you really need the harness for the H2 first power-on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The H2 manual asks you to support the robot during power-on and every change of posture: it does not hold its balance before motion control. The harness must be rated for the weight of the robot plus a safety margin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much space does the Unitree H2 need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The width is 456 mm and the depth 218 mm, but the useful space includes stride, arms, exclusion zone and hoist radius. You need a clear area, a level floor and no cables on the ground."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Ethernet port is used for the H2 SDK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The RJ45 port on the 192.168.123.x segment, [12]. [15] belongs to the 192.168.124.x segment of the PC2. On the PC, set a free static IP on the same subnet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What credentials does the Unitree H2 PC2 have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The user is unitree and the initial password is Unitree0408; on early firmware versions it may be Unitree#24226. Change it before connecting the robot to a shared network."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the H2 be started without connecting it to the Internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Local control and the SDK run over Ethernet and DDS. Without Internet you lose OTA updates and cloud functions; for an isolated network, agree the procedure with your supplier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the differences between the H2 and the H2 Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dimensions, weight and battery are the same. The H2 Plus carries an NVIDIA Jetson T5000 module and, as an option, two SharpaWave hands with 22 DOF each. The bill of materials and the configuration manual must be read before the first power-on."
+      }
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree H2 first power-on: setup, harness and network"/>
+<meta property="og:description" content="Unitree H2 first power-on: space, harness, battery, Ethernet, debug mode and the Unitree manuals. A practical checklist before you start."/>
+<meta property="og:url" content="https://abrarobotics.com/en/blog/unitree-h2-primo-avvio.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/prodotti/h2-edu.webp"/>
+<meta property="og:locale" content="en_GB"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/en/index-en.html">Home</a> / <a href="/en/index-en.html">Blog</a> / H2 first power-on</nav>
+
+<figure class="article-cover">
+<img src="/images/prodotti/h2-edu.webp" alt="Unitree H2 EDU, full-size humanoid" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Operating guide · Humanoids</p>
+<h1>Unitree H2 first power-on: what to know before switching on</h1>
+<div class="article-meta"><time datetime="2026-10-27">27 October 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In brief:</strong> before the first power-on the Unitree H2 must be hung or supported: it does not hold its balance until it enters motion control. You need a rated harness, a clear area, a charged battery, an Ethernet network and the H2 manual. Shutdown means damping and then removing power: the support is still needed.</div>
+</header>
+
+<div class="article-content">
+<p>The first power-on of the <strong>Unitree H2</strong> requires support, a charged battery and a configured network. The robot is 1,820 mm tall, weighs about 70 kg with the battery and does not hold its balance until it enters motion control: until then it must be hung or supported. Versions and configurations are on the <a href="/en/h2-en.html">H2 range page</a>; the differences between H2 Air, H2 EDU, H2-D and H2 Plus are in the <a href="/en/blog/unitree-h2-italia.html">H2 guide</a>. The procedure described here covers the biped versions: H2 Air, H2 EDU and H2 Plus.</p>
+
+<h2>Unitree H2 first power-on: the correct sequence</h2>
+<p>The H2 manual describes a precise sequence. Key combinations change with the firmware: use the remote control manual for your unit, not a sequence copied from a video of another version.</p>
+<ol>
+<li><strong>Support.</strong> Hang the robot from a hoist or rest it on a suitable support, facing forward. Clear the area of people and obstacles and arrange the arms and legs in a natural position, with no cables under tension.</li>
+<li><strong>Battery.</strong> Insert it into the compartment until it clicks, with the robot switched off. Do not force it: if it does not go in, remove it and check the orientation.</li>
+<li><strong>Power on.</strong> A short press on the battery button, then a long press of more than 2 seconds. Wait about a minute: the robot initialises and enters zero torque or damping.</li>
+<li><strong>Posture.</strong> With the remote control or the cockpit, bring the H2 into the preparation position for standing while still supporting it. Put the feet down, switch to motion control and check the balance before releasing the support.</li>
+<li><strong>Shutdown.</strong> Return the robot to the rest posture, put it in damping, then press briefly and hold the battery button for more than 2 seconds. For long periods, remove the battery.</li>
+</ol>
+<p>The critical point is the fourth step. In damping the joints relax: if the robot is standing and not supported, it collapses. Keep the support under tension until you have seen the robot hold its balance on its own.</p>
+
+<h2>How much space you need for the first power-on</h2>
+<p>The stated standing dimensions are 1820 × 456 × 218 mm, but the useful space is not that of the robot at rest. What counts is the stride, the arm span, the exclusion zone and the working radius of the hoist. <em>Example with hypothetical numbers:</em> a 7 × 7 m room, a 4 × 4 m test area, a 1.5 m margin on each side and a ceiling of at least 2.8 m for the harness.</p>
+<p>The floor must be level and non-slip. No cables, low obstacles or objects that could catch the feet. You need stable lighting and non-reflective surfaces: the manual warns that poor lighting and reflections make perception worse. The H2 is for indoor use: rain, splashes and condensation stay out of the test area.</p>
+<p>If the robot has to work alongside people, the design of the area is part of the risk assessment. The method for setting up a trial in a company is in the guide to a <a href="/en/blog/poc-robot-umanoide-azienda.html">PoC with a humanoid robot</a>.</p>
+
+<h2>Gantry and harness: the requirement you cannot improvise</h2>
+<p>You do not power on an H2 standing and unsupported. The manual calls for a suspension point rated for the weight of the robot plus a safety factor. Hoist, slings and anchor point must be chosen for that value.</p>
+<p>Prefer a hoist with a brake and controlled descent, or a suitable support. Attach only to the points provided on the robot, never the arms, legs or head. During the first tests keep the feet a few centimetres off the ground and nobody under the robot.</p>
+<p>Two people are needed: one on the remote control and one on the hoist. The stop sequence must be rehearsed before powering on. If the robot drops suddenly, the person on the hoist must be able to stop the fall without being within reach of the arms.</p>
+
+<h2>Power and battery</h2>
+<p>The battery is 15 Ah (0.972 kWh), with a maximum voltage of 75.6 V and about 3 hours of runtime according to Unitree. It is quick-release, but it must be inserted and removed with the robot switched off.</p>
+<p>Before the first power-on, charge the battery and prepare the correct charger. If the session lasts longer than one battery pack, keep a spare. Do not work with a low battery: the manual warns that a voltage drop during the standing position or an arm acceleration can make the joints release in an unsafe way.</p>
+<p>The power ports on the back deliver 54-75.6 V and 10 A directly from the battery, two 24 V/10 A outputs and one 12 V/10 A; the two hand interfaces add 24 V/10 A each. The sum of the external outputs, excluding the direct battery one, must not exceed 500 W. If you add sensors, a compute module or a camera, do the maths before fitting them.</p>
+
+<h2>Network: two segments, not a single LAN</h2>
+<p>The base H2 has two RJ45 ports on the back and they are not interchangeable. The port on the <code>192.168.123.x</code> segment carries DDS traffic and control; the port on the <code>192.168.124.x</code> segment is the PC2 one. The H2 Plus lists four Gigabit Ethernet ports: numbering and segments must be checked against the configuration bill of materials. The table below is from the H2 documentation.</p>
+<table>
+<thead><tr><th>Device or port</th><th>Address</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>RJ45 [12]</td><td><code>192.168.123.x</code></td><td>DDS, control, custom software development (SDK)</td></tr>
+<tr><td>RJ45 [15]</td><td><code>192.168.124.x</code></td><td>PC2</td></tr>
+<tr><td>PC1, motion controller</td><td><code>192.168.123.161</code></td><td>Closed, do not change</td></tr>
+<tr><td>PC2, development computer</td><td><code>192.168.123.162</code> and <code>192.168.124.162</code></td><td>User <code>unitree</code>, initial password <code>Unitree0408</code></td></tr>
+<tr><td>PC3 and PC4 optional</td><td><code>192.168.123.163/.164</code> and <code>192.168.124.163/.164</code></td><td>Initial password <code>123</code></td></tr>
+</tbody>
+</table>
+<p>The SDK is available on the H2 EDU and H2 Plus: the H2 Air does not allow custom software development (SDK). For the SDK, connect your PC to the port on the 123.x segment with a free static IP on the same subnet, check connectivity and run the examples on the PC2 or from an external PC. PC1 is left alone: it is the Unitree motion controller.</p>
+<p>Before connecting the robot to the company network, change the passwords, put it on a dedicated VLAN and open the Internet uplink only if needed. The guide to <a href="/en/blog/unitree-offline-sicurezza-rete-aziendale.html">network security with Unitree robots</a> covers VLANs, OTA and cloud.</p>
+
+<h2>Debug mode: only with the robot suspended</h2>
+<p>For low-level commands the Unitree quick start guide asks you to put the H2 in damping, suspend it and press L2+R2 to enter debug mode. L2+A runs a diagnostic action. It is a lab mode, not for a trade show demo.</p>
+<p>If an example does not respond, check the robot state, mode and network interface first. Do not change the code until you have ruled out a connection or sequence problem. Unitree documents are updated: check the last-modified date before following a procedure.</p>
+
+<h2>Documentation to have before you start</h2>
+<p>Download and save a local copy of the documents for your configuration: if the network is isolated, the online manual cannot be reached.</p>
+<ul>
+<li><strong>H2 manual:</strong> power on, shutdown, battery, safety and robot states.</li>
+<li><strong>Remote control manual:</strong> the key map depends on the firmware.</li>
+<li><strong>Battery and charger manual:</strong> voltage, charging and storage.</li>
+<li><strong>H2 developer guide:</strong> interfaces, network addresses, debug mode and SDK.</li>
+<li><strong>Delivery bill of materials:</strong> exact version, compute modules, hands and accessories.</li>
+</ul>
+<p>If the configuration is an H2 Plus, dimensions, weight and battery are the same as the H2, but computing, ports and hands change: NVIDIA Jetson T5000 module and, as an option, two SharpaWave hands with 22 DOF each. The bill of materials and the configuration manual must be read first; the details are in the guide to the <a href="/en/blog/unitree-h2-plus-prezzo-specifiche.html">H2 Plus</a>.</p>
+
+<h2>Safety and regulations</h2>
+<p class="article-note"><em>General information, not legal advice. The risk assessment and the actual obligations depend on the environment, software and intended use.</em></p>
+<p>Before walking the H2 near people you need a written risk assessment. Employers must provide suitable equipment and train the people who use it, under the health and safety rules that apply where the robot is used.</p>
+<p>Until 19 January 2027, machinery placed on the EU market follows Directive 2006/42/EC. From 20 January 2027, Regulation (EU) 2023/1230 applies, as the <a href="https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en" rel="noopener noreferrer" target="_blank">European Commission</a> states. An H2 placed on the market before that date remains governed by Directive 2006/42/EC. The employer's health and safety obligations still apply. The guide to the <a href="/en/blog/unitree-regolamento-macchine-2027.html">Machinery Regulation 2027</a> explains what changes for anyone who modifies the robot or installs it in a cell.</p>
+<p>In the H2 manual the stop procedure is damping, followed by removing power. The H2 Plus lists a remote E-stop. If your configuration includes one, test it before starting and check the equipment against the bill of materials.</p>
+<p>Practical rules: a marked-off zone, controlled access, two operators, a tested stop and a session log. If the robot is suspended, the area under the hook stays off limits. If in doubt, stop the robot and remove power: it is the action that does not depend on the software.</p>
+
+<h2>Checklist before the first power-on</h2>
+<ol>
+<li>Hoist or bracket checked, rated for the robot weight plus margin, with brake and controlled descent.</li>
+<li>Clear area, level and non-slip floor, stable light, no cables on the floor.</li>
+<li>Battery charged, correct charger and a second battery if the session is long.</li>
+<li>H2 manual and remote control manual for the exact version, saved locally.</li>
+<li>For H2 EDU and H2 Plus: PC with a static IP on the 123.x segment and an Ethernet cable.</li>
+<li>PC2, PC3 and PC4 passwords changed, where present, before connecting the robot to the network.</li>
+<li>Two operators present, stop sequence tested, nobody under the robot.</li>
+<li>Firmware version and delivery bill of materials noted in the session log.</li>
+</ol>
+
+<section class="article-faq">
+<h2>Frequently asked questions</h2>
+<div class="faq-item"><h3>Do you really need the harness for the H2 first power-on?</h3><p>Yes. The H2 manual asks you to support the robot during power-on and every change of posture: it does not hold its balance before motion control. The harness must be rated for the weight of the robot plus a safety margin.</p></div>
+<div class="faq-item"><h3>How much space does the Unitree H2 need?</h3><p>The width is 456 mm and the depth 218 mm, but the useful space includes stride, arms, exclusion zone and hoist radius. You need a clear area, a level floor and no cables on the ground.</p></div>
+<div class="faq-item"><h3>Which Ethernet port is used for the H2 SDK?</h3><p>The RJ45 port on the 192.168.123.x segment, [12]. [15] belongs to the 192.168.124.x segment of the PC2. On the PC, set a free static IP on the same subnet.</p></div>
+<div class="faq-item"><h3>What credentials does the Unitree H2 PC2 have?</h3><p>The user is unitree and the initial password is Unitree0408; on early firmware versions it may be Unitree#24226. Change it before connecting the robot to a shared network.</p></div>
+<div class="faq-item"><h3>Can the H2 be started without connecting it to the Internet?</h3><p>Yes. Local control and the SDK run over Ethernet and DDS. Without Internet you lose OTA updates and cloud functions; for an isolated network, agree the procedure with your supplier.</p></div>
+<div class="faq-item"><h3>What are the differences between the H2 and the H2 Plus?</h3><p>Dimensions, weight and battery are the same. The H2 Plus carries an NVIDIA Jetson T5000 module and, as an option, two SharpaWave hands with 22 DOF each. The bill of materials and the configuration manual must be read before the first power-on.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Sources</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">H2 product page</a> (dimensions, weight, battery, runtime, no SDK on the base version and safety warnings)</li>
+<li>Unitree, <a href="https://www.unitree.com/H2plus" rel="noopener noreferrer" target="_blank">H2 Plus product page</a> (Jetson T5000, SharpaWave hands, remote E-stop and software development)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/User_Manual.html" rel="noopener noreferrer" target="_blank">H2 User Manual</a> (power on, support, battery, shutdown and safety)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/Remote_Control.html" rel="noopener noreferrer" target="_blank">H2 Remote Control</a> (remote control commands)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/Battery_Charger.html" rel="noopener noreferrer" target="_blank">H2 Battery and Charger</a> (battery and charger)</li>
+<li>Unitree, <a href="https://support.unitree.com/home/en/H2_developer/About_H2" rel="noopener noreferrer" target="_blank">H2 Developer Guide: About H2</a> (interfaces, PC1/PC2, addresses and credentials)</li>
+<li>Unitree, <a href="https://support.unitree.com/home/en/H2_developer/quick_development" rel="noopener noreferrer" target="_blank">H2 Developer Guide: Quick Development</a> (network, SDK2, debug mode and suspension)</li>
+<li>Unitree, <a href="https://www.unitree.com/app/H2/" rel="noopener noreferrer" target="_blank">H2 app and manuals</a> (unboxing, power-on, network, calibration and debug videos and documents)</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> (C++ SDK and development environment)</li>
+<li>European Commission, <a href="https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en" rel="noopener noreferrer" target="_blank">Machinery</a> (Directive 2006/42/EC and application of Regulation 2023/1230 from 20 January 2027)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Have you received an H2?</h2><p>For questions about power-on, harness, power or network, your first contact is Abra Robotics.</p><a class="btn btn-primary" href="/en/assessment-en.html">Request an assessment</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">All humanoids</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script src="/script.js"></script>
+</body></html>
