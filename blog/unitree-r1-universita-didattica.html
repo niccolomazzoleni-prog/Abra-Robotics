@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree R1 università: cosa ci si fa in didattica</title>
+<meta name="description" content="Unitree R1 università: specifiche ufficiali, SDK DDS e ROS 2, corsi di controllo, RL e percezione, limiti, prezzi di listino e fondi per la ricerca."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/unitree-r1-universita-didattica.html"/>
+<link href="https://abrarobotics.com/blog/unitree-r1-universita-didattica.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-r1-universita-didattica.html" hreflang="x-default" rel="alternate"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="../images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="../images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree R1 università: cosa ci si fa davvero in didattica",
+  "description": "Unitree R1 università: specifiche ufficiali, SDK DDS e ROS 2, corsi di controllo, RL e percezione, limiti, prezzi di listino e fondi per la ricerca.",
+  "datePublished": "2026-10-28",
+  "dateModified": "2026-10-28",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": "https://abrarobotics.com/blog/unitree-r1-universita-didattica.html",
+  "image": "https://abrarobotics.com/images/official/unitree-r1-01.webp",
+  "inLanguage": "it"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Unitree R1 cosa fa in un laboratorio universitario?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Regge corsi di controllo e locomozione, reinforcement learning e percezione. Non è pensato per manipolare carichi: il carico massimo al braccio è circa 2 kg e l'autonomia circa un'ora."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quale versione dell'R1 si può programmare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Solo le versioni EDU. Air e Basic si usano con app e telecomando; l'SDK unitree_sdk2, ROS 2 e i topic DDS sono documentati per l'R1 EDU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto costa l'Unitree R1 per un'università?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L'R1 Air costa 7.190,05 €; l'R1 Edu Standard (R1-U1), la prima versione programmabile del bipede, costa 14.929,58 €. La versione più cara della famiglia R1 è l'R1 Edu Professional B (R1-U4) a 35.216,56 €. Prezzi End-User IVA esclusa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "L'R1 è adatto al reinforcement learning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì, in versione EDU, con un flusso simulazione-addestramento-trasferimento. La batteria da circa un'ora limita le sessioni reali; il repository unitree_sim_isaaclab documenta G1 e H1-2, quindi per l'R1 vanno verificati i modelli disponibili."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un'università può usare l'iperammortamento per comprare un R1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In generale no: l'iperammortamento è rivolto alle imprese. Gli atenei finanziano l'acquisto con fondi di progetto, PRIN, PNRR o Horizon Europe, secondo le regole del singolo bando."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "R1 o G1 per la didattica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L'R1 EDU basta per controllo, locomozione e percezione a budget contenuto. Per manipolazione, apprendimento per imitazione e dataset di teleoperazione il riferimento è il G1 EDU."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree R1 università: cosa ci si fa in didattica"/>
+<meta property="og:description" content="Unitree R1 università: specifiche ufficiali, SDK DDS e ROS 2, corsi di controllo, RL e percezione, limiti, prezzi di listino e fondi per la ricerca."/>
+<meta property="og:url" content="https://abrarobotics.com/blog/unitree-r1-universita-didattica.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-r1-01.webp"/>
+<meta property="og:locale" content="it_IT"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp"/></a>
+<div class="nav-links nav-post-links"><a href="../blog.html">Blog</a></div>
+</div></nav>
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Applicazioni</nav>
+
+<figure class="article-cover">
+<img src="../images/official/unitree-r1-01.webp" alt="Unitree R1 EDU, robot umanoide bipede compatto" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Applicazioni</p>
+<h1>Unitree R1 università: cosa ci si fa davvero in didattica</h1>
+<div class="article-meta"><time datetime="2026-10-28">28 ottobre 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In breve:</strong> l'R1 EDU è un bipede da 123 cm e circa 29 kg, con SDK su DDS, ROS 2 e telecamera binoculare. In ateneo serve per corsi di controllo, reinforcement learning e percezione, non per manipolazione pesante. La prima versione programmabile è l'R1 Edu Standard (R1-U1).</div>
+</header>
+
+<div class="article-content">
+<p>Chi valuta l'<em>Unitree R1 per università</em> e didattica ha due vincoli: un corso da coprire e un budget da chiudere. L'R1 EDU è il bipede compatto della gamma: serve a insegnare come cammina un umanoide e come si scrive il codice che lo controlla. Non è pensato per la manipolazione pesante o l'assemblaggio; le mani sono opzionali.</p>
+<p class="article-note"><em>Informazioni generali, non consulenza legale o fiscale. Prezzi End-User IVA esclusa dal listino pubblico; le condizioni dei bandi vanno verificate con l'ufficio ricerca del proprio ateneo.</em></p>
+
+<h2>Unitree R1 università: cosa ci si fa davvero</h2>
+<p>In ateneo l'R1 copre tre laboratori: controllo e locomozione, reinforcement learning, percezione e interazione uomo-robot. Un corso introduttivo lo usa per la parte pratica; un corso avanzato aggiunge la pipeline simulazione-robot. Fuori da questi tre ambiti non è la scelta giusta: non è un robot di servizio.</p>
+<table>
+<thead><tr><th>Laboratorio</th><th>Cosa studia lo studente</th><th>Cosa tocca sul robot</th><th>Limite da conoscere</th></tr></thead>
+<tbody>
+<tr><td>Controllo e locomozione</td><td>Cinematica, dinamica, equilibrio, generazione del passo</td><td>Stato dei giunti, comandi di basso livello, IMU</td><td>Coppia al ginocchio non pubblicata</td></tr>
+<tr><td>Reinforcement learning</td><td>Reward, domain randomization, trasferimento sim-to-real</td><td>SDK, topic DDS, simulatore</td><td>Modelli R1 da verificare</td></tr>
+<tr><td>Percezione e HRI</td><td>Stereo vision, profondità, voce, tracciamento</td><td>Telecamera binoculare, array di microfoni</td><td>Depth 544×448, non un sensore industriale</td></tr>
+</tbody>
+</table>
+
+<h2>Le specifiche ufficiali dell'R1</h2>
+<p>I dati sotto vengono dalla scheda del produttore. Unitree precisa che i parametri possono cambiare con la configurazione e che il carico al braccio varia molto con la postura.</p>
+<table>
+<thead><tr><th>Voce</th><th>R1 Air</th><th>R1 Basic</th><th>R1 EDU</th></tr></thead>
+<tbody>
+<tr><td>Dimensioni in piedi</td><td>1230 × 357 × 190 mm</td><td>1230 × 357 × 190 mm</td><td>1230 × 357 × 190 mm</td></tr>
+<tr><td>Peso con batteria</td><td>circa 27 kg</td><td>circa 29 kg</td><td>circa 29 kg</td></tr>
+<tr><td>Gradi di libertà</td><td>20</td><td>26</td><td>26, fino a 40 con le mani</td></tr>
+<tr><td>Braccio / vita / testa</td><td>4 / 0 / 0</td><td>5 / 2 / 2</td><td>5 / 2 / 2</td></tr>
+<tr><td>Carico massimo per braccio</td><td>circa 2 kg</td><td>circa 2 kg</td><td>circa 2 kg</td></tr>
+<tr><td>Telecamera</td><td>Monoculare</td><td>Binoculare</td><td>Binoculare</td></tr>
+<tr><td>Calcolo</td><td>CPU 8 core</td><td>CPU 8 core</td><td>CPU 8 core + Jetson Orin 40-100 TOPS secondo configurazione</td></tr>
+<tr><td>SDK</td><td>No</td><td>No</td><td>Sì</td></tr>
+<tr><td>Autonomia</td><td>circa 1 ora</td><td>circa 1 ora</td><td>circa 1 ora</td></tr>
+<tr><td>Garanzia</td><td>6 mesi</td><td>8 mesi</td><td>12 mesi</td></tr>
+</tbody>
+</table>
+<p>La batteria è a sgancio rapido, con caricabatterie e telecomando in dotazione; Wi-Fi 6 e Bluetooth 5.2 sono dichiarati su tutta la famiglia. Unitree avverte che il settore è in una fase iniziale, alcune funzioni sono in sviluppo e va mantenuta una distanza di sicurezza.</p>
+
+<h2>SDK e sviluppo software: cosa si programma sull'R1 EDU</h2>
+<p>Tra le versioni del bipede, lo sviluppo software proprio è attivo solo sull'R1 EDU. Air e Basic si comandano con app o telecomando e non eseguono codice dello studente. Sull'EDU si lavora con <strong>unitree_sdk2</strong>, uno strato sopra DDS con pubblicazione/sottoscrizione per i dati continui e richiesta/risposta per i comandi. Gli esempi C++ per l'R1 nell'SDK usano i topic <code>rt/lowstate</code> e <code>rt/lowcmd</code>; la documentazione R1 ha una routine ROS 2. L'SDK è distribuito con licenza BSD-3-Clause. Per i primi passi su ROS 2 c'è la <a href="ros2-unitree-guida-rapida.html">guida rapida Unitree</a>.</p>
+<p>La testa dell'R1 EDU monta un modulo binoculare. Il servizio video documentato espone un'immagine a 1280×720, RGB per occhio a 544×448 e una mappa di profondità a 544×448. Basta per rilevare ostacoli e stimare distanze; non per un dataset da sensore industriale.</p>
+<p>La scheda ufficiale parla di supporto alle principali piattaforme; il repository <strong>unitree_sim_isaaclab</strong>, però, documenta G1 e H1-2, non R1. Prima di impostare un corso di reinforcement learning chiedete i modelli R1 aggiornati e provate la pipeline in laboratorio.</p>
+
+<h2>Tre corsi possibili</h2>
+<h3>Controllo e locomozione</h3>
+<p>È il corso più naturale. Gli studenti leggono stato dei giunti e IMU, generano traiettorie di appoggio e provano a mantenere l'equilibrio con perturbazioni controllate. Esercizi tipici: alzata e abbassamento, squat, passo avanti e indietro, recupero dopo una spinta laterale. Unitree non pubblica la coppia massima al ginocchio dell'R1: per il G1 EDU dichiara 120 N·m. Il confronto con l'R1 va fatto sulla risposta osservata, non su un dato di targa.</p>
+<h3>Reinforcement learning</h3>
+<p>L'R1 EDU permette di portare sul robot una policy addestrata in simulazione, via SDK. Conviene addestrare in simulazione e usare il robot per la verifica finale. Esercizi utili: reward shaping per il cammino, randomizzazione di attrito e massa, valutazione su terreno irregolare. La pipeline va costruita sui modelli disponibili, non dati per scontati.</p>
+<h3>Percezione e interazione</h3>
+<p>Telecamera stereo e array di quattro microfoni bastano per un laboratorio di percezione e HRI. Gli studenti stimano la profondità, segmentano un ostacolo, seguono una persona e collegano un comando vocale a un'azione. Unitree dichiara un modello multimodale integrato per voce e immagini; i risultati vanno misurati in laboratorio, non presi dalla demo del produttore.</p>
+
+<h2>Quante unità servono e come si organizza il laboratorio</h2>
+<p>Con una classe numerosa conviene dividere gli studenti in gruppi e fare sessioni a turni. Una seconda batteria per robot evita di interrompere il turno mentre l'altra si ricarica. Il robot lavora in un'area delimitata, con pavimento libero e la distanza di sicurezza del produttore; accensione, spegnimento e spostamento restano a una persona responsabile. Gli studenti si collegano in rete locale e lavorano sul codice.</p>
+<table>
+<thead><tr><th>Accessorio</th><th>Prezzo IVA esclusa</th><th>Quando serve</th></tr></thead>
+<tbody>
+<tr><td>Batteria R1 (6000 mAh)</td><td>586,95 €</td><td>Sessioni oltre l'ora o classi a turni</td></tr>
+<tr><td>Caricabatterie R1</td><td>146,73 €</td><td>Una unità per robot</td></tr>
+<tr><td>Modulo di calcolo 100 TOPS</td><td>4.402,07 €</td><td>Upgrade per U1 con modelli più pesanti</td></tr>
+<tr><td>Kit LiDAR Livox Mid-360</td><td>2.201,04 €</td><td>SLAM e navigazione</td></tr>
+<tr><td>Mano Dex3-1 senza sensori tattili</td><td>7.109,32 €</td><td>Se il corso include la presa</td></tr>
+</tbody>
+</table>
+
+<h2>Unitree R1 prezzo: quale versione scegliere per l'ateneo</h2>
+<p>Per la didattica il punto di partenza è l'<strong>R1 Edu Standard (R1-U1)</strong>: 26 gradi di libertà, SDK e modulo di calcolo da 40 TOPS. L'<strong>R1 Edu Smart (R1-U2)</strong> aggiunge la base di espansione da 100 TOPS. Le <strong>Professional</strong> aggiungono le mani: la U3 include le Dex3-1 senza sensori tattili. Se il corso non prevede la presa, una Professional paga accessori che restano fermi.</p>
+<table>
+<thead><tr><th>Versione</th><th>Prezzo IVA esclusa</th><th>Nota</th></tr></thead>
+<tbody>
+<tr><td><a href="../prodotti/unitree-r1-air.html">R1 Air</a></td><td>7.190,05 €</td><td>Demo e teleguida, senza SDK</td></tr>
+<tr><td><a href="../prodotti/unitree-r1-basic.html">R1 Basic</a></td><td>8.261,55 €</td><td>26 DoF, senza SDK</td></tr>
+<tr><td><a href="../prodotti/unitree-r1-edu.html">R1 Edu Standard (R1-U1)</a></td><td>14.929,58 €</td><td>Entry EDU, modulo 40 TOPS</td></tr>
+<tr><td><a href="../prodotti/unitree-r1-edu-smart.html">R1 Edu Smart (R1-U2)</a></td><td>17.608,28 €</td><td>U1 con base di espansione 100 TOPS</td></tr>
+<tr><td><a href="../prodotti/unitree-r1-edu-prof-a.html">R1 Edu Professional A (R1-U3)</a></td><td>32.281,85 €</td><td>U2 con mani Dex3-1 senza tattile</td></tr>
+<tr><td><a href="../prodotti/unitree-r1-edu-prof-b.html">R1 Edu Professional B (R1-U4)</a></td><td>35.216,56 €</td><td>Configurazione più cara della famiglia</td></tr>
+</tbody>
+</table>
+<p>Nel listino la famiglia R1 copre da 6.294,96 € (R1-A5 Standard, torso senza gambe) a 35.216,56 € (R1 Edu Professional B). Le altre Professional cambiano per mani e accessori: il prospetto completo è nella <a href="../r1.html">pagina della gamma R1</a>. I prezzi sono End-User, IVA esclusa, con spedizione e dazio inclusi in Italia.</p>
+
+<h2>I limiti da mettere nel conto</h2>
+<ul>
+<li><strong>Autonomia.</strong> Una giornata di lezione richiede batterie di riserva e turni pianificati.</li>
+<li><strong>SDK.</strong> Air e Basic non sono programmabili. Il preventivo didattico parte dalla U1.</li>
+<li><strong>Mani.</strong> Una mano Dex3-1 senza tattile costa 7.109,32 €, quasi quanto un R1 Air. Per la sola locomozione sono un costo inutile.</li>
+<li><strong>Simulazione.</strong> Il repository unitree_sim_isaaclab documenta G1 e H1-2. Per l'R1 va verificata la disponibilità di asset e pipeline.</li>
+<li><strong>Maturità.</strong> Unitree scrive che alcune funzioni sono in sviluppo e che serve distanza di sicurezza. Il laboratorio deve avere una procedura scritta.</li>
+</ul>
+<p>Se il corso è centrato sulla manipolazione, il confronto giusto è con il <a href="unitree-r1-vs-g1.html">G1</a>, non con una versione più cara dell'R1. Il G1 Edu Standard (G1-U1) costa 38.004,54 €; la famiglia G1 EDU dichiara 120 N·m al ginocchio, arriva a 43 gradi di libertà e offre più opzioni di mani. Per la sola presa su banco valuta le versioni senza gambe R1-D o G1-D. Per due laboratori, la combinazione sensata è R1 per il corso base e G1 per la manipolazione, non due R1 con mani costose.</p>
+
+<h2>Come si finanzia l'acquisto in università</h2>
+<p>L'iperammortamento è riservato alle imprese: la <a href="https://www.mimit.gov.it/it/incentivi/nuovo-piano-transizione-5-0-iperammortamento" rel="noopener noreferrer" target="_blank">scheda MIMIT</a> indica le imprese residenti e le stabili organizzazioni in Italia, non gli atenei in quanto tali. Le università comprano con fondi di progetto, bandi regionali, PRIN, PNRR o Horizon Europe. Il bando PRIN 2026, chiuso il 1° giugno 2026, finanzia progetti triennali da 1 a 1,2 milioni di euro con 4-6 unità di ricerca; il PNRR Missione 4 Componente 2 mette 8,55 miliardi di euro a disposizione del MUR; Horizon Europe ha una dotazione indicativa di 93,5 miliardi di euro per il 2021-2027. Ogni programma decide quali voci sono ammissibili: robot, moduli di calcolo, batterie, software e formazione possono stare in categorie diverse. Il preventivo va costruito sulle voci del bando.</p>
+<p>Per il quadro completo su piattaforme e percorsi c'è la pagina <a href="../universita-ricerca.html">Università e Ricerca</a>. Se l'acquirente è un'impresa, le regole di iperammortamento, Sabatini e leasing sono nell'articolo sul <a href="finanziamento-robot-industria-40.html">finanziamento dei robot</a>.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Prodotti citati nell'articolo</span><a href="../listino-unitree.html">Listino completo</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-r1-edu.html"><img alt="Unitree R1 EDU (R1-U1)" loading="lazy" src="../images/official/unitree-r1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-r1-edu.html">Unitree R1 EDU (R1-U1)</a></h3>
+<p>SDK, 26 DoF, telecamera binoculare</p>
+<div class="product-card-price">14.929,58 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-r1-edu.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-r1-air.html"><img alt="Unitree R1 Air" loading="lazy" src="../images/prodotti/r1-air.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-r1-air.html">Unitree R1 Air</a></h3>
+<p>20 DoF, uso con app, senza SDK</p>
+<div class="product-card-price">7.190,05 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-r1-air.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-g1-edu-standard.html"><img alt="Unitree G1 Edu Standard (G1-U1)" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-g1-edu-standard.html">Unitree G1 Edu Standard (G1-U1)</a></h3>
+<p>SDK, 23 DoF, per manipolazione</p>
+<div class="product-card-price">38.004,54 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-edu-standard.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<section class="article-faq">
+<h2>Domande frequenti</h2>
+<div class="faq-item"><h3>Unitree R1 cosa fa in un laboratorio universitario?</h3><p>Regge corsi di controllo e locomozione, reinforcement learning e percezione. Non è pensato per manipolare carichi: il carico massimo al braccio è circa 2 kg e l'autonomia circa un'ora.</p></div>
+<div class="faq-item"><h3>Quale versione dell'R1 si può programmare?</h3><p>Solo le versioni EDU. Air e Basic si usano con app e telecomando; l'SDK unitree_sdk2, ROS 2 e i topic DDS sono documentati per l'R1 EDU.</p></div>
+<div class="faq-item"><h3>Quanto costa l'Unitree R1 per un'università?</h3><p>L'R1 Air costa 7.190,05 €; l'R1 Edu Standard (R1-U1), la prima versione programmabile del bipede, costa 14.929,58 €. La versione più cara della famiglia R1 è l'R1 Edu Professional B (R1-U4) a 35.216,56 €. Prezzi End-User IVA esclusa.</p></div>
+<div class="faq-item"><h3>L'R1 è adatto al reinforcement learning?</h3><p>Sì, in versione EDU, con un flusso simulazione-addestramento-trasferimento. La batteria da circa un'ora limita le sessioni reali; il repository unitree_sim_isaaclab documenta G1 e H1-2, quindi per l'R1 vanno verificati i modelli disponibili.</p></div>
+<div class="faq-item"><h3>Un'università può usare l'iperammortamento per comprare un R1?</h3><p>In generale no: l'iperammortamento è rivolto alle imprese. Gli atenei finanziano l'acquisto con fondi di progetto, PRIN, PNRR o Horizon Europe, secondo le regole del singolo bando.</p></div>
+<div class="faq-item"><h3>R1 o G1 per la didattica?</h3><p>L'R1 EDU basta per controllo, locomozione e percezione a budget contenuto. Per manipolazione, apprendimento per imitazione e dataset di teleoperazione il riferimento è il G1 EDU.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Fonti</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/R1/" rel="noopener noreferrer" target="_blank">scheda ufficiale R1</a> (specifiche, DoF, note su sicurezza e funzioni in sviluppo)</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/R1_developer" rel="noopener noreferrer" target="_blank">R1 developer</a> (specifiche, camere, interfacce elettriche, sviluppo software proprio)</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/R1_developer/services_interface" rel="noopener noreferrer" target="_blank">R1 services interface</a> (DDS, pubblicazione/sottoscrizione, richiesta/risposta, unitree_sdk2)</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/R1_developer/video_service" rel="noopener noreferrer" target="_blank">R1 video service</a> (risoluzioni del modulo binoculare: 1280×720, RGB per occhio e depth 544×448)</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> (SDK, licenza BSD-3-Clause, ambiente Ubuntu, esempi R1 e topic DDS)</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_sim_isaaclab" rel="noopener noreferrer" target="_blank">unitree_sim_isaaclab</a> (ambiente Isaac Lab per G1 e H1-2)</li>
+<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">scheda ufficiale G1</a> (23-43 gradi di libertà, 120 N·m al ginocchio per la versione EDU, mani opzionali)</li>
+<li>Unitree, <a href="https://www.unitree.com/R1-D/" rel="noopener noreferrer" target="_blank">scheda ufficiale R1-D</a> e <a href="https://www.unitree.com/G1-D/" rel="noopener noreferrer" target="_blank">scheda ufficiale G1-D</a> (versioni senza gambe, a due braccia o a colonna)</li>
+<li>MIMIT, <a href="https://www.mimit.gov.it/it/incentivi/nuovo-piano-transizione-5-0-iperammortamento" rel="noopener noreferrer" target="_blank">Iperammortamento, scheda ufficiale della misura</a> (destinatari: imprese residenti e stabili organizzazioni in Italia)</li>
+<li>MUR, <a href="https://www.mur.gov.it/it/aree-tematiche/ricerca/programmi-di-finanziamento/progetti-di-rilevante-interesse-nazionale-prin/prin-2026" rel="noopener noreferrer" target="_blank">PRIN 2026</a> (bando, dotazione e scadenze)</li>
+<li>MUR, <a href="https://www.mur.gov.it/it/pnrr/pnrr-misure-e-componenti" rel="noopener noreferrer" target="_blank">PNRR - Misure e Componenti</a> (Missione 4, Componente 2, 8,55 miliardi al MUR)</li>
+<li>Commissione europea, <a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en" rel="noopener noreferrer" target="_blank">Horizon Europe</a> (programma 2021-2027, 93,5 miliardi indicativi)</li>
+<li>Abra Robotics, <a href="../listino-unitree.html">listino pubblico End-User</a> (prezzi IVA esclusa usati nelle tabelle)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Allestire un laboratorio con l'R1</h2><p>Dicci quanti studenti, quali corsi e quale budget: prepariamo una configurazione con robot, batterie, moduli di calcolo e accessori, separando le voci utili al bando.</p><a class="btn btn-primary" href="../universita-ricerca.html">Università e Ricerca</a><a class="btn btn-outline-light" href="../assessment.html">Trova la configurazione</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp" width="180" height="72" decoding="async"/></a>
+<p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Prodotti</span>
+<a href="../cobot.html">Cobot</a>
+<a href="../amr.html">AMR</a>
+<a href="../quadrupedi.html">Quadrupedi</a>
+<a href="../umanoidi.html">Umanoidi</a>
+<a href="../accessori.html">Accessori</a>
+<a href="../catalogo.html">Catalogo completo</a>
+<a href="../listino-unitree.html">Listino prezzi</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Servizi e risorse</span>
+<a href="../assessment.html">Trova il robot giusto</a>
+<a href="../software.html">Software</a>
+<a href="../finanziamenti.html">Finanziamenti</a>
+<a href="../manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="../universita-ricerca.html">Università e Ricerca</a>
+<a href="../blog.html">Blog</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contatti</span>
+<a href="../chi-siamo.html">Chi siamo</a>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Viale Trieste 105<br/>30026 Portogruaro (VE)</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<nav aria-label="Note legali" class="footer-legal">
+<a href="../privacy-policy.html">Privacy Policy</a>
+<a href="../cookie-policy.html">Cookie Policy</a>
+<a href="../condizioni-di-vendita.html">Condizioni di vendita</a>
+<a href="../politica-resi.html">Politica resi</a>
+<a href="../note-legali.html">Note legali</a>
+</nav>
+</div>
+</footer>
+<script defer src="../script.js"></script>
+</body></html>
