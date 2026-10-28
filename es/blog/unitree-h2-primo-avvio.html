@@ -1,0 +1,344 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-h2-primo-avvio.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree H2: primer arranque, batería y red</title>
+<meta name="description" content="Unitree H2: espacio, suspensión, batería, red Ethernet, modo debug y documentación oficial. Lista de comprobación para el primer arranque."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/es/blog/unitree-h2-primo-avvio.html"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-primo-avvio.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-h2-primo-avvio.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/unitree-h2-primo-avvio.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/unitree-h2-primo-avvio.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-h2-primo-avvio.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/unitree-h2-primo-avvio.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-h2-primo-avvio.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-primo-avvio.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="icon" type="image/png" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree H2: primer arranque, batería y red",
+  "description": "Unitree H2: espacio, suspensión, batería, red Ethernet, modo debug y documentación oficial. Lista de comprobación para el primer arranque.",
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/es/blog/unitree-h2-primo-avvio.html"
+  },
+  "image": "https://abrarobotics.com/images/prodotti/h2-edu.webp",
+  "inLanguage": "es",
+  "url": "https://abrarobotics.com/es/blog/unitree-h2-primo-avvio.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿De verdad hace falta la suspensión para el primer arranque del H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El manual del H2 pide sostener el robot durante el encendido y cada cambio de postura: no mantiene el equilibrio antes del control de movimiento. La suspensión debe dimensionarse para el peso del robot más un margen de seguridad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto espacio necesita el Unitree H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La anchura es 456 mm y la profundidad 218 mm, pero el espacio útil incluye el paso, los brazos, la zona de exclusión y el radio del polipasto. Hacen falta un área libre, un suelo plano y ningún cable en el suelo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué puerto Ethernet se usa para el SDK del H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El puerto RJ45 del segmento 192.168.123.x, el [12]. El [15] pertenece al segmento 192.168.124.x del PC2. En el PC, configure una IP estática libre de la misma subred."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué credenciales tiene el PC2 del Unitree H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El usuario es unitree y la contraseña inicial es Unitree0408; en las primeras versiones de firmware puede ser Unitree#24226. Cámbiela antes de conectar el robot a una red compartida."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se puede arrancar el H2 sin conectarlo a Internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El control local y el SDK pasan por Ethernet y DDS. Sin Internet faltan las actualizaciones OTA y las funciones en la nube; para una red aislada, acuerde el procedimiento con el proveedor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencias hay entre el H2 y el H2 Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las dimensiones, el peso y la batería no cambian. El H2 Plus monta un módulo NVIDIA Jetson T5000 y, en opción, dos manos SharpaWave de 22 DOF cada una. El albarán y el manual de la configuración deben leerse antes del arranque."
+      }
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree H2: primer arranque, batería y red"/>
+<meta property="og:description" content="Unitree H2: espacio, suspensión, batería, red Ethernet, modo debug y documentación oficial. Lista de comprobación para el primer arranque."/>
+<meta property="og:url" content="https://abrarobotics.com/es/blog/unitree-h2-primo-avvio.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/prodotti/h2-edu.webp"/>
+<meta property="og:locale" content="es_ES"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Robots Unitree con envío desde Italia · soporte en inglés</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/es/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Productos <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Cuadrúpedos</a>
+<a href="/en/umanoidi-en.html">Humanoides</a>
+<a href="/en/accessori-en.html">Accesorios</a>
+<a href="/en/catalogo-unitree-en.html">Catálogo completo</a>
+<a href="/es/#models">Tarifa de precios</a>
+</div>
+</div>
+<a href="/es/#models">Precios</a>
+<a href="/en/assessment-en.html">Encontrar el robot adecuado</a>
+<a href="/es/#incentives">Financiación</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Sectores <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Industria y logística</a>
+<a href="/en/universita-ricerca-en.html">Universidades e investigación</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Quiénes somos</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Reservar una llamada</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/es/">Inicio</a> / <a href="/es/">Blog</a> / Primer arranque del H2</nav>
+
+<figure class="article-cover">
+<img src="/images/prodotti/h2-edu.webp" alt="Unitree H2 EDU, humanoide de tamaño humano" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Guías de uso · Humanoides</p>
+<h1>Unitree H2: qué saber antes de encenderlo</h1>
+<div class="article-meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>En resumen:</strong> antes del primer arranque, el Unitree H2 debe colgarse o sostenerse: no mantiene el equilibrio hasta que entra en control de movimiento. Hacen falta una suspensión dimensionada, un área libre, la batería cargada, red Ethernet y el manual del H2. La parada pasa por damping y retirada de la alimentación: el soporte sigue siendo necesario.</div>
+</header>
+
+<div class="article-content">
+<p>La puesta en marcha del <strong>Unitree H2</strong> requiere un soporte, la batería cargada y la red configurada. El robot mide 1.820 mm de alto, pesa unos 70 kg con la batería y no mantiene el equilibrio hasta que entra en control de movimiento: hasta ese momento hay que colgarlo o sostenerlo. Las versiones y configuraciones están en la <a href="/es/unitree-h2.html">página de la gama H2</a>; las diferencias entre H2 Air, H2 EDU, H2-D y H2 Plus están en la <a href="/es/blog/unitree-h2-italia.html">guía del H2</a>. El procedimiento descrito aquí se refiere a las versiones bípedas: H2 Air, H2 EDU y H2 Plus.</p>
+
+<h2>Unitree H2: la secuencia correcta</h2>
+<p>El manual del H2 describe una secuencia precisa. Las combinaciones de teclas cambian con el firmware: use el manual del mando a distancia de su unidad, no una secuencia copiada de un vídeo de otra versión.</p>
+<ol>
+<li><strong>Soporte.</strong> Cuelgue el robot de un polipasto o apóyelo en un soporte adecuado, con el frontal hacia delante. Despeje la zona de personas y obstáculos y coloque brazos y piernas en una posición natural, sin cables en tensión.</li>
+<li><strong>Batería.</strong> Insértela en el compartimento hasta que encaje, con el robot apagado. No fuerce: si no entra, sáquela y compruebe la orientación.</li>
+<li><strong>Encendido.</strong> Pulsación corta en el botón de la batería y después pulsación larga de más de 2 segundos. Espere alrededor de un minuto: el robot se inicializa y entra en zero-torque o damping.</li>
+<li><strong>Postura.</strong> Con el mando a distancia o el cockpit, lleve el H2 a la posición de preparación para ponerse de pie sin dejar de sostenerlo. Apoye los pies del robot, pase al control de movimiento y compruebe el equilibrio antes de soltar el soporte.</li>
+<li><strong>Apagado.</strong> Devuelva el robot a la postura de reposo, póngalo en damping y después pulse brevemente y mantenga pulsado el botón de la batería más de 2 segundos. Para periodos largos, retire la batería.</li>
+</ol>
+<p>El punto crítico es el cuarto paso. En damping las articulaciones se relajan: si el robot está de pie y no está sostenido, se desploma. Mantenga el soporte en tensión hasta haber visto que el robot se mantiene en equilibrio por sí solo.</p>
+
+<h2>Qué espacio hace falta para el primer arranque</h2>
+<p>Las dimensiones oficiales de pie son 1820 × 456 × 218 mm, pero el espacio útil no es el del robot parado. Cuentan el paso, la apertura de los brazos, la zona de exclusión y el radio de acción del polipasto. <em>Ejemplo con cifras hipotéticas:</em> sala de 7 × 7 m, área de prueba de 4 × 4 m, margen de 1,5 m por cada lado y techo de al menos 2,8 m para la suspensión.</p>
+<p>El suelo debe ser plano y no resbaladizo. Nada de cables, obstáculos bajos u objetos que puedan enganchar los pies. Hacen falta luz estable y superficies no reflectantes: el manual advierte de que una iluminación escasa y los reflejos empeoran la percepción. El H2 es para uso interior: la lluvia, las salpicaduras y la condensación quedan fuera del área de prueba.</p>
+<p>Si el robot debe convivir con personas, el diseño del área forma parte de la evaluación de riesgos. El método para plantear una prueba en empresa está en la guía del <a href="/es/blog/poc-robot-umanoide-azienda.html">PoC con un robot humanoide</a>.</p>
+
+<h2>Pórtico y suspensión: el requisito que no se improvisa</h2>
+<p>Un H2 no se enciende de pie y sin sujeción. El manual exige un punto de suspensión dimensionado para el peso del robot más un factor de seguridad. El polipasto, las eslingas y el punto de anclaje deben elegirse sobre ese valor.</p>
+<p>Prefiera un polipasto con freno y descenso controlado, o un soporte adecuado. Enganche solo los puntos previstos por el robot, nunca brazos, piernas o cabeza. Durante las primeras pruebas mantenga los pies a pocos centímetros del suelo y compruebe que no haya nadie debajo del robot.</p>
+<p>Hacen falta dos personas: una en el mando a distancia y otra en el polipasto. La secuencia de parada debe probarse en vacío antes de encender. Si el robot baja de golpe, la persona del polipasto debe poder detener la caída sin estar dentro del radio de los brazos.</p>
+
+<h2>Alimentación y batería</h2>
+<p>La batería es de 15 Ah (0,972 kWh), con una tensión máxima de 75,6 V y unas 3 horas de autonomía según Unitree. Es de extracción rápida, pero debe insertarse y retirarse con el robot apagado.</p>
+<p>Antes del primer arranque, cargue la batería y prepare el cargador correcto. Si la sesión dura más que una batería, tenga otra de repuesto. No trabaje con la batería baja: el manual advierte de que la caída de tensión durante la posición erguida o una aceleración del brazo puede hacer que las articulaciones se suelten de forma insegura.</p>
+<p>Los puertos de alimentación de la parte trasera entregan 54-75,6 V y 10 A directamente desde la batería, dos salidas de 24 V/10 A y una de 12 V/10 A; las dos interfaces para las manos añaden 24 V/10 A cada una. La suma de las salidas externas, excluida la directa de la batería, no debe superar 500 W. Si añade sensores, un módulo de computación o una cámara, haga el cálculo antes de montarlos.</p>
+
+<h2>Red: dos segmentos, no una sola LAN</h2>
+<p>El H2 base tiene dos puertos RJ45 en la parte trasera y no son intercambiables. El puerto del segmento <code>192.168.123.x</code> lleva el tráfico DDS y el control; el puerto del segmento <code>192.168.124.x</code> es el del PC2. El H2 Plus declara cuatro puertos Gigabit Ethernet: la numeración y los segmentos deben verificarse en el albarán de entrega de la configuración. La tabla siguiente es la de la documentación del H2.</p>
+<table>
+<thead><tr><th>Dispositivo o puerto</th><th>Dirección</th><th>Notas</th></tr></thead>
+<tbody>
+<tr><td>RJ45 [12]</td><td><code>192.168.123.x</code></td><td>DDS, control, desarrollo de software propio (SDK)</td></tr>
+<tr><td>RJ45 [15]</td><td><code>192.168.124.x</code></td><td>PC2</td></tr>
+<tr><td>PC1, controlador de movimiento</td><td><code>192.168.123.161</code></td><td>Cerrado, no se modifica</td></tr>
+<tr><td>PC2, ordenador de desarrollo</td><td><code>192.168.123.162</code> y <code>192.168.124.162</code></td><td>Usuario <code>unitree</code>, contraseña inicial <code>Unitree0408</code></td></tr>
+<tr><td>PC3 y PC4 opcionales</td><td><code>192.168.123.163/.164</code> y <code>192.168.124.163/.164</code></td><td>Contraseña inicial <code>123</code></td></tr>
+</tbody>
+</table>
+<p>El SDK está disponible en H2 EDU y H2 Plus: el H2 Air no permite el desarrollo de software propio (SDK). Para el SDK, conecte su PC al puerto del segmento 123.x con una IP estática libre de la misma subred, compruebe la conectividad y ejecute los ejemplos en el PC2 o desde un PC externo. El PC1 no se toca: es el controlador de movimiento de Unitree.</p>
+<p>Antes de conectar el robot a la red de la empresa, cambie las contraseñas, póngalo en una VLAN dedicada y abra la salida a Internet solo si hace falta. La guía de <a href="/es/blog/unitree-offline-sicurezza-rete-aziendale.html">seguridad de red con robots Unitree</a> cubre VLAN, OTA y nube.</p>
+
+<h2>Modo debug: solo con el robot colgado</h2>
+<p>Para los comandos de bajo nivel, la guía rápida de Unitree pide poner el H2 en damping, suspenderlo y pulsar L2+R2 para entrar en modo debug. L2+A ejecuta una acción de diagnóstico. Es un modo de laboratorio, no de demostración en feria.</p>
+<p>Si un ejemplo no responde, compruebe primero el estado del robot, el modo y la interfaz de red. No cambie el código hasta haber descartado un problema de conexión o de secuencia. Los documentos de Unitree se actualizan: compruebe la fecha de última modificación antes de seguir un procedimiento.</p>
+
+<h2>Documentación que debe tener antes de empezar</h2>
+<p>Descargue y guarde una copia local de los documentos de su configuración: si la red está aislada, el manual en línea no es accesible.</p>
+<ul>
+<li><strong>Manual del H2:</strong> arranque, parada, batería, seguridad y estados del robot.</li>
+<li><strong>Manual del mando a distancia:</strong> el mapa de teclas depende del firmware.</li>
+<li><strong>Manual de batería y cargador:</strong> tensión, recarga y almacenamiento.</li>
+<li><strong>Guía para desarrolladores del H2:</strong> interfaces, direcciones de red, modo debug y SDK.</li>
+<li><strong>Albarán de entrega:</strong> versión exacta, módulos de computación, manos y accesorios.</li>
+</ul>
+<p>Si la configuración es un H2 Plus, las dimensiones, el peso y la batería no cambian respecto al H2, pero cambian el módulo de computación, los puertos y las manos: módulo NVIDIA Jetson T5000 y, en opción, dos manos SharpaWave de 22 DOF cada una. El albarán y el manual de la configuración deben leerse antes; los detalles están en la guía del <a href="/es/blog/unitree-h2-plus-prezzo-specifiche.html">H2 Plus</a>.</p>
+
+<h2>Seguridad y normativa</h2>
+<p class="article-note"><em>Información general, no asesoramiento legal. La evaluación de riesgos y las obligaciones concretas dependen del entorno, el software y el uso previsto.</em></p>
+<p>Antes de hacer caminar el H2 cerca de personas hace falta una evaluación de riesgos por escrito. El empleador debe poner a disposición equipos conformes y formar a quienes los usan, según la normativa de prevención de riesgos laborales aplicable.</p>
+<p>Hasta el 19 de enero de 2027, las máquinas introducidas en el mercado de la UE siguen la Directiva 2006/42/CE. Desde el 20 de enero de 2027 se aplica el Reglamento (UE) 2023/1230, como indica la <a href="https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en" rel="noopener noreferrer" target="_blank">Comisión Europea</a>. Un H2 introducido en el mercado antes de esa fecha sigue regulado por la Directiva 2006/42/CE. Se mantienen las obligaciones de seguridad en el trabajo de la normativa nacional. La guía del <a href="/es/blog/unitree-regolamento-macchine-2027.html">Reglamento de máquinas 2027</a> explica qué cambia para quien modifica el robot o lo integra en una célula.</p>
+<p>En el manual del H2, el procedimiento de parada es el damping, seguido de la retirada de la alimentación. El H2 Plus declara una parada de emergencia remota (E-stop). Si su configuración lo incluye, pruébela antes de empezar y verifique el equipamiento en el albarán de entrega.</p>
+<p>Reglas prácticas: zona delimitada, acceso controlado, dos operadores, parada probada y registro de sesiones. Si el robot está suspendido, el área bajo el gancho sigue prohibida. En caso de duda, pare el robot y corte la alimentación: es la acción que no depende del software.</p>
+
+<h2>Lista de comprobación antes del primer arranque</h2>
+<ol>
+<li>Polipasto o soporte verificados y dimensionados para el peso del robot más un margen, con freno y descenso controlado.</li>
+<li>Área libre, suelo plano y no resbaladizo, luz estable, ningún cable en el suelo.</li>
+<li>Batería cargada, cargador correcto y segunda batería si la sesión es larga.</li>
+<li>Manual del H2 y manual del mando a distancia de la versión exacta, guardados en local.</li>
+<li>Para H2 EDU y H2 Plus: PC con IP estática en el segmento 123.x y cable Ethernet.</li>
+<li>Contraseñas de PC2, PC3 y PC4 cambiadas, si existen, antes de conectar el robot a la red.</li>
+<li>Dos operadores presentes, secuencia de parada probada, nadie debajo del robot.</li>
+<li>Versión de firmware y albarán de entrega anotados en el registro de la sesión.</li>
+</ol>
+
+<section class="article-faq">
+<h2>Preguntas frecuentes</h2>
+<div class="faq-item"><h3>¿De verdad hace falta la suspensión para el primer arranque del H2?</h3><p>Sí. El manual del H2 pide sostener el robot durante el encendido y cada cambio de postura: no mantiene el equilibrio antes del control de movimiento. La suspensión debe dimensionarse para el peso del robot más un margen de seguridad.</p></div>
+<div class="faq-item"><h3>¿Cuánto espacio necesita el Unitree H2?</h3><p>La anchura es 456 mm y la profundidad 218 mm, pero el espacio útil incluye el paso, los brazos, la zona de exclusión y el radio del polipasto. Hacen falta un área libre, un suelo plano y ningún cable en el suelo.</p></div>
+<div class="faq-item"><h3>¿Qué puerto Ethernet se usa para el SDK del H2?</h3><p>El puerto RJ45 del segmento 192.168.123.x, el [12]. El [15] pertenece al segmento 192.168.124.x del PC2. En el PC, configure una IP estática libre de la misma subred.</p></div>
+<div class="faq-item"><h3>¿Qué credenciales tiene el PC2 del Unitree H2?</h3><p>El usuario es unitree y la contraseña inicial es Unitree0408; en las primeras versiones de firmware puede ser Unitree#24226. Cámbiela antes de conectar el robot a una red compartida.</p></div>
+<div class="faq-item"><h3>¿Se puede arrancar el H2 sin conectarlo a Internet?</h3><p>Sí. El control local y el SDK pasan por Ethernet y DDS. Sin Internet faltan las actualizaciones OTA y las funciones en la nube; para una red aislada, acuerde el procedimiento con el proveedor.</p></div>
+<div class="faq-item"><h3>¿Qué diferencias hay entre el H2 y el H2 Plus?</h3><p>Las dimensiones, el peso y la batería no cambian. El H2 Plus monta un módulo NVIDIA Jetson T5000 y, en opción, dos manos SharpaWave de 22 DOF cada una. El albarán y el manual de la configuración deben leerse antes del arranque.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Fuentes</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">ficha oficial del H2</a> (dimensiones, peso, batería, autonomía, ausencia de SDK en la versión base y advertencias de seguridad)</li>
+<li>Unitree, <a href="https://www.unitree.com/H2plus" rel="noopener noreferrer" target="_blank">ficha oficial del H2 Plus</a> (Jetson T5000, manos SharpaWave, E-stop remoto y desarrollo de software)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/User_Manual.html" rel="noopener noreferrer" target="_blank">H2 User Manual</a> (arranque, sujeción, batería, parada y seguridad)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/Remote_Control.html" rel="noopener noreferrer" target="_blank">H2 Remote Control</a> (comandos del mando a distancia)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/Battery_Charger.html" rel="noopener noreferrer" target="_blank">H2 Battery and Charger</a> (batería y cargador)</li>
+<li>Unitree, <a href="https://support.unitree.com/home/en/H2_developer/About_H2" rel="noopener noreferrer" target="_blank">H2 Developer Guide: About H2</a> (interfaces, PC1/PC2, direcciones y credenciales)</li>
+<li>Unitree, <a href="https://support.unitree.com/home/en/H2_developer/quick_development" rel="noopener noreferrer" target="_blank">H2 Developer Guide: Quick Development</a> (red, SDK2, modo debug y suspensión)</li>
+<li>Unitree, <a href="https://www.unitree.com/app/H2/" rel="noopener noreferrer" target="_blank">H2 app y manuales</a> (vídeos y documentos de desembalaje, arranque, red, calibración y debug)</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> (SDK C++ y entorno de desarrollo)</li>
+<li>Comisión Europea, <a href="https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en" rel="noopener noreferrer" target="_blank">Machinery</a> (Directiva 2006/42/CE y aplicación del Reglamento 2023/1230 desde el 20 de enero de 2027)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>¿Ha recibido un H2?</h2><p>Para dudas sobre arranque, suspensión, alimentación o red, el primer contacto es Abra Robotics, con soporte en inglés.</p><a class="btn btn-primary" href="/en/assessment-en.html">Solicitar una evaluación</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Todos los humanoides</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/es/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Robótica aplicada para empresas, universidades y centros de investigación. Hardware, software a medida, formación y soporte técnico dedicado.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navegación</span>
+<a href="/en/manifattura-logistica-en.html">Industria y logística</a>
+<a href="/en/universita-ricerca-en.html">Universidades e investigación</a>
+<a href="/en/assessment-en.html">Encontrar el robot adecuado</a>
+<a href="/es/#incentives">Financiación</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Productos</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Cuadrúpedos</a>
+<a href="/en/umanoidi-en.html">Humanoides</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contacto</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italia</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Reservar una llamada</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Todos los derechos reservados.</p>
+</div>
+</footer>
+<script src="/script.js"></script>
+</body></html>
