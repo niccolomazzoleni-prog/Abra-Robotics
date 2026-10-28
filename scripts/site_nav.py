@@ -33,6 +33,7 @@ def render_site_nav(prefix: str = "") -> str:
             <a href="{p}quadrupedi.html">Quadrupedi</a>
             <a href="{p}umanoidi.html">Umanoidi</a>
             <a href="{p}accessori.html">Accessori</a>
+            <a href="{p}catalogo-unitree.html">Unitree Italia</a>
             <a href="{p}catalogo.html">Catalogo completo</a>
             <a href="{p}listino-unitree.html">Listino prezzi</a>
           </div>
@@ -68,6 +69,7 @@ def render_site_nav(prefix: str = "") -> str:
         <a href="{p}quadrupedi.html">Quadrupedi</a>
         <a href="{p}umanoidi.html">Umanoidi</a>
         <a href="{p}accessori.html">Accessori</a>
+        <a href="{p}catalogo-unitree.html">Unitree Italia</a>
         <a href="{p}catalogo.html">Catalogo completo</a>
         <a href="{p}listino-unitree.html">Listino prezzi</a>
       </div>
@@ -110,6 +112,7 @@ def render_site_footer(prefix: str = "") -> str:
 <a href="{p}quadrupedi.html">Quadrupedi</a>
 <a href="{p}umanoidi.html">Umanoidi</a>
 <a href="{p}accessori.html">Accessori</a>
+<a href="{p}catalogo-unitree.html">Unitree Italia</a>
 <a href="{p}catalogo.html">Catalogo completo</a>
 <a href="{p}listino-unitree.html">Listino prezzi</a>
 </div>
