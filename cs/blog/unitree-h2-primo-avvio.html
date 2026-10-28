@@ -1,0 +1,341 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-h2-primo-avvio.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree H2: první spuštění, závěs, baterie a cena</title>
+<meta name="description" content="Unitree H2: první spuštění, závěs, baterie, síť Ethernet, debug mode a oficiální dokumentace. Kontrolní seznam kroků pro Česko a Slovensko."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/cs/blog/unitree-h2-primo-avvio.html"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-primo-avvio.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-h2-primo-avvio.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-h2-primo-avvio.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-h2-primo-avvio.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-h2-primo-avvio.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="icon" type="image/png" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree H2: první spuštění, závěs, baterie a cena",
+  "description": "Unitree H2: první spuštění, závěs, baterie, síť Ethernet, debug mode a oficiální dokumentace. Kontrolní seznam kroků pro Česko a Slovensko.",
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/cs/blog/unitree-h2-primo-avvio.html"
+  },
+  "image": "https://abrarobotics.com/images/prodotti/h2-edu.webp",
+  "inLanguage": "cs",
+  "url": "https://abrarobotics.com/cs/blog/unitree-h2-primo-avvio.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Je závěs při prvním spuštění H2 opravdu nutný?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ano. Manuál H2 vyžaduje přidržovat robota při zapnutí a každé změně postoje: před motion control rovnováhu neudrží. Závěs musí být dimenzovaný na hmotnost robota plus bezpečnostní rezervu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kolik prostoru Unitree H2 potřebuje?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Šířka je 456 mm a hloubka 218 mm, ale užitečný prostor zahrnuje délku kroku, paže, vyloučenou zónu a dosah kladkostroje. Potřebujete volný prostor, rovnou podlahu a žádné kabely na zemi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Který ethernetový port se používá pro SDK H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Port RJ45 na segmentu 192.168.123.x, tedy [12]. Port [15] patří segmentu 192.168.124.x počítače PC2. Na PC nastavte volnou statickou IP adresu stejné podsítě."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jaké přihlašovací údaje má PC2 u Unitree H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uživatel je unitree a počáteční heslo Unitree0408; u prvních verzí firmwaru může být Unitree#24226. Změňte je před připojením robota ke sdílené síti."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Lze H2 spustit bez připojení k internetu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ano. Místní řízení a SDK běží přes Ethernet a DDS. Bez internetu chybí aktualizace OTA a cloudové funkce; u izolované sítě si postup dohodněte s dodavatelem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jaké jsou rozdíly mezi H2 a H2 Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rozměry, hmotnost a baterie jsou stejné. H2 Plus má modul NVIDIA Jetson T5000 a volitelně dvě ruce SharpaWave po 22 DOF. Dodací list a manuál ke konfiguraci je třeba číst před spuštěním."
+      }
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree H2: první spuštění, závěs, baterie a cena"/>
+<meta property="og:description" content="Unitree H2: první spuštění, závěs, baterie, síť Ethernet, debug mode a oficiální dokumentace. Kontrolní seznam kroků pro Česko a Slovensko."/>
+<meta property="og:url" content="https://abrarobotics.com/cs/blog/unitree-h2-primo-avvio.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/prodotti/h2-edu.webp"/>
+<meta property="og:locale" content="cs_CZ"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Roboti Unitree s dodáním z Itálie · podpora v angličtině</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Produkty <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+<a href="/en/accessori-en.html">Příslušenství</a>
+<a href="/en/catalogo-unitree-en.html">Kompletní katalog</a>
+<a href="/cs/#models">Ceník</a>
+</div>
+</div>
+<a href="/cs/#models">Ceny</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Obory <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">O nás</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/cs/">Domů</a> / <a href="/cs/">Blog</a> / První spuštění H2</nav>
+
+<figure class="article-cover">
+<img src="/images/prodotti/h2-edu.webp" alt="Unitree H2 EDU, humanoidní robot v plné velikosti" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Návody k použití · Humanoidi</p>
+<h1>Unitree H2: co vědět před prvním zapnutím</h1>
+<div class="article-meta"><time datetime="2026-10-27">27. října 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Ve zkratce:</strong> před prvním spuštěním je třeba Unitree H2 zavěsit nebo podepřít: dokud nepřejde do motion control, rovnováhu neudrží. Potřebujete dimenzovaný závěs, volný prostor, nabitou baterii, ethernetovou síť a manuál H2. Zastavení probíhá přes damping a odpojení napájení: podpěra zůstává nutná.</div>
+</header>
+
+<div class="article-content">
+<p>Spuštění <strong>Unitree H2</strong> vyžaduje závěs, nabitou baterii a nakonfigurovanou síť. Robot je vysoký 1 820 mm, s baterií váží přibližně 70 kg a rovnováhu udrží až po přechodu do motion control: do té doby musí viset nebo být podepřený. Verze a konfigurace najdete na <a href="/cs/unitree-h2.html">stránce řady H2</a>; rozdíly mezi H2 Air, H2 EDU, H2-D a H2 Plus popisuje <a href="/cs/blog/unitree-h2-italia.html">průvodce H2 pro Česko a Slovensko</a>. Postup níže se týká dvounohých verzí: H2 Air, H2 EDU a H2 Plus.</p>
+
+<h2>Unitree H2: správný postup spuštění</h2>
+<p>Manuál H2 popisuje přesný postup. Kombinace tlačítek se mění s firmwarem: používejte manuál k dálkovému ovladači své jednotky, ne postup opsaný z videa jiné verze.</p>
+<ol>
+<li><strong>Podpěra.</strong> Zavěste robota na kladkostroj nebo ho opřete o vhodnou podpěru čelem dopředu. Uvolněte prostor od lidí a překážek a nastavte paže a nohy do přirozené polohy, bez napnutých kabelů.</li>
+<li><strong>Baterie.</strong> Vložte ji do přihrádky až do zacvaknutí, se strojem vypnutým. Netlačte silou: pokud nejde vložit, vyjměte ji a zkontrolujte orientaci.</li>
+<li><strong>Zapnutí.</strong> Krátký stisk tlačítka baterie, potom dlouhý stisk přes 2 sekundy. Počkejte asi minutu: robot se inicializuje a přejde do zero torque nebo damping.</li>
+<li><strong>Postoj.</strong> Dálkovým ovladačem nebo v aplikaci cockpit uveďte H2 do přípravy na stoj a dál ho přidržujte. Položte chodidla, přejděte na řízení pohybu a před uvolněním podpěry ověřte rovnováhu.</li>
+<li><strong>Vypnutí.</strong> Vraťte robota do klidové polohy, přepněte do damping, potom krátce stiskněte a podržte tlačítko baterie přes 2 sekundy. Při delší odstávce baterii vyjměte.</li>
+</ol>
+<p>Kritický je čtvrtý krok. V režimu damping se klouby uvolní: pokud robot stojí a není podepřený, sesune se. Držte závěs napnutý, dokud neuvidíte, že robot stojí v rovnováze sám.</p>
+
+<h2>Kolik prostoru je potřeba pro první spuštění</h2>
+<p>Oficiální rozměry ve stoji jsou 1820 × 456 × 218 mm, ale užitečný prostor není jen prostor stojícího robota. Rozhoduje délka kroku, rozpětí paží, vyloučená zóna a dosah kladkostroje. <em>Příklad s hypotetickými čísly:</em> místnost 7 × 7 m, zkušební plocha 4 × 4 m, okraj 1,5 m na každé straně a strop alespoň 2,8 m pro závěs.</p>
+<p>Podlaha musí být rovná a neklouzavá. Žádné kabely, nízké překážky ani předměty, o které by se mohla zachytit chodidla. Potřebujete stálé světlo a nereflexní povrchy: manuál upozorňuje, že slabé osvětlení a odlesky zhoršují vnímání. H2 je určen pro vnitřní použití: déšť, stříkající voda a kondenzace do zkušebního prostoru nepatří.</p>
+<p>Pokud má robot pracovat v blízkosti lidí, je návrh prostoru součástí posouzení rizik. Metodiku pro nastavení zkoušky ve firmě najdete v průvodci <a href="/cs/blog/poc-robot-umanoide-azienda.html">PoC s humanoidním robotem</a>.</p>
+
+<h2>Portál a závěs: požadavek, který se nedá improvizovat</h2>
+<p>H2 nelze zapnout ve stoji a volně. Manuál vyžaduje závěsný bod dimenzovaný na hmotnost robota plus bezpečnostní faktor. Kladkostroj, popruhy a kotvicí bod je třeba vybrat podle této hodnoty.</p>
+<p>Upřednostněte kladkostroj s brzdou a řízeným spouštěním, případně vhodnou podpěru. Zavěšujte jen do bodů určených robotem, nikdy za paže, nohy nebo hlavu. Při prvních zkouškách držte chodidla několik centimetrů nad zemí a nikdo nesmí být pod robotem.</p>
+<p>Jsou potřeba dva lidé: jeden u dálkového ovladače a jeden u kladkostroje. Zastavovací postup je třeba vyzkoušet naprázdno před zapnutím. Pokud robot náhle klesne, člověk u kladkostroje musí zastavit pád, aniž by stál v dosahu paží.</p>
+
+<h2>Napájení a baterie</h2>
+<p>Baterie má 15 Ah (0,972 kWh), maximální napětí 75,6 V a podle Unitree přibližně 3 hodiny výdrže. Je rychle vyjímatelná, ale vkládat a vyjímat se musí se strojem vypnutým.</p>
+<p>Před prvním spuštěním baterii nabijte a připravte správnou nabíječku. Pokud zkouška trvá déle než jedno nabití, mějte náhradní baterii. Nepracujte s vybitou baterií: manuál upozorňuje, že pokles napětí během stoje nebo zrychlení paže může vést k nebezpečnému uvolnění kloubů.</p>
+<p>Napájecí porty na zadní straně dávají 54 až 75,6 V a 10 A přímo z baterie, dva výstupy 24 V/10 A a jeden 12 V/10 A; dvě rozhraní pro ruce přidávají každé 24 V/10 A. Součet vnějších výstupů, kromě toho přímého z baterie, nesmí překročit 500 W. Pokud přidáváte senzory, výpočetní modul nebo kameru, spočítejte to před montáží.</p>
+
+<h2>Síť: dva segmenty, ne jedna LAN</h2>
+<p>Základní H2 má na zadní straně dvě porty RJ45 a nejsou zaměnitelné. Port na segmentu <code>192.168.123.x</code> přenáší provoz DDS a řízení; port na segmentu <code>192.168.124.x</code> patří PC2. H2 Plus uvádí čtyři porty Gigabit Ethernet: číslování a segmenty je třeba ověřit v konfiguračním listu. Následující tabulka vychází z dokumentace H2.</p>
+<table>
+<thead><tr><th>Zařízení nebo port</th><th>Adresa</th><th>Poznámky</th></tr></thead>
+<tbody>
+<tr><td>RJ45 [12]</td><td><code>192.168.123.x</code></td><td>DDS, řízení, vývoj pomocí SDK</td></tr>
+<tr><td>RJ45 [15]</td><td><code>192.168.124.x</code></td><td>PC2</td></tr>
+<tr><td>PC1, motion controller</td><td><code>192.168.123.161</code></td><td>Uzavřený, nemění se</td></tr>
+<tr><td>PC2, vývojový počítač</td><td><code>192.168.123.162</code> a <code>192.168.124.162</code></td><td>Uživatel <code>unitree</code>, počáteční heslo <code>Unitree0408</code></td></tr>
+<tr><td>PC3 a PC4 volitelné</td><td><code>192.168.123.163/.164</code> a <code>192.168.124.163/.164</code></td><td>Počáteční heslo <code>123</code></td></tr>
+</tbody>
+</table>
+<p>SDK je dostupné u H2 EDU a H2 Plus: H2 Air programování pomocí SDK neumožňuje. Pro práci se SDK připojte svůj PC k portu na segmentu 123.x s volnou statickou IP adresou stejné podsítě, ověřte konektivitu a spusťte příklady na PC2 nebo z externího PC. PC1 se nedotýká: je to motion controller Unitree.</p>
+<p>Před připojením robota k firemní síti změňte hesla, umístěte ho do vyhrazené VLAN a přístup do internetu otevřete jen v případě potřeby. Průvodce <a href="/cs/blog/unitree-offline-sicurezza-rete-aziendale.html">zabezpečením sítě s roboty Unitree</a> pokrývá VLAN, OTA a cloud.</p>
+
+<h2>Debug mode: jen se zavěšeným robotem</h2>
+<p>Pro nízkoúrovňové příkazy vyžaduje rychlý návod Unitree uvést H2 do damping, zavěsit ho a stisknout L2+R2 pro vstup do debug mode. L2+A provádí diagnostickou akci. Je to laboratorní režim, ne pro ukázky na veletrhu.</p>
+<p>Pokud příklad neodpovídá, zkontrolujte nejdřív stav robota, režim a síťové rozhraní. Neměňte kód, dokud nevyloučíte problém s připojením nebo postupem. Dokumenty Unitree se aktualizují: před použitím postupu zkontrolujte datum poslední změny.</p>
+
+<h2>Dokumentace, kterou je třeba mít před začátkem</h2>
+<p>Stáhněte si a uložte lokální kopii dokumentů své konfigurace: pokud je síť izolovaná, online manuál není dostupný.</p>
+<ul>
+<li><strong>Manuál H2:</strong> spuštění, zastavení, baterie, bezpečnost a stavy robota.</li>
+<li><strong>Manuál dálkového ovladače:</strong> mapa tlačítek závisí na firmwaru.</li>
+<li><strong>Manuál baterie a nabíječky:</strong> napětí, nabíjení a skladování.</li>
+<li><strong>Vývojářský průvodce H2:</strong> rozhraní, síťové adresy, debug mode a SDK.</li>
+<li><strong>Dodací list:</strong> přesná verze, výpočetní moduly, ruce a příslušenství.</li>
+</ul>
+<p>Pokud je konfigurace H2 Plus, rozměry, hmotnost a baterie jsou stejné jako u H2, ale liší se výpočet, porty a ruce: modul NVIDIA Jetson T5000 a volitelně dvě ruce SharpaWave po 22 DOF. Dodací list a manuál ke konfiguraci je třeba číst předem; podrobnosti jsou v průvodci <a href="/cs/blog/unitree-h2-plus-prezzo-specifiche.html">H2 Plus</a>.</p>
+
+<h2>Bezpečnost a normy</h2>
+<p class="article-note"><em>Obecné informace, nikoli právní poradenství. Posouzení rizik a konkrétní povinnosti závisí na prostředí, softwaru a zamýšleném použití.</em></p>
+<p>Než H2 začne chodit v blízkosti lidí, je potřeba písemné posouzení rizik. Zaměstnavatel musí zajistit vhodná zařízení a proškolit obsluhu; konkrétní povinnosti stanoví vnitrostátní předpisy o bezpečnosti práce.</p>
+<p>Do 19. ledna 2027 se stroje uváděné na trh EU řídí směrnicí 2006/42/ES. Od 20. ledna 2027 platí nařízení (EU) 2023/1230, jak uvádí <a href="https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en" rel="noopener noreferrer" target="_blank">Evropská komise</a>. H2 uvedený na trh před tímto datem zůstává v režimu směrnice 2006/42/ES. Povinnosti v oblasti bezpečnosti práce zůstávají. Průvodce <a href="/cs/blog/unitree-regolamento-macchine-2027.html">nařízením o strojních zařízeních 2027</a> vysvětluje, co se mění pro toho, kdo robota upravuje nebo začleňuje do robotické buňky.</p>
+<p>V manuálu H2 je postupem zastavení damping, po němž následuje odpojení napájení. H2 Plus uvádí dálkový E-stop. Pokud ho vaše konfigurace obsahuje, vyzkoušejte ho před začátkem a ověřte výbavu v dodacím listu.</p>
+<p>Praktická pravidla: ohraničená zóna, řízený přístup, dva operátoři, vyzkoušené zastavení a záznam o sezeních. Pokud robot visí, prostor pod hákem zůstává zakázaný. V pochybnostech robota zastavte a odpojte napájení: je to krok, který nezávisí na softwaru.</p>
+
+<h2>Kontrolní seznam před prvním spuštěním</h2>
+<ol>
+<li>Kladkostroj nebo konzola ověřené, dimenzované na hmotnost robota plus rezervu, s brzdou a řízeným spouštěním.</li>
+<li>Volný prostor, rovná a neklouzavá podlaha, stálé světlo, žádné kabely na zemi.</li>
+<li>Nabitá baterie, správná nabíječka a druhá baterie, pokud je zkouška dlouhá.</li>
+<li>Manuál H2 a manuál dálkového ovladače přesné verze, uložené lokálně.</li>
+<li>Pro H2 EDU a H2 Plus: PC se statickou IP na segmentu 123.x a ethernetový kabel.</li>
+<li>Změněná hesla PC2, PC3 a PC4, pokud existují, před připojením robota k síti.</li>
+<li>Přítomni dva operátoři, vyzkoušený postup zastavení, nikdo pod robotem.</li>
+<li>Verze firmwaru a dodací list zapsané v záznamu o sezení.</li>
+</ol>
+
+<section class="article-faq">
+<h2>Časté dotazy</h2>
+<div class="faq-item"><h3>Je závěs při prvním spuštění H2 opravdu nutný?</h3><p>Ano. Manuál H2 vyžaduje přidržovat robota při zapnutí a každé změně postoje: před motion control rovnováhu neudrží. Závěs musí být dimenzovaný na hmotnost robota plus bezpečnostní rezervu.</p></div>
+<div class="faq-item"><h3>Kolik prostoru Unitree H2 potřebuje?</h3><p>Šířka je 456 mm a hloubka 218 mm, ale užitečný prostor zahrnuje délku kroku, paže, vyloučenou zónu a dosah kladkostroje. Potřebujete volný prostor, rovnou podlahu a žádné kabely na zemi.</p></div>
+<div class="faq-item"><h3>Který ethernetový port se používá pro SDK H2?</h3><p>Port RJ45 na segmentu 192.168.123.x, tedy [12]. Port [15] patří segmentu 192.168.124.x počítače PC2. Na PC nastavte volnou statickou IP adresu stejné podsítě.</p></div>
+<div class="faq-item"><h3>Jaké přihlašovací údaje má PC2 u Unitree H2?</h3><p>Uživatel je unitree a počáteční heslo Unitree0408; u prvních verzí firmwaru může být Unitree#24226. Změňte je před připojením robota ke sdílené síti.</p></div>
+<div class="faq-item"><h3>Lze H2 spustit bez připojení k internetu?</h3><p>Ano. Místní řízení a SDK běží přes Ethernet a DDS. Bez internetu chybí aktualizace OTA a cloudové funkce; u izolované sítě si postup dohodněte s dodavatelem.</p></div>
+<div class="faq-item"><h3>Jaké jsou rozdíly mezi H2 a H2 Plus?</h3><p>Rozměry, hmotnost a baterie jsou stejné. H2 Plus má modul NVIDIA Jetson T5000 a volitelně dvě ruce SharpaWave po 22 DOF. Dodací list a manuál ke konfiguraci je třeba číst před spuštěním.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Zdroje</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">oficiální specifikace H2</a> (rozměry, hmotnost, baterie, výdrž, absence SDK u základní verze a bezpečnostní upozornění)</li>
+<li>Unitree, <a href="https://www.unitree.com/H2plus" rel="noopener noreferrer" target="_blank">oficiální specifikace H2 Plus</a> (Jetson T5000, ruce SharpaWave, dálkový E-stop a vývoj softwaru)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/User_Manual.html" rel="noopener noreferrer" target="_blank">H2 User Manual</a> (spuštění, závěs, baterie, zastavení a bezpečnost)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/Remote_Control.html" rel="noopener noreferrer" target="_blank">H2 Remote Control</a> (příkazy dálkového ovladače)</li>
+<li>Unitree, <a href="https://marketing.unitree.com/article/en/H2/Battery_Charger.html" rel="noopener noreferrer" target="_blank">H2 Battery and Charger</a> (baterie a nabíječka)</li>
+<li>Unitree, <a href="https://support.unitree.com/home/en/H2_developer/About_H2" rel="noopener noreferrer" target="_blank">H2 Developer Guide: About H2</a> (rozhraní, PC1/PC2, adresy a přihlašovací údaje)</li>
+<li>Unitree, <a href="https://support.unitree.com/home/en/H2_developer/quick_development" rel="noopener noreferrer" target="_blank">H2 Developer Guide: Quick Development</a> (síť, SDK2, debug mode a závěs)</li>
+<li>Unitree, <a href="https://www.unitree.com/app/H2/" rel="noopener noreferrer" target="_blank">H2 aplikace a manuály</a> (videa a dokumenty k vybalení, spuštění, síti, kalibraci a debugu)</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> (SDK pro C++ a vývojové prostředí)</li>
+<li>Evropská komise, <a href="https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en" rel="noopener noreferrer" target="_blank">Machinery</a> (směrnice 2006/42/ES a použití nařízení 2023/1230 od 20. ledna 2027)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Dostali jste H2?</h2><p>S dotazy k spuštění, závěsu, napájení nebo síti se nejdřív obraťte na Abra Robotics; podpora probíhá v angličtině.</p><a class="btn btn-primary" href="/en/assessment-en.html">Poptat assessment</a><a class="btn btn-outline-light" href="/en/umanoidi-en.html">Celá řada humanoidů</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Aplikovaná robotika pro firmy, univerzity a výzkumné instituce. Hardware, software na míru, školení a technická podpora.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigace</span>
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Produkty</span>
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Kontakt</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Itálie</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Všechna práva vyhrazena.</p>
+</div>
+</footer>
+<script src="/script.js"></script>
+</body></html>
