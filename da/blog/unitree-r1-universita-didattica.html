@@ -1,0 +1,383 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-r1-universita-didattica.html -->
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree R1 til universiteter: pris og brug i undervisningen</title>
+<meta name="description" content="Unitree R1 til undervisning: officielle specifikationer, SDK med DDS og ROS 2, kurser i kontrol, RL og perception, begrænsninger og priser ekskl. moms."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/da/blog/unitree-r1-universita-didattica.html"/>
+<link href="https://abrarobotics.com/blog/unitree-r1-universita-didattica.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-r1-universita-didattica.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/unitree-r1-universita-didattica.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-r1-universita-didattica.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree R1 til universiteter: pris og brug i undervisningen",
+  "description": "Unitree R1 til undervisning: officielle specifikationer, SDK med DDS og ROS 2, kurser i kontrol, RL og perception, begrænsninger og priser ekskl. moms.",
+  "datePublished": "2026-10-28",
+  "dateModified": "2026-10-28",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/da/blog/unitree-r1-universita-didattica.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-r1-01.webp",
+  "inLanguage": "da",
+  "url": "https://abrarobotics.com/da/blog/unitree-r1-universita-didattica.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvad bruges Unitree R1 til i et universitetslaboratorium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Den dækker kurser i kontrol og locomotion, reinforcement learning og perception. Den er ikke beregnet til at håndtere laster: den maksimale last pr. arm er ca. 2 kg, og driftstiden er ca. en time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvilken version af R1 kan programmeres?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kun EDU-versionerne. Air og Basic bruges med app og fjernbetjening; SDK'et unitree_sdk2, ROS 2 og DDS-topics er dokumenteret for R1 EDU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad koster Unitree R1 til et universitet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R1 Air koster 7.190,05 €; R1 Edu Standard (R1-U1), den første programmerbare version af den tobenede robot, koster 14.929,58 €. Den dyreste version i R1-serien er R1 Edu Professional B (R1-U4) til 35.216,56 €. End-User-priser ekskl. moms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Er R1 egnet til reinforcement learning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, i EDU-versionen, med et forløb fra simulering over træning til overførsel. Batteriet på ca. en time begrænser de fysiske sessioner; repositoryet unitree_sim_isaaclab dokumenterer G1 og H1-2, så for R1 skal de tilgængelige modeller bekræftes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan et universitet bruge danske tilskud til at købe en R1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nogle danske ordninger er rettet mod virksomheder, for eksempel det forhøjede fradrag for forsknings- og udviklingsudgifter og Innobooster. Universiteter finansierer typisk indkøb gennem projektmidler og egne budgetter. Se siden Finansiering."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "R1 eller G1 til undervisning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R1 EDU er nok til kontrol, locomotion og perception på et begrænset budget. Til manipulation, imitation learning og datasæt fra teleoperation er referencepunktet G1 EDU."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree R1 til universiteter: pris og brug i undervisningen"/>
+<meta property="og:description" content="Unitree R1 til undervisning: officielle specifikationer, SDK med DDS og ROS 2, kurser i kontrol, RL og perception, begrænsninger og priser ekskl. moms."/>
+<meta property="og:url" content="https://abrarobotics.com/da/blog/unitree-r1-universita-didattica.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-r1-01.webp"/>
+<meta property="og:locale" content="da_DK"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree-robotter leveret fra Italien · support på engelsk</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/da/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Produkter <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Firbenede robotter</a>
+<a href="/en/umanoidi-en.html">Humanoider</a>
+<a href="/en/accessori-en.html">Tilbehør</a>
+<a href="/en/catalogo-unitree-en.html">Hele kataloget</a>
+<a href="/da/#models">Prisliste</a>
+</div>
+</div>
+<a href="/da/#models">Priser</a>
+<a href="/en/assessment-en.html">Find den rigtige robot</a>
+<a href="/da/#incentives">Finansiering</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Brancher <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Produktion &amp; logistik</a>
+<a href="/en/universita-ricerca-en.html">Universiteter &amp; forskning</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Om os</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book et opkald</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/da/">Forside</a> / <a href="/da/">Blog</a> / Anvendelser</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-r1-01.webp" alt="Unitree R1 EDU, kompakt tobenet humanoid robot" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Anvendelser</p>
+<h1>Unitree R1 på universitetet: hvad den bruges til i undervisningen</h1>
+<div class="article-meta"><time datetime="2026-10-28">28. oktober 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Kort fortalt:</strong> R1 EDU er en tobenet robot på 123 cm og ca. 29 kg med SDK på DDS, ROS 2 og binokulært kamera. På universitetet bruges den til kurser i kontrol, reinforcement learning og perception, ikke til tung manipulation. Den første programmerbare version er R1 Edu Standard (R1-U1).</div>
+</header>
+
+<div class="article-content">
+<p>Den, der overvejer <em>Unitree R1 til universitet</em> og undervisning, har to rammer: et kursus, der skal dækkes, og et budget, der skal holde. R1 EDU er den kompakte tobenede robot i serien: den bruges til at undervise i, hvordan en humanoid går, og hvordan man skriver koden, der styrer den. Den er ikke beregnet til tung manipulation eller montage; hænderne er valgfrie.</p>
+<p class="article-note"><em>Generel information, ikke juridisk eller skattemæssig rådgivning. End-User-priser ekskl. moms fra den offentlige prisliste; betingelserne i de enkelte programmer skal bekræftes med universitetets forskningsafdeling.</em></p>
+
+<h2>Unitree R1 på universitetet: hvad den bruges til</h2>
+<p>På universitetet dækker R1 tre laboratorier: kontrol og locomotion, reinforcement learning samt perception og menneske-robot-interaktion. Et introduktionskursus bruger den til den praktiske del; et videregående kursus tilføjer pipeline fra simulering til robot. Uden for disse tre områder er den ikke det rigtige valg: den er ikke en servicerobot.</p>
+<table>
+<thead><tr><th>Laboratorium</th><th>Hvad den studerende lærer</th><th>Hvad man arbejder med på robotten</th><th>Begrænsning at kende</th></tr></thead>
+<tbody>
+<tr><td>Kontrol og locomotion</td><td>Kinematik, dynamik, balance, ganggenerering</td><td>Ledstatus, kommandoer på lavt niveau, IMU</td><td>Drejningsmoment i knæet er ikke offentliggjort</td></tr>
+<tr><td>Reinforcement learning</td><td>Reward, domain randomization, sim-to-real-overførsel</td><td>SDK, DDS-topics, simulator</td><td>R1-modeller skal bekræftes</td></tr>
+<tr><td>Perception og HRI</td><td>Stereo vision, dybde, tale, sporing</td><td>Binokulært kamera, mikrofonarray</td><td>Dybde 544×448, ikke en industriel sensor</td></tr>
+</tbody>
+</table>
+
+<h2>De officielle specifikationer for R1</h2>
+<p>Dataene nedenfor kommer fra producentens datablad. Unitree præciserer, at parametrene kan ændre sig med konfigurationen, og at lasten på armen varierer meget med stillingen.</p>
+<table>
+<thead><tr><th>Punkt</th><th>R1 Air</th><th>R1 Basic</th><th>R1 EDU</th></tr></thead>
+<tbody>
+<tr><td>Mål stående</td><td>1230 × 357 × 190 mm</td><td>1230 × 357 × 190 mm</td><td>1230 × 357 × 190 mm</td></tr>
+<tr><td>Vægt med batteri</td><td>ca. 27 kg</td><td>ca. 29 kg</td><td>ca. 29 kg</td></tr>
+<tr><td>Frihedsgrader</td><td>20</td><td>26</td><td>26, op til 40 med hænder</td></tr>
+<tr><td>Arm / talje / hoved</td><td>4 / 0 / 0</td><td>5 / 2 / 2</td><td>5 / 2 / 2</td></tr>
+<tr><td>Maks. last pr. arm</td><td>ca. 2 kg</td><td>ca. 2 kg</td><td>ca. 2 kg</td></tr>
+<tr><td>Kamera</td><td>Monokulært</td><td>Binokulært</td><td>Binokulært</td></tr>
+<tr><td>Beregning</td><td>8-core CPU</td><td>8-core CPU</td><td>8-core CPU + Jetson Orin 40-100 TOPS afhængigt af konfiguration</td></tr>
+<tr><td>SDK</td><td>Nej</td><td>Nej</td><td>Ja</td></tr>
+<tr><td>Driftstid</td><td>ca. 1 time</td><td>ca. 1 time</td><td>ca. 1 time</td></tr>
+<tr><td>Garanti</td><td>6 måneder</td><td>8 måneder</td><td>12 måneder</td></tr>
+</tbody>
+</table>
+<p>Batteriet kan skiftes hurtigt, og både oplader og fjernbetjening følger med; Wi-Fi 6 og Bluetooth 5.2 er angivet for hele serien. Unitree advarer om, at branchen er i en tidlig fase, at nogle funktioner stadig er under udvikling, og at man skal holde sikkerhedsafstand.</p>
+
+<h2>SDK og softwareudvikling: hvad man programmerer på R1 EDU</h2>
+<p>Blandt versionerne af den tobenede robot er egen softwareudvikling (SDK) kun aktiv på R1 EDU. Air og Basic styres med app eller fjernbetjening og kører ikke den studerendes kode. På EDU arbejder man med <strong>unitree_sdk2</strong>, et lag over DDS med publish/subscribe til løbende data og request/response til kommandoer. C++-eksemplerne til R1 i SDK'et bruger topics <code>rt/lowstate</code> og <code>rt/lowcmd</code>; R1-dokumentationen har en ROS 2-rutine. SDK'et distribueres under BSD-3-Clause-licensen. Til de første skridt med ROS 2 findes den <a href="/da/blog/ros2-unitree-guida-rapida.html">hurtige Unitree-guide</a>.</p>
+<p>Hovedet på R1 EDU har et binokulært modul. Den dokumenterede videotjeneste leverer et billede på 1280×720, RGB pr. øje på 544×448 og et dybdekort på 544×448. Det er nok til at registrere forhindringer og vurdere afstande, men ikke til et datasæt fra en industriel sensor.</p>
+<p>Det officielle datablad nævner support til de vigtigste platforme; repositoryet <strong>unitree_sim_isaaclab</strong> dokumenterer dog G1 og H1-2, ikke R1. Inden et kursus i reinforcement learning planlægges, bør man bede om opdaterede R1-modeller og afprøve pipelinen i laboratoriet.</p>
+
+<h2>Tre mulige kurser</h2>
+<h3>Kontrol og locomotion</h3>
+<p>Det er det mest naturlige kursus. De studerende læser ledstatus og IMU, genererer støttetrajektorier og forsøger at holde balancen med kontrollerede forstyrrelser. Typiske øvelser: rejse og sænke sig, squat, skridt frem og tilbage, genopretning efter et sideskub. Unitree offentliggør ikke det maksimale drejningsmoment i knæet på R1; for G1 EDU angives 120 N·m. Sammenligningen med R1 skal bygge på den observerede respons, ikke på en værdi fra databladet.</p>
+<h3>Reinforcement learning</h3>
+<p>R1 EDU gør det muligt at overføre en policy, der er trænet i simulering, til robotten via SDK. Det er bedst at træne i simulering og bruge robotten til den endelige verifikation. Nyttige øvelser: reward shaping til gang, randomisering af friktion og masse, evaluering på ujævnt underlag. Pipelinen skal bygges på de modeller, der findes, ikke på antagelser.</p>
+<h3>Perception og interaktion</h3>
+<p>Stereokamera og et array med fire mikrofoner er nok til et laboratorium i perception og HRI. De studerende vurderer dybde, segmenterer en forhindring, følger en person og knytter en tale kommando til en handling. Unitree angiver en integreret multimodal model til tale og billeder; resultaterne skal måles i laboratoriet og ikke tages fra producentens demo.</p>
+
+<h2>Hvor mange enheder er der brug for, og hvordan organiseres laboratoriet</h2>
+<p>Med en stor klasse er det en fordel at dele de studerende i grupper og køre holdvise sessioner. Et ekstra batteri pr. robot forhindrer, at holdet må vente, mens det andet batteri lades op. Robotten arbejder i et afgrænset område med frit gulv og producentens sikkerhedsafstand; tænding, slukning og flytning er en ansvarlig persons opgave. De studerende forbinder til det lokale netværk og arbejder med koden.</p>
+<table>
+<thead><tr><th>Tilbehør</th><th>Pris ekskl. moms</th><th>Hvornår det er nødvendigt</th></tr></thead>
+<tbody>
+<tr><td>Batteri til R1 (6000 mAh)</td><td>586,95 €</td><td>Sessioner over en time eller klasser på skift</td></tr>
+<tr><td>Oplader til R1</td><td>146,73 €</td><td>Én enhed pr. robot</td></tr>
+<tr><td>Beregningsmodul 100 TOPS</td><td>4.402,07 €</td><td>Opgradering til U1 med tungere modeller</td></tr>
+<tr><td>LiDAR-kit Livox Mid-360</td><td>2.201,04 €</td><td>SLAM og navigation</td></tr>
+<tr><td>Hånd Dex3-1 uden taktile sensorer</td><td>7.109,32 €</td><td>Hvis kurset omfatter gribning</td></tr>
+</tbody>
+</table>
+
+<h2>Unitree R1 pris: hvilken version skal universitetet vælge</h2>
+<p>Til undervisning er udgangspunktet <strong>R1 Edu Standard (R1-U1)</strong>: 26 frihedsgrader, SDK og et beregningsmodul på 40 TOPS. <strong>R1 Edu Smart (R1-U2)</strong> tilføjer en udvidelsesbase på 100 TOPS. <strong>Professional</strong>-versionerne tilføjer hænderne: U3 inkluderer Dex3-1 uden taktile sensorer. Hvis kurset ikke omfatter gribning, betaler man for tilbehør, der bare står stille.</p>
+<table>
+<thead><tr><th>Version</th><th>Pris ekskl. moms</th><th>Bemærkning</th></tr></thead>
+<tbody>
+<tr><td><a href="/en/prodotti/unitree-r1-air-en.html">R1 Air</a></td><td>7.190,05 €</td><td>Demo og fjernstyring, uden SDK</td></tr>
+<tr><td><a href="/prodotti/unitree-r1-basic.html">R1 Basic</a></td><td>8.261,55 €</td><td>26 frihedsgrader, uden SDK</td></tr>
+<tr><td><a href="/en/prodotti/unitree-r1-edu-en.html">R1 Edu Standard (R1-U1)</a></td><td>14.929,58 €</td><td>Entry EDU, modul på 40 TOPS</td></tr>
+<tr><td><a href="/prodotti/unitree-r1-edu-smart.html">R1 Edu Smart (R1-U2)</a></td><td>17.608,28 €</td><td>U1 med udvidelsesbase på 100 TOPS</td></tr>
+<tr><td><a href="/prodotti/unitree-r1-edu-prof-a.html">R1 Edu Professional A (R1-U3)</a></td><td>32.281,85 €</td><td>U2 med Dex3-1-hænder uden taktil</td></tr>
+<tr><td><a href="/prodotti/unitree-r1-edu-prof-b.html">R1 Edu Professional B (R1-U4)</a></td><td>35.216,56 €</td><td>Seriens dyreste konfiguration</td></tr>
+</tbody>
+</table>
+<p>På prislisten går R1-serien fra 6.294,96 € (R1-A5 Standard, torso uden ben) til 35.216,56 € (R1 Edu Professional B). De øvrige Professional-versioner adskiller sig i hænder og tilbehør: den fulde oversigt findes på <a href="/da/unitree-r1.html">siden om R1-serien</a>. Priserne er End-User-priser ekskl. moms. Fragt og forsikring er ikke inkluderet i listeprisen og beregnes i tilbuddet; mellem EU-lande er der ingen told.</p>
+
+<h2>Begrænsningerne, man skal regne med</h2>
+<ul>
+<li><strong>Driftstid.</strong> En hel undervisningsdag kræver reservebatterier og planlagte hold.</li>
+<li><strong>SDK.</strong> Air og Basic kan ikke programmeres. Tilbuddet til undervisning tager udgangspunkt i U1.</li>
+<li><strong>Hænder.</strong> En Dex3-1-hånd uden taktil koster 7.109,32 €, næsten lige så meget som en R1 Air. Til ren locomotion er det en unødvendig udgift.</li>
+<li><strong>Simulering.</strong> Repositoryet unitree_sim_isaaclab dokumenterer G1 og H1-2. For R1 skal tilgængeligheden af assets og pipeline bekræftes.</li>
+<li><strong>Modenhed.</strong> Unitree skriver, at nogle funktioner er under udvikling, og at der kræves sikkerhedsafstand. Laboratoriet skal have en skriftlig procedure.</li>
+</ul>
+<p>Hvis kurset handler om manipulation, er sammenligningen med <a href="/da/blog/unitree-r1-vs-g1.html">G1</a> den rigtige, ikke med en dyrere version af R1. G1 Edu Standard (G1-U1) koster 38.004,54 €; G1 EDU-serien angiver 120 N·m i knæet, når op til 43 frihedsgrader og tilbyder flere håndmuligheder. Til ren gribning på et bord kan man overveje versionerne uden ben, R1-D eller G1-D. Til to laboratorier er den fornuftige kombination R1 til det grundlæggende kursus og G1 til manipulation, ikke to R1 med dyre hænder.</p>
+
+<h2>Hvordan købet finansieres på universitetet</h2>
+<p>I Danmark finansierer universiteterne indkøb gennem projektmidler og egne budgetter. Danske ordninger kan være relevante, for eksempel det forhøjede fradrag for forsknings- og udviklingsudgifter og Innobooster fra Danmarks Innovationsfond. Betingelserne afhænger af det enkelte program, og Abra Robotics kan levere tilbud og teknisk dokumentation til ansøgningen, men giver ikke skatterådgivning. Detaljerne står på siden <a href="/da/#incentives">Finansiering</a>.</p>
+<p>For det samlede overblik over platforme og forløb findes siden <a href="/en/universita-ricerca-en.html">Universiteter og forskning</a>. Hvis køberen er en virksomhed, findes reglerne om finansiering og leasing i artiklen om <a href="/da/blog/finanziamento-robot-industria-40.html">finansiering af robotter</a>.</p>
+
+<div class="product-strip" aria-label="Produkter nævnt i artiklen">
+<div class="product-strip-head"><span>Produkter nævnt i artiklen</span><a href="/da/#models">Hele prislisten</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-r1-edu-en.html"><img alt="Unitree R1 EDU (R1-U1)" loading="lazy" src="/images/official/unitree-r1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-r1-edu-en.html">Unitree R1 EDU (R1-U1)</a></h3>
+<p>SDK, 26 frihedsgrader, binokulært kamera</p>
+<div class="product-card-price">14.929,58 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-r1-edu-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-r1-air-en.html"><img alt="Unitree R1 Air" loading="lazy" src="/images/prodotti/r1-air.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-r1-air-en.html">Unitree R1 Air</a></h3>
+<p>20 frihedsgrader, bruges med app, uden SDK</p>
+<div class="product-card-price">7.190,05 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-r1-air-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 Edu Standard (G1-U1)" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 Edu Standard (G1-U1)</a></h3>
+<p>SDK, 23 frihedsgrader, til manipulation</p>
+<div class="product-card-price">38.004,54 € <small>ekskl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produktet</a><a class="product-card-link" href="/en/assessment-en.html">Få et tilbud</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<section class="article-faq">
+<h2>Ofte stillede spørgsmål</h2>
+<div class="faq-item"><h3>Hvad bruges Unitree R1 til i et universitetslaboratorium?</h3><p>Den dækker kurser i kontrol og locomotion, reinforcement learning og perception. Den er ikke beregnet til at håndtere laster: den maksimale last pr. arm er ca. 2 kg, og driftstiden er ca. en time.</p></div>
+<div class="faq-item"><h3>Hvilken version af R1 kan programmeres?</h3><p>Kun EDU-versionerne. Air og Basic bruges med app og fjernbetjening; SDK'et unitree_sdk2, ROS 2 og DDS-topics er dokumenteret for R1 EDU.</p></div>
+<div class="faq-item"><h3>Hvad koster Unitree R1 til et universitet?</h3><p>R1 Air koster 7.190,05 €; R1 Edu Standard (R1-U1), den første programmerbare version af den tobenede robot, koster 14.929,58 €. Den dyreste version i R1-serien er R1 Edu Professional B (R1-U4) til 35.216,56 €. End-User-priser ekskl. moms.</p></div>
+<div class="faq-item"><h3>Er R1 egnet til reinforcement learning?</h3><p>Ja, i EDU-versionen, med et forløb fra simulering over træning til overførsel. Batteriet på ca. en time begrænser de fysiske sessioner; repositoryet unitree_sim_isaaclab dokumenterer G1 og H1-2, så for R1 skal de tilgængelige modeller bekræftes.</p></div>
+<div class="faq-item"><h3>Kan et universitet bruge danske tilskud til at købe en R1?</h3><p>Nogle danske ordninger er rettet mod virksomheder, for eksempel det forhøjede fradrag for forsknings- og udviklingsudgifter og Innobooster. Universiteter finansierer typisk indkøb gennem projektmidler og egne budgetter. Se siden <a href="/da/#incentives">Finansiering</a>.</p></div>
+<div class="faq-item"><h3>R1 eller G1 til undervisning?</h3><p>R1 EDU er nok til kontrol, locomotion og perception på et begrænset budget. Til manipulation, imitation learning og datasæt fra teleoperation er referencepunktet G1 EDU.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Kilder</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/R1/" rel="noopener noreferrer" target="_blank">officielt datablad for R1</a> (specifikationer, frihedsgrader, noter om sikkerhed og funktioner under udvikling)</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/R1_developer" rel="noopener noreferrer" target="_blank">R1 developer</a> (specifikationer, kameraer, elektriske grænseflader, egen softwareudvikling)</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/R1_developer/services_interface" rel="noopener noreferrer" target="_blank">R1 services interface</a> (DDS, publish/subscribe, request/response, unitree_sdk2)</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/R1_developer/video_service" rel="noopener noreferrer" target="_blank">R1 video service</a> (opløsninger for det binokulære modul: 1280×720, RGB pr. øje og dybde 544×448)</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">unitree_sdk2</a> (SDK, BSD-3-Clause-licens, Ubuntu-miljø, R1-eksempler og DDS-topics)</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_sim_isaaclab" rel="noopener noreferrer" target="_blank">unitree_sim_isaaclab</a> (Isaac Lab-miljø til G1 og H1-2)</li>
+<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">officielt datablad for G1</a> (23-43 frihedsgrader, 120 N·m i knæet for EDU-versionen, valgfrie hænder)</li>
+<li>Unitree, <a href="https://www.unitree.com/R1-D/" rel="noopener noreferrer" target="_blank">officielt datablad for R1-D</a> og <a href="https://www.unitree.com/G1-D/" rel="noopener noreferrer" target="_blank">officielt datablad for G1-D</a> (versioner uden ben, med to arme eller som søjle)</li>
+<li>Abra Robotics, <a href="/da/#models">offentlig End-User-prisliste</a> (priser ekskl. moms brugt i tabellerne)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Indret et laboratorium med R1</h2><p>Fortæl os, hvor mange studerende, hvilke kurser og hvilket budget: vi sammensætter en konfiguration med robot, batterier, beregningsmoduler og tilbehør og opdeler de poster, der er relevante for ansøgningen.</p><a class="btn btn-primary" href="/en/universita-ricerca-en.html">Universiteter og forskning</a><a class="btn btn-outline-light" href="/en/assessment-en.html">Find konfigurationen</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/da/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Anvendt robotteknologi til virksomheder, universiteter og forskningsinstitutioner. Hardware, skræddersyet software, træning og teknisk support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Produktion &amp; logistik</a>
+<a href="/en/universita-ricerca-en.html">Universiteter &amp; forskning</a>
+<a href="/en/assessment-en.html">Find den rigtige robot</a>
+<a href="/da/#incentives">Finansiering</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Produkter</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Firbenede robotter</a>
+<a href="/en/umanoidi-en.html">Humanoider</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Kontakt</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italien</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book et opkald</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Alle rettigheder forbeholdes.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
