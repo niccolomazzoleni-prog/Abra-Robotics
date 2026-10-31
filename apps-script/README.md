@@ -7,7 +7,7 @@ prodotto) inviano allo **stesso endpoint**. L'endpoint è un Web App Google Apps
 
 ## EMERGENCY — Code.gs svuotato (ago 2026)
 
-Se in [project history](https://script.google.com/home/projects/1AT0Y4vgFTdrGbKRcnhNzojBDXWVQBN6ySmYt-mZSb7rZvT3Y1iJWO2lw/projecthistory?hl=it)
+Se in [project history](Apps Script → progetto "Abra Contatti" → Cronologia progetto (link nel Brain/Drive, non nel repo pubblico))
 la versione corrente mostra solo:
 
 ```js
@@ -21,7 +21,7 @@ aggiornare le mail/`NOTIFY_TO` finché non ripristini.
 
 1. Apri il progetto Apps Script → file **Codice.gs**
 2. Cancella tutto e incolla il contenuto di `apps-script/Code.gs` (locale, gitignored)
-3. Verifica `NOTIFY_TO` = `gio@abrarobotics.com,nico@abrarobotics.com,niccolomazzoleni@gmail.com`
+3. Verifica `NOTIFY_TO` = gli indirizzi interni di gio@ e nico@ (elenco completo solo nelle Script Properties, non nel repo)
 4. **Deploy → Gestisci distribuzioni → matita → Nuova versione → Distribuisci**
    (accesso **Chiunque**, esegui come **Me stesso**)
 5. Test: `powershell -File scripts/watchdog-forms.ps1`
@@ -31,13 +31,13 @@ aggiornare le mail/`NOTIFY_TO` finché non ripristini.
 
 ### Foglio Google (produzione)
 
-Foglio contatti: **https://docs.google.com/spreadsheets/d/15zvBHBRrsnC7b4qB7J3ttp0tXXJg8JFu27m4wXuWccQ/edit**
+Foglio contatti: **foglio "Abra Contatti sito" su Google Drive di gio@abrarobotics.com** (link non pubblicato: il repo è pubblico)
 
 1. Condividi il foglio con **gio@abrarobotics.com** → permesso **Editor** (se non sei già gio@).
 2. Vai su **https://script.google.com** → progetto Abra Web App → incolla `Code.gs` aggiornato.
 3. Seleziona **`bootstrapAbraSheet`** → ▶ **Esegui** (account **gio@abrarobotics.com**).
    - Crea tab **Scartati** / **Analytics** se mancano
-   - Condivide con gio@ + niccolomazzoleni@gmail.com
+   - Condivide con gio@ e nico@
    - Copia righe dai fogli legacy (se gio@ ha accesso)
 4. **Servizi** (+) → **Google Analytics Data API** → ON
 5. **Deploy** → **Gestisci distribuzioni** → matita → **Nuova versione** → Deploy
@@ -102,10 +102,10 @@ La dashboard admin legge dati da **due fonti**:
 ### Endpoint stats (JSONP)
 
 ```
-GET .../exec?action=stats&key=abra2026stats&callback=abraStatsCb
+GET .../exec?action=stats&key=<ABRA_STATS_KEY>&callback=abraStatsCb
 ```
 
-Chiave di default: `abra2026stats`. Per cambiarla: Script Property `ABRA_STATS_KEY` in Apps Script.
+La chiave sta solo nella Script Property `ABRA_STATS_KEY` di Apps Script: non scriverla nel repo (è pubblico).
 
 ### Cosa vedi nella dashboard
 
