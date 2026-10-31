@@ -1,0 +1,301 @@
+<!-- generato da scripts/blog_lingue.py da blog/g1-addestramento-da-video-mujoco.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree G1 Motion Imitation in MuJoCo: aus einem Video</title>
+<meta name="description" content="Pipeline für Unitree G1 Motion Imitation in MuJoCo: Posenschätzung aus Video mit GVHMR, Retargeting mit GMR, RL mit mjlab, Grenzen von Sim-to-Real."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/de/blog/g1-addestramento-da-video-mujoco.html"/>
+<link href="https://abrarobotics.com/blog/g1-addestramento-da-video-mujoco.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/g1-addestramento-da-video-mujoco.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/g1-addestramento-da-video-mujoco.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/g1-addestramento-da-video-mujoco.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/g1-addestramento-da-video-mujoco.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/g1-addestramento-da-video-mujoco.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree G1 Motion Imitation in MuJoCo: aus einem Video",
+  "description": "Pipeline für Unitree G1 Motion Imitation in MuJoCo: Posenschätzung aus Video mit GVHMR, Retargeting mit GMR, RL mit mjlab, Grenzen von Sim-to-Real.",
+  "datePublished": "2026-10-29",
+  "dateModified": "2026-10-29",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/de/blog/g1-addestramento-da-video-mujoco.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-01.webp",
+  "inLanguage": "de",
+  "url": "https://abrarobotics.com/de/blog/g1-addestramento-da-video-mujoco.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was macht der Unitree G1 mit Motion Imitation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Er lernt, eine im Video aufgezeichnete menschliche Bewegung nachzubilden. Die Policy steuert die Gelenke des Roboters, sie erkennt keine Objekte und entscheidet nicht über die Aufgabe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Reicht ein einziges Video, um den G1 zu trainieren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für eine einzelne Fähigkeit reicht es, für ein allgemeines Verhalten nicht. Nötig sind trotzdem Retargeting, Training in der Simulation und Versuche am Roboter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Braucht man für diese Pipeline einen Unitree G1 EDU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, für das Laden einer eigenen Policy braucht es SDK und Entwicklungsrechner, die nur die EDU-Versionen vorsehen. Das Unitree-Datenblatt sieht eigene Softwareentwicklung (SDK) beim Basis-G1 nicht vor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet ein Unitree G1 für diese Arbeit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Laut Preisliste reicht die G1-Familie von 19.809,32 € bis 90.829,38 €, zzgl. MwSt. Für die Pipeline braucht es eine EDU-Version: Der G1 Edu Standard (G1-U1) kostet 38.004,54 €."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wo läuft die Policy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Auf einem Ubuntu-PC, der über Ethernet mit dem G1 verbunden ist: Ein C++-Programm lädt die ONNX-Policy und sendet die Befehle mit unitree_sdk2. Zuerst testet man in unitree_mujoco, dann am hängenden Roboter im Debug Mode."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree G1 Motion Imitation in MuJoCo: aus einem Video"/>
+<meta property="og:description" content="Pipeline für Unitree G1 Motion Imitation in MuJoCo: Posenschätzung aus Video mit GVHMR, Retargeting mit GMR, RL mit mjlab, Grenzen von Sim-to-Real."/>
+<meta property="og:url" content="https://abrarobotics.com/de/blog/g1-addestramento-da-video-mujoco.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
+<meta property="og:locale" content="de_DE"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Roboter mit Lieferung aus Italien · Support auf Englisch</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/de/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Produkte <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Vierbeiner</a>
+<a href="/en/umanoidi-en.html">Humanoide</a>
+<a href="/en/accessori-en.html">Zubehör</a>
+<a href="/en/catalogo-unitree-en.html">Gesamtkatalog</a>
+<a href="/de/#models">Preisliste</a>
+</div>
+</div>
+<a href="/de/#models">Preise</a>
+<a href="/en/assessment-en.html">Passenden Roboter finden</a>
+<a href="/de/#incentives">Finanzierung</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Branchen <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Fertigung &amp; Logistik</a>
+<a href="/en/universita-ricerca-en.html">Hochschulen &amp; Forschung</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Über uns</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Gespräch buchen</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/de/">Startseite</a> / <a href="/de/">Blog</a> / Motion Imitation G1</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-01.webp" alt="Unitree G1 EDU, Plattform für Motion Imitation aus Video" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Entwicklung · Motion Imitation</p>
+<h1>Unitree G1 Motion Imitation in MuJoCo: vom Video zum Roboter</h1>
+<div class="article-meta"><time datetime="2026-10-29">29. Oktober 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Kurz gesagt:</strong> Die offene Pipeline für Unitree G1 Motion Imitation in MuJoCo hat vier Stufen: menschliche Posenschätzung aus Video mit GVHMR, Retargeting auf den G1 mit GMR, Reinforcement Learning mit mjlab oder unitree_rl_mjlab, Deployment auf einem G1 EDU im Debug Mode. Nötig sind ein Ubuntu-PC mit NVIDIA-GPU und Zeit für die Feinabstimmung. Das Video liefert die Bewegung, nicht die Fähigkeit.</div>
+</header>
+
+<div class="article-content">
+<p>Die offene Pipeline für <strong>Unitree G1 Motion Imitation in MuJoCo</strong> beginnt mit einer Videoaufnahme und endet mit einer Policy, die die Gelenke des Roboters bewegt. Das ist kein fertiges Produkt: Es ist eine Kette von Open-Source-Werkzeugen, jedes mit einem genau definierten Eingabeformat. Das Ergebnis hängt von der Qualität der gefilmten Bewegung ab.</p>
+
+<h2>Unitree G1 Motion Imitation in MuJoCo: die vier Stufen</h2>
+<p>Die geradlinigste Kette nutzt drei getrennte Projekte für Posenschätzung, Retargeting und Training, danach das Unitree SDK für den Roboter. VideoMimic, die Arbeit der UC Berkeley, vorgestellt auf der CoRL 2025, fasst die ersten beiden Stufen zusammen und rekonstruiert auch die Umgebung, bleibt aber ein Forschungsprojekt. Für ein Labor, das jeden Schritt kontrollieren will, ist der Weg über einzelne Komponenten sinnvoller.</p>
+<table>
+<thead><tr><th>Stufe</th><th>Werkzeug</th><th>Eingabe</th><th>Ausgabe</th></tr></thead>
+<tbody>
+<tr><td>1. Posenschätzung</td><td>GVHMR</td><td>Monokulares Video</td><td>SMPL-X in der Kamera und Trajektorie in der Welt</td></tr>
+<tr><td>2. Retargeting</td><td>GMR</td><td>SMPL-X, AMASS, BVH, FBX</td><td>Trajektorie der G1-Gelenke</td></tr>
+<tr><td>3. RL</td><td>mjlab / unitree_rl_mjlab</td><td>CSV oder NPZ der Motion</td><td>ONNX-Policy</td></tr>
+<tr><td>4. Deployment</td><td>unitree_sdk2 + unitree_mujoco</td><td>ONNX-Policy</td><td>Low-Level-Befehle am G1</td></tr>
+</tbody>
+</table>
+<p>Der G1 misst 1.320 mm im Stand und wiegt rund 35 kg in der Basisversion, 35 kg oder mehr bei den EDU-Versionen. In der Basisversion hat er 23 Freiheitsgrade; die EDU-Versionen kommen mit den Händen auf 43. Das Retargeting muss also entscheiden, was mit den Fingern geschieht, wenn das Video sie nicht zeigt.</p>
+
+<h2>Stufe 1: menschliche Posenschätzung aus dem Video</h2>
+<p><a href="https://github.com/zju3dv/GVHMR" rel="noopener noreferrer" target="_blank">GVHMR</a> (SIGGRAPH Asia 2024) gewinnt die menschliche Bewegung aus einem monokularen Video und gibt die SMPL-X-Parameter in der Kamera sowie die globale Trajektorie in der Welt zurück. Das Verfahren schätzt die Pose in einem „Gravity-View“-System, das aus der Gravitationsrichtung und der Kamerarichtung aufgebaut wird, und verringert so die Fehlerakkumulation, die für autoregressive Verfahren typisch ist. Auf der Projektseite nennen die Autoren 280 ms für ein Video mit 1.430 Frames auf einer RTX 4090, ohne Preprocessing (2D-Tracking, Features, relative Kamerarotation).</p>
+<p>Die praktische Grenze liegt ganz im Preprocessing: 2D-Tracking, Features, relative Kamerarotation. Bewegt sich die Kamera, ist der Maßstab mehrdeutig und die Füße rutschen, dann übernimmt das Retargeting den Fehler. Deshalb rekonstruiert <a href="https://github.com/hongsukchoi/VideoMimic" rel="noopener noreferrer" target="_blank">VideoMimic</a> Person und Umgebung gemeinsam: Der Kontaktpunkt mit Treppen und Stühlen wird Teil des Problems, nicht ein Detail, das man später korrigiert. Das Repository steht unter MIT-Lizenz, und die real2sim-Pipeline akzeptiert ausdrücklich den Roboter <code>g1</code>.</p>
+
+<h2>Stufe 2: Retargeting vom menschlichen Körper auf den G1</h2>
+<p><a href="https://github.com/YanjieZe/GMR" rel="noopener noreferrer" target="_blank">GMR</a> (ICRA 2026, MIT-Lizenz) löst das umgekehrte Problem: Es bringt eine menschliche Trajektorie in die generalisierten Koordinaten des Roboters. Unterstützt werden SMPL-X und AMASS, BVH LAFAN1 und Nokov, FBX OptiTrack und PICO-Streaming. Für den G1 deckt es die Konfiguration mit 29 DoF und die mit 43 DoF samt Händen ab. Der Solver nutzt <code>mink</code> und MuJoCo, begrenzt die Motordrehzahl und zeigt das Ergebnis in einem MuJoCo-Fenster.</p>
+<p>Die angegebene Geschwindigkeit liegt bei 35-45 FPS auf einem Intel i9-13900K und 60-70 FPS auf einem Threadripper 7960X, das Retargeting läuft also auf der CPU ohne GPU. GMR bindet auch GVHMR ein: Der Befehl <code>scripts/gvhmr_to_robot.py --gvhmr_pred_file hmr4d_results.pt --robot unitree_g1</code> liest die von GVHMR erzeugte Datei und erzeugt die Motion des Roboters. Die Autoren warnen, dass eine einzige Konfiguration nicht für alle Bewegungen gut funktioniert: Einige Clips müssen von Hand geprüft werden.</p>
+
+<h2>Stufe 3: Reinforcement Learning in MuJoCo mit mjlab</h2>
+<p><a href="https://github.com/mujocolab/mjlab" rel="noopener noreferrer" target="_blank">mjlab</a> (Apache 2.0) verbindet die Manager-API von Isaac Lab mit MuJoCo Warp. Das Training braucht eine NVIDIA-GPU; unter macOS lässt sich eine Policy nur auswerten. Der Task <code>Mjlab-Tracking-Flat-Unitree-G1</code> trainiert den G1 darauf, einer Referenz-Motion zu folgen; in den Beispielen laufen 4.096 parallele Umgebungen, und die <a href="https://mujocolab.github.io/mjlab/main/source/training/motion_imitation.html" rel="noopener noreferrer" target="_blank">offizielle Anleitung</a> beschreibt die CSV-NPZ-Konvertierung und die WandB-Registrierung.</p>
+<p>Ein praktisches Detail: Die NPZ enthält Positionen und Quaternionen, indiziert nach Body-Nummer, und MuJoCo und PhysX vergeben unterschiedliche Indizes. Konvertiert man die Motion mit einem Skript aus Isaac Lab und lädt sie in mjlab, landen die Targets auf den falschen Bodies und das Training konvergiert nicht. Verwenden Sie <code>mjlab.scripts.csv_to_npz</code>.</p>
+<p>Wer die von Unitree gepflegte Version will, nimmt <a href="https://github.com/unitreerobotics/unitree_rl_mjlab" rel="noopener noreferrer" target="_blank">unitree_rl_mjlab</a>: gleiche Tracking-Tasks für den G1 mit 29 und 23 DoF, dazu Lokomotions-Tasks für Go2, A2, R1 und H1-2; das Repository nennt außerdem As2 und H2 unter den unterstützten Robotern. Das Projekt stammt von mjlab, whole_body_tracking und rsl_rl ab und exportiert <code>policy.onnx</code> während des Trainings. Die theoretische Grundlage ist <a href="https://arxiv.org/abs/2508.08241" rel="noopener noreferrer" target="_blank">BeyondMimic</a>: eine kompakte Formulierung des Motion Trackings mit gemeinsamen Hyperparametern, die im selben Setup Radschlagen in der Luft, Drehkicks und Sprints abdeckt.</p>
+
+<h2>Stufe 4: vom Simulator zum echten G1</h2>
+<p>Das Deployment läuft über <code>unitree_sdk2</code> und ein C++-Programm, das die ONNX-Policy lädt und auf <code>rt/lowcmd</code> veröffentlicht. Zuerst testet man in <code>unitree_mujoco</code>, dann am hängenden Roboter. Im Unitree-Repository hat das PC-Netz die Adresse <code>192.168.123.222</code> mit Maske <code>255.255.255.0</code>; der Roboter wird im Nullmoment-Modus eingeschaltet und mit <strong>L2+R2</strong> in den Debug Mode gebracht, sonst streiten sich der integrierte Motion Controller und die Policy um die Motoren. Netzwerk- und Debug-Prozedur sind dieselben wie in der Anleitung zum <a href="/de/blog/unitree-g1-programmazione.html">Programmieren des G1</a>.</p>
+<p>Die Kluft zwischen Simulation und Realität schließt ein besseres Video nicht. <a href="https://arxiv.org/abs/2502.01143" rel="noopener noreferrer" target="_blank">ASAP</a> (RSS 2025) geht von in der Simulation trainierten Motion-Tracking-Policies aus und ergänzt ein Residualmodell der Aktionen, das mit am Roboter gesammelten Daten trainiert wird, um die Dynamikdifferenz auszugleichen. Die Arbeit wurde am G1 evaluiert und nennt einen geringeren Tracking-Fehler als bei System Identification und Domain Randomization. Praktisch heißt das: Rechnen Sie mit einer zweiten Feinabstimmungsphase am Roboter, nicht mit einem direkten Transfer.</p>
+<p>Auch das physikalische Modell zählt. Der <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1" rel="noopener noreferrer" target="_blank">G1 in MuJoCo Menagerie</a> ist ein vereinfachtes MJCF, abgeleitet aus der öffentlichen Datei von <code>unitree_ros</code>, unter BSD-3-Clause-Lizenz. Das MJX-Modell wurde in MuJoCo Playground auf reale Hardware übertragen: ein guter Ausgangspunkt, doch Aktuatoren und Verstärkungen müssen am eigenen Exemplar geprüft werden.</p>
+
+<h2>Grenzen: was ein Video nicht löst</h2>
+<ul>
+<li><strong>Kräfte und Kontakte.</strong> Das Video liefert Kinematik, nicht Drehmomente, Reibung oder Kontaktkräfte. Manipulation und Greifen bleiben außerhalb einer reinen Motion-Tracking-Pipeline.</li>
+<li><strong>Maßstab und Kamera.</strong> Ein Video mit bewegter Kamera oder ohne metrische Referenzen erzeugt mehrdeutige Trajektorien; das Retargeting kann den Maßstab nicht erfinden.</li>
+<li><strong>Ein Clip, eine Fähigkeit.</strong> Der Tracking-Task von mjlab trainiert auf einer Referenz-Motion. Für mehrere Fähigkeiten braucht es einen Multi-Clip-Datensatz und ein Training, das sie kombiniert.</li>
+<li><strong>Qualität des Retargetings.</strong> GMR räumt ein, dass einige Bewegungen mit der Standardkonfiguration schlecht gelingen: Sie müssen vor dem Training in MuJoCo geprüft werden.</li>
+<li><strong>Sicherheit.</strong> Die Policy ist keine Sicherheitsfunktion: Sie ersetzt keine Schutzvorrichtungen. Erste Versuche mit hängendem Roboter, freiem Bereich und einer Person an der Fernbedienung.</li>
+</ul>
+
+<h2>Was der Einstieg kostet</h2>
+<p>Nötig ist ein G1 EDU: Das Unitree-Datenblatt sieht eigene Softwareentwicklung (SDK) nur für diese Version vor. Laut Preisliste reicht die G1-Familie von 19.809,32 € bis 90.829,38 €, zzgl. MwSt. Der G1 Edu Standard (G1-U1) mit 23 DoF und Rechenmodul Jetson Orin NX kostet 38.004,54 €. Die Unterschiede zwischen U1, U2 und den Versionen mit Händen stehen im Leitfaden <a href="/de/blog/unitree-g1-quale-versione-scegliere.html">Welche Version des G1 wählen</a>; die komplette Palette findet sich unter <a href="/de/unitree-g1.html">Unitree G1</a>.</p>
+<p>Abra Robotics stellt die G1-EDU-Modelle auch in Deutschland, Österreich und der Schweiz bereit, mit Support auf Englisch; Schulung und eigene Softwareentwicklung (SDK) sind separate Leistungen. Versand, Versicherung und Lieferbedingungen stehen im schriftlichen Angebot, Steuer und Zoll richten sich nach dem Bestimmungsland. Für Labore, die bei null beginnen, deckt die Anleitung <a href="/de/blog/ros2-unitree-guida-rapida.html">ROS 2 auf Unitree Robotern</a> Netzwerk und erstes Topic ab; zum Forschungskontext gibt es die Seite <a href="/en/universita-ricerca-en.html">Hochschulen und Forschung</a>.</p>
+
+<section class="article-faq">
+<h2>Häufige Fragen</h2>
+<div class="faq-item"><h3>Was macht der Unitree G1 mit Motion Imitation?</h3><p>Er lernt, eine im Video aufgezeichnete menschliche Bewegung nachzubilden. Die Policy steuert die Gelenke des Roboters, sie erkennt keine Objekte und entscheidet nicht über die Aufgabe.</p></div>
+<div class="faq-item"><h3>Reicht ein einziges Video, um den G1 zu trainieren?</h3><p>Für eine einzelne Fähigkeit reicht es, für ein allgemeines Verhalten nicht. Nötig sind trotzdem Retargeting, Training in der Simulation und Versuche am Roboter.</p></div>
+<div class="faq-item"><h3>Braucht man für diese Pipeline einen Unitree G1 EDU?</h3><p>Ja, für das Laden einer eigenen Policy braucht es SDK und Entwicklungsrechner, die nur die EDU-Versionen vorsehen. Das Unitree-Datenblatt sieht eigene Softwareentwicklung (SDK) beim Basis-G1 nicht vor.</p></div>
+<div class="faq-item"><h3>Was kostet ein Unitree G1 für diese Arbeit?</h3><p>Laut Preisliste reicht die G1-Familie von 19.809,32 € bis 90.829,38 €, zzgl. MwSt. Für die Pipeline braucht es eine EDU-Version: Der G1 Edu Standard (G1-U1) kostet 38.004,54 €.</p></div>
+<div class="faq-item"><h3>Wo läuft die Policy?</h3><p>Auf einem Ubuntu-PC, der über Ethernet mit dem G1 verbunden ist: Ein C++-Programm lädt die ONNX-Policy und sendet die Befehle mit unitree_sdk2. Zuerst testet man in unitree_mujoco, dann am hängenden Roboter im Debug Mode.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Quellen</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">offizielles Datenblatt G1</a> (DoF, Gewicht, Höhe, Softwareentwicklung nur bei EDU)</li>
+<li>Unitree, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab" rel="noopener noreferrer" target="_blank">unitree_rl_mjlab</a> (G1-Tasks, Motion-Konvertierung, Deployment und Debug Mode)</li>
+<li>mujocolab, <a href="https://github.com/mujocolab/mjlab" rel="noopener noreferrer" target="_blank">mjlab</a> und <a href="https://mujocolab.github.io/mjlab/main/source/training/motion_imitation.html" rel="noopener noreferrer" target="_blank">Anleitung Motion Imitation</a></li>
+<li>Yanjie Ze et al., <a href="https://github.com/YanjieZe/GMR" rel="noopener noreferrer" target="_blank">GMR: General Motion Retargeting</a> (README, unterstützte Roboter, CPU-Benchmark)</li>
+<li>Shen et al., <a href="https://zju3dv.github.io/gvhmr/" rel="noopener noreferrer" target="_blank">GVHMR: World-Grounded Human Motion Recovery via Gravity-View Coordinates</a>, SIGGRAPH Asia 2024</li>
+<li>Allshire, Choi et al., <a href="https://www.videomimic.net/" rel="noopener noreferrer" target="_blank">VideoMimic: Visual Imitation Enables Contextual Humanoid Control</a>, CoRL 2025; Code auf <a href="https://github.com/hongsukchoi/VideoMimic" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+<li>Liao et al., <a href="https://arxiv.org/abs/2508.08241" rel="noopener noreferrer" target="_blank">BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion</a>, arXiv:2508.08241</li>
+<li>He et al., <a href="https://arxiv.org/abs/2502.01143" rel="noopener noreferrer" target="_blank">ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills</a>, arXiv:2502.01143</li>
+<li>Google DeepMind, <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1" rel="noopener noreferrer" target="_blank">Unitree G1 Description (MJCF)</a>, MuJoCo Menagerie</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Brauchen Sie einen G1 EDU für die Pipeline?</h2><p>Wir konfigurieren den G1 EDU mit dem passenden Rechenmodul und bieten als separate Leistung Schulung zu SDK, MuJoCo und ROS 2 an.</p><a class="btn btn-primary" href="/de/unitree-g1.html">G1-EDU-Konfigurationen</a><a class="btn btn-outline-light" href="/en/index-en.html">Software-Leistungen</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/de/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Angewandte Robotik für Unternehmen, Hochschulen und Forschungseinrichtungen. Hardware, Software nach Maß, Schulung und technischer Support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Fertigung &amp; Logistik</a>
+<a href="/en/universita-ricerca-en.html">Hochschulen &amp; Forschung</a>
+<a href="/en/assessment-en.html">Passenden Roboter finden</a>
+<a href="/de/#incentives">Finanzierung</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Produkte</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Vierbeiner</a>
+<a href="/en/umanoidi-en.html">Humanoide</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Kontakt</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italien</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Gespräch buchen</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Alle Rechte vorbehalten.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
