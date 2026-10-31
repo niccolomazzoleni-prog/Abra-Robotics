@@ -12,7 +12,7 @@ function Get-JsonOrError($response) {
 }
 $Base = "https://script.google.com/macros/s/AKfycbw1WeoJYZltyorwQ-8Nftg0DdiOXOV-Zl3MlRegJS2ybhAzaRaqZNpTRamEbHJe2NtK/exec"
 $BaseSecondary = "https://script.google.com/macros/s/AKfycbxPPfh3qZRF0GwnKJicY5rcgdMSRoW_liBenRQValdCPSCM2MrZR_Y6fwrAZOHgCrDW/exec"
-$StatsKey = "abra2026stats"
+$StatsKey = $env:ABRA_STATS_KEY  # chiave fuori dal repo pubblico
 $SmokeKey = "abra2026smoke"
 $Passed = 0
 $Failed = 0
