@@ -130,7 +130,7 @@
 
       if (autoQuote && autoQuote.lines?.length) {
         parts.push(this.quote.formatQuote(autoQuote));
-        parts.push('\n→ Apri "Crea offerta" (offerta.html) per personalizzare voci, cliente ed export PDF.');
+        parts.push('\n→ Per un\'offerta formale scrivici: info@abrarobotics.com');
       } else if (ragResults.length) {
         parts.push('Ecco cosa ho trovato nella knowledge base:\n');
         ragResults.slice(0, 3).forEach(r => {
