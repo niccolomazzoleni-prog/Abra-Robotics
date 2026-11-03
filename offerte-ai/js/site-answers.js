@@ -14,7 +14,7 @@
   const WA_DISPLAY = '+39 340 859 2926';
   const EMAIL = 'info@abrarobotics.com';
   const BOOKING_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF';
-  const DELIVERY = '4–6 settimane';
+  const DELIVERY = '60 giorni';
   const LISTINO_URL = 'listino-unitree.html';
   const UMANOIDI_URL = 'umanoidi.html';
   const QUADRUPEDI_URL = 'quadrupedi.html';
@@ -456,7 +456,7 @@
 
     answerDelivery(found) {
       const lines = [
-        '**Consegna in ' + DELIVERY + '** dalla conferma d\'ordine, per umanoidi, quadrupedi e accessori Unitree.',
+        '**Consegna in ' + DELIVERY + '** dalla conferma d\'ordine. Il **G1 EDU U2** è in **pronta consegna**.',
         'I prezzi di listino includono già **spedizione e dazio** (IVA esclusa). Per configurazioni speciali confermiamo la data in fase d\'ordine.',
       ];
       if (found && found.mode === 'families') {

@@ -61,7 +61,7 @@ def riassunto():
         "",
         "## Condizioni dei prezzi",
         "- Prezzi End-User pubblici, **IVA esclusa**, spedizione e dazio inclusi per i robot.",
-        "- Consegna indicativa: **4–6 settimane** dalla conferma d'ordine.",
+        "- Consegna: **60 giorni** dalla conferma d'ordine; il G1 EDU U2 è in **pronta consegna**.",
         "- Garanzia, ricambi originali e assistenza tecnica in Italia.",
         f"- Elenco completo di tutti i prodotti con prezzo e link: {BASE}llms-full.txt",
         f"- Listino consultabile: {BASE}listino-unitree.html",
@@ -105,7 +105,7 @@ def riassunto():
         f"- **Chi vende robot Unitree in Italia?** Abra Robotics, filiera di distribuzione di Unitree Italia — {BASE}lp-unitree.html",
         f"- **Quanto costa un robot umanoide Unitree in Italia?** Da {eur(min(v['prezzo_eur'] for k, v in LISTINO.items() if re.match(r'^(G1|H2|R1)', k) and v.get('categoria') == 'UMANOIDI' and not v.get('prezzo_da') and v.get('prezzo_eur')))} € IVA esclusa (R1-A5); G1 da {eur(gruppo(r'^G1-')[0][1]['prezzo_eur'])} €; H2 da {eur(gruppo(r'^H2(-AIR|-EDU|-PLUS)')[0][1]['prezzo_eur'])} € — {BASE}umanoidi.html",
         f"- **Quanto costa un cane robot Unitree?** Go2 da {eur(gruppo(r'^GO2-')[0][1]['prezzo_eur'])} € IVA esclusa; AS2 da {eur(gruppo(r'^AS2-')[0][1]['prezzo_eur'])} € — {BASE}quadrupedi.html",
-        "- **Tempi di consegna?** 4–6 settimane dalla conferma d'ordine.",
+        "- **Tempi di consegna?** 60 giorni dalla conferma d'ordine; il G1 EDU U2 è in pronta consegna.",
         f"- **Si può finanziare?** Sì, la maggior parte dei progetti è finanziabile — {BASE}finanziamenti.html",
         "",
         "## Entity",
@@ -150,7 +150,7 @@ def guide():
 def completo():
     righe = [
         "# Abra Robotics — listino completo per assistenti AI (llms-full.txt)",
-        f"> Aggiornato: {OGGI}. Prezzi End-User in euro, IVA esclusa, spedizione e dazio inclusi per i robot. Consegna 4–6 settimane.",
+        f"> Aggiornato: {OGGI}. Prezzi End-User in euro, IVA esclusa, spedizione e dazio inclusi per i robot. Consegna in 60 giorni dalla conferma d'ordine (G1 EDU U2 in pronta consegna).",
         "> Fonte: listino pubblico https://abrarobotics.com/listino-unitree.html — riassunto: https://abrarobotics.com/llms.txt",
         "",
     ]
