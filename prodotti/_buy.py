@@ -8,7 +8,7 @@ SITE = "https://niccolomazzoleni-prog.github.io/Abra-Robotics"
 _PERKS = '''            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
               <li><span class="bp-ico">✓</span> Parte della filiera di distribuzione di Unitree Italia · garanzia inclusa</li>
-              <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
+              <li><span class="bp-ico">✓</span> Consegna in 60 giorni dalla conferma d'ordine</li>
             </ul>'''
 _NOTE = '<p class="buy-box-note">Prezzo indicativo, soggetto a variazioni cambio EUR/USD — preventivo aggiornato su richiesta.</p>'
 

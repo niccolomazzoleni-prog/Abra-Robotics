@@ -89,12 +89,16 @@ def product_family(sku: str, nome: str) -> str:
 
 PRICE_FROM_SKUS = {"R1-D"}
 
-# Ricambi su ordinazione: niente "Disponibile" ne' tempi di consegna fissi, JSON-LD BackOrder
+# Ricambi su ordinazione: niente "Disponibile", JSON-LD BackOrder
 ON_ORDER_SKUS = {
     "GO2-AIR-MAIN-BOARD", "G1-FOOT-SOLE", "G1-MAIN-BOARD", "B2W-SINGLE-WHEEL", "GO2-UWB-MODULE",
     "G1-HIP-IMU-COVER", "G1-FRONT-WEARING-PLATE", "G1-BACK-NECK-RUBBER-COVER",
 }
-ON_ORDER_TEXT = "Ricambio su ordinazione: tempi di consegna confermati nel preventivo"
+ON_ORDER_TEXT = "Ricambio su ordinazione: consegna in 60 giorni dalla conferma d'ordine"
+
+# Pronta consegna (regola di Gio, 4/11/2026): tutto il resto 60 giorni dalla conferma d'ordine
+READY_SKUS = {"G1-U2"}
+READY_TEXT = "<strong>Pronta consegna</strong>: il G1 EDU U2 è disponibile subito"
 
 FILENAME_MAP: dict[str, str] = {
     "H2-EDU": "unitree-h2.html",
@@ -229,11 +233,13 @@ def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float
     perks = """            <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Spedizione e dazio doganale inclusi</li>
               <li><span class="bp-ico">✓</span> Parte della filiera di distribuzione di Unitree Italia</li>
-              <li><span class="bp-ico">✓</span> Consegna stimata 4–6 settimane</li>
+              <li><span class="bp-ico">✓</span> Consegna in 60 giorni dalla conferma d'ordine</li>
             </ul>"""
     on_order = sku in ON_ORDER_SKUS
     if on_order:
-        perks = perks.replace("Consegna stimata 4–6 settimane", ON_ORDER_TEXT)
+        perks = perks.replace("Consegna in 60 giorni dalla conferma d'ordine", ON_ORDER_TEXT)
+    if sku in READY_SKUS:
+        perks = perks.replace("Consegna in 60 giorni dalla conferma d'ordine", READY_TEXT)
     note = '<p class="buy-box-note">Prezzo indicativo — preventivo aggiornato su richiesta.</p>'
     if on_order:
         note = '<p class="buy-box-note">Prezzo indicativo, preventivo aggiornato su richiesta.</p>'
@@ -249,7 +255,8 @@ def buy_area(price: float | None, has_price: bool, sku: str = "", listino: float
     was, badge = discount_parts(price, listino)
     amount = f"A partire da {vis} €" if sku in PRICE_FROM_SKUS else f"{vis} €"
     sub = "Prezzo indicativo · IVA esclusa" if sku in PRICE_FROM_SKUS else "Prezzo chiavi in mano · IVA esclusa"
-    stock = "" if on_order else '              <span class="buy-box-stock"><span class="dot"></span> Disponibile</span>\n'
+    stato = "Pronta consegna" if sku in READY_SKUS else "Disponibile"
+    stock = "" if on_order else f'              <span class="buy-box-stock"><span class="dot"></span> {stato}</span>\n'
     return f"""          <div class="buy-box">
             <div class="buy-box-head">
               <div class="buy-box-price">
@@ -406,6 +413,10 @@ def generate_page(row: dict, manifest: dict) -> str | None:
     }
     for k, v in repl.items():
         html = html.replace(k, v)
+    if sku in READY_SKUS:
+        html = html.replace("<span>Consegna in 60 giorni</span>", "<span>Pronta consegna</span>")
+        html = html.replace("Robot consegnato in 60 giorni dalla conferma d'ordine, già configurato e operativo.",
+                            "Robot in pronta consegna, già configurato e operativo.")
     path.write_text(html, encoding="utf-8")
     return filename
 

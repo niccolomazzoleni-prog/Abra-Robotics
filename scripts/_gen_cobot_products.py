@@ -158,7 +158,7 @@ def buy_area(prezzo_eur: float) -> str:
             <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Assessment applicativo su preventivo</li>
               <li><span class="bp-ico">✓</span> Configurazione base e supporto Abra</li>
-              <li><span class="bp-ico">✓</span> Disponibilità e consegna da verificare con il produttore</li>
+              <li><span class="bp-ico">✓</span> Consegna in 60 giorni dalla conferma d'ordine</li>
             </ul>
             <div class="buy-box-cta"><a href="#form" class="btn btn-primary">Richiedi preventivo</a></div>
             <p class="buy-box-note">Prezzo indicativo — gripper e safety su preventivo dedicato.</p>

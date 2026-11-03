@@ -153,7 +153,7 @@ PROCESS_HTML = """      <div class="process-steps-product">
         <div class="step">
           <span class="step-number">03</span>
           <h3>Go-live</h3>
-          <p>Commissioning e messa in servizio del primo percorso — tipicamente ~4 settimane.</p>
+          <p>Consegna in 60 giorni dalla conferma d'ordine, poi messa in servizio del primo percorso.</p>
         </div>
       </div>"""
 
@@ -194,7 +194,7 @@ def buy_area(net: float) -> str:
             <ul class="buy-box-perks">
               <li><span class="bp-ico">✓</span> Sopralluogo e integrazione su preventivo</li>
               <li><span class="bp-ico">✓</span> Progettazione percorsi e integrazione</li>
-              <li><span class="bp-ico">✓</span> Disponibilità e consegna da verificare con il produttore</li>
+              <li><span class="bp-ico">✓</span> Consegna in 60 giorni dalla conferma d'ordine</li>
             </ul>
             <div class="buy-box-cta"><a href="#form" class="btn btn-primary">Richiedi preventivo</a></div>
             <p class="buy-box-note">Prezzo indicativo — quotazione aggiornata su richiesta.</p>
@@ -217,7 +217,7 @@ def product_schema(
     faq = f"""  <script type="application/ld+json">
   {{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {{"@type": "Question", "name": "Il prezzo «da» è definitivo?", "acceptedAnswer": {{"@type": "Answer", "text": "No: è indicativo IVA esclusa. Il preventivo finale dipende da layout, integrazioni e top module."}}}},
-    {{"@type": "Question", "name": "Quanto tempo serve per il go-live?", "acceptedAnswer": {{"@type": "Answer", "text": "Per AMR industriali stimiamo circa 4 settimane dal sopralluogo al primo percorso operativo."}}}}
+    {{"@type": "Question", "name": "Quanto tempo serve per il go-live?", "acceptedAnswer": {{"@type": "Answer", "text": "Il robot arriva in 60 giorni dalla conferma d'ordine. Dopo la consegna mettiamo in servizio il primo percorso: i tempi dipendono da complessità e IT."}}}}
   ]}}
   </script>"""
     breadcrumb = f"""  <script type="application/ld+json">
