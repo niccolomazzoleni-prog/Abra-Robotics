@@ -151,15 +151,15 @@
       const lower = this._normalizeText(userText);
       if (!/tempi?\s*(di\s+)?consegna|quando\s+arriv|delivery|tempo\s+consegna/.test(lower)) return null;
       if (/\bg1\b|umanoide|umanoidi/.test(lower)) {
-        return '**Tempi di consegna umanoidi G1:** in genere **4–6 settimane** dalla conferma ordine (configurazione e stock da verificare).';
+        return '**Tempi di consegna umanoidi:** il **G1 EDU U2** è in **pronta consegna**; gli altri umanoidi in **60 giorni** dalla conferma d\'ordine.';
       }
       if (/\bgo2\b|\bas2\b|\ba2\b|quadruped/.test(lower)) {
-        return '**Tempi di consegna quadrupedi:** in genere **4–6 settimane** dalla conferma ordine.';
+        return '**Tempi di consegna quadrupedi:** **60 giorni** dalla conferma d\'ordine.';
       }
       if (/\bmir\b|\bamr\b|cobot/.test(lower)) {
-        return '**Tempi di consegna AMR/cobot:** da verificare con il produttore; li confermiamo per iscritto in offerta.';
+        return '**Tempi di consegna AMR/cobot:** **60 giorni** dalla conferma d\'ordine, salvo disponibilità diversa confermata dal fornitore.';
       }
-      return '**Tempi indicativi Abra:** quadrupedi e umanoidi Unitree 4–6 settimane dalla conferma ordine · AMR/cobot da verificare con il produttore.';
+      return '**Tempi di consegna Abra:** G1 EDU U2 in pronta consegna · tutti gli altri prodotti 60 giorni dalla conferma d\'ordine, salvo disponibilità diversa confermata dal fornitore.';
     }
 
     tryAutoQuote(userText) {

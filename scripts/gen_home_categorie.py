@@ -85,7 +85,7 @@ def blocco():
     listino = ('<a class="cat-card cat-card--listino" href="listino-unitree.html"><span>'
                '<span class="cat-card-name">Listino prezzi completo</span>'
                f'<p>Tutti i prezzi End-User in un\'unica pagina, IVA esclusa.</p>'
-               '<ul><li>Spedizione e dazio inclusi</li><li>Consegna in 4–6 settimane</li><li>Garanzia e assistenza in Italia</li></ul>'
+               '<ul><li>Spedizione e dazio inclusi</li><li>Consegna in 60 giorni</li><li>Garanzia e assistenza in Italia</li></ul>'
                '</span><span class="cat-card-cta">Apri il listino →</span></a>')
     return (STYLE + '<section class="section cat-section" id="categorie"><div class="container">'
             '<div class="section-header" style="text-align:left;max-width:100%;margin-bottom:0;">'

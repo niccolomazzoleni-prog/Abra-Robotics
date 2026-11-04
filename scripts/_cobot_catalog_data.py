@@ -160,7 +160,7 @@ CATALOG: tuple[tuple, ...] = (
         [
             ("Compatibilità", "Fairino FR10 · FR16 · FR20 · FR30"),
             ("Software", "Pallet pattern integrato"),
-            ("Lead time indicativo", "~25 giorni lavorativi"),
+            ("Consegna dalla conferma d'ordine", "60 giorni"),
         ],
         "Base meccanica per celle palletizzazione — abbina il cobot Fairino giusto al tuo ciclo.",
         10230,
@@ -202,7 +202,7 @@ CATALOG: tuple[tuple, ...] = (
         [
             ("Incluso Abra", "Assessment · layout cella · go-live"),
             ("Applicazioni", "Palletizzazione · depalletizzazione"),
-            ("Lead time", "da verificare con il produttore"),
+            ("Consegna dalla conferma d'ordine", "60 giorni"),
         ],
         "Automazione pallet fine linea con payload elevato e ROI 12–24 mesi.",
         36828,

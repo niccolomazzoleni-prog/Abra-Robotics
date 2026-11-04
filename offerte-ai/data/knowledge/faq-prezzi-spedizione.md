@@ -13,7 +13,7 @@
 - Indicativa di default Abra:
   - **Quadrupedi:** da € 1.000
   - **Umanoidi:** da € 2.000
-- Tempi consegna: quadrupedi 4–6 settimane, umanoidi 4–6 settimane dalla conferma ordine
+- Tempi consegna: G1 EDU U2 in pronta consegna; tutti gli altri prodotti 60 giorni dalla conferma d'ordine, salvo disponibilità diversa confermata dal fornitore
 
 ## Cosa include tipicamente il robot
 
