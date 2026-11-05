@@ -1,0 +1,364 @@
+<!-- generato da scripts/blog_lingue.py da blog/amr-robot-vs-agv.html -->
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMR-robotti vs AGV: erot, kustannukset ja valinta</title>
+<meta name="description" content="AMR-robotti vs AGV: kiinteä reitti vai SLAM-navigaatio, infrastruktuuri, kalusto, turvallisuus ISO 3691-4 ja kustannuserät. Milloin AGV on oikea valinta."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/fi/blog/amr-robot-vs-agv.html"/>
+<link href="https://abrarobotics.com/blog/amr-robot-vs-agv.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/amr-robot-vs-agv.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/amr-robot-vs-agv.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/amr-robot-vs-agv.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AMR-robotti vs AGV: erot, kustannukset ja valinta",
+  "description": "AMR-robotti vs AGV: kiinteä reitti vai SLAM-navigaatio, infrastruktuuri, kalusto, turvallisuus ISO 3691-4 ja kustannuserät. Milloin AGV on oikea valinta.",
+  "datePublished": "2026-11-04",
+  "dateModified": "2026-11-04",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/fi/blog/amr-robot-vs-agv.html"
+  },
+  "image": "https://abrarobotics.com/images/manifattura/amr/mir600-hero.webp",
+  "inLanguage": "fi",
+  "url": "https://abrarobotics.com/fi/blog/amr-robot-vs-agv.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Mitä AMR-robotti tarkoittaa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AMR-robotti on autonominen mobiilirobotti: se liikkuu ilman fyysisiä ohjaimia, rakentaa ympäristöstä kartan ja käyttää sitä paikantamiseen ja reitinsuunnitteluun. Lyhenne tulee sanoista Autonomous Mobile Robot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMR-robotti vs AGV: kumpi kannattaa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Riippuu siitä, kuinka paljon layout muuttuu ja kuinka paljon infrastruktuuria haluat asentaa. AMR kannattaa vaihtelevilla reiteillä ja muuttuvilla layouteilla; AGV vakaisilla virtauksilla ja kiinteillä reiteillä, erityisesti jos ohjaimet ovat jo olemassa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Paljonko AMR-robotti maksaa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Abran hinnastossa AMR-mallisto vaihtelee 16 999 eurosta 164 430 euroon ilman arvonlisäveroa, ja hinta koskee vain robottia. Kalustonhallintaohjelmisto, WMS/MES-integraatio, lataus, ylämoduuli ja käyttöönotto hinnoitellaan erikseen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Tarvitseeko AMR infrastruktuuria?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lattiaohjaimia ei tarvita kuten AGV:ssä, mutta tarvitaan ajan tasalla oleva kartta, luotettava Wi-Fi-verkko, latausasemat, vaihtopisteet ja riskienarvioinnin mukaisesti valmisteltu alue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Koskeeko ISO 3691-4 myös AMR-robotteja?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kyllä. ISO 3691-4:2023 kattaa miehittämättömät teollisuustrukit ja niiden järjestelmät ja mainitsee nimenomaisesti sekä AGV:t että AMR:t. Yksittäisen asennuksen turvallisuus kuitenkin validoidaan projektissa."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="AMR-robotti vs AGV: erot, kustannukset ja valinta"/>
+<meta property="og:description" content="AMR-robotti vs AGV: kiinteä reitti vai SLAM-navigaatio, infrastruktuuri, kalusto, turvallisuus ISO 3691-4 ja kustannuserät. Milloin AGV on oikea valinta."/>
+<meta property="og:url" content="https://abrarobotics.com/fi/blog/amr-robot-vs-agv.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/manifattura/amr/mir600-hero.webp"/>
+<meta property="og:locale" content="fi_FI"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree-robotit toimitettuna Italiasta · tuki englanniksi</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/fi/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Tuotteet <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobotit</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Nelijalkaiset robotit</a>
+<a href="/en/umanoidi-en.html">Humanoidit</a>
+<a href="/en/accessori-en.html">Lisävarusteet</a>
+<a href="/en/catalogo-unitree-en.html">Koko luettelo</a>
+<a href="/fi/#models">Hinnasto</a>
+</div>
+</div>
+<a href="/fi/#models">Hinnat</a>
+<a href="/en/assessment-en.html">Löydä oikea robotti</a>
+<a href="/fi/#incentives">Rahoitus</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Toimialat <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Valmistus ja logistiikka</a>
+<a href="/en/universita-ricerca-en.html">Yliopistot ja tutkimus</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">Tietoa meistä</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Varaa puhelu</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/fi/">Etusivu</a> / <a href="/fi/">Blogi</a> / AMR vs AGV</nav>
+
+<figure class="article-cover">
+<img src="/images/manifattura/amr/mir600-hero.webp" alt="AMR MiR600 sisälogistiikan kuormalavojen siirrossa" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Cobotit ja AMR</p>
+<h1>AMR-robotti vs AGV: erot, kustannukset ja milloin kumpi kannattaa</h1>
+<div class="article-meta"><time datetime="2026-11-04">4. marraskuuta 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Lyhyesti:</strong> AMR ja AGV siirtävät materiaaleja, mutta eri logiikalla. AGV seuraa kiinteää reittiä, joka muodostuu magneettinauhoista, johtimista tai lattiakoodeista; AMR käyttää karttaa ja SLAM-navigaatiota ja laskee reitin uudelleen esteen löytyessä. AMR vähentää lattiaan tehtäviä töitä ja kestää muuttuvia layoutteja; AGV on oikea valinta vakaisiin virtauksiin. Molemmissa turvallisuus suunnitellaan ISO 3691-4:n mukaan.</div>
+</header>
+
+<div class="article-content">
+<p>AMR-robotti vs AGV: valinta riippuu yhdestä asiasta: siitä, onko robotin reitti kiinteä osa laitosta vai täytyykö sen mukautua muuttuviin virtauksiin. Tästä vastauksesta riippuvat infrastruktuuri, robottikaluston hallinta, käyttöönotto ja kustannusrakenne. Vertailu perustuu valmistajien dokumentaatioon ja miehittämättömien teollisuustrukkien viitestandardiin.</p>
+
+<h2>AMR-robotti vs AGV: ratkaiseva ero</h2>
+<p>AGV (Automated Guided Vehicle) seuraa lattiaan määritettyä reittiä. Ohjaus voi olla magneettinauha, magneettijohto, QR-koodi tai optinen linja. AMR (Autonomous Mobile Robot) ei tarvitse tällaista ohjausta: se rakentaa ympäristöstä kartan, paikantaa itsensä kartalla ja suunnittelee reitin. Ero näkyy käytännössä, kun kuormalava tukkii käytävän: AGV pysähtyy yleensä ja odottaa, AMR laskee kiertotien.</p>
+<table>
+<thead><tr><th>Ominaisuus</th><th>AGV</th><th>AMR</th></tr></thead>
+<tbody>
+<tr><td>Navigointi</td><td>Kiinteä reitti: nauha, johto, QR tai optinen linja</td><td>Kartta ja SLAM, reitti lasketaan uudelleen</td></tr>
+<tr><td>Infrastruktuuri</td><td>Lattiaohjaimet ja muutokset alueella</td><td>Verkko, kartta, lataus ja vaihtopisteet</td></tr>
+<tr><td>Este reitillä</td><td>Pysähtyy yleensä ja odottaa</td><td>Kiertää tai vaihtaa reittiä</td></tr>
+<tr><td>Muuttuva layout</td><td>Edellyttää ohjainten uudelleensuunnittelua</td><td>Edellyttää uutta karttaa tai ohjelmistomuutosta</td></tr>
+<tr><td>Robottikalusto</td><td>Määritetyt sekvenssit ja reitit</td><td>Tehtävät jaetaan dynaamisesti</td></tr>
+<tr><td>Vahvuus</td><td>Toistettavuus tunnetulla reitillä</td><td>Joustavuus vaihtelevilla reiteillä</td></tr>
+</tbody>
+</table>
+<p>Ero ei ole aina selvä. Neura Robotics ilmoittaa esimerkiksi MAV-mallille kaksi navigointitapaa: kiinteät reitit ja vapaa navigaatio. Sama ajoneuvo voi toimia enemmän AGV:n tai AMR:n tapaan kokoonpanosta riippuen. Teknisen tietolehden lyhenteellä on vähemmän merkitystä.</p>
+
+<h2>Kiinteä reitti vai SLAM-navigaatio</h2>
+<p>SLAM tarkoittaa Simultaneous Localization and Mapping -menetelmää: robotti rakentaa karttaa liikkuessaan ja käyttää sitä paikantamiseen. LiDAR ja 3D-kamerat mittaavat ympäristöä, ohjelmisto vertaa mittausta karttaan ja korjaa sijaintia. Näin AMR voi vaihtaa kohdetta uusimatta koko järjestelmää.</p>
+<p>AGV toimii päinvastoin: reitti on tiedossa ja robotti seuraa sitä. Käyttäytyminen on ennustettavaa, mutta automaatio on sidottu ohjainten fyysiseen sijaintiin. Jos siirrät linjaa tai lisäät käytävän, nauhaa, johtoa tai koodeja pitää siirtää, mikä tarkoittaa muutoksia alueelle ja uusia tarkastuksia.</p>
+<p>SLAM-navigaatio edellyttää ajan tasalla olevaa karttaa, antureiden luettavissa olevia pintoja ja vakaata ympäristöä. Lasit, heijastavat pinnat, kiiltävät lattiat ja väärään paikkaan jätetyt tavarat voivat hämmentää paikannusta: paikkakäynti ja kenttäkoe merkitsevät enemmän kuin tekninen tietolehti.</p>
+
+<h2>Tarvittava infrastruktuuri</h2>
+<p>AGV edellyttää fyysisiä ohjaimia ja niiden huoltoa. AMR ei tarvitse ohjaimia, mutta se tarvitsee luotettavan Wi-Fi-verkon reitille, koska robottikalusto vaihtaa tehtäviä ja tilatietoja ohjauksen kanssa. Tarvitaan latausasemat, vaihtopisteet, mahdolliset ylämoduulit ja valmisteltu alue.</p>
+<p>AMR ei poista infrastruktuuria: se korvaa lattiaohjaimet verkolla, kartalla, latauksella ja vaihtopisteillä, jotka päivitetään projektin mukana. MiR puhuu siitä, ettei tarvita merkittäviä muutoksia, ei siitä, ettei vaatimuksia ole: verkko, lataus ja lastauspisteet ovat edelleen projektin osia.</p>
+<p>Alueen turvallisuus on osa projektia. ISO 3691-4:2023 edellyttää toiminta-alueen olosuhteiden huomioimista ja sisältää liitteen, joka käsittelee sen valmistelua. Jalankulkualueet, risteykset, ovet, hissit ja katvealueet on suunniteltava yhdessä robotin kanssa, ei jälkeenpäin. Tämä koskee sekä AMR:ää että AGV:tä.</p>
+
+<h2>Muuttuvat layoutit ja joustavuus</h2>
+<p>Jos layout muuttuu usein, AMR:llä on konkreettinen etu. Työpisteen siirtäminen, noutopisteen lisääminen tai virtauksen suunnan muuttaminen edellyttää uutta karttaa ja tehtävien muuttamista, ei uusia ohjaimia. Osastolla, jolla tilaukset vaihtelevat, robotti ei tarvitse uusia ohjaimia joka muutoksessa.</p>
+<p>Jos layout on vakaa, etu pienenee. AGV muuttumattomalla reitillä tarjoaa toistettavan käyttäytymisen ja yksinkertaisen ohjauksen. Kun reitti on osa prosessia, AGV voi olla suoraviivaisin ratkaisu: joustavuus maksetaan antureilla ja ohjelmistolla, ja sitä tarvitaan vain, jos sitä käytetään.</p>
+<p>Väliratkaisu: kiinteä reitti päävirtauksille ja autonomiset robotit poikkeuksille ja vaihteleville täydennyksille. Kalustonhallintaohjelmiston on puhuttava molempien kanssa. VDA 5050 on avoin rajapinta keskusohjauksen ja mobiilirobottien välillä; nykyinen versio on maaliskuun 2026 versio 3.0.0. KUKA käyttää sitä esimerkiksi integroidakseen AMR:t, AGV:t ja teollisuustrukit samaan kalustonhallintaan.</p>
+
+<h2>Läpäisy ja robottikaluston hallinta</h2>
+<p>Huippunopeus kertoo läpäisystä vähän. Ratkaisevia ovat etäisyys, lastaus- ja purkuaika, odotukset risteyksissä ja käytettävyys latauksen aikana. Jonossa seisova nopeampi robotti ei ole nopeampi kuin hitaampi robotti hyvin suunnitellulla virtauksella.</p>
+<p><em>Esimerkki kuvitteellisilla luvuilla:</em> jos tehtävä kestää 2,5 minuuttia, robotti tekee teoriassa 24 tehtävää tunnissa. Käytännössä määrä pienenee latauksen, jonojen ja kiinnitysten takia. Sadalle tehtävälle tunnissa tarvitaan teoriassa vähintään viisi robottia ja lisäksi marginaali ruuhkahuippuja varten. Laskelma on tehtävä todellisella kiertoajalla, ei teknisen tietolehden luvulla.</p>
+<p>Robottikalusto muuttaa myös ohjelmistoa. Muutamalla AGV:llä riittävät yksinkertaiset sekvenssit ja prioriteetit. Monilla AMR:illä tarvitaan tehtävien jakamista, reitinsuunnittelua, reittivarauksien hallintaa, ajoitettua latausta ja viestintää ovien, hissien ja varaston kanssa. MiR Fleet tekee tämän saman valmistajan roboteille; VDA 5050 määrittelee rajapinnan eri valmistajien välille.</p>
+
+<h2>Turvallisuus: ISO 3691-4 koskee molempia</h2>
+<p class="article-note"><em>Yleistä tietoa, ei oikeudellista neuvontaa.</em></p>
+<p><a href="https://www.iso.org/standard/83545.html" rel="noopener noreferrer" target="_blank">ISO 3691-4:2023</a> on miehittämättömien teollisuustrukkien ja niiden järjestelmien viitestandardi. ISO:n tietosivu mainitsee esimerkkeinä sekä AGV:t että AMR:t: soveltamisala on yhteinen.</p>
+<p>Standardi käsittelee kokonaisjärjestelmää eli ohjausta, ohjausvälineitä ja virransyöttöä; virtalähteiden vaatimuksia se ei kata. Se edellyttää toiminta-alueen vaarojen arviointia ja alueen valmistelua. Sitä ei sovelleta trukkeihin, joita ohjaavat yksinomaan mekaaniset välineet kuten kiskot tai ohjaimet, eikä se kata ympäristöjä, joissa on erityisiä hygieniavaatimuksia, räjähdysvaarallisia ilmakehiä tai julkisia teitä.</p>
+<p>Marraskuussa 2026 ISO:n tietosivu ilmoittaa vuoden 2023 painoksen julkaistuksi ja olevan tarkistettavana. Robotin vaatimustenmukaisuus on yksi asia; asennuksen turvallisuus on toinen. Skannerit, hidastusalueet, nopeudet, kuormat ja palautusmenettelyt on tarkistettava asennuksessa. Valmistaja voi ilmoittaa 360°:n skannereista ja turvallisuustasosta PL d, luokka 3, standardin ISO 13849-1 mukaan, kuten Neura MAV:n kohdalla, mutta riskienarviointi kuuluu silti projektiin.</p>
+
+<h2>Kustannusrakenne</h2>
+<p>Robotin hinta on vasta ensimmäinen kustannuserä. AMR- tai AGV-projekti rakennetaan laskemalla yhteen:</p>
+<ul>
+<li><strong>Robotti ja alusta.</strong> Ajoneuvo kantavuutensa ja nopeutensa kanssa.</li>
+<li><strong>Ylämoduuli.</strong> Nostin, haarukat, rulla, koukku tai taso.</li>
+<li><strong>Kalustonhallintaohjelmisto.</strong> Tehtävät, liikenne, lataus ja historia.</li>
+<li><strong>WMS-, MES- tai ERP-integraatio.</strong> Säännöt, joilla tilauksista tulee tehtäviä.</li>
+<li><strong>Lataus.</strong> Asemat, akut ja mahdollinen kontaktilataus.</li>
+<li><strong>Paikkakäynti ja käyttöönotto.</strong> Mittaus, kartta, kokeet ja koulutus.</li>
+<li><strong>Turvallisuus.</strong> Skannerit, alueet, suojukset ja alueen riskinarviointi.</li>
+<li><strong>Huolto ja varaosat.</strong> Ajan myötä, ei vain käynnistyksessä.</li>
+</ul>
+<p>Abran hinnastossa AMR-mallisto vaihtelee <strong>16 999 eurosta</strong> (AutoXing Juno Plus) <strong>164 430 euroon</strong> (MiR1200 Pallet Jack EU) ilman arvonlisäveroa. Hinnat koskevat vain robottia: paikkakäynti, toteutettavuusanalyysi, WMS/MES/ERP-integraatio, kalustonhallintaohjelmisto, latausasemat, ylämoduulit ja käyttöönotto hinnoitellaan erikseen. AGV:ssä budjettiin on lisättävä myös ohjaimet, niiden asennus ja muutokset alueelle.</p>
+
+<div class="product-strip" aria-label="Artikkelissa mainitut tuotteet">
+<div class="product-strip-head"><span>Artikkelissa mainitut tuotteet</span><a href="/amr.html">AMR-luettelo</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-juno-plus-en.html"><img alt="AutoXing Juno Plus" loading="lazy" src="/images/manifattura/amr/juno-plus.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-juno-plus-en.html">AutoXing Juno Plus</a></h3>
+<p>Kevyt AMR, 200 kg, 2D-SLAM</p>
+<div class="product-card-price">16 999 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-juno-plus-en.html">Katso tiedot</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-mir600-base-en.html"><img alt="MiR600 Base" loading="lazy" src="/images/manifattura/amr/mir600-base.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-mir600-base-en.html">MiR600 Base</a></h3>
+<p>AMR 600 kg, 2,0 m/s, IP52</p>
+<div class="product-card-price">67 324 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-mir600-base-en.html">Katso tiedot</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-mir1200-en.html"><img alt="MiR1200 Pallet Jack EU" loading="lazy" src="/images/manifattura/amr/mir1200-palletjack.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-mir1200-en.html">MiR1200 Pallet Jack EU</a></h3>
+<p>Autonominen lavansiirtovaunu, 1 200 kg</p>
+<div class="product-card-price">164 430 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-mir1200-en.html">Katso tiedot</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<h2>Milloin AGV on edelleen oikea valinta</h2>
+<p>AGV on edelleen oikea valinta, kun reitti on vakaa ja osa prosessia:</p>
+<ul>
+<li><strong>Kiinteä ja toistuva virtaus.</strong> Materiaali kulkee aina samasta pisteestä samaan pisteeseen.</li>
+<li><strong>Layout, joka ei muutu.</strong> Työpisteet pysyvät paikoillaan vuosia.</li>
+<li><strong>Ohjaimet ovat jo olemassa.</strong> Järjestelmässä on jo nauhat tai johtimet ja huolto on hallinnassa.</li>
+<li><strong>Yksinkertainen ohjaus.</strong> Liikenne on rajallista eikä dynaamisia tehtäviä tarvita.</li>
+<li><strong>Pysähdyspisteen toistettavuus.</strong> Lasti vaatii aina saman sijoittelun.</li>
+</ul>
+<p>Näissä tapauksissa AMR lisää antureita ja ohjelmistoa, joita et käytä. Jos poikkeuksia taas on usein tai reitti muuttuu tilausten mukana, AGV:stä tulee rajoite. Ratkaisevaa on, kuinka monta kertaa vuodessa reitti muuttuu ja kuka maksaa laitoksen seisokin ohjainten siirtämisen vuoksi.</p>
+
+<h2>Näin päätät käytännössä</h2>
+<ol>
+<li><strong>Piirrä todelliset virtaukset.</strong> Lähtöpiste, kohde, tiheys, paino ja kuorman tyyppi.</li>
+<li><strong>Laske, kuinka usein layout muuttuu.</strong> Jos se muuttuu usein, AMR:llä on etu; jos ei, AGV voi riittää.</li>
+<li><strong>Tarkista alue.</strong> Lattia, käytävät, ovet, hissit, risteykset ja katvealueet.</li>
+<li><strong>Tarkista verkko ja lataus.</strong> Vakaa Wi-Fi, asemat, latausaika ja vuorot.</li>
+<li><strong>Pyydä kokonaiskustannus.</strong> Robotti, moduuli, kalusto, integraatio, turvallisuus ja huolto.</li>
+</ol>
+<p>Tehdas- ja varastosovelluksissa, joissa cobotit ja AMR:t toimivat samassa laitoksessa, katso <a href="/en/manifattura-logistica-en.html">Valmistus ja logistiikka</a>. Jos kuljetus on vain osa kiertoa ja myös käsittelyä tarvitaan, vertailu laajenee <a href="/cobot.html">cobotteihin</a>. Mobiilirobotin ja humanoidin valinnasta artikkeli <a href="/fi/blog/umanoidi-vs-robotica-tradizionale.html">humanoidit vs perinteinen robotiikka</a> selventää tehtävät, joissa kaksijalkainen ei kannata.</p>
+
+<h2>Mitä Abra Robotics tekee</h2>
+<p>Abra Robotics tarjoaa AMR-, cobot- ja Unitree-robottien valikoimaa myös Suomeen ja tukee projektia virtausanalyysistä käyttöönottoon. AMR:n ja AGV:n vertailuun tarvitaan pohjapiirros, kuormat, tiheydet ja vuorot: näiden tietojen perusteella selviää, onko reitti vakaa vai tarvitaanko robotti, joka laskee reitin uudelleen. Luettelo on sivulla <a href="/amr.html">AMR</a>; prosessista aloittamiseen on <a href="/en/assessment-en.html">arviointi</a>. Tuki on englanniksi.</p>
+
+<section class="article-faq">
+<h2>Usein kysytyt kysymykset</h2>
+<div class="faq-item"><h3>Mitä AMR-robotti tarkoittaa?</h3><p>AMR-robotti on autonominen mobiilirobotti: se liikkuu ilman fyysisiä ohjaimia, rakentaa ympäristöstä kartan ja käyttää sitä paikantamiseen ja reitinsuunnitteluun. Lyhenne tulee sanoista Autonomous Mobile Robot.</p></div>
+<div class="faq-item"><h3>AMR-robotti vs AGV: kumpi kannattaa?</h3><p>Riippuu siitä, kuinka paljon layout muuttuu ja kuinka paljon infrastruktuuria haluat asentaa. AMR kannattaa vaihtelevilla reiteillä ja muuttuvilla layouteilla; AGV vakaisilla virtauksilla ja kiinteillä reiteillä, erityisesti jos ohjaimet ovat jo olemassa.</p></div>
+<div class="faq-item"><h3>Paljonko AMR-robotti maksaa?</h3><p>Abran hinnastossa AMR-mallisto vaihtelee 16 999 eurosta 164 430 euroon ilman arvonlisäveroa, ja hinta koskee vain robottia. Kalustonhallintaohjelmisto, WMS/MES-integraatio, lataus, ylämoduuli ja käyttöönotto hinnoitellaan erikseen.</p></div>
+<div class="faq-item"><h3>Tarvitseeko AMR infrastruktuuria?</h3><p>Lattiaohjaimia ei tarvita kuten AGV:ssä, mutta tarvitaan ajan tasalla oleva kartta, luotettava Wi-Fi-verkko, latausasemat, vaihtopisteet ja riskienarvioinnin mukaisesti valmisteltu alue.</p></div>
+<div class="faq-item"><h3>Koskeeko ISO 3691-4 myös AMR-robotteja?</h3><p>Kyllä. ISO 3691-4:2023 kattaa miehittämättömät teollisuustrukit ja niiden järjestelmät ja mainitsee nimenomaisesti sekä AGV:t että AMR:t. Yksittäisen asennuksen turvallisuus kuitenkin validoidaan projektissa.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Lähteet</h2>
+<ol>
+<li>ISO, <a href="https://www.iso.org/standard/83545.html" rel="noopener noreferrer" target="_blank">ISO 3691-4:2023, Industrial trucks - Safety requirements and verification - Part 4: Driverless industrial trucks and their systems</a></li>
+<li>KUKA, <a href="https://www.kuka.com/en-us/knowledge/agv-vs-amr" rel="noopener noreferrer" target="_blank">AGV vs. AMR: differences, applications, costs and decision support</a></li>
+<li>Mobile Industrial Robots, <a href="https://mobile-industrial-robots.com/blog/agv-vs-amr-whats-the-difference" rel="noopener noreferrer" target="_blank">AMR vs AGV: key differences explained</a></li>
+<li>VDA, <a href="https://www.vda.de/en/topics/automotive-industry/vda-5050" rel="noopener noreferrer" target="_blank">VDA 5050, interface for communication between mobile robots and a fleet control</a></li>
+<li>Mobile Industrial Robots, <a href="https://mobile-industrial-robots.com/products/robots/mir600" rel="noopener noreferrer" target="_blank">MiR600, virallinen tuotesivu</a> (600 kg, 2,0 m/s, IP52, ISO 3691-4)</li>
+<li>Neura Robotics, <a href="https://neura-robotics.com/products/mav/" rel="noopener noreferrer" target="_blank">MAV, virallinen tuotesivu</a> (kiinteä tai vapaa navigaatio, turvallisuus PL d, luokka 3)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>AMR vai AGV? Lähdetään liikkeelle virtauksesta</h2><p>Kerro, mitä sinun pitää siirtää, paljonko se painaa ja kuinka usein reitti muuttuu. Kerromme, tarvitsetko AMR:n vai onko AGV yksinkertaisin valinta.</p><a class="btn btn-primary" href="/en/assessment-en.html">Pyydä arviointi</a><a class="btn btn-outline-light" href="/amr.html">Katso AMR-luettelo</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/fi/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Sovellettua robotiikkaa yrityksille, yliopistoille ja tutkimuslaitoksille. Laitteet, räätälöity ohjelmisto, koulutus ja tekninen tuki.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigointi</span>
+<a href="/en/manifattura-logistica-en.html">Valmistus ja logistiikka</a>
+<a href="/en/universita-ricerca-en.html">Yliopistot ja tutkimus</a>
+<a href="/en/assessment-en.html">Löydä oikea robotti</a>
+<a href="/fi/#incentives">Rahoitus</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Tuotteet</span>
+<a href="/en/lp-cobot-en.html">Cobotit</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Nelijalkaiset robotit</a>
+<a href="/en/umanoidi-en.html">Humanoidit</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Yhteystiedot</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italia</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Varaa puhelu</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Kaikki oikeudet pidätetään.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
