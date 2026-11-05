@@ -1,0 +1,363 @@
+<!-- generato da scripts/blog_lingue.py da blog/amr-robot-vs-agv.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMR vs AGV: differences, costs and when to choose</title>
+<meta name="description" content="AMR vs AGV: fixed paths or SLAM navigation, infrastructure, fleets, ISO 3691-4 safety and cost items. When an AGV is still the right choice."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/en/blog/amr-robot-vs-agv.html"/>
+<link href="https://abrarobotics.com/blog/amr-robot-vs-agv.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/amr-robot-vs-agv.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/amr-robot-vs-agv.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AMR vs AGV: differences, costs and when to choose",
+  "description": "AMR vs AGV: fixed paths or SLAM navigation, infrastructure, fleets, ISO 3691-4 safety and cost items. When an AGV is still the right choice.",
+  "datePublished": "2026-11-04",
+  "dateModified": "2026-11-04",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/en/blog/amr-robot-vs-agv.html"
+  },
+  "image": "https://abrarobotics.com/images/manifattura/amr/mir600-hero.webp",
+  "inLanguage": "en",
+  "url": "https://abrarobotics.com/en/blog/amr-robot-vs-agv.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does AMR robot mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An AMR robot is an autonomous mobile robot: it moves without physical guides, builds a map of the environment and uses it to localise itself and plan its route. The acronym stands for Autonomous Mobile Robot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMR robot vs AGV: which is better?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on how much the layout changes and how much infrastructure you want to install. An AMR is better for variable routes and changing layouts; an AGV for stable flows and fixed paths, especially if the guides already exist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does an AMR robot cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the Abra price list the AMR family ranges from €16,999 to €164,430 excluding VAT, for the robot alone. Fleet software, WMS/MES integration, charging, top modules and commissioning are quoted separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does an AMR need infrastructure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It does not need floor guides as an AGV does, but it does need an up-to-date map, a reliable Wi-Fi network, charging stations, exchange points and an area prepared according to the risk assessment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ISO 3691-4 apply to AMRs too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ISO 3691-4:2023 covers driverless industrial trucks and their systems and explicitly cites both AGVs and AMRs. The safety of each installation is verified on the project, however."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="AMR vs AGV: differences, costs and when to choose"/>
+<meta property="og:description" content="AMR vs AGV: fixed paths or SLAM navigation, infrastructure, fleets, ISO 3691-4 safety and cost items. When an AGV is still the right choice."/>
+<meta property="og:url" content="https://abrarobotics.com/en/blog/amr-robot-vs-agv.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/manifattura/amr/mir600-hero.webp"/>
+<meta property="og:locale" content="en_GB"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Unitree Italy distribution chain</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/en/index-en.html">Home</a> / <a href="/en/index-en.html">Blog</a> / AMR vs AGV</nav>
+
+<figure class="article-cover">
+<img src="/images/manifattura/amr/mir600-hero.webp" alt="MiR600 AMR for internal pallet handling" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Cobots and AMRs</p>
+<h1>AMR robot vs AGV: differences, costs and when to choose</h1>
+<div class="article-meta"><time datetime="2026-11-04">4 November 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In short:</strong> AMRs and AGVs both move materials, but with different logic. An AGV follows a fixed path made of magnetic tape, wire or floor codes; an AMR uses a map and SLAM navigation and recalculates its route when it meets an obstacle. An AMR reduces floor works and copes with changing layouts; an AGV remains the right choice for stable flows. For both, safety is designed to ISO 3691-4.</div>
+</header>
+
+<div class="article-content">
+<p>AMR robot vs AGV: the choice depends on one point, whether the robot's route is a fixed part of the plant or has to adapt to changing flows. Infrastructure, fleet management, commissioning and cost structure all follow from that answer. This comparison draws on manufacturer documentation and the reference standard for driverless industrial trucks.</p>
+
+<h2>AMR robot vs AGV: the difference that matters</h2>
+<p>An AGV (Automated Guided Vehicle) follows a path defined on the floor. The guidance can be magnetic tape, magnetic wire, a QR code or an optical line. An AMR (Autonomous Mobile Robot) does not need that guidance: it builds a map of the environment, localises itself within the map and plans its route. The practical difference shows when a pallet blocks the aisle: an AGV normally stops and waits, an AMR calculates a detour.</p>
+<table>
+<thead><tr><th>Characteristic</th><th>AGV</th><th>AMR</th></tr></thead>
+<tbody>
+<tr><td>Navigation</td><td>Fixed path: tape, wire, QR or optical line</td><td>Map and SLAM, with route recalculation</td></tr>
+<tr><td>Infrastructure</td><td>Floor guides and changes to the area</td><td>Network, map, charging and exchange points</td></tr>
+<tr><td>Obstacle on the path</td><td>Normally stops and waits</td><td>Goes around or changes route</td></tr>
+<tr><td>Changing layout</td><td>Requires rethinking the guides</td><td>Requires a new map or a software change</td></tr>
+<tr><td>Fleet</td><td>Defined sequences and routes</td><td>Dynamically assigned missions</td></tr>
+<tr><td>Strength</td><td>Repeatability on a known route</td><td>Flexibility on variable routes</td></tr>
+</tbody>
+</table>
+<p>The distinction is not always clear-cut. Neura Robotics, for example, states two navigation modes for the MAV: one with fixed paths and one with free navigation. The same vehicle can work more like an AGV or more like an AMR depending on configuration. The label on the datasheet matters less.</p>
+
+<h2>Fixed-path navigation versus SLAM</h2>
+<p>SLAM stands for Simultaneous Localization and Mapping: the robot builds the map as it moves and uses it to understand where it is. LiDAR and 3D cameras measure the environment, the software compares the reading with the map and corrects the position. This is how an AMR changes destination without redoing the plant.</p>
+<p>An AGV works the other way round: the route is known and the robot follows it. Behaviour is predictable, but automation remains tied to the physical position of the guides. If you move a line or add an aisle, you have to move tape, wire or codes, with changes to the area and new checks.</p>
+<p>SLAM navigation depends on an up-to-date map, surfaces the sensors can read and a stable environment. Glass, reflective surfaces, polished floors and misplaced material can confuse localisation: a site survey and an on-site trial matter more than the datasheet.</p>
+
+<h2>The infrastructure required</h2>
+<p>An AGV requires physical guides and maintenance. An AMR does not require guides, but it does require a reliable Wi-Fi network along the route, because the fleet exchanges missions and status with the controller. Charging stations, exchange points, optional top modules and a prepared area are also needed.</p>
+<p>An AMR does not eliminate infrastructure: it replaces floor guides with network, map, charging and exchange points, which are updated with the project. MiR talks about no major changes, not about the absence of requirements: network, charging and load points remain project items.</p>
+<p>Area safety is part of the project. ISO 3691-4:2023 requires the conditions of the operating zone to be considered and devotes an annex to its preparation. Pedestrian zones, intersections, doors, lifts and blind spots must be designed together with the robot, not afterwards. This applies to both AMR and AGV.</p>
+
+<h2>Changing layouts and flexibility</h2>
+<p>If the layout changes often, an AMR has a concrete advantage. Moving a station, adding a pick-up point or reversing the direction of a flow requires a new map and a change to the missions, not new guides. In a department with variable orders, the robot does not need new guides every time something changes.</p>
+<p>If the layout is stable, the advantage shrinks. An AGV on a route that does not change offers repeatable behaviour and simple control. Where the route is part of the process, an AGV can remain the most straightforward solution: flexibility is paid for in sensors and software and is only worth it if you use it.</p>
+<p>An intermediate solution: fixed paths for the main flows and autonomous robots for deviations and variable replenishment. The fleet software must talk to both. VDA 5050 is an open interface between the central controller and mobile robots; the current version is 3.0.0 from March 2026. KUKA, for example, uses it to integrate AMRs, AGVs and industrial trucks in the same fleet manager.</p>
+
+<h2>Throughput and fleet management</h2>
+<p>Maximum speed says little about throughput. Distance, loading and unloading time, waiting at intersections and availability during charging all count. A faster robot stuck in a queue is no quicker than a slower one on a well-designed flow.</p>
+<p><em>Example with hypothetical numbers:</em> if a mission takes 2.5 minutes, one robot completes 24 missions an hour in theory. In practice this falls because of charging, queues and docking. For 100 missions an hour you need at least five robots in theory, plus margin for peaks. The calculation must be based on real cycle time, not on the nameplate figure.</p>
+<p>The fleet also changes the software. With a few AGVs, simple sequences and priorities are enough. With many AMRs you need mission assignment, route calculation, block management, scheduled charging and communication with doors, lifts and the warehouse. MiR Fleet does this for robots from the same manufacturer; VDA 5050 defines the interface between different manufacturers.</p>
+
+<h2>Safety: ISO 3691-4 applies to both</h2>
+<p class="article-note"><em>General information, not legal advice.</em></p>
+<p>The <a href="https://www.iso.org/standard/83545.html" rel="noopener noreferrer" target="_blank">ISO 3691-4:2023</a> is the reference standard for driverless industrial trucks and their systems. The ISO page cites both AGVs and AMRs among its examples: the scope is shared.</p>
+<p>The standard considers the complete system, namely control, guidance means and power supply; the requirements for power sources are not covered. It asks for the hazards of the operating area to be assessed and for the area to be prepared. It does not apply to trucks guided exclusively by mechanical means such as rails or guides, and it does not cover environments with specific hygiene requirements, explosive atmospheres or public roads.</p>
+<p>As of November 2026 the ISO page lists the 2023 edition as published and under review. Robot conformity is one part; installation safety is another. Scanners, slowdown zones, speed, loads and recovery procedures must be verified on site. A manufacturer can declare 360° scanners and PL d Cat. 3 safety according to ISO 13849-1, as Neura does for the MAV, but the risk assessment remains part of the project.</p>
+
+<h2>The cost structure</h2>
+<p>The robot price is only the first item. An AMR or AGV project is built by adding:</p>
+<ul>
+<li><strong>Robot and base.</strong> The vehicle with its payload and speed.</li>
+<li><strong>Top module.</strong> Lift, forks, roller, hook or platform.</li>
+<li><strong>Fleet software.</strong> Missions, traffic, charging and history.</li>
+<li><strong>WMS, MES or ERP integration.</strong> The rules that turn orders into missions.</li>
+<li><strong>Charging.</strong> Stations, batteries and any contact charging.</li>
+<li><strong>Site survey and commissioning.</strong> Survey, map, tests and training.</li>
+<li><strong>Safety.</strong> Scanners, zones, barriers and risk assessment of the area.</li>
+<li><strong>Maintenance and spare parts.</strong> Over time, not only at start-up.</li>
+</ul>
+<p>In the Abra price list the AMR family ranges from <strong>€16,999</strong> for the AutoXing Juno Plus to <strong>€164,430</strong> for the MiR1200 Pallet Jack EU, excluding VAT. These are robot-only prices: site survey, feasibility analysis, WMS/MES/ERP integration, fleet software, charging stations, top modules and commissioning are quoted separately. For an AGV you must also budget for the guides, their installation and changes to the area.</p>
+
+<div class="product-strip" aria-label="Products mentioned">
+<div class="product-strip-head"><span>Products mentioned in this article</span><a href="/amr.html">AMR catalogue</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-juno-plus-en.html"><img alt="AutoXing Juno Plus" loading="lazy" src="/images/manifattura/amr/juno-plus.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-juno-plus-en.html">AutoXing Juno Plus</a></h3>
+<p>Lightweight AMR, 200 kg, 2D SLAM</p>
+<div class="product-card-price">€16,999 <small>excluding VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-juno-plus-en.html">View product</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-mir600-base-en.html"><img alt="MiR600 Base" loading="lazy" src="/images/manifattura/amr/mir600-base.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-mir600-base-en.html">MiR600 Base</a></h3>
+<p>AMR 600 kg, 2.0 m/s, IP52</p>
+<div class="product-card-price">€67,324 <small>excluding VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-mir600-base-en.html">View product</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-mir1200-en.html"><img alt="MiR1200 Pallet Jack EU" loading="lazy" src="/images/manifattura/amr/mir1200-palletjack.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-mir1200-en.html">MiR1200 Pallet Jack EU</a></h3>
+<p>Autonomous pallet truck, 1,200 kg</p>
+<div class="product-card-price">€164,430 <small>excluding VAT</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-mir1200-en.html">View product</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<h2>When an AGV is still the right choice</h2>
+<p>An AGV remains the right choice when the route is stable and part of the process:</p>
+<ul>
+<li><strong>Fixed, repetitive flow.</strong> Material always goes from the same point to the same point.</li>
+<li><strong>Layout that does not change.</strong> Stations stay where they have been for years.</li>
+<li><strong>Guides already in place.</strong> The plant already has tape or wire and maintenance is under control.</li>
+<li><strong>Simple control.</strong> Traffic is limited and dynamic missions are not needed.</li>
+<li><strong>Repeatability of the stop point.</strong> The load always requires the same positioning.</li>
+</ul>
+<p>In these cases an AMR adds sensors and software you do not use. If, instead, exceptions are frequent or the route changes with orders, an AGV becomes a constraint. Count how many times a year the route will change and who pays for plant downtime to move the guides.</p>
+
+<h2>How to decide in practice</h2>
+<ol>
+<li><strong>Map the real flows.</strong> Origin, destination, frequency, weight and type of load.</li>
+<li><strong>Count how often the layout changes.</strong> If it changes often, an AMR has an advantage; if it does not, an AGV may be enough.</li>
+<li><strong>Check the area.</strong> Floor, aisles, doors, lifts, intersections and blind spots.</li>
+<li><strong>Check network and charging.</strong> Stable Wi-Fi, stations, charging time and shifts.</li>
+<li><strong>Ask for the total cost.</strong> Robot, module, fleet, integration, safety and maintenance.</li>
+</ol>
+<p>For factory and warehouse applications with cobots and AMRs in the same plant, see <a href="/en/manifattura-logistica-en.html">Manufacturing and Logistics</a>. If transport is only part of the cycle and you also need to manipulate, the comparison widens to <a href="/cobot.html">cobots</a>. For the choice between a mobile robot and a humanoid, the article <a href="/en/blog/umanoidi-vs-robotica-tradizionale.html">humanoids vs traditional robotics</a> clarifies the tasks where a biped is not worthwhile.</p>
+
+<h2>What Abra Robotics does</h2>
+<p>Abra Robotics supplies AMRs, cobots and Unitree robots and follows the project from flow analysis to commissioning. We provide the Unitree range in the United Kingdom, Ireland and internationally, with support in English. Comparing AMR and AGV requires a floor plan, loads, frequencies and shifts: with this data you can see whether the route is stable or whether you need a robot that recalculates its route. The catalogue is on the <a href="/amr.html">AMR</a> page; to start from the process there is the <a href="/en/assessment-en.html">assessment</a>.</p>
+
+<section class="article-faq">
+<h2>Frequently asked questions</h2>
+<div class="faq-item"><h3>What does AMR robot mean?</h3><p>An AMR robot is an autonomous mobile robot: it moves without physical guides, builds a map of the environment and uses it to localise itself and plan its route. The acronym stands for Autonomous Mobile Robot.</p></div>
+<div class="faq-item"><h3>AMR robot vs AGV: which is better?</h3><p>It depends on how much the layout changes and how much infrastructure you want to install. An AMR is better for variable routes and changing layouts; an AGV for stable flows and fixed paths, especially if the guides already exist.</p></div>
+<div class="faq-item"><h3>How much does an AMR robot cost?</h3><p>In the Abra price list the AMR family ranges from €16,999 to €164,430 excluding VAT, for the robot alone. Fleet software, WMS/MES integration, charging, top modules and commissioning are quoted separately.</p></div>
+<div class="faq-item"><h3>Does an AMR need infrastructure?</h3><p>It does not need floor guides as an AGV does, but it does need an up-to-date map, a reliable Wi-Fi network, charging stations, exchange points and an area prepared according to the risk assessment.</p></div>
+<div class="faq-item"><h3>Does ISO 3691-4 apply to AMRs too?</h3><p>Yes. ISO 3691-4:2023 covers driverless industrial trucks and their systems and explicitly cites both AGVs and AMRs. The safety of each installation is verified on the project, however.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Sources</h2>
+<ol>
+<li>ISO, <a href="https://www.iso.org/standard/83545.html" rel="noopener noreferrer" target="_blank">ISO 3691-4:2023, Industrial trucks: Safety requirements and verification. Part 4: Driverless industrial trucks and their systems</a></li>
+<li>KUKA, <a href="https://www.kuka.com/en-us/knowledge/agv-vs-amr" rel="noopener noreferrer" target="_blank">AGV vs. AMR: differences, applications, costs and decision support</a></li>
+<li>Mobile Industrial Robots, <a href="https://mobile-industrial-robots.com/blog/agv-vs-amr-whats-the-difference" rel="noopener noreferrer" target="_blank">AMR vs AGV: key differences explained</a></li>
+<li>VDA, <a href="https://www.vda.de/en/topics/automotive-industry/vda-5050" rel="noopener noreferrer" target="_blank">VDA 5050, interface for communication between mobile robots and a fleet control</a></li>
+<li>Mobile Industrial Robots, <a href="https://mobile-industrial-robots.com/products/robots/mir600" rel="noopener noreferrer" target="_blank">MiR600, official datasheet</a> (600 kg, 2.0 m/s, IP52, ISO 3691-4)</li>
+<li>Neura Robotics, <a href="https://neura-robotics.com/products/mav/" rel="noopener noreferrer" target="_blank">MAV, official datasheet</a> (fixed or free navigation, PL d Cat. 3 safety)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>AMR or AGV? Start from the flow</h2><p>Tell us what you need to move, how much it weighs and how often the route changes. We will tell you whether you need an AMR or whether an AGV remains the simpler choice.</p><a class="btn btn-primary" href="/en/assessment-en.html">Request the assessment</a><a class="btn btn-outline-light" href="/amr.html">View the AMR catalogue</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/en/index-en.html"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Applied robotics for companies, universities and research institutions. Hardware, custom software, training and dedicated technical support.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigation</span>
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Products</span>
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contact</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Italy</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="/script.js"></script>
+</body></html>
