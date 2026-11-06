@@ -1234,10 +1234,10 @@ main>section.sec-light+section.sec-light{padding-top:0!important}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(55% 45% at 12% 100%,rgba(var(--acc-rgb),.22),transparent 70%),radial-gradient(40% 35% at 95% 85%,rgba(var(--acc2-rgb),.12),transparent 70%)}
 .hero .btn-light svg{color:var(--acc)}
 .btn-light{transition:transform .2s,box-shadow .2s,background .2s}
-.btn-light:hover{box-shadow:0 0 0 4px rgba(var(--acc-rgb),.18)}
+.btn-light:hover{box-shadow:none}
 .bphoto,.cat-img img,.pc-img,.area-img,.mdl-img,.brand img{filter:none}
 .sec-light{background-image:radial-gradient(60% 40% at 100% 0%,rgba(var(--acc-rgb),.06),transparent 70%)}
-#applicazioni{background-image:radial-gradient(50% 30% at 0% 10%,rgba(var(--acc2-rgb),.07),transparent 70%),radial-gradient(50% 30% at 100% 70%,rgba(var(--acc-rgb),.07),transparent 70%)}
+#applicazioni{background-image:none}
 #software{background:radial-gradient(60% 50% at 80% 0%,rgba(var(--acc4-rgb),.12),transparent 70%),#000}
 
 /* kicker above section titles */
@@ -1436,36 +1436,37 @@ canvas.fleet{cursor:crosshair}
 .uc-item[aria-selected="true"]{background:#fff;box-shadow:0 1px 0 var(--line-2),0 12px 30px -18px rgba(0,0,0,.25)}
 .uc-item[aria-selected="true"]::before{background:var(--acc)}
 .uc-item:not([aria-selected="true"]):hover{background:rgba(0,0,0,.03)}
-.uc-panel{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;min-height:500px;padding:22px;border-radius:28px;color:#f5f5f5;
- background:radial-gradient(70% 60% at 0% 0%,rgba(162,123,255,.28),transparent 60%),radial-gradient(60% 60% at 100% 100%,rgba(43,196,168,.18),transparent 60%),#07070a;
- border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 80px -50px rgba(20,10,60,.7)}
+.uc-panel{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;min-height:548px;padding:22px;border-radius:28px;color:#f5f5f5;
+ background:#0a0a0a;
+ border:1px solid rgba(255,255,255,.08)}
 .uc-left{display:flex;flex-direction:column;padding:8px 4px}
 .uc-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:5px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-self:stretch}
 .uc-tabs button{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;gap:8px;padding:10px 14px;border-radius:12px;font-size:14px;font-weight:500;color:rgba(255,255,255,.62)!important;transition:background .2s,color .2s}
-.uc-tabs button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--s);box-shadow:0 0 10px var(--s)}
-.uc-tabs button[aria-pressed="true"]{background:rgba(255,255,255,.14);color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
-.uc-tabs button[disabled]{opacity:.3;cursor:default}
+.uc-tabs button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--s)}
+.uc-tabs button[aria-pressed="true"]{background:rgba(255,255,255,.12);color:#fff!important}
+.uc-tabs button[disabled]{opacity:.45;cursor:not-allowed}
+.uc-tabs button[disabled]::before{background:rgba(255,255,255,.35)}
 .uc-tabs button:not([disabled]):not([aria-pressed="true"]):hover{color:#fff!important}
 .uc-acts{display:grid;gap:10px;margin-top:20px}
 .uc-act{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-radius:16px;
- background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);
- backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+ background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
 .uc-act span{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:500;letter-spacing:-.01em}
-.uc-act span::before{content:"";flex:none;width:6px;height:22px;border-radius:3px;background:var(--s);box-shadow:0 0 14px var(--s)}
+.uc-act{border-left:3px solid var(--s)!important}
 .uc-act a{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:12.5px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background .2s}
 .uc-act a:hover{background:rgba(255,255,255,.2)}
-.uc-cta{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:auto;padding:13px 20px;border-radius:999px;background:#fff;color:#0a0a0a;font-size:14.5px;font-weight:500;text-decoration:none}
-.uc-cta{margin-top:24px}
-.uc-img{position:relative;border-radius:20px;background:#0b0b0f center/cover no-repeat;border:1px solid rgba(255,255,255,.08);min-height:320px}
+.uc-foot{display:flex;justify-content:flex-start;margin:24px 0 0 312px}
+.uc-foot .btn{height:48px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;gap:8px}
+@media (max-width:900px){.uc-foot{margin-left:0}}
+.uc-img{position:relative;border-radius:18px;background:#111 center/cover no-repeat;min-height:420px}
 .uc-img.contain{background-size:contain}
-.uc-img::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,transparent 60%,rgba(7,7,10,.5))}
+
 .uc [data-s="op"]{--s:#2bc4a8}.uc [data-s="exp"]{--s:#a27bff}.uc [data-s="dev"]{--s:#ff7a59}
 @media (max-width:900px){
  .uc{grid-template-columns:1fr;gap:16px}
  .uc-list{display:flex;overflow-x:auto;gap:6px;scrollbar-width:none}
- .uc-item{flex:none;padding:10px 16px;border-radius:999px}.uc-item span{display:none}.uc-item b{font-size:15px}.uc-item::before{display:none}
+ .uc-item{flex:none;padding:10px 16px;border-radius:999px;border:1px solid var(--line-2)!important}.uc-item span{display:none}.uc-item b{font-size:15px}.uc-item::before{display:none}
  .uc-item[aria-selected="true"]{background:#0a0a0a;color:#fff}
- .uc-panel{grid-template-columns:1fr;padding:14px;border-radius:22px}.uc-img{min-height:220px;order:-1}
+ .uc-panel{grid-template-columns:1fr;padding:14px;border-radius:22px}.uc-img{min-height:0;aspect-ratio:1/1;order:-1;background-position:var(--pm)}
  .uc-tabs button{padding:9px 11px;font-size:13px}.uc-act span{font-size:15.5px}
 }
 </style>
@@ -1651,20 +1652,21 @@ canvas.fleet{cursor:crosshair}
     <h2 class="h2 reveal">I principali casi d'uso della robotica di ultima generazione.</h2>
     <p class="lead reveal">Il grado di adozione cambia in base al tipo di robot e all'applicazione. I casi segnati con il nome dell'azienda rimandano all'articolo che ne parla.</p>
     <div class="uc reveal" data-uc></div>
+    <div class="uc-foot reveal"><a class="btn btn-light" href="#contatti">Parla con un consulente Abra <svg><use href="#i-arrow"/></svg></a></div>
     <template id="uc-data">[
- {"n":"Umanoidi","one":"In showroom e laboratori, in test sulle linee di produzione.","head":"Dalla vetrina alla linea di produzione.","robot":"Unitree G1-D","img":"images/official/unitree-g1-d-standard.webp","fit":1,
+ {"n":"Umanoidi","one":"In showroom e laboratori, in test sulle linee di produzione.","head":"Dalla vetrina alla linea di produzione.","robot":"Unitree G1-D","img":"images/home/uc-umanoidi.webp","pm":"50% 18%",
   "a":[["op","Accoglienza clienti","Hall, reception, eventi"],["op","Showroom e fiere","Demo interattive"],["op","Laboratori R&D","Sviluppo e test di applicazioni"],
        ["exp","Movimentazione componenti","Walker S1 in fabbrica EV","BYD","https://interestingengineering.com/innovation/ubtechs-walker-s1-begins-factory-work-at-byd"],
        ["exp","Carico lamiere in maschera","Figure 02 in carrozzeria","BMW","https://collisionweek.com/2024/08/07/bmw-successfully-tests-humanoid-robots-south-carolina-manufacturing-plant/"],
        ["exp","Consegna parti alla linea","Apollo nel Digital Factory Campus","Mercedes-Benz","https://group.mercedes-benz.com/company/production/production-network/mbdfc-humanoid-robots.html"],
        ["exp","Prelievo cassette da AMR","Digit in magazzino","GXO","https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/"],
        ["dev","Compiti di linea non strutturati","Variazioni continue di pezzo e posizione"],["dev","Aree non mappate, tra le persone","Ambienti dinamici a uso promiscuo"]]},
- {"n":"Quadrupedi","one":"Ispezioni già operative, manutenzione predittiva in test.","head":"Ispezioni ogni giorno, anche senza personale.","robot":"Unitree Go2 / B2","img":"images/official/unitree-b2-pista.webp",
+ {"n":"Quadrupedi","one":"Ispezioni già operative, manutenzione predittiva in test.","head":"Ispezioni ogni giorno, anche senza personale.","robot":"Unitree Go2 / B2","img":"images/home/uc-quadrupedi.webp","pm":"50% 60%",
   "a":[["op","Ispezione impianti","Spot su dieci linee di confezionamento","AB InBev","https://bostondynamics.com/case-studies/energy-savings-predictive-maintenance-at-ab-inbevs-largest-european-brewery/"],
        ["op","Perimeter control","Ronde programmate e notturne"],["op","Lettura strumenti e quadri","Manometri, contatori, pannelli"],
        ["exp","Manutenzione predittiva","ANYmal su pompe e compressori","BASF","https://www.anybotics.com/news/anymal-case-basf-chemical-plant/"],
        ["dev","Missioni one-shot","Richieste puntuali in aree non mappate"]]},
- {"n":"Cobot e AMR","one":"Tecnologia matura: produzione e logistica, oggi.","head":"Già in produzione, con ritorno misurabile.","robot":"Fairino · MiR · AutoXing","img":"images/home/cnc.webp",
+ {"n":"Cobot e AMR","one":"Tecnologia matura: produzione e logistica, oggi.","head":"Già in produzione, con ritorno misurabile.","robot":"Fairino · MiR · AutoXing","img":"images/home/uc-cobot.webp","pm":"62% 35%",
   "a":[["op","Asservimento macchine e CNC","Carico grezzi, scarico finiti"],["op","Pick & place","Da cassetta o vassoio, con visione"],["op","Assemblaggio","Avvitatura e montaggi ripetitivi"],["op","Pallettizzazione","Fine linea e imballaggio"],["op","Logistica interna","AMR tra reparti e magazzino"],["op","Logistica esterna","Collegamenti tra edifici"]]}
 ]</template>
 
@@ -1792,7 +1794,7 @@ canvas.fleet{cursor:crosshair}
   </div>
   <details class="wrap foot-credits">
     <summary>Crediti fotografici</summary>
-    <p>Foto da Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Bra%C3%A7o_rob%C3%B3tico_colaborativo_Universal_Robots_UR3_no_Laborat%C3%B3rio_de_Investiga%C3%A7%C3%A3o_e_Inova%C3%A7%C3%A3o,_CeDRI,_Bragan%C3%A7a.jpg" target="_blank" rel="noopener">laboratorio CeDRI</a> e <a href="https://commons.wikimedia.org/wiki/File:Formar_para_formar_conhecimento_%E2%80%93_investigadores_do_CeDRI_em_forma%C3%A7%C3%A3o_na_c%C3%A9lula_industrial_Festo,_Bragan%C3%A7a.jpg" target="_blank" rel="noopener">formazione CeDRI</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Injection_Molding_Machine_with_a_robot_arm.jpg" target="_blank" rel="noopener">pressa a iniezione</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:EGU-Metall_CNC-Fr%C3%A4sen_mit_Roboterautomatisierung.jpg" target="_blank" rel="noopener">EGU-Metall</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:DeckelMaho-DMU50e-MachiningCenter.jpg" target="_blank" rel="noopener">DMU 50</a> (CC BY-SA 2.0), <a href="https://commons.wikimedia.org/wiki/File:SMT-Bestueckung.jpg" target="_blank" rel="noopener">linea SMT</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:Single_Extrusion_Panel.jpg" target="_blank" rel="noopener">profilo estruso</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:BMW_Leipzig_MEDIA_050719_Download_Karosseriebau_max.jpg" target="_blank" rel="noopener">BMW Lipsia</a> (CC BY-SA 2.0 DE), <a href="https://commons.wikimedia.org/wiki/File:Acorn_Sales.jpg" target="_blank" rel="noopener">Acorn Sales</a> (CC BY 4.0), <a href="https://commons.wikimedia.org/wiki/File:Der_kollaborative_Roboter_Sawyer_von_Rethink_Robotics_beim_Einsatz_in_der_Industrie.jpg" target="_blank" rel="noopener">Sawyer in produzione</a> (CC BY-SA 4.0) e <a href="https://commons.wikimedia.org/wiki/File:No_reflexo_da_tecnologia,_n%C3%B3s_%E2%80%93_c%C3%A9lula_industrial_Festo_no_LCPS,_CeDRI,_Bragan%C3%A7a.jpg" target="_blank" rel="noopener">cella Festo CeDRI</a> (CC BY-SA 4.0). Immagini ritagliate. Foto dei robot: Unitree Robotics e produttori.</p>
+    <p>Foto da Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Bra%C3%A7o_rob%C3%B3tico_colaborativo_Universal_Robots_UR3_no_Laborat%C3%B3rio_de_Investiga%C3%A7%C3%A3o_e_Inova%C3%A7%C3%A3o,_CeDRI,_Bragan%C3%A7a.jpg" target="_blank" rel="noopener">laboratorio CeDRI</a> e <a href="https://commons.wikimedia.org/wiki/File:Formar_para_formar_conhecimento_%E2%80%93_investigadores_do_CeDRI_em_forma%C3%A7%C3%A3o_na_c%C3%A9lula_industrial_Festo,_Bragan%C3%A7a.jpg" target="_blank" rel="noopener">formazione CeDRI</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Injection_Molding_Machine_with_a_robot_arm.jpg" target="_blank" rel="noopener">pressa a iniezione</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:EGU-Metall_CNC-Fr%C3%A4sen_mit_Roboterautomatisierung.jpg" target="_blank" rel="noopener">EGU-Metall</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:DeckelMaho-DMU50e-MachiningCenter.jpg" target="_blank" rel="noopener">DMU 50</a> (CC BY-SA 2.0), <a href="https://commons.wikimedia.org/wiki/File:SMT-Bestueckung.jpg" target="_blank" rel="noopener">linea SMT</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:Single_Extrusion_Panel.jpg" target="_blank" rel="noopener">profilo estruso</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:BMW_Leipzig_MEDIA_050719_Download_Karosseriebau_max.jpg" target="_blank" rel="noopener">BMW Lipsia</a> (CC BY-SA 2.0 DE), <a href="https://commons.wikimedia.org/wiki/File:Acorn_Sales.jpg" target="_blank" rel="noopener">Acorn Sales</a> (CC BY 4.0), <a href="https://commons.wikimedia.org/wiki/File:Der_kollaborative_Roboter_Sawyer_von_Rethink_Robotics_beim_Einsatz_in_der_Industrie.jpg" target="_blank" rel="noopener">Sawyer in produzione</a> (CC BY-SA 4.0) e <a href="https://commons.wikimedia.org/wiki/File:No_reflexo_da_tecnologia,_n%C3%B3s_%E2%80%93_c%C3%A9lula_industrial_Festo_no_LCPS,_CeDRI,_Bragan%C3%A7a.jpg" target="_blank" rel="noopener">cella Festo CeDRI</a> (CC BY-SA 4.0)., <a href="https://commons.wikimedia.org/wiki/File:Unitree_G1.jpg" target="_blank" rel="noopener">Unitree G1</a> (CC0), <a href="https://commons.wikimedia.org/wiki/File:HK_WCN_%E7%81%A3%E4%BB%94%E5%8C%97_Wan_Chai_North_%E9%A6%99%E6%B8%AF%E6%9C%83%E5%B1%95_HKCEC_%E5%BB%BA%E9%80%A0%E5%89%B5%E6%96%B0%E5%8D%9A%E8%A6%BD%E6%9C%83_Construction_Innovation_Expo_December_2022_Px3_118.jpg" target="_blank" rel="noopener">Unitree Go2, Construction Innovation Expo</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Schramberg_-_Sawyer_3.jpg" target="_blank" rel="noopener">Sawyer a Schramberg</a> (CC BY 4.0). Immagini ritagliate. Foto dei robot: Unitree Robotics e produttori.</p>
   </details>
 </footer>
 
@@ -1808,7 +1810,7 @@ canvas.fleet{cursor:crosshair}
   D.map(function(r,i){var ps=ph(r);return '<div role="tabpanel" id="uc-p'+i+'" aria-labelledby="uc-t'+i+'"'+(i?' hidden':'')+'><div class="uc-panel"><div class="uc-left"><div class="uc-tabs">'+
    ['op','exp','dev'].map(function(p){return '<button type="button" data-s="'+p+'" data-step="'+p+'" aria-pressed="'+(p===ps[0])+'"'+(ps.indexOf(p)<0?' disabled':'')+'>'+LL[p]+'</button>'}).join('')+'</div>'+
    ps.map(function(p){return '<div class="uc-acts" data-pane="'+p+'"'+(p===ps[0]?'':' hidden')+'>'+r.a.filter(function(a){return a[0]===p}).map(function(a){return '<div class="uc-act" data-s="'+p+'"><span>'+e(a[1])+'</span>'+(a[3]?'<a href="'+a[4]+'" target="_blank" rel="noopener">'+e(a[3])+' ↗</a>':'')+'</div>'}).join('')+'</div>'}).join('')+
-   '<a class="uc-cta" href="#contatti">Parla con un consulente Abra <svg width="10" height="10"><use href="#i-arrow"/></svg></a></div><div class="uc-img'+(r.fit?' contain':'')+'" style="background-image:url('+r.img+')" role="img" aria-label="'+e(r.robot)+'"></div></div></div>'}).join('')+'</div>';
+   '</div><div class="uc-img'+(r.fit?' contain':'')+'" style="background-image:url('+r.img+');--pm:'+(r.pm||'50% 50%')+'" role="img" aria-label="'+e(r.n)+'"></div></div></div>'}).join('')+'</div>';
  var tabs=[].slice.call(box.querySelectorAll('[role=tab]'));
  function sel(i){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=j!==i})}
  tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(i)});t.addEventListener('keydown',function(ev){var n=ev.key==='ArrowDown'||ev.key==='ArrowRight'?1:ev.key==='ArrowUp'||ev.key==='ArrowLeft'?-1:0;if(n){ev.preventDefault();var j=(i+n+tabs.length)%tabs.length;sel(j);tabs[j].focus()}})});
