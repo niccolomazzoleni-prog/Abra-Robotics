@@ -1458,8 +1458,8 @@ canvas.fleet{cursor:crosshair}
 .uc-foot{display:flex;justify-content:flex-start;margin:24px 0 0 312px}
 .uc-foot .btn{height:48px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;gap:8px}
 @media (max-width:900px){.uc-foot{margin-left:0}}
-.uc-img{display:flex;align-items:center;justify-content:center;min-height:0}
-.uc-img img{display:block;width:100%;height:auto;max-height:504px;object-fit:contain;border-radius:18px}
+.uc-img{align-self:start;min-height:0}
+.uc-img img{display:block;width:100%;height:auto;aspect-ratio:9/10;object-fit:cover;border-radius:18px;background:#111}
 
 
 .uc [data-s="op"]{--s:#2bc4a8}.uc [data-s="exp"]{--s:#a27bff}.uc [data-s="dev"]{--s:#ff7a59}
@@ -1468,7 +1468,7 @@ canvas.fleet{cursor:crosshair}
  .uc-list{display:flex;overflow-x:auto;gap:6px;scrollbar-width:none}
  .uc-item{flex:none;padding:10px 16px;border-radius:999px;border:1px solid var(--line-2)!important}.uc-item span{display:none}.uc-item b{font-size:15px}.uc-item::before{display:none}
  .uc-item[aria-selected="true"]{background:#0a0a0a;color:#fff}
- .uc-panel{grid-template-columns:1fr;padding:14px;border-radius:22px}.uc-img{order:-1}.uc-img img{max-height:none}
+ .uc-panel{grid-template-columns:1fr;padding:14px;border-radius:22px}.uc-img{order:-1}
  .uc-tabs button{padding:9px 11px;font-size:13px}.uc-act span{font-size:15.5px}
 }
 </style>
