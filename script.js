@@ -362,7 +362,7 @@ document.querySelectorAll('.nav-item-dropdown').forEach((item, i) => {
 
 // Navbar background on scroll
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
+if (navbar) window.addEventListener('scroll', () => {
   if (window.scrollY > 10) {
     navbar.style.boxShadow = '0 1px 8px rgba(0,0,0,0.04)';
   } else {

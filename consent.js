@@ -28,6 +28,7 @@
       ad_personalization: g(c.marketing),
     });
     if (typeof window.fbq === 'function') window.fbq('consent', c.marketing ? 'grant' : 'revoke');
+    if (c.marketing && typeof window.abraLoadPixel === 'function') window.abraLoadPixel();
     window.dataLayer.push({ event: 'abra_consent_update', consent_analytics: !!c.analytics, consent_marketing: !!c.marketing });
   }
 
