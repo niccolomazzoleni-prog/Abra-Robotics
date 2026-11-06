@@ -1423,6 +1423,51 @@ canvas.fleet{cursor:crosshair}
 .foot-credits a{text-decoration:underline!important}
 @media (max-width:820px){.site-foot .wrap.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
 @media (max-width:640px){.wrap{padding:0 16px}}
+
+/* Casi d'uso: lista + pannello scuro (da 21st "Feature 108") */
+.uc{display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:start;margin-top:36px}
+.uc button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+.uc [hidden]{display:none!important}
+.uc-list{display:grid;gap:6px}
+.uc-item{position:relative;display:grid;gap:4px;padding:18px 20px 18px 22px;border-radius:16px;transition:background .2s,box-shadow .2s}
+.uc-item b{font-size:19px;font-weight:500}
+.uc-item span{font-size:13.5px;color:var(--muted);line-height:1.4}
+.uc-item::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;border-radius:2px;background:transparent}
+.uc-item[aria-selected="true"]{background:#fff;box-shadow:0 1px 0 var(--line-2),0 12px 30px -18px rgba(0,0,0,.25)}
+.uc-item[aria-selected="true"]::before{background:var(--acc)}
+.uc-item:not([aria-selected="true"]):hover{background:rgba(0,0,0,.03)}
+.uc-panel{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;min-height:500px;padding:22px;border-radius:28px;color:#f5f5f5;
+ background:radial-gradient(70% 60% at 0% 0%,rgba(162,123,255,.28),transparent 60%),radial-gradient(60% 60% at 100% 100%,rgba(43,196,168,.18),transparent 60%),#07070a;
+ border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 80px -50px rgba(20,10,60,.7)}
+.uc-left{display:flex;flex-direction:column;padding:8px 4px}
+.uc-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:5px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-self:stretch}
+.uc-tabs button{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;gap:8px;padding:10px 14px;border-radius:12px;font-size:14px;font-weight:500;color:rgba(255,255,255,.62)!important;transition:background .2s,color .2s}
+.uc-tabs button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--s);box-shadow:0 0 10px var(--s)}
+.uc-tabs button[aria-pressed="true"]{background:rgba(255,255,255,.14);color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.uc-tabs button[disabled]{opacity:.3;cursor:default}
+.uc-tabs button:not([disabled]):not([aria-pressed="true"]):hover{color:#fff!important}
+.uc-acts{display:grid;gap:10px;margin-top:20px}
+.uc-act{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-radius:16px;
+ background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);
+ backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.uc-act span{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:500;letter-spacing:-.01em}
+.uc-act span::before{content:"";flex:none;width:6px;height:22px;border-radius:3px;background:var(--s);box-shadow:0 0 14px var(--s)}
+.uc-act a{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:12.5px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background .2s}
+.uc-act a:hover{background:rgba(255,255,255,.2)}
+.uc-cta{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:auto;padding:13px 20px;border-radius:999px;background:#fff;color:#0a0a0a;font-size:14.5px;font-weight:500;text-decoration:none}
+.uc-cta{margin-top:24px}
+.uc-img{position:relative;border-radius:20px;background:#0b0b0f center/cover no-repeat;border:1px solid rgba(255,255,255,.08);min-height:320px}
+.uc-img.contain{background-size:contain}
+.uc-img::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,transparent 60%,rgba(7,7,10,.5))}
+.uc [data-s="op"]{--s:#2bc4a8}.uc [data-s="exp"]{--s:#a27bff}.uc [data-s="dev"]{--s:#ff7a59}
+@media (max-width:900px){
+ .uc{grid-template-columns:1fr;gap:16px}
+ .uc-list{display:flex;overflow-x:auto;gap:6px;scrollbar-width:none}
+ .uc-item{flex:none;padding:10px 16px;border-radius:999px}.uc-item span{display:none}.uc-item b{font-size:15px}.uc-item::before{display:none}
+ .uc-item[aria-selected="true"]{background:#0a0a0a;color:#fff}
+ .uc-panel{grid-template-columns:1fr;padding:14px;border-radius:22px}.uc-img{min-height:220px;order:-1}
+ .uc-tabs button{padding:9px 11px;font-size:13px}.uc-act span{font-size:15.5px}
+}
 </style>
 </head>
 <body>
@@ -1605,31 +1650,23 @@ canvas.fleet{cursor:crosshair}
   <div class="wrap">
     <h2 class="h2 reveal">I principali casi d'uso della robotica di ultima generazione.</h2>
     <p class="lead reveal">Il grado di adozione cambia in base al tipo di robot e all'applicazione. I casi segnati con il nome dell'azienda rimandano all'articolo che ne parla.</p>
-    <div class="legend reveal"><span data-s="op">In uso operativo</span><span data-s="exp">In sperimentazione nell'industria</span><span data-s="dev">In sviluppo</span></div>
-    <div class="bento reveal">
-      <article class="btile big">
-        <div class="bphoto" style="background-image:url(images/official/unitree-g1-d-standard.webp)"><b>Umanoidi</b></div>
-        <div class="bstage" data-s="op"><span>In uso operativo</span><div>Accoglienza, showroom e laboratori R&amp;D</div></div>
-        <div class="bstage" data-s="exp"><span>In sperimentazione nell'industria</span><div>Movimentazione componenti, manipolazione e pick &amp; place, carico pezzi in maschera, asservimento linea</div><div class="cases">
-            <a class="case" href="https://interestingengineering.com/innovation/ubtechs-walker-s1-begins-factory-work-at-byd" target="_blank" rel="noopener"><b>BYD</b><span>UBTech Walker S1: movimentazione e assemblaggio di componenti nello stabilimento EV di Changsha</span></a>
-            <a class="case" href="https://collisionweek.com/2024/08/07/bmw-successfully-tests-humanoid-robots-south-carolina-manufacturing-plant/" target="_blank" rel="noopener"><b>BMW</b><span>Figure 02: inserimento di lamiere nelle maschere di saldatura, Spartanburg</span></a>
-            <a class="case" href="https://group.mercedes-benz.com/company/production/production-network/mbdfc-humanoid-robots.html" target="_blank" rel="noopener"><b>Mercedes-Benz</b><span>Apptronik Apollo: consegna di componenti alla linea e controllo dei pezzi</span></a>
-            <a class="case" href="https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/" target="_blank" rel="noopener"><b>GXO</b><span>Agility Digit: prelievo di cassette dagli AMR e deposito su nastro</span></a>
-          </div></div>
-        <div class="bstage" data-s="dev"><span>In sviluppo</span><div>Compiti di linea complessi e non strutturati. Movimentazione in ambienti dinamici a uso promiscuo con presenza di persone, in zone non mappate e con attività non mappate.</div></div>
-      </article>
-      <article class="btile">
-        <div class="bphoto" style="background-image:url(images/official/unitree-b2-pista.webp)"><b>Quadrupedi</b></div>
-        <div class="bstage" data-s="op"><span>In uso operativo</span><div>Ispezione, controllo e perimeter control. Lettura di strumenti, manometri e quadri elettrici.</div><div class="cases"><a class="case" href="https://bostondynamics.com/case-studies/energy-savings-predictive-maintenance-at-ab-inbevs-largest-european-brewery/" target="_blank" rel="noopener"><b>AB InBev</b><span>Spot: 1.800 ispezioni a settimana su dieci linee di confezionamento, Lovanio</span></a></div></div>
-        <div class="bstage" data-s="exp"><span>In sperimentazione nell'industria</span><div>Analisi e verifica dei macchinari, manutenzione predittiva con termografia e misure acustiche</div><div class="cases"><a class="case" href="https://www.anybotics.com/news/anymal-case-basf-chemical-plant/" target="_blank" rel="noopener"><b>BASF</b><span>ANYmal: giri di ispezione su pompe e compressori, Ludwigshafen</span></a></div></div>
-        <div class="bstage" data-s="dev"><span>In sviluppo</span><div>Attività dinamiche in aree non mappate, con richieste one-shot</div></div>
-      </article>
-      <article class="btile">
-        <div class="bphoto bvideo"><video muted loop playsinline preload="none" data-src="videos/fairino-palletizing.mp4" poster="images/home/cnc.webp"></video><b>Cobot e AMR</b></div>
-        <div class="bstage" data-s="op"><span>Cobot, in uso operativo</span><div>Tutti gli ambiti di produzione: movimentazione, assemblaggio, pick &amp; place, pallettizzazione, asservimento macchina, asservimento CNC</div></div>
-        <div class="bstage" data-s="op"><span>AMR, in uso operativo</span><div>Tutta la logistica, interna ed esterna</div></div>
-      </article>
-    </div>
+    <div class="uc reveal" data-uc></div>
+    <template id="uc-data">[
+ {"n":"Umanoidi","one":"In showroom e laboratori, in test sulle linee di produzione.","head":"Dalla vetrina alla linea di produzione.","robot":"Unitree G1-D","img":"images/official/unitree-g1-d-standard.webp","fit":1,
+  "a":[["op","Accoglienza clienti","Hall, reception, eventi"],["op","Showroom e fiere","Demo interattive"],["op","Laboratori R&D","Sviluppo e test di applicazioni"],
+       ["exp","Movimentazione componenti","Walker S1 in fabbrica EV","BYD","https://interestingengineering.com/innovation/ubtechs-walker-s1-begins-factory-work-at-byd"],
+       ["exp","Carico lamiere in maschera","Figure 02 in carrozzeria","BMW","https://collisionweek.com/2024/08/07/bmw-successfully-tests-humanoid-robots-south-carolina-manufacturing-plant/"],
+       ["exp","Consegna parti alla linea","Apollo nel Digital Factory Campus","Mercedes-Benz","https://group.mercedes-benz.com/company/production/production-network/mbdfc-humanoid-robots.html"],
+       ["exp","Prelievo cassette da AMR","Digit in magazzino","GXO","https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/"],
+       ["dev","Compiti di linea non strutturati","Variazioni continue di pezzo e posizione"],["dev","Aree non mappate, tra le persone","Ambienti dinamici a uso promiscuo"]]},
+ {"n":"Quadrupedi","one":"Ispezioni già operative, manutenzione predittiva in test.","head":"Ispezioni ogni giorno, anche senza personale.","robot":"Unitree Go2 / B2","img":"images/official/unitree-b2-pista.webp",
+  "a":[["op","Ispezione impianti","Spot su dieci linee di confezionamento","AB InBev","https://bostondynamics.com/case-studies/energy-savings-predictive-maintenance-at-ab-inbevs-largest-european-brewery/"],
+       ["op","Perimeter control","Ronde programmate e notturne"],["op","Lettura strumenti e quadri","Manometri, contatori, pannelli"],
+       ["exp","Manutenzione predittiva","ANYmal su pompe e compressori","BASF","https://www.anybotics.com/news/anymal-case-basf-chemical-plant/"],
+       ["dev","Missioni one-shot","Richieste puntuali in aree non mappate"]]},
+ {"n":"Cobot e AMR","one":"Tecnologia matura: produzione e logistica, oggi.","head":"Già in produzione, con ritorno misurabile.","robot":"Fairino · MiR · AutoXing","img":"images/home/cnc.webp",
+  "a":[["op","Asservimento macchine e CNC","Carico grezzi, scarico finiti"],["op","Pick & place","Da cassetta o vassoio, con visione"],["op","Assemblaggio","Avvitatura e montaggi ripetitivi"],["op","Pallettizzazione","Fine linea e imballaggio"],["op","Logistica interna","AMR tra reparti e magazzino"],["op","Logistica esterna","Collegamenti tra edifici"]]}
+]</template>
 
     <h3 class="sub-h reveal">Robotica già applicabile, settore per settore.</h3>
     <p class="lead reveal">Le attività possibili sono molte di più di quelle in elenco: i casi non presenti vengono esaminati nella fase di fattibilità.</p>
@@ -1760,6 +1797,24 @@ canvas.fleet{cursor:crosshair}
 </footer>
 
 <script>window.__abraFormLive=true;</script>
+<script>
+/* Casi d'uso: lista + pannello */
+(function(){
+ var box=document.querySelector('[data-uc]'),tpl=document.getElementById('uc-data');if(!box||!tpl)return;
+ var D=JSON.parse(tpl.content.textContent),LL={op:'In uso',exp:'In test',dev:'In sviluppo'};
+ function e(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+ function ph(r){return ['op','exp','dev'].filter(function(p){return r.a.some(function(a){return a[0]===p})})}
+ box.innerHTML='<div class="uc-list" role="tablist" aria-label="Tipo di robot">'+D.map(function(r,i){return '<button type="button" role="tab" class="uc-item" id="uc-t'+i+'" aria-controls="uc-p'+i+'" aria-selected="'+(i===0)+'" tabindex="'+(i?-1:0)+'"><b>'+e(r.n)+'</b><span>'+e(r.one)+'</span></button>'}).join('')+'</div><div>'+
+  D.map(function(r,i){var ps=ph(r);return '<div role="tabpanel" id="uc-p'+i+'" aria-labelledby="uc-t'+i+'"'+(i?' hidden':'')+'><div class="uc-panel"><div class="uc-left"><div class="uc-tabs">'+
+   ['op','exp','dev'].map(function(p){return '<button type="button" data-s="'+p+'" data-step="'+p+'" aria-pressed="'+(p===ps[0])+'"'+(ps.indexOf(p)<0?' disabled':'')+'>'+LL[p]+'</button>'}).join('')+'</div>'+
+   ps.map(function(p){return '<div class="uc-acts" data-pane="'+p+'"'+(p===ps[0]?'':' hidden')+'>'+r.a.filter(function(a){return a[0]===p}).map(function(a){return '<div class="uc-act" data-s="'+p+'"><span>'+e(a[1])+'</span>'+(a[3]?'<a href="'+a[4]+'" target="_blank" rel="noopener">'+e(a[3])+' ↗</a>':'')+'</div>'}).join('')+'</div>'}).join('')+
+   '<a class="uc-cta" href="#contatti">Parla con un consulente Abra <svg width="10" height="10"><use href="#i-arrow"/></svg></a></div><div class="uc-img'+(r.fit?' contain':'')+'" style="background-image:url('+r.img+')" role="img" aria-label="'+e(r.robot)+'"></div></div></div>'}).join('')+'</div>';
+ var tabs=[].slice.call(box.querySelectorAll('[role=tab]'));
+ function sel(i){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=j!==i})}
+ tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(i)});t.addEventListener('keydown',function(ev){var n=ev.key==='ArrowDown'||ev.key==='ArrowRight'?1:ev.key==='ArrowUp'||ev.key==='ArrowLeft'?-1:0;if(n){ev.preventDefault();var j=(i+n+tabs.length)%tabs.length;sel(j);tabs[j].focus()}})});
+ box.addEventListener('click',function(ev){var b=ev.target.closest('[data-step]');if(!b||b.disabled)return;var p=b.closest('[role=tabpanel]');p.querySelectorAll('[data-step]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});p.querySelectorAll('[data-pane]').forEach(function(x){x.hidden=x.getAttribute('data-pane')!==b.getAttribute('data-step')})});
+})();
+</script>
 <script>
 (function(){
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
