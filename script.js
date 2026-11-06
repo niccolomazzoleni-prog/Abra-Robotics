@@ -557,6 +557,9 @@ document.addEventListener('click', (e) => {
   if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/')) depth = 1;
   if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
   if (location.pathname.includes('/en/prodotti/') || location.pathname.includes('/en/blog/')) depth = 2;
+  // Versioni estere (/de/, /fr/, ...): una cartella in piu', due per il loro blog
+  var lang = /^\/(de|fr|es|nl|da|sv|no|fi|pl|cs|uk)\//.exec(location.pathname);
+  if (lang) depth = location.pathname.indexOf('/blog/') >= 0 ? 2 : 1;
   var prefix = depth ? '../'.repeat(depth) : '';
 
   var s = document.createElement('script');
