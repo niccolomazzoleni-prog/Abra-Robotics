@@ -468,10 +468,10 @@ section.pad-full{padding-top:120px!important}
 /* Gradient text, used sparingly */
 .grad{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 :root{--g1:#8a8a8a;--g2:#b37eff}
-.hero .grad{--g1:#ffffff;--g2:#c9a4ff}
+.hero .grad{background:none;color:#fff!important;-webkit-text-fill-color:#fff}
 .h2 span.grad,h1 .grad{color:transparent}
 .sec-light .grad,:root[data-theme="light"] .grad{--g1:#9a9a9a;--g2:#7c4dd6}
-:root[data-theme="light"] .hero .grad{--g1:#ffffff;--g2:#c9a4ff}
+:root[data-theme="light"] .hero .grad{background:none;color:#fff!important;-webkit-text-fill-color:#fff}
 
 /* Google colors tint (default) */
 :root{--gb:#4285f4;--gr:#ea4335;--gy:#fbbc05;--gg:#34a853}
@@ -1232,7 +1232,7 @@ main>section.sec-light+section.sec-light{padding-top:0!important}
 :root[data-mix] .sec-light{--acc:#6d3fd6;--acc-rgb:109,63,214;--acc2:#0b8f78;--acc2-rgb:11,143,120;--acc3:#d9532c;--acc3-rgb:217,83,44;--acc4:#2f5bff;--acc4-rgb:47,91,255;--vis-filter:none}
 :root{--g1:#ffffff;--g2:#a27bff}
 .hero .grad{--g1:#ffffff;--g2:#b99bff}
-.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(55% 45% at 12% 100%,rgba(var(--acc-rgb),.22),transparent 70%),radial-gradient(40% 35% at 95% 85%,rgba(var(--acc2-rgb),.12),transparent 70%)}
+
 .hero .btn-light svg{color:var(--acc)}
 .btn-light{transition:transform .2s,box-shadow .2s,background .2s}
 .btn-light:hover{box-shadow:none}
@@ -1383,9 +1383,6 @@ canvas.fleet{cursor:crosshair}
 .portrait span{color:#fff;font-size:64px;font-weight:300;letter-spacing:-.03em;opacity:.95}
 .wa-bar{display:none!important}
 .person b{font-size:18px}
-.person .li{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin-top:10px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;font-family:var(--sans);font-size:13px;color:var(--text);text-decoration:none;transition:border-color .2s,color .2s}
-.person .li svg{width:9px;height:9px}
-.person .li:hover{border-color:#0a66c2;color:#0a66c2}
 @media (max-width:640px){.team-grid{grid-template-columns:1fr 1fr}}
 
 /* catalog */
@@ -1685,11 +1682,11 @@ canvas.fleet{cursor:crosshair}
   <div class="wrap">
     <h2 class="h2 reveal">Il Team Abra</h2>
     <p class="lead reveal">Il Team Abra è composto da ingegneri specializzati in robotica ed embodied AI, con un percorso costruito tra ricerca applicata, aziende tecnologiche e startup.</p>
-    <!-- Foto: salvare in images/team/<nome>.webp e aggiungere <img> dentro .portrait. LinkedIn: sostituire href con l'URL del profilo -->
+    <!-- Foto: salvare in images/team/<nome>.webp e aggiungere <img> dentro .portrait. -->
     <div class="team-grid reveal">
-      <article class="person"><div class="portrait" style="--p1:#7c4dff;--p2:#2bc4a8"><span aria-hidden="true">GP</span><img src="images/team/giovanni-pitton.webp" alt="Giovanni Pitton" width="320" height="400" loading="lazy"/></div><b>Giovanni Pitton</b><span>Co-founder e CTO</span><a class="li" href="https://www.linkedin.com/in/giovannipitton/" target="_blank" rel="noopener">LinkedIn <svg><use href="#i-arrow"/></svg></a></article>
-      <article class="person"><div class="portrait" style="--p1:#ff7a59;--p2:#7c4dff"><span aria-hidden="true">NM</span><img src="images/team/niccolo-mazzoleni.webp" alt="Niccolò Mazzoleni" width="320" height="400" loading="lazy"/></div><b>Niccolò Mazzoleni</b><span>Co-founder e CMO</span><a class="li" href="https://www.linkedin.com/in/niccol%C3%B2-mazzoleni/" target="_blank" rel="noopener">LinkedIn <svg><use href="#i-arrow"/></svg></a></article>
-      <article class="person"><div class="portrait" style="--p1:#2bc4a8;--p2:#4f7cff"><span aria-hidden="true">SC</span><img src="images/team/samuele-cigardi.webp" alt="Samuele Cigardi" width="320" height="400" loading="lazy"/></div><b>Samuele Cigardi</b><span>Co-founder, responsabile R&amp;D</span><a class="li" href="https://www.linkedin.com/in/samuele-cigardi/" target="_blank" rel="noopener">LinkedIn <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="person"><div class="portrait" style="--p1:#7c4dff;--p2:#2bc4a8"><span aria-hidden="true">GP</span><img src="images/team/giovanni-pitton.webp" alt="Giovanni Pitton" width="320" height="400" loading="lazy"/></div><b>Giovanni Pitton</b><span>Co-founder e CTO</span></article>
+      <article class="person"><div class="portrait" style="--p1:#ff7a59;--p2:#7c4dff"><span aria-hidden="true">NM</span><img src="images/team/niccolo-mazzoleni.webp" alt="Niccolò Mazzoleni" width="320" height="400" loading="lazy"/></div><b>Niccolò Mazzoleni</b><span>Co-founder e CMO</span></article>
+      <article class="person"><div class="portrait" style="--p1:#2bc4a8;--p2:#4f7cff"><span aria-hidden="true">SC</span><img src="images/team/samuele-cigardi.webp" alt="Samuele Cigardi" width="320" height="400" loading="lazy"/></div><b>Samuele Cigardi</b><span>Co-founder, responsabile R&amp;D</span></article>
     </div>
   </div>
 </section>
