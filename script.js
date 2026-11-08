@@ -362,7 +362,7 @@ document.querySelectorAll('.nav-item-dropdown').forEach((item, i) => {
 
 // Navbar background on scroll
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
+if (navbar) window.addEventListener('scroll', () => {
   if (window.scrollY > 10) {
     navbar.style.boxShadow = '0 1px 8px rgba(0,0,0,0.04)';
   } else {
@@ -554,7 +554,7 @@ document.addEventListener('click', (e) => {
   if (document.querySelector('script[data-abra-chat-widget]')) return;
 
   var depth = 0;
-  if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/')) depth = 1;
+  if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/') || location.pathname.includes('/tecnologia/')) depth = 1;
   if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
   if (location.pathname.includes('/en/prodotti/') || location.pathname.includes('/en/blog/')) depth = 2;
   var prefix = depth ? '../'.repeat(depth) : '';
