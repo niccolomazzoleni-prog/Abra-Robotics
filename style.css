@@ -3323,3 +3323,8 @@ body :is(main,section,header,article,.collection-hero) :is(span,small,td,th,dt,d
 body :is(main,section,article) :is(span,small,td,th,dt,dd,p.label,li > span):not([data-ui] *):not(h1 *):not(h2 *):not(h3 *){letter-spacing:0!important}
 .sw-section-head > .label,.step-eyebrow,.honesty-tag,.pillar-tag,.fam-card-tag,.label-light{display:none!important}
 body .marquee-strip{display:none}
+/* Pagine categoria sul modello Umanoidi: schede prodotto su 3 colonne, foto contenute */
+@media (min-width:1001px){:is(.fam-section,#g1-grid) .robot-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media (min-width:641px) and (max-width:1000px){:is(.fam-section,#g1-grid) .robot-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+:is(.fam-section,#g1-grid) .robot-media{aspect-ratio:4/3;max-height:320px}
+:is(.fam-section,#g1-grid) .robot-media img{object-fit:contain;width:100%;height:100%}

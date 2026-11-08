@@ -84,7 +84,7 @@ def scheda(fam):
             f'<img src="{fam["img"]}" alt="{html.escape(fam["nome"])}, robot umanoide" loading="lazy"></a>'
             f'<div class="fam-card-body"><p class="fam-card-tag">{fam["tag"]}</p><h3>{fam["nome"]}</h3>'
             f'<p class="fam-card-claim">{fam["claim"]}</p>'
-            f'<p class="fam-card-meta"><span>da <strong>{da} €</strong></span><span>{len(items)} configurazioni</span></p>'
+            f'<p class="fam-card-meta"><span>{len(items)} configurazioni</span></p>'
             f'<div class="fam-card-actions"><a class="btn btn-primary" href="#fam-{fam["id"]}">Vedi configurazioni</a>{link}</div>'
             f"</div></article>")
 
@@ -173,7 +173,7 @@ def main():
     t = sostituisci(t, "STILE", STYLE, ancora_prima="</head>")
     # dati strutturati: elenco di tutte le configurazioni (ItemList) per Google e assistenti AI
     voci = [(k, v) for f in FAMIGLIE for k, v in prodotti(f)]
-    lista = {"@context": "https://schema.org", "@type": "ItemList", "name": "Robot umanoidi Unitree in Italia — configurazioni e prezzi",
+    lista = {"@context": "https://schema.org", "@type": "ItemList", "name": "Robot umanoidi Unitree in Italia: configurazioni e prezzi",
              "numberOfItems": len(voci),
              "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"https://abrarobotics.com/prodotti/{v['slug']}",
                                   "item": {"@type": "Product", "name": v["nome"], "brand": {"@type": "Brand", "name": "Unitree"},
@@ -186,13 +186,13 @@ def main():
 
     # hero: titolo, sottotitolo e numeri
     t = re.sub(r"<h1>Robot umanoidi Unitree in Italia[^<]*</h1>",
-               "<h1>Robot umanoidi Unitree in Italia — G1, H2, R1 e versioni dual-arm</h1>", t)
-    t = re.sub(r'<p class="lead">Gamma umanoide Unitree completa:.*?</p>',
+               "<h1>Robot umanoidi Unitree in Italia: G1, H2, R1 e versioni dual-arm</h1>", t)
+    t = re.sub(r'<p class="lead">(Gamma umanoide Unitree completa:|Sei famiglie di umanoidi).*?</p>',
                '<p class="lead">Sei famiglie di umanoidi Unitree, dai bipedi compatti ai busti dual-arm su base mobile. '
-               'Scegli la famiglia per vedere tutte le configurazioni con prezzi End-User, IVA esclusa.</p>', t, flags=re.S)
+               'Prezzi End-User, IVA esclusa.</p>', t, flags=re.S)
     meta = (f'<div class="hero-meta">\n<div><strong>6</strong><span>Famiglie di umanoidi</span></div>\n'
             f'<div><strong>{tot}</strong><span>Configurazioni</span></div>\n'
-            f'<div><strong>da {eur(minimo, dec=False)} €</strong><span>IVA esclusa</span></div>\n'
+
             f'<div><strong>Italia</strong><span>Filiera di distribuzione di Unitree Italia</span></div>\n</div>')
     t = re.sub(r'<div class="hero-meta">.*?</div>\s*</div>', meta, t, count=1, flags=re.S)
     t = re.sub(r'\s*<div class="tldr"[^>]*>\s*<strong>Famiglie esposte:</strong>.*?</div>', "", t, count=1, flags=re.S)
