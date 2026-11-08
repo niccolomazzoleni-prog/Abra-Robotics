@@ -1370,7 +1370,7 @@ canvas.fleet{cursor:crosshair}
 .portrait{position:relative;overflow:hidden;background:linear-gradient(140deg,var(--p1),var(--p2));border:0;color:#fff;font-size:44px;font-weight:300}
 .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .portrait span{color:#fff;font-size:64px;font-weight:300;letter-spacing:-.03em;opacity:.95}
-.wa-bar{display:none!important}
+
 .person b{font-size:18px}
 @media (max-width:640px){.team-grid{grid-template-columns:1fr 1fr}}
 
@@ -1505,6 +1505,153 @@ canvas.fleet{cursor:crosshair}
 .person .role,.person small{display:block}
 .portrait{background-image:none!important;background-color:#ece8f6!important}
 .uc-item,.uc-item.on,.uc-item[aria-selected="true"]{box-shadow:none!important}
+
+/* Barra WhatsApp (stessa delle altre pagine, la home non carica style.css) */
+.wa-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 13px 24px;
+  background: #1a7a3a;
+  box-shadow: 0 -1px 12px rgba(0,0,0,0.08);
+  transition: box-shadow 0.35s ease;
+}
+
+.wa-bar:hover {
+  box-shadow: 0 -3px 24px rgba(30, 107, 63, 0.28);
+}
+
+.wa-bar p {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wa-bar p svg {
+  flex-shrink: 0;
+}
+
+.wa-bar a.wa-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #128C7E;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 9px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  isolation: isolate;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.wa-bar a.wa-btn::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--wa-angle),
+    rgba(255,107,107,0.55),
+    rgba(255,217,61,0.5),
+    rgba(107,203,119,0.55),
+    rgba(77,150,255,0.5),
+    rgba(155,89,182,0.5),
+    rgba(255,107,107,0.55)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.58;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wa-bar:hover a.wa-btn::before {
+  opacity: 0.95;
+}
+
+.wa-bar a.wa-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.14), 0 0 20px rgba(255,255,255,0.25);
+}
+
+.wa-bar-close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: color 0.15s;
+}
+.wa-bar-close:hover { color: #fff; }
+
+/* Padding body per non nascondere contenuto sotto la barra */
+body.has-wa-bar { padding-bottom: 60px; }
+
+@media (max-width: 600px) {
+  .wa-bar {
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 12px 44px 12px 14px;
+    justify-content: flex-start;
+  }
+  .wa-bar p {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.73rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    justify-content: flex-start;
+  }
+  .wa-bar a.wa-btn {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 7px 12px;
+    gap: 0;
+  }
+  .wa-bar a.wa-btn svg { display: none; }
+  .wa-bar-close { top: 50%; right: 12px; transform: translateY(-50%); }
+  body.has-wa-bar { padding-bottom: 60px; }
+}
+
+/* Landing cobot: top-bar (40px) + navbar fissa (72px) */
+/* Barra WhatsApp nella veste della home: barra nera, bottone verde WhatsApp con icona visibile */
+.wa-bar{background:#0a0a0a!important;border-top:1px solid #1f1f1f;box-shadow:none!important;padding:10px 20px}
+.wa-bar:hover{box-shadow:none!important}
+.wa-bar p{color:#e6e6e6;font-weight:400}
+.wa-bar p svg{display:none}
+.wa-bar a.wa-btn{background:#25d366!important;color:#04130a!important;font-weight:500;border-radius:999px}
+.wa-bar a.wa-btn::before{display:none}
+.wa-bar a.wa-btn:hover{background:#3ae07a!important}
+.wa-bar a.wa-btn svg{fill:#04130a!important;display:inline-block!important}
+.wa-bar a.wa-btn svg path{fill:#04130a}
+.wa-bar-close{color:#9a9a9a}
+@media (max-width:520px){.wa-bar p{display:none}.wa-bar{justify-content:center}}
 </style>
 </head>
 <body>
