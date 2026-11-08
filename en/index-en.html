@@ -1488,6 +1488,23 @@ canvas.fleet{cursor:crosshair}
 @media (max-width:960px){.uc{grid-template-columns:minmax(0,1fr)}}
 .sw-hint{bottom:auto!important;top:46px;right:14px}
 @media (hover:none),(max-width:820px){.mdl::after{background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.78) 34%,rgba(0,0,0,.95) 62%)}.mdl-body{text-shadow:0 1px 10px rgba(0,0,0,.6)}}
+
+/* Passaggio anti-slop (design-taste-frontend), 8/11 */
+:root{--mono:var(--sans)}
+[data-ui]{--mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.pc-tag{display:none}
+.proof-label{text-transform:none!important;letter-spacing:0!important;font-size:14px!important}
+.proof-label .dot{display:none}
+.pc{background-image:none!important;background-color:#0b0b0b!important}
+#software{background-image:none!important}
+.f-title{font-size:17px;font-weight:500}
+:is(.eyebrow,.kicker){display:none}
+
+.mdl-body small{display:none}
+.cat-img{background:#f1eefa!important}
+.person .role,.person small{display:block}
+.portrait{background-image:none!important;background-color:#ece8f6!important}
+.uc-item,.uc-item.on,.uc-item[aria-selected="true"]{box-shadow:none!important}
 </style>
 </head>
 <body>
@@ -1577,7 +1594,7 @@ canvas.fleet{cursor:crosshair}
     <h2 class="h2 reveal" style="max-width:760px">From supply to software: four service lines that bring robotics into your company.</h2>
     <div class="pc-lines">
       <article class="pc pc-tilt has-vis reveal" style="--c:var(--acc)">
-        <div class="pc-vis shop" aria-hidden="true">
+        <div class="pc-vis shop" aria-hidden="true" data-ui>
           <div class="shop-win">
             <div class="shop-bar"><i></i><i></i><i></i><span>abrarobotics.com/en/catalog</span></div>
             <div class="shop-view"><div class="shop-track">
@@ -1593,24 +1610,24 @@ canvas.fleet{cursor:crosshair}
             <span class="shop-cursor"></span>
           </div>
         </div>
-        <div class="pc-body"><span class="pc-tag">01</span><h3>Supply</h3><p>A broad catalog of robots to choose and configure, delivered within 6 weeks.</p><a class="btn pc-btn" href="#catalogo">View the catalog</a></div>
+        <div class="pc-body"><h3>Supply</h3><p>A broad catalog of robots to choose and configure, delivered within 6 weeks.</p><a class="btn pc-btn" href="#catalogo">View the catalog</a></div>
       </article>
       <article class="pc pc-tilt reveal" style="--c:var(--acc2)">
         <div class="pc-img" style="background-image:url(../images/home/formazione.webp)"></div>
         <span class="pc-live" aria-hidden="true"><i></i>Hands-on session · ROS 2</span>
-        <div class="pc-body"><span class="pc-tag">02</span><h3>Training</h3><p>Corporate training programs for in-house teams: ROS 2, digital twin simulation, embodied AI and safety of robotic systems.</p></div>
+        <div class="pc-body"><h3>Training</h3><p>Corporate training programs for in-house teams: ROS 2, digital twin simulation, embodied AI and safety of robotic systems.</p></div>
       </article>
       <article class="pc pc-tilt reveal" style="--c:var(--acc3)">
         <div class="pc-img" style="background-image:url(../images/home/laboratorio.webp)"></div>
-        <div class="pc-body"><span class="pc-tag">03</span><h3>Lab</h3><p>Robot testing and configuration in a dedicated lab.</p></div>
+        <div class="pc-body"><h3>Lab</h3><p>Robot testing and configuration in a dedicated lab.</p></div>
       </article>
       <article class="pc pc-tilt has-vis reveal" style="--c:var(--acc4)">
-        <div class="pc-vis lidar-card" aria-hidden="true">
+        <div class="pc-vis lidar-card" aria-hidden="true" data-ui>
           <div class="dash-head"><span>Abra Fleet · Go2</span><span class="live"><i></i>LiDAR</span></div>
           <canvas class="lidar" data-mode="card"></canvas>
           <div class="dash-foot"><span>Points <b data-pts>0</b></span><span>Area <b>Hall A</b></span></div>
         </div>
-        <div class="pc-body"><span class="pc-tag">04</span><h3>Software</h3><p>Proprietary tools to simulate, develop and manage robots.</p><a class="btn pc-btn" href="../software.html#suite">Explore the software suite</a></div>
+        <div class="pc-body"><h3>Software</h3><p>Proprietary tools to simulate, develop and manage robots.</p><a class="btn pc-btn" href="../software.html#suite">Explore the software suite</a></div>
       </article>
     </div>
   </div>
@@ -1631,7 +1648,7 @@ canvas.fleet{cursor:crosshair}
     <div class="features">
       <article class="reveal">
         <!-- Humanoid Studio: per mostrare il video reale, inserire il file in data-src (es. videos/humanoid-studio-g1d.mp4) -->
-        <div class="f-visual sw-vis" data-video-slot>
+        <div class="f-visual sw-vis" data-video-slot data-ui>
           <video class="sw-video" muted loop playsinline preload="none" data-src="" poster=""></video>
           <canvas class="hs-sim" aria-label="Simulation of the G1-D arm picking and placing a part"></canvas>
           <div class="sw-chip">Humanoid Studio · G1-D</div>
@@ -1642,7 +1659,7 @@ canvas.fleet{cursor:crosshair}
       </article>
       <article class="reveal">
         <!-- Fleet Control: per il video reale del Go2, inserire il file in data-src -->
-        <div class="f-visual sw-vis" data-video-slot>
+        <div class="f-visual sw-vis" data-video-slot data-ui>
           <video class="sw-video" muted loop playsinline preload="none" data-src="" poster=""></video>
           <canvas class="fleet" aria-label="Map of an area with a Go2 on the move; click to send a target point"></canvas>
           <div class="sw-chip">Fleet Control · Go2</div>
@@ -1653,7 +1670,7 @@ canvas.fleet{cursor:crosshair}
         <p class="f-text">Missions, map and status of one or more Unitree quadrupeds from a single dashboard, with no integration work on your side.</p>
       </article>
       <article class="reveal">
-        <div class="f-visual sw-vis term-vis">
+        <div class="f-visual sw-vis term-vis" data-ui>
           <div class="term" aria-hidden="true">
             <div class="term-head"><i></i><i></i><i></i><span>abra · one-prompt</span></div>
             <pre class="term-body" data-term></pre>
