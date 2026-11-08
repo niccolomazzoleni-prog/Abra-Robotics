@@ -3025,3 +3025,56 @@ a:not(.btn):not(.logo):focus-visible{outline:2px solid var(--orange);outline-off
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1)}
 .footer-copy{color:#8a8a8a}
 .footer .btn,.footer .btn-primary{background:#fff;color:#0a0a0a;border-color:#fff}
+
+/* Menu come la home: logo compatto, voci raccolte in una pillola scura,
+   pulsante bianco arrotondato. Link e tendine restano quelli di ogni pagina. */
+.navbar{background:#000;border-bottom:1px solid rgba(255,255,255,.07)}
+.navbar .logo-img{height:auto;width:150px}
+.navbar-inner{min-height:72px}
+@media (min-width:1201px){
+  .navbar .nav-links{gap:0;padding:3px;border-radius:999px;background:rgba(30,30,30,.55);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .navbar .nav-links>a,.navbar .nav-dropdown-trigger{font-size:14px;line-height:1.2;padding:9px 14px;border-radius:999px;color:#ddd;white-space:nowrap}
+  .navbar .nav-links>a:hover,.navbar .nav-dropdown-trigger:hover{background:rgba(255,255,255,.1);color:#fff}
+  .navbar .btn,.navbar .btn-sm{height:38px;padding:0 18px;border-radius:999px;font-size:14px;display:inline-flex;align-items:center;white-space:nowrap}
+}
+.menu-toggle{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(20,20,20,.55);justify-content:center;align-items:center}
+@media (max-width:640px){.navbar .logo-img{width:128px}.navbar-inner{min-height:64px}}
+/* Tendina scura, coerente con il menu (prima le voci erano grigio chiaro su bianco) */
+.navbar .nav-dropdown-panel{background:#0d0d0d;border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px -16px rgba(0,0,0,.6)}
+.navbar .nav-dropdown-panel a{color:#d9d9d9;border-radius:10px}
+.navbar .nav-dropdown-panel a:hover{color:#fff;background:rgba(255,255,255,.08)}
+/* Menu delle landing: stesso aspetto del menu del sito (le landing hanno stili propri in pagina) */
+body .lp-navbar{background:#000;border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:none}
+body .lp-navbar .lp-logo{filter:invert(1);height:auto;width:150px}
+body .lp-navbar .lp-nav-links{gap:0;padding:3px;border-radius:999px;background:rgba(30,30,30,.55);border:1px solid rgba(255,255,255,.14)}
+body .lp-navbar .lp-nav-links a{font-size:14px;line-height:1.2;padding:9px 14px;border-radius:999px;color:#ddd;text-decoration:none}
+body .lp-navbar .lp-nav-links a:hover{background:rgba(255,255,255,.1);color:#fff}
+body .lp-navbar .btn{background:#fff;color:#0a0a0a;border-color:#fff;height:38px;padding:0 18px;border-radius:999px;font-size:14px;display:inline-flex;align-items:center}
+@media (max-width:640px){body .lp-navbar .lp-logo{width:120px}}
+/* Revisione step 1 */
+/* 1. Pagine senza barra annunci (es. blog): il menu sta in cima, senza fascia bianca sopra */
+body:not(:has(.top-bar)) .navbar{top:0}
+/* ...e su mobile, dove manca il burger, le poche voci restano visibili in versione compatta */
+@media (max-width:1200px){
+  .navbar:not(:has(.menu-toggle)) .nav-links{display:flex;gap:0;padding:3px;border-radius:999px;background:rgba(30,30,30,.55);border:1px solid rgba(255,255,255,.14)}
+  .navbar:not(:has(.menu-toggle)) .nav-links a{font-size:13px;padding:7px 10px;border-radius:999px;color:#ddd;white-space:nowrap}
+}
+@media (max-width:640px){.navbar:not(:has(.menu-toggle)) .btn{display:none}}
+/* 2. Barra annunci su mobile: una riga sola alta 36px, cosi' non finisce sotto il menu */
+@media (max-width:768px){
+  .top-bar{height:36px;display:flex;align-items:center;justify-content:center;padding:0 14px;overflow:hidden}
+  .top-bar p{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12.5px;line-height:36px}
+}
+/* 3. Logo del footer della stessa misura della home */
+.footer .logo-img{width:150px;height:auto}
+/* 4. Footer delle landing neri come il resto del sito */
+body .lpu-footer{background:#000;color:#9a9a9a;border-top:0}
+body .lpu-footer a{color:#cfcfcf}
+body .lpu-footer a:hover{color:#fff}
+/* 5. Menu mobile scuro, con un solo comando di chiusura (la X del burger) */
+.mobile-menu{background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08)}
+.mobile-menu a,.mobile-menu button:not(.mobile-menu-close){color:#e6e6e6}
+.mobile-menu a:hover{color:#fff}
+.mobile-menu .btn,.mobile-menu .btn-primary{background:#fff;color:#0a0a0a;border-color:#fff}
+.mobile-menu .nav-dropdown-panel,.mobile-menu [class*=sub]{background:transparent}
+.mobile-menu-close{display:none}
