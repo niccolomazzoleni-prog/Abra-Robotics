@@ -3134,3 +3134,148 @@ body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-h
 /* Card: angoli e bordo come la home, accento al passaggio */
 :is(.card,.product-card,.collection-card,.mdl-card,.hub-card,.vert-card,.sw-card){transition:border-color .2s,transform .2s,box-shadow .2s}
 :is(.product-card,.collection-card,.mdl-card,.hub-card):hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(109,63,214,.45)}
+
+/* ==========================================================================
+   Redesign pagine categoria (umanoidi, quadrupedi, cobot, AMR, accessori e
+   simili con .collection-hero): card, etichette, tabelle e FAQ come la home.
+   ========================================================================== */
+body:has(.collection-hero) .section{padding-top:88px;padding-bottom:88px}
+body:has(.collection-hero) .section + .section{border-top:1px solid #efefef}
+/* Etichette: da pillola grigia a kicker mono con linea colorata, come la home */
+body:has(.collection-hero) main .label,body:has(.collection-hero) .section .label{
+  display:inline-flex;align-items:center;gap:10px;padding:0;border:0;background:none;border-radius:0;
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
+body:has(.collection-hero) .section .label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+body:has(.collection-hero) .section-dark .label{color:var(--acc)}
+body:has(.collection-hero) .section h2{font-weight:400;letter-spacing:-.03em}
+/* Card prodotto e famiglia */
+body:has(.collection-hero) :is(.robot-card,.fam-card,.acc-card,.gripper-card,.q-card,.amr-tile){
+  --c:var(--acc);border:1px solid #e7e7e7;border-radius:18px;background:#fff;overflow:hidden;
+  transition:border-color .2s,transform .2s,box-shadow .2s}
+body:has(.collection-hero) :is(.robot-card,.fam-card,.acc-card,.gripper-card,.q-card,.amr-tile):nth-child(4n+2){--c:var(--acc2)}
+body:has(.collection-hero) :is(.robot-card,.fam-card,.acc-card,.gripper-card,.q-card,.amr-tile):nth-child(4n+3){--c:var(--acc3)}
+body:has(.collection-hero) :is(.robot-card,.fam-card,.acc-card,.gripper-card,.q-card,.amr-tile):nth-child(4n+4){--c:var(--acc4)}
+body:has(.collection-hero) :is(.robot-card,.fam-card,.acc-card,.gripper-card,.q-card,.amr-tile):hover{
+  border-color:color-mix(in srgb,var(--c) 55%,#fff);transform:translateY(-3px);box-shadow:0 18px 36px -24px color-mix(in srgb,var(--c) 75%,#000)}
+body:has(.collection-hero) :is(.robot-media,.fam-card-media,.acc-media,.gripper-media){
+  background:radial-gradient(70% 60% at 50% 55%,color-mix(in srgb,var(--c) 16%,transparent),transparent 70%),linear-gradient(180deg,#fbfbfb,#f1f1f3)!important;
+  border-bottom:1px solid #efefef}
+body:has(.collection-hero) :is(.robot-media-tag,.fam-card-tag){
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;color:color-mix(in srgb,var(--c) 70%,#000)!important}
+body:has(.collection-hero) .robot-media-tag{background:rgba(255,255,255,.85);border:1px solid color-mix(in srgb,var(--c) 35%,#fff);border-radius:999px;backdrop-filter:blur(6px)}
+body:has(.collection-hero) :is(.robot-card,.fam-card,.acc-card,.gripper-card) h3{font-weight:500;letter-spacing:-.02em}
+body:has(.collection-hero) :is(.key-spec-label,.spec-rows dt,.spec-rows th){font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:#8a8a8a}
+body:has(.collection-hero) .key-spec{border-radius:12px}
+body:has(.collection-hero) :is(.fam-card-meta strong,.card-price,.hub-price,.fam-item-price){font-family:var(--mono);font-weight:500;color:#111}
+body:has(.collection-hero) :is(.fam-card-link,.gripper-link,.acc-link,.btn-card.btn-secondary){color:var(--accent-text)}
+body:has(.collection-hero) .fam-card-link{text-decoration:none;border-bottom:1px solid currentColor}
+/* Navigazione per famiglia: pillole */
+body:has(.collection-hero) .fam-item{border-radius:14px;border-color:#e7e7e7}
+body:has(.collection-hero) .fam-item:hover{border-color:var(--acc);background:#faf7ff}
+/* Tabelle di confronto */
+body:has(.collection-hero) .section table{border-collapse:separate;border-spacing:0}
+body:has(.collection-hero) .section :is(.table-wrap,[class*=table-wrap],[class*=compare]){border-radius:18px;overflow:auto;border:1px solid #e7e7e7}
+body:has(.collection-hero) .section thead th{background:#000!important;color:#f5f5f5!important;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em}
+body:has(.collection-hero) .section tbody tr:hover td{background:#faf7ff}
+/* Link nel testo */
+body:has(.collection-hero) .section p a:not(.btn),body:has(.collection-hero) .section li a:not(.btn){color:var(--accent-text);text-decoration-color:rgba(109,63,214,.35);text-underline-offset:3px}
+/* FAQ */
+body:has(.collection-hero) :is(.seo-faq-item,.faq-item){border:1px solid #e7e7e7;border-radius:16px;background:#fff;padding-left:4px;padding-right:4px;margin-bottom:10px}
+body:has(.collection-hero) :is(.seo-faq-item,.faq-item)[open]{border-color:rgba(162,123,255,.5)}
+/* Box guida alla scelta e note */
+body:has(.collection-hero) :is(.q-fam,.q-card,.q-note,.successor-note,.use-case-box){border-radius:16px}
+body:has(.collection-hero) .q-card{border-top:3px solid var(--c)}
+
+/* ==========================================================================
+   Redesign schede prodotto (pagine con .product-hero): stesso linguaggio
+   della home. Galleria con alone colorato, dati chiave in mono, box prezzo
+   come card, tabelle e card con angoli e accenti della home.
+   ========================================================================== */
+body:has(.product-hero) .product-hero{background:linear-gradient(180deg,#fff 0%,#fafafa 100%);border-bottom:1px solid #efefef}
+body:has(.product-hero) .breadcrumb{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:#8a8a8a}
+body:has(.product-hero) .breadcrumb a{color:#666}
+body:has(.product-hero) .breadcrumb a:hover{color:var(--accent-text)}
+body:has(.product-hero) :is(.gallery-main,.gallery .main,.product-gallery){border-radius:20px!important;border:1px solid #ececec;
+  background:radial-gradient(65% 55% at 50% 58%,rgba(162,123,255,.16),transparent 70%),radial-gradient(45% 40% at 70% 30%,rgba(43,196,168,.10),transparent 70%),linear-gradient(180deg,#fcfcfc,#f0f0f3)!important}
+body:has(.product-hero) .product-info .label,body:has(.product-hero) .section .label{
+  display:inline-flex;align-items:center;gap:10px;padding:0;border:0;background:none;border-radius:0;
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
+body:has(.product-hero) :is(.product-info,.section) .label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+body:has(.product-hero) .section-dark .label{color:var(--acc)}
+body:has(.product-hero) .product-title{font-weight:400;letter-spacing:-.035em}
+body:has(.product-hero) .hub-link{color:var(--accent-text);text-underline-offset:3px}
+body:has(.product-hero) :is(.key-specs-grid,.product-stats){border-radius:16px;overflow:hidden}
+body:has(.product-hero) :is(.key-spec-label,.stat-label,.spec-mini-label,.included-card-label,.parallax-caption-label,.finance-stat-label){
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase}
+body:has(.product-hero) :is(.key-spec-value,.stat-number,.spec-mini-value){font-weight:500;letter-spacing:-.02em}
+body:has(.product-hero) .key-spec:nth-child(4n+1) .key-spec-value{color:#111}
+body:has(.product-hero) .quote-box{border-radius:20px!important;border:1px solid #e7e7e7!important;box-shadow:0 20px 40px -28px rgba(109,63,214,.45);position:relative;overflow:hidden}
+body:has(.product-hero) .quote-box::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--acc),var(--acc2) 45%,var(--acc3) 75%,var(--acc4))}
+body:has(.product-hero) .quote-box :is(.price,.quote-price,[class*=price-value],[class*=price-now]){letter-spacing:-.03em}
+body:has(.product-hero) :is(.trust-check,.check){color:var(--acc2)}
+body:has(.product-hero) .marquee-strip{background:#000;border-top:1px solid #161616;border-bottom:1px solid #161616}
+body:has(.product-hero) .marquee-dot{background:var(--acc)!important}
+body:has(.product-hero) .section h2{font-weight:400;letter-spacing:-.03em}
+body:has(.product-hero) :is(.spec-mini-card,.included-card,.feature-card,.comp-model-card,.step,.finance-stat,.product-stat){border-radius:18px}
+body:has(.product-hero) .section-dark :is(.spec-mini-card,.included-card,.feature-card,.comp-model-card){background:#0a0a0a;border:1px solid #1f1f1f}
+body:has(.product-hero) .section-dark .spec-mini-value{color:#fff}
+body:has(.product-hero) .section-dark :is(.spec-mini-card,.included-card):nth-child(4n+1){box-shadow:inset 0 2px 0 var(--acc)}
+body:has(.product-hero) .section-dark :is(.spec-mini-card,.included-card):nth-child(4n+2){box-shadow:inset 0 2px 0 var(--acc2)}
+body:has(.product-hero) .section-dark :is(.spec-mini-card,.included-card):nth-child(4n+3){box-shadow:inset 0 2px 0 var(--acc3)}
+body:has(.product-hero) .section-dark :is(.spec-mini-card,.included-card):nth-child(4n+4){box-shadow:inset 0 2px 0 var(--acc4)}
+body:has(.product-hero) .step-number{font-family:var(--mono);color:var(--acc2)}
+body:has(.product-hero) .comp-model-tag{font-family:var(--mono);color:var(--accent-text)}
+body:has(.product-hero) .specs-table{border-radius:18px;overflow:hidden}
+body:has(.product-hero) .specs-table :is(th,dt){font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+body:has(.product-hero) .section:not(.section-dark) table thead th{background:#000;color:#f5f5f5;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em}
+body:has(.product-hero) :is(.faq-item,.seo-faq-item){border-radius:16px}
+body:has(.product-hero) .correlati a,body:has(.product-hero) .correlati [class*=card]{border-radius:14px;transition:border-color .2s,transform .2s}
+body:has(.product-hero) .correlati a:hover{border-color:var(--acc);transform:translateY(-2px)}
+body:has(.product-hero) .section p a:not(.btn){color:var(--accent-text);text-underline-offset:3px}
+
+/* ==========================================================================
+   Redesign articoli del blog (.article-wrap): testata, tipografia,
+   riquadri, tabelle e card prodotto come la home.
+   ========================================================================== */
+body:has(.article-wrap) .article-header .label{display:inline-flex;align-items:center;gap:10px;padding:0;border:0;background:none;border-radius:0;
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
+body:has(.article-wrap) .article-header .label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+body:has(.article-wrap) .article-header h1{font-weight:400;letter-spacing:-.035em}
+body:has(.article-wrap) :is(.article-meta,.breadcrumb){font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:#8a8a8a}
+body:has(.article-wrap) .breadcrumb a:hover{color:var(--accent-text)}
+body:has(.article-wrap) .article-cover{border-radius:20px;overflow:hidden;
+  background:radial-gradient(60% 55% at 50% 60%,rgba(162,123,255,.14),transparent 70%),linear-gradient(180deg,#fcfcfc,#f0f0f3)}
+body:has(.article-wrap) .article-content h2{font-weight:500;letter-spacing:-.025em;position:relative;padding-top:18px}
+body:has(.article-wrap) .article-content h2::before{content:"";position:absolute;left:0;top:0;width:28px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+body:has(.article-wrap) .article-content h3{font-weight:500}
+body:has(.article-wrap) .article-content :is(p,li){font-weight:400;color:#2b2b2b}
+body:has(.article-wrap) .article-content a:not(.btn):not(.product-card-btn){color:var(--accent-text);text-decoration-color:rgba(109,63,214,.35);text-underline-offset:3px}
+body:has(.article-wrap) :is(.article-tldr,.article-lead){border-radius:16px;border:1px solid rgba(162,123,255,.28);background:linear-gradient(90deg,rgba(162,123,255,.07),rgba(43,196,168,.07))}
+body:has(.article-wrap) .callout{border-radius:14px;border-left-width:3px}
+body:has(.article-wrap) .callout-tip{border-left-color:var(--acc2)}
+body:has(.article-wrap) .callout-warning{border-left-color:var(--acc3)}
+body:has(.article-wrap) .callout-danger{border-left-color:#e5484d}
+body:has(.article-wrap) :is(.spec-table-wrap,.kbd-table){border-radius:16px;overflow:auto;border:1px solid #e7e7e7}
+body:has(.article-wrap) .article-content table thead th{background:#000;color:#f5f5f5;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.05em}
+body:has(.article-wrap) .article-content tbody tr:hover td{background:#faf7ff}
+body:has(.article-wrap) :is(.product-strip){border-radius:20px;border:1px solid #ececec;background:#fafafa}
+body:has(.article-wrap) .product-card{border-radius:16px;overflow:hidden;border:1px solid #e7e7e7;transition:border-color .2s,transform .2s,box-shadow .2s}
+body:has(.article-wrap) .product-card:hover{border-color:rgba(162,123,255,.55);transform:translateY(-2px);box-shadow:0 14px 30px -20px rgba(109,63,214,.5)}
+body:has(.article-wrap) .product-card-media{background:radial-gradient(65% 55% at 50% 58%,rgba(162,123,255,.14),transparent 70%),linear-gradient(180deg,#fcfcfc,#f0f0f3)}
+body:has(.article-wrap) .product-card-price{font-family:var(--mono);color:#111}
+body:has(.article-wrap) :is(.figure-card,.ip-card){border-radius:16px;overflow:hidden}
+body:has(.article-wrap) .article-toc{border-radius:16px;border:1px solid #ececec}
+body:has(.article-wrap) .article-toc-title{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
+body:has(.article-wrap) .faq-item{border-radius:14px}
+body:has(.article-wrap) .article-cta{border-radius:20px;background:#000;position:relative;overflow:hidden}
+body:has(.article-wrap) .article-cta::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2) 45%,var(--acc3) 75%,var(--acc4))}
+
+/* Correzioni revisione 8/11 */
+/* CTA senza .cta-content (pagine estere e modelli): titolo e testo leggibili sul nero */
+.section-cta > .container > :is(h2,h3){color:#f5f5f5}
+.section-cta > .container > p{color:#b9b9b9}
+/* Menu degli articoli del blog: voci leggibili sul nero */
+.navbar .nav-links a,.navbar .nav-post-links a{color:#d9d9d9}
+.navbar .nav-links a:hover,.navbar .nav-post-links a:hover{color:#fff}
+/* Barra WhatsApp su mobile: testo su una riga senza tagli */
+@media (max-width:520px){.wa-bar p{display:none}.wa-bar{justify-content:center}}
