@@ -3279,3 +3279,47 @@ body:has(.article-wrap) .article-cta::after{content:"";position:absolute;left:0;
 .navbar .nav-links a:hover,.navbar .nav-post-links a:hover{color:#fff}
 /* Barra WhatsApp su mobile: testo su una riga senza tagli */
 @media (max-width:520px){.wa-bar p{display:none}.wa-bar{justify-content:center}}
+
+/* ==========================================================================
+   Passaggio anti-slop (design-taste-frontend), 8/11
+   Niente cappelli sopra i titoli, niente monospazio fuori dalle interfacce,
+   niente etichette maiuscole spaziate, niente sfumature e linee decorative.
+   Le interfacce vere (data-ui) tengono il loro stile.
+   ========================================================================== */
+:root{--mono:var(--font)}
+[data-ui]{--mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+/* Cappelli sopra i titoli: via. Il titolo dice già cosa c'è */
+:is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero,.product-info,.article-header) .label,
+.section-header > .label,.section > .container > .label,.cta-content > .label,.vert-final-cta .label,.sw-final-cta .label,
+.np-kicker,.suite-sec .np-kicker,.eyebrow,.section-eyebrow,.section-label{display:none!important}
+/* Etichette in maiuscoletto spaziato: frase normale, carattere del testo */
+:is(.robot-media-tag,.fam-card-tag,.key-spec-label,.stat-label,.spec-mini-label,.included-card-label,.parallax-caption-label,
+.finance-stat-label,.mdl-cat,.footer-heading,.comp-model-tag,.article-toc-title,.breadcrumb,.article-meta,.np-fact small,
+.cat-body small,.hub-price,.mdl-price,.step-number,.np-step b,.key-spec-label,.spec-rows dt,.spec-rows th,.specs-table th,.specs-table dt){
+  text-transform:none!important;letter-spacing:0!important}
+:is(.robot-media-tag,.fam-card-tag,.key-spec-label,.stat-label,.spec-mini-label,.included-card-label,.footer-heading,.np-fact small){font-size:13px!important}
+.footer-heading{color:#fff!important;font-weight:500!important}
+thead th{text-transform:none!important;letter-spacing:0!important;font-size:13px!important}
+/* Numerazioni decorative */
+.np-num,.pillar-tag,.np-step b{display:none!important}
+/* Linee e sfumature decorative aggiunte nel redesign: tolte */
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero)::after{display:none}
+body .quote-box::before,.np-card::before,body:has(.article-wrap) .article-content h2::before,body:has(.article-wrap) .article-cta::after{display:none}
+body:has(.article-wrap) .article-content h2{padding-top:0}
+body:has(.collection-hero) :is(.robot-media,.fam-card-media,.acc-media,.gripper-media){background:color-mix(in srgb,var(--c) 7%,#f4f4f5)!important}
+body:has(.product-hero) :is(.gallery-main,.gallery .main,.product-gallery){background:#f1eefa!important}
+body:has(.product-hero) .product-hero{background:#fafafa}
+body:has(.article-wrap) :is(.article-cover,.product-card-media){background:#f1eefa}
+body:has(.article-wrap) :is(.article-tldr,.article-lead){background:#f4f0fd;border:0}
+.np-note{background:#f4f0fd!important;border:0!important}
+.np-hero-img::after{display:none}
+.np-tagline{background:rgba(0,0,0,.6);padding:6px 10px;border-radius:999px}
+body .top-bar{background:#0a0a0a}
+/* Ombre su elementi fermi */
+body :is(.robot-card,.fam-card,.acc-card,.gripper-card,.q-card,.amr-tile,.np-card,.product-card,.mdl-card,.quote-box):not(:hover){box-shadow:none!important}
+body:has(.product-hero) .section-dark :is(.spec-mini-card,.included-card){box-shadow:none!important}
+/* Anti-slop, secondo giro: niente maiuscoletto spaziato nei contenuti, altri cappelli via */
+body :is(main,section,header,article,.collection-hero) :is(span,small,td,th,dt,dd,a,p,li,b,strong):not([data-ui] *):not(.marquee-text):not(.cmr *){text-transform:none!important}
+body :is(main,section,article) :is(span,small,td,th,dt,dd,p.label,li > span):not([data-ui] *):not(h1 *):not(h2 *):not(h3 *){letter-spacing:0!important}
+.sw-section-head > .label,.step-eyebrow,.honesty-tag,.pillar-tag,.fam-card-tag,.label-light{display:none!important}
+body .marquee-strip{display:none}
