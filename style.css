@@ -3097,3 +3097,40 @@ body .lpu-footer a:hover{color:#fff}
 .mdl-link{font-size:.88rem;font-weight:500}
 @media (max-width:1000px){.mdl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.mdl-grid{grid-template-columns:1fr 1fr;gap:10px}.mdl-card-body{padding:12px}.mdl-card h3{font-size:.95rem}}
+
+/* ==========================================================================
+   Veste grafica home v14, passo 2: testate scure come l'hero della home,
+   titoli leggeri, etichette mono colorate, sezioni scure pulite.
+   Vale per tutte le pagine che usano style.css; contenuti invariati.
+   ========================================================================== */
+:root{--acc:#a27bff;--acc2:#2bc4a8;--acc3:#ff7a59;--acc4:#5b86ff}
+body{font-weight:300}
+p,li,td{font-weight:300}
+h1{font-weight:400;letter-spacing:-.035em}
+h2{font-weight:400;letter-spacing:-.03em}
+h3,h4{font-weight:500}
+/* Testate */
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero){
+  background:#000!important;color:#f5f5f5!important;position:relative;overflow:hidden;border-bottom:1px solid #161616}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero)::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2) 45%,var(--acc3) 75%,var(--acc4));opacity:.85;pointer-events:none}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) :is(h1,h2,h3,strong,b){color:#f5f5f5!important}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) :is(p,li,dd,dt,time){color:#b9b9b9!important}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) a:not(.btn){color:#d8c8ff}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) :is(.eyebrow,.badge,.hero-badge,.page-badge,.breadcrumb,[class*=eyebrow],[class*=kicker],[class*=label]){
+  font-family:var(--mono);color:var(--acc)!important;background:transparent!important;border-color:rgba(162,123,255,.35)!important}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) .btn:not(.btn-secondary):not(.btn-outline):not(.btn-ghost){background:#fff!important;color:#000!important;border-color:#fff!important}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) :is(.btn-secondary,.btn-outline,.btn-ghost){background:rgba(20,20,20,.6)!important;color:#fff!important;border:1px solid rgba(255,255,255,.22)!important}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) :is([class*=stat],[class*=chip],[class*=pill],[class*=tag]){background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12);color:#e6e6e6}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) :is(input,select){background:#111;color:#f5f5f5;border-color:#2a2a2a}
+body :is(.collection-hero,.page-hero,.vert-hero,.legal-hero,.cat-hero,.listino-hero,.blog-hero) img{filter:none}
+/* Sezioni scure: nero pieno come la home, senza griglia animata */
+.section-dark{background:#000}
+.section-dark::before{display:none}
+/* Etichette di sezione nel corpo pagina */
+.eyebrow,.section-label,.section-eyebrow{color:var(--accent-text)}
+.section-dark :is(.eyebrow,.section-label,.section-eyebrow){color:var(--acc)}
+/* Card: angoli e bordo come la home, accento al passaggio */
+:is(.card,.product-card,.collection-card,.mdl-card,.hub-card,.vert-card,.sw-card){transition:border-color .2s,transform .2s,box-shadow .2s}
+:is(.product-card,.collection-card,.mdl-card,.hub-card):hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(109,63,214,.45)}
