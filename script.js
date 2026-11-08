@@ -452,10 +452,11 @@ document.addEventListener('click', (e) => {
   let reopenTimer = null;
 
   function waBarHtml() {
+    const en = (document.documentElement.lang || 'it').slice(0, 2) !== 'it';
     return `<div class="wa-bar" id="wa-bar">
-    <p>Vuoi ricevere più informazioni?</p>
-    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">${WA_SVG} Contattaci su WhatsApp</a>
-    <button class="wa-bar-close" id="wa-bar-close" aria-label="Chiudi">&times;</button>
+    <p>${en ? 'Want more information?' : 'Vuoi ricevere più informazioni?'}</p>
+    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">${WA_SVG} ${en ? 'Contact us on WhatsApp' : 'Contattaci su WhatsApp'}</a>
+    <button class="wa-bar-close" id="wa-bar-close" aria-label="${en ? 'Close' : 'Chiudi'}">&times;</button>
   </div>`;
   }
 

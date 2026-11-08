@@ -1668,8 +1668,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
         thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
       }
 
-      document.getElementById('gallery-prev').addEventListener('click', () => setImage(current - 1));
-      document.getElementById('gallery-next').addEventListener('click', () => setImage(current + 1));
+      document.getElementById('gallery-prev')?.addEventListener('click', () => setImage(current - 1));
+      document.getElementById('gallery-next')?.addEventListener('click', () => setImage(current + 1));
       thumbs.forEach((t, i) => t.addEventListener('click', () => setImage(i)));
     })();
 
