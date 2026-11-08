@@ -50,7 +50,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <link href="llms.txt" rel="alternate" type="text/plain" title="LLM site summary"/>
 <link href="fonts/geist.css" rel="stylesheet"/>
 <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="preload" as="image" href="images/official/unitree-go2-roccia.webp" fetchpriority="high"/>
+<link rel="preload" as="image" href="images/home/hero-wb-still.webp" media="(min-width:761px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="images/home/hero-wb-still-mobile.webp" media="(max-width:760px)" fetchpriority="high"/>
 <style>
 :root{
   --bg:#000;
@@ -785,7 +786,8 @@ section.pad-full{padding-top:120px!important}
 .hv{display:none;position:absolute;inset:0}
 :root[data-hero="a"] .hv-a,:root[data-hero="b"] .hv-b,:root[data-hero="c"] .hv-c,:root[data-hero="d"] .hv-d{display:block}
 /* A: Go2 on the rock, slow drift */
-.hv-a,.hv-d{background:url(images/official/unitree-go2-roccia.webp) 30% 62%/cover no-repeat;transform:scale(1.04);animation:drift 24s ease-in-out infinite alternate}
+.hv-a,.hv-d{background:url(images/home/hero-wb-still.webp) 50% 50%/cover no-repeat;transform:scale(1.04);animation:drift 24s ease-in-out infinite alternate}
+@media (max-width:760px){.hv-a{background-image:url(images/home/hero-wb-still-mobile.webp)!important;background-position:50% 0%!important}}
 /* B: humanoid at work, full-bleed video */
 .hv-b{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.85)}
 /* C: diptych, quadruped left, humanoid right */
@@ -1509,7 +1511,7 @@ canvas.fleet{cursor:crosshair}
 
 <header class="hero force-dark">
   <div class="hero-media" aria-hidden="true">
-    <div class="hv hv-a" role="img" aria-label="Unitree Go2 su una roccia al buio"></div>
+    <div class="hv hv-a" role="img" aria-label="Umanoide Unitree G1 con logo Abra Robotics che movimenta pezzi su un banco di lavoro"></div>
   </div>
 
   <nav class="nav" aria-label="Principale">
