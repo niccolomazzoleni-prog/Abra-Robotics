@@ -1362,7 +1362,7 @@ canvas.fleet{cursor:crosshair}
 .apps li em{grid-column:2;grid-row:1/3;align-self:center;display:flex;align-items:center;gap:6px;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--s);white-space:nowrap}
 .tabpanel.has-sub{grid-template-columns:1.05fr 1fr}
 /* team */
-.team-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:900px}
+.team-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none}
 .portrait{position:relative;overflow:hidden;background:linear-gradient(140deg,var(--p1),var(--p2));border:0;color:#fff;font-size:44px;font-weight:300}
 .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .portrait span{color:#fff;font-size:64px;font-weight:300;letter-spacing:-.03em;opacity:.95}
@@ -2270,7 +2270,7 @@ window.addEventListener('load',function(){if(window.abraConsent&&window.abraCons
  var box=document.querySelector('[data-sx]');if(!box)return;
  var PH={op:'In uso',exp:'In test',dev:'In sviluppo'};
  var D=[
-  {n:'Manipolazione e asservimento',s:'Carico e scarico pezzi: con i cobot oggi, con l\'umanoide in test.',d:'La richiesta più frequente. Con i cobot è già in produzione; con l\'umanoide G1-D si parte da un banco di prova con i vostri pezzi.',img:'images/home/sxr-manipolazione.webp',
+  {n:'Manipolazione e asservimento',s:'Carico e scarico pezzi: con i cobot oggi, con l\'umanoide in test.',d:'Si può fare già oggi: con i cobot è in produzione, con l\'umanoide G1-D non è lontano. Si parte da un banco di prova con i vostri pezzi.',img:'images/home/sxr-manipolazione.webp',
    a:[['Asservimento presse a iniezione','Cobot','op'],['Asservimento CNC','Cobot','op'],['Pick & place con visione 3D','Cobot','op'],['Prelievo e posa in maschera','Umanoide G1-D','exp'],['Più macchine su base mobile','Umanoide G1-D','dev']]},
   {n:'Produzione',s:'Sei comparti, dalla plastica al fine linea.',sub:[
    {n:'Plastica',d:'Presse a iniezione e lavorazioni sullo stampato.',img:'images/home/sxr-plastica.webp',a:[['Asservimento presse a iniezione','Cobot','op'],['Inserimento inserti e deposito su nastro','Cobot','op'],['Sbavatura e controllo visivo dello stampato','Cobot','exp']]},
