@@ -53,6 +53,39 @@ Cosa blocca, in ordine di peso:
 3. Sui nomi dei modelli siamo oltre la 35ª posizione: pagine in concorrenza tra loro e poca autorità rispetto a Meko.
 4. Ci sono pagine povere che Google scarta, e questo pesa su tutto il sito.
 
+## Dove Meko ci batte (Search Console di Meko, dal 11/10 al 07/11/2026)
+
+Dati presi dalla Search Console di Meko (proprietà `https://www.mekosrl.it/`, ancora visibile dall'account di Gio).
+Posizioni medie su tutti i paesi: il 91% dei clic di Meko arriva dall'Italia.
+
+Nei 28 giorni Meko ha fatto 489 clic e 21.841 impressioni, di cui 444 clic dall'Italia. Abra ha fatto 301 clic e
+10.658 impressioni, di cui 117 clic dall'Italia. Meko non sta calando: fa 500-550 clic al mese in tutto il 2026.
+Su 176 ricerche in comune siamo sopra Meko in 25.
+
+| Ricerca | Meko: posizione | Meko: clic / impressioni | Abra: posizione | Abra: impressioni | Nostra pagina |
+|---|---|---|---|---|---|
+| robot umanoidi in vendita in italia | 4,2 | 22 / 394 | non compare | 0 | `umanoidi` (IT-7) |
+| vendita robot umanoidi | 5,3 | 4 / 42 | non compare | 0 | `umanoidi` (IT-7) |
+| robot umanoidi prezzo | 8,2 | 1 / 70 | non compare | 0 | `blog/robot-umanoide-prezzo` (IT-7) |
+| robot umanoide prezzo | 8,0 | 9 / 912 | 34,0 | 3 | `blog/robot-umanoide-prezzo` (IT-7) |
+| prezzo robot umanoide | 8,1 | 2 / 71 | 50,0 | 2 | `blog/robot-umanoide-prezzo` (IT-7) |
+| robot antropomorfo prezzo | 9,7 | 0 / 75 | 56,0 | 3 | `blog/robot-umanoide-prezzo` (IT-7) |
+| unitree | 5,8 | 6 / 2.101 | 40,6 | 40 | `catalogo-unitree` (IT-1) |
+| unitree robotics | 7,6 | 2 / 591 | 19,5 | 4 | `catalogo-unitree` (IT-1) |
+| unitree italia | 1,7 | 8 / 57 | 6,2 | 54 | `catalogo-unitree` (IT-1) |
+| unitree g1 | 4,7 | 5 / 627 | 46,5 | 157 | `g1` (IT-2) |
+| unitree g1 prezzo | 2,3 | 4 / 35 | 6,6 | 29 | `g1` (IT-2) |
+| unitree go2 | 9,6 | 1 / 213 | 28,4 | 100 | `go2` (IT-2) |
+| unitree go2 edu | 2,7 | 3 / 84 | 18,9 | 64 | `go2` (IT-2) |
+| unitree r1 | 8,6 | 2 / 152 | 12,4 | 47 | `r1` (IT-2) |
+| unitree h2 | 5,3 | 2 / 124 | 46,5 | 2 | `h2` (IT-2) |
+| unitree a2 | 4,0 | 1 / 101 | 16,8 | 53 | `a2` (IT-2) |
+| unitree b2 | 4,0 | 0 / 99 | 35,1 | 56 | `b2` (IT-2) |
+
+Due pagine di Meko fanno il 37% dei suoi clic: `/unitree` (83 clic, 4.777 impressioni) e la scheda
+`/product-page/unitree-g1` (99 clic, 4.068 impressioni). Sono le pagine da battere con `catalogo-unitree` e `g1`.
+Siamo già sopra Meko su "cane robot prezzo", dove Meko non c'è.
+
 ## Attività, nell'ordine
 
 **IT-0 [persona] Pubblicare le PR aperte.** Unire #73, #71 e #77 (e #74 e #76 se approvate). Poi Claude richiede
@@ -65,6 +98,9 @@ Bisogna aggiungere:
 - un titolo sotto i 60 caratteri con un vantaggio concreto, per esempio "listino pubblico" o "assistenza in Italia";
 - nelle prime righe: chi siamo, cosa vendiamo, consegna e assistenza in Italia.
 
+La stessa pagina deve salire anche su "unitree", "unitree robotics" e "robot unitree", dove la pagina `/unitree`
+di Meko è in 6ª-8ª posizione e noi oltre la 19ª.
+
 "Rivenditore ufficiale" si scrive solo se è vero e documentato. **[persona]** Il profilo Google Business di
 Abra Robotics deve avere un link a `catalogo-unitree`.
 Fatto quando: posizione media in Italia ≤ 3 dopo 4 settimane dalla pubblicazione.
@@ -76,6 +112,9 @@ creano pagine nuove per il prezzo, perché si farebbero concorrenza con quelle c
 - una tabella delle versioni con prezzo, a chi serve e consegna;
 - dati strutturati Product/Offer con il prezzo del listino;
 - link dalle guide `cane-robot-prezzo` e `robot-umanoide-prezzo`, con il nome del modello come testo.
+
+Ordine degli hub secondo le impressioni di Meko sul nome del modello: `g1`, `go2`, `r1`, `h2`, `a2`, `b2`, poi
+`as2`. La scheda G1 di Meko è la sua pagina più cliccata, in posizione 4,7 su "unitree g1" contro la nostra 46,5.
 
 È l'attività 2.2 del piano Europa, fatta prima e solo in italiano.
 Fatto quando: ogni "unitree [modello] prezzo" ha impressioni in Italia dopo 4 settimane e posizione ≤ 10 dopo 8.
@@ -103,6 +142,19 @@ Fatto quando: nessuna pagina italiana "scansionata ma non indicizzata" nella sit
 - Ogni caso studio è una pagina del sito, collegata dall'hub del modello.
 Fatto quando: 10 domini italiani nuovi nel rapporto Link di Search Console entro il 31/03/2027.
 
+**IT-7 Ricerche d'acquisto sugli umanoidi.** La ricerca generica che porta più clic a Meko è "robot umanoidi in
+vendita in italia": 22 clic in 28 giorni, posizione 4,2. Noi non compariamo né lì né su "vendita robot umanoidi" e
+"robot umanoidi prezzo". Non si creano pagine nuove:
+- `umanoidi` risponde a "in vendita", "vendita" e "comprare". Titolo e H1 diventano tipo "Robot umanoidi in vendita
+  in Italia" (oggi il titolo è "Robot umanoidi Unitree G1, H2, R1: prezzi in Italia"). Nelle prime righe:
+  prezzo di partenza dal listino, consegna e assistenza in Italia;
+- `blog/robot-umanoide-prezzo` copre le varianti di prezzo ("robot umanoidi prezzo", "prezzo robot umanoide",
+  "robot antropomorfo prezzo") nel testo e nelle FAQ, senza cambiare il titolo;
+- `catalogo-unitree`, gli hub `g1`, `h2`, `r1` e il post sul prezzo linkano `umanoidi` con il testo "robot umanoidi
+  in vendita".
+
+Fatto quando: "robot umanoidi in vendita in italia" ha impressioni dopo 4 settimane e posizione ≤ 5 dopo 8.
+
 ## Misura
 
 - Ogni lunedì: `company-brain/seo-monitor/posizioni_italia.py` da WSL (posizioni Italia sulle ricerche qui sopra,
@@ -110,7 +162,10 @@ Fatto quando: 10 domini italiani nuovi nel rapporto Link di Search Console entro
   al 09/11/2026 non ha mai girato.
 - Ogni 4 settimane: audit di indicizzazione delle pagine italiane (URL Inspection API) e confronto con la
   tabella "Dove siamo"; si aggiorna la tabella.
+- Ogni 4 settimane: confronto con Meko e aggiornamento della tabella "Dove Meko ci batte". La service account
+  vede solo abrarobotics.com: i dati di Meko si leggono dal profilo Search Console di Gio salvato in WSL
+  (`~/.local/share/abra-seo/gsc-profile`, lo stesso di `richiedi_indicizzazione.py`).
 - Se una metrica non si muove dopo 8 settimane, si riapre l'attività con un'ipotesi diversa.
 
-Ordine: IT-0 → IT-1 → IT-2 → IT-3 → IT-4 → IT-5, con IT-6 in parallelo. Le fasi 3 e 4 del piano Europa
+Ordine: IT-0 → IT-1 → IT-2 → IT-7 → IT-3 → IT-4 → IT-5, con IT-6 in parallelo. Le fasi 3 e 4 del piano Europa
 ripartono quando "unitree italia" è ≤ 3 e IT-2 ha impressioni su tutte le ricerche "prezzo".
