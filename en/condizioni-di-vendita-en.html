@@ -53,9 +53,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -136,12 +134,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="container">
 <p class="eyebrow">Legal</p>
 <h1>Terms of Sale</h1>
-<p class="legal-updated">General terms of sale and supply · Last updated: 14 October 2026</p>
+<p class="legal-updated">General terms of sale and supply · Last updated: 6 November 2026</p>
 </div>
 </section>
 <main class="legal">
 <div class="legal-note">
-<p><strong>Summary.</strong> We sell mainly to companies, universities and research bodies. Online purchase with the "Buy" button is reserved for customers with a VAT number; consumers can buy on quotation and keep all rights granted by the Italian Consumer Code (sections marked "Consumers"). The Italian version of these terms prevails in case of discrepancy. The terms of a written offer prevail over these general terms.</p>
+<p><strong>Summary.</strong> We sell mainly to companies, universities and research bodies. The website does not allow direct online purchase: every order is concluded on quotation, with a written Offer. Consumers keep all rights granted by the Italian Consumer Code (sections marked "Consumers"). The Italian version of these terms prevails in case of discrepancy. The terms of a written offer prevail over these general terms.</p>
 </div>
 <div class="legal-toc">
 <strong>Contents</strong>
@@ -182,7 +180,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <h2 id="scope">2. Scope</h2>
 <p>2.1. These General Terms of Sale ("Terms") apply to all sales of Products and Services by the Supplier, whether made through abrarobotics.com, by email or by Offer. The Customer's own terms do not apply unless accepted in writing by the Supplier.</p>
 <p>2.2. In case of conflict, the specific terms of the Offer or Order Confirmation prevail over these Terms.</p>
-<p>2.3. <strong>Online purchase with the "Buy" button is reserved for Business Customers.</strong> By ordering online the Customer declares that it acts for business purposes and provides its VAT number. The Supplier may refuse or cancel an online order without valid tax details, refunding the full amount paid. Consumers can buy by requesting a quotation.</p>
+<p>2.3. <strong>Orders on quotation.</strong> The website does not allow direct online purchase: published prices help customers choose, and the order is concluded when the Customer accepts a written Offer from the Supplier. Business Customers state their VAT number in the order; the Supplier may refuse or cancel an order without valid tax details, refunding any amount paid in full. Consumers buy in the same way, by requesting a quotation.</p>
 <p>2.4. Clauses reserved for Business Customers do not apply to Consumers. Nothing in these Terms limits the mandatory rights of Consumers under the Consumer Code.</p>
 <p>2.5. The Supplier may amend these Terms. Each contract is governed by the version published on the date of the order.</p>
 
@@ -193,7 +191,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <h2 id="order">4. Orders and conclusion of the contract</h2>
 <p>4.1. <strong>Purchase by Offer.</strong> The contract is concluded when the Supplier receives the Offer accepted and signed by the Customer and, where provided, the down payment. The Supplier then sends the Order Confirmation.</p>
-<p>4.2. <strong>Online purchase.</strong> Paying for an order on the website is a purchase proposal. The contract is concluded when the Order Confirmation is sent by email. Within 5 business days of payment the Supplier may decline the order, for example if the Product is unavailable from the manufacturer, in case of an obvious pricing error, missing tax details or export restrictions: in that case it refunds the full amount paid and has no further obligation.</p>
+<p>4.2. <strong>Order not accepted.</strong> The contract is concluded when the Order Confirmation is sent by email. Within 5 business days of receiving the signed Offer or the payment the Supplier may decline the order, for example if the Product is unavailable from the manufacturer, in case of an obvious pricing error, missing tax details or export restrictions: in that case it refunds the full amount paid and has no further obligation.</p>
 <p>4.3. The Supplier sends the Customer, on a durable medium (email), the order summary and a link to these Terms.</p>
 
 <h2 id="prices">5. Prices</h2>
@@ -204,8 +202,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p>5.5. An obviously wrong price due to a clerical error does not bind the Supplier, which informs the Customer and, if the Customer does not accept the correct price, cancels the order with a full refund.</p>
 
 <h2 id="payment">6. Payment</h2>
-<p>6.1. The Customer may pay by bank transfer, by card through Stripe or by the other methods stated in the Offer (for example leasing or financing). The Supplier does not receive or store card details.</p>
-<p>6.2. Online purchases are paid in full when ordering. For purchases by Offer, unless agreed otherwise, the Customer pays 50% on signing the Offer and the balance before shipment.</p>
+<p>6.1. The Customer may pay by bank transfer, by card through the Stripe payment link stated in the Offer or by the other methods stated in the Offer (for example leasing or financing). The Supplier does not receive or store card details.</p>
+<p>6.2. Unless otherwise agreed in the Offer, the Customer pays 50% on signing the Offer and the balance before shipment.</p>
 <p>6.3. <strong>Business Customers.</strong> Late payments bear, without formal notice, the default interest set by Italian Legislative Decree 231/2002, and the Supplier is entitled to a fixed sum of 40 euro for recovery costs, without prejudice to further damages. Until full payment the Supplier may suspend deliveries, Services and support.</p>
 
 <h2 id="delivery">7. Delivery, transport and risk</h2>

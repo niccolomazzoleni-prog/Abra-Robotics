@@ -152,9 +152,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -356,7 +354,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p class="form-note">Di norma rispondiamo entro 12 ore lavorative.</p>
 </div>
 <div aria-live="polite" class="form-feedback" id="form-feedback"></div>
-</form>
+<p class="form-privacy" style="margin-top:10px;font-size:12.5px;line-height:1.45;opacity:.75">Inviando la richiesta accetti il trattamento dei dati per ricevere una risposta, come descritto nell'<a href="/privacy-policy.html" target="_blank" rel="noopener">informativa privacy</a>.</p></form>
 </div>
 </section>
 <!-- 10. FAQ -->
@@ -383,5 +381,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a class="wa-btn" href="https://wa.me/393408592926" rel="noopener" target="_blank">Contattaci su WhatsApp</a>
 <button aria-label="Chiudi" class="wa-bar-close" id="wa-bar-close">×</button>
 </div>
+
+<footer class="footer"><div class="container footer-bottom"><p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. P.IVA 04800170278, Viale Trieste 105, 30026 Portogruaro (VE).</p><nav aria-label="Legal" class="footer-legal"><a href="/privacy-policy.html">Privacy Policy</a> <a href="/cookie-policy.html">Cookie Policy</a> <a href="/condizioni-di-vendita.html">Condizioni di vendita</a> <a href="/note-legali.html">Note legali</a></nav></div></footer>
 </body>
 </html>

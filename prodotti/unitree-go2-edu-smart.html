@@ -957,9 +957,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -1045,7 +1043,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <nav aria-label="Breadcrumb" class="breadcrumb">
 <a href="../index.html">Home</a>
 <span class="breadcrumb-sep">›</span>
-<a href="../#prodotti">Prodotti</a>
+<a href="../#catalogo">Prodotti</a>
 <span class="breadcrumb-sep">›</span>
 <a href="../go2.html">Unitree Go2</a>
 <span class="breadcrumb-sep">›</span>
@@ -1074,7 +1072,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p class="label">Robot quadrupede · Ricerca &amp; Automazione</p>
 <h1 class="product-title">Unitree Go2 EDU Smart</h1>
 <p class="hub-link" style="margin:.4rem 0 1rem"><a href="../go2.html">Tutte le versioni Unitree Go2 a confronto, con prezzi →</a></p>
-<p class="product-subtitle">Il quadrupede AI che porta la robotica mobile nel tuo laboratorio — e nei tuoi capannoni.</p>
+<p class="product-subtitle">Il quadrupede AI che porta la robotica mobile nel tuo laboratorio, e nei tuoi capannoni.</p>
 <div class="key-specs-grid">
 <div class="key-spec">
 <span class="key-spec-value">2 <small style="font-size:.9rem;font-weight:600">m/s</small></span>
@@ -1138,7 +1136,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="buy-box-cta">
 <a class="btn btn-primary" href="#form">Richiedi preventivo</a>
 </div>
-<p class="buy-box-note">Prezzo indicativo, soggetto a variazioni cambio EUR/USD — preventivo aggiornato su richiesta.</p>
+<p class="buy-box-note">Prezzo indicativo, soggetto a variazioni cambio EUR/USD, preventivo aggiornato su richiesta.</p>
 </div>
 <!-- /LISTINO:sku:GO2-EDU-SMART -->
 <div class="product-trust">
@@ -1252,7 +1250,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="desc-card">
 <p class="label">EDU Smart vs Enterprise</p>
 <h3>Sviluppo, non sorveglianza</h3>
-<p>La famiglia <strong>Enterprise</strong> è ottimizzata per sorveglianza e comunicazione remota — non supporta programmazione custom. Il <strong>Go2 EDU Smart</strong> è una piattaforma di sviluppo: SDK aperto, Jetson Orin NX 100 TOPS, supporto ROS completo, accessori espandibili. Se vuoi scrivere codice o fare ricerca, ti serve la versione EDU.</p>
+<p>La famiglia <strong>Enterprise</strong> è ottimizzata per sorveglianza e comunicazione remota, non supporta programmazione custom. Il <strong>Go2 EDU Smart</strong> è una piattaforma di sviluppo: SDK aperto, Jetson Orin NX 100 TOPS, supporto ROS completo, accessori espandibili. Se vuoi scrivere codice o fare ricerca, ti serve la versione EDU.</p>
 </div>
 <div class="desc-card">
 <p class="label">EDU Smart vs EDU base</p>
@@ -1303,7 +1301,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="section-header">
 <p class="label">Espansioni</p>
 <h2>Espandi con gli accessori</h2>
-<p class="section-sub">Il Go2 EDU Smart è una piattaforma modulare. Configura il robot con gli accessori che servono al tuo progetto — definiamo tutto prima dell'ordine.</p>
+<p class="section-sub">Il Go2 EDU Smart è una piattaforma modulare. Configura il robot con gli accessori che servono al tuo progetto, definiamo tutto prima dell'ordine.</p>
 </div>
 <div class="accessori-grid">
 <div class="accessori-card">
@@ -1347,7 +1345,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="section-header">
 <p class="label">Gamma Go2</p>
 <h2>Scegli il modello giusto</h2>
-<p class="section-sub">La famiglia Enterprise è pensata per sorveglianza. La famiglia EDU per sviluppo e ricerca. Sono prodotti distinti — sceglili in base al caso d'uso.</p>
+<p class="section-sub">La famiglia Enterprise è pensata per sorveglianza. La famiglia EDU per sviluppo e ricerca. Sono prodotti distinti, sceglili in base al caso d'uso.</p>
 </div>
 <div class="comp-models-bar">
 <div class="comp-model-card">
@@ -1412,7 +1410,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="step">
 <span class="step-number">02</span>
 <h3>Definisci la configurazione</h3>
-<p>LiDAR esterno (MID-360 o XT16), braccio servo, telecamera D435i — definiamo tutto prima dell'ordine.</p>
+<p>LiDAR esterno (MID-360 o XT16), braccio servo, telecamera D435i, definiamo tutto prima dell'ordine.</p>
 </div>
 <div class="step">
 <span class="step-number">03</span>
@@ -1426,7 +1424,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div style="text-align:center;">
-<a class="btn" href="#form" style="background:var(--white);color:var(--black);border-color:var(--white);">Inizia ora — richiedi un preventivo →</a>
+<a class="btn" href="#form" style="background:var(--white);color:var(--black);border-color:var(--white);">Inizia ora, richiedi un preventivo →</a>
 </div>
 </div>
 </section>
@@ -1644,7 +1642,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="../privacy-policy.html">Privacy Policy</a>
 <a href="../cookie-policy.html">Cookie Policy</a>

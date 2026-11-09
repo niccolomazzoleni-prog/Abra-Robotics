@@ -1,0 +1,361 @@
+<!-- generato da scripts/blog_lingue.py da blog/unitree-g1-cosa-puo-fare.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree G1: co umí, co ne a cena v Česku</title>
+<meta name="description" content="Co Unitree G1 umí hned po zapnutí, co přidávají SDK2 a ROS 2 ve verzích EDU, limity manipulace a výdrže, s oficiálními zdroji."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/cs/blog/unitree-g1-cosa-puo-fare.html"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-cosa-puo-fare.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-g1-cosa-puo-fare.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/unitree-g1-cosa-puo-fare.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/unitree-g1-cosa-puo-fare.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/unitree-g1-cosa-puo-fare.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/unitree-g1-cosa-puo-fare.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/blog/unitree-g1-cosa-puo-fare.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-g1-cosa-puo-fare.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/unitree-g1-cosa-puo-fare.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-g1-cosa-puo-fare.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-cosa-puo-fare.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree G1: co umí, co ne a cena v Česku",
+  "description": "Co Unitree G1 umí hned po zapnutí, co přidávají SDK2 a ROS 2 ve verzích EDU, limity manipulace a výdrže, s oficiálními zdroji.",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/cs/blog/unitree-g1-cosa-puo-fare.html"
+  },
+  "image": "https://abrarobotics.com/images/official/unitree-g1-01.webp",
+  "inLanguage": "cs",
+  "url": "https://abrarobotics.com/cs/blog/unitree-g1-cosa-puo-fare.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Co umí Unitree G1 bez programování?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chodí, sedá si, vstává ze země, provádí gesta a ukázkové sekvence z dálkového ovladače R3. Aplikace Unitree Explore slouží ke stavu, kalibraci a nastavení kloubů."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Dokáže se G1 sám postavit po pádu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Má příkaz z polohy vleže do stoje a ukázkovou sekvenci vstávání, ale nejde o zaručené zotavení z jakéhokoli pádu. Funguje na rovné a tvrdé podlaze s volným prostorem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jaký je rozdíl mezi G1 Air a G1 EDU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "G1 Air chodí a spouští ukázky, ale nemá vývojový počítač a neprogramuje se. SDK2, ROS 2, teleoperace a sběr dat vyžadují verzi EDU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak dlouho vydrží baterie G1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Přibližně 2 hodiny s baterií 9000 mAh podle Unitree. Nepřetržitá chůze a zátěž na pažích skutečnou výdrž snižují."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je G1 připravený na opakovanou úlohu ve firmě?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ne jako produkční robot. Manipulace je lehká (přibližně 3 kg na paži u EDU) a každá úloha se musí vyvinout, změřit a zabezpečit. Nejprve je vhodné PoC s napsanými KPI."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree G1: co umí, co ne a cena v Česku"/>
+<meta property="og:description" content="Co Unitree G1 umí hned po zapnutí, co přidávají SDK2 a ROS 2 ve verzích EDU, limity manipulace a výdrže, s oficiálními zdroji."/>
+<meta property="og:url" content="https://abrarobotics.com/cs/blog/unitree-g1-cosa-puo-fare.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
+<meta property="og:locale" content="cs_CZ"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Roboti Unitree s dodáním z Itálie · podpora v angličtině</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Produkty <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+<a href="/en/accessori-en.html">Příslušenství</a>
+<a href="/en/catalogo-unitree-en.html">Kompletní katalog</a>
+<a href="/cs/#models">Ceník</a>
+</div>
+</div>
+<a href="/cs/#models">Ceny</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Obory <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">O nás</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/cs/">Domů</a> / <a href="/cs/">Blog</a> / Aplikace</nav>
+
+<figure class="article-cover">
+<img src="/images/official/unitree-g1-01.webp" alt="Unitree G1 EDU ve stoje, humanoidní robot pro laboratoř a aplikace" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Aplikace · Unitree G1</p>
+<h1>Unitree G1: co opravdu umí (a co ne)</h1>
+<div class="article-meta"><time datetime="2026-11-03">3. listopadu 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Stručně:</strong> po zapnutí a postavení G1 chodí, sedá si, vstává ze země a provádí gesta a ukázky z dálkového ovladače R3. Aplikace Unitree Explore slouží ke stavu a kalibraci. SDK2, ROS 2, teleoperace a sběr dat vyžadují verzi EDU. Manipulace zůstává lehká: ukázkové video nestačí, úloha se musí změřit v PoC.</div>
+</header>
+
+<div class="article-content">
+<p>Otázka „co umí Unitree G1“ obvykle přichází z videí tanců, skoků a vstávání. Ta videa ukazují zdařilé sekvence, ne to, co je potřeba k použití robota v laboratoři nebo ve firmě. G1 je humanoid vysoký 1,32 m a vážící přibližně 35 kg, který po postavení chodí, sedá si, vstává a spouští ukázky. Krokem dál jsou verze EDU, čas na vývoj a úloha popsaná tak, aby se dala ověřit.</p>
+
+<h2>Unitree G1: co umí po zapnutí</h2>
+<p>Základ je společný: 6 stupňů volnosti na nohu, pas s 1 osou a baterie 9000 mAh. G1 Air má 23 stupňů volnosti; EDU od 23 do 43. Mění se hlavně to, co lze ovládat a programovat. Po zapnutí a sekvenci postavení jsou k dispozici tyto funkce:</p>
+<ul>
+<li><strong>Chůze a běh:</strong> Running mode s R2 + A; Regular mode s R1 + X (pas s 1 osou) nebo R1 + Y (pas se 3 osami); nízká a vysoká rychlost.</li>
+<li><strong>Polohy:</strong> locked standing, sed, dřep a návrat do stoje.</li>
+<li><strong>Vstávání ze země:</strong> L2 + X dostane robota z polohy vleže do stoje.</li>
+<li><strong>Gesta:</strong> podání ruky, pozdrav, potlesk, polibek, vzpažené paže.</li>
+<li><strong>Ukázky:</strong> tance, kung fu a sekvence vstávání se spouští z dálkového ovladače R3.</li>
+<li><strong>Aplikace Unitree Explore:</strong> stav, teploty, alarmy, kalibrace motorů a IMU, nastavení kloubů a funkce teaching pro záznam pohybů horní části těla a jejich vyvolání.</li>
+</ul>
+<p>Sekvence zapnutí, příkazy dálkového ovladače a síť jsou v <a href="/cs/blog/unitree-g1-guida-operativa.html">provozním návodu G1</a>.</p>
+
+<h2>Chůze, vstávání a zotavení po pádu: co to znamená v praxi</h2>
+<p>Chodit v režimu Regular neznamená navigovat samostatně. Robot udržuje rovnováhu a reaguje na příkazy, ale nezná prostředí. Unitree upřesňuje, že současný režim chůze nezahrnuje schody: stupně a výškové rozdíly nejsou hotová úloha.</p>
+<p>Vstávání ze země je sekvence. L2 + X dostane robota z polohy vleže do stoje; ukázka Roll Up dělá totéž v rámci choreografie. Nejde o zaručené zotavení z jakéhokoli pádu. Pokud robot spadne na bok, proti překážce nebo s paží v neobvyklé poloze, příkaz nemusí stačit. Dokumentace Unitree omezuje start z polohy vleže nebo z dřepu na rovné a tvrdé podlahy.</p>
+<p>Pro dvounohého robota je pád během vývoje běžná událost. Rozdíl mezi ukázkou a testem je v tom, že v testu se zapisuje, kolikrát robot spadne, jak dlouho zůstane na zemi a kdo zasáhne. Proto se první testy dělají s volným prostorem a člověkem u dálkového ovladače.</p>
+
+<h2>Co přinášejí SDK2 a ROS 2 (jen verze EDU)</h2>
+<p>Tabulka Unitree uvádí vlastní vývoj softwaru (SDK) jen ve sloupci G1 EDU. G1 Air nemá PC2, vývojový počítač, na kterém běží uživatelské programy. U G1 EDU je PC2 Jetson Orin NX s 16 GB RAM a 2 TB úložiště, dostupný na 192.168.123.164.</p>
+<p>Se SDK2, v C++ a Pythonu, se publikují příkazy na DDS, čtou se stavy motorů, IMU a baterie a ovládají se ruce. ROS 2 se přidává přes <code>unitree_ros2</code>, když jsou potřeba témata ROS 2, rosbag nebo již napsané uzly pro ROS 2. Postup krok za krokem je v návodu k <a href="/cs/blog/unitree-g1-programmazione.html">programování G1</a>.</p>
+<p>V ceníku stojí <a href="/en/prodotti/unitree-g1-en.html">G1 Air</a> 19&nbsp;809&nbsp;€, <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU Standard (U1)</a> 38&nbsp;005&nbsp;€ a <a href="/en/prodotti/unitree-g1-edu-plus-en.html">G1 EDU Plus (U2)</a> 46&nbsp;809&nbsp;€, bez DPH. Řada G1 sahá až k 90&nbsp;829&nbsp;€ za G1 EDU Ultimate I.</p>
+
+<h2>Teleoperace a sběr dat</h2>
+<p>S G1 EDU a XR headsetem lze robota teleoperovat. Oficiální repozitář <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">xr_teleoperate</a> podporuje G1 s 23 a 29 DoF, ruce Dex3-1, Inspire a BrainCo a zaznamenává epizody jedním tlačítkem. Data se převádějí do formátu LeRobot pomocí <a href="https://github.com/unitreerobotics/unitree_lerobot" rel="noopener noreferrer" target="_blank">unitree_lerobot</a>, který zahrnuje i trénink a testování na skutečném robotu.</p>
+<p>Slouží ke sběru lidských demonstrací pro trénink manipulační politiky, ne k řízení robota v provozu. Je potřeba vyškolený operátor, headset, prostor a čas. Kvalita dat závisí na tom, jak se zaznamenávají, ne jen na počtu epizod.</p>
+
+<h2>RL a sim-to-real</h2>
+<p>Na G1 EDU pokrývá <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> cyklus Train, Play, Sim2Sim a Sim2Real pro G1. Politika se trénuje v Isaac Gym, ověří v MuJoCo a poté se přenese na skutečného robota v debug mode. <code>unitree_mujoco</code> a <code>unitree_sim_isaaclab</code> nabízejí stejná DDS rozhraní jako robot.</p>
+<p>Je to typická cesta laboratoře: začíná se simulací, měří se rozdíl sim-to-real a přijímá se, že politiku je nutné znovu otestovat po každé aktualizaci firmwaru. Není to tlačítko „nauč a jdi“.</p>
+
+<h2>Skutečné limity: manipulace a výdrž</h2>
+<p>Maximální nosnost jedné paže je přibližně 3 kg u EDU a přibližně 2 kg u základního G1. Unitree upřesňuje, že hodnota se výrazně mění s polohou a natažením paže. Ruce jsou volitelné; verze, které je obsahují, stojí více. Hmatový senzor má smysl, pokud úloha vyžaduje měření kontaktu.</p>
+<p>Deklarovaná výdrž je přibližně 2 hodiny s baterií 9000 mAh. Při nepřetržité chůzi, teleoperaci a zátěži na pažích se den zkoušek organizuje s nejméně dvěma bateriemi. Nabíjení a výměna vyžadují čas a člověka.</p>
+<p>G1 nenahrazuje cobota v buňce pick and place s vysokým tempem. Pro úlohu u pracovního stolu je G1-D Standard na pevném podstavci, bez nohou. Pro opakovanou logistiku zůstávají AMR nebo cobot jednodušší na integraci.</p>
+
+<h2>Ukázková videa a opakovatelné úlohy: jak je rozlišit</h2>
+<p>Video ukazuje to nejlepší ze sekvence, často po mnoha pokusech a s operátorem mimo záběr. Opakovatelná úloha vyžaduje, aby stejná akce vyšla vícekrát, s proměnlivými předměty a polohami. Tabulka odděluje obojí.</p>
+<table>
+<thead><tr><th>Co je vidět ve videu</th><th>Co je potřeba k zopakování</th><th>Kde to selže</th></tr></thead>
+<tbody>
+<tr><td>Tanec, kung fu, gesta</td><td>Ukázky předinstalované v dálkovém ovladači</td><td>Překážky, nerovná podlaha, málo prostoru</td></tr>
+<tr><td>Vstávání ze země</td><td>Příkaz L2 + X nebo ukázka Roll Up</td><td>Pád na bok, měkký povrch, nedostatek prostoru</td></tr>
+<tr><td>Podání ruky</td><td>Interaktivní gesto z dálkového ovladače</td><td>Člověk, který se hýbe, špatná výška, neočekávaný kontakt</td></tr>
+<tr><td>Pick and place</td><td>Ruce, SDK, vnímání a data</td><td>Deformovatelné předměty, úchop mimo polohu, doba cyklu</td></tr>
+<tr><td>Teleoperace</td><td>Headset, PC2 a operátor</td><td>Latence, kalibrace, únava</td></tr>
+<tr><td>Politika RL</td><td>Simulace, nasazení a debug mode</td><td>Rozdíl sim-to-real, firmware, bezpečnost</td></tr>
+</tbody>
+</table>
+<p>Nejsou to testy provedené Abra Robotics: před podpisem se zeptejte, který řádek chcete předvést a s jakými čísly.</p>
+
+<h2>Který G1 zvolit pro váš případ</h2>
+<ul>
+<li><strong>Ukázky, veletrhy, showroom:</strong> G1 Air. Chodí a spouští ukázky, neprogramuje se.</li>
+<li><strong>Lokomoce, RL, sim-to-real:</strong> G1 EDU Standard (U1), 23 DoF a PC2.</li>
+<li><strong>Teleoperace a manipulace s pažemi:</strong> G1 EDU Plus (U2), 29 DoF, pas a klouby zápěstí.</li>
+<li><strong>Manipulace u pracovního stolu:</strong> G1-D Standard, na pevném podstavci.</li>
+</ul>
+<p>Před volbou napište úlohu a KPI. Návod, jak nastavit <a href="/cs/blog/poc-robot-umanoide-azienda.html">PoC s humanoidním robotem ve firmě</a>, vysvětluje, která čísla stanovit před testy.</p>
+
+<div class="product-strip" aria-label="Produkty zmíněné v článku">
+<div class="product-strip-head"><span>Produkty zmíněné v článku</span><a href="/en/prodotti/unitree-g1-en.html">G1 Air</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-en.html"><img alt="Unitree G1 Air" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-en.html">Unitree G1 Air</a></h3>
+<p>Ukázky a veletrhy, bez SDK</p>
+<div class="product-card-price">19&nbsp;809&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-en.html">Zobrazit detail</a><a class="product-card-link" href="/en/prodotti/unitree-g1-edu-standard-en.html">Porovnat EDU</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU Standard (U1)" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU Standard (U1)</a></h3>
+<p>SDK, 23 DoF, Jetson Orin NX</p>
+<div class="product-card-price">38&nbsp;005&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Zobrazit detail</a><a class="product-card-link" href="/en/prodotti/unitree-g1-edu-plus-en.html">Porovnat U2</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/unitree-g1-edu-plus-en.html"><img alt="Unitree G1 EDU Plus (U2)" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU Plus (U2)</a></h3>
+<p>29 DoF: pas a klouby zápěstí</p>
+<div class="product-card-price">46&nbsp;809&nbsp;€ <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Zobrazit detail</a><a class="product-card-link" href="/cs/blog/unitree-g1-programmazione.html">Jak se programuje</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<h2>Co dělá Abra Robotics</h2>
+<p>Abra Robotics dodává řadu robotů Unitree, coboty a AMR také do Česka a na Slovensko. U G1 pomáháme vybrat správnou verzi a jako samostatnou službu nabízíme školení a vývoj softwaru na Unitree SDK. Podpora probíhá v angličtině.</p>
+
+<section class="article-faq">
+<h2>Časté dotazy</h2>
+<div class="faq-item"><h3>Co umí Unitree G1 bez programování?</h3><p>Chodí, sedá si, vstává ze země, provádí gesta a ukázkové sekvence z dálkového ovladače R3. Aplikace Unitree Explore slouží ke stavu, kalibraci a nastavení kloubů.</p></div>
+<div class="faq-item"><h3>Dokáže se G1 sám postavit po pádu?</h3><p>Má příkaz z polohy vleže do stoje a ukázkovou sekvenci vstávání, ale nejde o zaručené zotavení z jakéhokoli pádu. Funguje na rovné a tvrdé podlaze s volným prostorem.</p></div>
+<div class="faq-item"><h3>Jaký je rozdíl mezi G1 Air a G1 EDU?</h3><p>G1 Air chodí a spouští ukázky, ale nemá vývojový počítač a neprogramuje se. SDK2, ROS 2, teleoperace a sběr dat vyžadují verzi EDU.</p></div>
+<div class="faq-item"><h3>Jak dlouho vydrží baterie G1?</h3><p>Přibližně 2 hodiny s baterií 9000 mAh podle Unitree. Nepřetržitá chůze a zátěž na pažích skutečnou výdrž snižují.</p></div>
+<div class="faq-item"><h3>Je G1 připravený na opakovanou úlohu ve firmě?</h3><p>Ne jako produkční robot. Manipulace je lehká (přibližně 3 kg na paži u EDU) a každá úloha se musí vyvinout, změřit a zabezpečit. Nejprve je vhodné PoC s napsanými KPI.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Zdroje</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">technický list G1 a G1 EDU</a> (stupně volnosti, nosnost paže, baterie, vlastní vývoj softwaru).</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">G1 remote control</a> (režimy chůze, vstávání ze země, gesta, limit schodů a rovná podlaha).</li>
+<li>Unitree, <a href="https://oss-global-cdn.unitree.com/static/5014b2b84df94951b1e2197081e02822.pdf" rel="noopener noreferrer" target="_blank">G1 remote control quick reference</a> (režimy, gesta a ukázka Roll Up).</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">G1 developer FAQ</a> (PC2: Jetson Orin NX 16 GB, 2 TB a adresa 192.168.123.164).</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/arm_action_interface" rel="noopener noreferrer" target="_blank">Arm Action Service Interface</a> (naučené akce zaznamenané funkcí teaching v aplikaci).</li>
+<li>Unitree, <a href="https://www.unitree.com/app/g1/" rel="noopener noreferrer" target="_blank">Unitree Explore App pro G1</a> (stav, kalibrace, nastavení kloubů, videa a manuály).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">xr_teleoperate</a> (teleoperace G1 23 a 29 DoF, záznam dat).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_lerobot" rel="noopener noreferrer" target="_blank">unitree_lerobot</a> (konverze dat, trénink a testování na G1).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Train, Play, Sim2Sim, Sim2Real pro G1).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> a <a href="https://github.com/unitreerobotics/unitree_sim_isaaclab" rel="noopener noreferrer" target="_blank">unitree_sim_isaaclab</a> (simulace se stejnými DDS rozhraními jako robot).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> (rozhraní ROS 2 pro roboty Unitree).</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Před koupí G1</h2><p>Řekněte nám úlohu, tempo a kdo ji bude používat: ověříme, zda je potřeba Air, U1, U2 nebo G1-D.</p><a class="btn btn-primary" href="/en/prodotti/unitree-g1-edu-standard-en.html">Detail G1 EDU Standard (U1)</a><a class="btn btn-outline-light" href="/cs/blog/unitree-g1-programmazione.html">Návod k programování</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Aplikovaná robotika pro firmy, univerzity a výzkumné instituce. Hardware, software na míru, školení a technická podpora.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigace</span>
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Produkty</span>
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Kontakt</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Itálie</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Všechna práva vyhrazena. Abra Robotics di Niccolò Mazzoleni, DIČ IT04800170278, Viale Trieste 105, 30026 Portogruaro (VE), Itálie.</p>
+<nav aria-label="Legal" class="footer-legal"><a href="/en/privacy-policy-en.html" hreflang="en">Ochrana soukromí (EN)</a> <a href="/en/cookie-policy-en.html" hreflang="en">Zásady cookies (EN)</a> <a href="/en/condizioni-di-vendita-en.html" hreflang="en">Obchodní podmínky (EN)</a> <a href="/en/note-legali-en.html" hreflang="en">Právní informace (EN)</a></nav>
+</div>
+</footer>
+<script defer src="/consent.js"></script>
+<script defer src="/script.js"></script>
+</body></html>

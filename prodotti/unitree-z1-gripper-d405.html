@@ -129,9 +129,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -234,7 +232,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
           <div class="key-specs-grid">            <div class="key-spec"><span class="key-spec-value">Z1 Gripper + D405</span><span class="key-spec-label">Prodotto</span></div>
             <div class="key-spec"><span class="key-spec-value">Unitree R1 / Z1 / G1</span><span class="key-spec-label">Compatibilità</span></div>
             <div class="key-spec"><span class="key-spec-value">Accessorio manipolazione</span><span class="key-spec-label">Tipo</span></div></div>
-          <p class="product-desc">Z1 Gripper + D405 — accessorio originale Unitree per piattaforme di manipolazione. Pinza con RealSense D405.</p>
+          <p class="product-desc">Z1 Gripper + D405, accessorio originale Unitree per piattaforme di manipolazione. Pinza con RealSense D405.</p>
           <!-- LISTINO:sku:Z1-GRIPPER-D405 -->
           <div class="buy-box">
             <div class="buy-box-head">
@@ -254,7 +252,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
             <div class="buy-box-cta">
               <a href="#form" class="btn btn-primary">Richiedi preventivo</a>
             </div>
-<p class="buy-box-note">Prezzo indicativo — preventivo aggiornato su richiesta.</p>
+<p class="buy-box-note">Prezzo indicativo, preventivo aggiornato su richiesta.</p>
           </div>
           <!-- /LISTINO:sku:Z1-GRIPPER-D405 -->
           <div class="product-trust">
@@ -356,7 +354,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="../privacy-policy.html">Privacy Policy</a>
 <a href="../cookie-policy.html">Cookie Policy</a>

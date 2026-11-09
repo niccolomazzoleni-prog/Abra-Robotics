@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<script>/* abra-consent-default: Consent Mode v2, negato finche' l'utente non sceglie (consent.js) */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var c=null;try{c=JSON.parse(localStorage.getItem('abra_consent')||'null');if(c&&(c.v!==1||Date.now()-c.ts>15552e6))c=null;}catch(e){}window.abraConsent=c;var g=function(v){return v?'granted':'denied';};gtag('consent','default',{ad_storage:g(c&&c.marketing),ad_user_data:g(c&&c.marketing),ad_personalization:g(c&&c.marketing),analytics_storage:g(c&&c.analytics),functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);})();</script>
+<script defer src="consent.js"></script>
+<script defer src="visite.js"></script>
+<meta content="G6A_4xRUkEdTQnXeAm_M37_ovtX1XVe5bjkGzvsCHzk" name="google-site-verification"/>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MNLWZSN7');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-T4ZC7CM8RX"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T4ZC7CM8RX');
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Formazione robotica: ROS 2, digital twin, embodied AI | Abra</title>
+<meta content="Corsi pratici su robot reali per team R&amp;D e automazione: ROS 2 per Unitree e cobot, simulazione in digital twin, embodied AI e sicurezza (ISO 10218, ISO/TS 15066)." name="description"/>
+<meta content="noindex, follow" name="robots"/>
+<link href="https://abrarobotics.com/formazione.html" rel="canonical"/>
+<link rel="alternate" hreflang="it" href="https://abrarobotics.com/formazione.html"/>
+<link rel="alternate" hreflang="x-default" href="https://abrarobotics.com/formazione.html"/>
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="Formazione robotica per team tecnici | Abra Robotics" property="og:title"/>
+<meta content="ROS 2, digital twin, embodied AI e sicurezza dei sistemi robotici: percorsi pratici su robot reali, in sede, in laboratorio o da remoto." property="og:description"/>
+<meta content="https://abrarobotics.com/formazione.html" property="og:url"/>
+<meta content="it_IT" property="og:locale"/>
+<meta content="Abra Robotics" property="og:site_name"/>
+<meta content="https://abrarobotics.com/images/home/formazione.webp" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Formazione robotica per team tecnici | Abra Robotics" name="twitter:title"/>
+<meta content="ROS 2, digital twin, embodied AI e sicurezza dei sistemi robotici: percorsi pratici su robot reali, in sede, in laboratorio o da remoto." name="twitter:description"/>
+<meta content="https://abrarobotics.com/images/home/formazione.webp" name="twitter:image"/>
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+/* Pagine servizio (formazione, laboratorio, software): stesso linguaggio della home */
+.np-hero{padding:calc(40px + 72px + 72px) 0 88px}
+.np-hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.np-hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.06;margin:14px 0 22px}
+.np-hero .np-sub{font-size:clamp(1.02rem,1.25vw,1.15rem);line-height:1.6;max-width:600px;margin-bottom:30px}
+.np-hero .np-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.np-hero-img{aspect-ratio:4/3;border-radius:18px;overflow:hidden;border:1px solid #1e1e1e;position:relative}
+.np-hero-img img{width:100%;height:100%;object-fit:cover}
+.np-hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45))}
+.np-tagline{position:absolute;left:16px;bottom:14px;z-index:1;font-family:var(--mono);font-size:12px;color:#fff;display:flex;gap:8px;align-items:center}
+.np-tagline i{width:7px;height:7px;border-radius:50%;background:var(--acc2);box-shadow:0 0 10px var(--acc2)}
+.np-kicker{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px}
+.np-kicker i{width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.np-hero .np-kicker{color:var(--acc)}
+.np-sec{padding:96px 0}
+.np-sec.alt{background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee}
+.np-sec.dark{background:#000;color:#f5f5f5}
+.np-sec.dark .np-kicker{color:var(--acc)}
+.np-sec h2{font-size:clamp(1.9rem,3.2vw,2.6rem);line-height:1.12;max-width:760px;margin-bottom:14px}
+.np-lead{font-size:1.06rem;color:#555;max-width:680px;margin-bottom:44px}
+.np-sec.dark .np-lead{color:#a9a9a9}
+.np-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.np-cards.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.np-card{--c:var(--acc);position:relative;border:1px solid #e6e6e6;border-radius:18px;padding:28px 28px 26px;background:#fff;transition:border-color .2s,transform .2s,box-shadow .2s;overflow:hidden}
+.np-card:hover{border-color:color-mix(in srgb,var(--c) 55%,#fff);transform:translateY(-2px);box-shadow:0 16px 34px -22px color-mix(in srgb,var(--c) 70%,#000)}
+.np-card::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--c);opacity:.85}
+.np-card .np-num{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:22px;padding:0 8px;border-radius:999px;font-family:var(--mono);font-size:11px;color:#fff;background:var(--c);margin-bottom:16px}
+.np-card h3{font-size:1.22rem;margin-bottom:10px}
+.np-card p{color:#555;font-size:.98rem;line-height:1.6}
+.np-card ul{list-style:none;margin-top:14px;display:grid;gap:7px}
+.np-card li{position:relative;padding-left:18px;font-size:.94rem;color:#3a3a3a;line-height:1.5}
+.np-card li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--c)}
+.np-card a{color:var(--accent-text);font-weight:500}
+.np-sec.dark .np-card{background:#0a0a0a;border-color:#1f1f1f}
+.np-sec.dark .np-card p,.np-sec.dark .np-card li{color:#b5b5b5}
+.c2{--c:var(--acc2)}.c2 .np-num{color:#04241f}.c3{--c:var(--acc3)}.c4{--c:var(--acc4)}
+.np-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:s}
+.np-step{border-top:1px solid #2a2a2a;padding-top:22px}
+.np-step b{display:block;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--acc2);margin-bottom:12px;letter-spacing:.06em}
+.np-step h3{font-size:1.08rem;margin-bottom:8px;color:#f5f5f5}
+.np-step p{font-size:.95rem;color:#a9a9a9;line-height:1.55}
+.np-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid #e6e6e6;border-radius:18px;overflow:hidden;background:#fff}
+.np-fact{padding:24px;border-right:1px solid #eee}
+.np-fact:last-child{border-right:0}
+.np-fact small{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#888;margin-bottom:8px}
+.np-fact span{font-size:1.02rem;line-height:1.45;color:#111}
+.np-note{margin-top:28px;display:flex;gap:14px;align-items:flex-start;padding:20px 22px;border-radius:16px;background:linear-gradient(90deg,rgba(43,196,168,.08),rgba(43,196,168,.08));border:1px solid rgba(43,196,168,.25);font-size:.98rem;color:#333}
+.np-note a{color:var(--accent-text);font-weight:500}
+.np-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.np-links a{padding:9px 16px;border-radius:999px;border:1px solid #ddd;font-size:.92rem;color:#111;transition:border-color .2s,background .2s}
+.np-links a:hover{border-color:var(--acc);background:#f6f1ff}
+.np-faq{max-width:860px}
+.np-faq .faq-item{margin-bottom:10px}
+@media (max-width:1000px){
+  .np-hero .container{grid-template-columns:1fr;gap:36px}
+  .np-cards.three{grid-template-columns:1fr 1fr}
+  .np-steps{grid-template-columns:1fr 1fr}
+  .np-facts{grid-template-columns:1fr 1fr}.np-fact:nth-child(2){border-right:0}.np-fact:nth-child(-n+2){border-bottom:1px solid #eee}
+}
+@media (max-width:640px){
+  .np-hero{padding:calc(36px + 64px + 40px) 0 56px}
+  .np-sec{padding:64px 0}
+  .np-cards,.np-cards.three,.np-steps,.np-facts{grid-template-columns:1fr}
+  .np-fact{border-right:0;border-bottom:1px solid #eee}.np-fact:last-child{border-bottom:0}
+  .np-card{padding:22px}
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
+  "https://connect.facebook.net/en_US/fbevents.js");
+  fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
+  fbq("track","PageView");
+  </script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>La prima call è gratuita e senza impegno. <a href="#richiesta">Prenota →</a></p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="cobot.html">Cobot</a>
+<a href="amr.html">AMR</a>
+<a href="quadrupedi.html">Quadrupedi</a>
+<a href="umanoidi.html">Umanoidi</a>
+<a href="accessori.html">Accessori</a>
+<a href="catalogo.html">Catalogo completo</a>
+<a href="listino-unitree.html">Listino prezzi</a>
+</div>
+</div>
+<a href="listino-unitree.html">Prezzi</a>
+<a href="assessment.html">Trova il robot giusto</a>
+<a href="finanziamenti.html">Finanziamenti</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="universita-ricerca.html">Università e Ricerca</a>
+</div>
+</div>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Prodotti <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="cobot.html">Cobot</a>
+<a href="amr.html">AMR</a>
+<a href="quadrupedi.html">Quadrupedi</a>
+<a href="umanoidi.html">Umanoidi</a>
+<a href="accessori.html">Accessori</a>
+<a href="catalogo.html">Catalogo completo</a>
+<a href="listino-unitree.html">Listino prezzi</a>
+</div>
+</div>
+<a href="listino-unitree.html">Prezzi</a>
+<a href="assessment.html">Trova il robot giusto</a>
+<a href="finanziamenti.html">Finanziamenti</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Per chi <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="universita-ricerca.html">Università e Ricerca</a>
+</div>
+</div>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+<!-- HERO -->
+<header class="page-hero np-hero">
+<div class="container">
+<div>
+<h1>Formazione su robotica ed embodied AI per i team tecnici.</h1>
+<p class="np-sub">Corsi pratici su robot veri per team di R&amp;D, automazione e ricerca: ROS 2, simulazione in digital twin, embodied AI e sicurezza. Si lavora sulle piattaforme che userete, dal primo avvio fino al vostro caso d&#39;uso.</p>
+<div class="np-ctas">
+<a class="btn btn-primary" href="#richiesta">Richiedi informazioni</a>
+<a class="btn btn-secondary" href="#percorsi">Vedi i percorsi</a>
+</div>
+</div>
+<div class="np-hero-img"><img src="images/home/formazione.webp" alt="Sessione pratica di formazione su ROS 2 con un team tecnico" width="1200" height="900" fetchpriority="high"/><span class="np-tagline"><i></i>Sessione pratica · ROS 2</span></div>
+</div>
+</header>
+<!-- PERCORSI -->
+<section class="np-sec" id="percorsi"><div class="container">
+<h2>Quattro percorsi, dal primo avvio del robot al vostro caso d'uso.</h2>
+<p class="np-lead">Ogni percorso alterna teoria breve ed esercizi sul robot. Si parte dalle basi e si arriva a un risultato che il team può riusare nel proprio lavoro.</p>
+<div class="np-cards"><article class="np-card "><h3>ROS 2 per robot Unitree e cobot</h3><p>Programmare umanoidi, quadrupedi e cobot con lo stack usato in ricerca e in industria.</p><ul><li>Architettura ROS 2: nodi, topic, servizi e azioni</li><li>SDK Unitree per G1 e Go2, driver dei cobot Fairino</li><li>Navigazione e percezione con LiDAR e camere di profondità</li><li>Dal codice di esempio a un comportamento vostro</li></ul></article><article class="np-card c2"><h3>Simulazione e digital twin</h3><p>Provare cella, robot e pezzi in simulazione prima di toccare l&#39;impianto.</p><ul><li>Modellazione di cella e pezzi in Isaac Sim o MuJoCo</li><li>Verifica di traiettorie, tempi ciclo e collisioni</li><li>Passaggio dalla simulazione al robot reale (sim-to-real)</li><li>Uso del gemello digitale per formare gli operatori</li></ul></article><article class="np-card c3"><h3>Embodied AI</h3><p>Insegnare al robot nuovi compiti di manipolazione partendo da dimostrazioni.</p><ul><li>Teleoperazione e raccolta di dati dimostrativi</li><li>Addestramento di policy per manipolazione (imitation learning, modelli VLA)</li><li>Valutazione delle policy e limiti di sicurezza sul robot</li><li>Gestione dei dataset e ripetibilità dei test</li></ul></article><article class="np-card c4"><h3>Sicurezza dei sistemi robotici</h3><p>Cosa preparare perché un robot possa lavorare vicino alle persone.</p><ul><li>Valutazione dei rischi della cella o dell&#39;area di lavoro</li><li>ISO 10218 e ISO/TS 15066 per la collaborazione uomo-robot</li><li>Regolamento Macchine (UE) 2023/1230</li><li>Documentazione per la certificazione, rilasciata da TÜV o da un altro ente accreditato</li></ul></article></div>
+</div></section>
+
+<!-- FORMATO -->
+<section class="np-sec alt" id="formato"><div class="container">
+<h2>In presenza o da remoto, sempre con il robot davanti.</h2>
+<p class="np-lead">Le sessioni pratiche si tengono nella vostra sede o nel laboratorio Abra. La parte teorica e il supporto tra una sessione e l&#39;altra si possono seguire da remoto.</p>
+<div class="np-facts"><div class="np-fact"><small>Dove</small><span>Nella vostra sede, nel laboratorio Abra o da remoto su Google Meet</span></div><div class="np-fact"><small>Durata</small><span>Da una giornata introduttiva a percorsi di più settimane</span></div><div class="np-fact"><small>Gruppi</small><span>Gruppi piccoli, così ognuno lavora sul robot</span></div><div class="np-fact"><small>Materiali</small><span>Dispense, codice di esempio e registrazioni restano al team</span></div></div>
+<div class="np-note"><span>La formazione si può spesso finanziare con fondi interprofessionali o bandi regionali. <a href="finanziamenti.html">Vedi i finanziamenti disponibili</a>.</span></div>
+</div></section>
+
+<!-- PER CHI -->
+<section class="np-sec dark" id="per-chi"><div class="container">
+<h2>Per i team che devono far lavorare il robot, non solo accenderlo.</h2>
+<p class="np-lead">I percorsi sono pensati per chi porta la robotica dentro l&#39;azienda o il laboratorio di ricerca.</p>
+<div class="np-cards three"><article class="np-card "><h3>Team R&amp;D e innovazione</h3><p>Per valutare nuove piattaforme e costruire i primi prototipi in autonomia.</p></article><article class="np-card c2"><h3>Automazione e manutenzione</h3><p>Per gestire, riprogrammare e mettere in sicurezza i robot già in reparto.</p></article><article class="np-card c3"><h3>Università e centri di ricerca</h3><p>Per corsi, tesi e progetti su piattaforme reali. <a href="universita-ricerca.html">Robotica per la ricerca</a>.</p></article></div>
+</div></section>
+<section class="np-sec alt" id="faq"><div class="container"><div class="np-faq">
+<h2>Domande frequenti</h2>
+<details class="faq-item"><summary>Serve esperienza di programmazione per seguire i corsi?</summary><p>Per ROS 2 ed embodied AI serve una base di Python o C++. Il percorso sulla sicurezza e le giornate introduttive sono pensati anche per chi gestisce progetti e impianti senza scrivere codice. Nella prima call verifichiamo il livello di partenza del team.</p></details>
+<details class="faq-item"><summary>Dobbiamo avere già un robot?</summary><p>No. Le sessioni pratiche si possono svolgere nel laboratorio Abra con i nostri robot. Se avete già un robot, costruiamo gli esercizi sulla vostra piattaforma e sul vostro caso d'uso.</p></details>
+<details class="faq-item"><summary>Il programma si può adattare alla nostra azienda?</summary><p>Sì. Ogni percorso parte da un modulo base e si completa con esercizi sul vostro processo: pezzi, layout, sensori e obiettivi reali.</p></details>
+<details class="faq-item"><summary>La formazione si può finanziare?</summary><p>Spesso sì, tramite fondi interprofessionali o bandi regionali per la formazione. Verifichiamo con voi se il percorso rientra in uno strumento di finanziamento prima di partire.</p></details>
+<details class="faq-item"><summary>In che lingua si svolgono i corsi?</summary><p>In italiano o in inglese, in presenza o da remoto. Le sessioni da remoto si tengono su Google Meet e restano registrate per il team.</p></details>
+<details class="faq-item"><summary>Quanto costa un percorso?</summary><p>Dipende da durata, numero di partecipanti e uso del laboratorio. Lo definiamo dopo la prima call gratuita, in cui capiamo obiettivi e livello del team.</p></details>
+</div></div></section>
+<!-- FORM CONTATTI -->
+<section class="section section-cta" id="richiesta" style="scroll-margin-top:130px;">
+<div class="container">
+<div class="cta-content">
+<h2>Hai un progetto in mente?</h2>
+<p class="cta-subtitle">Compila il form, un consulente ABRA ti ricontatterà di norma entro 12 ore lavorative.</p>
+</div>
+<form class="contact-form" id="contact-form">
+<div class="form-row">
+<div class="form-group">
+<label for="nome">Nome e cognome</label>
+<input id="nome" name="nome" placeholder="Mario Rossi" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="azienda">Azienda</label>
+<input id="azienda" name="azienda" placeholder="Acme S.r.l." required="" type="text"/>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group"><label for="email">Email</label><input id="email" name="email" placeholder="nome@azienda.it" required="" type="email"/></div>
+<div class="form-group"><label for="telefono">Telefono</label><input id="telefono" name="telefono" placeholder="+39 ..." required="" type="tel"/></div>
+</div>
+<div class="form-group">
+<label for="ruolo">Ruolo</label>
+<input id="ruolo" name="ruolo" placeholder="CTO, Responsabile R&amp;D, Ricercatore..." required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="messaggio">La tua richiesta</label>
+<textarea id="messaggio" name="messaggio" placeholder="Raccontaci il tuo progetto e chiedici tutto quello che vuoi sapere." required="" rows="6"></textarea>
+</div>
+<input name="vertical" type="hidden" value="Formazione"/>
+<div class="form-footer">
+<button class="btn btn-primary form-submit" type="submit">Invia la richiesta</button>
+<p class="form-note">Di norma rispondiamo entro 12 ore lavorative.</p>
+</div>
+<div aria-live="polite" class="form-feedback" id="form-feedback"></div>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.webp" width="180" height="72" decoding="async"/></a>
+<p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Prodotti</span>
+<a href="cobot.html">Cobot</a>
+<a href="amr.html">AMR</a>
+<a href="quadrupedi.html">Quadrupedi</a>
+<a href="umanoidi.html">Umanoidi</a>
+<a href="accessori.html">Accessori</a>
+<a href="catalogo.html">Catalogo completo</a>
+<a href="listino-unitree.html">Listino prezzi</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Servizi e risorse</span>
+<a href="assessment.html">Trova il robot giusto</a>
+<a href="software.html">Software</a>
+<a href="finanziamenti.html">Finanziamenti</a>
+<a href="manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="universita-ricerca.html">Università e Ricerca</a>
+<a href="blog.html">Blog</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contatti</span>
+<a href="chi-siamo.html">Chi siamo</a>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Viale Trieste 105<br/>30026 Portogruaro (VE)</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
+<nav aria-label="Note legali" class="footer-legal">
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="cookie-policy.html">Cookie Policy</a>
+<a href="condizioni-di-vendita.html">Condizioni di vendita</a>
+<a href="politica-resi.html">Politica resi</a>
+<a href="note-legali.html">Note legali</a>
+</nav>
+</div>
+</footer>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://abrarobotics.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Formazione",
+      "item": "https://abrarobotics.com/formazione.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Serve esperienza di programmazione per seguire i corsi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per ROS 2 ed embodied AI serve una base di Python o C++. Il percorso sulla sicurezza e le giornate introduttive sono pensati anche per chi gestisce progetti e impianti senza scrivere codice. Nella prima call verifichiamo il livello di partenza del team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Dobbiamo avere già un robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Le sessioni pratiche si possono svolgere nel laboratorio Abra con i nostri robot. Se avete già un robot, costruiamo gli esercizi sulla vostra piattaforma e sul vostro caso d'uso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il programma si può adattare alla nostra azienda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì. Ogni percorso parte da un modulo base e si completa con esercizi sul vostro processo: pezzi, layout, sensori e obiettivi reali."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "La formazione si può finanziare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Spesso sì, tramite fondi interprofessionali o bandi regionali per la formazione. Verifichiamo con voi se il percorso rientra in uno strumento di finanziamento prima di partire."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "In che lingua si svolgono i corsi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In italiano o in inglese, in presenza o da remoto. Le sessioni da remoto si tengono su Google Meet e restano registrate per il team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto costa un percorso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dipende da durata, numero di partecipanti e uso del laboratorio. Lo definiamo dopo la prima call gratuita, in cui capiamo obiettivi e livello del team."
+      }
+    }
+  ]
+}
+</script>
+<script src="script.js"></script>
+<!-- WhatsApp sticky bar -->
+<div class="wa-bar" id="wa-bar">
+<p><svg fill="#fff" height="20" style="flex-shrink:0" viewbox="0 0 24 24" width="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg> Vuoi ricevere più informazioni?</p>
+<a class="wa-btn" href="https://wa.me/393408592926" rel="noopener" target="_blank">Contattaci su WhatsApp</a>
+<button aria-label="Chiudi" class="wa-bar-close" id="wa-bar-close">×</button>
+</div>
+</body>
+</html>

@@ -362,7 +362,7 @@ document.querySelectorAll('.nav-item-dropdown').forEach((item, i) => {
 
 // Navbar background on scroll
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
+if (navbar) window.addEventListener('scroll', () => {
   if (window.scrollY > 10) {
     navbar.style.boxShadow = '0 1px 8px rgba(0,0,0,0.04)';
   } else {
@@ -452,10 +452,11 @@ document.addEventListener('click', (e) => {
   let reopenTimer = null;
 
   function waBarHtml() {
+    const en = (document.documentElement.lang || 'it').slice(0, 2) !== 'it';
     return `<div class="wa-bar" id="wa-bar">
-    <p>Vuoi ricevere più informazioni?</p>
-    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">${WA_SVG} Contattaci su WhatsApp</a>
-    <button class="wa-bar-close" id="wa-bar-close" aria-label="Chiudi">&times;</button>
+    <p>${en ? 'Want more information?' : 'Vuoi ricevere più informazioni?'}</p>
+    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">${WA_SVG} ${en ? 'Contact us on WhatsApp' : 'Contattaci su WhatsApp'}</a>
+    <button class="wa-bar-close" id="wa-bar-close" aria-label="${en ? 'Close' : 'Chiudi'}">&times;</button>
   </div>`;
   }
 
@@ -557,6 +558,9 @@ document.addEventListener('click', (e) => {
   if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/')) depth = 1;
   if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
   if (location.pathname.includes('/en/prodotti/') || location.pathname.includes('/en/blog/')) depth = 2;
+  // Versioni estere (/de/, /fr/, ...): una cartella in piu', due per il loro blog
+  var lang = /^\/(de|fr|es|nl|da|sv|no|fi|pl|cs|uk)\//.exec(location.pathname);
+  if (lang) depth = location.pathname.indexOf('/blog/') >= 0 ? 2 : 1;
   var prefix = depth ? '../'.repeat(depth) : '';
 
   var s = document.createElement('script');
