@@ -516,7 +516,7 @@ def patch_umanoidi_family_nav() -> None:
     )
     t = re.sub(
         r"<h1[^>]*>.*?</h1>",
-        "<h1>Robot umanoidi Unitree in Italia — G1, H2, R1</h1>",
+        "<h1>Robot umanoidi in vendita in Italia: Unitree G1, H2, R1 e dual-arm</h1>",
         t,
         count=1,
         flags=re.I | re.S,
