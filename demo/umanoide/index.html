@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G1 Playground · controllo dell'umanoide da un prompt</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cpath d=%22M0 0h16v10l-6 6H0z%22 fill=%22%23f2c200%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"../vendor/three/three.module.min.js","three/addons/":"../vendor/three/addons/"}}</script>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><i class="mark"></i><div><h1>G1 Playground</h1><div class="eyebrow">Controllo dell'umanoide da un prompt</div></div></div>
+  <div class="modes">
+    <span class="tag live" id="badgeDemo" title="Riprese registrate su hardware vero, nessun simulatore collegato">● DEMO</span>
+    <span class="tag off" id="badgeLive" title="Con il server Isaac Lab collegato la pagina passa DAL VIVO">DAL VIVO</span>
+    <span class="sys" id="sysline"></span>
+  </div>
+  <div class="spend"><span class="eyebrow">Spesa prompt</span> <b class="num" id="spend">0,00 $</b><span class="clock" id="clock"></span></div>
+</header>
+
+<main class="grid">
+  <aside class="col left">
+    <section class="panel" id="pRobots">
+      <header><span class="n">01</span><h2>Robot</h2><span class="eyebrow r">flotta del playground</span></header>
+      <ul class="robots" id="robots"></ul>
+    </section>
+    <section class="panel grow" id="pQueue">
+      <header><span class="n">04</span><h2>Coda lavori</h2><span class="eyebrow r" id="qcount"></span></header>
+      <ul class="queue" id="queue"></ul>
+    </section>
+  </aside>
+
+  <section class="view" id="view">
+    <canvas id="c3d"></canvas>
+    <div class="vcap"><span class="eyebrow">Anteprima 3D</span> <span class="dim">mesh Unitree G1 29 DoF · IK in tempo reale · movimento procedurale</span></div>
+    <div class="vtools">
+      <button class="btn sm" id="bFollow">Segui robot</button>
+      <button class="btn sm" id="bReset">Reset magazzino</button>
+    </div>
+    <div class="notice hidden" id="notice"></div>
+    <div class="clipov hidden" id="clipov">
+      <video id="clipv" muted playsinline loop preload="none"></video>
+      <div class="cliplab"><span class="tag live">Ripresa dal simulatore</span> <span id="cliptxt"></span></div>
+      <button class="btn sm close" id="clipx">Chiudi ✕</button>
+    </div>
+    <div class="promptwrap">
+      <div class="status" id="status"><i class="dot"></i><span id="statustxt">Pronto · scrivi cosa deve fare il robot</span></div>
+      <div class="chips" id="chips"></div>
+      <form class="prompt" id="pform" autocomplete="off">
+        <span class="caret">›</span>
+        <input id="pin" type="text" placeholder="Prendi la cassetta rossa dal tavolo e mettila sul nastro" aria-label="Comando per il robot">
+        <button class="btn primary" type="submit" id="psend">Invia ↵</button>
+      </form>
+    </div>
+  </section>
+
+  <aside class="col right">
+    <section class="panel" id="pPlan">
+      <header><span class="n">02</span><h2>Piano di Claude</h2><span class="eyebrow r" id="planmeta">in attesa del prompt</span></header>
+      <div class="plan" id="plan"><p class="empty">Scrivi un comando o scegli un esempio. Claude lo trasforma in passi che usano le abilità del robot (vai, prendi, metti_in_scatola, premi), il robot li esegue e la pagina li spunta.</p></div>
+    </section>
+    <section class="panel" id="pCam">
+      <header><span class="n">03</span><h2>Camera testa</h2><span class="eyebrow r">Isaac · 640×480</span></header>
+      <div class="cam"><video id="headv" src="media/testa_presa.mp4" poster="media/testa_presa.jpg" muted autoplay loop playsinline></video>
+        <span class="rec">● REC</span><span class="camlab">ripresa registrata · ordine 4512, presa della tanica</span></div>
+    </section>
+    <section class="panel" id="pRL">
+      <header><span class="n">05</span><h2>Addestramento RL</h2>
+        <span class="tabs r"><button class="tab on" data-k="premi">premi</button><button class="tab" data-k="chiudi">chiudi lembi</button></span></header>
+      <div class="rl">
+        <canvas id="rlc"></canvas>
+        <div class="rlstats" id="rlstats"></div>
+        <div class="rlbtn"><button class="btn sm" id="bEval">Valuta 8×</button><button class="btn sm" id="bTrain">Addestra</button></div>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<div id="regia" class="hidden">
+  <div class="rg-type" id="rgType"><span class="eyebrow" id="rgEyebrow">G1 Playground · operatore</span><div class="rg-line"><span class="caret">›</span><span id="rgText"></span><i class="cursor"></i></div></div>
+  <div class="rg-title" id="rgTitle"><h1>UN PROMPT.</h1><p id="rgSub">Claude pianifica. Il robot esegue.</p></div>
+  <div class="rg-lower" id="rgLower"></div>
+  <div class="rg-fade" id="rgFade"></div>
+</div>
+<div id="loading"><span class="eyebrow">Carico le mesh del G1…</span></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

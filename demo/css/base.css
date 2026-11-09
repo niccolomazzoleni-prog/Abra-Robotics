@@ -1,0 +1,36 @@
+/* Vetrina Abra — sistema visivo comune alle tre dashboard.
+ * Grafite + giallo segnale, Archivo (titoli, largo) + JetBrains Mono (dati).
+ * Angoli vivi, sezioni numerate, niente card arrotondate blu. */
+@font-face { font-family: "Archivo"; src: url("../fonts/Archivo.ttf") format("truetype"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../fonts/JetBrainsMono.ttf") format("truetype"); font-weight: 100 800; font-display: swap; }
+
+:root {
+  --bg: #0e0f10;        /* fondo scena */
+  --bg-2: #15171a;      /* pannelli */
+  --bg-3: #1d2024;      /* pannelli alzati */
+  --line: #2a2e33;
+  --line-2: #3a3f45;
+  --text: #e8e6e1;
+  --muted: #8b9096;
+  --faint: #5a6066;
+  --signal: #f2c200;    /* giallo segnale: azione, robot, enfasi */
+  --signal-dim: #6b5600;
+  --cyan: #5fd4e6;      /* dati sensore: lidar, nuvole di punti */
+  --ok: #7bd389;
+  --err: #ff5a4e;
+  --f-title: "Archivo", "Arial Narrow", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: var(--f-mono); font-size: 13px; }
+h1, h2, h3 { font-family: var(--f-title); font-stretch: 112%; font-weight: 800; letter-spacing: -0.01em; margin: 0; text-transform: uppercase; }
+.num { font-family: var(--f-mono); color: var(--signal); font-weight: 700; }
+.eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.panel { background: color-mix(in srgb, var(--bg-2) 88%, transparent); border: 1px solid var(--line); backdrop-filter: blur(6px); }
+.panel > header { display: flex; gap: 10px; align-items: baseline; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+.btn { font: 600 12px var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--text); border: 1px solid var(--line-2); padding: 8px 12px; cursor: pointer; }
+.btn:hover { border-color: var(--signal); color: var(--signal); }
+.btn.primary { background: var(--signal); color: #111; border-color: var(--signal); }
+.tag { display: inline-block; padding: 1px 6px; border: 1px solid var(--line-2); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.tag.live { color: var(--signal); border-color: var(--signal-dim); }
+.bar { height: 4px; background: var(--line); } .bar > i { display: block; height: 100%; background: var(--signal); }

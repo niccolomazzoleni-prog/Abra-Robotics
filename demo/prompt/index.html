@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gemello · One prompt coding</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="prompt.css">
+<script type="importmap">
+{ "imports": { "three": "../vendor/three/three.module.min.js", "three/addons/": "../vendor/three/addons/" } }
+</script>
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <span class="mark"></span>
+    <b class="brand">GEMELLO</b>
+    <span class="claim">one prompt coding · una frase, un gemello digitale, il codice del robot</span>
+    <span class="sp"></span>
+    <span class="tag live" id="stato-tag">pronto</span>
+    <span class="eyebrow hide-s">dati da progetti reali · demo offline</span>
+  </header>
+
+  <main class="grid">
+    <!-- 1 · INGRESSO -->
+    <section class="panel col-in">
+      <header><span class="num">01</span><h3>Ingresso</h3><span class="sp"></span><span class="eyebrow">cosa ci dai</span></header>
+      <div class="in-body">
+        <label class="eyebrow" for="prompt">La richiesta, a parole</label>
+        <div class="prompt-box">
+          <textarea id="prompt" rows="4" spellcheck="false" placeholder="Es. pallettizzare sacchi da 25 kg su pallet EUR…"></textarea>
+          <div class="chips" id="chips"></div>
+        </div>
+        <div class="attach">
+          <button class="btn sm" data-att="foto">+ foto</button>
+          <button class="btn sm" data-att="video">+ video</button>
+          <button class="btn sm" data-att="cad">+ CAD</button>
+          <button class="btn sm" data-att="niente">niente</button>
+          <input type="file" id="file" hidden>
+        </div>
+        <button class="btn primary genera" id="genera"><span>Genera la cella</span><i>↵</i></button>
+
+        <div class="eyebrow sec">Esempi veri · clicca per provarli</div>
+        <div class="esempi" id="esempi"></div>
+
+        <div class="eyebrow sec">Cosa ricevi</div>
+        <ul class="ricevi">
+          <li><b>Gemello digitale</b><span>cella.json · layout quotato</span></li>
+          <li><b>Programma robot</b><span>URScript per UR, gli stessi punti del collaudo</span></li>
+          <li><b>Collaudo fisico</b><span>prese, cadute, tempo ciclo misurati</span></li>
+          <li><b>Video e rapporto</b><span>scelte, perché, limiti dichiarati</span></li>
+        </ul>
+        <div class="eyebrow sec">Banco di prova · comprensione</div>
+        <div class="banco" id="banco"></div>
+        <p class="fine">Ogni risposta di Claude o correzione del cliente diventa un esempio: la volta dopo la risolvono le regole, a 0 $.</p>
+      </div>
+    </section>
+
+    <!-- 2 · PIPELINE -->
+    <section class="panel col-pipe">
+      <header><span class="num">02</span><h3>Pipeline</h3><span class="sp"></span><span class="eyebrow" id="tot">costo 0 $ · 0,0 s</span></header>
+      <svg id="flusso" viewBox="0 0 440 64" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="livelli" id="livelli"></div>
+      <div class="spec-h"><span class="eyebrow">Spec della cella</span><span class="sp"></span><span class="eyebrow" id="spec-n">0 campi</span></div>
+      <pre class="spec" id="spec"></pre>
+      <div class="pipe-foot"><div><span class="eyebrow">costo modelli</span><b id="pf-c">—</b></div><div><span class="eyebrow">livello max</span><b id="pf-l">—</b></div><div><span class="eyebrow">tempo reale</span><b id="pf-t">—</b></div></div>
+    </section>
+
+    <!-- 3 · USCITA -->
+    <section class="col-out">
+      <div class="panel vp-wrap">
+        <header><span class="num">03</span><h3>Gemello digitale</h3><span class="sp"></span><span class="eyebrow" id="vp-cella">—</span></header>
+        <div class="vp" id="vp">
+          <canvas id="c3d"></canvas>
+          <div class="hud tl"><div class="eyebrow" id="hud-fase">in attesa della richiesta</div><div class="bar"><i id="hud-bar" style="width:0"></i></div></div>
+          <div class="hud tr"><div class="eyebrow" id="hud-unita">pezzi</div><div class="cnt"><b id="hud-n">0</b><span>/</span><span id="hud-tot">8</span></div><div class="eyebrow ciclo"><span>tempo ciclo</span> <b id="hud-ciclo">—</b></div><div class="eyebrow ciclo"><span>ciclo</span> <b id="hud-tc">0,0 s</b> <span class="tag" id="hud-x">×1</span></div></div>
+          <div class="clip pip"><div class="pip-h eyebrow">replay del collaudo vero</div><video id="clip" muted loop playsinline preload="none"></video><span class="eyebrow" id="clip-l">—</span></div>
+          <div class="hud bl eyebrow" id="hud-help">trascina per ruotare · rotella per lo zoom</div>
+        </div>
+      </div>
+      <div class="out-row">
+        <div class="panel code-wrap">
+          <header><span class="num">04</span><h3>Codice robot</h3><span class="sp"></span><span class="file" id="code-file">—</span></header>
+          <div class="code" id="code"></div>
+          <div class="code-foot eyebrow" id="code-nota">—</div>
+        </div>
+        <div class="panel ver-wrap">
+          <header><span class="num">05</span><h3>Verifica</h3><span class="sp"></span><span class="tag" id="ver-tag">in attesa</span></header>
+          <div class="ver-body">
+            <ul class="checks" id="checks"></ul>
+            <div class="eyebrow ver-f" id="ver-f"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="intro"><div class="intro-in"><div class="intro-eb eyebrow">Gemello · one prompt coding</div><div class="intro-t" id="intro-t"></div><div class="intro-chip" id="intro-chip"><span class="tag live">testo</span> una frase · nessun allegato</div></div></div>
+<div id="outro"><div class="outro-in"><div class="mark big"></div><h1>Una frase.<br>Una cella.</h1><p>Gemello digitale + codice robot, verificato in simulazione.<br><span>8/8 raccordi in sede · 0,10 $ di modelli · URScript pronto</span></p></div></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

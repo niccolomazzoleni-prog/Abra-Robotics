@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abra · Console Go2 — SLAM, mappa e navigazione</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="css/cane.css">
+<script type="importmap">{"imports":{"three":"../vendor/three/three.module.min.js","three/addons/":"../vendor/three/addons/"}}</script>
+<script>window.__pronto = false;</script>
+</head>
+<body>
+<canvas id="vista"></canvas>
+<canvas id="sovra"></canvas>
+<div id="velo"></div>
+
+<div id="hud">
+  <div class="barra">
+    <img class="logo" src="../img/abra-logo-horizontal-white.svg" alt="Abra Robotics">
+    <span class="sep"></span>
+    <span class="eyebrow">Console Go2</span>
+    <span class="tag live" id="tStato">SLAM attivo</span>
+    <span class="sp"></span>
+    <label class="eyebrow mondoSel">mondo
+      <select id="mondo">
+        <option value="magazzino">magazzino · 30 × 20 m</option>
+        <option value="uffici">uffici · 24 × 14 m</option>
+        <option value="deposito">deposito · 20 × 16 m</option>
+      </select>
+    </label>
+    <span class="eyebrow" id="orologio">--:--:--</span>
+  </div>
+
+  <aside class="col sx">
+    <section class="panel mod" data-m="slam">
+      <header><span class="n">01</span><h3>SLAM</h3><span class="tag live">KISS-SLAM · L2</span></header>
+      <div class="kv"><span>punti mappa</span><b id="kPunti">0</b></div>
+      <div class="kv"><span>scansioni</span><b id="kScan">0</b></div>
+      <div class="kv"><span>nuovi / scansione</span><b id="kNuovi">0</b></div>
+      <div class="spark"><canvas id="spark" width="300" height="38"></canvas></div>
+    </section>
+    <section class="panel mod" data-m="nav">
+      <header><span class="n">02</span><h3>Navigazione</h3><span class="tag" id="kModoTag">esplora</span></header>
+      <div class="kv"><span>planner</span><b>A* · celle 0,20 m</b></div>
+      <div class="kv"><span>meta</span><b id="kMeta">—</b></div>
+      <div class="kv"><span>percorso</span><b id="kPerc">—</b></div>
+      <div class="kv"><span>frontiere</span><b id="kFront">0</b></div>
+      <div class="kv"><span>area mappata</span><b id="kArea">0 m²</b></div>
+    </section>
+    <section class="panel mod" data-m="pos">
+      <header><span class="n">03</span><h3>Posizionamento</h3><span class="tag">EKF + ArUco</span></header>
+      <div class="kv"><span>stima</span><b id="kStima">—</b></div>
+      <div class="kv"><span>deriva odometria</span><b id="kDeriva">0,00 m</b></div>
+      <div class="kv"><span>ultimo marcatore</span><b id="kAruco">—</b></div>
+    </section>
+    <section class="panel mod" data-m="pat">
+      <header><span class="n">05</span><h3>Pattuglia</h3><span class="tag" id="kPatTag">in attesa</span></header>
+      <ol id="zone"></ol>
+    </section>
+  </aside>
+
+  <aside class="col dx">
+    <section class="panel tele">
+      <header><span class="eyebrow">Telemetria</span><span class="tag live">10 Hz</span></header>
+      <div class="big"><div><span class="eyebrow">velocità</span><b id="tV">0,00</b><i>m/s</i></div>
+        <div><span class="eyebrow">rotazione</span><b id="tW">0,00</b><i>rad/s</i></div></div>
+      <div class="kv"><span>posa x · y · θ</span><b id="tPosa">—</b></div>
+      <div class="kv"><span>percorsi</span><b id="tDist">0,0 m</b></div>
+      <div class="kv"><span>batteria</span><b id="tBat">—</b></div>
+      <div class="bar"><i id="tBatBar" style="width:80%"></i></div>
+    </section>
+    <section class="panel cmd">
+      <header><span class="eyebrow">Cosa deve fare il cane</span></header>
+      <div class="modi">
+        <button class="btn" data-modo="punto">1 · Vai a un punto</button>
+        <button class="btn" data-modo="missione">2 · Missione</button>
+        <button class="btn primary" data-modo="esplora">3 · Esplora e mappa</button>
+      </div>
+      <p class="aiuto" id="aiuto">Il cane va da solo verso le zone non ancora viste e costruisce la mappa.</p>
+      <div class="riga" id="rigaMissione" hidden>
+        <button class="btn" id="bAvvia">Avvia missione</button><button class="btn" id="bCancella">Cancella punti</button>
+      </div>
+      <div class="riga"><button class="btn" id="bFerma">Ferma il cane</button><button class="btn" id="bSegui">Segui</button></div>
+    </section>
+    <section class="panel cam">
+      <header><span class="n">04</span><h3>Camere</h3><span class="tag live">RealSense D435i</span></header>
+      <div id="camBox"><span class="rec">● REC</span><span id="camInfo">69° · 1280×720</span></div>
+    </section>
+    <section class="panel liv">
+      <header><span class="eyebrow">Livelli</span></header>
+      <div class="toggles">
+        <label><input type="checkbox" data-l="nuvola" checked><span>Nuvola</span></label>
+        <label><input type="checkbox" data-l="griglia" checked><span>Griglia</span></label>
+        <label><input type="checkbox" data-l="frontiere" checked><span>Frontiere</span></label>
+        <label><input type="checkbox" data-l="percorso" checked><span>Percorso</span></label>
+      </div>
+    </section>
+  </aside>
+
+  <section class="panel log">
+    <header><span class="eyebrow">Registro</span><span class="tag">slam_abra.log</span></header>
+    <pre id="log"></pre>
+  </section>
+</div>
+
+<div id="titolo"><div class="eyebrow" id="titEye"></div><h1 id="titH"></h1></div>
+<div id="finale"><img src="../img/abra-logo-horizontal-white.svg" alt="Abra Robotics"><h1>Il cane che<br>disegna la mappa</h1><div class="eyebrow">Unitree Go2 · LiDAR L2 · KISS-SLAM · A* · ArUco</div></div>
+<div id="carica"><span class="eyebrow">carico mesh Go2 e mondo…</span></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
