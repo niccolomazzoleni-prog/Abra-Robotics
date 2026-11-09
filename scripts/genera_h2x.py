@@ -20,11 +20,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from g1_plus_testi import T as G1P  # noqa: E402  stringhe d'interfaccia IT/EN (pulsanti, form, vantaggi)
-from h2x_testi import CONFIGS, HAND_OF, LANGS, SOURCE_H2, SOURCE_VIDEO, T  # noqa: E402
+from h2x_testi import CONFIGS, HAND_OF, LANGS, SOURCE_PAGE, SOURCE_VIDEO, T  # noqa: E402
 from genera_hub_modelli import CAL, SITE  # noqa: E402
 from genera_lingue import chrome, cta, head as lang_head, money  # noqa: E402
 
-IMG = "images/official/unitree-h2-01.webp"
+# Foto ufficiali della pagina Unitree H2-X (chiave = testo alternativo in T[...]["alts"])
+IMG = "images/prodotti/2026/unitree-h2-x.webp"
+GALLERY = [("main", IMG), ("head", "images/prodotti/2026/unitree-h2-x-testa.webp"),
+           ("batt", "images/prodotti/2026/unitree-h2-x-batterie.webp"), ("run", "images/prodotti/2026/unitree-h2-x-corsa.webp"),
+           ("escort", "images/prodotti/2026/unitree-h2-x-scorta.webp")]
+SCHEMA = "images/prodotti/2026/unitree-h2-x-schema.webp"
 NAME = "Unitree H2-X"
 SKU = "H2-X"
 HREFLANG = {"no": "nb"}
@@ -38,7 +43,9 @@ H2X_CSS = """<style id="h2x-css">
 .h2x-notes{font-size:.85rem;color:var(--gray-600);margin-top:12px;line-height:1.5}
 .h2x-price{display:inline-block;margin-top:14px;padding:10px 16px;border:1px solid var(--gray-200);border-radius:12px}
 .h2x-price strong{font-size:1.15rem}
-.h2x-media{margin-top:20px}.h2x-media img{width:100%;max-width:720px;height:auto;border-radius:12px;border:1px solid var(--gray-200);background:#fff}
+.h2x-media{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px}
+.h2x-media img,.h2x-schema img{width:100%;height:auto;border-radius:12px;border:1px solid var(--gray-200);background:#000}
+.h2x-schema{max-width:560px;margin-top:20px}
 .hm-langs{font-size:.85rem;margin:0 0 14px;color:var(--gray-600)}.hm-langs a{color:inherit}.hm-langs a[aria-current]{font-weight:700;color:var(--black)}
 </style>"""
 
@@ -130,10 +137,11 @@ def configs_table(code: str, P: dict[str, str], price_col: str) -> str:
             + '<div class="h2x-notes">' + "<br>".join(esc(n) for n in t["cfg_notes"]) + "</div>")
 
 
-def specs_table(code: str) -> str:
+def specs_table(code: str, pre: str) -> str:
     t = T[code]
     rows = "".join(f"<tr><td>{esc(a)}</td><td>{esc(b)}</td></tr>" for a, b in t["specs"])
-    return f'<p>{esc(t["specs_intro"])}</p><div class="hm-wrap"><table class="hm-table h2x-specs"><tbody>{rows}</tbody></table></div>'
+    return (f'<p>{esc(t["specs_intro"])}</p><div class="hm-wrap"><table class="hm-table h2x-specs"><tbody>{rows}</tbody></table></div>'
+            f'<div class="h2x-schema"><img src="{pre}{SCHEMA}" alt="{esc(t["alts"]["schema"])}" loading="lazy" width="1000" height="1239"></div>')
 
 
 def what_html(code: str) -> str:
@@ -145,9 +153,9 @@ def faq_html(code: str, P: dict[str, str]) -> str:
 
 
 def sources_html(code: str) -> str:
-    v, h = T[code]["src"]
-    return (f'<ul><li><a href="{SOURCE_VIDEO}" target="_blank" rel="noopener">{esc(v)}: {SOURCE_VIDEO}</a></li>'
-            f'<li><a href="{SOURCE_H2}" target="_blank" rel="noopener">{esc(h)}: {SOURCE_H2}</a></li></ul>')
+    pg, v = T[code]["src"]
+    return (f'<ul><li><a href="{SOURCE_PAGE}" target="_blank" rel="noopener">{esc(pg)}: {SOURCE_PAGE}</a></li>'
+            f'<li><a href="{SOURCE_VIDEO}" target="_blank" rel="noopener">{esc(v)}: {SOURCE_VIDEO}</a></li></ul>')
 
 
 def json_ld(code: str, crumbs: list[tuple[str, str]], P: dict[str, str]) -> list[dict]:
@@ -156,7 +164,7 @@ def json_ld(code: str, crumbs: list[tuple[str, str]], P: dict[str, str]) -> list
     low = CONFIGS[0][2]
     # Offerta "da": prezzo dell'H2-X Air, in preordine (la data di consegna si conferma in offerta)
     product = {"@context": "https://schema.org", "@type": "Product", "name": NAME, "sku": SKU, "mpn": SKU,
-               "brand": {"@type": "Brand", "name": "Unitree"}, "image": [f"{SITE}/{IMG}"],
+               "brand": {"@type": "Brand", "name": "Unitree"}, "image": [f"{SITE}/{p}" for _, p in GALLERY],
                "description": fill(t["desc"], P), "url": own, "category": "Business & Industrial > Robotics",
                "offers": {"@type": "Offer", "url": own, "priceCurrency": "EUR", "price": f"{low:.2f}",
                           "priceValidUntil": VALID_UNTIL, "availability": "https://schema.org/PreOrder",
@@ -219,7 +227,9 @@ def product_page(code: str) -> str:
     footer = tpl[tpl.index('<footer class="footer">'):]
 
     home, hum, fam = (("../index-en.html", "../umanoidi-en.html", "../h2-en.html") if en else ("../index.html", "../umanoidi.html", "../h2.html"))
-    img = pre + IMG
+    alts = t["alts"]
+    thumbs = "".join(f'<div class="gallery-thumb{" active" if i == 0 else ""}" data-index="{i}"><img src="{pre}{p}" alt="{esc(alts[k])}"></div>'
+                     for i, (k, p) in enumerate(GALLERY))
     keys = "".join(f'<div class="key-spec"><span class="key-spec-value">{esc(v)}</span><span class="key-spec-label">{esc(k)}</span></div>' for k, v in t["key"])
     perks = "".join(f'<li><span class="bp-ico">✓</span> {esc(p)}</li>' for p in ui["perks"])
     f = dict(ui["form"], msg=t["form_msg"])
@@ -239,10 +249,14 @@ def product_page(code: str) -> str:
       <div class="product-hero-grid">
         <div class="gallery">
           <div class="gallery-main">
-            <img id="gallery-main-img" src="{img}" alt="{esc(t['img_alt'])}">
+            <img id="gallery-main-img" src="{pre}{IMG}" alt="{esc(alts['main'])}">
+            <div class="gallery-nav">
+              <button aria-label="{'Previous image' if en else 'Immagine precedente'}" class="gallery-btn" id="gallery-prev">←</button>
+              <button aria-label="{'Next image' if en else 'Immagine successiva'}" class="gallery-btn" id="gallery-next">→</button>
+            </div>
           </div>
           <div class="gallery-thumbs">
-            <div class="gallery-thumb active" data-index="0"><img src="{img}" alt="{esc(t['img_alt'])}"></div>
+            {thumbs}
           </div>
         </div>
         <div class="product-info">
@@ -269,7 +283,7 @@ def product_page(code: str) -> str:
     </div>
   </section>
 
-{section(t['cfg_h2'], configs_table(code, P, t['price_col']), 'configurazioni')}{section(t['what_h2'], what_html(code), 'unitree-h2-x')}{section(t['specs_h2'], specs_table(code), 'specs')}{section(t['family_h2'], '<p>' + esc(t['family_text']) + f' <a href="{fam}">{esc(t["family_link"])} →</a></p>')}
+{section(t['cfg_h2'], configs_table(code, P, t['price_col']), 'configurazioni')}{section(t['what_h2'], what_html(code), 'unitree-h2-x')}{section(t['specs_h2'], specs_table(code, pre), 'specs')}{section(t['family_h2'], '<p>' + esc(t['family_text']) + f' <a href="{fam}">{esc(t["family_link"])} →</a></p>')}
 <section class="section hm-faq" id="faq"><div class="container"><h2>{esc(ui['faq_h2'])}</h2>{faq_html(code, P)}</div></section>
 <section class="section hm-src" style="padding-top:0"><div class="container"><h2>{esc(ui['sources_h2'])}</h2>{sources_html(code)}</div></section>
 
@@ -310,7 +324,8 @@ def lang_page(code: str) -> str:
     head = head.replace("</head>", H2X_CSS + "\n</head>", 1)
     _, _, body, footer = chrome(d)
     keys = "".join(f"<div><strong>{esc(v)}</strong><span>{esc(k)}</span></div>" for k, v in t["key"])
-    media = f'<div class="h2x-media"><img src="../{IMG}" alt="{esc(t["img_alt"])}" loading="lazy"></div>'
+    media = '<div class="h2x-media">' + "".join(f'<img src="../{p}" alt="{esc(t["alts"][k])}" loading="lazy">'
+                                                for k, p in GALLERY if k in ("main", "batt", "run")) + "</div>"
     cta_html = cta(d).replace('<section class="section section-cta">', '<section class="section section-cta" id="quote">', 1)
     price_from = f'{u["from"].replace("{p}", P["air"])} {u["excl_vat"]}'
     main = f"""<!-- HERO -->
@@ -327,7 +342,7 @@ def lang_page(code: str) -> str:
 <p>{esc(t['price_note'])} <a href="#quote">{esc(u['quote_title'])} →</a></p>
 </div>
 </section>
-{section(t['cfg_h2'], configs_table(code, P, u['table_price']), 'configurations')}{section(t['what_h2'], what_html(code) + media, 'unitree-h2-x')}{section(t['specs_h2'], specs_table(code), 'specs')}{section(t['family_h2'], '<p>' + esc(t['family_text']) + f' <a href="unitree-h2.html">{esc(t["family_link"])} →</a></p>')}{cta_html}
+{section(t['cfg_h2'], configs_table(code, P, u['table_price']), 'configurations')}{section(t['what_h2'], what_html(code) + media, 'unitree-h2-x')}{section(t['specs_h2'], specs_table(code, '../'), 'specs')}{section(t['family_h2'], '<p>' + esc(t['family_text']) + f' <a href="unitree-h2.html">{esc(t["family_link"])} →</a></p>')}{cta_html}
 <section class="section hm-faq" id="faq"><div class="container"><h2>{esc(u['faq'])}</h2>{faq_html(code, P)}</div></section>
 <section class="section hm-src" style="padding-top:0"><div class="container"><h2>{esc(u['sources'])}</h2>{sources_html(code)}</div></section>
 """
