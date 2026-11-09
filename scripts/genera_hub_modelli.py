@@ -228,7 +228,8 @@ GUIDE_IT = {
   "Ispezione leggera e sicurezza: le versioni con LiDAR e telecamere servono per sopralluoghi, mappatura di ambienti e controlli ripetitivi in spazi dove un robot su ruote non passa. Per carichi o ambienti industriali gravosi conviene guardare l'<a href=\"a2.html\">Unitree A2</a> o il <a href=\"b2.html\">B2</a>.",
   "Eventi e comunicazione: il Go2 Air e il Pro sono i modelli più usati per fiere, showroom e attività marketing."]),
  ("Go2 o un altro quadrupede Unitree?", [
-  "Il Go2 è il quadrupede compatto: leggero, facile da trasportare, ideale per sviluppo e ambienti interni. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia, più robusta e con più autonomia. L'<a href=\"a2.html\">A2</a> e il <a href=\"b2.html\">B2</a> sono quadrupedi industriali con protezione IP, carichi molto più alti e diverse ore di autonomia. Il confronto completo è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+  "Il Go2 è il quadrupede compatto: leggero, facile da trasportare, ideale per sviluppo e ambienti interni. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia, più robusta e con più autonomia. L'<a href=\"a2.html\">A2</a> e il <a href=\"b2.html\">B2</a> sono quadrupedi industriali con protezione IP, carichi molto più alti e diverse ore di autonomia. Il confronto completo è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("Comprare un Unitree Go2 in Italia con Abra Robotics", [
   "I prezzi in tabella sono End-User IVA esclusa, con spedizione e dazio in Italia già inclusi: nessun costo doganale a sorpresa. Prima dell'ordine ti aiutiamo a scegliere versione e accessori in base all'uso reale e verifichiamo gratuitamente se l'acquisto rientra in <a href=\"finanziamenti.html\">iperammortamento, Nuova Sabatini o bandi regionali</a>.",
   "Fattura italiana, consegna in Italia, Svizzera e Balcani, supporto in italiano per messa in servizio e primi passi con l'SDK."]),
@@ -236,7 +237,8 @@ GUIDE_IT = {
 "a2": [
  ("Unitree A2: un quadrupede pensato per l'industria", [
   "L'A2 nasce per lavorare in impianti, cantieri e aree esterne: pesa circa 42 kg, porta circa 25 kg in camminata continua (circa 100 kg da fermo) e cammina oltre 5 ore senza carico, coprendo circa 20 km con una carica. La protezione IP56, IP67 sui componenti principali della versione Pro, gli permette di lavorare con polvere e pioggia.",
-  "A differenza dei quadrupedi compatti come il <a href=\"go2.html\">Go2</a>, l'A2 è progettato per missioni ripetute e lunghe: giri di ispezione programmati, sorveglianza perimetrale, trasporto di strumenti e sensori."]),
+  "A differenza dei quadrupedi compatti come il <a href=\"go2.html\">Go2</a>, l'A2 è progettato per missioni ripetute e lunghe: giri di ispezione programmati, sorveglianza perimetrale, trasporto di strumenti e sensori.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("A2 Standard, A2 Pro o A2-W?", [
   "L'A2 Standard ha un LiDAR e una telecamera HD: è la scelta per ispezioni e trasporto leggero in ambienti già mappati. L'A2 Pro aggiunge un secondo LiDAR e protezione IP67 dei componenti principali, per ambienti più gravosi e percezione più completa intorno al robot.",
   "Le versioni A2-W hanno ruote all'estremità delle zampe: su strade, piazzali e corridoi lunghi si muovono rotolando, più veloci e con meno consumo, mantenendo la capacità di salire scale e ostacoli."]),
@@ -281,7 +283,8 @@ GUIDE_IT = {
   "Il B2 cammina su zampe ed è il più versatile su terreni accidentati, scale e macerie. Il B2-W ha ruote all'estremità delle zampe: su strade, piazzali e capannoni copre distanze lunghe più velocemente e con meno consumo, senza perdere la capacità di superare ostacoli. Esiste anche il kit di conversione a quattro ruote per trasformare un B2 in B2-W.",
   "Entrambi si ordinano anche con il kit LiDAR SLAM per la mappatura e la navigazione autonoma, e con moduli di calcolo dedicati (Intel Core i7 o NVIDIA Jetson AGX fino a 550 TOPS) per far girare a bordo visione e AI."]),
  ("B2, A2 o AS2?", [
-  "L'<a href=\"a2.html\">A2</a> è il quadrupede industriale più leggero (circa 42 kg) con lunga autonomia, adatto a ronde e ispezioni ripetute. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia. Il B2 è la scelta quando servono carico, velocità e robustezza massimi. Confronto completo nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+  "L'<a href=\"a2.html\">A2</a> è il quadrupede industriale più leggero (circa 42 kg) con lunga autonomia, adatto a ronde e ispezioni ripetute. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia. Il B2 è la scelta quando servono carico, velocità e robustezza massimi. Confronto completo nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("Comprare un Unitree B2 in Italia", [
   "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi, fattura italiana e supporto in italiano. Per i progetti industriali partiamo dal compito da svolgere (percorso, carico, ambiente) e definiamo versione, batterie di ricambio (standard, basse temperature, alta capacità) e calcolo; verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a> disponibili."]),
 ],
