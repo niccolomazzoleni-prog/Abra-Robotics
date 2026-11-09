@@ -14,6 +14,7 @@ import html
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -315,6 +316,36 @@ def eur(x: float, en: bool) -> str:
     return s if en else s.replace(",", ".")
 
 
+# Tabella degli hub IT: a chi serve ogni versione (primo pattern che corrisponde al nome), ricavato dai testi
+# "quale scegliere" e dalle guide qui sopra. Nessuna corrispondenza = "—".
+USO_IT = {
+    "g1": [(r"\bAir\b|Basic", "dimostrazioni, eventi e comunicazione"), (r"COMP", "competizioni (versione atletica)"),
+           (r"EDU", "ricerca e sviluppo con SDK"), (r"\bPro\b", "intrattenimento e interazione")],
+    "go2": [(r"Go2-W", "percorsi lunghi su superfici piane (ruote)"), (r"Gas", "ispezione con rilevamento gas"),
+            (r"EDU", "ricerca e sviluppo con SDK"), (r"\bAir\b", "eventi, comunicazione e primo contatto"),
+            (r"\bPro\b", "dimostrazioni avanzate: più velocità e carico")],
+    "r1": [(r"Professional", "ricerca sulla manipolazione (mani o pinze)"), (r"Edu", "didattica e ricerca con SDK"),
+           (r"(?i)\bair\b|Basic", "dimostrazioni, senza SDK")],
+    "a2": [(r"A2-W", "percorsi lunghi su superfici regolari (ruote)"), (r"\bPro\b", "ispezione in ambienti gravosi (IP67, due LiDAR)"),
+           (r"Standard", "ispezione e trasporto leggero (IP56)")],
+    "b2": [(r"B2-W", "lunghe distanze su ruote"), (r"\bB2\b", "ispezione industriale, terreni difficili e carichi elevati")],
+    # as2 e h2: hub IT a mano, la tabella la scrive seo_hub_prezzo_it.py
+    "as2": [(r"AS2-W", "versione con ruote"), (r"EDU", "sviluppo software: LiDAR industriale e SDK"),
+            (r"AS2-X|\bPro\b", "ispezione: LiDAR industriale, IP54, circa 4 ore di autonomia"),
+            (r"\bAir\b", "dimostrazioni e primo contatto")],
+    "h2": [(r"H2-[AD]\b", "manipolazione: busto dual-arm"), (r"EDU", "ricerca e sviluppo con SDK"),
+           (r"\bAir\b|Basic", "dimostrazioni e showroom")],
+}
+# Consegna (decisione commerciale di Gio, 09/11/2026): G1 EDU U2 in pronta consegna (mani e pinze a 60 giorni),
+# tutto il resto 60 giorni dalla conferma d'ordine, salvo disponibilità diversa confermata dal fornitore.
+PRONTA_CONSEGNA = {"G1-U2"}
+CONSEGNA_IT = "Consegna in 60 giorni dalla conferma d'ordine, salvo disponibilità diversa confermata dal fornitore."
+
+
+def uso_it(key: str, name: str) -> str:
+    return next((t for pat, t in USO_IT.get(key, []) if re.search(pat, name)), "—")
+
+
 def load() -> dict[str, dict]:
     items = json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8"))
     out: dict[str, dict] = {k: {"robots": [], "acc": []} for k in FAMILIES}
@@ -422,23 +453,33 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
         lead = f"{f['what_en']} Below: every {name} version we sell with its end-user price (excl. VAT), the official specifications and how to choose."
     else:
         title = (f.get("seo_it") or "").replace("{low}", eur(low, False) if low else "") or (f"Unitree {name} prezzo Italia: da {eur(low, False)} €, tutte le versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
-        h1 = f"Unitree {name}: prezzi e versioni in Italia"
+        h1 = f"Unitree {name} prezzo in Italia: listino {date.today().year}"
         desc = (f"Prezzo Unitree {name} in Italia: tutte le versioni da {eur(low, False)} € IVA esclusa, specifiche ufficiali "
                 f"e quale scegliere. Spedizione e dazio inclusi, supporto in italiano.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
-        lead = f"{f['what_it']} Qui trovi tutte le versioni {name} a listino con prezzo End-User (IVA esclusa), le specifiche ufficiali e come scegliere."
+        # prime 2 righe: prezzo di partenza dal listino (piano Italia IT-2)
+        cheapest = next((re.sub(r"\s*\(.*\)", "", r["name"]) for r in (robots or acc) if r["price"] == low), None) if low else None
+        price_it = (f"L'Unitree {name} costa da {eur(low, False)} € IVA esclusa" + (f" nella versione {cheapest}" if cheapest else "")
+                    + ", con spedizione e dazio in Italia inclusi (listino End-User). ") if low else ""
+        lead = (f"{price_it}{f['what_it']} Sotto trovi tutte le versioni a listino con prezzo, "
+                f"{'a chi servono ' if key in USO_IT else ''}e consegna, le specifiche ufficiali e come scegliere.")
     if len(title) > 60:
         title = title.replace(" | Abra", "")[:60].rsplit(" ", 1)[0]
     if len(desc) > 158:  # toglie l'ultima frase intera invece di troncare a metà ("supporto in.")
         desc = desc.rsplit(". ", 1)[0].rstrip(",.") + "."
 
     rows = robots or acc
-    th = ("Version", "Price (excl. VAT)", "") if en else ("Versione", "Prezzo (IVA esclusa)", "")
+    # IT: colonne "A chi serve" (solo famiglie in USO_IT) e "Consegna" (piano Italia IT-2); la tabella EN resta com'era
+    uso = not en and key in USO_IT
+    th = ("Version", "Price (excl. VAT)", "") if en else \
+        ("Versione", "Prezzo (IVA esclusa)") + (("A chi serve",) if uso else ()) + ("Consegna", "")
+    extra = (lambda r: "") if en else (lambda r: (f'<td>{html.escape(uso_it(key, r["name"]))}</td>' if uso else "")
+                                       + f'<td>{"pronta consegna" if r["sku"] in PRONTA_CONSEGNA else "60 giorni"}</td>')
     tr = "\n".join(
         f'<tr><td><a href="{link(r["slug"])}">{html.escape(nome_en(r["name"]) if en else r["name"])}</a></td>'
         f'<td class="p">{(("on request" if en else "su richiesta") if not r["price"] else ("from € " + eur(r["price"], True)) if en else ("da " + eur(r["price"], False) + " €"))}</td>'
-        f'<td><a href="{link(r["slug"])}">{"Details" if en else "Scheda"} →</a></td></tr>'
+        f'{extra(r)}<td><a href="{link(r["slug"])}">{"Details" if en else "Scheda"} →</a></td></tr>'
         for r in rows if r["price"] or r["on_request"])
-    table = f'<div class="hm-wrap"><table class="hm-table"><thead><tr><th>{th[0]}</th><th>{th[1]}</th><th>{th[2]}</th></tr></thead><tbody>\n{tr}\n</tbody></table></div>'
+    table = f'<div class="hm-wrap"><table class="hm-table"><thead><tr>{"".join(f"<th>{h}</th>" for h in th)}</tr></thead><tbody>\n{tr}\n</tbody></table></div>'
 
     specs = "".join(f'<div><span>{html.escape(s[1] if en else s[0])}</span><strong>{html.escape(split(s[2], en))}</strong></div>'
                     for s in f["specs"] if (s[1] if en else s[0]))
@@ -543,7 +584,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
 </section>
 <section class="section" style="padding-top:24px"><div class="container">
 <h2>{T(f'Unitree {name} versions and prices', f'Versioni e prezzi Unitree {name}')}</h2>
-<p>{T('End-user prices excluding VAT, shipping and duty to Italy included. Each order is confirmed with an updated quote.', 'Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi. Ogni ordine si conferma con un preventivo aggiornato.')}</p>
+<p>{T('End-user prices excluding VAT, shipping and duty to Italy included. Each order is confirmed with an updated quote.', 'Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi. Ogni ordine si conferma con un preventivo aggiornato. ' + CONSEGNA_IT + (" Il G1 EDU U2 è in pronta consegna (mani e pinze a 60 giorni)." if key == "g1" else ""))}</p>
 {table}
 </div></section>
 <section class="section" style="padding-top:0"><div class="container">
