@@ -54,7 +54,7 @@
     return '';
   }
 
-  var CSS = '.consent-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;max-width:760px;margin:0 auto;background:#0a0a0a;color:#f5f5f5;border-radius:12px;padding:14px 44px 14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.3);font:14px/1.45 Satoshi,-apple-system,BlinkMacSystemFont,sans-serif}' +
+  var CSS = '.consent-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;max-width:760px;margin:0 auto;background:#0a0a0a;color:#f5f5f5;border-radius:12px;padding:14px 44px 14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.3);font:14px/1.45 Satoshi,-apple-system,BlinkMacSystemFont,sans-serif}body.has-wa-bar .consent-banner{bottom:76px}' +
     '.consent-text{margin:0 0 10px;font-size:13px;color:#e5e5e5}.consent-text a{color:#fff;text-decoration:underline}' +
     '.consent-prefs{display:grid;gap:6px;margin:0 0 10px;font-size:13px}.consent-prefs[hidden]{display:none}.consent-prefs label{display:flex;gap:8px;align-items:center}' +
     '.consent-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}' +
