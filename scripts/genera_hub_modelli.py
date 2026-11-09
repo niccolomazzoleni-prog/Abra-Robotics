@@ -252,7 +252,8 @@ GUIDE_IT = {
  ("G1 Air, G1 Pro, G1 EDU, G1-Comp: come orientarsi", [
   "Il G1 è l'umanoide bipede di Unitree alto circa 1,32 m e pesante circa 35 kg. Le versioni si distinguono per gradi di libertà, coppia ai motori, calcolo a bordo e mani.",
   "Il G1 Air (Basic) ha 23 gradi di libertà, mani fisse e nessuno sviluppo software con SDK: è pensato per dimostrazioni ed eventi. Il G1 Pro aggiunge funzioni di intrattenimento e interazione. Il G1-Comp è la versione atletica per competizioni.",
-  "Le versioni G1 EDU (codici Unitree G1-U1 … U10) sono quelle per ricerca e sviluppo: SDK di alto e basso livello, NVIDIA Jetson Orin a bordo, coppia al ginocchio di 120 N·m e carico al braccio di circa 3 kg. Salendo di codice si aggiungono vita e polsi articolati e mani dexterous: Dex3-1 a tre dita (anche tattile), Inspire e BrainCo a cinque dita."]),
+  "Le versioni G1 EDU (codici Unitree G1-U1 … U10) sono quelle per ricerca e sviluppo: SDK di alto e basso livello, NVIDIA Jetson Orin a bordo, coppia al ginocchio di 120 N·m e carico al braccio di circa 3 kg. Salendo di codice si aggiungono vita e polsi articolati e mani dexterous: Dex3-1 a tre dita (anche tattile), Inspire e BrainCo a cinque dita.",
+  "Tutti gli umanoidi Unitree a confronto, con prezzi e consegna: <a href=\"umanoidi.html\">robot umanoidi in vendita in Italia</a>."]),
  ("Quale G1 EDU per il tuo laboratorio", [
   "Locomozione e controllo del corpo intero: G1 EDU Standard (U1) o Plus (U2, vita e polsi articolati).",
   "Manipolazione e apprendimento per imitazione: le Ultimate con mani Dex3-1 (U3, U4 tattile) o a cinque dita (Inspire, BrainCo) per afferrare oggetti reali.",
@@ -267,7 +268,8 @@ GUIDE_IT = {
   "L'R1 è alto circa 1,23 m e pesa circa 29 kg: è l'umanoide bipede più accessibile di Unitree. Cammina, corre, esegue movimenti dinamici e acrobatici, e nella versione EDU è completamente programmabile.",
   "Le versioni: R1 Air (20 gradi di libertà, senza vita e testa motorizzate), R1 Basic (26 gradi di libertà, telecamera binoculare), R1 EDU Standard (R1-U1) con SDK per lo sviluppo software e modulo AI da 40 TOPS, R1 EDU Smart (R1-U2) con base da 100 TOPS, e le R1 EDU Professional (R1-U3 … U6 e oltre) con mani Dex3-1, BrainCo Revo 2 o Linker Hand."]),
  ("R1 o G1?", [
-  "L'R1 costa molto meno del <a href=\"g1.html\">G1</a> ed è più piccolo e leggero: è la scelta giusta per didattica, laboratori universitari, corsi su locomozione e reinforcement learning, dimostrazioni. Il G1 ha motori più potenti, più gradi di libertà nelle versioni alte e più opzioni di mani: è la piattaforma per la ricerca su manipolazione e AI fisica."]),
+  "L'R1 costa molto meno del <a href=\"g1.html\">G1</a> ed è più piccolo e leggero: è la scelta giusta per didattica, laboratori universitari, corsi su locomozione e reinforcement learning, dimostrazioni. Il G1 ha motori più potenti, più gradi di libertà nelle versioni alte e più opzioni di mani: è la piattaforma per la ricerca su manipolazione e AI fisica.",
+  "Tutti gli umanoidi Unitree a confronto, con prezzi e consegna: <a href=\"umanoidi.html\">robot umanoidi in vendita in Italia</a>."]),
  ("Programmare l'R1 EDU", [
   "Le versioni EDU danno accesso allo sviluppo di alto e basso livello con l'SDK Unitree e all'interfaccia per la simulazione in Isaac Sim: si addestra in simulazione e si trasferisce sul robot. Per il busto a doppio braccio su base fissa o mobile c'è la famiglia <a href=\"r1-d.html\">R1-D / R1-A</a>."]),
  ("Comprare un Unitree R1 in Italia", [
@@ -589,6 +591,8 @@ def link_row(page_path: str, en: bool, keys: list[str]) -> None:
     links = "".join(
         f'<a href="{(FAMILIES[k]["en_page"].split("/", 1)[1]) if en else FAMILIES[k]["it_page"]}">Unitree {html.escape(FAMILIES[k].get("name_en", FAMILIES[k]["name"]) if en else FAMILIES[k]["name"])}</a>'
         for k in keys)
+    if not en and page_path != "umanoidi.html":  # piano SEO Italia, IT-7
+        links += '<a href="umanoidi.html">Robot umanoidi in vendita</a>'
     block = (f'<!-- HUB:MODELLI -->\n<section class="section" style="padding:8px 0 0"><div class="container">'
              f'<p class="label">{"Unitree families: prices and versions" if en else "Famiglie Unitree: prezzi e versioni"}</p>'
              f'<div class="hm-fam" style="display:flex;flex-wrap:wrap;gap:8px">{links}</div></div></section>\n<!-- /HUB:MODELLI -->')

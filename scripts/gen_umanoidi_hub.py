@@ -185,11 +185,25 @@ def main():
                     ancora_prima="</head>")
 
     # hero: titolo, sottotitolo e numeri
-    t = re.sub(r"<h1>Robot umanoidi Unitree in Italia[^<]*</h1>",
-               "<h1>Robot umanoidi Unitree in Italia: G1, H2, R1 e versioni dual-arm</h1>", t)
-    t = re.sub(r'<p class="lead">(Gamma umanoide Unitree completa:|Sei famiglie di umanoidi).*?</p>',
-               '<p class="lead">Sei famiglie di umanoidi Unitree, dai bipedi compatti ai busti dual-arm su base mobile. '
-               'Prezzi End-User, IVA esclusa.</p>', t, flags=re.S)
+    # "robot umanoidi in vendita in Italia" (piano SEO Italia, IT-7): titolo, H1 e prime righe con prezzo,
+    # consegna e assistenza; prezzo di partenza = R1 Air (umanoide completo), i busti dual-arm a parte
+    r1_air = next(v["prezzo_eur"] for f in FAMIGLIE for k, v in prodotti(f) if k == "R1-AIR")
+    titolo = "Robot umanoidi in vendita in Italia: Unitree G1, H2, R1"
+    desc = (f"Robot umanoidi Unitree in vendita in Italia da {eur(round(r1_air), False)} € IVA esclusa: G1, H2, R1 e dual-arm, "
+            "listino pubblico, consegna in 60 giorni e assistenza in Italia.")
+    t = re.sub(r"<title>[^<]*</title>", f"<title>{titolo}</title>", t, count=1)
+    t = re.sub(r'(<meta[^>]*property="og:title"[^>]*content=")[^"]*(")', lambda m: m.group(1) + titolo + m.group(2), t, count=1)
+    t = re.sub(r'(<meta content=")[^"]*(" property="og:title")', lambda m: m.group(1) + titolo + m.group(2), t, count=1)
+    t = re.sub(r'(<meta content=")[^"]*(" name="description")', lambda m: m.group(1) + desc + m.group(2), t, count=1)
+    t = re.sub(r'(<meta content=")[^"]*(" property="og:description")', lambda m: m.group(1) + desc + m.group(2), t, count=1)
+    t = re.sub(r'(<meta[^>]*property="og:description"[^>]*content=")[^"]*(")', lambda m: m.group(1) + desc + m.group(2), t, count=1)
+    t = re.sub(r"<h1>Robot umanoidi (?:Unitree in Italia|in vendita in Italia)[^<]*</h1>",
+               "<h1>Robot umanoidi in vendita in Italia: Unitree G1, H2, R1 e dual-arm</h1>", t)
+    t = re.sub(r'<p class="lead">(Gamma umanoide Unitree completa:|Sei famiglie di umanoidi|Robot umanoidi Unitree in vendita).*?</p>',
+               lambda m: f'<p class="lead">Robot umanoidi Unitree in vendita in Italia da {eur(round(r1_air), False)} € IVA esclusa (R1 Air), '
+               f'con spedizione e dazio inclusi; i busti dual-arm partono da {eur(round(minimo), False)} €. Consegna in 60 giorni dalla '
+               "conferma d'ordine (G1 EDU U2 in pronta consegna), garanzia e assistenza in Italia. Sei famiglie, dai bipedi "
+               "compatti ai busti dual-arm su base mobile.</p>", t, flags=re.S)
     meta = (f'<div class="hero-meta">\n<div><strong>6</strong><span>Famiglie di umanoidi</span></div>\n'
             f'<div><strong>{tot}</strong><span>Configurazioni</span></div>\n'
 
