@@ -123,9 +123,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -224,7 +222,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
         <div class="product-info">
           <p class="label">MANI · BRACCI</p>
           <h1 class="product-title">Hand Dex3-1 (senza tattile)</h1>
-          <p class="product-subtitle">Mano dexterous 3 dita — singola.</p>
+          <p class="product-subtitle">Mano dexterous 3 dita, singola.</p>
           <div class="key-specs-grid">            <div class="key-spec"><span class="key-spec-value">7</span><span class="key-spec-label">DoF</span></div>
             <div class="key-spec"><span class="key-spec-value">~710 g</span><span class="key-spec-label">Peso</span></div>
             <div class="key-spec"><span class="key-spec-value">No</span><span class="key-spec-label">Tattile</span></div>
@@ -249,7 +247,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
             <div class="buy-box-cta">
               <a href="#form" class="btn btn-primary">Richiedi preventivo</a>
             </div>
-<p class="buy-box-note">Prezzo indicativo — preventivo aggiornato su richiesta.</p>
+<p class="buy-box-note">Prezzo indicativo, preventivo aggiornato su richiesta.</p>
           </div>
           <!-- /LISTINO:sku:HAND-DEX3-1-NO-TAC -->
           <div class="product-trust">
@@ -346,7 +344,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="../privacy-policy.html">Privacy Policy</a>
 <a href="../cookie-policy.html">Cookie Policy</a>

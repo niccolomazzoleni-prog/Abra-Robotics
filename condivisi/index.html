@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Abra Robotics · Materiali riservati</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Satoshi;src:url(/fonts/satoshi-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Satoshi;src:url(/fonts/satoshi-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Satoshi;src:url(/fonts/satoshi-700.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:Satoshi;src:url(/fonts/satoshi-900.woff2) format("woff2");font-weight:900;font-display:swap}
+:root{--bg:#000;--fg:#fff;--mute:rgba(255,255,255,.62);--line:rgba(255,255,255,.14);--card:rgba(255,255,255,.05);--accent:#8b5cf6;--pad:48px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 Satoshi,system-ui,sans-serif}
+a{color:inherit}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px var(--pad);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:10}
+header.top img{height:30px;width:auto;display:block;filter:invert(1)}
+header.top .meta{font-size:13px;color:var(--mute);text-align:right}
+header.top .meta b{color:var(--fg);font-weight:500}
+main{padding:0 var(--pad) 80px}
+.hero{padding:72px 0 40px;max-width:1100px}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px}
+h1{font-size:clamp(34px,5vw,64px);line-height:1.04;font-weight:900;letter-spacing:-.02em;margin:0 0 22px}
+.hero p{font-size:20px;color:var(--mute);max-width:820px;margin:0}
+h2{font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:-.01em;margin:0 0 22px}
+section{padding:48px 0;border-top:1px solid var(--line)}
+.reel video{width:100%;max-width:1100px;border-radius:14px;background:#111;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;flex-direction:column}
+.card video{width:100%;aspect-ratio:16/9;background:#111;display:block;object-fit:cover}
+.card .b{padding:22px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{font-size:22px;font-weight:700;margin:0}
+.card .sub{font-size:14px;color:var(--mute);margin-top:-6px}
+.card p{margin:0;color:rgba(255,255,255,.86)}
+.res{font-size:14px;color:#a7f3c4}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--mute)}
+.price{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.price b{font-size:24px;font-weight:700}
+.price span{font-size:13px;color:var(--mute)}
+ul.pc{margin:0;padding-left:0;list-style:none;color:rgba(255,255,255,.86);font-size:15px}
+ul.pc li{margin:3px 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.box{border-left:3px solid var(--accent);background:var(--card);border-radius:0 12px 12px 0;padding:22px 24px}
+.box h3{margin:0 0 8px;font-size:19px}
+.box p,.box li{color:rgba(255,255,255,.86)}
+.box ul{margin:0;padding-left:18px}
+.docs{display:flex;flex-wrap:wrap;gap:16px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:999px;padding:14px 24px;font:500 16px Satoshi,system-ui,sans-serif;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:scale(1.05)}
+.btn small{color:var(--mute);font-size:13px}
+.note{font-size:14px;color:var(--mute);max-width:900px}
+footer{padding:36px var(--pad);border-top:1px solid var(--line);color:var(--mute);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+.state{min-height:60vh;display:flex;flex-direction:column;justify-content:center;max-width:720px;padding:80px 0}
+.state h1{font-size:40px}
+.state p{color:var(--mute);font-size:18px}
+@media (max-width:720px){:root{--pad:20px}.grid{grid-template-columns:1fr}header.top .meta{display:none}.hero{padding:44px 0 28px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="/" aria-label="Abra Robotics"><img src="/images/logo.png" alt="Abra Robotics" width="97" height="30"></a>
+  <div class="meta" id="meta"></div>
+</header>
+<main id="app"><div class="state"><p>Caricamento…</p></div></main>
+<footer><span>Abra Robotics · materiali riservati, non inoltrare fuori dal progetto.</span><span id="foot"></span></footer>
+<script>
+(function () {
+  "use strict";
+  // Media e manifest: /condivisi/f/<token>/ sul sito oppure https://file.gpitton.com/<token>/ (fuori dal repo).
+  var ORIGIN = "https://file.gpitton.com/";
+  var app = document.getElementById("app");
+  var token = (location.hash || "").replace(/^#/, "").trim();
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    for (var k in attrs || {}) {
+      if (k === "text") n.textContent = attrs[k];
+      else if (k === "cls") n.className = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    }
+    (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
+    return n;
+  }
+  function state(title, text) {
+    app.innerHTML = "";
+    app.appendChild(el("div", { cls: "state" }, [el("h1", { text: title }), el("p", { text: text })]));
+  }
+  function fmtDate(iso) {
+    try { return new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" }); } catch (e) { return iso; }
+  }
+  function video(base, v, poster) {
+    var n = el("video", { controls: "", playsinline: "", preload: "metadata", controlslist: "nodownload noplaybackrate", disablepictureinpicture: "" });
+    if (poster) n.setAttribute("poster", base + poster);
+    n.appendChild(el("source", { src: base + v, type: "video/mp4" }));
+    n.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    return n;
+  }
+  if (!/^[A-Za-z0-9_-]{16,64}$/.test(token)) return state("Link non valido", "Il link che hai aperto è incompleto. Controlla di averlo copiato per intero o scrivici a info@abrarobotics.com.");
+  // Prima sul sito (/condivisi/f/<token>/), poi sul server file esterno.
+  var base = "/condivisi/f/" + token + "/";
+  function load(b) { return fetch(b + "manifest.json", { cache: "no-store", referrerPolicy: "no-referrer" }).then(function (r) { if (!r.ok) throw new Error(r.status); base = b; return r.json(); }); }
+  load(base).catch(function () { return load(ORIGIN + token + "/"); })
+    .then(function (m) {
+      var today = new Date().toISOString().slice(0, 10);
+      if (m.scade && today > m.scade) return state("Link scaduto", "Questi materiali erano disponibili fino al " + fmtDate(m.scade) + ". Scrivici a info@abrarobotics.com se ti servono ancora.");
+      document.title = (m.titolo || "Materiali") + " · Abra Robotics";
+      document.getElementById("meta").innerHTML = "";
+      var meta = document.getElementById("meta");
+      if (m.per) meta.appendChild(el("div", {}, [document.createTextNode("Per "), el("b", { text: m.per })]));
+      if (m.scade) meta.appendChild(el("div", { text: "Disponibile fino al " + fmtDate(m.scade) }));
+      document.getElementById("foot").textContent = m.scade ? "Pagina attiva fino al " + fmtDate(m.scade) : "";
+      app.innerHTML = "";
+      app.appendChild(el("div", { cls: "hero" }, [
+        m.intestazione ? el("div", { cls: "eyebrow", text: m.intestazione }) : null,
+        el("h1", { text: m.titolo || "" }),
+        m.intro ? el("p", { text: m.intro }) : null,
+      ]));
+      if (m.reel) {
+        app.appendChild(el("section", { cls: "reel" }, [el("h2", { text: m.reel.titolo || "In 70 secondi" }), video(base, m.reel.video, m.reel.poster),
+          m.reel.nota ? el("p", { cls: "note", text: m.reel.nota, style: "margin-top:14px" }) : null]));
+      }
+      if ((m.soluzioni || []).length) {
+        var grid = el("div", { cls: "grid" });
+        m.soluzioni.forEach(function (s) {
+          var b = el("div", { cls: "b" }, [
+            el("h3", { text: s.titolo }),
+            s.sottotitolo ? el("div", { cls: "sub", text: s.sottotitolo }) : null,
+            s.descrizione ? el("p", { text: s.descrizione }) : null,
+            s.risultato ? el("div", { cls: "res", text: s.risultato }) : null,
+          ]);
+          if ((s.pro || []).length || (s.contro || []).length) {
+            var ul = el("ul", { cls: "pc" });
+            (s.pro || []).forEach(function (t) { ul.appendChild(el("li", { text: "＋ " + t })); });
+            (s.contro || []).forEach(function (t) { ul.appendChild(el("li", { text: "− " + t })); });
+            b.appendChild(ul);
+          }
+          if ((s.tag || []).length) b.appendChild(el("div", { cls: "tags" }, s.tag.map(function (t) { return el("span", { cls: "tag", text: t }); })));
+          if (s.prezzo) b.appendChild(el("div", { cls: "price" }, [el("b", { text: s.prezzo }), el("span", { text: s.forchetta || "" })]));
+          grid.appendChild(el("div", { cls: "card" }, [s.video ? video(base, s.video, s.poster) : null, b]));
+        });
+        app.appendChild(el("section", {}, [el("h2", { text: m.titolo_soluzioni || "Le soluzioni simulate" }), grid,
+          m.nota_soluzioni ? el("p", { cls: "note", text: m.nota_soluzioni, style: "margin-top:18px" }) : null]));
+      }
+      if ((m.riquadri || []).length) {
+        app.appendChild(el("section", {}, [el("h2", { text: m.titolo_riquadri || "Cosa consigliamo" }),
+          el("div", { cls: "two" }, m.riquadri.map(function (q) {
+            var kids = [el("h3", { text: q.titolo })];
+            if (q.testo) kids.push(el("p", { text: q.testo }));
+            if ((q.punti || []).length) kids.push(el("ul", {}, q.punti.map(function (t) { return el("li", { text: t }); })));
+            return el("div", { cls: "box" }, kids);
+          }))]));
+      }
+      if ((m.documenti || []).length) {
+        app.appendChild(el("section", {}, [el("h2", { text: "Documenti" }),
+          el("div", { cls: "docs" }, m.documenti.map(function (d) {
+            return el("a", { cls: "btn", href: base + d.file, download: d.scarica || d.file, rel: "noopener" }, [document.createTextNode("Scarica " + d.nome + " "), el("small", { text: d.dettaglio || "PDF" })]);
+          })),
+          m.nota_documenti ? el("p", { cls: "note", text: m.nota_documenti, style: "margin-top:18px" }) : null]));
+      }
+      if (m.contatto) {
+        var c = m.contatto;
+        app.appendChild(el("section", {}, [el("h2", { text: c.titolo || "Parliamone" }),
+          c.testo ? el("p", { cls: "note", text: c.testo, style: "margin-bottom:22px;font-size:17px" }) : null,
+          el("div", { cls: "docs" }, [
+            c.email ? el("a", { cls: "btn", href: "mailto:" + c.email + "?subject=" + encodeURIComponent(m.titolo || "") }, [document.createTextNode("Scrivi a " + (c.nome || c.email))]) : null,
+            c.telefono ? el("a", { cls: "btn", href: "tel:" + c.telefono.replace(/\s+/g, "") }, [document.createTextNode(c.telefono)]) : null,
+          ])]));
+      }
+    })
+    .catch(function () { state("Link scaduto o non disponibile", "Non troviamo più questi materiali. Scrivici a info@abrarobotics.com e te li rimandiamo."); });
+})();
+</script>
+</body>
+</html>

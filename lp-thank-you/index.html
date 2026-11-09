@@ -26,21 +26,16 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <title>Grazie — Abra Robotics</title>
 <meta name="robots" content="noindex, nofollow"/>
 <link rel="canonical" href="https://abrarobotics.com/lp-thank-you"/>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin/>
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin/>
 <link href="../favicon.ico" rel="icon" sizes="any"/>
 <link href="../images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
 <link href="../images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
 <link href="../images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
 <!-- Meta Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -62,7 +57,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
   html, body {
     height: 100%;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Geist', sans-serif;
     background: #fff;
     color: var(--black);
   }
@@ -165,7 +160,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
     gap: 10px;
     background: var(--black);
     color: var(--white);
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 700;
     font-size: 1rem;
     padding: 14px 28px;
@@ -213,6 +208,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
     .ty-btn { font-size: 0.9rem; padding: 13px 22px; }
   }
 </style>
+<link rel="stylesheet" href="../fonts/geist.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -267,5 +263,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   </div>
 </main>
 
+
+<footer class="footer" style="margin-top:48px;padding:24px 16px;border-top:1px solid rgba(127,127,127,.25);font-size:12.5px;text-align:center"><div class="container footer-bottom" style="display:grid;gap:8px"><p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. P.IVA 04800170278, Viale Trieste 105, 30026 Portogruaro (VE).</p><nav aria-label="Legal" class="footer-legal" style="display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center"><a href="/privacy-policy.html">Privacy Policy</a> <a href="/cookie-policy.html">Cookie Policy</a> <a href="/condizioni-di-vendita.html">Condizioni di vendita</a> <a href="/note-legali.html">Note legali</a></nav></div></footer>
 </body>
 </html>

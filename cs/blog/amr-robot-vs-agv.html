@@ -1,0 +1,367 @@
+<!-- generato da scripts/blog_lingue.py da blog/amr-robot-vs-agv.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMR vs AGV: rozdíly, cena a kdy který zvolit</title>
+<meta name="description" content="AMR vs AGV: pevná trasa, nebo navigace SLAM, infrastruktura, flotily, bezpečnost ISO 3691-4 a cena robota. Kdy se AGV ještě vyplatí."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/cs/blog/amr-robot-vs-agv.html"/>
+<link href="https://abrarobotics.com/blog/amr-robot-vs-agv.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/amr-robot-vs-agv.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/amr-robot-vs-agv.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/amr-robot-vs-agv.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/amr-robot-vs-agv.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="/images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/blog/blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AMR vs AGV: rozdíly, cena a kdy který zvolit",
+  "description": "AMR vs AGV: pevná trasa, nebo navigace SLAM, infrastruktura, flotily, bezpečnost ISO 3691-4 a cena robota. Kdy se AGV ještě vyplatí.",
+  "datePublished": "2026-11-04",
+  "dateModified": "2026-11-04",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abrarobotics.com/cs/blog/amr-robot-vs-agv.html"
+  },
+  "image": "https://abrarobotics.com/images/manifattura/amr/mir600-hero.webp",
+  "inLanguage": "cs",
+  "url": "https://abrarobotics.com/cs/blog/amr-robot-vs-agv.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Co znamená AMR robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AMR robot je autonomní mobilní robot: pohybuje se bez fyzických vodicích linií, vytváří mapu prostředí a používá ji k lokalizaci a plánování trasy. Zkratka znamená Autonomous Mobile Robot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMR robot vs AGV: které se vyplatí?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Záleží na tom, jak moc se mění layout a kolik infrastruktury chcete instalovat. AMR se vyplatí na proměnlivých trasách a v měnícím se layoutu; AGV na stabilních tocích a pevných trasách, zejména pokud vodicí linie už existují."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kolik stojí AMR robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "V ceníku Abra se rodina AMR pohybuje od 16 999 € do 164 430 € bez DPH, za samotný robot. Software flotily, integrace WMS/MES, nabíjení, nástavby a uvedení do provozu se nabízejí zvlášť."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Potřebuje AMR infrastrukturu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nevyžaduje vodicí linie na podlaze jako AGV, ale potřebuje aktuální mapu, spolehlivou Wi-Fi síť, nabíjecí stanice, předávací místa a prostor připravený podle vyhodnocení rizik."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Platí ISO 3691-4 i pro AMR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ano. ISO 3691-4:2023 pokrývá průmyslové vozíky bez řidiče a jejich systémy a výslovně uvádí jak AGV, tak AMR. Bezpečnost konkrétní instalace se však ověřuje v projektu."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="AMR vs AGV: rozdíly, cena a kdy který zvolit"/>
+<meta property="og:description" content="AMR vs AGV: pevná trasa, nebo navigace SLAM, infrastruktura, flotily, bezpečnost ISO 3691-4 a cena robota. Kdy se AGV ještě vyplatí."/>
+<meta property="og:url" content="https://abrarobotics.com/cs/blog/amr-robot-vs-agv.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/manifattura/amr/mir600-hero.webp"/>
+<meta property="og:locale" content="cs_CZ"/>
+<meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MNLWZSN7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Top Bar -->
+<div class="top-bar">
+<p>Roboti Unitree s dodáním z Itálie · podpora v angličtině</p>
+</div>
+<!-- Navbar -->
+<nav class="navbar">
+<div class="container navbar-inner">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<div class="nav-links">
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Produkty <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+<a href="/en/accessori-en.html">Příslušenství</a>
+<a href="/en/catalogo-unitree-en.html">Kompletní katalog</a>
+<a href="/cs/#models">Ceník</a>
+</div>
+</div>
+<a href="/cs/#models">Ceny</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+<div class="nav-item-dropdown">
+<button class="nav-dropdown-trigger" type="button">Obory <span class="nav-caret">▾</span></button>
+<div class="nav-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">O nás</a>
+</div>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+<button aria-label="Menu" class="menu-toggle">
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">Products <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/lp-cobot-en.html">Cobots</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/quadrupedi-en.html">Quadrupeds</a>
+<a href="/en/umanoidi-en.html">Humanoids</a>
+<a href="/en/accessori-en.html">Accessories</a>
+<a href="/en/catalogo-unitree-en.html">Full catalog</a>
+<a href="/en/listino-unitree-en.html">Price list</a>
+</div>
+</div>
+<a href="/en/listino-unitree-en.html">Prices</a>
+<a href="/en/assessment-en.html">Find the right robot</a>
+<a href="/en/finanziamenti-en.html">Financing</a>
+<div class="mobile-dropdown">
+<button class="mobile-dropdown-trigger" type="button">For whom <span class="nav-caret">▾</span></button>
+<div class="mobile-dropdown-panel">
+<a href="/en/manifattura-logistica-en.html">Manufacturing &amp; Logistics</a>
+<a href="/en/universita-ricerca-en.html">Universities &amp; Research</a>
+</div>
+</div>
+<a href="/en/chi-siamo-en.html">About us</a>
+<a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Book a call</a>
+</div>
+
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="/cs/">Domů</a> / <a href="/cs/">Blog</a> / AMR vs AGV</nav>
+
+<figure class="article-cover">
+<img src="/images/manifattura/amr/mir600-hero.webp" alt="AMR MiR600 pro vnitřní přepravu palet" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Coboty a AMR</p>
+<h1>AMR vs AGV: rozdíly, cena a kdy který zvolit</h1>
+<div class="article-meta"><time datetime="2026-11-04">4. listopadu 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Ve zkratce:</strong> AMR a AGV přepravují materiál, ale s jinou logikou. AGV sleduje pevnou trasu tvořenou magnetickými pásky, dráty nebo kódy na podlaze; AMR používá mapu a navigaci SLAM a při překážce trasu přepočítá. AMR omezuje stavební úpravy a zvládá měnící se layout; AGV zůstává správnou volbou pro stabilní toky. U obou se bezpečnost navrhuje podle ISO 3691-4.</div>
+</header>
+
+<div class="article-content">
+<p>AMR robot vs AGV: rozhodnutí závisí na jedné věci, zda je trasa robota pevnou součástí provozu, nebo se musí přizpůsobovat měnícím se tokům. Na této odpovědi závisí infrastruktura, správa flotily, uvedení do provozu i struktura nákladů. Srovnání vychází z dokumentace výrobců a z normy platné pro vozíky bez řidiče.</p>
+
+<h2>AMR robot vs AGV: rozdíl, který rozhoduje</h2>
+<p>AGV (Automated Guided Vehicle) sleduje trasu definovanou na podlaze. Vodicí linii může tvořit magnetický pásek, magnetický drát, QR kód nebo optická čára. AMR (Autonomous Mobile Robot) takovou vodicí linii nepotřebuje: vytváří mapu prostředí, lokalizuje se v ní a plánuje trasu. Rozdíl je vidět v praxi, když paleta zablokuje koridor: AGV se obvykle zastaví a čeká, AMR vypočítá objížďku.</p>
+<table>
+<thead><tr><th>Vlastnost</th><th>AGV</th><th>AMR</th></tr></thead>
+<tbody>
+<tr><td>Navigace</td><td>Pevná trasa: pásek, drát, QR nebo optická čára</td><td>Mapa a SLAM s přepočtem trasy</td></tr>
+<tr><td>Infrastruktura</td><td>Vodicí linie na podlaze a úpravy prostoru</td><td>Síť, mapa, nabíjení a předávací místa</td></tr>
+<tr><td>Překážka na trase</td><td>Obvykle se zastaví a čeká</td><td>Objede ji nebo změní trasu</td></tr>
+<tr><td>Měnící se layout</td><td>Vyžaduje nové vodicí linie</td><td>Vyžaduje novou mapu nebo úpravu softwaru</td></tr>
+<tr><td>Flotila</td><td>Definované sekvence a trasy</td><td>Dynamicky přidělované mise</td></tr>
+<tr><td>Silná stránka</td><td>Opakovatelnost na známé trase</td><td>Flexibilita na proměnlivých trasách</td></tr>
+</tbody>
+</table>
+<p>Rozlišení není vždy ostré. Neura Robotics například u MAV uvádí dva režimy navigace: s pevnými trasami a s volnou navigací. Stejné vozidlo může podle konfigurace pracovat spíš jako AGV nebo jako AMR. Označení na produktovém listu proto hraje menší roli.</p>
+
+<h2>Navigace s pevnou trasou versus SLAM</h2>
+<p>SLAM znamená Simultaneous Localization and Mapping: robot vytváří mapu za pohybu a používá ji k určení své polohy. LiDAR a 3D kamery měří prostředí, software porovnává naměřená data s mapou a opravuje polohu. AMR tak může změnit cíl, aniž by se musel předělávat provoz.</p>
+<p>AGV pracuje opačně: trasa je známá a robot ji sleduje. Chování je předvídatelné, ale automatizace zůstává svázaná s fyzickou polohou vodicích linií. Pokud přesunete linku nebo přidáte koridor, musíte přesunout pásek, drát nebo kódy, s úpravami prostoru a novým ověřením.</p>
+<p>Navigace SLAM závisí na aktuální mapě, na površích čitelných pro senzory a na stabilním prostředí. Sklo, lesklé povrchy, naleštěné podlahy a materiál mimo určené místo mohou lokalizaci zmást: prohlídka a zkouška v provozu rozhodují víc než produktový list.</p>
+
+<h2>Potřebná infrastruktura</h2>
+<p>AGV vyžaduje fyzické vodicí linie a údržbu. AMR vodicí linie nevyžaduje, ale potřebuje spolehlivou Wi-Fi síť podél trasy, protože flotila si vyměňuje mise a stav s řídicím systémem. Dále jsou potřeba nabíjecí stanice, předávací místa, případné nástavby a připravený prostor.</p>
+<p>AMR infrastrukturu neruší: nahrazuje vodicí linie na podlaze sítí, mapou, nabíjením a předávacími místy, které se aktualizují s projektem. MiR mluví o žádných významných úpravách, ne o absenci požadavků: síť, nabíjení a nakládací místa zůstávají položkami projektu.</p>
+<p>Bezpečnost prostoru je součástí projektu. ISO 3691-4:2023 požaduje zohlednit podmínky provozní zóny a věnuje jednu přílohu její přípravě. Pěší zóny, křižovatky, dveře, výtahy a slepá místa se musí navrhovat společně s robotem, ne dodatečně. Platí to pro AMR i AGV.</p>
+
+<h2>Měnící se layout a flexibilita</h2>
+<p>Pokud se layout mění často, má AMR konkrétní výhodu. Přesunout pracoviště, přidat odběrné místo nebo změnit směr toku vyžaduje novou mapu a úpravu misí, ne nové vodicí linie. V provozu s proměnlivými zakázkami robot nevyžaduje nové vodicí linie při každé změně.</p>
+<p>Pokud je layout stabilní, výhoda se zmenšuje. AGV na trase, která se nemění, nabízí opakovatelné chování a jednoduché řízení. Tam, kde je trasa součástí procesu, může AGV zůstat nejpřímějším řešením: flexibilita se platí senzory a softwarem a má smysl jen tehdy, když ji využijete.</p>
+<p>Mezilehlé řešení: pevná trasa pro hlavní toky a autonomní roboti pro odbočky a proměnlivé zásobování. Software flotily musí komunikovat s oběma. VDA 5050 je otevřené rozhraní mezi centrálním řízením a mobilními roboty; aktuální verze je 3.0.0 z března 2026. KUKA ji například používá k integraci AMR, AGV a průmyslových vozíků v jednom systému pro správu flotily.</p>
+
+<h2>Propustnost a správa flotily</h2>
+<p>Maximální rychlost o propustnosti mnoho neříká. Rozhoduje vzdálenost, doba nakládky a vykládky, čekání na křižovatkách a dostupnost během nabíjení. Rychlejší robot stojící ve frontě není rychlejší než pomalejší robot na dobře navrženém toku.</p>
+<p><em>Příklad s hypotetickými čísly:</em> pokud mise trvá 2,5 minuty, robot teoreticky zvládne 24 misí za hodinu. V praxi se počet snižuje kvůli nabíjení, frontám a připojování. Na 100 misí za hodinu je teoreticky potřeba alespoň pět robotů, plus rezerva na špičky. Výpočet se dělá ze skutečného cyklu, ne z údaje na štítku.</p>
+<p>Flotila mění i software. U několika AGV stačí jednoduché sekvence a priority. U mnoha AMR je potřeba přidělování misí, výpočet trasy, správa blokací, plánované nabíjení a komunikace s dveřmi, výtahy a skladem. MiR Fleet to zajišťuje pro roboty stejného výrobce; VDA 5050 definuje rozhraní mezi různými výrobci.</p>
+
+<h2>Bezpečnost: ISO 3691-4 platí pro oba</h2>
+<p class="article-note"><em>Obecné informace, ne právní poradenství.</em></p>
+<p>Norma <a href="https://www.iso.org/standard/83545.html" rel="noopener noreferrer" target="_blank">ISO 3691-4:2023</a> je referenční normou pro průmyslové vozíky bez řidiče a jejich systémy. Karta ISO uvádí mezi příklady jak AGV, tak AMR: oblast použití je společná.</p>
+<p>Norma uvažuje celý systém, tedy řízení, vodicí prostředky a napájení; požadavky na zdroje napájení nejsou pokryty. Požaduje vyhodnotit nebezpečí provozní zóny a zónu připravit. Nevztahuje se na vozíky řízené výhradně mechanickými prostředky, jako jsou koleje nebo vodicí lišty, a nepokrývá prostředí se specifickými hygienickými požadavky, výbušnou atmosférou nebo veřejné komunikace.</p>
+<p>V listopadu 2026 karta ISO uvádí vydání 2023 jako publikované a v revizi. Shoda robota je jedna část; bezpečnost instalace je druhá. Skenery, zóny zpomalení, rychlost, zatížení a postupy obnovení provozu se musí ověřit v konkrétním provozu. Výrobce může deklarovat 360° skenery a bezpečnost PL d Cat. 3 podle ISO 13849-1, jako Neura u MAV, ale vyhodnocení rizik zůstává na projektu.</p>
+
+<h2>Struktura nákladů</h2>
+<p>Cena robota je jen první položka. Projekt AMR nebo AGV se skládá ze součtu:</p>
+<ul>
+<li><strong>Robot a základna.</strong> Vozidlo s nosností a rychlostí.</li>
+<li><strong>Nástavba.</strong> Zdviž, vidlice, válečková plošina, hák nebo plošina.</li>
+<li><strong>Software flotily.</strong> Mise, provoz, nabíjení a historie.</li>
+<li><strong>Integrace WMS, MES nebo ERP.</strong> Pravidla, podle kterých se objednávky mění na mise.</li>
+<li><strong>Nabíjení.</strong> Stanice, baterie a případné kontaktní nabíjení.</li>
+<li><strong>Prohlídka a uvedení do provozu.</strong> Zaměření, mapa, zkoušky a školení.</li>
+<li><strong>Bezpečnost.</strong> Skenery, zóny, zábrany a vyhodnocení rizik prostoru.</li>
+<li><strong>Údržba a náhradní díly.</strong> V čase, ne jen při spuštění.</li>
+</ul>
+<p>V ceníku Abra se rodina AMR pohybuje od <strong>16 999 €</strong> pro AutoXing Juno Plus do <strong>164 430 €</strong> pro MiR1200 Pallet Jack EU, bez DPH. Jsou to ceny samotného robota: prohlídka, studie proveditelnosti, integrace WMS/MES/ERP, software flotily, nabíjecí stanice, nástavby a uvedení do provozu se nabízejí zvlášť. U AGV je třeba do rozpočtu zahrnout i vodicí linie, jejich pokládku a úpravy prostoru.</p>
+
+<div class="product-strip" aria-label="Produkty zmíněné v článku">
+<div class="product-strip-head"><span>Produkty zmíněné v článku</span><a href="/amr.html">Katalog AMR</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-juno-plus-en.html"><img alt="AutoXing Juno Plus" loading="lazy" src="/images/manifattura/amr/juno-plus.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-juno-plus-en.html">AutoXing Juno Plus</a></h3>
+<p>Lehký AMR, 200 kg, SLAM 2D</p>
+<div class="product-card-price">16 999 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-juno-plus-en.html">Detail produktu</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-mir600-base-en.html"><img alt="MiR600 Base" loading="lazy" src="/images/manifattura/amr/mir600-base.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-mir600-base-en.html">MiR600 Base</a></h3>
+<p>AMR 600 kg, 2,0 m/s, IP52</p>
+<div class="product-card-price">67 324 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-mir600-base-en.html">Detail produktu</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="/en/prodotti/amr-mir1200-en.html"><img alt="MiR1200 Pallet Jack EU" loading="lazy" src="/images/manifattura/amr/mir1200-palletjack.webp"/></a>
+<div class="product-card-body">
+<h3><a href="/en/prodotti/amr-mir1200-en.html">MiR1200 Pallet Jack EU</a></h3>
+<p>Autonomní paletový vozík, 1 200 kg</p>
+<div class="product-card-price">164 430 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/amr-mir1200-en.html">Detail produktu</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<h2>Kdy zůstává AGV správnou volbou</h2>
+<p>AGV zůstává správnou volbou, když je trasa stabilní a je součástí procesu:</p>
+<ul>
+<li><strong>Pevný a opakující se tok.</strong> Materiál jde vždy ze stejného místa na stejné místo.</li>
+<li><strong>Layout, který se nemění.</strong> Pracoviště zůstávají na místě roky.</li>
+<li><strong>Vodicí linie už existují.</strong> Provoz už má pásky nebo dráty a údržba je zvládnutá.</li>
+<li><strong>Jednoduché řízení.</strong> Provoz je omezený a nejsou potřeba dynamické mise.</li>
+<li><strong>Opakovatelnost zastavovacího bodu.</strong> Náklad vždy vyžaduje stejné polohování.</li>
+</ul>
+<p>V těchto případech AMR přidává senzory a software, které nevyužijete. Pokud jsou výjimky časté nebo se trasa mění se zakázkami, AGV se stává omezením. Počítejte, kolikrát za rok se trasa změní a kdo platí odstavení provozu kvůli přesunu vodicích linií.</p>
+
+<h2>Jak rozhodnout v praxi</h2>
+<ol>
+<li><strong>Zmapujte skutečné toky.</strong> Zdroj, cíl, frekvence, hmotnost a typ nákladu.</li>
+<li><strong>Spočítejte, kolikrát se layout změní.</strong> Pokud často, AMR má výhodu; pokud ne, AGV může stačit.</li>
+<li><strong>Ověřte prostor.</strong> Podlaha, koridory, dveře, výtahy, křižovatky a slepá místa.</li>
+<li><strong>Zkontrolujte síť a nabíjení.</strong> Stabilní Wi-Fi, stanice, doba nabíjení a směny.</li>
+<li><strong>Ptejte se na celkové náklady.</strong> Robot, nástavba, flotila, integrace, bezpečnost a údržba.</li>
+</ol>
+<p>Pro aplikace ve výrobě a skladu s coboty a AMR ve stejném provozu viz <a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>. Pokud je přeprava jen částí cyklu a je třeba také manipulovat, srovnání se rozšiřuje na <a href="/cobot.html">coboty</a>. Pro volbu mezi mobilním a humanoidním robotem objasňuje článek <a href="/cs/blog/umanoidi-vs-robotica-tradizionale.html">humanoidi vs tradiční robotika</a> úlohy, ve kterých se dvounohý robot nevyplatí.</p>
+
+<h2>Co dělá Abra Robotics</h2>
+<p>Abra Robotics nabízí AMR, coboty a roboty Unitree a provází projekt od analýzy toků až po uvedení do provozu. Pro srovnání AMR a AGV je potřeba půdorys, břemena, frekvence a směny: s těmito údaji je jasné, zda je trasa stabilní, nebo zda je potřeba robot, který trasu přepočítává. Katalog je na stránce <a href="/amr.html">AMR</a>; začít od procesu pomůže <a href="/en/assessment-en.html">assessment</a>. Řadu Unitree nabízíme také pro Česko a Slovensko, s podporou v angličtině.</p>
+
+<section class="article-faq">
+<h2>Časté dotazy</h2>
+<div class="faq-item"><h3>Co znamená AMR robot?</h3><p>AMR robot je autonomní mobilní robot: pohybuje se bez fyzických vodicích linií, vytváří mapu prostředí a používá ji k lokalizaci a plánování trasy. Zkratka znamená Autonomous Mobile Robot.</p></div>
+<div class="faq-item"><h3>AMR robot vs AGV: které se vyplatí?</h3><p>Záleží na tom, jak moc se mění layout a kolik infrastruktury chcete instalovat. AMR se vyplatí na proměnlivých trasách a v měnícím se layoutu; AGV na stabilních tocích a pevných trasách, zejména pokud vodicí linie už existují.</p></div>
+<div class="faq-item"><h3>Kolik stojí AMR robot?</h3><p>V ceníku Abra se rodina AMR pohybuje od 16 999 € do 164 430 € bez DPH, za samotný robot. Software flotily, integrace WMS/MES, nabíjení, nástavby a uvedení do provozu se nabízejí zvlášť.</p></div>
+<div class="faq-item"><h3>Potřebuje AMR infrastrukturu?</h3><p>Nevyžaduje vodicí linie na podlaze jako AGV, ale potřebuje aktuální mapu, spolehlivou Wi-Fi síť, nabíjecí stanice, předávací místa a prostor připravený podle vyhodnocení rizik.</p></div>
+<div class="faq-item"><h3>Platí ISO 3691-4 i pro AMR?</h3><p>Ano. ISO 3691-4:2023 pokrývá průmyslové vozíky bez řidiče a jejich systémy a výslovně uvádí jak AGV, tak AMR. Bezpečnost konkrétní instalace se však ověřuje v projektu.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Zdroje</h2>
+<ol>
+<li>ISO, <a href="https://www.iso.org/standard/83545.html" rel="noopener noreferrer" target="_blank">ISO 3691-4:2023, Industrial trucks: Safety requirements and verification, Part 4: Driverless industrial trucks and their systems</a></li>
+<li>KUKA, <a href="https://www.kuka.com/en-us/knowledge/agv-vs-amr" rel="noopener noreferrer" target="_blank">AGV vs. AMR: rozdíly, aplikace, náklady a podpora rozhodování</a></li>
+<li>Mobile Industrial Robots, <a href="https://mobile-industrial-robots.com/blog/agv-vs-amr-whats-the-difference" rel="noopener noreferrer" target="_blank">AMR vs AGV: klíčové rozdíly</a></li>
+<li>VDA, <a href="https://www.vda.de/en/topics/automotive-industry/vda-5050" rel="noopener noreferrer" target="_blank">VDA 5050, rozhraní pro komunikaci mezi mobilními roboty a řízením flotily</a></li>
+<li>Mobile Industrial Robots, <a href="https://mobile-industrial-robots.com/products/robots/mir600" rel="noopener noreferrer" target="_blank">MiR600, oficiální produktový list</a> (600 kg, 2,0 m/s, IP52, ISO 3691-4)</li>
+<li>Neura Robotics, <a href="https://neura-robotics.com/products/mav/" rel="noopener noreferrer" target="_blank">MAV, oficiální produktový list</a> (pevná nebo volná navigace, bezpečnost PL d Cat. 3)</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>AMR, nebo AGV? Začněme tokem</h2><p>Popište nám, co potřebujete přepravit, jak je to těžké a jak často se trasa mění. Řekneme vám, zda je potřeba AMR, nebo zda AGV zůstává jednodušší volbou.</p><a class="btn btn-primary" href="/en/assessment-en.html">Požádat o assessment</a><a class="btn btn-outline-light" href="/amr.html">Zobrazit katalog AMR</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="/cs/"><img alt="Abra Robotics" class="logo-img" src="/images/logo.webp"/></a>
+<p class="footer-desc">Aplikovaná robotika pro firmy, univerzity a výzkumné instituce. Hardware, software na míru, školení a technická podpora.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Navigace</span>
+<a href="/en/manifattura-logistica-en.html">Výroba a logistika</a>
+<a href="/en/universita-ricerca-en.html">Univerzity a výzkum</a>
+<a href="/en/assessment-en.html">Najděte správného robota</a>
+<a href="/cs/#incentives">Financování</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Produkty</span>
+<a href="/en/lp-cobot-en.html">Coboty</a>
+<a href="/en/manifattura-logistica-en.html#amr">AMR</a>
+<a href="/en/manifattura-logistica-en.html#quadrupedi">Čtyřnozí roboti</a>
+<a href="/en/umanoidi-en.html">Humanoidi</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Kontakt</span>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Itálie</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Domluvit hovor</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics. Všechna práva vyhrazena. Abra Robotics di Niccolò Mazzoleni, DIČ IT04800170278, Viale Trieste 105, 30026 Portogruaro (VE), Itálie.</p>
+<nav aria-label="Legal" class="footer-legal"><a href="/en/privacy-policy-en.html" hreflang="en">Ochrana soukromí (EN)</a> <a href="/en/cookie-policy-en.html" hreflang="en">Zásady cookies (EN)</a> <a href="/en/condizioni-di-vendita-en.html" hreflang="en">Obchodní podmínky (EN)</a> <a href="/en/note-legali-en.html" hreflang="en">Právní informace (EN)</a></nav>
+</div>
+</footer>
+<script defer src="/consent.js"></script>
+<script defer src="/script.js"></script>
+</body></html>

@@ -84,9 +84,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -202,7 +200,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <li><span class="bp-ico">✓</span> Disponibilità e consegna da verificare con il produttore</li>
 </ul>
 <div class="buy-box-cta"><a class="btn btn-primary" href="#form">Richiedi preventivo</a></div>
-<p class="buy-box-note">Prezzo indicativo — gripper e safety su preventivo dedicato.</p>
+<p class="buy-box-note">Prezzo indicativo, gripper e safety su preventivo dedicato.</p>
 </div>
 <!-- /LISTINO:sku:cobot-fairino-palletizing-fr10 -->
 <div class="product-trust">
@@ -218,7 +216,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="container" style="max-width:900px;">
 <div class="use-case-box" style="margin:0;">
 <span class="use-case-label">Caso d'uso chiave</span>
-<p class="use-case-text">Palletizzazione fine linea per PMI — installazione rapida senza recinto.</p>
+<p class="use-case-text">Palletizzazione fine linea per PMI, installazione rapida senza recinto.</p>
 </div>
 <div class="amr-inclusion-box" style="margin-top:20px;">
 <p><strong>Il prezzo «da» si riferisce al solo prodotto</strong>, IVA esclusa.</p>
@@ -346,7 +344,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="step">
 <span class="step-number">03</span>
 <h3>Go-live</h3>
-<p>Installazione e commissioning — tempi definiti nell'offerta, in base al progetto.</p>
+<p>Installazione e commissioning, tempi definiti nell'offerta, in base al progetto.</p>
 </div>
 </div>
 </div>
@@ -440,7 +438,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="../privacy-policy.html">Privacy Policy</a>
 <a href="../cookie-policy.html">Cookie Policy</a>

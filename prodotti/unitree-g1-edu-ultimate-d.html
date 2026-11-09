@@ -102,9 +102,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -301,7 +299,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="buy-box-cta">
 <a class="btn btn-primary" href="#form">Richiedi preventivo</a>
 </div>
-<p class="buy-box-note">Prezzo indicativo, soggetto a variazioni cambio EUR/USD — preventivo aggiornato su richiesta.</p>
+<p class="buy-box-note">Prezzo indicativo, soggetto a variazioni cambio EUR/USD, preventivo aggiornato su richiesta.</p>
 </div>
 <div class="product-trust">
 <div class="trust-item"><span class="trust-check">✓</span><span>Filiera di distribuzione di Unitree Italia</span></div>
@@ -387,7 +385,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 <div class="specs-accordion faq-list" style="max-width:100%;">
 <details class="faq-item" open="">
-<summary>Hardware — Telaio e dimensioni</summary>
+<summary>Hardware: Telaio e dimensioni</summary>
 <table class="specs-table">
 <tr><td>Altezza in piedi</td><td>1.320 mm</td></tr>
 <tr><td>Larghezza × Profondità</td><td>450 × 200 mm</td></tr>
@@ -406,7 +404,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </table>
 </details>
 <details class="faq-item">
-<summary>Meccanica — Gradi di libertà e articolazioni</summary>
+<summary>Meccanica: Gradi di libertà e articolazioni</summary>
 <table class="specs-table">
 <tr><td>DoF totali</td><td>40</td></tr>
 <tr><td>Gamba (×2)</td><td>6 DoF ciascuna</td></tr>
@@ -503,7 +501,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="section-header">
 <p class="label">Capacità</p>
 <h2>Cosa sa fare</h2>
-<p class="section-sub">Le capacità chiave di G1 EDU Ultimate D — pronte all'uso.</p>
+<p class="section-sub">Le capacità chiave di G1 EDU Ultimate D, pronte all'uso.</p>
 </div>
 <div class="features-grid">
 <div class="feature-card">
@@ -799,7 +797,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="../privacy-policy.html">Privacy Policy</a>
 <a href="../cookie-policy.html">Cookie Policy</a>

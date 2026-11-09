@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unitree G1: cosa può fare davvero (e cosa no)</title>
+<meta name="description" content="Cosa fa l'Unitree G1 appena acceso, cosa aggiungono SDK2 e ROS 2 sulle versioni EDU, i limiti di manipolazione e autonomia, con fonti ufficiali."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/unitree-g1-cosa-puo-fare.html"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-cosa-puo-fare.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/unitree-g1-cosa-puo-fare.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/blog/unitree-g1-cosa-puo-fare.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/blog/unitree-g1-cosa-puo-fare.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/blog/unitree-g1-cosa-puo-fare.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/blog/unitree-g1-cosa-puo-fare.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/blog/unitree-g1-cosa-puo-fare.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/blog/unitree-g1-cosa-puo-fare.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/da/blog/unitree-g1-cosa-puo-fare.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/blog/unitree-g1-cosa-puo-fare.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/unitree-g1-cosa-puo-fare.html" hreflang="x-default" rel="alternate"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="../images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="../images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Unitree G1: cosa può fare davvero (e cosa no)",
+  "description": "Cosa fa l'Unitree G1 appena acceso, cosa aggiungono SDK2 e ROS 2 sulle versioni EDU, i limiti di manipolazione e autonomia, con fonti ufficiali.",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": "https://abrarobotics.com/blog/unitree-g1-cosa-puo-fare.html",
+  "image": "https://abrarobotics.com/images/official/unitree-g1-01.webp",
+  "inLanguage": "it"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Unitree G1 cosa può fare senza programmarlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cammina, si siede, si rialza da terra, esegue gesti e sequenze demo dal telecomando R3. L'app Unitree Explore serve per stato, calibrazione e messa a punto dei giunti."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il G1 può rialzarsi da solo dopo una caduta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ha un comando da sdraiato a in piedi e una sequenza demo di rialzo, ma non è un recupero garantito da qualsiasi caduta. Funziona su pavimento piano e duro, con spazio libero."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Che differenza c'è tra G1 Air e G1 EDU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il G1 Air cammina ed esegue le demo, ma non ha il computer di sviluppo e non si programma. SDK2, ROS 2, teleoperazione e raccolta dati richiedono una versione EDU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto dura la batteria del G1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Circa 2 ore con la batteria da 9000 mAh, secondo Unitree. Camminata continua e carichi sulle braccia riducono l'autonomia reale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il G1 è pronto per un compito ripetitivo in azienda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non come robot da produzione. La manipolazione è leggera (circa 3 kg per braccio sull'EDU) e ogni compito va sviluppato, misurato e protetto. Prima conviene un PoC con KPI scritti."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Unitree G1: cosa può fare davvero (e cosa no)"/>
+<meta property="og:description" content="Cosa fa l'Unitree G1 appena acceso, cosa aggiungono SDK2 e ROS 2 sulle versioni EDU, i limiti di manipolazione e autonomia, con fonti ufficiali."/>
+<meta property="og:url" content="https://abrarobotics.com/blog/unitree-g1-cosa-puo-fare.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/official/unitree-g1-01.webp"/>
+<meta property="og:locale" content="it_IT"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script defer src="../consent.js"></script>
+</head>
+<body>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp"/></a>
+<div class="nav-links nav-post-links"><a href="../blog.html">Blog</a></div>
+</div></nav>
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Applicazioni</nav>
+
+<figure class="article-cover">
+<img src="../images/official/unitree-g1-01.webp" alt="Unitree G1 EDU in piedi, robot umanoide per laboratorio e applicazioni" loading="eager"/>
+</figure>
+
+<header class="article-header"><p class="label">Applicazioni · Unitree G1</p>
+<h1>Unitree G1: cosa può fare davvero (e cosa no)</h1>
+<div class="article-meta"><time datetime="2026-11-03">3 novembre 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In breve:</strong> acceso e messo in piedi, il G1 cammina, si siede, si rialza da terra ed esegue gesti e demo dal telecomando R3. L'app Unitree Explore serve per stato e calibrazione. SDK2, ROS 2, teleoperazione e raccolta dati richiedono una versione EDU. La manipolazione resta leggera: un video dimostrativo non basta, il compito va misurato in un PoC.</div>
+</header>
+
+<div class="article-content">
+<p>La domanda «Unitree G1 cosa può fare» arriva di solito da video di danze, salti e rialzi. Quei video mostrano sequenze riuscite, non cosa serve per usare il robot in laboratorio o in azienda. Il G1 è un umanoide da 1,32 m e circa 35 kg che, una volta in piedi, cammina, si siede, si rialza e esegue demo. Per andare oltre servono una versione EDU, tempo di sviluppo e un compito scritto in modo verificabile.</p>
+
+<h2>Unitree G1: cosa può fare dopo l'avvio</h2>
+<p>La base è comune: 6 gradi di libertà per gamba, una vita a 1 asse e batteria da 9000 mAh. Il G1 Air ha 23 gradi di libertà; l'EDU va da 23 a 43. Cambia soprattutto ciò che si può comandare e programmare. Dopo l'avvio e la sequenza di messa in piedi, le funzioni pronte all'uso sono queste:</p>
+<ul>
+<li><strong>Camminata e corsa:</strong> Running mode con R2 + A; Regular mode con R1 + X (vita a 1 asse) o R1 + Y (vita a 3 assi); velocità bassa e alta.</li>
+<li><strong>Posture:</strong> locked standing, seduto, squat e ritorno in piedi.</li>
+<li><strong>Rialzo da terra:</strong> L2 + X porta il robot da sdraiato a in piedi.</li>
+<li><strong>Gesti:</strong> stretta di mano, saluto, applauso, bacio, braccia alzate.</li>
+<li><strong>Demo:</strong> danze, kung fu e sequenza di rialzo si avviano dal telecomando R3.</li>
+<li><strong>App Unitree Explore:</strong> stato, temperature, allarmi, calibrazione di motori e IMU, messa a punto dei giunti e funzione teaching per registrare azioni dell'upper body e richiamarle.</li>
+</ul>
+<p>La sequenza di accensione, i comandi del telecomando e la rete sono nella <a href="unitree-g1-guida-operativa.html">guida operativa del G1</a>.</p>
+
+<h2>Camminata, rialzata e recupero caduta: cosa significano in pratica</h2>
+<p>Camminare in modalità Regular non vuol dire navigare da soli. Il robot mantiene l'equilibrio e risponde ai comandi, ma non conosce l'ambiente. Unitree precisa che la modalità di camminata attuale non include le scale: gradini e dislivelli non sono un compito pronto.</p>
+<p>Il rialzo da terra è una sequenza. L2 + X porta il robot da sdraiato a in piedi; la demo Roll Up fa lo stesso dentro una coreografia. Non è un recupero garantito da qualsiasi caduta. Se il robot cade su un fianco, contro un ostacolo o con un braccio in una posizione anomala, il comando può non bastare. La documentazione Unitree limita l'avvio da sdraiato o da squat a pavimenti piani e duri.</p>
+<p>Per un bipede la caduta è un evento normale durante lo sviluppo. La differenza tra una demo e un test è che nel test si scrive quante volte il robot cade, quanto tempo resta a terra e chi interviene. Per questo i primi test si fanno con spazio libero e una persona al telecomando.</p>
+
+<h2>Cosa aggiungono SDK2 e ROS 2 (solo versioni EDU)</h2>
+<p>La scheda Unitree mette lo sviluppo software proprio solo nella colonna G1 EDU. Il G1 Air non ha il PC2, il computer di sviluppo su cui girano i programmi utente. Sul G1 EDU il PC2 è un Jetson Orin NX con 16 GB di RAM e 2 TB di storage, raggiungibile su 192.168.123.164.</p>
+<p>Con SDK2, in C++ e Python, si pubblicano comandi su DDS, si leggono stato motori, IMU e batteria e si controllano le mani. ROS 2 si aggiunge con <code>unitree_ros2</code> quando servono topic ROS 2, rosbag o nodi già scritti per ROS 2. Il percorso passo passo è nella guida alla <a href="unitree-g1-programmazione.html">programmazione del G1</a>.</p>
+<p>A listino il <a href="../prodotti/unitree-g1.html">G1 Air</a> costa 19.809 €, il <a href="../prodotti/unitree-g1-edu-standard.html">G1 EDU Standard (U1)</a> 38.005 € e il <a href="../prodotti/unitree-g1-edu-plus.html">G1 EDU Plus (U2)</a> 46.809 €, IVA esclusa. La famiglia G1 arriva a 90.829 € per il G1 EDU Ultimate I.</p>
+
+<h2>Teleoperazione e raccolta dati</h2>
+<p>Con un G1 EDU e un visore XR si può teleoperare il robot. Il repository ufficiale <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">xr_teleoperate</a> supporta il G1 a 23 e 29 DoF, le mani Dex3-1, Inspire e BrainCo, e registra episodi con un tasto. I dati si convertono nel formato LeRobot con <a href="https://github.com/unitreerobotics/unitree_lerobot" rel="noopener noreferrer" target="_blank">unitree_lerobot</a>, che include anche training e test su robot reale.</p>
+<p>Serve a raccogliere dimostrazioni umane per addestrare una policy di manipolazione, non a comandare il robot in produzione. Servono un operatore addestrato, un visore, spazio e tempo. La qualità dei dati dipende da come si registra, non solo dal numero di episodi.</p>
+
+<h2>RL e sim-to-real</h2>
+<p>Su un G1 EDU, <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> copre il ciclo Train, Play, Sim2Sim e Sim2Real per il G1. Si addestra una policy in Isaac Gym, la si verifica in MuJoCo e poi la si porta sul robot reale in debug mode. <code>unitree_mujoco</code> e <code>unitree_sim_isaaclab</code> espongono le stesse interfacce DDS del robot.</p>
+<p>È il percorso tipico di un laboratorio: si parte dalla simulazione, si misura il divario sim-to-real e si accetta che la policy vada ritestata dopo ogni aggiornamento firmware. Non è un pulsante «addestra e vai».</p>
+
+<h2>I limiti veri: manipolazione e autonomia</h2>
+<p>Il carico massimo per braccio è circa 3 kg sull'EDU e circa 2 kg sul G1 base. Unitree precisa che il valore varia molto con la postura e con l'estensione del braccio. Le mani sono opzionali; le versioni che le includono costano di più. Il sensore tattile ha senso se il compito richiede di misurare il contatto.</p>
+<p>L'autonomia dichiarata è di circa 2 ore con la batteria da 9000 mAh. Con camminata continua, teleoperazione e carichi sulle braccia, una giornata di prove si organizza con almeno due batterie. Ricarica e sostituzione richiedono tempo e una persona.</p>
+<p>Un G1 non sostituisce un cobot in una cella di pick and place ad alta cadenza. Per un compito da banco, il G1-D Standard è su piantana fissa, senza gambe. Per la logistica ripetitiva, un AMR o un cobot restano più semplici da integrare.</p>
+
+<h2>Video dimostrativi e compiti ripetibili: come distinguerli</h2>
+<p>Un video mostra il meglio di una sequenza, spesso dopo molte prove e con un operatore fuori campo. Un compito ripetibile richiede che la stessa azione riesca più volte, con oggetti e posizioni variabili. La tabella separa le due cose.</p>
+<table>
+<thead><tr><th>Cosa si vede nel video</th><th>Cosa serve per ripeterlo</th><th>Dove si rompe</th></tr></thead>
+<tbody>
+<tr><td>Danza, kung fu, gesti</td><td>Demo preinstallate dal telecomando</td><td>Ostacoli, pavimento irregolare, spazio ridotto</td></tr>
+<tr><td>Rialzo da terra</td><td>Comando L2 + X o demo Roll Up</td><td>Caduta su un fianco, superficie morbida, spazio insufficiente</td></tr>
+<tr><td>Stretta di mano</td><td>Gesto interattivo dal telecomando</td><td>Persona che si muove, altezza sbagliata, contatto improvviso</td></tr>
+<tr><td>Pick and place</td><td>Mani, SDK, percezione e dati</td><td>Oggetti deformabili, prese fuori posizione, tempi ciclo</td></tr>
+<tr><td>Teleoperazione</td><td>Visore, PC2 e operatore</td><td>Latenza, calibrazione, affaticamento</td></tr>
+<tr><td>Policy di RL</td><td>Simulazione, deploy e debug mode</td><td>Divario sim-to-real, firmware, sicurezza</td></tr>
+</tbody>
+</table>
+<p>Non sono test eseguiti da Abra Robotics: prima di firmare, chiedi quale riga vuoi dimostrare e con quali numeri.</p>
+
+<h2>Quale G1 scegliere per il tuo caso</h2>
+<ul>
+<li><strong>Demo, fiere, showroom:</strong> G1 Air. Cammina e fa le demo, non si programma.</li>
+<li><strong>Locomozione, RL, sim-to-real:</strong> G1 EDU Standard (U1), 23 DoF e PC2.</li>
+<li><strong>Teleoperazione e manipolazione con le braccia:</strong> G1 EDU Plus (U2), 29 DoF, vita e polsi articolati.</li>
+<li><strong>Manipolazione da banco:</strong> G1-D Standard, su piantana fissa.</li>
+</ul>
+<p>Prima di scegliere, scrivi il compito e i KPI. La guida per impostare un <a href="poc-robot-umanoide-azienda.html">PoC con un robot umanoide in azienda</a> spiega quali numeri fissare prima dei test.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Prodotti citati nell'articolo</span><a href="../prodotti/unitree-g1.html">G1 Air</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-g1.html"><img alt="Unitree G1 Air" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-g1.html">Unitree G1 Air</a></h3>
+<p>Demo e fiere, senza SDK</p>
+<div class="product-card-price">19.809 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1.html">Vedi scheda</a><a class="product-card-link" href="../prodotti/unitree-g1-edu-standard.html">Confronta EDU</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-g1-edu-standard.html"><img alt="Unitree G1 EDU Standard (U1)" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-g1-edu-standard.html">Unitree G1 EDU Standard (U1)</a></h3>
+<p>SDK, 23 DoF, Jetson Orin NX</p>
+<div class="product-card-price">38.005 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-edu-standard.html">Vedi scheda</a><a class="product-card-link" href="../prodotti/unitree-g1-edu-plus.html">Confronta U2</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-g1-edu-plus.html"><img alt="Unitree G1 EDU Plus (U2)" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-g1-edu-plus.html">Unitree G1 EDU Plus (U2)</a></h3>
+<p>29 DoF: vita e polsi articolati</p>
+<div class="product-card-price">46.809 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-edu-plus.html">Vedi scheda</a><a class="product-card-link" href="unitree-g1-programmazione.html">Come si programma</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<h2>Cosa fa Abra Robotics</h2>
+<p>Abra Robotics, parte della filiera di distribuzione di Unitree Italia, vende robot Unitree, cobot e AMR. Per il G1 aiutiamo a scegliere la versione e, come servizio separato, offriamo formazione e sviluppo software su SDK Unitree. Per assistenza e ricambi il primo contatto è Abra Robotics.</p>
+
+<section class="article-faq">
+<h2>Domande frequenti</h2>
+<div class="faq-item"><h3>Unitree G1 cosa può fare senza programmarlo?</h3><p>Cammina, si siede, si rialza da terra, esegue gesti e sequenze demo dal telecomando R3. L'app Unitree Explore serve per stato, calibrazione e messa a punto dei giunti.</p></div>
+<div class="faq-item"><h3>Il G1 può rialzarsi da solo dopo una caduta?</h3><p>Ha un comando da sdraiato a in piedi e una sequenza demo di rialzo, ma non è un recupero garantito da qualsiasi caduta. Funziona su pavimento piano e duro, con spazio libero.</p></div>
+<div class="faq-item"><h3>Che differenza c'è tra G1 Air e G1 EDU?</h3><p>Il G1 Air cammina ed esegue le demo, ma non ha il computer di sviluppo e non si programma. SDK2, ROS 2, teleoperazione e raccolta dati richiedono una versione EDU.</p></div>
+<div class="faq-item"><h3>Quanto dura la batteria del G1?</h3><p>Circa 2 ore con la batteria da 9000 mAh, secondo Unitree. Camminata continua e carichi sulle braccia riducono l'autonomia reale.</p></div>
+<div class="faq-item"><h3>Il G1 è pronto per un compito ripetitivo in azienda?</h3><p>Non come robot da produzione. La manipolazione è leggera (circa 3 kg per braccio sull'EDU) e ogni compito va sviluppato, misurato e protetto. Prima conviene un PoC con KPI scritti.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Fonti</h2>
+<ol>
+<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">scheda tecnica G1 e G1 EDU</a> (gradi di libertà, carico per braccio, batteria, sviluppo software proprio).</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">G1 remote control</a> (modalità di camminata, rialzo da terra, gesti, limite scale e pavimento piano).</li>
+<li>Unitree, <a href="https://oss-global-cdn.unitree.com/static/5014b2b84df94951b1e2197081e02822.pdf" rel="noopener noreferrer" target="_blank">G1 remote control quick reference</a> (modalità, gesti e demo Roll Up).</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">G1 developer FAQ</a> (PC2: Jetson Orin NX 16 GB, 2 TB e indirizzo 192.168.123.164).</li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/arm_action_interface" rel="noopener noreferrer" target="_blank">Arm Action Service Interface</a> (azioni insegnate registrate con la funzione teaching dell'app).</li>
+<li>Unitree, <a href="https://www.unitree.com/app/g1/" rel="noopener noreferrer" target="_blank">Unitree Explore App per G1</a> (stato, calibrazione, messa a punto dei giunti, video e manuali).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/xr_teleoperate" rel="noopener noreferrer" target="_blank">xr_teleoperate</a> (teleoperazione G1 23 e 29 DoF, registrazione dati).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_lerobot" rel="noopener noreferrer" target="_blank">unitree_lerobot</a> (conversione dati, training e test su G1).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Train, Play, Sim2Sim, Sim2Real per G1).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> e <a href="https://github.com/unitreerobotics/unitree_sim_isaaclab" rel="noopener noreferrer" target="_blank">unitree_sim_isaaclab</a> (simulazione con le stesse interfacce DDS del robot).</li>
+<li>Unitree Robotics, <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a> (interfacce ROS 2 per i robot Unitree).</li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Prima di comprare un G1</h2><p>Dicci il compito, il ritmo e chi lo userà: verifichiamo se serve Air, U1, U2 o un G1-D.</p><a class="btn btn-primary" href="../prodotti/unitree-g1-edu-standard.html">Scheda G1 EDU Standard (U1)</a><a class="btn btn-outline-light" href="unitree-g1-programmazione.html">Guida alla programmazione</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp" width="180" height="72" decoding="async"/></a>
+<p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Prodotti</span>
+<a href="../cobot.html">Cobot</a>
+<a href="../amr.html">AMR</a>
+<a href="../quadrupedi.html">Quadrupedi</a>
+<a href="../umanoidi.html">Umanoidi</a>
+<a href="../accessori.html">Accessori</a>
+<a href="../catalogo-unitree.html">Unitree Italia</a>
+<a href="../catalogo.html">Catalogo completo</a>
+<a href="../listino-unitree.html">Listino prezzi</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Servizi e risorse</span>
+<a href="../assessment.html">Trova il robot giusto</a>
+<a href="../software.html">Software</a>
+<a href="../finanziamenti.html">Finanziamenti</a>
+<a href="../manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="../universita-ricerca.html">Università e Ricerca</a>
+<a href="../blog.html">Blog</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contatti</span>
+<a href="../chi-siamo.html">Chi siamo</a>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Viale Trieste 105<br/>30026 Portogruaro (VE)</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
+<nav aria-label="Note legali" class="footer-legal">
+<a href="../privacy-policy.html">Privacy Policy</a>
+<a href="../cookie-policy.html">Cookie Policy</a>
+<a href="../condizioni-di-vendita.html">Condizioni di vendita</a>
+<a href="../politica-resi.html">Politica resi</a>
+<a href="../note-legali.html">Note legali</a>
+</nav>
+</div>
+</footer>
+<script defer src="../script.js"></script>
+</body></html>
