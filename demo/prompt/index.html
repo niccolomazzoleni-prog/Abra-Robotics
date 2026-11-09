@@ -3,9 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, follow">
-<script>window.DEMO_SEMPLICE={testo:'Scegli un esempio e premi «Genera la cella»: Gemello capisce la richiesta, costruisce il gemello digitale, scrive il programma del robot e lo collauda in simulazione. Gli esempi vengono da progetti veri.',dentro:'.in-body',nascondiSezioni:['cosa ricevi','banco di prova']}</script>
+<script>window.DEMO_SEMPLICE=(function(){
+var $=function(s){return document.querySelector(s)},txt=function(s){var e=$(s);return e?e.textContent.trim():''};
+var clic=function(s){var e=$(s);if(e)e.click()};
+var esempio=function(id,testo){return{testo:testo,clic:function(){clic('.es[data-s="'+id+'"]')},on:function(){return!!$('.es.on[data-s="'+id+'"]')}}};
+return{
+titolo:'One-prompt coding',
+frase:'Descrivi un lavoro a parole: il sistema costruisce la postazione e prova il robot in 3D.',
+bottoni:[esempio('pallet','Pallettizza scatole'),esempio('cnc','Carica un tornio'),{testo:'Ricomincia',clic:function(){clic('#genera')}}],
+prossimo:function(){return $('.es.on[data-s="pallet"]')?1:0},
+citazione:function(){var p=$('#prompt');return p?p.value.trim():''},
+stato:function(){
+var f=txt('#hud-fase'),n=txt('#hud-n'),tot=txt('#hud-tot');
+if(txt('#ver-tag')==='superato')return'Cella pronta: '+tot+' pezzi su '+tot+' posati, verifica superata';
+if(/^ciclo/.test(f))return'Il robot lavora: '+n+(n==='1'?' pezzo':' pezzi')+' su '+tot+' posati';
+if(/^costruzione/.test(f))return'Sto costruendo la postazione in 3D';
+if(/^compilazione/.test(f))return'Sto trasformando la richiesta in un progetto';
+return'Sto leggendo la richiesta'}}})()</script>
 <script src="../semplice.js"></script>
-<style>html.semplice .col-pipe,html.semplice .code-wrap,html.semplice .in-body .fine{display:none}html.semplice .grid{grid-template-columns:340px minmax(0,1fr)}@media (max-width:900px){html.semplice .grid{grid-template-columns:1fr}html.semplice .col-out{grid-column:auto;order:-1}html.semplice .vp-wrap{height:48vh;min-height:300px}}</style>
+<style>html.semplice .top,html.semplice .col-in,html.semplice .col-pipe,html.semplice .vp-wrap>header,html.semplice .out-row,html.semplice #intro,html.semplice #outro,html.semplice .vp>:not(canvas){display:none!important}html.semplice,html.semplice body{overflow:hidden!important}html.semplice #app,html.semplice .grid,html.semplice .col-out,html.semplice .vp-wrap{display:block!important;height:100%!important;padding:0!important;border:0!important;background:none!important;backdrop-filter:none!important}html.semplice .vp{position:fixed!important;inset:0 0 var(--vs-b,0px) var(--vs-l,0px)!important;height:auto!important}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gemello · One prompt coding</title>
 <link rel="stylesheet" href="../css/base.css">

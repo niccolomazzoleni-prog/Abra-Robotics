@@ -3,9 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, follow">
-<script>window.DEMO_SEMPLICE={testo:'Scegli uno dei comandi sotto la scena: il piano di Claude lo divide in passi e il G1 li esegue nel magazzino. Piani e riprese vengono da prove vere del nostro G1 Playground.',dentro:'.col.right',avvio:function(){var b=document.querySelector('#chips .chip');if(b)b.click()}}</script>
+<script>window.DEMO_SEMPLICE=(function(){
+var $=function(s){return document.querySelector(s)};
+var ultimo=-1;
+var passi=function(){return[].slice.call(document.querySelectorAll('#steps li'))};
+var occupato=function(){return!!$('#steps')&&!$('#replybox .reply')};
+var comando=function(i,testo){return{testo:testo,clic:function(){var c=$('#chips .chip[data-i="'+i+'"]');if(c){ultimo=i;c.click()}},on:function(){return ultimo===i&&occupato()}}};
+return{
+titolo:'Humanoid Studio',
+frase:'Un robot umanoide lavora in un magazzino: scegli un compito.',
+bottoni:[comando(0,'Cassetta sul nastro'),comando(1,'Inscatola e spedisci'),comando(2,'Avvia il nastro')],
+occupato:occupato,
+prossimo:function(){return(ultimo+1)%3},
+citazione:function(){return ultimo>=0&&$('#pin')?$('#pin').value:''},
+stato:function(){
+var l=passi();
+if(!l.length)return'Scegli un compito: il robot lo esegue nel magazzino';
+if($('#replybox .reply'))return'Fatto: il robot ha completato i '+l.length+' passi';
+var i=l.findIndex(function(x){return x.classList.contains('run')});
+if(i<0)i=l.filter(function(x){return x.classList.contains('done')}).length;
+if(i>=l.length)i=l.length-1;
+var lb=l[i].querySelector('.lb'),t=lb&&lb.firstChild?lb.firstChild.textContent.trim():'';
+if(!$('#steps li.in'))return'Il robot sta preparando i passi da fare';
+return'Passo '+(i+1)+' di '+l.length+': '+t.charAt(0).toLowerCase()+t.slice(1)},
+pronto:function(){var l=document.getElementById('loading');return document.readyState!=='loading'&&(!l||l.style.opacity==='0')},
+rimuovi:['#pCam video'],
+ritardo:900,
+avvio:function(){var c=$('#chips .chip[data-i="0"]');if(c){ultimo=0;c.click()}
+// il robot deve vedersi bene: telecamera che lo segue e qualche scatto di zoom (di piu' sul telefono)
+var f=$('#bFollow');if(f&&!f.classList.contains('on'))f.click();
+var cv=$('#c3d'),n=innerWidth<700?10:4;
+for(var k=0;k<n;k++)setTimeout(function(){cv&&cv.dispatchEvent(new WheelEvent('wheel',{deltaY:-120,bubbles:true,cancelable:true}))},120*k)}}})()</script>
 <script src="../semplice.js"></script>
-<style>html.semplice .col.left,html.semplice #pCam,html.semplice #pRL{display:none}html.semplice .grid{grid-template-columns:minmax(0,1fr) 360px}@media (max-width:900px){html.semplice .grid{grid-template-columns:1fr}html.semplice .col.right{border-left:0}}@media (max-width:720px){html.semplice .modes{display:none}html.semplice .chips{display:flex;flex-wrap:wrap;gap:6px}html.semplice .view{height:62vh}}</style>
+<style>html.semplice .top,html.semplice .col,html.semplice .vcap,html.semplice .vtools,html.semplice .promptwrap,html.semplice .notice,html.semplice #loading,html.semplice #regia{display:none!important}html.semplice,html.semplice body{overflow:hidden!important}html.semplice body{display:block!important;height:100vh!important}html.semplice .grid{display:block!important}html.semplice .view{position:fixed!important;inset:0 0 var(--vs-b,0px) var(--vs-l,0px)!important;height:auto!important;min-height:0!important}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>G1 Playground · controllo dell'umanoide da un prompt</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cpath d=%22M0 0h16v10l-6 6H0z%22 fill=%22%23f2c200%22/%3E%3C/svg%3E">

@@ -3,9 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, follow">
-<script>window.DEMO_SEMPLICE={testo:'Il Go2 esplora il magazzino da solo e disegna la mappa con il LiDAR. Premi «Vai a un punto» e clicca sulla mappa per mandarlo dove vuoi.',ritardo:2500,avvio:function(rec){var c=function(re){var b=[].find.call(document.querySelectorAll('button'),function(x){return re.test(x.textContent)});if(b)b.click();return b};c(/esplora/i);if(rec)c(/^\s*segui\s*$/i)}}</script>
+<script>window.DEMO_SEMPLICE=(function(){
+var $=function(s){return document.querySelector(s)},txt=function(s){var e=$(s);return e?e.textContent.trim():''};
+var modo=function(){var b=$('[data-modo].primary');return b?b.dataset.modo:''};
+var clic=function(s){var e=$(s);if(e)e.click()};
+return{
+titolo:'Fleet Control',
+frase:'Un robot a quattro zampe esplora un magazzino e disegna la mappa.',
+bottoni:[
+{testo:'Esplora da solo',clic:function(){clic('[data-modo=esplora]')},on:function(){return modo()==='esplora'}},
+{testo:'Mandalo in un punto',clic:function(){clic('[data-modo=punto]')},on:function(){return modo()==='punto'}},
+{testo:'Fermati',clic:function(){clic('#bFerma')},on:function(){return!modo()}}],
+prossimo:function(){var m=modo();return m==='esplora'||m==='pattuglia'?1:m==='punto'?(/\d/.test(txt('#kMeta'))?0:-1):0},
+invito:function(){return modo()==='punto'&&!/\d/.test(txt('#kMeta'))},
+stato:function(){
+var m=modo(),area=txt('#kArea'),perc=txt('#kPerc').split(' · ')[0];
+if(m==='esplora')return parseInt(area,10)>0?'Il robot sta esplorando: '+area+' mappati':'Il robot sta partendo ad esplorare';
+if(m==='punto')return /\d/.test(txt('#kMeta'))?'Il robot cammina verso il punto scelto'+(/\d/.test(perc)?': '+perc+' di strada':''):'Tocca un punto del pavimento: il robot ci va da solo';
+if(m==='pattuglia')return'Mappa completa: '+area+'. Il robot fa un giro di controllo';
+return'Il robot è fermo. Premi «Esplora da solo» per farlo ripartire'},
+pronto:function(){return window.__pronto===true},
+ogni:function(){var b=$('#bSegui');if(b&&!b.classList.contains('on'))b.click()},
+ritardo:1500,
+avvio:function(rec){clic('[data-modo=esplora]');if(rec)clic('#bSegui')}}})()</script>
 <script src="../semplice.js"></script>
-<style>html.semplice .col.sx,html.semplice .panel.tele,html.semplice .panel.cam,html.semplice .panel.liv,html.semplice .panel.log{display:none}html.rec .col.dx{display:none}@media (max-width:700px){html.semplice .col.dx{left:var(--pad);right:var(--pad);width:auto;top:auto;bottom:var(--pad)}html.semplice .cmd .modi .btn{font-size:12px;padding:10px 8px}}</style>
+<style>html.semplice #hud,html.semplice #sovra,html.semplice #titolo,html.semplice #finale,html.semplice #carica{display:none!important}html.semplice #vista{transform:translate(calc(var(--vs-l,0px)/2),calc(var(--vs-b,0px)/-2));transition:transform .2s ease}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Abra · Console Go2 — SLAM, mappa e navigazione</title>
 <link rel="icon" href="data:,">

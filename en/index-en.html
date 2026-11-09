@@ -1307,6 +1307,10 @@ img.pc-img,img.mdl-img{width:100%;height:100%;object-fit:cover;display:block}
 /* Software section */
 .sw-vis{aspect-ratio:4/3!important;background:#05070d!important;border-color:rgba(255,255,255,.12)!important}
 .sw-vis::before,.sw-vis::after{display:none}
+/* luce che scorre finché il video non ha disegnato il primo fotogramma */
+.sw-vis::before{display:block;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.07) 50%,transparent 65%);opacity:1;filter:none;transform:translateX(-100%);animation:swsh 1.8s ease-in-out infinite}
+@keyframes swsh{to{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.sw-vis::before{animation:none}}
 .sw-vis canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .sw-vis .sw-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 .sw-vis.has-video .sw-video{display:block}
@@ -1775,7 +1779,7 @@ body.has-wa-bar { padding-bottom: 60px; }
           <img class="dash-shot" src="../images/home/software-console-go2.webp" alt="Abra Go2 console: LiDAR point cloud, planned path and warehouse map built by the robot" width="800" height="400" loading="lazy" decoding="async">
           <div class="dash-foot"><span>World <b>warehouse 30 × 20 m</b></span><span>Points <b>7,702</b></span></div>
         </div>
-        <div class="pc-body"><h3>Software</h3><p>Proprietary tools to simulate, develop and manage robots.</p><a class="btn pc-btn" href="../demo/cane/?vista=semplice" data-demo="Go2 console · SLAM and navigation" target="_blank" rel="noopener">Try the Go2 console</a></div>
+        <div class="pc-body"><h3>Software</h3><p>Proprietary tools to simulate, develop and manage robots.</p><a class="btn pc-btn" href="../demo/cane/?vista=semplice" data-demo="Fleet Control: the Go2 explores and maps" target="_blank" rel="noopener">Try the Go2 console</a></div>
       </article>
     </div>
   </div>
@@ -1801,7 +1805,7 @@ body.has-wa-bar { padding-bottom: 60px; }
         </div>
         <h3 class="f-title">Humanoid Studio</h3>
         <p class="f-text">Manipulation on G1 and G1-D: picking from trays, placing into fixtures and pick &amp; place, starting from vision and grasping that are already integrated.</p>
-        <a class="sw-demo" href="../demo/umanoide/?vista=semplice" data-demo="G1 Playground · plain-language commands" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="../demo/umanoide/?vista=semplice" data-demo="Humanoid Studio: give the G1 a task" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
       </article>
       <article class="reveal">
         <div class="f-visual sw-vis" data-video-slot data-ui>
@@ -1810,7 +1814,7 @@ body.has-wa-bar { padding-bottom: 60px; }
         </div>
         <h3 class="f-title">Fleet Control</h3>
         <p class="f-text">Missions, map and status of one or more Unitree quadrupeds from a single dashboard, with no integration work on your side.</p>
-        <a class="sw-demo" href="../demo/cane/?vista=semplice" data-demo="Go2 console · SLAM and navigation" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="../demo/cane/?vista=semplice" data-demo="Fleet Control: the Go2 explores and maps" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
       </article>
       <article class="reveal">
         <div class="f-visual sw-vis term-vis" data-video-slot data-ui>
@@ -1820,7 +1824,7 @@ body.has-wa-bar { padding-bottom: 60px; }
         </div>
         <h3 class="f-title">One-prompt coding</h3>
         <p class="f-text">Connect the robot to your Claude and describe the task in plain words: the assistant writes the robot code, built on our tested tools.</p>
-        <a class="sw-demo" href="../demo/prompt/?vista=semplice" data-demo="Gemello · one-prompt coding" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="../demo/prompt/?vista=semplice" data-demo="One-prompt coding: from one sentence to a robot cell" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
       </article>
     </div>
   </div>
