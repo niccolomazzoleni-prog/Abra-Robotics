@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from seo_title_desc import seo_desc  # noqa: E402
-from schede_regole import categoria_title  # noqa: E402
+from schede_regole import NOINDEX_IT, categoria_title  # noqa: E402
 
 SITE = "https://abrarobotics.com/"
 MAX_TITLE = 60
@@ -382,6 +382,15 @@ def main() -> None:
                 s = l; stats["ld"] += 1
         if s != o:
             f.write_text(s, encoding="utf-8")
+    # schede IT tolte dall'indice (schede_regole.NOINDEX_IT): noindex, follow
+    for rel in sorted(NOINDEX_IT):
+        f = ROOT / rel
+        if f.is_file():
+            s = f.read_text(encoding="utf-8")
+            n = re.sub(r'<meta[^>]*name="robots"[^>]*>', '<meta name="robots" content="noindex, follow">', s, count=1)
+            if n != s:
+                f.write_text(n, encoding="utf-8")
+                stats["noindex"] = stats.get("noindex", 0) + 1
     print("schede prezzo:", stats)
 
 
