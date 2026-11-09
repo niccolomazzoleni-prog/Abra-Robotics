@@ -5,8 +5,7 @@ Dati e foto Unitree: pagina ufficiale H2-X (https://www.unitree.com/H2-X/) e vid
 (ottobre 2026, canale Unitree Robotics). Il prezzo in dollari della pagina Unitree non si pubblica.
 
 Prezzi (CONFIGS), con la stessa regola delle H2 EDU Smart del listino (es. Smart D = H2 EDU + 2 mani Dex5-1):
-- H2-X Air = MSRP Abra;
-- H2-X EDU = Air x (H2 EDU / H2 Air) del listino pubblico;
+- H2-X Air e H2-X EDU = MSRP Abra;
 - H2-X EDU + mani = H2-X EDU + 2 x prezzo della mano H2 nel listino pubblico (end-user.json);
 - Full Setup = H2-X EDU + 2 mani BrainCo Revo 3 U21T.
 Segnaposto nei testi: {<chiave configurazione>} = prezzo nel formato della lingua.
@@ -21,8 +20,8 @@ SOURCE_PAGE = "https://www.unitree.com/H2-X/"
 LANGS = ["it", "en", "de", "fr", "nl", "da", "sv", "no", "fi", "es", "pl", "cs"]
 
 MSRP_AIR = 36713
+MSRP_EDU = 54057
 _L = json.loads((Path(__file__).resolve().parent.parent / "listini/pubblico/end-user.json").read_text(encoding="utf-8"))
-_EDU = round(MSRP_AIR * _L["H2-EDU"]["prezzo_eur"] / _L["H2-AIR"]["prezzo_eur"])
 
 # (chiave, nome, SKU della mano H2 nel listino): la coppia di mani si somma all'H2-X EDU
 _HANDS = [
@@ -40,8 +39,8 @@ _HANDS = [
 HAND_OF = {"full": "u21t"}
 
 # (chiave, nome, prezzo in euro IVA esclusa), in ordine di prezzo
-CONFIGS = [("air", "H2-X Air", MSRP_AIR), ("edu", "H2-X EDU", _EDU)] + [
-    (k, n, round(_EDU + 2 * _L[sku]["prezzo_eur"])) for k, n, sku in _HANDS]
+CONFIGS = [("air", "H2-X Air", MSRP_AIR), ("edu", "H2-X EDU", MSRP_EDU)] + [
+    (k, n, round(MSRP_EDU + 2 * _L[sku]["prezzo_eur"])) for k, n, sku in _HANDS]
 
 T = {
 "it": {
