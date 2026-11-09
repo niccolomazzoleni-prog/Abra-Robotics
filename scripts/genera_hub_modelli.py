@@ -536,7 +536,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
 <div class="hero-meta">
 <div><strong>{len([r for r in rows if r['price']])}</strong><span>{T('Versions', 'Versioni a listino')}</span></div>
 {('<div><strong>' + (T('from € ' + eur(low, True), 'da ' + eur(low, False) + ' €')) + '</strong><span>' + T('excl. VAT', 'IVA esclusa') + '</span></div>') if low else ''}
-<div><strong>{T('Italy', 'Italia')}</strong><span>{T('Unitree Italy distribution chain', 'Filiera di distribuzione di Unitree Italia')}</span></div>
+<div><strong>{T('Italy', 'Italia')}</strong><span>{T('Unitree Italy distribution chain', 'Filiera di distribuzione di <a href="catalogo-unitree.html">Unitree Italia</a>')}</span></div>
 </div>
 <div class="hm-fam">{fam_links}</div>
 </div>
