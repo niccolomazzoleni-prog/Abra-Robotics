@@ -4,7 +4,7 @@
 - IT: prodotti/unitree-h2-x.html            (layout scheda prodotto, chrome da prodotti/unitree-g1-pro.html)
 - EN: en/prodotti/unitree-h2-x-en.html      (layout scheda prodotto, chrome da en/prodotti/unitree-g1-edu-plus-en.html)
 - DE FR NL DA SV NO FI ES PL CS: <codice>/unitree-h2-x.html (layout delle pagine lingua, chrome di genera_lingue.py)
-Prezzo "da" = H2-X Air (voce H2-X in end-user.json); la tabella mostra tutte le configurazioni fino al Full Setup.
+Prezzo "da" = H2-X Air (voce H2-X in end-user.json); la tabella mostra Air, EDU e le composizioni di mani fino al Full Setup.
 JSON-LD con offerta in preordine (PreOrder). Testi e configurazioni: scripts/h2x_testi.py.
 Idempotente. Uso: python3 scripts/genera_h2x.py   (Python >= 3.12, come genera_lingue.py)
 """
@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from g1_plus_testi import T as G1P  # noqa: E402  stringhe d'interfaccia IT/EN (pulsanti, form, vantaggi)
-from h2x_testi import CONFIGS, LANGS, SOURCE_H2, SOURCE_VIDEO, T  # noqa: E402
+from h2x_testi import CONFIGS, HAND_OF, LANGS, SOURCE_H2, SOURCE_VIDEO, T  # noqa: E402
 from genera_hub_modelli import CAL, SITE  # noqa: E402
 from genera_lingue import chrome, cta, head as lang_head, money  # noqa: E402
 
@@ -112,10 +112,19 @@ def section(h2: str, inner: str, anchor: str = "") -> str:
     return f'<section class="section hm-guide" style="padding-top:0"{a}><div class="container"><h2>{esc(h2)}</h2>{inner}</div></section>\n'
 
 
+def includes(code: str, key: str) -> str:
+    """Cosa comprende la configurazione: Air, EDU, oppure H2-X EDU con una coppia di mani."""
+    t = T[code]
+    if key in ("air", "edu"):
+        return t["inc_" + key]
+    s = t["inc_hand"].format(h=t["hands"][HAND_OF.get(key, key)])
+    return s + " " + t["inc_full"] if key == "full" else s
+
+
 def configs_table(code: str, P: dict[str, str], price_col: str) -> str:
     t = T[code]
-    rows = "".join(f'<tr id="h2x-{k}"><td><strong>{esc(n)}</strong></td><td>{esc(inc)}</td><td class="p">{esc(P[k])}</td></tr>'
-                   for (k, n, _), inc in zip(CONFIGS, t["cfg"]))
+    rows = "".join(f'<tr id="h2x-{k}"><td><strong>{esc(n)}</strong></td><td>{esc(includes(code, k))}</td><td class="p">{esc(P[k])}</td></tr>'
+                   for k, n, _ in CONFIGS)
     return (f'<p>{esc(t["cfg_intro"])}</p><div class="hm-wrap"><table class="hm-table h2x-table"><thead><tr>'
             f'<th>{esc(t["cols"][0])}</th><th>{esc(t["cols"][1])}</th><th>{esc(price_col)}</th></tr></thead><tbody>{rows}</tbody></table></div>'
             + '<div class="h2x-notes">' + "<br>".join(esc(n) for n in t["cfg_notes"]) + "</div>")
