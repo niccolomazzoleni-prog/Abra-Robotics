@@ -1196,6 +1196,7 @@ main>section.sec-light+section.sec-light{padding-top:0!important}
 .mdl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
 .mdl{position:relative;height:520px;border-radius:18px;overflow:hidden;background:#111;color:#fff;min-width:0;outline-offset:2px}
 .mdl-img{position:absolute;inset:0;background:center/cover;filter:grayscale(1)}
+img.pc-img,img.mdl-img{width:100%;height:100%;object-fit:cover;display:block}
 .mdl::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.82));transition:background .3s}
 .mdl-body{position:absolute;left:0;right:0;bottom:0;z-index:1;display:flex;flex-direction:column;padding:24px}
 .mdl small{font-size:13.5px;color:#d8d8d8}
@@ -1747,14 +1748,14 @@ body.has-wa-bar { padding-bottom: 60px; }
           <div class="shop-win">
             <div class="shop-bar"><i></i><i></i><i></i><span>abrarobotics.com/en/catalog</span></div>
             <div class="shop-view"><div class="shop-track">
-              <div class="shop-item"><img src="../images/official/unitree-g1-03.webp" alt="" decoding="async"/><b>Unitree G1</b><em>Humanoid</em><s>Available</s></div>
-              <div class="shop-item"><img src="../images/prodotti/2026/as2.webp" alt="" decoding="async"/><b>Unitree AS2</b><em>Quadruped</em><s>Available</s></div>
-              <div class="shop-item"><img src="../images/manifattura/fairino-fr5.webp" alt="" decoding="async"/><b>Fairino FR5</b><em>Cobot</em><s>Available</s></div>
-              <div class="shop-item"><img src="../images/manifattura/amr/juno-plus.webp" alt="" decoding="async"/><b>Juno Plus</b><em>AMR</em><s>On order</s></div>
-              <div class="shop-item"><img src="../images/official/unitree-h2-01.webp" alt="" decoding="async"/><b>Unitree H2</b><em>Humanoid</em><s>On order</s></div>
-              <div class="shop-item"><img src="../images/official/unitree-go2-01.webp" alt="" decoding="async"/><b>Unitree Go2</b><em>Quadruped</em><s>Available</s></div>
-              <div class="shop-item"><img src="../images/official/unitree-g1-03.webp" alt="" decoding="async"/><b>Unitree G1</b><em>Humanoid</em><s>Available</s></div>
-              <div class="shop-item"><img src="../images/prodotti/2026/as2.webp" alt="" decoding="async"/><b>Unitree AS2</b><em>Quadruped</em><s>Available</s></div>
+              <div class="shop-item"><img src="../images/home/shop/unitree-g1-03.webp" alt="" loading="lazy" decoding="async"/><b>Unitree G1</b><em>Humanoid</em><s>Available</s></div>
+              <div class="shop-item"><img src="../images/home/shop/as2.webp" alt="" loading="lazy" decoding="async"/><b>Unitree AS2</b><em>Quadruped</em><s>Available</s></div>
+              <div class="shop-item"><img src="../images/home/shop/fairino-fr5.webp" alt="" loading="lazy" decoding="async"/><b>Fairino FR5</b><em>Cobot</em><s>Available</s></div>
+              <div class="shop-item"><img src="../images/home/shop/juno-plus.webp" alt="" loading="lazy" decoding="async"/><b>Juno Plus</b><em>AMR</em><s>On order</s></div>
+              <div class="shop-item"><img src="../images/home/shop/unitree-h2-01.webp" alt="" loading="lazy" decoding="async"/><b>Unitree H2</b><em>Humanoid</em><s>On order</s></div>
+              <div class="shop-item"><img src="../images/home/shop/unitree-go2-01.webp" alt="" loading="lazy" decoding="async"/><b>Unitree Go2</b><em>Quadruped</em><s>Available</s></div>
+              <div class="shop-item"><img src="../images/home/shop/unitree-g1-03.webp" alt="" loading="lazy" decoding="async"/><b>Unitree G1</b><em>Humanoid</em><s>Available</s></div>
+              <div class="shop-item"><img src="../images/home/shop/as2.webp" alt="" loading="lazy" decoding="async"/><b>Unitree AS2</b><em>Quadruped</em><s>Available</s></div>
             </div></div>
             <span class="shop-cursor"></span>
           </div>
@@ -1762,12 +1763,12 @@ body.has-wa-bar { padding-bottom: 60px; }
         <div class="pc-body"><h3>Supply</h3><p>A broad catalog of robots to choose and configure, delivered within 6 weeks.</p><a class="btn pc-btn" href="#catalogo">View the catalog</a></div>
       </article>
       <article class="pc pc-tilt reveal" style="--c:var(--acc2)">
-        <div class="pc-img" style="background-image:url(../images/home/formazione.webp)"></div>
+        <img class="pc-img" src="../images/home/formazione.webp" alt="" loading="lazy" decoding="async">
         <span class="pc-live" aria-hidden="true"><i></i>Hands-on session · ROS 2</span>
         <div class="pc-body"><h3>Training</h3><p>Corporate training programs for in-house teams: ROS 2, digital twin simulation, embodied AI and safety of robotic systems.</p></div>
       </article>
       <article class="pc pc-tilt reveal" style="--c:var(--acc3)">
-        <div class="pc-img" style="background-image:url(../images/home/laboratorio.webp)"></div>
+        <img class="pc-img" src="../images/home/laboratorio.webp" alt="" loading="lazy" decoding="async">
         <div class="pc-body"><h3>Lab</h3><p>Robot testing and configuration in a dedicated lab.</p></div>
       </article>
       <article class="pc pc-tilt has-vis reveal" style="--c:var(--acc4)">
@@ -1776,7 +1777,7 @@ body.has-wa-bar { padding-bottom: 60px; }
           <img class="dash-shot" src="../images/home/software-console-go2.webp" alt="Abra Go2 console: LiDAR point cloud, planned path and warehouse map built by the robot" width="800" height="400" loading="lazy" decoding="async">
           <div class="dash-foot"><span>World <b>warehouse 30 × 20 m</b></span><span>Points <b>7,702</b></span></div>
         </div>
-        <div class="pc-body"><h3>Software</h3><p>Proprietary tools to simulate, develop and manage robots.</p><a class="btn pc-btn" href="../demo/cane/" data-demo="Go2 console · SLAM and navigation" target="_blank" rel="noopener">Try the Go2 console</a></div>
+        <div class="pc-body"><h3>Software</h3><p>Proprietary tools to simulate, develop and manage robots.</p><a class="btn pc-btn" href="../demo/cane/?vista=semplice" data-demo="Go2 console · SLAM and navigation" target="_blank" rel="noopener">Try the Go2 console</a></div>
       </article>
     </div>
   </div>
@@ -1786,7 +1787,7 @@ body.has-wa-bar { padding-bottom: 60px; }
   <div class="wrap">
     <h2 class="h2 reveal">How we work together</h2>
     <p class="lead reveal">Our engagement models, from the simplest to the most structured.</p>
-    <div class="mdl-grid reveal"><article class="mdl" tabindex="0"><div class="mdl-img" style="background-image:url(../images/home/assessment.webp)"></div><div class="mdl-body"><small>Simplest</small><h3>Assessment</h3><div class="mdl-more"><p>For companies that want to understand where and how to introduce robotics into their processes.</p><ul><li>Process mapping</li><li>Feasibility of each use case</li><li>Roadmap with indicative timelines and costs</li></ul></div><a class="btn pc-btn" href="#contatti" data-start="assessment">Request an assessment</a></div></article><article class="mdl" tabindex="0"><div class="mdl-img" style="background-image:url(../images/home/affiancamento.webp)"></div><div class="mdl-body"><small>Intermediate</small><h3>Co-development</h3><div class="mdl-more"><p>For R&amp;D, Innovation and Automation teams that want to develop the project in-house and build internal expertise.</p><ul><li>Use case development guided by Abra</li><li>Team training</li><li>Access to our proprietary tools</li></ul></div><a class="btn pc-btn" href="#contatti" data-start="affiancamento">Book a call</a></div></article><article class="mdl" tabindex="0"><div class="mdl-img" style="background-image:url(../images/home/validazione.webp)"></div><div class="mdl-body"><small>Most structured</small><h3>Development and validation</h3><div class="mdl-more"><p>For companies that have already identified the use case and want to outsource its development and validation.</p><ul><li>Solution development and validation</li><li>Digital twin simulation</li><li>Production trial and support through certification, issued by TÜV or another accredited body</li></ul></div><a class="btn pc-btn" href="#contatti" data-start="poc">Book a call</a></div></article></div>
+    <div class="mdl-grid reveal"><article class="mdl" tabindex="0"><img class="mdl-img" src="../images/home/assessment.webp" alt="" loading="lazy" decoding="async"><div class="mdl-body"><small>Simplest</small><h3>Assessment</h3><div class="mdl-more"><p>For companies that want to understand where and how to introduce robotics into their processes.</p><ul><li>Process mapping</li><li>Feasibility of each use case</li><li>Roadmap with indicative timelines and costs</li></ul></div><a class="btn pc-btn" href="#contatti" data-start="assessment">Request an assessment</a></div></article><article class="mdl" tabindex="0"><img class="mdl-img" src="../images/home/affiancamento.webp" alt="" loading="lazy" decoding="async"><div class="mdl-body"><small>Intermediate</small><h3>Co-development</h3><div class="mdl-more"><p>For R&amp;D, Innovation and Automation teams that want to develop the project in-house and build internal expertise.</p><ul><li>Use case development guided by Abra</li><li>Team training</li><li>Access to our proprietary tools</li></ul></div><a class="btn pc-btn" href="#contatti" data-start="affiancamento">Book a call</a></div></article><article class="mdl" tabindex="0"><img class="mdl-img" src="../images/home/validazione.webp" alt="" loading="lazy" decoding="async"><div class="mdl-body"><small>Most structured</small><h3>Development and validation</h3><div class="mdl-more"><p>For companies that have already identified the use case and want to outsource its development and validation.</p><ul><li>Solution development and validation</li><li>Digital twin simulation</li><li>Production trial and support through certification, issued by TÜV or another accredited body</li></ul></div><a class="btn pc-btn" href="#contatti" data-start="poc">Book a call</a></div></article></div>
   </div>
 </section>
 
@@ -1797,31 +1798,31 @@ body.has-wa-bar { padding-bottom: 60px; }
     <div class="features">
       <article class="reveal">
         <div class="f-visual sw-vis" data-video-slot data-ui>
-          <video class="sw-video" muted loop playsinline preload="none" data-src="../videos/software/humanoid-studio-g1.mp4" poster="../images/home/sw-humanoid-studio.webp"></video>
+          <video class="sw-video" muted loop playsinline preload="none" data-src="../videos/software/humanoid-studio-g1.mp4" data-poster="../images/home/sw-humanoid-studio.webp"></video>
           <div class="sw-chip">Humanoid Studio · G1</div>
         </div>
         <h3 class="f-title">Humanoid Studio</h3>
         <p class="f-text">Manipulation on G1 and G1-D: picking from trays, placing into fixtures and pick &amp; place, starting from vision and grasping that are already integrated.</p>
-        <a class="sw-demo" href="../demo/umanoide/" data-demo="G1 Playground · plain-language commands" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="../demo/umanoide/?vista=semplice" data-demo="G1 Playground · plain-language commands" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
       </article>
       <article class="reveal">
         <div class="f-visual sw-vis" data-video-slot data-ui>
-          <video class="sw-video" muted loop playsinline preload="none" data-src="../videos/software/fleet-control-go2.mp4" poster="../images/home/sw-fleet-control.webp"></video>
+          <video class="sw-video" muted loop playsinline preload="none" data-src="../videos/software/fleet-control-go2.mp4" data-poster="../images/home/sw-fleet-control.webp"></video>
           <div class="sw-chip">Fleet Control · Go2</div>
         </div>
         <h3 class="f-title">Fleet Control</h3>
         <p class="f-text">Missions, map and status of one or more Unitree quadrupeds from a single dashboard, with no integration work on your side.</p>
-        <a class="sw-demo" href="../demo/cane/" data-demo="Go2 console · SLAM and navigation" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="../demo/cane/?vista=semplice" data-demo="Go2 console · SLAM and navigation" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
       </article>
       <article class="reveal">
         <div class="f-visual sw-vis term-vis" data-video-slot data-ui>
-          <video class="sw-video" muted loop playsinline preload="none" data-src="../videos/software/one-prompt-gemello.mp4" poster="../images/home/sw-one-prompt.webp"></video>
+          <video class="sw-video" muted loop playsinline preload="none" data-src="../videos/software/one-prompt-gemello.mp4" data-poster="../images/home/sw-one-prompt.webp"></video>
           <div class="sw-chip">One-prompt coding · UR30</div>
           <div class="sw-chip soon">Coming soon</div>
         </div>
         <h3 class="f-title">One-prompt coding</h3>
         <p class="f-text">Connect the robot to your Claude and describe the task in plain words: the assistant writes the robot code, built on our tested tools.</p>
-        <a class="sw-demo" href="../demo/prompt/" data-demo="Gemello · one-prompt coding" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="../demo/prompt/?vista=semplice" data-demo="Gemello · one-prompt coding" target="_blank" rel="noopener">Try the interactive demo (in Italian) <span aria-hidden="true">→</span></a>
       </article>
     </div>
   </div>
@@ -2026,8 +2027,8 @@ body.has-wa-bar { padding-bottom: 60px; }
     var src=v.getAttribute('data-src');
     if(!src)return;
     var slot=v.closest('[data-video-slot]');if(slot)slot.classList.add('has-video');
-    if(RM)return;
-    whenVisible(v,function(){if(!v.src)v.src=src;v.play().catch(function(){})},function(){v.pause()});
+    var poster=v.getAttribute('data-poster');
+    whenVisible(v,function(){if(poster&&!v.poster)v.poster=poster;if(RM)return;if(!v.src)v.src=src;v.play().catch(function(){})},function(){v.pause()});
   });
 
 
