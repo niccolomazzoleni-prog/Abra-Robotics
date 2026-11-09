@@ -436,11 +436,15 @@ def update_csv_pages(rows: list[dict]) -> None:
 
 BRAND_HUBS = [("G1", "g1.html"), ("H2", "h2.html"), ("R1", "r1.html"), ("G1-D", "g1-d.html"), ("R1-D", "r1-d.html"),
               ("Go2", "go2.html"), ("AS2", "as2.html"), ("A2", "a2.html"), ("B2", "b2.html"), ("Z1 e D1", "z1.html")]
-BRAND_INTRO = ("Abra Robotics fa parte della filiera di distribuzione Unitree Italia: vendiamo tutta la gamma Unitree, "
-               "dagli umanoidi G1, H2 e R1 ai quadrupedi Go2, AS2, A2 e B2, fino a bracci, mani robotiche e accessori. "
-               "Prezzi pubblici in euro, fattura italiana, supporto tecnico e formazione in italiano, consegna tipica in "
-               "4-6 settimane e verifica gratuita degli incentivi (iperammortamento, Nuova Sabatini, bandi regionali). "
-               "Per ogni famiglia trovi la pagina con tutte le versioni e i prezzi a confronto.")
+BRAND_INTRO = ("Abra Robotics è un'azienda italiana di robotica e fa parte della filiera di distribuzione Unitree Italia. "
+               "Vendiamo tutta la gamma Unitree: gli umanoidi G1, H2 e R1, i quadrupedi Go2, AS2, A2 e B2, bracci, mani "
+               "robotiche e accessori. Il listino è pubblico, in euro, con spedizione e dazio inclusi. Consegniamo in Italia "
+               "con fattura italiana, garanzia e assistenza tecnica in Italia e formazione in italiano; verifichiamo gratis "
+               "gli incentivi (iperammortamento, Nuova Sabatini, bandi regionali). Per ogni famiglia trovi la pagina con "
+               "tutte le versioni e i prezzi a confronto.")
+BRAND_TITLE = "Unitree Italia: listino pubblico e assistenza in Italia"
+BRAND_DESC = ("Unitree Italia: tutti i robot Unitree con listino pubblico in euro, spedizione e dazio inclusi. "
+              "Fattura italiana, garanzia e assistenza in Italia.")
 
 
 def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
@@ -489,12 +493,12 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unitree Italia: catalogo e prezzi di tutti i robot | Abra</title>
-  <meta name="description" content="Unitree in Italia: catalogo completo con prezzi End-User pubblici di umanoidi, quadrupedi, bracci e accessori. Spedizione e dazio inclusi, supporto in italiano.">
+  <title>{BRAND_TITLE}</title>
+  <meta name="description" content="{BRAND_DESC}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{SITE}/catalogo-unitree.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Unitree Italia: catalogo e prezzi — Abra Robotics">
+  <meta property="og:title" content="{BRAND_TITLE} — Abra Robotics">
   <meta property="og:description" content="{len(pub)} prodotti Unitree con prezzi End-User pubblici in Italia.">
   <meta property="og:url" content="{SITE}/catalogo-unitree.html">
   <meta property="og:image" content="{SITE}/images/official/unitree-g1-03.webp">
