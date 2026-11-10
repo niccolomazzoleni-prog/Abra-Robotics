@@ -110,6 +110,22 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 .hm-faq p{margin:10px 0 0;line-height:1.6;color:var(--gray-600)}
 .hm-fam{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .hm-fam a{padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem}
+/* telefono: le righe delle tabelle configurazioni/prezzi diventano schede (nome + prezzo, poi descrizione/link); thead resta nel DOM per la semantica */
+@media (max-width:600px){
+.hm-table:not(.g1p-table):not(.h2x-specs),.hm-table:not(.g1p-table):not(.h2x-specs) tbody{display:block}
+.hm-table:not(.g1p-table):not(.h2x-specs) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 16px;margin:0 0 12px;border:1px solid var(--gray-200);border-radius:16px;background:var(--white,#fff)}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr:target{background:var(--gray-50,#fafafa);border-color:var(--black,#0a0a0a)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td{display:block;padding:0;border:0;font-size:15px;line-height:1.5;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:first-child{grid-column:1;grid-row:1;font-size:16px;font-weight:600;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td.p{grid-column:2;grid-row:1;text-align:right;white-space:nowrap;font-size:16px}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:not(:first-child):not(.p){grid-column:1/-1;color:var(--gray-600)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td a{color:var(--black,#0a0a0a)}
+.hm-table.h2x-specs tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.hm-table.h2x-specs td{display:block;padding:0;border:0;font-size:15px;line-height:1.5}
+.hm-table.h2x-specs td:first-child{min-width:0;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+.hm-table.h2x-specs,.hm-table.h2x-specs tbody{display:block}
+}
 </style>
 </head>
 <body>

@@ -171,6 +171,22 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 .hm-faq p{margin:10px 0 0;line-height:1.6;color:var(--gray-600)}
 .hm-fam{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .hm-fam a{padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem}
+/* telefono: le righe delle tabelle configurazioni/prezzi diventano schede (nome + prezzo, poi descrizione/link); thead resta nel DOM per la semantica */
+@media (max-width:600px){
+.hm-table:not(.g1p-table):not(.h2x-specs),.hm-table:not(.g1p-table):not(.h2x-specs) tbody{display:block}
+.hm-table:not(.g1p-table):not(.h2x-specs) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 16px;margin:0 0 12px;border:1px solid var(--gray-200);border-radius:16px;background:var(--white,#fff)}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr:target{background:var(--gray-50,#fafafa);border-color:var(--black,#0a0a0a)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td{display:block;padding:0;border:0;font-size:15px;line-height:1.5;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:first-child{grid-column:1;grid-row:1;font-size:16px;font-weight:600;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td.p{grid-column:2;grid-row:1;text-align:right;white-space:nowrap;font-size:16px}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:not(:first-child):not(.p){grid-column:1/-1;color:var(--gray-600)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td a{color:var(--black,#0a0a0a)}
+.hm-table.h2x-specs tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.hm-table.h2x-specs td{display:block;padding:0;border:0;font-size:15px;line-height:1.5}
+.hm-table.h2x-specs td:first-child{min-width:0;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+.hm-table.h2x-specs,.hm-table.h2x-specs tbody{display:block}
+}
 </style>
 </head>
 <body>
@@ -320,6 +336,22 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
     </div>
   </section>
 
+<!-- CORRELATI -->
+<section class="correlati"><div class="container">
+<h2>Altri prodotti H2</h2>
+<ul class="rel-grid">
+<li><a class="rel-card" href="unitree-h2-remote.html"><span class="rel-media"><img src="../images/thumbs/official__unitree-telecomando.webp" alt="H2 Remote Controller" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Ricambio</span><span class="rel-name">H2 Remote Controller</span><span class="rel-price">da 367 €</span></span></a></li>
+<li><a class="rel-card" href="unitree-h2-charger-fast.html"><span class="rel-media"><img src="../images/thumbs/prodotti__h2-charger-fast.webp" alt="H2 Fast Charger" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Ricambio</span><span class="rel-name">H2 Fast Charger</span><span class="rel-price">da 367 €</span></span></a></li>
+<li><a class="rel-card" href="unitree-h2-frame.html"><span class="rel-media"><img src="../images/thumbs/prodotti__2026__h2-frame.webp" alt="H2 Staffa di Protezione (Protective Bracket)" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Ricambio</span><span class="rel-name">H2 Staffa di Protezione (Protective Bracket)</span><span class="rel-price">da 367 €</span></span></a></li>
+<li><a class="rel-card" href="unitree-h2-gripper-dex1-std.html"><span class="rel-media"><img src="../images/thumbs/official__unitree-dex1-1.webp" alt="H2 DEX1-1 Gripper standard" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Accessorio</span><span class="rel-name">H2 DEX1-1 Gripper standard</span><span class="rel-price">da 440 €</span></span></a></li>
+<li><a class="rel-card" href="unitree-h2-gripper-dex1-adv.html"><span class="rel-media"><img src="../images/thumbs/official__unitree-dex1-1-b.webp" alt="H2 DEX1-1 pinza Plus" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Accessorio</span><span class="rel-name">H2 DEX1-1 pinza Plus</span><span class="rel-price">da 660 €</span></span></a></li>
+<li><a class="rel-card" href="unitree-h2-gripper-dex1-flag.html"><span class="rel-media"><img src="../images/thumbs/official__unitree-dex1-1-b.webp" alt="H2 DEX1-1 Gripper Flagship" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Accessorio</span><span class="rel-name">H2 DEX1-1 Gripper Flagship</span><span class="rel-price">da 1.454 €</span></span></a></li>
+<li><a class="rel-card" href="unitree-h2-vis-computer.html"><span class="rel-media"><img src="../images/thumbs/prodotti__h2-vis-computer.webp" alt="H2-A / H2-D Unità di calcolo per Visualizzazione" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Ricambio</span><span class="rel-name">H2-A / H2-D Unità di calcolo per Visualizzazione</span><span class="rel-price">da 2.832 €</span></span></a></li>
+<li><a class="rel-card" href="unitree-h2-battery.html"><span class="rel-media"><img src="../images/thumbs/official__placeholder-prodotto.webp" alt="H2 Battery (Single)" width="320" height="240" loading="lazy" decoding="async"></span><span class="rel-body"><span class="rel-tag">Ricambio</span><span class="rel-name">H2 Battery (Single)</span><span class="rel-price">da 3.668 €</span></span></a></li>
+</ul>
+<p class="rel-all"><a href="../umanoidi.html#fam-h2">Vedi tutti i prodotti H2 (100)</a></p>
+</div></section>
+<!-- /CORRELATI -->
 <footer class="footer">
 <div class="container footer-grid">
 <div class="footer-brand">
