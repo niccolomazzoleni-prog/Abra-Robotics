@@ -126,9 +126,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -368,12 +366,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <h2>Altri prodotti H2</h2>
 <ul>
 <li><a href="unitree-h2-a-std-a.html">H2-A Standard A <span>da 35.363 €</span></a></li>
+<li><a href="unitree-h2-x.html">H2-X (Air – Full Setup) <span>da 36.713 €</span></a></li>
 <li><a href="unitree-h2-air.html">H2 Basic (H2 Air) <span>da 43.874 €</span></a></li>
 <li><a href="unitree-h2-a-std-f.html">H2-A Standard F <span>da 44.754 €</span></a></li>
 <li><a href="unitree-h2-a-std-b.html">H2-A Standard B <span>da 48.716 €</span></a></li>
 <li><a href="unitree-h2-a-std-g.html">H2-A Standard G <span>da 50.624 €</span></a></li>
 <li><a href="unitree-h2-a-std-c.html">H2-A Standard C <span>da 51.651 €</span></a></li>
-<li><a href="unitree-h2-a-std-h.html">H2-A Standard H <span>da 51.651 €</span></a></li>
 <li><a href="unitree-h2-a-std-d.html">H2-A Standard D <span>da 63.390 €</span></a></li>
 </ul>
 </div></section>
@@ -412,7 +410,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="../privacy-policy.html">Privacy Policy</a>
 <a href="../cookie-policy.html">Cookie Policy</a>

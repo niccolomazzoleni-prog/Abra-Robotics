@@ -141,7 +141,7 @@ def unitree_titles(name: str, slug: str, en: bool, price: float | None = None) -
         def core_p(n: str, c: str | None, vat: bool) -> str:
             if en:
                 return f"{n}{' ' + c if c else ''} price: €{n_en}{' excl. VAT' if vat else ''}"
-            return f"{n}{' ' + c + ',' if c else ''} prezzo: {n_it} €{' + IVA' if vat else ''}"
+            return f"{n}{' ' + c.rstrip(' ,') + ',' if c else ''} prezzo: {n_it} €{' + IVA' if vat else ''}"
 
         # prima sparisce la parte tra parentesi, poi si accettano 65 caratteri, poi sparisce la
         # categoria, infine "+ IVA"; il prezzo resta sempre visibile

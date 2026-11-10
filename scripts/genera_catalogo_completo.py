@@ -39,6 +39,7 @@ SKIP_OVERWRITE = {
     "unitree-g1-comp.html", "unitree-r1-edu.html", "unitree-go2-pro.html",
     "unitree-go2-edu.html", "unitree-go2-edu-smart.html", "unitree-go2-enterprise-u2.html",
     "unitree-a2.html", "unitree-a2-pro.html", "unitree-b2.html", "unitree-h2.html",
+    "unitree-h2-x.html",  # scheda in 12 lingue di scripts/genera_h2x.py
 }
 
 FAMILY_ORDER = ["H2", "G1", "R1", "R1-D", "G1-D", "Go2", "Go2W", "AS2", "A2", "A2W", "B2", "B2W", "Accessori"]
@@ -87,7 +88,7 @@ def product_family(sku: str, nome: str) -> str:
     return "Accessori"
 
 
-PRICE_FROM_SKUS = {"R1-D"}
+PRICE_FROM_SKUS = {"R1-D", "H2-X"}
 
 # Ricambi su ordinazione: niente "Disponibile" ne' tempi di consegna fissi, JSON-LD BackOrder
 ON_ORDER_SKUS = {

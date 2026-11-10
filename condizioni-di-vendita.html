@@ -53,9 +53,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -136,12 +134,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="container">
 <p class="eyebrow">Legale</p>
 <h1>Condizioni di vendita</h1>
-<p class="legal-updated">Condizioni generali di vendita e fornitura · Ultimo aggiornamento: 14 ottobre 2026</p>
+<p class="legal-updated">Condizioni generali di vendita e fornitura · Ultimo aggiornamento: 6 novembre 2026</p>
 </div>
 </section>
 <main class="legal">
 <div class="legal-note">
-<p><strong>In breve.</strong> Vendiamo principalmente ad aziende, università ed enti di ricerca. L'acquisto online con il pulsante "Acquista" è riservato ai clienti con Partita IVA; i consumatori possono acquistare su preventivo e mantengono tutti i diritti previsti dal Codice del Consumo (sezioni indicate come "Consumatori"). Le condizioni di un'offerta scritta prevalgono su queste condizioni generali.</p>
+<p><strong>In breve.</strong> Vendiamo principalmente ad aziende, università ed enti di ricerca. Il sito non consente l'acquisto diretto online: ogni ordine si conclude su preventivo, con un'Offerta scritta. I consumatori mantengono tutti i diritti previsti dal Codice del Consumo (sezioni indicate come "Consumatori"). Le condizioni di un'offerta scritta prevalgono su queste condizioni generali.</p>
 </div>
 <div class="legal-toc">
 <strong>Indice</strong>
@@ -183,7 +181,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <h2 id="ambito">2. Ambito di applicazione</h2>
 <p>2.1. Queste Condizioni Generali di Vendita ("Condizioni") si applicano a tutte le vendite di Prodotti e Servizi del Fornitore, concluse tramite il sito abrarobotics.com, via email o tramite Offerta. Eventuali condizioni del Cliente non si applicano se non accettate per iscritto dal Fornitore.</p>
 <p>2.2. In caso di contrasto, le condizioni particolari dell'Offerta o della Conferma d'ordine prevalgono su queste Condizioni.</p>
-<p>2.3. <strong>L'acquisto online tramite il pulsante "Acquista" è riservato ai Clienti Professionali.</strong> Effettuando l'ordine online il Cliente dichiara di agire per scopi professionali e indica la propria Partita IVA o codice identificativo IVA. Il Fornitore può rifiutare o annullare un ordine online privo di dati fiscali validi, rimborsando integralmente quanto pagato. Il Consumatore può acquistare chiedendo un preventivo.</p>
+<p>2.3. <strong>Ordini su preventivo.</strong> Il sito non consente l'acquisto diretto online: i prezzi pubblicati servono a orientare la scelta e l'ordine si conclude con l'accettazione di un'Offerta scritta del Fornitore. Il Cliente Professionale indica nell'ordine la propria Partita IVA o codice identificativo IVA; il Fornitore può rifiutare o annullare un ordine privo di dati fiscali validi, rimborsando integralmente quanto eventualmente pagato. Il Consumatore acquista allo stesso modo, chiedendo un preventivo.</p>
 <p>2.4. Le clausole indicate come riservate ai Clienti Professionali non si applicano ai Consumatori. Nessuna clausola di queste Condizioni limita i diritti che il Codice del Consumo riconosce ai Consumatori in modo inderogabile.</p>
 <p>2.5. Il Fornitore può modificare queste Condizioni. A ciascun contratto si applica la versione pubblicata alla data dell'ordine.</p>
 
@@ -194,7 +192,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <h2 id="ordine">4. Ordine e conclusione del contratto</h2>
 <p>4.1. <strong>Acquisto su Offerta.</strong> Il contratto si conclude quando il Fornitore riceve l'Offerta accettata e firmata dal Cliente e, se previsto, l'acconto. Il Fornitore invia la Conferma d'ordine con il riepilogo di Prodotti, Servizi, prezzi e tempi indicativi.</p>
-<p>4.2. <strong>Acquisto online.</strong> Il pagamento dell'ordine sul sito costituisce proposta d'acquisto. Il contratto si conclude con l'invio della Conferma d'ordine via email. Entro 5 giorni lavorativi dal pagamento il Fornitore può non accettare l'ordine, per esempio per indisponibilità del Prodotto presso il produttore, errore materiale nel prezzo, dati fiscali mancanti o restrizioni all'esportazione: in questo caso rimborsa integralmente l'importo pagato e non ha altri obblighi verso il Cliente.</p>
+<p>4.2. <strong>Mancata accettazione dell'ordine.</strong> Il contratto si conclude con l'invio della Conferma d'ordine via email. Entro 5 giorni lavorativi dal ricevimento dell'Offerta firmata o del pagamento il Fornitore può non accettare l'ordine, per esempio per indisponibilità del Prodotto presso il produttore, errore materiale nel prezzo, dati fiscali mancanti o restrizioni all'esportazione: in questo caso rimborsa integralmente l'importo pagato e non ha altri obblighi verso il Cliente.</p>
 <p>4.3. Il Fornitore invia al Cliente, su supporto durevole (email), il riepilogo dell'ordine e il link a queste Condizioni.</p>
 
 <h2 id="prezzi">5. Prezzi</h2>
@@ -205,8 +203,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p>5.5. Un prezzo palesemente errato per errore materiale (per esempio una cifra mancante) non vincola il Fornitore, che lo comunica al Cliente e, se il Cliente non accetta il prezzo corretto, annulla l'ordine rimborsando quanto pagato.</p>
 
 <h2 id="pagamenti">6. Pagamenti</h2>
-<p>6.1. Il Cliente può pagare con bonifico bancario, con carta tramite il circuito di pagamento Stripe o con le altre modalità indicate nell'Offerta (per esempio leasing o finanziamento). Il Fornitore non riceve né conserva i dati della carta.</p>
-<p>6.2. Gli acquisti online si pagano per intero al momento dell'ordine. Per gli acquisti su Offerta, salvo diverso accordo, il Cliente versa il 50% alla firma dell'Offerta e il saldo prima della spedizione.</p>
+<p>6.1. Il Cliente può pagare con bonifico bancario, con carta tramite il link di pagamento Stripe indicato nell'Offerta o con le altre modalità indicate nell'Offerta (per esempio leasing o finanziamento). Il Fornitore non riceve né conserva i dati della carta.</p>
+<p>6.2. Salvo diverso accordo indicato nell'Offerta, il Cliente versa il 50% alla firma dell'Offerta e il saldo prima della spedizione.</p>
 <p>6.3. <strong>Clienti Professionali.</strong> In caso di ritardo nel pagamento decorrono, senza bisogno di messa in mora, gli interessi moratori previsti dal D.Lgs. 231/2002 e il Fornitore ha diritto all'importo forfettario di 40 euro per i costi di recupero, salvo il maggior danno. Finché il pagamento non è completo, il Fornitore può sospendere consegne, Servizi e assistenza.</p>
 
 <h2 id="consegna">7. Consegna, trasporto e rischio</h2>
@@ -285,7 +283,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p>19.2. Per le controversie con Clienti Professionali è competente in via esclusiva il Foro di Pordenone. Per le controversie con Consumatori è competente il giudice del luogo di residenza o domicilio del Consumatore.</p>
 
 <h2 id="clausole">20. Approvazione specifica delle clausole</h2>
-<p>Ai sensi degli artt. 1341 e 1342 del Codice civile, il Cliente Professionale approva specificamente le seguenti clausole: 2.3 (acquisto online riservato e annullamento), 4.2 (mancata accettazione dell'ordine), 5.4 e 5.5 (adeguamento ed errori di prezzo), 6.3 (sospensione delle prestazioni), 7.2 (termini non essenziali ed esclusione di risarcimenti), 7.5 (decadenza per danni visibili), 8.3 (collaudo tacito), 10.1 e 10.3 (limiti, decadenze ed esclusioni della garanzia), 11.2 (esclusione del recesso e penale), 12.4 (obblighi di integrazione), 13 (software e servizi del produttore), 14 (rifiuto di ordini), 15 (limitazione di responsabilità), 16 (forza maggiore), 19 (legge applicabile e foro esclusivo).</p>
+<p>Ai sensi degli artt. 1341 e 1342 del Codice civile, il Cliente Professionale approva specificamente le seguenti clausole: 2.3 (ordini su preventivo, dati fiscali e annullamento), 4.2 (mancata accettazione dell'ordine), 5.4 e 5.5 (adeguamento ed errori di prezzo), 6.3 (sospensione delle prestazioni), 7.2 (termini non essenziali ed esclusione di risarcimenti), 7.5 (decadenza per danni visibili), 8.3 (collaudo tacito), 10.1 e 10.3 (limiti, decadenze ed esclusioni della garanzia), 11.2 (esclusione del recesso e penale), 12.4 (obblighi di integrazione), 13 (software e servizi del produttore), 14 (rifiuto di ordini), 15 (limitazione di responsabilità), 16 (forza maggiore), 19 (legge applicabile e foro esclusivo).</p>
 <p>Per qualsiasi chiarimento: <a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>.</p>
 </main>
 <!-- Footer -->

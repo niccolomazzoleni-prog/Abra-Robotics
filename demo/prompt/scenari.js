@@ -1,0 +1,96 @@
+// Due scenari pre-registrati. Testi, costi, tempi, spec e collaudi presi da progetti veri di ~/gemello
+// (runs/, demo/, data/registro_llm.jsonl). Dove un valore è illustrativo è scritto in `nota`.
+import { SCRIPT_PALLET } from "./script_reali.js";
+
+export const SCENARI = {
+  pallet: {
+    id: "pallet",
+    n: "01",
+    titolo: "Pallettizzazione scatole",
+    sotto: "fine linea · pallet EUR",
+    testo: "Pallettizzare scatole 600x400x300 mm da 18 kg su pallet EUR con un UR30, 4 strati",
+    allegati: [],
+    origine: "caso reale: una frase, capita a sole regole",
+    livelli: [
+      { st: "ok", costo: 0, sec: 0.02, nota: "pallet, scatola, quote, massa, robot, strati: tutto nel testo", esito: "capito · 0 $" },
+      { st: "no", costo: 0, sec: 0, nota: "non serve", esito: "non serve" },
+      { st: "no", costo: 0, sec: 0, nota: "non serve", esito: "non serve" },
+    ],
+    spec: [
+      ["processo", "pallettizzazione", "regole"],
+      ["pezzo", "scatola 600×400×300 mm", "testo"],
+      ["massa", "18 kg", "testo"],
+      ["pallet", "EUR 1200×800", "testo"],
+      ["strati", "4 · schema 2×2", "testo"],
+      ["robot", "UR30", "testo"],
+      ["pinza", "ventosa 4 coppe Ø56", "calcolo"],
+      ["alimentazione", "rulliera, 0,35 m/s", "calcolo"],
+      ["payload", "20 kg su 30 kg (67%)", "calcolo"],
+    ],
+    cella: "UR30 · ventosa 4 coppe · pallet EUR 1200×800",
+    pezzi: 8, unita: "scatole · strati 1–2",
+    cicloReale: 12.6, cicloTxt: "12,6 s / scatola",
+    file: "pallettizzazione.script",
+    script: SCRIPT_PALLET,
+    codiceNota: "URScript generato dalla pipeline, copia del file reale",
+    clip: { src: "asset/sim_pallet.mp4", poster: "asset/sim_pallet.jpg", label: "replay del collaudo · Newton + MuJoCo · Blender Cycles" },
+    verifica: [
+      ["ok", "scatole posate", "4/4 primo strato · cadute 0"],
+      ["ok", "errore di posa max", "0,03 mm"],
+      ["ok", "tenuta ventosa", "591 N · sicurezza 3,3"],
+      ["ok", "payload robot", "20 kg su 30 kg"],
+      ["ok", "carico pallet", "288 kg su 1000 kg"],
+      ["ok", "cadenza", "4,78 scatole/min"],
+      ["warn", "raggiungibilità", "10/16 posizioni: strati 3–4 da rivedere"],
+    ],
+    fonteVerifica: "esito.json del collaudo reale (58,8 s simulati)",
+  },
+  cnc: {
+    id: "cnc",
+    n: "02",
+    titolo: "Asservimento tornio CNC",
+    sotto: "carico grezzo, scarico finito",
+    testo: "Carico e scarico tornio CNC, pezzi tondi d50 lunghi 120 mm in acciaio, 40 pezzi/ora",
+    allegati: [],
+    origine: "caso reale dal banco sintetico del 1 novembre",
+    livelli: [
+      { st: "su", costo: 0, sec: 0.01, nota: "tornio e quote sì, «pezzi tondi» no: pezzo non riconosciuto", esito: "incerto → sale" },
+      { st: "ok", costo: 0.0017, sec: 8.1, nota: "DeepSeek v4.1 flash · confidenza 0,9", esito: "capito" },
+      { st: "no", costo: 0, sec: 0, nota: "non serve", esito: "non serve" },
+    ],
+    spec: [
+      ["processo", "asservimento_cnc", "L1"],
+      ["pezzo", "grezzo tondo Ø50×120 acciaio", "L1"],
+      ["massa", "1,85 kg", "calcolo"],
+      ["cadenza", "40 pezzi/ora", "testo"],
+      ["robot", "UR10e (portata 12,5 kg)", "calcolo"],
+      ["pinza", "Robotiq 2F-85 · 55 N", "calcolo"],
+      ["cella", "m_ur10e_cnc · porta + morsa", "calcolo"],
+      ["alimentazione", "vassoio, pezzi orientati", "calcolo"],
+    ],
+    cella: "UR10e · Robotiq 2F-85 · CNC con porta automatica",
+    pezzi: 8, unita: "pezzi lavorati",
+    cicloReale: 32, cicloTxt: "25–40 s / pezzo (stima)",
+    file: "asservimento_cnc.script",
+    script: null, // scritto dai punti della cella (vedi app.js)
+    codiceNota: "URScript ricostruito per la demo dai punti della cella",
+    clip: { src: "asset/sim_cnc.mp4", poster: "asset/sim_cnc.jpg", label: "cella_main · Isaac Lab PhysX · cella CM-18 di partenza" },
+    verifica: [
+      ["ok", "grezzi caricati · finiti scaricati", "8/8 · 8/8"],
+      ["ok", "interblocchi porta e morsa", "rispettati"],
+      ["ok", "collisioni", "0"],
+      ["ok", "raggiungibilità", "vassoio, morsa, vaschetta"],
+      ["ok", "payload", "3,5 kg su 12,5 kg"],
+      ["ok", "tempo ciclo", "≈ 32 s · margine su 90 s"],
+      ["warn", "non simulato", "asportazione di truciolo"],
+    ],
+    fonteVerifica: "valori indicativi: cella di partenza collaudata in cella_main, questo lotto non simulato",
+  },
+};
+
+export const BANCO = [
+  ["16 richieste reali", "solo regole", "15/16", 15 / 16, "0 $"],
+  ["16 richieste reali", "modello economico", "16/16", 1, "0,01 $"],
+  ["27 casi sintetici", "modello economico", "27/27", 1, "0,02 $"],
+  ["12 input «cattivi»", "senza errori", "12/12", 1, ""],
+];

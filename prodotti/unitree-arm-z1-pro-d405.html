@@ -126,9 +126,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,"script",
+  n.queue=[];f.abraLoadPixel=function(){if(f.__abraPx)return;f.__abraPx=1;var t=b.createElement(e);t.async=!0;t.src=v;var s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)};if(f.abraConsent&&f.abraConsent.marketing)f.abraLoadPixel()}(window,document,"script",
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("consent",window.abraConsent&&window.abraConsent.marketing?"grant":"revoke");fbq("init","1478056171004711");
   fbq("track","PageView");
@@ -227,7 +225,6 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
         <div class="product-info">
           <p class="label">MANI · BRACCI</p>
           <h1 class="product-title">Unitree Z1 Pro con pinza e telecamera D405</h1>
-<p class="hub-link" style="margin:.4rem 0 1rem"><a href="../z1.html">Tutte le versioni Unitree Z1 e D1 a confronto, con prezzi →</a></p>
           <p class="product-subtitle">Questo prodotto adotta tutti i parametri di Z1 Pro manipolatore e è dotato di Z1 D405 pinza che mantiene…</p>
           <div class="key-specs-grid">            <div class="key-spec"><span class="key-spec-value">Z1 / D1</span><span class="key-spec-label">Famiglia / compatibilità</span></div>
             <div class="key-spec"><span class="key-spec-value">Mano / pinza / braccio</span><span class="key-spec-label">Tipo</span></div></div>
@@ -362,7 +359,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="../privacy-policy.html">Privacy Policy</a>
 <a href="../cookie-policy.html">Cookie Policy</a>
