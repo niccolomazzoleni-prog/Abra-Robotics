@@ -5,8 +5,8 @@ import { LAYOUT } from './scene.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const HALF = Math.PI / 2;
-const qGrip = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.75, yaw, 'ZYX'));
-const qPress = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.15, yaw, 'ZYX'));
+const qGrip = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.35, yaw, 'ZYX'));
+const qPress = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.35, yaw, 'ZYX'));
 
 // posizione "in mano" durante il trasporto, nel riferimento del bacino
 function carry(tl, side = 'R') {
@@ -17,12 +17,15 @@ function carry(tl, side = 'R') {
   };
 }
 
+// orientamento della mano in trasporto: segue il busto (non resta fisso nel mondo mentre il robot gira)
+const carryQ = tl => t => qGrip(tl.basePose(t).yaw);
+
 // presa della cassetta dal tavolo; ritorna i tempi chiave
 function pickToolbox(tl) {
   const B = LAYOUT.box, T = LAYOUT.table;
   const handle = V(B.x, B.y, T.h + B.H + B.hh);
   const t0 = tl.t;
-  tl.walk(B.x - 0.13, 0.8, HALF);
+  tl.walk(B.x - 0.13, 0.74, HALF);
   const tA = tl.t;
   tl.hand('R', 0.15, handle.clone().add(V(0.02, -0.12, 0.16)), 0, qGrip(HALF));
   tl.hand('R', 1.05, handle.clone().add(V(0, -0.02, 0.14)), 1, qGrip(HALF));
@@ -38,10 +41,10 @@ function pickToolbox(tl) {
 function placeAt(tl, standX, standY, dropP, label) {
   const high = label === 'scatola' ? 0.26 : 0.1;
   const t0 = tl.t;
-  tl.hand('R', 0.0, carry(tl), 1, qGrip(0));
+  tl.hand('R', 0.7, carry(tl), 1, carryQ(tl));
   tl.walk(standX, standY, -HALF);
   const tA = tl.t;
-  tl.hand('R', 0.0, carry(tl), 1, qGrip(-HALF));
+  tl.hand('R', 0.0, carry(tl), 1, carryQ(tl));
   tl.hand('R', 0.9, dropP.clone().add(V(0, 0.05, high)), 1, qGrip(-HALF));
   tl.hand('R', 1.6, dropP.clone(), 1, qGrip(-HALF));
   tl.ev(1.75, 'release', { obj: 'cassetta', where: label, p: dropP.clone() });
