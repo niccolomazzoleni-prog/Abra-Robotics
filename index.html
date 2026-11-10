@@ -1659,6 +1659,22 @@ body.has-wa-bar { padding-bottom: 60px; }
 .wa-bar a.wa-btn svg path{fill:#04130a}
 .wa-bar-close{color:#9a9a9a}
 @media (max-width:520px){.wa-bar p{display:none}.wa-bar{justify-content:center}}
+
+/* Nov 2026: barra loghi che scorre, CTA prenota chiamata anche da mobile, barra WhatsApp */
+.proof .wrap{flex-wrap:nowrap}
+.proof-marquee{flex:1 1 auto;min-width:0;overflow:hidden;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.proof-track{display:flex;align-items:center;width:max-content;animation:proof-scroll 32s linear infinite}
+.proof-track img{flex:0 0 auto;margin-right:56px}
+.proof-marquee:hover .proof-track{animation-play-state:paused}
+@keyframes proof-scroll{from{transform:translateX(0)}to{transform:translateX(-25%)}}
+@media (prefers-reduced-motion:reduce){.proof-track{animation-duration:90s}}
+@media (max-width:640px){.proof .wrap{flex-direction:column;align-items:flex-start;gap:16px}.proof-marquee{width:100%}.proof-track{animation-duration:24s}.proof-track img{margin-right:40px}}
+@media (max-width:1180px){.nav-cta{display:flex!important}.nav-cta .cta-long{display:none}}
+@media (max-width:640px){.nav-right{gap:8px}.nav-cta .btn,.nav-cta .btn:last-child{display:inline-flex;height:36px;padding:0 13px;font-size:13px}.nav-cta .btn svg{display:none}.logo img{width:108px}}
+@media (max-width:360px){.nav-cta .btn{padding:0 10px;font-size:12px}.logo img{width:96px}}
+.wa-bar a.wa-btn{gap:8px!important;background:#5fe39a!important}
+.wa-bar a.wa-btn:hover{background:#7deaae!important}
+@media (max-width:600px){.wa-bar a.wa-btn{gap:7px!important;padding:8px 16px}.wa-bar a.wa-btn svg{width:16px;height:16px;flex:0 0 auto}}
 </style>
 </head>
 <body>
@@ -1706,7 +1722,7 @@ body.has-wa-bar { padding-bottom: 60px; }
       </div>
       <div class="nav-right">
         <div class="nav-cta btn-group">
-          <a class="btn btn-light" href="#contatti">Richiedi un confronto tecnico <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-light" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" target="_blank" rel="noopener noreferrer">Prenota una chiamata<span class="cta-long"> conoscitiva</span> <svg><use href="#i-arrow"/></svg></a>
         </div>
         <button class="nav-burger" id="navBurger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
       </div>
@@ -1716,10 +1732,10 @@ body.has-wa-bar { padding-bottom: 60px; }
   <div class="hero-inner">
     <div class="wrap">
       <div>
-        <h1><span class="hero-kicker">Robot Unitree, cobot e AMR in Italia</span> Il partner tecnologico per l'adozione <span class="grad">della robotica avanzata</span> nelle imprese.</h1>
+        <h1>Il partner tecnologico per l'adozione <span class="grad">della robotica avanzata</span> nelle imprese.</h1>
         <p>Affianchiamo i team Innovation, R&amp;D e Automazione aiutandoli ad integrare la robotica industriale nei processi logistici e produttivi, un passo alla volta.</p>
         <div class="btn-group">
-          <a class="btn btn-light" href="#contatti">Richiedi un confronto tecnico <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-light" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" target="_blank" rel="noopener noreferrer">Prenota una chiamata conoscitiva <svg><use href="#i-arrow"/></svg></a>
           <a class="btn btn-ghost" href="#catalogo">Scopri i robot <svg><use href="#i-arrow"/></svg></a>
         </div>
       </div>
@@ -1732,11 +1748,29 @@ body.has-wa-bar { padding-bottom: 60px; }
   <div class="wrap">
     <span class="proof-label"><i class="dot"></i>Clienti e partner</span>
     <!-- Per aggiungere un partner: copiare una riga <img> con il logo in logos/ -->
-    <div class="proof-logos">
-      <img src="logos/unitree.svg" alt="Unitree" width="120" height="24"/>
-      <img src="logos/cyberwave.svg" alt="Cyberwave" width="130" height="24"/>
-      <img src="logos/ciga.webp" alt="CIGA Group" width="110" height="24"/>
-      <img src="logos/eagleprojects.svg" alt="Eagle Project" width="140" height="24"/>
+    <div class="proof-logos proof-marquee">
+      <div class="proof-track">
+        <img src="logos/unitree.svg" alt="Unitree" width="120" height="24"/>
+        <img src="logos/cyberwave.svg" alt="Cyberwave" width="130" height="24"/>
+        <img src="logos/ciga.webp" alt="CIGA Group" width="110" height="24"/>
+        <img src="logos/eagleprojects.svg" alt="Eagle Project" width="140" height="24"/>
+        <img src="logos/yuma.svg" alt="YUMA" width="103" height="24"/>
+        <img src="logos/unitree.svg" alt="" data-alt="Unitree" width="120" height="24" aria-hidden="true"/>
+        <img src="logos/cyberwave.svg" alt="" data-alt="Cyberwave" width="130" height="24" aria-hidden="true"/>
+        <img src="logos/ciga.webp" alt="" data-alt="CIGA Group" width="110" height="24" aria-hidden="true"/>
+        <img src="logos/eagleprojects.svg" alt="" data-alt="Eagle Project" width="140" height="24" aria-hidden="true"/>
+        <img src="logos/yuma.svg" alt="" data-alt="YUMA" width="103" height="24" aria-hidden="true"/>
+        <img src="logos/unitree.svg" alt="" data-alt="Unitree" width="120" height="24" aria-hidden="true"/>
+        <img src="logos/cyberwave.svg" alt="" data-alt="Cyberwave" width="130" height="24" aria-hidden="true"/>
+        <img src="logos/ciga.webp" alt="" data-alt="CIGA Group" width="110" height="24" aria-hidden="true"/>
+        <img src="logos/eagleprojects.svg" alt="" data-alt="Eagle Project" width="140" height="24" aria-hidden="true"/>
+        <img src="logos/yuma.svg" alt="" data-alt="YUMA" width="103" height="24" aria-hidden="true"/>
+        <img src="logos/unitree.svg" alt="" data-alt="Unitree" width="120" height="24" aria-hidden="true"/>
+        <img src="logos/cyberwave.svg" alt="" data-alt="Cyberwave" width="130" height="24" aria-hidden="true"/>
+        <img src="logos/ciga.webp" alt="" data-alt="CIGA Group" width="110" height="24" aria-hidden="true"/>
+        <img src="logos/eagleprojects.svg" alt="" data-alt="Eagle Project" width="140" height="24" aria-hidden="true"/>
+        <img src="logos/yuma.svg" alt="" data-alt="YUMA" width="103" height="24" aria-hidden="true"/>
+      </div>
     </div>
   </div>
 </section>
