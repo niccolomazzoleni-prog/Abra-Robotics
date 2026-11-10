@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Scheda Unitree H2-X in tutte le lingue del sito, con le sei configurazioni e i prezzi.
+"""Scheda Unitree H2-X in tutte le lingue del sito, con le configurazioni e i prezzi (listino barrato e scontato).
 
 - IT: prodotti/unitree-h2-x.html            (layout scheda prodotto, chrome da prodotti/unitree-g1-pro.html)
 - EN: en/prodotti/unitree-h2-x-en.html      (layout scheda prodotto, chrome da en/prodotti/unitree-g1-edu-plus-en.html)
 - DE FR NL DA SV NO FI ES PL CS: <codice>/unitree-h2-x.html (layout delle pagine lingua, chrome di genera_lingue.py)
-Prezzo "da" = H2-X Air (voce H2-X in end-user.json); la tabella mostra Air, EDU e le composizioni di mani fino al Full Setup.
+Prezzo "da" = H2-X Air (voce H2-X in end-user.json); la tabella mostra Air, EDU e le composizioni di mani,
+ognuna con il prezzo di listino barrato e il prezzo scontato.
 JSON-LD con offerta in preordine (PreOrder). Testi e configurazioni: scripts/h2x_testi.py.
 Idempotente. Uso: python3 scripts/genera_h2x.py   (Python >= 3.12, come genera_lingue.py)
 """
@@ -20,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from g1_plus_testi import T as G1P  # noqa: E402  stringhe d'interfaccia IT/EN (pulsanti, form, vantaggi)
-from h2x_testi import CONFIGS, HAND_OF, LANGS, SOURCE_PAGE, SOURCE_VIDEO, T  # noqa: E402
+from h2x_testi import CONFIGS, LANGS, SOURCE_PAGE, SOURCE_VIDEO, T  # noqa: E402
 from genera_hub_modelli import CAL, SITE  # noqa: E402
 from genera_lingue import chrome, cta, head as lang_head, money  # noqa: E402
 
@@ -37,7 +38,8 @@ LANG_NAMES = {"it": "Italiano", "en": "English"}
 VALID_UNTIL = "2027-06-30"
 
 H2X_CSS = """<style id="h2x-css">
-.h2x-table td:first-child{white-space:nowrap}
+.h2x-table td:first-child,.h2x-table td.p{white-space:nowrap}
+.h2x-was{display:block;font-size:.8rem;font-weight:400;color:var(--gray-500,#737373)}
 .h2x-table tr:target td{background:var(--gray-50,#fafafa)}
 .h2x-specs td:first-child{color:var(--gray-600);min-width:180px}
 .h2x-notes{font-size:.85rem;color:var(--gray-600);margin-top:12px;line-height:1.5}
@@ -83,7 +85,7 @@ def lang_names() -> dict[str, str]:
 
 
 def prices(code: str) -> dict[str, str]:
-    """Prezzo di ogni configurazione nel formato della lingua."""
+    """Prezzo scontato ({k}) e di listino ({k}_l) di ogni configurazione, nel formato della lingua."""
     if code == "it":
         fmt = lambda x: f"{x:,.0f}".replace(",", ".") + " €"  # noqa: E731
     elif code == "en":
@@ -91,7 +93,9 @@ def prices(code: str) -> dict[str, str]:
     else:
         d = lang_data(code)
         fmt = lambda x: money(x, d)  # noqa: E731
-    return {k: fmt(p) for k, _, p in CONFIGS}
+    out = {k: fmt(p) for k, _, p, _ in CONFIGS}
+    out.update({k + "_l": fmt(lp) for k, _, _, lp in CONFIGS})
+    return out
 
 
 def fill(s: str, P: dict[str, str]) -> str:
@@ -124,14 +128,15 @@ def includes(code: str, key: str) -> str:
     t = T[code]
     if key in ("air", "edu"):
         return t["inc_" + key]
-    s = t["inc_hand"].format(h=t["hands"][HAND_OF.get(key, key)])
-    return s + " " + t["inc_full"] if key == "full" else s
+    s = t["inc_hand"].format(h=t["hands"][key])
+    return s + " " + t["inc_full"] if key == CONFIGS[-1][0] else s
 
 
 def configs_table(code: str, P: dict[str, str], price_col: str) -> str:
     t = T[code]
-    rows = "".join(f'<tr id="h2x-{k}"><td><strong>{esc(n)}</strong></td><td>{esc(includes(code, k))}</td><td class="p">{esc(P[k])}</td></tr>'
-                   for k, n, _ in CONFIGS)
+    rows = "".join(f'<tr id="h2x-{k}"><td><strong>{esc(n)}</strong></td><td>{esc(includes(code, k))}</td>'
+                   f'<td class="p"><s class="h2x-was" title="{esc(t["was"])}">{esc(P[k + "_l"])}</s>{esc(P[k])}</td></tr>'
+                   for k, n, _, _ in CONFIGS)
     return (f'<p>{esc(t["cfg_intro"])}</p><div class="hm-wrap"><table class="hm-table h2x-table"><thead><tr>'
             f'<th>{esc(t["cols"][0])}</th><th>{esc(t["cols"][1])}</th><th>{esc(price_col)}</th></tr></thead><tbody>{rows}</tbody></table></div>'
             + '<div class="h2x-notes">' + "<br>".join(esc(n) for n in t["cfg_notes"]) + "</div>")
@@ -234,6 +239,7 @@ def product_page(code: str) -> str:
     perks = "".join(f'<li><span class="bp-ico">✓</span> {esc(p)}</li>' for p in ui["perks"])
     f = dict(ui["form"], msg=t["form_msg"])
     price_from = t["price_label"].replace("{p}", P["air"])
+    top = CONFIGS[-1]
     main = f"""<section class="product-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -267,7 +273,7 @@ def product_page(code: str) -> str:
           <p class="product-desc">{esc(t['lead'])}</p>
           <div class="buy-box">
             <div class="buy-box-head">
-              <div class="buy-box-price"><span class="buy-box-amount" style="font-size:1.5rem;">{esc(price_from)}</span><span class="buy-box-sub">H2-X Air → H2-X Full Setup ({esc(P['full'])})</span></div>
+              <div class="buy-box-price"><span class="buy-box-was">{esc(t['was'])} <s>{esc(P['air_l'])}</s></span><span class="buy-box-amount" style="font-size:1.5rem;">{esc(price_from)}</span><span class="buy-box-sub">H2-X Air → {esc(top[1])} ({esc(P[top[0]])})</span></div>
             </div>
             <ul class="buy-box-perks">
               {perks}
@@ -328,6 +334,7 @@ def lang_page(code: str) -> str:
                                                 for k, p in GALLERY if k in ("main", "batt", "run")) + "</div>"
     cta_html = cta(d).replace('<section class="section section-cta">', '<section class="section section-cta" id="quote">', 1)
     price_from = f'{u["from"].replace("{p}", P["air"])} {u["excl_vat"]}'
+    top = CONFIGS[-1]
     main = f"""<!-- HERO -->
 <section class="collection-hero">
 <div class="container">
@@ -338,7 +345,7 @@ def lang_page(code: str) -> str:
 <div class="hero-meta">
 {keys}
 </div>
-<p class="h2x-price"><strong>{esc(price_from)}</strong> · H2-X Air → H2-X Full Setup ({esc(P['full'])})</p>
+<p class="h2x-price"><span class="h2x-was">{esc(t['was'])} <s>{esc(P['air_l'])}</s></span><strong>{esc(price_from)}</strong> · H2-X Air → {esc(top[1])} ({esc(P[top[0]])})</p>
 <p>{esc(t['price_note'])} <a href="#quote">{esc(u['quote_title'])} →</a></p>
 </div>
 </section>
