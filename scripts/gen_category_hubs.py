@@ -8,7 +8,8 @@ Struttura di ogni pagina, come Umanoidi:
   poi tutto il resto della pagina (tabelle, guide, video, FAQ) invariato, sotto le famiglie.
 
 I prezzi non sono mai preceduti da "da" / "a partire da": le schede mostrano il prezzo del modello.
-Uso: python3 scripts/gen_category_hubs.py   (si può rilanciare: le parti generate sono marcate)
+Uso: python3 scripts/gen_category_hubs.py   (costruzione iniziale)
+     python3 scripts/gen_category_hubs.py --liste   (pagina gia' costruita: aggiorna solo le liste "Altre configurazioni")
 """
 import html
 import json
@@ -20,7 +21,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from gen_umanoidi_hub import STYLE, eur  # noqa: E402
+from gen_umanoidi_hub import STYLE, eur, elenco, voce  # noqa: E402
 
 LISTINO = json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8"))
 
@@ -106,11 +107,33 @@ def listino_items(rx):
 
 
 def item_link(v):
-    listino = v.get("prezzo_listino_eur")
-    barrato = (f'<s class="fam-map" title="Prezzo di listino">{eur(listino)} €</s>'
-               if listino and listino > v["prezzo_eur"] else "")
-    return (f'<a class="fam-item" href="prodotti/{v["slug"]}"><span class="fam-item-name">{html.escape(v["nome"])}</span>'
-            f'<span class="fam-item-price">{barrato}<strong>{eur(v["prezzo_eur"])} €</strong></span></a>')
+    return voce(None, v)
+
+
+def aggiorna_liste(path):
+    """Riscrive in una pagina gia' generata le liste "Altre configurazioni" (schede con miniatura) e lo stile,
+    senza ricostruire la pagina. Idempotente. Uso: python3 scripts/gen_category_hubs.py --liste"""
+    t = (ROOT / path).read_text(encoding="utf-8")
+    by_slug = {v["slug"]: v for v in LISTINO.values() if v.get("slug")}
+    soup = BeautifulSoup(t, "html.parser")
+    for h3 in soup.select("h3.fam-serie"):
+        lst = h3.find_next_sibling()
+        if lst is None or "fam-list" not in (lst.get("class") or []):
+            continue
+        slugs = [a["href"].split("/")[-1] for a in lst.select("a[href]")]
+        nxt = lst.find_next_sibling()
+        if nxt is not None and "fam-more" in (nxt.get("class") or []):
+            slugs += [a["href"].split("/")[-1] for a in nxt.select("a[href]")]
+            nxt.decompose()
+        items = [(None, by_slug[s]) for s in slugs if s in by_slug]
+        if len(items) != len(slugs):
+            continue
+        lst.replace_with(frag(elenco(items)))
+    st = soup.select_one("style#hub-style")
+    if st is not None:
+        st.replace_with(frag(STYLE))
+    (ROOT / path).write_text(str(soup), encoding="utf-8")
+    print(path, "liste aggiornate")
 
 
 def first_img(nodes):
@@ -203,8 +226,8 @@ def build(path, cfg):
             f'<div class="fam-head"><div><h2>{f["name"]}</h2><p class="fam-head-claim">{f["claim"]}</p></div>'
             f'<div class="fam-head-side"><img src="{img}" alt="{html.escape(f["name"])}" loading="lazy">{side_btn}</div></div>'
             f'<div class="fam-body"></div>'
-            + (f'<h3 class="fam-serie">Altre configurazioni <span>{len(extra)}</span></h3><div class="fam-list">'
-               + "".join(item_link(v) for _, v in extra) + "</div>" if extra else "")
+            + (f'<h3 class="fam-serie">Altre configurazioni <span>{len(extra)}</span></h3>'
+               + elenco(extra) if extra else "")
             + '<p class="fam-back"><a href="#famiglie">↑ Torna alle famiglie</a></p></div></section>')
         body = sec.select_one(".fam-body")
         if cfg["grid"] == "filters":
@@ -249,5 +272,8 @@ def build(path, cfg):
 
 
 if __name__ == "__main__":
-    for p, c in PAGES.items():
-        build(p, c)
+    if "--liste" in sys.argv:   # pagine gia' generate: aggiorna solo le liste di schede e lo stile
+        aggiorna_liste("quadrupedi.html")
+    else:
+        for p, c in PAGES.items():
+            build(p, c)
