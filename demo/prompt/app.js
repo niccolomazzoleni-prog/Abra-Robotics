@@ -10,6 +10,8 @@ import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js"
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { SCENARI, BANCO } from "./scenari.js";
 import { cellaPallet, cellaCnc, materiali } from "./cell.js";
+import { costruisci } from "./interprete.js";
+const CALL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF";
 
 const $ = (s) => document.querySelector(s);
 const qs = new URLSearchParams(location.search);
@@ -110,19 +112,22 @@ function setItem(it, t0, t) { // 0..0.5 filo · 0.5..1 solido
 }
 
 // ---------------------------------------------------------------- URScript per la cella CNC (dai punti del piano)
-function scriptCnc(cell) {
+const PAR_CNC_RIF = { d: 50, Lp: 120, mat: "acciaio", massa: 1.8498, rate: 40, forza: 55 };
+function scriptCnc(cell, par = PAR_CNC_RIF) {
+  const dTxt = num(par.d, par.d % 1 ? 1 : 0).replace(",", "."), lTxt = num(par.Lp, par.Lp % 1 ? 1 : 0).replace(",", ".");
+  const presa = Math.min(85, Math.max(5, Math.round(par.d - 4)));
   const inv = cell.kin.base.clone().multiply(new THREE.Matrix4().makeRotationZ(Math.PI)).invert(); // frame "base" di URScript
   const P = ([x, y, z]) => { const v = new THREE.Vector3(x, y, z).applyMatrix4(inv); return `p[${v.x.toFixed(4)}, ${v.y.toFixed(4)}, ${v.z.toFixed(4)}, 0.0000, 3.1416, 0.0000]`; };
   const up = ([x, y, z], d = 0.12) => [x, y, z + d];
   const L = [
     "def gemello_asservimento_cnc():",
     "  # generato da gemello: UR10e + Robotiq 2F-85, cella m_ur10e_cnc (CM-18), porta automatica e morsa",
-    "  # grezzo tondo D50x120 mm acciaio, 1,85 kg; cadenza richiesta 40 pezzi/ora (90 s per pezzo)",
+    `  # grezzo tondo D${dTxt}x${lTxt} mm ${par.mat}, ${num(par.massa, 2)} kg; cadenza richiesta ${num(par.rate, par.rate % 1 ? 1 : 0)} pezzi/ora (${Math.round(3600 / par.rate)} s per pezzo)`,
     "  # I/O ipotizzati: DI2 porta aperta, DI3 fine ciclo, DO2 apri porta, DO3 morsa chiusa, DO4 avvio",
     "  set_tcp(p[0, 0, 0.172, 0, 0, 0])",
     "  set_payload(1.00, [0, 0, 0.06])",
     "  def pinza(mm):",
-    "    rq_set_force_norm(55)",
+    `    rq_set_force_norm(${par.forza})`,
     "    rq_move_and_wait_mm(mm)",
     "  end",
     "  def porta(aperta):",
@@ -134,8 +139,8 @@ function scriptCnc(cell) {
     "  def prendi(sopra, posa):",
     "    movel(sopra, a=0.8, v=0.5)",
     "    movel(posa, a=0.4, v=0.12)",
-    "    pinza(46)                 # si ferma sul tondo D50",
-    "    set_payload(2.85, [0, 0, 0.08])",
+    `    pinza(${presa})                 # si ferma sul tondo D${dTxt}`,
+    `    set_payload(${(1 + par.massa).toFixed(2)}, [0, 0, 0.08])`,
     "    movel(sopra, a=0.4, v=0.15)",
     "  end",
     "  def carica(fuori, sopra, posa):",
@@ -162,7 +167,7 @@ function scriptCnc(cell) {
     "  def scarica(sopra, posa, fuori, vaschetta):",
     "    movel(sopra, a=0.6, v=0.3)",
     "    movel(posa, a=0.3, v=0.06)",
-    "    pinza(46)",
+    `    pinza(${presa})`,
     "    set_standard_digital_out(3, False)  # morsa apre",
     "    movel(sopra, a=0.4, v=0.15)",
     "    movel(fuori, a=0.8, v=0.4)",
@@ -175,7 +180,7 @@ function scriptCnc(cell) {
   ];
   const { src, vise, fuori } = cell.pts;
   src.forEach((s, k) => {
-    const bx = 0.25 + ((k % 4) - 1.5) * 0.06;
+    const bx = 0.25 + ((k % 4) - 1.5) * cell.pts.pitchB;
     L.push(`  # pezzo ${k + 1}: vassoio posto ${k + 1} -> morsa -> vaschetta B`);
     L.push(`  prendi(${P(up(s))}, ${P(s)})`);
     L.push(`  carica(${P(fuori)}, ${P(up(vise))}, ${P(vise)})`);
@@ -202,6 +207,24 @@ function cella(id) {
   c.root.visible = false; world.add(c.root);
   window.__ik = Object.assign(window.__ik || {}, { [id]: [+c.piano.errMax.toFixed(5), c.piano.bad] }); document.body.dataset.ik = JSON.stringify(window.__ik);
   return (CELLE[id] = c);
+}
+
+// cella costruita dalla frase dell'utente: una sola alla volta, la precedente si smaltisce
+function cellaDin(id, din) {
+  const old = CELLE._din;
+  if (old) {
+    world.remove(old.root);
+    old.root.traverse((o) => { if (o.geometry) { const eg = edgeCache.get(o.geometry.uuid); if (eg) { eg.dispose(); edgeCache.delete(o.geometry.uuid); } o.geometry.dispose(); } });
+    old.items2.forEach((it) => { it.mats.forEach((m) => m.dispose()); it.lm.dispose(); });
+    delete CELLE._din;
+  }
+  const c = id === "pallet" ? cellaPallet(MAT, glb.ur30, din.par) : cellaCnc(MAT, glb.ur10e_2f85, din.par);
+  c.items2 = prepItems(c);
+  c.script = din.scen.script || scriptCnc(c, din.par);
+  c.lmap = c.lineMap(c.script);
+  c.root.visible = false; world.add(c.root);
+  window.__ik = Object.assign(window.__ik || {}, { din: [+c.piano.errMax.toFixed(5), c.piano.bad] }); document.body.dataset.ik = JSON.stringify(window.__ik);
+  return (CELLE._din = c);
 }
 
 // ---------------------------------------------------------------- UI statica
@@ -236,20 +259,23 @@ function chips(s) {
   const all = [...(s ? s.allegati : []), ...chipsExtra];
   $("#chips").innerHTML = all.map((a) => `<span class="chip"><b>${a.tipo}</b>${esc(a.nome)} <i>${esc(a.meta || "")}</i></span>`).join("");
 }
-function scegli(id, testo) {
-  scen = SCENARI[id];
-  document.querySelectorAll(".es").forEach((b) => b.classList.toggle("on", b.dataset.s === id));
+function scegli(id, testo, din) {
+  scen = din ? din.scen : SCENARI[id];
+  document.querySelectorAll(".es").forEach((b) => b.classList.toggle("on", !din && b.dataset.s === id));
   $("#prompt").value = testo ?? scen.testo;
   chips(scen);
-  for (const k in CELLE) CELLE[k].root.visible = k === id;
-  cell = cella(id); cell.root.visible = true;
+  for (const k in CELLE) CELLE[k].root.visible = false;
+  cell = din ? cellaDin(id, din) : cella(id); cell.root.visible = true;
+  document.body.dataset.stima = scen.stima ? "1" : "";
+  $("#fl-r").textContent = din ? "capito a sole regole · 0 $" : "i modelli lavorano solo in «capire»";
   $("#vp-cella").textContent = scen.cella;
   $("#code-file").textContent = scen.file;
   $("#code-nota").innerHTML = `<span>${scen.codiceNota}</span><span>${cell.script.split("\n").length} righe · URScript</span>`;
   $("#hud-unita").textContent = scen.unita; els.hudTot.textContent = cell.n;
   $("#hud-ciclo").textContent = scen.cicloTxt;
-  $("#clip-l").textContent = scen.clip.label;
-  els.clip.poster = scen.clip.poster; els.clip.src = scen.clip.src; els.clip.parentElement.classList.remove("on");
+  if (scen.clip) { $("#clip-l").textContent = scen.clip.label; els.clip.poster = scen.clip.poster; els.clip.src = scen.clip.src; }
+  else { els.clip.removeAttribute("poster"); els.clip.removeAttribute("src"); }
+  els.clip.parentElement.classList.remove("on");
   $("#ver-f").textContent = scen.fonteVerifica;
   els.checks.innerHTML = scen.verifica.map(([k, a, b]) => `<li class="${k}"><b>${k === "ok" ? "OK" : "VEDI"}</b><span>${a}<em>${b}</em></span></li>`).join("");
   // codice: una riga DOM per riga di programma
@@ -278,27 +304,63 @@ function programma(s, regia) {
   const robot0 = build0 + buildDur + 0.5;
   return { lv, spec0, step, spec1, build0, buildDur, code0, codeDur, robot0, ver0: robot0 + 2.2, tscale: regia ? 1.5 : 1 };
 }
-function genera(id, testo) {
+function genera(id, testo, din) {
   if (!glb.ur10e_2f85) return;
-  scegli(id, testo);
+  scegli(id, testo, din);
   sched = programma(scen, REGIA);
   T0 = now(); lastTxt = {}; cell.items2.forEach((it) => (it.phase = -1));
   els.lv.forEach((e) => { e.className = "lv"; e._s = ""; });
   $("#genera").classList.add("run");
   if (!REGIA) els.clip.pause();
 }
-// instradamento minimo del testo libero (la vera L0 è in ~/gemello/gemello/regole.py)
-function instrada(t) {
-  t = t.toLowerCase();
-  if (/pallet|bancal|scatol|cartoni|sacchi|palletiz/.test(t)) return "pallet";
-  if (/cnc|tornio|fresa|asserviment|macchina utensile|lathe|billett|grezz|pressa/.test(t)) return "cnc";
-  return "pallet";
+// frase libera: la legge l'interprete a regole (interprete.js); il caso di riferimento resta quello registrato
+function mostraFuori(f, testo) { // oltre la portata di un cobot (o frase non riconosciuta): nessuna cella, solo ciò che è stato letto
+  const s = f.scen || {};
+  scen = { id: s.id || "pallet", allegati: [], clip: null };
+  cell = null; sched = null; T0 = 1e9; lastTxt = {};
+  for (const k in CELLE) CELLE[k].root.visible = false;
+  document.querySelectorAll(".es").forEach((b) => b.classList.remove("on"));
+  document.body.dataset.stima = "1";
+  $("#prompt").value = testo; chips(null);
+  const lv = s.livelli || [{ st: "su", costo: 0, sec: 0.02, nota: "non trovo né una pallettizzazione né un asservimento di macchina", esito: "non riconosciuto" }, { st: "no", nota: "non serve", esito: "non serve" }, { st: "no", nota: "non serve", esito: "non serve" }];
+  lv.forEach((l, i) => {
+    const e = els.lv[i]; e._s = "x"; e.className = "lv " + l.st;
+    e.querySelector(".c").textContent = l.st === "no" ? "—" : usd(l.costo); e.querySelector(".s").textContent = l.st === "no" ? "" : num(l.sec, 2) + " s";
+    e.querySelector(".k").textContent = l.esito; e.querySelector(".nt").textContent = l.nota; e.querySelector(".w").textContent = "";
+  });
+  const spec = f.spec || [];
+  els.spec.innerHTML = spec.length ? '<div class="sl"><span class="p">{</span></div>' + spec.map(([k, v, fo], i) => `<div class="sl"><span class="kv">  <span class="k">"${k}"</span><span class="p">: </span><span class="v">"${esc(v)}"</span>${i < spec.length - 1 ? '<span class="p">,</span>' : ""}</span><span class="f ${fo}">${fo}</span></div>`).join("") + '<div class="sl"><span class="p">}</span></div>' : "";
+  $("#spec-n").textContent = `${spec.length} campi`;
+  FL.forEach((_, i) => { const n = $("#fn" + i); n.setAttribute("class", "nd" + (i < 2 ? " done" : "")); if (i) $("#fp" + i).setAttribute("class", i < 2 ? "on" : ""); });
+  $("#fl-r").textContent = "capito a sole regole · 0 $";
+  $("#tot").textContent = "modelli: 0 $ · 0,0 s"; $("#pf-c").textContent = "0 $"; $("#pf-l").textContent = "L0"; $("#pf-t").textContent = "0,0 s";
+  $("#vp-cella").textContent = "nessuna cella · oltre la portata";
+  $("#code-file").textContent = "—"; $("#code-nota").innerHTML = "<span>nessun programma generato</span>";
+  els.code.innerHTML = `<div style="padding:14px;line-height:1.5;font-size:13px;white-space:normal"><p style="margin:0 0 10px">${esc(f.motivo)}</p><p style="margin:0 0 12px">Questo compito lo impostiamo con te: prenotiamo 20 minuti?</p><a class="btn primary" href="${CALL}" target="_blank" rel="noopener">Prenota una call</a></div>`;
+  els.checks.innerHTML = `<li class="warn on"><b>VEDI</b><span>oltre la portata di un cobot<em>${esc(f.motivo)}</em></span></li>`;
+  $("#ver-f").textContent = "nessun calcolo eseguito: nessuna cella costruita";
+  const tag = $("#ver-tag"); tag.textContent = "da impostare"; tag.className = "tag";
+  $("#hud-fase").textContent = "oltre la portata di un cobot: lo impostiamo con te"; els.hudBar.style.width = "0%";
+  $("#hud-unita").textContent = "nessuna cella"; els.hudN.textContent = "0"; els.hudTot.textContent = "—"; $("#hud-ciclo").textContent = "—"; $("#hud-tc").textContent = "0,0 s"; $("#hud-x").textContent = "×1";
+  $(".cnt").classList.remove("full");
+  $("#stato-tag").textContent = "da impostare insieme";
+  const g = $("#genera"); g.classList.remove("run"); g.firstChild.textContent = "Genera la cella";
 }
-document.querySelectorAll(".es").forEach((b) => b.addEventListener("click", () => { chipsExtra = []; genera(b.dataset.s); }));
+function avvia(t, mostraEsito = true) { // mostraEsito=false (vista semplice): se la frase è fuori portata la scena resta com'è
+  if (!glb.ur10e_2f85) return { pronto: false };
+  let r;
+  try { r = costruisci(t); } catch (e) { console.error(e); r = { processo: null, fuori: true, motivo: "Non riesco a leggere questa frase.", testo: t }; }
+  if (r.fuori) { if (mostraEsito) mostraFuori(r, t); }
+  else genera(r.processo, t, r.rif ? undefined : r);
+  window.__gemello.stato = { capito: r.capito || "", stima: !!(r.scen && r.scen.stima && !r.rif) };
+  return { pronto: true, processo: r.processo, fuori: !!r.fuori, motivo: r.motivo || "", rif: !!r.rif, capito: r.capito || "" };
+}
+window.__gemello = { esegui: avvia, stato: { capito: "", stima: false }, cella: () => cell };
+document.querySelectorAll(".es").forEach((b) => b.addEventListener("click", () => { chipsExtra = []; window.__gemello.stato = { capito: "", stima: false }; genera(b.dataset.s); }));
 $("#genera").addEventListener("click", () => {
   const t = $("#prompt").value.trim();
-  const id = chipsExtra.some((c) => c.tipo === "video") && !t ? "pallet" : t ? instrada(t) : scen.id;
-  genera(id, t || undefined);
+  if (!t) { window.__gemello.stato = { capito: "", stima: false }; genera(chipsExtra.some((c) => c.tipo === "video") ? "pallet" : scen.id); return; }
+  avvia(t);
 });
 $("#prompt").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("#genera").click(); } });
 const fileIn = $("#file"); let attTipo = "foto";
@@ -444,9 +506,10 @@ function aggiorna(t) { // t = secondi dall'inizio della corsa
   if (lastTxt.nv !== nv) {
     [...els.checks.children].forEach((li, i) => li.classList.toggle("on", i < nv));
     const tag = $("#ver-tag");
-    if (nv === 0) { tag.textContent = run ? "collaudo in corso" : "in attesa"; tag.className = "tag" + (run ? " live" : ""); }
-    else { tag.textContent = nv < s.verifica.length ? "collaudo in corso" : "superato"; tag.className = "tag " + (nv < s.verifica.length ? "live" : "ok"); }
-    if (nv > 0 && lastTxt.nv === 0) { els.clip.parentElement.classList.add("on"); if (!REGIA || true) els.clip.play().catch(() => {}); }
+    const [tIn, tFine] = s.stima ? ["calcolo in corso", "stimato"] : ["collaudo in corso", "superato"];
+    if (nv === 0) { tag.textContent = run ? tIn : "in attesa"; tag.className = "tag" + (run ? " live" : ""); }
+    else { tag.textContent = nv < s.verifica.length ? tIn : tFine; tag.className = "tag " + (nv < s.verifica.length ? "live" : "ok"); }
+    if (nv > 0 && lastTxt.nv === 0 && s.clip) { els.clip.parentElement.classList.add("on"); if (!REGIA || true) els.clip.play().catch(() => {}); }
     if (nv === 0) els.clip.parentElement.classList.remove("on");
     lastTxt.nv = nv;
   }

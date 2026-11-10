@@ -435,7 +435,8 @@
     if (cfg.passi) {
       var ol = document.createElement('ol');
       ol.className = 'vs-passi';
-      cfg.passi.forEach(function (p) { var li = document.createElement('li'); li.textContent = p.testo; ol.appendChild(li); elPassi.push(li); });
+      var testoPasso = function (p) { return typeof p.testo === 'function' ? p.testo() : p.testo; };   // il testo può dipendere dalla frase letta
+      cfg.passi.forEach(function (p) { var li = document.createElement('li'); li.textContent = testoPasso(p); ol.appendChild(li); elPassi.push(li); });
       azioni.parentNode.insertBefore(ol, ui.querySelector('.vs-extra'));
     }
     if (cfg.codice) {
@@ -464,14 +465,15 @@
           chiave.push(f ? 'vs-fatto' : (on && prima ? 'vs-corso' : ''));
           if (!f) prima = false;
         });
-        var kp = chiave.join('|');
+        var tx = cfg.passi.map(testoPasso), kp = chiave.join('|') + '\u0001' + tx.join('|');
         if (kp !== ultimiPassi) {
           ultimiPassi = kp;
           if (kp.indexOf('vs-') >= 0 && ol0 && ol0.scrollIntoView && !extraId) ol0.scrollIntoView({ block: 'nearest' });
           chiave.forEach(function (c, i) {
             elPassi[i].className = c;
             if (c === 'vs-corso') elPassi[i].setAttribute('aria-current', 'step'); else elPassi[i].removeAttribute('aria-current');
-            elPassi[i].setAttribute('aria-label', cfg.passi[i].testo + (c === 'vs-fatto' ? ': fatto' : c === 'vs-corso' ? ': in corso' : ''));
+            if (elPassi[i].textContent !== tx[i]) elPassi[i].textContent = tx[i];
+            elPassi[i].setAttribute('aria-label', tx[i] + (c === 'vs-fatto' ? ': fatto' : c === 'vs-corso' ? ': in corso' : ''));
           });
         }
       }
