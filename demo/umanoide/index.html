@@ -8,9 +8,15 @@ var $=function(s){return document.querySelector(s)};
 var ultimo=-1;
 var passi=function(){return[].slice.call(document.querySelectorAll('#steps li'))};
 var occupato=function(){return!!$('#steps')&&!$('#replybox .reply')};
+var chiuso=false;
+var WA='https://wa.me/393288216708?text='+encodeURIComponent('Ciao Abra Robotics, ho provato la demo Humanoid Studio sul vostro sito e vorrei capire cosa può fare un umanoide nel mio magazzino. (rif. DEMO-G1)');
 var comando=function(i,testo){return{testo:testo,clic:function(){var c=$('#chips .chip[data-i="'+i+'"]');if(c){ultimo=i;c.click()}},on:function(){return ultimo===i&&occupato()}}};
 return{
 titolo:'Humanoid Studio',
+demo:'g1',
+extra:function(){if(occupato()){chiuso=false;return null}
+return ultimo===1&&$('#replybox .reply')&&!chiuso?{id:'g1-spedisci',chat:{nome:'Abra Robot · G1',testo:'Ho spedito il pacco dell\'ordine 4512. Ora cosa vuoi che faccia?',bottone:'Rispondi su WhatsApp',url:WA,attesa:1500}}:null},
+extraChiuso:function(){chiuso=true},
 frase:'Un robot umanoide lavora in un magazzino: scegli un compito.',
 bottoni:[comando(0,'Cassetta sul nastro'),comando(1,'Inscatola e spedisci'),comando(2,'Avvia il nastro')],
 occupato:occupato,
@@ -19,7 +25,7 @@ citazione:function(){return ultimo>=0&&$('#pin')?$('#pin').value:''},
 stato:function(){
 var l=passi();
 if(!l.length)return'Scegli un compito: il robot lo esegue nel magazzino';
-if($('#replybox .reply'))return'Fatto: il robot ha completato i '+l.length+' passi';
+if($('#replybox .reply'))return'Fatto: '+l.length+' passi completati';
 var i=l.findIndex(function(x){return x.classList.contains('run')});
 if(i<0)i=l.filter(function(x){return x.classList.contains('done')}).length;
 if(i>=l.length)i=l.length-1;

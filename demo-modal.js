@@ -51,7 +51,12 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
     window.addEventListener('message', function (e) {
       var d = e.data;
-      if (!d || d.type !== 'abra-demo' || e.source !== frame.contentWindow) return;
+      if (!d || e.source !== frame.contentWindow) return;
+      if (d.type === 'abra-demo-cta') {   // clic su un invito dentro la demo: si registra solo se il sito ha gtag (il consenso lo gestisce già la home)
+        if (typeof window.gtag === 'function') window.gtag('event', 'demo_cta', { demo: String(d.demo || ''), action: String(d.action || '') });
+        return;
+      }
+      if (d.type !== 'abra-demo') return;
       progress(+d.progress || 0, !!d.ready);
     });
     document.body.appendChild(modal);

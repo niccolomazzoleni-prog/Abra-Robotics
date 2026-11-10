@@ -9,6 +9,7 @@ var clic=function(s){var e=$(s);if(e)e.click()};
 var esempio=function(id,testo){return{testo:testo,clic:function(){clic('.es[data-s="'+id+'"]')},on:function(){return!!$('.es.on[data-s="'+id+'"]')}}};
 return{
 titolo:'One-prompt coding',
+demo:'gemello',
 frase:'Descrivi un lavoro a parole: il sistema costruisce la postazione e prova il robot in 3D.',
 bottoni:[esempio('pallet','Pallettizza scatole'),esempio('cnc','Carica un tornio'),{testo:'Ricomincia',clic:function(){clic('#genera')}}],
 prossimo:function(){return $('.es.on[data-s="pallet"]')?1:0},
