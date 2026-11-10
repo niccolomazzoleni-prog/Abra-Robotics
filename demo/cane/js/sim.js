@@ -258,6 +258,10 @@ export class Cane {
       wc = Math.max(-1.2, Math.min(1.2, 2.2 * err));
       vc = Math.abs(err) > 1.0 ? 0 : this.vmax * Math.max(0, Math.cos(err)) ** 2 * Math.min(1, dFine / 0.6 + 0.25);
       if (dFine < 0.18) { this.percorso = null; vc = 0; wc = 0; this.arrivato = true; }
+    } else if (this.yawMeta != null) {   // arrivato: si gira verso la direzione chiesta (es. un quadrante da guardare)
+      const e = Math.atan2(Math.sin(this.yawMeta - this.yaw), Math.cos(this.yawMeta - this.yaw));
+      this.orientato = Math.abs(e) < 0.05;
+      wc = this.orientato ? 0 : Math.max(-1.2, Math.min(1.2, 2.2 * e));
     }
     // rampe come la sport mode
     const av = 1.2 * dt, aw = 3.0 * dt;

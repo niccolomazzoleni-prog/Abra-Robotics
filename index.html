@@ -1301,8 +1301,14 @@ img.pc-img,img.mdl-img{width:100%;height:100%;object-fit:cover;display:block}
 .dash-foot b{color:#fff;font-weight:500}
 .dash-head .live{display:flex;align-items:center;gap:6px;color:#fff}
 .lidar-card .dash-shot{flex:1;min-height:0;width:100%;object-fit:cover;display:block}
-.sw-demo{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:14.5px;color:#fff;text-decoration:underline;text-underline-offset:3px}
-.sw-demo:hover{text-decoration-thickness:2px}
+.sw-demo{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;margin-top:16px;padding:8px 20px 8px 10px;border-radius:999px;background:#fff;color:#000;font-family:var(--sans);font-size:14.5px;font-weight:500;line-height:1.2;text-decoration:none;box-shadow:0 0 24px rgba(255,255,255,.14);transition:background .2s,box-shadow .2s,transform .15s}
+.sw-demo:hover{background:#e4e4e4;box-shadow:0 0 28px rgba(255,255,255,.26)}
+.sw-demo:active{transform:scale(.985)}
+.sw-demo:focus-visible{outline:2px solid #2f5bff;outline-offset:3px}
+.sw-play{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#000;color:#fff;transition:transform .2s}
+.sw-play svg{width:12px;height:12px;margin-left:2px}
+.sw-demo:hover .sw-play{transform:scale(1.1)}
+@media (max-width:600px){.sw-demo{display:flex;width:100%}}
 
 /* Software section */
 .sw-vis{aspect-ratio:4/3!important;background:#05070d!important;border-color:rgba(255,255,255,.12)!important}
@@ -1839,7 +1845,7 @@ body.has-wa-bar { padding-bottom: 60px; }
         </div>
         <h3 class="f-title">Humanoid Studio</h3>
         <p class="f-text">Manipolazione su G1 e G1-D: prelievo da vassoio, posa in maschera, pick &amp; place, partendo da visione e presa già integrate.</p>
-        <a class="sw-demo" href="demo/umanoide/?vista=semplice" data-demo="Humanoid Studio: dai un compito al G1" target="_blank" rel="noopener">Prova la demo interattiva <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="demo/umanoide/?vista=semplice" data-demo="Humanoid Studio: dai un compito al G1" target="_blank" rel="noopener"><span class="sw-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span>Prova la demo interattiva</span></a>
       </article>
       <article class="reveal">
         <div class="f-visual sw-vis" data-video-slot data-ui>
@@ -1848,7 +1854,7 @@ body.has-wa-bar { padding-bottom: 60px; }
         </div>
         <h3 class="f-title">Fleet Control</h3>
         <p class="f-text">Missioni, mappa e stato di uno o più quadrupedi Unitree da un'unica dashboard, senza costruire l'integrazione.</p>
-        <a class="sw-demo" href="demo/cane/?vista=semplice" data-demo="Fleet Control: il Go2 esplora e disegna la mappa" target="_blank" rel="noopener">Prova la demo interattiva <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="demo/cane/?vista=semplice" data-demo="Fleet Control: il Go2 esplora e disegna la mappa" target="_blank" rel="noopener"><span class="sw-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span>Prova la demo interattiva</span></a>
       </article>
       <article class="reveal">
         <div class="f-visual sw-vis term-vis" data-video-slot data-ui>
@@ -1858,7 +1864,7 @@ body.has-wa-bar { padding-bottom: 60px; }
         </div>
         <h3 class="f-title">One-prompt coding</h3>
         <p class="f-text">Colleghi il robot al tuo Claude e descrivi il compito a parole: il codice per il robot lo scrive l'assistente, sui nostri strumenti già testati.</p>
-        <a class="sw-demo" href="demo/prompt/?vista=semplice" data-demo="One-prompt coding: da una frase a una cella robot" target="_blank" rel="noopener">Prova la demo interattiva <span aria-hidden="true">→</span></a>
+        <a class="sw-demo" href="demo/prompt/?vista=semplice" data-demo="One-prompt coding: da una frase a una cella robot" target="_blank" rel="noopener"><span class="sw-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span>Prova la demo interattiva</span></a>
       </article>
     </div>
   </div>

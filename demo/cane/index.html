@@ -3,27 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, follow">
+<script src="manometro.js"></script>
 <script>window.DEMO_SEMPLICE=(function(){
 var $=function(s){return document.querySelector(s)},txt=function(s){var e=$(s);return e?e.textContent.trim():''};
 var modo=function(){var b=$('[data-modo].primary');return b?b.dataset.modo:''};
 var clic=function(s){var e=$(s);if(e)e.click()};
+// missione «Controlla il manometro»: fase 1 cammina, 2 davanti al quadrante, 3 foto scattata, 4 messaggio arrivato
+var M={fase:0,foto:false,chat:false,inviato:false};
+var reset=function(){M.fase=0;M.foto=M.chat=M.inviato=false};
+var WA='https://wa.me/393288216708?text='+encodeURIComponent('Ciao Abra Robotics, ho provato la demo Fleet Control sul vostro sito e vorrei capire come automatizzare i controlli nel mio impianto. (rif. DEMO-GO2)');
+var missione=function(){
+var d=window.__abraDemo;if(!d)return;
+if(M.fase===1){
+if(!d.attivo()){reset();return}
+if(d.fermo()){M.fase=2;d.vista();
+setTimeout(function(){if(M.fase!==2)return;M.fase=3;M.foto=true;if(window.__semplice)window.__semplice.flash();
+setTimeout(function(){if(M.fase===3)M.chat=true},2600)},900)}}};
 return{
 titolo:'Fleet Control',
+demo:'go2',
 frase:'Un robot a quattro zampe esplora un magazzino e disegna la mappa.',
 bottoni:[
-{testo:'Esplora da solo',clic:function(){clic('[data-modo=esplora]')},on:function(){return modo()==='esplora'}},
-{testo:'Mandalo in un punto',clic:function(){clic('[data-modo=punto]')},on:function(){return modo()==='punto'}},
-{testo:'Fermati',clic:function(){clic('#bFerma')},on:function(){return!modo()}}],
-prossimo:function(){var m=modo();return m==='esplora'||m==='pattuglia'?1:m==='punto'?(/\d/.test(txt('#kMeta'))?0:-1):0},
-invito:function(){return modo()==='punto'&&!/\d/.test(txt('#kMeta'))},
+{testo:'Esplora da solo',clic:function(){reset();clic('[data-modo=esplora]')},on:function(){return!M.fase&&modo()==='esplora'}},
+{testo:'Mandalo in un punto',clic:function(){reset();clic('[data-modo=punto]')},on:function(){return!M.fase&&modo()==='punto'}},
+{testo:'Controlla il manometro',clic:function(){var d=window.__abraDemo;reset();if(d&&d.vaiA(d.manometro.sosta[0],d.manometro.sosta[1],'manometro Linea 3',d.manometro.yaw))M.fase=1},on:function(){return M.fase>0&&M.fase<4}},
+{testo:'Fermati',clic:function(){reset();clic('#bFerma')},on:function(){return!M.fase&&!modo()}}],
+prossimo:function(){if(M.fase)return-1;var m=modo();return m==='esplora'||m==='pattuglia'?2:m==='punto'?(/\d/.test(txt('#kMeta'))?0:-1):0},
+invito:function(){return!M.fase&&modo()==='punto'&&!/\d/.test(txt('#kMeta'))},
+extra:function(){
+if(!M.foto)return null;
+var G=window.ABRA_MANOMETRO;
+return{id:'go2-manometro',
+foto:{titolo:'Foto dal robot',didascalia:'Pressione 8,7 bar, soglia 6 bar',svg:G?G.svgFoto():''},
+chat:M.chat?{nome:'Abra Robot \u00b7 Go2',avviso:true,testo:'Attenzione: la pressione della Linea 3 \u00e8 troppo alta (8,7 bar, soglia 6 bar). Vuoi sapere come automatizzare i tuoi controlli? Rispondi a questo messaggio.',bottone:'Rispondi su WhatsApp',url:WA,attesa:1600,inviato:function(){M.inviato=true;M.fase=4}}:null}},
+extraChiuso:function(){reset()},
 stato:function(){
-var m=modo(),area=txt('#kArea'),perc=txt('#kPerc').split(' · ')[0];
+if(M.fase===1)return'Il robot va al manometro\u2026';
+if(M.inviato)return'Messaggio inviato';
+if(M.fase===2)return'Il robot guarda il manometro';
+if(M.fase>=3)return'Foto scattata: pressione fuori soglia';
+var m=modo(),area=txt('#kArea'),perc=txt('#kPerc').split(' \u00b7 ')[0];
 if(m==='esplora')return parseInt(area,10)>0?'Il robot sta esplorando: '+area+' mappati':'Il robot sta partendo ad esplorare';
 if(m==='punto')return /\d/.test(txt('#kMeta'))?'Il robot cammina verso il punto scelto'+(/\d/.test(perc)?': '+perc+' di strada':''):'Tocca un punto del pavimento: il robot ci va da solo';
 if(m==='pattuglia')return'Mappa completa: '+area+'. Il robot fa un giro di controllo';
-return'Il robot è fermo. Premi «Esplora da solo» per farlo ripartire'},
+return'Il robot \u00e8 fermo. Premi \u00abEsplora da solo\u00bb per farlo ripartire'},
 pronto:function(){return window.__pronto===true},
-ogni:function(){var b=$('#bSegui');if(b&&!b.classList.contains('on'))b.click()},
+ogni:function(){missione();var b=$('#bSegui');if(M.fase<2&&b&&!b.classList.contains('on'))b.click()},
 ritardo:1500,
 avvio:function(rec){clic('[data-modo=esplora]');if(rec)clic('#bSegui')}}})()</script>
 <script src="../semplice.js"></script>
