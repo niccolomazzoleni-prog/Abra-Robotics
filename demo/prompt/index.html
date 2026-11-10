@@ -6,18 +6,73 @@
 <script>window.DEMO_SEMPLICE=(function(){
 var $=function(s){return document.querySelector(s)},txt=function(s){var e=$(s);return e?e.textContent.trim():''};
 var clic=function(s){var e=$(s);if(e)e.click()};
-var esempio=function(id,testo){return{testo:testo,clic:function(){clic('.es[data-s="'+id+'"]')},on:function(){return!!$('.es.on[data-s="'+id+'"]')}}};
+var S=function(){return window.__semplice||{scrivi:function(t,f){f&&f()},rispondi:function(){}}};
+var CALL='https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF';
+var WA='https://wa.me/393288216708?text='+encodeURIComponent('Ciao Abra Robotics, ho provato la demo One-prompt coding sul vostro sito e vorrei provarla sul mio processo. (rif. DEMO-UR30)');
+// le due frasi d'esempio sono quelle dei due scenari della dashboard (scenari.js)
+var FRASE={pallet:'Pallettizzare scatole 600x400x300 mm da 18 kg su pallet EUR con un UR30, 4 strati',cnc:'Carico e scarico tornio CNC, pezzi tondi d50 lunghi 120 mm in acciaio, 40 pezzi/ora'};
+var corrente='pallet',fermo=false,visto=false,finale=null,tSup=0;
+// avvia lo scenario nella dashboard vera (stessa azione del pulsante dell'esempio)
+var lancia=function(id){corrente=id;fermo=false;visto=false;finale=null;tSup=0;S().rispondi(null);clic('.es[data-s="'+id+'"]')};
+var preset=function(id,testo){return{testo:testo,clic:function(){S().scrivi(FRASE[id],function(){lancia(id)})},on:function(){return corrente===id&&!fermo}}};
+var num=function(s){var m=/(\d+(?:[.,]\d+)?)/.exec(s||'');return m?parseFloat(m[1].replace(',','.')):0};
+// numeri della simulazione: tutti letti dalla dashboard (contatore, tempo ciclo, controlli, cadenza richiesta)
+var calcola=function(conto){
+var n=num(txt('#hud-tot')),pal=corrente==='pallet',riga1,ck=[].slice.call(document.querySelectorAll('#checks li')),
+ok=ck.filter(function(l){return l.classList.contains('ok')}).length,av=ck.filter(function(l){return l.classList.contains('warn')})[0];
+if(pal){var c=num(txt('#hud-ciclo'));riga1=(conto?n+' '+(n===1?'scatola posata':'scatole posate'):'Verifica superata')+(c?' · ciclo '+String(c).replace('.',',')+' s a scatola · circa '+Math.round(3600/c)+' scatole/ora':'')}
+else{var m=/tempo ciclo\s*≈\s*(\d+)\s*s/.exec(ck.map(function(l){return l.textContent}).join(' | ')),r=/(\d+)\s*pezzi\/ora/.exec(txt('#spec'));
+riga1=(conto?n+' '+(n===1?'pezzo lavorato':'pezzi lavorati'):'Verifica superata')+(m?' · ciclo del robot circa '+m[1]+' s (stima)':'')+(r?' · cadenza richiesta '+r[1]+' pezzi/ora':'')}
+var riga2='Controlli superati: '+ok+' su '+ck.length;
+if(av){var b=av.querySelector('span'),l=b&&b.firstChild?b.firstChild.textContent.trim():'',e=av.querySelector('em');riga2='La verifica ha trovato un punto da rivedere prima del robot vero: '+l.toLowerCase()+(e?' ('+e.textContent.trim()+')':'')}
+return[riga1,riga2]};
+var fine=function(){return/^(ciclo)/.test(txt('#hud-fase'))};
 return{
 titolo:'One-prompt coding',
 demo:'gemello',
-frase:'Descrivi un lavoro a parole: il sistema costruisce la postazione e prova il robot in 3D.',
-bottoni:[esempio('pallet','Pallettizza scatole'),esempio('cnc','Carica un tornio'),{testo:'Ricomincia',clic:function(){clic('#genera')}}],
-prossimo:function(){return $('.es.on[data-s="pallet"]')?1:0},
-citazione:function(){var p=$('#prompt');return p?p.value.trim():''},
+frase:'Scrivi una frase: il sistema progetta la cella robot, scrive il programma e lo verifica in simulazione.',
+prompt:{
+etichetta:'La tua richiesta, a parole',
+segnaposto:'Es. pallettizzare scatole da 18 kg su pallet EUR',
+aiuto:'Scegli un esempio o scrivi la tua frase.',
+invia:function(t){
+t=t.toLowerCase();
+if(/pallet|scatol|cartoni/.test(t))lancia('pallet');
+else if(/tornio|cnc|macchina|carico|scarico|asservimento/.test(t))lancia('cnc');
+else{fermo=true;visto=false;finale=null;tSup=0;S().rispondi({id:'altro',chat:{nome:'Abra Robot · Cobot',testo:'Questo compito lo impostiamo con te: prenotiamo 20 minuti?',bottone:'Prenota una call',url:CALL,cta:'call',enfasi:true,attesa:900}})}}},
+extraInline:true,
+passiOn:function(){return!fermo},
+passi:[
+{testo:'Capisce il compito',fatto:function(){return!!$('#fn1.done')}},
+{testo:'Disegna la cella',fatto:fine},
+{testo:'Scrive il programma',fatto:function(){var l=document.querySelectorAll('#code .ln');var nascoste=[].filter.call(l,function(x){return x.style.display==='none'}).length;return l.length>1&&nascoste<=1&&!$('#code .caret')}},
+{testo:'Verifica in simulazione',fatto:function(){return txt('#ver-tag')==='superato'}}],
+codice:{
+titolo:'Programma generato',
+nascondi:function(){return fermo},
+righe:function(){return[].slice.call(document.querySelectorAll('#code .ln')).filter(function(l){return l.style.display!=='none'}).slice(0,10).map(function(l){return l.lastChild.textContent})},
+nota:function(){var m=/(\d+) righe/.exec(txt('#code-nota'));return m?'Prime 10 righe di '+m[1]+' · URScript, il linguaggio dei robot UR':''}},
+risultato:function(){return visto?finale:null},
+ogni:function(){
+if(fermo)return;
+if(txt('#ver-tag')!=='superato'){visto=false;finale=null;tSup=0;return}
+if(!tSup)tSup=Date.now();
+var n=num(txt('#hud-n')),tot=num(txt('#hud-tot'));
+// il risultato esce quando il robot ha posato tutti i pezzi; se il ciclo è lungo (il tornio) dopo 18 s esce senza il conteggio
+if(visto)return;
+if(tot>0&&n>=tot&&fine()){finale=calcola(true);visto=true}
+else if(Date.now()-tSup>18000){finale=calcola(false);visto=true}},
+extra:function(){return visto?{id:'gemello-fine',chat:{nome:'Abra Robot · Cobot',testo:'Cella pronta e programma verificato in simulazione. Vuoi provarla con il tuo pezzo?',bottone:'Rispondi su WhatsApp',url:WA,attesa:1400}}:null},
+bottoni:[preset('pallet','Pallettizza scatole'),preset('cnc','Carica un tornio'),{testo:'Ricomincia',clic:function(){S().scrivi(FRASE[corrente],function(){lancia(corrente)})}}],
+prossimo:function(){return corrente==='pallet'?1:0},
+invito:function(){return fermo},
+ritardo:700,
+avvio:function(rec){if(!rec)S().scrivi(FRASE.pallet,function(){lancia('pallet')})},
 stato:function(){
-var f=txt('#hud-fase'),n=txt('#hud-n'),tot=txt('#hud-tot');
-if(txt('#ver-tag')==='superato')return'Cella pronta: '+tot+' pezzi su '+tot+' posati, verifica superata';
-if(/^ciclo/.test(f))return'Il robot lavora: '+n+(n==='1'?' pezzo':' pezzi')+' su '+tot+' posati';
+var f=txt('#hud-fase'),n=txt('#hud-n'),tot=txt('#hud-tot'),pal=corrente==='pallet';
+if(fermo)return'Questo compito non è tra gli esempi: lo impostiamo insieme';
+if(txt('#ver-tag')==='superato'&&visto)return'Cella pronta, programma verificato in simulazione';
+if(/^ciclo/.test(f))return'Il robot lavora: '+n+' su '+tot+(pal?' scatole posate':' pezzi lavorati');
 if(/^costruzione/.test(f))return'Sto costruendo la postazione in 3D';
 if(/^compilazione/.test(f))return'Sto trasformando la richiesta in un progetto';
 return'Sto leggendo la richiesta'}}})()</script>

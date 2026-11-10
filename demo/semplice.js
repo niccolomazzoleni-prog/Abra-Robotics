@@ -111,13 +111,48 @@
     '@keyframes vsin{from{opacity:0;transform:translateY(6px)}}',
     '@keyframes vsd{50%{opacity:.3;transform:translateY(-3px)}}',
     '@keyframes vsf{0%{opacity:.9}100%{opacity:0}}',
+    // casella di testo, passi, programma e risultato (opzionali: vedi cfg.prompt, cfg.passi, cfg.codice, cfg.risultato)
+    '.vs-prompt{display:flex;gap:8px;align-items:stretch;margin:0 0 8px}',
+    '.vs-prompt textarea{flex:1;min-width:0;min-height:72px;max-height:132px;resize:none;padding:10px 12px;border-radius:14px;border:1px solid #3a3a3a;background:#000;color:#fff;font:400 16px/1.4 ' + SANS + '}',
+    '.vs-prompt textarea:focus{outline:2px solid #2bc4a8;outline-offset:1px;border-color:#2bc4a8}',
+    '.vs-prompt textarea::placeholder{color:#8d8d8d}',
+    '.vs-prompt .vs-btn{flex:none;min-height:44px;padding:0 16px}',
+    '.vs-compatta .vs-azioni{gap:6px}',
+    '.vs-compatta .vs-azioni .vs-btn{min-height:44px;padding-top:6px;padding-bottom:6px}',
+    '.vs-compatta .vs-stato span{min-height:0}',
+    '@media (min-width:901px) and (min-height:521px){.vs-compatta .vs-corpo{padding-top:12px}.vs-compatta .vs-titolo{margin-bottom:8px}.vs-compatta .vs-frase{margin-bottom:10px}.vs-compatta .vs-passi{margin-top:10px;gap:5px}.vs-compatta .vs-fondo{padding:10px 20px 12px}.vs-compatta .vs-fondo .vs-btn{min-height:44px;padding-top:6px;padding-bottom:6px}}',
+    '.vs-aiuto{margin:0 0 12px;font-size:15px;line-height:1.4;color:#b4b4b4}',
+    '.vs-passi{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:7px}',
+    '.vs-passi li{display:flex;align-items:center;gap:10px;font-size:15px;line-height:1.3;color:#9a9a9a}',
+    '.vs-passi li::before{content:"";flex:none;box-sizing:border-box;width:20px;height:20px;border-radius:50%;border:2px solid #4a4a4a}',
+    '.vs-passi li.vs-fatto,.vs-passi li.vs-corso{color:#fff}',
+    '.vs-passi li.vs-fatto::before{border-color:#2bc4a8;background:#2bc4a8 url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 12 12%22%3E%3Cpath d=%22M2.5 6.3l2.4 2.4 4.6-5%22 fill=%22none%22 stroke=%22%2300110d%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E") center/12px no-repeat}',
+    '.vs-passi li.vs-corso::before{border-color:#2bc4a8;border-top-color:transparent;animation:vsgira .9s linear infinite}',
+    '@keyframes vsgira{to{transform:rotate(360deg)}}',
+    '.vs-prog{margin:14px 0 0;border:1px solid #2a2a2a;border-radius:14px;background:#000;overflow:hidden}',
+    '.vs-prog summary{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:0 14px;cursor:pointer;list-style:none;font-size:15px;color:#fff}',
+    '.vs-prog summary::-webkit-details-marker{display:none}',
+    '.vs-prog summary::after{content:"";flex:none;width:8px;height:8px;margin-bottom:4px;border:solid #b4b4b4;border-width:0 2px 2px 0;transform:rotate(45deg)}',
+    '.vs-prog[open] summary::after{transform:rotate(-135deg);margin-bottom:-3px}',
+    '.vs-prog summary:focus-visible{outline:2px solid #2f5bff;outline-offset:-2px}',
+    '.vs-prog pre{margin:0;padding:10px 14px 6px;max-height:215px;overflow-x:auto;overflow-y:hidden;border-top:1px solid #242424;font:400 13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#d7f5ee;white-space:pre;tab-size:2}',
+    '.vs-prog .vs-pn{margin:0;padding:2px 14px 10px;font-size:15px;color:#b4b4b4}',
+    '.vs-res{margin:14px 0 0;padding:12px 14px;border-radius:14px;border:1px solid #2bc4a8;background:rgba(43,196,168,.10);font-size:16px;line-height:1.4;color:#fff;animation:vsin .3s ease}',
+    '.vs-res span{display:block;margin-top:4px;font-size:15px;color:#c4c4c4}',
+    // il messaggio finale può stare dentro la scheda, insieme ai comandi (cfg.extraInline)
+    '.vs-inl .vs-extra{display:block}',
+    '.vs-inl .vs-nuova{display:none}',
+    '.vs-inl .vs-chat{margin:14px 0 0}',
+    '.vs-ris .vs-prompt,.vs-ris .vs-aiuto,.vs-ris .vs-passi,.vs-ris .vs-prog,.vs-ris .vs-res{display:none}',
+    '@keyframes vsenf{50%{box-shadow:0 0 0 7px rgba(43,196,168,0)}}',
+    '.vs-enf .vs-fondo .vs-prim,.vs-chat .vs-btn.vs-prim{box-shadow:0 0 0 3px rgba(43,196,168,.45);animation:vsenf 1.4s ease-in-out infinite}',
     // computer con poca altezza (es. 1280x720): comandi e risultato devono stare nella scheda senza scorrere
     '@media (min-width:901px) and (max-height:760px){.vs-cta{grid-template-columns:1fr 1fr}.vs-fondo .vs-btn{padding:8px 8px;font-size:15px}.vs-fondo{padding:8px 14px 10px}.vs-nota{margin-top:6px;line-height:1.3}.vs-ris .vs-corpo{padding-top:10px}.vs-ch-h{padding:6px 10px}.vs-ch-b{padding:8px}.vs-msg{padding:8px 10px 6px}.vs-foto,.vs-chat{margin-bottom:8px}.vs-chat .vs-btn{margin:0 10px 10px;width:calc(100% - 20px)}.vs-ris .vs-stato{padding-top:8px}.vs-ris .vs-stato span{min-height:0}}',
     // schermi bassi (telefono girato): colonna compatta, senza spiegazione
-    '@media (max-height:520px){.vs-corpo{padding:14px 16px 6px}.vs-fondo{padding:8px 16px 10px}.vs-t{font-size:20px}.vs-frase,.vs-cit,.vs-nota{display:none}.vs-btn{min-height:48px;padding:8px 14px}.vs-stato{margin-top:10px;padding-top:10px}}',
+    '@media (max-height:520px){.vs-corpo{padding:14px 16px 6px}.vs-fondo{padding:8px 16px 10px}.vs-t{font-size:20px}.vs-frase,.vs-cit,.vs-nota,.vs-aiuto,.vs-prog{display:none}.vs-btn{min-height:48px;padding:8px 14px}.vs-stato{margin-top:10px;padding-top:10px}}',
     // telefono e tablet in piedi: barra in basso a tutta larghezza, la scena sta sopra; il titolo apre e chiude la spiegazione
-    '@media (max-width:900px) and (min-height:521px){.vs-card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:62vh;border-width:1px 0 0;border-radius:20px 20px 0 0}.vs-corpo{padding:12px 16px 2px}.vs-fondo{padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px))}.vs-cta{grid-template-columns:1fr 1fr}.vs-btn{padding:8px 10px}.vs-titolo{margin-bottom:6px;cursor:pointer}.vs-t{display:flex;align-items:center;justify-content:space-between;font-size:20px;min-height:36px}.vs-t::after{content:"";width:9px;height:9px;margin:0 6px 4px 12px;border:solid #b4b4b4;border-width:0 2px 2px 0;transform:rotate(45deg)}.vs-chiusa .vs-t::after{transform:rotate(-135deg);margin-bottom:-4px}.vs-frase{margin-bottom:10px}.vs-cit{margin-bottom:10px}.vs-chiusa .vs-frase,.vs-chiusa .vs-cit,.vs-chiusa .vs-nota{display:none}.vs-azioni{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}.vs-stato{margin-top:10px;padding-top:10px}.vs-ris{max-height:74vh}.vs-ris .vs-nota{display:none}.vs-chat{margin-bottom:10px}}',
-    '@media (prefers-reduced-motion:reduce){.vs-bar i,.vs-stato i,.vs-btn,.vs-load,.vs-flash,.vs-msg,.vs-scrive i{animation:none!important;transition:none!important}}'
+    '@media (max-width:900px) and (min-height:521px){.vs-card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:62vh;border-width:1px 0 0;border-radius:20px 20px 0 0}.vs-corpo{padding:12px 16px 2px}.vs-fondo{padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px))}.vs-cta{grid-template-columns:1fr 1fr}.vs-btn{padding:8px 10px}.vs-titolo{margin-bottom:6px;cursor:pointer}.vs-t{display:flex;align-items:center;justify-content:space-between;font-size:20px;min-height:36px}.vs-t::after{content:"";width:9px;height:9px;margin:0 6px 4px 12px;border:solid #b4b4b4;border-width:0 2px 2px 0;transform:rotate(45deg)}.vs-chiusa .vs-t::after{transform:rotate(-135deg);margin-bottom:-4px}.vs-frase{margin-bottom:10px}.vs-cit{margin-bottom:10px}.vs-chiusa .vs-frase,.vs-chiusa .vs-cit,.vs-chiusa .vs-nota,.vs-chiusa .vs-aiuto{display:none}.vs-prompt textarea{min-height:56px}.vs-passi{grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:10px}.vs-prog{margin-top:10px}.vs-res{margin-top:10px;padding:10px 12px}.vs-inl .vs-chat{margin-top:10px}.vs-azioni{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}.vs-stato{margin-top:10px;padding-top:10px}.vs-ris{max-height:74vh}.vs-ris .vs-nota{display:none}.vs-chat{margin-bottom:10px}}',
+    '@media (prefers-reduced-motion:reduce){.vs-bar i,.vs-stato i,.vs-btn,.vs-load,.vs-flash,.vs-msg,.vs-scrive i,.vs-passi li::before,.vs-res,.vs-enf .vs-fondo .vs-prim,.vs-chat .vs-btn.vs-prim{animation:none!important;transition:none!important}}'
   ].join('\n');
   document.head.appendChild(css);
 
@@ -313,12 +348,12 @@
 
     // risultato della missione (foto e messaggio): cfg.extra() dà {id, foto:{svg,titolo,didascalia}, chat:{nome,testo,bottone,url,avviso}} o null
     var corpo = ui.querySelector('.vs-corpo'), elFoto = ui.querySelector('.vs-ex-foto'), elChat = ui.querySelector('.vs-ex-chat');
-    var extraId = null, fotoOk = false, chatOk = false, tChat = 0;
+    var extraId = null, fotoOk = false, chatOk = false, tChat = 0, forzato = null;
     var AVVISO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20.5h20z" fill="#ffb020"/><path d="M12 9.5v5.2" stroke="#1a1200" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.3" fill="#1a1200"/></svg>';
     var WA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.8-1.2A8.5 8.5 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.6c.3 3.3 2.700 5.700 6.100 6.300l1-1.300-2-1-.9.800c-1-.4-1.800-1.200-2.200-2.200l.8-.9-1-2z" fill="currentColor"/></svg>';
     function nascondiExtra() {
       extraId = null; fotoOk = chatOk = false; clearTimeout(tChat);
-      card.classList.remove('vs-ris'); elFoto.textContent = ''; elChat.textContent = '';
+      card.classList.remove('vs-ris', 'vs-inl', 'vs-enf'); elFoto.textContent = ''; elChat.textContent = '';
       setTimeout(misura, 30);
     }
     ui.querySelector('.vs-nuova').addEventListener('click', function () {
@@ -333,6 +368,9 @@
       fig.querySelector('span').textContent = f.didascalia || '';
       elFoto.appendChild(fig);
     }
+    function vediChat(ch) {
+      if (cfg.extraInline && ch.scrollIntoView) ch.scrollIntoView({ block: 'nearest' }); else corpo.scrollTop = corpo.scrollHeight;
+    }
     function mostraChat(c) {
       var ch = document.createElement('div');
       ch.className = 'vs-chat';
@@ -340,7 +378,7 @@
         '<div class="vs-ch-b"><div class="vs-scrive" aria-label="Sta scrivendo"><i></i><i></i><i></i></div></div>';
       ch.querySelector('b').textContent = c.nome;
       elChat.appendChild(ch);
-      corpo.scrollTop = corpo.scrollHeight;
+      vediChat(ch);
       tChat = setTimeout(function () {
         var m = document.createElement('div'), d = new Date();
         m.className = 'vs-msg';
@@ -349,23 +387,127 @@
         m.lastChild.textContent = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
         var b = ch.querySelector('.vs-ch-b'); b.textContent = ''; b.appendChild(m);
         var a = document.createElement('a');
-        a.className = 'vs-btn vs-wa'; a.href = c.url; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('data-cta', 'whatsapp');
-        a.innerHTML = WA + '<span></span>'; a.lastChild.textContent = c.bottone || 'Rispondi su WhatsApp';
+        var call = c.cta === 'call';   // invito a prenotare una call al posto di WhatsApp
+        a.className = 'vs-btn ' + (call ? 'vs-prim' : 'vs-wa'); a.href = c.url; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('data-cta', c.cta || 'whatsapp');
+        a.innerHTML = (call ? '' : WA) + '<span></span>'; a.lastChild.textContent = c.bottone || 'Rispondi su WhatsApp';
         ch.appendChild(a);
-        corpo.scrollTop = corpo.scrollHeight;
+        if (c.enfasi) card.classList.add('vs-enf');
+        vediChat(ch);
         if (c.inviato) try { c.inviato(); } catch (e) { /* niente */ }
       }, c.attesa || 1400);
     }
     function aggiornaExtra() {
-      var ex = cfg.extra ? cfg.extra() : null;
+      var ex = forzato || (cfg.extra ? cfg.extra() : null);
       if (!ex) { if (extraId) nascondiExtra(); return; }
-      if (ex.id !== extraId) { nascondiExtra(); extraId = ex.id; card.classList.add('vs-ris'); setTimeout(misura, 30); }
+      if (ex.id !== extraId) { nascondiExtra(); extraId = ex.id; card.classList.add(cfg.extraInline ? 'vs-inl' : 'vs-ris'); setTimeout(misura, 30); }
       if (ex.foto && !fotoOk) { fotoOk = true; mostraFoto(ex.foto); }
       if (ex.chat && !chatOk) { chatOk = true; mostraChat(ex.chat); }
     }
     window.__semplice = {
       flash: function () { var f = ui.querySelector('.vs-flash'); f.classList.remove('vs-sc'); void f.offsetWidth; f.classList.add('vs-sc'); },
       risultato: function () { return !!extraId; }
+    };
+
+    // casella di testo + passi + programma + risultato (tutto opzionale e locale: nessuna chiamata esterna)
+    var elIn = null, elRis = null, elProg = null, elProgPre = null, elProgNota = null, elPassi = [], tScrivi = 0;
+    if (cfg.passi) card.classList.add('vs-compatta');
+    var cresci = function () { if (elIn) { elIn.style.height = 'auto'; elIn.style.height = Math.min(elIn.scrollHeight + 2, 132) + 'px'; } };
+    if (cfg.prompt) {
+      var wrap = document.createElement('div');
+      wrap.innerHTML = '<form class="vs-prompt"><textarea rows="3" maxlength="240" spellcheck="false" autocomplete="off"></textarea>' +
+        '<button type="submit" class="vs-btn vs-prim">Invia</button></form><p class="vs-aiuto"></p>';
+      elIn = wrap.querySelector('textarea');
+      elIn.placeholder = cfg.prompt.segnaposto || '';
+      elIn.setAttribute('aria-label', cfg.prompt.etichetta || 'La tua richiesta');
+      wrap.querySelector('.vs-aiuto').textContent = cfg.prompt.aiuto || '';
+      var invio = function () {
+        var t = elIn.value.trim();
+        if (!t) { elIn.focus(); return; }
+        clearInterval(tScrivi);
+        try { cfg.prompt.invia(t); } catch (e) { /* l'app non è ancora pronta */ }
+        setTimeout(sicuro, 60);
+      };
+      elIn.addEventListener('input', cresci);
+      wrap.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); invio(); });
+      elIn.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); invio(); } });
+      while (wrap.firstChild) azioni.parentNode.insertBefore(wrap.firstChild, azioni);
+    }
+    if (cfg.passi) {
+      var ol = document.createElement('ol');
+      ol.className = 'vs-passi';
+      cfg.passi.forEach(function (p) { var li = document.createElement('li'); li.textContent = p.testo; ol.appendChild(li); elPassi.push(li); });
+      azioni.parentNode.insertBefore(ol, ui.querySelector('.vs-extra'));
+    }
+    if (cfg.codice) {
+      elProg = document.createElement('details');
+      elProg.className = 'vs-prog';
+      elProg.open = !telefono.matches;   // sul telefono parte chiuso
+      elProg.innerHTML = '<summary></summary><pre></pre><p class="vs-pn"></p>';
+      elProg.firstChild.textContent = cfg.codice.titolo || 'Programma generato';
+      elProgPre = elProg.querySelector('pre'); elProgNota = elProg.querySelector('.vs-pn');
+      elProgPre.tabIndex = 0;
+      azioni.parentNode.insertBefore(elProg, ui.querySelector('.vs-extra'));
+    }
+    if (cfg.risultato) {
+      elRis = document.createElement('p');
+      elRis.className = 'vs-res'; elRis.hidden = true;
+      elRis.innerHTML = '<b></b><span></span>';
+      azioni.parentNode.insertBefore(elRis, ui.querySelector('.vs-extra'));
+    }
+    var ol0 = elPassi.length ? elPassi[0].parentNode : null;
+    var ultimiPassi = '', ultimoCodice = '', ultimoRis = '';
+    function aggiornaBlocchi() {
+      if (elPassi.length) {
+        var on = cfg.passiOn ? !!cfg.passiOn() : true, prima = true, chiave = [];
+        cfg.passi.forEach(function (p) {
+          var f = on && !!p.fatto();
+          chiave.push(f ? 'vs-fatto' : (on && prima ? 'vs-corso' : ''));
+          if (!f) prima = false;
+        });
+        var kp = chiave.join('|');
+        if (kp !== ultimiPassi) {
+          ultimiPassi = kp;
+          if (kp.indexOf('vs-') >= 0 && ol0 && ol0.scrollIntoView && !extraId) ol0.scrollIntoView({ block: 'nearest' });
+          chiave.forEach(function (c, i) {
+            elPassi[i].className = c;
+            if (c === 'vs-corso') elPassi[i].setAttribute('aria-current', 'step'); else elPassi[i].removeAttribute('aria-current');
+            elPassi[i].setAttribute('aria-label', cfg.passi[i].testo + (c === 'vs-fatto' ? ': fatto' : c === 'vs-corso' ? ': in corso' : ''));
+          });
+        }
+      }
+      if (elProg) {
+        elProg.hidden = !!(cfg.codice.nascondi && cfg.codice.nascondi());
+        var righe = cfg.codice.righe ? cfg.codice.righe() : [];
+        var nota = cfg.codice.nota ? cfg.codice.nota() : '';
+        var k = righe.join('\n') + '\u0001' + nota;
+        if (k !== ultimoCodice) {
+          ultimoCodice = k;
+          elProgPre.textContent = righe.length ? righe.join('\n') : 'Sto scrivendo il programma…';
+          elProgNota.textContent = nota; elProgNota.hidden = !nota;
+        }
+      }
+      if (elRis) {
+        var r = cfg.risultato(), kr = r ? r.join('\u0001') : '';
+        if (kr !== ultimoRis) {
+          ultimoRis = kr; elRis.hidden = !r;
+          if (r) { elRis.firstChild.textContent = r[0]; elRis.lastChild.textContent = r[1] || ''; elRis.lastChild.hidden = !r[1]; }
+        }
+      }
+    }
+    window.__semplice.scrivi = function (testo, fine) {   // scrive la frase nella casella, a macchina, in al massimo ~1,5 s
+      clearInterval(tScrivi);
+      if (!elIn) { if (fine) fine(); return; }
+      if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) { elIn.value = testo; cresci(); if (fine) fine(); return; }
+      var n = 0, passo = Math.max(1, Math.ceil(testo.length / 50));
+      elIn.value = ''; cresci();
+      tScrivi = setInterval(function () {
+        n = Math.min(testo.length, n + passo);
+        elIn.value = testo.slice(0, n); cresci();
+        if (n >= testo.length) { clearInterval(tScrivi); if (fine) setTimeout(fine, 150); }
+      }, 26);
+    };
+    window.__semplice.rispondi = function (ex) {   // messaggio deciso dalla pagina (es. richiesta non riconosciuta); null lo toglie
+      nascondiExtra(); forzato = ex || null; aggiornaExtra();
     };
 
     // la scena usa solo lo spazio che la scheda non occupa: --vs-l a sinistra (computer), --vs-b in basso (telefono)
@@ -417,6 +559,7 @@
       var c = cfg.citazione ? cfg.citazione() : '';
       if (c !== ultimaCit) { ultimaCit = c; elCit.hidden = !c; elCit.textContent = c ? '\u201c' + c + '\u201d' : ''; }
       aggiornaExtra();
+      aggiornaBlocchi();
       if (cfg.ogni) cfg.ogni();   // es. la telecamera deve seguire sempre il robot
     }
     function sicuro() { try { aggiorna(); } catch (e) { /* la pagina dell'app sta ancora nascendo */ } }
