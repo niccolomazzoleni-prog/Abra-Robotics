@@ -412,21 +412,44 @@ document.head.insertAdjacentHTML('beforeend', `
   </style>
 `);
 
-// Meta Pixel — eventi click globali
+// Contatti: ogni clic su WhatsApp, prenotazione, modulo, telefono o mail va in Analytics (contact_click) e Meta Pixel.
+// I link WhatsApp senza testo ricevono un messaggio già scritto con la pagina e "(rif. SITO)": il CRM li riconosce.
+const ABRA_WA_NUMBER = '393408592926';
+const ABRA_CALL_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF';
+function abraIsIt() { return (document.documentElement.lang || 'it').slice(0, 2) === 'it'; }
+function abraWaText() {
+  const h1 = document.querySelector('h1');
+  let page = ((h1 && h1.textContent) || (document.title || '').split(/\s[|–—]\s|\s-\s/)[0]).replace(/\s+/g, ' ').trim();
+  if (page.length > 60) page = page.slice(0, 60).replace(/\s+\S*$/, '') + '…';
+  return abraIsIt()
+    ? `Ciao Abra Robotics, vi scrivo dal sito${page ? ` (pagina: ${page})` : ''}. (rif. SITO)`
+    : `Hi Abra Robotics, I'm writing from your website${page ? ` (page: ${page})` : ''}. (rif. SITO)`;
+}
+function abraWaLink() { return `https://wa.me/${ABRA_WA_NUMBER}?text=${encodeURIComponent(abraWaText())}`; }
 document.addEventListener('click', (e) => {
-  if (!window.fbq) return;
   const el = e.target.closest('a, button');
   if (!el) return;
-  // WhatsApp
-  if (el.classList.contains('wa-btn') || (el.href && el.href.includes('wa.me'))) {
-    fbq('track', 'Contact', { content_name: 'whatsapp' });
-  }
-  // Prenota una chiamata
+  const href = el.getAttribute('href') || '';
   const txt = el.textContent.trim().toLowerCase();
-  if (txt.includes('prenota') || txt.includes('chiama') || txt.includes('chiamata')) {
-    fbq('track', 'Contact', { content_name: 'prenota_chiamata' });
+  let method = el.dataset.contact || null;
+  if (!method) {
+    if (el.classList.contains('wa-btn') || /wa\.me\//.test(href)) method = 'whatsapp';
+    else if (/calendar\.google\.com\/calendar\/appointments/.test(href)) method = 'call';
+    else if (/^tel:/.test(href)) method = 'phone';
+    else if (/^mailto:/.test(href)) method = 'email';
+    else if (txt.includes('prenota') || txt.includes('chiama') || txt.includes('book a call')) method = 'call';
   }
-});
+  if (!method) return;
+  if (method === 'whatsapp' && new RegExp(`wa\\.me/${ABRA_WA_NUMBER}(?![0-9])`).test(href) && !/[?&]text=/.test(href)) {
+    el.setAttribute('href', abraWaLink());
+  }
+  const placement = el.closest('#wa-bar') ? 'barra' : el.closest('[class*="abra-cw"]') ? 'chat' : 'pagina';
+  if (window.gtag) gtag('event', 'contact_click', { contact_method: method, contact_placement: placement, page_path: location.pathname });
+  if (window.fbq) {
+    const name = { whatsapp: 'whatsapp', call: 'prenota_chiamata', form: 'modulo', phone: 'telefono', email: 'email' }[method];
+    if (name) fbq('track', 'Contact', { content_name: name });
+  }
+}, true);
 
 // FAQ accordion (button pattern — schede compatte)
 (function () {
@@ -443,72 +466,115 @@ document.addEventListener('click', (e) => {
   });
 })();
 
-// WhatsApp bar — visibile al reload; se chiusa, riappare dopo 2 minuti
+// Barra contatti: compare solo quando si scorre verso l'alto (oltre la prima schermata), vetro scuro trasparente con
+// sfocatura leggera; tre strade: WhatsApp, prenota una call, modulo. Si chiude con la X e resta chiusa per la visita.
+// Tiene l'id "wa-bar" (le pagine lo hanno già nell'HTML e la chat lo usa per non sovrapporsi).
 (function () {
-  const WA_REOPEN_MS = 2 * 60 * 1000;
-  const LEGACY_KEY = 'abra_wa_bar_closed';
-  const WA_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>';
+  const CLOSED_KEY = 'abra_dock_closed';
+  const ICON = {
+    whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9 0-3.17-1.24-6.16-3.48-8.4"/></svg>',
+    call: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>',
+    form: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>',
+  };
+  const CSS = `
+#wa-bar.contact-dock{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:9000;display:flex;align-items:center;gap:6px;
+  padding:6px 6px 6px 18px;border-radius:999px;background:rgba(14,14,14,.68);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);
+  border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.18);color:#fff;font:500 14px/1 Geist,Satoshi,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  transform:translate(-50%,calc(100% + 30px));opacity:0;visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s ease,visibility 0s linear .35s}
+#wa-bar.contact-dock.on{transform:translate(-50%,0);opacity:1;visibility:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s ease}
+#wa-bar .cd-label{color:rgba(255,255,255,.88);margin-right:6px;white-space:nowrap}
+#wa-bar .cd-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 15px;border-radius:999px;color:#fff;text-decoration:none;white-space:nowrap;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);font:inherit;cursor:pointer;transition:background .2s}
+#wa-bar .cd-btn:hover{background:rgba(255,255,255,.2)}
+#wa-bar .cd-btn svg{width:17px;height:17px;flex:none}
+#wa-bar .cd-short{display:none}
+#wa-bar .cd-wa svg{color:#5fe39a}
+#wa-bar .cd-close{width:32px;height:32px;margin-left:2px;border:0;border-radius:50%;background:transparent;color:rgba(255,255,255,.7);font:400 20px/1 sans-serif;cursor:pointer}
+#wa-bar .cd-close:hover{color:#fff;background:rgba(255,255,255,.1)}
+@media (max-width:600px){
+  #wa-bar.contact-dock{left:10px;right:10px;padding:6px;gap:6px;transform:translateY(calc(100% + 30px))}
+  #wa-bar.contact-dock.on{transform:none}
+  #wa-bar .cd-label{display:none}
+  #wa-bar .cd-btn{flex:1 1 0;min-width:0;height:44px;padding:0 6px;gap:6px;font-size:14px}
+  #wa-bar .cd-btn svg{width:16px;height:16px}
+  #wa-bar .cd-long{display:none}
+  #wa-bar .cd-short{display:inline}
+  #wa-bar .cd-close{width:28px;flex:none}
+}
+@media (prefers-reduced-motion:reduce){#wa-bar.contact-dock,#wa-bar.contact-dock.on{transition:none}}`;
 
-  let reopenTimer = null;
-
-  function waBarHtml() {
-    const en = (document.documentElement.lang || 'it').slice(0, 2) !== 'it';
-    return `<div class="wa-bar" id="wa-bar">
-    <p>${en ? 'Want more information?' : 'Vuoi ricevere più informazioni?'}</p>
-    <a href="https://wa.me/393408592926" target="_blank" rel="noopener" class="wa-btn">${WA_SVG} ${en ? 'Contact us on WhatsApp' : 'Contattaci su WhatsApp'}</a>
-    <button class="wa-bar-close" id="wa-bar-close" aria-label="${en ? 'Close' : 'Chiudi'}">&times;</button>
-  </div>`;
+  function dockHtml() {
+    const it = abraIsIt();
+    return `<span class="cd-label">${it ? 'Parliamone:' : "Let's talk:"}</span>
+<a class="cd-btn cd-wa wa-btn" data-contact="whatsapp" href="${abraWaLink()}" target="_blank" rel="noopener">${ICON.whatsapp}<span>WhatsApp</span></a>
+<a class="cd-btn cd-call" data-contact="call" href="${ABRA_CALL_URL}" target="_blank" rel="noopener">${ICON.call}<span class="cd-long">${it ? 'Prenota una call' : 'Book a call'}</span><span class="cd-short">Call</span></a>
+<a class="cd-btn cd-form" data-contact="form" href="${it ? '/#contatti' : '/en/index-en.html#contatti'}">${ICON.form}<span class="cd-long">${it ? 'Scrivici' : 'Write to us'}</span><span class="cd-short">${it ? 'Scrivici' : 'Write'}</span></a>
+<button class="cd-close" type="button" aria-label="${it ? 'Chiudi' : 'Close'}">&times;</button>`;
   }
 
-  function showWaBar(bar) {
-    bar.style.display = '';
-    document.body.classList.add('has-wa-bar');
-  }
-
-  function hideWaBar(bar) {
-    bar.style.display = 'none';
-    document.body.classList.remove('has-wa-bar');
-    clearTimeout(reopenTimer);
-    reopenTimer = setTimeout(() => showWaBar(bar), WA_REOPEN_MS);
-  }
-
-  function initWaBar() {
-    try { localStorage.removeItem(LEGACY_KEY); } catch (e) { /* ignore */ }
-
+  function init() {
+    let closed = false;
+    try { closed = sessionStorage.getItem(CLOSED_KEY) === '1'; } catch (e) { /* storage non disponibile */ }
     let bar = document.getElementById('wa-bar');
     if (!bar) {
-      document.body.insertAdjacentHTML('beforeend', waBarHtml());
-      bar = document.getElementById('wa-bar');
+      bar = document.createElement('div');
+      bar.id = 'wa-bar';
+      document.body.appendChild(bar);
     }
-    if (!bar || bar.dataset.waInit === '1') return;
-    bar.dataset.waInit = '1';
+    if (bar.dataset.dock === '1') return;
+    bar.dataset.dock = '1';
+    if (!document.getElementById('contact-dock-css')) {
+      const st = document.createElement('style');
+      st.id = 'contact-dock-css';
+      st.textContent = CSS;
+      document.head.appendChild(st);
+    }
+    bar.className = 'contact-dock';
+    bar.setAttribute('role', 'region');
+    bar.setAttribute('aria-label', abraIsIt() ? 'Contatti' : 'Contact');
+    bar.innerHTML = dockHtml();
+    document.body.classList.remove('has-wa-bar');
+    if (closed) return;
 
-    showWaBar(bar);
-
-    const closeBtn = document.getElementById('wa-bar-close');
-    if (closeBtn) closeBtn.addEventListener('click', () => hideWaBar(bar));
-
-    bar.addEventListener('mousemove', (e) => {
-      const r = bar.getBoundingClientRect();
-      const x = ((e.clientX - r.left) / r.width) * 100;
-      const y = ((e.clientY - r.top) / r.height) * 100;
-      const angle = Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * (180 / Math.PI);
-      bar.style.setProperty('--wa-mx', `${x}%`);
-      bar.style.setProperty('--wa-my', `${y}%`);
-      bar.style.setProperty('--wa-angle', `${angle}deg`);
+    // Il modulo: se è nella pagina ci si scorre sopra, altrimenti si va a quello della home.
+    const form = document.querySelector('.contact-form, .quote-form-top');
+    bar.querySelector('.cd-form').addEventListener('click', (e) => {
+      if (!form) return;
+      e.preventDefault();
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => { const f = form.querySelector('input:not([type=hidden]), textarea'); if (f) f.focus({ preventScroll: true }); }, 700);
     });
-    bar.addEventListener('mouseleave', () => {
-      bar.style.setProperty('--wa-mx', '50%');
-      bar.style.setProperty('--wa-my', '50%');
-      bar.style.setProperty('--wa-angle', '0deg');
+
+    let shown = false, formInView = false, lastY = window.scrollY, ticking = false;
+    const relayout = () => window.dispatchEvent(new Event('resize')); // la chat ricalcola la sua posizione
+    function set(on) {
+      if (on === shown) return;
+      shown = on;
+      bar.classList.toggle('on', on);
+      setTimeout(relayout, 380);
+    }
+    function consentOpen() { const c = document.querySelector('.consent-banner'); return !!(c && c.offsetParent !== null); }
+    function update() {
+      ticking = false;
+      const y = window.scrollY, d = y - lastY;
+      if (Math.abs(d) < 6) return;
+      lastY = y;
+      if (d < 0 && y > window.innerHeight * 0.6 && !formInView && !consentOpen()) set(true);
+      else if (d > 0 || y < 120) set(false);
+    }
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    if (form && 'IntersectionObserver' in window) {
+      new IntersectionObserver((en) => { formInView = en.some((x) => x.isIntersecting); if (formInView) set(false); }, { threshold: 0.15 }).observe(form);
+    }
+    bar.querySelector('.cd-close').addEventListener('click', () => {
+      set(false);
+      try { sessionStorage.setItem(CLOSED_KEY, '1'); } catch (e) { /* ignore */ }
+      setTimeout(() => { bar.style.display = 'none'; relayout(); }, 400);
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWaBar);
-  } else {
-    initWaBar();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 
 // Cookie / privacy informational notice (technical cookies only)
@@ -564,7 +630,7 @@ document.addEventListener('click', (e) => {
   var prefix = depth ? '../'.repeat(depth) : '';
 
   var s = document.createElement('script');
-  s.src = prefix + 'offerte-ai/js/widget.js?v=20260930';
+  s.src = prefix + 'offerte-ai/js/widget.js?v=20261110';
   s.setAttribute('data-base', prefix + 'offerte-ai/');
   s.setAttribute('data-abra-chat-widget', '1');
   s.defer = true;

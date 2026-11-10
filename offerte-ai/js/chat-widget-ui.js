@@ -277,7 +277,7 @@
         for (const o of obstacles) {
           if (!o || o.style.display === 'none' || !o.offsetParent && getComputedStyle(o).position !== 'fixed') continue;
           const r = o.getBoundingClientRect();
-          if (!r.height || r.top >= vh || r.bottom < vh - 4) continue;   // non ancorato in basso
+          if (!r.height || r.top >= vh || r.bottom < vh - 40) continue;   // non ancorato in basso (la barra contatti galleggia a 14 px dal fondo)
           // il banner cookie è centrato: conta solo se si sovrappone alla colonna del launcher
           if (r.right < global.innerWidth - 96) continue;
           lift = Math.max(lift, Math.ceil(vh - r.top));

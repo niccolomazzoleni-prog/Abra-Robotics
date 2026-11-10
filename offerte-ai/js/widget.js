@@ -15,7 +15,7 @@
 
   if (window.AbraChatWidget) return;
 
-  const VERSION = '20260930';
+  const VERSION = '20261110';
   const script = document.currentScript;
   const base = (script && script.getAttribute('data-base')) || '/offerte-ai/';
   const baseUrl = new URL(base.endsWith('/') ? base : base + '/', location.href).href;
