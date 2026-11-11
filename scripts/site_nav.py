@@ -131,7 +131,7 @@ def render_site_footer(prefix: str = "") -> str:
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE). Intermediazione e sviluppo software: Caligo di Giovanni Pitton, P.IVA 04982670277.</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="{p}privacy-policy.html">Privacy Policy</a>
 <a href="{p}cookie-policy.html">Cookie Policy</a>
