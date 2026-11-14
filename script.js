@@ -621,7 +621,7 @@ document.addEventListener('click', (e) => {
   if (document.querySelector('script[data-abra-chat-widget]')) return;
 
   var depth = 0;
-  if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/')) depth = 1;
+  if (location.pathname.includes('/prodotti/') || location.pathname.includes('/blog/') || location.pathname.includes('/tecnologia/')) depth = 1;
   if (location.pathname.includes('/en/')) depth = Math.max(depth, 1);
   if (location.pathname.includes('/en/prodotti/') || location.pathname.includes('/en/blog/')) depth = 2;
   // Versioni estere (/de/, /fr/, ...): una cartella in piu', due per il loro blog
