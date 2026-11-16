@@ -435,6 +435,19 @@ def update_csv_pages(rows: list[dict]) -> None:
         w.writerows(rows)
 
 
+BRAND_HUBS = [("G1", "g1.html"), ("H2", "h2.html"), ("R1", "r1.html"), ("G1-D", "g1-d.html"), ("R1-D", "r1-d.html"),
+              ("Go2", "go2.html"), ("AS2", "as2.html"), ("A2", "a2.html"), ("B2", "b2.html"), ("Z1 e D1", "z1.html")]
+BRAND_INTRO = ("Abra Robotics è un'azienda italiana di robotica e fa parte della filiera di distribuzione Unitree Italia. "
+               "Vendiamo tutta la gamma Unitree: gli umanoidi G1, H2 e R1, i quadrupedi Go2, AS2, A2 e B2, bracci, mani "
+               "robotiche e accessori. Il listino è pubblico, in euro, con spedizione e dazio inclusi. Consegniamo in Italia "
+               "con fattura italiana, garanzia e assistenza tecnica in Italia e formazione in italiano; verifichiamo gratis "
+               "gli incentivi (iperammortamento, Nuova Sabatini, bandi regionali). Per ogni famiglia trovi la pagina con "
+               "tutte le versioni e i prezzi a confronto.")
+BRAND_TITLE = "Unitree Italia: listino pubblico e assistenza in Italia"
+BRAND_DESC = ("Unitree Italia: tutti i robot Unitree con listino pubblico in euro, spedizione e dazio inclusi. "
+              "Fattura italiana, garanzia e assistenza in Italia.")
+
+
 def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
     """Pagina catalogo pubblico con immagini, filtri e navbar completa."""
     # prezzo pubblico, oppure voce "su richiesta" (prezzo_su_richiesta in end-user.json, es. G1-PLUS)
@@ -467,21 +480,30 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
         </article>""")
     family_opts = "".join(f'<option value="{f}">{f}</option>' for f in FAMILY_ORDER if f in families)
     cat_opts = "".join(f'<option value="{v}">{v}</option>' for v in CAT_LABEL.values())
+    # pagina del marchio per "unitree" / "unitree italia": indice delle famiglie (hub) nello schema
+    brand_ld = "\n".join(f'  <script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": "Unitree Italia", "item": f"{SITE}/catalogo-unitree.html"}]},
+        {"@context": "https://schema.org", "@type": "ItemList", "name": "Robot Unitree in Italia",
+         "itemListElement": [{"@type": "ListItem", "position": i, "name": f"Unitree {n}", "url": f"{SITE}/{u}"}
+                             for i, (n, u) in enumerate(BRAND_HUBS, 1)]}))
 
     html = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogo Unitree Italia: tutti i prodotti e prezzi | Abra</title>
-  <meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Filiera Unitree Italia.">
+  <title>{BRAND_TITLE}</title>
+  <meta name="description" content="{BRAND_DESC}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{SITE}/catalogo-unitree.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Catalogo Unitree — Abra Robotics">
+  <meta property="og:title" content="{BRAND_TITLE} — Abra Robotics">
   <meta property="og:description" content="{len(pub)} prodotti Unitree con prezzi End-User pubblici in Italia.">
   <meta property="og:url" content="{SITE}/catalogo-unitree.html">
   <meta property="og:image" content="{SITE}/images/official/unitree-g1-03.webp">
+{brand_ld}
   <link rel="stylesheet" href="style.css">
   <style>
     .cat-hero {{ padding: calc(40px + 72px + 48px) 48px 40px; border-bottom: 1px solid var(--gray-200); }}
@@ -513,9 +535,10 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
 <body>
 {SITE_NAV}
   <header class="cat-hero">
-    <p class="label">Catalogo pubblico End-User</p>
-    <h1>Tutti i prodotti Unitree</h1>
-    <p style="color:var(--gray-600);max-width:640px;">Listino pubblico End-User — IVA esclusa, spedizione e dazio inclusi. {len(pub)} prodotti con scheda e prezzo trasparente.</p>
+    <p class="label">Filiera di distribuzione Unitree Italia</p>
+    <h1>Unitree in Italia: catalogo e prezzi</h1>
+    <p style="color:var(--gray-600);max-width:720px;">{BRAND_INTRO}</p>
+    <p style="color:var(--gray-600);max-width:720px;">Listino pubblico End-User — IVA esclusa, spedizione e dazio inclusi. {len(pub)} prodotti con scheda e prezzo trasparente. Chi vende Unitree in Italia e come scegliere: <a href="blog/unitree-italia-guida-completa.html">guida completa a Unitree in Italia</a>.</p>
 {PUBLIC_NOTICE}
   </header>
   <main class="cat-body-page">
