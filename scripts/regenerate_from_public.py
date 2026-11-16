@@ -93,6 +93,8 @@ def main() -> None:
     # title/description "prezzo", breadcrumb con la famiglia, politica resi nel Product JSON-LD
     subprocess.run([sys.executable, str(ROOT / "scripts" / "seo_schede_prezzo.py")], check=False)
     subprocess.run([sys.executable, str(ROOT / "scripts" / "schema_spedizione.py")], check=False)
+    # Product senza prezzo (su richiesta): via dai dati strutturati, Google li segna come errore
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "schema_senza_prezzo.py")], check=False)
     print(f"Rigenerate {created} schede · catalogo-unitree.html aggiornato")
 
 
