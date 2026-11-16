@@ -799,6 +799,12 @@ section.pad-full{padding-top:120px!important}
 /* A: Go2 on the rock, slow drift */
 .hv-a,.hv-d{background:url(images/home/hero-wb-still.webp) 50% 50%/cover no-repeat;transform:scale(1.04);animation:drift 24s ease-in-out infinite alternate}
 @media (max-width:760px){.hv-a{background-image:url(images/home/hero-wb-still-mobile.webp)!important;background-position:50% 0%!important}}
+/* Desktop: il robot sta al 70% della foto. Con position-x 70% quel punto cade sempre al 70% del livello;
+   spostando il livello di -20% finisce al centro dello schermo a ogni larghezza. Il bordo destro sfuma nel nero. */
+@media (min-width:761px){
+  .hv-a{left:-20%;right:20%;background-position:70% 22%;
+    -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,#000 92%,transparent 100%)}
+}
 /* B: humanoid at work, full-bleed video */
 .hv-b{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.85)}
 /* C: diptych, quadruped left, humanoid right */
