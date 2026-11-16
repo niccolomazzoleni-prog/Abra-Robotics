@@ -14,6 +14,7 @@ import html
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -228,7 +229,8 @@ GUIDE_IT = {
   "Ispezione leggera e sicurezza: le versioni con LiDAR e telecamere servono per sopralluoghi, mappatura di ambienti e controlli ripetitivi in spazi dove un robot su ruote non passa. Per carichi o ambienti industriali gravosi conviene guardare l'<a href=\"a2.html\">Unitree A2</a> o il <a href=\"b2.html\">B2</a>.",
   "Eventi e comunicazione: il Go2 Air e il Pro sono i modelli più usati per fiere, showroom e attività marketing."]),
  ("Go2 o un altro quadrupede Unitree?", [
-  "Il Go2 è il quadrupede compatto: leggero, facile da trasportare, ideale per sviluppo e ambienti interni. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia, più robusta e con più autonomia. L'<a href=\"a2.html\">A2</a> e il <a href=\"b2.html\">B2</a> sono quadrupedi industriali con protezione IP, carichi molto più alti e diverse ore di autonomia. Il confronto completo è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+  "Il Go2 è il quadrupede compatto: leggero, facile da trasportare, ideale per sviluppo e ambienti interni. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia, più robusta e con più autonomia. L'<a href=\"a2.html\">A2</a> e il <a href=\"b2.html\">B2</a> sono quadrupedi industriali con protezione IP, carichi molto più alti e diverse ore di autonomia. Il confronto completo è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("Comprare un Unitree Go2 in Italia con Abra Robotics", [
   "I prezzi in tabella sono End-User IVA esclusa, con spedizione e dazio in Italia già inclusi: nessun costo doganale a sorpresa. Prima dell'ordine ti aiutiamo a scegliere versione e accessori in base all'uso reale e verifichiamo gratuitamente se l'acquisto rientra in <a href=\"finanziamenti.html\">iperammortamento, Nuova Sabatini o bandi regionali</a>.",
   "Fattura italiana, consegna in Italia, Svizzera e Balcani, supporto in italiano per messa in servizio e primi passi con l'SDK."]),
@@ -236,7 +238,8 @@ GUIDE_IT = {
 "a2": [
  ("Unitree A2: un quadrupede pensato per l'industria", [
   "L'A2 nasce per lavorare in impianti, cantieri e aree esterne: pesa circa 42 kg, porta circa 25 kg in camminata continua (circa 100 kg da fermo) e cammina oltre 5 ore senza carico, coprendo circa 20 km con una carica. La protezione IP56, IP67 sui componenti principali della versione Pro, gli permette di lavorare con polvere e pioggia.",
-  "A differenza dei quadrupedi compatti come il <a href=\"go2.html\">Go2</a>, l'A2 è progettato per missioni ripetute e lunghe: giri di ispezione programmati, sorveglianza perimetrale, trasporto di strumenti e sensori."]),
+  "A differenza dei quadrupedi compatti come il <a href=\"go2.html\">Go2</a>, l'A2 è progettato per missioni ripetute e lunghe: giri di ispezione programmati, sorveglianza perimetrale, trasporto di strumenti e sensori.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("A2 Standard, A2 Pro o A2-W?", [
   "L'A2 Standard ha un LiDAR e una telecamera HD: è la scelta per ispezioni e trasporto leggero in ambienti già mappati. L'A2 Pro aggiunge un secondo LiDAR e protezione IP67 dei componenti principali, per ambienti più gravosi e percezione più completa intorno al robot.",
   "Le versioni A2-W hanno ruote all'estremità delle zampe: su strade, piazzali e corridoi lunghi si muovono rotolando, più veloci e con meno consumo, mantenendo la capacità di salire scale e ostacoli."]),
@@ -261,7 +264,8 @@ GUIDE_IT = {
  ("Programmare il G1", [
   "Unitree pubblica su GitHub l'SDK ufficiale (unitree_sdk2), il pacchetto ROS 2 e i modelli per la simulazione in Isaac Sim e MuJoCo: si sviluppa la politica in simulazione e la si porta sul robot reale. Approfondimenti nella <a href=\"blog/unitree-g1-programmazione.html\">guida alla programmazione del G1</a> e nel confronto <a href=\"blog/unitree-g1-quale-versione-scegliere.html\">quale versione del G1 scegliere</a>."]),
  ("Comprare un Unitree G1 in Italia", [
-  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size)."]),
+  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size).",
+  "Prima di comprare: <a href=\"blog/poc-robot-umanoide-azienda.html\">come impostare un PoC con un robot umanoide in azienda</a> (fasi, KPI, rischi) e <a href=\"blog/umanoidi-vs-robotica-tradizionale.html\">quando conviene un umanoide rispetto a cobot e AMR</a>."]),
 ],
 "r1": [
  ("Unitree R1: l'umanoide compatto per iniziare", [
@@ -283,7 +287,8 @@ GUIDE_IT = {
   "Il B2 cammina su zampe ed è il più versatile su terreni accidentati, scale e macerie. Il B2-W ha ruote all'estremità delle zampe: su strade, piazzali e capannoni copre distanze lunghe più velocemente e con meno consumo, senza perdere la capacità di superare ostacoli. Esiste anche il kit di conversione a quattro ruote per trasformare un B2 in B2-W.",
   "Entrambi si ordinano anche con il kit LiDAR SLAM per la mappatura e la navigazione autonoma, e con moduli di calcolo dedicati (Intel Core i7 o NVIDIA Jetson AGX fino a 550 TOPS) per far girare a bordo visione e AI."]),
  ("B2, A2 o AS2?", [
-  "L'<a href=\"a2.html\">A2</a> è il quadrupede industriale più leggero (circa 42 kg) con lunga autonomia, adatto a ronde e ispezioni ripetute. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia. Il B2 è la scelta quando servono carico, velocità e robustezza massimi. Confronto completo nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+  "L'<a href=\"a2.html\">A2</a> è il quadrupede industriale più leggero (circa 42 kg) con lunga autonomia, adatto a ronde e ispezioni ripetute. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia. Il B2 è la scelta quando servono carico, velocità e robustezza massimi. Confronto completo nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("Comprare un Unitree B2 in Italia", [
   "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi, fattura italiana e supporto in italiano. Per i progetti industriali partiamo dal compito da svolgere (percorso, carico, ambiente) e definiamo versione, batterie di ricambio (standard, basse temperature, alta capacità) e calcolo; verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a> disponibili."]),
 ],
@@ -315,6 +320,36 @@ def family_of(name: str) -> str | None:
 def eur(x: float, en: bool) -> str:
     s = f"{x:,.0f}"
     return s if en else s.replace(",", ".")
+
+
+# Tabella degli hub IT: a chi serve ogni versione (primo pattern che corrisponde al nome), ricavato dai testi
+# "quale scegliere" e dalle guide qui sopra. Nessuna corrispondenza = "—".
+USO_IT = {
+    "g1": [(r"\bAir\b|Basic", "dimostrazioni, eventi e comunicazione"), (r"COMP", "competizioni (versione atletica)"),
+           (r"EDU", "ricerca e sviluppo con SDK"), (r"\bPro\b", "intrattenimento e interazione")],
+    "go2": [(r"Go2-W", "percorsi lunghi su superfici piane (ruote)"), (r"Gas", "ispezione con rilevamento gas"),
+            (r"EDU", "ricerca e sviluppo con SDK"), (r"\bAir\b", "eventi, comunicazione e primo contatto"),
+            (r"\bPro\b", "dimostrazioni avanzate: più velocità e carico")],
+    "r1": [(r"Professional", "ricerca sulla manipolazione (mani o pinze)"), (r"Edu", "didattica e ricerca con SDK"),
+           (r"(?i)\bair\b|Basic", "dimostrazioni, senza SDK")],
+    "a2": [(r"A2-W", "percorsi lunghi su superfici regolari (ruote)"), (r"\bPro\b", "ispezione in ambienti gravosi (IP67, due LiDAR)"),
+           (r"Standard", "ispezione e trasporto leggero (IP56)")],
+    "b2": [(r"B2-W", "lunghe distanze su ruote"), (r"\bB2\b", "ispezione industriale, terreni difficili e carichi elevati")],
+    # as2 e h2: hub IT a mano, la tabella la scrive seo_hub_prezzo_it.py
+    "as2": [(r"AS2-W", "versione con ruote"), (r"EDU", "sviluppo software: LiDAR industriale e SDK"),
+            (r"AS2-X|\bPro\b", "ispezione: LiDAR industriale, IP54, circa 4 ore di autonomia"),
+            (r"\bAir\b", "dimostrazioni e primo contatto")],
+    "h2": [(r"H2-[AD]\b", "manipolazione: busto dual-arm"), (r"EDU", "ricerca e sviluppo con SDK"),
+           (r"\bAir\b|Basic", "dimostrazioni e showroom")],
+}
+# Consegna (decisione commerciale di Gio, 09/11/2026): G1 EDU U2 in pronta consegna (mani e pinze a 60 giorni),
+# tutto il resto 60 giorni dalla conferma d'ordine, salvo disponibilità diversa confermata dal fornitore.
+PRONTA_CONSEGNA = {"G1-U2"}
+CONSEGNA_IT = "Consegna in 60 giorni dalla conferma d'ordine, salvo disponibilità diversa confermata dal fornitore."
+
+
+def uso_it(key: str, name: str) -> str:
+    return next((t for pat, t in USO_IT.get(key, []) if re.search(pat, name)), "—")
 
 
 def load() -> dict[str, dict]:
@@ -394,6 +429,22 @@ HUB_CSS = """<style id="hub-modello-css">
 .hm-faq p{margin:10px 0 0;line-height:1.6;color:var(--gray-600)}
 .hm-fam{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .hm-fam a{padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem}
+/* telefono: le righe delle tabelle configurazioni/prezzi diventano schede (nome + prezzo, poi descrizione/link); thead resta nel DOM per la semantica */
+@media (max-width:600px){
+.hm-table:not(.g1p-table):not(.h2x-specs),.hm-table:not(.g1p-table):not(.h2x-specs) tbody{display:block}
+.hm-table:not(.g1p-table):not(.h2x-specs) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 16px;margin:0 0 12px;border:1px solid var(--gray-200);border-radius:16px;background:var(--white,#fff)}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr:target{background:var(--gray-50,#fafafa);border-color:var(--black,#0a0a0a)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td{display:block;padding:0;border:0;font-size:15px;line-height:1.5;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:first-child{grid-column:1;grid-row:1;font-size:16px;font-weight:600;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td.p{grid-column:2;grid-row:1;text-align:right;white-space:nowrap;font-size:16px}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:not(:first-child):not(.p){grid-column:1/-1;color:var(--gray-600)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td a{color:var(--black,#0a0a0a)}
+.hm-table.h2x-specs tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.hm-table.h2x-specs td{display:block;padding:0;border:0;font-size:15px;line-height:1.5}
+.hm-table.h2x-specs td:first-child{min-width:0;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+.hm-table.h2x-specs,.hm-table.h2x-specs tbody{display:block}
+}
 </style>"""
 
 
@@ -424,23 +475,33 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
         lead = f"{f['what_en']} Below: every {name} version we sell with its end-user price (excl. VAT), the official specifications and how to choose."
     else:
         title = (f.get("seo_it") or "").replace("{low}", eur(low, False) if low else "") or (f"Unitree {name} prezzo Italia: da {eur(low, False)} €, tutte le versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
-        h1 = f"Unitree {name}: prezzi e versioni in Italia"
+        h1 = f"Unitree {name} prezzo in Italia: listino {date.today().year}"
         desc = (f"Prezzo Unitree {name} in Italia: tutte le versioni da {eur(low, False)} € IVA esclusa, specifiche ufficiali "
                 f"e quale scegliere. Spedizione e dazio inclusi, supporto in italiano.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
-        lead = f"{f['what_it']} Qui trovi tutte le versioni {name} a listino con prezzo End-User (IVA esclusa), le specifiche ufficiali e come scegliere."
+        # prime 2 righe: prezzo di partenza dal listino (piano Italia IT-2)
+        cheapest = next((re.sub(r"\s*\(.*\)", "", r["name"]) for r in (robots or acc) if r["price"] == low), None) if low else None
+        price_it = (f"L'Unitree {name} costa da {eur(low, False)} € IVA esclusa" + (f" nella versione {cheapest}" if cheapest else "")
+                    + ", con spedizione e dazio in Italia inclusi (listino End-User). ") if low else ""
+        lead = (f"{price_it}{f['what_it']} Sotto trovi tutte le versioni a listino con prezzo, "
+                f"{'a chi servono ' if key in USO_IT else ''}e consegna, le specifiche ufficiali e come scegliere.")
     if len(title) > 60:
         title = title.replace(" | Abra", "")[:60].rsplit(" ", 1)[0]
     if len(desc) > 158:  # toglie l'ultima frase intera invece di troncare a metà ("supporto in.")
         desc = desc.rsplit(". ", 1)[0].rstrip(",.") + "."
 
     rows = robots or acc
-    th = ("Version", "Price (excl. VAT)", "") if en else ("Versione", "Prezzo (IVA esclusa)", "")
+    # IT: colonne "A chi serve" (solo famiglie in USO_IT) e "Consegna" (piano Italia IT-2); la tabella EN resta com'era
+    uso = not en and key in USO_IT
+    th = ("Version", "Price (excl. VAT)", "") if en else \
+        ("Versione", "Prezzo (IVA esclusa)") + (("A chi serve",) if uso else ()) + ("Consegna", "")
+    extra = (lambda r: "") if en else (lambda r: (f'<td>{html.escape(uso_it(key, r["name"]))}</td>' if uso else "")
+                                       + f'<td>{"pronta consegna" if r["sku"] in PRONTA_CONSEGNA else "60 giorni"}</td>')
     tr = "\n".join(
         f'<tr><td><a href="{link(r["slug"])}">{html.escape(nome_en(r["name"]) if en else r["name"])}</a></td>'
         f'<td class="p">{(("on request" if en else "su richiesta") if not r["price"] else ("from € " + eur(r["price"], True)) if en else ("da " + eur(r["price"], False) + " €"))}</td>'
-        f'<td><a href="{link(r["slug"])}">{"Details" if en else "Scheda"} →</a></td></tr>'
+        f'{extra(r)}<td><a href="{link(r["slug"])}">{"Details" if en else "Scheda"} →</a></td></tr>'
         for r in rows if r["price"] or r["on_request"])
-    table = f'<div class="hm-wrap"><table class="hm-table"><thead><tr><th>{th[0]}</th><th>{th[1]}</th><th>{th[2]}</th></tr></thead><tbody>\n{tr}\n</tbody></table></div>'
+    table = f'<div class="hm-wrap"><table class="hm-table"><thead><tr>{"".join(f"<th>{h}</th>" for h in th)}</tr></thead><tbody>\n{tr}\n</tbody></table></div>'
 
     specs = "".join(f'<div><span>{html.escape(s[1] if en else s[0])}</span><strong>{html.escape(split(s[2], en))}</strong></div>'
                     for s in f["specs"] if (s[1] if en else s[0]))
@@ -545,7 +606,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
 </section>
 <section class="section" style="padding-top:24px"><div class="container">
 <h2>{T(f'Unitree {name} versions and prices', f'Versioni e prezzi Unitree {name}')}</h2>
-<p>{T('End-user prices excluding VAT, shipping and duty to Italy included. Each order is confirmed with an updated quote.', 'Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi. Ogni ordine si conferma con un preventivo aggiornato.')}</p>
+<p>{T('End-user prices excluding VAT, shipping and duty to Italy included. Each order is confirmed with an updated quote.', 'Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi. Ogni ordine si conferma con un preventivo aggiornato. ' + CONSEGNA_IT + (" Il G1 EDU U2 è in pronta consegna (mani e pinze a 60 giorni)." if key == "g1" else ""))}</p>
 {table}
 </div></section>
 <section class="section" style="padding-top:0"><div class="container">

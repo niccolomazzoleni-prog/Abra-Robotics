@@ -108,8 +108,8 @@ def chrome(d: dict) -> tuple[str, str, str, str]:
 
 
 def link_product(slug: str, code: str = "") -> str:
-    if code and slug == "unitree-g1-plus.html" and (ROOT / code / slug).is_file():
-        return slug  # G1+: scheda nella lingua della pagina (scripts/genera_g1_plus.py)
+    if code and slug in ("unitree-g1-plus.html", "unitree-h2-x.html") and (ROOT / code / slug).is_file():
+        return slug  # G1+ e H2-X: scheda nella lingua della pagina (scripts/genera_g1_plus.py, genera_h2x.py)
     en_slug = slug.replace(".html", "-en.html")
     if (ROOT / "en/prodotti" / en_slug).is_file():
         return f"../en/prodotti/{en_slug}"

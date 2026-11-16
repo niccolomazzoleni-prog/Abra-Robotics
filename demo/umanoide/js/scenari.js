@@ -5,24 +5,27 @@ import { LAYOUT } from './scene.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const HALF = Math.PI / 2;
-const qGrip = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.75, yaw, 'ZYX'));
-const qPress = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.15, yaw, 'ZYX'));
+const qGrip = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.35, yaw, 'ZYX'));
+const qPress = yaw => new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.35, yaw, 'ZYX'));
 
-// posizione "in mano" durante il trasporto, nel riferimento del bacino
-function carry(tl, side = 'R') {
+// posizione "in mano" durante il trasporto, nel riferimento del bacino (z = altezza del palmo)
+function carry(tl, side = 'R', z = 0.84) {
   return t => {
     const b = tl.basePose(t), c = Math.cos(b.yaw), s = Math.sin(b.yaw);
-    const lx = 0.3, ly = side === 'R' ? -0.17 : 0.17, z = 0.84;
+    const lx = 0.3, ly = side === 'R' ? -0.17 : 0.17;
     return V(b.x + lx * c - ly * s, b.y + lx * s + ly * c, z);
   };
 }
+
+// orientamento della mano in trasporto: segue il busto (non resta fisso nel mondo mentre il robot gira)
+const carryQ = tl => t => qGrip(tl.basePose(t).yaw);
 
 // presa della cassetta dal tavolo; ritorna i tempi chiave
 function pickToolbox(tl) {
   const B = LAYOUT.box, T = LAYOUT.table;
   const handle = V(B.x, B.y, T.h + B.H + B.hh);
   const t0 = tl.t;
-  tl.walk(B.x - 0.13, 0.8, HALF);
+  tl.walk(B.x - 0.13, 0.74, HALF);
   const tA = tl.t;
   tl.hand('R', 0.15, handle.clone().add(V(0.02, -0.12, 0.16)), 0, qGrip(HALF));
   tl.hand('R', 1.05, handle.clone().add(V(0, -0.02, 0.14)), 1, qGrip(HALF));
@@ -36,18 +39,42 @@ function pickToolbox(tl) {
 }
 
 function placeAt(tl, standX, standY, dropP, label) {
-  const high = label === 'scatola' ? 0.26 : 0.1;
+  if (label === 'scatola') return placeInCarton(tl, standX, standY, dropP);
+  const high = 0.1;
   const t0 = tl.t;
-  tl.hand('R', 0.0, carry(tl), 1, qGrip(0));
+  tl.hand('R', 0.7, carry(tl), 1, carryQ(tl));
   tl.walk(standX, standY, -HALF);
   const tA = tl.t;
-  tl.hand('R', 0.0, carry(tl), 1, qGrip(-HALF));
+  tl.hand('R', 0.0, carry(tl), 1, carryQ(tl));
   tl.hand('R', 0.9, dropP.clone().add(V(0, 0.05, high)), 1, qGrip(-HALF));
   tl.hand('R', 1.6, dropP.clone(), 1, qGrip(-HALF));
   tl.ev(1.75, 'release', { obj: 'cassetta', where: label, p: dropP.clone() });
   tl.hand('R', 2.5, dropP.clone().add(V(0, 0.08, 0.2)), 0.6, qGrip(-HALF));
   tl.hand('R', 3.2, null, 0);
   tl.stand(3.3, { crouch: t => ease((t - tA - 0.4) / 0.8) * (1 - ease((t - tA - 2.0) / 0.8)) });
+  return { t0, tA, tB: tl.t };
+}
+
+// Nella scatola: la cassetta viaggia sopra il bordo (bordo + altezza dal palmo al fondo + margine), si ferma
+// sopra l'apertura, scende in verticale e solo allora si rilascia; poi la mano risale dritta.
+// Il palmo sta a B.H + B.hh sopra il fondo della cassetta (vedi updateWorld in main.js).
+export const SCATOLA_QUOTA = LAYOUT.conv.z + LAYOUT.carton.H + (LAYOUT.box.H + LAYOUT.box.hh) + 0.05;
+function placeInCarton(tl, standX, standY, dropP) {
+  const zH = SCATOLA_QUOTA, t0 = tl.t;
+  const above = z => V(dropP.x, dropP.y, z);
+  tl.hand('R', 0.7, carry(tl, 'R', zH), 1, carryQ(tl));
+  tl.walk(standX, standY, -HALF);
+  const tA = tl.t;
+  tl.hand('R', 0.0, carry(tl, 'R', zH), 1, carryQ(tl));
+  tl.hand('R', 0.9, above(zH), 1, qGrip(-HALF));                       // in orizzontale, sempre sopra il bordo
+  tl.hand('R', 1.2, above(zH), 1, qGrip(-HALF));
+  for (let k = 1; k <= 4; k++) tl.hand('R', 1.2 + 0.28 * k, above(zH + (dropP.z - zH) * k / 4), 1, qGrip(-HALF));   // discesa verticale a tappe
+  tl.hand('R', 2.55, dropP.clone(), 1, qGrip(-HALF));
+  tl.ev(2.6, 'release', { obj: 'cassetta', where: 'scatola', p: dropP.clone() });
+  tl.hand('R', 2.9, dropP.clone(), 1, qGrip(-HALF));                   // la mano non si muove finché la cassetta non è sul fondo
+  for (let k = 1; k <= 3; k++) tl.hand('R', 2.9 + 0.3 * k, above(dropP.z + (zH - dropP.z) * k / 3), 0.8, qGrip(-HALF));   // risale dritta
+  tl.hand('R', 4.3, null, 0);
+  tl.stand(4.4, { crouch: t => ease((t - tA - 0.4) / 0.8) * (1 - ease((t - tA - 3.3) / 0.8)) });
   return { t0, tA, tB: tl.t };
 }
 
@@ -100,7 +127,7 @@ export const SCENARI = [
       tl.stand(0.5);
       const p = pickToolbox(tl);
       const K = LAYOUT.carton, C = LAYOUT.conv;
-      const drop = V(K.x, -0.86, C.z + 0.012 + LAYOUT.box.H + LAYOUT.box.hh + 0.02);
+      const drop = V(K.x, -0.915, C.z + 0.012 + LAYOUT.box.H + LAYOUT.box.hh + 0.02);
       const q = placeAt(tl, K.x + 0.12, -0.4, drop, 'scatola');
       const tP0 = tl.t;
       const r = pressButton(tl, 0, W);

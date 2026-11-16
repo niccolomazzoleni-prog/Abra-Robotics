@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import { toCreasedNormals } from 'three/addons/utils/BufferGeometryUtils.js';
 
+const clamp01 = x => Math.max(0, Math.min(1, x));
 const _v = new THREE.Vector3(), _v2 = new THREE.Vector3(), _q = new THREE.Quaternion(), _q2 = new THREE.Quaternion();
 
 export async function loadG1(base) {
@@ -70,7 +71,9 @@ class Chain {
     this.top = this.j[0].body; this.rest = rest || this.j.map(() => 0);
   }
   pe(out) { return out.copy(this.effLocal).applyMatrix4(this.eff.matrixWorld); }
-  solve(target, tq, { iters = 6, wRot = 0.4, lambda = 0.06, restW = 0.0, maxStep = 0.3 } = {}) {
+  get q() { return this.j.map(j => j.q); }
+  set q(v) { this.j.forEach((j, i) => setJ(j, v[i])); }
+  solve(target, tq, { iters = 6, wRot = 0.4, lambda = 0.06, restW = 0.0, maxStep = 0.3, rest = this.rest } = {}) {
     const n = this.j.length, m = tq ? 6 : 3;
     const pe = new THREE.Vector3(), pj = new THREE.Vector3(), aj = new THREE.Vector3(), c = new THREE.Vector3();
     let err = 0;
@@ -100,7 +103,7 @@ class Chain {
       const y = solve(A, e, m);
       for (let i = 0; i < n; i++) {
         let dq = 0; for (let r = 0; r < m; r++) dq += J[i][r] * y[r];
-        dq += restW * (this.rest[i] - this.j[i].q);
+        dq += restW * (rest[i] - this.j[i].q);
         dq = Math.max(-maxStep, Math.min(maxStep, dq));
         setJ(this.j[i], this.j[i].q + dq);
       }
@@ -142,7 +145,7 @@ export class G1 {
   }
   set(j, q) { setJ(this.joints[j], q); }
   // st = stato calcolato dalla timeline: base {x,y,z,yaw,pitch,roll}, feet {L:{p,yaw},R:{...}}, hands {L:{p,w},R}, waist {yaw,pitch}
-  apply(st) {
+  body(st) {
     const b = st.base;
     this.pelvis.position.set(b.x, b.y, b.z);
     this.pelvis.quaternion.setFromEuler(new THREE.Euler(b.roll || 0, b.pitch || 0, b.yaw, 'ZYX'));
@@ -157,23 +160,70 @@ export class G1 {
       const tq = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, f.pitch || 0, f.yaw, 'ZYX'));
       this.legs[s].solve(_v, tq, { iters: it, wRot: 0.5, lambda: 0.07, restW: 0.03, maxStep: 0.15 });
     }
+  }
+  // bersaglio della mano: riposo (con oscillazione e accucciata) -> punto richiesto, pesato da w
+  armTarget(st, s, h = st.hands[s]) {
+    const rest = new THREE.Vector3().copy(this.handRest[s]);
+    if (h.swing) rest.x += h.swing;
+    if (h.restOff) rest.add(h.restOff);
+    this.pelvis.localToWorld(rest);
+    const tgt = h.p ? rest.lerp(h.p, h.w) : rest;
+    const wr = h.q && h.p ? clamp01((h.w - 0.35) / 0.45) : 0;
+    return { tgt, tq: wr > 0 ? h.q : null, wr };
+  }
+  // Braccia: per ogni chiave della timeline l'IK viene risolta una volta sola, con calma e da più pose di partenza
+  // (bake); fra due chiavi si interpola nello spazio dei giunti e ogni fotogramma corregge solo di poco, partendo
+  // sempre dalla posa interpolata. Niente memoria fra fotogrammi = niente salti, e lo stesso t dà la stessa posa.
+  bake(tl) {
+    tl.armQ = { L: [], R: [] };
+    const saveFirst = this.first;
     for (const s of ['L', 'R']) {
-      const h = st.hands[s];
-      const rest = _v2.copy(this.handRest[s]);
-      if (h.swing) rest.x += h.swing;
-      if (h.restOff) rest.add(h.restOff);
-      this.pelvis.localToWorld(rest);
-      const tgt = h.p ? rest.clone().lerp(h.p, h.w) : rest.clone();
-      const tq = h.q && h.w > 0.5 ? h.q : null;
-      this.arms[s].solve(tgt, tq, { iters: it, wRot: 0.12, lambda: 0.06, restW: 0.05, maxStep: 0.2 });
-      this.arms[s].pe(this.palmWorld[s]);
+      const arm = this.arms[s], sg = s === 'R' ? 1 : -1;
+      const seeds = [arm.rest, [-0.9, -0.15 * sg, 0, 0.7, 0, -0.2, 0], [-1.5, -0.25 * sg, 0.3 * sg, 0.5, 0, -0.4, 0], [-0.4, -0.3 * sg, 0, 1.3, 0, 0, 0]];
+      let prev = arm.rest;
+      for (const k of tl.hands[s]) {
+        const st = tl.eval(k.t);
+        this.first = true; this.body(st);
+        const p = typeof k.p === 'function' ? k.p(k.t) : k.p, q = typeof k.q === 'function' ? k.q(k.t) : k.q;
+        const { tgt, tq, wr } = this.armTarget(st, s, { p, w: p ? k.w : 0, q, swing: 0, restOff: st.hands[s].restOff });
+        let best = null;
+        for (const seed of [prev, ...seeds]) {
+          arm.q = seed;
+          for (let pass = 0; pass < 3; pass++) arm.solve(tgt, tq, { iters: 30, wRot: 0.35 * wr, lambda: 0.05, restW: 0.02, maxStep: 0.12 });
+          const e = arm.pe(new THREE.Vector3()).distanceTo(tgt);
+          let r = 0; if (tq) { arm.eff.getWorldQuaternion(_q2); r = 2 * Math.acos(Math.min(1, Math.abs(_q2.dot(tq)))); }
+          const qv = arm.q; let dist = 0; qv.forEach((x, i) => { dist += (x - prev[i]) ** 2; });
+          const cost = e + 0.04 * r * wr + 0.01 * Math.sqrt(dist);
+          if (!best || cost < best.cost) best = { cost, q: qv, e, r };
+        }
+        tl.armQ[s].push(best.q); prev = best.q;
+        if (s === 'R') (tl.armErr ??= []).push({ t: k.t, e: best.e, r: best.r });
+      }
+    }
+    this.first = saveFirst || true;
+  }
+  apply(st) {
+    if (st.tl && !st.tl.armQ) this.bake(st.tl);
+    this.body(st);
+    for (const s of ['L', 'R']) {
+      const h = st.hands[s], arm = this.arms[s];
+      const { tgt, tq, wr } = this.armTarget(st, s);
+      const Q = st.tl?.armQ?.[s];
+      if (Q && h.ka != null) {
+        const qa = Q[h.ka], qb = Q[h.kb], base = qa.map((x, i) => x + (qb[i] - x) * h.u);
+        arm.q = base;
+        // fra due chiavi diverse conta il moto dei giunti (morbido); vicino alle chiavi e quando si tiene, il bersaglio
+        const c = h.pin ? 1 : 1 - Math.sin(Math.PI * h.u);
+        if (c < 1) { arm.top.updateMatrixWorld(true); tgt.lerpVectors(arm.pe(_v), tgt, c); }
+        arm.solve(tgt, tq, { iters: 5, wRot: 0.3 * wr * c, lambda: 0.08, restW: 0.12, rest: base, maxStep: 0.08 });
+      } else arm.solve(tgt, tq, { iters: 6, wRot: 0.12, lambda: 0.06, restW: 0.05, maxStep: 0.2 });
+      arm.pe(this.palmWorld[s]);
     }
   }
   reset() { this.first = true; }
 }
 
 // ---------------------------------------------------------------- timeline di movimento
-const clamp01 = x => Math.max(0, Math.min(1, x));
 export const ease = x => { x = clamp01(x); return x * x * (3 - 2 * x); };
 const ease5 = x => { x = clamp01(x); return x * x * x * (x * (6 * x - 15) + 10); };
 const angLerp = (a, b, t) => { let d = b - a; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return a + d * t; };
@@ -228,7 +278,7 @@ export class Timeline {
   }
   eval(t) {
     const bp = this.basePose(t), s = bp.seg;
-    const st = { base: { x: bp.x, y: bp.y, z: this.H, yaw: bp.yaw, pitch: 0, roll: 0 }, feet: {}, hands: {}, waist: { yaw: 0, pitch: 0 }, walking: false };
+    const st = { tl: this, base: { x: bp.x, y: bp.y, z: this.H, yaw: bp.yaw, pitch: 0, roll: 0 }, feet: {}, hands: {}, waist: { yaw: 0, pitch: 0 }, walking: false };
     if (s.type === 'walk') {
       st.walking = true;
       const Ts = (s.t1 - s.t0) / s.n, tau = t - s.t0;
@@ -264,14 +314,17 @@ export class Timeline {
     for (const side of ['L', 'R']) {
       const ks = this.hands[side];
       let i = ks.length - 1; while (i > 0 && ks[i].t > t) i--;
-      const a = ks[i], b = ks[Math.min(ks.length - 1, i + 1)];
+      const ib = Math.min(ks.length - 1, i + 1), a = ks[i], b = ks[ib];
       const u = b.t > a.t ? ease(clamp01((t - a.t) / (b.t - a.t))) : 1;
       const w = a.w + (b.w - a.w) * u;
       let p = null;
       const pa = typeof a.p === 'function' ? a.p(t) : a.p, pb = typeof b.p === 'function' ? b.p(t) : b.p;
       if (pa && pb) p = pa.clone().lerp(pb, u); else p = (pa || pb) ? (pa || pb).clone() : null;
-      const q = (u > 0.5 ? b.q : a.q) || a.q || null;
-      st.hands[side] = { p, w: p ? w : 0, q, swing: (st.swing || 0) * (side === 'L' ? 1 : -1) * (1 - w) };
+      // chiavi con lo stesso bersaglio (tenere il manico, trasportare, riposo): la mano va tenuta lì con precisione
+      const pin = (!pa && !pb) || (pa && pb && pa.distanceTo(pb) < 0.02 && Math.abs(a.w - b.w) < 0.02);
+      const qa = typeof a.q === 'function' ? a.q(t) : a.q, qb = typeof b.q === 'function' ? b.q(t) : b.q;
+      const q = qa && qb ? qa.clone().slerp(qb, u) : (qa || qb || null);
+      st.hands[side] = { p, w: p ? w : 0, q, swing: (st.swing || 0) * (side === 'L' ? 1 : -1) * (1 - w), ka: i, kb: ib, u, pin };
       if (st.slump) st.hands[side].restOff = new THREE.Vector3(-0.08 * st.slump, 0, -0.12 * st.slump);
     }
     return st;

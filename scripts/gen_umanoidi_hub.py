@@ -9,9 +9,12 @@ Uso: python scripts/gen_umanoidi_hub.py
 import html
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from miniature import HEIGHT, WIDTH, thumb_src  # noqa: E402
 PAGE = ROOT / "umanoidi.html"
 LISTINO = json.loads((ROOT / "listini/pubblico/end-user.json").read_text(encoding="utf-8"))
 
@@ -59,21 +62,33 @@ def prodotti(fam):
     return sorted(out, key=lambda kv: (not kv[1].get("prezzo_eur"), kv[1].get("prezzo_eur") or 0))
 
 
+CAP = 8  # schede visibili per elenco; le altre stanno in un <details> (link comunque presenti nell'HTML)
+
+
 def voce(k, v):
+    """Scheda con miniatura, nome e prezzo. Stesso link e stesso prezzo di prima."""
+    nome = html.escape(v["nome"])
+    img = thumb_src(v.get("immagine") or "", "")
+    media = (f'<span class="fam-item-media"><img src="{html.escape(img)}" alt="{nome}" width="{WIDTH}" height="{HEIGHT}" '
+             f'loading="lazy" decoding="async"></span>') if img else '<span class="fam-item-media"></span>'
     if not v.get("prezzo_eur"):
-        return (f'<a class="fam-item" href="prodotti/{v["slug"]}">'
-                f'<span class="fam-item-name">{html.escape(v["nome"])}</span>'
-                f'<span class="fam-item-price"><strong>Prezzo su richiesta</strong></span></a>')
-    listino = v.get("prezzo_listino_eur")
-    barrato = (f'<s class="fam-map" title="Prezzo di listino">{eur(listino)} €</s>'
-               if listino and listino > v["prezzo_eur"] else "")
-    return (f'<a class="fam-item" href="prodotti/{v["slug"]}">'
-            f'<span class="fam-item-name">{html.escape(v["nome"])}</span>'
-            f'<span class="fam-item-price">{barrato}<strong>{eur(v["prezzo_eur"])} €</strong></span></a>')
+        prezzo = '<span class="fam-item-price"><strong>Prezzo su richiesta</strong></span>'
+    else:
+        listino = v.get("prezzo_listino_eur")
+        barrato = (f'<s class="fam-map" title="Prezzo di listino">{eur(listino)} €</s>'
+                   if listino and listino > v["prezzo_eur"] else "")
+        prezzo = f'<span class="fam-item-price">{barrato}<strong>{eur(v["prezzo_eur"])} €</strong></span>'
+    return (f'<a class="fam-item" href="prodotti/{v["slug"]}">{media}'
+            f'<span class="fam-item-body"><span class="fam-item-name">{nome}</span>{prezzo}</span></a>')
 
 
 def elenco(items):
-    return '<div class="fam-list">' + "".join(voce(k, v) for k, v in items) + "</div>"
+    visibili, resto = items[:CAP], items[CAP:]
+    out = '<div class="fam-list">' + "".join(voce(k, v) for k, v in visibili) + "</div>"
+    if resto:
+        out += (f'<details class="fam-more"><summary>Mostra altre {len(resto)} configurazioni</summary>'
+                '<div class="fam-list">' + "".join(voce(k, v) for k, v in resto) + "</div></details>")
+    return out
 
 
 def scheda(fam):
@@ -137,17 +152,25 @@ STYLE = """<style id="hub-style">
 .fam-head-side img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:var(--gray-50);border-radius:var(--radius-sm);padding:12px}
 .fam-serie{font-size:15px;font-weight:700;margin:28px 0 12px;display:flex;align-items:center;gap:8px}
 .fam-serie span{font-size:12px;font-weight:600;color:var(--gray-600);background:var(--gray-100);border-radius:999px;padding:2px 8px}
-.fam-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
-.fam-item{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);background:var(--white);color:var(--black);text-decoration:none;transition:border-color .15s,background .15s}
-.fam-item:hover{border-color:var(--black);background:var(--gray-50)}
-.fam-item-name{font-weight:600;font-size:15px;line-height:1.35}
-.fam-item-price{display:flex;align-items:baseline;gap:8px;font-size:14px}
+.fam-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.fam-item{display:flex;flex-direction:column;box-sizing:border-box;border:1px solid var(--gray-200);border-radius:16px;background:var(--white);color:var(--black);text-decoration:none;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
+.fam-item:hover,.fam-item:focus-visible{border-color:var(--black);box-shadow:0 8px 24px rgba(0,0,0,.07);transform:translateY(-2px)}
+.fam-item-media{display:block;position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--gray-50);border-bottom:1px solid var(--gray-100)}
+.fam-item-media img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;padding:12px;box-sizing:border-box}
+.fam-item-body{display:flex;flex-direction:column;gap:6px;padding:12px 14px 14px;flex:1}
+.fam-item-name{font-weight:500;font-size:15px;line-height:1.3}
+.fam-item-price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:auto;font-size:14px}
 .fam-item-price strong{font-size:16px}
-.fam-map{color:var(--gray-400);font-size:13px}
+.fam-map{color:#6b6b6b;font-size:13px}
+.fam-more{margin-top:14px}
+.fam-more summary{cursor:pointer;display:inline-block;padding:10px 18px;border:1px solid var(--gray-200);border-radius:999px;font-size:14px;font-weight:500;color:var(--black);list-style:none}
+.fam-more summary::-webkit-details-marker{display:none}
+.fam-more summary:hover{border-color:var(--black)}
+.fam-more[open] summary{margin-bottom:14px}
 .fam-back{margin:24px 0 0;font-size:14px}
 .fam-back a{color:var(--gray-600)}
-@media (max-width:960px){.fam-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fam-head{grid-template-columns:1fr}.fam-head-side{max-width:360px}}
-@media (max-width:600px){.fam-grid{grid-template-columns:1fr}}
+@media (max-width:960px){.fam-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fam-head{grid-template-columns:1fr}.fam-head-side{max-width:360px}.fam-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.fam-grid{grid-template-columns:1fr}.fam-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fam-item-body{padding:10px 12px 12px}.fam-item-name{font-size:14px}.fam-item-price{font-size:14px}.fam-item-price strong{font-size:15px}.fam-map{font-size:14px}}
 </style>"""
 
 

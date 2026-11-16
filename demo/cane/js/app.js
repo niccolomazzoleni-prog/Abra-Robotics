@@ -15,6 +15,7 @@ const Q = new URLSearchParams(location.search);
 const REGIA = Q.get('regia') === '1';
 const SALTA = +(Q.get('salta') || 0);
 const LITE = Q.get('lite') === '1';
+const SEMPLICE = Q.get('vista') === 'semplice';   // vista semplice del sito: qui c'è anche la stazione del manometro
 const DURATA = 45;
 const $ = (s) => document.querySelector(s);
 if (REGIA) document.body.classList.add('regia');
@@ -149,6 +150,7 @@ freccia.position.z = 0.012; freccia.layers.set(1); cane3d.add(freccia);
 
 // ---------------------------------------------------------------- stato del mondo
 let mondo, mappa, lidar, cane, mondo3d, R;   // R = rng di scena
+let ordine = null, faro = null, tween = null;   // ordine = {x, y} della missione del manometro (solo vista semplice)
 let puntiGeo, scia, griglia, gTex, vTex, bTex, percorso3d, meta3d, marcatori = [], extra3d = [];
 const S = { modo: REGIA ? 'fermo' : 'esplora', meta: null, missione: [], iMis: 0, zone: [], iZona: 0, pausa: 0, nero: [], fronti: { celle: [], gruppi: [] },
   bersaglio: null, scans: 0, nuovi: 0, storia: [], deriva: 0, driftAng: 0, ultimoAr: null, arVisti: [], batt: 86.4, lidarOn: !REGIA,
@@ -287,6 +289,7 @@ function caricaMondo(nome) {
   // camera interattiva
   const L = Math.max(x1 - x0, y1 - y0);
   controls.target.set(cane.x + 2.5, cane.y - 0.5, 0); camera.position.set(cane.x - 3.5, cane.y + 6.5, 7.5); controls.update();
+  if (SEMPLICE && nome === 'magazzino') costruisciManometro();
   logga(`SLAM Abra (KISS-SLAM) avviato  sorgente sim:${nome}  LiDAR L2 ${lidar.raggiScan * 10} punti/s`, 'ev');
 }
 
@@ -392,6 +395,7 @@ function aggiornaPercorso(P) {
 
 // ---------------------------------------------------------------- comportamento (navigatore_slam.py)
 function pianifica(meta, etichetta) {
+  if (ordine && Math.hypot(meta[0] - ordine.x, meta[1] - ordine.y) > 0.6) { ordine = null; cane.yawMeta = null; }   // altra meta: la missione del manometro è annullata
   const t0 = performance.now();
   const r = astar(mappa, [cane.x, cane.y], meta);
   if (!r) { logga(`NAV A* nessun percorso verso (${fmt(meta[0], 1)},${fmt(meta[1], 1)}): meta scartata`, 'ev'); return false; }
@@ -585,7 +589,7 @@ const AIUTO = { punto: 'Clicca sul pavimento: il cane calcola il percorso A* sul
 let segui = !REGIA;
 function setModo(m, auto) {
   S.modo = m; S.missioneAttiva = false;
-  if (!auto) { cane.percorso = null; S.meta = null; S.bersaglio = null; aggiornaPercorso(null); }
+  if (!auto) { cane.percorso = null; S.meta = null; S.bersaglio = null; ordine = null; cane.yawMeta = null; aggiornaPercorso(null); }
   document.querySelectorAll('[data-modo]').forEach((b) => b.classList.toggle('primary', b.dataset.modo === m));
   $('#aiuto').textContent = AIUTO[m]; $('#rigaMissione').hidden = m !== 'missione';
   if (m === 'pattuglia') { S.iZona = 0; S.zone.forEach((z) => z.stato = 'da fare'); vaiZona(); }
@@ -616,6 +620,70 @@ canvas.addEventListener('pointerup', (e) => {
   if (S.modo !== 'punto') setModo('punto');
   pianifica([p.x, p.y], 'vai a un punto');
 });
+
+// ---------------------------------------------------------------- stazione del manometro (solo vista semplice)
+// Palo con quadrante tondo e cartello «Linea 3» nel corridoio libero davanti agli scaffali (y 0-2,95), a 10,2 m dalla partenza.
+// Il quadrante guarda verso -x, cioè verso il cane che arriva da ovest; il cane si ferma a 1 m (yaw 0) e lo guarda.
+const MANO = { x: 11.4, y: 1.45, sosta: [10.4, 1.45], yaw: 0 };
+function costruisciManometro() {
+  const g = new THREE.Group(); g.position.set(MANO.x, MANO.y, 0); g.rotation.z = Math.PI / 2;   // il modello è costruito con il fronte verso +y: ruotato di 90° guarda -x
+  const giallo = new THREE.MeshStandardMaterial({ color: 0xd8b000, roughness: 0.5, metalness: 0.2 });
+  const acciaio = new THREE.MeshStandardMaterial({ color: 0x8b9199, roughness: 0.4, metalness: 0.7 });
+  const verticale = (r, h, mat, z) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 20).rotateX(Math.PI / 2), mat); m.position.z = z; g.add(m); return m; };
+  verticale(0.2, 0.04, acciaio, 0.02);
+  verticale(0.045, 1.2, giallo, 0.64);
+  const staffa = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 0.12), acciaio); staffa.position.set(0, 0.03, 1.14); g.add(staffa);
+  const cassa = new THREE.Mesh(new THREE.CylinderGeometry(0.31, 0.31, 0.07, 40), new THREE.MeshStandardMaterial({ color: 0x26282b, roughness: 0.5, metalness: 0.4 })); cassa.position.set(0, 0.08, 1.25); g.add(cassa);   // asse lungo y: il fronte guarda +y
+  const frontale = (w, h, mat, x, y, z) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h).rotateX(Math.PI / 2).rotateZ(Math.PI), mat); m.position.set(x, y, z); g.add(m); return m; };
+  const faccia = new THREE.MeshBasicMaterial({ color: 0xc4c4bf, toneMapped: false });   // un po' scura: non deve accecare il bloom
+  frontale(0.6, 0.6, faccia, 0, 0.1155, 1.25);
+  const svg = window.ABRA_MANOMETRO && window.ABRA_MANOMETRO.svgQuadrante();
+  if (svg) {
+    const img = new Image();
+    img.onload = () => { const t = new THREE.Texture(img); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; t.needsUpdate = true; faccia.map = t; faccia.needsUpdate = true; };
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+  const cv = document.createElement('canvas'); cv.width = 512; cv.height = 128; const x = cv.getContext('2d');
+  x.fillStyle = '#f2c200'; x.fillRect(0, 0, 512, 128); x.fillStyle = '#111'; x.font = '800 78px Archivo, Arial, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('LINEA 3', 256, 68);
+  const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace;
+  frontale(0.4, 0.1, new THREE.MeshBasicMaterial({ map: tx, toneMapped: false }), 0, 0.05, 0.75);
+  faro = new THREE.Mesh(new THREE.SphereGeometry(0.045, 16, 12), new THREE.MeshBasicMaterial({ color: 0xe23b30 })); faro.position.set(0, 0.08, 1.64); g.add(faro);
+  mondo3d.add(g);
+}
+// camera di inseguimento per la missione: dalla panoramica (dietro e sopra il cane) a viste sempre più alte e vicine,
+// la prima da cui il cane si vede senza scaffali o muri nel mezzo (raggio contro le scatole, come il LiDAR)
+const _cd = new THREE.Vector3(), _cw = new THREE.Vector3();
+const VISTE_ALTE = [[-3.5, 6.5, 7.5], [-2.5, 3.5, 8.5], [-1.5, 1.8, 10], [-0.6, 0.8, 12], [0, 0, 14]];
+function liberoDa(p, x, y, z) { const dx = x - p.x, dy = y - p.y, dz = z - p.z, d = Math.hypot(dx, dy, dz), h = mondo.raggio(p.x, p.y, p.z, dx / d, dy / d, dz / d, d - 0.05); return !(h && h.b >= 4); }   // b >= 4: i muri perimetrali sono bassi nella vista, non coprono
+function cameraAlta() {
+  for (const [a, b, c] of VISTE_ALTE) {
+    _cw.set(cane.x + a, cane.y + b, c);
+    if (liberoDa(_cw, cane.x, cane.y, 0.3) && liberoDa(_cw, cane.x + 0.4, cane.y, 0.3) && liberoDa(_cw, cane.x - 0.4, cane.y, 0.3) && liberoDa(_cw, cane.x, cane.y + 0.4, 0.3) && liberoDa(_cw, cane.x, cane.y - 0.4, 0.3)) return _cw;
+  }
+  return _cw;
+}
+// piccola porta per la scheda comandi del sito (demo/cane/index.html): va in un punto, dice se è arrivato e orientato, avvicina la camera
+function vistaManometro() {
+  const k = camera.aspect < 0.8 ? 2.2 : 1;   // telefono in piedi: la scena visibile è bassa e stretta, la camera si allontana
+  segui = false; document.querySelector('#bSegui')?.classList.remove('on');
+  tween = { t: 0, p0: camera.position.clone(), q0: controls.target.clone(), p1: new THREE.Vector3(MANO.x - 4.6 * k, MANO.y + 0.1, 2.3 + 0.6 * (k - 1)), q1: new THREE.Vector3(MANO.x - 0.9, MANO.y, 0.75) };
+}
+if (SEMPLICE) window.__abraDemo = {
+  manometro: MANO,
+  vaiA(x, y, etichetta, yaw) { setModo('punto'); if (!pianifica([x, y], etichetta)) return false; ordine = { x, y }; cane.yawMeta = yaw; cane.orientato = false; return true; },
+  attivo: () => !!ordine,
+  arrivato: () => !!ordine && !cane.percorso && Math.hypot(cane.x - ordine.x, cane.y - ordine.y) < 0.5,
+  fermo: () => !!ordine && !cane.percorso && Math.hypot(cane.x - ordine.x, cane.y - ordine.y) < 0.5 && !!cane.orientato,
+  vista: vistaManometro,
+  // prova senza finestra: fa avanzare simulazione e camera di `sec` secondi (passi da 0,05 s) e dà il risultato di libera()
+  avanza(sec) { for (let t = 0; t < sec; t += DT) { passoSim(0); aggiornaCamera(DT); controls.update(); } return this.libera(); },
+  // linea di vista camera -> cane e camera -> quadrante: true se nessuna scatola (scaffale, parete) si frappone
+  libera() {
+    const o = camera.position, ok = (x, y, z) => { const dx = x - o.x, dy = y - o.y, dz = z - o.z, d = Math.hypot(dx, dy, dz); const h = mondo.raggio(o.x, o.y, o.z, dx / d, dy / d, dz / d, d - 0.05); return !(h && h.b >= 0); };
+    const n = new THREE.Vector3(cane.x, cane.y, 0.3).project(camera);
+    return { cane: ok(cane.x, cane.y, 0.3), quadrante: ok(MANO.x - 0.1, MANO.y, 1.25), cam: o.toArray().map((v) => +v.toFixed(2)), ndc: [+n.x.toFixed(2), +n.y.toFixed(2)], dog: [+cane.x.toFixed(1), +cane.y.toFixed(1)] };
+  },
+};
 
 // ---------------------------------------------------------------- regia
 const TITOLI = [
@@ -712,6 +780,13 @@ function renderCamRS(rect) {
   sx.restore();
 }
 
+function aggiornaCamera(dt) {
+  if (segui && ordine && !tween) {   // missione del manometro in cammino: camera alta che vede sopra gli scaffali, mai dietro un muro
+    controls.target.lerp(_cd.set(cane.x, cane.y, 0), Math.min(1, dt * 4));
+    camera.position.lerp(cameraAlta(), Math.min(1, dt * 3));
+  } else if (segui) { const d = new THREE.Vector3(cane.x, cane.y, 0).sub(controls.target).multiplyScalar(Math.min(1, dt * 3)); controls.target.add(d); camera.position.add(d); }
+  if (tween) { tween.t += dt / 1.6; const e = smooth(0, 1, tween.t); camera.position.lerpVectors(tween.p0, tween.p1, e); controls.target.lerpVectors(tween.q0, tween.q1, e); if (tween.t >= 1) tween = null; }
+}
 let tPrec = null, t0 = null, acc = 0, tHud = 0, tGr = 0, fine = false;
 function ciclo() {
   requestAnimationFrame(ciclo);
@@ -738,9 +813,10 @@ function ciclo() {
     MAT_PERCORSO.uniforms.uA.value = smooth(12, 14, tR);
     if (tR >= DURATA && !fine) { fine = true; window.__regiaFine = true; }
   } else {
-    if (segui) { const d = new THREE.Vector3(cane.x, cane.y, 0).sub(controls.target).multiplyScalar(Math.min(1, dt * 3)); controls.target.add(d); camera.position.add(d); }
+    aggiornaCamera(dt);
     controls.update();
   }
+  if (faro) faro.material.color.setRGB(0.55 + 0.45 * Math.sin(tv * 4), 0.04, 0.03);
   tHud += dt; if (tHud > 0.2) { tHud = 0; hud(); }
   composer.render(dt);
   sx.clearRect(0, 0, sovra.width, sovra.height);
@@ -748,6 +824,7 @@ function ciclo() {
 }
 
 // ---------------------------------------------------------------- avvio
+if (SEMPLICE) { MONDI.magazzino.lo.push([MANO.x - 0.03, MANO.y - 0.03, 0]); MONDI.magazzino.hi.push([MANO.x + 0.03, MANO.y + 0.03, 1.6]); }   // il palo è un ostacolo vero: il cane lo aggira
 caricaMondo('magazzino');
 setModo(REGIA ? 'fermo' : 'esplora', true);
 applicaLivelli();

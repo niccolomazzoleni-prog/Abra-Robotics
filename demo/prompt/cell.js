@@ -109,6 +109,11 @@ export class Piano {
     for (let j = 0; j < 6; j++) { while (q[j] - this.q[j] > PI) q[j] -= 2 * PI; while (q[j] - this.q[j] < -PI) q[j] += 2 * PI; }
     this.segs.push({ t0: this.t, t1: this.t + dur, q0: this.q, q1: q, g0: this.grip, g1: this.grip, line }); this.q = q; this.t += dur; return this;
   }
+  can(T) { // la posa è raggiungibile (senza spostare il robot)? stessa ricerca di to()
+    if (this.kin.ik(T, this.q, 300).err <= 1e-3) return true;
+    for (const d of [[0, 0.4, -0.4, 0, 0, 0], [0, -0.4, 0.4, 0, 0, 0], [0, 0, 0, 0.8, 0, 0], [0, 0, 0, -0.8, 0, 0], [0, 0, 0, 0, 0, 1.5]]) if (this.kin.ik(T, this.q.map((v, i) => v + d[i]), 300).err <= 1e-3) return true;
+    return false;
+  }
   joints(q, dur, line = this.line) { this.segs.push({ t0: this.t, t1: this.t + dur, q0: this.q, q1: q.slice(), g0: this.grip, g1: this.grip, line }); this.q = q.slice(); this.t += dur; return this; }
   gr(g, dur, line = this.line) { this.segs.push({ t0: this.t, t1: this.t + dur, q0: this.q, q1: this.q, g0: this.grip, g1: g, line }); this.grip = g; this.t += dur; return this; }
   wait(dur, line = this.line) { return this.gr(this.grip, dur, line); }
@@ -159,7 +164,12 @@ function mapLinee(script, kind) {
 }
 
 // ================= SCENA 2: pallettizzazione =================
-export function cellaPallet(m, gltf) {
+// parametri di riferimento (la frase d'esempio): schema 2x2, scatole 600x400x300, pallet EUR
+export const PAR_PALLET = {
+  tipo: "scatole", L: 0.6, W: 0.4, H: 0.3, mass: 18, palL: 1.2, palW: 0.8, palTxt: "pallet EUR 1200×800", rot: false, coppe: 4, robot: "UR30", stopY: 0,
+  slots: [[0.3015, 1.1605, 0], [-0.3015, 1.1605, 0], [0.3015, 0.7575, 0], [-0.3015, 0.7575, 0], [0.3015, 1.1605, 1], [-0.3015, 1.1605, 1], [0.3015, 0.7575, 1], [-0.3015, 0.7575, 1]],
+};
+export function cellaPallet(m, gltf, par = PAR_PALLET) {
   const items = []; const add = (label, obj) => { items.push({ label, obj }); return obj; };
   const root = new THREE.Group();
   root.add(add("pavimento", grp(pavimento(m, 9, 8, -0.3, 0.2), striscia(m, [[-1.6, 2.0], [1.4, 2.0], [1.4, -1.0]]))));
@@ -173,40 +183,43 @@ export function cellaPallet(m, gltf) {
   conv.add(box(m.signal, w, 0.04, 0.12, cx, y1 - 0.02, ctop - 0.02));
   conv.add(box(m.black, 0.06, 0.06, 0.06, cx - w / 2 - 0.05, -0.25, ctop + 0.05));
   root.add(add("rulliera motorizzata", conv));
-  // pallet EUR 1200x800x144
-  const pal = new THREE.Group(), px = 0, py = 0.959;
-  for (const yy of [-0.35, 0, 0.35]) pal.add(box(m.wood, 1.2, 0.1, 0.022, px, py + yy, 0));
-  for (const xx of [-0.55, 0, 0.55]) for (const yy of [-0.35, 0, 0.35]) pal.add(box(m.wood, 0.1, 0.1, 0.078, px + xx, py + yy, 0.022));
-  for (const xx of [-0.55, 0, 0.55]) pal.add(box(m.wood, 0.1, 0.8, 0.022, px + xx, py, 0.1));
-  for (let i = 0; i < 5; i++) pal.add(box(m.wood, 1.2, 0.1, 0.022, px, py - 0.35 + i * 0.175, 0.122));
-  root.add(add("pallet EUR 1200×800", pal));
+  // pallet (EUR 1200x800x144 nel caso di riferimento)
+  const pal = new THREE.Group(), px = 0, py = 0.959, PLp = par.palL, PWp = par.palW, pa = PWp / 2 - 0.05, pb = PLp / 2 - 0.05;
+  for (const yy of [-pa, 0, pa]) pal.add(box(m.wood, PLp, 0.1, 0.022, px, py + yy, 0));
+  for (const xx of [-pb, 0, pb]) for (const yy of [-pa, 0, pa]) pal.add(box(m.wood, 0.1, 0.1, 0.078, px + xx, py + yy, 0.022));
+  for (const xx of [-pb, 0, pb]) pal.add(box(m.wood, 0.1, PWp, 0.022, px + xx, py, 0.1));
+  for (let i = 0; i < 5; i++) pal.add(box(m.wood, PLp, 0.1, 0.022, px, py - pa + (i * (PWp - 0.1)) / 4, 0.122));
+  root.add(add(par.palTxt, pal));
   root.add(add("quadro comandi", quadroComandi(m, 1.1, -0.6, PI / 2)));
   root.add(add("piedistallo", piedistallo(m, 0, 0, 0.4, 0.36)));
   const robot = new Robot(gltf, "ur30", 0.13);
   const baseM = Tm(0, 0, 0.4, PI); robot.root.matrixAutoUpdate = false; robot.root.matrix.copy(baseM); root.add(robot.root);
   // ventosa 4 coppe sul flangia (tool0, Z uscente)
   const vt = grp(cyl(m.paint2, 0.045, 0.06, 0, 0, 0), box(m.dark, 0.32, 0.2, 0.02, 0, 0, 0.06), box(m.signal, 0.08, 0.08, 0.025, 0, 0, 0.035));
-  for (const sx of [-1, 1]) for (const sy of [-1, 1]) vt.add(cyl(m.rubber, 0.028, 0.05, sx * 0.088, sy * 0.06, 0.08, 20, 0.018));
+  const cx4 = par.coppe === 4 ? [-0.088, 0.088] : par.coppe === 6 ? [-0.11, 0, 0.11] : [-0.12, -0.04, 0.04, 0.12];
+  for (const sx of cx4) for (const sy of [-1, 1]) vt.add(cyl(m.rubber, 0.028, 0.05, sx, sy * 0.06, 0.08, 20, 0.018));
   robot.tool0.add(vt);
   for (const lk of ["base_link_inertia", "shoulder_link", "upper_arm_link", "forearm_link", "wrist_1_link", "wrist_2_link", "wrist_3_link"]) {
     items.push({ label: "UR30 · " + lk.replace("_link", "").replace("_", " "), meshes: robot.parts.filter((p) => p.link === lk).map((p) => p.mesh), robot: true });
   }
-  items.push({ label: "ventosa 4 coppe", obj: vt, robot: true });
-  // scatole 600x400x300 (origine: centro della faccia superiore)
-  const N = 8, pezzi = [], pg = new THREE.Group();
-  const geo = new THREE.BoxGeometry(0.6, 0.4, 0.3).translate(0, 0, -0.15);
-  const nastro = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.06, 0.002).translate(0, 0, 0.001), M({ color: 0xc9b38a, roughness: 0.6 }));
-  for (let k = 0; k < N; k++) { const b = new THREE.Mesh(geo, m.card); b.castShadow = b.receiveShadow = true; b.add(nastro.clone()); b.matrixAutoUpdate = false; pezzi.push(b); pg.add(b); }
-  root.add(add("scatole 600×400×300 · 18 kg", pg));
+  items.push({ label: `ventosa ${par.coppe} coppe`, obj: vt, robot: true });
+  // scatole (600x400x300 nel caso di riferimento; origine: centro della faccia superiore)
+  const BL = par.L, BW = par.W, BH = par.H, N = par.slots.length, pezzi = [], pg = new THREE.Group();
+  const geo = new THREE.BoxGeometry(BL, BW, BH).translate(0, 0, -BH / 2);
+  const matBox = par.tipo === "casse" ? m.wood : par.tipo === "sacchi" ? M({ color: 0xd8cdb2, roughness: 0.95, metalness: 0 }) : m.card;
+  const nastro = par.tipo === "scatole" || par.tipo === "cartoni" ? new THREE.Mesh(new THREE.BoxGeometry(BL, 0.06, 0.002).translate(0, 0, 0.001), M({ color: 0xc9b38a, roughness: 0.6 })) : null;
+  for (let k = 0; k < N; k++) { const b = new THREE.Mesh(geo, matBox); b.castShadow = b.receiveShadow = true; if (nastro) b.add(nastro.clone()); b.matrixAutoUpdate = false; pezzi.push(b); pg.add(b); }
+  const mmr = (v) => Math.round(v * 1000);
+  root.add(add(`${par.tipo} ${mmr(BL)}×${mmr(BW)}×${mmr(BH)} · ${String(par.mass).replace(".", ",")} kg`, pg));
 
   const kin = new Cinematica("ur30", baseM, 0.13);
   const P = new Piano(kin, [0, -1.9, 1.9, -1.57, -1.57, 0]);
   const giu = (x, y, z) => posa([x, y, z], [0, 0, -1], [0, 1, 0]);
+  const giuR = (x, y, z) => posa([x, y, z], [0, 0, -1], par.rot ? [1, 0, 0] : [0, 1, 0]); // scatole ruotate di 90° sul pallet
   P.line = "home"; P.to(giu(-0.3, 0.45, 1.0), 0.01); P.joints(P.q, 0.4);
-  const slot = [[0.3015, 1.1605], [-0.3015, 1.1605], [0.3015, 0.7575], [-0.3015, 0.7575]];
-  const pickZ = ctop + 0.3, stopY = 0;
+  const pickZ = ctop + BH, stopY = par.stopY, rz = par.rot ? -PI / 2 : 0;
   for (let k = 0; k < N; k++) {
-    const [sx, sy] = slot[k % 4], sz = 0.147 + 0.3 * (Math.floor(k / 4) + 1);
+    const [sx, sy, lay] = par.slots[k], sz = 0.147 + BH * (lay + 1);
     const tP = P.t + 0.55; // istante di arrivo sotto la ventosa
     const ks = P.keys[k] = [];
     ks.push({ t: 0, kind: "hide" });
@@ -216,8 +229,20 @@ export function cellaPallet(m, gltf) {
     P.keys[k].push({ t: P.t - 0.001, kind: "static", M: Tm(cx, stopY, pickZ) });
     P.attach(k).to(giu(cx, stopY, pickZ + 0.2), 0.25);
     P.line = "deposito:" + k;
-    const zA = Math.max(sz + 0.15, pickZ + 0.2);
-    P.to(giu((cx + sx) / 2 - 0.15, (stopY + sy) / 2, zA + 0.05), 0.42).to(giu(sx, sy, sz + 0.07), 0.4).to(giu(sx, sy, sz), 0.28).gr(0, 0.12).detach(k, Tm(sx, sy, sz)).to(giu(sx, sy, sz + 0.07), 0.22);
+    if (par.sicuro) {
+      // frase dell'utente: si arriva sopra lo slot alla quota più alta raggiungibile (fino a fondo scatola 9 cm sopra le scatole posate),
+      // poi si scende in verticale a gradini: la scatola non attraversa quelle già posate
+      let zHi = sz + BH + 0.09; while (zHi > sz + 0.08 && !P.can(giuR(sx, sy, zHi))) zHi -= 0.02;
+      const zW0 = Math.max(sz + 0.15 + Math.max(0, BH - 0.3), pickZ + 0.2) + 0.05, zW = Math.max(zW0, zHi + 0.03);
+      const wx = (cx + sx) / 2 - 0.15, wy = (stopY + sy) / 2;
+      P.to(giuR(wx, wy, P.can(giuR(wx, wy, zW)) ? zW : zW0), 0.42).to(giuR(sx, sy, zHi), 0.4);
+      const nS = Math.max(1, Math.ceil((zHi - sz - 0.07) / 0.1));
+      for (let i = 1; i <= nS; i++) P.to(giuR(sx, sy, zHi + ((sz + 0.07 - zHi) * i) / nS), 0.4 / nS);
+      P.to(giuR(sx, sy, sz), 0.26).gr(0, 0.12).detach(k, Tm(sx, sy, sz, rz)).to(giuR(sx, sy, sz + 0.07), 0.2).to(giuR(sx, sy, zHi), 0.3);
+    } else {
+      const zA = Math.max(sz + 0.15 + Math.max(0, BH - 0.3), pickZ + 0.2);
+      P.to(giuR((cx + sx) / 2 - 0.15, (stopY + sy) / 2, zA + 0.05), 0.42).to(giuR(sx, sy, sz + 0.07), 0.4).to(giuR(sx, sy, sz), 0.28).gr(0, 0.12).detach(k, Tm(sx, sy, sz, rz)).to(giuR(sx, sy, sz + 0.07), 0.22);
+    }
     P.mark("posato");
   }
   P.line = "fine"; P.to(giu(-0.3, 0.45, 1.0), 0.6); P.wait(2.0);
@@ -230,7 +255,14 @@ export function cellaPallet(m, gltf) {
 }
 
 // ================= SCENA 3: asservimento CNC =================
-export function cellaCnc(m, gltf) {
+export const PAR_CNC = { d: 50, Lp: 120, mat: "acciaio" };
+export function cellaCnc(m, gltf, par = PAR_CNC) {
+  // geometria del grezzo: Ø e lunghezza dalla frase (riferimento Ø50×120), passi di vassoio e vaschetta adattati
+  const r = par.d / 2000, Lc = par.Lp / 1000, dr = r - 0.025;
+  const pitchX = Math.max(0.065, 2 * r + 0.015), rowP = Math.max(0.14, Lc + 0.02), padY = 0.035 * (Lc / 0.12);
+  const trayW = 4 * pitchX + 0.04, trayD = rowP + Lc + 0.04, pitchB = Math.max(0.06, 2 * r + 0.01);
+  const binW = Math.max(0.3, 4 * pitchB + 0.06), binD = Math.max(0.26, Lc + 0.14);
+  const gC = par.d === 50 ? 1 : Math.max(0, Math.min(2.3, (42.5 - par.d / 2) / 18)); // chiusura della pinza sul tondo
   const items = []; const add = (label, obj) => { items.push({ label, obj }); return obj; };
   const root = new THREE.Group();
   root.add(add("pavimento", grp(pavimento(m, 8, 7, 0.4, 0.2), striscia(m, [[-1.0, -1.25], [2.0, -1.25]]))));
@@ -255,7 +287,8 @@ export function cellaCnc(m, gltf) {
   // morsa
   const vx = 0.86, vy = 0.24, vz = 1.0;
   cnc.add(box(m.dark, 0.3, 0.4, 0.05, vx, vy, 0.95), box(m.steel, 0.16, 0.2, vz - 1.0 + 0.04, vx, vy, 1.0));
-  const ganF = box(m.steel, 0.03, 0.16, 0.05, vx + 0.045, vy, vz + 0.04), ganM = box(m.steel, 0.03, 0.16, 0.05, vx - 0.06, vy, vz + 0.04);
+  const gm0 = vx - 0.06 - dr;
+  const ganF = box(m.steel, 0.03, 0.16, 0.05, vx + 0.045 + dr, vy, vz + 0.04), ganM = box(m.steel, 0.03, 0.16, 0.05, gm0, vy, vz + 0.04);
   cnc.add(ganF, ganM);
   // mandrino che scende durante la lavorazione
   const mand = grp(cyl(m.paint2, 0.07, 0.35, 0, 0, 0.12), cyl(m.steel, 0.02, 0.12, 0, 0, 0));
@@ -266,10 +299,10 @@ export function cellaCnc(m, gltf) {
   luce.position.set(X0 - 0.02, -0.33, 2.15); cnc.add(luce);
   root.add(add("centro di lavoro CNC · porta e morsa", cnc));
   // vassoio grezzi e vaschetta finiti
-  const tray = grp(box(m.dark, 0.3, 0.3, 0.025, -0.25, 0.3, 0.85));
-  for (let i = 0; i < 4; i++) for (const sy of [-0.035, 0.035]) for (const jj of [0, 1]) tray.add(box(m.paint2, 0.05, 0.02, 0.012, -0.25 + (i - 1.5) * 0.065, 0.3 + (jj - 0.5) * 0.14 + sy, 0.875));
+  const tray = grp(box(m.dark, trayW, trayD, 0.025, -0.25, 0.3, 0.85));
+  for (let i = 0; i < 4; i++) for (const sy of [-padY, padY]) for (const jj of [0, 1]) tray.add(box(m.paint2, 0.05, 0.02, 0.012, -0.25 + (i - 1.5) * pitchX, 0.3 + (jj - 0.5) * rowP + sy, 0.875));
   root.add(add("vassoio grezzi", tray));
-  const bin = grp(box(m.signal, 0.3, 0.26, 0.012, 0.25, 0.52, 0.85), box(m.signal, 0.3, 0.012, 0.14, 0.25, 0.39, 0.85), box(m.signal, 0.3, 0.012, 0.14, 0.25, 0.65, 0.85), box(m.signal, 0.012, 0.26, 0.14, 0.1, 0.52, 0.85), box(m.signal, 0.012, 0.26, 0.14, 0.4, 0.52, 0.85));
+  const bin = grp(box(m.signal, binW, binD, 0.012, 0.25, 0.52, 0.85), box(m.signal, binW, 0.012, 0.14, 0.25, 0.52 - binD / 2, 0.85), box(m.signal, binW, 0.012, 0.14, 0.25, 0.52 + binD / 2, 0.85), box(m.signal, 0.012, binD, 0.14, 0.25 - binW / 2, 0.52, 0.85), box(m.signal, 0.012, binD, 0.14, 0.25 + binW / 2, 0.52, 0.85));
   root.add(add("vaschetta B · finiti", bin));
   const rbx = 0, rby = -0.35, rbz = 0.85;
   root.add(add("piedistallo", piedistallo(m, rbx, rby, rbz)));
@@ -278,16 +311,18 @@ export function cellaCnc(m, gltf) {
   for (const lk of ["base_link_inertia", "shoulder_link", "upper_arm_link", "forearm_link", "wrist_1_link", "wrist_2_link", "wrist_3_link", "gripper"]) {
     items.push({ label: lk === "gripper" ? "pinza Robotiq 2F-85" : "UR10e · " + lk.replace("_link", "").replace("_", " "), meshes: robot.parts.filter((p) => p.link === lk).map((p) => p.mesh), robot: true });
   }
-  // grezzi Ø50x120, asse lungo Y; origine al centro
+  // grezzi (Ø50x120 acciaio nel caso di riferimento), asse lungo Y; origine al centro
   const N = 8, pezzi = [], pg = new THREE.Group();
-  const gRaw = new THREE.CylinderGeometry(0.025, 0.025, 0.12, 28), gFin = new THREE.CylinderGeometry(0.019, 0.019, 0.06, 28).translate(0, 0.03, 0);
-  const gFin2 = new THREE.CylinderGeometry(0.025, 0.025, 0.06, 28).translate(0, -0.03, 0);
+  const gRaw = new THREE.CylinderGeometry(r, r, Lc, 28), gFin = new THREE.CylinderGeometry(r * 0.76, r * 0.76, Lc / 2, 28).translate(0, Lc / 4, 0);
+  const gFin2 = new THREE.CylinderGeometry(r, r, Lc / 2, 28).translate(0, -Lc / 4, 0);
+  const mRaw = { acciaio: m.raw, alluminio: M({ color: 0x8d969e, roughness: 0.55, metalness: 0.8 }), ottone: M({ color: 0x9c7a3c, roughness: 0.5, metalness: 0.85 }), plastica: M({ color: 0xcfd2d4, roughness: 0.6, metalness: 0.05 }) }[par.mat] || m.raw;
+  const mFin = par.mat === "plastica" ? M({ color: 0xf2f3f4, roughness: 0.4, metalness: 0.05 }) : par.mat === "ottone" ? M({ color: 0xd9b45a, roughness: 0.2, metalness: 1 }) : m.fin;
   for (let k = 0; k < N; k++) {
-    const raw = new THREE.Mesh(gRaw, m.raw), fin = grp(new THREE.Mesh(gFin, m.fin), new THREE.Mesh(gFin2, m.fin));
+    const raw = new THREE.Mesh(gRaw, mRaw), fin = grp(new THREE.Mesh(gFin, mFin), new THREE.Mesh(gFin2, mFin));
     raw.castShadow = true; fin.children.forEach((c) => (c.castShadow = true)); fin.visible = false;
     const p = grp(raw, fin); p.matrixAutoUpdate = false; p.userData = { raw, fin }; pezzi.push(p); pg.add(p);
   }
-  root.add(add("grezzi Ø50×120 acciaio", pg));
+  root.add(add(`grezzi Ø${par.d}×${par.Lp} ${par.mat}`, pg));
 
   const kin = new Cinematica("ur10e", baseM, 0.172);
   const P = new Piano(kin, [0, -1.75, 1.6, -1.42, -1.5708, 0]);
@@ -295,21 +330,21 @@ export function cellaCnc(m, gltf) {
   const fuori = [0.4, 0.22, 1.36];
   P.line = "home"; P.to(giu(0.1, 0.1, 1.3), 0.01); P.joints(P.q, 0.4);
   const src = [];
-  for (let jj = 0; jj < 2; jj++) for (let i = 0; i < 4; i++) src.push([-0.25 + (i - 1.5) * 0.065, 0.3 + (jj - 0.5) * 0.14, 0.875 + 0.012 + 0.025]);
+  for (let jj = 0; jj < 2; jj++) for (let i = 0; i < 4; i++) src.push([-0.25 + (i - 1.5) * pitchX, 0.3 + (jj - 0.5) * rowP, 0.875 + 0.012 + r]);
   pezzi.forEach((_, k) => P.key(k, { kind: "static", M: Tm(...src[k]) }));
-  const cz = vz + 0.065;
-  const pts = { src, vise: [vx - 0.008, vy, cz], fuori };
+  const cz = vz + 0.04 + r;
+  const pts = { src, vise: [vx - 0.008, vy, cz], fuori, pitchB };
   for (let k = 0; k < N; k++) {
     const [sx, sy, sz] = src[k];
     P.line = "prendi:" + k;
-    P.to(giu(sx, sy, sz + 0.12), 0.5).to(giu(sx, sy, sz), 0.24).gr(1, 0.14).attach(k).to(giu(sx, sy, sz + 0.12), 0.22);
+    P.to(giu(sx, sy, sz + 0.12), 0.5).to(giu(sx, sy, sz), 0.24).gr(gC, 0.14).attach(k).to(giu(sx, sy, sz + 0.12), 0.22);
     P.line = "carica:" + k;
     P.mark("apri").to(giu(...fuori), 0.5).to(giu(vx - 0.008, vy, cz + 0.12), 0.34).to(giu(vx - 0.008, vy, cz), 0.24).mark("serra").gr(0, 0.12).detach(k, Tm(vx - 0.008, vy, cz)).to(giu(vx - 0.008, vy, cz + 0.12), 0.2).to(giu(...fuori), 0.3);
     P.line = "ciclo:" + k;
     P.mark("chiudi").wait(0.45).mark("lav0").wait(1.5).mark("lav1"); (P.fin = P.fin || {})[k] = P.t; P.wait(0.1).mark("apri2").wait(0.4);
     P.line = "scarica:" + k;
-    P.to(giu(vx - 0.008, vy, cz + 0.12), 0.32).to(giu(vx - 0.008, vy, cz), 0.22).mark("libera").gr(1, 0.12).attach(k).to(giu(vx - 0.008, vy, cz + 0.12), 0.2).to(giu(...fuori), 0.3).mark("chiudi2");
-    const bxp = 0.25 + ((k % 4) - 1.5) * 0.06, byp = 0.52, bzp = 0.875 + 0.025 + Math.floor(k / 4) * 0.05;
+    P.to(giu(vx - 0.008, vy, cz + 0.12), 0.32).to(giu(vx - 0.008, vy, cz), 0.22).mark("libera").gr(gC, 0.12).attach(k).to(giu(vx - 0.008, vy, cz + 0.12), 0.2).to(giu(...fuori), 0.3).mark("chiudi2");
+    const bxp = 0.25 + ((k % 4) - 1.5) * pitchB, byp = 0.52, bzp = 0.875 + r + Math.floor(k / 4) * 2 * r;
     P.to(giu(bxp, byp, 1.1), 0.45).gr(0, 0.1);
     const Mrel = P.tcp().multiply([...P.keys[k]].reverse().find((x) => x.kind === "att").off);
     P.key(k, { kind: "lerp", d: 0.28, fall: true, M0: Mrel, M1: Tm(bxp, byp, bzp) }).wait(0.15);
@@ -321,7 +356,7 @@ export function cellaCnc(m, gltf) {
     let la = -1, lb = -1; for (const x of P.marks[a] || []) if (x <= t) la = x; for (const x of P.marks[b] || []) if (x <= t) lb = x; return [la, lb];
   };
   return {
-    root, items, robot, piano: P, pezzi, n: N, pts, kin,
+    root, items, robot, piano: P, pezzi, n: N, pts, kin, par,
     centro: new THREE.Vector3(0.3, 0.15, 1.0), cam: { r: 4.5, el: 0.4, az: -2.7 },
     lineMap: (script) => mapLinee(script, (l) => { const m2 = /^\s*(prendi|carica|ciclo|scarica)\(/.exec(l); return m2 ? m2[1] : /textmsg\("lotto/.test(l) ? "fine" : /^\s*movej/.test(l) ? "home" : null; }),
     anima(t) {
@@ -332,7 +367,7 @@ export function cellaCnc(m, gltf) {
       const u = ease((t - t0) / 0.4); const ap = prev + (st - prev) * u;
       porta.position.y = 0.275 + 0.68 * ap;
       const [ls, ll] = iv("serra", "libera", t); const ch = ls > ll ? ease((t - ls) / 0.12) : 1 - ease((t - ll) / 0.12);
-      ganM.position.x = vx - 0.06 + 0.018 * Math.max(0, Math.min(1, ch));
+      ganM.position.x = gm0 + 0.018 * Math.max(0, Math.min(1, ch));
       const [l0, l1] = iv("lav0", "lav1", t); const lav = l0 > l1 && l0 >= 0;
       mand.position.z = lav ? 1.4 - 0.22 * ease((t - l0) / 0.3) : 1.4 - 0.22 * (1 - ease((t - l1) / 0.3)) * (l1 >= 0 ? 1 : 0);
       mand.rotation.z = lav ? t * 40 : 0;

@@ -164,6 +164,16 @@ def _motivo_robot(slug: str) -> str | None:
     return None
 
 
+# Schede IT "scansionate ma non indicizzate" con 0 impressioni a 90 giorni (Search Console, 09/11/2026):
+# noindex, follow (lo scrive seo_schede_prezzo.py) e quindi fuori dalla sitemap; restano nel catalogo e nel feed
+# Merchant (docs/seo-piano-italia.md, IT-5). Si tolgono da qui quando la scheda ha contenuto proprio.
+NOINDEX_IT = {
+    "prodotti/cobot-fairino-fr16.html", "prodotti/cobot-fairino-fr5.html", "prodotti/cobot-fairino-palletizing-fr10.html",
+    "prodotti/cobot-fairino-palletizing-fr20.html", "prodotti/unitree-d1-arm.html", "prodotti/unitree-go2w-u4.html",
+    "prodotti/unitree-go2w-u5.html",
+}
+
+
 def motivo_esclusione(rel: str) -> str | None:
     """Motivo per cui la pagina (path relativo, es. 'prodotti/x.html') resta fuori dalla sitemap."""
     if LEGALI.match(rel):

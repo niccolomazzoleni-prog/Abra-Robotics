@@ -33,7 +33,9 @@
   function waUrl(text) {
     // encodeURIComponent non codifica le parentesi, che romperebbero i link markdown
     return 'https://wa.me/' + WA_NUMBER + '?text=' +
-      encodeURIComponent(text || 'Ciao Abra Robotics, vorrei informazioni').replace(/\(/g, '%28').replace(/\)/g, '%29');
+      // "(rif. SITO)": il CRM riconosce che il contatto arriva dal sito
+      encodeURIComponent((function (t) { return /\(rif\./i.test(t) ? t : t + ' (rif. SITO)'; })(text || 'Ciao Abra Robotics, vorrei informazioni'))
+        .replace(/\(/g, '%28').replace(/\)/g, '%29');
   }
 
   function mdLink(label, href) {

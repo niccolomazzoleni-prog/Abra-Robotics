@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from seo_title_desc import seo_desc  # noqa: E402
-from schede_regole import categoria_title  # noqa: E402
+from schede_regole import NOINDEX_IT, categoria_title  # noqa: E402
 
 SITE = "https://abrarobotics.com/"
 MAX_TITLE = 60
@@ -213,6 +213,11 @@ def strip_price_sentences(desc: str, name: str) -> str:
     return out
 
 
+# Description IT scritte per il CTR (docs/seo-piano-italia.md, IT-4): sostituiscono il testo dopo il prezzo.
+# La scheda G1 Air compare per "unitree g1 prezzo": rimanda a tutte le versioni dell'hub, senza cifre da aggiornare.
+DESC_IT = {"unitree-g1.html": "Tutte le versioni G1 con prezzo e consegna nel listino pubblico; assistenza in Italia."}
+
+
 def new_desc(desc: str, name: str, price: float, en: bool) -> str:
     head = f"{name} price: from €{fmt_en(price)} excl. VAT." if en else f"{name}: prezzo da {fmt_it(price)} € IVA esclusa."
     rest = strip_price_sentences(desc, name)
@@ -369,7 +374,7 @@ def main() -> None:
         p = page_price(s, prod, en)
         dm = re.search(r'<meta[^>]*name="description"[^>]*content="([^"]*)"', s) or re.search(r'<meta[^>]*content="([^"]*)"[^>]*name="description"', s)
         if p and dm:
-            nd = new_desc(H.unescape(dm.group(1)), name, p, en)
+            nd = new_desc(DESC_IT.get(f.name) if not en and f.name in DESC_IT else H.unescape(dm.group(1)), name, p, en)
             if nd != H.unescape(dm.group(1)):
                 s = set_meta(set_meta(s, "description", nd), "og:description", nd)
                 stats["desc"] += 1
@@ -382,6 +387,15 @@ def main() -> None:
                 s = l; stats["ld"] += 1
         if s != o:
             f.write_text(s, encoding="utf-8")
+    # schede IT tolte dall'indice (schede_regole.NOINDEX_IT): noindex, follow
+    for rel in sorted(NOINDEX_IT):
+        f = ROOT / rel
+        if f.is_file():
+            s = f.read_text(encoding="utf-8")
+            n = re.sub(r'<meta[^>]*name="robots"[^>]*>', '<meta name="robots" content="noindex, follow">', s, count=1)
+            if n != s:
+                f.write_text(n, encoding="utf-8")
+                stats["noindex"] = stats.get("noindex", 0) + 1
     print("schede prezzo:", stats)
 
 
