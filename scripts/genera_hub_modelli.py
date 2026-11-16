@@ -260,7 +260,8 @@ GUIDE_IT = {
  ("Programmare il G1", [
   "Unitree pubblica su GitHub l'SDK ufficiale (unitree_sdk2), il pacchetto ROS 2 e i modelli per la simulazione in Isaac Sim e MuJoCo: si sviluppa la politica in simulazione e la si porta sul robot reale. Approfondimenti nella <a href=\"blog/unitree-g1-programmazione.html\">guida alla programmazione del G1</a> e nel confronto <a href=\"blog/unitree-g1-quale-versione-scegliere.html\">quale versione del G1 scegliere</a>."]),
  ("Comprare un Unitree G1 in Italia", [
-  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size)."]),
+  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size).",
+  "Prima di comprare: <a href=\"blog/poc-robot-umanoide-azienda.html\">come impostare un PoC con un robot umanoide in azienda</a> (fasi, KPI, rischi) e <a href=\"blog/umanoidi-vs-robotica-tradizionale.html\">quando conviene un umanoide rispetto a cobot e AMR</a>."]),
 ],
 "r1": [
  ("Unitree R1: l'umanoide compatto per iniziare", [
