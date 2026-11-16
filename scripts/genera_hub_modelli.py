@@ -229,7 +229,8 @@ GUIDE_IT = {
   "Ispezione leggera e sicurezza: le versioni con LiDAR e telecamere servono per sopralluoghi, mappatura di ambienti e controlli ripetitivi in spazi dove un robot su ruote non passa. Per carichi o ambienti industriali gravosi conviene guardare l'<a href=\"a2.html\">Unitree A2</a> o il <a href=\"b2.html\">B2</a>.",
   "Eventi e comunicazione: il Go2 Air e il Pro sono i modelli più usati per fiere, showroom e attività marketing."]),
  ("Go2 o un altro quadrupede Unitree?", [
-  "Il Go2 è il quadrupede compatto: leggero, facile da trasportare, ideale per sviluppo e ambienti interni. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia, più robusta e con più autonomia. L'<a href=\"a2.html\">A2</a> e il <a href=\"b2.html\">B2</a> sono quadrupedi industriali con protezione IP, carichi molto più alti e diverse ore di autonomia. Il confronto completo è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+  "Il Go2 è il quadrupede compatto: leggero, facile da trasportare, ideale per sviluppo e ambienti interni. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia, più robusta e con più autonomia. L'<a href=\"a2.html\">A2</a> e il <a href=\"b2.html\">B2</a> sono quadrupedi industriali con protezione IP, carichi molto più alti e diverse ore di autonomia. Il confronto completo è nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("Comprare un Unitree Go2 in Italia con Abra Robotics", [
   "I prezzi in tabella sono End-User IVA esclusa, con spedizione e dazio in Italia già inclusi: nessun costo doganale a sorpresa. Prima dell'ordine ti aiutiamo a scegliere versione e accessori in base all'uso reale e verifichiamo gratuitamente se l'acquisto rientra in <a href=\"finanziamenti.html\">iperammortamento, Nuova Sabatini o bandi regionali</a>.",
   "Fattura italiana, consegna in Italia, Svizzera e Balcani, supporto in italiano per messa in servizio e primi passi con l'SDK."]),
@@ -237,7 +238,8 @@ GUIDE_IT = {
 "a2": [
  ("Unitree A2: un quadrupede pensato per l'industria", [
   "L'A2 nasce per lavorare in impianti, cantieri e aree esterne: pesa circa 42 kg, porta circa 25 kg in camminata continua (circa 100 kg da fermo) e cammina oltre 5 ore senza carico, coprendo circa 20 km con una carica. La protezione IP56, IP67 sui componenti principali della versione Pro, gli permette di lavorare con polvere e pioggia.",
-  "A differenza dei quadrupedi compatti come il <a href=\"go2.html\">Go2</a>, l'A2 è progettato per missioni ripetute e lunghe: giri di ispezione programmati, sorveglianza perimetrale, trasporto di strumenti e sensori."]),
+  "A differenza dei quadrupedi compatti come il <a href=\"go2.html\">Go2</a>, l'A2 è progettato per missioni ripetute e lunghe: giri di ispezione programmati, sorveglianza perimetrale, trasporto di strumenti e sensori.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("A2 Standard, A2 Pro o A2-W?", [
   "L'A2 Standard ha un LiDAR e una telecamera HD: è la scelta per ispezioni e trasporto leggero in ambienti già mappati. L'A2 Pro aggiunge un secondo LiDAR e protezione IP67 dei componenti principali, per ambienti più gravosi e percezione più completa intorno al robot.",
   "Le versioni A2-W hanno ruote all'estremità delle zampe: su strade, piazzali e corridoi lunghi si muovono rotolando, più veloci e con meno consumo, mantenendo la capacità di salire scale e ostacoli."]),
@@ -261,7 +263,8 @@ GUIDE_IT = {
  ("Programmare il G1", [
   "Unitree pubblica su GitHub l'SDK ufficiale (unitree_sdk2), il pacchetto ROS 2 e i modelli per la simulazione in Isaac Sim e MuJoCo: si sviluppa la politica in simulazione e la si porta sul robot reale. Approfondimenti nella <a href=\"blog/unitree-g1-programmazione.html\">guida alla programmazione del G1</a> e nel confronto <a href=\"blog/unitree-g1-quale-versione-scegliere.html\">quale versione del G1 scegliere</a>."]),
  ("Comprare un Unitree G1 in Italia", [
-  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size)."]),
+  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size).",
+  "Prima di comprare: <a href=\"blog/poc-robot-umanoide-azienda.html\">come impostare un PoC con un robot umanoide in azienda</a> (fasi, KPI, rischi) e <a href=\"blog/umanoidi-vs-robotica-tradizionale.html\">quando conviene un umanoide rispetto a cobot e AMR</a>."]),
 ],
 "r1": [
  ("Unitree R1: l'umanoide compatto per iniziare", [
@@ -282,7 +285,8 @@ GUIDE_IT = {
   "Il B2 cammina su zampe ed è il più versatile su terreni accidentati, scale e macerie. Il B2-W ha ruote all'estremità delle zampe: su strade, piazzali e capannoni copre distanze lunghe più velocemente e con meno consumo, senza perdere la capacità di superare ostacoli. Esiste anche il kit di conversione a quattro ruote per trasformare un B2 in B2-W.",
   "Entrambi si ordinano anche con il kit LiDAR SLAM per la mappatura e la navigazione autonoma, e con moduli di calcolo dedicati (Intel Core i7 o NVIDIA Jetson AGX fino a 550 TOPS) per far girare a bordo visione e AI."]),
  ("B2, A2 o AS2?", [
-  "L'<a href=\"a2.html\">A2</a> è il quadrupede industriale più leggero (circa 42 kg) con lunga autonomia, adatto a ronde e ispezioni ripetute. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia. Il B2 è la scelta quando servono carico, velocità e robustezza massimi. Confronto completo nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>."]),
+  "L'<a href=\"a2.html\">A2</a> è il quadrupede industriale più leggero (circa 42 kg) con lunga autonomia, adatto a ronde e ispezioni ripetute. L'<a href=\"as2.html\">AS2</a> è la fascia intermedia. Il B2 è la scelta quando servono carico, velocità e robustezza massimi. Confronto completo nella pagina <a href=\"quadrupedi.html\">robot quadrupedi Unitree</a>.",
+  "Go2, AS2, A2 e B2 a confronto con prezzo, carico e protezione: <a href=\"blog/cane-robot-prezzo.html\">prezzi dei cani robot</a>."]),
  ("Comprare un Unitree B2 in Italia", [
   "Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi, fattura italiana e supporto in italiano. Per i progetti industriali partiamo dal compito da svolgere (percorso, carico, ambiente) e definiamo versione, batterie di ricambio (standard, basse temperature, alta capacità) e calcolo; verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a> disponibili."]),
 ],
@@ -423,6 +427,22 @@ HUB_CSS = """<style id="hub-modello-css">
 .hm-faq p{margin:10px 0 0;line-height:1.6;color:var(--gray-600)}
 .hm-fam{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .hm-fam a{padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem}
+/* telefono: le righe delle tabelle configurazioni/prezzi diventano schede (nome + prezzo, poi descrizione/link); thead resta nel DOM per la semantica */
+@media (max-width:600px){
+.hm-table:not(.g1p-table):not(.h2x-specs),.hm-table:not(.g1p-table):not(.h2x-specs) tbody{display:block}
+.hm-table:not(.g1p-table):not(.h2x-specs) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 16px;margin:0 0 12px;border:1px solid var(--gray-200);border-radius:16px;background:var(--white,#fff)}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr:target{background:var(--gray-50,#fafafa);border-color:var(--black,#0a0a0a)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td{display:block;padding:0;border:0;font-size:15px;line-height:1.5;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:first-child{grid-column:1;grid-row:1;font-size:16px;font-weight:600;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td.p{grid-column:2;grid-row:1;text-align:right;white-space:nowrap;font-size:16px}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:not(:first-child):not(.p){grid-column:1/-1;color:var(--gray-600)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td a{color:var(--black,#0a0a0a)}
+.hm-table.h2x-specs tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.hm-table.h2x-specs td{display:block;padding:0;border:0;font-size:15px;line-height:1.5}
+.hm-table.h2x-specs td:first-child{min-width:0;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+.hm-table.h2x-specs,.hm-table.h2x-specs tbody{display:block}
+}
 </style>"""
 
 

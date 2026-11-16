@@ -10,19 +10,36 @@ from __future__ import annotations
 import html
 import json
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from miniature import HEIGHT, WIDTH, thumb_src  # noqa: E402
 PROD = ROOT / "prodotti"
 START, END = "<!-- CORRELATI -->", "<!-- /CORRELATI -->"
 MAX_LINKS = 8
-CSS = ('<style id="correlati-css">.correlati{padding:40px 0;border-top:1px solid var(--gray-200,#e5e5e5)}'
-       '.correlati h2{font-size:1.3rem;margin:0 0 14px}.correlati ul{list-style:none;margin:0;padding:0;display:grid;'
-       'grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}.correlati li a{display:flex;justify-content:space-between;'
-       'gap:10px;padding:10px 12px;border:1px solid var(--gray-200,#e5e5e5);border-radius:8px;color:var(--black,#0a0a0a);'
-       'text-decoration:none;font-size:.92rem}.correlati li a:hover{border-color:var(--black,#0a0a0a)}'
-       '.correlati li span{color:var(--gray-600,#525252);white-space:nowrap}</style>')
+CSS_START, CSS_END = "/* CORRELATI:START */", "/* CORRELATI:END */"
+CSS = """.correlati{padding:48px 0;border-top:1px solid var(--gray-200,#e5e5e5)}
+.correlati h2{font-size:1.4rem;margin:0 0 20px}
+.correlati .rel-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.correlati .rel-card{display:flex;flex-direction:column;height:100%;box-sizing:border-box;border:1px solid var(--gray-200,#e5e5e5);border-radius:16px;overflow:hidden;background:#fff;color:var(--black,#0a0a0a);text-decoration:none;transition:border-color .15s,box-shadow .15s,transform .15s}
+.correlati .rel-card:hover,.correlati .rel-card:focus-visible{border-color:var(--black,#0a0a0a);box-shadow:0 8px 24px rgba(0,0,0,.07);transform:translateY(-2px)}
+.correlati .rel-media{display:block;position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--gray-50,#fafafa);border-bottom:1px solid var(--gray-100,#f5f5f5)}
+.correlati .rel-media img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;padding:12px;box-sizing:border-box}
+.correlati .rel-body{display:flex;flex-direction:column;gap:3px;padding:12px 14px 14px;flex:1}
+.correlati .rel-tag{font-size:.8rem;line-height:1.2;color:#6b6b6b}
+.correlati .rel-name{font-size:.95rem;font-weight:500;line-height:1.3;color:var(--black,#0a0a0a)}
+.correlati .rel-price{margin-top:auto;padding-top:6px;font-size:1rem;font-weight:600;color:var(--black,#0a0a0a)}
+.correlati .rel-all{margin:20px 0 0;font-size:.95rem}
+.correlati .rel-all a{color:var(--black,#0a0a0a);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:960px){.correlati .rel-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.correlati{padding:36px 0}
+.correlati .rel-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding-bottom:6px;scrollbar-width:none}
+.correlati .rel-grid::-webkit-scrollbar{display:none}
+.correlati .rel-grid>li{flex:0 0 70%;max-width:260px;scroll-snap-align:start}
+.correlati .rel-tag{font-size:14px}.correlati .rel-name{font-size:15px}.correlati .rel-price{font-size:16px}}"""
 
 
 def family(name: str) -> str:
@@ -72,6 +89,26 @@ def eur(x) -> str:
     return f"{x:,.0f}".replace(",", ".")
 
 
+# "Vedi tutti": pagina hub della famiglia (percorso, nome mostrato; None = nome famiglia)
+HUB = {"G1": ("../umanoidi.html#fam-g1", None), "H2": ("../umanoidi.html#fam-h2", None), "R1": ("../umanoidi.html#fam-r1", None),
+       "GO2": ("../quadrupedi.html#fam-go2", "Go2"), "AS2": ("../quadrupedi.html#fam-as2", None), "A2": ("../quadrupedi.html#fam-a2", None),
+       "B2": ("../quadrupedi.html#fam-b2", None), "Cobot Fairino": ("../cobot.html", "cobot Fairino"), "AMR": ("../amr.html", "AMR")}
+TAG = {"UMANOIDI": "Configurazione", "COMPONENTISTICA": "Ricambio", "MANI_BRACCI": "Accessorio", "ACC": "Accessorio"}
+
+
+def card(x: dict) -> str:
+    name = html.escape(x["name"] if x.get("plain") else label(x["name"]))
+    tag = x.get("tag") or TAG.get(x["cat"], "")
+    if tag.lower() in x["name"].lower():  # "(Ricambio)" gia' nel nome: niente etichetta doppia
+        tag = ""
+    img = thumb_src(x.get("img") or "", "../")
+    media = (f'<span class="rel-media"><img src="{html.escape(img)}" alt="{name}" width="{WIDTH}" height="{HEIGHT}" '
+             f'loading="lazy" decoding="async"></span>') if img else '<span class="rel-media"></span>'
+    price = f'<span class="rel-price">da {eur(x["price"])} €</span>' if x["price"] else ""
+    return (f'<li><a class="rel-card" href="{x["slug"]}">{media}<span class="rel-body">'
+            + (f'<span class="rel-tag">{tag}</span>' if tag else "") + f'<span class="rel-name">{name}</span>{price}</span></a></li>')
+
+
 def main() -> None:
     items = json.loads((ROOT / "listini" / "pubblico" / "end-user.json").read_text(encoding="utf-8"))
     rows = []
@@ -80,7 +117,7 @@ def main() -> None:
         f = PROD / (slug or "_")
         if not slug or not f.is_file() or 'http-equiv="refresh"' in f.read_text(encoding="utf-8"):
             continue
-        rows.append({"slug": slug, "name": v.get("nome", ""), "fam": family(v.get("nome", "")), "cat": v.get("categoria"), "price": v.get("prezzo_eur")})
+        rows.append({"slug": slug, "name": v.get("nome", ""), "fam": family(v.get("nome", "")), "cat": v.get("categoria"), "price": v.get("prezzo_eur"), "img": v.get("immagine")})
     # cobot Fairino e AMR non sono nel listino Unitree: famiglie dai loro dati
     for data, fam in (("cobot-products.json", "Cobot Fairino"), ("amr-products.json", "AMR")):
         try:
@@ -91,7 +128,8 @@ def main() -> None:
             fn = v.get("filename")
             if fn and (PROD / fn).is_file():
                 rows.append({"slug": fn, "name": v.get("title", fn), "fam": fam, "cat": "UMANOIDI" if v.get("group", "robot") == "robot" else "ACC",
-                             "price": v.get("price_eur"), "plain": True})
+                             "price": v.get("price_eur"), "plain": True, "img": v.get("image"),
+                             "tag": "Modello" if v.get("group", "robot") == "robot" else "Accessorio"})
     by_fam = defaultdict(list)
     for r in rows:
         by_fam[r["fam"]].append(r)
@@ -108,21 +146,35 @@ def main() -> None:
         if not pick:
             continue
         title = f"Altri {html.escape(r['fam'])}" if r.get("plain") else (f"Altri prodotti {html.escape(nice_fam(r['fam']))}" if r["fam"] else "Prodotti correlati")
-        lis = "\n".join(
-            f'<li><a href="{x["slug"]}">{html.escape(x["name"] if x.get("plain") else label(x["name"]))}' + (f' <span>da {eur(x["price"])} €</span>' if x["price"] else "") + "</a></li>"
-            for x in pick)
-        block = f'{START}\n<section class="correlati"><div class="container">\n<h2>{title}</h2>\n<ul>\n{lis}\n</ul>\n</div></section>\n{END}'
+        lis = "\n".join(card(x) for x in pick)
+        tutti = ""
+        hub = HUB.get(r["fam"])
+        if hub and len(same) > len(pick):
+            tutti = f'\n<p class="rel-all"><a href="{hub[0]}">Vedi tutti i prodotti {html.escape(hub[1] or nice_fam(r["fam"]))} ({len(same)})</a></p>'
+        block = (f'{START}\n<section class="correlati"><div class="container">\n<h2>{title}</h2>\n<ul class="rel-grid">\n{lis}\n</ul>'
+                 f'{tutti}\n</div></section>\n{END}')
         if START in s:
             n = re.sub(re.escape(START) + r"[\s\S]*?" + re.escape(END), lambda m: block, s, count=1)
         elif '<footer class="footer"' in s:
             n = s.replace('<footer class="footer"', block + '\n<footer class="footer"', 1)
         else:
             continue
-        if 'id="correlati-css"' not in n:
-            n = n.replace("</head>", CSS + "\n</head>", 1)
+        # CSS: nelle schede con product.css sta li'; le poche schede con stile proprio tengono il blocco inline
+        n = re.sub(r'\s*<style id="correlati-css">[\s\S]*?</style>', "", n)
+        if 'href="product.css' not in n:
+            n = n.replace("</head>", f'<style id="correlati-css">{CSS}</style>\n</head>', 1)
         if n != s:
             f.write_text(n, encoding="utf-8")
             done += 1
+    css = PROD / "product.css"
+    t = css.read_text(encoding="utf-8")
+    blocco = f"{CSS_START}\n{CSS}\n{CSS_END}"
+    if CSS_START in t:
+        t2 = re.sub(re.escape(CSS_START) + r"[\s\S]*?" + re.escape(CSS_END), lambda m: blocco, t)
+    else:
+        t2 = t.rstrip("\n") + "\n\n" + blocco + "\n"
+    if t2 != t:
+        css.write_text(t2, encoding="utf-8")
     print(f"correlati: {done} schede aggiornate su {len(rows)}")
 
 

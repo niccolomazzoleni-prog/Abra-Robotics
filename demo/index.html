@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abra Robotics — tre console, un linguaggio</title>
+<link rel="stylesheet" href="css/base.css">
+<style>
+  body { overflow-x: hidden; }
+  .top { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 28px; padding: 14px 40px; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .top img { height: 22px; }
+  .top nav { display: flex; gap: 22px; margin-left: auto; }
+  .top nav a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+  .top nav a:hover { color: var(--signal); }
+  .hero { min-height: min(72vh, 720px); display: grid; align-content: end; padding: 0 40px 64px; border-bottom: 1px solid var(--line); background:
+      linear-gradient(transparent 0 calc(100% - 1px), var(--line) 0) 0 0 / 100% 80px,
+      linear-gradient(90deg, transparent 0 calc(100% - 1px), var(--line) 0) 0 0 / 80px 100%; background-color: var(--bg); }
+  .hero h1 { font-size: clamp(44px, 8.5vw, 132px); line-height: .9; font-stretch: 125%; }
+  .hero h1 em { font-style: normal; color: var(--signal); }
+  .hero p { max-width: 640px; color: var(--muted); font-size: 15px; line-height: 1.6; margin: 28px 0 0; }
+  section.demo { padding: 72px 40px; border-bottom: 1px solid var(--line); }
+  .demo .head { display: grid; grid-template-columns: 120px 1fr minmax(260px, 420px); gap: 24px; align-items: end; margin-bottom: 28px; }
+  .demo .head .n { font: 800 64px/0.8 var(--f-title); font-stretch: 125%; color: var(--signal); }
+  .demo .head h2 { font-size: clamp(28px, 4vw, 56px); line-height: .95; }
+  .demo .head p { color: var(--muted); line-height: 1.6; margin: 0; }
+  .stage { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: #000; }
+  .stage iframe, .stage video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  .stage .cover { position: absolute; inset: 0; display: grid; place-items: center; cursor: pointer; background: center / cover no-repeat; }
+  .stage .cover span { background: var(--signal); color: #111; font: 700 13px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; padding: 14px 22px; }
+  .tools { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .tools .sp { flex: 1; }
+  .tools .tag { align-self: center; }
+  footer { padding: 40px; color: var(--faint); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; display: flex; justify-content: space-between; }
+  @media (max-width: 900px) { .demo .head { grid-template-columns: 1fr; } .top nav { display: none; } section.demo, .hero { padding-left: 18px; padding-right: 18px; } }
+</style>
+</head>
+<body>
+<div class="top">
+  <img src="img/abra-logo-horizontal-white.svg" alt="Abra Robotics">
+  <nav><a href="#cane">01 Cane</a><a href="#umanoide">02 Umanoide</a><a href="#prompt">03 Un prompt</a></nav>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Abra Robotics — console di controllo</div>
+  <h1>Tre robot.<br><em>Una</em> frase.</h1>
+  <p>Un cane che si costruisce la mappa da solo, un umanoide che esegue quello che scrivi, una cella robotica che nasce da una descrizione. Ogni schermata qui sotto è interattiva: giraci intorno, cliccaci sopra, scrivile.</p>
+</header>
+
+<main id="demos"></main>
+
+<footer><span>Abra Robotics · simulazione e console reali, dati dimostrativi</span><span>2026</span></footer>
+
+<script type="module">
+const DEMO = [
+  { id: 'cane', n: '01', titolo: 'Il cane che<br>disegna la mappa', testo: 'Unitree Go2 con LiDAR: SLAM in tempo reale, esplorazione autonoma delle zone ignote, percorso calcolato su mappa vera. Clicca sul pavimento e il cane ci va.' },
+  { id: 'umanoide', n: '02', titolo: "L'umanoide<br>a un prompt", testo: 'Unitree G1 in magazzino. Scrivi cosa vuoi, Claude lo scompone in passi, il robot li esegue in simulazione fisica e li verifica prima del mondo vero.' },
+  { id: 'prompt', n: '03', titolo: 'Una frase,<br>una cella', testo: 'Una descrizione, una foto o un CAD: il gemello digitale della cella si costruisce da solo, il codice robot si scrive e si collauda in simulazione.' },
+];
+const main = document.getElementById('demos');
+for (const d of DEMO) {
+  const s = document.createElement('section');
+  s.className = 'demo'; s.id = d.id;
+  s.innerHTML = `
+    <div class="head"><div class="n">${d.n}</div><h2>${d.titolo}</h2><p>${d.testo}</p></div>
+    <div class="stage"><div class="cover" style="background-image:url(${d.id}/copertina.jpg)"><span>Avvia la console</span></div></div>
+    <div class="tools">
+      <button class="btn primary" data-a="live">Console interattiva</button>
+      <button class="btn" data-a="video">Guarda il film</button>
+      <span class="sp"></span>
+      <a class="btn" href="${d.id}/index.html" target="_blank">Schermo intero</a>
+    </div>`;
+  const stage = s.querySelector('.stage');
+  const live = () => { stage.innerHTML = `<iframe src="${d.id}/index.html" allow="fullscreen" loading="lazy" title="${d.id}"></iframe>`; };
+  const video = () => { stage.innerHTML = `<video src="video/${d.id}.mp4" controls autoplay playsinline></video>`; };
+  s.querySelector('.cover').onclick = live;
+  s.querySelector('[data-a=live]').onclick = live;
+  s.querySelector('[data-a=video]').onclick = video;
+  main.appendChild(s);
+}
+</script>
+</body>
+</html>
