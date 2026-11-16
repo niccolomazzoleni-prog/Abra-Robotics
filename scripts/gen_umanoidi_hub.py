@@ -78,7 +78,7 @@ def voce(k, v):
         barrato = (f'<s class="fam-map" title="Prezzo di listino">{eur(listino)} €</s>'
                    if listino and listino > v["prezzo_eur"] else "")
         prezzo = f'<span class="fam-item-price">{barrato}<strong>{eur(v["prezzo_eur"])} €</strong></span>'
-    return (f'<a class="fam-item" href="prodotti/{v["slug"]}">{media}'
+    return (f'<a class="fam-item" href="prodotti/{v['slug']}">{media}'
             f'<span class="fam-item-body"><span class="fam-item-name">{nome}</span>{prezzo}</span></a>')
 
 
@@ -198,11 +198,10 @@ def main():
     voci = [(k, v) for f in FAMIGLIE for k, v in prodotti(f)]
     lista = {"@context": "https://schema.org", "@type": "ItemList", "name": "Robot umanoidi Unitree in Italia: configurazioni e prezzi",
              "numberOfItems": len(voci),
-             "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"https://abrarobotics.com/prodotti/{v['slug']}",
-                                  "item": {"@type": "Product", "name": v["nome"], "brand": {"@type": "Brand", "name": "Unitree"},
-                                           "url": f"https://abrarobotics.com/prodotti/{v['slug']}",
-                                           **({"offers": {"@type": "Offer", "price": f"{v['prezzo_eur']:.2f}", "priceCurrency": "EUR",
-                                                         "availability": "https://schema.org/InStock"}} if v.get("prezzo_eur") else {})}}
+             # solo elenco (posizione, nome, URL): offerta, immagine, spedizione e resi stanno nel Product di ogni scheda;
+             # annidare qui 168 Product senza image/description li faceva segnare come schede commerciante non valide
+             "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v["nome"],
+                                  "url": f"https://abrarobotics.com/prodotti/{v['slug']}"}
                                  for i, (k, v) in enumerate(voci)]}
     t = sostituisci(t, "JSONLD", '<script type="application/ld+json">' + json.dumps(lista, ensure_ascii=False) + "</script>",
                     ancora_prima="</head>")
@@ -249,7 +248,7 @@ def main():
                   '</div></div></div></section>\n<section class="section" id="g1-grid" style="padding-top:0;">', 1)
     griglia = t[t.index('id="g1-grid"'):t.index("<!-- HUB:G1-ALTRE -->") if "<!-- HUB:G1-ALTRE -->" in t else None]
     griglia = griglia[:griglia.index("</section>")]
-    altre = [(k, v) for k, v in prodotti(g1) if f'prodotti/{v["slug"]}' not in griglia]
+    altre = [(k, v) for k, v in prodotti(g1) if f'prodotti/{v['slug']}' not in griglia]
     blocco_g1 = ('<section class="section fam-section" style="padding-top:0;border-top:0"><div class="container">'
                  f'<h3 class="fam-serie">Altre configurazioni G1 <span>{len(altre)}</span></h3>{elenco(altre)}'
                  '<p class="fam-back"><a href="#famiglie">↑ Torna alle famiglie</a></p></div></section>')
