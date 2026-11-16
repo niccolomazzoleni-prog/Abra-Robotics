@@ -27,19 +27,19 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Unitree G1 prezzo: da 19.809 €, Basic, Pro, EDU, Ultimate</title>
-<link rel="alternate" hreflang="it" href="https://abrarobotics.com/g1.html"/>
-<link rel="alternate" hreflang="en" href="https://abrarobotics.com/en/g1-en.html"/>
-<link rel="alternate" hreflang="de" href="https://abrarobotics.com/de/unitree-g1.html"/>
-<link rel="alternate" hreflang="fr" href="https://abrarobotics.com/fr/unitree-g1.html"/>
-<link rel="alternate" hreflang="nl" href="https://abrarobotics.com/nl/unitree-g1.html"/>
-<link rel="alternate" hreflang="da" href="https://abrarobotics.com/da/unitree-g1.html"/>
-<link rel="alternate" hreflang="sv" href="https://abrarobotics.com/sv/unitree-g1.html"/>
-<link rel="alternate" hreflang="nb" href="https://abrarobotics.com/no/unitree-g1.html"/>
-<link rel="alternate" hreflang="fi" href="https://abrarobotics.com/fi/unitree-g1.html"/>
-<link rel="alternate" hreflang="es" href="https://abrarobotics.com/es/unitree-g1.html"/>
-<link rel="alternate" hreflang="pl" href="https://abrarobotics.com/pl/unitree-g1.html"/>
-<link rel="alternate" hreflang="cs" href="https://abrarobotics.com/cs/unitree-g1.html"/>
-<link rel="alternate" hreflang="x-default" href="https://abrarobotics.com/g1.html"/>
+<link href="https://abrarobotics.com/g1.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/g1-en.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/unitree-g1.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/unitree-g1.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/unitree-g1.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/unitree-g1.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/unitree-g1.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/unitree-g1.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/sv/unitree-g1.html" hreflang="sv" rel="alternate"/>
+<link href="https://abrarobotics.com/da/unitree-g1.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/no/unitree-g1.html" hreflang="nb" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/unitree-g1.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/g1.html" hreflang="x-default" rel="alternate"/>
 <meta content="Prezzo Unitree G1 in Italia: tutte le versioni da 19.809 € IVA esclusa, specifiche ufficiali e quale scegliere." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://abrarobotics.com/g1.html" rel="canonical"/>
@@ -434,6 +434,22 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 .hm-faq p{margin:10px 0 0;line-height:1.6;color:var(--gray-600)}
 .hm-fam{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .hm-fam a{padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem}
+/* telefono: le righe delle tabelle configurazioni/prezzi diventano schede (nome + prezzo, poi descrizione/link); thead resta nel DOM per la semantica */
+@media (max-width:600px){
+.hm-table:not(.g1p-table):not(.h2x-specs),.hm-table:not(.g1p-table):not(.h2x-specs) tbody{display:block}
+.hm-table:not(.g1p-table):not(.h2x-specs) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 16px;margin:0 0 12px;border:1px solid var(--gray-200);border-radius:16px;background:var(--white,#fff)}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr:target{background:var(--gray-50,#fafafa);border-color:var(--black,#0a0a0a)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td{display:block;padding:0;border:0;font-size:15px;line-height:1.5;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:first-child{grid-column:1;grid-row:1;font-size:16px;font-weight:600;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td.p{grid-column:2;grid-row:1;text-align:right;white-space:nowrap;font-size:16px}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:not(:first-child):not(.p){grid-column:1/-1;color:var(--gray-600)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td a{color:var(--black,#0a0a0a)}
+.hm-table.h2x-specs tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.hm-table.h2x-specs td{display:block;padding:0;border:0;font-size:15px;line-height:1.5}
+.hm-table.h2x-specs td:first-child{min-width:0;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+.hm-table.h2x-specs,.hm-table.h2x-specs tbody{display:block}
+}
 </style>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Abra Robotics"/>
@@ -524,8 +540,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <section class="collection-hero">
 <div class="container">
 <p class="label"><a href="umanoidi.html" style="color:inherit">Robot umanoide</a> · <a href="https://abrarobotics.com/en/g1-en.html" hreflang="en" style="color:inherit">English</a></p>
-<h1>Unitree G1: prezzi e versioni in Italia</h1>
-<p class="lead">Il G1 cammina, si rialza, esegue movimenti dimostrativi dall&#x27;app Unitree e, nelle versioni EDU, si programma via SDK per ricerca su locomozione, manipolazione e apprendimento. Qui trovi tutte le versioni G1 a listino con prezzo End-User (IVA esclusa), le specifiche ufficiali e come scegliere.</p>
+<h1>Unitree G1 prezzo in Italia: listino 2026</h1>
+<p class="lead">L&#x27;Unitree G1 costa da 19.809 € IVA esclusa nella versione G1 Basic, con spedizione e dazio in Italia inclusi (listino End-User). Il G1 cammina, si rialza, esegue movimenti dimostrativi dall&#x27;app Unitree e, nelle versioni EDU, si programma via SDK per ricerca su locomozione, manipolazione e apprendimento. Sotto trovi tutte le versioni a listino con prezzo, a chi servono e consegna, le specifiche ufficiali e come scegliere.</p>
 <div class="hero-meta">
 <div><strong>23</strong><span>Versioni a listino</span></div>
 <div><strong>da 19.809 €</strong><span>IVA esclusa</span></div>
@@ -536,32 +552,32 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </section>
 <section class="section" style="padding-top:24px"><div class="container">
 <h2>Versioni e prezzi Unitree G1</h2>
-<p>Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi. Ogni ordine si conferma con un preventivo aggiornato.</p>
-<div class="hm-wrap"><table class="hm-table"><thead><tr><th>Versione</th><th>Prezzo (IVA esclusa)</th><th></th></tr></thead><tbody>
-<tr><td><a href="prodotti/unitree-g1.html">G1 Basic (G1 Air)</a></td><td class="p">da 19.809 €</td><td><a href="prodotti/unitree-g1.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-pro.html">G1 Pro</a></td><td class="p">da 31.548 €</td><td><a href="prodotti/unitree-g1-pro.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-standard.html">G1 EDU Standard (G1-U1)</a></td><td class="p">da 38.005 €</td><td><a href="prodotti/unitree-g1-edu-standard.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-prof-h.html">G1 EDU Professional H</a></td><td class="p">da 39.325 €</td><td><a href="prodotti/unitree-g1-edu-prof-h.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-prof-g.html">G1 EDU Professional G</a></td><td class="p">da 41.233 €</td><td><a href="prodotti/unitree-g1-edu-prof-g.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-comp.html">G1-COMP</a></td><td class="p">da 42.407 €</td><td><a href="prodotti/unitree-g1-comp.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-plus.html">G1 EDU Plus (G1-U2)</a></td><td class="p">da 46.809 €</td><td><a href="prodotti/unitree-g1-edu-plus.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-e.html">G1 E</a></td><td class="p">da 46.809 €</td><td><a href="prodotti/unitree-g1-e.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ult-h.html">G1 EDU Ultimate H</a></td><td class="p">da 48.129 €</td><td><a href="prodotti/unitree-g1-edu-ult-h.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-u10.html">G1 EDU Professional E (G1-U10)</a></td><td class="p">da 49.743 €</td><td><a href="prodotti/unitree-g1-u10.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ult-g.html">G1 EDU Ultimate G</a></td><td class="p">da 50.037 €</td><td><a href="prodotti/unitree-g1-edu-ult-g.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-u9.html">G1 EDU Professional A (G1-U9)</a></td><td class="p">da 52.678 €</td><td><a href="prodotti/unitree-g1-u9.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-prof-f.html">G1 EDU Professional F</a></td><td class="p">da 54.586 €</td><td><a href="prodotti/unitree-g1-edu-prof-f.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-u4-37dof.html">G1 EDU Professional B (G1-U4 37 DoF)</a></td><td class="p">da 55.613 €</td><td><a href="prodotti/unitree-g1-u4-37dof.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ultimate-e.html">G1 EDU Ultimate E (G1-U7)</a></td><td class="p">da 58.548 €</td><td><a href="prodotti/unitree-g1-edu-ultimate-e.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-boxing.html">G1 EDU Boxing</a></td><td class="p">da 58.548 €</td><td><a href="prodotti/unitree-g1-edu-boxing.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ultimate-a.html">G1 EDU Ultimate A (G1-U3)</a></td><td class="p">da 61.482 €</td><td><a href="prodotti/unitree-g1-edu-ultimate-a.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ultimate-f.html">G1 EDU Ultimate F (G1-U8)</a></td><td class="p">da 63.390 €</td><td><a href="prodotti/unitree-g1-edu-ultimate-f.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ultimate-b.html">G1 EDU Ultimate B (G1-U4)</a></td><td class="p">da 64.417 €</td><td><a href="prodotti/unitree-g1-edu-ultimate-b.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ultimate-c.html">G1 EDU Ultimate C (G1-U5)</a></td><td class="p">da 64.417 €</td><td><a href="prodotti/unitree-g1-edu-ultimate-c.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ultimate-d.html">G1 EDU Ultimate D (G1-U6)</a></td><td class="p">da 70.286 €</td><td><a href="prodotti/unitree-g1-edu-ultimate-d.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-prof-i.html">G1 EDU Professional I</a></td><td class="p">da 82.025 €</td><td><a href="prodotti/unitree-g1-edu-prof-i.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-edu-ult-i.html">G1 EDU Ultimate I</a></td><td class="p">da 90.829 €</td><td><a href="prodotti/unitree-g1-edu-ult-i.html">Scheda →</a></td></tr>
-<tr><td><a href="prodotti/unitree-g1-plus.html">G1+ (G1 Plus)</a></td><td class="p">su richiesta</td><td><a href="prodotti/unitree-g1-plus.html">Scheda →</a></td></tr>
+<p>Prezzi End-User IVA esclusa, spedizione e dazio in Italia inclusi. Ogni ordine si conferma con un preventivo aggiornato. Consegna in 60 giorni dalla conferma d'ordine, salvo disponibilità diversa confermata dal fornitore. Il G1 EDU U2 è in pronta consegna (mani e pinze a 60 giorni).</p>
+<div class="hm-wrap"><table class="hm-table"><thead><tr><th>Versione</th><th>Prezzo (IVA esclusa)</th><th>A chi serve</th><th>Consegna</th><th></th></tr></thead><tbody>
+<tr><td><a href="prodotti/unitree-g1.html">G1 Basic (G1 Air)</a></td><td class="p">da 19.809 €</td><td>dimostrazioni, eventi e comunicazione</td><td>60 giorni</td><td><a href="prodotti/unitree-g1.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-pro.html">G1 Pro</a></td><td class="p">da 31.548 €</td><td>intrattenimento e interazione</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-pro.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-standard.html">G1 EDU Standard (G1-U1)</a></td><td class="p">da 38.005 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-standard.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-prof-h.html">G1 EDU Professional H</a></td><td class="p">da 39.325 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-prof-h.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-prof-g.html">G1 EDU Professional G</a></td><td class="p">da 41.233 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-prof-g.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-comp.html">G1-COMP</a></td><td class="p">da 42.407 €</td><td>competizioni (versione atletica)</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-comp.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-plus.html">G1 EDU Plus (G1-U2)</a></td><td class="p">da 46.809 €</td><td>ricerca e sviluppo con SDK</td><td>pronta consegna</td><td><a href="prodotti/unitree-g1-edu-plus.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-e.html">G1 E</a></td><td class="p">da 46.809 €</td><td>—</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-e.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ult-h.html">G1 EDU Ultimate H</a></td><td class="p">da 48.129 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ult-h.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-u10.html">G1 EDU Professional E (G1-U10)</a></td><td class="p">da 49.743 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-u10.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ult-g.html">G1 EDU Ultimate G</a></td><td class="p">da 50.037 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ult-g.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-u9.html">G1 EDU Professional A (G1-U9)</a></td><td class="p">da 52.678 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-u9.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-prof-f.html">G1 EDU Professional F</a></td><td class="p">da 54.586 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-prof-f.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-u4-37dof.html">G1 EDU Professional B (G1-U4 37 DoF)</a></td><td class="p">da 55.613 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-u4-37dof.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ultimate-e.html">G1 EDU Ultimate E (G1-U7)</a></td><td class="p">da 58.548 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ultimate-e.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-boxing.html">G1 EDU Boxing</a></td><td class="p">da 58.548 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-boxing.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ultimate-a.html">G1 EDU Ultimate A (G1-U3)</a></td><td class="p">da 61.482 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ultimate-a.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ultimate-f.html">G1 EDU Ultimate F (G1-U8)</a></td><td class="p">da 63.390 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ultimate-f.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ultimate-b.html">G1 EDU Ultimate B (G1-U4)</a></td><td class="p">da 64.417 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ultimate-b.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ultimate-c.html">G1 EDU Ultimate C (G1-U5)</a></td><td class="p">da 64.417 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ultimate-c.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ultimate-d.html">G1 EDU Ultimate D (G1-U6)</a></td><td class="p">da 70.286 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ultimate-d.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-prof-i.html">G1 EDU Professional I</a></td><td class="p">da 82.025 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-prof-i.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-edu-ult-i.html">G1 EDU Ultimate I</a></td><td class="p">da 90.829 €</td><td>ricerca e sviluppo con SDK</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-edu-ult-i.html">Scheda →</a></td></tr>
+<tr><td><a href="prodotti/unitree-g1-plus.html">G1+ (G1 Plus)</a></td><td class="p">su richiesta</td><td>—</td><td>60 giorni</td><td><a href="prodotti/unitree-g1-plus.html">Scheda →</a></td></tr>
 </tbody></table></div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="container">
@@ -572,10 +588,10 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <h2>Specifiche ufficiali Unitree G1</h2>
 <div class="hm-specs"><div><span>Dimensioni in piedi</span><strong>1320 × 450 × 200 mm</strong></div><div><span>Peso</span><strong>circa 35 kg</strong></div><div><span>Gradi di libertà (G1)</span><strong>23</strong></div><div><span>Coppia max ginocchio</span><strong>90 N·m (G1), 120 N·m (EDU)</strong></div><div><span>Carico braccio</span><strong>circa 2 kg (G1), 3 kg (EDU)</strong></div><div><span>Batteria</span><strong>9000 mAh</strong></div><div><span>Autonomia</span><strong>circa 2 ore</strong></div></div>
 </div></section>
-<section class="section hm-guide" style="padding-top:0"><div class="container"><h2>G1 Air, G1 Pro, G1 EDU, G1-Comp: come orientarsi</h2><p>Il G1 è l'umanoide bipede di Unitree alto circa 1,32 m e pesante circa 35 kg. Le versioni si distinguono per gradi di libertà, coppia ai motori, calcolo a bordo e mani.</p><p>Il G1 Air (Basic) ha 23 gradi di libertà, mani fisse e nessuno sviluppo software con SDK: è pensato per dimostrazioni ed eventi. Il G1 Pro aggiunge funzioni di intrattenimento e interazione. Il G1-Comp è la versione atletica per competizioni.</p><p>Le versioni G1 EDU (codici Unitree G1-U1 … U10) sono quelle per ricerca e sviluppo: SDK di alto e basso livello, NVIDIA Jetson Orin a bordo, coppia al ginocchio di 120 N·m e carico al braccio di circa 3 kg. Salendo di codice si aggiungono vita e polsi articolati e mani dexterous: Dex3-1 a tre dita (anche tattile), Inspire e BrainCo a cinque dita.</p></div></section>
+<section class="section hm-guide" style="padding-top:0"><div class="container"><h2>G1 Air, G1 Pro, G1 EDU, G1-Comp: come orientarsi</h2><p>Il G1 è l'umanoide bipede di Unitree alto circa 1,32 m e pesante circa 35 kg. Le versioni si distinguono per gradi di libertà, coppia ai motori, calcolo a bordo e mani.</p><p>Il G1 Air (Basic) ha 23 gradi di libertà, mani fisse e nessuno sviluppo software con SDK: è pensato per dimostrazioni ed eventi. Il G1 Pro aggiunge funzioni di intrattenimento e interazione. Il G1-Comp è la versione atletica per competizioni.</p><p>Le versioni G1 EDU (codici Unitree G1-U1 … U10) sono quelle per ricerca e sviluppo: SDK di alto e basso livello, NVIDIA Jetson Orin a bordo, coppia al ginocchio di 120 N·m e carico al braccio di circa 3 kg. Salendo di codice si aggiungono vita e polsi articolati e mani dexterous: Dex3-1 a tre dita (anche tattile), Inspire e BrainCo a cinque dita.</p><p>Tutti gli umanoidi Unitree a confronto, con prezzi e consegna: <a href="umanoidi.html">robot umanoidi in vendita in Italia</a>.</p></div></section>
 <section class="section hm-guide" style="padding-top:0"><div class="container"><h2>Quale G1 EDU per il tuo laboratorio</h2><p>Locomozione e controllo del corpo intero: G1 EDU Standard (U1) o Plus (U2, vita e polsi articolati).</p><p>Manipolazione e apprendimento per imitazione: le Ultimate con mani Dex3-1 (U3, U4 tattile) o a cinque dita (Inspire, BrainCo) per afferrare oggetti reali.</p><p>Raccolta dati per AI fisica e teleoperazione: valuta anche il <a href="g1-d.html">G1-D</a>, il busto dual-arm su piantana o base mobile pensato proprio per la manipolazione.</p></div></section>
 <section class="section hm-guide" style="padding-top:0"><div class="container"><h2>Programmare il G1</h2><p>Unitree pubblica su GitHub l'SDK ufficiale (unitree_sdk2), il pacchetto ROS 2 e i modelli per la simulazione in Isaac Sim e MuJoCo: si sviluppa la politica in simulazione e la si porta sul robot reale. Approfondimenti nella <a href="blog/unitree-g1-programmazione.html">guida alla programmazione del G1</a> e nel confronto <a href="blog/unitree-g1-quale-versione-scegliere.html">quale versione del G1 scegliere</a>.</p></div></section>
-<section class="section hm-guide" style="padding-top:0"><div class="container"><h2>Comprare un Unitree G1 in Italia</h2><p>Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href="finanziamenti.html">incentivi</a>. Altri umanoidi: <a href="r1.html">Unitree R1</a> (più compatto) e <a href="h2.html">H2</a> (full-size).</p></div></section>
+<section class="section hm-guide" style="padding-top:0"><div class="container"><h2>Comprare un Unitree G1 in Italia</h2><p>Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href="finanziamenti.html">incentivi</a>. Altri umanoidi: <a href="r1.html">Unitree R1</a> (più compatto) e <a href="h2.html">H2</a> (full-size).</p><p>Prima di comprare: <a href="blog/poc-robot-umanoide-azienda.html">come impostare un PoC con un robot umanoide in azienda</a> (fasi, KPI, rischi) e <a href="blog/umanoidi-vs-robotica-tradizionale.html">quando conviene un umanoide rispetto a cobot e AMR</a>.</p></div></section>
 <section class="section" style="padding-top:0"><div class="container"><h2>Accessori per Unitree G1</h2><ul class="hm-acc"><li><a href="prodotti/unitree-g1-back-neck-rubber-cover.html">G1 Copertura in Gomma del Collo Posteriore (Ricambio)<span>da 66 €</span></a></li><li><a href="prodotti/unitree-g1-hip-imu-cover.html">G1 Copertura Protettiva Imu Dell&#x27;anca (Ricambio)<span>da 90 €</span></a></li><li><a href="prodotti/unitree-g1-charger.html">G1 Battery Charger<span>da 147 €</span></a></li><li><a href="prodotti/unitree-g1-front-wearing-plate.html">G1 Piastra Frontale (Front Wearing Plate, Ricambio)<span>da 240 €</span></a></li><li><a href="prodotti/unitree-g1-foot-sole.html">G1 Suola del Piede (Ricambio Originale)<span>da 300 €</span></a></li><li><a href="prodotti/unitree-g1-remote.html">G1 Remote Controller<span>da 367 €</span></a></li><li><a href="prodotti/unitree-g1-frame.html">G1 Staffa di Protezione<span>da 367 €</span></a></li><li><a href="prodotti/unitree-g1-battery.html">G1 Battery<span>da 880 €</span></a></li><li><a href="prodotti/unitree-g1-main-board.html">G1 scheda di Controllo Principale (Ricambio)<span>da 897 €</span></a></li><li><a href="prodotti/unitree-g1-depth-cam.html">G1 telecamera di profondità Realsense D435i<span>da 1.174 €</span></a></li><li><a href="prodotti/unitree-g1-wrist-2dof.html">G1 Polso 2-dof (Singolo)<span>da 3.302 €</span></a></li><li><a href="prodotti/unitree-g1-lidar-mid360.html">G1 kit LiDAR MID360<span>da 4.402 €</span></a></li><li><a href="prodotti/unitree-g1-head-2dof.html">G1 modulo Testa a 2 Gradi di Libertà<span>da 4.402 €</span></a></li><li><a href="prodotti/unitree-g1-e-nx.html">G1-E NX (modulo Nvidia Orin NX per G1 E)<span>da 4.402 €</span></a></li><li><a href="prodotti/unitree-g1-waist-3dof.html">G1 Upgrade Vita 3-dof<span>da 4.402 €</span></a></li><li><a href="prodotti/unitree-g1-agx-orin-dock.html">G1 / G1-D Rear Expansion Dock Nvidia Jetson AGX Orin (275 Tops)<span>da 8.804 €</span></a></li><li><a href="prodotti/unitree-g1-thor-dock.html">G1 / G1-D Rear Expansion Dock Nvidia Jetson Thor (2070 Tops)<span>da 17.608 €</span></a></li></ul></div></section>
 <section class="section section-cta"><div class="container" style="text-align:center">
 <h2>Preventivo per l'Unitree G1</h2>
@@ -619,7 +635,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE).</p>
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278 — Portogruaro (VE). Intermediazione e sviluppo software: Caligo di Giovanni Pitton, P.IVA 04982670277.</p>
 <nav aria-label="Note legali" class="footer-legal">
 <a href="privacy-policy.html">Privacy Policy</a>
 <a href="cookie-policy.html">Cookie Policy</a>
