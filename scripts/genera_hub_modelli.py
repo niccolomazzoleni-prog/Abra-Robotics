@@ -262,7 +262,8 @@ GUIDE_IT = {
  ("Programmare il G1", [
   "Unitree pubblica su GitHub l'SDK ufficiale (unitree_sdk2), il pacchetto ROS 2 e i modelli per la simulazione in Isaac Sim e MuJoCo: si sviluppa la politica in simulazione e la si porta sul robot reale. Approfondimenti nella <a href=\"blog/unitree-g1-programmazione.html\">guida alla programmazione del G1</a> e nel confronto <a href=\"blog/unitree-g1-quale-versione-scegliere.html\">quale versione del G1 scegliere</a>."]),
  ("Comprare un Unitree G1 in Italia", [
-  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size)."]),
+  "Prezzi End-User IVA esclusa con spedizione e dazio in Italia inclusi, fattura italiana, supporto in italiano. Per università ed enti di ricerca prepariamo offerte e documentazione per gare pubbliche; per le imprese verifichiamo gli <a href=\"finanziamenti.html\">incentivi</a>. Altri umanoidi: <a href=\"r1.html\">Unitree R1</a> (più compatto) e <a href=\"h2.html\">H2</a> (full-size).",
+  "Prima di comprare: <a href=\"blog/poc-robot-umanoide-azienda.html\">come impostare un PoC con un robot umanoide in azienda</a> (fasi, KPI, rischi) e <a href=\"blog/umanoidi-vs-robotica-tradizionale.html\">quando conviene un umanoide rispetto a cobot e AMR</a>."]),
 ],
 "r1": [
  ("Unitree R1: l'umanoide compatto per iniziare", [
@@ -395,6 +396,22 @@ HUB_CSS = """<style id="hub-modello-css">
 .hm-faq p{margin:10px 0 0;line-height:1.6;color:var(--gray-600)}
 .hm-fam{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .hm-fam a{padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem}
+/* telefono: le righe delle tabelle configurazioni/prezzi diventano schede (nome + prezzo, poi descrizione/link); thead resta nel DOM per la semantica */
+@media (max-width:600px){
+.hm-table:not(.g1p-table):not(.h2x-specs),.hm-table:not(.g1p-table):not(.h2x-specs) tbody{display:block}
+.hm-table:not(.g1p-table):not(.h2x-specs) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 16px;margin:0 0 12px;border:1px solid var(--gray-200);border-radius:16px;background:var(--white,#fff)}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr:target{background:var(--gray-50,#fafafa);border-color:var(--black,#0a0a0a)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td{display:block;padding:0;border:0;font-size:15px;line-height:1.5;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:first-child{grid-column:1;grid-row:1;font-size:16px;font-weight:600;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td.p{grid-column:2;grid-row:1;text-align:right;white-space:nowrap;font-size:16px}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:not(:first-child):not(.p){grid-column:1/-1;color:var(--gray-600)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td a{color:var(--black,#0a0a0a)}
+.hm-table.h2x-specs tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.hm-table.h2x-specs td{display:block;padding:0;border:0;font-size:15px;line-height:1.5}
+.hm-table.h2x-specs td:first-child{min-width:0;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+.hm-table.h2x-specs,.hm-table.h2x-specs tbody{display:block}
+}
 </style>"""
 
 
