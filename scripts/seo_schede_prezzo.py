@@ -247,7 +247,9 @@ def rebuild_breadcrumb(s: str, rel: str, fam: str | None, en: bool, name: str) -
     fam_hubs = {v[2 if en else 1].split("/")[-1] for v in FAMILIES.values()}
     cats = [l for l in links[1:] if l[0].split("/")[-1] not in fam_hubs]
     cat = cats[0] if cats else None
-    if fam and FAMILIES[fam][3] and (not cat or cat[0].split("/")[-1].replace("-en", "") in ("index.html", "catalogo-unitree.html", "catalogo.html")):
+    if fam and FAMILIES[fam][3] and (not cat or cat[0].split("/")[-1].replace("-en", "") in ("index.html", "catalogo-unitree.html", "catalogo.html",
+                                                                         "umanoidi.html", "quadrupedi.html")):
+        # la categoria segue sempre la famiglia: un Go2 sotto "Umanoidi" (copiato dal modello) era sbagliato
         c = FAMILIES[fam][3]
         cat = (f"../{c}-en.html" if en else f"../{c}.html", ("Humanoids" if c == "umanoidi" else "Quadrupeds") if en else c.capitalize())
     crumbs = [home] + ([cat] if cat else [])
