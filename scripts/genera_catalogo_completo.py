@@ -127,6 +127,8 @@ FILENAME_MAP: dict[str, str] = {
     "AS2-EDU-LASER": "unitree-as2-edu-laser.html",
     "AS2-EDU-ULT": "unitree-as2-edu-ult.html",
     "AS2-X": "unitree-as2-x.html",
+    # AS2-W X: la scheda indicizzata e' sempre stata unitree-as2-w.html (unitree-as2w-x.html e' solo un rimando)
+    "AS2W-X": "unitree-as2-w.html",
     "A2-STD": "unitree-a2.html",
     "A2-PRO": "unitree-a2-pro.html",
     "B2": "unitree-b2.html",
