@@ -27,19 +27,19 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Unitree Go2 price: versions and specs | Abra</title>
-<link rel="alternate" hreflang="it" href="https://abrarobotics.com/go2.html"/>
-<link rel="alternate" hreflang="en" href="https://abrarobotics.com/en/go2-en.html"/>
-<link rel="alternate" hreflang="de" href="https://abrarobotics.com/de/unitree-go2.html"/>
-<link rel="alternate" hreflang="fr" href="https://abrarobotics.com/fr/unitree-go2.html"/>
-<link rel="alternate" hreflang="nl" href="https://abrarobotics.com/nl/unitree-go2.html"/>
-<link rel="alternate" hreflang="da" href="https://abrarobotics.com/da/unitree-go2.html"/>
-<link rel="alternate" hreflang="sv" href="https://abrarobotics.com/sv/unitree-go2.html"/>
-<link rel="alternate" hreflang="nb" href="https://abrarobotics.com/no/unitree-go2.html"/>
-<link rel="alternate" hreflang="fi" href="https://abrarobotics.com/fi/unitree-go2.html"/>
-<link rel="alternate" hreflang="es" href="https://abrarobotics.com/es/unitree-go2.html"/>
-<link rel="alternate" hreflang="pl" href="https://abrarobotics.com/pl/unitree-go2.html"/>
-<link rel="alternate" hreflang="cs" href="https://abrarobotics.com/cs/unitree-go2.html"/>
-<link rel="alternate" hreflang="x-default" href="https://abrarobotics.com/go2.html"/>
+<link href="https://abrarobotics.com/go2.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/go2-en.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/de/unitree-go2.html" hreflang="de" rel="alternate"/>
+<link href="https://abrarobotics.com/fr/unitree-go2.html" hreflang="fr" rel="alternate"/>
+<link href="https://abrarobotics.com/es/unitree-go2.html" hreflang="es" rel="alternate"/>
+<link href="https://abrarobotics.com/pl/unitree-go2.html" hreflang="pl" rel="alternate"/>
+<link href="https://abrarobotics.com/nl/unitree-go2.html" hreflang="nl" rel="alternate"/>
+<link href="https://abrarobotics.com/cs/unitree-go2.html" hreflang="cs" rel="alternate"/>
+<link href="https://abrarobotics.com/sv/unitree-go2.html" hreflang="sv" rel="alternate"/>
+<link href="https://abrarobotics.com/da/unitree-go2.html" hreflang="da" rel="alternate"/>
+<link href="https://abrarobotics.com/no/unitree-go2.html" hreflang="nb" rel="alternate"/>
+<link href="https://abrarobotics.com/fi/unitree-go2.html" hreflang="fi" rel="alternate"/>
+<link href="https://abrarobotics.com/go2.html" hreflang="x-default" rel="alternate"/>
 <meta content="Unitree Go2 price in Europe: all versions from € 2,576 excl. VAT, official specs and which to choose. Sold in Italy by Abra Robotics." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://abrarobotics.com/en/go2-en.html" rel="canonical"/>
@@ -434,6 +434,22 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 .hm-faq p{margin:10px 0 0;line-height:1.6;color:var(--gray-600)}
 .hm-fam{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .hm-fam a{padding:6px 12px;border:1px solid var(--gray-200);border-radius:999px;color:var(--black);text-decoration:none;font-size:.9rem}
+/* telefono: le righe delle tabelle configurazioni/prezzi diventano schede (nome + prezzo, poi descrizione/link); thead resta nel DOM per la semantica */
+@media (max-width:600px){
+.hm-table:not(.g1p-table):not(.h2x-specs),.hm-table:not(.g1p-table):not(.h2x-specs) tbody{display:block}
+.hm-table:not(.g1p-table):not(.h2x-specs) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 16px;margin:0 0 12px;border:1px solid var(--gray-200);border-radius:16px;background:var(--white,#fff)}
+.hm-table:not(.g1p-table):not(.h2x-specs) tr:target{background:var(--gray-50,#fafafa);border-color:var(--black,#0a0a0a)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td{display:block;padding:0;border:0;font-size:15px;line-height:1.5;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:first-child{grid-column:1;grid-row:1;font-size:16px;font-weight:600;white-space:normal}
+.hm-table:not(.g1p-table):not(.h2x-specs) td.p{grid-column:2;grid-row:1;text-align:right;white-space:nowrap;font-size:16px}
+.hm-table:not(.g1p-table):not(.h2x-specs) td:not(:first-child):not(.p){grid-column:1/-1;color:var(--gray-600)}
+.hm-table:not(.g1p-table):not(.h2x-specs) td a{color:var(--black,#0a0a0a)}
+.hm-table.h2x-specs tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.hm-table.h2x-specs td{display:block;padding:0;border:0;font-size:15px;line-height:1.5}
+.hm-table.h2x-specs td:first-child{min-width:0;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+.hm-table.h2x-specs,.hm-table.h2x-specs tbody{display:block}
+}
 </style>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Abra Robotics"/>
@@ -600,7 +616,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </div>
 <div class="container footer-bottom">
-<p class="footer-copy">© 2026 Abra Robotics. All rights reserved. Abra Robotics di Niccolò Mazzoleni, VAT IT04800170278, Viale Trieste 105, 30026 Portogruaro (VE), Italy.</p>
+<p class="footer-copy">© 2026 Abra Robotics. All rights reserved. Abra Robotics di Niccolò Mazzoleni, VAT IT04800170278, Viale Trieste 105, 30026 Portogruaro (VE), Italy. Caligo di Giovanni Pitton, VAT IT04982670277.</p>
 <nav aria-label="Legal" class="footer-legal"><a href="/en/privacy-policy-en.html">Privacy Policy</a> <a href="/en/cookie-policy-en.html">Cookie Policy</a> <a href="/en/condizioni-di-vendita-en.html">Terms of sale</a> <a href="/en/note-legali-en.html">Legal notice</a></nav>
 </div>
 </footer>

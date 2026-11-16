@@ -62,7 +62,7 @@
     '.consent-btn[hidden]{display:none}' +
     '.consent-x{position:absolute;top:6px;right:8px;width:32px;height:32px;border:0;background:transparent;color:#fff;font-size:22px;line-height:1;cursor:pointer}' +
     '.consent-open{cursor:pointer}' +
-    '@media (max-width:520px){.consent-actions{justify-content:stretch}.consent-btn{flex:1 1 28%;padding:8px 6px}}';
+    '@media (max-width:520px){.consent-banner{left:8px;right:8px;bottom:8px;padding:10px 34px 10px 12px;font-size:12.5px;line-height:1.4}body.has-wa-bar .consent-banner{bottom:66px}.consent-text{margin-bottom:8px}.consent-actions{justify-content:stretch;gap:6px}.consent-btn{flex:1 1 28%;padding:7px 6px;font-size:12.5px}}';
 
   function open(showPrefs) {
     if (!document.getElementById('consent-css')) {

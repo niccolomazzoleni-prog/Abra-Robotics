@@ -213,6 +213,11 @@ def strip_price_sentences(desc: str, name: str) -> str:
     return out
 
 
+# Description IT scritte per il CTR (docs/seo-piano-italia.md, IT-4): sostituiscono il testo dopo il prezzo.
+# La scheda G1 Air compare per "unitree g1 prezzo": rimanda a tutte le versioni dell'hub, senza cifre da aggiornare.
+DESC_IT = {"unitree-g1.html": "Tutte le versioni G1 con prezzo e consegna nel listino pubblico; assistenza in Italia."}
+
+
 def new_desc(desc: str, name: str, price: float, en: bool) -> str:
     head = f"{name} price: from €{fmt_en(price)} excl. VAT." if en else f"{name}: prezzo da {fmt_it(price)} € IVA esclusa."
     rest = strip_price_sentences(desc, name)
@@ -369,7 +374,7 @@ def main() -> None:
         p = page_price(s, prod, en)
         dm = re.search(r'<meta[^>]*name="description"[^>]*content="([^"]*)"', s) or re.search(r'<meta[^>]*content="([^"]*)"[^>]*name="description"', s)
         if p and dm:
-            nd = new_desc(H.unescape(dm.group(1)), name, p, en)
+            nd = new_desc(DESC_IT.get(f.name) if not en and f.name in DESC_IT else H.unescape(dm.group(1)), name, p, en)
             if nd != H.unescape(dm.group(1)):
                 s = set_meta(set_meta(s, "description", nd), "og:description", nd)
                 stats["desc"] += 1
