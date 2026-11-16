@@ -139,7 +139,7 @@ def page_shell(
 {faq_schema(faqs)}
 </head>
 <body>
-<div class="top-bar"><p>Filiera di distribuzione di Unitree Italia</p></div>
+<div class="top-bar"><p>Filiera di distribuzione di <a href="catalogo-unitree.html">Unitree Italia</a></p></div>
 <nav class="navbar"><div class="container navbar-inner">
 <a class="logo" href="index.html"><img alt="Abra Robotics" class="logo-img" src="images/logo.png"/></a>
 <div class="nav-links">

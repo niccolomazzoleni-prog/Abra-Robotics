@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from genera_catalogo_completo import BRAND_HUBS, BRAND_INTRO, SITE  # noqa: E402
+from genera_catalogo_completo import BRAND_DESC, BRAND_HUBS, BRAND_INTRO, BRAND_TITLE, SITE  # noqa: E402
 
 LANG_DIRS = {"en", "de", "es", "fr", "pl", "sv", "da", "no", "nl", "cs", "fi", "pt", "uk"}
 SKIP_DIRS = {".git", ".claude", "admin", "editor", "node_modules", "docs", "listini", "apps-script"}
@@ -61,11 +61,11 @@ def fix_catalogo() -> None:
     s = p.read_text(encoding="utf-8")
     rep = {
         "<title>Catalogo Unitree Italia: tutti i prodotti e prezzi | Abra</title>":
-            "<title>Unitree Italia: catalogo e prezzi di tutti i robot | Abra</title>",
+            f"<title>{BRAND_TITLE}</title>",
         '<meta name="description" content="Catalogo completo Unitree con prezzi End-User pubblici: umanoidi, quadrupedi, mani, batterie e accessori. Filiera Unitree Italia.">':
-            '<meta name="description" content="Unitree in Italia: catalogo completo con prezzi End-User pubblici di umanoidi, quadrupedi, bracci e accessori. Spedizione e dazio inclusi, supporto in italiano.">',
+            f'<meta name="description" content="{BRAND_DESC}">',
         '<meta property="og:title" content="Catalogo Unitree — Abra Robotics">':
-            '<meta property="og:title" content="Unitree Italia: catalogo e prezzi — Abra Robotics">',
+            f'<meta property="og:title" content="{BRAND_TITLE} — Abra Robotics">',
         '<p class="label">Catalogo pubblico End-User</p>': '<p class="label">Filiera di distribuzione Unitree Italia</p>',
         "<h1>Tutti i prodotti Unitree</h1>": "<h1>Unitree in Italia: catalogo e prezzi</h1>",
     }
