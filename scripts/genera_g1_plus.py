@@ -362,3 +362,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    # Product senza prezzo: via dai dati strutturati (errore Google), vedi scripts/schema_senza_prezzo.py
+    import subprocess, sys as _sys
+    subprocess.run([_sys.executable, str(Path(__file__).resolve().parent / "schema_senza_prezzo.py")], check=False)
