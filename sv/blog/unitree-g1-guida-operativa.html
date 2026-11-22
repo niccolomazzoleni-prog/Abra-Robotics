@@ -52,7 +52,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "@type": "Article",
   "headline": "Unitree G1: start, fjärrkontroll och nätverk | Abra",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics"
@@ -166,49 +166,45 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </figure>
 
 <header class="article-header">
-<p class="label">Unitree G1 · Bruksguide</p>
-<h1>Unitree G1: så startar du roboten, använder fjärrkontrollen och ansluter datorn</h1>
-<div class="article-meta"><time datetime="2026-10-15">Uppdaterad 15 oktober 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
+<p class="label">Unitree G1 · Bruksanvisning</p>
+<h1>Unitree G1: starta roboten, använda fjärrkontrollen och ansluta datorn</h1>
+<div class="article-meta"><time datetime="2026-11-22">Uppdaterad 22 november 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
 </header>
-
 <div class="article-layout">
 <div class="article-main">
-<p class="article-lead">Bruksguide för <a href="/sv/unitree-g1.html">Unitree G1</a> EDU: varianter, start, kommandon på fjärrkontrollen R3, batteri, nätverk och SSH. Kommandona följer den officiella dekalen på fjärrkontrollen och <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitrees utvecklardokumentation</a>. Programmering med SDK och ROS 2 tas upp i en <a href="/sv/blog/unitree-g1-programmazione.html">separat artikel</a>.</p>
-
+<p class="article-lead">Bruksanvisning för <a href="/sv/unitree-g1.html">Unitree G1</a> EDU: versioner, start, kommandon på fjärrkontrollen R3, batteri, nätverk och SSH. Kommandona följer Unitrees dokumentation från november 2026: de ändras med firmware, så jämför dem alltid med dekalen för din version.</p>
 <div class="article-content">
-
-<h2 id="varianti">Varianter av G1 EDU (U1–U10)</h2>
-<p>Beteckningar från Unitrees prislista. Skillnaden mellan modellerna är den mekaniska basen (23 eller 29 DoF) och den monterade <strong>manipulatorn</strong>. G1 Air är inte avsedd för sekundär utveckling: i <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitrees officiella tabell</a> finns den punkten bara för G1 EDU.</p>
+<h2 id="varianti">G1 EDU-versioner (U1–U10)</h2>
+<p>Koder från Unitrees prislista. Modellerna skiljer sig i den mekaniska basen (23 eller 29 DoF) och i den monterade <strong>manipulatorn</strong>. G1 Air tillåter inte egen mjukvaruutveckling: i Unitrees officiella tabell finns det bara för G1 EDU.</p>
 <div class="spec-table-wrap">
 <table>
-<thead><tr><th>SKU</th><th>DoF</th><th>Manipulator</th><th>Produktblad</th></tr></thead>
+<thead><tr><th>SKU</th><th>DoF</th><th>Manipulator</th><th>Produktsida</th></tr></thead>
 <tbody>
-<tr><td><strong>G1 Air</strong></td><td>23</td><td>Dummy (ej EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
-<tr><td><strong>G1-U1</strong></td><td>23</td><td>Dummyhänder, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
-<tr><td><strong>G1-U2</strong></td><td>29</td><td>Dummy + midja 3 DoF + arm 7 DoF</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
-<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1 tre fingrar, utan taktil sensorik</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
-<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1 tre fingrar, med taktil sensorik</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
-<tr><td><strong>G1-U5</strong></td><td>ej angiven</td><td>Inspire RH56DFQ, utan taktil sensorik</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
-<tr><td><strong>G1-U6</strong></td><td>ej angiven</td><td>Inspire RH56DFTP, med taktil sensorik</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
-<tr><td><strong>G1-U7</strong></td><td>37</td><td>Revo2 Basic (5 fingrar)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
-<tr><td><strong>G1-U8</strong></td><td>ej angiven</td><td>Revo2 Touch (5 fingrar, med taktil sensorik)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
-<tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 utan taktil sensorik (kompakt konfiguration)</td><td><a href="/en/prodotti/unitree-g1-u9-en.html">U9</a></td></tr>
+<tr><td><strong>G1 Air</strong></td><td>23</td><td>Attrapp (inte EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
+<tr><td><strong>G1-U1</strong></td><td>23</td><td>Attrapphänder, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
+<tr><td><strong>G1-U2</strong></td><td>29</td><td>Attrapp + midja 3 DoF + arm 7 DoF</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
+<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1 tre fingrar, utan taktila sensorer</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
+<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1 tre fingrar, med taktila sensorer</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
+<tr><td><strong>G1-U5</strong></td><td>n.d.</td><td>Inspire RH56DFQ, utan taktila sensorer</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
+<tr><td><strong>G1-U6</strong></td><td>n.d.</td><td>Inspire RH56DFTP, med taktila sensorer</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
+<tr><td><strong>G1-U7</strong></td><td>n.d.</td><td>Revo2 Basic (5 fingrar)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
+<tr><td><strong>G1-U8</strong></td><td>n.d.</td><td>Revo2 Touch (5 fingrar, med taktila sensorer)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
+<tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 utan taktila sensorer (kompakt konfiguration)</td><td><a href="/en/prodotti/unitree-g1-u9-en.html">U9</a></td></tr>
 <tr><td><strong>G1-U10</strong></td><td>35</td><td>Revo2 Basic (5 fingrar)</td><td><a href="/en/prodotti/unitree-g1-u10-en.html">U10</a></td></tr>
 </tbody>
 </table>
 </div>
-<p>Priserna finns i den <a href="/sv/#models">offentliga prislistan</a>. För att välja mellan versionerna finns guiden <a href="/sv/blog/unitree-g1-quale-versione-scegliere.html">vilken G1 ska man välja</a>; gäller arbetet en arbetsbänk, titta också på <a href="/sv/unitree-g1-d.html">G1-D</a>.</p>
-
-<div class="product-strip" aria-label="Prodotti citati">
-<div class="product-strip-head"><span>Produkter i artikeln</span><a href="/sv/unitree-g1.html">Hela G1-serien</a></div>
+<p>Priser i den <a href="/en/listino-unitree-en.html">offentliga prislistan</a>. För att välja version finns guiden <a href="unitree-g1-quale-versione-scegliere.html">vilken G1 ska man välja</a>; för arbete vid bänk, titta också på <a href="/sv/unitree-g1-d.html">G1-D</a>.</p>
+<div aria-label="Prodotti citati" class="product-strip">
+<div class="product-strip-head"><span>Produkter i artikeln</span><a href="/sv/unitree-g1.html">G1-serien</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>Sekundär utveckling, 23 DoF, beräkningsdocka</p>
-<div class="product-card-price">38 005 € <small>exkl. moms</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produktblad</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
+<p>SDK, 23 DoF, beräkningsdocka</p>
+<div class="product-card-price">38.005 € <small>exkl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produkten</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
 </div>
 </article>
 <article class="product-card">
@@ -216,187 +212,128 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU U2</a></h3>
 <p>29 DoF: midja med 3 axlar, armar med 7 axlar</p>
-<div class="product-card-price">46 809 € <small>exkl. moms</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Se produktblad</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
+<div class="product-card-price">46.809 € <small>exkl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Se produkten</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
 </div>
 </article>
 <article class="product-card">
-<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Batteria G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="G1-batteri" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
 <div class="product-card-body">
-<h3><a href="/en/prodotti/unitree-g1-battery-en.html">Batteri G1</a></h3>
-<p>9000 mAh, snabbutbytbart</p>
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">G1-batteri</a></h3>
+<p>9000 mAh, snabbyte</p>
 <div class="product-card-price">880 € <small>exkl. moms</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Se produktblad</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Se produkten</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
 </div>
 </article>
 </div>
 </div>
-<h2 id="protezione">Fysiskt skydd för roboten</h2>
-<div class="callout callout-warning">
-<strong>Rekommenderade skydd:</strong> på hårda golv får G1 snabbt märken, särskilt vid demonstrationer med många rörelser nere vid golvet. Vi rekommenderar <strong>mjuka skydd (till exempel i neopren) på armar och ben</strong> och, vid första starten, <a href="/en/prodotti/unitree-g1-frame-en.html">skyddsställningen</a> i prislistan. Metoden ”från golvet” (L2+X) ökar risken för märken på armbågar och knän.
-</div>
-
-<h2 id="telecomando">Fjärrkontrollen R3</h2>
-<p>Påslagning: <strong>kort tryck</strong> på strömknappen, sedan <strong>håll in ≥2 s</strong> (två pip). Avstängning: kort tryck + långt tryck ≥2 s (tre pip).</p>
-<div class="callout callout-tip">
-<strong>Fjärrkontrollens batteri:</strong> det kan ta slut <em>före</em> G1:s batterier. Håll fjärrkontrollen laddad: utan R3 kan du inte styra roboten på ett säkert sätt.
-</div>
-<p>Fjärrkontrollen ingår och kan även köpas separat: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>.</p>
-
-<h2 id="comandi">Kommandon på fjärrkontrollen (aktuell firmware)</h2>
-<p>Kombinationerna kan ändras med firmwareversionen: kontrollera alltid dekalen på din fjärrkontroll innan du använder roboten.</p>
-<p>Teckenförklaring tryckt på fjärrkontrollen R3:</p>
-<ul>
-<li><strong>★</strong> = ett enkelt kort tryck</li>
-<li><strong>▲</strong> = långt tryck i ~2 sekunder (i motion control går roboten in i dämpningsskyddet om du håller <strong>damping</strong> L2 + B intryckt i <strong>5 sekunder</strong>, enligt dekalen)</li>
-</ul>
-
-<figure class="article-cover" style="max-width:100%;margin:28px 0">
-<img src="/images/blog/g1-telecomando-comandi.webp" alt="Tabella comandi telecomando Unitree G1 R3" loading="lazy" style="padding:0;max-height:none;object-fit:contain"/>
-<figcaption style="padding:12px 16px;font-size:0.85rem;color:var(--gray-600);border-top:1px solid var(--gray-200);background:var(--gray-50)">Unitrees officiella kommandoreferens för fjärrkontrollen R3.</figcaption>
-</figure>
-
-<h3>Zero moment / hållning</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
-<thead><tr><th>Kommando</th><th>Knappar</th><th>Typ</th></tr></thead>
+<h2 id="protezione">Fysiskt skydd av roboten</h2>
+<div class="callout callout-warning"><strong>Rekommenderat skydd:</strong> vid demonstrationer med rörelser på golvet bör armar och ben skyddas med <strong>mjuka överdrag, till exempel i neopren</strong>. Använd vid första starten <a href="/en/prodotti/unitree-g1-frame-en.html">skyddsramen</a> från prislistan.</div>
+<h2 id="telecomando">Fjärrkontroll R3</h2>
+<p>G1 styrs med fjärrkontrollen Unitree R3. Unitree anger ett batteri på 780 mAh för cirka 5 timmars användning. Start: kort tryck på strömknappen, sedan håll in i mer än 2 sekunder tills det piper.</p>
+<div class="callout callout-tip"><strong>Håll den alltid laddad.</strong> Fjärrkontrollen laddas långsamt: ladda den i slutet av dagen, inte strax innan du använder roboten. Utan fjärrkontroll finns det inget snabbt sätt att styra roboten.</div>
+<p>En extra fjärrkontroll finns i prislistan: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>, <a class="prezzo" data-prodotto="unitree-g1-remote" href="/en/prodotti/unitree-g1-remote-en.html" title="Unitree G1 Remote Controller"><img src="/images/official/unitree-telecomando.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-telecomando.webp" alt="" loading="lazy"><b>Unitree G1 Remote Controller</b><span>367 € exkl. moms</span><em>Se produkten →</em></span></a> <span class="prezzo-iva">exkl. moms</span>.</p>
+<h2 id="comandi">Kommandon på fjärrkontrollen</h2>
+<p><strong>Unitree ändrar knappkombinationerna mellan firmwareversionerna.</strong> Document Center har en egen dekal för varje version av motion control (8.2, 8.4.2, 8.5, över 8.6) och, i nyare versioner, separata dekaler för G1 med 23 eller 29 frihetsgrader. Kontrollera versionen i appen innan du använder roboten och jämför kommandona med rätt dekal på <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">den officiella sidan för fjärrkontrollen</a>. Tabellen nedan visar kommandona i Unitrees dokumentation från november 2026.</p>
+<div class="callout callout-danger"><strong>Damping och zero torque får roboten att falla.</strong> L2 + B (damping) och L2 + Y (zero torque) tar bort motorernas aktiva styrning: en stående G1 utan stöd tappar balansen och faller. Därför anger Unitree L2 + B som nödstopp: det används bara när roboten är utom kontroll, eller när den redan sitter eller hänger i ramen.</div>
+<h3>Byte av läge</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Kommando</th><th>Knappar</th><th>Vad det gör</th></tr></thead>
 <tbody>
-<tr><td><strong>Zero moment</strong></td><td>L2 + Y</td><td>★: noll vridmoment, fria leder: <strong>hänger roboten inte upp faller den</strong></td></tr>
-<tr><td><strong>Damping</strong></td><td>L2 + B</td><td>★: dämpar motorerna: <strong>det är kommandot för att stoppa roboten</strong></td></tr>
-<tr><td><strong>Locked standing</strong></td><td>L2 + ↑</td><td>★: stående med låsta leder</td></tr>
-<tr><td><strong>Resa sig från liggande</strong></td><td>L2 + X</td><td>★: Lie till Stand (bara hårt golv, se skydd)</td></tr>
-<tr><td><strong>Sittande</strong></td><td>L2 + ←</td><td>▲: vänta på övergången</td></tr>
-<tr><td><strong>Squat / stand</strong></td><td>L2 + A</td><td>▲</td></tr>
-<tr><td><strong>Adapt rise</strong></td><td>R1 + R2 + X</td><td>★</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-danger">
-<strong>Säkerhet:</strong> använd <strong>damping, L2 + B</strong> för att stoppa roboten (i motion control håller du in det i 5 sekunder för dämpningsskyddet). <strong>Blanda inte ihop det med L2 + Y</strong> (zero moment): det nollställer motorernas vridmoment, och om roboten inte hänger i selen eller ställningen faller den.
-</div>
-
-<h3>Motion control</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
-<thead><tr><th>Läge</th><th>Knappar</th><th>Anmärkning</th></tr></thead>
+<tr><td>Damping (①)</td><td>L2 + B</td><td>Motorerna dämpas. Stående robot: faller. Bara sittande eller hängande, och som nödstopp</td></tr>
+<tr><td>Zero torque</td><td>L2 + Y</td><td>Motorer utan moment, lederna fria. Stående robot: faller</td></tr>
+<tr><td>Låst stående (②)</td><td>L2 + ↑</td><td>Förberedande hållning, på cirka 5 sekunder</td></tr>
+<tr><td>Sittande (④)</td><td>L2 + ←</td><td>Sätter sig långsamt, utan balansstyrning: bara framför en stol</td></tr>
+<tr><td>Från liggande till stående (⑤)</td><td>L2 + X</td><td>Bara på plant, hårt golv</td></tr>
+<tr><td>Hukande (⑥)</td><td>L2 + A</td><td>Hukande, utan balansstyrning</td></tr>
+<tr><td>Felsökningsläge (debug)</td><td>L2 + R2</td><td>Bara för utveckling med SDK, från damping eller zero torque</td></tr>
+</tbody></table></div>
+<h3>Rörelse</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Läge</th><th>Knappar</th><th>Anmärkningar</th></tr></thead>
 <tbody>
-<tr><td><strong>Running mode</strong></td><td>R2 + A</td><td>▲ 2 s: löpning/aggressiv rörelse</td></tr>
-<tr><td>Låg/hög hastighet (run)</td><td>R2 + ↑ / ↓</td><td>▲</td></tr>
-<tr><td><strong>Regular mode (midja 1 DoF)</strong></td><td>R1 + X</td><td>▲ 2 s: <strong>stabilt walk mode</strong> (G1-U1 / midja 1 DoF)</td></tr>
-<tr><td><strong>Regular mode (midja 3 DoF)</strong></td><td>R1 + Y</td><td>▲ 2 s: <strong>stabilt walk mode</strong> (G1-U2+ / midja 3 DoF)</td></tr>
-<tr><td>Låg/hög hastighet (regular)</td><td>Dubbelklick L2 / L1</td><td>▲</td></tr>
-<tr><td>Stepping / standing</td><td>Dubbelklick START</td><td>▲</td></tr>
-<tr><td>Climb mode</td><td>R2 + B</td><td>▲</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-tip">
-<strong>Hälsningar och gester (handshake, wave, kiss, clap):</strong> använd dem i <strong>Regular mode</strong>: <strong>R1 + Y</strong> om du har midja med 3 DoF (U2+) eller <strong>R1 + X</strong> med midja 1 DoF (U1). I <strong>Running mode (R2+A)</strong> är roboten mindre stabil: ett handslag eller en hälsning kan få den ur balans. Interaktiva kommandon: SELECT + A (handslag), SELECT + Y (hälsning), dubbelklick Y/X/A (se dekalen).
-</div>
-
-<h3>Debug mode (bara för SDK-utveckling)</h3>
-<p><strong>L2 + R2</strong> stoppar motion controllern för att undvika konflikter med SDK:t; med <strong>L2 + A</strong> kontrollerar du att du är i debug mode (källa: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitree, remote control</a>). Det behövs <em>bara</em> i labbet när du programmerar motorerna på låg nivå. Vid normal användning med fjärrkontrollen ska du <strong>inte</strong> gå in i debug mode: starta om G1 för att lämna det.</p>
-
-<h3>Rekommenderade startsekvenser (enligt dekalen)</h3>
+<tr><td>Löpning (③)</td><td>R2 + A</td><td>Hastighet: R2 + ↑ snabb, R2 + ↓ långsam</td></tr>
+<tr><td>Huvudstyrning, midja 1 DoF (⑦)</td><td>R1 + X</td><td>Dubbelklick START: växlar mellan stående och gång</td></tr>
+<tr><td>Huvudstyrning, midja 3 DoF (⑧)</td><td>R1 + Y</td><td>Bara för G1 med midja med 3 axlar</td></tr>
+<tr><td>Låg / hög hastighet</td><td>Dubbelklick L2 / L1</td><td>I huvudstyrningen</td></tr>
+</tbody></table></div>
+<p>Gester: SELECT + Y vinkar, SELECT + A handslag, SELECT + X vänder sig om och vinkar. Unitree varnar för att det nuvarande gångläget inte är gjort för trappor.</p>
+<h3>Ordning för start och avstängning</h3>
 <ul>
-<li><strong>Från sittande (rekommenderas):</strong> Slå på, sedan (1) Damping, (2) Locked standing, (3) Running/Regular, demo, (4) Sittande, stäng av. Vid steg (2) och (3) stöttar en person roboten vid axlarna.</li>
-<li><strong>Från liggande:</strong> Slå på, sedan (1), (10), demo, (6), stäng av.</li>
-<li><strong>Från squat:</strong> Slå på, sedan (1), (6), demo, (6), stäng av.</li>
+<li><strong>Sittande på en stol (enklast):</strong> starta → ① damping → ② låst stående, håll roboten i axlarna → ③ eller ⑦ → användning → framför stolen ④ sittande → ① damping → stäng av.</li>
+<li><strong>Hängande i skyddsramen:</strong> starta och vänta ungefär en och en halv minut → ① damping → ② → sänk kroken tills fötterna når golvet → R2 + A → när den går stabilt, lossa kroken. Avstängning: häng upp roboten igen, sedan ① damping och stäng av.</li>
+<li><strong>Från liggande eller hukande:</strong> bara på plant, hårt golv. Med robothänder monterade avråder Unitree från dessa starter, eftersom de kan skada händerna.</li>
 </ul>
-
-<h2 id="accensione">Starta G1 med batteriet</h2>
-<ol>
-<li>Sätt i batteriet tills det klickar (strömbrytaren mot baksidan).</li>
-<li>Kort tryck på knappen, håll sedan in ≥2 s.</li>
-<li>Vänta ~1 min: alla leder är i <strong>zero torque</strong>.</li>
-<li>Följ fjärrkontrollens sekvens ovan: först <strong>damping (L2 + B)</strong>, sedan fortsätter du.</li>
-</ol>
-
-<h3>Upphängd i ställningen (labb)</h3>
-<p>Rekommenderas vid första starten: <a href="/en/prodotti/unitree-g1-frame-en.html">skyddsställningen</a>. Häng upp roboten och låt fötterna nå golvet först när den har stabiliserats i Regular mode. Armar och ben ska vara fria och inga kablar får vara sträckta.</p>
-
-<h3>Från golvet (L2+X)</h3>
-<div class="callout callout-danger">
-Bara på en <strong>plan och hård</strong> yta. Roboten reser sig själv: håll avstånd. Med manipulatorer (U3–U10) ska du undvika den här metoden. Använd neoprenskydd: rörelser på betong ger direkt märken i plast och aluminium.
-</div>
-
-<h2 id="carico">Last och armar</h2>
-<p>Unitree anger en maximal last per arm på cirka <strong>3 kg för G1 EDU</strong> (cirka 2 kg för bas-G1) och påpekar att den varierar mycket med armens position (<a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">produktblad G1</a>). I praktiken kan även <strong>1 kg</strong> med utsträckt arm få roboten att tippa framåt och störa gången. Belasta inte armarna vid hälsningar och gester.</p>
-
+<p>För att stoppa roboten medan den går släpper du spakarna och växlar till stående (dubbelklick START). Damping ges först när roboten sitter eller hänger.</p>
+<h3>Felsökningsläge (debug)</h3>
+<p>Behövs bara för den som utvecklar med SDK: L2 + R2, från damping eller zero torque, stoppar Unitrees rörelseprogram så att det inte krockar med SDK-kommandona. I felsökningsläget svarar roboten inte längre på de vanliga rörelsekommandona. <strong>Felsökningsläget lämnar man genom att starta om roboten.</strong> Fallet tas upp i <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">issue #43 i unitree_sdk2_python</a>.</p>
+<h2 id="accensione">Batteri: isättning och start</h2>
+<ul>
+<li>Skjut in batteriet från robotens sida, åt rätt håll och utan att tvinga, tills det klickar på plats.</li>
+<li>Kort tryck på batteriets knapp, sedan håll in i minst 2 sekunder.</li>
+<li>Vänta ungefär en minut: när starten är klar är lederna i zero torque och roboten måste sitta eller hänga.</li>
+<li>Följ en av ordningarna ovan. Använd vid första starten <a href="/en/prodotti/unitree-g1-frame-en.html">skyddsramen</a> (<a class="prezzo" data-prodotto="unitree-g1-frame" href="/en/prodotti/unitree-g1-frame-en.html" title="Unitree G1 Staffa di protezione"><img src="/images/official/placeholder-prodotto.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/placeholder-prodotto.webp" alt="" loading="lazy"><b>Unitree G1 Staffa di protezione</b><span>367 € exkl. moms</span><em>Se produkten →</em></span></a> <span class="prezzo-iva">exkl. moms</span>).</li>
+</ul>
+<h2 id="carico">Last på armarna</h2>
+<p>Unitree anger en maxlast per arm på cirka 3 kg för G1 EDU (cirka 2 kg för grundversionen av G1) och påpekar att den varierar mycket med armens ställning.</p>
 <h2 id="batteria">Batteri och drifttid</h2>
-<p>Enligt Unitree har G1 ett smart, snabbutbytbart batteri på <strong>9000 mAh</strong> för <strong>cirka 2 timmars</strong> drifttid. Den verkliga drifttiden blir kortare vid kontinuerlig gång och last på armarna.</p>
+<p>G1 har ett snabbutbytbart batteri på 9000 mAh: Unitree anger cirka 2 timmars drifttid, som sjunker vid kontinuerlig gång och last på armarna.</p>
 <ul>
-<li>För en hel testdag behövs minst två batterier: <a href="/en/prodotti/unitree-g1-battery-en.html">extrabatteriet till G1</a> kostar 880 € i prislistan och <a href="/en/prodotti/unitree-g1-charger-en.html">laddaren</a> 147 € (exklusive moms).</li>
-<li>Stäng av roboten innan du byter batteri och sätt den i damping igen innan du låter den resa sig.</li>
-<li>Håll också fjärrkontrollen R3 laddad: utan fjärrkontroll har du inget snabbt sätt att stoppa roboten.</li>
+<li>För en testdag behövs minst två batterier: <a href="/en/prodotti/unitree-g1-battery-en.html">G1-batteri</a> <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € exkl. moms</span><em>Se produkten →</em></span></a> <span class="prezzo-iva">exkl. moms</span>, <a href="/en/prodotti/unitree-g1-charger-en.html">laddare</a> <a class="prezzo" data-prodotto="unitree-g1-charger" href="/en/prodotti/unitree-g1-charger-en.html" title="Unitree G1 Battery Charger"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">147 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery Charger</b><span>147 € exkl. moms</span><em>Se produkten →</em></span></a> <span class="prezzo-iva">exkl. moms</span>.</li>
+<li>Innan du byter batteri: låt roboten sitta eller hänga, sedan damping och avstängning.</li>
 </ul>
-
-<h2 id="rete">Nätverk och SSH</h2>
-<p>Lägg datorn på subnätet <code>192.168.123.0/24</code> med en ledig statisk IP-adress (t.ex. <code>.51</code>; använd <strong>inte</strong> .161, .164, .120). PC1 (.161) kör Unitrees rörelsestyrning och är inte öppen för utvecklare; utvecklingen sker på PC2 (.164).</p>
-<ul>
-<li><strong>Direkt Ethernet</strong> till G1:s LAN-port</li>
-<li><strong>Wi‑Fi</strong>: enligt <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">LeRobot-dokumentationen</a> är Wi‑Fi avstängt som standard på PC2 och måste aktiveras manuellt; för att installera paket kan du dela datorns uppkoppling via Ethernet.</li>
-</ul>
-
-<div class="ip-grid">
-<div class="ip-card"><code>192.168.123.161</code><span>MCU / Unitrees motion controller</span></div>
-<div class="ip-card"><code>192.168.123.164</code><span>Jetson Orin (PC2), SSH <code>unitree</code> / <code>123</code></span></div>
-<div class="ip-card"><code>192.168.123.120</code><span>LiDAR Livox MID-360 (huvudet)</span></div>
-</div>
-
+<h2 id="rete">Nätverk och SSH (bara G1 EDU)</h2>
+<p>Anslut datorn till nätet 192.168.123.0/24 med en ledig statisk IP-adress, till exempel 192.168.123.99. Använd inte robotens adresser:</p>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Adress</th><th>Vad som finns där</th></tr></thead>
+<tbody>
+<tr><td>192.168.123.161</td><td>PC1, Unitrees rörelsestyrning: inte åtkomlig</td></tr>
+<tr><td>192.168.123.164</td><td>PC2 (Jetson Orin), datorn för utveckling</td></tr>
+<tr><td>192.168.123.120</td><td>LiDAR Livox MID-360, om monterad</td></tr>
+</tbody></table></div>
 <pre><code>ping 192.168.123.164
 ssh unitree@192.168.123.164
-# Password predefinita: 123</code></pre>
-<div class="callout callout-warning">
-<strong>Inloggningsuppgifter:</strong> <code>unitree</code> / <code>123</code> är standarduppgifterna, som även anges i LeRobot-dokumentationen. Unitree säger att de initiala uppgifterna ska begäras från supporten, så på vissa enheter kan de vara andra. Byt lösenord efter första inloggningen, särskilt om roboten kopplas in i företagets nätverk.
-</div>
-
-<p><strong><a href="/sv/unitree-h2.html">H2</a>:</strong> använder samma subnät 192.168.123.x, med en PC1 för styrningen (Intel Core i5) och en PC2 för utvecklingen (Intel Core i7 på EDU-versionen, enligt <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">Unitrees produktblad</a>). De exakta adresserna beror på konfigurationen: kontrollera dem i leveransdokumentationen.</p>
-
-<h2 id="errori">Vanliga problem</h2>
+# utente: unitree   password: 123</code></pre>
+<p><strong>Standardinloggning för PC2:</strong> användare <code>unitree</code>, lösenord <code>123</code>. Byt lösenord vid första inloggningen, särskilt om roboten ansluts till företagets nätverk.</p>
+<p>Rekommenderad anslutning är en Ethernetkabel direkt till robotens port.</p>
+<h2 id="errori">Om något inte fungerar</h2>
 <ul>
-<li><strong>Ping svarar inte</strong>: kontrollera Ethernetkabeln och datorns IP-adress, och <strong>starta sedan om roboten</strong>.</li>
-<li><strong>SSH kommer inte in eller är långsamt</strong>: för många SSH-sessioner eller överbelastad Jetson; starta om G1.</li>
-<li><strong>SDK:t får lederna att skaka</strong>: motion controllern är aktiv parallellt, eller så kommer <strong>dubbla kommandon</strong> (fjärrkontroll och SDK samtidigt). Gå bara in i debug mode för utveckling, eller stoppa SDK-kommandona.</li>
+<li>Ping svarar inte: kontrollera kabeln och datorns IP-adress och starta sedan om roboten.</li>
+<li>Med SDK skakar roboten: Unitrees rörelseprogram och SDK skickar kommandon samtidigt. Gå till felsökningsläget eller stoppa SDK-kommandona.</li>
+<li>Roboten är instabil eller håller inte balansen: guiden om <a href="/en/blog/unitree-g1-problemi-comuni-soluzioni.html">vanliga problem med G1</a>.</li>
 </ul>
-
 <h2 id="prossimi">Nästa steg</h2>
 <ul>
-<li><a href="/sv/blog/unitree-g1-programmazione.html">SDK2 och ROS2</a></li>
-<li><a href="/en/accessori-en.html">Tillbehör och skydd</a></li>
-<li><a href="/sv/blog/ros2-unitree-guida-rapida.html">ROS 2 på Unitree, snabbguide</a></li>
-<li><a href="/sv/blog/unitree-regolamento-macchine-2027.html">Säkerhet och maskinförordningen 2027</a></li>
-<li><a href="/sv/#cta-finale">Kontakta Abra för support</a></li>
+<li><a href="unitree-g1-programmazione.html">SDK2 och ROS2</a></li>
+<li><a href="/en/accessori-en.html">Tillbehör och överdrag</a></li>
+<li><a href="ros2-unitree-guida-rapida.html">ROS 2 på Unitree, snabbguide</a></li>
+<li><a href="unitree-regolamento-macchine-2027.html">Säkerhet och maskinförordningen 2027</a></li>
+<li><a href="/sv/index.html#cta-finale">Kontakta Abra för support</a></li>
 </ul>
-
 </div>
-
 <section class="article-faq" id="faq">
-<h2>Vanliga frågor</h2>
-<div class="faq-item"><h3>G1-U1 eller G1-U2?</h3><p>U1 = 23 DoF, midja 1 DoF. U2 = 29 DoF, midja 3 DoF och armar 7 DoF: basen för manipulation.</p></div>
-<div class="faq-item"><h3>Vilket walk mode för hälsningar?</h3><p>R1+Y (midja 3 DoF, U2+) eller R1+X (midja 1 DoF, U1): Regular mode, inte R2+A Running mode.</p></div>
-<div class="faq-item"><h3>SSH-lösenord?</h3><p>Standard är unitree / 123 på 192.168.123.164 (PC2). På vissa enheter kan de vara andra: Unitree lämnar ut dem via supporten. Byt dem efter första inloggningen.</p></div>
-<div class="faq-item"><h3>Hur stoppar man G1 på ett säkert sätt?</h3><p>Med damping, L2 + B. Använd inte L2 + Y (zero moment): det nollställer vridmomentet och roboten faller om den inte hänger upp.</p></div>
-<div class="faq-item"><h3>Hur länge räcker batteriet i G1?</h3><p>Cirka 2 timmar enligt Unitree, med batteriet på 9000 mAh. För en hel testdag behövs minst två batterier.</p></div>
-<div class="faq-item"><h3>Går G1 Air att ansluta via SSH som EDU?</h3><p>Nej. Sekundär utveckling finns bara på G1 EDU, som har PC2 för användarens kod.</p></div>
+<h2>FAQ</h2>
+<div class="faq-item"><h3>G1-U1 o G1-U2?</h3><p>U1 räcker för förflyttning och styrning. U2 lägger till midja med 3 axlar och armar med 7 axlar: bra om projektet handlar om manipulation.</p></div>
+<div class="faq-item"><h3>Vilka är SSH-uppgifterna för G1?</h3><p>På PC2 (192.168.123.164) användare unitree, lösenord 123. Byt lösenord vid första inloggningen.</p></div>
+<div class="faq-item"><h3>Hur stoppar man G1 säkert?</h3><p>Under gång: släpp spakarna och växla till stående med dubbelklick START, låt den sedan sätta sig framför en stol eller häng upp den i ramen igen. Damping (L2 + B) och zero torque (L2 + Y) får en stående robot att falla: damping bara som nödstopp eller när roboten sitter eller hänger.</p></div>
+<div class="faq-item"><h3>Är kommandona på fjärrkontrollen alltid desamma?</h3><p>Nej, Unitree ändrar dem med firmwareversionerna. Kontrollera versionen i appen och motsvarande dekal i Unitree Document Center.</p></div>
+<div class="faq-item"><h3>Hur länge räcker batteriet i G1?</h3><p>Cirka 2 timmar enligt Unitree. För en testdag behövs minst två batterier.</p></div>
+<div class="faq-item"><h3>Ansluter G1 Air via SSH som EDU?</h3><p>Nej. PC2 för egen kod och utveckling med SDK finns bara på G1 EDU.</p></div>
 </section>
-
 <section class="article-references" id="fonti">
 <h2>Källor</h2>
 <ol>
-<li>Unitree, tekniskt datablad G1 och G1 EDU (mått, batteri, last per arm, garanti): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
-<li>Unitree Document Center, G1 developer: fjärrkontroll och debug mode: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, datablad G1 och G1 EDU (mått, batteri, armlast, garanti): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree Document Center, G1 developer: fjärrkontroll och felsökningsläge: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: arkitektur och beräkningsenheter: <a href="https://support.unitree.com/home/en/G1_developer/about_G1" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: LiDAR Livox MID-360 (IP 192.168.123.120): <a href="https://support.unitree.com/home/en/G1_developer/lidar_Instructions" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
-<li>Hugging Face, LeRobot-dokumentation för Unitree G1 (nätverk, SSH, Wi‑Fi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
-<li>Unitree, tekniskt datablad H2: <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">unitree.com/H2</a></li>
+<li>Hugging Face, LeRobot-dokumentation för Unitree G1 (nätverk, SSH, wifi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
+<li>Unitree, fjärrkontroll R3: <a href="https://www.unitree.com/R3" rel="noopener noreferrer" target="_blank">unitree.com/R3</a></li>
+<li>Unitree, G1 User Manual V1.6 (start, fjärrkontroll, nödstopp): <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">marketing.unitree.com</a></li>
 <li>Unitree, officiellt Python-SDK: <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a></li>
 </ol>
 </section>
-
-<div class="article-cta">
+</div></div><div class="article-cta">
 <h2>Har du precis fått en G1?</h2>
 <p>Har du frågor om start, nätverk eller kommandon är Abra Robotics din första kontakt.</p>
 <a class="btn btn-primary" href="/sv/#cta-finale">Kontakta oss</a>
@@ -458,5 +395,6 @@ ssh unitree@192.168.123.164
 </div>
 </footer>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body>
 </html>
