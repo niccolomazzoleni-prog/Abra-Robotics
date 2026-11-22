@@ -51,7 +51,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "Unitree G1: laiteohjelmiston päivitys ja hinta",
   "description": "Unitree G1:n laiteohjelmiston päivitys virallisella sovelluksella: tarkistukset ennen aloitusta (akku, versio, verkko), vältettävät virheet ja downgrade.",
   "datePublished": "2026-10-09",
-  "dateModified": "2026-10-19",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -203,106 +203,94 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <img src="/images/prodotti/2026/g1.webp" alt="Unitree G1 -humanoidirobotti seisomassa, edestä nähtynä" width="800" height="800" loading="eager"/>
 </figure>
 
-<header class="article-header"><p class="label">Oppaat</p>
-<h1>Unitree G1: näin päivität laiteohjelmiston ilman riskejä</h1>
-<div class="article-meta"><time datetime="2026-10-09">9. lokakuuta 2026</time><span>Päivitetty 19. lokakuuta 2026</span><span>Abra Robotics</span></div>
+<header class="article-header"><p class="label">Opas</p>
+<h1>Unitree G1: näin päivität laiteohjelmiston turvallisesti</h1>
+<div class="article-meta"><time datetime="2026-10-09">9. lokakuuta 2026</time><span>Päivitetty 22. marraskuuta 2026</span><span>Abra Robotics</span></div>
 </header>
-
 <div class="article-content">
-<div class="callout callout-tip"><p><strong>Lyhyesti.</strong> G1 saa ohjelmistopäivitykset verkon kautta (OTA). Yhteys robottiin hoidetaan virallisella <strong>Unitree Explore</strong> -sovelluksella. Ennen aloitusta tarkista akku, nykyinen versio ja yhteys; älä sammuta robottia päivityksen aikana. Unitree ei ole dokumentoinut paluuta edelliseen versioon.</p></div>
-
-<p>Seuraavat ohjeet perustuvat vain Unitreen asiakirjoihin: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">G1:n virallinen tuotesivu</a>, käyttöohje (versio 1.6, elokuu 2026), Unitree Explore -sovelluksen sivu ja tukikeskus support.unitree.com. Unitree ei julkaise vaiheittaista päivitysohjetta: kun asiakirjat vaikenevat, sanomme sen.</p>
-
-<h2>Mitä Unitree kertoo G1:n laiteohjelmistopäivityksestä</h2>
-<p>Käyttöohjeen tekniset tiedot -taulukossa sekä G1 että G1 EDU mainitsevat kohdan <em>Intelligent OTA Upgrade</em>: robotin ohjelmisto päivitetään verkon kautta ilman laitteistomuutoksia. Käyttöohje pyytää ennen käynnistystä tehtävissä tarkistuksissa varmistamaan, että laiteohjelmisto on uusin versio: «Ensure that the firmware has been updated to the latest version».</p>
-<p>Puhelimen ja robotin välinen yhteys hoidetaan <strong>Unitree Explore</strong> -sovelluksella, joka on ladattavissa iOS:lle ja Androidille <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a> -sivulta. Sovellus näyttää robotin tilan reaaliajassa (lämpötila, hälytykset ja muut tiedot), ja sen avulla voi tarkistaa, että laite on normaalissa kunnossa ennen jatkamista.</p>
-
+<div class="callout callout-tip"><p><strong>Lyhyesti.</strong> G1 saa ohjelmistopäivitykset verkon kautta (OTA). Yhteys robottiin kulkee virallisen <strong>Unitree Explore</strong> -sovelluksen kautta. Tarkista ennen aloittamista akku, nykyinen versio ja yhteys; älä sammuta robottia päivityksen aikana. Unitree ei dokumentoi paluuta edelliseen versioon.</p></div>
+<p>Alla olevat ohjeet perustuvat vain Unitreen asiakirjoihin: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">G1:n viralliseen esitteeseen</a>, käyttöoppaaseen (versio 1.6, elokuu 2026), Unitree Explore -sovelluksen sivuun ja tukikeskukseen support.unitree.com. Unitree ei julkaise vaiheittaista päivitysohjetta: missä asiakirjat eivät kerro mitään, sanomme sen.</p>
+<h2>Mitä Unitree sanoo G1:n laiteohjelmiston päivityksestä</h2>
+<p>Käyttöoppaan teknisten tietojen taulukossa sekä G1:llä että G1 EDU:lla on kohta <em>Intelligent OTA Upgrade</em>: robotin ohjelmisto päivittyy verkon kautta ilman laitteistoon kajoamista. Käyttöopas edellyttää käynnistystä edeltävissä tarkistuksissa, että laiteohjelmisto on uusin versio: ”Ensure that the firmware has been updated to the latest version”.</p>
+<p>Puhelimen ja robotin välinen yhteys kulkee <strong>Unitree Explore</strong> -sovelluksen kautta, joka on saatavana iOS:lle ja Androidille sivulla <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a>. Sovellus näyttää robotin tilan reaaliajassa (lämpötilan, hälytykset ja muut tiedot), mikä auttaa varmistamaan, että kone toimii normaalisti ennen jatkamista.</p>
 <h2>Vaiheet järjestyksessä</h2>
 <ol>
-<li><strong>Asenna sovellus ja yhdistä robotti.</strong> Ensimmäisellä yhteydellä käyttöohje pyytää rekisteröimään tilin, ottamaan puhelimen Bluetoothin käyttöön ja pitämään puhelimen lähellä G1:tä sekä lisäämään robotin kohdasta «Add Robot».</li>
-<li><strong>Valitse yhteystapa.</strong> Käyttöohjeessa on kaksi tapaa: AP (puhelin yhdistyy robotin hotspotiin) tai Wi-Fi reitittimen kautta. Ohje löytyy myös sovellussivun videolta «Adding G1 &amp; Network setting».</li>
-<li><strong>Tarkista tila ja versio.</strong> Ennen päivitystä katso sovelluksesta, ettei aktiivisia hälytyksiä ole, ja kirjaa nykyinen laiteohjelmistoversio.</li>
-<li><strong>Käynnistä päivitys ja odota.</strong> Noudata sovelluksen robotillesi näyttämiä ohjeita äläkä keskeytä virransyöttöä tai yhteyttä, ennen kuin toimenpide on päättynyt.</li>
+<li><strong>Asenna sovellus ja yhdistä robotti.</strong> Kytke ensimmäisellä yhdistämiskerralla puhelimen Bluetooth päälle, pidä puhelin lähellä G1:tä ja lisää robotti kohdasta ”Add Robot”. Unitreen toimittamaa tiliä ei tarvita.</li>
+<li><strong>Valitse yhteystapa.</strong> Käyttöopas tarjoaa kaksi tapaa: AP (puhelin yhdistyy robotin hotspotiin) tai wifi reitittimen kautta. Toimenpide näytetään myös sovellussivun videolla ”Adding G1 &amp; Network setting”.</li>
+<li><strong>Tarkista tila ja versio.</strong> Tarkista sovelluksesta ennen päivitystä, ettei aktiivisia hälytyksiä ole, ja kirjaa nykyinen laiteohjelmistoversio.</li>
+<li><strong>Käynnistä päivitys ja odota.</strong> Noudata sovelluksen robotillesi antamia ohjeita, äläkä katkaise virtaa tai yhteyttä ennen kuin toimenpide on valmis.</li>
 </ol>
-
 <h2>Ennen päivitystä: akku, versio, verkko</h2>
 <ul>
-<li><strong>Akku.</strong> Käyttöohje ei ilmoita lataustasoa päivitystä varten, mutta ennen käynnistystä tehtävissä tarkistuksissa se pyytää akun ja kaukosäätimen olevan täysin ladattuja. Unitreen mukaan G1:n akku kestää noin 2 tuntia.</li>
-<li><strong>Versio.</strong> Kirjaa nykyinen laiteohjelmistoversio. Sen avulla näet, onko päivitys todella tarpeen, ja ongelmatilanteessa voit antaa tuelle tarkan tiedon.</li>
-<li><strong>Verkko.</strong> Käyttöohje ei suosittele ympäristöjä, joissa on Wi-Fi-häiriöitä, ja AP-tilassa se pyytää, ettei hotspotin nimessä ole erikoismerkkejä tai välilyöntejä. Pidä puhelin ja robotti lähellä toisiaan. Jos työskentelet G1 EDU:lla sisäverkossa 192.168.123.x, lopussa mainittu G1:n käyttöopas selittää verkon rakenteen.</li>
+<li><strong>Akku.</strong> Käyttöopas ei anna päivitykselle varausrajaa, mutta edellyttää käynnistystä edeltävissä tarkistuksissa täyteen ladattua akkua ja kaukosäädintä. G1:n akku kestää Unitreen mukaan noin 2 tuntia.</li>
+<li><strong>Versio.</strong> Kirjaa nykyinen laiteohjelmistoversio. Sen avulla näet, onko päivitys todella tarpeen, ja ongelmatilanteessa tuki saa tarkan tiedon.</li>
+<li><strong>Verkko.</strong> Käyttöopas ei suosittele ympäristöjä, joissa on wifi-häiriöitä, ja edellyttää AP-tilassa, ettei hotspotin nimessä ole erikoismerkkejä tai välilyöntejä. Pidä puhelin ja robotti lähellä toisiaan. Jos työskentelet G1 EDU:lla sisäverkossa 192.168.123.x, alempana mainittu G1:n käyttöopas selittää sen rakenteen.</li>
 </ul>
-
 <h2>Päivityksen jälkeen: hälytykset ja kalibrointi</h2>
-<p>Käyttöohjeen poikkeamia käsittelevässä osassa todetaan, että robotti, joka kaatuu usein tai ei pysy pystyssä uudelleenkäynnistyksen jälkeen, voi vaatia nivelten uuden kalibroinnin, joka tehdään Unitree Explore -sovelluksen ohjeiden mukaan.</p>
-<p>Kalibrointi tehdään sovelluksesta: ohjattu kalibrointitoiminto kalibroi uudelleen moottorin nivelet ja IMU:n. Käyttöohjeessa polku on [Settings] → [Data] → [Robot] → [Calibration]; sovelluksen uusimmissa versioissa valikko voi muuttua.</p>
-<div class="callout callout-warning"><p><strong>Huomio.</strong> Käyttöohje muistuttaa, että G1 lähtee tehtaalta jo kalibroituna eikä sitä pidä kalibroida uudelleen normaalin käytön aikana. Jos päivityksen jälkeen ilmestyy hälytys, kysy ensin tekniseltä tuelta vahvistus ennen kalibrointia.</p></div>
-
+<p>Poikkeamia käsittelevässä osiossa käyttöopas toteaa, että robotti, joka kaatuu usein tai ei pysy pystyssä uudelleenkäynnistyksen jälkeen, voi tarvita nivelten uuden kalibroinnin Unitree Explore -sovelluksen vaiheiden mukaan.</p>
+<p>Kalibrointi tehdään sovelluksesta: avustettu kalibrointitoiminto kalibroi moottorinivelet ja IMU:n uudelleen. Käyttöoppaassa polku on [Settings] → [Data] → [Robot] → [Calibration]; sovelluksen uusissa versioissa valikko voi olla erilainen.</p>
+<div class="callout callout-tip"><p><strong>Jos robotti ei ole vakaa päivityksen jälkeen</strong> tai ei pysy tasapainossa, tee täysi kalibrointi (full body) sovelluksesta. Jos se ei auta, toista se muutaman kerran; vaikka se auttaisi, kannattaa toistaa se vielä kerran. Jos ongelma jatkuu, <a href="/en/index-en.html#contatti">kirjoita meille yhteydenottolomakkeella</a>.</p></div>
 <h2>Mitä ei pidä tehdä</h2>
 <ul>
-<li><strong>Älä sammuta robottia</strong> äläkä sulje yhteyttä päivityksen aikana.</li>
-<li><strong>Älä päivitä</strong> lähes tyhjällä akulla tai epävakaalla verkolla.</li>
-<li><strong>Älä käytä epävirallisia laiteohjelmistopaketteja</strong>: päivitykset tulevat vain Unitreen kanavista.</li>
-<li><strong>Älä kalibroi «varmuuden vuoksi»</strong>: kalibrointi tehdään vain tarvittaessa ja tuen kanssa keskusteltuasi.</li>
+<li><strong>Älä sammuta robottia</strong> äläkä katkaise yhteyttä päivityksen aikana.</li>
+<li><strong>Älä päivitä</strong> lähes tyhjällä akulla tai epävakaassa verkossa.</li>
+<li><strong>Älä käytä epävirallisia laiteohjelmistopaketteja</strong>: päivitykset tulevat vain Unitreen kanavien kautta.</li>
+<li><strong>Älä kalibroi uudelleen, jos robotti toimii hyvin</strong>: kalibrointi on tarkoitettu robotille, joka ei ole vakaa.</li>
 <li><strong>Älä aloita</strong> tietämättä nykyistä laiteohjelmistoversiota.</li>
 </ul>
-
-<h2>Voiko edelliseen versioon palata?</h2>
-<p>G1:n laiteohjelmistolle Unitree ei julkaise downgrade-ohjetta tarkastelluissa asiakirjoissa (käyttöohje, sovellussivu, kehittäjien UKK). Kyse ei siis ole toimenpiteestä, jota kannattaa yrittää yksin. Jos päivitys aiheuttaa ongelmia, ensimmäinen yhteyspiste on Abra Robotics; käyttöohje mainitsee myös Unitreen teknisen tuen (support@unitree.cc) ja <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitreen asiakaspalveluportaalin</a>.</p>
-
-<div class="product-strip" aria-label="Mainitut tuotteet">
-<div class="product-strip-head"><span>Artikkelissa mainitut tuotteet</span><a href="/fi/unitree-g1.html">G1-mallisto</a></div>
+<h2>Voiko palata aiempaan versioon?</h2>
+<p>G1:n laiteohjelmistolle Unitree ei julkaise tarkastelemissamme asiakirjoissa (käyttöopas, sovellussivu, kehittäjien UKK) paluumenettelyä vanhempaan versioon. Sitä ei siis kannata yrittää itse. Jos päivitys aiheuttaa ongelmia, ensimmäinen yhteyshenkilö on Abra Robotics; käyttöopas mainitsee myös Unitreen teknisen tuen (support@unitree.cc) ja <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitreen asiakaspalveluportaalin</a>.</p>
+<div aria-label="Prodotti citati" class="product-strip">
+<div class="product-strip-head"><span>Artikkelissa mainitut tuotteet</span><a href="/fi/unitree-g1.html">G1-sarja</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
 <p>SDK, 23 DoF, laskentatelakka</p>
-<div class="product-card-price">38 005 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<div class="product-card-price">38.005 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="G1-akku" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-battery-en.html">G1-akku</a></h3>
-<p>9000 mAh, pikairrotettava</p>
+<p>9000 mAh, pikavaihto</p>
 <div class="product-card-price">880 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="G1-kaukosäädin (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-remote-en.html">G1-kaukosäädin (R3)</a></h3>
-<p>Varalle, aina ladattuna</p>
+<p>Varalla, aina ladattuna</p>
 <div class="product-card-price">367 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 </div>
 </div>
-<h2>Usein kysytyt kysymykset</h2>
+<h2>Usein kysyttyä</h2>
 <h3>Miten Unitree G1:n laiteohjelmisto päivitetään?</h3>
-<p>Verkon kautta (OTA), kun robotti on yhdistetty Unitree Explore -sovellukseen. Kirjaa ensin nykyinen versio ja tarkista akku ja verkko.</p>
+<p>Verkon kautta (OTA), robotti yhdistettynä Unitree Explore -sovellukseen. Kirjaa ensin nykyinen versio ja tarkista akku ja verkko.</p>
 <h3>Voinko palata aiempaan laiteohjelmistoversioon?</h3>
-<p>Unitree ei ole dokumentoinut sitä. Jos päivitys aiheuttaa ongelmia, ota yhteyttä tukeen sen sijaan, että yrittäisit downgradea yksin.</p>
-<h3>Päivityksen jälkeen G1 ilmoittaa nivelten hälytyksistä: mitä tehdä?</h3>
-<p>Älä kalibroi yksin. Unitreen käyttöohje pyytää ottamaan yhteyttä tekniseen tukeen ennen kuin päätät nivelten kalibroinnista sovelluksesta.</p>
+<p>Unitree ei dokumentoi sitä. Jos päivitys aiheuttaa ongelmia, ota yhteyttä tukeen sen sijaan, että yrittäisit palata vanhempaan versioon itse.</p>
+<h3>Päivityksen jälkeen G1 näyttää nivelhälytyksiä: mitä teen?</h3>
+<p>Tarkista sovelluksesta, mitkä nivelet ovat virhetilassa. Jos robotti ei ole vakaa, tee täysi kalibrointi sovelluksesta ja toista se muutaman kerran; jos ongelma jatkuu, kirjoita meille yhteydenottolomakkeella.</p>
 <h3>Voinko sammuttaa robotin päivityksen aikana?</h3>
-<p>Et. Älä keskeytä virransyöttöä ja yhteyttä, ennen kuin päivitys on päättynyt.</p>
-
-<p>Robotin päivittäiseen käyttöön <a href="/fi/blog/unitree-g1-guida-operativa.html">G1:n käyttöopas</a> kattaa käynnistyksen, kaukosäätimen ja turvakomennot. G1 EDU:lla kehittäville SDK ja ROS 2 löytyvät <a href="/fi/blog/unitree-g1-programmazione.html">ohjelmointioppaasta</a>.</p>
-
+<p>Et. Älä katkaise virtaa tai yhteyttä ennen kuin päivitys on valmis.</p>
+<p>Robotin päivittäiseen käyttöön <a href="unitree-g1-guida-operativa.html">G1:n käyttöopas</a> kattaa käynnistyksen, kaukosäätimen ja turvakomennot. G1 EDU:lla kehittävä löytää SDK:n ja ROS 2:n <a href="unitree-g1-programmazione.html">ohjelmointioppaasta</a>.</p>
 <div class="figure-grid">
-<figure class="figure-card"><img src="/images/official/unitree-g1-info-batteria.webp" alt="Unitree G1:n pikairrotettava akku" width="800" height="800" loading="lazy"/><figcaption>G1:n akku: lähde liikkeelle täydellä latauksella ennen päivitystä.</figcaption></figure>
-<figure class="figure-card"><img src="/images/official/unitree-telecomando.webp" alt="Unitree G1:n kannettava kaukosäädin" width="800" height="800" loading="lazy"/><figcaption>G1:n kaukosäädin, pidä se käsillä päivityksen jälkeisissä testeissä.</figcaption></figure>
+<figure class="figure-card"><img alt="Unitree G1:n pikavaihdettava akku" height="800" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp" width="800"/><figcaption>G1:n akku: aloita täydellä latauksella ennen päivitystä.</figcaption></figure>
+<figure class="figure-card"><img alt="Unitree G1:n kannettava kaukosäädin" height="800" loading="lazy" src="/images/official/unitree-telecomando.webp" width="800"/><figcaption>G1:n kaukosäädin, pidä se käden ulottuvilla päivityksen jälkeisissä testeissä.</figcaption></figure>
 </div>
-
 <h2>Lähteet</h2>
 <ul>
-<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, virallinen tuotesivu (toiminta-aika, takuu)</a></li>
-<li><a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download: virallinen sovellus, G1:n toiminnot ja opastusvideot</a></li>
-<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual V1.6 (kohta «Intelligent OTA Upgrade», tarkistukset ennen käynnistystä, sovellusyhteys, kalibrointi)</a></li>
+<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, virallinen esite (käyttöaika, takuu)</a></li>
+<li><a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download: virallinen sovellus, toiminnot ja G1:n opetusvideot</a></li>
+<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual V1.6 (”Intelligent OTA Upgrade”, käynnistystä edeltävät tarkistukset, yhteys sovellukseen, kalibrointi)</a></li>
 <li><a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree, asiakaspalveluportaali</a></li>
 </ul>
 </div>
