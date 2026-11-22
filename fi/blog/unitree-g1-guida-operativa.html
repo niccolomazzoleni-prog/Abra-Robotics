@@ -52,7 +52,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "@type": "Article",
   "headline": "Unitree G1: käynnistys, kaukosäädin ja verkko | Abra",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics"
@@ -167,48 +167,44 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <header class="article-header">
 <p class="label">Unitree G1 · Käyttöopas</p>
-<h1>Unitree G1: näin käynnistät robotin, käytät kaukosäädintä ja kytket PC:n</h1>
-<div class="article-meta"><time datetime="2026-10-15">Päivitetty 15. lokakuuta 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
+<h1>Unitree G1: käynnistys, kaukosäätimen käyttö ja tietokoneen liittäminen</h1>
+<div class="article-meta"><time datetime="2026-11-22">Päivitetty 22. marraskuuta 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
 </header>
-
 <div class="article-layout">
 <div class="article-main">
-<p class="article-lead">Käyttöopas <a href="/fi/unitree-g1.html">Unitree G1</a> EDU -robotille: versiot, käynnistys, R3-kaukosäätimen komennot, akku, verkko ja SSH. Komennot noudattavat kaukosäätimen virallista tarraa ja <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitreen kehittäjädokumentaatiota</a>. Ohjelmoinnista SDK:lla ja ROS 2:lla kerrotaan <a href="/fi/blog/unitree-g1-programmazione.html">erillisessä artikkelissa</a>.</p>
-
+<p class="article-lead">Käyttöopas <a href="/fi/unitree-g1.html">Unitree G1</a> EDU -robotille: versiot, käynnistys, R3-kaukosäätimen komennot, akku, verkko ja SSH. Komennot noudattavat Unitreen marraskuun 2026 dokumentaatiota: ne muuttuvat laiteohjelmiston mukana, joten vertaa niitä aina oman versiosi tarraan.</p>
 <div class="article-content">
-
 <h2 id="varianti">G1 EDU -versiot (U1–U10)</h2>
-<p>Koodit ovat Unitreen hinnastosta. Mallit eroavat toisistaan mekaanisen perusrungon (23 tai 29 DoF) ja asennetun <strong>manipulaattorin</strong> osalta. G1 Air ei tue jatkokehitystä: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitreen virallisessa taulukossa</a> kohta on merkitty vain G1 EDU:lle.</p>
+<p>Koodit Unitreen hinnastosta. Mallit eroavat mekaaniselta rungoltaan (23 tai 29 DoF) ja asennetulta <strong>manipulaattorilta</strong>. G1 Air ei salli omaa ohjelmistokehitystä: Unitreen virallisessa taulukossa se on vain G1 EDU:lla.</p>
 <div class="spec-table-wrap">
 <table>
-<thead><tr><th>SKU</th><th>DoF</th><th>Manipulaattori</th><th>Tiedot</th></tr></thead>
+<thead><tr><th>SKU</th><th>DoF</th><th>Manipulaattori</th><th>Tuotesivu</th></tr></thead>
 <tbody>
-<tr><td><strong>G1 Air</strong></td><td>23</td><td>Dummy-kädet (ei EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
-<tr><td><strong>G1-U1</strong></td><td>23</td><td>Dummy-kädet, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
-<tr><td><strong>G1-U2</strong></td><td>29</td><td>Dummy-kädet + 3 DoF:n vyötärö + 7 DoF:n käsivarsi</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
-<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1, kolme sormea, ilman kosketusantureita</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
-<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1, kolme sormea, kosketusantureilla</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
-<tr><td><strong>G1-U5</strong></td><td>–</td><td>Inspire RH56DFQ, ilman kosketusantureita</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
-<tr><td><strong>G1-U6</strong></td><td>–</td><td>Inspire RH56DFTP, kosketusantureilla</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
-<tr><td><strong>G1-U7</strong></td><td>37</td><td>Revo2 Basic (5 sormea)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
-<tr><td><strong>G1-U8</strong></td><td>–</td><td>Revo2 Touch (5 sormea, kosketusantureilla)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
+<tr><td><strong>G1 Air</strong></td><td>23</td><td>Mallikappale (ei EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
+<tr><td><strong>G1-U1</strong></td><td>23</td><td>Mallikädet, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
+<tr><td><strong>G1-U2</strong></td><td>29</td><td>Mallikappale + vyötärö 3 DoF + käsivarsi 7 DoF</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
+<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1 kolme sormea, ilman kosketusantureita</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
+<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1 kolme sormea, kosketusantureilla</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
+<tr><td><strong>G1-U5</strong></td><td>n.d.</td><td>Inspire RH56DFQ, ilman kosketusantureita</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
+<tr><td><strong>G1-U6</strong></td><td>n.d.</td><td>Inspire RH56DFTP, kosketusantureilla</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
+<tr><td><strong>G1-U7</strong></td><td>n.d.</td><td>Revo2 Basic (5 sormea)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
+<tr><td><strong>G1-U8</strong></td><td>n.d.</td><td>Revo2 Touch (5 sormea, kosketusantureilla)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
 <tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 ilman kosketusantureita (kompakti kokoonpano)</td><td><a href="/en/prodotti/unitree-g1-u9-en.html">U9</a></td></tr>
 <tr><td><strong>G1-U10</strong></td><td>35</td><td>Revo2 Basic (5 sormea)</td><td><a href="/en/prodotti/unitree-g1-u10-en.html">U10</a></td></tr>
 </tbody>
 </table>
 </div>
-<p>Hinnat löytyvät <a href="/fi/#models">julkisesta hinnastosta</a>. Versioiden välillä valitsemista helpottaa opas <a href="/en/blog/unitree-g1-quale-versione-scegliere.html">mikä G1 kannattaa valita</a>. Jos työ tehdään pöydän ääressä, katso myös <a href="/fi/unitree-g1-d.html">G1-D</a>.</p>
-
-<div class="product-strip" aria-label="Prodotti citati">
-<div class="product-strip-head"><span>Artikkelissa mainitut tuotteet</span><a href="/fi/unitree-g1.html">G1-mallisto</a></div>
+<p>Hinnat <a href="/en/listino-unitree-en.html">julkisessa hinnastossa</a>. Version valintaan on opas <a href="unitree-g1-quale-versione-scegliere.html">mikä G1 valita</a>; pöytätyöhön kannattaa katsoa myös <a href="/fi/unitree-g1-d.html">G1-D</a>.</p>
+<div aria-label="Prodotti citati" class="product-strip">
+<div class="product-strip-head"><span>Artikkelissa mainitut tuotteet</span><a href="/fi/unitree-g1.html">G1-sarja</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>Jatkokehitys, 23 DoF, laskentatelakka</p>
-<div class="product-card-price">38 005 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<p>SDK, 23 DoF, laskentatelakka</p>
+<div class="product-card-price">38.005 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 <article class="product-card">
@@ -216,187 +212,128 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU U2</a></h3>
 <p>29 DoF: 3-akselinen vyötärö, 7-akseliset käsivarret</p>
-<div class="product-card-price">46 809 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<div class="product-card-price">46.809 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="G1-akku" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-battery-en.html">G1-akku</a></h3>
-<p>9000 mAh, pikairrotettava</p>
+<p>9000 mAh, pikavaihto</p>
 <div class="product-card-price">880 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 </div>
 </div>
 <h2 id="protezione">Robotin fyysinen suojaus</h2>
-<div class="callout callout-warning">
-<strong>Suositellut suojukset:</strong> kovalla lattialla G1:n pintaan tulee nopeasti jälkiä, varsinkin esittelyissä, joissa liikutaan paljon maassa. Suosittelemme <strong>pehmeitä suojuksia (esimerkiksi neopreenistä) käsivarsiin ja jalkoihin</strong> sekä ensimmäisellä käynnistyskerralla hinnastossa olevaa <a href="/en/prodotti/unitree-g1-frame-en.html">suojakehikkoa</a>. Maasta nousemisen menetelmä (L2+X) lisää kyynärpäiden ja polvien naarmuuntumisen riskiä.
-</div>
-
+<div class="callout callout-warning"><strong>Suositellut suojat:</strong> esittelyissä, joissa liikutaan lattialla, kädet ja jalat kannattaa suojata <strong>pehmeillä suojilla, esimerkiksi neopreenistä</strong>. Käytä ensimmäisellä käynnistyskerralla hinnaston <a href="/en/prodotti/unitree-g1-frame-en.html">suojakehikkoa</a>.</div>
 <h2 id="telecomando">R3-kaukosäädin</h2>
-<p>Päälle: <strong>lyhyt painallus</strong> virtapainikkeesta ja heti perään <strong>pitkä painallus ≥2 s</strong> (kaksi piippausta). Pois päältä: lyhyt ja pitkä painallus ≥2 s (kolme piippausta).</p>
-<div class="callout callout-tip">
-<strong>Kaukosäätimen akku:</strong> se voi tyhjentyä <em>ennen</em> G1:n akkuja. Pidä kaukosäädin ladattuna: ilman R3:a robottia ei voi ohjata turvallisesti.
-</div>
-<p>Kaukosäädin sisältyy toimitukseen tai sen voi ostaa erikseen: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>.</p>
-
-<h2 id="comandi">Kaukosäätimen komennot (nykyinen laiteohjelmisto)</h2>
-<p>Näppäinyhdistelmät voivat muuttua laiteohjelmiston (firmware) version mukana: tarkista aina oman kaukosäätimesi tarra ennen robotin käyttöä.</p>
-<p>R3-kaukosäätimeen painettujen komentojen selitykset:</p>
-<ul>
-<li><strong>★</strong> = yksi lyhyt painallus</li>
-<li><strong>▲</strong> = pitkä painallus, noin 2 sekuntia (motion control -tilassa <strong>damping</strong>-yhdistelmän L2 + B pitäminen pohjassa <strong>5 sekuntia</strong> siirtää robotin damping-suojaustilaan, kuten tarrassa kerrotaan)</li>
-</ul>
-
-<figure class="article-cover" style="max-width:100%;margin:28px 0">
-<img src="/images/blog/g1-telecomando-comandi.webp" alt="Unitree G1:n R3-kaukosäätimen komentotaulukko" loading="lazy" style="padding:0;max-height:none;object-fit:contain"/>
-<figcaption style="padding:12px 16px;font-size:0.85rem;color:var(--gray-600);border-top:1px solid var(--gray-200);background:var(--gray-50)">Unitreen virallinen komentotaulukko: R3-kaukosäädin.</figcaption>
-</figure>
-
-<h3>Zero moment ja asennot</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
-<thead><tr><th>Komento</th><th>Näppäimet</th><th>Tyyppi</th></tr></thead>
+<p>G1:tä ohjataan Unitree R3 -kaukosäätimellä. Unitree ilmoittaa 780 mAh:n akun, joka riittää noin 5 tunnin käyttöön. Käynnistys: lyhyt painallus virtapainikkeesta, sitten pidä pohjassa yli 2 sekuntia, kunnes kuuluu piippaus.</p>
+<div class="callout callout-tip"><strong>Pidä se aina ladattuna.</strong> Kaukosäädin latautuu hitaasti: laita se lataukseen päivän päätteeksi, ei juuri ennen robotin käyttöä. Ilman kaukosäädintä robottia ei voi ohjata nopeasti.</div>
+<p>Varakaukosäädin on hinnastossa: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>, <a class="prezzo" data-prodotto="unitree-g1-remote" href="/en/prodotti/unitree-g1-remote-en.html" title="Unitree G1 Remote Controller"><img src="/images/official/unitree-telecomando.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-telecomando.webp" alt="" loading="lazy"><b>Unitree G1 Remote Controller</b><span>367 € alv 0 %</span><em>Katso tuote →</em></span></a> <span class="prezzo-iva">alv 0 %</span>.</p>
+<h2 id="comandi">Kaukosäätimen komennot</h2>
+<p><strong>Unitree muuttaa painikeyhdistelmiä laiteohjelmistoversioiden mukana.</strong> Document Centerissä on oma tarra jokaiselle motion control -versiolle (8.2, 8.4.2, 8.5, yli 8.6) ja uusissa versioissa erikseen 23 tai 29 vapausasteen G1:lle. Tarkista versio sovelluksesta ennen robotin käyttöä ja vertaa komentoja oikeaan tarraan <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">kaukosäätimen virallisella sivulla</a>. Alla oleva taulukko esittää Unitreen marraskuun 2026 dokumentaation komennot.</p>
+<div class="callout callout-danger"><strong>Damping ja zero torque kaatavat robotin.</strong> L2 + B (damping) ja L2 + Y (zero torque) poistavat moottoreilta aktiivisen ohjauksen: seisova G1 ilman tukea menettää tasapainonsa ja kaatuu. Siksi Unitree ilmoittaa L2 + B:n hätäpysäytykseksi: sitä käytetään vain, kun robotti on hallitsematon tai kun se jo istuu tai roikkuu kehikossa.</div>
+<h3>Tilan vaihto</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Komento</th><th>Painikkeet</th><th>Mitä se tekee</th></tr></thead>
 <tbody>
-<tr><td><strong>Zero moment</strong></td><td>L2 + Y</td><td>★, nollamomentti, nivelet vapaina: <strong>jos robottia ei ole ripustettu, se kaatuu</strong></td></tr>
-<tr><td><strong>Damping</strong></td><td>L2 + B</td><td>★, vaimentaa moottorit: <strong>tällä komennolla robotti pysäytetään</strong></td></tr>
-<tr><td><strong>Locked standing</strong></td><td>L2 + ↑</td><td>★, seisoo nivelet lukittuina</td></tr>
-<tr><td><strong>Nousu makuulta</strong></td><td>L2 + X</td><td>★, Lie to Stand (vain kovalla lattialla, katso suojaus)</td></tr>
-<tr><td><strong>Istuminen</strong></td><td>L2 + ←</td><td>▲, odota siirtymän loppuun</td></tr>
-<tr><td><strong>Squat ↔ stand</strong></td><td>L2 + A</td><td>▲</td></tr>
-<tr><td><strong>Adapt rise</strong></td><td>R1 + R2 + X</td><td>★</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-danger">
-<strong>Turvallisuus:</strong> pysäytä robotti <strong>damping-komennolla L2 + B</strong> (motion control -tilassa pidä yhdistelmää pohjassa 5 sekuntia, niin robotti siirtyy damping-suojaustilaan). <strong>Älä sekoita sitä yhdistelmään L2 + Y</strong> (zero moment): se nollaa moottorien momentin, ja jos robotti ei roiku valjaissa tai kehikossa, se kaatuu.
-</div>
-
-<h3>Motion control</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
-<thead><tr><th>Tila</th><th>Näppäimet</th><th>Huomiot</th></tr></thead>
+<tr><td>Damping (①)</td><td>L2 + B</td><td>Moottorit vaimennetaan. Seisova robotti: kaatuu. Vain istuessa tai roikkuessa sekä hätäpysäytyksenä</td></tr>
+<tr><td>Zero torque</td><td>L2 + Y</td><td>Moottorit ilman momenttia, nivelet vapaina. Seisova robotti: kaatuu</td></tr>
+<tr><td>Lukittu seisonta (②)</td><td>L2 + ↑</td><td>Valmiusasento, noin 5 sekunnissa</td></tr>
+<tr><td>Istuminen (④)</td><td>L2 + ←</td><td>Istuu hitaasti ilman tasapainon säätöä: vain tuolin edessä</td></tr>
+<tr><td>Makuulta seisomaan (⑤)</td><td>L2 + X</td><td>Vain tasaisella, kovalla lattialla</td></tr>
+<tr><td>Kyykky (⑥)</td><td>L2 + A</td><td>Kyykyssä, ilman tasapainon säätöä</td></tr>
+<tr><td>Debug-tila</td><td>L2 + R2</td><td>Vain SDK-kehitykseen, damping- tai zero torque -tilasta</td></tr>
+</tbody></table></div>
+<h3>Liike</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Tila</th><th>Painikkeet</th><th>Huomiot</th></tr></thead>
 <tbody>
-<tr><td><strong>Running mode</strong></td><td>R2 + A</td><td>▲ 2 s, juoksu ja aggressiivisempi liike</td></tr>
-<tr><td>Hidas/nopea nopeus (run)</td><td>R2 + ↑ / ↓</td><td>▲</td></tr>
-<tr><td><strong>Regular mode (vyötärö 1 DoF)</strong></td><td>R1 + X</td><td>▲ 2 s, <strong>vakaa walk mode</strong> (G1-U1 / vyötärö 1 DoF)</td></tr>
-<tr><td><strong>Regular mode (vyötärö 3 DoF)</strong></td><td>R1 + Y</td><td>▲ 2 s, <strong>vakaa walk mode</strong> (G1-U2+ / vyötärö 3 DoF)</td></tr>
-<tr><td>Hidas/nopea nopeus (regular)</td><td>Kaksoisnapsautus L2 / L1</td><td>▲</td></tr>
-<tr><td>Stepping / standing</td><td>Kaksoisnapsautus START</td><td>▲</td></tr>
-<tr><td>Climb mode</td><td>R2 + B</td><td>▲</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-tip">
-<strong>Tervehdykset ja eleet (kättely, vilkutus, lentosuukko, taputus):</strong> käytä niitä <strong>Regular modessa</strong>, eli <strong>R1 + Y</strong>, jos vyötärössä on 3 DoF (U2+), tai <strong>R1 + X</strong>, jos vyötärössä on 1 DoF (U1). <strong>Running modessa (R2+A)</strong> robotti on epävakaampi, ja kättely tai vilkutus voi horjuttaa sitä. Vuorovaikutuskomennot: SELECT + A (kättely), SELECT + Y (vilkutus), kaksoisnapsautus Y/X/A (katso tarra).
-</div>
-
-<h3>Debug mode (vain SDK-kehitykseen)</h3>
-<p><strong>L2 + R2</strong> pysäyttää liikkeenohjaimen, jotta se ei ole ristiriidassa SDK:n kanssa. Yhdistelmällä <strong>L2 + A</strong> voi tarkistaa, että robotti on debug modessa (lähde: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitree, remote control</a>). Tilaa tarvitaan <em>vain</em> laboratoriossa, kun ohjelmoit moottoreita matalalla tasolla. Tavallisessa kaukosäädinkäytössä debug modeen <strong>ei</strong> pidä siirtyä: siitä poistutaan käynnistämällä G1 uudelleen.</p>
-
-<h3>Suositellut käynnistysjärjestykset (tarran mukaan)</h3>
+<tr><td>Juoksu (③)</td><td>R2 + A</td><td>Nopeus: R2 + ↑ nopea, R2 + ↓ hidas</td></tr>
+<tr><td>Pääohjaus, vyötärö 1 DoF (⑦)</td><td>R1 + X</td><td>START-kaksoisnapsautus: vaihtaa seisomisen ja kävelyn välillä</td></tr>
+<tr><td>Pääohjaus, vyötärö 3 DoF (⑧)</td><td>R1 + Y</td><td>Vain G1:lle, jossa on 3-akselinen vyötärö</td></tr>
+<tr><td>Matala / korkea nopeus</td><td>L2 / L1 -kaksoisnapsautus</td><td>Pääohjauksessa</td></tr>
+</tbody></table></div>
+<p>Eleet: SELECT + Y heiluttaa, SELECT + A kättelee, SELECT + X kääntyy ja heiluttaa. Unitree varoittaa, että nykyinen kävelytila ei sovellu portaisiin.</p>
+<h3>Käynnistys- ja sammutusjärjestys</h3>
 <ul>
-<li><strong>Istuma-asennosta (suositeltu):</strong> käynnistä, sitten (1) Damping, (2) Locked standing, (3) Running/Regular, esittely, (4) istuminen ja lopuksi sammutus. Vaiheissa (2) ja (3) robottia tuetaan käsin hartioista.</li>
-<li><strong>Makuuasennosta:</strong> käynnistä, sitten (1), (10), esittely, (6) ja sammutus.</li>
-<li><strong>Kyykystä:</strong> käynnistä, sitten (1), (6), esittely, (6) ja sammutus.</li>
+<li><strong>Tuolilla istuen (helpoin):</strong> käynnistä → ① damping → ② lukittu seisonta, pidä robottia olkapäistä → ③ tai ⑦ → käyttö → tuolin edessä ④ istuminen → ① damping → sammuta.</li>
+<li><strong>Suojakehikossa roikkuen:</strong> käynnistä ja odota noin puolitoista minuuttia → ① damping → ② → laske koukkua, kunnes jalat koskettavat lattiaa → R2 + A → kun robotti kävelee vakaasti, irrota koukku. Sammutus: ripusta robotti takaisin, sitten ① damping ja sammutus.</li>
+<li><strong>Makuulta tai kyykystä:</strong> vain tasaisella, kovalla lattialla. Kun robottikädet on asennettu, Unitree ei suosittele näitä käynnistyksiä, koska ne voivat vahingoittaa käsiä.</li>
 </ul>
-
-<h2 id="accensione">G1:n käynnistys akulla</h2>
-<ol>
-<li>Työnnä akku paikalleen, kunnes kuuluu napsahdus (kytkin taaksepäin).</li>
-<li>Paina painiketta lyhyesti ja pidä sitten pohjassa ≥2 s.</li>
-<li>Odota noin 1 min: kaikki nivelet ovat <strong>zero torque</strong> -tilassa.</li>
-<li>Noudata yllä olevaa kaukosäätimen järjestystä: ensin <strong>damping (L2 + B)</strong>, sitten jatka.</li>
-</ol>
-
-<h3>Kehikkoon ripustettuna (laboratorio)</h3>
-<p>Suositellaan ensimmäisellä käynnistyskerralla: <a href="/en/prodotti/unitree-g1-frame-en.html">suojakehikko</a>. Ripusta robotti ja laske jalat maahan vasta, kun se on vakautunut Regular modessa. Käsivarsien ja jalkojen on liikuttava vapaasti, eikä yksikään kaapeli saa olla kireällä.</p>
-
-<h3>Maasta nouseminen (L2+X)</h3>
-<div class="callout callout-danger">
-Vain <strong>tasaisella ja kovalla</strong> alustalla. Robotti nousee itse, joten pysy etäällä. Manipulaattoreilla varustetuilla malleilla (U3–U10) vältä tätä menetelmää. Käytä neopreenisuojuksia: betonilla liikkuminen naarmuttaa muovi- ja alumiiniosia heti.
-</div>
-
-<h2 id="carico">Hyötykuorma ja käsivarret</h2>
-<p>Unitree ilmoittaa käsivarren enimmäiskuormaksi noin <strong>3 kg G1 EDU:ssa</strong> (noin 2 kg perus-G1:ssä) ja tarkentaa, että arvo vaihtelee paljon käsivarren asennon mukaan (<a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">G1:n tuotesivu</a>). Käytännössä ojennetussa käsivarressa jo <strong>1 kg</strong> voi kallistaa robottia eteenpäin ja häiritä kävelyä. Älä kuormita käsivarsia tervehdysten ja eleiden aikana.</p>
-
-<h2 id="batteria">Akku ja toiminta-aika</h2>
-<p>Unitreen mukaan G1:ssä on pikairrotettava älyakku, jonka kapasiteetti on <strong>9000 mAh</strong> ja toiminta-aika <strong>noin 2 tuntia</strong>. Todellinen arvo on pienempi jatkuvassa kävelyssä ja käsivarsien kuormittuessa.</p>
+<p>Pysäyttääksesi robotin kävelyn aikana päästä irti ohjaussauvoista ja vaihda seisomaan (START-kaksoisnapsautus). Damping annetaan vasta, kun robotti istuu tai roikkuu.</p>
+<h3>Debug-tila</h3>
+<p>Tarvitaan vain SDK:lla kehitettäessä: L2 + R2 damping- tai zero torque -tilasta pysäyttää Unitreen liikeohjelman, jotta se ei törmää SDK-komentojen kanssa. Debug-tilassa robotti ei enää reagoi tavallisiin liikekomentoihin. <strong>Debug-tilasta poistutaan käynnistämällä robotti uudelleen.</strong> Tapausta käsitellään <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_pythonin issuessa #43</a>.</p>
+<h2 id="accensione">Akku: asennus ja käynnistys</h2>
 <ul>
-<li>Koko testipäivää varten tarvitaan vähintään kaksi akkua: <a href="/en/prodotti/unitree-g1-battery-en.html">G1:n lisäakku</a> maksaa hinnastossa 880 € ja <a href="/en/prodotti/unitree-g1-charger-en.html">laturi</a> 147 € (alv 0 %).</li>
-<li>Sammuta robotti ennen akun vaihtoa ja palauta se damping-tilaan ennen kuin annat sen nousta.</li>
-<li>Pidä myös R3-kaukosäädin ladattuna: ilman kaukosäädintä robottia ei voi pysäyttää nopeasti.</li>
+<li>Työnnä akku robotin kyljestä oikein päin ja väkisin painamatta, kunnes se napsahtaa paikalleen.</li>
+<li>Lyhyt painallus akun painikkeesta, sitten pidä pohjassa vähintään 2 sekuntia.</li>
+<li>Odota noin minuutti: käynnistyksen jälkeen nivelet ovat zero torque -tilassa, ja robotin on istuttava tai roikuttava.</li>
+<li>Noudata yhtä yllä olevista järjestyksistä. Käytä ensimmäisellä käynnistyskerralla <a href="/en/prodotti/unitree-g1-frame-en.html">suojakehikkoa</a> (<a class="prezzo" data-prodotto="unitree-g1-frame" href="/en/prodotti/unitree-g1-frame-en.html" title="Unitree G1 Staffa di protezione"><img src="/images/official/placeholder-prodotto.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/placeholder-prodotto.webp" alt="" loading="lazy"><b>Unitree G1 Staffa di protezione</b><span>367 € alv 0 %</span><em>Katso tuote →</em></span></a> <span class="prezzo-iva">alv 0 %</span>).</li>
 </ul>
-
-<h2 id="rete">Verkko ja SSH</h2>
-<p>Siirrä PC aliverkkoon <code>192.168.123.0/24</code> vapaalla kiinteällä IP-osoitteella (esim. <code>.51</code>; <strong>älä</strong> käytä osoitteita .161, .164 tai .120). PC1 (.161) ajaa Unitreen liikkeenohjausta, eikä se ole kehittäjien käytössä; kehitys tehdään PC2:lla (.164).</p>
+<h2 id="carico">Käsivarsien kuorma</h2>
+<p>Unitree ilmoittaa käsivarren enimmäiskuormaksi noin 3 kg G1 EDU:lla (noin 2 kg perus-G1:llä) ja huomauttaa, että se vaihtelee paljon käsivarren asennon mukaan.</p>
+<h2 id="batteria">Akku ja käyttöaika</h2>
+<p>G1:ssä on pikavaihdettava 9000 mAh:n akku: Unitree ilmoittaa noin 2 tunnin käyttöajan, joka lyhenee jatkuvassa kävelyssä ja käsivarsien kuormituksessa.</p>
 <ul>
-<li><strong>Suora Ethernet-yhteys</strong> G1:n LAN-porttiin</li>
-<li><strong>Wi‑Fi</strong>: <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">LeRobotin dokumentaation</a> mukaan PC2:n Wi‑Fi on oletuksena pois päältä, ja se on otettava käyttöön käsin; pakettien asentamista varten PC:n internetyhteyden voi jakaa Ethernetin kautta.</li>
+<li>Testipäivään tarvitaan vähintään kaksi akkua: <a href="/en/prodotti/unitree-g1-battery-en.html">G1-akku</a> <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € alv 0 %</span><em>Katso tuote →</em></span></a> <span class="prezzo-iva">alv 0 %</span>, <a href="/en/prodotti/unitree-g1-charger-en.html">laturi</a> <a class="prezzo" data-prodotto="unitree-g1-charger" href="/en/prodotti/unitree-g1-charger-en.html" title="Unitree G1 Battery Charger"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">147 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery Charger</b><span>147 € alv 0 %</span><em>Katso tuote →</em></span></a> <span class="prezzo-iva">alv 0 %</span>.</li>
+<li>Ennen akun vaihtoa laita robotti istumaan tai roikkumaan, sitten damping ja sammutus.</li>
 </ul>
-
-<div class="ip-grid">
-<div class="ip-card"><code>192.168.123.161</code><span>MCU / Unitreen liikkeenohjain</span></div>
-<div class="ip-card"><code>192.168.123.164</code><span>Jetson Orin (PC2), SSH <code>unitree</code> / <code>123</code></span></div>
-<div class="ip-card"><code>192.168.123.120</code><span>LiDAR Livox MID-360 (pää)</span></div>
-</div>
-
+<h2 id="rete">Verkko ja SSH (vain G1 EDU)</h2>
+<p>Liitä tietokone verkkoon 192.168.123.0/24 vapaalla staattisella IP-osoitteella, esimerkiksi 192.168.123.99. Älä käytä robotin osoitteita:</p>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Osoite</th><th>Mitä siellä on</th></tr></thead>
+<tbody>
+<tr><td>192.168.123.161</td><td>PC1, Unitreen liikeohjaus: ei käytettävissä</td></tr>
+<tr><td>192.168.123.164</td><td>PC2 (Jetson Orin), kehityskäyttöön tarkoitettu tietokone</td></tr>
+<tr><td>192.168.123.120</td><td>LiDAR Livox MID-360, jos asennettu</td></tr>
+</tbody></table></div>
 <pre><code>ping 192.168.123.164
 ssh unitree@192.168.123.164
-# Password predefinita: 123</code></pre>
-<div class="callout callout-warning">
-<strong>Tunnukset:</strong> <code>unitree</code> / <code>123</code> ovat oletustunnukset, jotka mainitaan myös LeRobotin dokumentaatiossa. Unitree neuvoo pyytämään alkuperäiset tunnukset tuesta, joten joissakin yksiköissä ne voivat olla erilaiset. Vaihda salasana ensimmäisen kirjautumisen jälkeen, varsinkin jos robotti liitetään yrityksen verkkoon.
-</div>
-
-<p><strong><a href="/fi/unitree-h2.html">H2</a>:</strong> käyttää samaa aliverkkoa 192.168.123.x. Siinä on PC1 ohjausta varten (Intel Core i5) ja PC2 kehitystä varten (EDU-versiossa Intel Core i7, <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">Unitreen tuotesivun</a> mukaan). Tarkat osoitteet riippuvat kokoonpanosta: tarkista ne toimituksen mukana tulevasta dokumentaatiosta.</p>
-
-<h2 id="errori">Yleisiä ongelmia</h2>
+# utente: unitree   password: 123</code></pre>
+<p><strong>PC2:n oletustunnukset:</strong> käyttäjä <code>unitree</code>, salasana <code>123</code>. Vaihda salasana ensimmäisellä kirjautumiskerralla, varsinkin jos robotti liitetään yrityksen verkkoon.</p>
+<p>Suositeltu yhteys on Ethernet-kaapeli suoraan robotin porttiin.</p>
+<h2 id="errori">Jos jokin ei toimi</h2>
 <ul>
-<li><strong>Ping ei vastaa</strong>: tarkista Ethernet-kaapeli ja PC:n IP-osoite, ja <strong>käynnistä robotti uudelleen</strong>.</li>
-<li><strong>SSH ei yhdistä tai on hidas</strong>: SSH-istuntoja on liikaa tai Jetson on ylikuormittunut. Käynnistä G1 uudelleen.</li>
-<li><strong>SDK saa nivelet tärisemään</strong>: liikkeenohjain on päällä samaan aikaan, tai robotti saa <strong>kaksoiskomentoja</strong> (kaukosäädin ja SDK yhtä aikaa). Siirry debug modeen vain kehitystä varten tai pysäytä SDK-komennot.</li>
+<li>Ping ei vastaa: tarkista kaapeli ja tietokoneen IP-osoite ja käynnistä robotti uudelleen.</li>
+<li>SDK:n kanssa robotti tärisee: Unitreen liikeohjelma ja SDK lähettävät komentoja samaan aikaan. Siirry debug-tilaan tai pysäytä SDK-komennot.</li>
+<li>Robotti on epävakaa tai ei pysy tasapainossa: opas <a href="unitree-g1-problemi-comuni-soluzioni.html">G1:n yleisiin ongelmiin</a>.</li>
 </ul>
-
 <h2 id="prossimi">Seuraavat vaiheet</h2>
 <ul>
-<li><a href="/fi/blog/unitree-g1-programmazione.html">SDK2 ja ROS2</a></li>
-<li><a href="/en/accessori-en.html">Lisävarusteet ja suojukset</a></li>
-<li><a href="/fi/blog/ros2-unitree-guida-rapida.html">ROS 2 Unitree-roboteilla, pikaopas</a></li>
-<li><a href="/en/blog/unitree-regolamento-macchine-2027.html">Turvallisuus ja vuoden 2027 koneasetus</a></li>
-<li><a href="/fi/#cta-finale">Ota yhteyttä Abran tukeen</a></li>
+<li><a href="unitree-g1-programmazione.html">SDK2 ja ROS2</a></li>
+<li><a href="/en/accessori-en.html">Lisävarusteet ja suojat</a></li>
+<li><a href="ros2-unitree-guida-rapida.html">ROS 2 Unitreella, pikaopas</a></li>
+<li><a href="unitree-regolamento-macchine-2027.html">Turvallisuus ja koneasetus 2027</a></li>
+<li><a href="/fi/index.html#cta-finale">Ota yhteyttä Abraan tukea varten</a></li>
 </ul>
-
 </div>
-
 <section class="article-faq" id="faq">
-<h2>Usein kysytyt kysymykset</h2>
-<div class="faq-item"><h3>G1-U1 vai G1-U2?</h3><p>U1 = 23 DoF, vyötärö 1 DoF. U2 = 29 DoF, vyötärö 3 DoF ja käsivarret 7 DoF, eli perusta manipulointiin.</p></div>
-<div class="faq-item"><h3>Mikä walk mode tervehdyksiin?</h3><p>R1+Y (vyötärö 3 DoF, U2+) tai R1+X (vyötärö 1 DoF, U1) eli Regular mode, ei R2+A eli Running mode.</p></div>
-<div class="faq-item"><h3>Mikä on SSH-salasana?</h3><p>Oletustunnukset ovat unitree / 123 osoitteessa 192.168.123.164 (PC2). Joissakin yksiköissä ne voivat olla erilaiset, ja Unitree toimittaa ne tuen kautta. Vaihda ne ensimmäisen kirjautumisen jälkeen.</p></div>
-<div class="faq-item"><h3>Miten G1 pysäytetään turvallisesti?</h3><p>Damping-komennolla L2 + B. Älä käytä yhdistelmää L2 + Y (zero moment): se nollaa momentin, ja robotti kaatuu, jos sitä ei ole ripustettu.</p></div>
-<div class="faq-item"><h3>Kuinka kauan G1:n akku kestää?</h3><p>Unitreen mukaan noin 2 tuntia 9000 mAh:n akulla. Koko testipäivää varten tarvitaan vähintään kaksi akkua.</p></div>
-<div class="faq-item"><h3>Voiko G1 Airiin ottaa SSH-yhteyden samalla tavalla kuin EDU-versioon?</h3><p>Ei. Jatkokehitys on mahdollista vain G1 EDU:ssa, jossa on PC2 käyttäjän koodille.</p></div>
+<h2>FAQ</h2>
+<div class="faq-item"><h3>G1-U1 o G1-U2?</h3><p>U1 riittää liikkumiseen ja ohjaukseen. U2 lisää 3-akselisen vyötärön ja 7-akseliset käsivarret: hyödyllinen, jos projekti koskee manipulointia.</p></div>
+<div class="faq-item"><h3>Mitkä ovat G1:n SSH-tunnukset?</h3><p>PC2:ssa (192.168.123.164) käyttäjä unitree, salasana 123. Vaihda salasana ensimmäisellä kirjautumiskerralla.</p></div>
+<div class="faq-item"><h3>Miten G1 pysäytetään turvallisesti?</h3><p>Kävelyn aikana: päästä irti ohjaussauvoista ja vaihda seisomaan START-kaksoisnapsautuksella, laita robotti sitten istumaan tuolin eteen tai ripusta se takaisin kehikkoon. Damping (L2 + B) ja zero torque (L2 + Y) kaatavat seisovan robotin: dampingia käytetään vain hätäpysäytyksenä tai robotin istuessa tai roikkuessa.</p></div>
+<div class="faq-item"><h3>Ovatko kaukosäätimen komennot aina samat?</h3><p>Eivät, Unitree muuttaa niitä laiteohjelmistoversioiden mukana. Tarkista versio sovelluksesta ja vastaava tarra Unitree Document Centeristä.</p></div>
+<div class="faq-item"><h3>Kuinka kauan G1:n akku kestää?</h3><p>Unitreen mukaan noin 2 tuntia. Testipäivään tarvitaan vähintään kaksi akkua.</p></div>
+<div class="faq-item"><h3>Yhdistyykö G1 Air SSH:lla kuten EDU?</h3><p>Ei. PC2 omalle koodille ja SDK-kehitys ovat vain G1 EDU:ssa.</p></div>
 </section>
-
 <section class="article-references" id="fonti">
 <h2>Lähteet</h2>
 <ol>
-<li>Unitree, G1:n ja G1 EDU:n tekniset tiedot (mitat, akku, käsivarren kuorma, takuu): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
-<li>Unitree Document Center, G1 developer: kaukosäädin ja debug mode: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, G1:n ja G1 EDU:n tekninen esite (mitat, akku, käsivarren kuorma, takuu): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree Document Center, G1 developer: kaukosäädin ja debug-tila: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: arkkitehtuuri ja laskentayksiköt: <a href="https://support.unitree.com/home/en/G1_developer/about_G1" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: LiDAR Livox MID-360 (IP 192.168.123.120): <a href="https://support.unitree.com/home/en/G1_developer/lidar_Instructions" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
-<li>Hugging Face, LeRobotin dokumentaatio Unitree G1:lle (verkko, SSH, Wi‑Fi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
-<li>Unitree, H2:n tekniset tiedot: <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">unitree.com/H2</a></li>
+<li>Hugging Face, LeRobot-dokumentaatio Unitree G1:lle (verkko, SSH, wifi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
+<li>Unitree, R3-kaukosäädin: <a href="https://www.unitree.com/R3" rel="noopener noreferrer" target="_blank">unitree.com/R3</a></li>
+<li>Unitree, G1 User Manual V1.6 (käynnistys, kaukosäädin, hätäpysäytys): <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">marketing.unitree.com</a></li>
 <li>Unitree, virallinen Python-SDK: <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a></li>
 </ol>
 </section>
-
-<div class="article-cta">
+</div></div><div class="article-cta">
 <h2>Saitko juuri G1:n?</h2>
 <p>Kun käynnistyksestä, verkosta tai komennoista herää kysymyksiä, ensimmäinen yhteyspiste on Abra Robotics.</p>
 <a class="btn btn-primary" href="/fi/#cta-finale">Ota yhteyttä</a>
@@ -458,5 +395,6 @@ ssh unitree@192.168.123.164
 </div>
 </footer>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body>
 </html>

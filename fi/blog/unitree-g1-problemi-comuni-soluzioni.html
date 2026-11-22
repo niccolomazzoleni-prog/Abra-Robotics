@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Unitree G1: yleisimmät ongelmat ja miten ne ratkaistaan</title>
-<meta name="description" content="G1 ei nouse, moottorivirheet, sovellus ei yhdistä, akku sammuu: todennäköiset syyt, tarkistukset ja milloin tarvitaan tukea."/>
+<meta name="description" content="G1 epävakaa, moottorivirheet, sovellus ei yhdisty, kamerakuva puuttuu, debug-tila: mitä tarkistaa kussakin ongelmassa ja milloin kirjoittaa meille."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/fi/blog/unitree-g1-problemi-comuni-soluzioni.html"/>
 <link href="https://abrarobotics.com/blog/unitree-g1-problemi-comuni-soluzioni.html" hreflang="it" rel="alternate"/>
@@ -29,9 +29,9 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Unitree G1: yleisimmät ongelmat ja miten ne ratkaistaan",
-  "description": "G1 ei nouse, moottorivirheet, sovellus ei yhdistä, akku sammuu: todennäköiset syyt, tarkistukset ja milloin tarvitaan tukea.",
+  "description": "G1 epävakaa, moottorivirheet, sovellus ei yhdisty, kamerakuva puuttuu, debug-tila: mitä tarkistaa kussakin ongelmassa ja milloin kirjoittaa meille.",
   "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -54,54 +54,52 @@
   "url": "https://abrarobotics.com/fi/blog/unitree-g1-problemi-comuni-soluzioni.html"
 }
   </script>
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Miksi G1 ei nouse tai kaatuu heti käynnistyksen jälkeen?",
+      "name": "G1 ei pysy tasapainossa: mitä teen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yleisimpiä syitä ovat keskeytynyt käynnistys, epätasainen alusta, ilman tukea annettu komento tai toleranssin ulkopuolella oleva kalibrointi. Käynnistä robotti uudelleen, tarkista hälytykset sovelluksesta ja jos ongelma jatkuu, kysy tukea ennen uudelleenkalibrointia."
+        "text": "Tarkista sovelluksesta moottorien tila ja virheet ja tee sitten täysi kalibrointi sovelluksesta. Toista se tarvittaessa muutaman kerran. Jos robotti on yhä epävakaa, kirjoita meille yhteydenottolomakkeella."
       }
     },
     {
       "@type": "Question",
-      "name": "Mitä moottorivirhe tarkoittaa G1:ssä?",
+      "name": "Miksi sovellus ei yhdisty G1:een?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Koodi ilmoittaa suojauksen tyypin: ylivirta, ohimenevä ylijännite, ylikuumeneminen tai enkooderivirhe. Pysäytä robotti, anna sen jäähtyä ja kirjaa tarkka koodi ennen uutta yritystä."
+        "text": "Puhelimen on oltava robotin verkossa, lähellä, Bluetooth päällä ja sovellukselle annettu lupa. Kokemuksemme mukaan sovellus toimii paremmin Androidilla."
       }
     },
     {
       "@type": "Question",
-      "name": "Miksi Unitree Explore -sovellus ei yhdistä G1:een?",
+      "name": "Miksi en näe kameraa sovelluksessa?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "AP-tilassa puhelimen on oltava robotin hotspotissa eikä nimessä saa olla välilyöntejä tai symboleja. Pidä Bluetooth päällä ja myönnä sovellukselle Bluetooth-lupa; jos se ei riitä, käynnistä robotti ja sovellus uudelleen."
+        "text": "Video vaatii enemmän kaistaa kuin sovelluksen muut osat: heikolla signaalilla kuva ei tule perille. Mene lähemmäs robottia tai käytä vähemmän kuormitettua verkkoa."
       }
     },
     {
       "@type": "Question",
-      "name": "Kuinka kauan G1:n akku kestää?",
+      "name": "Miten debug-tilasta poistutaan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Unitreen mukaan noin 2 tuntia 9000 mAh:n akulla. Unitree täsmentää, että arvot voivat vaihdella kokoonpanon ja käytön mukaan."
+        "text": "Käynnistämällä robotti uudelleen."
       }
     },
     {
       "@type": "Question",
-      "name": "Milloin kannattaa ottaa yhteyttä tukeen?",
+      "name": "Mitä moottorivirhe tarkoittaa?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kun hälytys palaa uudelleenkäynnistyksen jälkeen, nivel kuumenee tai juuttuu, akku turpoaa tai robotti kaatuu ilman syytä. Varaa sarjanumero, laiteohjelmistoversio, video ja virhekoodi."
+        "text": "Se kertoo, mikä suojaus on lauennut, esimerkiksi ylivirta tai ylikuumeneminen. Pysäytä robotti, anna sen jäähtyä ja kirjaa koodi ja nivel."
       }
     }
   ]
-}
-  </script>
+}</script>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1: yleisimmät ongelmat ja miten ne ratkaistaan"/>
@@ -192,95 +190,71 @@
 </figure>
 
 <header class="article-header"><p class="label">Ongelmat ja ratkaisut</p>
-<h1>Unitree G1: yleisimmät ongelmat ja miten ne ratkaistaan</h1>
-<div class="article-meta"><time datetime="2026-10-22">22. lokakuuta 2026</time><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>Lyhyesti:</strong> Unitree G1:n yleisimmät ongelmat liittyvät käynnistykseen ja asentoon, moottorihälytyksiin, Unitree Explore -sovellusyhteyteen ja akkuun. Usein riittää uudelleenkäynnistys, hälytysten lukeminen ja alustan tarkistus. Jos vika palaa tai nivel kuumenee, pysähdy ja pyydä tukea: älä pakota komentoja epävakaaseen robotiin.</div>
+<h1>Unitree G1: yleisimmät ongelmat ja niiden ratkaisut</h1>
+<div class="article-meta"><time datetime="2026-10-22">22. lokakuuta 2026</time><span>Päivitetty 22. marraskuuta 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Lyhyesti:</strong> lähes kaikissa G1:n ongelmissa ensimmäinen tarkistus on Unitree Explore -sovellus, joka näyttää moottorien tilan ja virheet. Jos robotti ei ole vakaa, tee ensin täysi kalibrointi sovelluksesta. Jos ongelma jatkuu, kirjoita meille.</div>
 </header>
-
 <div class="article-content">
-<p>G1:n ongelmat, jotka toistuvat unitreeroboticsin GitHub-keskusteluissa ja käyttöoppaassa, jakautuvat neljään ryhmään: robotti ei nouse tai menettää vakautensa, moottori menee hälytystilaan tai kuumenee, sovellus ei yhdistä, akku tyhjenee tai sammuu. Jokaiselle oireelle löydät todennäköisen syyn, tarkistukset järjestyksessä ja kohdan, jossa kannattaa pysähtyä.</p>
-
-<h2>Unitree G1: yleisimmät ongelmat, oireet ja ensitarkistukset</h2>
-<table>
-<thead><tr><th>Oire</th><th>Todennäköinen syy</th><th>Ensimmäinen tarkistus</th></tr></thead>
+<p>Alla ovat ongelmat, joita näemme G1:ssä useimmin, yksi kussakin osiossa: mitä tarkistaa, missä järjestyksessä ja milloin lopettaa. Kaukosäätimen komennot ovat <a href="unitree-g1-guida-operativa.html">G1:n käyttöoppaassa</a>.</p>
+<h2 id="stabilita">1. Robotti ei pysy tasapainossa, tärisee tai ei nouse</h2>
+<ol>
+<li><strong>Tarkista sovellus.</strong> Unitree Explore näyttää jokaisen moottorin tilan ja mahdolliset virheet: katso, onko jokin nivel virhetilassa tai selvästi muita kuumempi.</li>
+<li><strong>Tarkista käynnistys.</strong> Robotin on käynnistyttävä tuolilla istuen tai kehikossa roikkuen, ja painikejärjestyksen on vastattava laiteohjelmistoversiosi tarraa. Makuulta käynnistämiseen tarvitaan tasainen, kova lattia.</li>
+<li><strong>Tee täysi kalibrointi (full body) sovelluksesta.</strong> Se on tehokkain korjaus, kun robotti ei ole tasapainossa. Jos se ei auta ensimmäisellä kerralla, toista se muutaman kerran. Vaikka se auttaisi, kannattaa toistaa se toisen kerran tuloksen vakiinnuttamiseksi.</li>
+<li>Jos robotti on yhä epävakaa muutaman kalibroinnin jälkeen, lopeta ja <a href="/en/index-en.html#contatti">kirjoita meille yhteydenottolomakkeella</a>.</li>
+</ol>
+<h2 id="motori">2. Moottori on virhetilassa tai kuumenee</h2>
+<p>Tarkista sovelluksesta, mikä nivel on virhetilassa ja mikä sen lämpötila on. Pysäytä sitten robotti (istumaan tai roikkumaan, sitten damping), anna sen jäähtyä ja kirjaa virhekoodi ja nivel.</p>
+<p>Koodi kertoo, mikä suojaus on lauennut, ei sitä, mikä osa on rikki. Merkitykset ovat <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">Unitree Document Centerin virhetaulukossa</a>; moottorissa yleisimmät ovat ylivirta, ylikuumeneminen ja enkooderivirhe.</p>
+<p>Jos kehität SDK:lla: suuret vahvistukset ja pitkään ojennettuina pidetyt käsivarret kuumentavat moottoreita, kuten <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issuessa #129</a> käsitellyssä tapauksessa, jossa olkapäässä oli Inspire-käsi.</p>
+<h2 id="app">3. Sovellus ei yhdisty robottiin</h2>
+<ul>
+<li>Puhelimen on oltava todella G1:n verkossa (robotin hotspot) tai samassa wifi-verkossa ja pysyttävä robotin lähellä parituksen ajan.</li>
+<li>Bluetooth päällä ja sovellukselle annettu Bluetooth-lupa koko parituksen ajan.</li>
+<li>Käynnistä sovellus ja robotti uudelleen.</li>
+<li><strong>Kokemuksemme mukaan sovellus toimii paremmin Androidilla</strong> kuin iPhonella: jos se ei yhdisty iPhonella, kokeile Android-puhelinta.</li>
+</ul>
+<h2 id="camera">4. Kamera ei näy sovelluksessa</h2>
+<p>Video tulee perille vain, jos yhteys riittää robotin lähettämiin kilotavuihin sekunnissa. Heikolla signaalilla tai ruuhkaisessa verkossa sovelluksen muut osat toimivat, mutta kuva ei tule tai jäätyy. Mene lähemmäs robottia tai käytä vähemmän kuormitettua wifi-verkkoa.</p>
+<h2 id="batteria">5. Robotti sammuu yllättäen</h2>
+<p>Jos akku sammuu testin aikana punaisen LEDin kanssa, ylivirtasuojaus on voinut laueta: näin käy äkillisissä liikkeissä, esimerkiksi siirryttäessä yhtäkkiä kiinteästä asennosta koulutettuun policyyn. Unitreen työntekijä selittää asian <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">unitree_rl_mjlabin issuessa #14</a>: asteittaisemmat komennot estävät ongelman.</p>
+<p>Akku ladataan robotin ulkopuolella alkuperäisellä laturilla. Jos se vilkkuu punaisena latauksen aikana, älä jatka äläkä avaa sitä. Vara-akku: <a href="/en/prodotti/unitree-g1-battery-en.html">G1-akku</a>, <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € alv 0 %</span><em>Katso tuote →</em></span></a> <span class="prezzo-iva">alv 0 %</span>.</p>
+<h2 id="sviluppo">6. GitHubissa raportoidut kehitysongelmat (SDK)</h2>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Ongelma</th><th>Mitä tehdä</th><th>Missä asiasta puhutaan</th></tr></thead>
 <tbody>
-<tr><td>Ei nouse, kaatuu heti, tärisee</td><td>Keskeytynyt käynnistys, pehmeä alusta, virheellinen tuki tai toleranssin ulkopuolella oleva kalibrointi</td><td>Uudelleenkäynnistys, sovellus ja hälytykset, kova ja esteetön alusta</td></tr>
-<tr><td>Nivelen hälytys, kuuma moottori, käsivarsi ei enää vastaa</td><td>Ylivirta, ohimenevä ylijännite, ylikuumeneminen tai liian korkeat vahvistukset</td><td>Pysäytä robotti, anna jäähtyä, kirjaa koodi</td></tr>
-<tr><td>Sovellus ei yhdistä tai katkaisee yhteyden</td><td>AP-hotspot, Bluetooth-luvat, etäisyys</td><td>Yhteystila ja hotspotin nimi</td></tr>
-<tr><td>Akku sammuu tai vilkkuu punaisena</td><td>Akun suojaus tai virtapiikki</td><td>Akun LEDit ja viimeksi lähetetty komento</td></tr>
-</tbody>
-</table>
-
-<h2>Miksi G1 ei nouse tai kaatuu heti käynnistyksen jälkeen?</h2>
-<p>Käyttöopas kuvaa kaksi eri tapausta. Ensimmäinen on epäonnistunut käynnistys: robotti on ripustettuna ja päällä, mutta kahden minuutin kuluttua nilkan ääntä ei kuulu sen saavuttaessa ääriasentonsa. Silloin alustus ei onnistunut, ja oppaan mukaan vaiheet «Check before Power on» ja «Preparation before Power on» on tarkistettava uudelleen ennen uutta yritystä.</p>
-<p>Toinen tapaus on käytön aikainen kaatuminen: jos robotti liukuu tai sitä ohjataan väärin, moottorit siirtyvät automaattisesti jarrutukseen nivelten suojaamiseksi. Kyse ei ole nivelen viasta vaan reaktiosta tapahtumaan. Ennen uudelleenkäynnistystä korjaa syy: alusta, tuki, komento.</p>
+<tr><td>SDK:n kanssa robotti tärisee tai ei tottele komentoja</td><td>Unitreen liikeohjelma ja SDK lähettävät komentoja samaan aikaan. Matalan tason ohjausta varten siirrytään debug-tilaan (L2 + R2, damping-tilasta); debug-tilassa tavalliset liikekomennot eivät enää toimi. Tilasta poistutaan käynnistämällä robotti uudelleen.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a></td></tr>
+<tr><td>«Waiting to subscribe dds…»</td><td>Tietokone ei saa robotin tietoja: tarkista kaapeli, IP-osoite verkossa 192.168.123.x ja ohjelmalle annettu verkkoliitäntä. Unitree viittaa CycloneDDS-ohjeeseensa.</td><td><a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/wiki/CycloneDDS-and-UnitreeSDK-(en)" rel="noopener noreferrer" target="_blank">CycloneDDS-ohje</a></td></tr>
+<tr><td>Pään kameran lukeminen SDK:lla</td><td>Python-repositoriosta puuttuu G1:n esimerkki; jotkut käyttäjät kertovat, että Go2:n kameraesimerkki toimii.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #106</a></td></tr>
+</tbody></table></div>
+<h2 id="assistenza">Milloin ottaa meihin yhteyttä</h2>
 <ul>
-<li><strong>Käynnistä robotti uudelleen</strong> ja aloita käynnistysjärjestyksestä, älä liikekomennosta.</li>
-<li><strong>Aseta robotti damping-tilaan</strong> komennolla L2 + B ennen kuin kosket siihen. Koko järjestys on <a href="/fi/blog/unitree-g1-guida-operativa.html">G1:n käyttöoppaassa</a>.</li>
-<li><strong>Tarkista hälytykset sovelluksesta</strong>: Unitree Explore näyttää tilan, lämpötilat ja varoitukset reaaliajassa.</li>
-<li><strong>Tarkista tuki</strong>: käyttöopas edellyttää, että suojakiinnike on asennettu ja alustan pyörät lukittu.</li>
+<li>robotti on yhä epävakaa muutaman kalibroinnin jälkeen;</li>
+<li>virhe palaa uudelleenkäynnistyksen jälkeen;</li>
+<li>nivel kuumenee poikkeuksellisesti, jumittaa tai pitää uusia ääniä;</li>
+<li>akku pullistuu tai ei ota latausta vastaan;</li>
+<li>kaatumisen jälkeen näkyy halkeamia, paljaita kaapeleita tai löysiä liittimiä.</li>
 </ul>
-<div class="callout callout-warning"><p><strong>Kalibrointi.</strong> G1 toimitetaan tehdaskalibroituna. Käyttöopas kieltää nivelten uudelleenkalibroinnin normaalikäytössä ja kehottaa ottamaan yhteyttä Unitreen tekniseen tukeen ennen kuin päätetään, tarvitaanko kalibrointia.</p></div>
-
-<h2>Moottorivirheet ja ylikuumeneminen</h2>
-<p>G1:n virhetaulukko erottaa laitteen yleisen tilan yksittäisen moottorin tilasta. Hyödyllisimpiä yleisiä koodeja: 0x8 moottorin palautteen aikakatkaisu, 0x10 akun palautteen aikakatkaisu, 0x100 moottorin tilavirhe, 0x200 ylivirtasuoja, 0x400 alijännitesuoja, 0x1000 ohjelmallinen hätäpysäytys painettuna. Moottorissa 0x1 on ylivirta, 0x2 ohimenevä ylijännite, 0x200 käämin ylikuumeneminen, 0x400 ja 0x800 kahden enkooderin virheet.</p>
-<p>Koodi kertoo, mikä suojaus laukesi, ei sitä, mikä komponentti on rikki. Siksi ensimmäinen vaihe on aina sama: pysäytä robotti, poista kuorma, anna sen jäähtyä ja kirjaa tarkka koodi sekä kyseinen nivel.</p>
-<h3>Miksi moottori kuumenee liikaa</h3>
-<p>Repositoriossa <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a> on dokumentoitu tapaus, jossa G1:n olkanivelen moottori ylikuumeni Inspire FTP -kädellä ja vahvistukset olivat kp = 40 ja kd = 1.5. Käsivarsi lakkasi vastaamasta pian. Keskustelussa ei ole Unitreen virallista ratkaisua. Eräs tekninen kommentti toteaa, että käsi muuttaa massaa ja painovoiman aiheuttamaa momenttia, joten säätö on sovitettava todelliseen kuormaan eikä vain vahvistuksiin.</p>
-<p>Sama logiikka pätee ulkoisiin ohjaimiin: aggressiiviset vahvistukset ja asennot, joissa käsivarsi pidetään pitkään ojennettuna, lisäävät virtaa ja lämpötilaa. Jos ylikuumeneminen ilmaantuu ilman lisäkuormaa, kirjaa lämpötila, nivel ja virhekoodi ja pyydä tukea.</p>
-
-<h2>SDK:n, kaukosäätimen ja debug-tilan ristiriidat</h2>
-<p>Jos G1 tärisee tai ei vastaa SDK-komentoihin, sillä voi olla kaksi aktiivista komentolähdettä samanaikaisesti. Liikkeenohjausohjelma käynnistyy virran kytkeytyessä ja lähettää komentoja myös ilman kaukosäädintä; jos SDK lähettää samaan aikaan muita käskyjä, robotti värähtelee. <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">Issue #43 unitree_sdk2_python-repositoriossa</a> selittää siirtymisen debug-tilaan komennolla L2 + R2 ja vahvistuksen komennolla L2 + A.</p>
-<p>Huomaa sivuvaikutus: debug-tila poistaa sport clientin käytöstä, joten korkean tason liikekomennot lakkaavat toimimasta. Keskustelussa mainittu tapa poistua debug-tilasta on robotin uudelleenkäynnistys. Ohjelmisto-osuutta käsitellään <a href="/fi/blog/unitree-g1-programmazione.html">G1:n ohjelmointioppaassa</a>.</p>
-
-<h2>Miksi Unitree Explore -sovellus ei yhdistä?</h2>
-<p>Käyttöopas tukee kahta tilaa: AP, jossa puhelin on yhdistetty robotin hotspotiin, tai Wi-Fi reitittimen kautta. AP-tilassa tarkistus on suoraviivainen: puhelimen on oltava todella G1:n verkossa, hotspotin nimessä ei saa olla välilyöntejä tai erikoismerkkejä ja laitteiden on pysyttävä lähellä toisiaan. Käynnistä sen jälkeen robotti ja sovellus uudelleen.</p>
-<ul>
-<li><strong>Bluetooth</strong>: sovelluksella on oltava Bluetooth-lupa, ja puhelimen Bluetoothin on pysyttävä päällä koko pariliitoksen ajan.</li>
-<li><strong>Tili</strong>: sovellus vaatii Unitreen tarjoaman yritystilin; ilman tunnuksia pariliitos ei valmistu.</li>
-<li><strong>Etäisyys</strong>: käyttöopas edellyttää, että robotti ja puhelin pidetään lähellä toisiaan pariliitoksen aikana.</li>
-<li><strong>Laiteohjelmiston päivitys</strong>: Unitree jakaa päivitykset OTA:na; menettely on kuvattu <a href="/fi/blog/unitree-g1-aggiornare-firmware.html">G1:n laiteohjelmiston päivitysohjeessa</a>.</li>
-</ul>
-
-<h2>Akku: käyttöaika, lataus ja sammumiset</h2>
-<p>Unitree ilmoittaa G1:lle 9000 mAh:n älykkään pika-irrotettavan akun, noin 2 tunnin käyttöajan ja 54 V 5 A:n laturin. Todellinen käyttöaika riippuu siitä, miten robottia käytetään.</p>
-<p>Akku ladataan irrotettuna robotista ja sammutettuna. Käyttöopas edellyttää, että akku annetaan jäähtyä huoneenlämpöiseksi käytön jälkeen, että käytetään vain alkuperäistä laturia ja että akku irrotetaan latauksen päätyttyä, kun kaikki LEDit sammuvat. Jos LEDit vilkkuvat punaisina, älä jatka latausta äläkä avaa akkupakettia.</p>
-<p>Äkillinen sammuminen testin aikana voi olla myös ylivirtasuoja. <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">unitree_rl_mjlabin issuessa #14</a> Unitreen työntekijä yhdistää punaisella LEDillä varustetun sammumisen vääntömomentin piikkiin siirryttäessä kiinteästä asennosta koulutettuun toimintapolitiikkaan ja suosittelee asteittaisempia komentoja. Vara-akku on luettelossa <a href="/en/prodotti/unitree-g1-battery-en.html">G1-akun tuotesivulla</a>.</p>
-
-<h2>Milloin tarvitaan tukea</h2>
-<p>Pysähdy ja ota yhteyttä tukeen, jos jokin näistä merkeistä ilmenee:</p>
-<ul>
-<li>hälytys palaa uudelleenkäynnistyksen jälkeen tai ilmestyy ilman komentoa;</li>
-<li>nivel kuumenee poikkeavasti, juuttuu tai haisee;</li>
-<li>robotti kaatuu toistuvasti samalle puolelle ilman alustaan liittyviä virheitä;</li>
-<li>akku turpoaa, vuotaa nestettä tai ei ota latausta vastaan;</li>
-<li>törmäyksen jälkeen on halkeamia, paljaita kaapeleita tai löystyneitä liittimiä.</li>
-</ul>
-<p>Ennen yhteydenottoa varaa: sarjanumero, laiteohjelmistoversio, täydellinen virhekoodi, kyseinen nivel, asennettu kuorma, tapahtuman tarkka ajankohta ja video. Samat tiedot tarvitaan, jotta voidaan päätellä, onko ongelma ohjelmisto-, sähkö- vai mekaaninen. Abra Robotics toimittaa Unitree-mallistoa myös Suomeen ja tarjoaa tukea englanniksi, myös <a href="/en/assessment-en.html">arvioinnin</a> kautta. Mallistosta ja versioista kerrotaan <a href="/fi/unitree-g1.html">Unitree G1 -sivulla</a>.</p>
-
+<p>Kirjoita meille <a href="/en/index-en.html#contatti">yhteydenottolomakkeella</a>: sarjanumero, laiteohjelmistoversio, virhekoodi, kyseinen nivel ja mahdollisuuksien mukaan video.</p>
 <section class="article-faq">
-<h2>Usein kysytyt kysymykset</h2>
-<div class="faq-item"><h3>Miksi G1 ei nouse tai kaatuu heti käynnistyksen jälkeen?</h3><p>Yleisimpiä syitä ovat keskeytynyt käynnistys, epätasainen alusta, ilman tukea annettu komento tai toleranssin ulkopuolella oleva kalibrointi. Käynnistä robotti uudelleen, tarkista hälytykset sovelluksesta ja jos ongelma jatkuu, kysy tukea ennen uudelleenkalibrointia.</p></div>
-<div class="faq-item"><h3>Mitä moottorivirhe tarkoittaa G1:ssä?</h3><p>Koodi ilmoittaa suojauksen tyypin: ylivirta, ohimenevä ylijännite, ylikuumeneminen tai enkooderivirhe. Pysäytä robotti, anna sen jäähtyä ja kirjaa tarkka koodi ennen uutta yritystä.</p></div>
-<div class="faq-item"><h3>Miksi Unitree Explore -sovellus ei yhdistä G1:een?</h3><p>AP-tilassa puhelimen on oltava robotin hotspotissa eikä nimessä saa olla välilyöntejä tai symboleja. Pidä Bluetooth päällä ja myönnä sovellukselle Bluetooth-lupa; jos se ei riitä, käynnistä robotti ja sovellus uudelleen.</p></div>
-<div class="faq-item"><h3>Kuinka kauan G1:n akku kestää?</h3><p>Unitreen mukaan noin 2 tuntia 9000 mAh:n akulla. Unitree täsmentää, että arvot voivat vaihdella kokoonpanon ja käytön mukaan.</p></div>
-<div class="faq-item"><h3>Milloin kannattaa ottaa yhteyttä tukeen?</h3><p>Kun hälytys palaa uudelleenkäynnistyksen jälkeen, nivel kuumenee tai juuttuu, akku turpoaa tai robotti kaatuu ilman syytä. Varaa sarjanumero, laiteohjelmistoversio, video ja virhekoodi.</p></div>
+<h2>Usein kysyttyä</h2>
+<div class="faq-item"><h3>G1 ei pysy tasapainossa: mitä teen?</h3><p>Tarkista sovelluksesta moottorien tila ja virheet ja tee sitten täysi kalibrointi sovelluksesta. Toista se tarvittaessa muutaman kerran. Jos robotti on yhä epävakaa, kirjoita meille yhteydenottolomakkeella.</p></div>
+<div class="faq-item"><h3>Miksi sovellus ei yhdisty G1:een?</h3><p>Puhelimen on oltava robotin verkossa, lähellä, Bluetooth päällä ja sovellukselle annettu lupa. Kokemuksemme mukaan sovellus toimii paremmin Androidilla.</p></div>
+<div class="faq-item"><h3>Miksi en näe kameraa sovelluksessa?</h3><p>Video vaatii enemmän kaistaa kuin sovelluksen muut osat: heikolla signaalilla kuva ei tule perille. Mene lähemmäs robottia tai käytä vähemmän kuormitettua verkkoa.</p></div>
+<div class="faq-item"><h3>Miten debug-tilasta poistutaan?</h3><p>Käynnistämällä robotti uudelleen.</p></div>
+<div class="faq-item"><h3>Mitä moottorivirhe tarkoittaa?</h3><p>Se kertoo, mikä suojaus on lauennut, esimerkiksi ylivirta tai ylikuumeneminen. Pysäytä robotti, anna sen jäähtyä ja kirjaa koodi ja nivel.</p></div>
 </section>
-
 <section class="article-references">
 <h2>Lähteet</h2>
 <ol>
-<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">G1:n ja G1 EDUn virallinen tuotesivu</a> (9000 mAh:n akku, noin 2 tunnin käyttöaika, 54 V 5 A:n laturi)</li>
-<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">koneen tilan ja moottorin virhekoodit</a></li>
-<li>Unitree, <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">G1 User Manual</a> (käynnistys, sovellus, kalibrointi, poikkeavat tilat, akku)</li>
-<li>Unitree, <a href="https://www.unitree.com/app/g1/" rel="noopener noreferrer" target="_blank">Unitree Explore -sovelluksen G1-sivu</a> (tila, lämpötilat, hälytykset, kalibrointi)</li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issue #129: olkanivelen moottorin ylikuumeneminen Inspire FTP -kädellä</a></li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">issue #43: SDK-komennot, debug-tila ja ristiriidat liikkeenohjaimen kanssa</a></li>
-<li>GitHub, unitreerobotics/unitree_rl_mjlab, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">issue #14: sammuminen ja punainen LED ylivirtasuojan vuoksi</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">kaukosäädin ja debug-tila</a> sekä <a href="https://support.unitree.com/home/en/G1_developer/quick_start" rel="noopener noreferrer" target="_blank">pika-aloitus</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">virhekoodit</a></li>
+<li>GitHub unitreerobotics: <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">#106</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">#129</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">unitree_rl_mjlab #14</a></li>
+<li>Abra Roboticsin kokemus toimitetuista G1-roboteista (kalibrointi, sovellus, kamera)</li>
 </ol>
 </section>
 </div>
-<div class="article-cta"><h2>Eikö G1 käynnisty uudelleen?</h2><p>Kun robotti on pysähtynyt, ensimmäinen yhteys on Abra Robotics. Kerro oire, virhekoodi ja kokoonpano. Tuki on englanniksi.</p><a class="btn btn-primary" href="/en/assessment-en.html">Kuvaile ongelma</a><a class="btn btn-outline-light" href="/fi/unitree-g1.html">G1-mallisto ja versiot</a></div>
+<div class="article-cta"><h2>Eikö G1 käynnisty uudelleen?</h2><p>Kun robotti on pysähtynyt, ensimmäinen yhteys on Abra Robotics. Kerro oire, virhekoodi ja kokoonpano. Tuki on englanniksi.</p><a class="btn btn-primary" href="/en/index-en.html#contatti">Kuvaile ongelma</a><a class="btn btn-outline-light" href="/fi/unitree-g1.html">G1-mallisto ja versiot</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
@@ -316,4 +290,5 @@
 </footer>
 <script defer src="/consent.js"></script>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body></html>

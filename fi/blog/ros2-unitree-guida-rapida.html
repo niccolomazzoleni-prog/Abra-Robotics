@@ -51,7 +51,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "ROS 2 Unitree-roboteissa: pikaopas unitree_ros2-pakettiin",
   "description": "ROS 2 Unitree Go2 EDU-, B2-, G1- ja H2-roboteissa: tuetut versiot, unitree_ros2:n asennus, CycloneDDS, verkko 192.168.123.x ja ensimmäinen topic laboratoriossa.",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -74,17 +74,16 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "url": "https://abrarobotics.com/fi/blog/ros2-unitree-guida-rapida.html"
 }
   </script>
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Mitä ROS 2 -versiota Unitree-robottien kanssa kannattaa käyttää?",
+      "name": "Mitä ROS 2 -versiota Unitree-roboteissa kannattaa käyttää?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Humblea Ubuntu 22.04:ssä: Unitree suosittelee tätä yhdistelmää unitree_ros2:n README-tiedostossa. Foxy Ubuntu 20.04:ssä on testattu, mutta sen tuki päättyi 20. kesäkuuta 2023. Humblea tuetaan toukokuuhun 2027 asti."
+        "text": "Humblea Ubuntu 22.04:ssä: se on Unitreen suosittelema yhdistelmä."
       }
     },
     {
@@ -92,7 +91,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Voiko Go2 Airia tai Prota käyttää ROS 2:n kanssa?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ei. Go2:n virallisessa taulukossa jatkokehitys on mahdollista EDU-versiossa; Air ja Pro eivät sisällä sitä. ROS 2:ta varten tarvitaan Go2 EDU."
+        "text": "Ei. SDK ja siten ROS 2 on vain Go2 EDU:ssa."
       }
     },
     {
@@ -100,7 +99,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Tarvitaanko SDK:n ja ROS 2:n välille silta?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ei. Sekä robotti että ROS 2 käyttävät DDS:ää, joten unitree_ros2:n ja CycloneDDS-väliohjelmiston avulla robotin viestit näkyvät suoraan ROS 2 -topiceina ilman käännössolmuja."
+        "text": "Ei. Robotti ja ROS 2 puhuvat molemmat DDS:ää: unitree_ros2:n ja CycloneDDS:n avulla robotin viestit ovat jo ROS 2 -topiceja."
       }
     },
     {
@@ -108,20 +107,19 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Miksi ros2 topic list ei näytä robotin topiceja?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yleisimpiä syitä on kolme: RMW_IMPLEMENTATION ei ole asetettu arvoon rmw_cyclonedds_cpp, setup.sh:ssa on väärä verkkoliitännän nimi tai PC:tä ei ole määritetty aliverkkoon 192.168.123.x. Tarkista setup.sh uudelleen ja pingaa robottia."
+        "text": "Yleensä puuttuu RMW_IMPLEMENTATION=rmw_cyclonedds_cpp, liitäntä setup.sh:ssa on väärä tai tietokone ei ole aliverkossa 192.168.123.x. Ping robottiin selvittää kolmannen tapauksen."
       }
     },
     {
       "@type": "Question",
-      "name": "Voiko ROS 2:ta käyttää ilman kytkettyä robottia?",
+      "name": "Voiko ROS 2:ta käyttää ilman liitettyä robottia?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kyllä. unitree_ros2 sisältää tiedoston setup_local.sh, joka käyttää loopback-liitäntää, ja unitree_mujoco simuloi robottia samoilla viesteillä: voit kehittää ja testata simulaatiossa ennen kuin kosket laitteistoon."
+        "text": "Kyllä, setup_local.sh:lla loopback-liitännässä ja unitree_mujoco-simulaattorilla, joka käyttää samoja viestejä kuin robotti."
       }
     }
   ]
-}
-  </script>
+}</script>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="ROS 2 Unitree-roboteissa: pikaopas unitree_ros2-pakettiin"/>
@@ -212,29 +210,26 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </figure>
 
 <header class="article-header"><p class="label">ROS 2 · Kehitys</p>
-<h1>ROS 2 Unitree-roboteissa: tyhjästä ensimmäiseen topiciin</h1>
-<div class="article-meta"><time datetime="2026-10-09">Päivitetty 9. lokakuuta 2026</time><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>Lyhyesti:</strong> Unitree-robotit viestivät DDS:n kautta, ja ROS 2 käyttää samaa väliohjelmistoa. Virallisella <code>unitree_ros2</code>-paketilla, ROS 2 Humblella Ubuntu 22.04:ssä ja CycloneDDS:llä robotin viestit näkyvät suoraan ROS 2 -topiceina ilman siltaa. Tarvitset robotin EDU-version, Ethernet-kaapelin ja PC:n aliverkossa 192.168.123.x.</div>
+<h1>ROS 2 Unitree-roboteissa: nollasta ensimmäiseen topiciin</h1>
+<div class="article-meta"><time datetime="2026-07-13">13. heinäkuuta 2026</time><span>Päivitetty 22. marraskuuta 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Lyhyesti:</strong> Unitree-robotit viestivät DDS:n kautta, samalla väliohjelmistolla kuin ROS 2. Virallisella <code>unitree_ros2</code>-paketilla, ROS 2 Humblella Ubuntu 22.04:ssä ja CycloneDDS:llä robotin viesteistä tulee ROS 2 -topicseja ilman siltaa. Tarvitset robotin EDU-version, Ethernet-kaapelin ja tietokoneen aliverkossa 192.168.123.x.</div>
 </header>
-
 <div class="article-content">
-<p><strong>ROS 2 Unitree-roboteissa</strong> toimii ilman takaisinmallinnusta ja ilman käännössolmuja: robotti julkaisee tietonsa DDS:n (CycloneDDS) kautta, ja ROS 2 käyttää DDS:ää tiedonsiirtokerroksenaan. Virallinen <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a>-paketti sisältää viestien määrittelyt ja ympäristöskriptit. Tämä opas tiivistää virallisen README-tiedoston menettelyn ja kertoo kohdat, joihin työ tavallisesti pysähtyy.</p>
-
+<p><strong>ROS 2 Unitree-roboteissa</strong> toimii ilman takaisinmallinnusta ja ilman käännössolmuja: robotti julkaisee tietonsa DDS:n (CycloneDDS) kautta, ja ROS 2 käyttää DDS:ää viestintäkerroksena. Virallinen <a href="https://github.com/unitreerobotics/unitree_ros2" rel="noopener noreferrer" target="_blank">unitree_ros2</a>-paketti sisältää viestimääritykset ja asetusskriptit. Alla olevat vaiheet noudattavat virallista README-tiedostoa.</p>
 <h2>Mitkä Unitree-robotit tukevat ROS 2:ta</h2>
-<p>Ohjelmistokehitys on mahdollista vain kehittäjäversioissa. Go2:n <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">virallinen tuotesivu</a> mainitsee jatkokehityksen EDU-versiossa, ei Air- eikä Pro-versiossa. G1:ssä sama koskee <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1 EDU</a> -versiota.</p>
+<p>Ohjelmistokehitys on mahdollista vain kehittäjäversioissa. Go2:n <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">virallinen esite</a> mainitsee SDK-pääsyn omaan kehitykseen EDU-versiossa, ei Airissa eikä Prossa; G1:llä sama koskee <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">G1 EDU:ta</a>.</p>
 <table>
 <thead><tr><th>Robotti</th><th>Viestit unitree_ros2:ssa</th><th>ROS 2 -esimerkit repositoriossa</th></tr></thead>
 <tbody>
-<tr><td><a href="/fi/unitree-go2.html">Go2 EDU</a></td><td><code>unitree_go</code></td><td>sport client, seisominen, robotin tila, low-level</td></tr>
-<tr><td><a href="/fi/unitree-b2.html">B2 / B2W</a></td><td><code>unitree_go</code></td><td>low-level, tilan lukeminen</td></tr>
+<tr><td><a href="/fi/unitree-go2.html">Go2 EDU</a></td><td><code>unitree_go</code></td><td>sport client, stand, robotin tila, matala taso</td></tr>
+<tr><td><a href="/fi/unitree-b2.html">B2 / B2W</a></td><td><code>unitree_go</code></td><td>sport client, stand</td></tr>
 <tr><td><a href="/fi/unitree-g1.html">G1 EDU</a></td><td><code>unitree_hg</code></td><td><code>g1_low_level_example</code></td></tr>
-<tr><td><a href="/fi/unitree-h2.html">H2</a></td><td>esimerkkikansio <code>h2</code></td><td>löytyvät repositoriosta</td></tr>
-<tr><td>H1 / H1-2</td><td><code>unitree_go</code> / <code>unitree_hg</code></td><td>low-level H1-2</td></tr>
+<tr><td><a href="/fi/unitree-h2.html">H2</a></td><td><code>unitree_hg</code></td><td><code>h2_loco_client</code> (korkea taso), <code>h2_ankle_swing_example</code> (matala taso)</td></tr>
+<tr><td>H1 / H1-2</td><td><code>unitree_go</code> / <code>unitree_hg</code></td><td>matala taso H1-2</td></tr>
 </tbody>
 </table>
-<p>Malleille <a href="/fi/unitree-r1.html">R1</a> ja <a href="/fi/unitree-a2.html">A2</a> <code>unitree_sdk2</code> sisältää lokakuussa 2026 omat C++-esimerkit, mutta <code>unitree_ros2</code>:ssa ei vielä ole niille erillisiä esimerkkejä. Jos projekti perustuu pelkästään ROS 2:een, tarkista repositorion tilanne ennen kuin ostat jommankumman näistä malleista.</p>
-
-<div class="product-strip" aria-label="Prodotti citati">
+<p><a href="/fi/unitree-r1.html">R1</a>:lle ja <a href="/fi/unitree-a2.html">A2</a>:lle <code>unitree_sdk2</code> sisältää lokakuussa 2026 omat C++-esimerkit, mutta <code>unitree_ros2</code>:ssa ei vielä ole niille erityisiä esimerkkejä. Tarkista repositorion tilanne ennen ostoa, jos projekti käyttää näillä malleilla vain ROS 2:ta.</p>
+<div aria-label="Prodotti citati" class="product-strip">
 <div class="product-strip-head"><span>Artikkelissa mainitut tuotteet</span><a href="/en/universita-ricerca-en.html">EDU-robotit tutkimukseen</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
@@ -242,52 +237,46 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-go2-edu-en.html">Unitree Go2 EDU</a></h3>
 <p>SDK ja ROS 2, akku 15000 mAh</p>
-<div class="product-card-price">8 804 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<div class="product-card-price">8.804 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-go2-edu-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>Jatkokehitys (SDK-pääsy), 23 DoF, laskentayksikkö</p>
-<div class="product-card-price">38 005 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<p>SDK, 23 DoF, laskentatelakka</p>
+<div class="product-card-price">38.005 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-b2-en.html"><img alt="Unitree B2" loading="lazy" src="/images/official/unitree-b2-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-b2-en.html">Unitree B2</a></h3>
-<p>Raskas teollisuusmalli: yli 40 kg, IP67</p>
-<div class="product-card-price">66 828 € <small>alv 0 %</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-b2-en.html">Katso tiedot</a><a class="product-card-link" href="/en/assessment-en.html">Pyydä tarjous</a></div>
+<p>Raskas teollisuus: yli 40 kg, IP67</p>
+<div class="product-card-price">66.828 € <small>alv 0 %</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-b2-en.html">Katso tuote</a><a class="product-card-link" href="/en/assessment-en.html">Tarjous</a></div>
 </div>
 </article>
 </div>
 </div>
-<h2>Vaatimukset: Ubuntu ja ROS 2 -versio</h2>
-<p>unitree_ros2:n README mainitsee kaksi testattua yhdistelmää:</p>
+<h2>Mitä tarvitset</h2>
 <ul>
-<li><strong>Ubuntu 22.04 + ROS 2 Humble</strong>, joka on merkitty suositelluksi;</li>
-<li><strong>Ubuntu 20.04 + ROS 2 Foxy</strong>.</li>
+<li>robotin EDU-versiona (Go2 EDU, G1 EDU, B2, H2);</li>
+<li>tietokoneen, jossa on <strong>Ubuntu 22.04 ja ROS 2 Humble</strong>, Unitreen suosittelema yhdistelmä (ROS 2 Humble asennetaan <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">virallisen ohjeen</a> mukaan);</li>
+<li>Ethernet-kaapelin tietokoneen ja robotin välille.</li>
 </ul>
-<p><a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">ROS 2 -julkaisutaulukon</a> mukaan Foxyn tuki päättyi 20. kesäkuuta 2023, kun taas Humblea tuetaan toukokuuhun 2027 ja Jazzya toukokuuhun 2029 asti. Nyt alkavassa projektissa käytännöllinen valinta on Humble; Jazzy ei kuulu Unitreen testaamiin yhdistelmiin. ROS 2 Humble asennetaan Debian-paketeista <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">virallisen ohjeen</a> mukaan.</p>
-
-<h2>unitree_ros2:n asennus vaihe vaiheelta</h2>
-<p>1. Kloonaa repositorio ja asenna riippuvuudet (Humblea käytettäessä korvaa <code>foxy</code> sanalla <code>humble</code>):</p>
+<h2>unitree_ros2:n asennus</h2>
+<p>1. Lataa repositorio ja asenna riippuvuudet:</p>
 <pre><code>git clone https://github.com/unitreerobotics/unitree_ros2
-sudo apt install ros-humble-rmw-cyclonedds-cpp
-sudo apt install ros-humble-rosidl-generator-dds-idl
-sudo apt install libyaml-cpp-dev</code></pre>
-<p>2. Vain Foxyn kanssa: käännä CycloneDDS 0.10.x työtilassa <code>cyclonedds_ws</code> terminaalissa, johon ROS 2:ta <em>ei</em> ole ladattu. Robotti käyttää CycloneDDS:n versiota 0.10.2; Humblea käytettäessä tätä vaihetta ei tarvita.</p>
-<p>3. Käännä viestipaketit (<code>unitree_go</code>, <code>unitree_hg</code>, <code>unitree_api</code>):</p>
+sudo apt install ros-humble-rmw-cyclonedds-cpp ros-humble-rosidl-generator-dds-idl libyaml-cpp-dev</code></pre>
+<p>2. Käännä viestipaketit:</p>
 <pre><code>cd ~/unitree_ros2/cyclonedds_ws
 source /opt/ros/humble/setup.bash
 colcon build</code></pre>
-
 <h2>Verkko ja CycloneDDS</h2>
-<p>Liitä PC robottiin Ethernet-kaapelilla. Aseta verkkoliitännän asetuksissa IPv4 manuaaliseksi, osoitteeksi <code>192.168.123.99</code> ja aliverkon peitteeksi <code>255.255.255.0</code>, kuten README neuvoo. Selvitä liitännän nimi komennolla <code>ifconfig</code> tai <code>ip a</code> (esimerkiksi <code>enp3s0</code>) ja kirjoita se tiedostoon <code>~/unitree_ros2/setup.sh</code>:</p>
+<p>Liitä tietokone robottiin Ethernet-kaapelilla. Aseta liitännän asetuksissa IPv4 käsin, osoite <code>192.168.123.99</code>, aliverkon peite <code>255.255.255.0</code>, kuten README neuvoo. Selvitä liitännän nimi komennolla <code>ifconfig</code> tai <code>ip a</code> (esimerkiksi <code>enp3s0</code>) ja kirjoita se tiedostoon <code>~/unitree_ros2/setup.sh</code>:</p>
 <pre><code>#!/bin/bash
 source /opt/ros/humble/setup.bash
 source $HOME/unitree_ros2/cyclonedds_ws/install/setup.bash
@@ -295,44 +284,37 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export CYCLONEDDS_URI='&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;
   &lt;NetworkInterface name="enp3s0" priority="default" multicast="default" /&gt;
 &lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;'</code></pre>
-<p>Ratkaiseva rivi on <code>RMW_IMPLEMENTATION=rmw_cyclonedds_cpp</code>: Humblen oletusväliohjelmisto on toinen, ja ilman tätä muuttujaa PC ei näe robottia. ROS 2 -dokumentaatio kertoo, miten <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html" rel="noopener noreferrer" target="_blank">DDS-väliohjelmisto valitaan</a>. Ilman kytkettyä robottia voit käyttää tiedostoa <code>setup_local.sh</code>, joka toimii loopback-liitännässä.</p>
-
+<p>Ratkaiseva rivi on <code>RMW_IMPLEMENTATION=rmw_cyclonedds_cpp</code>: Humblen oletusväliohjelmisto on eri, ja ilman tätä muuttujaa tietokone ei näe robottia. ROS 2 -dokumentaatio kertoo, miten <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html" rel="noopener noreferrer" target="_blank">DDS-väliohjelmisto valitaan</a>. Ilman liitettyä robottia voit käyttää <code>setup_local.sh</code>-skriptiä, joka toimii loopback-liitännässä.</p>
 <h2>Ensimmäinen topic</h2>
 <pre><code>source ~/unitree_ros2/setup.sh
 ros2 topic list
 ros2 topic echo /sportmodestate</code></pre>
-<p>Go2:ssa ja B2:ssa <code>/sportmodestate</code> kertoo sijainnin, nopeuden ja askellajin; <code>/lowstate</code> kertoo moottorien, IMU:n ja akun tilan. Esimerkkien kääntäminen ja ajaminen:</p>
+<p>Go2:ssa ja B2:ssa <code>/sportmodestate</code> kertoo sijainnin, nopeuden ja askellajin; <code>/lowstate</code> kertoo moottorit, IMU:n ja akun. Esimerkkien kääntäminen ja ajaminen:</p>
 <pre><code>cd ~/unitree_ros2/example
 colcon build
 ./install/unitree_ros2_example/bin/read_motion_state</code></pre>
-<p>README näyttää myös, miten Go2:n LiDARin pistepilvi visualisoidaan RViz2:ssa topicista <code>utlidar/cloud</code> koordinaatistossa <code>utlidar_lidar</code>.</p>
-
-<h2>Ohjaus: korkea taso ja matala taso</h2>
+<p>README näyttää myös, miten Go2:n LiDARin pistepilvi näytetään RViz2:ssa topicissa <code>utlidar/cloud</code> kehyksellä <code>utlidar_lidar</code>.</p>
+<h2>Ohjaus: korkea ja matala taso</h2>
 <ul>
-<li><strong>Korkea taso</strong> (Go2, B2): pyynnöt topiciin <code>/api/sport/request</code> <code>unitree_api</code>-viesteinä, jotka esimerkkien <code>SportClient</code>-luokka muodostaa. Robotti käyttää omaa liikkeenohjaustaan.</li>
-<li><strong>Matala taso</strong>: asento-, nopeus-, vääntömomentti- ja vahvistuskomennot topiciin <code>/lowcmd</code>. Sisäänrakennettu liikepalvelu on ensin kytkettävä pois, muuten komennot menevät päällekkäin. Humanoideissa debug-tilaan siirrytään yhdistelmällä L2+R2 robotin roikkuessa nostimessa: koko menettely on oppaassa <a href="/fi/blog/unitree-g1-programmazione.html">G1:n ohjelmointi</a>.</li>
+<li><strong>Korkea taso</strong> (Go2, B2): pyynnöt topiciin <code>/api/sport/request</code> <code>unitree_api</code>-viesteillä, jotka esimerkkien <code>SportClient</code>-luokka luo. Robotti käyttää omaa liikeohjaustaan.</li>
+<li><strong>Matala taso</strong>: sijainti-, nopeus-, momentti- ja vahvistuskomennot topiciin <code>/lowcmd</code>. Ensin sisäänrakennettu liikepalvelu on poistettava käytöstä, muuten komennot menevät päällekkäin. Humanoideissa siirrytään debug-tilaan L2+R2:lla robotin roikkuessa: koko menettely on oppaassa <a href="unitree-g1-programmazione.html">G1:n ohjelmointi</a>.</li>
 </ul>
-
 <h2>Simuloi ennen laitteistoa</h2>
-<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> on virallinen MuJoCoon perustuva simulaattori: se hyväksyy ohjelmat, jotka on kirjoitettu <code>unitree_sdk2</code>:lla, <code>unitree_sdk2_python</code>:lla ja <code>unitree_ros2</code>:lla, ja käyttää samoja low-level-viestejä kuin oikea robotti. Suositeltu työnkulku on kehittää simulaatiossa loopbackin kautta ja ajaa sitten sama koodi robotissa vaihtamalla vain verkkoliitäntä. Liikkumisen policyille on <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Go2, G1, H1, H1-2).</p>
-
-<h2>Yleisimmät virheet</h2>
+<p><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> on MuJoCoon perustuva virallinen simulaattori: se hyväksyy ohjelmat, jotka on kirjoitettu <code>unitree_sdk2</code>:lla, <code>unitree_sdk2_python</code>:lla ja <code>unitree_ros2</code>:lla, samoilla matalan tason viesteillä kuin oikea robotti. Kehitys tehdään simulaatiossa loopback-liitännässä, minkä jälkeen sama koodi toimii robotissa, ja vain verkkoliitäntä vaihtuu. Kävely-policyjä varten on <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Go2, G1, H1, H1-2).</p>
+<h2>Yleiset virheet</h2>
 <ul>
-<li><strong>Ei yhtään topicia</strong>: RMW:tä ei ole asetettu, <code>setup.sh</code>:ssa on väärä liitäntä tai PC on aliverkon ulkopuolella. README suosittelee myös PC:n uudelleenkäynnistystä ensimmäisen määrityksen jälkeen.</li>
-<li><strong>CycloneDDS:n kääntäminen epäonnistuu Foxyssa</strong>: terminaaliin oli jo ladattu <code>/opt/ros/foxy/setup.bash</code>; kommentoi rivi pois tiedostosta <code>~/.bashrc</code> ja avaa terminaali uudelleen.</li>
-<li><strong>Useita ROS-asennuksia samassa PC:ssä</strong>: älä lisää <code>setup.sh</code>:ta tiedostoon <code>~/.bashrc</code>, vaan lataa se käsin tarvittaessa.</li>
+<li><strong>Ei topiceja</strong>: RMW asettamatta, väärä liitäntä tiedostossa <code>setup.sh</code> tai tietokone aliverkon ulkopuolella. README suosittelee myös tietokoneen uudelleenkäynnistystä ensimmäisen määrityksen jälkeen.</li>
+<li><strong>Useita ROS-asennuksia samassa tietokoneessa</strong>: älä lisää <code>setup.sh</code>:ta tiedostoon <code>~/.bashrc</code>, vaan lataa se käsin tarvittaessa.</li>
 </ul>
-<p>Yliopistojen laboratorioille Abra Robotics toimittaa EDU-malleja Suomeen englanninkielisellä tuella ja tarjoaa SDK-koulutusta ja -kehitystä erillisinä palveluina: katso <a href="/en/universita-ricerca-en.html">Yliopistot ja tutkimus</a> ja <a href="/en/index-en.html">Ohjelmistot</a>. Kehittäjäversioiden tuotesivut ovat <a href="/en/prodotti/unitree-go2-edu-en.html">Go2 EDU</a> ja <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU</a>.</p>
-
+<p>Yliopistojen laboratorioille Abra Robotics, joka kuuluu Unitree Italian jakeluketjuun, toimittaa EDU-mallit ja tarjoaa koulutusta ja SDK-kehitystä erillisinä palveluina: katso <a href="/en/universita-ricerca-en.html">Yliopistot ja tutkimus</a> ja <a href="/en/software-en.html">Ohjelmistot</a>.</p>
 <section class="article-faq">
-<h2>Usein kysytyt kysymykset</h2>
-<div class="faq-item"><h3>Mitä ROS 2 -versiota Unitree-robottien kanssa kannattaa käyttää?</h3><p>Humblea Ubuntu 22.04:ssä: Unitree suosittelee tätä yhdistelmää unitree_ros2:n README-tiedostossa. Foxy Ubuntu 20.04:ssä on testattu, mutta sen tuki päättyi 20. kesäkuuta 2023. Humblea tuetaan toukokuuhun 2027 asti.</p></div>
-<div class="faq-item"><h3>Voiko Go2 Airia tai Prota käyttää ROS 2:n kanssa?</h3><p>Ei. Go2:n virallisessa taulukossa jatkokehitys on mahdollista EDU-versiossa; Air ja Pro eivät sisällä sitä. ROS 2:ta varten tarvitaan Go2 EDU.</p></div>
-<div class="faq-item"><h3>Tarvitaanko SDK:n ja ROS 2:n välille silta?</h3><p>Ei. Sekä robotti että ROS 2 käyttävät DDS:ää, joten unitree_ros2:n ja CycloneDDS-väliohjelmiston avulla robotin viestit näkyvät suoraan ROS 2 -topiceina ilman käännössolmuja.</p></div>
-<div class="faq-item"><h3>Miksi ros2 topic list ei näytä robotin topiceja?</h3><p>Yleisimpiä syitä on kolme: RMW_IMPLEMENTATION ei ole asetettu arvoon rmw_cyclonedds_cpp, setup.sh:ssa on väärä verkkoliitännän nimi tai PC:tä ei ole määritetty aliverkkoon 192.168.123.x. Tarkista setup.sh uudelleen ja pingaa robottia.</p></div>
-<div class="faq-item"><h3>Voiko ROS 2:ta käyttää ilman kytkettyä robottia?</h3><p>Kyllä. unitree_ros2 sisältää tiedoston setup_local.sh, joka käyttää loopback-liitäntää, ja unitree_mujoco simuloi robottia samoilla viesteillä: voit kehittää ja testata simulaatiossa ennen kuin kosket laitteistoon.</p></div>
+<h2>Usein kysyttyä</h2>
+<div class="faq-item"><h3>Mitä ROS 2 -versiota Unitree-roboteissa kannattaa käyttää?</h3><p>Humblea Ubuntu 22.04:ssä: se on Unitreen suosittelema yhdistelmä.</p></div>
+<div class="faq-item"><h3>Voiko Go2 Airia tai Prota käyttää ROS 2:n kanssa?</h3><p>Ei. SDK ja siten ROS 2 on vain Go2 EDU:ssa.</p></div>
+<div class="faq-item"><h3>Tarvitaanko SDK:n ja ROS 2:n välille silta?</h3><p>Ei. Robotti ja ROS 2 puhuvat molemmat DDS:ää: unitree_ros2:n ja CycloneDDS:n avulla robotin viestit ovat jo ROS 2 -topiceja.</p></div>
+<div class="faq-item"><h3>Miksi ros2 topic list ei näytä robotin topiceja?</h3><p>Yleensä puuttuu RMW_IMPLEMENTATION=rmw_cyclonedds_cpp, liitäntä setup.sh:ssa on väärä tai tietokone ei ole aliverkossa 192.168.123.x. Ping robottiin selvittää kolmannen tapauksen.</p></div>
+<div class="faq-item"><h3>Voiko ROS 2:ta käyttää ilman liitettyä robottia?</h3><p>Kyllä, setup_local.sh:lla loopback-liitännässä ja unitree_mujoco-simulaattorilla, joka käyttää samoja viestejä kuin robotti.</p></div>
 </section>
-
 <section class="article-references" id="fonti">
 <h2>Lähteet</h2>
 <ol>
@@ -340,11 +322,11 @@ colcon build
 <li>Unitree, <em>unitree_sdk2</em>: <a href="https://github.com/unitreerobotics/unitree_sdk2" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_sdk2</a></li>
 <li>Unitree, <em>unitree_mujoco</em>: <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_mujoco</a></li>
 <li>Unitree, <em>unitree_rl_gym</em>: <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">github.com/unitreerobotics/unitree_rl_gym</a></li>
-<li>Unitree, Go2:n ja G1:n tuotesivut (jatkokehitys vain EDU-versiossa): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a> · <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
-<li>Unitree Document Center, kehittäjäosio: <a href="https://support.unitree.com/home/en/developer" rel="noopener noreferrer" target="_blank">support.unitree.com/home/en/developer</a></li>
-<li>ROS 2 Documentation, jakelut ja tuen päättymispäivät: <a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">docs.ros.org/en/humble/Releases.html</a></li>
-<li>ROS 2 Documentation, Humblen asennus Debian-paketeista: <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">docs.ros.org</a></li>
-<li>ROS 2 Documentation, DDS-väliohjelmisto ja RMW: <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html" rel="noopener noreferrer" target="_blank">docs.ros.org</a></li>
+<li>Unitree, Go2:n ja G1:n tuote-esitteet (SDK vain EDU-versioissa): <a href="https://www.unitree.com/go2" rel="noopener noreferrer" target="_blank">unitree.com/go2</a> · <a href="https://www.unitree.com/g1" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree Document Center, kehittäjien osio: <a href="https://support.unitree.com/home/en/developer" rel="noopener noreferrer" target="_blank">support.unitree.com/home/en/developer</a></li>
+<li>ROS 2 -dokumentaatio, jakeluversiot ja tuen päättymispäivät: <a href="https://docs.ros.org/en/humble/Releases.html" rel="noopener noreferrer" target="_blank">docs.ros.org/en/humble/Releases.html</a></li>
+<li>ROS 2 -dokumentaatio, Humblen asennus Debian-paketeista: <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html" rel="noopener noreferrer" target="_blank">docs.ros.org</a></li>
+<li>ROS 2 -dokumentaatio, DDS-väliohjelmisto ja RMW: <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html" rel="noopener noreferrer" target="_blank">docs.ros.org</a></li>
 </ol>
 </section>
 </div>
