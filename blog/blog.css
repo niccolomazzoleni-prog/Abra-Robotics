@@ -795,3 +795,80 @@
 /* Menu articoli sul nero (veste grafica home v14): voci leggibili */
 .navbar .nav-post-links a{color:#d9d9d9}
 .navbar .nav-post-links a:hover{color:#fff}
+
+/* Prezzi collegati alle schede prodotto (scripts/aggiorna_prezzi_blog.py):
+   chip con miniatura + prezzo; al passaggio del mouse una mini card del prodotto */
+.article-content a.prezzo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 10px 1px 3px;
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
+  background: var(--white);
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1.5;
+  vertical-align: baseline;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.article-content a.prezzo:hover,
+.article-content a.prezzo:focus-visible {
+  border-color: var(--black);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.article-content a.prezzo > img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: var(--gray-100, #f4f4f5);
+}
+.article-content a.prezzo:not(:has(> img)) { padding-left: 10px; }
+.prezzo-iva { color: var(--gray-500); font-size: 0.9em; }
+.prezzo-card {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 20;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius, 12px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.14);
+  white-space: normal;
+  text-align: left;
+  font-weight: 400;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 4px);
+  transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
+  pointer-events: none;
+}
+.prezzo-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+.prezzo-card b { font-size: 0.85rem; line-height: 1.3; color: var(--black); }
+.prezzo-card span { font-size: 0.85rem; font-weight: 700; color: var(--black); }
+.prezzo-card em { font-style: normal; font-size: 0.78rem; color: var(--gray-600); }
+.article-content a.prezzo:hover .prezzo-card,
+.article-content a.prezzo:focus-visible .prezzo-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+@media (hover: none), (max-width: 600px) {
+  .prezzo-card { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prezzo-card, .article-content a.prezzo { transition: none; }
+}
