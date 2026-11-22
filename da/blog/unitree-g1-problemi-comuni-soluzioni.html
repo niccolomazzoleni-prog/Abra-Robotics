@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Unitree G1: pris, problemer og løsninger</title>
-<meta name="description" content="G1 der ikke rejser sig, motorfejl, app der ikke forbinder, batteri der slukker: sandsynlige årsager, tjek du kan lave, og hvornår du bør kontakte support."/>
+<meta name="description" content="G1 ustabil, motorfejl, appen forbinder ikke, intet kamerabillede, debug-tilstand: hvad du skal kontrollere ved hvert problem, og hvornår du skal skrive til os."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/da/blog/unitree-g1-problemi-comuni-soluzioni.html"/>
 <link href="https://abrarobotics.com/blog/unitree-g1-problemi-comuni-soluzioni.html" hreflang="it" rel="alternate"/>
@@ -29,9 +29,9 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Unitree G1: pris, problemer og løsninger",
-  "description": "G1 der ikke rejser sig, motorfejl, app der ikke forbinder, batteri der slukker: sandsynlige årsager, tjek du kan lave, og hvornår du bør kontakte support.",
+  "description": "G1 ustabil, motorfejl, appen forbinder ikke, intet kamerabillede, debug-tilstand: hvad du skal kontrollere ved hvert problem, og hvornår du skal skrive til os.",
   "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -54,54 +54,52 @@
   "url": "https://abrarobotics.com/da/blog/unitree-g1-problemi-comuni-soluzioni.html"
 }
   </script>
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Hvorfor rejser G1 sig ikke eller falder lige efter opstart?",
+      "name": "G1 holder ikke balancen: hvad gør jeg?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "De hyppigste årsager er en ufuldstændig opstart, et underlag der ikke er plant, en kommando givet uden støtte eller en kalibrering uden for tolerance. Genstart robotten, kontrollér alarmerne i appen, og kontakt support, før du kalibrerer igen, hvis problemet fortsætter."
+        "text": "Kontrollér motorernes status og fejl i appen, og lav derefter en fuld kalibrering fra appen. Gentag den om nødvendigt et par gange. Hvis robotten stadig er ustabil, så skriv til os via kontaktformularen."
       }
     },
     {
       "@type": "Question",
-      "name": "Hvad betyder en motorfejl på G1?",
+      "name": "Hvorfor forbinder appen ikke til G1?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Koden angiver typen af beskyttelse: overstrøm, transient overspænding, overophedning eller encoderfejl. Stop robotten, lad den køle af, og notér den præcise kode, før du prøver igen."
+        "text": "Telefonen skal være på robottens netværk, tæt på, med Bluetooth tændt og tilladelse givet til appen. Erfaringsmæssigt virker appen bedre på Android."
       }
     },
     {
       "@type": "Question",
-      "name": "Hvorfor forbinder appen Unitree Explore ikke til G1?",
+      "name": "Hvorfor kan jeg ikke se kameraet i appen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "I AP-tilstand skal telefonen være på robottens hotspot, og navnet må ikke indeholde mellemrum eller symboler. Hold Bluetooth tændt, og giv appen Bluetooth-tilladelse; er det ikke nok, så genstart robot og app."
+        "text": "Videoen kræver mere båndbredde end resten af appen: med svagt signal kommer billedet ikke frem. Gå tættere på robotten, eller brug et mindre belastet netværk."
       }
     },
     {
       "@type": "Question",
-      "name": "Hvor længe holder batteriet på G1?",
+      "name": "Hvordan forlader man debug-tilstand?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cirka 2 timer ifølge Unitree, med et batteri på 9000 mAh. Unitree præciserer, at værdierne kan variere med konfiguration og brug."
+        "text": "Ved at genstarte robotten."
       }
     },
     {
       "@type": "Question",
-      "name": "Hvornår bør man kontakte support?",
+      "name": "Hvad betyder en motorfejl?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Når en alarm kommer igen efter genstart, et led bliver varmt eller sætter sig fast, batteriet svulmer op, eller robotten falder uden grund. Forbered serienummer, firmwareversion, video og fejlkode."
+        "text": "Den viser, hvilken beskyttelse der er udløst, for eksempel overstrøm eller overophedning. Stop robotten, lad den køle af, og noter kode og led."
       }
     }
   ]
-}
-  </script>
+}</script>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1: pris, problemer og løsninger"/>
@@ -192,95 +190,71 @@
 </figure>
 
 <header class="article-header"><p class="label">Problemer og løsninger</p>
-<h1>Unitree G1: de mest almindelige problemer og sådan løser du dem</h1>
-<div class="article-meta"><time datetime="2026-10-22">22. oktober 2026</time><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>Kort fortalt:</strong> de hyppigste problemer med Unitree G1 handler om opstart og kropsholdning, motoralarmer, forbindelse til appen Unitree Explore og batteri. Ofte er en genstart, læsning af alarmerne og et tjek af underlaget nok. Kommer fejlen igen, eller bliver et led varmt, så stop og kontakt support: tving ikke kommandoer igennem på en ustabil robot.</div>
+<h1>Unitree G1: de mest almindelige problemer og hvordan du løser dem</h1>
+<div class="article-meta"><time datetime="2026-10-22">22. oktober 2026</time><span>Opdateret 22. november 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Kort sagt:</strong> ved næsten alle problemer med G1 er det første tjek appen Unitree Explore, som viser motorernes status og fejl. Hvis robotten ikke er stabil, er det første, du skal gøre, en fuld kalibrering fra appen. Hvis problemet fortsætter, så skriv til os.</div>
 </header>
-
 <div class="article-content">
-<p>De G1-problemer, der går igen i GitHub-issues fra unitreerobotics og i brugermanualen, falder i fire grupper: robotten rejser sig ikke eller mister stabiliteten, en motor går i alarm eller bliver varm, appen forbinder ikke, batteriet aflades eller slukker. For hvert symptom finder du den sandsynlige årsag, tjekkene i rækkefølge og det punkt, hvor du skal stoppe.</p>
-
-<h2>Unitree G1: almindelige problemer, symptomer og første tjek</h2>
-<table>
-<thead><tr><th>Symptom</th><th>Sandsynlig årsag</th><th>Første tjek</th></tr></thead>
+<p>Her er de problemer, vi oftest ser på G1, ét pr. afsnit: hvad du skal kontrollere, i hvilken rækkefølge, og hvornår du skal stoppe. Kommandoerne på fjernbetjeningen står i <a href="unitree-g1-guida-operativa.html">brugsvejledningen til G1</a>.</p>
+<h2 id="stabilita">1. Robotten holder ikke balancen, ryster eller rejser sig ikke</h2>
+<ol>
+<li><strong>Tjek appen.</strong> Unitree Explore viser status for hver motor og eventuelle fejl: se, om et led står i fejl eller er meget varmere end de andre.</li>
+<li><strong>Tjek opstarten.</strong> Robotten skal starte siddende på en stol eller hængende i rammen, og tastrækkefølgen skal være den på mærkaten for din firmwareversion. Start fra liggende kræver et plant, hårdt gulv.</li>
+<li><strong>Lav en fuld kalibrering (full body) fra appen.</strong> Det er den mest effektive løsning, når robotten ikke er i balance. Hvis den ikke hjælper første gang, så gentag den et par gange. Selv om den hjælper, er det en god idé at gentage den en gang til for at fastholde resultatet.</li>
+<li>Hvis robotten stadig er ustabil efter et par kalibreringer, så stop og <a href="/en/index-en.html#contatti">skriv til os via kontaktformularen</a>.</li>
+</ol>
+<h2 id="motori">2. En motor står i fejl eller bliver varm</h2>
+<p>Kontrollér i appen, hvilket led der står i fejl, og hvor varmt det er. Stop derefter robotten (siddende eller hængende, så damping), lad den køle af, og noter fejlkoden og leddet.</p>
+<p>Koden fortæller, hvilken beskyttelse der er udløst, ikke hvilken del der er i stykker. Betydningerne står i <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">fejltabellen i Unitree Document Center</a>; de mest almindelige på motoren er overstrøm, overophedning og encoderfejl.</p>
+<p>Hvis du udvikler med SDK: høje forstærkninger og arme, der holdes strakt længe, gør motorerne varme, som i tilfældet med skulderen med Inspire-hånd, der beskrives i <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issue #129</a>.</p>
+<h2 id="app">3. Appen forbinder ikke til robotten</h2>
+<ul>
+<li>Telefonen skal virkelig være på G1's netværk (robottens hotspot) eller på samme wi-fi-netværk og blive tæt på robotten under parringen.</li>
+<li>Bluetooth tændt og Bluetooth-tilladelse givet til appen under hele parringen.</li>
+<li>Genstart appen og robotten.</li>
+<li><strong>Erfaringsmæssigt virker appen bedre på Android</strong> end på iPhone: hvis den ikke forbinder med en iPhone, så prøv en Android-telefon.</li>
+</ul>
+<h2 id="camera">4. Kameraet vises ikke i appen</h2>
+<p>Videoen kommer kun igennem, hvis forbindelsen kan klare de kilobyte pr. sekund, som robotten sender. Med svagt signal eller et overbelastet netværk virker resten af appen, men billedet kommer ikke frem eller fryser. Gå tættere på robotten, eller brug et mindre belastet wi-fi-netværk.</p>
+<h2 id="batteria">5. Robotten slukker pludselig</h2>
+<p>Hvis batteriet slukker med rød LED under en test, kan overstrømsbeskyttelsen være udløst: det sker ved bratte bevægelser, for eksempel ved et pludseligt skift fra en fast stilling til en trænet policy. En Unitree-medarbejder forklarer det i <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">issue #14 i unitree_rl_mjlab</a>: mere gradvise kommandoer undgår problemet.</p>
+<p>Batteriet oplades uden for robotten med den originale oplader. Hvis det blinker rødt under opladning, så fortsæt ikke, og åbn det ikke. Ekstra batteri: <a href="/en/prodotti/unitree-g1-battery-en.html">G1-batteri</a>, <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € ekskl. moms</span><em>Se produktet →</em></span></a> <span class="prezzo-iva">ekskl. moms</span>.</p>
+<h2 id="sviluppo">6. Udviklingsproblemer (SDK) rapporteret på GitHub</h2>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Problem</th><th>Hvad du skal gøre</th><th>Hvor det omtales</th></tr></thead>
 <tbody>
-<tr><td>Rejser sig ikke, falder straks, ryster</td><td>Ufuldstændig opstart, blødt underlag, forkert støtte eller kalibrering uden for tolerance</td><td>Genstart, app og alarmer, hårdt og frit underlag</td></tr>
-<tr><td>Alarm på led, varm motor, arm der mister respons</td><td>Overstrøm, transient overspænding, overophedning eller for høje gains</td><td>Stop robotten, lad den køle af, notér koden</td></tr>
-<tr><td>App der ikke forbinder eller frakobler</td><td>AP-hotspot, Bluetooth-tilladelser, afstand</td><td>Forbindelsestilstand og hotspotnavn</td></tr>
-<tr><td>Batteri der slukker eller blinker rødt</td><td>Batteribeskyttelse eller strømspids</td><td>Batteriets LED'er og den sidste kommando, der blev sendt</td></tr>
-</tbody>
-</table>
-
-<h2>Hvorfor rejser G1 sig ikke eller falder lige efter opstart?</h2>
-<p>Manualen beskriver to forskellige tilfælde. Det første er en mislykket opstart: robotten er ophængt og tændt, men efter to minutter høres ikke lyden af anklen, der når endestoppet. Her er initialiseringen ikke gået igennem, og manualen beder dig kontrollere trinnene i "Check before Power on" og "Preparation before Power on" igen, før du prøver igen.</p>
-<p>Det andet tilfælde er et fald under brug: hvis robotten glider eller styres forkert, skifter motorerne automatisk til bremsetilstand for at beskytte leddene. Det er ikke en fejl i leddet, men en reaktion på hændelsen. Ret årsagen, før du tænder igen: underlag, støtte, kommando.</p>
+<tr><td>Med SDK ryster robotten eller ignorerer kommandoer</td><td>Unitrees bevægelsesprogram og SDK sender kommandoer samtidig. Til styring på lavt niveau går man i debug-tilstand (L2 + R2, fra damping); i debug-tilstand virker de normale bevægelseskommandoer ikke længere. For at komme ud genstarter man robotten.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a></td></tr>
+<tr><td>«Waiting to subscribe dds…»</td><td>Pc'en modtager ikke data fra robotten: kontrollér kablet, IP-adressen på nettet 192.168.123.x og den netværksgrænseflade, der er angivet i programmet. Unitree henviser til sin vejledning om CycloneDDS.</td><td><a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/wiki/CycloneDDS-and-UnitreeSDK-(en)" rel="noopener noreferrer" target="_blank">vejledning om CycloneDDS</a></td></tr>
+<tr><td>Læse hovedkameraet via SDK</td><td>Python-repoet mangler et eksempel til G1; nogle brugere oplyser, at kameraeksemplet fra Go2 virker.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #106</a></td></tr>
+</tbody></table></div>
+<h2 id="assistenza">Hvornår du skal kontakte os</h2>
 <ul>
-<li><strong>Genstart robotten</strong> og start fra opstartssekvensen, ikke fra en bevægelseskommando.</li>
-<li><strong>Sæt robotten i damping</strong> med L2 + B, før du rører den. Den fulde sekvens står i <a href="/da/blog/unitree-g1-guida-operativa.html">driftsvejledningen til G1</a>.</li>
-<li><strong>Kontrollér alarmerne i appen</strong>: Unitree Explore viser status, temperaturer og advarsler i realtid.</li>
-<li><strong>Kontrollér støtten</strong>: manualen beder dig kontrollere, at beskyttelsesbøjlen er monteret, og at hjulene i bunden er låst.</li>
+<li>robotten er stadig ustabil efter et par kalibreringer;</li>
+<li>en fejl kommer igen efter genstart;</li>
+<li>et led bliver unormalt varmt, låser eller laver nye lyde;</li>
+<li>batteriet svulmer op eller tager ikke imod opladning;</li>
+<li>efter et fald er der revner, blottede kabler eller løse stik.</li>
 </ul>
-<div class="callout callout-warning"><p><strong>Kalibrering.</strong> G1 leveres kalibreret fra fabrikken. Manualen siger, at leddene ikke skal kalibreres igen ved normal brug, og at du skal kontakte Unitrees tekniske support, før du afgør, om kalibrering er nødvendig.</p></div>
-
-<h2>Motorfejl og overophedning</h2>
-<p>Fejltabellen for G1 skelner mellem maskinens generelle tilstand og den enkelte motor. Blandt de generelle koder, det er mest nyttigt at kende: 0x8 timeout i motorens feedback, 0x10 timeout i batteriets feedback, 0x100 motorstatusfejl, 0x200 beskyttelse mod overstrøm, 0x400 beskyttelse mod underspænding, 0x1000 softwarenødstop aktiveret. På motoren er 0x1 overstrøm, 0x2 transient overspænding, 0x200 overophedning af viklingen, 0x400 og 0x800 fejl i de to encodere.</p>
-<p>Koden fortæller, hvilken beskyttelse der er udløst, ikke hvilken komponent der er i stykker. Derfor er første skridt altid det samme: stop robotten, fjern belastningen, lad den køle af, og notér den præcise kode sammen med det berørte led.</p>
-<h3>Hvorfor bliver en motor for varm?</h3>
-<p>I repositoriet <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a> er der dokumenteret et tilfælde med overophedning af skuldermotoren på en G1 med Inspire FTP-hånd, med gains kp = 40 og kd = 1.5. Armen mistede respons efter kort tid. I diskussionen findes ingen officiel løsning fra Unitree. En teknisk kommentar hævder, at hånden ændrer masse og tyngdemoment, så styringen skal tilpasses den faktiske belastning og ikke kun gains.</p>
-<p>Samme logik gælder eksterne controllere: aggressive gains og stillinger, hvor armen holdes strakt i lang tid, øger strømmen og temperaturen. Hvis overophedningen opstår uden ekstra belastning, så notér temperatur, led og fejlkode, og kontakt support.</p>
-
-<h2>Konflikter mellem SDK, fjernbetjening og debug mode</h2>
-<p>En G1, der ryster eller ikke reagerer på SDK-kommandoer, kan have to aktive kommandokilder samtidig. Bevægelsesstyringsprogrammet starter ved opstart og bliver ved med at sende kommandoer, også uden fjernbetjening; hvis SDK'et samtidig sender andre instruktioner, svinger robotten. Issuet <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">#43 i repositoriet unitree_sdk2_python</a> forklarer skiftet til debug mode med L2 + R2 og bekræftelsen med L2 + A.</p>
-<p>Vær opmærksom på bivirkningen: debug mode deaktiverer sport-klienten, så højniveau-bevægelseskommandoer holder op med at virke. For at forlade debug mode er vejen ifølge diskussionen at genstarte robotten. Software-delen er behandlet i <a href="/da/blog/unitree-g1-programmazione.html">guiden til programmering af G1</a>.</p>
-
-<h2>Hvorfor forbinder appen Unitree Explore ikke?</h2>
-<p>Manualen beskriver to tilstande: AP, hvor telefonen er forbundet til robottens hotspot, eller Wi-Fi via router. Bruger du AP, er tjekket enkelt: telefonen skal faktisk være på G1's netværk, hotspotnavnet må ikke indeholde mellemrum eller specialtegn, og de to enheder skal være tæt på hinanden. Genstart derefter robot og app.</p>
-<ul>
-<li><strong>Bluetooth</strong>: appen skal have Bluetooth-tilladelse, og telefonens Bluetooth skal være tændt under hele parringen.</li>
-<li><strong>Konto</strong>: appen kræver en virksomhedskonto fra Unitree; uden loginoplysninger fuldføres parringen ikke.</li>
-<li><strong>Afstand</strong>: manualen beder dig holde robot og telefon tæt på hinanden under parringen.</li>
-<li><strong>Firmwareopdatering</strong>: Unitree distribuerer opdateringer via OTA; fremgangsmåden står i <a href="/da/blog/unitree-g1-aggiornare-firmware.html">opdatering af firmware til G1</a>.</li>
-</ul>
-
-<h2>Batteri: driftstid, opladning og nedlukninger</h2>
-<p>Unitree angiver for G1 et intelligent batteri med hurtigudløsning på 9000 mAh, cirka 2 timers driftstid og en oplader på 54 V 5 A. Den reelle driftstid afhænger af, hvordan robotten bruges.</p>
-<p>Batteriet skal oplades, når det er taget af robotten og slukket. Manualen beder dig lade det køle af til stuetemperatur efter brug, kun bruge den originale oplader og tage det af opladeren, når opladningen er færdig, og alle LED'er er slukket. Hvis LED'erne blinker rødt, skal du ikke fortsætte opladningen og ikke åbne batteripakken.</p>
-<p>En pludselig nedlukning under en test kan også være beskyttelse mod overstrøm. I issue <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">#14 i unitree_rl_mjlab</a> kæder en Unitree-medarbejder nedlukningen med rød LED sammen med en spids i momentet ved skiftet fra fast positur til en trænet policy og anbefaler mere gradvise kommandoer. Reservedelsbatteriet er i prislisten på siden for <a href="/en/prodotti/unitree-g1-battery-en.html">batteriet G1</a>.</p>
-
-<h2>Hvornår skal du kontakte support</h2>
-<p>Stop og kontakt support, hvis et af disse tegn viser sig:</p>
-<ul>
-<li>en alarm kommer igen efter genstart eller opstår uden en kommando;</li>
-<li>et led bliver unormalt varmt, sætter sig fast eller lugter;</li>
-<li>robotten falder gentagne gange til samme side uden fejl på underlaget;</li>
-<li>batteriet svulmer op, lækker væske eller tager ikke imod opladning;</li>
-<li>der er revner, blottede kabler eller løse stik efter et sammenstød.</li>
-</ul>
-<p>Før du skriver, så forbered: serienummer, firmwareversion, fuld fejlkode, berørt led, monteret last, det præcise tidspunkt for hændelsen og en video. Det er de samme oplysninger, der skal til for at forstå, om problemet er software, elektrisk eller mekanisk. For support er første kontakt Abra Robotics, der leverer Unitree-sortimentet i Danmark med support på engelsk, også via <a href="/en/assessment-en.html">vurderingen</a>. For sortimentet og versionerne findes siden <a href="/da/unitree-g1.html">Unitree G1</a>.</p>
-
+<p>Skriv til os via <a href="/en/index-en.html#contatti">kontaktformularen</a> med: serienummer, firmwareversion, fejlkode, berørt led og, hvis muligt, en video.</p>
 <section class="article-faq">
 <h2>Ofte stillede spørgsmål</h2>
-<div class="faq-item"><h3>Hvorfor rejser G1 sig ikke eller falder lige efter opstart?</h3><p>De hyppigste årsager er en ufuldstændig opstart, et underlag der ikke er plant, en kommando givet uden støtte eller en kalibrering uden for tolerance. Genstart robotten, kontrollér alarmerne i appen, og kontakt support, før du kalibrerer igen, hvis problemet fortsætter.</p></div>
-<div class="faq-item"><h3>Hvad betyder en motorfejl på G1?</h3><p>Koden angiver typen af beskyttelse: overstrøm, transient overspænding, overophedning eller encoderfejl. Stop robotten, lad den køle af, og notér den præcise kode, før du prøver igen.</p></div>
-<div class="faq-item"><h3>Hvorfor forbinder appen Unitree Explore ikke til G1?</h3><p>I AP-tilstand skal telefonen være på robottens hotspot, og navnet må ikke indeholde mellemrum eller symboler. Hold Bluetooth tændt, og giv appen Bluetooth-tilladelse; er det ikke nok, så genstart robot og app.</p></div>
-<div class="faq-item"><h3>Hvor længe holder batteriet på G1?</h3><p>Cirka 2 timer ifølge Unitree, med et batteri på 9000 mAh. Unitree præciserer, at værdierne kan variere med konfiguration og brug.</p></div>
-<div class="faq-item"><h3>Hvornår bør man kontakte support?</h3><p>Når en alarm kommer igen efter genstart, et led bliver varmt eller sætter sig fast, batteriet svulmer op, eller robotten falder uden grund. Forbered serienummer, firmwareversion, video og fejlkode.</p></div>
+<div class="faq-item"><h3>G1 holder ikke balancen: hvad gør jeg?</h3><p>Kontrollér motorernes status og fejl i appen, og lav derefter en fuld kalibrering fra appen. Gentag den om nødvendigt et par gange. Hvis robotten stadig er ustabil, så skriv til os via kontaktformularen.</p></div>
+<div class="faq-item"><h3>Hvorfor forbinder appen ikke til G1?</h3><p>Telefonen skal være på robottens netværk, tæt på, med Bluetooth tændt og tilladelse givet til appen. Erfaringsmæssigt virker appen bedre på Android.</p></div>
+<div class="faq-item"><h3>Hvorfor kan jeg ikke se kameraet i appen?</h3><p>Videoen kræver mere båndbredde end resten af appen: med svagt signal kommer billedet ikke frem. Gå tættere på robotten, eller brug et mindre belastet netværk.</p></div>
+<div class="faq-item"><h3>Hvordan forlader man debug-tilstand?</h3><p>Ved at genstarte robotten.</p></div>
+<div class="faq-item"><h3>Hvad betyder en motorfejl?</h3><p>Den viser, hvilken beskyttelse der er udløst, for eksempel overstrøm eller overophedning. Stop robotten, lad den køle af, og noter kode og led.</p></div>
 </section>
-
 <section class="article-references">
 <h2>Kilder</h2>
 <ol>
-<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">officiel specifikation for G1 og G1 EDU</a> (batteri 9000 mAh, driftstid cirka 2 timer, oplader 54 V 5 A)</li>
-<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">fejlkoder for maskin- og motorstatus</a></li>
-<li>Unitree, <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">G1 User Manual</a> (opstart, app, kalibrering, unormale tilstande, batteri)</li>
-<li>Unitree, <a href="https://www.unitree.com/app/g1/" rel="noopener noreferrer" target="_blank">siden for appen Unitree Explore til G1</a> (status, temperaturer, alarmer, kalibrering)</li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issue #129: overophedning af skuldermotoren med Inspire FTP-hånd</a></li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">issue #43: SDK-kommandoer, debug mode og konflikter med motion controlleren</a></li>
-<li>GitHub, unitreerobotics/unitree_rl_mjlab, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">issue #14: nedlukning og rød LED på grund af overstrømsbeskyttelse</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">fjernbetjening og debug-tilstand</a> og <a href="https://support.unitree.com/home/en/G1_developer/quick_start" rel="noopener noreferrer" target="_blank">hurtig start</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">fejlkoder</a></li>
+<li>GitHub unitreerobotics: <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">#106</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">#129</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">unitree_rl_mjlab #14</a></li>
+<li>Abra Robotics' erfaring med leverede G1 (kalibrering, app, kamera)</li>
 </ol>
 </section>
 </div>
-<div class="article-cta"><h2>En G1, der ikke vil starte igen?</h2><p>For en robot, der står stille, er første kontakt Abra Robotics. Angiv symptom, fejlkode og konfiguration.</p><a class="btn btn-primary" href="/en/assessment-en.html">Beskriv problemet</a><a class="btn btn-outline-light" href="/da/unitree-g1.html">G1-sortiment og versioner</a></div>
+<div class="article-cta"><h2>En G1, der ikke vil starte igen?</h2><p>For en robot, der står stille, er første kontakt Abra Robotics. Angiv symptom, fejlkode og konfiguration.</p><a class="btn btn-primary" href="/en/index-en.html#contatti">Beskriv problemet</a><a class="btn btn-outline-light" href="/da/unitree-g1.html">G1-sortiment og versioner</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
@@ -316,4 +290,5 @@
 </footer>
 <script defer src="/consent.js"></script>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body></html>
