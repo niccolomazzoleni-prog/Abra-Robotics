@@ -52,7 +52,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "@type": "Article",
   "headline": "Unitree G1: zapnutí, dálkový ovladač a síť | Abra",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics"
@@ -166,58 +166,54 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </figure>
 
 <header class="article-header">
-<p class="label">Unitree G1 · Provozní návod</p>
-<h1>Unitree G1: jak ho zapnout, ovládat dálkovým ovladačem a připojit k PC</h1>
-<div class="article-meta"><time datetime="2026-10-15">Aktualizováno 15. října 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
+<p class="label">Unitree G1 · Návod k obsluze</p>
+<h1>Unitree G1: jak ho zapnout, používat ovladač a připojit počítač</h1>
+<div class="article-meta"><time datetime="2026-11-22">Aktualizováno 22. listopadu 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
 </header>
-
 <div class="article-layout">
 <div class="article-main">
-<p class="article-lead">Provozní návod k <a href="/cs/unitree-g1.html">Unitree G1</a> EDU: varianty, zapnutí, příkazy dálkového ovladače R3, baterie, síť a SSH. Příkazy odpovídají oficiální nálepce na ovladači a <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">dokumentaci Unitree pro vývojáře</a>. Programování přes SDK a ROS 2 popisuje <a href="/cs/blog/unitree-g1-programmazione.html">samostatný článek</a>.</p>
-
+<p class="article-lead">Návod k obsluze <a href="/cs/unitree-g1.html">Unitree G1</a> EDU: verze, zapnutí, příkazy ovladače R3, baterie, síť a SSH. Příkazy odpovídají dokumentaci Unitree platné k listopadu 2026: mění se s firmwarem, proto je vždy porovnejte s nálepkou pro svou verzi.</p>
 <div class="article-content">
-
-<h2 id="varianti">Varianty G1 EDU (U1–U10)</h2>
-<p>Kódy z ceníku Unitree. Modely se liší mechanickou základnou (23 nebo 29 DoF) a namontovaným <strong>manipulátorem</strong>. G1 Air sekundární vývoj neumožňuje: v <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">oficiální tabulce Unitree</a> je tato položka uvedena jen u G1 EDU.</p>
+<h2 id="varianti">Verze G1 EDU (U1–U10)</h2>
+<p>Kódy z ceníku Unitree. Modely se liší mechanickým základem (23 nebo 29 DoF) a namontovaným <strong>manipulátorem</strong>. G1 Air neumožňuje vlastní vývoj softwaru: v oficiální tabulce Unitree je tato položka jen u G1 EDU.</p>
 <div class="spec-table-wrap">
 <table>
-<thead><tr><th>SKU</th><th>DoF</th><th>Manipulátor</th><th>Detail</th></tr></thead>
+<thead><tr><th>SKU</th><th>DoF</th><th>Manipulátor</th><th>Karta</th></tr></thead>
 <tbody>
-<tr><td><strong>G1 Air</strong></td><td>23</td><td>Atrapy rukou (ne EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
+<tr><td><strong>G1 Air</strong></td><td>23</td><td>Atrapa (ne EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
 <tr><td><strong>G1-U1</strong></td><td>23</td><td>Atrapy rukou, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
-<tr><td><strong>G1-U2</strong></td><td>29</td><td>Atrapy rukou + pas 3 DoF + paže 7 DoF</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
-<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1, tři prsty, bez hmatových senzorů</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
-<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1, tři prsty, s hmatovými senzory</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
-<tr><td><strong>G1-U5</strong></td><td>–</td><td>Inspire RH56DFQ, bez hmatových senzorů</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
-<tr><td><strong>G1-U6</strong></td><td>–</td><td>Inspire RH56DFTP, s hmatovými senzory</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
-<tr><td><strong>G1-U7</strong></td><td>37</td><td>Revo2 Basic (5 prstů)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
-<tr><td><strong>G1-U8</strong></td><td>–</td><td>Revo2 Touch (5 prstů, s hmatovými senzory)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
+<tr><td><strong>G1-U2</strong></td><td>29</td><td>Atrapa + pas 3 DoF + paže 7 DoF</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
+<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1 tři prsty, bez hmatových senzorů</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
+<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1 tři prsty, s hmatovými senzory</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
+<tr><td><strong>G1-U5</strong></td><td>n.d.</td><td>Inspire RH56DFQ, bez hmatových senzorů</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
+<tr><td><strong>G1-U6</strong></td><td>n.d.</td><td>Inspire RH56DFTP, s hmatovými senzory</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
+<tr><td><strong>G1-U7</strong></td><td>n.d.</td><td>Revo2 Basic (5 prstů)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
+<tr><td><strong>G1-U8</strong></td><td>n.d.</td><td>Revo2 Touch (5 prstů, s hmatovými senzory)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
 <tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 bez hmatových senzorů (kompaktní konfigurace)</td><td><a href="/en/prodotti/unitree-g1-u9-en.html">U9</a></td></tr>
 <tr><td><strong>G1-U10</strong></td><td>35</td><td>Revo2 Basic (5 prstů)</td><td><a href="/en/prodotti/unitree-g1-u10-en.html">U10</a></td></tr>
 </tbody>
 </table>
 </div>
-<p>Ceny najdete ve <a href="/cs/#models">veřejném ceníku</a>. S výběrem verze pomůže návod <a href="/cs/blog/unitree-g1-quale-versione-scegliere.html">který G1 zvolit</a>; pokud jde o práci u pracovního stolu, podívejte se i na <a href="/cs/unitree-g1-d.html">G1-D</a>.</p>
-
-<div class="product-strip" aria-label="Prodotti citati">
-<div class="product-strip-head"><span>Produkty zmíněné v článku</span><a href="/cs/unitree-g1.html">Celá řada G1</a></div>
+<p>Ceny jsou ve <a href="/en/listino-unitree-en.html">veřejném ceníku</a>. S výběrem verze pomůže průvodce <a href="unitree-g1-quale-versione-scegliere.html">který G1 vybrat</a>; pro práci u stolu se podívejte i na <a href="/cs/unitree-g1-d.html">G1-D</a>.</p>
+<div aria-label="Prodotti citati" class="product-strip">
+<div class="product-strip-head"><span>Produkty v článku</span><a href="/cs/unitree-g1.html">Řada G1</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>Sekundární vývoj, 23 DoF, výpočetní dok</p>
-<div class="product-card-price">38&nbsp;005&nbsp;€ <small>bez DPH</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+<p>SDK, 23 DoF, výpočetní dok</p>
+<div class="product-card-price">38.005 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Zobrazit produkt</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
 </div>
 </article>
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-plus-en.html"><img alt="Unitree G1 EDU U2" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU U2</a></h3>
-<p>29 DoF: pas se 3 osami, paže se 7 osami</p>
-<div class="product-card-price">46&nbsp;809&nbsp;€ <small>bez DPH</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+<p>29 DoF: 3osý pas, 7osé paže</p>
+<div class="product-card-price">46.809 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Zobrazit produkt</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
 </div>
 </article>
 <article class="product-card">
@@ -225,178 +221,119 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-battery-en.html">Baterie G1</a></h3>
 <p>9000 mAh, rychlá výměna</p>
-<div class="product-card-price">880&nbsp;€ <small>bez DPH</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+<div class="product-card-price">880 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Zobrazit produkt</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
 </div>
 </article>
 </div>
 </div>
 <h2 id="protezione">Fyzická ochrana robota</h2>
-<div class="callout callout-warning">
-<strong>Doporučené kryty:</strong> na tvrdé podlaze se G1 rychle poškrábe, hlavně při ukázkách s mnoha pohyby na zemi. Doporučujeme <strong>měkké kryty (například z neoprenu) na paže a nohy</strong> a při prvním spuštění <a href="/en/prodotti/unitree-g1-frame-en.html">ochranný rám</a> z ceníku. Vstávání „ze země“ (L2+X) zvyšuje riziko odřenin na loktech a kolenou.
-</div>
-
-<h2 id="telecomando">Dálkový ovladač R3</h2>
-<p>Zapnutí: <strong>krátký stisk</strong> tlačítka napájení a pak <strong>podržení ≥2 s</strong> (dvě pípnutí). Vypnutí: krátký stisk + dlouhý stisk ≥2 s (tři pípnutí).</p>
-<div class="callout callout-tip">
-<strong>Baterie ovladače:</strong> může se vybít <em>dřív</em> než baterie G1. Mějte ovladač nabitý: bez R3 robota bezpečně neovládáte.
-</div>
-<p>Dálkový ovladač je součástí dodávky nebo ho lze dokoupit: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>.</p>
-
-<h2 id="comandi">Příkazy dálkového ovladače (aktuální firmware)</h2>
-<p>Kombinace se mohou s verzí firmwaru měnit: před použitím robota vždy zkontrolujte nálepku na svém ovladači.</p>
-<p>Legenda příkazů vytištěná na ovladači R3:</p>
-<ul>
-<li><strong>★</strong> = jeden krátký stisk</li>
-<li><strong>▲</strong> = dlouhý stisk asi 2 sekundy (v režimu motion control se podržením <strong>damping</strong> L2 + B po dobu <strong>5 sekund</strong> zapne ochranné tlumení, jak uvádí nálepka)</li>
-</ul>
-
-<figure class="article-cover" style="max-width:100%;margin:28px 0">
-<img src="/images/blog/g1-telecomando-comandi.webp" alt="Tabulka příkazů dálkového ovladače Unitree G1 R3" loading="lazy" style="padding:0;max-height:none;object-fit:contain"/>
-<figcaption style="padding:12px 16px;font-size:0.85rem;color:var(--gray-600);border-top:1px solid var(--gray-200);background:var(--gray-50)">Oficiální přehled příkazů Unitree, dálkový ovladač R3.</figcaption>
-</figure>
-
-<h3>Zero moment / postoj</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
-<thead><tr><th>Příkaz</th><th>Tlačítka</th><th>Typ</th></tr></thead>
+<div class="callout callout-warning"><strong>Doporučená ochrana:</strong> při ukázkách s pohyby na zemi je vhodné chránit paže a nohy <strong>měkkými kryty, například z neoprenu</strong>. Při prvním spuštění použijte <a href="/en/prodotti/unitree-g1-frame-en.html">ochranný rám</a> z ceníku.</div>
+<h2 id="telecomando">Ovladač R3</h2>
+<p>G1 se ovládá ovladačem Unitree R3. Unitree uvádí baterii 780 mAh na přibližně 5 hodin provozu. Zapnutí: krátce stiskněte vypínač, potom ho podržte déle než 2 sekundy, dokud nezazní pípnutí.</p>
+<div class="callout callout-tip"><strong>Mějte ho vždy nabitý.</strong> Ovladač se nabíjí pomalu: dávejte ho nabíjet na konci dne, ne těsně před použitím robota. Bez ovladače nelze robota rychle ovládat.</div>
+<p>Náhradní ovladač je v ceníku: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>, <a class="prezzo" data-prodotto="unitree-g1-remote" href="/en/prodotti/unitree-g1-remote-en.html" title="Unitree G1 Remote Controller"><img src="/images/official/unitree-telecomando.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-telecomando.webp" alt="" loading="lazy"><b>Unitree G1 Remote Controller</b><span>367 € bez DPH</span><em>Zobrazit produkt →</em></span></a> <span class="prezzo-iva">bez DPH</span>.</p>
+<h2 id="comandi">Příkazy ovladače</h2>
+<p><strong>Unitree mění kombinace tlačítek s verzemi firmwaru.</strong> Document Center má samostatnou nálepku pro každou verzi motion control (8.2, 8.4.2, 8.5, nad 8.6) a u novějších verzí zvlášť pro G1 s 23 nebo 29 stupni volnosti. Před použitím robota zkontrolujte verzi v aplikaci a porovnejte příkazy se správnou nálepkou na <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">oficiální stránce ovladače</a>. Tabulka níže uvádí příkazy z dokumentace Unitree platné k listopadu 2026.</p>
+<div class="callout callout-danger"><strong>Damping a zero torque způsobí pád robota.</strong> L2 + B (damping) a L2 + Y (zero torque) odeberou motorům aktivní řízení: stojící G1 bez opory ztratí rovnováhu a spadne. Proto Unitree uvádí L2 + B jako nouzové zastavení: používá se jen tehdy, když je robot mimo kontrolu, nebo když už sedí či visí na rámu.</div>
+<h3>Změna režimu</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Příkaz</th><th>Tlačítka</th><th>Co dělá</th></tr></thead>
 <tbody>
-<tr><td><strong>Zero moment</strong></td><td>L2 + Y</td><td>★ nulový moment, volné klouby: <strong>pokud robot nevisí, spadne</strong></td></tr>
-<tr><td><strong>Damping</strong></td><td>L2 + B</td><td>★ tlumí motory: <strong>tímto příkazem robota zastavíte</strong></td></tr>
-<tr><td><strong>Locked standing</strong></td><td>L2 + ↑</td><td>★ stoj se zablokovanými klouby</td></tr>
-<tr><td><strong>Vstávání z lehu</strong></td><td>L2 + X</td><td>★ z polohy Lie do Stand (jen tvrdá podlaha, viz ochrana)</td></tr>
-<tr><td><strong>Sed</strong></td><td>L2 + ←</td><td>▲ počkejte na dokončení přechodu</td></tr>
-<tr><td><strong>Squat ↔ stand</strong></td><td>L2 + A</td><td>▲</td></tr>
-<tr><td><strong>Adapt rise</strong></td><td>R1 + R2 + X</td><td>★</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-danger">
-<strong>Bezpečnost:</strong> k zastavení robota použijte <strong>damping, L2 + B</strong> (v režimu motion control ho podržte 5 sekund pro ochranné tlumení). <strong>Nezaměňujte ho s L2 + Y</strong> (zero moment): ten vynuluje moment motorů a robot, který nevisí v postroji nebo v rámu, spadne.
-</div>
-
-<h3>Motion control</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
+<tr><td>Damping (①)</td><td>L2 + B</td><td>Motory tlumené. Stojící robot: spadne. Jen vsedě nebo zavěšený a jako nouzové zastavení</td></tr>
+<tr><td>Zero torque</td><td>L2 + Y</td><td>Motory bez momentu, klouby volné. Stojící robot: spadne</td></tr>
+<tr><td>Zamčený stoj (②)</td><td>L2 + ↑</td><td>Přípravná poloha, asi za 5 sekund</td></tr>
+<tr><td>Sed (④)</td><td>L2 + ←</td><td>Pomalu se posadí bez řízení rovnováhy: jen před židlí</td></tr>
+<tr><td>Z lehu do stoje (⑤)</td><td>L2 + X</td><td>Jen na rovné a tvrdé podlaze</td></tr>
+<tr><td>Dřep (⑥)</td><td>L2 + A</td><td>V dřepu, bez řízení rovnováhy</td></tr>
+<tr><td>Režim debug</td><td>L2 + R2</td><td>Jen pro vývoj se SDK, z režimu damping nebo zero torque</td></tr>
+</tbody></table></div>
+<h3>Pohyb</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
 <thead><tr><th>Režim</th><th>Tlačítka</th><th>Poznámky</th></tr></thead>
 <tbody>
-<tr><td><strong>Running mode</strong></td><td>R2 + A</td><td>▲ 2 s, běh a dynamičtější pohyb</td></tr>
-<tr><td>Nízká/vysoká rychlost (run)</td><td>R2 + ↑ / ↓</td><td>▲</td></tr>
-<tr><td><strong>Regular mode (pas 1 DoF)</strong></td><td>R1 + X</td><td>▲ 2 s, <strong>stabilní walk mode</strong> (G1-U1 / pas 1 DoF)</td></tr>
-<tr><td><strong>Regular mode (pas 3 DoF)</strong></td><td>R1 + Y</td><td>▲ 2 s, <strong>stabilní walk mode</strong> (G1-U2+ / pas 3 DoF)</td></tr>
-<tr><td>Nízká/vysoká rychlost (regular)</td><td>Dvojklik L2 / L1</td><td>▲</td></tr>
-<tr><td>Přešlapování / stoj</td><td>Dvojklik START</td><td>▲</td></tr>
-<tr><td>Climb mode</td><td>R2 + B</td><td>▲</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-tip">
-<strong>Pozdravy a gesta (handshake, wave, kiss, clap):</strong> používejte je v <strong>Regular mode</strong>, tedy <strong>R1 + Y</strong> u pasu 3 DoF (U2+), nebo <strong>R1 + X</strong> u pasu 1 DoF (U1). V <strong>Running mode (R2+A)</strong> je robot méně stabilní a podání ruky nebo pozdrav ho mohou vyvést z rovnováhy. Interaktivní příkazy: SELECT + A (podání ruky), SELECT + Y (pozdrav), dvojklik Y/X/A (viz nálepka).
-</div>
-
-<h3>Debug mode (jen pro vývoj se SDK)</h3>
-<p><strong>L2 + R2</strong> zastaví motion controller, aby nedocházelo ke konfliktům se SDK; kombinací <strong>L2 + A</strong> ověříte, že jste v debug mode (zdroj: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitree, remote control</a>). Potřebujete ho <em>jen</em> v laboratoři při low-level programování motorů. Při běžném ovládání dálkovým ovladačem do debug mode <strong>nevstupujte</strong>; ukončíte ho restartem G1.</p>
-
-<h3>Doporučené sekvence zapnutí (podle nálepky)</h3>
+<tr><td>Běh (③)</td><td>R2 + A</td><td>Rychlost: R2 + ↑ rychle, R2 + ↓ pomalu</td></tr>
+<tr><td>Hlavní řízení, pas 1 DoF (⑦)</td><td>R1 + X</td><td>Dvojklik START: přepíná mezi stáním a chůzí</td></tr>
+<tr><td>Hlavní řízení, pas 3 DoF (⑧)</td><td>R1 + Y</td><td>Jen pro G1 se 3osým pasem</td></tr>
+<tr><td>Nízká / vysoká rychlost</td><td>Dvojklik L2 / L1</td><td>V hlavním řízení</td></tr>
+</tbody></table></div>
+<p>Gesta: SELECT + Y mávání, SELECT + A podání ruky, SELECT + X se otočí a zamává. Unitree upozorňuje, že současný režim chůze není určen na schody.</p>
+<h3>Postup zapnutí a vypnutí</h3>
 <ul>
-<li><strong>Ze sedu (doporučeno):</strong> zapnout, (1) Damping, (2) Locked standing, (3) Running/Regular, ukázka, (4) Sed, vypnout. Kroky (2) a (3) s ruční dopomocí za ramena.</li>
-<li><strong>Z lehu:</strong> zapnout, (1), (10), ukázka, (6), vypnout.</li>
-<li><strong>Z dřepu:</strong> zapnout, (1), (6), ukázka, (6), vypnout.</li>
+<li><strong>Vsedě na židli (nejjednodušší):</strong> zapnout → ① damping → ② zamčený stoj, robota držte za ramena → ③ nebo ⑦ → provoz → před židlí ④ sed → ① damping → vypnout.</li>
+<li><strong>Zavěšený na ochranném rámu:</strong> zapnout a počkat asi minutu a půl → ① damping → ② → spouštět hák, dokud se chodidla nedotknou země → R2 + A → když jde stabilně, hák uvolnit. Vypnutí: robota znovu zavěsit, potom ① damping a vypnout.</li>
+<li><strong>Z lehu nebo dřepu:</strong> jen na rovné a tvrdé podlaze. S namontovanými robotickými rukama Unitree tyto starty nedoporučuje, protože mohou ruce poškodit.</li>
 </ul>
-
-<h2 id="accensione">Zapnutí baterie G1</h2>
-<ol>
-<li>Zasuňte baterii až do cvaknutí (vypínač směrem dozadu).</li>
-<li>Krátce stiskněte tlačítko a pak ho podržte ≥2 s.</li>
-<li>Počkejte asi 1 min: všechny klouby přejdou do <strong>zero torque</strong>.</li>
-<li>Pokračujte podle sekvence pro dálkový ovladač výše: nejdřív <strong>damping (L2 + B)</strong>, pak další kroky.</li>
-</ol>
-
-<h3>Zavěšení v rámu (laboratoř)</h3>
-<p>Doporučeno při prvním spuštění: <a href="/en/prodotti/unitree-g1-frame-en.html">ochranný rám</a>. Robota zavěste a nohy položte na zem až po stabilizaci v Regular mode. Paže a nohy volné, žádný napnutý kabel.</p>
-
-<h3>Vstávání ze země (L2+X)</h3>
-<div class="callout callout-danger">
-Jen na <strong>rovném a tvrdém</strong> povrchu. Robot vstává sám, držte si odstup. S manipulátory (U3–U10) tento způsob nepoužívejte. Použijte neoprenové kryty: pohyb po betonu plast i hliník okamžitě poškrábe.
-</div>
-
-<h2 id="carico">Nosnost a paže</h2>
-<p>Unitree uvádí maximální nosnost jedné paže přibližně <strong>3 kg u G1 EDU</strong> (přibližně 2 kg u základního G1) a upozorňuje, že se výrazně mění podle polohy paže (<a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">produktová stránka G1</a>). V praxi může s nataženou paží robota naklonit dopředu a narušit chůzi i <strong>1 kg</strong>. Při pozdravech a gestech paže nezatěžujte.</p>
-
+<p>Chcete-li robota zastavit při chůzi, pusťte páčky a přepněte na stání (dvojklik START). Damping se zapíná, až když robot sedí nebo visí.</p>
+<h3>Režim debug</h3>
+<p>Potřebuje ho jen ten, kdo vyvíjí se SDK: L2 + R2, z režimu damping nebo zero torque, zastaví pohybový program Unitree, aby nekolidoval s příkazy SDK. V režimu debug robot přestane reagovat na běžné pohybové příkazy. <strong>Režim debug se opouští restartem robota.</strong> Případ je popsán v <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">issue #43 unitree_sdk2_python</a>.</p>
+<h2 id="accensione">Baterie: vložení a zapnutí</h2>
+<ul>
+<li>Baterii zasuňte z boku robota, správnou stranou a bez násilí, dokud nezacvakne.</li>
+<li>Krátce stiskněte tlačítko baterie, potom ho podržte nejméně 2 sekundy.</li>
+<li>Počkejte asi minutu: po startu jsou klouby v režimu zero torque a robot musí sedět nebo viset.</li>
+<li>Postupujte podle jednoho z postupů výše. Při prvním spuštění použijte <a href="/en/prodotti/unitree-g1-frame-en.html">ochranný rám</a> (<a class="prezzo" data-prodotto="unitree-g1-frame" href="/en/prodotti/unitree-g1-frame-en.html" title="Unitree G1 Staffa di protezione"><img src="/images/official/placeholder-prodotto.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/placeholder-prodotto.webp" alt="" loading="lazy"><b>Unitree G1 Staffa di protezione</b><span>367 € bez DPH</span><em>Zobrazit produkt →</em></span></a> <span class="prezzo-iva">bez DPH</span>).</li>
+</ul>
+<h2 id="carico">Zatížení paží</h2>
+<p>Unitree uvádí maximální zatížení jedné paže asi 3 kg u G1 EDU (asi 2 kg u základního G1) a upozorňuje, že silně závisí na poloze paže.</p>
 <h2 id="batteria">Baterie a výdrž</h2>
-<p>Podle Unitree má G1 chytrou rychlovýměnnou baterii s kapacitou <strong>9000 mAh</strong> na <strong>přibližně 2 hodiny</strong> provozu. Skutečná výdrž klesá při nepřetržité chůzi a se zátěží na pažích.</p>
+<p>G1 má rychle vyměnitelnou baterii 9000 mAh: Unitree uvádí výdrž asi 2 hodiny, která klesá při nepřetržité chůzi a zatížení paží.</p>
 <ul>
-<li>Na celý den zkoušek potřebujete aspoň dvě baterie: <a href="/en/prodotti/unitree-g1-battery-en.html">přídavná baterie G1</a> stojí podle ceníku 880&nbsp;€, <a href="/en/prodotti/unitree-g1-charger-en.html">nabíječka</a> 147&nbsp;€ (bez DPH).</li>
-<li>Před výměnou baterie robota vypněte a než ho necháte vstát, přepněte ho znovu do režimu damping.</li>
-<li>Mějte nabitý i dálkový ovladač R3: bez něj nemáte rychlý způsob, jak robota zastavit.</li>
+<li>Na den testů jsou potřeba alespoň dvě baterie: <a href="/en/prodotti/unitree-g1-battery-en.html">baterie G1</a> <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € bez DPH</span><em>Zobrazit produkt →</em></span></a> <span class="prezzo-iva">bez DPH</span>, <a href="/en/prodotti/unitree-g1-charger-en.html">nabíječka</a> <a class="prezzo" data-prodotto="unitree-g1-charger" href="/en/prodotti/unitree-g1-charger-en.html" title="Unitree G1 Battery Charger"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">147 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery Charger</b><span>147 € bez DPH</span><em>Zobrazit produkt →</em></span></a> <span class="prezzo-iva">bez DPH</span>.</li>
+<li>Před výměnou baterie robota posaďte nebo zavěste, potom damping a vypnutí.</li>
 </ul>
-
-<h2 id="rete">Síť a SSH</h2>
-<p>Připojte PC do podsítě <code>192.168.123.0/24</code> s volnou statickou IP adresou (např. <code>.51</code>; <strong>nepoužívejte</strong> .161, .164, .120). PC1 (.161) provozuje řízení pohybu Unitree a vývojářům není přístupné; vyvíjí se na PC2 (.164).</p>
-<ul>
-<li><strong>Přímý Ethernet</strong> do LAN portu G1</li>
-<li><strong>Wi‑Fi</strong>: podle <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">dokumentace LeRobot</a> je Wi‑Fi na PC2 ve výchozím stavu vypnuté a je třeba ho zapnout ručně; pro instalaci balíčků můžete sdílet připojení PC přes Ethernet.</li>
-</ul>
-
-<div class="ip-grid">
-<div class="ip-card"><code>192.168.123.161</code><span>MCU / motion controller Unitree</span></div>
-<div class="ip-card"><code>192.168.123.164</code><span>Jetson Orin (PC2), SSH <code>unitree</code> / <code>123</code></span></div>
-<div class="ip-card"><code>192.168.123.120</code><span>LiDAR Livox MID-360 (hlava)</span></div>
-</div>
-
+<h2 id="rete">Síť a SSH (jen G1 EDU)</h2>
+<p>Připojte počítač do sítě 192.168.123.0/24 s volnou statickou IP adresou, například 192.168.123.99. Nepoužívejte adresy robota:</p>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Adresa</th><th>Co tam běží</th></tr></thead>
+<tbody>
+<tr><td>192.168.123.161</td><td>PC1, řízení pohybu Unitree: nepřístupné</td></tr>
+<tr><td>192.168.123.164</td><td>PC2 (Jetson Orin), počítač pro vývoj</td></tr>
+<tr><td>192.168.123.120</td><td>LiDAR Livox MID-360, pokud je namontován</td></tr>
+</tbody></table></div>
 <pre><code>ping 192.168.123.164
 ssh unitree@192.168.123.164
-# Password predefinita: 123</code></pre>
-<div class="callout callout-warning">
-<strong>Přihlašovací údaje:</strong> <code>unitree</code> / <code>123</code> jsou výchozí údaje, které uvádí i dokumentace LeRobot. Unitree doporučuje vyžádat si počáteční přihlašovací údaje od podpory, takže u některých kusů se mohou lišit. Po prvním přihlášení heslo změňte, zvlášť pokud robot připojujete do firemní sítě.
-</div>
-
-<p><strong><a href="/cs/unitree-h2.html">H2</a>:</strong> používá stejnou podsíť 192.168.123.x, s PC1 pro řízení (Intel Core i5) a PC2 pro vývoj (Intel Core i7 ve verzi EDU, podle <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">produktové stránky Unitree</a>). Přesné adresy závisí na konfiguraci: ověřte je v dokumentaci dodané s robotem.</p>
-
-<h2 id="errori">Časté problémy</h2>
+# utente: unitree   password: 123</code></pre>
+<p><strong>Výchozí přihlašovací údaje PC2:</strong> uživatel <code>unitree</code>, heslo <code>123</code>. Při prvním přihlášení heslo změňte, zvlášť pokud robot přijde do firemní sítě.</p>
+<p>Doporučené připojení je ethernetový kabel přímo do portu robota.</p>
+<h2 id="errori">Když něco nefunguje</h2>
 <ul>
-<li><strong>Ping neodpovídá</strong>: zkontrolujte ethernetový kabel a IP adresu PC, pak <strong>restartujte robota</strong>.</li>
-<li><strong>SSH se nepřipojí nebo je pomalé</strong>: příliš mnoho relací SSH nebo přetížený Jetson; restartujte G1.</li>
-<li><strong>SDK rozechvívá klouby</strong>: souběžně běží motion controller, nebo jde o <strong>dvojí řízení</strong> (dálkový ovladač a SDK zároveň). Do debug mode vstupujte jen kvůli vývoji, případně zastavte příkazy ze SDK.</li>
+<li>Ping neodpovídá: zkontrolujte kabel a IP adresu počítače, potom robota restartujte.</li>
+<li>Se SDK se robot třese: pohybový program Unitree a SDK posílají příkazy současně. Přepněte do režimu debug nebo zastavte příkazy SDK.</li>
+<li>Robot není stabilní nebo neudrží rovnováhu: průvodce <a href="unitree-g1-problemi-comuni-soluzioni.html">nejčastějšími problémy G1</a>.</li>
 </ul>
-
 <h2 id="prossimi">Další kroky</h2>
 <ul>
-<li><a href="/cs/blog/unitree-g1-programmazione.html">SDK2 a ROS2</a></li>
+<li><a href="unitree-g1-programmazione.html">SDK2 a ROS2</a></li>
 <li><a href="/en/accessori-en.html">Příslušenství a kryty</a></li>
-<li><a href="/cs/blog/ros2-unitree-guida-rapida.html">ROS 2 na robotech Unitree, rychlý návod</a></li>
-<li><a href="/cs/blog/unitree-regolamento-macchine-2027.html">Bezpečnost a nařízení o strojních zařízeních 2027</a></li>
-<li><a href="/cs/#cta-finale">Kontaktujte Abra kvůli podpoře</a></li>
+<li><a href="ros2-unitree-guida-rapida.html">ROS 2 na Unitree, rychlý průvodce</a></li>
+<li><a href="unitree-regolamento-macchine-2027.html">Bezpečnost a nařízení o strojních zařízeních 2027</a></li>
+<li><a href="/cs/index.html#cta-finale">Kontaktovat Abra kvůli podpoře</a></li>
 </ul>
-
 </div>
-
 <section class="article-faq" id="faq">
-<h2>Časté dotazy</h2>
-<div class="faq-item"><h3>G1-U1, nebo G1-U2?</h3><p>U1 = 23 DoF, pas 1 DoF. U2 = 29 DoF, pas 3 DoF a paže 7 DoF, tedy základ pro manipulaci.</p></div>
-<div class="faq-item"><h3>Jaký walk mode zvolit pro pozdravy?</h3><p>R1+Y (pas 3 DoF, U2+) nebo R1+X (pas 1 DoF, U1), tedy Regular mode, ne R2+A Running mode.</p></div>
-<div class="faq-item"><h3>Jaké je heslo pro SSH?</h3><p>Výchozí údaje jsou unitree / 123 na 192.168.123.164 (PC2). U některých kusů se mohou lišit: Unitree je poskytuje přes podporu. Po prvním přihlášení je změňte.</p></div>
-<div class="faq-item"><h3>Jak G1 bezpečně zastavit?</h3><p>Příkazem damping, L2 + B. Nepoužívejte L2 + Y (zero moment): vynuluje moment a robot, který nevisí, spadne.</p></div>
-<div class="faq-item"><h3>Jak dlouho vydrží baterie G1?</h3><p>Podle Unitree přibližně 2 hodiny s baterií 9000 mAh. Na celý den zkoušek potřebujete aspoň dvě baterie.</p></div>
-<div class="faq-item"><h3>Připojí se G1 Air přes SSH stejně jako EDU?</h3><p>Ne. Sekundární vývoj je určen jen pro G1 EDU, který má PC2 pro uživatelský kód.</p></div>
+<h2>FAQ</h2>
+<div class="faq-item"><h3>G1-U1 o G1-U2?</h3><p>U1 stačí pro chůzi a řízení. U2 přidává 3osý pas a 7osé paže: hodí se, když se projekt týká manipulace.</p></div>
+<div class="faq-item"><h3>Jaké jsou přihlašovací údaje SSH k G1?</h3><p>Na PC2 (192.168.123.164) uživatel unitree, heslo 123. Při prvním přihlášení heslo změňte.</p></div>
+<div class="faq-item"><h3>Jak G1 bezpečně zastavit?</h3><p>Při chůzi: pusťte páčky a dvojklikem START přepněte na stání, potom robota posaďte před židli nebo ho znovu zavěste na rám. Damping (L2 + B) a zero torque (L2 + Y) způsobí pád stojícího robota: damping jen jako nouzové zastavení nebo u sedícího či zavěšeného robota.</p></div>
+<div class="faq-item"><h3>Jsou příkazy ovladače vždy stejné?</h3><p>Ne, Unitree je mění s verzemi firmwaru. Zkontrolujte verzi v aplikaci a odpovídající nálepku v Unitree Document Center.</p></div>
+<div class="faq-item"><h3>Jak dlouho vydrží baterie G1?</h3><p>Podle Unitree asi 2 hodiny. Na den testů jsou potřeba alespoň dvě baterie.</p></div>
+<div class="faq-item"><h3>Připojuje se G1 Air přes SSH jako EDU?</h3><p>Ne. PC2 pro vlastní kód a vývoj se SDK má jen G1 EDU.</p></div>
 </section>
-
 <section class="article-references" id="fonti">
 <h2>Zdroje</h2>
 <ol>
-<li>Unitree, technické parametry G1 a G1 EDU (rozměry, baterie, nosnost paže, záruka): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
-<li>Unitree Document Center, G1 developer: dálkový ovladač a debug mode: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
+<li>Unitree, technický list G1 a G1 EDU (rozměry, baterie, zatížení paže, záruka): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree Document Center, G1 developer: ovladač a režim debug: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: architektura a výpočetní jednotky: <a href="https://support.unitree.com/home/en/G1_developer/about_G1" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: LiDAR Livox MID-360 (IP 192.168.123.120): <a href="https://support.unitree.com/home/en/G1_developer/lidar_Instructions" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Hugging Face, dokumentace LeRobot pro Unitree G1 (síť, SSH, Wi‑Fi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
-<li>Unitree, technické parametry H2: <a href="https://www.unitree.com/H2" rel="noopener noreferrer" target="_blank">unitree.com/H2</a></li>
+<li>Unitree, ovladač R3: <a href="https://www.unitree.com/R3" rel="noopener noreferrer" target="_blank">unitree.com/R3</a></li>
+<li>Unitree, G1 User Manual V1.6 (zapnutí, ovladač, nouzové zastavení): <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">marketing.unitree.com</a></li>
 <li>Unitree, oficiální SDK pro Python: <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a></li>
 </ol>
 </section>
-
-<div class="article-cta">
+</div></div><div class="article-cta">
 <h2>Právě vám dorazil G1?</h2>
 <p>S dotazy ke spuštění, síti nebo příkazům se obraťte na Abra Robotics. Podporu poskytujeme v angličtině.</p>
 <a class="btn btn-primary" href="/cs/#cta-finale">Kontaktujte nás</a>
@@ -458,5 +395,6 @@ ssh unitree@192.168.123.164
 </div>
 </footer>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body>
 </html>
