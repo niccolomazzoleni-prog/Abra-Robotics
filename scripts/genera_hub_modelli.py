@@ -29,7 +29,7 @@ CAL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPd
 FAMILIES = {
     "g1": {
         "name": "G1", "prefixes": ["G1", "G1-E"], "it_page": "g1.html", "en_page": "en/g1-en.html",
-        "seo_it": "Unitree G1 prezzo: da {low} €, Basic, Pro, EDU, Ultimate", "seo_en": "Unitree G1 price: Basic, Pro, EDU U1-U10, Ultimate",
+        "seo_it": "Unitree G1 in Italia: prezzo da {low} € e versioni", "seo_en": "Unitree G1 price: Basic, Pro, EDU U1-U10, Ultimate",
         "image": "images/official/unitree-g1-02.webp", "parent_it": "umanoidi.html", "parent_en": "en/umanoidi-en.html",
         "type_it": "Robot umanoide", "type_en": "Humanoid robot",
         "source": "https://www.unitree.com/g1/",
@@ -75,7 +75,7 @@ FAMILIES = {
         "specs": [("Dimensioni", "Dimensions", "1230 × 357 × 190 mm"), ("Peso", "Weight", "circa 27 kg (Air), circa 29 kg (R1, EDU)|about 27 kg (Air), about 29 kg (R1, EDU)"),
                   ("Gradi di libertà", "Degrees of freedom", "20 (Air), 26 (R1, EDU)"), ("Autonomia", "Battery life", "circa 1 ora|about 1 hour"),
                   ("Calcolo", "Computing", "processore 8 core|8-core processor"), ("Telecamere", "Cameras", "monoculare (Air), binoculare (R1, EDU)|monocular (Air), binocular (R1, EDU)")],
-        "seo_it": "Unitree R1 prezzo: Air, Basic, EDU U1-U6, Professional",
+        "seo_it": "Unitree R1 in Italia: prezzo, Air, EDU e Professional",
         "seo_en": "Unitree R1 price: Air, Basic, EDU U1-U6, Professional",
         "choose_it": [("R1 Air", "la versione più semplice: 20 gradi di libertà, senza vita e testa motorizzate, nessuno sviluppo software con SDK."),
                       ("R1 Basic", "26 gradi di libertà con vita e testa mobili, telecamera binoculare; nessuno sviluppo software con SDK."),
@@ -136,7 +136,7 @@ FAMILIES = {
         "what_en": "The A2 is an industrial quadruped for inspection, surveillance and transport in plants, with long endurance and environmental protection.",
     },
     "b2": {
-        "name": "B2", "prefixes": ["B2", "B2-W", "B2W"], "seo_it": "Unitree B2 e B2-W prezzo Italia: da {low} €", "it_page": "b2.html", "en_page": "en/b2-en.html",
+        "name": "B2", "prefixes": ["B2", "B2-W", "B2W"], "seo_it": "Unitree B2 e B2-W in Italia: prezzo da {low} €", "it_page": "b2.html", "en_page": "en/b2-en.html",
         "image": "images/official/unitree-b2-montagna.webp", "parent_it": "quadrupedi.html", "parent_en": "en/quadrupedi-en.html",
         "type_it": "Quadrupede industriale pesante", "type_en": "Heavy industrial quadruped",
         "source": "https://www.unitree.com/b2/",
@@ -474,7 +474,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
                 f"which to choose. Sold in Italy by Abra Robotics.") if low else f"Unitree {name}: versions, official specs and quote from Abra Robotics."
         lead = f"{f['what_en']} Below: every {name} version we sell with its end-user price (excl. VAT), the official specifications and how to choose."
     else:
-        title = (f.get("seo_it") or "").replace("{low}", eur(low, False) if low else "") or (f"Unitree {name} prezzo Italia: da {eur(low, False)} €, tutte le versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
+        title = (f.get("seo_it") or "").replace("{low}", eur(low, False) if low else "") or (f"Unitree {name} in Italia: prezzo da {eur(low, False)} € e versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
         h1 = f"Unitree {name} prezzo in Italia: listino {date.today().year}"
         desc = (f"Prezzo Unitree {name} in Italia: tutte le versioni da {eur(low, False)} € IVA esclusa, specifiche ufficiali "
                 f"e quale scegliere. Spedizione e dazio inclusi, supporto in italiano.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
