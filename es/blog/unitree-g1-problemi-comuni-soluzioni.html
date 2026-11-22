@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Unitree G1: problemas comunes y cómo resolverlos</title>
-<meta name="description" content="G1 que no se levanta, errores de motor, app que no conecta, batería que se apaga: causas probables, comprobaciones y cuándo pedir asistencia."/>
+<meta name="description" content="G1 inestable, errores de motor, la app no se conecta, no se ve la cámara, modo debug: qué comprobar en cada problema y cuándo escribirnos."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/es/blog/unitree-g1-problemi-comuni-soluzioni.html"/>
 <link href="https://abrarobotics.com/blog/unitree-g1-problemi-comuni-soluzioni.html" hreflang="it" rel="alternate"/>
@@ -29,9 +29,9 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Unitree G1: problemas comunes y cómo resolverlos",
-  "description": "G1 que no se levanta, errores de motor, app que no conecta, batería que se apaga: causas probables, comprobaciones y cuándo pedir asistencia.",
+  "description": "G1 inestable, errores de motor, la app no se conecta, no se ve la cámara, modo debug: qué comprobar en cada problema y cuándo escribirnos.",
   "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -54,54 +54,52 @@
   "url": "https://abrarobotics.com/es/blog/unitree-g1-problemi-comuni-soluzioni.html"
 }
   </script>
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Por qué el G1 no se levanta o se cae enseguida después del encendido?",
+      "name": "El G1 no mantiene el equilibrio: ¿qué hago?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Las causas más frecuentes son un arranque incompleto, una superficie no plana, un comando dado sin apoyo o una calibración fuera de tolerancia. Reinicie el robot, compruebe las alarmas en la app y, si el problema sigue, consulte con la asistencia antes de recalibrar."
+        "text": "Revise en la app el estado de los motores y los errores, y luego haga una calibración completa desde la app. Si hace falta, repítala varias veces. Si el robot sigue inestable, escríbanos desde el formulario de contacto."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Qué significa un error de motor en el G1?",
+      "name": "¿Por qué la app no se conecta al G1?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "El código indica el tipo de protección: sobrecorriente, sobretensión transitoria, sobrecalentamiento o error de encoder. Detenga el robot, déjelo enfriar y anote el código exacto antes de volver a intentarlo."
+        "text": "El teléfono debe estar en la red del robot, cerca, con el Bluetooth activado y el permiso concedido a la app. Por experiencia, la app funciona mejor en Android."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Por qué la app Unitree Explore no conecta con el G1?",
+      "name": "¿Por qué no veo la cámara en la app?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "En modo AP el teléfono debe estar en el punto de acceso del robot y el nombre no debe contener espacios ni símbolos. Mantenga el Bluetooth encendido y conceda a la app el permiso de Bluetooth; si no basta, reinicie el robot y la app."
+        "text": "El vídeo necesita más ancho de banda que el resto de la app: con señal débil la imagen no llega. Acérquese al robot o use una red menos cargada."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Cuánto dura la batería del G1?",
+      "name": "¿Cómo se sale del modo debug?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Unas 2 horas según Unitree, con batería de 9000 mAh. Unitree precisa que los valores pueden variar con la configuración y el uso."
+        "text": "Reiniciando el robot."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Cuándo conviene llamar a la asistencia?",
+      "name": "¿Qué significa un error de motor?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cuando una alarma vuelve después del reinicio, una articulación se calienta o se bloquea, la batería se hincha o el robot se cae sin motivo. Prepare número de serie, versión de firmware, vídeo y código de error."
+        "text": "Indica qué protección ha saltado, por ejemplo sobrecorriente o sobrecalentamiento. Detenga el robot, déjelo enfriar y anote el código y la articulación."
       }
     }
   ]
-}
-  </script>
+}</script>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1: problemas comunes y cómo resolverlos"/>
@@ -192,95 +190,71 @@
 </figure>
 
 <header class="article-header"><p class="label">Problemas y soluciones</p>
-<h1>Unitree G1: problemas más comunes y cómo resolverlos</h1>
-<div class="article-meta"><time datetime="2026-10-22">22 de octubre de 2026</time><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>En resumen:</strong> los problemas más frecuentes del Unitree G1 tienen que ver con el arranque y la postura, las alarmas de los motores, la conexión con la app Unitree Explore y la batería. A menudo basta con reiniciar, leer las alarmas y comprobar la superficie. Si el fallo vuelve o una articulación se calienta, deténgase y pida asistencia: no fuerce los comandos en un robot inestable.</div>
+<h1>Unitree G1: los problemas más frecuentes y cómo resolverlos</h1>
+<div class="article-meta"><time datetime="2026-10-22">22 de octubre de 2026</time><span>Actualizado el 22 de noviembre de 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>En resumen:</strong> para casi todos los problemas del G1, la primera comprobación es la app Unitree Explore, que muestra el estado de los motores y los errores. Si el robot no es estable, lo primero es una calibración completa desde la app. Si el problema sigue, escríbanos.</div>
 </header>
-
 <div class="article-content">
-<p>Los problemas del G1 que se repiten en las issues de GitHub de unitreerobotics y en el manual de usuario se agrupan en cuatro bloques: el robot no se levanta o pierde estabilidad, un motor entra en alarma o se calienta, la app no conecta, la batería se descarga o se apaga. Para cada síntoma encontrará la causa probable, las comprobaciones en orden y el punto en el que detenerse.</p>
-
-<h2>Unitree G1: problemas comunes, síntomas y primeras comprobaciones</h2>
-<table>
-<thead><tr><th>Síntoma</th><th>Causa probable</th><th>Primera comprobación</th></tr></thead>
+<p>Estos son los problemas que más vemos en el G1, uno por sección: qué comprobar, en qué orden y cuándo parar. Los comandos del mando están en la <a href="unitree-g1-guida-operativa.html">guía de uso del G1</a>.</p>
+<h2 id="stabilita">1. El robot no mantiene el equilibrio, tiembla o no se levanta</h2>
+<ol>
+<li><strong>Revise la app.</strong> Unitree Explore muestra el estado de cada motor y los posibles errores: mire si alguna articulación está en error o mucho más caliente que las demás.</li>
+<li><strong>Revise el arranque.</strong> El robot debe arrancar sentado en una silla o colgado del bastidor, y la secuencia de botones debe ser la de la pegatina de su versión de firmware. Para arrancar desde tumbado hace falta un suelo plano y duro.</li>
+<li><strong>Haga una calibración completa (full body) desde la app.</strong> Es el remedio más eficaz cuando el robot no está equilibrado. Si no lo resuelve al primer intento, repítala varias veces. Aunque lo resuelva, conviene repetirla una segunda vez para consolidar el resultado.</li>
+<li>Si después de varias calibraciones el robot sigue inestable, pare y <a href="/en/index-en.html#contatti">escríbanos desde el formulario de contacto</a>.</li>
+</ol>
+<h2 id="motori">2. Un motor da error o se calienta</h2>
+<p>En la app, compruebe qué articulación está en error y su temperatura. Luego detenga el robot (sentado o colgado, después damping), déjelo enfriar y anote el código de error y la articulación.</p>
+<p>El código indica qué protección ha saltado, no qué pieza está rota. Los significados están en la <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">tabla de errores del Document Center de Unitree</a>; los más comunes en el motor son sobrecorriente, sobrecalentamiento y error del encoder.</p>
+<p>Si desarrolla con el SDK: ganancias altas y brazos extendidos mucho tiempo hacen que los motores se calienten, como en el caso del hombro con mano Inspire tratado en el <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issue #129</a>.</p>
+<h2 id="app">3. La app no se conecta al robot</h2>
+<ul>
+<li>El teléfono debe estar realmente en la red del G1 (hotspot del robot) o en la misma red Wi-Fi, y quedarse cerca del robot durante la vinculación.</li>
+<li>Bluetooth activado y permiso de Bluetooth concedido a la app durante toda la vinculación.</li>
+<li>Reinicie la app y el robot.</li>
+<li><strong>Por experiencia, la app funciona mejor en Android</strong> que en iPhone: si no se conecta con un iPhone, pruebe con un teléfono Android.</li>
+</ul>
+<h2 id="camera">4. La cámara no se ve en la app</h2>
+<p>El vídeo solo llega si la conexión soporta los kilobytes por segundo que transmite el robot. Con señal débil o una red saturada, el resto de la app funciona pero la imagen no llega o se congela. Acérquese al robot o use una red Wi-Fi menos cargada.</p>
+<h2 id="batteria">5. El robot se apaga de repente</h2>
+<p>Si la batería se apaga con el LED rojo durante una prueba, puede haber saltado la protección por sobrecorriente: pasa con movimientos bruscos, por ejemplo al pasar de golpe de una pose fija a una política entrenada. Un colaborador de Unitree lo explica en el <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">issue #14 de unitree_rl_mjlab</a>: comandos más graduales evitan el problema.</p>
+<p>La batería se carga fuera del robot, con el cargador original. Si parpadea en rojo durante la carga, no insista y no la abra. Batería de repuesto: <a href="/en/prodotti/unitree-g1-battery-en.html">batería G1</a>, <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € sin IVA</span><em>Ver ficha →</em></span></a> <span class="prezzo-iva">sin IVA</span>.</p>
+<h2 id="sviluppo">6. Problemas de desarrollo (SDK) señalados en GitHub</h2>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Problema</th><th>Qué hacer</th><th>Dónde se habla de ello</th></tr></thead>
 <tbody>
-<tr><td>No se levanta, se cae enseguida, tiembla</td><td>Arranque incompleto, superficie que cede, apoyo incorrecto o calibración fuera de tolerancia</td><td>Reinicio, app y alarmas, superficie dura y despejada</td></tr>
-<tr><td>Alarma de articulación, motor caliente, brazo que pierde respuesta</td><td>Sobrecorriente, sobretensión transitoria, sobrecalentamiento o ganancias demasiado altas</td><td>Detener el robot, dejar enfriar, anotar el código</td></tr>
-<tr><td>App que no conecta o se desconecta</td><td>Punto de acceso AP, permisos de Bluetooth, distancia</td><td>Modo de conexión y nombre del punto de acceso</td></tr>
-<tr><td>Batería que se apaga o parpadea en rojo</td><td>Protección de la batería o pico de corriente</td><td>LED de la batería y último comando enviado</td></tr>
-</tbody>
-</table>
-
-<h2>¿Por qué el G1 no se levanta o se cae nada más encenderlo?</h2>
-<p>El manual describe dos casos distintos. El primero es el arranque fallido: el robot está suspendido y encendido, pero a los dos minutos no se oye el ruido del tobillo que llega al final de su recorrido. En ese caso la inicialización no ha terminado bien y el manual pide revisar los pasos de «Check before Power on» y «Preparation before Power on» antes de volver a intentarlo.</p>
-<p>El segundo caso es una caída durante el uso: si el robot resbala o recibe un comando incorrecto, los motores pasan automáticamente a frenado para proteger las articulaciones. No es un fallo de la articulación, sino una reacción al incidente. Antes de volver a encenderlo, corrija la causa: superficie, apoyo, comando.</p>
+<tr><td>Con el SDK el robot tiembla o ignora los comandos</td><td>El programa de movimiento de Unitree y el SDK envían comandos a la vez. Para el control de bajo nivel se entra en modo debug (L2 + R2, desde damping); en modo debug los comandos de movimiento normales dejan de funcionar. Para salir se reinicia el robot.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a></td></tr>
+<tr><td>«Waiting to subscribe dds…»</td><td>El PC no recibe los datos del robot: compruebe el cable, la IP en la red 192.168.123.x y la interfaz de red indicada al programa. Unitree remite a su guía sobre CycloneDDS.</td><td><a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/wiki/CycloneDDS-and-UnitreeSDK-(en)" rel="noopener noreferrer" target="_blank">guía CycloneDDS</a></td></tr>
+<tr><td>Leer la cámara de la cabeza desde el SDK</td><td>En el repositorio de Python falta un ejemplo para el G1; algunos usuarios indican que funciona el ejemplo de cámara del Go2.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #106</a></td></tr>
+</tbody></table></div>
+<h2 id="assistenza">Cuándo llamarnos</h2>
 <ul>
-<li><strong>Reinicie el robot</strong> y vuelva a la secuencia de encendido, no a un comando de movimiento.</li>
-<li><strong>Ponga el robot en damping</strong> con L2 + B antes de tocarlo. La secuencia completa está en la <a href="/es/blog/unitree-g1-guida-operativa.html">guía operativa del G1</a>.</li>
-<li><strong>Compruebe las alarmas en la app</strong>: Unitree Explore muestra estado, temperaturas y avisos en tiempo real.</li>
-<li><strong>Verifique el apoyo</strong>: el manual pide comprobar que el soporte de protección esté montado y que las ruedas de la base estén bloqueadas.</li>
+<li>el robot sigue inestable después de varias calibraciones;</li>
+<li>un error vuelve tras el reinicio;</li>
+<li>una articulación se calienta de forma anormal, se bloquea o hace ruidos nuevos;</li>
+<li>la batería se hincha o no acepta la carga;</li>
+<li>tras una caída hay grietas, cables al aire o conectores sueltos.</li>
 </ul>
-<div class="callout callout-warning"><p><strong>Calibración.</strong> El G1 sale calibrado de fábrica. El manual dice que no se deben recalibrar las articulaciones para el uso normal y que hay que consultar al soporte técnico de Unitree antes de decidir si la calibración es necesaria.</p></div>
-
-<h2>Errores de motor y sobrecalentamiento</h2>
-<p>La tabla de errores del G1 distingue el estado general de la máquina del de cada motor. Entre los códigos generales más útiles: 0x8 timeout del feedback del motor, 0x10 timeout del feedback de la batería, 0x100 error de estado del motor, 0x200 protección contra sobrecorriente, 0x400 protección contra subtensión, 0x1000 parada de emergencia por software pulsada. En el motor, 0x1 es sobrecorriente, 0x2 sobretensión transitoria, 0x200 sobrecalentamiento del devanado, 0x400 y 0x800 errores de los dos encoders.</p>
-<p>El código indica qué protección se ha activado, no qué componente está roto. Por eso el primer paso es siempre el mismo: detener el robot, quitar la carga, dejarlo enfriar y anotar el código exacto con la articulación afectada.</p>
-<h3>¿Por qué se calienta demasiado un motor?</h3>
-<p>En el repositorio <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a> está documentado un caso de sobrecalentamiento del motor del hombro en un G1 con mano Inspire FTP, con ganancias kp = 40 y kd = 1.5. El brazo perdía respuesta al poco tiempo. En la discusión no hay una solución oficial de Unitree. Un comentario técnico sostiene que la mano cambia la masa y el par gravitatorio, por lo que el control debe adaptarse a la carga real y no solo a las ganancias.</p>
-<p>La misma lógica vale para los controladores externos: ganancias agresivas y posturas que mantienen el brazo extendido mucho tiempo aumentan la corriente y la temperatura. Si el sobrecalentamiento aparece sin carga adicional, anote temperatura, articulación y código de error y pida asistencia.</p>
-
-<h2>Conflictos entre SDK, mando a distancia y modo debug</h2>
-<p>Un G1 que tiembla o no responde a los comandos del SDK puede tener dos fuentes de comando activas a la vez. El programa de control del movimiento arranca al encender y sigue enviando comandos aunque no haya mando; si el SDK envía otras instrucciones al mismo tiempo, el robot oscila. La issue <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">#43 del repositorio unitree_sdk2_python</a> explica el paso al modo debug con L2 + R2 y la confirmación con L2 + A.</p>
-<p>Atención al efecto secundario: el modo debug desactiva el cliente ai sport, por lo que los comandos de movimiento de alto nivel dejan de funcionar. Para salir del modo debug, la vía indicada en la discusión es reiniciar el robot. La parte de software se trata en la <a href="/es/blog/unitree-g1-programmazione.html">guía de programación del G1</a>.</p>
-
-<h2>¿Por qué no conecta la app Unitree Explore?</h2>
-<p>El manual prevé dos modos: AP, con el teléfono conectado al punto de acceso del robot, o Wi-Fi a través de un router. Si usa el AP, la comprobación es directa: el teléfono debe estar de verdad en la red del G1, el nombre del punto de acceso no debe contener espacios ni símbolos especiales y los dos dispositivos deben permanecer cerca. Después, reinicie el robot y la app.</p>
-<ul>
-<li><strong>Bluetooth</strong>: la app debe tener permiso de Bluetooth y el Bluetooth del teléfono debe estar encendido durante todo el emparejamiento.</li>
-<li><strong>Cuenta</strong>: la app requiere una cuenta de empresa facilitada por Unitree; sin credenciales el emparejamiento no se completa.</li>
-<li><strong>Distancia</strong>: el manual pide mantener el robot y el teléfono cerca durante el emparejamiento.</li>
-<li><strong>Actualización de firmware</strong>: Unitree distribuye las actualizaciones por OTA; el procedimiento está en la <a href="/es/blog/unitree-g1-aggiornare-firmware.html">actualización de firmware del G1</a>.</li>
-</ul>
-
-<h2>Batería: autonomía, recarga y cortes</h2>
-<p>Unitree declara para el G1 una batería inteligente de extracción rápida de 9000 mAh, unas 2 horas de autonomía y un cargador de 54 V 5 A. La autonomía real depende de cómo se use el robot.</p>
-<p>La batería se carga desmontada del robot y apagada. El manual pide dejarla enfriar a temperatura ambiente después del uso, usar solo el cargador original y desconectarla al terminar la carga, cuando todos los LED se apagan. Si los LED parpadean en rojo, no insista con la carga y no abra el paquete.</p>
-<p>Un apagado repentino durante una prueba también puede ser una protección contra sobrecorriente. En la issue <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">#14 de unitree_rl_mjlab</a> un colaborador de Unitree relaciona el apagado con LED rojo con un pico de par al pasar de una pose fija a una política entrenada, y recomienda comandos más graduales. La batería de repuesto está en la tarifa de la ficha de la <a href="/en/prodotti/unitree-g1-battery-en.html">batería G1</a>.</p>
-
-<h2>Cuándo hace falta asistencia</h2>
-<p>Deténgase y contacte con la asistencia si aparece alguna de estas señales:</p>
-<ul>
-<li>una alarma vuelve después del reinicio o aparece sin un comando;</li>
-<li>una articulación se calienta de forma anómala, se bloquea o desprende olor;</li>
-<li>el robot se cae repetidamente sobre el mismo lado sin errores de superficie;</li>
-<li>la batería se hincha, pierde líquido o no acepta la carga;</li>
-<li>después de un golpe hay grietas, cables al descubierto o conectores flojos.</li>
-</ul>
-<p>Antes de escribir, prepare: número de serie, versión de firmware, código de error completo, articulación afectada, carga montada, minuto exacto del incidente y un vídeo. Es la misma información que hace falta para saber si el problema es de software, eléctrico o mecánico. Para la asistencia, el primer contacto es Abra Robotics, también a través del <a href="/en/assessment-en.html">assessment</a>. Para la gama y las versiones está la página <a href="/es/unitree-g1.html">Unitree G1</a>.</p>
-
+<p>Escríbanos desde el <a href="/en/index-en.html#contatti">formulario de contacto</a> con: número de serie, versión de firmware, código de error, articulación afectada y, si puede, un vídeo.</p>
 <section class="article-faq">
 <h2>Preguntas frecuentes</h2>
-<div class="faq-item"><h3>¿Por qué el G1 no se levanta o se cae enseguida después del encendido?</h3><p>Las causas más frecuentes son un arranque incompleto, una superficie no plana, un comando dado sin apoyo o una calibración fuera de tolerancia. Reinicie el robot, compruebe las alarmas en la app y, si el problema sigue, consulte con la asistencia antes de recalibrar.</p></div>
-<div class="faq-item"><h3>¿Qué significa un error de motor en el G1?</h3><p>El código indica el tipo de protección: sobrecorriente, sobretensión transitoria, sobrecalentamiento o error de encoder. Detenga el robot, déjelo enfriar y anote el código exacto antes de volver a intentarlo.</p></div>
-<div class="faq-item"><h3>¿Por qué la app Unitree Explore no conecta con el G1?</h3><p>En modo AP el teléfono debe estar en el punto de acceso del robot y el nombre no debe contener espacios ni símbolos. Mantenga el Bluetooth encendido y conceda a la app el permiso de Bluetooth; si no basta, reinicie el robot y la app.</p></div>
-<div class="faq-item"><h3>¿Cuánto dura la batería del G1?</h3><p>Unas 2 horas según Unitree, con batería de 9000 mAh. Unitree precisa que los valores pueden variar con la configuración y el uso.</p></div>
-<div class="faq-item"><h3>¿Cuándo conviene llamar a la asistencia?</h3><p>Cuando una alarma vuelve después del reinicio, una articulación se calienta o se bloquea, la batería se hincha o el robot se cae sin motivo. Prepare número de serie, versión de firmware, vídeo y código de error.</p></div>
+<div class="faq-item"><h3>El G1 no mantiene el equilibrio: ¿qué hago?</h3><p>Revise en la app el estado de los motores y los errores, y luego haga una calibración completa desde la app. Si hace falta, repítala varias veces. Si el robot sigue inestable, escríbanos desde el formulario de contacto.</p></div>
+<div class="faq-item"><h3>¿Por qué la app no se conecta al G1?</h3><p>El teléfono debe estar en la red del robot, cerca, con el Bluetooth activado y el permiso concedido a la app. Por experiencia, la app funciona mejor en Android.</p></div>
+<div class="faq-item"><h3>¿Por qué no veo la cámara en la app?</h3><p>El vídeo necesita más ancho de banda que el resto de la app: con señal débil la imagen no llega. Acérquese al robot o use una red menos cargada.</p></div>
+<div class="faq-item"><h3>¿Cómo se sale del modo debug?</h3><p>Reiniciando el robot.</p></div>
+<div class="faq-item"><h3>¿Qué significa un error de motor?</h3><p>Indica qué protección ha saltado, por ejemplo sobrecorriente o sobrecalentamiento. Detenga el robot, déjelo enfriar y anote el código y la articulación.</p></div>
 </section>
-
 <section class="article-references">
 <h2>Fuentes</h2>
 <ol>
-<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">ficha oficial del G1 y del G1 EDU</a> (batería de 9000 mAh, autonomía de unas 2 horas, cargador de 54 V 5 A)</li>
-<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">códigos de error del estado de la máquina y del motor</a></li>
-<li>Unitree, <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">G1 User Manual</a> (arranque, app, calibración, condiciones anómalas, batería)</li>
-<li>Unitree, <a href="https://www.unitree.com/app/g1/" rel="noopener noreferrer" target="_blank">página de la app Unitree Explore para el G1</a> (estado, temperaturas, alarmas, calibración)</li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issue #129: sobrecalentamiento del motor del hombro con mano Inspire FTP</a></li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">issue #43: comandos SDK, modo debug y conflictos con el controlador de movimiento</a></li>
-<li>GitHub, unitreerobotics/unitree_rl_mjlab, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">issue #14: apagado y LED rojo por protección contra sobrecorriente</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">mando y modo debug</a> e <a href="https://support.unitree.com/home/en/G1_developer/quick_start" rel="noopener noreferrer" target="_blank">inicio rápido</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">códigos de error</a></li>
+<li>GitHub unitreerobotics: <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">#106</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">#129</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">unitree_rl_mjlab #14</a></li>
+<li>Experiencia de Abra Robotics con los G1 entregados (calibración, app, cámara)</li>
 </ol>
 </section>
 </div>
-<div class="article-cta"><h2>¿Un G1 que no arranca?</h2><p>Para un robot parado, el primer contacto es Abra Robotics. Indique el síntoma, el código de error y la configuración.</p><a class="btn btn-primary" href="/en/assessment-en.html">Describa el problema</a><a class="btn btn-outline-light" href="/es/unitree-g1.html">Gama y versiones del G1</a></div>
+<div class="article-cta"><h2>¿Un G1 que no arranca?</h2><p>Para un robot parado, el primer contacto es Abra Robotics. Indique el síntoma, el código de error y la configuración.</p><a class="btn btn-primary" href="/en/index-en.html#contatti">Describa el problema</a><a class="btn btn-outline-light" href="/es/unitree-g1.html">Gama y versiones del G1</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
@@ -316,4 +290,5 @@
 </footer>
 <script defer src="/consent.js"></script>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body></html>
