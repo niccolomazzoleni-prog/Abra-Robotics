@@ -21,11 +21,26 @@ except ImportError:
 SITE_SLASH = SITE + "/"
 
 # Categorie Google per prefisso prodotto (fallback se assente nel JSON-LD)
+# Solo voci che esistono nella tassonomia ufficiale Google
+# (google.com/basepages/producttype/taxonomy-with-ids.en-US.txt): una voce inventata,
+# come "Business & Industrial > Robotics", viene segnalata da Merchant Center.
 _CATEGORY_DEFAULT = {
     "amr-": "Business & Industrial > Material Handling",
-    "cobot-": "Business & Industrial > Industrial Machinery > Robotic Arms",
-    "unitree-": "Business & Industrial > Robotics",
+    "cobot-": "Business & Industrial > Manufacturing",
+    "unitree-": "Business & Industrial",
 }
+_CATEGORY_VALID = {
+    "Business & Industrial",
+    "Business & Industrial > Manufacturing",
+    "Business & Industrial > Material Handling",
+    "Business & Industrial > Science & Laboratory",
+}
+
+# Spedizione: la stessa dichiarata nel JSON-LD delle schede (gratuita in Italia)
+_SHIPPING = """      <g:shipping>
+        <g:country>IT</g:country>
+        <g:price>0.00 EUR</g:price>
+      </g:shipping>"""
 
 # product_type leggibile per prefisso
 _PRODUCT_TYPE = {
@@ -88,6 +103,15 @@ def image_url(text: str) -> str:
     return SITE + "/" + og.lstrip("/")
 
 
+def feed_image(url: str) -> str:
+    """Merchant Center vuole immagini di almeno 500x500 (dal 31/01/2027): per le foto
+    piccole usa la versione quadrata 800x800 su bianco in images/feed/<nome>.jpg."""
+    stem = url.rsplit("/", 1)[-1].rsplit(".", 1)[0]
+    if (_ROOT / "images" / "feed" / f"{stem}.jpg").exists():
+        return f"{SITE}/images/feed/{stem}.jpg"
+    return url
+
+
 def esc(s: str) -> str:
     return html.escape(s, quote=False)
 
@@ -124,7 +148,7 @@ def resolve_availability(product_id: str, avail_map: dict[str, str]) -> str:
 
 
 def category_for(product_id: str, from_html: str) -> str:
-    if from_html:
+    if from_html in _CATEGORY_VALID:
         return from_html
     for prefix, cat in _CATEGORY_DEFAULT.items():
         if product_id.startswith(prefix):
@@ -154,6 +178,10 @@ def load_items(avail_map: dict[str, str]) -> tuple[list[dict], list[str]]:
             link = grab(r'<link\s+rel="canonical"\s+href="(.*?)"', text, SITE_SLASH + "prodotti/" + path)
             brand = parse_brand(text)
             mpn = parse_mpn(text)
+            # l'"mpn" delle schede e' lo slug della pagina, non un codice del produttore:
+            # Google lo tratta come identificativo falso, meglio dichiarare che non c'e'
+            if mpn == pid:
+                mpn = ""
             cat_html = parse_category(text)
             product_type = next((v for k, v in _PRODUCT_TYPE.items() if pid.startswith(k)), "Robot")
             items.append({
@@ -161,7 +189,7 @@ def load_items(avail_map: dict[str, str]) -> tuple[list[dict], list[str]]:
                 "title": title,
                 "description": desc,
                 "link": link,
-                "image": image_url(text),
+                "image": feed_image(image_url(text)),
                 "price": price,
                 "brand": brand,
                 "mpn": mpn,
@@ -195,6 +223,7 @@ def build_xml(items: list[dict]) -> str:
       <g:condition>new</g:condition>
       <g:product_type>{esc(it['product_type'])}</g:product_type>
       <g:google_product_category>{esc(it['category'])}</g:google_product_category>
+{_SHIPPING}
 {identifier_block}
     </item>"""
         )
