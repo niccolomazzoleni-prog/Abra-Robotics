@@ -500,6 +500,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
   <meta name="description" content="{BRAND_DESC}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{SITE}/catalogo-unitree.html">
+  <script type="application/ld+json">{{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Unitree in Italia: catalogo e prezzi", "url": "https://abrarobotics.com/catalogo-unitree.html", "primaryImageOfPage": {{"@type": "ImageObject", "url": "https://abrarobotics.com/images/official/unitree-g1-03.webp", "width": 1600, "height": 1004}}}}</script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="{BRAND_TITLE} — Abra Robotics">
   <meta property="og:description" content="{len(pub)} prodotti Unitree con prezzi End-User pubblici in Italia.">
@@ -510,6 +511,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
   <style>
     .cat-hero {{ padding: calc(40px + 72px + 48px) 48px 40px; border-bottom: 1px solid var(--gray-200); }}
     .cat-hero h1 {{ font-size: clamp(2rem,4vw,3rem); margin: 12px 0; }}
+    .cat-hero-img {{ display:block; width:100%; max-width:520px; height:auto; border-radius:12px; margin-top:20px; }}
     .cat-body-page {{ padding: 48px; }}
     .cat-group {{ margin-bottom: 56px; }}
     .cat-group h2 {{ font-size: 1.4rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-200); }}
@@ -541,6 +543,7 @@ def regenerate_catalogo_html(rows: list[dict], manifest: dict) -> None:
     <h1>Unitree in Italia: catalogo e prezzi</h1>
     <p style="color:var(--gray-600);max-width:720px;">{BRAND_INTRO}</p>
     <p style="color:var(--gray-600);max-width:720px;">Listino pubblico End-User — IVA esclusa, spedizione e dazio inclusi. {len(pub)} prodotti con scheda e prezzo trasparente. Chi vende Unitree in Italia e come scegliere: <a href="blog/unitree-italia-guida-completa.html">guida completa a Unitree in Italia</a>.</p>
+    <img class="cat-hero-img" src="images/official/unitree-g1-03.webp" alt="Robot umanoide Unitree G1, in vendita in Italia con Abra Robotics" width="1600" height="1004" fetchpriority="high">
 {PUBLIC_NOTICE}
   </header>
   <main class="cat-body-page">
