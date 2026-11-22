@@ -51,7 +51,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "Unitree G1: så uppdaterar du firmware säkert",
   "description": "Så uppdaterar du firmware på Unitree G1 med den officiella appen: kontroller före start (batteri, version, nätverk), misstag att undvika och nedgradering.",
   "datePublished": "2026-10-09",
-  "dateModified": "2026-10-19",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -203,106 +203,94 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <img src="/images/prodotti/2026/g1.webp" alt="Unitree G1 humanoid robot stående, frontvy" width="800" height="800" loading="eager"/>
 </figure>
 
-<header class="article-header"><p class="label">Guider</p>
+<header class="article-header"><p class="label">Guide</p>
 <h1>Unitree G1: så uppdaterar du firmware utan risk</h1>
-<div class="article-meta"><time datetime="2026-10-09">9 oktober 2026</time><span>Uppdaterad 19 oktober 2026</span><span>Abra Robotics</span></div>
+<div class="article-meta"><time datetime="2026-10-09">9 oktober 2026</time><span>Uppdaterad 22 november 2026</span><span>Abra Robotics</span></div>
 </header>
-
 <div class="article-content">
-<div class="callout callout-tip"><p><strong>Kort sagt.</strong> G1 tar emot mjukvaruuppdateringar över nätet (OTA). Anslutningen till roboten går via den officiella appen <strong>Unitree Explore</strong>. Kontrollera batteri, aktuell version och anslutning innan du börjar; stäng inte av roboten under uppdateringen. En återgång till föregående version är inte dokumenterad av Unitree.</p></div>
-
-<p>Uppgifterna nedan kommer endast från Unitree-dokument: den <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">officiella produktsidan för G1</a>, användarmanualen (version 1.6 från augusti 2026), sidan för appen Unitree Explore och supportcentret på support.unitree.com. Unitree publicerar ingen stegvis beskrivning av uppdateringen: där dokumenten tiger säger vi det.</p>
-
-<h2>Vad Unitree säger om firmwareuppdateringen för G1</h2>
-<p>I manualens specifikationstabell finns posten <em>Intelligent OTA Upgrade</em> för både G1 och G1 EDU: robotens mjukvara uppdateras över nätet, utan ingrepp i hårdvaran. Bland kontrollerna före start ber användarmanualen dig kontrollera att firmware är den senaste versionen: ”Ensure that the firmware has been updated to the latest version”.</p>
-<p>Anslutningen mellan telefon och robot går via appen <strong>Unitree Explore</strong>, som kan laddas ner för iOS och Android från sidan <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a>. Appen visar robotens status i realtid (temperatur, larm och andra data), vilket är användbart för att kontrollera att maskinen är i normalt skick innan du fortsätter.</p>
-
+<div class="callout callout-tip"><p><strong>I korthet.</strong> G1 får mjukvaruuppdateringar via nätverket (OTA). Anslutningen till roboten går via den officiella appen <strong>Unitree Explore</strong>. Kontrollera batteri, aktuell version och anslutning innan du börjar; stäng inte av roboten under uppdateringen. Unitree dokumenterar inte hur man går tillbaka till föregående version.</p></div>
+<p>Anvisningarna nedan kommer bara från Unitrees dokument: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">G1:s officiella produktblad</a>, användarhandboken (version 1.6 från augusti 2026), sidan för appen Unitree Explore och supportcentret support.unitree.com. Unitree publicerar ingen steg-för-steg-instruktion för uppdateringen: där dokumenten inte säger något, skriver vi det.</p>
+<h2>Vad Unitree säger om firmwareuppdatering av G1</h2>
+<p>I handbokens specifikationstabell anger både G1 och G1 EDU <em>Intelligent OTA Upgrade</em>: robotens mjukvara uppdateras via nätverket, utan ingrepp i hårdvaran. Användarhandboken kräver bland kontrollerna före start att firmware är den senaste versionen: ”Ensure that the firmware has been updated to the latest version”.</p>
+<p>Anslutningen mellan telefon och robot går via appen <strong>Unitree Explore</strong>, som finns för iOS och Android på sidan <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a>. Appen visar robotens status i realtid (temperatur, larm och andra data), vilket hjälper dig att kontrollera att maskinen fungerar normalt innan du fortsätter.</p>
 <h2>Stegen, i ordning</h2>
 <ol>
-<li><strong>Installera appen och anslut roboten.</strong> Vid första anslutningen ber manualen dig registrera ett konto, aktivera telefonens Bluetooth och hålla den nära G1, och sedan lägga till roboten med ”Add Robot”.</li>
-<li><strong>Välj anslutningssätt.</strong> Manualen anger två lägen: AP (telefonen ansluter till robotens hotspot) eller Wi-Fi via router. Proceduren finns också i videon ”Adding G1 &amp; Network setting” på appens sida.</li>
-<li><strong>Kontrollera status och version.</strong> Innan du uppdaterar kontrollerar du i appen att inga larm är aktiva och noterar aktuell firmwareversion.</li>
-<li><strong>Starta uppdateringen och vänta.</strong> Följ anvisningarna som appen visar för din robot och bryt inte strömmen eller anslutningen förrän åtgärden är klar.</li>
+<li><strong>Installera appen och anslut roboten.</strong> Slå på telefonens Bluetooth vid första anslutningen, håll telefonen nära G1 och lägg till roboten med ”Add Robot”. Inget konto från Unitree behövs.</li>
+<li><strong>Välj anslutningsläge.</strong> Handboken har två lägen: AP (telefonen ansluter till robotens hotspot) eller wifi via en router. Proceduren visas också i videon ”Adding G1 &amp; Network setting” på appens sida.</li>
+<li><strong>Kontrollera status och version.</strong> Kontrollera i appen före uppdateringen att inga larm är aktiva och anteckna aktuell firmwareversion.</li>
+<li><strong>Starta uppdateringen och vänta.</strong> Följ appens anvisningar för din robot och bryt inte strömmen eller anslutningen förrän åtgärden är klar.</li>
 </ol>
-
 <h2>Före uppdateringen: batteri, version, nätverk</h2>
 <ul>
-<li><strong>Batteri.</strong> Manualen anger ingen laddningsnivå för uppdateringen, men bland kontrollerna före start kräver den att batteri och fjärrkontroll är fulladdade. Enligt Unitree räcker G1:s batteri i cirka 2 timmar.</li>
-<li><strong>Version.</strong> Notera aktuell firmwareversion. Det hjälper dig att förstå om uppdateringen verkligen behövs och, vid problem, att ge supporten exakt information.</li>
-<li><strong>Nätverk.</strong> Manualen avråder från miljöer med Wi-Fi-störningar och kräver, i AP-läge, att hotspotens namn inte innehåller specialtecken eller mellanslag. Håll telefon och robot nära varandra. Om du arbetar med G1 EDU och det interna nätet 192.168.123.x förklarar driftguiden för G1 som nämns längst ner hur nätet är uppbyggt.</li>
+<li><strong>Batteri.</strong> Handboken anger ingen laddningsnivå för uppdateringen, men kräver bland kontrollerna före start fulladdat batteri och fulladdad fjärrkontroll. Batteriet i G1 räcker enligt Unitree cirka 2 timmar.</li>
+<li><strong>Version.</strong> Anteckna aktuell firmwareversion. Den visar om uppdateringen verkligen behövs och ger supporten exakt information om något går fel.</li>
+<li><strong>Nätverk.</strong> Handboken avråder från miljöer med wifistörningar och kräver i AP-läge att hotspotens namn saknar specialtecken och mellanslag. Håll telefon och robot nära varandra. Om du arbetar på G1 EDU med det interna nätet 192.168.123.x förklarar bruksanvisningen för G1 längst ned hur det är uppbyggt.</li>
 </ul>
-
 <h2>Efter uppdateringen: larm och kalibrering</h2>
-<p>I avsnittet om avvikelser anger manualen att en robot som ofta faller eller inte kan stå upp efter omstart kan behöva en ny kalibrering av lederna, som görs med stegen som visas i appen Unitree Explore.</p>
-<p>Kalibreringen görs i appen: den guidade kalibreringsfunktionen kalibrerar om motorlederna och IMU:n. I manualen är sökvägen [Settings] → [Data] → [Robot] → [Calibration]; i nyare versioner av appen kan menyn ändras.</p>
-<div class="callout callout-warning"><p><strong>Observera.</strong> Manualen påminner om att G1 levereras fabrikskalibrerad och inte ska kalibreras om vid normal användning. Om ett larm visas efter en uppdatering ska du rådgöra med teknisk support innan du kalibrerar om.</p></div>
-
+<p>I avsnittet om avvikelser anger handboken att en robot som ofta faller eller inte kan stå efter omstart kan behöva en ny kalibrering av lederna, med stegen i appen Unitree Explore.</p>
+<p>Kalibreringen görs i appen: funktionen för assisterad kalibrering kalibrerar om motorlederna och IMU:n. I handboken är sökvägen [Settings] → [Data] → [Robot] → [Calibration]; i nyare versioner av appen kan menyn se annorlunda ut.</p>
+<div class="callout callout-tip"><p><strong>Om roboten inte är stabil efter uppdateringen</strong> eller inte håller balansen, gör en fullständig kalibrering (full body) i appen. Om det inte hjälper, upprepa den några gånger; även om det hjälper är det bra att göra den en gång till. Om problemet kvarstår, <a href="/en/index-en.html#contatti">skriv till oss via kontaktformuläret</a>.</p></div>
 <h2>Vad du inte ska göra</h2>
 <ul>
 <li><strong>Stäng inte av roboten</strong> och bryt inte anslutningen under uppdateringen.</li>
-<li><strong>Uppdatera inte</strong> med nästan tomt batteri eller med ett instabilt nätverk.</li>
-<li><strong>Använd inte inofficiella firmwarepaket</strong>: uppdateringar kommer endast från Unitrees kanaler.</li>
-<li><strong>Kalibrera inte ”för säkerhets skull”</strong>: kalibreringen görs bara när det behövs och efter kontakt med supporten.</li>
+<li><strong>Uppdatera inte</strong> med nästan tomt batteri eller instabilt nätverk.</li>
+<li><strong>Använd inga inofficiella firmwarepaket</strong>: uppdateringar kommer bara via Unitrees kanaler.</li>
+<li><strong>Kalibrera inte om roboten fungerar bra</strong>: kalibreringen är till för en robot som inte är stabil.</li>
 <li><strong>Börja inte</strong> utan att känna till aktuell firmwareversion.</li>
 </ul>
-
-<h2>Kan man återgå till en tidigare version?</h2>
-<p>För G1:s firmware publicerar Unitree ingen nedgraderingsprocedur i de dokument vi har gått igenom (användarmanual, appens sida, vanliga frågor för utvecklare). Det är därför inget man bör försöka på egen hand. Om en uppdatering skapar problem vänder du dig i första hand till Abra Robotics; manualen anger också Unitrees tekniska support (support@unitree.cc) och <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitrees kundtjänstportal</a>.</p>
-
-<div class="product-strip" aria-label="Produkter i artikeln">
-<div class="product-strip-head"><span>Produkter som nämns i artikeln</span><a href="/sv/unitree-g1.html">Hela G1-serien</a></div>
+<h2>Går det att gå tillbaka till en tidigare version?</h2>
+<p>För G1:s firmware publicerar Unitree ingen nedgraderingsprocedur i de dokument vi gått igenom (användarhandbok, appsida, FAQ för utvecklare). Det är alltså inget man ska försöka på egen hand. Om en uppdatering ställer till problem är Abra Robotics första kontakt; handboken nämner också Unitrees tekniska support (support@unitree.cc) och <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitrees kundtjänstportal</a>.</p>
+<div aria-label="Prodotti citati" class="product-strip">
+<div class="product-strip-head"><span>Produkter i artikeln</span><a href="/sv/unitree-g1.html">G1-serien</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>SDK, 23 DoF, beräkningsmodul</p>
-<div class="product-card-price">38 005 € <small>exkl. moms</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produktblad</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
+<p>SDK, 23 DoF, beräkningsdocka</p>
+<div class="product-card-price">38.005 € <small>exkl. moms</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Se produkten</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
 </div>
 </article>
 <article class="product-card">
-<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Batteri G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="G1-batteri" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
 <div class="product-card-body">
-<h3><a href="/en/prodotti/unitree-g1-battery-en.html">Batteri G1</a></h3>
-<p>9000 mAh, snabbutbytbart</p>
+<h3><a href="/en/prodotti/unitree-g1-battery-en.html">G1-batteri</a></h3>
+<p>9000 mAh, snabbyte</p>
 <div class="product-card-price">880 € <small>exkl. moms</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Se produktblad</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Se produkten</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
 </div>
 </article>
 <article class="product-card">
-<a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="Fjärrkontroll G1 (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
+<a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="G1-fjärrkontroll (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
 <div class="product-card-body">
-<h3><a href="/en/prodotti/unitree-g1-remote-en.html">Fjärrkontroll G1 (R3)</a></h3>
-<p>I reserv, alltid laddad</p>
+<h3><a href="/en/prodotti/unitree-g1-remote-en.html">G1-fjärrkontroll (R3)</a></h3>
+<p>Som reserv, alltid laddad</p>
 <div class="product-card-price">367 € <small>exkl. moms</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Se produktblad</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Se produkten</a><a class="product-card-link" href="/en/assessment-en.html">Offert</a></div>
 </div>
 </article>
 </div>
 </div>
 <h2>Vanliga frågor</h2>
 <h3>Hur uppdaterar man firmware på Unitree G1?</h3>
-<p>Över nätet (OTA), med roboten ansluten till appen Unitree Explore. Notera aktuell version och kontrollera batteri och nätverk först.</p>
-<h3>Kan jag återgå till en tidigare firmwareversion?</h3>
-<p>Det är inte dokumenterat av Unitree. Om en uppdatering skapar problem ska du kontakta supporten i stället för att försöka nedgradera på egen hand.</p>
-<h3>Efter uppdateringen larmar G1 om lederna: vad ska jag göra?</h3>
-<p>Kalibrera inte på egen hand. Unitrees manual säger att man ska rådgöra med teknisk support innan man avgör om lederna ska kalibreras om i appen.</p>
-<h3>Kan jag stänga av roboten under uppdateringen?</h3>
+<p>Via nätverket (OTA), med roboten ansluten till appen Unitree Explore. Anteckna först aktuell version och kontrollera batteri och nätverk.</p>
+<h3>Kan jag gå tillbaka till en tidigare firmwareversion?</h3>
+<p>Det är inte dokumenterat av Unitree. Om en uppdatering ställer till problem, kontakta supporten i stället för att själv försöka nedgradera.</p>
+<h3>Efter uppdateringen visar G1 larm på lederna: vad gör jag?</h3>
+<p>Kontrollera i appen vilka leder som visar fel. Om roboten inte är stabil, gör en fullständig kalibrering i appen och upprepa den några gånger; om problemet kvarstår, skriv till oss via kontaktformuläret.</p>
+<h3>Får jag stänga av roboten under uppdateringen?</h3>
 <p>Nej. Bryt inte strömmen eller anslutningen förrän uppdateringen är klar.</p>
-
-<p>För daglig användning av roboten täcker <a href="/sv/blog/unitree-g1-guida-operativa.html">driftguiden för G1</a> start, fjärrkontroll och säkerhetskommandon. Den som utvecklar på G1 EDU hittar SDK och ROS 2 i <a href="/sv/blog/unitree-g1-programmazione.html">programmeringsguiden</a>.</p>
-
+<p>För daglig användning av roboten går <a href="unitree-g1-guida-operativa.html">bruksanvisningen för G1</a> igenom start, fjärrkontroll och säkerhetskommandon. Den som utvecklar på G1 EDU hittar SDK och ROS 2 i <a href="unitree-g1-programmazione.html">programmeringsguiden</a>.</p>
 <div class="figure-grid">
-<figure class="figure-card"><img src="/images/official/unitree-g1-info-batteria.webp" alt="Snabbutbytbart batteri till Unitree G1" width="800" height="800" loading="lazy"/><figcaption>G1:s batteri: se till att det är fulladdat innan du uppdaterar.</figcaption></figure>
-<figure class="figure-card"><img src="/images/official/unitree-telecomando.webp" alt="Bärbar fjärrkontroll till Unitree G1" width="800" height="800" loading="lazy"/><figcaption>G1:s fjärrkontroll: håll den nära till hands under testerna efter uppdateringen.</figcaption></figure>
+<figure class="figure-card"><img alt="Snabbutbytbart batteri till Unitree G1" height="800" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp" width="800"/><figcaption>Batteriet i G1: börja med full laddning innan du uppdaterar.</figcaption></figure>
+<figure class="figure-card"><img alt="Bärbar fjärrkontroll till Unitree G1" height="800" loading="lazy" src="/images/official/unitree-telecomando.webp" width="800"/><figcaption>Fjärrkontrollen till G1, ha den nära till hands vid testerna efter uppdateringen.</figcaption></figure>
 </div>
-
 <h2>Källor</h2>
 <ul>
-<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, officiell produktsida (drifttid, garanti)</a></li>
+<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, officiellt produktblad (drifttid, garanti)</a></li>
 <li><a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download: officiell app, funktioner och videoguider för G1</a></li>
-<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual V1.6 (posten ”Intelligent OTA Upgrade”, kontroller före start, anslutning till appen, kalibrering)</a></li>
+<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual V1.6 (”Intelligent OTA Upgrade”, kontroller före start, anslutning till appen, kalibrering)</a></li>
 <li><a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree, kundtjänstportal</a></li>
 </ul>
 </div>
