@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Unitree G1: časté problémy a jak je řešit</title>
-<meta name="description" content="G1 se nezvedá, hlásí chyby motorů, aplikace se nepřipojí nebo se vypíná baterie: pravděpodobné příčiny, kontroly a kdy vyhledat servis."/>
+<meta name="description" content="G1 nestabilní, chyby motorů, aplikace se nepřipojí, není vidět kamera, režim debug: co u každého problému zkontrolovat a kdy nám napsat."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/cs/blog/unitree-g1-problemi-comuni-soluzioni.html"/>
 <link href="https://abrarobotics.com/blog/unitree-g1-problemi-comuni-soluzioni.html" hreflang="it" rel="alternate"/>
@@ -29,9 +29,9 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Unitree G1: časté problémy a jak je řešit",
-  "description": "G1 se nezvedá, hlásí chyby motorů, aplikace se nepřipojí nebo se vypíná baterie: pravděpodobné příčiny, kontroly a kdy vyhledat servis.",
+  "description": "G1 nestabilní, chyby motorů, aplikace se nepřipojí, není vidět kamera, režim debug: co u každého problému zkontrolovat a kdy nám napsat.",
   "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -54,54 +54,52 @@
   "url": "https://abrarobotics.com/cs/blog/unitree-g1-problemi-comuni-soluzioni.html"
 }
   </script>
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Proč se G1 nezvedne nebo hned po zapnutí spadne?",
+      "name": "G1 neudrží rovnováhu: co mám dělat?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nejčastější příčiny jsou neúplné spuštění, nerovný povrch, příkaz zadaný bez opory nebo kalibrace mimo toleranci. Restartujte robota, zkontrolujte alarmy v aplikaci a pokud problém přetrvává, obraťte se na servis ještě před rekalibrací."
+        "text": "V aplikaci zkontrolujte stav motorů a chyby, potom proveďte úplnou kalibraci z aplikace. V případě potřeby ji několikrát zopakujte. Pokud robot zůstává nestabilní, napište nám přes kontaktní formulář."
       }
     },
     {
       "@type": "Question",
-      "name": "Co znamená chyba motoru na G1?",
+      "name": "Proč se aplikace nepřipojí k G1?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kód označuje typ ochrany: nadproud, přechodové přepětí, přehřátí nebo chybu enkodéru. Zastavte robota, nechte ho vychladnout a před dalším pokusem zapište přesný kód."
+        "text": "Telefon musí být v síti robota, nablízku, se zapnutým Bluetooth a s oprávněním pro aplikaci. Podle zkušeností funguje aplikace lépe na Androidu."
       }
     },
     {
       "@type": "Question",
-      "name": "Proč se aplikace Unitree Explore nepřipojí ke G1?",
+      "name": "Proč v aplikaci nevidím kameru?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "V režimu AP musí být telefon na hotspotu robota a název nesmí obsahovat mezery ani symboly. Mějte zapnutý Bluetooth a udělte aplikaci oprávnění k Bluetooth; pokud to nestačí, restartujte robota i aplikaci."
+        "text": "Video potřebuje větší šířku pásma než zbytek aplikace: při slabém signálu obraz nedorazí. Přibližte se k robotovi nebo použijte méně vytíženou síť."
       }
     },
     {
       "@type": "Question",
-      "name": "Jak dlouho vydrží baterie G1?",
+      "name": "Jak se opouští režim debug?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Přibližně 2 hodiny podle Unitree, s baterií 9000 mAh. Unitree upřesňuje, že hodnoty se mohou lišit podle konfigurace a používání."
+        "text": "Restartem robota."
       }
     },
     {
       "@type": "Question",
-      "name": "Kdy je vhodné zavolat servis?",
+      "name": "Co znamená chyba motoru?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Když se alarm vrací po restartu, kloub se zahřívá nebo blokuje, baterie bobtná nebo robot padá bez důvodu. Připravte sériové číslo, verzi firmwaru, video a kód chyby."
+        "text": "Ukazuje, která ochrana zasáhla, například nadproud nebo přehřátí. Robota zastavte, nechte vychladnout a zapište si kód a kloub."
       }
     }
   ]
-}
-  </script>
+}</script>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1: časté problémy a jak je řešit"/>
@@ -192,95 +190,71 @@
 </figure>
 
 <header class="article-header"><p class="label">Problémy a řešení</p>
-<h1>Unitree G1: nejčastější problémy a jak je řešit</h1>
-<div class="article-meta"><time datetime="2026-10-22">22. října 2026</time><span>Abra Robotics</span></div>
-<div class="article-tldr"><strong>Stručně:</strong> nejčastější problémy Unitree G1 se týkají spuštění a postoje, alarmů motorů, připojení k aplikaci Unitree Explore a baterie. Často stačí restart, čtení alarmů a kontrola povrchu. Pokud se závada vrací nebo se kloub zahřívá, zastavte se a obraťte se na servis: nevnucujte příkazy nestabilnímu robotovi.</div>
+<h1>Unitree G1: nejčastější problémy a jak je vyřešit</h1>
+<div class="article-meta"><time datetime="2026-10-22">22. října 2026</time><span>Aktualizováno 22. listopadu 2026</span><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>Stručně:</strong> u téměř všech problémů G1 je první kontrolou aplikace Unitree Explore, která ukazuje stav motorů a chyby. Pokud robot není stabilní, nejprve proveďte úplnou kalibraci z aplikace. Pokud problém trvá, napište nám.</div>
 </header>
-
 <div class="article-content">
-<p>Problémy G1, které se opakovaně objevují v issues na GitHubu unitreerobotics a v uživatelské příručce, spadají do čtyř skupin: robot se nezvedne nebo ztrácí stabilitu, motor hlásí alarm nebo se přehřívá, aplikace se nepřipojí, baterie se vybíjí nebo se vypíná. U každého příznaku najdete pravděpodobnou příčinu, kontroly v pořadí a bod, kde se zastavit.</p>
-
-<h2>Unitree G1: běžné problémy, příznaky a první kontroly</h2>
-<table>
-<thead><tr><th>Příznak</th><th>Pravděpodobná příčina</th><th>První kontrola</th></tr></thead>
+<p>Níže jsou problémy, které u G1 vídáme nejčastěji, každý v samostatné části: co zkontrolovat, v jakém pořadí a kdy přestat. Příkazy ovladače najdete v <a href="unitree-g1-guida-operativa.html">návodu k obsluze G1</a>.</p>
+<h2 id="stabilita">1. Robot neudrží rovnováhu, třese se nebo nevstane</h2>
+<ol>
+<li><strong>Zkontrolujte aplikaci.</strong> Unitree Explore ukazuje stav každého motoru a případné chyby: podívejte se, zda některý kloub nehlásí chybu nebo není výrazně teplejší než ostatní.</li>
+<li><strong>Zkontrolujte start.</strong> Robot musí startovat vsedě na židli nebo zavěšený na rámu a pořadí tlačítek musí odpovídat nálepce vaší verze firmwaru. Start z lehu vyžaduje rovnou a tvrdou podlahu.</li>
+<li><strong>Proveďte úplnou kalibraci (full body) z aplikace.</strong> Je to nejúčinnější náprava, když robot není vyvážený. Pokud napoprvé nepomůže, několikrát ji zopakujte. I když pomůže, vyplatí se ji zopakovat podruhé, aby se výsledek ustálil.</li>
+<li>Pokud robot zůstává nestabilní i po několika kalibracích, přestaňte a <a href="/en/index-en.html#contatti">napište nám přes kontaktní formulář</a>.</li>
+</ol>
+<h2 id="motori">2. Motor hlásí chybu nebo se zahřívá</h2>
+<p>V aplikaci zkontrolujte, který kloub hlásí chybu a jakou má teplotu. Potom robota zastavte (vsedě nebo zavěšený, pak damping), nechte ho vychladnout a zapište si chybový kód a kloub.</p>
+<p>Kód říká, která ochrana zasáhla, ne která součástka je vadná. Významy jsou v <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">tabulce chyb v Unitree Document Center</a>; u motoru jsou nejčastější nadproud, přehřátí a chyba enkodéru.</p>
+<p>Pokud vyvíjíte se SDK: vysoká zesílení a dlouho natažené paže motory zahřívají, jako v případě ramene s rukou Inspire popsaném v <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issue #129</a>.</p>
+<h2 id="app">3. Aplikace se nepřipojí k robotovi</h2>
+<ul>
+<li>Telefon musí být opravdu v síti G1 (hotspot robota) nebo ve stejné síti Wi-Fi a během párování zůstat blízko robota.</li>
+<li>Bluetooth zapnutý a aplikace má oprávnění k Bluetooth po celou dobu párování.</li>
+<li>Restartujte aplikaci i robota.</li>
+<li><strong>Podle zkušeností funguje aplikace lépe na Androidu</strong> než na iPhonu: pokud se s iPhonem nepřipojí, zkuste telefon s Androidem.</li>
+</ul>
+<h2 id="camera">4. V aplikaci není vidět kamera</h2>
+<p>Video projde jen tehdy, když připojení zvládne kilobajty za sekundu, které robot vysílá. Při slabém signálu nebo přetížené síti zbytek aplikace funguje, ale obraz nedorazí nebo zamrzne. Přibližte se k robotovi nebo použijte méně vytíženou síť Wi-Fi.</p>
+<h2 id="batteria">5. Robot se náhle vypne</h2>
+<p>Pokud se baterie během testu vypne s červenou LED, mohla zasáhnout ochrana proti nadproudu: stává se to při prudkých pohybech, například při náhlém přechodu z pevné pózy na natrénovanou politiku. Spolupracovník Unitree to vysvětluje v <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">issue #14 unitree_rl_mjlab</a>: postupnější příkazy problému předejdou.</p>
+<p>Baterie se nabíjí mimo robota originální nabíječkou. Pokud při nabíjení bliká červeně, nepokračujte a neotevírejte ji. Náhradní baterie: <a href="/en/prodotti/unitree-g1-battery-en.html">baterie G1</a>, <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € bez DPH</span><em>Zobrazit produkt →</em></span></a> <span class="prezzo-iva">bez DPH</span>.</p>
+<h2 id="sviluppo">6. Problémy s vývojem (SDK) nahlášené na GitHubu</h2>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Problém</th><th>Co dělat</th><th>Kde se o tom píše</th></tr></thead>
 <tbody>
-<tr><td>Nezvedá se, hned padá, třese se</td><td>Neúplné spuštění, měkký povrch, nesprávná opora nebo kalibrace mimo toleranci</td><td>Restart, aplikace a alarmy, tvrdá a volná podlaha</td></tr>
-<tr><td>Alarm kloubu, horký motor, paže ztrácí odezvu</td><td>Nadproud, přechodové přepětí, přehřátí nebo příliš vysoké hodnoty zesílení</td><td>Zastavit robota, nechat vychladnout, zapsat kód</td></tr>
-<tr><td>Aplikace se nepřipojí nebo se odpojuje</td><td>Hotspot AP, oprávnění Bluetooth, vzdálenost</td><td>Režim připojení a název hotspotu</td></tr>
-<tr><td>Baterie se vypíná nebo bliká červeně</td><td>Ochrana baterie nebo proudová špička</td><td>LED baterie a poslední odeslaný příkaz</td></tr>
-</tbody>
-</table>
-
-<h2>Proč se G1 nezvedne nebo hned po zapnutí spadne?</h2>
-<p>Příručka popisuje dva různé případy. První je neúspěšné spuštění: robot je zavěšený a zapnutý, ale po dvou minutách není slyšet, jak kloub kotníku dorazí do koncové polohy. Inicializace v tom případě neproběhla správně a příručka doporučuje před dalším pokusem znovu zkontrolovat kroky „Check before Power on“ a „Preparation before Power on“.</p>
-<p>Druhý případ je pád během používání: pokud robot uklouzne nebo je špatně ovládán, motory automaticky přejdou do brzdění, aby chránily klouby. Nejde o poruchu kloubu, ale o reakci na událost. Než ho znovu zapnete, odstraňte příčinu: povrch, oporu, příkaz.</p>
+<tr><td>Se SDK se robot třese nebo ignoruje příkazy</td><td>Pohybový program Unitree a SDK posílají příkazy současně. Pro řízení na nízké úrovni se přechází do režimu debug (L2 + R2, z režimu damping); v režimu debug přestanou běžné pohybové příkazy fungovat. Odchod: restart robota.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a></td></tr>
+<tr><td>«Waiting to subscribe dds…»</td><td>Počítač nepřijímá data z robota: zkontrolujte kabel, IP adresu v síti 192.168.123.x a síťové rozhraní zadané programu. Unitree odkazuje na svůj návod k CycloneDDS.</td><td><a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/wiki/CycloneDDS-and-UnitreeSDK-(en)" rel="noopener noreferrer" target="_blank">návod CycloneDDS</a></td></tr>
+<tr><td>Čtení hlavové kamery přes SDK</td><td>V repozitáři pro Python chybí příklad pro G1; někteří uživatelé uvádějí, že funguje příklad kamery z Go2.</td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #106</a></td></tr>
+</tbody></table></div>
+<h2 id="assistenza">Kdy nás kontaktovat</h2>
 <ul>
-<li><strong>Restartujte robota</strong> a začněte znovu sekvencí zapnutí, ne pohybovým příkazem.</li>
-<li><strong>Přepněte robota do režimu damping</strong> pomocí L2 + B, než se ho dotknete. Celý postup je v <a href="/cs/blog/unitree-g1-guida-operativa.html">provozním návodu G1</a>.</li>
-<li><strong>Zkontrolujte alarmy v aplikaci</strong>: Unitree Explore zobrazuje stav, teploty a upozornění v reálném čase.</li>
-<li><strong>Ověřte oporu</strong>: příručka žádá kontrolu, že je namontovaný ochranný držák a že jsou zajištěná kolečka na základně.</li>
+<li>robot zůstává nestabilní i po několika kalibracích;</li>
+<li>chyba se po restartu vrací;</li>
+<li>kloub se neobvykle zahřívá, blokuje nebo vydává nové zvuky;</li>
+<li>baterie se nafukuje nebo se nenabíjí;</li>
+<li>po pádu jsou na robotovi praskliny, odkryté kabely nebo uvolněné konektory.</li>
 </ul>
-<div class="callout callout-warning"><p><strong>Kalibrace.</strong> G1 odchází z výroby zkalibrovaný. Příručka uvádí, že klouby se pro běžné používání nemají rekalibrovat, a před rozhodnutím, zda je kalibrace potřeba, doporučuje obrátit se na technickou podporu Unitree.</p></div>
-
-<h2>Chyby motorů a přehřívání</h2>
-<p>Tabulka chyb G1 rozlišuje celkový stav stroje od stavu jednotlivého motoru. Mezi nejužitečnější obecné kódy patří: 0x8 timeout zpětné vazby motoru, 0x10 timeout zpětné vazby baterie, 0x100 chyba stavu motoru, 0x200 ochrana proti nadproudu, 0x400 ochrana proti podpětí, 0x1000 aktivní softwarové nouzové zastavení. U motoru je 0x1 nadproud, 0x2 přechodové přepětí, 0x200 přehřátí vinutí, 0x400 a 0x800 chyby obou enkodérů.</p>
-<p>Kód říká, která ochrana se aktivovala, ne která součást je rozbitá. Proto je první krok vždy stejný: zastavit robota, sundat zátěž, nechat ho vychladnout a zapsat přesný kód spolu s dotčeným kloubem.</p>
-<h3>Proč se motor příliš zahřívá</h3>
-<p>V repozitáři <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a> je zdokumentován případ přehřátí ramenního motoru na G1 s rukou Inspire FTP s hodnotami zesílení kp = 40 a kd = 1,5. Paže po chvíli přestala reagovat. V diskusi není oficiální řešení od Unitree. Technický komentář uvádí, že ruka mění hmotnost a gravitační moment, takže řízení je třeba přizpůsobit skutečnému zatížení, ne jen hodnotám zesílení.</p>
-<p>Stejná logika platí pro externí ovladače: agresivní hodnoty zesílení a pózy, které drží paži dlouho nataženou, zvyšují proud a teplotu. Pokud se přehřívání objeví bez dodatečné zátěže, zapište teplotu, kloub a kód chyby a obraťte se na servis.</p>
-
-<h2>Konflikty mezi SDK, dálkovým ovladačem a debug mode</h2>
-<p>G1, který se třese nebo nereaguje na příkazy SDK, může mít aktivní dva zdroje příkazů současně. Program pro řízení pohybu se spouští při zapnutí a pokračuje v odesílání příkazů i bez dálkového ovladače; pokud SDK současně posílá jiné instrukce, robot kmitá. Issue <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">#43 v repozitáři unitree_sdk2_python</a> vysvětluje přechod do debug mode pomocí L2 + R2 a potvrzení pomocí L2 + A.</p>
-<p>Pozor na vedlejší efekt: debug mode vypne klienta sportovních režimů, takže příkazy pohybu na vysoké úrovni přestanou fungovat. V diskusi se jako způsob opuštění debug mode uvádí restart robota. Softwarové části se věnuje <a href="/cs/blog/unitree-g1-programmazione.html">návod k programování G1</a>.</p>
-
-<h2>Proč se aplikace Unitree Explore nepřipojí?</h2>
-<p>Příručka uvádí dva režimy: AP, kdy je telefon připojený k hotspotu robota, nebo Wi-Fi přes router. Pokud používáte AP, kontrola je přímočará: telefon musí být skutečně v síti G1, název hotspotu nesmí obsahovat mezery ani speciální znaky a obě zařízení musí zůstat blízko sebe. Potom restartujte robota i aplikaci.</p>
-<ul>
-<li><strong>Bluetooth</strong>: aplikace musí mít oprávnění k Bluetooth a Bluetooth v telefonu musí zůstat zapnutý po celou dobu párování.</li>
-<li><strong>Účet</strong>: aplikace vyžaduje firemní účet poskytnutý společností Unitree; bez přihlašovacích údajů se párování nedokončí.</li>
-<li><strong>Vzdálenost</strong>: příručka doporučuje mít robota a telefon během párování blízko u sebe.</li>
-<li><strong>Aktualizace firmwaru</strong>: Unitree distribuuje aktualizace přes OTA; postup je v <a href="/cs/blog/unitree-g1-aggiornare-firmware.html">aktualizaci firmwaru G1</a>.</li>
-</ul>
-
-<h2>Baterie: výdrž, nabíjení a vypínání</h2>
-<p>Unitree u G1 uvádí inteligentní baterii s rychlým odpojením o kapacitě 9000 mAh, přibližně 2 hodiny výdrže a nabíječku 54 V 5 A. Skutečná výdrž závisí na tom, jak se robot používá.</p>
-<p>Baterie se nabíjí mimo robota a musí být vypnutá. Příručka doporučuje nechat ji po použití vychladnout na pokojovou teplotu, používat pouze originální nabíječku a po skončení nabíjení ji odpojit, když všechny LED zhasnou. Pokud LED blikají červeně, nepokračujte v nabíjení a baterii neotvírejte.</p>
-<p>Náhlé vypnutí během testu může být také ochrana proti nadproudu. V issue <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">#14 projektu unitree_rl_mjlab</a> spolupracovník Unitree spojuje vypnutí s červenou LED se špičkou momentu při přechodu z pevné pózy na natrénovanou politiku a doporučuje pozvolnější příkazy. Náhradní baterie je v ceníku na kartě <a href="/en/prodotti/unitree-g1-battery-en.html">baterie G1</a>.</p>
-
-<h2>Kdy je potřeba servis</h2>
-<p>Zastavte se a kontaktujte servis, pokud se objeví některý z těchto signálů:</p>
-<ul>
-<li>alarm se po restartu vrací nebo se objeví bez příkazu;</li>
-<li>kloub se neobvykle zahřívá, zablokuje se nebo vydává zápach;</li>
-<li>robot opakovaně padá na stejnou stranu bez chyb povrchu;</li>
-<li>baterie bobtná, vytéká z ní kapalina nebo nepřijímá nabíjení;</li>
-<li>po nárazu jsou vidět praskliny, obnažené kabely nebo uvolněné konektory.</li>
-</ul>
-<p>Než napíšete, připravte: sériové číslo, verzi firmwaru, úplný kód chyby, dotčený kloub, namontovanou zátěž, přesnou minutu události a video. Jsou to stejné informace, které pomáhají určit, zda je problém softwarový, elektrický, nebo mechanický. Pro servis je prvním kontaktem Abra Robotics, také přes <a href="/en/assessment-en.html">assessment</a>. Podpora probíhá v angličtině. Řadu a verze najdete na stránce <a href="/cs/unitree-g1.html">Unitree G1</a>.</p>
-
+<p>Napište nám přes <a href="/en/index-en.html#contatti">kontaktní formulář</a>: sériové číslo, verzi firmwaru, chybový kód, dotčený kloub a pokud možno video.</p>
 <section class="article-faq">
 <h2>Časté dotazy</h2>
-<div class="faq-item"><h3>Proč se G1 nezvedne nebo hned po zapnutí spadne?</h3><p>Nejčastější příčiny jsou neúplné spuštění, nerovný povrch, příkaz zadaný bez opory nebo kalibrace mimo toleranci. Restartujte robota, zkontrolujte alarmy v aplikaci a pokud problém přetrvává, obraťte se na servis ještě před rekalibrací.</p></div>
-<div class="faq-item"><h3>Co znamená chyba motoru na G1?</h3><p>Kód označuje typ ochrany: nadproud, přechodové přepětí, přehřátí nebo chybu enkodéru. Zastavte robota, nechte ho vychladnout a před dalším pokusem zapište přesný kód.</p></div>
-<div class="faq-item"><h3>Proč se aplikace Unitree Explore nepřipojí ke G1?</h3><p>V režimu AP musí být telefon na hotspotu robota a název nesmí obsahovat mezery ani symboly. Mějte zapnutý Bluetooth a udělte aplikaci oprávnění k Bluetooth; pokud to nestačí, restartujte robota i aplikaci.</p></div>
-<div class="faq-item"><h3>Jak dlouho vydrží baterie G1?</h3><p>Přibližně 2 hodiny podle Unitree, s baterií 9000 mAh. Unitree upřesňuje, že hodnoty se mohou lišit podle konfigurace a používání.</p></div>
-<div class="faq-item"><h3>Kdy je vhodné zavolat servis?</h3><p>Když se alarm vrací po restartu, kloub se zahřívá nebo blokuje, baterie bobtná nebo robot padá bez důvodu. Připravte sériové číslo, verzi firmwaru, video a kód chyby.</p></div>
+<div class="faq-item"><h3>G1 neudrží rovnováhu: co mám dělat?</h3><p>V aplikaci zkontrolujte stav motorů a chyby, potom proveďte úplnou kalibraci z aplikace. V případě potřeby ji několikrát zopakujte. Pokud robot zůstává nestabilní, napište nám přes kontaktní formulář.</p></div>
+<div class="faq-item"><h3>Proč se aplikace nepřipojí k G1?</h3><p>Telefon musí být v síti robota, nablízku, se zapnutým Bluetooth a s oprávněním pro aplikaci. Podle zkušeností funguje aplikace lépe na Androidu.</p></div>
+<div class="faq-item"><h3>Proč v aplikaci nevidím kameru?</h3><p>Video potřebuje větší šířku pásma než zbytek aplikace: při slabém signálu obraz nedorazí. Přibližte se k robotovi nebo použijte méně vytíženou síť.</p></div>
+<div class="faq-item"><h3>Jak se opouští režim debug?</h3><p>Restartem robota.</p></div>
+<div class="faq-item"><h3>Co znamená chyba motoru?</h3><p>Ukazuje, která ochrana zasáhla, například nadproud nebo přehřátí. Robota zastavte, nechte vychladnout a zapište si kód a kloub.</p></div>
 </section>
-
 <section class="article-references">
 <h2>Zdroje</h2>
 <ol>
-<li>Unitree, <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">oficiální specifikace G1 a G1 EDU</a> (baterie 9000 mAh, výdrž přibližně 2 hodiny, nabíječka 54 V 5 A)</li>
-<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">kódy chyb stavu stroje a motoru</a></li>
-<li>Unitree, <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">G1 User Manual</a> (spuštění, aplikace, kalibrace, abnormální stavy, baterie)</li>
-<li>Unitree, <a href="https://www.unitree.com/app/g1/" rel="noopener noreferrer" target="_blank">stránka aplikace Unitree Explore pro G1</a> (stav, teploty, alarmy, kalibrace)</li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">issue #129: přehřátí motoru ramene s rukou Inspire FTP</a></li>
-<li>GitHub, unitreerobotics/unitree_sdk2_python, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">issue #43: příkazy SDK, debug mode a konflikty s motion controllerem</a></li>
-<li>GitHub, unitreerobotics/unitree_rl_mjlab, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">issue #14: vypnutí a červená LED kvůli ochraně proti nadproudu</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">ovladač a režim debug</a> a <a href="https://support.unitree.com/home/en/G1_developer/quick_start" rel="noopener noreferrer" target="_blank">rychlý start</a></li>
+<li>Unitree Document Center, <a href="https://support.unitree.com/home/en/G1_developer/common_istakes_and_definitions" rel="noopener noreferrer" target="_blank">chybové kódy</a></li>
+<li>GitHub unitreerobotics: <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">unitree_sdk2_python #43</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/106" rel="noopener noreferrer" target="_blank">#106</a>, <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/129" rel="noopener noreferrer" target="_blank">#129</a>, <a href="https://github.com/unitreerobotics/xr_teleoperate/issues/189" rel="noopener noreferrer" target="_blank">xr_teleoperate #189</a>, <a href="https://github.com/unitreerobotics/unitree_rl_mjlab/issues/14" rel="noopener noreferrer" target="_blank">unitree_rl_mjlab #14</a></li>
+<li>Zkušenosti Abra Robotics s dodanými G1 (kalibrace, aplikace, kamera)</li>
 </ol>
 </section>
 </div>
-<div class="article-cta"><h2>G1, který se znovu nespustí?</h2><p>U robota, který stojí, je prvním kontaktem Abra Robotics. Uveďte příznak, kód chyby a konfiguraci. Podpora probíhá v angličtině.</p><a class="btn btn-primary" href="/en/assessment-en.html">Popsat problém</a><a class="btn btn-outline-light" href="/cs/unitree-g1.html">Řada a verze G1</a></div>
+<div class="article-cta"><h2>G1, který se znovu nespustí?</h2><p>U robota, který stojí, je prvním kontaktem Abra Robotics. Uveďte příznak, kód chyby a konfiguraci. Podpora probíhá v angličtině.</p><a class="btn btn-primary" href="/en/index-en.html#contatti">Popsat problém</a><a class="btn btn-outline-light" href="/cs/unitree-g1.html">Řada a verze G1</a></div>
 </div></article>
 <footer class="footer">
 <div class="container footer-grid">
@@ -316,4 +290,5 @@
 </footer>
 <script defer src="/consent.js"></script>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body></html>

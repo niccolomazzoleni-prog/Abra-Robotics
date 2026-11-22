@@ -51,7 +51,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "headline": "Aktualizace firmwaru Unitree G1 bez rizika",
   "description": "Jak aktualizovat firmware Unitree G1 v oficiální aplikaci: kontroly před začátkem (baterie, verze, síť), chyby, kterým se vyhnout, a downgrade.",
   "datePublished": "2026-10-09",
-  "dateModified": "2026-10-15",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics",
@@ -164,62 +164,53 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <img src="/images/prodotti/2026/g1.webp" alt="Humanoidní robot Unitree G1 ve stoji, pohled zepředu" width="800" height="800" loading="eager"/>
 </figure>
 
-<header class="article-header"><p class="label">Návody</p>
+<header class="article-header"><p class="label">Průvodce</p>
 <h1>Unitree G1: jak bezpečně aktualizovat firmware</h1>
-<div class="article-meta"><time datetime="2026-10-09">9. října 2026</time><span>Abra Robotics</span></div>
+<div class="article-meta"><time datetime="2026-10-09">9. října 2026</time><span>Aktualizováno 22. listopadu 2026</span><span>Abra Robotics</span></div>
 </header>
-
 <div class="article-content">
-<div class="callout callout-tip"><p><strong>Stručně.</strong> G1 dostává softwarové aktualizace přes síť (OTA). Výchozím bodem je oficiální aplikace <strong>Unitree Explore</strong> připojená k robotu. Před začátkem zkontrolujte baterii, aktuální verzi a připojení; během aktualizace robota nevypínejte. Návrat k předchozí verzi Unitree nedokumentuje.</p></div>
-
-<p>Tento návod popisuje aktualizaci firmwaru Unitree G1 v mezích toho, co Unitree dokumentuje: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">oficiální produktová stránka G1</a>, uživatelská příručka, aplikace Unitree Explore a centrum podpory support.unitree.com. Žádné balíčky z fór ani improvizované příkazy: špatně provedená aktualizace může robota dostat do stavu, který vyžaduje servisní zásah.</p>
-
-<h2>Co říká Unitree o aktualizaci firmwaru G1</h2>
-<p>V tabulce parametrů uvádějí G1 i G1 EDU položku <em>Upgraded Intelligent OTA</em>: software robota se aktualizuje přes síť, bez zásahu do hardwaru. Uživatelská příručka mezi kontrolami před zapnutím žádá ověřit, že firmware je v nejnovější verzi: „Ensure that the firmware has been updated to the latest version“.</p>
-<p>Telefon se s robotem propojuje přes aplikaci <strong>Unitree Explore</strong> pro iOS a Android, ke stažení na stránce <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a>. Aplikace zobrazuje stav robota v reálném čase (teplotu, alarmy a další údaje), takže před aktualizací snadno ověříte, že je stroj v normálním stavu. Novinky a poznámky k vydání vaší verze najdete v centru podpory Unitree.</p>
-
-<h2>Postup krok za krokem</h2>
+<div class="callout callout-tip"><p><strong>Stručně.</strong> G1 dostává aktualizace softwaru přes síť (OTA). Připojení k robotovi vede přes oficiální aplikaci <strong>Unitree Explore</strong>. Před začátkem zkontrolujte baterii, aktuální verzi a připojení; během aktualizace robota nevypínejte. Návrat k předchozí verzi Unitree nedokumentuje.</p></div>
+<p>Následující pokyny pocházejí jen z dokumentů Unitree: <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">oficiálního listu G1</a>, uživatelské příručky (verze 1.6 ze srpna 2026), stránky aplikace Unitree Explore a centra podpory support.unitree.com. Unitree nezveřejňuje postup aktualizace krok za krokem: kde dokumenty mlčí, říkáme to.</p>
+<h2>Co Unitree říká o aktualizaci firmwaru G1</h2>
+<p>V tabulce specifikací v příručce mají G1 i G1 EDU položku <em>Intelligent OTA Upgrade</em>: software robota se aktualizuje přes síť, bez zásahu do hardwaru. Uživatelská příručka mezi kontrolami před zapnutím požaduje ověřit, že firmware je v nejnovější verzi: „Ensure that the firmware has been updated to the latest version“.</p>
+<p>Připojení telefonu k robotovi vede přes aplikaci <strong>Unitree Explore</strong>, dostupnou pro iOS a Android na stránce <a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download</a>. Aplikace ukazuje stav robota v reálném čase (teplotu, alarmy a další údaje), což pomáhá ověřit, že stroj před pokračováním funguje normálně.</p>
+<h2>Kroky v pořadí</h2>
 <ol>
-<li><strong>Nainstalujte aplikaci a připojte robota.</strong> Při prvním připojení příručka žádá založit účet, zapnout na telefonu Bluetooth a držet telefon u G1, pak přidat robota volbou „Add Robot“.</li>
-<li><strong>Zvolte způsob připojení.</strong> Příručka uvádí dva režimy: AP (telefon se připojí k hotspotu robota) nebo Wi-Fi přes router. Postup ukazuje i video „Adding G1 &amp; Network setting“ na stránce aplikace.</li>
-<li><strong>Zkontrolujte stav a verzi.</strong> Před aktualizací ověřte v aplikaci, že nejsou aktivní žádné alarmy, a poznamenejte si aktuální verzi firmwaru.</li>
-<li><strong>Spusťte aktualizaci a počkejte.</strong> Řiďte se pokyny, které aplikace pro váš robot zobrazí, a nepřerušujte napájení ani připojení, dokud operace neskončí.</li>
+<li><strong>Nainstalujte aplikaci a připojte robota.</strong> Při prvním připojení zapněte v telefonu Bluetooth, držte telefon blízko G1 a přidejte robota přes „Add Robot“. Žádný účet od Unitree není potřeba.</li>
+<li><strong>Zvolte režim připojení.</strong> Příručka počítá se dvěma režimy: AP (telefon se připojí k hotspotu robota) nebo Wi-Fi přes router. Postup ukazuje i video „Adding G1 &amp; Network setting“ na stránce aplikace.</li>
+<li><strong>Zkontrolujte stav a verzi.</strong> Před aktualizací ověřte v aplikaci, že nejsou aktivní žádné alarmy, a zapište si aktuální verzi firmwaru.</li>
+<li><strong>Spusťte aktualizaci a počkejte.</strong> Řiďte se pokyny, které aplikace zobrazí pro váš robot, a nepřerušujte napájení ani připojení, dokud operace neskončí.</li>
 </ol>
-
 <h2>Před aktualizací: baterie, verze, síť</h2>
 <ul>
-<li><strong>Baterie.</strong> Příručka neuvádí minimální úroveň nabití pro aktualizaci. Z opatrnosti začínejte s nabitou baterií: baterie G1 vydrží podle Unitree přibližně 2 hodiny a přerušená aktualizace je horší než odložená.</li>
-<li><strong>Verze.</strong> Poznamenejte si aktuální verzi firmwaru. Pomůže vám posoudit, zda je aktualizace opravdu potřeba, a při problémech podpoře poskytne přesnou informaci.</li>
-<li><strong>Síť.</strong> Příručka nedoporučuje prostředí s rušením Wi-Fi a v režimu AP žádá, aby název hotspotu neobsahoval speciální znaky ani mezery. Držte telefon a robota blízko sebe. Pokud na G1 EDU pracujete s vnitřní sítí 192.168.123.x, její uspořádání vysvětluje <a href="/cs/blog/unitree-g1-guida-operativa.html">návod k zapnutí a síti G1</a>.</li>
+<li><strong>Baterie.</strong> Příručka neuvádí minimální nabití pro aktualizaci, ale mezi kontrolami před zapnutím požaduje plně nabitou baterii i ovladač. Baterie G1 vydrží podle Unitree asi 2 hodiny.</li>
+<li><strong>Verze.</strong> Zapište si aktuální verzi firmwaru. Poslouží k posouzení, zda je aktualizace opravdu nutná, a při problémech k přesné informaci pro podporu.</li>
+<li><strong>Síť.</strong> Příručka nedoporučuje prostředí s rušením Wi-Fi a v režimu AP požaduje, aby název hotspotu neobsahoval speciální znaky ani mezery. Mějte telefon a robota blízko sebe. Pokud pracujete na G1 EDU s interní sítí 192.168.123.x, návod k obsluze G1 odkazovaný dole vysvětluje, jak je uspořádaná.</li>
 </ul>
-
 <h2>Po aktualizaci: alarmy a kalibrace</h2>
-<p>V sekci <a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">G1 Developer FAQ</a> centra podpory Unitree je popsán konkrétní případ: po aktualizaci na firmware 1.3.0 nebo novější může robot hlásit <em>Joint limit abnormal</em> a <em>Transient Over Voltage</em>. Podle Unitree nový firmware zpřesňuje kalibraci kloubů, takže předchozí kalibrace už nesplňuje požadavky a je nutné ji provést znovu.</p>
-<p>Kalibrace se provádí v aplikaci: funkce asistované kalibrace znovu zkalibruje motory kloubů a IMU. V příručce je cesta [Settings] &gt; [Data] &gt; [Robot] &gt; [Calibration]; v novějších verzích aplikace se menu může lišit.</p>
-<div class="callout callout-warning"><p><strong>Pozor.</strong> Příručka připomíná, že G1 opouští výrobu už zkalibrovaný a při běžném používání se znovu kalibrovat nemá. Pokud se po aktualizaci objeví alarm, před novou kalibrací si vyžádejte potvrzení od technické podpory.</p></div>
-
+<p>Příručka v části o poruchách uvádí, že robot, který často padá nebo po restartu neudrží stoj, může potřebovat novou kalibraci kloubů, provedenou podle kroků v aplikaci Unitree Explore.</p>
+<p>Kalibrace se provádí z aplikace: funkce asistované kalibrace znovu zkalibruje kloubové motory a IMU. V příručce je cesta [Settings] → [Data] → [Robot] → [Calibration]; v novějších verzích aplikace se menu může lišit.</p>
+<div class="callout callout-tip"><p><strong>Pokud robot po aktualizaci není stabilní</strong> nebo neudrží rovnováhu, proveďte z aplikace úplnou kalibraci (full body). Pokud nepomůže, několikrát ji zopakujte; i když pomůže, vyplatí se ji zopakovat podruhé. Pokud problém trvá, <a href="/en/index-en.html#contatti">napište nám přes kontaktní formulář</a>.</p></div>
 <h2>Co nedělat</h2>
 <ul>
-<li><strong>Nevypínejte robota</strong> a nepřerušujte připojení během aktualizace.</li>
-<li><strong>Neaktualizujte</strong> s téměř vybitou baterií ani na nestabilní síti.</li>
-<li><strong>Nepoužívejte neoficiální balíčky firmwaru</strong>: aktualizace přicházejí jen z kanálů Unitree.</li>
-<li><strong>Nekalibrujte „pro jistotu“</strong>: kalibrace se opakuje jen v případě potřeby, jako u firmwaru 1.3.0, a po konzultaci s podporou.</li>
-<li><strong>Nezačínejte</strong>, dokud neznáte aktuální verzi firmwaru.</li>
+<li><strong>Nevypínejte robota</strong> a během aktualizace nepřerušujte připojení.</li>
+<li><strong>Neaktualizujte</strong> s téměř vybitou baterií nebo s nestabilní sítí.</li>
+<li><strong>Nepoužívejte neoficiální balíčky firmwaru</strong>: aktualizace přicházejí jen kanály Unitree.</li>
+<li><strong>Nekalibrujte znovu, když robot funguje dobře</strong>: kalibrace je pro robota, který není stabilní.</li>
+<li><strong>Nezačínejte</strong>, aniž znáte aktuální verzi firmwaru.</li>
 </ul>
-
 <h2>Lze se vrátit k předchozí verzi?</h2>
-<p>Pro firmware G1 Unitree v prostudovaných dokumentech (uživatelská příručka, stránka aplikace, FAQ pro vývojáře) postup pro downgrade nezveřejňuje. Nezkoušejte ho proto sami. Pokud aktualizace způsobí problémy, obraťte se nejdřív na Abra Robotics, která dodává řadu Unitree do Česka a na Slovensko, s podporou v angličtině; příručka uvádí také technickou podporu Unitree (support@unitree.cc) a <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">zákaznický portál Unitree</a>.</p>
-
-<div class="product-strip" aria-label="Prodotti citati">
-<div class="product-strip-head"><span>Produkty zmíněné v článku</span><a href="/cs/unitree-g1.html">Celá řada G1</a></div>
+<p>Pro firmware G1 Unitree v prověřených dokumentech (uživatelská příručka, stránka aplikace, FAQ pro vývojáře) postup návratu ke starší verzi nezveřejňuje. Není to tedy operace, kterou byste měli zkoušet sami. Pokud aktualizace způsobí problémy, prvním kontaktem je Abra Robotics; příručka uvádí také technickou podporu Unitree (support@unitree.cc) a <a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">zákaznický portál Unitree</a>.</p>
+<div aria-label="Prodotti citati" class="product-strip">
+<div class="product-strip-head"><span>Produkty v článku</span><a href="/cs/unitree-g1.html">Řada G1</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>Sekundární vývoj, 23 DoF, výpočetní dok</p>
-<div class="product-card-price">38&nbsp;005&nbsp;€ <small>bez DPH</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+<p>SDK, 23 DoF, výpočetní dok</p>
+<div class="product-card-price">38.005 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Zobrazit produkt</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
 </div>
 </article>
 <article class="product-card">
@@ -227,46 +218,40 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-battery-en.html">Baterie G1</a></h3>
 <p>9000 mAh, rychlá výměna</p>
-<div class="product-card-price">880&nbsp;€ <small>bez DPH</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+<div class="product-card-price">880 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Zobrazit produkt</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
 </div>
 </article>
 <article class="product-card">
-<a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="Dálkový ovladač G1 (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
+<a class="product-card-media" href="/en/prodotti/unitree-g1-remote-en.html"><img alt="Ovladač G1 (R3)" loading="lazy" src="/images/official/unitree-telecomando.webp"/></a>
 <div class="product-card-body">
-<h3><a href="/en/prodotti/unitree-g1-remote-en.html">Dálkový ovladač G1 (R3)</a></h3>
+<h3><a href="/en/prodotti/unitree-g1-remote-en.html">Ovladač G1 (R3)</a></h3>
 <p>Náhradní, vždy nabitý</p>
-<div class="product-card-price">367&nbsp;€ <small>bez DPH</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Detail produktu</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
+<div class="product-card-price">367 € <small>bez DPH</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-remote-en.html">Zobrazit produkt</a><a class="product-card-link" href="/en/assessment-en.html">Nabídka</a></div>
 </div>
 </article>
 </div>
 </div>
 <h2>Časté dotazy</h2>
 <h3>Jak se aktualizuje firmware Unitree G1?</h3>
-<p>G1 podporuje aktualizaci OTA přes síť. Začíná se v oficiální aplikaci Unitree Explore připojené k robotu, po kontrole baterie, aktuální verze a sítě, a robot se nevypíná, dokud aktualizace neskončí.</p>
-<h3>Kde najdu novinky a poznámky k vydání firmwaru?</h3>
-<p>Novinky a poznámky k vydání najdete v centru podpory Unitree (support.unitree.com).</p>
+<p>Přes síť (OTA), s robotem připojeným k aplikaci Unitree Explore. Nejprve si zapište aktuální verzi a zkontrolujte baterii a síť.</p>
 <h3>Mohu se vrátit k předchozí verzi firmwaru?</h3>
-<p>Unitree to nedokumentuje. Pokud aktualizace způsobí problémy, kontaktujte podporu a downgrade nezkoušejte sami.</p>
-<h3>Po aktualizaci G1 hlásí „Joint limit abnormal“ nebo „Transient Over Voltage“: co dělat?</h3>
-<p>Podle FAQ Unitree pro vývojáře se u firmwaru 1.3.0 nebo novějšího změnila kalibrace kloubů a předchozí kalibraci je třeba v aplikaci provést znovu. Před novou kalibrací si vyžádejte potvrzení od technické podpory.</p>
+<p>Unitree to nedokumentuje. Pokud aktualizace způsobí problémy, obraťte se na podporu, místo abyste sami zkoušeli návrat.</p>
+<h3>Po aktualizaci G1 hlásí alarmy kloubů: co dělat?</h3>
+<p>V aplikaci zkontrolujte, které klouby hlásí chybu. Pokud robot není stabilní, proveďte úplnou kalibraci z aplikace a několikrát ji zopakujte; pokud problém trvá, napište nám přes kontaktní formulář.</p>
 <h3>Mohu robota během aktualizace vypnout?</h3>
 <p>Ne. Nepřerušujte napájení ani připojení, dokud aktualizace neskončí.</p>
-
-<p>Pro každodenní provoz robota slouží <a href="/cs/blog/unitree-g1-guida-operativa.html">provozní návod k G1</a>, který popisuje zapnutí, dálkový ovladač a bezpečnostní příkazy. Pokud na G1 EDU vyvíjíte, SDK a ROS 2 popisuje <a href="/cs/blog/unitree-g1-programmazione.html">návod k programování</a>; rozdíly mezi verzemi shrnuje článek <a href="/cs/blog/unitree-g1-quale-versione-scegliere.html">který G1 zvolit</a>. Konfigurace s cenami najdete na stránce <a href="/cs/unitree-g1.html">Unitree G1</a> a v detailu <a href="/en/prodotti/unitree-g1-edu-standard-en.html">G1 EDU U1</a>; pokud potřebujete druhou baterii, abyste během zkoušek nezůstali bez energie, je tu <a href="/en/prodotti/unitree-g1-battery-en.html">baterie G1</a>. Celou řadu najdete na stránce <a href="/en/umanoidi-en.html">humanoidi</a>.</p>
-
+<p>Pro každodenní používání robota pokrývá <a href="unitree-g1-guida-operativa.html">návod k obsluze G1</a> zapnutí, ovladač a bezpečnostní příkazy. Kdo vyvíjí na G1 EDU, najde SDK a ROS 2 v <a href="unitree-g1-programmazione.html">průvodci programováním</a>.</p>
 <div class="figure-grid">
-<figure class="figure-card"><img src="/images/official/unitree-g1-info-batteria.webp" alt="Rychlovýměnná baterie Unitree G1" width="800" height="800" loading="lazy"/><figcaption>Baterie G1: před aktualizací začínejte s plným nabitím.</figcaption></figure>
-<figure class="figure-card"><img src="/images/official/unitree-telecomando.webp" alt="Přenosný dálkový ovladač Unitree G1" width="800" height="800" loading="lazy"/><figcaption>Dálkový ovladač G1: při zkouškách po aktualizaci ho mějte po ruce.</figcaption></figure>
+<figure class="figure-card"><img alt="Rychle vyměnitelná baterie Unitree G1" height="800" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp" width="800"/><figcaption>Baterie G1: před aktualizací začněte s plným nabitím.</figcaption></figure>
+<figure class="figure-card"><img alt="Přenosný ovladač Unitree G1" height="800" loading="lazy" src="/images/official/unitree-telecomando.webp" width="800"/><figcaption>Ovladač G1, mějte ho po ruce při testech po aktualizaci.</figcaption></figure>
 </div>
-
 <h2>Zdroje</h2>
 <ul>
-<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, oficiální produktová stránka (položka „Upgraded Intelligent OTA“, výdrž, záruka)</a></li>
-<li><a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download: oficiální aplikace, funkce a videonávody k G1</a></li>
-<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual (kontroly před zapnutím, připojení k aplikaci, kalibrace)</a></li>
-<li><a href="https://support.unitree.com/home/en/G1_developer/FAQ" rel="noopener noreferrer" target="_blank">Unitree Document Center, G1 Developer FAQ</a></li>
+<li><a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">Unitree G1, oficiální list (výdrž, záruka)</a></li>
+<li><a href="https://www.unitree.com/app/g1" rel="noopener noreferrer" target="_blank">Unitree Explore APP Download: oficiální aplikace, funkce a videonávody G1</a></li>
+<li><a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">Unitree G1 User Manual V1.6 („Intelligent OTA Upgrade“, kontroly před zapnutím, připojení k aplikaci, kalibrace)</a></li>
 <li><a href="https://global-serviceconsole.unitree.com/index.html" rel="noopener noreferrer" target="_blank">Unitree, zákaznický portál</a></li>
 </ul>
 </div>
