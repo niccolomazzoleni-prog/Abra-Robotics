@@ -46,14 +46,6 @@
   // Pagine nelle lingue europee (/de/, /fr/, ...): banner in inglese, policy inglese in /en/
   var LANGDIR = /^\/(de|fr|nl|da|sv|no|fi|es|pl|cs|uk)\//.test(location.pathname);
 
-  function prefix() {
-    var p = location.pathname;
-    if (LANGDIR) return '../';
-    if (/\/en\/(prodotti|blog)\//.test(p)) return '../../';
-    if (/\/(prodotti|blog|en|editor)\//.test(p)) return '../';
-    return '';
-  }
-
   var CSS = '.consent-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;max-width:760px;margin:0 auto;background:#0a0a0a;color:#f5f5f5;border-radius:12px;padding:14px 44px 14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.3);font:14px/1.45 Satoshi,-apple-system,BlinkMacSystemFont,sans-serif}body.has-wa-bar .consent-banner{bottom:76px}' +
     '.consent-text{margin:0 0 10px;font-size:13px;color:#e5e5e5}.consent-text a{color:#fff;text-decoration:underline}' +
     '.consent-prefs{display:grid;gap:6px;margin:0 0 10px;font-size:13px}.consent-prefs[hidden]{display:none}.consent-prefs label{display:flex;gap:8px;align-items:center}' +
@@ -78,12 +70,12 @@
       text: 'We use technical cookies and, with your consent, statistics (Google Analytics) and marketing cookies (Google Ads, Meta) to measure visits and campaigns.',
       policy: 'Cookie Policy', reject: 'Reject', accept: 'Accept all', prefs: 'Customise', save: 'Save choices',
       tech: 'Technical (always on)', stats: 'Statistics: Google Analytics', mkt: 'Marketing: Google Ads, Meta Pixel', close: 'Close and reject',
-      policyHref: LANGDIR ? '../en/cookie-policy-en.html' : (/\/en\/(prodotti|blog)\//.test(location.pathname) ? '../' : '') + 'cookie-policy-en.html',
+      policyHref: "/en/cookie-policy-en.html",
     } : {
       text: 'Usiamo cookie tecnici e, con il tuo consenso, cookie di statistica (Google Analytics) e di marketing (Google Ads, Meta) per misurare visite e campagne.',
       policy: 'Cookie Policy', reject: 'Rifiuta', accept: 'Accetta tutti', prefs: 'Personalizza', save: 'Salva le scelte',
       tech: 'Tecnici (sempre attivi)', stats: 'Statistiche: Google Analytics', mkt: 'Marketing: Google Ads, Meta Pixel', close: 'Chiudi e rifiuta',
-      policyHref: prefix() + 'cookie-policy.html',
+      policyHref: "/cookie-policy.html",
     };
     banner = document.createElement('div');
     banner.className = 'consent-banner';
