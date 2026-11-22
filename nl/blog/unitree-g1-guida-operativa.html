@@ -52,7 +52,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   "@type": "Article",
   "headline": "Unitree G1: aanzetten, afstandsbediening en netwerk",
   "datePublished": "2026-07-13",
-  "dateModified": "2026-10-19",
+  "dateModified": "2026-11-22",
   "author": {
     "@type": "Organization",
     "name": "Abra Robotics"
@@ -74,33 +74,40 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   }
 }
 </script>
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "G1-U1 of G1-U2?",
+      "name": "G1-U1 o G1-U2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "De U1 volstaat voor voortbeweging en controle. De U2 voegt een taille met 3 assen en armen met 7 assen toe: nodig als het project over manipulatie gaat."
+        "text": "De U1 volstaat voor voortbeweging en besturing. De U2 voegt een taille met 3 assen en armen met 7 assen toe: nuttig als het project over manipulatie gaat."
       }
     },
     {
       "@type": "Question",
-      "name": "SSH-wachtwoord?",
+      "name": "Wat zijn de SSH-gegevens van de G1?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "De standaardgegevens van de PC2 zijn unitree / 123. Werken ze niet, dan levert Unitree ze via de support. Wijzig ze bij de eerste keer inloggen."
+        "text": "Op de PC2 (192.168.123.164) gebruiker unitree, wachtwoord 123. Wijzig het wachtwoord bij de eerste aanmelding."
       }
     },
     {
       "@type": "Question",
-      "name": "Hoe stop ik de G1 veilig?",
+      "name": "Hoe stopt u de G1 veilig?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Met damping, L2 + B. L2 + Y (zero moment) zet het koppel op nul: een staande robot die niet hangt, valt."
+        "text": "Tijdens het lopen: laat de joysticks los en schakel met dubbelklik START naar staan, laat hem dan vóór een stoel zitten of hang hem weer aan het frame. Damping (L2 + B) en zero torque (L2 + Y) laten een staande robot vallen: damping alleen als noodstop of bij een zittende of hangende robot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zijn de commando's van de afstandsbediening altijd dezelfde?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee, Unitree wijzigt ze met de firmwareversies. Controleer de versie in de app en de bijbehorende sticker in het Unitree Document Center."
       }
     },
     {
@@ -108,20 +115,19 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
       "name": "Hoe lang gaat de accu van de G1 mee?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Circa 2 uur volgens Unitree. Voor een testdag zijn minstens twee accu's nodig."
+        "text": "Ongeveer 2 uur volgens Unitree. Voor een testdag zijn minstens twee accu's nodig."
       }
     },
     {
       "@type": "Question",
-      "name": "Kan de G1 Air via SSH worden aangesloten zoals de EDU?",
+      "name": "Verbindt de G1 Air via SSH zoals de EDU?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nee. De PC2 voor eigen code en ontwikkeling met de SDK is alleen op de G1 EDU aanwezig."
+        "text": "Nee. De PC2 voor eigen code en ontwikkeling met de SDK zijn er alleen op de G1 EDU."
       }
     }
   ]
-}
-</script>
+}</script>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Unitree G1: aanzetten, afstandsbediening en netwerk"/>
@@ -213,49 +219,45 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </figure>
 
 <header class="article-header">
-<p class="label">Unitree G1 · Praktijkgids</p>
-<h1>Unitree G1: aanzetten, afstandsbediening gebruiken en de pc aansluiten</h1>
-<div class="article-meta"><time datetime="2026-10-19">Bijgewerkt 19 oktober 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
+<p class="label">Unitree G1 · Gebruikshandleiding</p>
+<h1>Unitree G1: inschakelen, de afstandsbediening gebruiken en de pc verbinden</h1>
+<div class="article-meta"><time datetime="2026-11-22">Bijgewerkt op 22 november 2026</time><span>Abra Robotics</span><span>~20 min</span></div>
 </header>
-
 <div class="article-layout">
 <div class="article-main">
-<p class="article-lead">Praktische gids voor de <a href="/nl/unitree-g1.html">Unitree G1</a> EDU: versies, opstarten, knoppen van de R3-afstandsbediening, accu, netwerk en SSH. De commando's volgen de officiële sticker op de afstandsbediening en de ontwikkelaarsdocumentatie van Unitree.</p>
-
+<p class="article-lead">Gebruikshandleiding voor de <a href="/nl/unitree-g1.html">Unitree G1</a> EDU: versies, inschakelen, commando's van de afstandsbediening R3, accu, netwerk en SSH. De commando's volgen de Unitree-documentatie van november 2026: ze veranderen met de firmware, dus vergelijk ze altijd met de sticker van uw versie.</p>
 <div class="article-content">
-
 <h2 id="varianti">G1 EDU-versies (U1–U10)</h2>
-<p>Codes uit de Unitree-prijslijst. Het verschil tussen de modellen zit in de mechanische basis (23 of 29 DoF) en de gemonteerde <strong>manipulator</strong>. De G1 Air ondersteunt geen eigen softwareontwikkeling: in de officiële tabel van Unitree staat die optie alleen bij de G1 EDU.</p>
+<p>Codes uit de Unitree-prijslijst. De modellen verschillen in de mechanische basis (23 of 29 DoF) en in de gemonteerde <strong>manipulator</strong>. De G1 Air ondersteunt geen eigen softwareontwikkeling: in de officiële Unitree-tabel staat dit alleen bij de G1 EDU.</p>
 <div class="spec-table-wrap">
 <table>
 <thead><tr><th>SKU</th><th>DoF</th><th>Manipulator</th><th>Productpagina</th></tr></thead>
 <tbody>
-<tr><td><strong>G1 Air</strong></td><td>23</td><td>Dummy (niet-EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
-<tr><td><strong>G1-U1</strong></td><td>23</td><td>Dummy-handen, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
+<tr><td><strong>G1 Air</strong></td><td>23</td><td>Dummy (geen EDU)</td><td><a href="/en/prodotti/unitree-g1-en.html">Air</a></td></tr>
+<tr><td><strong>G1-U1</strong></td><td>23</td><td>Dummyhanden, Jetson Orin NX</td><td><a href="/en/prodotti/unitree-g1-edu-standard-en.html">U1</a></td></tr>
 <tr><td><strong>G1-U2</strong></td><td>29</td><td>Dummy + taille 3 DoF + arm 7 DoF</td><td><a href="/en/prodotti/unitree-g1-edu-plus-en.html">U2</a></td></tr>
-<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1 drie vingers, zonder tactiel</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
-<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1 drie vingers, met tactiel</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
-<tr><td><strong>G1-U5</strong></td><td>n.v.t.</td><td>Inspire RH56DFQ, zonder tactiel</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
-<tr><td><strong>G1-U6</strong></td><td>n.v.t.</td><td>Inspire RH56DFTP, met tactiel</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
-<tr><td><strong>G1-U7</strong></td><td>n.v.t.</td><td>Revo2 Basic (5 vingers)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
-<tr><td><strong>G1-U8</strong></td><td>n.v.t.</td><td>Revo2 Touch (5 vingers, met tactiel)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
-<tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 zonder tactiel (compacte config.)</td><td><a href="/en/prodotti/unitree-g1-u9-en.html">U9</a></td></tr>
+<tr><td><strong>G1-U3</strong></td><td>43</td><td>Dex3-1 drie vingers, zonder tastsensoren</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-a-en.html">U3</a></td></tr>
+<tr><td><strong>G1-U4</strong></td><td>43</td><td>Dex3-1 drie vingers, met tastsensoren</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-b-en.html">U4</a></td></tr>
+<tr><td><strong>G1-U5</strong></td><td>n.d.</td><td>Inspire RH56DFQ, zonder tastsensoren</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-c-en.html">U5</a></td></tr>
+<tr><td><strong>G1-U6</strong></td><td>n.d.</td><td>Inspire RH56DFTP, met tastsensoren</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-d-en.html">U6</a></td></tr>
+<tr><td><strong>G1-U7</strong></td><td>n.d.</td><td>Revo2 Basic (5 vingers)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-e-en.html">U7</a></td></tr>
+<tr><td><strong>G1-U8</strong></td><td>n.d.</td><td>Revo2 Touch (5 vingers, met tastsensoren)</td><td><a href="/en/prodotti/unitree-g1-edu-ultimate-f-en.html">U8</a></td></tr>
+<tr><td><strong>G1-U9</strong></td><td>37</td><td>Dex3-1 zonder tastsensoren (compacte configuratie)</td><td><a href="/en/prodotti/unitree-g1-u9-en.html">U9</a></td></tr>
 <tr><td><strong>G1-U10</strong></td><td>35</td><td>Revo2 Basic (5 vingers)</td><td><a href="/en/prodotti/unitree-g1-u10-en.html">U10</a></td></tr>
 </tbody>
 </table>
 </div>
-<p>De prijzen staan in de <a href="/nl/#models">openbare prijslijst</a>. Om tussen de versies te kiezen is er de gids <a href="/nl/blog/unitree-g1-quale-versione-scegliere.html">welke G1 kiezen</a>; gaat het om werk aan een werkbank, bekijk dan ook de <a href="/nl/unitree-g1-d.html">G1-D</a>.</p>
-
-<div class="product-strip" aria-label="Producten in dit artikel">
-<div class="product-strip-head"><span>Producten in dit artikel</span><a href="/nl/unitree-g1.html">G1-serie</a></div>
+<p>Prijzen in de <a href="/en/listino-unitree-en.html">openbare prijslijst</a>. Voor de keuze tussen versies is er de gids <a href="unitree-g1-quale-versione-scegliere.html">welke G1 kiezen</a>; voor werk aan een werkbank kunt u ook naar de <a href="/nl/unitree-g1-d.html">G1-D</a> kijken.</p>
+<div aria-label="Prodotti citati" class="product-strip">
+<div class="product-strip-head"><span>Producten in dit artikel</span><a href="/nl/unitree-g1.html">G1-reeks</a></div>
 <div class="product-strip-grid">
 <article class="product-card">
 <a class="product-card-media" href="/en/prodotti/unitree-g1-edu-standard-en.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="/images/official/unitree-g1-01.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-standard-en.html">Unitree G1 EDU U1</a></h3>
-<p>SDK, 23 DoF, rekenmodule</p>
-<div class="product-card-price">€ 38.005 <small>excl. btw</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+<p>SDK, 23 DoF, rekendock</p>
+<div class="product-card-price">38.005 € <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-standard-en.html">Bekijk product</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
 </div>
 </article>
 <article class="product-card">
@@ -263,185 +265,128 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-edu-plus-en.html">Unitree G1 EDU U2</a></h3>
 <p>29 DoF: taille met 3 assen, armen met 7 assen</p>
-<div class="product-card-price">€ 46.809 <small>excl. btw</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+<div class="product-card-price">46.809 € <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-edu-plus-en.html">Bekijk product</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
 </div>
 </article>
 <article class="product-card">
-<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="Accu van de G1" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
+<a class="product-card-media" href="/en/prodotti/unitree-g1-battery-en.html"><img alt="G1-accu" loading="lazy" src="/images/official/unitree-g1-info-batteria.webp"/></a>
 <div class="product-card-body">
 <h3><a href="/en/prodotti/unitree-g1-battery-en.html">G1-accu</a></h3>
-<p>9000 mAh, snel te verwisselen</p>
-<div class="product-card-price">€ 880 <small>excl. btw</small></div>
-<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Bekijk productpagina</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
+<p>9000 mAh, snel wisselbaar</p>
+<div class="product-card-price">880 € <small>excl. btw</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="/en/prodotti/unitree-g1-battery-en.html">Bekijk product</a><a class="product-card-link" href="/en/assessment-en.html">Offerte</a></div>
 </div>
 </article>
 </div>
 </div>
 <h2 id="protezione">Fysieke bescherming van de robot</h2>
-<div class="callout callout-warning">
-<strong>Bescherming aanbevolen:</strong> voor demo's met bewegingen op de grond is het verstandig armen en benen te beschermen met <strong>zachte hoezen, bijvoorbeeld van neopreen</strong>. Gebruik bij de eerste start het <a href="/en/prodotti/unitree-g1-frame-en.html">beschermframe</a> uit de prijslijst.
-</div>
-
-<h2 id="telecomando">R3-afstandsbediening</h2>
-<p>De G1 wordt bediend met de Unitree R3-afstandsbediening, compatibel met de hele Unitree-gamma. Unitree geeft een accu van 780 mAh op voor circa 5 uur gebruik (<a href="https://www.unitree.com/R3" rel="noopener noreferrer" target="_blank">specificaties R3</a>). Inschakelen volgens de G1-gebruikershandleiding: kort op de aan/uit-knop drukken en daarna langer dan 2 seconden ingedrukt houden tot de piep.</p>
-<div class="callout callout-tip">
-<strong>Accu van de afstandsbediening:</strong> houd hem opgeladen. Zonder R3 is er geen snelle manier om de robot te stoppen.
-</div>
-<p>De reserve-afstandsbediening staat in de prijslijst: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>.</p>
-
-<h2 id="comandi">Knoppen van de afstandsbediening (huidige firmware)</h2>
-<p>De combinaties kunnen per firmwareversie veranderen: controleer altijd de sticker op uw eigen afstandsbediening voordat u de robot gebruikt.</p>
-<p>Legenda zoals gedrukt op de R3-afstandsbediening:</p>
-<ul>
-<li><strong>★</strong> = één korte druk</li>
-<li><strong>▲</strong> = 2 seconden ingedrukt houden</li>
-<li>In motion control komt u in de damping-beveiliging door <strong>damping</strong> (L2 + B) <strong>5 seconden</strong> ingedrukt te houden. Dat is de noodstop die in de handleiding wordt aangegeven: de robot zakt langzaam naar de grond.</li>
-</ul>
-
-<figure class="article-cover" style="max-width:100%;margin:28px 0">
-<img src="/images/blog/g1-telecomando-comandi.webp" alt="Tabel met knoppen van de Unitree G1 R3-afstandsbediening" loading="lazy" style="padding:0;max-height:none;object-fit:contain"/>
-<figcaption style="padding:12px 16px;font-size:0.85rem;color:var(--gray-600);border-top:1px solid var(--gray-200);background:var(--gray-50)">Officiële knopreferentie van Unitree op de R3-afstandsbediening.</figcaption>
-</figure>
-
-<h3>Zero moment / houding</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
-<thead><tr><th>Commando</th><th>Toetsen</th><th>Type</th></tr></thead>
+<div class="callout callout-warning"><strong>Aanbevolen bescherming:</strong> bij demonstraties met bewegingen op de grond kunt u armen en benen beter beschermen met <strong>zachte hoezen, bijvoorbeeld van neopreen</strong>. Gebruik bij de eerste start het <a href="/en/prodotti/unitree-g1-frame-en.html">beschermframe</a> uit de prijslijst.</div>
+<h2 id="telecomando">Afstandsbediening R3</h2>
+<p>De G1 wordt bediend met de afstandsbediening Unitree R3. Unitree geeft een accu van 780 mAh op voor ongeveer 5 uur gebruik. Inschakelen: kort op de aan-knop drukken, daarna langer dan 2 seconden ingedrukt houden tot de pieptoon.</p>
+<div class="callout callout-tip"><strong>Houd hem altijd opgeladen.</strong> De afstandsbediening laadt langzaam op: zet hem aan het eind van de dag aan de lader, niet vlak voordat u de robot gebruikt. Zonder afstandsbediening kunt u de robot niet snel bedienen.</div>
+<p>Een reserve-afstandsbediening staat in de prijslijst: <a href="/en/prodotti/unitree-g1-remote-en.html">G1 Remote Controller</a>, <a class="prezzo" data-prodotto="unitree-g1-remote" href="/en/prodotti/unitree-g1-remote-en.html" title="Unitree G1 Remote Controller"><img src="/images/official/unitree-telecomando.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-telecomando.webp" alt="" loading="lazy"><b>Unitree G1 Remote Controller</b><span>367 € excl. btw</span><em>Bekijk product →</em></span></a> <span class="prezzo-iva">excl. btw</span>.</p>
+<h2 id="comandi">Commando's van de afstandsbediening</h2>
+<p><strong>Unitree wijzigt de knoppencombinaties met de firmwareversies.</strong> Het Document Center heeft voor elke motion-controlversie (8.2, 8.4.2, 8.5, hoger dan 8.6) een eigen sticker en, bij recente versies, aparte stickers voor G1 met 23 of 29 vrijheidsgraden. Controleer vóór gebruik de versie in de app en vergelijk de commando's met de juiste sticker op de <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">officiële pagina van de afstandsbediening</a>. De tabel hieronder geeft de commando's uit de Unitree-documentatie van november 2026.</p>
+<div class="callout callout-danger"><strong>Damping en zero torque laten de robot vallen.</strong> L2 + B (damping) en L2 + Y (zero torque) nemen de motoren de actieve regeling af: een staande G1 zonder ondersteuning verliest zijn evenwicht en valt. Daarom noemt Unitree L2 + B de noodstop: gebruik hem alleen als de robot onbeheersbaar is, of als hij al zit of aan het frame hangt.</div>
+<h3>Modus wisselen</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Commando</th><th>Knoppen</th><th>Wat het doet</th></tr></thead>
 <tbody>
-<tr><td><strong>Zero moment</strong></td><td>L2 + Y</td><td>★ Koppel nul, gewrichten vrij: <strong>valt als de robot niet hangt</strong></td></tr>
-<tr><td><strong>Damping</strong></td><td>L2 + B</td><td>★ Dempt de motoren: <strong>dit is het commando om de robot te stoppen</strong></td></tr>
-<tr><td><strong>Locked standing</strong></td><td>L2 + ↑</td><td>★ Staand met geblokkeerde gewrichten</td></tr>
-<tr><td><strong>Opstaan uit liggende houding</strong></td><td>L2 + X</td><td>★ Lig → Sta (alleen op een vlakke, harde vloer)</td></tr>
-<tr><td><strong>Zittend</strong></td><td>L2 + ←</td><td>▲</td></tr>
-<tr><td><strong>Hurken ↔ staan</strong></td><td>L2 + A</td><td>▲</td></tr>
-<tr><td><strong>Adapt rise</strong></td><td>R1 + R2 + X</td><td>★</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-danger">
-<strong>Veiligheid:</strong> gebruik om de robot te stoppen <strong>damping, L2 + B</strong> (houd in motion control 5 seconden ingedrukt voor de damping-beveiliging). <strong>Verwar dit niet met L2 + Y</strong> (zero moment): dat zet het motorkoppel op nul en als de robot niet aan het harnas of het frame hangt, valt hij.
-</div>
-
-<h3>Motion control</h3>
-<div class="spec-table-wrap">
-<table class="kbd-table">
-<thead><tr><th>Modus</th><th>Toetsen</th><th>Opmerkingen</th></tr></thead>
+<tr><td>Damping (①)</td><td>L2 + B</td><td>Motoren gedempt. Staande robot: valt. Alleen zittend of hangend, en als noodstop</td></tr>
+<tr><td>Zero torque</td><td>L2 + Y</td><td>Motoren zonder koppel, gewrichten vrij. Staande robot: valt</td></tr>
+<tr><td>Vergrendeld staan (②)</td><td>L2 + ↑</td><td>Voorbereidingshouding, in ongeveer 5 seconden</td></tr>
+<tr><td>Zitten (④)</td><td>L2 + ←</td><td>Gaat langzaam zitten, zonder evenwichtsregeling: alleen vóór een stoel</td></tr>
+<tr><td>Van liggen naar staan (⑤)</td><td>L2 + X</td><td>Alleen op een vlakke, harde vloer</td></tr>
+<tr><td>Hurken (⑥)</td><td>L2 + A</td><td>Gehurkt, zonder evenwichtsregeling</td></tr>
+<tr><td>Debugmodus</td><td>L2 + R2</td><td>Alleen voor ontwikkeling met de SDK, vanuit damping of zero torque</td></tr>
+</tbody></table></div>
+<h3>Beweging</h3>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Modus</th><th>Knoppen</th><th>Opmerkingen</th></tr></thead>
 <tbody>
-<tr><td><strong>Running mode</strong></td><td>R2 + A</td><td>▲</td></tr>
-<tr><td>Lage/hoge snelheid (run)</td><td>R2 + ↑ / ↓</td><td>★</td></tr>
-<tr><td><strong>Regular mode (1 DoF taille)</strong></td><td>R1 + X</td><td>▲ Taille met 1 vrijheidsgraad (G1-U1)</td></tr>
-<tr><td><strong>Regular mode (3 DoF taille)</strong></td><td>R1 + Y</td><td>▲ Taille met 3 vrijheidsgraden (G1-U2 en later)</td></tr>
-<tr><td>Lage/hoge snelheid (regular)</td><td>Dubbelklik L2 / L1</td><td>★</td></tr>
-<tr><td>Stepping / standing</td><td>Dubbelklik START</td><td>★</td></tr>
-<tr><td>Climb mode</td><td>R2 + B</td><td>▲</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="callout callout-tip">
-<strong>Interactieve gebaren:</strong> SELECT + A (handdruk), SELECT + Y (zwaaien), dubbelklik Y (groet naar het gezicht), dubbelklik X (kus), dubbelklik A (applaus). Allemaal met een korte druk.
-</div>
-
-<h3>Debugmodus (alleen SDK-ontwikkeling)</h3>
-<p><strong>L2 + R2</strong> stopt het programma voor bewegingscontrole, zodat het niet in conflict komt met de SDK-commando's. Met <strong>L2 + A</strong> controleert u of u in de debugmodus zit; als de robot niet reageert zoals verwacht, geeft Unitree aan L2 + R2 te herhalen (<a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">Unitree, remote control</a>). Dit is alleen nodig in het lab, met de robot opgehangen, wanneer u de motoren op laag niveau aanstuurt. Bij normaal gebruik met de afstandsbediening komt u niet in de debugmodus.</p>
-
-<h3>Aanbevolen opstartsequenties (van de sticker)</h3>
+<tr><td>Rennen (③)</td><td>R2 + A</td><td>Snelheid: R2 + ↑ snel, R2 + ↓ langzaam</td></tr>
+<tr><td>Hoofdbesturing, taille 1 DoF (⑦)</td><td>R1 + X</td><td>Dubbelklik START: wisselt tussen staan en lopen</td></tr>
+<tr><td>Hoofdbesturing, taille 3 DoF (⑧)</td><td>R1 + Y</td><td>Alleen voor G1 met taille met 3 assen</td></tr>
+<tr><td>Lage / hoge snelheid</td><td>Dubbelklik L2 / L1</td><td>In de hoofdbesturing</td></tr>
+</tbody></table></div>
+<p>Gebaren: SELECT + Y zwaaien, SELECT + A hand schudden, SELECT + X draait zich om en zwaait. Unitree waarschuwt dat de huidige loopmodus niet bedoeld is voor trappen.</p>
+<h3>Volgorde voor in- en uitschakelen</h3>
 <ul>
-<li><strong>Vanuit zittende houding (aanbevolen):</strong> Inschakelen → (1) Damping → (2) Locked standing → (3) Running/Regular → demo → (4) Zittend → uitschakelen. Stappen (2) en (3) met handmatige ondersteuning achter de robot.</li>
-<li><strong>Vanuit liggende houding:</strong> Inschakelen → (1) → (10) → demo → (6) → uitschakelen. Stap (10) is niet genummerd in de stickertabel: controleer hem met de leveringsdocumentatie.</li>
-<li><strong>Vanuit hurkzit:</strong> Inschakelen → (1) → (6) → demo → (6) → uitschakelen.</li>
+<li><strong>Zittend op een stoel (het eenvoudigst):</strong> inschakelen → ① damping → ② vergrendeld staan, de robot bij de schouders vasthouden → ③ of ⑦ → gebruik → vóór de stoel ④ zitten → ① damping → uitschakelen.</li>
+<li><strong>Hangend aan het beschermframe:</strong> inschakelen en ongeveer anderhalve minuut wachten → ① damping → ② → de haak laten zakken tot de voeten de grond raken → R2 + A → als hij stabiel loopt, de haak losmaken. Uitschakelen: de robot weer ophangen, dan ① damping en uitschakelen.</li>
+<li><strong>Vanuit liggen of hurken:</strong> alleen op een vlakke, harde vloer. Met gemonteerde robothanden raadt Unitree deze starts af, omdat ze de handen kunnen beschadigen.</li>
 </ul>
-
-<h2 id="accensione">De accu van de G1 inschakelen</h2>
-<ol>
-<li>Plaats de accu aan de zijkant van de robot, met de schakelaar naar achteren, tot hij vastklikt.</li>
-<li>Druk kort op de aan/uit-knop en houd hem daarna minstens 2 s ingedrukt.</li>
-<li>Wacht ongeveer 1 minuut: na het opstarten staan alle gewrichten in <strong>zero torque</strong>.</li>
-<li>Volg de sequentie van de afstandsbediening: eerst <strong>damping (L2 + B)</strong>, daarna de andere stappen.</li>
-</ol>
-
-<h3>Methode opgehangen aan het frame (lab)</h3>
-<p>Aanbevolen bij de eerste start, met het beschermframe. Hang de robot op en zet de voeten pas op de grond nadat hij in Regular mode stabiel staat. Armen en benen vrij, geen kabel onder spanning.</p>
-
-<h3>Methode vanaf de grond (L2+X)</h3>
-<div class="callout callout-danger">
-Alleen op een <strong>vlakke en harde</strong> ondergrond. De robot staat zelf op: houd afstand.
-</div>
-
-<h2 id="carico">Laadvermogen en armen</h2>
-<p>Unitree geeft een maximale last per arm van circa <strong>3 kg op de G1 EDU</strong> (circa 2 kg op de G1-basis) en benadrukt dat die sterk afhangt van de armhouding (<a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">specificaties G1</a>).</p>
-
+<p>Om de robot tijdens het lopen te stoppen, laat u de joysticks los en schakelt u naar staan (dubbelklik START). Damping geeft u pas als de robot zit of hangt.</p>
+<h3>Debugmodus</h3>
+<p>Alleen nodig voor wie met de SDK ontwikkelt: L2 + R2, vanuit damping of zero torque, stopt het bewegingsprogramma van Unitree, zodat het niet botst met de SDK-commando's. In de debugmodus reageert de robot niet meer op de normale bewegingscommando's. <strong>De debugmodus verlaat u door de robot opnieuw te starten.</strong> Het geval wordt besproken in <a href="https://github.com/unitreerobotics/unitree_sdk2_python/issues/43" rel="noopener noreferrer" target="_blank">issue #43 van unitree_sdk2_python</a>.</p>
+<h2 id="accensione">Accu: plaatsen en inschakelen</h2>
+<ul>
+<li>Schuif de accu aan de zijkant in de robot, in de juiste richting en zonder te forceren, tot hij vastklikt.</li>
+<li>Kort op de knop van de accu drukken, daarna minstens 2 seconden ingedrukt houden.</li>
+<li>Wacht ongeveer een minuut: na het opstarten staan de gewrichten in zero torque en moet de robot zitten of hangen.</li>
+<li>Volg een van de volgordes hierboven. Gebruik bij de eerste start het <a href="/en/prodotti/unitree-g1-frame-en.html">beschermframe</a> (<a class="prezzo" data-prodotto="unitree-g1-frame" href="/en/prodotti/unitree-g1-frame-en.html" title="Unitree G1 Staffa di protezione"><img src="/images/official/placeholder-prodotto.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">367 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/placeholder-prodotto.webp" alt="" loading="lazy"><b>Unitree G1 Staffa di protezione</b><span>367 € excl. btw</span><em>Bekijk product →</em></span></a> <span class="prezzo-iva">excl. btw</span>).</li>
+</ul>
+<h2 id="carico">Belasting van de armen</h2>
+<p>Unitree geeft een maximale belasting per arm op van ongeveer 3 kg bij de G1 EDU (ongeveer 2 kg bij de basis-G1) en geeft aan dat die sterk afhangt van de armstand.</p>
 <h2 id="batteria">Accu en gebruiksduur</h2>
-<p>Volgens Unitree heeft de G1 een slimme, snel te verwisselen accu van <strong>9000 mAh</strong> voor <strong>circa 2 uur</strong> gebruik. In de praktijk daalt dat bij continu lopen en belasting van de armen.</p>
+<p>De G1 heeft een snel wisselbare accu van 9000 mAh: Unitree geeft ongeveer 2 uur gebruiksduur op, die daalt bij continu lopen en belasting op de armen.</p>
 <ul>
-<li>Voor een testdag zijn minstens twee accu's nodig: de <a href="/en/prodotti/unitree-g1-battery-en.html">extra G1-accu</a> staat in de prijslijst voor € 880, de <a href="/en/prodotti/unitree-g1-charger-en.html">lader</a> voor € 147 (excl. btw).</li>
-<li>Schakel de robot uit voordat u de accu vervangt en zet hem weer in damping voordat hij opstaat.</li>
+<li>Voor een testdag zijn minstens twee accu's nodig: <a href="/en/prodotti/unitree-g1-battery-en.html">G1-accu</a> <a class="prezzo" data-prodotto="unitree-g1-battery" href="/en/prodotti/unitree-g1-battery-en.html" title="Unitree G1 Battery"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">880 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery</b><span>880 € excl. btw</span><em>Bekijk product →</em></span></a> <span class="prezzo-iva">excl. btw</span>, <a href="/en/prodotti/unitree-g1-charger-en.html">lader</a> <a class="prezzo" data-prodotto="unitree-g1-charger" href="/en/prodotti/unitree-g1-charger-en.html" title="Unitree G1 Battery Charger"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">147 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-g1-info-batteria.webp" alt="" loading="lazy"><b>Unitree G1 Battery Charger</b><span>147 € excl. btw</span><em>Bekijk product →</em></span></a> <span class="prezzo-iva">excl. btw</span>.</li>
+<li>Laat de robot vóór het wisselen van de accu zitten of hangen, daarna damping en uitschakelen.</li>
 </ul>
-
-<h2 id="rete">Netwerk en SSH</h2>
-<p>Breng de pc naar de subnet <code>192.168.123.0/24</code> met een vrij statisch IP: Unitree suggereert <code>192.168.123.99</code>. Gebruik niet .161, .164 en .120. De PC1 (.161) voert de bewegingscontrole van Unitree uit en is niet open voor ontwikkelaars; ontwikkeling gebeurt op de PC2 (.164).</p>
-<ul>
-<li><strong>Directe Ethernet</strong> naar de LAN-poort van de G1 (aanbevolen door Unitree)</li>
-<li><strong>Wi-Fi</strong>: volgens de <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">LeRobot-documentatie</a> is Wi-Fi op de PC2 standaard uitgeschakeld en moet het handmatig worden ingeschakeld; om pakketten te installeren kunt u de internetverbinding van de pc via Ethernet delen.</li>
-</ul>
-
-<div class="ip-grid">
-<div class="ip-card"><code>192.168.123.161</code><span>MCU / bewegingscontroller Unitree</span></div>
-<div class="ip-card"><code>192.168.123.164</code><span>Jetson Orin (PC2), SSH <code>unitree</code> / <code>123</code></span></div>
-<div class="ip-card"><code>192.168.123.120</code><span>LiDAR Livox MID-360 (hoofd)</span></div>
-</div>
-
+<h2 id="rete">Netwerk en SSH (alleen G1 EDU)</h2>
+<p>Zet de pc in het netwerk 192.168.123.0/24 met een vrij statisch IP-adres, bijvoorbeeld 192.168.123.99. Gebruik de adressen van de robot niet:</p>
+<div class="spec-table-wrap"><table class="kbd-table">
+<thead><tr><th>Adres</th><th>Wat er draait</th></tr></thead>
+<tbody>
+<tr><td>192.168.123.161</td><td>PC1, bewegingsbesturing van Unitree: niet toegankelijk</td></tr>
+<tr><td>192.168.123.164</td><td>PC2 (Jetson Orin), de computer voor ontwikkeling</td></tr>
+<tr><td>192.168.123.120</td><td>LiDAR Livox MID-360, indien gemonteerd</td></tr>
+</tbody></table></div>
 <pre><code>ping 192.168.123.164
 ssh unitree@192.168.123.164
-# Standaardwachtwoord: 123</code></pre>
-<div class="callout callout-warning">
-<strong>Inloggegevens:</strong> <code>unitree</code> / <code>123</code> zijn de standaardgegevens die ook in de LeRobot-documentatie staan. Unitree geeft aan de initiële inloggegevens bij de support op te vragen, dus op sommige units kunnen ze anders zijn. Wijzig het wachtwoord na de eerste keer inloggen, vooral als de robot in het bedrijfsnetwerk komt.
-</div>
-
-
-<h2 id="errori">Veelvoorkomende problemen</h2>
+# utente: unitree   password: 123</code></pre>
+<p><strong>Standaardgegevens van de PC2:</strong> gebruiker <code>unitree</code>, wachtwoord <code>123</code>. Wijzig het wachtwoord bij de eerste aanmelding, zeker als de robot op het bedrijfsnetwerk komt.</p>
+<p>De aanbevolen verbinding is een Ethernetkabel rechtstreeks naar de poort van de robot.</p>
+<h2 id="errori">Als er iets misgaat</h2>
 <ul>
-<li><strong>Ping reageert niet</strong>: controleer de Ethernet-kabel en het IP van de pc en <strong>herstart de robot</strong>.</li>
-<li><strong>Met de SDK trillen de gewrichten</strong>: de motion controller is nog actief, of de afstandsbediening en de SDK sturen tegelijk commando's. Voor aansturing op laag niveau gaat u in de debugmodus; stop anders de SDK-commando's.</li>
+<li>De ping reageert niet: controleer kabel en IP-adres van de pc en start daarna de robot opnieuw.</li>
+<li>Met de SDK trilt de robot: het bewegingsprogramma van Unitree en de SDK sturen tegelijk commando's. Ga naar de debugmodus of stop de SDK-commando's.</li>
+<li>De robot is niet stabiel of houdt zijn evenwicht niet: gids over <a href="unitree-g1-problemi-comuni-soluzioni.html">veelvoorkomende problemen met de G1</a>.</li>
 </ul>
-
 <h2 id="prossimi">Volgende stappen</h2>
 <ul>
-<li><a href="/en/blog/unitree-g1-programmazione.html">SDK2 en ROS 2</a></li>
+<li><a href="unitree-g1-programmazione.html">SDK2 en ROS2</a></li>
 <li><a href="/en/accessori-en.html">Accessoires en hoezen</a></li>
-<li><a href="/nl/blog/ros2-unitree-guida-rapida.html">ROS 2 op Unitree, snelstartgids</a></li>
-<li><a href="/nl/blog/unitree-regolamento-macchine-2027.html">Veiligheid en de Machineverordening 2027</a></li>
-<li><a href="/nl/#cta-finale">Neem contact op met Abra voor ondersteuning</a></li>
+<li><a href="ros2-unitree-guida-rapida.html">ROS 2 op Unitree, snelle gids</a></li>
+<li><a href="unitree-regolamento-macchine-2027.html">Veiligheid en Machineverordening 2027</a></li>
+<li><a href="/nl/index.html#cta-finale">Abra contacteren voor ondersteuning</a></li>
 </ul>
-
 </div>
-
 <section class="article-faq" id="faq">
 <h2>FAQ</h2>
-<div class="faq-item"><h3>G1-U1 of G1-U2?</h3><p>De U1 volstaat voor voortbeweging en controle. De U2 voegt een taille met 3 assen en armen met 7 assen toe: nodig als het project over manipulatie gaat.</p></div>
-<div class="faq-item"><h3>SSH-wachtwoord?</h3><p>De standaardgegevens van de PC2 zijn unitree / 123. Werken ze niet, dan levert Unitree ze via de support. Wijzig ze bij de eerste keer inloggen.</p></div>
-<div class="faq-item"><h3>Hoe stop ik de G1 veilig?</h3><p>Met damping, L2 + B. L2 + Y (zero moment) zet het koppel op nul: een staande robot die niet hangt, valt.</p></div>
-<div class="faq-item"><h3>Hoe lang gaat de accu van de G1 mee?</h3><p>Circa 2 uur volgens Unitree. Voor een testdag zijn minstens twee accu's nodig.</p></div>
-<div class="faq-item"><h3>Kan de G1 Air via SSH worden aangesloten zoals de EDU?</h3><p>Nee. De PC2 voor eigen code en ontwikkeling met de SDK is alleen op de G1 EDU aanwezig.</p></div>
+<div class="faq-item"><h3>G1-U1 o G1-U2?</h3><p>De U1 volstaat voor voortbeweging en besturing. De U2 voegt een taille met 3 assen en armen met 7 assen toe: nuttig als het project over manipulatie gaat.</p></div>
+<div class="faq-item"><h3>Wat zijn de SSH-gegevens van de G1?</h3><p>Op de PC2 (192.168.123.164) gebruiker unitree, wachtwoord 123. Wijzig het wachtwoord bij de eerste aanmelding.</p></div>
+<div class="faq-item"><h3>Hoe stopt u de G1 veilig?</h3><p>Tijdens het lopen: laat de joysticks los en schakel met dubbelklik START naar staan, laat hem dan vóór een stoel zitten of hang hem weer aan het frame. Damping (L2 + B) en zero torque (L2 + Y) laten een staande robot vallen: damping alleen als noodstop of bij een zittende of hangende robot.</p></div>
+<div class="faq-item"><h3>Zijn de commando's van de afstandsbediening altijd dezelfde?</h3><p>Nee, Unitree wijzigt ze met de firmwareversies. Controleer de versie in de app en de bijbehorende sticker in het Unitree Document Center.</p></div>
+<div class="faq-item"><h3>Hoe lang gaat de accu van de G1 mee?</h3><p>Ongeveer 2 uur volgens Unitree. Voor een testdag zijn minstens twee accu's nodig.</p></div>
+<div class="faq-item"><h3>Verbindt de G1 Air via SSH zoals de EDU?</h3><p>Nee. De PC2 voor eigen code en ontwikkeling met de SDK zijn er alleen op de G1 EDU.</p></div>
 </section>
-
 <section class="article-references" id="fonti">
 <h2>Bronnen</h2>
 <ol>
-<li>Unitree, technische specificaties G1 en G1 EDU (afmetingen, accu, last per arm, garantie): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
+<li>Unitree, technische fiche G1 en G1 EDU (afmetingen, accu, armbelasting, garantie): <a href="https://www.unitree.com/g1/" rel="noopener noreferrer" target="_blank">unitree.com/g1</a></li>
 <li>Unitree Document Center, G1 developer: afstandsbediening en debugmodus: <a href="https://support.unitree.com/home/en/G1_developer/remote_control" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: architectuur en rekeneenheden: <a href="https://support.unitree.com/home/en/G1_developer/about_G1" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
 <li>Unitree Document Center, G1 developer: LiDAR Livox MID-360 (IP 192.168.123.120): <a href="https://support.unitree.com/home/en/G1_developer/lidar_Instructions" rel="noopener noreferrer" target="_blank">support.unitree.com</a></li>
-<li>Hugging Face, LeRobot-documentatie voor Unitree G1 (netwerk, SSH, Wi-Fi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
-<li>Unitree, R3-afstandsbediening: <a href="https://www.unitree.com/R3" rel="noopener noreferrer" target="_blank">unitree.com/R3</a></li>
-<li>Unitree, G1 User Manual V1.6 (opstarten, afstandsbediening, noodstop): <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">marketing.unitree.com</a></li>
+<li>Hugging Face, LeRobot-documentatie voor de Unitree G1 (netwerk, SSH, wifi): <a href="https://huggingface.co/docs/lerobot/en/unitree_g1" rel="noopener noreferrer" target="_blank">huggingface.co</a></li>
+<li>Unitree, afstandsbediening R3: <a href="https://www.unitree.com/R3" rel="noopener noreferrer" target="_blank">unitree.com/R3</a></li>
+<li>Unitree, G1 User Manual V1.6 (inschakelen, afstandsbediening, noodstop): <a href="https://marketing.unitree.com/article/en/G1/User_Manual.html" rel="noopener noreferrer" target="_blank">marketing.unitree.com</a></li>
 <li>Unitree, officiële Python-SDK: <a href="https://github.com/unitreerobotics/unitree_sdk2_python" rel="noopener noreferrer" target="_blank">unitree_sdk2_python</a></li>
 </ol>
 </section>
-
-<div class="article-cta">
+</div></div><div class="article-cta">
 <h2>Hebt u net een G1 ontvangen?</h2>
 <p>Voor vragen over opstarten, netwerk of bediening is Abra Robotics het eerste aanspreekpunt.</p>
 <a class="btn btn-primary" href="/nl/#cta-finale">Neem contact op</a>
@@ -503,5 +448,6 @@ ssh unitree@192.168.123.164
 </div>
 </footer>
 <script defer src="/script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
 </body>
 </html>
