@@ -1,0 +1,35 @@
+name: Sitemap lastmod allineato alle modifiche
+
+# Ogni volta che cambia una pagina, la data <lastmod> in sitemap.xml segue
+# l'ultimo commit della pagina: Google e lo script di indicizzazione serale
+# capiscono così quali pagine ripassare.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lastmod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Aggiorna lastmod
+        run: python scripts/aggiorna_lastmod.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: sitemap lastmod allineato alle modifiche [skip ci]"
+          for i in 1 2 3; do git push && break; git pull --rebase origin main; done
