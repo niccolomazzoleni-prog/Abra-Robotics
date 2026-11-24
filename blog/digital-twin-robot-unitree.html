@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Digital twin per robot Unitree: simulare prima di comprare</title>
+<meta name="description" content="Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il gemello digitale e cosa non dice."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://abrarobotics.com/blog/digital-twin-robot-unitree.html"/>
+<link href="https://abrarobotics.com/blog/digital-twin-robot-unitree.html" hreflang="it" rel="alternate"/>
+<link href="https://abrarobotics.com/en/blog/digital-twin-robot-unitree.html" hreflang="en" rel="alternate"/>
+<link href="https://abrarobotics.com/blog/digital-twin-robot-unitree.html" hreflang="x-default" rel="alternate"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="../images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"/>
+<link href="../images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="blog.css" rel="stylesheet"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Digital twin per robot Unitree: simulare prima di comprare",
+  "description": "Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il gemello digitale e cosa non dice.",
+  "datePublished": "2026-11-24",
+  "dateModified": "2026-11-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "url": "https://abrarobotics.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abra Robotics",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abrarobotics.com/images/logo-icon.png"
+    }
+  },
+  "mainEntityOfPage": "https://abrarobotics.com/blog/digital-twin-robot-unitree.html",
+  "image": "https://abrarobotics.com/images/home/sw-one-prompt.webp",
+  "inLanguage": "it"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Che cos'è il digital twin di un robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "È la copia virtuale del robot e del suo ambiente: modello cinematico e dinamico del robot, ambiente in scala reale, fisica dei contatti e la stessa interfaccia software del robot vero. Il codice provato nel gemello digitale gira poi sul robot cambiando solo l'interfaccia di rete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cosa vuol dire physical AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "È l'intelligenza artificiale che percepisce e agisce nel mondo fisico tramite un robot, invece di produrre solo testo o immagini. Le sue policy si addestrano quasi sempre in simulazione, perché servono milioni di tentativi che sul robot reale non sono possibili."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quali robot Unitree si possono simulare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il simulatore ufficiale unitree_mujoco include i modelli di A2, AS2, B2, B2W, G1, Go2, Go2W, H1, H1-2, H2 e R1. unitree_sim_isaaclab copre i compiti di manipolazione con G1 a 29 DoF, G1-D e R1; unitree_rl_lab e unitree_rl_gym servono ad addestrare la locomozione di Go2, G1 e H1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Una simulazione sostituisce il test sul robot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Dice presto se un compito è fattibile e quale configurazione funziona meglio, ma attriti, cavi, luce per la visione e latenza di rete vanno verificati sul robot. Per questo il digital twin viene prima del test reale, non al suo posto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Serve un robot EDU per usare il digital twin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per simulare no: i simulatori sono open source e girano su un PC. Per portare sul robot il codice provato in simulazione serve una versione con SDK, cioè EDU: il Go2 EDU costa 8.804,14 € e il G1 Edu Standard 38.004,54 €, IVA esclusa."
+      }
+    }
+  ]
+}
+  </script>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Abra Robotics"/>
+<meta property="og:title" content="Digital twin per robot Unitree: simulare prima di comprare"/>
+<meta property="og:description" content="Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il gemello digitale e cosa non dice."/>
+<meta property="og:url" content="https://abrarobotics.com/blog/digital-twin-robot-unitree.html"/>
+<meta property="og:image" content="https://abrarobotics.com/images/home/sw-one-prompt.webp"/>
+<meta property="og:locale" content="it_IT"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script defer src="../consent.js"></script>
+</head>
+<body>
+<nav class="navbar"><div class="container navbar-inner">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp"/></a>
+<div class="nav-links nav-post-links"><a href="../tecnologia.html">Tecnologia</a><a href="../blog.html">Blog</a></div>
+</div></nav>
+<article class="article-wrap"><div class="container">
+<nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Digital twin robot Unitree</nav>
+
+<figure class="article-cover">
+<video controls muted loop playsinline preload="none" poster="../images/home/sw-one-prompt.webp" src="../videos/software/one-prompt-gemello.mp4" aria-label="Gemello digitale di una cella robotizzata in simulazione"></video>
+</figure>
+
+<header class="article-header"><p class="label">Simulazione · Physical AI</p>
+<h1>Digital twin per robot Unitree: simulare prima di comprare</h1>
+<div class="article-meta"><time datetime="2026-11-24">24 novembre 2026</time><span>Abra Robotics</span></div>
+<div class="article-tldr"><strong>In breve:</strong> un <strong>digital twin</strong> di un robot Unitree è la sua copia virtuale dentro un ambiente in scala reale, con la fisica dei contatti e la stessa interfaccia software del robot vero. Unitree pubblica simulatori ufficiali in MuJoCo e Isaac Lab per G1, Go2, H2, R1 e gli altri modelli. Serve a capire se un compito è fattibile, con quale robot e con quale mano o pinza, prima di comprare. Non sostituisce il test sul robot: lo prepara.</div>
+</header>
+
+<div class="article-content">
+<p>Il <strong>digital twin di un robot Unitree</strong> risponde alla domanda che conta prima di un acquisto: il robot riesce a fare questo compito, in questo ambiente? I robot arrivano senza un'applicazione pronta, e il vero costo di un progetto è lo sviluppo. Provare in simulazione costa molto meno che scoprire un limite dopo aver comprato l'hardware.</p>
+
+<h2>Cos'è un digital twin di un robot</h2>
+<p>Un gemello digitale utile ha quattro parti:</p>
+<ul>
+<li><strong>Il robot</strong>: modello cinematico e dinamico (MJCF per MuJoCo, URDF o USD per Isaac Sim) con masse, giunti, limiti e attuatori.</li>
+<li><strong>L'ambiente</strong>: banchi, scaffali, pavimento e oggetti nelle misure reali, non una scena generica.</li>
+<li><strong>La fisica</strong>: gravità, contatti, attriti. È qui che si vede se una presa tiene o se il robot perde l'equilibrio.</li>
+<li><strong>La stessa interfaccia del robot</strong>: il programma manda gli stessi comandi e legge gli stessi stati del robot vero. Così il codice provato in simulazione passa al robot senza riscriverlo.</li>
+</ul>
+<p>L'ultimo punto è quello che distingue un digital twin da un'animazione 3D. Nei simulatori ufficiali Unitree il programma comunica in DDS con gli stessi messaggi del robot (<code>LowCmd</code>, <code>LowState</code>, <code>SportModeState</code>), quindi si sviluppa in simulazione e poi si cambia solo l'interfaccia di rete.</p>
+
+<h2>Physical AI: perché passa dalla simulazione</h2>
+<p>Con <strong>physical AI</strong> si intende l'intelligenza artificiale che agisce nel mondo fisico tramite un robot: cammina, afferra, ispeziona. A differenza di un modello linguistico, non impara da testi ma da tentativi, e ne servono moltissimi. Per la locomozione, per esempio, gli strumenti Unitree addestrano migliaia di robot in parallelo su una GPU; sul robot reale sarebbe impossibile, oltre che pericoloso.</p>
+<p>Il percorso tipico, descritto anche da Unitree nel repository <code>unitree_rl_gym</code>, è in quattro passi: <strong>Train</strong> (addestramento in simulazione), <strong>Play</strong> (verifica della policy), <strong>Sim2Sim</strong> (prova in un secondo simulatore, per non dipendere dai difetti del primo) e <strong>Sim2Real</strong> (prova sul robot). Lo stesso schema vale per la manipolazione e per i modelli che uniscono visione e azione: i dati si raccolgono e si provano prima nel gemello digitale.</p>
+
+<h2>I simulatori ufficiali Unitree</h2>
+<p>Unitree mantiene su GitHub quattro progetti di simulazione, tutti open source. Si scelgono in base al lavoro da fare.</p>
+<table>
+<thead><tr><th>Progetto</th><th>Motore</th><th>Robot</th><th>A cosa serve</th></tr></thead>
+<tbody>
+<tr><td><a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a></td><td>MuJoCo</td><td>A2, AS2, B2, B2W, G1, Go2, Go2W, H1, H1-2, H2, R1</td><td>Provare controllori di basso livello scritti con <code>unitree_sdk2</code>, <code>unitree_sdk2_python</code> o <code>unitree_ros2</code>, prima del robot</td></tr>
+<tr><td><a href="https://github.com/unitreerobotics/unitree_sim_isaaclab" rel="noopener noreferrer" target="_blank">unitree_sim_isaaclab</a></td><td>Isaac Lab</td><td>G1 29 DoF, G1-D, R1</td><td>Compiti di manipolazione (prendi e posa, impila, metti nel cassetto), raccolta e replay di dati, validazione di modelli</td></tr>
+<tr><td><a href="https://github.com/unitreerobotics/unitree_rl_lab" rel="noopener noreferrer" target="_blank">unitree_rl_lab</a></td><td>Isaac Lab</td><td>Go2, H1, G1 29 DoF</td><td>Addestrare con reinforcement learning le policy di locomozione</td></tr>
+<tr><td><a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a></td><td>Isaac Gym, MuJoCo</td><td>Go2, G1, H1, H1-2</td><td>Il percorso completo Train, Play, Sim2Sim, Sim2Real</td></tr>
+</tbody>
+</table>
+<p>Due dettagli pratici dai README. <code>unitree_mujoco</code> oggi supporta solo lo sviluppo di basso livello: serve a verificare i controllori, non ad avere le funzioni di alto livello dell'app. <code>unitree_sim_isaaclab</code> usa gli stessi topic DDS del robot reale (dominio DDS 1): se un robot vero è acceso sulla stessa rete, bisogna tenere separati i due. Per chi parte da zero con MuJoCo e i movimenti del G1 c'è la guida <a href="g1-addestramento-da-video-mujoco.html">motion imitation del G1 in MuJoCo</a>; per rete e primi topic, <a href="ros2-unitree-guida-rapida.html">ROS 2 su robot Unitree</a>.</p>
+
+<div class="product-strip" aria-label="Prodotti citati">
+<div class="product-strip-head"><span>Prodotti citati nell'articolo</span><a href="../catalogo-unitree.html">Catalogo Unitree</a></div>
+<div class="product-strip-grid">
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-go2-edu.html"><img alt="Unitree Go2 EDU" loading="lazy" src="../images/prodotti/go2-edu-std.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-go2-edu.html">Unitree Go2 EDU</a></h3>
+<p>SDK e ROS 2, simulato in MuJoCo e Isaac Lab</p>
+<div class="product-card-price">8.804 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-go2-edu.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-g1-edu-standard.html"><img alt="Unitree G1 EDU U1" loading="lazy" src="../images/official/unitree-g1-01.webp"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-g1-edu-standard.html">Unitree G1 EDU U1</a></h3>
+<p>SDK, 23 DoF, dock di calcolo</p>
+<div class="product-card-price">38.005 € <small>IVA esclusa</small></div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-edu-standard.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+<article class="product-card">
+<a class="product-card-media" href="../prodotti/unitree-g1-d-standard.html"><img alt="Unitree G1-D Standard" loading="lazy" src="../images/prodotti/g1-d-standard.png"/></a>
+<div class="product-card-body">
+<h3><a href="../prodotti/unitree-g1-d-standard.html">Unitree G1-D</a></h3>
+<p>Base su ruote e colonna, per la manipolazione</p>
+<div class="product-card-price">Prezzo su richiesta</div>
+<div class="product-card-actions"><a class="product-card-btn" href="../prodotti/unitree-g1-d-standard.html">Vedi scheda</a><a class="product-card-link" href="../assessment.html">Preventivo</a></div>
+</div>
+</article>
+</div>
+</div>
+
+<h2>Come costruiamo un digital twin, passo per passo</h2>
+<ol>
+<li><strong>Rilievo dell'ambiente.</strong> Dalle foto della postazione ricaviamo con la fotogrammetria (COLMAP e OpenMVS) un modello 3D in scala metrica. Le misure vere contano: dieci centimetri di differenza nell'altezza di un banco cambiano la presa.</li>
+<li><strong>Modello del robot con i pezzi reali.</strong> Partiamo dai modelli ufficiali Unitree e montiamo la mano, la pinza o la ventosa che useremmo davvero, con il loro ingombro.</li>
+<li><strong>Il compito.</strong> Si definisce cosa deve fare il robot, con quali oggetti, in quanto tempo e con quali vincoli di sicurezza, per esempio niente contatti con macchine e tavoli.</li>
+<li><strong>Prove ripetute e numeri.</strong> Non basta un video riuscito: ripetiamo il compito su molti tentativi, con oggetti in posizioni diverse, e misuriamo tasso di successo, tempo ciclo e collisioni.</li>
+<li><strong>Confronto tra configurazioni.</strong> Robot diversi, mani diverse, posizioni diverse del robot: il gemello digitale dice quale combinazione funziona meglio prima di comprarla.</li>
+<li><strong>Passaggio al robot reale.</strong> Solo dopo si prova sul robot, con lo stesso codice e con le cautele della prima messa in servizio.</li>
+</ol>
+<p>Per i quadrupedi il gemello digitale serve anche a preparare la missione: mappa, percorso, punti di ispezione e ritorno alla stazione di ricarica. Ne parliamo nella guida <a href="robot-quadrupede-ispezione-industriale.html">robot quadrupede per l'ispezione industriale</a>.</p>
+
+<figure>
+<video controls muted loop playsinline preload="none" poster="../images/home/sw-humanoid-studio.webp" src="../videos/software/humanoid-studio-g1.mp4" aria-label="Unitree G1 in simulazione con Humanoid Studio"></video>
+<figcaption>Humanoid Studio, la nostra base per i POC sugli umanoidi Unitree: visione e manipolazione già integrate.</figcaption>
+</figure>
+<figure>
+<video controls muted loop playsinline preload="none" poster="../images/home/sw-fleet-control.webp" src="../videos/software/fleet-control-go2.mp4" aria-label="Fleet Control per quadrupedi Unitree Go2"></video>
+<figcaption>Fleet Control: missioni dei quadrupedi Unitree gestite da un’unica dashboard.</figcaption>
+</figure>
+
+<h2>Cosa la simulazione non dice</h2>
+<ul>
+<li><strong>Attriti e materiali.</strong> Un oggetto scivoloso, un cartone che si piega o un cavo che si impiglia sono difficili da modellare bene.</li>
+<li><strong>Visione.</strong> Riflessi, controluce e polvere cambiano quello che vede la camera. Il modello visivo va provato con le immagini reali della postazione.</li>
+<li><strong>Il singolo robot.</strong> Guadagni degli attuatori, usura e calibrazione variano da un esemplare all'altro. Prima di un progetto il robot va calibrato.</li>
+<li><strong>Rete e tempi.</strong> Latenza e banda del wifi aziendale non sono quelle del PC di simulazione.</li>
+<li><strong>Sicurezza.</strong> Una policy addestrata non è una funzione di sicurezza e non sostituisce le protezioni previste dalla valutazione dei rischi (vedi la guida sul <a href="unitree-regolamento-macchine-2027.html">Regolamento Macchine 2027</a>).</li>
+</ul>
+
+<h2>Cosa serve e quanto costa</h2>
+<p>Per simulare basta un PC: i progetti sono open source. Isaac Sim e Isaac Lab richiedono una GPU NVIDIA RTX con i requisiti indicati da NVIDIA; MuJoCo gira anche su macchine più semplici. Per portare il codice sul robot serve invece una versione con SDK, cioè EDU: il <a class="prezzo" data-prodotto="unitree-go2-edu" href="../prodotti/unitree-go2-edu.html" title="Unitree Go2 EDU — Robot Quadrupede"><img src="/images/official/unitree-go2-02.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">8.804 €</span><span class="prezzo-card" aria-hidden="true"><img src="/images/official/unitree-go2-02.webp" alt="" loading="lazy"><b>Unitree Go2 EDU — Robot Quadrupede</b><span>8.804 € IVA esclusa</span><em>Vedi scheda →</em></span></a> <span class="prezzo-iva">IVA esclusa</span> per il Go2 EDU e il <a class="prezzo" data-prodotto="unitree-g1-edu-standard" href="../prodotti/unitree-g1-edu-standard.html" title="Unitree G1 EDU Standard (G1-U1)"><img src="/Abra-Robotics/images/official/unitree-g1-01.webp" alt="" width="20" height="20" loading="lazy"><span class="prezzo-num">38.005 €</span><span class="prezzo-card" aria-hidden="true"><img src="/Abra-Robotics/images/official/unitree-g1-01.webp" alt="" loading="lazy"><b>Unitree G1 EDU Standard (G1-U1)</b><span>38.005 € IVA esclusa</span><em>Vedi scheda →</em></span></a> <span class="prezzo-iva">IVA esclusa</span> per il G1 Edu Standard. La differenza tra le versioni del G1 è spiegata in <a href="unitree-g1-quale-versione-scegliere.html">quale versione del G1 scegliere</a>.</p>
+<p>Abra Robotics, parte della filiera di distribuzione di Unitree Italia, costruisce il digital twin come primo passo dei progetti: è la base dei nostri <a href="../poc.html">POC di robotica</a> e degli strumenti della <a href="../tecnologia.html">suite software Abra</a>. Sviluppo e simulazione sono servizi separati dalla fornitura del robot.</p>
+
+<section class="article-faq">
+<h2>Domande frequenti</h2>
+<div class="faq-item"><h3>Che cos'è il digital twin di un robot?</h3><p>È la copia virtuale del robot e del suo ambiente: modello cinematico e dinamico del robot, ambiente in scala reale, fisica dei contatti e la stessa interfaccia software del robot vero. Il codice provato nel gemello digitale gira poi sul robot cambiando solo l'interfaccia di rete.</p></div>
+<div class="faq-item"><h3>Cosa vuol dire physical AI?</h3><p>È l'intelligenza artificiale che percepisce e agisce nel mondo fisico tramite un robot, invece di produrre solo testo o immagini. Le sue policy si addestrano quasi sempre in simulazione, perché servono milioni di tentativi che sul robot reale non sono possibili.</p></div>
+<div class="faq-item"><h3>Quali robot Unitree si possono simulare?</h3><p>Il simulatore ufficiale unitree_mujoco include i modelli di A2, AS2, B2, B2W, G1, Go2, Go2W, H1, H1-2, H2 e R1. unitree_sim_isaaclab copre i compiti di manipolazione con G1 a 29 DoF, G1-D e R1; unitree_rl_lab e unitree_rl_gym servono ad addestrare la locomozione di Go2, G1 e H1.</p></div>
+<div class="faq-item"><h3>Una simulazione sostituisce il test sul robot?</h3><p>No. Dice presto se un compito è fattibile e quale configurazione funziona meglio, ma attriti, cavi, luce per la visione e latenza di rete vanno verificati sul robot. Per questo il digital twin viene prima del test reale, non al suo posto.</p></div>
+<div class="faq-item"><h3>Serve un robot EDU per usare il digital twin?</h3><p>Per simulare no: i simulatori sono open source e girano su un PC. Per portare sul robot il codice provato in simulazione serve una versione con SDK, cioè EDU: il Go2 EDU costa 8.804,14 € e il G1 Edu Standard 38.004,54 €, IVA esclusa.</p></div>
+</section>
+
+<section class="article-references">
+<h2>Fonti</h2>
+<ol>
+<li>Unitree, <a href="https://github.com/unitreerobotics/unitree_mujoco" rel="noopener noreferrer" target="_blank">unitree_mujoco</a> (robot inclusi, messaggi DDS supportati, solo basso livello)</li>
+<li>Unitree, <a href="https://github.com/unitreerobotics/unitree_sim_isaaclab" rel="noopener noreferrer" target="_blank">unitree_sim_isaaclab</a> (robot e compiti di manipolazione, dominio DDS 1)</li>
+<li>Unitree, <a href="https://github.com/unitreerobotics/unitree_rl_lab" rel="noopener noreferrer" target="_blank">unitree_rl_lab</a> (Isaac Lab, Go2, H1, G1 29 DoF)</li>
+<li>Unitree, <a href="https://github.com/unitreerobotics/unitree_rl_gym" rel="noopener noreferrer" target="_blank">unitree_rl_gym</a> (Train, Play, Sim2Sim, Sim2Real)</li>
+<li>NVIDIA, <a href="https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html" rel="noopener noreferrer" target="_blank">Isaac Lab, requisiti e installazione</a></li>
+<li>COLMAP, <a href="https://colmap.github.io/" rel="noopener noreferrer" target="_blank">documentazione ufficiale</a>; OpenMVS, <a href="https://github.com/cdcseacave/openMVS" rel="noopener noreferrer" target="_blank">repository</a></li>
+</ol>
+</section>
+</div>
+<div class="article-cta"><h2>Volete sapere se il robot fa il vostro compito?</h2><p>Partiamo dal digital twin della vostra postazione: compito, robot, mano o pinza, e i numeri delle prove prima dell'acquisto.</p><a class="btn btn-primary" href="../poc.html">POC di robotica</a><a class="btn btn-outline-light" href="../index.html#contatti">Scrivici</a></div>
+</div></article>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<a class="logo" href="../index.html"><img alt="Abra Robotics" class="logo-img" src="../images/logo.webp" width="180" height="72" decoding="async"/></a>
+<p class="footer-desc">Robotica applicata per aziende, università e istituti di ricerca. Hardware, software su misura, formazione e supporto tecnico dedicato.</p>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Prodotti</span>
+<a href="../cobot.html">Cobot</a>
+<a href="../amr.html">AMR</a>
+<a href="../quadrupedi.html">Quadrupedi</a>
+<a href="../umanoidi.html">Umanoidi</a>
+<a href="../accessori.html">Accessori</a>
+<a href="../catalogo-unitree.html">Unitree Italia</a>
+<a href="../catalogo.html">Catalogo completo</a>
+<a href="../listino-unitree.html">Listino prezzi</a>
+</div>
+<div class="footer-nav">
+<span class="footer-heading">Servizi e risorse</span>
+<a href="../assessment.html">Trova il robot giusto</a>
+<a href="../software.html">Software</a>
+<a href="../finanziamenti.html">Finanziamenti</a>
+<a href="../manifattura-logistica.html">Manifattura e Logistica</a>
+<a href="../universita-ricerca.html">Università e Ricerca</a>
+<a href="../blog.html">Blog</a>
+</div>
+<div class="footer-contact">
+<span class="footer-heading">Contatti</span>
+<a href="../chi-siamo.html">Chi siamo</a>
+<a href="mailto:info@abrarobotics.com">info@abrarobotics.com</a>
+<p>Viale Trieste 105<br/>30026 Portogruaro (VE)</p>
+<a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ22FrpPdyPVRihi4eXPQlljTcG2toa8XF2d8W-QX-L9cKMaXqozq_YsHym56LEdTs9WsnqlTHeF" rel="noopener noreferrer" target="_blank">Prenota una chiamata</a>
+</div>
+</div>
+<div class="container footer-bottom">
+<p class="footer-copy">© 2026 Abra Robotics di Niccolò Mazzoleni. Tutti i diritti riservati. P.IVA 04800170278, Portogruaro (VE). Intermediazione e sviluppo software: Caligo di Giovanni Pitton, P.IVA 04982670277.</p>
+<nav aria-label="Note legali" class="footer-legal">
+<a href="../privacy-policy.html">Privacy Policy</a>
+<a href="../cookie-policy.html">Cookie Policy</a>
+<a href="../condizioni-di-vendita.html">Condizioni di vendita</a>
+<a href="../politica-resi.html">Politica resi</a>
+<a href="../note-legali.html">Note legali</a>
+</nav>
+</div>
+</footer>
+<script defer src="../script.js"></script>
+<script defer src="/blog/prezzi.js"></script>
+</body></html>
