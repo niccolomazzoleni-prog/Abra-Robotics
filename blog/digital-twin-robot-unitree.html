@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Digital twin per robot Unitree: simulare prima di comprare</title>
-<meta name="description" content="Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il gemello digitale e cosa non dice."/>
+<meta name="description" content="Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il digital twin e cosa non dice."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://abrarobotics.com/blog/digital-twin-robot-unitree.html"/>
 <link href="https://abrarobotics.com/blog/digital-twin-robot-unitree.html" hreflang="it" rel="alternate"/>
@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Digital twin per robot Unitree: simulare prima di comprare",
-  "description": "Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il gemello digitale e cosa non dice.",
+  "description": "Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il digital twin e cosa non dice.",
   "datePublished": "2026-11-24",
   "dateModified": "2026-11-24",
   "author": {
@@ -52,7 +52,7 @@
       "name": "Che cos'è il digital twin di un robot?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "È la copia virtuale del robot e del suo ambiente: modello cinematico e dinamico del robot, ambiente in scala reale, fisica dei contatti e la stessa interfaccia software del robot vero. Il codice provato nel gemello digitale gira poi sul robot cambiando solo l'interfaccia di rete."
+        "text": "È la copia virtuale del robot e del suo ambiente: modello cinematico e dinamico del robot, ambiente in scala reale, fisica dei contatti e la stessa interfaccia software del robot vero. Il codice provato nel digital twin gira poi sul robot cambiando solo l'interfaccia di rete."
       }
     },
     {
@@ -93,7 +93,7 @@
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Abra Robotics"/>
 <meta property="og:title" content="Digital twin per robot Unitree: simulare prima di comprare"/>
-<meta property="og:description" content="Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il gemello digitale e cosa non dice."/>
+<meta property="og:description" content="Digital twin e physical AI per robot Unitree: simulatori ufficiali MuJoCo e Isaac Lab per G1, Go2, H2 e R1, come si costruisce il digital twin e cosa non dice."/>
 <meta property="og:url" content="https://abrarobotics.com/blog/digital-twin-robot-unitree.html"/>
 <meta property="og:image" content="https://abrarobotics.com/images/home/sw-one-prompt.webp"/>
 <meta property="og:locale" content="it_IT"/>
@@ -109,7 +109,7 @@
 <nav class="breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Digital twin robot Unitree</nav>
 
 <figure class="article-cover">
-<video controls muted loop playsinline preload="none" poster="../images/home/sw-one-prompt.webp" src="../videos/software/one-prompt-gemello.mp4" aria-label="Gemello digitale di una cella robotizzata in simulazione"></video>
+<video controls muted loop playsinline preload="none" poster="../images/home/sw-one-prompt.webp" src="../videos/software/one-prompt-gemello.mp4" aria-label="Digital twin di una cella robotizzata in simulazione"></video>
 </figure>
 
 <header class="article-header"><p class="label">Simulazione · Physical AI</p>
@@ -122,7 +122,7 @@
 <p>Il <strong>digital twin di un robot Unitree</strong> risponde alla domanda che conta prima di un acquisto: il robot riesce a fare questo compito, in questo ambiente? I robot arrivano senza un'applicazione pronta, e il vero costo di un progetto è lo sviluppo. Provare in simulazione costa molto meno che scoprire un limite dopo aver comprato l'hardware.</p>
 
 <h2>Cos'è un digital twin di un robot</h2>
-<p>Un gemello digitale utile ha quattro parti:</p>
+<p>Un digital twin utile ha quattro parti:</p>
 <ul>
 <li><strong>Il robot</strong>: modello cinematico e dinamico (MJCF per MuJoCo, URDF o USD per Isaac Sim) con masse, giunti, limiti e attuatori.</li>
 <li><strong>L'ambiente</strong>: banchi, scaffali, pavimento e oggetti nelle misure reali, non una scena generica.</li>
@@ -133,7 +133,7 @@
 
 <h2>Physical AI: perché passa dalla simulazione</h2>
 <p>Con <strong>physical AI</strong> si intende l'intelligenza artificiale che agisce nel mondo fisico tramite un robot: cammina, afferra, ispeziona. A differenza di un modello linguistico, non impara da testi ma da tentativi, e ne servono moltissimi. Per la locomozione, per esempio, gli strumenti Unitree addestrano migliaia di robot in parallelo su una GPU; sul robot reale sarebbe impossibile, oltre che pericoloso.</p>
-<p>Il percorso tipico, descritto anche da Unitree nel repository <code>unitree_rl_gym</code>, è in quattro passi: <strong>Train</strong> (addestramento in simulazione), <strong>Play</strong> (verifica della policy), <strong>Sim2Sim</strong> (prova in un secondo simulatore, per non dipendere dai difetti del primo) e <strong>Sim2Real</strong> (prova sul robot). Lo stesso schema vale per la manipolazione e per i modelli che uniscono visione e azione: i dati si raccolgono e si provano prima nel gemello digitale.</p>
+<p>Il percorso tipico, descritto anche da Unitree nel repository <code>unitree_rl_gym</code>, è in quattro passi: <strong>Train</strong> (addestramento in simulazione), <strong>Play</strong> (verifica della policy), <strong>Sim2Sim</strong> (prova in un secondo simulatore, per non dipendere dai difetti del primo) e <strong>Sim2Real</strong> (prova sul robot). Lo stesso schema vale per la manipolazione e per i modelli che uniscono visione e azione: i dati si raccolgono e si provano prima nel digital twin.</p>
 
 <h2>I simulatori ufficiali Unitree</h2>
 <p>Unitree mantiene su GitHub quattro progetti di simulazione, tutti open source. Si scelgono in base al lavoro da fare.</p>
@@ -187,13 +187,13 @@
 <li><strong>Modello del robot con i pezzi reali.</strong> Partiamo dai modelli ufficiali Unitree e montiamo la mano, la pinza o la ventosa che useremmo davvero, con il loro ingombro.</li>
 <li><strong>Il compito.</strong> Si definisce cosa deve fare il robot, con quali oggetti, in quanto tempo e con quali vincoli di sicurezza, per esempio niente contatti con macchine e tavoli.</li>
 <li><strong>Prove ripetute e numeri.</strong> Non basta un video riuscito: ripetiamo il compito su molti tentativi, con oggetti in posizioni diverse, e misuriamo tasso di successo, tempo ciclo e collisioni.</li>
-<li><strong>Confronto tra configurazioni.</strong> Robot diversi, mani diverse, posizioni diverse del robot: il gemello digitale dice quale combinazione funziona meglio prima di comprarla.</li>
+<li><strong>Confronto tra configurazioni.</strong> Robot diversi, mani diverse, posizioni diverse del robot: il digital twin dice quale combinazione funziona meglio prima di comprarla.</li>
 <li><strong>Passaggio al robot reale.</strong> Solo dopo si prova sul robot, con lo stesso codice e con le cautele della prima messa in servizio.</li>
 </ol>
-<p>Per i quadrupedi il gemello digitale serve anche a preparare la missione: mappa, percorso, punti di ispezione e ritorno alla stazione di ricarica. Ne parliamo nella guida <a href="robot-quadrupede-ispezione-industriale.html">robot quadrupede per l'ispezione industriale</a>.</p>
+<p>Per i quadrupedi il digital twin serve anche a preparare la missione: mappa, percorso, punti di ispezione e ritorno alla stazione di ricarica. Ne parliamo nella guida <a href="robot-quadrupede-ispezione-industriale.html">robot quadrupede per l'ispezione industriale</a>.</p>
 
 <h2>Provalo nel browser: Humanoid Studio e Fleet Control</h2>
-<p>Due dei nostri strumenti girano anche nel browser, in 3D, con i modelli dei robot Unitree. Sono versioni dimostrative dei gemelli digitali che usiamo nei progetti: si danno comandi e si guarda il robot eseguire, senza installare nulla.</p>
+<p>Due dei nostri strumenti girano anche nel browser, in 3D, con i modelli dei robot Unitree. Sono versioni dimostrative dei digital twin che usiamo nei progetti: si danno comandi e si guarda il robot eseguire, senza installare nulla.</p>
 <div class="demo-strip">
 <a class="demo-card" href="../demo/umanoide/?vista=semplice" data-demo="Humanoid Studio: dai un compito al G1" target="_blank" rel="noopener">
 <span class="demo-card-media"><img src="../demo/umanoide/copertina.jpg" alt="Humanoid Studio" loading="lazy"/><span class="demo-card-chip">Humanoid Studio · G1</span><span class="demo-card-play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></span></span>
@@ -221,7 +221,7 @@
 
 <section class="article-faq">
 <h2>Domande frequenti</h2>
-<div class="faq-item"><h3>Che cos'è il digital twin di un robot?</h3><p>È la copia virtuale del robot e del suo ambiente: modello cinematico e dinamico del robot, ambiente in scala reale, fisica dei contatti e la stessa interfaccia software del robot vero. Il codice provato nel gemello digitale gira poi sul robot cambiando solo l'interfaccia di rete.</p></div>
+<div class="faq-item"><h3>Che cos'è il digital twin di un robot?</h3><p>È la copia virtuale del robot e del suo ambiente: modello cinematico e dinamico del robot, ambiente in scala reale, fisica dei contatti e la stessa interfaccia software del robot vero. Il codice provato nel digital twin gira poi sul robot cambiando solo l'interfaccia di rete.</p></div>
 <div class="faq-item"><h3>Cosa vuol dire physical AI?</h3><p>È l'intelligenza artificiale che percepisce e agisce nel mondo fisico tramite un robot, invece di produrre solo testo o immagini. Le sue policy si addestrano quasi sempre in simulazione, perché servono milioni di tentativi che sul robot reale non sono possibili.</p></div>
 <div class="faq-item"><h3>Quali robot Unitree si possono simulare?</h3><p>Il simulatore ufficiale unitree_mujoco include i modelli di A2, AS2, B2, B2W, G1, Go2, Go2W, H1, H1-2, H2 e R1. unitree_sim_isaaclab copre i compiti di manipolazione con G1 a 29 DoF, G1-D e R1; unitree_rl_lab e unitree_rl_gym servono ad addestrare la locomozione di Go2, G1 e H1.</p></div>
 <div class="faq-item"><h3>Una simulazione sostituisce il test sul robot?</h3><p>No. Dice presto se un compito è fattibile e quale configurazione funziona meglio, ma attriti, cavi, luce per la visione e latenza di rete vanno verificati sul robot. Per questo il digital twin viene prima del test reale, non al suo posto.</p></div>
