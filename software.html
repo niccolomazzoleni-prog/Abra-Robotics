@@ -570,6 +570,15 @@ canvas.fleet{cursor:crosshair}
 @media (max-width:640px){.features{grid-template-columns:1fr}.suite-sec{padding:64px 0}}
 
 .sw-hint{bottom:auto!important;top:46px;right:14px}
+.fc-cowork-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:start}
+.fc-cowork-video{margin:0}
+.fc-cowork-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:18px;background:#000}
+.fc-cowork-video figcaption{margin-top:10px;font-size:.85rem;color:var(--gray-500,#6b6b6b)}
+.fc-cowork-text p{font-size:1.02rem;line-height:1.6}
+.fc-cowork-list{list-style:none;padding:0;margin:18px 0}
+.fc-cowork-list li{padding:10px 0;border-top:1px solid rgba(0,0,0,.08);line-height:1.5}
+.fc-cowork-note{font-size:.9rem;color:var(--gray-500,#6b6b6b)}
+@media (max-width:900px){.fc-cowork-grid{grid-template-columns:1fr;gap:24px}}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -722,6 +731,34 @@ canvas.fleet{cursor:crosshair}
 <a class="sw-demo" href="demo/prompt/?vista=semplice" data-demo="One-prompt coding: da una frase a una cella robot" target="_blank" rel="noopener"><span class="sw-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span>Prova la demo interattiva</span></a>
 <ul class="suite-more"><li>Compiti descritti in italiano</li><li>Codice generato sugli strumenti della suite</li><li>Prova in simulazione prima del robot</li></ul>
 </article>
+</div>
+</div>
+</section>
+
+<!-- FLEET CONTROL IN UN COWORKING (simulazione) -->
+<section class="sw-section fc-cowork" id="fleet-control-coworking">
+<div class="container">
+<div class="sw-section-head">
+<p class="label">Fleet Control · simulazione</p>
+<h2>Fleet Control in un coworking ricostruito in 3D.</h2>
+</div>
+<div class="fc-cowork-grid">
+<figure class="fc-cowork-video">
+<video controls muted playsinline preload="none" width="960" height="540" poster="images/software/fleet-control-coworking-poster.jpg" aria-label="Simulazione di Fleet Control in un coworking: mappatura LiDAR, accompagnamento alla postazione, privacy mode e console della flotta Unitree">
+<source src="videos/software/fleet-control-coworking.mp4" type="video/mp4">
+</video>
+<figcaption>Simulazione al computer, 52 secondi, senza audio.</figcaption>
+</figure>
+<div class="fc-cowork-text">
+<p>Abbiamo ricostruito un coworking in 3D e ci abbiamo fatto lavorare Fleet Control. Il Go2 mappa gli spazi con il LiDAR, riceve una richiesta e accompagna la persona fino alla sua postazione.</p>
+<ul class="fc-cowork-list">
+<li><strong>Mappa LiDAR</strong> degli spazi, aggiornata mentre il robot si muove</li>
+<li><strong>Accompagnamento</strong> alla postazione scelta, con percorso calcolato sulla mappa</li>
+<li><strong>Privacy mode</strong>: nelle immagini della camera i volti restano coperti</li>
+<li><strong>Una console per la flotta Unitree</strong>: Go2, AS2, B2 e Go2-W</li>
+</ul>
+<p class="fc-cowork-note">È una simulazione: ambiente, robot e percorsi sono ricostruiti al computer, e la scena della camera usa una foto con licenza libera.</p>
+</div>
 </div>
 </div>
 </section>
