@@ -13,6 +13,7 @@ from __future__ import annotations
 import html
 import json
 import re
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
@@ -721,6 +722,8 @@ def main() -> None:
     for k, f in FAMILIES.items():
         print(f"{k:5s} robot {len(data[k]['robots']):3d} accessori {len(data[k]['acc']):3d}")
     print("scritte:", " ".join(written))
+    # le sezioni video (data/video-libreria.json) vanno reinserite dopo la riscrittura delle pagine
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "genera_video.py")], check=False)
 
 
 if __name__ == "__main__":
