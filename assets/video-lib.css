@@ -1,0 +1,22 @@
+/* Sezioni video delle applicazioni (scripts/genera_video.py). Autonomo: funziona con style.css e abra-v13.css. */
+.vlib-sec{padding:72px 0;border-top:1px solid rgba(128,128,128,.22)}
+.vlib-wrap{padding:0 48px;max-width:1440px;margin:0 auto}
+.vlib-k{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;opacity:.6;margin:0 0 10px}
+.vlib-sec h2{margin:0 0 12px;letter-spacing:-.02em}
+.vlib-lead{max-width:760px;opacity:.75;line-height:1.6;margin:0 0 32px}
+.vlib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px}
+.vlib-card{margin:0;display:flex;flex-direction:column;gap:12px}
+.vlib-card video{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0b0b0b;border-radius:12px;border:1px solid rgba(128,128,128,.25)}
+.vlib-card figcaption{display:flex;flex-direction:column;gap:6px;line-height:1.5}
+.vlib-card figcaption strong{font-size:1rem}
+.vlib-card figcaption span{font-size:.9rem;opacity:.75}
+.vlib-card figcaption small{font-size:.75rem;opacity:.55;text-transform:uppercase;letter-spacing:.05em}
+.vlib-links{margin:36px 0 0;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:.92rem}
+.vlib-links span{opacity:.6}
+.vlib-links a{text-decoration:underline;text-underline-offset:3px}
+.vlib-apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:28px}
+.vlib-app{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit}
+.vlib-app img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid rgba(128,128,128,.25);transition:transform .2s}
+.vlib-app:hover img{transform:scale(1.02)}
+.vlib-app span{font-weight:600}
+@media (max-width:700px){.vlib-wrap{padding:0 20px}.vlib-grid{grid-template-columns:1fr}.vlib-sec{padding:56px 0}}
