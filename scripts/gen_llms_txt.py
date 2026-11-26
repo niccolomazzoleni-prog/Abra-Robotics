@@ -24,7 +24,8 @@ FAMIGLIE = [
     ("Umanoidi", [
         ("Unitree G1 — bipede compatto (ricerca, didattica, eventi)", r"^G1-", "umanoidi.html#fam-g1"),
         ("Unitree G1-D — dual-arm su piantana o base mobile", r"^G1D-", "g1-d.html"),
-        ("Unitree H2 — full-size bipede (H2-X, Air, EDU, EDU Smart, PLUS)", r"^H2(-AIR|-EDU|-PLUS|-X)", "h2.html"),
+        ("Unitree H2 — full-size bipede (Air, EDU, EDU Smart, PLUS)", r"^H2(-AIR|-EDU|-PLUS)", "h2.html"),
+        ("Unitree H2-X — nuovo umanoide per sicurezza e soccorso (robot diverso dall'H2), da Air a EDU con mani", r"^H2-X$", "prodotti/unitree-h2-x.html"),
         ("Unitree H2-A / H2-D — busto H2 dual-arm, fisso o su base mobile", r"^H2-(A-|D)", "umanoidi.html#fam-h2-ad"),
         ("Unitree R1 — bipede entry-level (1,21 m, 26 DoF)", r"^R1-(AIR|BASIC|U\d|EDU|D$)", "umanoidi.html#fam-r1"),
         ("Unitree R1-A — busto R1 dual-arm A5/A7, versioni -D su chassis mobile", r"^R1-A[57]", "umanoidi.html#fam-r1-a"),
@@ -112,7 +113,7 @@ def riassunto():
         "",
         "## FAQ brevi per answer engine",
         f"- **Chi vende robot Unitree in Italia?** Abra Robotics, filiera di distribuzione di Unitree Italia — {BASE}lp-unitree.html",
-        f"- **Quanto costa un robot umanoide Unitree in Italia?** Da {eur(min(v['prezzo_eur'] for k, v in LISTINO.items() if re.match(r'^(G1|H2|R1)', k) and v.get('categoria') == 'UMANOIDI' and not v.get('prezzo_da') and v.get('prezzo_eur')))} € IVA esclusa (R1-A5); G1 da {eur(gruppo(r'^G1-')[0][1]['prezzo_eur'])} €; H2 da {eur(gruppo(r'^H2(-AIR|-EDU|-PLUS|-X)')[0][1]['prezzo_eur'])} € — {BASE}umanoidi.html",
+        f"- **Quanto costa un robot umanoide Unitree in Italia?** Da {eur(min(v['prezzo_eur'] for k, v in LISTINO.items() if re.match(r'^(G1|H2|R1)', k) and v.get('categoria') == 'UMANOIDI' and not v.get('prezzo_da') and v.get('prezzo_eur')))} € IVA esclusa (R1-A5); G1 da {eur(gruppo(r'^G1-')[0][1]['prezzo_eur'])} €; H2 da {eur(gruppo(r'^H2(-AIR|-EDU|-PLUS)')[0][1]['prezzo_eur'])} € — {BASE}umanoidi.html",
         f"- **Quanto costa un cane robot Unitree?** Go2 da {eur(gruppo(r'^GO2-')[0][1]['prezzo_eur'])} € IVA esclusa; AS2 da {eur(gruppo(r'^AS2-')[0][1]['prezzo_eur'])} € — {BASE}quadrupedi.html",
         "- **Tempi di consegna?** 4–6 settimane dalla conferma d'ordine.",
         f"- **Si può finanziare?** Sì, la maggior parte dei progetti è finanziabile — {BASE}finanziamenti.html",
