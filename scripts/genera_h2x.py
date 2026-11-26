@@ -37,6 +37,10 @@ HREFLANG = {"no": "nb"}
 LANG_NAMES = {"it": "Italiano", "en": "English"}
 VALID_UNTIL = "2027-06-30"
 
+# articolo del blog sull'H2-X (IT ed EN): stesso percorso relativo da prodotti/ e da en/prodotti/
+GUIDA = {"it": "<p><a href=\"../blog/unitree-h2-x-prezzo-specifiche.html\">Guida: H2-X, prezzo, specifiche e differenze con l'H2 →</a></p>",
+         "en": '<p><a href="../blog/unitree-h2-x-prezzo-specifiche.html">Guide: H2-X price, specs and differences from the H2 →</a></p>'}
+
 H2X_CSS = """<style id="h2x-css">
 .h2x-table td:first-child,.h2x-table td.p{white-space:nowrap}
 .h2x-was{display:block;font-size:.8rem;font-weight:400;color:var(--gray-500,#737373)}
@@ -289,7 +293,7 @@ def product_page(code: str) -> str:
     </div>
   </section>
 
-{section(t['cfg_h2'], configs_table(code, P, t['price_col']), 'configurazioni')}{section(t['what_h2'], what_html(code), 'unitree-h2-x')}{section(t['specs_h2'], specs_table(code, pre), 'specs')}{section(t['family_h2'], '<p>' + esc(t['family_text']) + f' <a href="{fam}">{esc(t["family_link"])} →</a></p>')}
+{section(t['cfg_h2'], configs_table(code, P, t['price_col']), 'configurazioni')}{section(t['what_h2'], what_html(code), 'unitree-h2-x')}{section(t['specs_h2'], specs_table(code, pre), 'specs')}{section(t['family_h2'], '<p>' + esc(t['family_text']) + f' <a href="{fam}">{esc(t["family_link"])} →</a></p>' + GUIDA.get(code, ''))}
 <section class="section hm-faq" id="faq"><div class="container"><h2>{esc(ui['faq_h2'])}</h2>{faq_html(code, P)}</div></section>
 <section class="section hm-src" style="padding-top:0"><div class="container"><h2>{esc(ui['sources_h2'])}</h2>{sources_html(code)}</div></section>
 
