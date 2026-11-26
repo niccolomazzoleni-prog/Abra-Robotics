@@ -38,8 +38,8 @@ LANG_NAMES = {"it": "Italiano", "en": "English"}
 VALID_UNTIL = "2027-06-30"
 
 # articolo del blog sull'H2-X (IT ed EN): stesso percorso relativo da prodotti/ e da en/prodotti/
-GUIDA = {"it": "<p><a href=\"../blog/unitree-h2-x-prezzo-specifiche.html\">Guida: H2-X, prezzo, specifiche e differenze con l'H2 →</a></p>",
-         "en": '<p><a href="../blog/unitree-h2-x-prezzo-specifiche.html">Guide: H2-X price, specs and differences from the H2 →</a></p>'}
+GUIDA = {"it": "<p><a href=\"../blog/unitree-h2-x-prezzo-specifiche.html\">Guida: H2-X, prezzo, specifiche e differenze con l'H2</a></p>",
+         "en": '<p><a href="../blog/unitree-h2-x-prezzo-specifiche.html">Guide: H2-X price, specs and differences from the H2</a></p>'}
 
 H2X_CSS = """<style id="h2x-css">
 .h2x-table td:first-child,.h2x-table td.p{white-space:nowrap}

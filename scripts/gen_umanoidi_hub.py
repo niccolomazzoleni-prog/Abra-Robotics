@@ -35,7 +35,7 @@ FAMIGLIE = [
          match=r"^H2(-AIR|-EDU|-PLUS)", serie=[("H2 Air ed EDU", r"^H2-(AIR|EDU)$"), ("H2 EDU Smart", r"^H2-EDU-SMART-"),
                                               ("H2 PLUS", r"^H2-PLUS")]),
     dict(id="h2-x", nome="Unitree H2-X", tag="Nuovo · sicurezza e soccorso",
-         claim="Robot diverso dall'H2: circa 170 cm, 31 gradi di libertà, due batterie sostituibili a caldo e circa 8 ore di autonomia anche camminando. In preordine, da Air a EDU con mani dexterous.",
+         claim="Robot diverso dall'H2: circa 170 cm, 31 gradi di libertà, due batterie sostituibili a caldo e circa 8 ore di autonomia da fermo e circa 4 in camminata continua. In preordine, da Air a EDU con mani dexterous.",
          img="images/prodotti/2026/unitree-h2-x.webp", pagina="prodotti/unitree-h2-x.html",
          match=r"^H2-X", serie=[("H2-X Air ed EDU", r"^H2-X-(AIR|EDU)$"), ("H2-X EDU con mani", r"^H2-X-EDU-.")]),
     dict(id="h2-ad", nome="Unitree H2-A / H2-D", tag="Busto H2 dual-arm",
