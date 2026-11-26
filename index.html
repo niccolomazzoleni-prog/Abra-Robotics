@@ -1774,6 +1774,18 @@ body.has-wa-bar { padding-bottom: 60px; }
   <div class="hero-inner">
     <div class="wrap">
       <div>
+        <!-- PROMO:H2X inizio (banner temporaneo: per toglierlo cancellare fino a PROMO:H2X fine; clic misurati in GA4 come evento promo_h2x_click) -->
+        <style>
+        .promo-h2x{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;padding:5px 14px 5px 5px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;text-decoration:none;font-size:14px;line-height:1.2;max-width:100%;transition:background .2s,border-color .2s}
+        .promo-h2x:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.45)}
+        .promo-h2x img{width:30px;height:30px;border-radius:50%;object-fit:cover;object-position:50% 20%;background:#000;flex:none}
+        .promo-h2x b{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:#ff5a1f;color:#fff;border-radius:999px;padding:3px 8px;flex:none}
+        .promo-h2x span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .promo-h2x i{font-style:normal;opacity:.8;flex:none}
+        @media (max-width:520px){.promo-h2x{font-size:13px;gap:8px}.promo-h2x .promo-h2x-extra{display:none}}
+        </style>
+        <a class="promo-h2x" href="prodotti/unitree-h2-x.html?da=home-banner" onclick="if(window.gtag)gtag('event','promo_h2x_click',{posizione:'home-hero'})"><img src="images/thumbs/prodotti__2026__unitree-h2-x.webp" alt="" width="30" height="30"/><b>Nuovo</b><span>Unitree H2-X<span class="promo-h2x-extra">: 8 ore di autonomia</span>, da 36.713 €</span><i aria-hidden="true">→</i></a>
+        <!-- PROMO:H2X fine -->
         <h1>Il partner tecnologico per l'adozione <span class="grad">della robotica avanzata</span> nelle imprese.</h1>
         <p>Affianchiamo i team Innovation, R&amp;D e Automazione aiutandoli ad integrare la robotica industriale nei processi logistici e produttivi, un passo alla volta.</p>
         <div class="btn-group">
