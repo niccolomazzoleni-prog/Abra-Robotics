@@ -96,8 +96,8 @@ ROWS = [
 HUB = {"go2": ("go2.html", "Unitree Go2"), "as2": ("as2.html", "Unitree AS2"),
        "a2": ("a2.html", "Unitree A2"), "b2": ("b2.html", "Unitree B2")}
 
-MIN = min(p(k) for r in ROWS for k in r[2])
-MAX = max(p(k) for r in ROWS for k in r[2])
+MIN = min(p(k) for r in ROWS for k in r[2] if k in PRICES)
+MAX = max(p(k) for r in ROWS for k in r[2] if k in PRICES)
 
 
 def rel(path: str, en: bool) -> str:
@@ -125,10 +125,14 @@ def table(en: bool) -> str:
             out.append(f'<tr class="q-fam"><td colspan="8"><a href="{rel(hub, en)}">{label}</a> — '
                        + ("all versions and prices →" if en else "tutte le versioni e i prezzi →") + "</td></tr>")
             fam_prev = fam
-        lo = min(p(k) for k in keys)
-        price = (eur_en(lo) if en else eur_it(lo))
-        if len(keys) > 1:
-            price = ("from " if en else "da ") + price
+        con_prezzo = [k for k in keys if k in PRICES]   # es. AS2 Pro: su preventivo, non nel listino
+        if con_prezzo:
+            lo = min(p(k) for k in con_prezzo)
+            price = (eur_en(lo) if en else eur_it(lo))
+            if len(con_prezzo) > 1:
+                price = ("from " if en else "da ") + price
+        else:
+            price = "on request" if en else "su preventivo"
         s = s_en if en else s_it
         if en:
             name = name.replace("(ruote)", "(wheeled)")
@@ -157,12 +161,12 @@ def itemlist_jsonld(en: bool) -> str:
     page = f"{SITE}/en/quadrupedi-en.html" if en else f"{SITE}/quadrupedi.html"
     items = []
     for fam in ("go2", "as2", "a2", "b2"):
-        keys = [k for r in ROWS if r[0] == fam for k in r[2]]
+        keys = [k for r in ROWS if r[0] == fam for k in r[2] if k in PRICES]
         hub, label = HUB[fam]
         url = f"{SITE}/en/{hub.replace('.html', '-en.html')}" if en else f"{SITE}/{hub}"
         items.append({"@type": "ListItem", "position": len(items) + 1, "item": {
             "@type": "Product", "name": label, "url": url, "brand": {"@type": "Brand", "name": "Unitree"},
-            "offers": {"@type": "AggregateOffer", "priceCurrency": "EUR",
+            "offers": {"@type": "AggregateOffer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR",
                        "lowPrice": f"{min(p(k) for k in keys):.2f}", "highPrice": f"{max(p(k) for k in keys):.2f}",
                        "offerCount": len(keys),
                        "seller": {"@type": "Organization", "name": "Abra Robotics", "url": SITE}}}})

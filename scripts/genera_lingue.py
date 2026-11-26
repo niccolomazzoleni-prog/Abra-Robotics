@@ -244,7 +244,7 @@ def family_page(d: dict, key: str, data: dict, all_langs: list[dict]) -> str:
     ld_product = {"@context": "https://schema.org", "@type": "Product", "name": f"Unitree {name}", "brand": {"@type": "Brand", "name": "Unitree"},
                   "image": f"{SITE}/{f['image']}", "description": desc, "url": own}
     if low:
-        ld_product["offers"] = {"@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": f"{low:.2f}", "highPrice": f"{high:.2f}",
+        ld_product["offers"] = {"@type": "AggregateOffer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "lowPrice": f"{low:.2f}", "highPrice": f"{high:.2f}",
                                 "offerCount": len(prices), "seller": {"@type": "Organization", "name": "Abra Robotics", "url": SITE}}
     ld_bc = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": u["home"], "item": f"{SITE}/{code}/"},
