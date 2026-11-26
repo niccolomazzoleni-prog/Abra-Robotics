@@ -544,7 +544,7 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
     ld_product = {"@context": "https://schema.org", "@type": "Product", "name": f"Unitree {name}", "brand": {"@type": "Brand", "name": "Unitree"},
                   "image": f"{SITE}/{f['image']}", "description": desc, "url": own}
     if low:
-        ld_product["offers"] = {"@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": f"{low:.2f}", "highPrice": f"{high:.2f}",
+        ld_product["offers"] = {"@type": "AggregateOffer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "lowPrice": f"{low:.2f}", "highPrice": f"{high:.2f}",
                                 "offerCount": len([r for r in rows if r["price"]]),
                                 "seller": {"@type": "Organization", "name": "Abra Robotics", "url": SITE}}
     parent = f["parent_en"] if en else f["parent_it"]

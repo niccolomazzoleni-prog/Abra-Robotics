@@ -80,7 +80,7 @@ def product_ld(key: str, name: str, page: str, rows: list[dict]) -> str:
     prices = [r["price"] for r in rows if r["price"]]
     ld = {"@context": "https://schema.org", "@type": "Product", "name": f"Unitree {name}",
           "brand": {"@type": "Brand", "name": "Unitree"}, "image": f"{SITE}/{FAMILIES[key]['image']}", "url": f"{SITE}/{page}",
-          "offers": {"@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": f"{min(prices):.2f}",
+          "offers": {"@type": "AggregateOffer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "lowPrice": f"{min(prices):.2f}",
                      "highPrice": f"{max(prices):.2f}", "offerCount": len(prices),
                      "seller": {"@type": "Organization", "name": "Abra Robotics", "url": SITE}}}
     return f'<script type="application/ld+json" id="{LD_ID}">{json.dumps(ld, ensure_ascii=False)}</script>'
