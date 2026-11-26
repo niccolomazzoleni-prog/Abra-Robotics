@@ -62,6 +62,14 @@ def prodotti(fam):
     return sorted(out, key=lambda kv: (not kv[1].get("prezzo_eur"), kv[1].get("prezzo_eur") or 0))
 
 
+# modelli nuovi: badge sulla scheda e richiamo nella famiglia
+NOVITA = [(r"^H2-X", "Novità")]
+
+
+def novita(k):
+    return next((lab for rx, lab in NOVITA if re.match(rx, k)), None)
+
+
 CAP = 8  # schede visibili per elenco; le altre stanno in un <details> (link comunque presenti nell'HTML)
 
 
@@ -78,7 +86,8 @@ def voce(k, v):
         barrato = (f'<s class="fam-map" title="Prezzo di listino">{eur(listino)} €</s>'
                    if listino and listino > v["prezzo_eur"] else "")
         prezzo = f'<span class="fam-item-price">{barrato}<strong>{eur(v["prezzo_eur"])} €</strong></span>'
-    return (f'<a class="fam-item" href="prodotti/{v['slug']}">{media}'
+    badge = f'<span class="fam-badge">{novita(k)}</span>' if novita(k) else ""
+    return (f'<a class="fam-item" href="prodotti/{v['slug']}">{badge}{media}'
             f'<span class="fam-item-body"><span class="fam-item-name">{nome}</span>{prezzo}</span></a>')
 
 
@@ -94,14 +103,25 @@ def elenco(items):
 def scheda(fam):
     items = prodotti(fam)
     da = eur(items[0][1]["prezzo_eur"], dec=False)
-    link = (f'<a class="fam-card-link" href="{fam["pagina"]}">Pagina famiglia</a>' if fam["pagina"] else "")
+    nuovi = [(k, v) for k, v in items if novita(k)]
+    nuovo = (f'<a class="fam-card-new" href="prodotti/{nuovi[0][1]['slug']}">{novita(nuovi[0][0])}: '
+             f'{html.escape(nuovi[0][1]["nome"].split(" (")[0])}</a>') if nuovi else ""
     return (f'<article class="fam-card"><a class="fam-card-media" href="#fam-{fam["id"]}">'
             f'<img src="{fam["img"]}" alt="{html.escape(fam["nome"])}, robot umanoide" loading="lazy"></a>'
-            f'<div class="fam-card-body"><p class="fam-card-tag">{fam["tag"]}</p><h3>{fam["nome"]}</h3>'
-            f'<p class="fam-card-claim">{fam["claim"]}</p>'
-            f'<p class="fam-card-meta"><span>{len(items)} configurazioni</span></p>'
-            f'<div class="fam-card-actions"><a class="btn btn-primary" href="#fam-{fam["id"]}">Vedi configurazioni</a>{link}</div>'
+            f'<div class="fam-card-body"><p class="fam-card-tag">{fam["tag"]}</p>'
+            f'<h3><a href="#fam-{fam["id"]}">{fam["nome"]}</a></h3>{nuovo}'
+            f'<p class="fam-card-meta"><span>{len(items)} configurazioni</span><strong>da {da} €</strong></p>'
             f"</div></article>")
+
+
+def barra(t):
+    """Barra fissa per saltare tra le famiglie (resta visibile scorrendo)."""
+    voci = [(f"#fam-{f['id']}", f["nome"].replace("Unitree ", ""), any(novita(k) for k, _ in prodotti(f))) for f in FAMIGLIE]
+    if 'id="fam-altri-marchi"' in t:
+        voci.append(("#fam-altri-marchi", "Altri marchi", False))
+    return ('<nav class="fam-jump" aria-label="Famiglie di umanoidi"><div class="container">'
+            + "".join(f'<a href="{h}">{n}{"<span>Nuovo</span>" if nv else ""}</a>' for h, n, nv in voci)
+            + '<a class="fam-jump-all" href="listino-unitree.html">Listino completo</a></div></nav>')
 
 
 def sezione(fam):
@@ -130,18 +150,29 @@ def sezione(fam):
 
 
 STYLE = """<style id="hub-style">
-.fam-nav{padding:8px 0 40px}
-.fam-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.fam-card{display:flex;flex-direction:column;border:1px solid var(--gray-200);border-radius:var(--radius);background:var(--white);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.fam-jump{position:sticky;top:113px;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200)}
+.fam-jump .container{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+.fam-jump .container::-webkit-scrollbar{display:none}
+.fam-jump a{flex:none;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--gray-200);border-radius:999px;font-size:14px;font-weight:500;color:var(--black);text-decoration:none;white-space:nowrap}
+.fam-jump a:hover,.fam-jump a.on{border-color:var(--black);background:var(--black);color:var(--white)}
+.fam-jump a span,.fam-badge{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#ff5a1f;color:#fff;border-radius:999px;padding:2px 7px}
+.fam-jump .fam-jump-all{margin-left:auto;border-color:transparent;text-decoration:underline;text-underline-offset:3px}
+.fam-section,#famiglie,#g1-grid{scroll-margin-top:170px}
+.fam-nav{padding:32px 0 40px}
+.fam-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.fam-card{display:grid;grid-template-columns:120px 1fr;border:1px solid var(--gray-200);border-radius:var(--radius);background:var(--white);overflow:hidden;transition:border-color .2s,box-shadow .2s}
 .fam-card:hover{border-color:var(--gray-400);box-shadow:0 8px 24px rgba(0,0,0,.06)}
-.fam-card-media{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--gray-50)}
-.fam-card-media img{display:block;width:100%;height:100%;object-fit:contain;padding:16px}
-.fam-card-body{display:flex;flex-direction:column;gap:10px;padding:20px;flex:1}
+.fam-card-media{display:block;overflow:hidden;background:var(--gray-50)}
+.fam-card-media img{display:block;width:100%;height:100%;min-height:130px;object-fit:contain;padding:10px;box-sizing:border-box}
+.fam-card-body{display:flex;flex-direction:column;gap:6px;padding:14px 16px}
 .fam-card-tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);margin:0}
-.fam-card h3{margin:0;font-size:22px}
+.fam-card h3{margin:0;font-size:19px}
+.fam-card h3 a{color:inherit;text-decoration:none}
+.fam-card-new{align-self:flex-start;font-size:13px;font-weight:600;color:#c2410c;text-decoration:none}
+.fam-card-new:hover{text-decoration:underline}
 .fam-card-claim{margin:0;color:var(--gray-600);line-height:1.55;font-size:15px}
-.fam-card-meta{display:flex;justify-content:space-between;gap:12px;margin:auto 0 0;padding-top:12px;border-top:1px solid var(--gray-200);font-size:14px;color:var(--gray-600)}
-.fam-card-meta strong{color:var(--black);font-size:16px}
+.fam-card-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:auto 0 0;padding-top:8px;border-top:1px solid var(--gray-200);font-size:14px;color:var(--gray-600)}
+.fam-card-meta strong{color:var(--black);font-size:16px;white-space:nowrap}
 .fam-card-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .fam-card-link{font-weight:600;color:var(--black);text-decoration:underline;text-underline-offset:3px}
 .fam-section{border-top:1px solid var(--gray-200)}
@@ -153,7 +184,7 @@ STYLE = """<style id="hub-style">
 .fam-serie{font-size:15px;font-weight:700;margin:28px 0 12px;display:flex;align-items:center;gap:8px}
 .fam-serie span{font-size:12px;font-weight:600;color:var(--gray-600);background:var(--gray-100);border-radius:999px;padding:2px 8px}
 .fam-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.fam-item{display:flex;flex-direction:column;box-sizing:border-box;border:1px solid var(--gray-200);border-radius:16px;background:var(--white);color:var(--black);text-decoration:none;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
+.fam-item{position:relative;display:flex;flex-direction:column;box-sizing:border-box;border:1px solid var(--gray-200);border-radius:16px;background:var(--white);color:var(--black);text-decoration:none;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
 .fam-item:hover,.fam-item:focus-visible{border-color:var(--black);box-shadow:0 8px 24px rgba(0,0,0,.07);transform:translateY(-2px)}
 .fam-item-media{display:block;position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--gray-50);border-bottom:1px solid var(--gray-100)}
 .fam-item-media img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;padding:12px;box-sizing:border-box}
@@ -162,6 +193,9 @@ STYLE = """<style id="hub-style">
 .fam-item-price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:auto;font-size:14px}
 .fam-item-price strong{font-size:16px}
 .fam-map{color:#6b6b6b;font-size:13px}
+.fam-item .fam-badge{position:absolute;top:10px;left:10px;z-index:1}
+#g1-grid .robot-grid.compatta>.robot-card:nth-child(n+7){display:none}
+.g1-tutti{display:block;margin:18px auto 0}
 .fam-more{margin-top:14px}
 .fam-more summary{cursor:pointer;display:inline-block;padding:10px 18px;border:1px solid var(--gray-200);border-radius:999px;font-size:14px;font-weight:500;color:var(--black);list-style:none}
 .fam-more summary::-webkit-details-marker{display:none}
@@ -170,8 +204,30 @@ STYLE = """<style id="hub-style">
 .fam-back{margin:24px 0 0;font-size:14px}
 .fam-back a{color:var(--gray-600)}
 @media (max-width:960px){.fam-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fam-head{grid-template-columns:1fr}.fam-head-side{max-width:360px}.fam-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:600px){.fam-grid{grid-template-columns:1fr}.fam-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fam-item-body{padding:10px 12px 12px}.fam-item-name{font-size:14px}.fam-item-price{font-size:14px}.fam-item-price strong{font-size:15px}.fam-map{font-size:14px}}
+@media (max-width:960px){.fam-jump{top:104px}}
+@media (max-width:600px){.fam-grid{grid-template-columns:1fr}.fam-card{grid-template-columns:96px 1fr}.fam-card-meta{flex-direction:column;gap:2px}.fam-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fam-item-body{padding:10px 12px 12px}.fam-item-name{font-size:14px}.fam-item-price{font-size:14px}.fam-item-price strong{font-size:15px}.fam-map{font-size:14px}}
 </style>"""
+
+
+SCRIPT = """<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var g=document.querySelector('#g1-grid .robot-grid');
+  if(g&&g.children.length>6){
+    g.classList.add('compatta');
+    var b=document.createElement('button');b.type='button';b.className='btn btn-secondary g1-tutti';
+    b.textContent='Mostra tutti i '+g.children.length+' modelli G1';
+    b.onclick=function(){g.classList.remove('compatta');b.remove();};
+    g.after(b);
+    var f=document.querySelector('#g1-grid .coll-filters');
+    if(f)f.addEventListener('click',function(){g.classList.remove('compatta');b.remove();});
+  }
+  var link=[].slice.call(document.querySelectorAll('.fam-jump a[href^="#"]'));
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;
+    link.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id);});});},{rootMargin:'-40% 0px -55% 0px'});
+  link.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)io.observe(s);});
+});
+</script>"""
 
 
 def sostituisci(t, nome, contenuto, ancora_prima=None, ancora_dopo=None):
@@ -234,10 +290,10 @@ def main():
     t = re.sub(r'\s*<div class="tldr"[^>]*>\s*<strong>Famiglie esposte:</strong>.*?</div>', "", t, count=1, flags=re.S)
 
     # schede famiglia sotto l'hero
-    nav = ('<section class="section fam-nav" id="famiglie"><div class="container">'
+    nav = (barra(t) + '<section class="section fam-nav" id="famiglie"><div class="container">'
            '<div class="section-header" style="text-align:left;max-width:100%;"><p class="label">Scegli la famiglia</p>'
            '<h2>Quale umanoide ti serve?</h2></div>'
-           '<div class="fam-grid">' + "".join(scheda(f) for f in FAMIGLIE) + "</div></div></section>")
+           '<div class="fam-grid">' + "".join(scheda(f) for f in FAMIGLIE) + "</div></div></section>" + SCRIPT)
     t = sostituisci(t, "FAMIGLIE", nav, ancora_prima="<!-- GRID -->")
 
     # sezione G1: intestazione sopra le schede ricche + configurazioni non presenti
@@ -262,6 +318,10 @@ def main():
     t = t.replace("<h2>Tutta la gamma G1 a confronto</h2>", "<h2>G1: i modelli principali a confronto</h2>")
     altre_fam = "\n".join(sezione(f) for f in FAMIGLIE[1:])
     fine_matrix = t.index("</section>", t.index('class="matrix"')) + len("</section>")
+    # il blocco partner (genera_pagine_partner.py) sta dentro ALTRE-FAMIGLIE: va conservato
+    partner = re.search(r"<!-- PARTNER:inizio -->.*?<!-- PARTNER:fine -->", t, re.S)
+    if partner:
+        altre_fam += partner.group(0)
     if "<!-- HUB:ALTRE-FAMIGLIE -->" in t:
         t = sostituisci(t, "ALTRE-FAMIGLIE", altre_fam)
     else:
