@@ -1675,6 +1675,25 @@ body.has-wa-bar { padding-bottom: 60px; }
 .wa-bar a.wa-btn svg path{fill:#04130a}
 .wa-bar-close{color:#9a9a9a}
 @media (max-width:520px){.wa-bar p{display:none}.wa-bar{justify-content:center}}
+
+/* Modelli Unitree in home: card con foto, tipo e prezzo di partenza */
+.model-strip{margin-top:28px}
+.model-strip-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.model-strip-head h3{font-size:18px;font-weight:500;letter-spacing:-.01em;margin:0}
+.model-strip-head small{font-size:12.5px;opacity:.6}
+.model-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.model-chip{display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;border:1px solid var(--line-2);border-radius:14px;background:var(--surface);color:inherit;text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s;min-width:0}
+.model-chip:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.model-chip:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.model-chip img{flex:none;width:56px;height:56px;object-fit:contain;border-radius:10px;background:#f3f3f5;padding:4px}
+.model-chip span{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.model-chip b{font-size:15px;font-weight:500}
+.model-chip small{font-size:12.5px;opacity:.7}
+.model-chip em{font-style:normal;font-size:13px;font-weight:500;color:var(--acc2,#2bc4a8);margin-top:2px}
+.model-chip i{flex:none;margin-left:auto;font-style:normal;opacity:.45;transition:transform .2s,opacity .2s}
+.model-chip:hover i{opacity:1;transform:translateX(3px)}
+@media (max-width:900px){.model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.model-grid{grid-template-columns:1fr;gap:8px}.model-chip img{width:48px;height:48px}.model-strip-head{flex-direction:column;gap:2px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Unitree robots in Italy: G1, H2, AS2, Go2 prices", "url": "https://abrarobotics.com/en/index-en.html", "primaryImageOfPage": {"@type": "ImageObject", "url": "https://abrarobotics.com/images/official/unitree-g1-03.webp", "width": 1600, "height": 1004}}</script>
 </head>
@@ -1886,7 +1905,19 @@ body.has-wa-bar { padding-bottom: 60px; }
       <a class="cat-card" href="catalogo-amr-en.html" style="--c:var(--acc4)"><div class="cat-img"><img src="../images/home/cat-amr.webp" alt="AutoXing Juno Plus" loading="lazy"/></div><div class="cat-body"><h3>AMRs</h3><p>MiR, AutoXing and Youibot for intralogistics.</p><ul><li>From 100 to 1,350 kg</li><li>Towing hooks, lifters, pallets</li></ul><span>See all AMRs <svg><use href="#i-arrow"/></svg></span></div></a>
       <a class="cat-card" href="accessori-en.html" style="--c:var(--acc)"><div class="cat-img"><img src="../images/home/cat-accessori.webp" alt="Revo2 robotic hand" loading="lazy"/></div><div class="cat-body"><h3>Accessories</h3><p>Robotic hands, LiDAR, compute modules and spare parts.</p><ul><li>Dex, Inspire, Revo</li><li>Jetson Orin and Thor</li></ul><span>See all accessories <svg><use href="#i-arrow"/></svg></span></div></a>
     </div>
-    <p class="cat-models reveal" style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:15px"><strong>Unitree models:</strong> <a href="g1-en.html">Unitree G1</a> <a href="h2-en.html">Unitree H2</a> <a href="r1-en.html">Unitree R1</a> <a href="go2-en.html">Unitree Go2</a> <a href="as2-en.html">Unitree AS2</a> <a href="a2-en.html">Unitree A2</a> <a href="b2-en.html">Unitree B2</a> <a href="z1-en.html">Unitree Z1</a></p>
+    <div class="model-strip reveal">
+      <div class="model-strip-head"><h3>Unitree models</h3><small>List prices, excl. VAT</small></div>
+      <nav class="model-grid" aria-label="Unitree models">
+        <a class="model-chip" href="g1-en.html"><img src="../images/official/unitree-g1-01.webp" alt="Unitree G1" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree G1</b><small>Humanoid</small><em>from €19,809</em></span><i aria-hidden="true">→</i></a>
+        <a class="model-chip" href="h2-en.html"><img src="../images/official/unitree-h2-01.webp" alt="Unitree H2" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree H2</b><small>Full-size humanoid</small><em>from €35,363</em></span><i aria-hidden="true">→</i></a>
+        <a class="model-chip" href="r1-en.html"><img src="../images/official/unitree-r1-01.webp" alt="Unitree R1" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree R1</b><small>Compact humanoid</small><em>from €6,295</em></span><i aria-hidden="true">→</i></a>
+        <a class="model-chip" href="go2-en.html"><img src="../images/prodotti/go2-air.webp" alt="Unitree Go2" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree Go2</b><small>Quadruped</small><em>from €2,576</em></span><i aria-hidden="true">→</i></a>
+        <a class="model-chip" href="as2-en.html"><img src="../images/prodotti/2026/as2.webp" alt="Unitree AS2" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree AS2</b><small>Professional quadruped</small><em>from €5,400</em></span><i aria-hidden="true">→</i></a>
+        <a class="model-chip" href="a2-en.html"><img src="../images/official/unitree-a2-01.webp" alt="Unitree A2" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree A2</b><small>Industrial quadruped</small><em>from €30,814</em></span><i aria-hidden="true">→</i></a>
+        <a class="model-chip" href="b2-en.html"><img src="../images/official/unitree-b2-01.webp" alt="Unitree B2" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree B2</b><small>Heavy industrial quadruped</small><em>from €66,828</em></span><i aria-hidden="true">→</i></a>
+        <a class="model-chip" href="z1-en.html"><img src="../images/official/unitree-z1-01.webp" alt="Unitree Z1" width="56" height="56" loading="lazy" decoding="async"/><span><b>Unitree Z1</b><small>Robotic arm</small><em>from €9,685</em></span><i aria-hidden="true">→</i></a>
+      </nav>
+    </div>
   </div>
 </section>
 
