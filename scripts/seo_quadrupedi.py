@@ -210,8 +210,8 @@ CSS = """
 # ---------------------------------------------------------------- IT
 def it_content() -> dict:
     title = "Robot quadrupede Unitree: prezzi e modelli in Italia | Abra"
-    desc = (f"Robot quadrupede (cane robot) Unitree: prezzi da {eur_it(MIN)} IVA esclusa, confronto Go2, AS2, A2 e B2 "
-            "e quale scegliere per ricerca, ispezione e outdoor.")
+    desc = (f"Quanto costa un cane robot Unitree? Da {eur_it(MIN)} IVA esclusa (Go2 Air) a {eur_it(MAX)} (B2-W): "
+            "Go2, AS2, A2 e B2 a confronto e quale scegliere.")
     hero = f"""<section class="collection-hero">
 <div class="container">
 <p class="label">Robot quadrupedi · cane robot</p>

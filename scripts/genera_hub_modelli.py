@@ -471,14 +471,14 @@ def page(key: str, f: dict, data: dict, en: bool) -> str:
     if en:
         title = f.get("seo_en") or f"Unitree {name} price: versions and specs | Abra"
         h1 = f"Unitree {name}: price and versions in Europe"
-        desc = (f"Unitree {name} price in Europe: all versions from € {eur(low, True)} excl. VAT, official specs and "
-                f"which to choose. Sold in Italy by Abra Robotics.") if low else f"Unitree {name}: versions, official specs and quote from Abra Robotics."
+        desc = (f"Unitree {name} from € {eur(low, True)} excl. VAT: every version compared, what changes between them "
+                f"and official specs. Free written quote from Abra Robotics.") if low else f"Unitree {name}: versions, official specs and quote from Abra Robotics."
         lead = f"{f['what_en']} Below: every {name} version we sell with its end-user price (excl. VAT), the official specifications and how to choose."
     else:
         title = (f.get("seo_it") or "").replace("{low}", eur(low, False) if low else "") or (f"Unitree {name} in Italia: prezzo da {eur(low, False)} € e versioni" if low else f"Unitree {name} prezzo: versioni e specifiche | Abra")
         h1 = f"Unitree {name} prezzo in Italia: listino {date.today().year}"
-        desc = (f"Prezzo Unitree {name} in Italia: tutte le versioni da {eur(low, False)} € IVA esclusa, specifiche ufficiali "
-                f"e quale scegliere. Spedizione e dazio inclusi, supporto in italiano.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
+        desc = (f"Unitree {name} in Italia da {eur(low, False)} € IVA esclusa: tutte le versioni a confronto, cosa cambia "
+                f"tra l'una e l'altra, spedizione e dazio inclusi. Preventivo gratuito.") if low else f"Unitree {name}: versioni, specifiche ufficiali e preventivo da Abra Robotics."
         # prime 2 righe: prezzo di partenza dal listino (piano Italia IT-2)
         cheapest = next((re.sub(r"\s*\(.*\)", "", r["name"]) for r in (robots or acc) if r["price"] == low), None) if low else None
         price_it = (f"L'Unitree {name} costa da {eur(low, False)} € IVA esclusa" + (f" nella versione {cheapest}" if cheapest else "")
