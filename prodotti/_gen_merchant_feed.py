@@ -5,6 +5,7 @@ from __future__ import annotations
 import glob
 import html
 import json
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -65,6 +66,10 @@ def grab_meta_desc(text: str) -> str:
     if not m:
         return ""
     return html.unescape((m.group(1) or m.group(2) or "").strip())
+
+
+# Prezzi IVA inclusa nel feed: si attiva con FEED_IVA_INCLUSA=1 (spento finché Gio non decide)
+IVA_INCLUSA = os.environ.get("FEED_IVA_INCLUSA") == "1"
 
 
 def parse_price(text: str) -> str | None:
@@ -184,6 +189,11 @@ def load_items(avail_map: dict[str, str]) -> tuple[list[dict], list[str]]:
                 mpn = ""
             cat_html = parse_category(text)
             product_type = next((v for k, v in _PRODUCT_TYPE.items() if pid.startswith(k)), "Robot")
+            if IVA_INCLUSA:
+                # Google Shopping in Italia vuole il prezzo IVA inclusa (22%), anche se il sito
+                # mostra il prezzo IVA esclusa per le aziende
+                price = f"{float(price.split()[0]) * 1.22:.2f} EUR"
+                desc = desc.replace("IVA esclusa", "IVA esclusa sul sito; prezzo nel feed IVA 22% inclusa")
             items.append({
                 "id": pid,
                 "title": title,
